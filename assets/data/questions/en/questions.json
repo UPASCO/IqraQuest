@@ -1,0 +1,782 @@
+[
+  {
+    "id": "prophets_001",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet built the ark by Allah's command?",
+    "answers": [
+      "Nuh (Noah)",
+      "Ibrahim (Abraham)",
+      "Musa (Moses)",
+      "Yusuf (Joseph)"
+    ],
+    "explanation": "Allah commanded Nuh to build the ark to save the believers from the flood.",
+    "sourceDisplay": "Quran — Surah Hud, 11:37-38"
+  },
+  {
+    "id": "prophets_002",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was thrown into a fire that Allah made cool and safe for him?",
+    "answers": [
+      "Ibrahim (Abraham)",
+      "Nuh (Noah)",
+      "Dawud (David)",
+      "Ayyub (Job)"
+    ],
+    "explanation": "Allah commanded the fire to be cool and safe for Ibrahim.",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:69"
+  },
+  {
+    "id": "prophets_003",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was swallowed by a huge fish?",
+    "answers": [
+      "Yunus (Jonah)",
+      "Ilyas (Elijah)",
+      "Idris (Enoch)",
+      "Zakariyya (Zechariah)"
+    ],
+    "explanation": "Yunus was swallowed by the fish after leaving his people in anger; Allah forgave him.",
+    "sourceDisplay": "Quran — Surah As-Saffat, 37:142"
+  },
+  {
+    "id": "prophets_004",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet interpreted the king's dream of seven fat cows and seven lean cows?",
+    "answers": [
+      "Yusuf (Joseph)",
+      "Ya'qub (Jacob)",
+      "Isma'il (Ishmael)",
+      "Ishaq (Isaac)"
+    ],
+    "explanation": "Yusuf interpreted the king's dream, foretelling seven years of abundance followed by seven years of famine.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:43-49"
+  },
+  {
+    "id": "prophets_005",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet, according to the Quran, was spoken to directly by Allah?",
+    "answers": [
+      "Musa (Moses)",
+      "Harun (Aaron)",
+      "Yusuf (Joseph)",
+      "Sulaiman (Solomon)"
+    ],
+    "explanation": "The Quran states that Allah spoke to Musa directly.",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:164"
+  },
+  {
+    "id": "prophets_006",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet could understand the speech of birds?",
+    "answers": [
+      "Sulaiman (Solomon)",
+      "Dawud (David)",
+      "Yunus (Jonah)",
+      "Yusuf (Joseph)"
+    ],
+    "explanation": "Allah taught Sulaiman the speech of birds.",
+    "sourceDisplay": "Quran — Surah An-Naml, 27:16"
+  },
+  {
+    "id": "prophets_007",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was given the scripture called the Zabur (Psalms)?",
+    "answers": [
+      "Dawud (David)",
+      "Musa (Moses)",
+      "Isa (Jesus)",
+      "Ibrahim (Abraham)"
+    ],
+    "explanation": "The Quran mentions that the Zabur was given to Dawud.",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:55"
+  },
+  {
+    "id": "prophets_008",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was born without a father, by Allah's word 'Be, and it is'?",
+    "answers": [
+      "Isa (Jesus)",
+      "Yahya (John)",
+      "Isma'il (Ishmael)",
+      "Ishaq (Isaac)"
+    ],
+    "explanation": "The Quran describes Isa's miraculous birth without a father, by Allah's word alone.",
+    "sourceDisplay": "Quran — Surah Al 'Imran, 3:47"
+  },
+  {
+    "id": "prophets_009",
+    "correctAnswerIndex": 0,
+    "question": "Which chapter (surah) of the Quran is named after a prophet's mother?",
+    "answers": [
+      "Maryam",
+      "Yusuf",
+      "Nuh",
+      "Hud"
+    ],
+    "explanation": "Surah 19, Maryam, is named after the mother of the prophet Isa.",
+    "sourceDisplay": "Quran — Surah Maryam, 19:16"
+  },
+  {
+    "id": "prophets_010",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was tested with severe illness and is praised for his patience?",
+    "answers": [
+      "Ayyub (Job)",
+      "Zakariyya (Zechariah)",
+      "Yahya (John)",
+      "Idris (Enoch)"
+    ],
+    "explanation": "Ayyub remained patient through a very difficult trial, and Allah rewarded him.",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:83-84"
+  },
+  {
+    "id": "prophets_011",
+    "correctAnswerIndex": 0,
+    "question": "Whom did Allah command the angels to prostrate to, as a sign of honor?",
+    "answers": [
+      "Adam",
+      "Nuh (Noah)",
+      "Ibrahim (Abraham)",
+      "Musa (Moses)"
+    ],
+    "explanation": "Allah commanded the angels to prostrate to Adam as a mark of honor, not worship.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:34"
+  },
+  {
+    "id": "prophets_012",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet is called 'Khalilullah', the close friend of Allah?",
+    "answers": [
+      "Ibrahim (Abraham)",
+      "Musa (Moses)",
+      "Isa (Jesus)",
+      "Muhammad ﷺ"
+    ],
+    "explanation": "The Quran describes Ibrahim as the close friend (khalil) of Allah.",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:125"
+  },
+  {
+    "id": "prophets_013",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was thrown into a well by his brothers?",
+    "answers": [
+      "Yusuf (Joseph)",
+      "Bunyamin (Benjamin)",
+      "Ya'qub (Jacob)",
+      "Isma'il (Ishmael)"
+    ],
+    "explanation": "Yusuf's brothers threw him into a well out of jealousy.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:15"
+  },
+  {
+    "id": "prophets_014",
+    "correctAnswerIndex": 0,
+    "question": "Whose people were destroyed by a flood after rejecting him?",
+    "answers": [
+      "Nuh (Noah)",
+      "Hud",
+      "Salih",
+      "Shu'ayb"
+    ],
+    "explanation": "Nuh's people were engulfed by the flood after persistently rejecting his message.",
+    "sourceDisplay": "Quran — Surah Hud, 11:37-44"
+  },
+  {
+    "id": "prophets_015",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet saw the sea part to save his people from Pharaoh?",
+    "answers": [
+      "Musa (Moses)",
+      "Harun (Aaron)",
+      "Yusuf (Joseph)",
+      "Isma'il (Ishmael)"
+    ],
+    "explanation": "Allah commanded Musa to strike the sea, and it parted so the believers could pass.",
+    "sourceDisplay": "Quran — Surah Ash-Shu'ara, 26:63"
+  },
+  {
+    "id": "prophets_016",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet, alongside his father Dawud, judged the case of a field grazed by sheep?",
+    "answers": [
+      "Sulaiman (Solomon)",
+      "Isma'il (Ishmael)",
+      "Yusuf (Joseph)",
+      "Ishaq (Isaac)"
+    ],
+    "explanation": "The Quran relates that Sulaiman and Dawud judged this case, and Allah granted Sulaiman the understanding of it.",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:78-79"
+  },
+  {
+    "id": "prophets_017",
+    "correctAnswerIndex": 0,
+    "question": "Whose mother was instructed to place her baby into a river?",
+    "answers": [
+      "Musa (Moses)",
+      "Isa (Jesus)",
+      "Yusuf (Joseph)",
+      "Isma'il (Ishmael)"
+    ],
+    "explanation": "Allah inspired Musa's mother to place him in a chest on the river to protect him.",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:38-39"
+  },
+  {
+    "id": "prophets_018",
+    "correctAnswerIndex": 0,
+    "question": "Whose she-camel was a sign given to his people, the Thamud?",
+    "answers": [
+      "Salih",
+      "Hud",
+      "Shu'ayb",
+      "Lut (Lot)"
+    ],
+    "explanation": "Allah sent a she-camel as a sign to the people of Thamud through the prophet Salih.",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:73"
+  },
+  {
+    "id": "sira_001",
+    "correctAnswerIndex": 0,
+    "question": "In which city was the Prophet Muhammad ﷺ born?",
+    "answers": [
+      "Makkah",
+      "Madinah",
+      "Ta'if",
+      "Jerusalem"
+    ],
+    "explanation": "The Prophet Muhammad ﷺ was born in Makkah, in the Hijaz.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_002",
+    "correctAnswerIndex": 0,
+    "question": "What is the year of the Prophet's ﷺ birth called, marked by the Event of the Elephant?",
+    "answers": [
+      "The Year of the Elephant",
+      "The Year of Victory",
+      "The Year of the Camel",
+      "The Year of Light"
+    ],
+    "explanation": "The Event of the Elephant, in which Allah protected the Kaaba, is recounted in Surah Al-Fil.",
+    "sourceDisplay": "Quran — Surah Al-Fil, 105:1-5"
+  },
+  {
+    "id": "sira_003",
+    "correctAnswerIndex": 0,
+    "question": "What was the name of the Prophet's ﷺ first wife?",
+    "answers": [
+      "Khadijah",
+      "A'ishah",
+      "Hafsah",
+      "Zaynab"
+    ],
+    "explanation": "Khadijah bint Khuwaylid was the Prophet's ﷺ first wife and the first person to believe in his message.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_004",
+    "correctAnswerIndex": 0,
+    "question": "In which cave did the Prophet ﷺ receive the first revelation?",
+    "answers": [
+      "The Cave of Hira",
+      "The Cave of Thawr",
+      "The Cave of the Companions",
+      "The Cave of Uhud"
+    ],
+    "explanation": "The first revelation took place in the Cave of Hira, on Jabal an-Nur near Makkah.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_005",
+    "correctAnswerIndex": 0,
+    "question": "Which angel brought revelation to the Prophet ﷺ?",
+    "answers": [
+      "Jibril (Gabriel)",
+      "Mika'il (Michael)",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "The Quran explicitly mentions that Jibril brought revelation by Allah's permission.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:97"
+  },
+  {
+    "id": "sira_006",
+    "correctAnswerIndex": 0,
+    "question": "What is the migration of the Prophet ﷺ and his companions from Makkah to Madinah called?",
+    "answers": [
+      "Al-Hijrah",
+      "Al-Isra",
+      "Al-Mi'raj",
+      "Al-Fath"
+    ],
+    "explanation": "Al-Hijrah refers to the historic migration to Madinah, the starting point of the Islamic calendar.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_007",
+    "correctAnswerIndex": 0,
+    "question": "To which city did the Prophet ﷺ and Abu Bakr migrate?",
+    "answers": [
+      "Madinah",
+      "Ta'if",
+      "Damascus",
+      "Jerusalem"
+    ],
+    "explanation": "The Prophet ﷺ and Abu Bakr migrated from Makkah to Madinah (then called Yathrib).",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_008",
+    "correctAnswerIndex": 0,
+    "question": "The Quran describes a companion as 'the second of two, when they were in the cave' during the Hijrah. Who was it?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "The Quran refers to Abu Bakr, who accompanied the Prophet ﷺ in the Cave of Thawr during the Hijrah.",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:40"
+  },
+  {
+    "id": "sira_009",
+    "correctAnswerIndex": 0,
+    "question": "Which battle, mentioned in the Quran, saw a small Muslim army defeat a much larger force?",
+    "answers": [
+      "The Battle of Badr",
+      "The Battle of Uhud",
+      "The Battle of the Trench",
+      "The Battle of Hunayn"
+    ],
+    "explanation": "At Badr, Allah granted victory to a small group of believers over a much larger army.",
+    "sourceDisplay": "Quran — Surah Al 'Imran, 3:123"
+  },
+  {
+    "id": "sira_010",
+    "correctAnswerIndex": 0,
+    "question": "What is the largely peaceful return of the Prophet ﷺ and his companions to Makkah called?",
+    "answers": [
+      "The Conquest of Makkah (Fath Makkah)",
+      "The Battle of Makkah",
+      "The Siege of Makkah",
+      "The Fall of Makkah"
+    ],
+    "explanation": "The Conquest of Makkah took place largely peacefully, without widespread bloodshed.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_011",
+    "correctAnswerIndex": 0,
+    "question": "What is the final sermon delivered by the Prophet ﷺ near the end of his life called?",
+    "answers": [
+      "The Farewell Sermon",
+      "The Sermon of Makkah",
+      "The Cave Sermon",
+      "The Sermon of Badr"
+    ],
+    "explanation": "The Farewell Sermon (Khutbat al-Wada') was delivered during the Prophet's ﷺ final pilgrimage.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_012",
+    "correctAnswerIndex": 0,
+    "question": "During which month does the Quran state its revelation began?",
+    "answers": [
+      "Ramadan",
+      "Muharram",
+      "Rajab",
+      "Dhul-Hijjah"
+    ],
+    "explanation": "The Quran states that Ramadan is the month in which the Quran was revealed.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:185"
+  },
+  {
+    "id": "sira_013",
+    "correctAnswerIndex": 0,
+    "question": "What was the Prophet's ﷺ profession before he received revelation?",
+    "answers": [
+      "Merchant/trader",
+      "Only a shepherd",
+      "Blacksmith",
+      "Scribe"
+    ],
+    "explanation": "The Prophet ﷺ worked in trade, a well-established fact of his biography.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_014",
+    "correctAnswerIndex": 0,
+    "question": "Which grandfather of the Prophet ﷺ cared for him after his mother's death?",
+    "answers": [
+      "Abdul Muttalib",
+      "Abu Talib",
+      "Abu Lahab",
+      "Abu Sufyan"
+    ],
+    "explanation": "Abdul Muttalib cared for the young Muhammad ﷺ after the death of his mother Aminah.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_015",
+    "correctAnswerIndex": 0,
+    "question": "Which uncle raised the Prophet ﷺ after his grandfather's death?",
+    "answers": [
+      "Abu Talib",
+      "Al-Abbas",
+      "Hamzah",
+      "Abu Lahab"
+    ],
+    "explanation": "Abu Talib took charge of raising his nephew after Abdul Muttalib's death.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_016",
+    "correctAnswerIndex": 0,
+    "question": "What is the Prophet's ﷺ night journey from Makkah to Jerusalem, mentioned in the Quran, called?",
+    "answers": [
+      "Al-Isra",
+      "Al-Hijrah",
+      "Al-Fath",
+      "Al-Ghazwah"
+    ],
+    "explanation": "Surah Al-Isra opens by describing this miraculous night journey.",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:1"
+  },
+  {
+    "id": "sira_017",
+    "correctAnswerIndex": 0,
+    "question": "Which of the Prophet's ﷺ daughters married Ali ibn Abi Talib?",
+    "answers": [
+      "Fatimah",
+      "Zaynab",
+      "Ruqayyah",
+      "Umm Kulthum"
+    ],
+    "explanation": "Fatimah, daughter of the Prophet ﷺ and Khadijah, married Ali ibn Abi Talib — a widely established fact.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_018",
+    "correctAnswerIndex": 0,
+    "question": "Which month marks the start of the Islamic calendar year, referencing the Hijrah?",
+    "answers": [
+      "Muharram",
+      "Ramadan",
+      "Shawwal",
+      "Dhul-Qa'dah"
+    ],
+    "explanation": "The Islamic calendar begins with the month of Muharram, referencing the year of the Hijrah.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "quran_001",
+    "correctAnswerIndex": 0,
+    "question": "What is the name of the first chapter (surah) of the Quran?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Baqarah",
+      "Al-Ikhlas",
+      "An-Nas"
+    ],
+    "explanation": "Al-Fatiha, 'The Opening', is the first chapter of the Quran.",
+    "sourceDisplay": "Quran — Surah Al-Fatiha, 1:1-7"
+  },
+  {
+    "id": "quran_002",
+    "correctAnswerIndex": 0,
+    "question": "How many chapters (surahs) does the Quran contain?",
+    "answers": [
+      "114",
+      "99",
+      "100",
+      "120"
+    ],
+    "explanation": "The Quran is composed of 114 surahs.",
+    "sourceDisplay": "Quran — well-established count"
+  },
+  {
+    "id": "quran_003",
+    "correctAnswerIndex": 0,
+    "question": "What is the longest surah in the Quran?",
+    "answers": [
+      "Al-Baqarah",
+      "Al-Fatiha",
+      "Al-Kawthar",
+      "Al-'Asr"
+    ],
+    "explanation": "Al-Baqarah is the longest surah in the Quran, with 286 verses.",
+    "sourceDisplay": "Quran — well-established fact"
+  },
+  {
+    "id": "quran_004",
+    "correctAnswerIndex": 0,
+    "question": "What is the shortest surah in the Quran?",
+    "answers": [
+      "Al-Kawthar",
+      "Al-Ikhlas",
+      "Al-'Asr",
+      "An-Nasr"
+    ],
+    "explanation": "Al-Kawthar, with 3 verses, is the shortest surah in the Quran.",
+    "sourceDisplay": "Quran — Surah Al-Kawthar, 108:1-3"
+  },
+  {
+    "id": "quran_005",
+    "correctAnswerIndex": 0,
+    "question": "In which language was the Quran revealed?",
+    "answers": [
+      "Arabic",
+      "Aramaic",
+      "Hebrew",
+      "Persian"
+    ],
+    "explanation": "The Quran explicitly states it was revealed in the Arabic language.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:2"
+  },
+  {
+    "id": "quran_006",
+    "correctAnswerIndex": 0,
+    "question": "What is the name of the 19th surah, named after the mother of Isa?",
+    "answers": [
+      "Maryam",
+      "Yusuf",
+      "Al-Kahf",
+      "Ta-Ha"
+    ],
+    "explanation": "The Quran's 19th surah is named Maryam, after the mother of the prophet Isa.",
+    "sourceDisplay": "Quran — Surah Maryam, 19:1-16"
+  },
+  {
+    "id": "quran_007",
+    "correctAnswerIndex": 0,
+    "question": "What is a chapter of the Quran called?",
+    "answers": [
+      "A surah",
+      "A hadith",
+      "A juz'",
+      "A tafsir"
+    ],
+    "explanation": "The Quran is divided into chapters called surahs.",
+    "sourceDisplay": "Quran — well-established terminology"
+  },
+  {
+    "id": "quran_008",
+    "correctAnswerIndex": 0,
+    "question": "What is a verse of the Quran called?",
+    "answers": [
+      "An ayah",
+      "A surah",
+      "A hadith",
+      "A ruku'"
+    ],
+    "explanation": "Each verse of the Quran is called an ayah, meaning 'sign'.",
+    "sourceDisplay": "Quran — well-established terminology"
+  },
+  {
+    "id": "quran_009",
+    "correctAnswerIndex": 0,
+    "question": "Which surah is obligatorily recited in every unit (rak'ah) of the prayer?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "Al-Kawthar",
+      "Al-Fil"
+    ],
+    "explanation": "Reciting Al-Fatiha is a pillar of the prayer reported in an authentic hadith.",
+    "sourceDisplay": "Sahih al-Bukhari, no. 756"
+  },
+  {
+    "id": "quran_010",
+    "correctAnswerIndex": 0,
+    "question": "To whom was the Quran revealed?",
+    "answers": [
+      "The Prophet Muhammad ﷺ",
+      "The Prophet Musa",
+      "The Prophet Isa",
+      "The Prophet Dawud"
+    ],
+    "explanation": "The Quran was revealed to the Prophet Muhammad ﷺ, through the angel Jibril.",
+    "sourceDisplay": "Quran — well-established fact"
+  },
+  {
+    "id": "faith_001",
+    "correctAnswerIndex": 0,
+    "question": "How many pillars does Islam have?",
+    "answers": [
+      "5",
+      "4",
+      "6",
+      "7"
+    ],
+    "explanation": "The hadith of Jibril and the hadith reported by Ibn Umar list the five pillars of Islam.",
+    "sourceDisplay": "Sahih al-Bukhari, no. 8"
+  },
+  {
+    "id": "faith_002",
+    "correctAnswerIndex": 0,
+    "question": "What is the declaration of faith in Islam called?",
+    "answers": [
+      "The Shahadah",
+      "The Salah",
+      "The Zakah",
+      "The Hajj"
+    ],
+    "explanation": "The Shahadah, the testimony of faith, is the first pillar of Islam.",
+    "sourceDisplay": "Sahih al-Bukhari, no. 8"
+  },
+  {
+    "id": "faith_003",
+    "correctAnswerIndex": 0,
+    "question": "How many times a day is the obligatory prayer performed in Islam?",
+    "answers": [
+      "5",
+      "3",
+      "4",
+      "7"
+    ],
+    "explanation": "The five daily obligatory prayers are a foundational pillar of Islam.",
+    "sourceDisplay": "Sahih al-Bukhari, no. 8"
+  },
+  {
+    "id": "faith_004",
+    "correctAnswerIndex": 0,
+    "question": "What is the obligatory charity in Islam called?",
+    "answers": [
+      "Zakah",
+      "Sadaqah",
+      "Waqf",
+      "Kaffarah"
+    ],
+    "explanation": "Zakah is the obligatory charity, one of the five pillars of Islam.",
+    "sourceDisplay": "Sahih al-Bukhari, no. 8"
+  },
+  {
+    "id": "faith_005",
+    "correctAnswerIndex": 0,
+    "question": "What is the obligatory fasting month in Islam called?",
+    "answers": [
+      "Ramadan",
+      "Shawwal",
+      "Rajab",
+      "Muharram"
+    ],
+    "explanation": "The Quran commands fasting during the month of Ramadan.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:183"
+  },
+  {
+    "id": "faith_006",
+    "correctAnswerIndex": 0,
+    "question": "What is the pilgrimage to Makkah, obligatory once in a lifetime for those able, called?",
+    "answers": [
+      "Hajj",
+      "Umrah",
+      "I'tikaf",
+      "Tawaf"
+    ],
+    "explanation": "The Quran makes Hajj obligatory, at least once in a lifetime, for anyone able to undertake it.",
+    "sourceDisplay": "Quran — Surah Al 'Imran, 3:97"
+  },
+  {
+    "id": "faith_007",
+    "correctAnswerIndex": 0,
+    "question": "Which direction do Muslims face for prayer?",
+    "answers": [
+      "The Kaaba, in Makkah",
+      "Jerusalem",
+      "Madinah",
+      "East"
+    ],
+    "explanation": "The Quran established the Kaaba as the direction of prayer (Qiblah).",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:144"
+  },
+  {
+    "id": "faith_008",
+    "correctAnswerIndex": 0,
+    "question": "According to a well-known hadith, how many articles of faith (pillars of Iman) are commonly taught?",
+    "answers": [
+      "6",
+      "4",
+      "5",
+      "7"
+    ],
+    "explanation": "The hadith of Jibril lists six articles of faith: Allah, the angels, the books, the messengers, the Last Day, and divine decree.",
+    "sourceDisplay": "Sahih Muslim, no. 8"
+  },
+  {
+    "id": "virtues_001",
+    "correctAnswerIndex": 0,
+    "question": "According to a hadith reported by Imam al-Bukhari, what should someone who believes in Allah and the Last Day do with their speech?",
+    "answers": [
+      "Speak good or remain silent",
+      "Speak loudly",
+      "Never speak",
+      "Repeat rumors"
+    ],
+    "explanation": "The Prophet ﷺ said: 'Whoever believes in Allah and the Last Day should speak good or remain silent.'",
+    "sourceDisplay": "Sahih al-Bukhari, no. 6018"
+  },
+  {
+    "id": "virtues_002",
+    "correctAnswerIndex": 0,
+    "question": "According to that same hadith, whom else should a believer honor, besides their guest?",
+    "answers": [
+      "Their neighbor",
+      "Their merchant",
+      "Their rival",
+      "A stranger"
+    ],
+    "explanation": "The hadith continues: '...and whoever believes in Allah and the Last Day should honor their neighbor.'",
+    "sourceDisplay": "Sahih al-Bukhari, no. 6018"
+  },
+  {
+    "id": "virtues_003",
+    "correctAnswerIndex": 0,
+    "question": "This same hadith also mentions honoring whom, when they arrive at one's home?",
+    "answers": [
+      "The guest",
+      "Only the neighbor",
+      "The merchant",
+      "A distant unknown traveler"
+    ],
+    "explanation": "The full hadith says: '...whoever believes in Allah and the Last Day should honor their guest.'",
+    "sourceDisplay": "Sahih al-Bukhari, no. 6018"
+  },
+  {
+    "id": "virtues_004",
+    "correctAnswerIndex": 0,
+    "question": "According to an authentic hadith, a believer's faith is not complete until he loves for his brother what he loves for...",
+    "answers": [
+      "himself",
+      "his wealth",
+      "only his family",
+      "his country"
+    ],
+    "explanation": "The Prophet ﷺ said: 'None of you truly believes until he loves for his brother what he loves for himself.'",
+    "sourceDisplay": "Sahih al-Bukhari, no. 13"
+  },
+  {
+    "id": "virtues_005",
+    "correctAnswerIndex": 0,
+    "question": "According to an authentic hadith, the true Muslim is the one from whose tongue and ___ other people are safe.",
+    "answers": [
+      "hand",
+      "wealth",
+      "gaze",
+      "voice"
+    ],
+    "explanation": "The Prophet ﷺ said: 'The Muslim is the one from whose tongue and hand other Muslims are safe.'",
+    "sourceDisplay": "Sahih al-Bukhari, no. 10"
+  },
+  {
+    "id": "virtues_006",
+    "correctAnswerIndex": 0,
+    "question": "The Quran commands kindness to parents and forbids even saying which word of annoyance to them?",
+    "answers": [
+      "'Uff' (a sound of impatience)",
+      "'No'",
+      "'Enough'",
+      "'Wait'"
+    ],
+    "explanation": "The Quran calls for the utmost kindness to parents, forbidding even the slightest word of contempt.",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:23-24"
+  }
+]

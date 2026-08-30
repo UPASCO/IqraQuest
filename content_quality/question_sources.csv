@@ -1,0 +1,61 @@
+question_id,category,source_type,source_work,source_reference,verification_status,consensus_status
+prophets_001,prophets,quran,Quran,11:37-38,verified,nonControversial
+prophets_002,prophets,quran,Quran,21:69,verified,nonControversial
+prophets_003,prophets,quran,Quran,37:142,verified,nonControversial
+prophets_004,prophets,quran,Quran,12:43-49,verified,nonControversial
+prophets_005,prophets,quran,Quran,4:164,verified,nonControversial
+prophets_006,prophets,quran,Quran,27:16,verified,nonControversial
+prophets_007,prophets,quran,Quran,17:55,verified,nonControversial
+prophets_008,prophets,quran,Quran,3:47,verified,nonControversial
+prophets_009,prophets,quran,Quran,19:16,verified,nonControversial
+prophets_010,prophets,quran,Quran,21:83-84,verified,nonControversial
+prophets_011,prophets,quran,Quran,2:34,verified,nonControversial
+prophets_012,prophets,quran,Quran,4:125,verified,nonControversial
+prophets_013,prophets,quran,Quran,12:15,verified,nonControversial
+prophets_014,prophets,quran,Quran,11:37-44,verified,nonControversial
+prophets_015,prophets,quran,Quran,26:63,verified,nonControversial
+prophets_016,prophets,quran,Quran,21:78-79,verified,nonControversial
+prophets_017,prophets,quran,Quran,20:38-39,verified,nonControversial
+prophets_018,prophets,quran,Quran,7:73,verified,nonControversial
+sira_001,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_002,sira,quran,Quran,105:1-5,verified,nonControversial
+sira_003,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_004,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_005,sira,quran,Quran,2:97,verified,nonControversial
+sira_006,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_007,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_008,sira,quran,Quran,9:40,verified,nonControversial
+sira_009,sira,quran,Quran,3:123,verified,nonControversial
+sira_010,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_011,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_012,sira,quran,Quran,2:185,verified,nonControversial
+sira_013,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_014,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_015,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_016,sira,quran,Quran,17:1,verified,nonControversial
+sira_017,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_018,sira,sira,Sira,well-established biography,verified,nonControversial
+quran_001,quran,quran,Quran,1:1-7,verified,nonControversial
+quran_002,quran,quran,Quran,well-established count (114 surahs),verified,nonControversial
+quran_003,quran,quran,Quran,well-established (Al-Baqarah is the longest surah),verified,nonControversial
+quran_004,quran,quran,Quran,108:1-3,verified,nonControversial
+quran_005,quran,quran,Quran,12:2,verified,nonControversial
+quran_006,quran,quran,Quran,19:1-16,verified,nonControversial
+quran_007,quran,quran,Quran,well-established terminology,verified,nonControversial
+quran_008,quran,quran,Quran,well-established terminology,verified,nonControversial
+quran_009,quran,hadithBukhari,Sahih al-Bukhari,756,verified,nonControversial
+quran_010,quran,quran,Quran,well-established (revealed to Muhammad ﷺ),verified,nonControversial
+faith_001,faith,hadithBukhari,Sahih al-Bukhari,8,verified,nonControversial
+faith_002,faith,hadithBukhari,Sahih al-Bukhari,8,verified,nonControversial
+faith_003,faith,hadithBukhari,Sahih al-Bukhari,8,verified,nonControversial
+faith_004,faith,hadithBukhari,Sahih al-Bukhari,8,verified,nonControversial
+faith_005,faith,quran,Quran,2:183,verified,nonControversial
+faith_006,faith,quran,Quran,3:97,verified,nonControversial
+faith_007,faith,quran,Quran,2:144,verified,nonControversial
+faith_008,faith,hadithMuslim,Sahih Muslim,8,verified,nonControversial
+virtues_001,virtues,hadithBukhari,Sahih al-Bukhari,6018,verified,nonControversial
+virtues_002,virtues,hadithBukhari,Sahih al-Bukhari,6018,verified,nonControversial
+virtues_003,virtues,hadithBukhari,Sahih al-Bukhari,6018,verified,nonControversial
+virtues_004,virtues,hadithBukhari,Sahih al-Bukhari,13,verified,nonControversial
+virtues_005,virtues,hadithBukhari,Sahih al-Bukhari,10,verified,nonControversial
+virtues_006,virtues,quran,Quran,17:23-24,verified,nonControversial

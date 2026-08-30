@@ -1,0 +1,235 @@
+{
+  "@@locale": "en",
+  "appName": "IqraQuest",
+  "@appName": {
+    "description": "Application name, unchanged across locales"
+  },
+  "appTagline": "The journey of knowledge",
+  "@appTagline": {
+    "description": "Home screen tagline under the logo"
+  },
+  "onboardingWelcomeTitle": "Welcome to IqraQuest",
+  "@onboardingWelcomeTitle": {
+    "description": "Onboarding first screen title"
+  },
+  "onboardingWelcomeSubtitle": "Answer questions, roll the dice, guide your horse from Makkah to Madinah.",
+  "@onboardingWelcomeSubtitle": {
+    "description": "Onboarding first screen subtitle"
+  },
+  "getStarted": "Get started",
+  "@getStarted": {
+    "description": "Primary CTA button on onboarding"
+  },
+  "chooseLanguage": "Choose language",
+  "@chooseLanguage": {
+    "description": "Language picker label"
+  },
+  "play": "Play",
+  "@play": {
+    "description": "Primary home screen action"
+  },
+  "soloMode": "Solo",
+  "@soloMode": {
+    "description": "Home screen mode option"
+  },
+  "familyMode": "Family",
+  "@familyMode": {
+    "description": "Home screen mode option"
+  },
+  "dailyChallenge": "Daily Challenge",
+  "@dailyChallenge": {
+    "description": "Home screen menu item"
+  },
+  "progress": "Progress",
+  "@progress": {
+    "description": "Home screen menu item"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Home screen menu item"
+  },
+  "premium": "Premium",
+  "@premium": {
+    "description": "Home screen menu item / badge"
+  },
+  "continueGame": "Continue game",
+  "@continueGame": {
+    "description": "Resume a saved game"
+  },
+  "quickGame": "Quick game",
+  "@quickGame": {
+    "description": "Game variant: 1 pawn per player"
+  },
+  "classicGame": "Classic game",
+  "@classicGame": {
+    "description": "Game variant: 4 pawns per player"
+  },
+  "chooseDifficulty": "Choose difficulty",
+  "@chooseDifficulty": {
+    "description": "AI difficulty picker label"
+  },
+  "difficultyEasy": "Easy",
+  "@difficultyEasy": {
+    "description": "AI/quiz difficulty level"
+  },
+  "difficultyMedium": "Medium",
+  "@difficultyMedium": {
+    "description": "AI/quiz difficulty level"
+  },
+  "difficultyHard": "Hard",
+  "@difficultyHard": {
+    "description": "AI/quiz difficulty level"
+  },
+  "playerName": "Name",
+  "@playerName": {
+    "description": "Player name input label"
+  },
+  "chooseTeam": "Choose team",
+  "@chooseTeam": {
+    "description": "Team/color picker label"
+  },
+  "addPlayer": "Add player",
+  "@addPlayer": {
+    "description": "Add another player button"
+  },
+  "startGame": "Start game",
+  "@startGame": {
+    "description": "Confirm player setup and begin"
+  },
+  "yourTurn": "Your turn",
+  "@yourTurn": {
+    "description": "Turn banner"
+  },
+  "rollDice": "Roll the dice",
+  "@rollDice": {
+    "description": "Dice button label"
+  },
+  "diceLocked": "Answer the question to unlock the dice",
+  "@diceLocked": {
+    "description": "Dice disabled state message"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Question card: category label"
+  },
+  "correctAnswer": "Correct!",
+  "@correctAnswer": {
+    "description": "Feedback: correct"
+  },
+  "incorrectAnswer": "Not quite…",
+  "@incorrectAnswer": {
+    "description": "Feedback: incorrect"
+  },
+  "explanationLabel": "Explanation",
+  "@explanationLabel": {
+    "description": "Question card section header"
+  },
+  "sourceLabel": "Source",
+  "@sourceLabel": {
+    "description": "Question card section header"
+  },
+  "nextPlayer": "Next player",
+  "@nextPlayer": {
+    "description": "Turn transition button"
+  },
+  "rolledSix": "A six! Another turn — a new question.",
+  "@rolledSix": {
+    "description": "Message shown when a 6 grants another turn"
+  },
+  "playAgain": "Play again",
+  "@playAgain": {
+    "description": "Post-game button"
+  },
+  "protectedSquareLabel": "Protected square",
+  "@protectedSquareLabel": {
+    "description": "Board legend for a safe square"
+  },
+  "freeBankExhaustedMessage": "All the free edition's questions have been used for this game.",
+  "@freeBankExhaustedMessage": {
+    "description": "Shown once the free question bank runs out mid-game"
+  },
+  "victory": "Victory!",
+  "@victory": {
+    "description": "Win screen title"
+  },
+  "gameOver": "Game over",
+  "@gameOver": {
+    "description": "End-of-game screen title (generic)"
+  },
+  "backToHome": "Back to home",
+  "@backToHome": {
+    "description": "Navigation button back to home screen"
+  },
+  "gamesPlayed": "Games played",
+  "@gamesPlayed": {
+    "description": "Progress stat label"
+  },
+  "winRate": "Win rate",
+  "@winRate": {
+    "description": "Progress stat label"
+  },
+  "questionsAnswered": "Questions answered",
+  "@questionsAnswered": {
+    "description": "Progress stat label"
+  },
+  "streak": "Day streak",
+  "@streak": {
+    "description": "Progress stat label: daily streak"
+  },
+  "premiumTitle": "IqraQuest Premium",
+  "@premiumTitle": {
+    "description": "Premium sheet title"
+  },
+  "premiumUnlockAll": "Unlock all 500 questions and every difficulty",
+  "@premiumUnlockAll": {
+    "description": "Premium sheet value proposition"
+  },
+  "premiumOneTime": "One-time payment — no subscription",
+  "@premiumOneTime": {
+    "description": "Premium sheet: pricing model note"
+  },
+  "restorePurchases": "Restore purchases",
+  "@restorePurchases": {
+    "description": "Premium sheet button"
+  },
+  "purchaseSuccess": "Thank you! Premium is now active.",
+  "@purchaseSuccess": {
+    "description": "Purchase result feedback"
+  },
+  "purchaseError": "Purchase couldn't be completed. Please try again later.",
+  "@purchaseError": {
+    "description": "Purchase result feedback: failure"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Settings item"
+  },
+  "reduceMotion": "Reduce motion",
+  "@reduceMotion": {
+    "description": "Settings item: accessibility"
+  },
+  "darkMode": "Dark mode",
+  "@darkMode": {
+    "description": "Settings item"
+  },
+  "about": "About",
+  "@about": {
+    "description": "Settings item"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Settings item / legal link"
+  },
+  "genericError": "Something went wrong.",
+  "@genericError": {
+    "description": "Fallback error message"
+  },
+  "parentalGateTitle": "A question for parents",
+  "@parentalGateTitle": {
+    "description": "Parental gate dialog title, shown before purchases/external links"
+  },
+  "parentalGateInstruction": "Solve this to continue.",
+  "@parentalGateInstruction": {
+    "description": "Parental gate dialog body"
+  }
+}

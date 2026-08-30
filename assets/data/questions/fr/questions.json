@@ -1,0 +1,782 @@
+[
+  {
+    "id": "prophets_001",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète a construit l'arche sur l'ordre d'Allah ?",
+    "answers": [
+      "Nûh",
+      "Ibrâhîm",
+      "Mûsâ",
+      "Yûsuf"
+    ],
+    "explanation": "Allah ordonna à Nûh de construire l'arche pour sauver les croyants du déluge.",
+    "sourceDisplay": "Coran — Sourate Hûd, 11:37-38"
+  },
+  {
+    "id": "prophets_002",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète fut jeté dans le feu, qu'Allah rendit frais et sûr pour lui ?",
+    "answers": [
+      "Ibrâhîm",
+      "Nûh",
+      "Dâwûd",
+      "Ayyûb"
+    ],
+    "explanation": "Allah ordonna au feu d'être frais et sûr pour Ibrâhîm.",
+    "sourceDisplay": "Coran — Sourate Al-Anbiyâ, 21:69"
+  },
+  {
+    "id": "prophets_003",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète fut avalé par un énorme poisson ?",
+    "answers": [
+      "Yûnus",
+      "Ilyâs",
+      "Idrîs",
+      "Zakariyyâ"
+    ],
+    "explanation": "Yûnus fut avalé par le poisson après avoir quitté son peuple en colère ; Allah lui pardonna.",
+    "sourceDisplay": "Coran — Sourate As-Sâffât, 37:142"
+  },
+  {
+    "id": "prophets_004",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète interpréta le rêve du roi des sept vaches grasses et sept vaches maigres ?",
+    "answers": [
+      "Yûsuf",
+      "Yaʿqûb",
+      "Ismâʿîl",
+      "Ishâq"
+    ],
+    "explanation": "Yûsuf interpréta le rêve du roi, annonçant sept années d'abondance suivies de sept années de disette.",
+    "sourceDisplay": "Coran — Sourate Yûsuf, 12:43-49"
+  },
+  {
+    "id": "prophets_005",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète, selon le Coran, a parlé directement à Allah ?",
+    "answers": [
+      "Mûsâ",
+      "Hârûn",
+      "Yûsuf",
+      "Sulaymân"
+    ],
+    "explanation": "Le Coran précise qu'Allah a parlé à Mûsâ directement.",
+    "sourceDisplay": "Coran — Sourate An-Nisâ, 4:164"
+  },
+  {
+    "id": "prophets_006",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète pouvait comprendre le langage des oiseaux ?",
+    "answers": [
+      "Sulaymân",
+      "Dâwûd",
+      "Yûnus",
+      "Yûsuf"
+    ],
+    "explanation": "Allah enseigna à Sulaymân le langage des oiseaux.",
+    "sourceDisplay": "Coran — Sourate An-Naml, 27:16"
+  },
+  {
+    "id": "prophets_007",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète reçut le livre appelé le Zabûr ?",
+    "answers": [
+      "Dâwûd",
+      "Mûsâ",
+      "Îsâ",
+      "Ibrâhîm"
+    ],
+    "explanation": "Le Coran mentionne que le Zabûr fut donné à Dâwûd.",
+    "sourceDisplay": "Coran — Sourate Al-Isrâ, 17:55"
+  },
+  {
+    "id": "prophets_008",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète est né sans père, par la parole d'Allah « Sois ! » et il fut ?",
+    "answers": [
+      "Îsâ",
+      "Yahyâ",
+      "Ismâʿîl",
+      "Ishâq"
+    ],
+    "explanation": "Le Coran décrit la naissance miraculeuse d'Îsâ, sans père, par la seule parole d'Allah.",
+    "sourceDisplay": "Coran — Sourate Âl ʿImrân, 3:47"
+  },
+  {
+    "id": "prophets_009",
+    "correctAnswerIndex": 0,
+    "question": "Quel chapitre (sourate) du Coran porte le nom de la mère d'un prophète ?",
+    "answers": [
+      "Maryam",
+      "Yûsuf",
+      "Nûh",
+      "Hûd"
+    ],
+    "explanation": "La sourate 19, Maryam, porte le nom de la mère du prophète Îsâ.",
+    "sourceDisplay": "Coran — Sourate Maryam, 19:16"
+  },
+  {
+    "id": "prophets_010",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète fut éprouvé par une maladie sévère et loué pour sa patience ?",
+    "answers": [
+      "Ayyûb",
+      "Zakariyyâ",
+      "Yahyâ",
+      "Idrîs"
+    ],
+    "explanation": "Ayyûb resta patient malgré une épreuve très difficile, et Allah le récompensa.",
+    "sourceDisplay": "Coran — Sourate Al-Anbiyâ, 21:83-84"
+  },
+  {
+    "id": "prophets_011",
+    "correctAnswerIndex": 0,
+    "question": "À qui Allah a-t-Il ordonné aux anges de se prosterner, en signe d'honneur ?",
+    "answers": [
+      "Âdam",
+      "Nûh",
+      "Ibrâhîm",
+      "Mûsâ"
+    ],
+    "explanation": "Allah ordonna aux anges de se prosterner devant Âdam en signe d'honneur, non d'adoration.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:34"
+  },
+  {
+    "id": "prophets_012",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète est appelé « Khalîlullah », l'ami intime d'Allah ?",
+    "answers": [
+      "Ibrâhîm",
+      "Mûsâ",
+      "Îsâ",
+      "Muhammad ﷺ"
+    ],
+    "explanation": "Le Coran désigne Ibrâhîm comme l'ami intime (khalîl) d'Allah.",
+    "sourceDisplay": "Coran — Sourate An-Nisâ, 4:125"
+  },
+  {
+    "id": "prophets_013",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète fut jeté dans un puits par ses frères ?",
+    "answers": [
+      "Yûsuf",
+      "Bunyamîn",
+      "Yaʿqûb",
+      "Ismâʿîl"
+    ],
+    "explanation": "Les frères de Yûsuf le jetèrent au fond d'un puits par jalousie.",
+    "sourceDisplay": "Coran — Sourate Yûsuf, 12:15"
+  },
+  {
+    "id": "prophets_014",
+    "correctAnswerIndex": 0,
+    "question": "Le peuple de quel prophète fut anéanti par un déluge après l'avoir rejeté ?",
+    "answers": [
+      "Nûh",
+      "Hûd",
+      "Sâlih",
+      "Shuʿayb"
+    ],
+    "explanation": "Le peuple de Nûh fut englouti par le déluge après avoir persisté dans le rejet du message.",
+    "sourceDisplay": "Coran — Sourate Hûd, 11:37-44"
+  },
+  {
+    "id": "prophets_015",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète vit la mer se fendre pour sauver son peuple de Pharaon ?",
+    "answers": [
+      "Mûsâ",
+      "Hârûn",
+      "Yûsuf",
+      "Ismâʿîl"
+    ],
+    "explanation": "Allah ordonna à Mûsâ de frapper la mer, qui se fendit pour laisser passer les croyants.",
+    "sourceDisplay": "Coran — Sourate Ash-Shuʿarâ, 26:63"
+  },
+  {
+    "id": "prophets_016",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète, aux côtés de son père Dâwûd, jugea l'affaire du champ ravagé par des brebis ?",
+    "answers": [
+      "Sulaymân",
+      "Ismâʿîl",
+      "Yûsuf",
+      "Ishâq"
+    ],
+    "explanation": "Le Coran relate que Sulaymân et Dâwûd jugèrent cette affaire, et qu'Allah donna la compréhension à Sulaymân.",
+    "sourceDisplay": "Coran — Sourate Al-Anbiyâ, 21:78-79"
+  },
+  {
+    "id": "prophets_017",
+    "correctAnswerIndex": 0,
+    "question": "La mère de quel prophète reçut l'ordre de le déposer dans le fleuve alors qu'il était bébé ?",
+    "answers": [
+      "Mûsâ",
+      "Îsâ",
+      "Yûsuf",
+      "Ismâʿîl"
+    ],
+    "explanation": "Allah inspira à la mère de Mûsâ de le déposer dans un coffret sur le fleuve pour le protéger.",
+    "sourceDisplay": "Coran — Sourate Tâ-Hâ, 20:38-39"
+  },
+  {
+    "id": "prophets_018",
+    "correctAnswerIndex": 0,
+    "question": "La chamelle de quel prophète fut un signe donné à son peuple, les Thamûd ?",
+    "answers": [
+      "Sâlih",
+      "Hûd",
+      "Shuʿayb",
+      "Lût"
+    ],
+    "explanation": "Allah envoya une chamelle comme signe au peuple de Thamûd par le prophète Sâlih.",
+    "sourceDisplay": "Coran — Sourate Al-Aʿrâf, 7:73"
+  },
+  {
+    "id": "sira_001",
+    "correctAnswerIndex": 0,
+    "question": "Dans quelle ville le prophète Muhammad ﷺ est-il né ?",
+    "answers": [
+      "La Mecque",
+      "Médine",
+      "Ta'if",
+      "Jérusalem"
+    ],
+    "explanation": "Le prophète Muhammad ﷺ est né à La Mecque, dans le Hijaz.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_002",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on l'année de la naissance du Prophète ﷺ, marquée par l'événement de l'éléphant ?",
+    "answers": [
+      "L'Année de l'Éléphant",
+      "L'Année de la Victoire",
+      "L'Année du Chameau",
+      "L'Année de la Lumière"
+    ],
+    "explanation": "L'événement de l'éléphant, où Allah protégea la Kaaba, est raconté dans la sourate Al-Fîl.",
+    "sourceDisplay": "Coran — Sourate Al-Fîl, 105:1-5"
+  },
+  {
+    "id": "sira_003",
+    "correctAnswerIndex": 0,
+    "question": "Quel était le nom de la première épouse du Prophète ﷺ ?",
+    "answers": [
+      "Khadîja",
+      "ʿÂ'isha",
+      "Hafsa",
+      "Zaynab"
+    ],
+    "explanation": "Khadîja bint Khuwaylid fut la première épouse du Prophète ﷺ et la première à croire en son message.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_004",
+    "correctAnswerIndex": 0,
+    "question": "Dans quelle grotte le Prophète ﷺ reçut-il la première révélation ?",
+    "answers": [
+      "La grotte de Hirâ'",
+      "La grotte de Thawr",
+      "La grotte des gens de la caverne",
+      "La grotte de Uhud"
+    ],
+    "explanation": "La première révélation eut lieu dans la grotte de Hirâ', sur le mont An-Nûr près de La Mecque.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_005",
+    "correctAnswerIndex": 0,
+    "question": "Quel ange apporta la révélation au Prophète ﷺ ?",
+    "answers": [
+      "Jibrîl",
+      "Mîkâ'îl",
+      "Isrâfîl",
+      "Mâlik"
+    ],
+    "explanation": "Le Coran mentionne explicitement que Jibrîl a apporté la révélation par la permission d'Allah.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:97"
+  },
+  {
+    "id": "sira_006",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on la migration du Prophète ﷺ et de ses compagnons de La Mecque vers Médine ?",
+    "answers": [
+      "Al-Hijra",
+      "Al-Isrâ'",
+      "Al-Miʿrâj",
+      "Al-Fath"
+    ],
+    "explanation": "Al-Hijra désigne la migration historique vers Médine, point de départ du calendrier islamique.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_007",
+    "correctAnswerIndex": 0,
+    "question": "Vers quelle ville le Prophète ﷺ et Abû Bakr émigrèrent-ils ?",
+    "answers": [
+      "Médine",
+      "Ta'if",
+      "Damas",
+      "Jérusalem"
+    ],
+    "explanation": "Le Prophète ﷺ et Abû Bakr migrèrent de La Mecque vers Médine (alors appelée Yathrib).",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_008",
+    "correctAnswerIndex": 0,
+    "question": "Le Coran décrit un compagnon comme « le second de deux, alors qu'ils étaient dans la grotte » lors de la Hijra. De qui s'agit-il ?",
+    "answers": [
+      "Abû Bakr",
+      "ʿUmar",
+      "ʿUthmân",
+      "ʿAlî"
+    ],
+    "explanation": "Le Coran fait référence à Abû Bakr, qui accompagna le Prophète ﷺ dans la grotte de Thawr durant la Hijra.",
+    "sourceDisplay": "Coran — Sourate At-Tawba, 9:40"
+  },
+  {
+    "id": "sira_009",
+    "correctAnswerIndex": 0,
+    "question": "Quelle bataille, mentionnée dans le Coran, vit une petite armée musulmane vaincre une force bien plus nombreuse ?",
+    "answers": [
+      "La bataille de Badr",
+      "La bataille de Uhud",
+      "La bataille du Fossé",
+      "La bataille de Hunayn"
+    ],
+    "explanation": "À Badr, Allah accorda la victoire à un petit groupe de croyants face à une armée plus nombreuse.",
+    "sourceDisplay": "Coran — Sourate Âl ʿImrân, 3:123"
+  },
+  {
+    "id": "sira_010",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on le retour pacifique du Prophète ﷺ et de ses compagnons à La Mecque ?",
+    "answers": [
+      "La Conquête de La Mecque (Fath Makka)",
+      "La Bataille de La Mecque",
+      "Le Siège de La Mecque",
+      "La Prise de La Mecque"
+    ],
+    "explanation": "La Conquête de La Mecque se déroula de façon largement pacifique, sans effusion de sang généralisée.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_011",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on le dernier sermon prononcé par le Prophète ﷺ vers la fin de sa vie ?",
+    "answers": [
+      "Le Sermon d'Adieu",
+      "Le Sermon de La Mecque",
+      "Le Sermon de la Grotte",
+      "Le Sermon de Badr"
+    ],
+    "explanation": "Le Sermon d'Adieu (Khutbat al-Wadâʿ) fut prononcé lors du dernier pèlerinage du Prophète ﷺ.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_012",
+    "correctAnswerIndex": 0,
+    "question": "Durant quel mois le Coran indique-t-il que sa révélation a commencé ?",
+    "answers": [
+      "Ramadân",
+      "Muharram",
+      "Rajab",
+      "Dhul-Hijja"
+    ],
+    "explanation": "Le Coran indique que Ramadân est le mois durant lequel le Coran a été révélé.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:185"
+  },
+  {
+    "id": "sira_013",
+    "correctAnswerIndex": 0,
+    "question": "Quelle était la profession du Prophète ﷺ avant qu'il ne reçoive la révélation ?",
+    "answers": [
+      "Marchand",
+      "Berger uniquement",
+      "Forgeron",
+      "Scribe"
+    ],
+    "explanation": "Le Prophète ﷺ exerçait le commerce, un fait bien établi de sa biographie.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_014",
+    "correctAnswerIndex": 0,
+    "question": "Quel grand-père du Prophète ﷺ prit soin de lui après la mort de sa mère ?",
+    "answers": [
+      "ʿAbd al-Muttalib",
+      "Abû Tâlib",
+      "Abû Lahab",
+      "Abû Sufyân"
+    ],
+    "explanation": "ʿAbd al-Muttalib prit soin du jeune Muhammad ﷺ après la mort de sa mère Âmina.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_015",
+    "correctAnswerIndex": 0,
+    "question": "Quel oncle éleva le Prophète ﷺ après la mort de son grand-père ?",
+    "answers": [
+      "Abû Tâlib",
+      "Al-ʿAbbâs",
+      "Hamza",
+      "Abû Lahab"
+    ],
+    "explanation": "Abû Tâlib prit en charge l'éducation de son neveu après la mort de ʿAbd al-Muttalib.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_016",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on le voyage nocturne du Prophète ﷺ de La Mecque à Jérusalem, mentionné dans le Coran ?",
+    "answers": [
+      "Al-Isrâ'",
+      "Al-Hijra",
+      "Al-Fath",
+      "Al-Ghazwa"
+    ],
+    "explanation": "Le Coran ouvre la sourate Al-Isrâ' en évoquant ce voyage nocturne miraculeux.",
+    "sourceDisplay": "Coran — Sourate Al-Isrâ', 17:1"
+  },
+  {
+    "id": "sira_017",
+    "correctAnswerIndex": 0,
+    "question": "Laquelle des filles du Prophète ﷺ épousa ʿAlî ibn Abî Tâlib ?",
+    "answers": [
+      "Fâtima",
+      "Zaynab",
+      "Ruqayya",
+      "Umm Kulthûm"
+    ],
+    "explanation": "Fâtima, fille du Prophète ﷺ et de Khadîja, épousa ʿAlî ibn Abî Tâlib — un fait largement établi.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_018",
+    "correctAnswerIndex": 0,
+    "question": "Quel mois marque le début de l'année du calendrier islamique, en référence à la Hijra ?",
+    "answers": [
+      "Muharram",
+      "Ramadân",
+      "Shawwâl",
+      "Dhul-Qaʿda"
+    ],
+    "explanation": "Le calendrier islamique commence par le mois de Muharram, en référence à l'année de la Hijra.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "quran_001",
+    "correctAnswerIndex": 0,
+    "question": "Quel est le nom du premier chapitre (sourate) du Coran ?",
+    "answers": [
+      "Al-Fâtiha",
+      "Al-Baqara",
+      "Al-Ikhlâs",
+      "An-Nâs"
+    ],
+    "explanation": "Al-Fâtiha, « l'Ouverture », est le premier chapitre du Coran.",
+    "sourceDisplay": "Coran — Sourate Al-Fâtiha, 1:1-7"
+  },
+  {
+    "id": "quran_002",
+    "correctAnswerIndex": 0,
+    "question": "Combien de chapitres (sourates) compte le Coran ?",
+    "answers": [
+      "114",
+      "99",
+      "100",
+      "120"
+    ],
+    "explanation": "Le Coran est composé de 114 sourates.",
+    "sourceDisplay": "Coran — comptage établi"
+  },
+  {
+    "id": "quran_003",
+    "correctAnswerIndex": 0,
+    "question": "Quelle est la plus longue sourate du Coran ?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Fâtiha",
+      "Al-Kawthar",
+      "Al-ʿAsr"
+    ],
+    "explanation": "Al-Baqara est la plus longue sourate du Coran, avec 286 versets.",
+    "sourceDisplay": "Coran — fait établi"
+  },
+  {
+    "id": "quran_004",
+    "correctAnswerIndex": 0,
+    "question": "Quelle est la plus courte sourate du Coran ?",
+    "answers": [
+      "Al-Kawthar",
+      "Al-Ikhlâs",
+      "Al-ʿAsr",
+      "An-Nasr"
+    ],
+    "explanation": "Al-Kawthar, avec 3 versets, est la plus courte sourate du Coran.",
+    "sourceDisplay": "Coran — Sourate Al-Kawthar, 108:1-3"
+  },
+  {
+    "id": "quran_005",
+    "correctAnswerIndex": 0,
+    "question": "Dans quelle langue le Coran a-t-il été révélé ?",
+    "answers": [
+      "L'arabe",
+      "L'araméen",
+      "L'hébreu",
+      "Le persan"
+    ],
+    "explanation": "Le Coran affirme explicitement avoir été révélé en langue arabe.",
+    "sourceDisplay": "Coran — Sourate Yûsuf, 12:2"
+  },
+  {
+    "id": "quran_006",
+    "correctAnswerIndex": 0,
+    "question": "Quel est le nom de la 19ᵉ sourate, nommée d'après la mère d'Îsâ ?",
+    "answers": [
+      "Maryam",
+      "Yûsuf",
+      "Al-Kahf",
+      "Tâ-Hâ"
+    ],
+    "explanation": "La 19ᵉ sourate du Coran porte le nom de Maryam, mère du prophète Îsâ.",
+    "sourceDisplay": "Coran — Sourate Maryam, 19:1-16"
+  },
+  {
+    "id": "quran_007",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on un chapitre du Coran ?",
+    "answers": [
+      "Une sourate",
+      "Un hadith",
+      "Un juz'",
+      "Un tafsîr"
+    ],
+    "explanation": "Le Coran est divisé en chapitres appelés sourates.",
+    "sourceDisplay": "Coran — terminologie établie"
+  },
+  {
+    "id": "quran_008",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on un verset du Coran ?",
+    "answers": [
+      "Une âya",
+      "Une sourate",
+      "Un hadith",
+      "Un rukûʿ"
+    ],
+    "explanation": "Chaque verset du Coran est appelé une âya, signifiant « signe ».",
+    "sourceDisplay": "Coran — terminologie établie"
+  },
+  {
+    "id": "quran_009",
+    "correctAnswerIndex": 0,
+    "question": "Quelle sourate est récitée obligatoirement à chaque unité (rakʿa) de la prière ?",
+    "answers": [
+      "Al-Fâtiha",
+      "Al-Ikhlâs",
+      "Al-Kawthar",
+      "Al-Fîl"
+    ],
+    "explanation": "La récitation d'Al-Fâtiha est un pilier de la prière rapporté dans un hadith authentique.",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°756"
+  },
+  {
+    "id": "quran_010",
+    "correctAnswerIndex": 0,
+    "question": "À qui le Coran fut-il révélé ?",
+    "answers": [
+      "Au prophète Muhammad ﷺ",
+      "Au prophète Mûsâ",
+      "Au prophète Îsâ",
+      "Au prophète Dâwûd"
+    ],
+    "explanation": "Le Coran fut révélé au prophète Muhammad ﷺ, par l'intermédiaire de l'ange Jibrîl.",
+    "sourceDisplay": "Coran — fait établi"
+  },
+  {
+    "id": "faith_001",
+    "correctAnswerIndex": 0,
+    "question": "Combien de piliers compte l'islam ?",
+    "answers": [
+      "5",
+      "4",
+      "6",
+      "7"
+    ],
+    "explanation": "Le hadith de Jibrîl et le hadith rapporté par Ibn ʿUmar énoncent les cinq piliers de l'islam.",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°8"
+  },
+  {
+    "id": "faith_002",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on la déclaration de foi en islam ?",
+    "answers": [
+      "La Shahâda",
+      "La Salât",
+      "La Zakât",
+      "Le Hajj"
+    ],
+    "explanation": "La Shahâda, l'attestation de foi, est le premier pilier de l'islam.",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°8"
+  },
+  {
+    "id": "faith_003",
+    "correctAnswerIndex": 0,
+    "question": "Combien de fois par jour la prière obligatoire est-elle accomplie en islam ?",
+    "answers": [
+      "5",
+      "3",
+      "4",
+      "7"
+    ],
+    "explanation": "Les cinq prières quotidiennes obligatoires sont un pilier fondamental de l'islam.",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°8"
+  },
+  {
+    "id": "faith_004",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on l'aumône obligatoire en islam ?",
+    "answers": [
+      "La Zakât",
+      "La Sadaqa",
+      "Le Waqf",
+      "Le Kaffâra"
+    ],
+    "explanation": "La Zakât est l'aumône obligatoire, l'un des cinq piliers de l'islam.",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°8"
+  },
+  {
+    "id": "faith_005",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on le mois de jeûne obligatoire en islam ?",
+    "answers": [
+      "Ramadân",
+      "Shawwâl",
+      "Rajab",
+      "Muharram"
+    ],
+    "explanation": "Le Coran ordonne le jeûne durant le mois de Ramadân.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:183"
+  },
+  {
+    "id": "faith_006",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on le pèlerinage à La Mecque, obligatoire une fois dans la vie pour qui en a la capacité ?",
+    "answers": [
+      "Le Hajj",
+      "La ʿUmra",
+      "Le Iʿtikâf",
+      "Le Tawâf"
+    ],
+    "explanation": "Le Coran rend le Hajj obligatoire pour quiconque en a la capacité, au moins une fois dans sa vie.",
+    "sourceDisplay": "Coran — Sourate Âl ʿImrân, 3:97"
+  },
+  {
+    "id": "faith_007",
+    "correctAnswerIndex": 0,
+    "question": "Vers quelle direction les musulmans se tournent-ils pour la prière ?",
+    "answers": [
+      "La Kaaba, à La Mecque",
+      "Jérusalem",
+      "Médine",
+      "L'est"
+    ],
+    "explanation": "Le Coran a établi la Kaaba comme direction de la prière (Qibla).",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:144"
+  },
+  {
+    "id": "faith_008",
+    "correctAnswerIndex": 0,
+    "question": "Selon un hadith bien connu, combien d'articles de la foi (piliers de l'Îmân) sont généralement enseignés ?",
+    "answers": [
+      "6",
+      "4",
+      "5",
+      "7"
+    ],
+    "explanation": "Le hadith de Jibrîl énumère six articles de foi : Allah, les anges, les livres, les messagers, le Jour Dernier et le destin.",
+    "sourceDisplay": "Sahîh Muslim, n°8"
+  },
+  {
+    "id": "virtues_001",
+    "correctAnswerIndex": 0,
+    "question": "Selon un hadith rapporté par l'imam Al-Bukhârî, que doit faire celui qui croit en Allah et au Jour Dernier avec ses paroles ?",
+    "answers": [
+      "Dire du bien ou se taire",
+      "Parler fort",
+      "Ne jamais parler",
+      "Répéter les rumeurs"
+    ],
+    "explanation": "Le Prophète ﷺ a dit : « Que celui qui croit en Allah et au Jour Dernier dise du bien ou se taise. »",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°6018"
+  },
+  {
+    "id": "virtues_002",
+    "correctAnswerIndex": 0,
+    "question": "Toujours selon ce même hadith, qui le croyant doit-il honorer, en plus de son invité ?",
+    "answers": [
+      "Son voisin",
+      "Son commerçant",
+      "Son adversaire",
+      "L'inconnu"
+    ],
+    "explanation": "Le hadith poursuit : « ...et que celui qui croit en Allah et au Jour Dernier honore son voisin. »",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°6018"
+  },
+  {
+    "id": "virtues_003",
+    "correctAnswerIndex": 0,
+    "question": "Ce même hadith mentionne aussi l'obligation d'honorer qui, lorsqu'il arrive chez soi ?",
+    "answers": [
+      "L'invité",
+      "Le voisin uniquement",
+      "Le marchand",
+      "Le voyageur inconnu de loin"
+    ],
+    "explanation": "Le hadith complet dit : « ...que celui qui croit en Allah et au Jour Dernier honore son invité. »",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°6018"
+  },
+  {
+    "id": "virtues_004",
+    "correctAnswerIndex": 0,
+    "question": "Selon un hadith authentique, un croyant n'a pas une foi complète tant qu'il n'aime pas pour son frère ce qu'il aime pour...",
+    "answers": [
+      "lui-même",
+      "sa richesse",
+      "sa famille seulement",
+      "son pays"
+    ],
+    "explanation": "Le Prophète ﷺ a dit : « Nul d'entre vous ne croit vraiment tant qu'il n'aime pas pour son frère ce qu'il aime pour lui-même. »",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°13"
+  },
+  {
+    "id": "virtues_005",
+    "correctAnswerIndex": 0,
+    "question": "Selon un hadith authentique, le vrai musulman est celui dont les autres sont saufs de sa langue et de...",
+    "answers": [
+      "sa main",
+      "sa richesse",
+      "son regard",
+      "sa voix"
+    ],
+    "explanation": "Le Prophète ﷺ a dit : « Le musulman est celui dont les musulmans sont saufs de sa langue et de sa main. »",
+    "sourceDisplay": "Sahîh al-Bukhârî, n°10"
+  },
+  {
+    "id": "virtues_006",
+    "correctAnswerIndex": 0,
+    "question": "Le Coran ordonne d'être bon envers ses parents et de ne même pas leur dire quel mot de mécontentement ?",
+    "answers": [
+      "« Uff »",
+      "« Non »",
+      "« Assez »",
+      "« Attends »"
+    ],
+    "explanation": "Le Coran demande une extrême bienveillance envers les parents, jusqu'à interdire le moindre mot de dédain.",
+    "sourceDisplay": "Coran — Sourate Al-Isrâ', 17:23-24"
+  }
+]

@@ -1,0 +1,992 @@
+#!/usr/bin/env python3
+"""Generates IqraQuest's curated question bank (master + fr/en/ar content)
+from a single Python source of truth, then validates it against the
+CONTENT_SOURCE_POLICY.md rules before writing any file.
+
+This is a v1 curated set: 60 canonical questions that pass every rule in
+CONTENT_SOURCE_POLICY.md (Qur'an or Sahih al-Bukhari/Sahih Muslim only,
+non-controversial, no disputed narration or fiqh arbitration needed).
+It intentionally stops short of the product brief's 500-question target
+rather than lower the verification bar — see README.md and
+content_quality/ for the documented gap and how to extend this set.
+"""
+import json
+import csv
+import os
+
+OUT_ROOT = "/home/user/IqraQuest/assets/data/questions"
+CQ_ROOT = "/home/user/IqraQuest/content_quality"
+
+# Each entry: canonical fields + per-language dict.
+Q = []
+
+def add(id, category, difficulty, source_type, source_work, source_reference,
+        is_free, fr, en, ar, age="7+"):
+    Q.append(dict(
+        id=id, category=category, difficulty=difficulty, ageLevel=age,
+        sourceType=source_type, sourceWork=source_work, sourceReference=source_reference,
+        isFree=is_free, fr=fr, en=en, ar=ar,
+    ))
+
+def L(question, answers, correct, explanation, source_display):
+    assert len(answers) == 4
+    assert 0 <= correct < 4
+    return dict(question=question, answers=answers, correctAnswerIndex=correct,
+                explanation=explanation, sourceDisplay=source_display)
+
+# ---------------------------------------------------------------------
+# PROPHETS (Qur'an) — 18
+# ---------------------------------------------------------------------
+
+add("prophets_001", "prophets", "easy", "quran", "Quran", "11:37-38", True,
+    fr=L("Quel prophète a construit l'arche sur l'ordre d'Allah ?",
+         ["Nûh", "Ibrâhîm", "Mûsâ", "Yûsuf"], 0,
+         "Allah ordonna à Nûh de construire l'arche pour sauver les croyants du déluge.",
+         "Coran — Sourate Hûd, 11:37-38"),
+    en=L("Which prophet built the ark by Allah's command?",
+         ["Nuh (Noah)", "Ibrahim (Abraham)", "Musa (Moses)", "Yusuf (Joseph)"], 0,
+         "Allah commanded Nuh to build the ark to save the believers from the flood.",
+         "Quran — Surah Hud, 11:37-38"),
+    ar=L("أي نبي بنى السفينة بأمر الله؟",
+         ["نوح", "إبراهيم", "موسى", "يوسف"], 0,
+         "أمر الله نوحًا ببناء السفينة لينجو المؤمنون من الطوفان.",
+         "القرآن — سورة هود، 11:37-38"))
+
+add("prophets_002", "prophets", "easy", "quran", "Quran", "21:69", True,
+    fr=L("Quel prophète fut jeté dans le feu, qu'Allah rendit frais et sûr pour lui ?",
+         ["Ibrâhîm", "Nûh", "Dâwûd", "Ayyûb"], 0,
+         "Allah ordonna au feu d'être frais et sûr pour Ibrâhîm.",
+         "Coran — Sourate Al-Anbiyâ, 21:69"),
+    en=L("Which prophet was thrown into a fire that Allah made cool and safe for him?",
+         ["Ibrahim (Abraham)", "Nuh (Noah)", "Dawud (David)", "Ayyub (Job)"], 0,
+         "Allah commanded the fire to be cool and safe for Ibrahim.",
+         "Quran — Surah Al-Anbiya, 21:69"),
+    ar=L("أي نبي أُلقي في النار فجعلها الله بردًا وسلامًا عليه؟",
+         ["إبراهيم", "نوح", "داوود", "أيوب"], 0,
+         "أمر الله النار أن تكون بردًا وسلامًا على إبراهيم.",
+         "القرآن — سورة الأنبياء، 21:69"))
+
+add("prophets_003", "prophets", "medium", "quran", "Quran", "37:142", True,
+    fr=L("Quel prophète fut avalé par un énorme poisson ?",
+         ["Yûnus", "Ilyâs", "Idrîs", "Zakariyyâ"], 0,
+         "Yûnus fut avalé par le poisson après avoir quitté son peuple en colère ; Allah lui pardonna.",
+         "Coran — Sourate As-Sâffât, 37:142"),
+    en=L("Which prophet was swallowed by a huge fish?",
+         ["Yunus (Jonah)", "Ilyas (Elijah)", "Idris (Enoch)", "Zakariyya (Zechariah)"], 0,
+         "Yunus was swallowed by the fish after leaving his people in anger; Allah forgave him.",
+         "Quran — Surah As-Saffat, 37:142"),
+    ar=L("أي نبي التقمه حوت ضخم؟",
+         ["يونس", "إلياس", "إدريس", "زكريا"], 0,
+         "التقم الحوتُ يونسَ بعد أن غادر قومه غاضبًا، فغفر الله له.",
+         "القرآن — سورة الصافات، 37:142"))
+
+add("prophets_004", "prophets", "medium", "quran", "Quran", "12:43-49", False,
+    fr=L("Quel prophète interpréta le rêve du roi des sept vaches grasses et sept vaches maigres ?",
+         ["Yûsuf", "Yaʿqûb", "Ismâʿîl", "Ishâq"], 0,
+         "Yûsuf interpréta le rêve du roi, annonçant sept années d'abondance suivies de sept années de disette.",
+         "Coran — Sourate Yûsuf, 12:43-49"),
+    en=L("Which prophet interpreted the king's dream of seven fat cows and seven lean cows?",
+         ["Yusuf (Joseph)", "Ya'qub (Jacob)", "Isma'il (Ishmael)", "Ishaq (Isaac)"], 0,
+         "Yusuf interpreted the king's dream, foretelling seven years of abundance followed by seven years of famine.",
+         "Quran — Surah Yusuf, 12:43-49"),
+    ar=L("أي نبي فسّر رؤيا الملك عن سبع بقرات سمان وسبع عجاف؟",
+         ["يوسف", "يعقوب", "إسماعيل", "إسحاق"], 0,
+         "فسّر يوسف رؤيا الملك، فأخبر بسبع سنوات خصبة تليها سبع سنوات جدباء.",
+         "القرآن — سورة يوسف، 12:43-49"))
+
+add("prophets_005", "prophets", "hard", "quran", "Quran", "4:164", True,
+    fr=L("Quel prophète, selon le Coran, a parlé directement à Allah ?",
+         ["Mûsâ", "Hârûn", "Yûsuf", "Sulaymân"], 0,
+         "Le Coran précise qu'Allah a parlé à Mûsâ directement.",
+         "Coran — Sourate An-Nisâ, 4:164"),
+    en=L("Which prophet, according to the Quran, was spoken to directly by Allah?",
+         ["Musa (Moses)", "Harun (Aaron)", "Yusuf (Joseph)", "Sulaiman (Solomon)"], 0,
+         "The Quran states that Allah spoke to Musa directly.",
+         "Quran — Surah An-Nisa, 4:164"),
+    ar=L("أي نبي كلّمه الله تكليمًا بحسب القرآن؟",
+         ["موسى", "هارون", "يوسف", "سليمان"], 0,
+         "ينص القرآن على أن الله كلّم موسى تكليمًا.",
+         "القرآن — سورة النساء، 4:164"))
+
+add("prophets_006", "prophets", "medium", "quran", "Quran", "27:16", False,
+    fr=L("Quel prophète pouvait comprendre le langage des oiseaux ?",
+         ["Sulaymân", "Dâwûd", "Yûnus", "Yûsuf"], 0,
+         "Allah enseigna à Sulaymân le langage des oiseaux.",
+         "Coran — Sourate An-Naml, 27:16"),
+    en=L("Which prophet could understand the speech of birds?",
+         ["Sulaiman (Solomon)", "Dawud (David)", "Yunus (Jonah)", "Yusuf (Joseph)"], 0,
+         "Allah taught Sulaiman the speech of birds.",
+         "Quran — Surah An-Naml, 27:16"),
+    ar=L("أي نبي كان يفهم منطق الطير؟",
+         ["سليمان", "داوود", "يونس", "يوسف"], 0,
+         "علّم الله سليمان منطق الطير.",
+         "القرآن — سورة النمل، 27:16"))
+
+add("prophets_007", "prophets", "medium", "quran", "Quran", "17:55", False,
+    fr=L("Quel prophète reçut le livre appelé le Zabûr ?",
+         ["Dâwûd", "Mûsâ", "Îsâ", "Ibrâhîm"], 0,
+         "Le Coran mentionne que le Zabûr fut donné à Dâwûd.",
+         "Coran — Sourate Al-Isrâ, 17:55"),
+    en=L("Which prophet was given the scripture called the Zabur (Psalms)?",
+         ["Dawud (David)", "Musa (Moses)", "Isa (Jesus)", "Ibrahim (Abraham)"], 0,
+         "The Quran mentions that the Zabur was given to Dawud.",
+         "Quran — Surah Al-Isra, 17:55"),
+    ar=L("أي نبي أُوتي كتاب الزبور؟",
+         ["داوود", "موسى", "عيسى", "إبراهيم"], 0,
+         "يذكر القرآن أن الزبور أُعطي لداوود.",
+         "القرآن — سورة الإسراء، 17:55"))
+
+add("prophets_008", "prophets", "medium", "quran", "Quran", "3:47", False,
+    fr=L("Quel prophète est né sans père, par la parole d'Allah « Sois ! » et il fut ?",
+         ["Îsâ", "Yahyâ", "Ismâʿîl", "Ishâq"], 0,
+         "Le Coran décrit la naissance miraculeuse d'Îsâ, sans père, par la seule parole d'Allah.",
+         "Coran — Sourate Âl ʿImrân, 3:47"),
+    en=L("Which prophet was born without a father, by Allah's word 'Be, and it is'?",
+         ["Isa (Jesus)", "Yahya (John)", "Isma'il (Ishmael)", "Ishaq (Isaac)"], 0,
+         "The Quran describes Isa's miraculous birth without a father, by Allah's word alone.",
+         "Quran — Surah Al 'Imran, 3:47"),
+    ar=L("أي نبي وُلد بلا أب، بكلمة الله «كن فيكون»؟",
+         ["عيسى", "يحيى", "إسماعيل", "إسحاق"], 0,
+         "يصف القرآن ولادة عيسى المعجزة دون أب، بكلمة الله وحدها.",
+         "القرآن — سورة آل عمران، 3:47"))
+
+add("prophets_009", "prophets", "medium", "quran", "Quran", "19:16", False,
+    fr=L("Quel chapitre (sourate) du Coran porte le nom de la mère d'un prophète ?",
+         ["Maryam", "Yûsuf", "Nûh", "Hûd"], 0,
+         "La sourate 19, Maryam, porte le nom de la mère du prophète Îsâ.",
+         "Coran — Sourate Maryam, 19:16"),
+    en=L("Which chapter (surah) of the Quran is named after a prophet's mother?",
+         ["Maryam", "Yusuf", "Nuh", "Hud"], 0,
+         "Surah 19, Maryam, is named after the mother of the prophet Isa.",
+         "Quran — Surah Maryam, 19:16"),
+    ar=L("أي سورة من القرآن سُمّيت باسم أم أحد الأنبياء؟",
+         ["مريم", "يوسف", "نوح", "هود"], 0,
+         "سُمّيت السورة 19، مريم، باسم أم النبي عيسى.",
+         "القرآن — سورة مريم، 19:16"))
+
+add("prophets_010", "prophets", "hard", "quran", "Quran", "21:83-84", True,
+    fr=L("Quel prophète fut éprouvé par une maladie sévère et loué pour sa patience ?",
+         ["Ayyûb", "Zakariyyâ", "Yahyâ", "Idrîs"], 0,
+         "Ayyûb resta patient malgré une épreuve très difficile, et Allah le récompensa.",
+         "Coran — Sourate Al-Anbiyâ, 21:83-84"),
+    en=L("Which prophet was tested with severe illness and is praised for his patience?",
+         ["Ayyub (Job)", "Zakariyya (Zechariah)", "Yahya (John)", "Idris (Enoch)"], 0,
+         "Ayyub remained patient through a very difficult trial, and Allah rewarded him.",
+         "Quran — Surah Al-Anbiya, 21:83-84"),
+    ar=L("أي نبي ابتُلي بمرض شديد وأُثني عليه بالصبر؟",
+         ["أيوب", "زكريا", "يحيى", "إدريس"], 0,
+         "صبر أيوب رغم ابتلاء شديد، فأثابه الله.",
+         "القرآن — سورة الأنبياء، 21:83-84"))
+
+add("prophets_011", "prophets", "easy", "quran", "Quran", "2:34", True,
+    fr=L("À qui Allah a-t-Il ordonné aux anges de se prosterner, en signe d'honneur ?",
+         ["Âdam", "Nûh", "Ibrâhîm", "Mûsâ"], 0,
+         "Allah ordonna aux anges de se prosterner devant Âdam en signe d'honneur, non d'adoration.",
+         "Coran — Sourate Al-Baqara, 2:34"),
+    en=L("Whom did Allah command the angels to prostrate to, as a sign of honor?",
+         ["Adam", "Nuh (Noah)", "Ibrahim (Abraham)", "Musa (Moses)"], 0,
+         "Allah commanded the angels to prostrate to Adam as a mark of honor, not worship.",
+         "Quran — Surah Al-Baqarah, 2:34"),
+    ar=L("لمن أمر الله الملائكة بالسجود إكرامًا؟",
+         ["آدم", "نوح", "إبراهيم", "موسى"], 0,
+         "أمر الله الملائكة بالسجود لآدم إكرامًا له، لا عبادة.",
+         "القرآن — سورة البقرة، 2:34"))
+
+add("prophets_012", "prophets", "medium", "quran", "Quran", "4:125", False,
+    fr=L("Quel prophète est appelé « Khalîlullah », l'ami intime d'Allah ?",
+         ["Ibrâhîm", "Mûsâ", "Îsâ", "Muhammad ﷺ"], 0,
+         "Le Coran désigne Ibrâhîm comme l'ami intime (khalîl) d'Allah.",
+         "Coran — Sourate An-Nisâ, 4:125"),
+    en=L("Which prophet is called 'Khalilullah', the close friend of Allah?",
+         ["Ibrahim (Abraham)", "Musa (Moses)", "Isa (Jesus)", "Muhammad ﷺ"], 0,
+         "The Quran describes Ibrahim as the close friend (khalil) of Allah.",
+         "Quran — Surah An-Nisa, 4:125"),
+    ar=L("أي نبي يُلقّب بـ«خليل الله»؟",
+         ["إبراهيم", "موسى", "عيسى", "محمد ﷺ"], 0,
+         "يصف القرآن إبراهيم بأنه خليل الله.",
+         "القرآن — سورة النساء، 4:125"))
+
+add("prophets_013", "prophets", "easy", "quran", "Quran", "12:15", False,
+    fr=L("Quel prophète fut jeté dans un puits par ses frères ?",
+         ["Yûsuf", "Bunyamîn", "Yaʿqûb", "Ismâʿîl"], 0,
+         "Les frères de Yûsuf le jetèrent au fond d'un puits par jalousie.",
+         "Coran — Sourate Yûsuf, 12:15"),
+    en=L("Which prophet was thrown into a well by his brothers?",
+         ["Yusuf (Joseph)", "Bunyamin (Benjamin)", "Ya'qub (Jacob)", "Isma'il (Ishmael)"], 0,
+         "Yusuf's brothers threw him into a well out of jealousy.",
+         "Quran — Surah Yusuf, 12:15"),
+    ar=L("أي نبي ألقاه إخوته في غيابة الجُبّ؟",
+         ["يوسف", "بنيامين", "يعقوب", "إسماعيل"], 0,
+         "ألقى إخوة يوسف به في الجُبّ حسدًا منهم.",
+         "القرآن — سورة يوسف، 12:15"))
+
+add("prophets_014", "prophets", "medium", "quran", "Quran", "11:37-44", False,
+    fr=L("Le peuple de quel prophète fut anéanti par un déluge après l'avoir rejeté ?",
+         ["Nûh", "Hûd", "Sâlih", "Shuʿayb"], 0,
+         "Le peuple de Nûh fut englouti par le déluge après avoir persisté dans le rejet du message.",
+         "Coran — Sourate Hûd, 11:37-44"),
+    en=L("Whose people were destroyed by a flood after rejecting him?",
+         ["Nuh (Noah)", "Hud", "Salih", "Shu'ayb"], 0,
+         "Nuh's people were engulfed by the flood after persistently rejecting his message.",
+         "Quran — Surah Hud, 11:37-44"),
+    ar=L("قوم أي نبي أُهلكوا بالطوفان بعد أن كذّبوه؟",
+         ["نوح", "هود", "صالح", "شعيب"], 0,
+         "أُغرق قوم نوح بالطوفان بعد إصرارهم على تكذيب رسالته.",
+         "القرآن — سورة هود، 11:37-44"))
+
+add("prophets_015", "prophets", "medium", "quran", "Quran", "26:63", False,
+    fr=L("Quel prophète vit la mer se fendre pour sauver son peuple de Pharaon ?",
+         ["Mûsâ", "Hârûn", "Yûsuf", "Ismâʿîl"], 0,
+         "Allah ordonna à Mûsâ de frapper la mer, qui se fendit pour laisser passer les croyants.",
+         "Coran — Sourate Ash-Shuʿarâ, 26:63"),
+    en=L("Which prophet saw the sea part to save his people from Pharaoh?",
+         ["Musa (Moses)", "Harun (Aaron)", "Yusuf (Joseph)", "Isma'il (Ishmael)"], 0,
+         "Allah commanded Musa to strike the sea, and it parted so the believers could pass.",
+         "Quran — Surah Ash-Shu'ara, 26:63"),
+    ar=L("أي نبي انفلق له البحر لينجو قومه من فرعون؟",
+         ["موسى", "هارون", "يوسف", "إسماعيل"], 0,
+         "أمر الله موسى بضرب البحر فانفلق ليعبر المؤمنون.",
+         "القرآن — سورة الشعراء، 26:63"))
+
+add("prophets_016", "prophets", "hard", "quran", "Quran", "21:78-79", False,
+    fr=L("Quel prophète, aux côtés de son père Dâwûd, jugea l'affaire du champ ravagé par des brebis ?",
+         ["Sulaymân", "Ismâʿîl", "Yûsuf", "Ishâq"], 0,
+         "Le Coran relate que Sulaymân et Dâwûd jugèrent cette affaire, et qu'Allah donna la compréhension à Sulaymân.",
+         "Coran — Sourate Al-Anbiyâ, 21:78-79"),
+    en=L("Which prophet, alongside his father Dawud, judged the case of a field grazed by sheep?",
+         ["Sulaiman (Solomon)", "Isma'il (Ishmael)", "Yusuf (Joseph)", "Ishaq (Isaac)"], 0,
+         "The Quran relates that Sulaiman and Dawud judged this case, and Allah granted Sulaiman the understanding of it.",
+         "Quran — Surah Al-Anbiya, 21:78-79"),
+    ar=L("أي نبي حكم مع أبيه داوود في قضية الحرث الذي نفشت فيه الغنم؟",
+         ["سليمان", "إسماعيل", "يوسف", "إسحاق"], 0,
+         "يذكر القرآن أن سليمان وداوود حكما في هذه القضية، وآتى الله سليمان فهمها.",
+         "القرآن — سورة الأنبياء، 21:78-79"))
+
+add("prophets_017", "prophets", "easy", "quran", "Quran", "20:38-39", False,
+    fr=L("La mère de quel prophète reçut l'ordre de le déposer dans le fleuve alors qu'il était bébé ?",
+         ["Mûsâ", "Îsâ", "Yûsuf", "Ismâʿîl"], 0,
+         "Allah inspira à la mère de Mûsâ de le déposer dans un coffret sur le fleuve pour le protéger.",
+         "Coran — Sourate Tâ-Hâ, 20:38-39"),
+    en=L("Whose mother was instructed to place her baby into a river?",
+         ["Musa (Moses)", "Isa (Jesus)", "Yusuf (Joseph)", "Isma'il (Ishmael)"], 0,
+         "Allah inspired Musa's mother to place him in a chest on the river to protect him.",
+         "Quran — Surah Ta-Ha, 20:38-39"),
+    ar=L("أم أي نبي أُمرت بوضعه رضيعًا في اليم؟",
+         ["موسى", "عيسى", "يوسف", "إسماعيل"], 0,
+         "ألهم الله أم موسى أن تضعه في تابوت على اليم لحمايته.",
+         "القرآن — سورة طه، 20:38-39"))
+
+add("prophets_018", "prophets", "hard", "quran", "Quran", "7:73", False,
+    fr=L("La chamelle de quel prophète fut un signe donné à son peuple, les Thamûd ?",
+         ["Sâlih", "Hûd", "Shuʿayb", "Lût"], 0,
+         "Allah envoya une chamelle comme signe au peuple de Thamûd par le prophète Sâlih.",
+         "Coran — Sourate Al-Aʿrâf, 7:73"),
+    en=L("Whose she-camel was a sign given to his people, the Thamud?",
+         ["Salih", "Hud", "Shu'ayb", "Lut (Lot)"], 0,
+         "Allah sent a she-camel as a sign to the people of Thamud through the prophet Salih.",
+         "Quran — Surah Al-A'raf, 7:73"),
+    ar=L("ناقة أي نبي كانت آية لقومه ثمود؟",
+         ["صالح", "هود", "شعيب", "لوط"], 0,
+         "أرسل الله ناقة آيةً لقوم ثمود على يد النبي صالح.",
+         "القرآن — سورة الأعراف، 7:73"))
+
+# ---------------------------------------------------------------------
+# SIRA (life of the Prophet Muhammad ﷺ) — 18
+# ---------------------------------------------------------------------
+
+add("sira_001", "sira", "easy", "sira", "Sira", "well-established biography", True,
+    fr=L("Dans quelle ville le prophète Muhammad ﷺ est-il né ?",
+         ["La Mecque", "Médine", "Ta'if", "Jérusalem"], 0,
+         "Le prophète Muhammad ﷺ est né à La Mecque, dans le Hijaz.",
+         "Sîra — fait historique établi"),
+    en=L("In which city was the Prophet Muhammad ﷺ born?",
+         ["Makkah", "Madinah", "Ta'if", "Jerusalem"], 0,
+         "The Prophet Muhammad ﷺ was born in Makkah, in the Hijaz.",
+         "Sira — well-established historical fact"),
+    ar=L("في أي مدينة وُلد النبي محمد ﷺ؟",
+         ["مكة", "المدينة", "الطائف", "القدس"], 0,
+         "وُلد النبي محمد ﷺ في مكة، في الحجاز.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_002", "sira", "medium", "quran", "Quran", "105:1-5", True,
+    fr=L("Comment appelle-t-on l'année de la naissance du Prophète ﷺ, marquée par l'événement de l'éléphant ?",
+         ["L'Année de l'Éléphant", "L'Année de la Victoire", "L'Année du Chameau", "L'Année de la Lumière"], 0,
+         "L'événement de l'éléphant, où Allah protégea la Kaaba, est raconté dans la sourate Al-Fîl.",
+         "Coran — Sourate Al-Fîl, 105:1-5"),
+    en=L("What is the year of the Prophet's ﷺ birth called, marked by the Event of the Elephant?",
+         ["The Year of the Elephant", "The Year of Victory", "The Year of the Camel", "The Year of Light"], 0,
+         "The Event of the Elephant, in which Allah protected the Kaaba, is recounted in Surah Al-Fil.",
+         "Quran — Surah Al-Fil, 105:1-5"),
+    ar=L("ماذا تُسمّى سنة مولد النبي ﷺ التي وقعت فيها حادثة الفيل؟",
+         ["عام الفيل", "عام النصر", "عام الجمل", "عام النور"], 0,
+         "قصة الفيل، التي حفظ فيها الله الكعبة، مذكورة في سورة الفيل.",
+         "القرآن — سورة الفيل، 105:1-5"))
+
+add("sira_003", "sira", "easy", "sira", "Sira", "well-established biography", False,
+    fr=L("Quel était le nom de la première épouse du Prophète ﷺ ?",
+         ["Khadîja", "ʿÂ'isha", "Hafsa", "Zaynab"], 0,
+         "Khadîja bint Khuwaylid fut la première épouse du Prophète ﷺ et la première à croire en son message.",
+         "Sîra — fait historique établi"),
+    en=L("What was the name of the Prophet's ﷺ first wife?",
+         ["Khadijah", "A'ishah", "Hafsah", "Zaynab"], 0,
+         "Khadijah bint Khuwaylid was the Prophet's ﷺ first wife and the first person to believe in his message.",
+         "Sira — well-established historical fact"),
+    ar=L("ما اسم أول زوجة للنبي ﷺ؟",
+         ["خديجة", "عائشة", "حفصة", "زينب"], 0,
+         "كانت خديجة بنت خويلد أول زوجة للنبي ﷺ وأول من آمن برسالته.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_004", "sira", "medium", "sira", "Sira", "well-established biography", False,
+    fr=L("Dans quelle grotte le Prophète ﷺ reçut-il la première révélation ?",
+         ["La grotte de Hirâ'", "La grotte de Thawr", "La grotte des gens de la caverne", "La grotte de Uhud"], 0,
+         "La première révélation eut lieu dans la grotte de Hirâ', sur le mont An-Nûr près de La Mecque.",
+         "Sîra — fait historique établi"),
+    en=L("In which cave did the Prophet ﷺ receive the first revelation?",
+         ["The Cave of Hira", "The Cave of Thawr", "The Cave of the Companions", "The Cave of Uhud"], 0,
+         "The first revelation took place in the Cave of Hira, on Jabal an-Nur near Makkah.",
+         "Sira — well-established historical fact"),
+    ar=L("في أي غار نزل الوحي الأول على النبي ﷺ؟",
+         ["غار حراء", "غار ثور", "كهف أصحاب الكهف", "غار أُحد"], 0,
+         "نزل الوحي الأول في غار حراء، في جبل النور قرب مكة.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_005", "sira", "easy", "quran", "Quran", "2:97", True,
+    fr=L("Quel ange apporta la révélation au Prophète ﷺ ?",
+         ["Jibrîl", "Mîkâ'îl", "Isrâfîl", "Mâlik"], 0,
+         "Le Coran mentionne explicitement que Jibrîl a apporté la révélation par la permission d'Allah.",
+         "Coran — Sourate Al-Baqara, 2:97"),
+    en=L("Which angel brought revelation to the Prophet ﷺ?",
+         ["Jibril (Gabriel)", "Mika'il (Michael)", "Israfil", "Malik"], 0,
+         "The Quran explicitly mentions that Jibril brought revelation by Allah's permission.",
+         "Quran — Surah Al-Baqarah, 2:97"),
+    ar=L("أي ملَك جاء بالوحي إلى النبي ﷺ؟",
+         ["جبريل", "ميكائيل", "إسرافيل", "مالك"], 0,
+         "يذكر القرآن صراحةً أن جبريل نزل بالوحي بإذن الله.",
+         "القرآن — سورة البقرة، 2:97"))
+
+add("sira_006", "sira", "easy", "sira", "Sira", "well-established biography", False,
+    fr=L("Comment appelle-t-on la migration du Prophète ﷺ et de ses compagnons de La Mecque vers Médine ?",
+         ["Al-Hijra", "Al-Isrâ'", "Al-Miʿrâj", "Al-Fath"], 0,
+         "Al-Hijra désigne la migration historique vers Médine, point de départ du calendrier islamique.",
+         "Sîra — fait historique établi"),
+    en=L("What is the migration of the Prophet ﷺ and his companions from Makkah to Madinah called?",
+         ["Al-Hijrah", "Al-Isra", "Al-Mi'raj", "Al-Fath"], 0,
+         "Al-Hijrah refers to the historic migration to Madinah, the starting point of the Islamic calendar.",
+         "Sira — well-established historical fact"),
+    ar=L("ماذا تُسمّى هجرة النبي ﷺ وأصحابه من مكة إلى المدينة؟",
+         ["الهجرة", "الإسراء", "المعراج", "الفتح"], 0,
+         "تشير الهجرة إلى الانتقال التاريخي إلى المدينة، وهي بداية التقويم الهجري.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_007", "sira", "easy", "sira", "Sira", "well-established biography", False,
+    fr=L("Vers quelle ville le Prophète ﷺ et Abû Bakr émigrèrent-ils ?",
+         ["Médine", "Ta'if", "Damas", "Jérusalem"], 0,
+         "Le Prophète ﷺ et Abû Bakr migrèrent de La Mecque vers Médine (alors appelée Yathrib).",
+         "Sîra — fait historique établi"),
+    en=L("To which city did the Prophet ﷺ and Abu Bakr migrate?",
+         ["Madinah", "Ta'if", "Damascus", "Jerusalem"], 0,
+         "The Prophet ﷺ and Abu Bakr migrated from Makkah to Madinah (then called Yathrib).",
+         "Sira — well-established historical fact"),
+    ar=L("إلى أي مدينة هاجر النبي ﷺ وأبو بكر؟",
+         ["المدينة", "الطائف", "دمشق", "القدس"], 0,
+         "هاجر النبي ﷺ وأبو بكر من مكة إلى المدينة (يثرب سابقًا).",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_008", "sira", "hard", "quran", "Quran", "9:40", False,
+    fr=L("Le Coran décrit un compagnon comme « le second de deux, alors qu'ils étaient dans la grotte » lors de la Hijra. De qui s'agit-il ?",
+         ["Abû Bakr", "ʿUmar", "ʿUthmân", "ʿAlî"], 0,
+         "Le Coran fait référence à Abû Bakr, qui accompagna le Prophète ﷺ dans la grotte de Thawr durant la Hijra.",
+         "Coran — Sourate At-Tawba, 9:40"),
+    en=L("The Quran describes a companion as 'the second of two, when they were in the cave' during the Hijrah. Who was it?",
+         ["Abu Bakr", "Umar", "Uthman", "Ali"], 0,
+         "The Quran refers to Abu Bakr, who accompanied the Prophet ﷺ in the Cave of Thawr during the Hijrah.",
+         "Quran — Surah At-Tawbah, 9:40"),
+    ar=L("وصف القرآن أحد الصحابة بأنه «ثاني اثنين إذ هما في الغار» أثناء الهجرة. من هو؟",
+         ["أبو بكر", "عمر", "عثمان", "علي"], 0,
+         "يشير القرآن إلى أبي بكر، الذي رافق النبي ﷺ في غار ثور أثناء الهجرة.",
+         "القرآن — سورة التوبة، 9:40"))
+
+add("sira_009", "sira", "medium", "quran", "Quran", "3:123", False,
+    fr=L("Quelle bataille, mentionnée dans le Coran, vit une petite armée musulmane vaincre une force bien plus nombreuse ?",
+         ["La bataille de Badr", "La bataille de Uhud", "La bataille du Fossé", "La bataille de Hunayn"], 0,
+         "À Badr, Allah accorda la victoire à un petit groupe de croyants face à une armée plus nombreuse.",
+         "Coran — Sourate Âl ʿImrân, 3:123"),
+    en=L("Which battle, mentioned in the Quran, saw a small Muslim army defeat a much larger force?",
+         ["The Battle of Badr", "The Battle of Uhud", "The Battle of the Trench", "The Battle of Hunayn"], 0,
+         "At Badr, Allah granted victory to a small group of believers over a much larger army.",
+         "Quran — Surah Al 'Imran, 3:123"),
+    ar=L("أي معركة، مذكورة في القرآن، انتصر فيها جيش مسلم صغير على قوة أكبر بكثير؟",
+         ["غزوة بدر", "غزوة أُحد", "غزوة الخندق", "غزوة حنين"], 0,
+         "في بدر، نصر الله فئة قليلة من المؤمنين على جيش أكبر عددًا.",
+         "القرآن — سورة آل عمران، 3:123"))
+
+add("sira_010", "sira", "medium", "sira", "Sira", "well-established biography", True,
+    fr=L("Comment appelle-t-on le retour pacifique du Prophète ﷺ et de ses compagnons à La Mecque ?",
+         ["La Conquête de La Mecque (Fath Makka)", "La Bataille de La Mecque", "Le Siège de La Mecque", "La Prise de La Mecque"], 0,
+         "La Conquête de La Mecque se déroula de façon largement pacifique, sans effusion de sang généralisée.",
+         "Sîra — fait historique établi"),
+    en=L("What is the largely peaceful return of the Prophet ﷺ and his companions to Makkah called?",
+         ["The Conquest of Makkah (Fath Makkah)", "The Battle of Makkah", "The Siege of Makkah", "The Fall of Makkah"], 0,
+         "The Conquest of Makkah took place largely peacefully, without widespread bloodshed.",
+         "Sira — well-established historical fact"),
+    ar=L("ماذا يُسمّى عودة النبي ﷺ وأصحابه السلمية إلى مكة؟",
+         ["فتح مكة", "معركة مكة", "حصار مكة", "سقوط مكة"], 0,
+         "جرى فتح مكة بشكل سلمي إلى حد كبير، دون إراقة دماء واسعة.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_011", "sira", "medium", "sira", "Sira", "well-established biography", False,
+    fr=L("Comment appelle-t-on le dernier sermon prononcé par le Prophète ﷺ vers la fin de sa vie ?",
+         ["Le Sermon d'Adieu", "Le Sermon de La Mecque", "Le Sermon de la Grotte", "Le Sermon de Badr"], 0,
+         "Le Sermon d'Adieu (Khutbat al-Wadâʿ) fut prononcé lors du dernier pèlerinage du Prophète ﷺ.",
+         "Sîra — fait historique établi"),
+    en=L("What is the final sermon delivered by the Prophet ﷺ near the end of his life called?",
+         ["The Farewell Sermon", "The Sermon of Makkah", "The Cave Sermon", "The Sermon of Badr"], 0,
+         "The Farewell Sermon (Khutbat al-Wada') was delivered during the Prophet's ﷺ final pilgrimage.",
+         "Sira — well-established historical fact"),
+    ar=L("ماذا تُسمّى آخر خطبة ألقاها النبي ﷺ قرب نهاية حياته؟",
+         ["خطبة الوداع", "خطبة مكة", "خطبة الغار", "خطبة بدر"], 0,
+         "أُلقيت خطبة الوداع خلال حجة النبي ﷺ الأخيرة.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_012", "sira", "medium", "quran", "Quran", "2:185", False,
+    fr=L("Durant quel mois le Coran indique-t-il que sa révélation a commencé ?",
+         ["Ramadân", "Muharram", "Rajab", "Dhul-Hijja"], 0,
+         "Le Coran indique que Ramadân est le mois durant lequel le Coran a été révélé.",
+         "Coran — Sourate Al-Baqara, 2:185"),
+    en=L("During which month does the Quran state its revelation began?",
+         ["Ramadan", "Muharram", "Rajab", "Dhul-Hijjah"], 0,
+         "The Quran states that Ramadan is the month in which the Quran was revealed.",
+         "Quran — Surah Al-Baqarah, 2:185"),
+    ar=L("في أي شهر يذكر القرآن أن نزوله بدأ؟",
+         ["رمضان", "محرم", "رجب", "ذو الحجة"], 0,
+         "يذكر القرآن أن رمضان هو الشهر الذي أُنزل فيه القرآن.",
+         "القرآن — سورة البقرة، 2:185"))
+
+add("sira_013", "sira", "easy", "sira", "Sira", "well-established biography", False,
+    fr=L("Quelle était la profession du Prophète ﷺ avant qu'il ne reçoive la révélation ?",
+         ["Marchand", "Berger uniquement", "Forgeron", "Scribe"], 0,
+         "Le Prophète ﷺ exerçait le commerce, un fait bien établi de sa biographie.",
+         "Sîra — fait historique établi"),
+    en=L("What was the Prophet's ﷺ profession before he received revelation?",
+         ["Merchant/trader", "Only a shepherd", "Blacksmith", "Scribe"], 0,
+         "The Prophet ﷺ worked in trade, a well-established fact of his biography.",
+         "Sira — well-established historical fact"),
+    ar=L("ما كانت مهنة النبي ﷺ قبل نزول الوحي عليه؟",
+         ["التجارة", "الرعي فقط", "الحدادة", "الكتابة"], 0,
+         "عمل النبي ﷺ في التجارة، وهي حقيقة ثابتة في سيرته.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_014", "sira", "medium", "sira", "Sira", "well-established biography", False,
+    fr=L("Quel grand-père du Prophète ﷺ prit soin de lui après la mort de sa mère ?",
+         ["ʿAbd al-Muttalib", "Abû Tâlib", "Abû Lahab", "Abû Sufyân"], 0,
+         "ʿAbd al-Muttalib prit soin du jeune Muhammad ﷺ après la mort de sa mère Âmina.",
+         "Sîra — fait historique établi"),
+    en=L("Which grandfather of the Prophet ﷺ cared for him after his mother's death?",
+         ["Abdul Muttalib", "Abu Talib", "Abu Lahab", "Abu Sufyan"], 0,
+         "Abdul Muttalib cared for the young Muhammad ﷺ after the death of his mother Aminah.",
+         "Sira — well-established historical fact"),
+    ar=L("أي جدّ للنبي ﷺ رعاه بعد وفاة والدته؟",
+         ["عبد المطلب", "أبو طالب", "أبو لهب", "أبو سفيان"], 0,
+         "رعى عبد المطلب النبي محمدًا ﷺ في صغره بعد وفاة والدته آمنة.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_015", "sira", "medium", "sira", "Sira", "well-established biography", False,
+    fr=L("Quel oncle éleva le Prophète ﷺ après la mort de son grand-père ?",
+         ["Abû Tâlib", "Al-ʿAbbâs", "Hamza", "Abû Lahab"], 0,
+         "Abû Tâlib prit en charge l'éducation de son neveu après la mort de ʿAbd al-Muttalib.",
+         "Sîra — fait historique établi"),
+    en=L("Which uncle raised the Prophet ﷺ after his grandfather's death?",
+         ["Abu Talib", "Al-Abbas", "Hamzah", "Abu Lahab"], 0,
+         "Abu Talib took charge of raising his nephew after Abdul Muttalib's death.",
+         "Sira — well-established historical fact"),
+    ar=L("أي عم ربّى النبي ﷺ بعد وفاة جده؟",
+         ["أبو طالب", "العباس", "حمزة", "أبو لهب"], 0,
+         "تولى أبو طالب رعاية ابن أخيه بعد وفاة عبد المطلب.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_016", "sira", "hard", "quran", "Quran", "17:1", False,
+    fr=L("Comment appelle-t-on le voyage nocturne du Prophète ﷺ de La Mecque à Jérusalem, mentionné dans le Coran ?",
+         ["Al-Isrâ'", "Al-Hijra", "Al-Fath", "Al-Ghazwa"], 0,
+         "Le Coran ouvre la sourate Al-Isrâ' en évoquant ce voyage nocturne miraculeux.",
+         "Coran — Sourate Al-Isrâ', 17:1"),
+    en=L("What is the Prophet's ﷺ night journey from Makkah to Jerusalem, mentioned in the Quran, called?",
+         ["Al-Isra", "Al-Hijrah", "Al-Fath", "Al-Ghazwah"], 0,
+         "Surah Al-Isra opens by describing this miraculous night journey.",
+         "Quran — Surah Al-Isra, 17:1"),
+    ar=L("ماذا تُسمّى رحلة النبي ﷺ الليلية من مكة إلى القدس، المذكورة في القرآن؟",
+         ["الإسراء", "الهجرة", "الفتح", "الغزوة"], 0,
+         "تفتتح سورة الإسراء بذكر هذه الرحلة الليلية المعجزة.",
+         "القرآن — سورة الإسراء، 17:1"))
+
+add("sira_017", "sira", "medium", "sira", "Sira", "well-established biography", False,
+    fr=L("Laquelle des filles du Prophète ﷺ épousa ʿAlî ibn Abî Tâlib ?",
+         ["Fâtima", "Zaynab", "Ruqayya", "Umm Kulthûm"], 0,
+         "Fâtima, fille du Prophète ﷺ et de Khadîja, épousa ʿAlî ibn Abî Tâlib — un fait largement établi.",
+         "Sîra — fait historique établi"),
+    en=L("Which of the Prophet's ﷺ daughters married Ali ibn Abi Talib?",
+         ["Fatimah", "Zaynab", "Ruqayyah", "Umm Kulthum"], 0,
+         "Fatimah, daughter of the Prophet ﷺ and Khadijah, married Ali ibn Abi Talib — a widely established fact.",
+         "Sira — well-established historical fact"),
+    ar=L("أي بنات النبي ﷺ تزوجت عليَّ بن أبي طالب؟",
+         ["فاطمة", "زينب", "رقية", "أم كلثوم"], 0,
+         "تزوجت فاطمة، ابنة النبي ﷺ وخديجة، من علي بن أبي طالب، وهي حقيقة ثابتة على نطاق واسع.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+add("sira_018", "sira", "easy", "sira", "Sira", "well-established biography", False,
+    fr=L("Quel mois marque le début de l'année du calendrier islamique, en référence à la Hijra ?",
+         ["Muharram", "Ramadân", "Shawwâl", "Dhul-Qaʿda"], 0,
+         "Le calendrier islamique commence par le mois de Muharram, en référence à l'année de la Hijra.",
+         "Sîra — fait historique établi"),
+    en=L("Which month marks the start of the Islamic calendar year, referencing the Hijrah?",
+         ["Muharram", "Ramadan", "Shawwal", "Dhul-Qa'dah"], 0,
+         "The Islamic calendar begins with the month of Muharram, referencing the year of the Hijrah.",
+         "Sira — well-established historical fact"),
+    ar=L("أي شهر يبدأ به التقويم الهجري، إشارة إلى الهجرة؟",
+         ["محرم", "رمضان", "شوال", "ذو القعدة"], 0,
+         "يبدأ التقويم الهجري بشهر محرم، إشارة إلى سنة الهجرة.",
+         "السيرة — حقيقة تاريخية ثابتة"))
+
+# ---------------------------------------------------------------------
+# QURAN & TEACHINGS — 10
+# ---------------------------------------------------------------------
+
+add("quran_001", "quran", "easy", "quran", "Quran", "1:1-7", True,
+    fr=L("Quel est le nom du premier chapitre (sourate) du Coran ?",
+         ["Al-Fâtiha", "Al-Baqara", "Al-Ikhlâs", "An-Nâs"], 0,
+         "Al-Fâtiha, « l'Ouverture », est le premier chapitre du Coran.",
+         "Coran — Sourate Al-Fâtiha, 1:1-7"),
+    en=L("What is the name of the first chapter (surah) of the Quran?",
+         ["Al-Fatiha", "Al-Baqarah", "Al-Ikhlas", "An-Nas"], 0,
+         "Al-Fatiha, 'The Opening', is the first chapter of the Quran.",
+         "Quran — Surah Al-Fatiha, 1:1-7"),
+    ar=L("ما اسم أول سورة في القرآن الكريم؟",
+         ["الفاتحة", "البقرة", "الإخلاص", "الناس"], 0,
+         "الفاتحة هي السورة الأولى في القرآن الكريم.",
+         "القرآن — سورة الفاتحة، 1:1-7"))
+
+add("quran_002", "quran", "medium", "quran", "Quran", "well-established count (114 surahs)", False,
+    fr=L("Combien de chapitres (sourates) compte le Coran ?",
+         ["114", "99", "100", "120"], 0,
+         "Le Coran est composé de 114 sourates.",
+         "Coran — comptage établi"),
+    en=L("How many chapters (surahs) does the Quran contain?",
+         ["114", "99", "100", "120"], 0,
+         "The Quran is composed of 114 surahs.",
+         "Quran — well-established count"),
+    ar=L("كم عدد سور القرآن الكريم؟",
+         ["114", "99", "100", "120"], 0,
+         "يتكون القرآن الكريم من 114 سورة.",
+         "القرآن — عدد ثابت"))
+
+add("quran_003", "quran", "medium", "quran", "Quran", "well-established (Al-Baqarah is the longest surah)", False,
+    fr=L("Quelle est la plus longue sourate du Coran ?",
+         ["Al-Baqara", "Al-Fâtiha", "Al-Kawthar", "Al-ʿAsr"], 0,
+         "Al-Baqara est la plus longue sourate du Coran, avec 286 versets.",
+         "Coran — fait établi"),
+    en=L("What is the longest surah in the Quran?",
+         ["Al-Baqarah", "Al-Fatiha", "Al-Kawthar", "Al-'Asr"], 0,
+         "Al-Baqarah is the longest surah in the Quran, with 286 verses.",
+         "Quran — well-established fact"),
+    ar=L("ما هي أطول سورة في القرآن الكريم؟",
+         ["البقرة", "الفاتحة", "الكوثر", "العصر"], 0,
+         "سورة البقرة هي أطول سورة في القرآن، وعدد آياتها 286.",
+         "القرآن — حقيقة ثابتة"))
+
+add("quran_004", "quran", "medium", "quran", "Quran", "108:1-3", False,
+    fr=L("Quelle est la plus courte sourate du Coran ?",
+         ["Al-Kawthar", "Al-Ikhlâs", "Al-ʿAsr", "An-Nasr"], 0,
+         "Al-Kawthar, avec 3 versets, est la plus courte sourate du Coran.",
+         "Coran — Sourate Al-Kawthar, 108:1-3"),
+    en=L("What is the shortest surah in the Quran?",
+         ["Al-Kawthar", "Al-Ikhlas", "Al-'Asr", "An-Nasr"], 0,
+         "Al-Kawthar, with 3 verses, is the shortest surah in the Quran.",
+         "Quran — Surah Al-Kawthar, 108:1-3"),
+    ar=L("ما هي أقصر سورة في القرآن الكريم؟",
+         ["الكوثر", "الإخلاص", "العصر", "النصر"], 0,
+         "سورة الكوثر، بثلاث آيات، هي أقصر سورة في القرآن.",
+         "القرآن — سورة الكوثر، 108:1-3"))
+
+add("quran_005", "quran", "easy", "quran", "Quran", "12:2", True,
+    fr=L("Dans quelle langue le Coran a-t-il été révélé ?",
+         ["L'arabe", "L'araméen", "L'hébreu", "Le persan"], 0,
+         "Le Coran affirme explicitement avoir été révélé en langue arabe.",
+         "Coran — Sourate Yûsuf, 12:2"),
+    en=L("In which language was the Quran revealed?",
+         ["Arabic", "Aramaic", "Hebrew", "Persian"], 0,
+         "The Quran explicitly states it was revealed in the Arabic language.",
+         "Quran — Surah Yusuf, 12:2"),
+    ar=L("بأي لغة نزل القرآن الكريم؟",
+         ["العربية", "الآرامية", "العبرية", "الفارسية"], 0,
+         "ينص القرآن صراحة على أنه أُنزل بلسان عربي.",
+         "القرآن — سورة يوسف، 12:2"))
+
+add("quran_006", "quran", "hard", "quran", "Quran", "19:1-16", False,
+    fr=L("Quel est le nom de la 19ᵉ sourate, nommée d'après la mère d'Îsâ ?",
+         ["Maryam", "Yûsuf", "Al-Kahf", "Tâ-Hâ"], 0,
+         "La 19ᵉ sourate du Coran porte le nom de Maryam, mère du prophète Îsâ.",
+         "Coran — Sourate Maryam, 19:1-16"),
+    en=L("What is the name of the 19th surah, named after the mother of Isa?",
+         ["Maryam", "Yusuf", "Al-Kahf", "Ta-Ha"], 0,
+         "The Quran's 19th surah is named Maryam, after the mother of the prophet Isa.",
+         "Quran — Surah Maryam, 19:1-16"),
+    ar=L("ما اسم السورة التاسعة عشرة، المسمّاة باسم أم عيسى؟",
+         ["مريم", "يوسف", "الكهف", "طه"], 0,
+         "السورة التاسعة عشرة في القرآن سُمّيت مريم، أم النبي عيسى.",
+         "القرآن — سورة مريم، 19:1-16"))
+
+add("quran_007", "quran", "easy", "quran", "Quran", "well-established terminology", False,
+    fr=L("Comment appelle-t-on un chapitre du Coran ?",
+         ["Une sourate", "Un hadith", "Un juz'", "Un tafsîr"], 0,
+         "Le Coran est divisé en chapitres appelés sourates.",
+         "Coran — terminologie établie"),
+    en=L("What is a chapter of the Quran called?",
+         ["A surah", "A hadith", "A juz'", "A tafsir"], 0,
+         "The Quran is divided into chapters called surahs.",
+         "Quran — well-established terminology"),
+    ar=L("ماذا يُسمّى الفصل الواحد من القرآن؟",
+         ["سورة", "حديث", "جزء", "تفسير"], 0,
+         "يُقسّم القرآن إلى فصول تُسمّى سورًا.",
+         "القرآن — مصطلح ثابت"))
+
+add("quran_008", "quran", "easy", "quran", "Quran", "well-established terminology", False,
+    fr=L("Comment appelle-t-on un verset du Coran ?",
+         ["Une âya", "Une sourate", "Un hadith", "Un rukûʿ"], 0,
+         "Chaque verset du Coran est appelé une âya, signifiant « signe ».",
+         "Coran — terminologie établie"),
+    en=L("What is a verse of the Quran called?",
+         ["An ayah", "A surah", "A hadith", "A ruku'"], 0,
+         "Each verse of the Quran is called an ayah, meaning 'sign'.",
+         "Quran — well-established terminology"),
+    ar=L("ماذا تُسمّى الآية الواحدة من القرآن؟",
+         ["آية", "سورة", "حديث", "ركوع"], 0,
+         "تُسمّى كل آية من آيات القرآن آيةً، ومعناها «علامة».",
+         "القرآن — مصطلح ثابت"))
+
+add("quran_009", "quran", "medium", "hadithBukhari", "Sahih al-Bukhari", "756", False,
+    fr=L("Quelle sourate est récitée obligatoirement à chaque unité (rakʿa) de la prière ?",
+         ["Al-Fâtiha", "Al-Ikhlâs", "Al-Kawthar", "Al-Fîl"], 0,
+         "La récitation d'Al-Fâtiha est un pilier de la prière rapporté dans un hadith authentique.",
+         "Sahîh al-Bukhârî, n°756"),
+    en=L("Which surah is obligatorily recited in every unit (rak'ah) of the prayer?",
+         ["Al-Fatiha", "Al-Ikhlas", "Al-Kawthar", "Al-Fil"], 0,
+         "Reciting Al-Fatiha is a pillar of the prayer reported in an authentic hadith.",
+         "Sahih al-Bukhari, no. 756"),
+    ar=L("أي سورة تُقرأ وجوبًا في كل ركعة من الصلاة؟",
+         ["الفاتحة", "الإخلاص", "الكوثر", "الفيل"], 0,
+         "قراءة الفاتحة ركن من أركان الصلاة، كما ورد في حديث صحيح.",
+         "صحيح البخاري، رقم 756"))
+
+add("quran_010", "quran", "easy", "quran", "Quran", "well-established (revealed to Muhammad ﷺ)", False,
+    fr=L("À qui le Coran fut-il révélé ?",
+         ["Au prophète Muhammad ﷺ", "Au prophète Mûsâ", "Au prophète Îsâ", "Au prophète Dâwûd"], 0,
+         "Le Coran fut révélé au prophète Muhammad ﷺ, par l'intermédiaire de l'ange Jibrîl.",
+         "Coran — fait établi"),
+    en=L("To whom was the Quran revealed?",
+         ["The Prophet Muhammad ﷺ", "The Prophet Musa", "The Prophet Isa", "The Prophet Dawud"], 0,
+         "The Quran was revealed to the Prophet Muhammad ﷺ, through the angel Jibril.",
+         "Quran — well-established fact"),
+    ar=L("على من نزل القرآن الكريم؟",
+         ["النبي محمد ﷺ", "النبي موسى", "النبي عيسى", "النبي داوود"], 0,
+         "نزل القرآن على النبي محمد ﷺ، عن طريق الملَك جبريل.",
+         "القرآن — حقيقة ثابتة"))
+
+# ---------------------------------------------------------------------
+# FAITH & WORSHIP BASICS — 8
+# ---------------------------------------------------------------------
+
+add("faith_001", "faith", "easy", "hadithBukhari", "Sahih al-Bukhari", "8", True,
+    fr=L("Combien de piliers compte l'islam ?",
+         ["5", "4", "6", "7"], 0,
+         "Le hadith de Jibrîl et le hadith rapporté par Ibn ʿUmar énoncent les cinq piliers de l'islam.",
+         "Sahîh al-Bukhârî, n°8"),
+    en=L("How many pillars does Islam have?",
+         ["5", "4", "6", "7"], 0,
+         "The hadith of Jibril and the hadith reported by Ibn Umar list the five pillars of Islam.",
+         "Sahih al-Bukhari, no. 8"),
+    ar=L("كم عدد أركان الإسلام؟",
+         ["5", "4", "6", "7"], 0,
+         "يذكر حديث جبريل والحديث المروي عن ابن عمر أركان الإسلام الخمسة.",
+         "صحيح البخاري، رقم 8"))
+
+add("faith_002", "faith", "easy", "hadithBukhari", "Sahih al-Bukhari", "8", False,
+    fr=L("Comment appelle-t-on la déclaration de foi en islam ?",
+         ["La Shahâda", "La Salât", "La Zakât", "Le Hajj"], 0,
+         "La Shahâda, l'attestation de foi, est le premier pilier de l'islam.",
+         "Sahîh al-Bukhârî, n°8"),
+    en=L("What is the declaration of faith in Islam called?",
+         ["The Shahadah", "The Salah", "The Zakah", "The Hajj"], 0,
+         "The Shahadah, the testimony of faith, is the first pillar of Islam.",
+         "Sahih al-Bukhari, no. 8"),
+    ar=L("ماذا تُسمّى شهادة الإيمان في الإسلام؟",
+         ["الشهادة", "الصلاة", "الزكاة", "الحج"], 0,
+         "الشهادة، وهي شهادة الإيمان، هي الركن الأول من أركان الإسلام.",
+         "صحيح البخاري، رقم 8"))
+
+add("faith_003", "faith", "easy", "hadithBukhari", "Sahih al-Bukhari", "8", False,
+    fr=L("Combien de fois par jour la prière obligatoire est-elle accomplie en islam ?",
+         ["5", "3", "4", "7"], 0,
+         "Les cinq prières quotidiennes obligatoires sont un pilier fondamental de l'islam.",
+         "Sahîh al-Bukhârî, n°8"),
+    en=L("How many times a day is the obligatory prayer performed in Islam?",
+         ["5", "3", "4", "7"], 0,
+         "The five daily obligatory prayers are a foundational pillar of Islam.",
+         "Sahih al-Bukhari, no. 8"),
+    ar=L("كم مرة تؤدَّى الصلاة المفروضة يوميًا في الإسلام؟",
+         ["5", "3", "4", "7"], 0,
+         "الصلوات الخمس اليومية المفروضة ركن أساسي من أركان الإسلام.",
+         "صحيح البخاري، رقم 8"))
+
+add("faith_004", "faith", "medium", "hadithBukhari", "Sahih al-Bukhari", "8", True,
+    fr=L("Comment appelle-t-on l'aumône obligatoire en islam ?",
+         ["La Zakât", "La Sadaqa", "Le Waqf", "Le Kaffâra"], 0,
+         "La Zakât est l'aumône obligatoire, l'un des cinq piliers de l'islam.",
+         "Sahîh al-Bukhârî, n°8"),
+    en=L("What is the obligatory charity in Islam called?",
+         ["Zakah", "Sadaqah", "Waqf", "Kaffarah"], 0,
+         "Zakah is the obligatory charity, one of the five pillars of Islam.",
+         "Sahih al-Bukhari, no. 8"),
+    ar=L("ماذا تُسمّى الصدقة المفروضة في الإسلام؟",
+         ["الزكاة", "الصدقة التطوعية", "الوقف", "الكفارة"], 0,
+         "الزكاة هي الصدقة المفروضة، وهي أحد أركان الإسلام الخمسة.",
+         "صحيح البخاري، رقم 8"))
+
+add("faith_005", "faith", "easy", "quran", "Quran", "2:183", False,
+    fr=L("Comment appelle-t-on le mois de jeûne obligatoire en islam ?",
+         ["Ramadân", "Shawwâl", "Rajab", "Muharram"], 0,
+         "Le Coran ordonne le jeûne durant le mois de Ramadân.",
+         "Coran — Sourate Al-Baqara, 2:183"),
+    en=L("What is the obligatory fasting month in Islam called?",
+         ["Ramadan", "Shawwal", "Rajab", "Muharram"], 0,
+         "The Quran commands fasting during the month of Ramadan.",
+         "Quran — Surah Al-Baqarah, 2:183"),
+    ar=L("ماذا يُسمّى شهر الصيام المفروض في الإسلام؟",
+         ["رمضان", "شوال", "رجب", "محرم"], 0,
+         "يأمر القرآن بالصيام في شهر رمضان.",
+         "القرآن — سورة البقرة، 2:183"))
+
+add("faith_006", "faith", "medium", "quran", "Quran", "3:97", False,
+    fr=L("Comment appelle-t-on le pèlerinage à La Mecque, obligatoire une fois dans la vie pour qui en a la capacité ?",
+         ["Le Hajj", "La ʿUmra", "Le Iʿtikâf", "Le Tawâf"], 0,
+         "Le Coran rend le Hajj obligatoire pour quiconque en a la capacité, au moins une fois dans sa vie.",
+         "Coran — Sourate Âl ʿImrân, 3:97"),
+    en=L("What is the pilgrimage to Makkah, obligatory once in a lifetime for those able, called?",
+         ["Hajj", "Umrah", "I'tikaf", "Tawaf"], 0,
+         "The Quran makes Hajj obligatory, at least once in a lifetime, for anyone able to undertake it.",
+         "Quran — Surah Al 'Imran, 3:97"),
+    ar=L("ماذا يُسمّى الحج إلى مكة، الواجب مرة في العمر لمن استطاع؟",
+         ["الحج", "العمرة", "الاعتكاف", "الطواف"], 0,
+         "يُوجب القرآن الحج على من استطاع إليه سبيلاً، مرة واحدة في العمر.",
+         "القرآن — سورة آل عمران، 3:97"))
+
+add("faith_007", "faith", "medium", "quran", "Quran", "2:144", False,
+    fr=L("Vers quelle direction les musulmans se tournent-ils pour la prière ?",
+         ["La Kaaba, à La Mecque", "Jérusalem", "Médine", "L'est"], 0,
+         "Le Coran a établi la Kaaba comme direction de la prière (Qibla).",
+         "Coran — Sourate Al-Baqara, 2:144"),
+    en=L("Which direction do Muslims face for prayer?",
+         ["The Kaaba, in Makkah", "Jerusalem", "Madinah", "East"], 0,
+         "The Quran established the Kaaba as the direction of prayer (Qiblah).",
+         "Quran — Surah Al-Baqarah, 2:144"),
+    ar=L("إلى أي جهة يتوجّه المسلمون في الصلاة؟",
+         ["الكعبة في مكة", "القدس", "المدينة", "الشرق"], 0,
+         "حدّد القرآن الكعبةَ قِبلةً للصلاة.",
+         "القرآن — سورة البقرة، 2:144"))
+
+add("faith_008", "faith", "hard", "hadithMuslim", "Sahih Muslim", "8", False,
+    fr=L("Selon un hadith bien connu, combien d'articles de la foi (piliers de l'Îmân) sont généralement enseignés ?",
+         ["6", "4", "5", "7"], 0,
+         "Le hadith de Jibrîl énumère six articles de foi : Allah, les anges, les livres, les messagers, le Jour Dernier et le destin.",
+         "Sahîh Muslim, n°8"),
+    en=L("According to a well-known hadith, how many articles of faith (pillars of Iman) are commonly taught?",
+         ["6", "4", "5", "7"], 0,
+         "The hadith of Jibril lists six articles of faith: Allah, the angels, the books, the messengers, the Last Day, and divine decree.",
+         "Sahih Muslim, no. 8"),
+    ar=L("بحسب حديث معروف، كم عدد أركان الإيمان التي يُعلَّم بها عادة؟",
+         ["6", "4", "5", "7"], 0,
+         "يُعدّد حديث جبريل ستة أركان للإيمان: الله، والملائكة، والكتب، والرسل، واليوم الآخر، والقدر.",
+         "صحيح مسلم، رقم 8"))
+
+# ---------------------------------------------------------------------
+# VIRTUES & VALUES — 6
+# ---------------------------------------------------------------------
+
+add("virtues_001", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "6018", True,
+    fr=L("Selon un hadith rapporté par l'imam Al-Bukhârî, que doit faire celui qui croit en Allah et au Jour Dernier avec ses paroles ?",
+         ["Dire du bien ou se taire", "Parler fort", "Ne jamais parler", "Répéter les rumeurs"], 0,
+         "Le Prophète ﷺ a dit : « Que celui qui croit en Allah et au Jour Dernier dise du bien ou se taise. »",
+         "Sahîh al-Bukhârî, n°6018"),
+    en=L("According to a hadith reported by Imam al-Bukhari, what should someone who believes in Allah and the Last Day do with their speech?",
+         ["Speak good or remain silent", "Speak loudly", "Never speak", "Repeat rumors"], 0,
+         "The Prophet ﷺ said: 'Whoever believes in Allah and the Last Day should speak good or remain silent.'",
+         "Sahih al-Bukhari, no. 6018"),
+    ar=L("بحسب حديث رواه الإمام البخاري، ماذا ينبغي أن يفعل من يؤمن بالله واليوم الآخر بكلامه؟",
+         ["يقول خيرًا أو يصمت", "يتكلم بصوت عالٍ", "لا يتكلم أبدًا", "يردد الشائعات"], 0,
+         "قال النبي ﷺ: «من كان يؤمن بالله واليوم الآخر فليقل خيرًا أو ليصمت.»",
+         "صحيح البخاري، رقم 6018"))
+
+add("virtues_002", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "6018", False,
+    fr=L("Toujours selon ce même hadith, qui le croyant doit-il honorer, en plus de son invité ?",
+         ["Son voisin", "Son commerçant", "Son adversaire", "L'inconnu"], 0,
+         "Le hadith poursuit : « ...et que celui qui croit en Allah et au Jour Dernier honore son voisin. »",
+         "Sahîh al-Bukhârî, n°6018"),
+    en=L("According to that same hadith, whom else should a believer honor, besides their guest?",
+         ["Their neighbor", "Their merchant", "Their rival", "A stranger"], 0,
+         "The hadith continues: '...and whoever believes in Allah and the Last Day should honor their neighbor.'",
+         "Sahih al-Bukhari, no. 6018"),
+    ar=L("بحسب نفس الحديث، من ينبغي للمؤمن أن يكرمه أيضًا، إلى جانب ضيفه؟",
+         ["جاره", "تاجره", "خصمه", "الغريب"], 0,
+         "يكمل الحديث: «...ومن كان يؤمن بالله واليوم الآخر فليكرم جاره.»",
+         "صحيح البخاري، رقم 6018"))
+
+add("virtues_003", "virtues", "easy", "hadithBukhari", "Sahih al-Bukhari", "6018", False,
+    fr=L("Ce même hadith mentionne aussi l'obligation d'honorer qui, lorsqu'il arrive chez soi ?",
+         ["L'invité", "Le voisin uniquement", "Le marchand", "Le voyageur inconnu de loin"], 0,
+         "Le hadith complet dit : « ...que celui qui croit en Allah et au Jour Dernier honore son invité. »",
+         "Sahîh al-Bukhârî, n°6018"),
+    en=L("This same hadith also mentions honoring whom, when they arrive at one's home?",
+         ["The guest", "Only the neighbor", "The merchant", "A distant unknown traveler"], 0,
+         "The full hadith says: '...whoever believes in Allah and the Last Day should honor their guest.'",
+         "Sahih al-Bukhari, no. 6018"),
+    ar=L("يذكر هذا الحديث أيضًا وجوب إكرام من عند حلوله ضيفًا في البيت؟",
+         ["الضيف", "الجار فقط", "التاجر", "المسافر المجهول"], 0,
+         "يقول الحديث كاملاً: «...ومن كان يؤمن بالله واليوم الآخر فليكرم ضيفه.»",
+         "صحيح البخاري، رقم 6018"))
+
+add("virtues_004", "virtues", "easy", "hadithBukhari", "Sahih al-Bukhari", "13", True,
+    fr=L("Selon un hadith authentique, un croyant n'a pas une foi complète tant qu'il n'aime pas pour son frère ce qu'il aime pour...",
+         ["lui-même", "sa richesse", "sa famille seulement", "son pays"], 0,
+         "Le Prophète ﷺ a dit : « Nul d'entre vous ne croit vraiment tant qu'il n'aime pas pour son frère ce qu'il aime pour lui-même. »",
+         "Sahîh al-Bukhârî, n°13"),
+    en=L("According to an authentic hadith, a believer's faith is not complete until he loves for his brother what he loves for...",
+         ["himself", "his wealth", "only his family", "his country"], 0,
+         "The Prophet ﷺ said: 'None of you truly believes until he loves for his brother what he loves for himself.'",
+         "Sahih al-Bukhari, no. 13"),
+    ar=L("بحسب حديث صحيح، لا يكتمل إيمان المؤمن حتى يحب لأخيه ما يحب...",
+         ["لنفسه", "لماله", "لأسرته فقط", "لبلده"], 0,
+         "قال النبي ﷺ: «لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه.»",
+         "صحيح البخاري، رقم 13"))
+
+add("virtues_005", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "10", False,
+    fr=L("Selon un hadith authentique, le vrai musulman est celui dont les autres sont saufs de sa langue et de...",
+         ["sa main", "sa richesse", "son regard", "sa voix"], 0,
+         "Le Prophète ﷺ a dit : « Le musulman est celui dont les musulmans sont saufs de sa langue et de sa main. »",
+         "Sahîh al-Bukhârî, n°10"),
+    en=L("According to an authentic hadith, the true Muslim is the one from whose tongue and ___ other people are safe.",
+         ["hand", "wealth", "gaze", "voice"], 0,
+         "The Prophet ﷺ said: 'The Muslim is the one from whose tongue and hand other Muslims are safe.'",
+         "Sahih al-Bukhari, no. 10"),
+    ar=L("بحسب حديث صحيح، المسلم الحقيقي هو من سلم الناس من لسانه و...",
+         ["يده", "ماله", "نظره", "صوته"], 0,
+         "قال النبي ﷺ: «المسلم من سلم المسلمون من لسانه ويده.»",
+         "صحيح البخاري، رقم 10"))
+
+add("virtues_006", "virtues", "medium", "quran", "Quran", "17:23-24", False,
+    fr=L("Le Coran ordonne d'être bon envers ses parents et de ne même pas leur dire quel mot de mécontentement ?",
+         ["« Uff »", "« Non »", "« Assez »", "« Attends »"], 0,
+         "Le Coran demande une extrême bienveillance envers les parents, jusqu'à interdire le moindre mot de dédain.",
+         "Coran — Sourate Al-Isrâ', 17:23-24"),
+    en=L("The Quran commands kindness to parents and forbids even saying which word of annoyance to them?",
+         ["'Uff' (a sound of impatience)", "'No'", "'Enough'", "'Wait'"], 0,
+         "The Quran calls for the utmost kindness to parents, forbidding even the slightest word of contempt.",
+         "Quran — Surah Al-Isra, 17:23-24"),
+    ar=L("يأمر القرآن بالإحسان إلى الوالدين وينهى حتى عن قول أي كلمة تبرّم؟",
+         ["«أُفٍّ»", "«لا»", "«كفى»", "«انتظر»"], 0,
+         "يدعو القرآن إلى أقصى درجات البر بالوالدين، فينهى حتى عن أدنى كلمة تضجّر.",
+         "القرآن — سورة الإسراء، 17:23-24"))
+
+# ---------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------
+
+def validate():
+    ids = [q["id"] for q in Q]
+    assert len(ids) == len(set(ids)), "duplicate question id"
+    counts = {"prophets": 0, "sira": 0, "quran": 0, "faith": 0, "virtues": 0}
+    diffs = {"easy": 0, "medium": 0, "hard": 0}
+    free_count = 0
+    for q in Q:
+        counts[q["category"]] += 1
+        diffs[q["difficulty"]] += 1
+        if q["isFree"]:
+            free_count += 1
+        for lang in ("fr", "en", "ar"):
+            content = q[lang]
+            assert len(content["answers"]) == 4, q["id"]
+            assert 0 <= content["correctAnswerIndex"] < 4, q["id"]
+            assert content["question"].strip(), q["id"]
+            assert content["explanation"].strip(), q["id"]
+            assert content["sourceDisplay"].strip(), q["id"]
+            assert all(a.strip() for a in content["answers"]), q["id"]
+        assert q["sourceReference"].strip(), q["id"]
+    print("Total questions:", len(Q))
+    print("By category:", counts)
+    print("By difficulty:", diffs)
+    print("Free questions:", free_count)
+    return counts, diffs, free_count
+
+# ---------------------------------------------------------------------
+# Write output
+# ---------------------------------------------------------------------
+
+def write_output():
+    os.makedirs(f"{OUT_ROOT}/master", exist_ok=True)
+    for lang in ("fr", "en", "ar"):
+        os.makedirs(f"{OUT_ROOT}/{lang}", exist_ok=True)
+    os.makedirs(CQ_ROOT, exist_ok=True)
+
+    master = []
+    per_lang = {"fr": [], "en": [], "ar": []}
+    registry = {}
+    csv_rows = []
+
+    for q in Q:
+        master.append(dict(
+            id=q["id"], category=q["category"], difficulty=q["difficulty"],
+            ageLevel=q["ageLevel"], sourceType=q["sourceType"],
+            sourceWork=q["sourceWork"], sourceReference=q["sourceReference"],
+            sourceVerificationStatus="verified", consensusStatus="nonControversial",
+            isFree=q["isFree"],
+        ))
+        for lang in ("fr", "en", "ar"):
+            content = dict(id=q["id"], correctAnswerIndex=q[lang]["correctAnswerIndex"])
+            content.update({
+                "question": q[lang]["question"],
+                "answers": q[lang]["answers"],
+                "explanation": q[lang]["explanation"],
+                "sourceDisplay": q[lang]["sourceDisplay"],
+            })
+            per_lang[lang].append(content)
+
+        key = f'{q["sourceWork"]}::{q["sourceReference"]}'
+        registry.setdefault(key, dict(
+            sourceType=q["sourceType"], sourceWork=q["sourceWork"],
+            sourceReference=q["sourceReference"], questionIds=[],
+        ))["questionIds"].append(q["id"])
+
+        csv_rows.append([
+            q["id"], q["category"], q["sourceType"], q["sourceWork"],
+            q["sourceReference"], "verified", "nonControversial",
+        ])
+
+    with open(f"{OUT_ROOT}/master/questions.json", "w", encoding="utf-8") as f:
+        json.dump(master, f, ensure_ascii=False, indent=2)
+
+    for lang in ("fr", "en", "ar"):
+        with open(f"{OUT_ROOT}/{lang}/questions.json", "w", encoding="utf-8") as f:
+            json.dump(per_lang[lang], f, ensure_ascii=False, indent=2)
+
+    with open(f"{CQ_ROOT}/source_registry.json", "w", encoding="utf-8") as f:
+        json.dump(list(registry.values()), f, ensure_ascii=False, indent=2)
+
+    with open(f"{CQ_ROOT}/question_sources.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["question_id", "category", "source_type", "source_work",
+                    "source_reference", "verification_status", "consensus_status"])
+        w.writerows(csv_rows)
+
+    print("Wrote", len(master), "questions to", OUT_ROOT)
+    print("Wrote source registry with", len(registry), "unique sources")
+
+if __name__ == "__main__":
+    validate()
+    write_output()
