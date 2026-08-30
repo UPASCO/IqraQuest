@@ -11,8 +11,12 @@ correctly fails against that full target).
 
 ## Apple
 
+See `store/apple/TESTFLIGHT_SETUP.md` for the GitHub Actions pipeline
+that builds and uploads to TestFlight without a local Mac.
+
 ```text
 [ ] Final bundle ID confirmed (currently com.upasco.iqraquest — placeholder org, update if needed)
+[ ] ASC_KEY_ID / ASC_ISSUER_ID / ASC_KEY_CONTENT / APPLE_TEAM_ID secrets set in GitHub (store/apple/TESTFLIGHT_SETUP.md)
 [ ] App Store Connect record created
 [ ] In-App Purchase "iqraquest_full_access" configured as Non-Consumable
 [ ] Price tier set in App Store Connect (never hardcoded in-app — verified by pre_release_check.dart)

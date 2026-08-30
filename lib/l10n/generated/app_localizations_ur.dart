@@ -159,7 +159,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get purchaseSuccess => 'شکریہ! پریمیم اب فعال ہے۔';
 
   @override
-  String get purchaseError => 'خریداری مکمل نہیں ہو سکی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔';
+  String get purchaseError =>
+      'خریداری مکمل نہیں ہو سکی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔';
 
   @override
   String get language => 'زبان';

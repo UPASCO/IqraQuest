@@ -147,7 +147,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => 'Unlock all 500 questions and every difficulty';
+  String get premiumUnlockAll =>
+      'Unlock all 500 questions and every difficulty';
 
   @override
   String get premiumOneTime => 'One-time payment — no subscription';
@@ -159,7 +160,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get purchaseSuccess => 'Thank you! Premium is now active.';
 
   @override
-  String get purchaseError => 'Purchase couldn\'t be completed. Please try again later.';
+  String get purchaseError =>
+      'Purchase couldn\'t be completed. Please try again later.';
 
   @override
   String get language => 'Language';

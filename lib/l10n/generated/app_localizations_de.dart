@@ -147,7 +147,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => 'Schalte alle 500 Fragen und jeden Schwierigkeitsgrad frei';
+  String get premiumUnlockAll =>
+      'Schalte alle 500 Fragen und jeden Schwierigkeitsgrad frei';
 
   @override
   String get premiumOneTime => 'Einmalzahlung — kein Abonnement';

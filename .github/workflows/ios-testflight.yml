@@ -1,0 +1,63 @@
+name: iOS — build & upload to TestFlight
+
+# Manual trigger only, on purpose: this pipeline uploads a real build to
+# App Store Connect and costs Apple/GitHub build minutes, so it should
+# never fire on every push while the project is young. Once the team is
+# comfortable with it, this can be changed to trigger on e.g. tags
+# matching "v*" — see store/apple/TESTFLIGHT_SETUP.md.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build-and-upload:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Regenerate localizations
+        run: flutter gen-l10n
+
+      - name: Static analysis (release gate)
+        run: flutter analyze
+
+      - name: Run tests (release gate)
+        run: flutter test
+
+      - name: Build the Flutter iOS release (no codesign — fastlane signs)
+        # --build-number must increase on every TestFlight upload for the
+        # same version; the workflow run number is a simple, monotonic,
+        # zero-extra-API-call source for that (see ios/fastlane/Fastfile).
+        run: flutter build ios --release --no-codesign --build-number=${{ github.run_number }}
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+          working-directory: ios
+
+      - name: Build and upload to TestFlight
+        working-directory: ios
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: bundle exec fastlane beta
+
+      - name: Upload build artifacts (for debugging failed uploads)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build-logs
+          path: |
+            ios/build/**/*.log
+            ~/Library/Logs/gym
+          if-no-files-found: ignore

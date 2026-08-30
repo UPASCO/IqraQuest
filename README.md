@@ -216,13 +216,18 @@ No account, no backend, no ads, no analytics/tracking SDK. See
   The release build currently signs with the debug config; a real
   signing config must be added before shipping.
 - iOS: build via Xcode with a toolchain meeting Apple's current minimum
-  at submission time (spec §113).
-- Neither platform has been built end-to-end in this environment (no
-  Android SDK / Xcode available here) — `flutter analyze`, `flutter
-  test`, and a `flutter build web` compile-and-link pass were used
-  instead to verify the full codebase compiles and wires together
-  correctly. Building the actual `.aab`/`.ipa` is the next step on real
-  tooling.
+  at submission time (spec §113). A GitHub Actions pipeline
+  (`.github/workflows/ios-testflight.yml`, macOS runner) builds and
+  uploads to TestFlight via `fastlane` with no local Mac required —
+  triggered manually from the Actions tab. See
+  `store/apple/TESTFLIGHT_SETUP.md` for the one-time setup (App Store
+  Connect API key + Team ID as GitHub secrets).
+- Neither platform has been built end-to-end *in this development
+  environment* (no Android SDK / Xcode available here) — `flutter
+  analyze`, `flutter test`, and a `flutter build web` compile-and-link
+  pass were used instead to verify the full codebase compiles and wires
+  together correctly. The iOS TestFlight pipeline above runs the real
+  build on a real macOS runner once its secrets are configured.
 - See `STORE_RELEASE_CHECKLIST.md` for the full submission checklist for
   both stores.
 

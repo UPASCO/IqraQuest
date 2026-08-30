@@ -1,0 +1,50 @@
+default_platform(:ios)
+
+# See store/apple/TESTFLIGHT_SETUP.md for the full list of GitHub Actions
+# secrets this lane expects (ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_CONTENT,
+# APPLE_TEAM_ID) and how to obtain each one.
+platform :ios do
+  desc "Build the Flutter release IPA and upload it to TestFlight"
+  lane :beta do
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      # Store the raw contents of the downloaded .p8 file as the
+      # ASC_KEY_CONTENT secret (not base64 — App Store Connect API keys
+      # are already plain text PEM).
+      key_content: ENV.fetch("ASC_KEY_CONTENT"),
+      is_key_content_base64: false,
+      in_house: false,
+    )
+
+    # Xcode manages signing automatically using the API key above — no
+    # manually exported certificates/provisioning profiles to maintain.
+    update_code_signing_settings(
+      use_automatic_signing: true,
+      path: "Runner.xcodeproj",
+      team_id: ENV.fetch("APPLE_TEAM_ID"),
+    )
+
+    # NOTE: the build number is NOT set here. Flutter's Info.plist uses
+    # $(FLUTTER_BUILD_NUMBER) directly (from Generated.xcconfig, itself
+    # derived from `flutter build ios --build-number=N` or pubspec.yaml's
+    # version), not $(CURRENT_PROJECT_VERSION) — so fastlane's usual
+    # increment_build_number action has no effect on a Flutter app's
+    # actual CFBundleVersion. The CI workflow instead passes
+    # --build-number=${{ github.run_number }} to `flutter build ios`
+    # before this lane runs — see .github/workflows/ios-testflight.yml.
+
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store",
+      xcargs: "-allowProvisioningUpdates",
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true,
+      skip_submission: true,
+    )
+  end
+end

@@ -89,7 +89,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rollDice => 'Dobbelsteen gooien';
 
   @override
-  String get diceLocked => 'Beantwoord de vraag om de dobbelsteen te ontgrendelen';
+  String get diceLocked =>
+      'Beantwoord de vraag om de dobbelsteen te ontgrendelen';
 
   @override
   String get category => 'Categorie';
@@ -147,7 +148,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => 'Ontgrendel alle 500 vragen en elke moeilijkheidsgraad';
+  String get premiumUnlockAll =>
+      'Ontgrendel alle 500 vragen en elke moeilijkheidsgraad';
 
   @override
   String get premiumOneTime => 'Eenmalige betaling — geen abonnement';
@@ -159,7 +161,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get purchaseSuccess => 'Bedankt! Premium is nu actief.';
 
   @override
-  String get purchaseError => 'Aankoop kon niet worden voltooid. Probeer het later opnieuw.';
+  String get purchaseError =>
+      'Aankoop kon niet worden voltooid. Probeer het later opnieuw.';
 
   @override
   String get language => 'Taal';

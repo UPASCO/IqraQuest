@@ -119,7 +119,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get protectedSquareLabel => 'Korumalı Kare';
 
   @override
-  String get freeBankExhaustedMessage => 'Bu oyunda ücretsiz sürümün tüm soruları kullanıldı.';
+  String get freeBankExhaustedMessage =>
+      'Bu oyunda ücretsiz sürümün tüm soruları kullanıldı.';
 
   @override
   String get victory => 'Zafer!';
@@ -146,7 +147,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
+  String get premiumUnlockAll =>
+      '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
 
   @override
   String get premiumOneTime => 'Tek seferlik ödeme — abonelik yok';
@@ -158,7 +160,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get purchaseSuccess => 'Teşekkürler! Premium artık aktif.';
 
   @override
-  String get purchaseError => 'Satın alma tamamlanamadı. Lütfen daha sonra tekrar deneyin.';
+  String get purchaseError =>
+      'Satın alma tamamlanamadı. Lütfen daha sonra tekrar deneyin.';
 
   @override
   String get language => 'Dil';

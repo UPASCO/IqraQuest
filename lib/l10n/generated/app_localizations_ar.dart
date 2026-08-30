@@ -119,7 +119,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get protectedSquareLabel => 'مربع محمي';
 
   @override
-  String get freeBankExhaustedMessage => 'تم استخدام جميع أسئلة النسخة المجانية في هذه اللعبة.';
+  String get freeBankExhaustedMessage =>
+      'تم استخدام جميع أسئلة النسخة المجانية في هذه اللعبة.';
 
   @override
   String get victory => 'النصر!';

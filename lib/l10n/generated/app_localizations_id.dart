@@ -147,7 +147,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => 'Buka 500 pertanyaan dan semua tingkat kesulitan';
+  String get premiumUnlockAll =>
+      'Buka 500 pertanyaan dan semua tingkat kesulitan';
 
   @override
   String get premiumOneTime => 'Pembayaran sekali — tanpa langganan';
@@ -159,7 +160,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get purchaseSuccess => 'Terima kasih! Premium kini aktif.';
 
   @override
-  String get purchaseError => 'Pembelian tidak dapat diselesaikan. Coba lagi nanti.';
+  String get purchaseError =>
+      'Pembelian tidak dapat diselesaikan. Coba lagi nanti.';
 
   @override
   String get language => 'Bahasa';
