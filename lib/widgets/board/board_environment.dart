@@ -3,6 +3,68 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
+/// The three lands of the journey. A player must recognise the region
+/// from color and light alone, before reading any name.
+enum WorldRegion { dawn, solar, fertile }
+
+class _RegionPalette {
+  const _RegionPalette({
+    required this.sky,
+    required this.glow,
+    required this.terrain,
+    required this.contour,
+    required this.fgTop,
+    required this.fgBottom,
+    required this.ridgeFar,
+    required this.ridgeNear,
+  });
+
+  final List<Color> sky;
+  final Color glow;
+  final List<Color> terrain;
+  final Color contour;
+  final Color fgTop;
+  final Color fgBottom;
+  final Color ridgeFar;
+  final Color ridgeNear;
+}
+
+const _palettes = {
+  // Aube du Hijaz: cool night greens breaking into first light.
+  WorldRegion.dawn: _RegionPalette(
+    sky: [Color(0xFF0A3327), Color(0xFF135C43), Color(0xFF6E9A6B), Color(0xFFE8C182)],
+    glow: Color(0xFFFFDC9A),
+    terrain: [Color(0xFFEDD3A2), Color(0xFFDDBC85), Color(0xFFC29E6A), Color(0xFF97794E)],
+    contour: Color(0xFF7A5F38),
+    fgTop: Color(0xFF6B5232),
+    fgBottom: Color(0xFF4A3820),
+    ridgeFar: Color(0x8CB99B78),
+    ridgeNear: Color(0xBF8E7452),
+  ),
+  // Désert solaire: hot noon light, rock and dust.
+  WorldRegion.solar: _RegionPalette(
+    sky: [Color(0xFF1E5E63), Color(0xFF4E8C7A), Color(0xFFD9B36A), Color(0xFFF4D08A)],
+    glow: Color(0xFFFFE6A8),
+    terrain: [Color(0xFFF4DCA4), Color(0xFFE8C583), Color(0xFFCE9F5E), Color(0xFFA37844)],
+    contour: Color(0xFF8A5F2E),
+    fgTop: Color(0xFF7A5426),
+    fgBottom: Color(0xFF52371A),
+    ridgeFar: Color(0x8CC79A66),
+    ridgeNear: Color(0xBFA1703E),
+  ),
+  // Oasis / vallée fertile: shade, water and green.
+  WorldRegion.fertile: _RegionPalette(
+    sky: [Color(0xFF0A2E38), Color(0xFF14554E), Color(0xFF5E9A78), Color(0xFFD9CE8E)],
+    glow: Color(0xFFEFE3A0),
+    terrain: [Color(0xFFD7D49E), Color(0xFFB3C388), Color(0xFF8CA96A), Color(0xFF5F7C48)],
+    contour: Color(0xFF4A6238),
+    fgTop: Color(0xFF3E5A30),
+    fgBottom: Color(0xFF283E1F),
+    ridgeFar: Color(0x8C7FA075),
+    ridgeNear: Color(0xBF5C7C54),
+  ),
+};
+
 /// The living world the race takes place in: a full-screen dawn over the
 /// Hijaz with real depth — sky, far mountains in haze, terrain sweeping
 /// toward the viewer, and dark foreground dunes framing the bottom.
@@ -10,31 +72,37 @@ import 'package:flutter/material.dart';
 /// The board no longer paints its own ground; it sits ON this landscape,
 /// so the whole screen is the game world and the UI floats above it.
 class BoardEnvironmentPainter extends CustomPainter {
-  const BoardEnvironmentPainter({this.horizon = 0.26});
+  const BoardEnvironmentPainter({
+    this.horizon = 0.26,
+    this.region = WorldRegion.dawn,
+    this.heroPath = false,
+  });
 
   /// Where the sky meets the land, as a fraction of screen height.
   final double horizon;
+  final WorldRegion region;
+
+  /// Home hero mode: a winding trail leads from the viewer's feet to a
+  /// tiny oasis on the horizon — the journey is visible before a single
+  /// tap.
+  final bool heroPath;
 
   @override
   void paint(Canvas canvas, Size size) {
     final w = size.width, h = size.height;
     final hy = h * horizon;
+    final pal = _palettes[region]!;
 
     // --- Sky: night emerald fading into a warm dawn band ---
     canvas.drawRect(
       Rect.fromLTWH(0, 0, w, hy + h * 0.05),
       Paint()
-        ..shader = ui.Gradient.linear(
-          Offset(w / 2, 0),
-          Offset(w / 2, hy),
-          [
-            const Color(0xFF0A3327),
-            const Color(0xFF135C43),
-            const Color(0xFF6E9A6B),
-            const Color(0xFFE8C182),
-          ],
-          [0, 0.45, 0.80, 1],
-        ),
+        ..shader = ui.Gradient.linear(Offset(w / 2, 0), Offset(w / 2, hy), pal.sky, [
+          0,
+          0.45,
+          0.80,
+          1,
+        ]),
     );
 
     // Stars, high in the sky.
@@ -59,7 +127,11 @@ class BoardEnvironmentPainter extends CustomPainter {
         ..shader = ui.Gradient.radial(
           Offset(w * 0.5, hy),
           w * 0.65,
-          [const Color(0xB3FFDC9A), const Color(0x33FFDC9A), const Color(0x00FFDC9A)],
+          [
+            pal.glow.withValues(alpha: 0.70),
+            pal.glow.withValues(alpha: 0.20),
+            pal.glow.withValues(alpha: 0),
+          ],
           [0, 0.5, 1],
         ),
     );
@@ -81,8 +153,8 @@ class BoardEnvironmentPainter extends CustomPainter {
       canvas.drawPath(path, Paint()..color = color);
     }
 
-    ridge(hy, h * 0.055, 0.8, const Color(0xFFB99B78).withValues(alpha: 0.55));
-    ridge(hy, h * 0.032, 2.9, const Color(0xFF8E7452).withValues(alpha: 0.75));
+    ridge(hy, h * 0.055, 0.8, pal.ridgeFar);
+    ridge(hy, h * 0.032, 2.9, pal.ridgeNear);
 
     // --- Terrain: warm near the horizon, deeper and richer toward the
     // viewer (atmospheric perspective) ---
@@ -90,17 +162,12 @@ class BoardEnvironmentPainter extends CustomPainter {
     canvas.drawRect(
       ground,
       Paint()
-        ..shader = ui.Gradient.linear(
-          Offset(w / 2, hy),
-          Offset(w / 2, h),
-          [
-            const Color(0xFFEDD3A2),
-            const Color(0xFFDDBC85),
-            const Color(0xFFC29E6A),
-            const Color(0xFF97794E),
-          ],
-          [0, 0.30, 0.68, 1],
-        ),
+        ..shader = ui.Gradient.linear(Offset(w / 2, hy), Offset(w / 2, h), pal.terrain, [
+          0,
+          0.30,
+          0.68,
+          1,
+        ]),
     );
 
     // Dune contour lines sweeping across the terrain, wider apart as they
@@ -108,7 +175,7 @@ class BoardEnvironmentPainter extends CustomPainter {
     final contour = Paint()
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..color = const Color(0xFF7A5F38).withValues(alpha: 0.14);
+      ..color = pal.contour.withValues(alpha: 0.14);
     for (var i = 0; i < 5; i++) {
       final t = i / 4.0;
       final y = hy + (h - hy) * (0.10 + t * t * 0.85);
@@ -127,6 +194,8 @@ class BoardEnvironmentPainter extends CustomPainter {
       );
     }
 
+    if (heroPath) _paintHeroPath(canvas, size, hy, pal);
+
     // --- Foreground: dark dune shoulders framing the bottom corners,
     // with a few grass tufts. This is what puts the player IN the scene. ---
     final fgLeft = Path()
@@ -142,8 +211,8 @@ class BoardEnvironmentPainter extends CustomPainter {
       ..quadraticBezierTo(w * 0.60, h * 0.965, w * 0.56, h)
       ..close();
     for (final (path, top, bottom) in [
-      (fgLeft, const Color(0xFF6B5232), const Color(0xFF4A3820)),
-      (fgRight, const Color(0xFF74582F), const Color(0xFF4A3820)),
+      (fgLeft, pal.fgTop, pal.fgBottom),
+      (fgRight, Color.lerp(pal.fgTop, Colors.white, 0.06)!, pal.fgBottom),
     ]) {
       canvas.drawPath(
         path,
@@ -185,6 +254,72 @@ class BoardEnvironmentPainter extends CustomPainter {
       final y = hy + (math.sin(i * 17.3) * 0.5 + 0.5) * (h - hy) * 0.7;
       canvas.drawCircle(Offset(x, y), 1.4 + (i % 3) * 0.7, dust);
     }
+  }
+
+  void _paintHeroPath(Canvas canvas, Size size, double hy, _RegionPalette pal) {
+    final w = size.width, h = size.height;
+    // A trail that snakes to the horizon, narrowing with distance.
+    Offset centerAt(double t) =>
+        Offset(w * (0.5 + 0.16 * math.sin(t * math.pi * 1.35 + 0.4) * (1 - t)), h - (h - hy) * t);
+    double halfWidth(double t) => w * (0.20 * (1 - t) * (1 - t) + 0.006);
+
+    final left = <Offset>[], right = <Offset>[];
+    for (var i = 0; i <= 24; i++) {
+      final t = i / 24;
+      final c = centerAt(t);
+      final hw = halfWidth(t);
+      left.add(c.translate(-hw, 0));
+      right.add(c.translate(hw, 0));
+    }
+    final band = Path()..moveTo(left.first.dx, left.first.dy);
+    for (final o in left) {
+      band.lineTo(o.dx, o.dy);
+    }
+    for (final o in right.reversed) {
+      band.lineTo(o.dx, o.dy);
+    }
+    band.close();
+    canvas.drawPath(
+      band,
+      Paint()
+        ..shader = ui.Gradient.linear(Offset(w / 2, h), Offset(w / 2, hy), [
+          const Color(0xE8F2E3BE),
+          const Color(0x66F2E3BE),
+        ]),
+    );
+    // Hoof-worn edges.
+    final edge = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2
+      ..color = pal.contour.withValues(alpha: 0.28);
+    final le = Path()..moveTo(left.first.dx, left.first.dy);
+    for (final o in left) {
+      le.lineTo(o.dx, o.dy);
+    }
+    canvas.drawPath(le, edge);
+    final re = Path()..moveTo(right.first.dx, right.first.dy);
+    for (final o in right) {
+      re.lineTo(o.dx, o.dy);
+    }
+    canvas.drawPath(re, edge);
+
+    // The destination: a tiny oasis right on the horizon, glowing.
+    final dest = centerAt(0.985);
+    canvas.drawCircle(
+      dest,
+      w * 0.085,
+      Paint()
+        ..shader = ui.Gradient.radial(dest, w * 0.085, [
+          pal.glow.withValues(alpha: 0.85),
+          pal.glow.withValues(alpha: 0),
+        ]),
+    );
+    canvas.drawOval(
+      Rect.fromCenter(center: dest.translate(0, 3), width: w * 0.045, height: w * 0.014),
+      Paint()..color = const Color(0xFF4E93A8),
+    );
+    _paintPalmSilhouette(canvas, dest.translate(-w * 0.016, 2), w * 0.030);
+    _paintPalmSilhouette(canvas, dest.translate(w * 0.014, 3), w * 0.024);
   }
 
   /// A small desert inn: walls, one dome, an arched door, warm-lit.
@@ -300,5 +435,6 @@ class BoardEnvironmentPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant BoardEnvironmentPainter old) => old.horizon != horizon;
+  bool shouldRepaint(covariant BoardEnvironmentPainter old) =>
+      old.horizon != horizon || old.region != region || old.heroPath != heroPath;
 }

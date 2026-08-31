@@ -9,7 +9,8 @@ import '../../../models/models.dart';
 import '../../../services/movement_choice_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/board/board_environment.dart';
-import '../../../widgets/board/board_widget.dart';
+import '../../../widgets/board/board_widget.dart'
+    show BoardPreview, BoardWidget, paintChestLandmark;
 import '../../../widgets/gait_selector.dart' show HorseshoePainter;
 import '../../../widgets/question_card.dart';
 import '../application/game_controller.dart';
@@ -96,15 +97,20 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final screen = MediaQuery.sizeOf(context);
     // Negative tilt: the TOP of the board recedes toward the horizon.
     const tilt = -0.50;
-    final boardSide = screen.width * 1.10;
+    final boardSide = screen.width * 1.0;
+    final region = switch (state.circuitId) {
+      CircuitId.oasisRoute => WorldRegion.dawn,
+      CircuitId.caravanTrail => WorldRegion.solar,
+      CircuitId.greatRide => WorldRegion.fertile,
+    };
 
     return Scaffold(
       backgroundColor: const Color(0xFF0A3327),
       body: Stack(
         fit: StackFit.expand,
         children: [
-          const Positioned.fill(
-            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.20)),
+          Positioned.fill(
+            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.20, region: region)),
           ),
 
           // The journey, tilted into the landscape.
@@ -242,6 +248,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   state.lastAnswerCorrect == true && state.turnPhase == TurnPhase.showingFeedback
                   ? _hoveredGait?.knowledgePoints
                   : null,
+              justUnlocked: state.justUnlocked.isEmpty ? null : state.justUnlocked.first,
+              streakCurrent: player.streak.current,
               l10n: l10n,
               onSelect: (i) {
                 setState(() => _selectedAnswer = i);
@@ -683,6 +691,8 @@ class _QuestionOverlay extends StatelessWidget {
     required this.onSelect,
     required this.onContinue,
     this.pointsEarned,
+    this.justUnlocked,
+    this.streakCurrent = 0,
   });
 
   final Question question;
@@ -697,6 +707,10 @@ class _QuestionOverlay extends StatelessWidget {
   /// Knowledge points the answer just earned; shown as an immediate
   /// reward chip so every correct answer pays out visibly.
   final int? pointsEarned;
+
+  /// A streak reward crossed by this very answer — the hero moment.
+  final StreakReward? justUnlocked;
+  final int streakCurrent;
 
   @override
   Widget build(BuildContext context) {
@@ -722,11 +736,21 @@ class _QuestionOverlay extends StatelessWidget {
             ),
           ),
           // The payout floats over the world, above the panel, where the
-          // eye already is.
+          // eye already is. A streak threshold turns it into a hero
+          // moment: a golden burst behind the reward.
           if (pointsEarned != null)
-            Align(
-              alignment: const Alignment(0, -0.90),
-              child: _RewardChip(points: pointsEarned!),
+            SafeArea(
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: justUnlocked != null
+                      // The unlock IS the payout: one hero beat, no
+                      // competing chip.
+                      ? _StreakBurst(unlocked: justUnlocked!, streak: streakCurrent)
+                      : _RewardChip(points: pointsEarned!),
+                ),
+              ),
             ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -797,6 +821,95 @@ class _ArchCrestPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _ArchCrestPainter oldDelegate) => false;
+}
+
+/// A streak threshold crossed: golden rays burst behind the reward and
+/// the earned emblem scales in — one hero beat, then play continues.
+class _StreakBurst extends StatelessWidget {
+  const _StreakBurst({required this.unlocked, required this.streak});
+
+  final StreakReward unlocked;
+  final int streak;
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = switch (unlocked) {
+      StreakReward.shield => Icons.shield,
+      StreakReward.grandGallop => Icons.bolt,
+      StreakReward.masteryBadge => Icons.workspace_premium,
+    };
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: AppMotion.of(context, AppMotion.reward),
+      curve: AppMotion.settle,
+      builder: (context, t, child) {
+        final c = t.clamp(0.0, 1.0);
+        return Opacity(
+          opacity: c,
+          child: Transform.scale(scale: 0.6 + 0.4 * t, child: child),
+        );
+      },
+      child: SizedBox(
+        width: 170,
+        height: 130,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            const CustomPaint(size: Size(170, 130), painter: _SunburstPainter()),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 44, color: const Color(0xFFFFEBB8)),
+                Text(
+                  '×$streak',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: const Color(0xFFFFEBB8),
+                    fontWeight: FontWeight.w900,
+                    shadows: const [Shadow(color: Color(0x99000000), blurRadius: 10)],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SunburstPainter extends CustomPainter {
+  const _SunburstPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final c = size.center(Offset.zero);
+    final r = size.shortestSide * 0.72;
+    canvas.drawCircle(
+      c,
+      r,
+      Paint()
+        ..shader = ui.Gradient.radial(c, r, [const Color(0xB3F3D68A), const Color(0x00F3D68A)]),
+    );
+    final ray = Paint()..color = const Color(0x66FFE9AE);
+    for (var i = 0; i < 12; i++) {
+      final a = i * 3.14159 / 6;
+      canvas.save();
+      canvas.translate(c.dx, c.dy);
+      canvas.rotate(a);
+      canvas.drawPath(
+        Path()
+          ..moveTo(0, -r * 0.30)
+          ..lineTo(r * 0.055, -r)
+          ..lineTo(-r * 0.055, -r)
+          ..close(),
+        ray,
+      );
+      canvas.restore();
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SunburstPainter oldDelegate) => false;
 }
 
 /// The immediate payout of a correct answer: a gold chip that pops in,
@@ -878,7 +991,6 @@ class _CellOfferSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final title = switch (effect) {
       CellEffect.challenge => l10n.cellChallenge,
       CellEffect.shortcut => l10n.cellShortcut,
@@ -890,27 +1002,94 @@ class _CellOfferSheet extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 28),
+        margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+        padding: const EdgeInsets.fromLTRB(18, 16, 18, 18),
         decoration: BoxDecoration(
-          color: colors.surfaceElevated,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          color: const Color(0xFF10281E),
+          borderRadius: BorderRadius.circular(26),
+          border: Border.all(color: const Color(0xFFEBC06A).withValues(alpha: 0.55), width: 1.2),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.5),
+              blurRadius: 26,
+              offset: const Offset(0, 10),
+            ),
+          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 8),
-            Text(l10n.cellChallengeOffer, style: Theme.of(context).textTheme.bodyMedium),
+            // The chest itself, glowing — the player sees the exact
+            // object they rode to, not an abstract dialog.
+            if (effect == CellEffect.challenge || effect == CellEffect.shortcut)
+              TweenAnimationBuilder<double>(
+                tween: Tween(begin: 0, end: 1),
+                duration: AppMotion.of(context, AppMotion.reward),
+                curve: AppMotion.settle,
+                builder: (context, t, child) =>
+                    Transform.scale(scale: 0.7 + 0.3 * t.clamp(0.0, 1.0), child: child),
+                child: const SizedBox(
+                  width: 84,
+                  height: 72,
+                  child: CustomPaint(painter: _ChestBadgePainter()),
+                ),
+              ),
+            const SizedBox(height: 6),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge
+                  ?.copyWith(color: const Color(0xFFF3D68A), fontWeight: FontWeight.w800),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              l10n.cellChallengeOffer,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: const Color(0xFFE9DFC8)),
+            ),
             const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(
-                  child: OutlinedButton(onPressed: onDecline, child: Text(l10n.declineChallenge)),
+                  child: TextButton(
+                    onPressed: onDecline,
+                    style: TextButton.styleFrom(
+                      foregroundColor: const Color(0xCCE9DFC8),
+                      minimumSize: const Size.fromHeight(48),
+                    ),
+                    child: Text(l10n.declineChallenge),
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: ElevatedButton(onPressed: onAccept, child: Text(l10n.acceptChallenge)),
+                  child: SizedBox(
+                    height: 48,
+                    child: Material(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                      child: Ink(
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xFFF3D68A), Color(0xFFD8A032)],
+                          ),
+                        ),
+                        child: InkWell(
+                          onTap: onAccept,
+                          child: Center(
+                            child: Text(
+                              l10n.acceptChallenge,
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                color: const Color(0xFF4A3410),
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -919,4 +1098,16 @@ class _CellOfferSheet extends StatelessWidget {
       ),
     );
   }
+}
+
+class _ChestBadgePainter extends CustomPainter {
+  const _ChestBadgePainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintChestLandmark(canvas, size.center(Offset.zero), size.width * 0.62);
+  }
+
+  @override
+  bool shouldRepaint(covariant _ChestBadgePainter oldDelegate) => false;
 }

@@ -77,25 +77,39 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         fit: StackFit.expand,
         children: [
           const Positioned.fill(
-            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.34)),
+            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.30, heroPath: true)),
           ),
 
-          // The hero: the horse in the landscape, anchored by its shadow.
+          // The hero: the horse on the trail, backlit by the dawn, its
+          // destination visible on the horizon behind it.
           Align(
-            alignment: const Alignment(0, -0.16),
+            alignment: const Alignment(0, -0.10),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const HorseToken(
-                  coat: HorseCoat.bay,
-                  team: AppTeam.saphir,
-                  pose: HorsePose.standing,
-                  size: 205,
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 300,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: RadialGradient(colors: [Color(0x59FFE2A0), Color(0x00FFE2A0)]),
+                      ),
+                    ),
+                    const HorseToken(
+                      coat: HorseCoat.bay,
+                      team: AppTeam.saphir,
+                      pose: HorsePose.standing,
+                      size: 232,
+                    ),
+                  ],
                 ),
                 Transform.translate(
-                  offset: const Offset(0, -10),
+                  offset: const Offset(0, -42),
                   child: Container(
-                    width: 140,
+                    width: 150,
                     height: 20,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),

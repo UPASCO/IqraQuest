@@ -122,8 +122,9 @@ class _BoardPainter extends CustomPainter {
     _paintCaravanRoute(canvas, size);
     _paintFinalLanes(canvas, size);
     _paintTrack(canvas, size);
-    _paintStables(canvas, size);
-    _paintFinishEmblem(canvas, size);
+    _paintCamps(canvas, size);
+    _paintOasisDestination(canvas, size);
+    _paintOccluders(canvas, size);
     _paintPreview(canvas, size);
   }
 
@@ -224,7 +225,7 @@ class _BoardPainter extends CustomPainter {
   // -------------------------------------------------------------------
 
   void _paintCaravanRoute(Canvas canvas, Size size) {
-    final path = Path()..addRRect(layout.trackRRect);
+    final path = layout.trackPath;
     final w = size.shortestSide * 0.082;
 
     canvas.drawPath(
@@ -253,29 +254,51 @@ class _BoardPainter extends CustomPainter {
 
   void _paintTrack(Canvas canvas, Size size) {
     final sq = size.shortestSide * 0.052;
-    final r = Radius.circular(sq * 0.3);
+    final r = Radius.circular(sq * 0.34);
     for (var i = 0; i < circuit.trackLength; i++) {
       final p = layout.trackPoint(i);
       final effect = circuit.effectAt(i);
       final protected = effect == CellEffect.oasis;
+
+      // A plain square is just a worn stepping stone on the trail — quiet
+      // ground, not a UI element. Only the special places stand out.
+      if (effect == CellEffect.plain) {
+        final stoneW = sq * 0.66;
+        final stoneH = sq * 0.46;
+        canvas.save();
+        canvas.translate(p.dx, p.dy);
+        canvas.rotate(math.sin(i * 3.7) * 0.35);
+        canvas.drawOval(
+          Rect.fromCenter(center: const Offset(0, 1.5), width: stoneW, height: stoneH),
+          Paint()..color = const Color(0xFF8A6F45).withValues(alpha: 0.35),
+        );
+        canvas.drawOval(
+          Rect.fromCenter(center: Offset.zero, width: stoneW, height: stoneH),
+          Paint()
+            ..shader = ui.Gradient.linear(Offset(0, -stoneH / 2), Offset(0, stoneH / 2), [
+              const Color(0xFFF6EBD2),
+              const Color(0xFFDDC69B),
+            ]),
+        );
+        canvas.restore();
+        continue;
+      }
+
+      if (effect == CellEffect.challenge) {
+        _paintChest(canvas, p, sq * 0.95);
+        continue;
+      }
+
       final rect = Rect.fromCenter(center: p, width: sq, height: sq);
       final rrect = RRect.fromRectAndRadius(rect, r);
 
-      // Contact shadow, then a top-lit face: the tiles sit *on* the road
-      // rather than being printed into it.
+      // Contact shadow, then a top-lit face: the landmarks sit *on* the
+      // trail rather than being printed into it.
       canvas.drawRRect(
         RRect.fromRectAndRadius(rect.translate(0, sq * 0.09), r),
         Paint()
-          ..color = const Color(0xFF5A4526).withValues(alpha: 0.22)
+          ..color = const Color(0xFF5A4526).withValues(alpha: 0.26)
           ..maskFilter = MaskFilter.blur(BlurStyle.normal, sq * 0.1),
-      );
-      canvas.drawRRect(
-        rrect,
-        Paint()
-          ..shader = ui.Gradient.linear(rect.topCenter, rect.bottomCenter, [
-            Colors.white,
-            protected ? const Color(0xFFFBEFD2) : const Color(0xFFF3EBDA),
-          ]),
       );
 
       if (protected) {
@@ -300,7 +323,7 @@ class _BoardPainter extends CustomPainter {
             ..style = PaintingStyle.stroke
             ..strokeWidth = sq * 0.05,
         );
-      } else if (effect != CellEffect.plain) {
+      } else {
         // A special square owns its whole tile: a colored face with a
         // bold white glyph, readable at a glance and without any text —
         // this is what lets a player spot "the chest two squares ahead"
@@ -322,17 +345,11 @@ class _BoardPainter extends CustomPainter {
             ..strokeWidth = sq * 0.05,
         );
         _paintEffectGlyph(canvas, p, sq * 0.26, effect);
-      } else {
-        canvas.drawRRect(
-          rrect,
-          Paint()
-            ..color = const Color(0xFF8A7A5C).withValues(alpha: 0.16)
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = sq * 0.05,
-        );
       }
     }
   }
+
+  void _paintChest(Canvas canvas, Offset p, double w) => paintChestLandmark(canvas, p, w);
 
   Color _effectTint(CellEffect effect) => switch (effect) {
     CellEffect.knowledge => const Color(0xFF1F7A5C),
@@ -409,10 +426,26 @@ class _BoardPainter extends CustomPainter {
           paint,
         );
       case CellEffect.relay:
-        // A baton passed between two points.
-        canvas.drawCircle(Offset(c.dx - r * 0.6, c.dy), r * 0.35, paint);
-        canvas.drawCircle(Offset(c.dx + r * 0.6, c.dy), r * 0.35, paint);
-        canvas.drawLine(Offset(c.dx - r * 0.2, c.dy), Offset(c.dx + r * 0.2, c.dy), paint);
+        // A hand-off: circulating arc with an arrowhead.
+        canvas.drawArc(
+          Rect.fromCircle(center: c, radius: r * 0.75),
+          -math.pi * 0.75,
+          math.pi * 1.5,
+          false,
+          paint,
+        );
+        final tip = Offset(
+          c.dx + r * 0.75 * math.cos(-math.pi * 0.75),
+          c.dy + r * 0.75 * math.sin(-math.pi * 0.75),
+        );
+        canvas.drawPath(
+          Path()
+            ..moveTo(tip.dx - r * 0.42, tip.dy - r * 0.02)
+            ..lineTo(tip.dx + r * 0.10, tip.dy - r * 0.38)
+            ..lineTo(tip.dx + r * 0.16, tip.dy + r * 0.30)
+            ..close(),
+          Paint()..color = Colors.white,
+        );
       case CellEffect.plain || CellEffect.oasis:
         break;
     }
@@ -492,61 +525,30 @@ class _BoardPainter extends CustomPainter {
   }
 
   // -------------------------------------------------------------------
-  // Stables: small walled courtyards. Each carries its team's symbol, so
-  // a stable is identified by shape as well as by color (DESIGN_SYSTEM.md
-  // §2) — previously they were distinguished by color alone.
+  // Camps: each team's stable is a caravan camp pitched just off the
+  // trail at its own entry — part of the journey, not a board corner.
   // -------------------------------------------------------------------
 
-  void _paintStables(Canvas canvas, Size size) {
+  void _paintCamps(Canvas canvas, Size size) {
     final teamColors = [colors.player1, colors.player2, colors.player3, colors.player4];
-    final margin = size.shortestSide * 0.09;
-    final stableSize = margin * 1.7;
-    final positions = [
-      Offset(margin * 0.6, margin * 0.6),
-      Offset(size.width - margin * 0.6, margin * 0.6),
-      Offset(size.width - margin * 0.6, size.height - margin * 0.6),
-      Offset(margin * 0.6, size.height - margin * 0.6),
-    ];
+    final campSize = size.shortestSide * 0.115;
     for (var t = 0; t < 4; t++) {
       final tint = teamColors[t];
-      final rect = Rect.fromCenter(center: positions[t], width: stableSize, height: stableSize);
-      final rrect = RRect.fromRectAndRadius(rect, Radius.circular(stableSize * 0.22));
+      final c = layout.campCenter(t);
 
-      canvas.drawRRect(
-        rrect.shift(Offset(0, stableSize * 0.03)),
-        Paint()
-          ..color = Colors.black.withValues(alpha: 0.13)
-          ..maskFilter = MaskFilter.blur(BlurStyle.normal, stableSize * 0.06),
-      );
-      canvas.drawRRect(
-        rrect,
-        Paint()
-          ..shader = ui.Gradient.linear(rect.topLeft, rect.bottomRight, [
-            Colors.white.withValues(alpha: 0.78),
-            Color.lerp(tint, Colors.white, 0.72)!,
-          ]),
-      );
-      canvas.drawRRect(
-        rrect,
-        Paint()
-          ..color = tint.withValues(alpha: 0.55)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = stableSize * 0.035,
-      );
-      canvas.drawRRect(
-        rrect.deflate(stableSize * 0.1),
-        Paint()
-          ..color = tint.withValues(alpha: 0.22)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = stableSize * 0.015,
+      // Trodden ground under the camp.
+      canvas.drawOval(
+        Rect.fromCenter(
+          center: c.translate(0, campSize * 0.18),
+          width: campSize * 1.5,
+          height: campSize * 0.62,
+        ),
+        Paint()..color = const Color(0xFF8A6F45).withValues(alpha: 0.28),
       );
 
-      // A camp tent with a team pennant: the stable is a caravan camp at
-      // the start of the journey, not an empty walled box.
-      final c = positions[t];
-      final tentW = stableSize * 0.54;
-      final tentH = stableSize * 0.34;
-      final baseY = c.dy + stableSize * 0.30;
+      final tentW = campSize * 0.94;
+      final tentH = campSize * 0.62;
+      final baseY = c.dy + campSize * 0.24;
       final apex = Offset(c.dx, baseY - tentH);
       final tent = Path()
         ..moveTo(c.dx - tentW / 2, baseY)
@@ -558,88 +560,172 @@ class _BoardPainter extends CustomPainter {
         Paint()
           ..shader = ui.Gradient.linear(apex, Offset(apex.dx, baseY), [
             Color.lerp(tint, Colors.white, 0.42)!,
-            Color.lerp(tint, Colors.white, 0.06)!,
+            Color.lerp(tint, Colors.white, 0.02)!,
           ]),
       );
       canvas.drawPath(
         Path()
           ..moveTo(c.dx - tentW * 0.11, baseY)
-          ..lineTo(c.dx, baseY - tentH * 0.38)
+          ..lineTo(c.dx, baseY - tentH * 0.40)
           ..lineTo(c.dx + tentW * 0.11, baseY)
           ..close(),
-        Paint()..color = Color.lerp(tint, Colors.black, 0.42)!,
+        Paint()..color = Color.lerp(tint, Colors.black, 0.45)!,
       );
-      final poleTop = apex.translate(0, -stableSize * 0.15);
+      final poleTop = apex.translate(0, -campSize * 0.20);
       canvas.drawLine(
         apex,
         poleTop,
         Paint()
           ..color = const Color(0xFF6B4F2E)
-          ..strokeWidth = stableSize * 0.022
+          ..strokeWidth = campSize * 0.030
           ..strokeCap = StrokeCap.round,
       );
       canvas.drawPath(
         Path()
           ..moveTo(poleTop.dx, poleTop.dy)
-          ..lineTo(poleTop.dx + stableSize * 0.16, poleTop.dy + stableSize * 0.05)
-          ..lineTo(poleTop.dx, poleTop.dy + stableSize * 0.10)
+          ..lineTo(poleTop.dx + campSize * 0.22, poleTop.dy + campSize * 0.07)
+          ..lineTo(poleTop.dx, poleTop.dy + campSize * 0.14)
           ..close(),
         Paint()..color = tint,
       );
-
       paintTeamSymbol(
         canvas,
-        Offset(c.dx, c.dy + stableSize * 0.30 + stableSize * 0.09),
-        stableSize * 0.10,
+        Offset(c.dx, baseY + campSize * 0.14),
+        campSize * 0.11,
         AppTeam.values[t].symbol,
-        color: tint.withValues(alpha: 0.7),
+        color: tint.withValues(alpha: 0.85),
         embossed: false,
       );
     }
   }
 
   // -------------------------------------------------------------------
-  // The destination: a gold medallion on the app's eight-point star.
+  // The destination is a real place: a small oasis at the heart of the
+  // land — water, palms, a golden glow. "I want to reach THAT."
   // -------------------------------------------------------------------
 
-  void _paintFinishEmblem(Canvas canvas, Size size) {
+  void _paintOasisDestination(Canvas canvas, Size size) {
     final c = layout.center;
-    final r = size.shortestSide * 0.085;
+    final s = size.shortestSide;
 
     canvas.drawCircle(
       c,
-      r * 1.7,
+      s * 0.13,
       Paint()
-        ..shader = ui.Gradient.radial(c, r * 1.7, [
-          colors.goldAccent.withValues(alpha: 0.34),
+        ..shader = ui.Gradient.radial(c, s * 0.13, [
+          colors.goldAccent.withValues(alpha: 0.35),
           colors.goldAccent.withValues(alpha: 0),
         ]),
     );
-    canvas.drawCircle(
-      c,
-      r,
+
+    // Soft green ground around the water.
+    canvas.drawOval(
+      Rect.fromCenter(center: c.translate(0, s * 0.008), width: s * 0.20, height: s * 0.115),
+      Paint()..color = const Color(0xFF8FAF6C).withValues(alpha: 0.8),
+    );
+
+    // The pond, rimmed with wet sand.
+    final pond = Rect.fromCenter(
+      center: c.translate(0, s * 0.012),
+      width: s * 0.145,
+      height: s * 0.078,
+    );
+    canvas.drawOval(pond.inflate(s * 0.006), Paint()..color = const Color(0xFFCBB284));
+    canvas.drawOval(
+      pond,
       Paint()
-        ..shader = ui.Gradient.linear(Offset(c.dx, c.dy - r), Offset(c.dx, c.dy + r), [
-          const Color(0xFFFFF3D6),
-          colors.goldAccent,
+        ..shader = ui.Gradient.linear(pond.topCenter, pond.bottomCenter, [
+          const Color(0xFF9FD4CD),
+          const Color(0xFF4E93A8),
         ]),
     );
-    canvas.drawCircle(
-      c,
-      r,
+    // A wavering highlight on the water.
+    canvas.drawPath(
+      Path()
+        ..moveTo(pond.left + pond.width * 0.22, pond.center.dy)
+        ..quadraticBezierTo(
+          pond.center.dx,
+          pond.center.dy - pond.height * 0.28,
+          pond.right - pond.width * 0.22,
+          pond.center.dy - pond.height * 0.06,
+        ),
       Paint()
-        ..color = const Color(0xFF9A7430).withValues(alpha: 0.6)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = r * 0.09,
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = s * 0.006
+        ..color = Colors.white.withValues(alpha: 0.65),
     );
+
+    // Palms leaning over the water.
+    _paintPalm(canvas, c.translate(-s * 0.070, -s * 0.008), s * 0.052);
+    _paintPalm(canvas, c.translate(s * 0.062, -s * 0.016), s * 0.062);
+    _paintPalm(canvas, c.translate(s * 0.012, -s * 0.030), s * 0.040);
+
+    // The brand's star, small and golden at the water's edge.
     canvas.drawPath(
-      eightPointStar(c, r * 0.66),
-      Paint()..color = const Color(0xFF8A6526).withValues(alpha: 0.55),
+      eightPointStar(c.translate(-s * 0.012, s * 0.036), s * 0.013),
+      Paint()..color = colors.goldAccent,
     );
-    canvas.drawPath(
-      eightPointStar(c, r * 0.4, innerRatio: 0.5),
-      Paint()..color = const Color(0xFFFFF8E6).withValues(alpha: 0.9),
-    );
+  }
+
+  // -------------------------------------------------------------------
+  // Terrain crossing OVER the trail: two dune shoulders and a palm
+  // cluster that occlude short quiet stretches of the route. This is
+  // what breaks the "shape drawn on top of the ground" reading.
+  // -------------------------------------------------------------------
+
+  void _paintOccluders(Canvas canvas, Size size) {
+    final s = size.shortestSide;
+
+    int quietIndex(int from) {
+      for (var k = from; k < from + circuit.trackLength; k++) {
+        if (circuit.effectAt(k % circuit.trackLength) == CellEffect.plain &&
+            circuit.effectAt((k + 1) % circuit.trackLength) == CellEffect.plain) {
+          return k % circuit.trackLength;
+        }
+      }
+      return from % circuit.trackLength;
+    }
+
+    void mound(Offset p, double r, double tiltSeed) {
+      canvas.save();
+      canvas.translate(p.dx, p.dy);
+      canvas.rotate(math.sin(tiltSeed) * 0.3);
+      final body = Rect.fromCenter(center: Offset.zero, width: r * 2.4, height: r * 1.1);
+      canvas.drawOval(
+        body.translate(0, r * 0.10),
+        Paint()..color = const Color(0xFF8A6F45).withValues(alpha: 0.30),
+      );
+      canvas.drawOval(
+        body,
+        Paint()
+          ..shader = ui.Gradient.linear(Offset(0, -r * 0.55), Offset(0, r * 0.55), [
+            const Color(0xFFEFD6A4),
+            const Color(0xFFC9A671),
+          ]),
+      );
+      canvas.drawPath(
+        Path()
+          ..moveTo(-r * 0.9, -r * 0.18)
+          ..quadraticBezierTo(0, -r * 0.62, r * 0.9, -r * 0.10),
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeCap = StrokeCap.round
+          ..strokeWidth = r * 0.10
+          ..color = Colors.white.withValues(alpha: 0.35),
+      );
+      canvas.restore();
+    }
+
+    final a = quietIndex((circuit.trackLength * 0.38).round());
+    final b = quietIndex((circuit.trackLength * 0.815).round());
+    final pa = Offset.lerp(layout.trackPoint(a), layout.trackPoint(a + 1), 0.5)!;
+    final pb = Offset.lerp(layout.trackPoint(b), layout.trackPoint(b + 1), 0.5)!;
+    mound(pa, s * 0.052, 1.3);
+    mound(pb, s * 0.058, 4.1);
+    // Palms rising over the trail edge by the second mound.
+    _paintPalm(canvas, pb.translate(s * 0.028, -s * 0.012), s * 0.055);
+    _paintPalm(canvas, pb.translate(-s * 0.030, s * 0.004), s * 0.042);
   }
 
   @override
@@ -863,4 +949,63 @@ class _ShieldRingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _ShieldRingPainter oldDelegate) => oldDelegate.color != color;
+}
+
+/// A wooden chest with gold banding and a soft glow — the trail's most
+/// desirable landmark, shared between the board and the chest-offer
+/// sheet so the reward moment shows the exact object the player rode to.
+void paintChestLandmark(Canvas canvas, Offset p, double w) {
+  final h = w * 0.78;
+  canvas.drawCircle(
+    p,
+    w * 0.95,
+    Paint()
+      ..shader = ui.Gradient.radial(p, w * 0.95, [
+        const Color(0x66FFD873),
+        const Color(0x00FFD873),
+      ]),
+  );
+  canvas.drawOval(
+    Rect.fromCenter(center: p.translate(0, h * 0.42), width: w * 1.15, height: h * 0.30),
+    Paint()..color = const Color(0xFF6B4F2E).withValues(alpha: 0.35),
+  );
+  final body = RRect.fromRectAndRadius(
+    Rect.fromCenter(center: p.translate(0, h * 0.12), width: w, height: h * 0.62),
+    Radius.circular(w * 0.10),
+  );
+  canvas.drawRRect(
+    body,
+    Paint()
+      ..shader = ui.Gradient.linear(Offset(p.dx, p.dy - h * 0.2), Offset(p.dx, p.dy + h * 0.45), [
+        const Color(0xFF9A6636),
+        const Color(0xFF6E4522),
+      ]),
+  );
+  // Domed lid.
+  final lid = Path()
+    ..moveTo(p.dx - w / 2, p.dy - h * 0.18)
+    ..quadraticBezierTo(p.dx, p.dy - h * 0.62, p.dx + w / 2, p.dy - h * 0.18)
+    ..close();
+  canvas.drawPath(
+    lid,
+    Paint()
+      ..shader = ui.Gradient.linear(Offset(p.dx, p.dy - h * 0.62), Offset(p.dx, p.dy - h * 0.14), [
+        const Color(0xFFB07A42),
+        const Color(0xFF7E5128),
+      ]),
+  );
+  final band = Paint()
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = w * 0.085
+    ..strokeCap = StrokeCap.round
+    ..color = const Color(0xFFE3B354);
+  canvas.drawLine(p.translate(0, -h * 0.52), p.translate(0, h * 0.40), band);
+  canvas.drawRRect(
+    body,
+    Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = w * 0.05
+      ..color = const Color(0xFFE3B354).withValues(alpha: 0.8),
+  );
+  canvas.drawCircle(p.translate(0, h * 0.02), w * 0.11, Paint()..color = const Color(0xFFF3D68A));
 }

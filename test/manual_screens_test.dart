@@ -111,7 +111,7 @@ void main() {
     }
   });
 
-  GameState _midJourneySave() {
+  GameState midJourneySave() {
     final now = DateTime(2026, 1, 1);
     return GameState(
       gameId: 'seed',
@@ -141,7 +141,7 @@ void main() {
       tester,
       '/home',
       seed: (storage) async {
-        await GameSaveService(storage).save(_midJourneySave());
+        await GameSaveService(storage).save(midJourneySave());
         final progress = ProgressService(storage);
         for (var i = 0; i < 23; i++) {
           await progress.recordAnswer(correct: true, category: QuestionCategory.quran);
@@ -155,6 +155,60 @@ void main() {
   testWidgets('mode selection', (tester) async {
     await _pumpApp(tester, '/mode-selection');
     await _capture(tester, 'screen_mode_selection');
+  });
+
+  testWidgets('fertile valley region (greatRide)', (tester) async {
+    final container = await _pumpApp(tester, '/game');
+    final controller = container.read(gameControllerProvider.notifier);
+    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    controller.configure(pool: pool!, isPremium: true);
+    controller.startNewGame(
+      mode: GameMode.family,
+      variant: GameVariant.classic,
+      circuitId: CircuitId.greatRide,
+      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+    );
+    await _settle(tester);
+    await _capture(tester, 'screen_game_region_fertile');
+  });
+
+  testWidgets('chest offer on the solar trail (caravanTrail)', (tester) async {
+    final container = await _pumpApp(tester, '/game');
+    final controller = container.read(gameControllerProvider.notifier);
+    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    controller.configure(pool: pool!, isPremium: true);
+    controller.startNewGame(
+      mode: GameMode.family,
+      variant: GameVariant.classic,
+      circuitId: CircuitId.caravanTrail,
+      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+    );
+    final state = container.read(gameControllerProvider)!.gameState;
+    final players = [...state.players];
+    players[0] = players[0].copyWith(
+      horses: const [
+        HorseState(position: TrackPosition(2)),
+        HorseState(),
+      ],
+    );
+    await tester.runAsync(
+      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+    );
+    controller.loadSaved();
+    await _settle(tester);
+
+    await tester.tap(find.text('2 squares'));
+    await _settle(tester);
+    await tester.tap(find.byKey(const Key('gait-confirm')));
+    await _settle(tester);
+    final q = container.read(gameControllerProvider)!.currentQuestion;
+    if (q != null) {
+      await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
+      await _settle(tester);
+      await tester.tap(find.text('Continue').last);
+      await _settle(tester);
+      await _capture(tester, 'screen_game_chest');
+    }
   });
 
   testWidgets('game: gait selection, question, cell offer', (tester) async {
