@@ -86,6 +86,11 @@ Future<ProviderContainer> _pumpApp(
   final ctx = tester.element(find.byType(IqraQuestApp));
   await tester.runAsync(() async {
     for (final asset in const [
+      'assets/board/scene_oasis.webp',
+      'assets/board/horses/horse_emerald.webp',
+      'assets/board/horses/horse_saphir.webp',
+      'assets/board/horses/horse_grenat.webp',
+      'assets/board/horses/horse_safran.webp',
       'assets/images/region_dawn.webp',
       'assets/images/region_oasis.webp',
       'assets/images/region_mountains.webp',
@@ -101,8 +106,12 @@ Future<ProviderContainer> _pumpApp(
   return ProviderScope.containerOf(tester.element(find.byType(IqraQuestApp)));
 }
 
-Player _human(String id, String name, AppTeam team) =>
-    Player(id: id, name: name, team: team, horses: const [HorseState(), HorseState()]);
+Player _human(String id, String name, AppTeam team, {int horseCount = 2}) => Player(
+  id: id,
+  name: name,
+  team: team,
+  horses: [for (var i = 0; i < horseCount; i++) const HorseState()],
+);
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -247,6 +256,85 @@ void main() {
       await tester.tap(find.text('Continue').last);
       await _settle(tester);
       await _capture(tester, 'screen_game_chest');
+    }
+  });
+
+  testWidgets('VISUAL GATE: the oasis diorama, 4 stables, 4 horses each', (tester) async {
+    final container = await _pumpApp(tester, '/game');
+    final controller = container.read(gameControllerProvider.notifier);
+    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    controller.configure(pool: pool!, isPremium: true);
+    controller.startNewGame(
+      mode: GameMode.family,
+      variant: GameVariant.classic,
+      circuitId: CircuitId.oasisRoute,
+      players: [
+        _human('p0', 'Amina', AppTeam.emerald, horseCount: 4),
+        _human('p1', 'Yusuf', AppTeam.saphir, horseCount: 4),
+        _human('p2', 'Zaynab', AppTeam.grenat, horseCount: 4),
+        _human('p3', 'Khalid', AppTeam.safran, horseCount: 4),
+      ],
+    );
+    // Mid-race: every stable has horses out riding, one already on its
+    // final lane — the "petits chevaux" structure must be readable.
+    final state = container.read(gameControllerProvider)!.gameState;
+    final players = [...state.players];
+    players[0] = players[0].copyWith(
+      horses: const [
+        HorseState(position: TrackPosition(1)),
+        HorseState(position: TrackPosition(3)),
+        HorseState(),
+        HorseState(),
+      ],
+    );
+    players[1] = players[1].copyWith(
+      horses: const [
+        HorseState(position: TrackPosition(8), hasShield: true),
+        HorseState(position: FinalLanePosition(2)),
+        HorseState(),
+        HorseState(),
+      ],
+    );
+    players[2] = players[2].copyWith(
+      horses: const [
+        HorseState(position: TrackPosition(14)),
+        HorseState(),
+        HorseState(),
+        HorseState(),
+      ],
+    );
+    players[3] = players[3].copyWith(
+      horses: const [
+        HorseState(position: TrackPosition(20)),
+        HorseState(position: TrackPosition(22)),
+        HorseState(),
+        HorseState(),
+      ],
+    );
+    await tester.runAsync(
+      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+    );
+    controller.loadSaved();
+    await _settle(tester);
+    await _capture(tester, 'screen_gate_board');
+
+    // Arm a gait: the destination beacon appears on the diorama itself.
+    await tester.tap(find.text('Canter'));
+    await _settle(tester);
+    await _capture(tester, 'screen_gate_preview');
+
+    // Commit, answer, continue: the figurine rides — catch it mid-hop.
+    await tester.tap(find.byKey(const Key('gait-confirm')));
+    await _settle(tester);
+    final q = container.read(gameControllerProvider)!.currentQuestion;
+    if (q != null) {
+      await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
+      await _settle(tester);
+      await tester.tap(find.text('Continue').last);
+      await tester.pump(const Duration(milliseconds: 120));
+      await tester.pump(const Duration(milliseconds: 110));
+      await _capture(tester, 'screen_gate_moving');
+      await _settle(tester);
     }
   });
 

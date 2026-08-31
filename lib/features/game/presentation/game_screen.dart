@@ -9,6 +9,7 @@ import '../../../models/models.dart';
 import '../../../services/movement_choice_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/board/board_environment.dart';
+import '../../../widgets/board/baked_board_scene.dart';
 import '../../../widgets/board/board_widget.dart' show BoardPreview, BoardWidget;
 import '../../../widgets/gait_selector.dart' show HorseshoePainter;
 import '../../../widgets/illustration.dart';
@@ -104,44 +105,64 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       CircuitId.greatRide => WorldRegion.fertile,
     };
 
+    final selectable = state.turnPhase == TurnPhase.selectingGait
+        ? {
+            for (final i in ref.read(gameControllerProvider.notifier).movableHorses)
+              '${player.id}:$i',
+          }
+        : const <String>{};
+    // The oasis route plays inside the baked 2.5D diorama; the other
+    // circuits still use the painted board until their scenes are baked.
+    final useDiorama = state.circuitId == CircuitId.oasisRoute;
+
     return Scaffold(
       backgroundColor: const Color(0xFF0A3327),
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Positioned.fill(
-            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.20, region: region)),
-          ),
+          if (useDiorama)
+            Positioned.fill(
+              child: BakedBoardScene(
+                state: state,
+                preview: boardPreview,
+                selectableHorses: selectable,
+                selectedHorseKey: '${player.id}:$_selectedHorse',
+                onHorseTap: (playerIndex, horseIndex) {
+                  if (playerIndex != state.currentPlayerIndex) return;
+                  setState(() => _selectedHorse = horseIndex);
+                },
+              ),
+            )
+          else ...[
+            Positioned.fill(
+              child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.20, region: region)),
+            ),
 
-          // The journey, tilted into the landscape.
-          Align(
-            alignment: const Alignment(0, -0.32),
-            child: Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.0014)
-                ..rotateX(tilt),
-              child: SizedBox(
-                width: boardSide,
-                height: boardSide,
-                child: BoardWidget(
-                  state: state,
-                  preview: boardPreview,
-                  billboardAngle: tilt,
-                  selectableHorses: state.turnPhase == TurnPhase.selectingGait
-                      ? {
-                          for (final i in ref.read(gameControllerProvider.notifier).movableHorses)
-                            '${player.id}:$i',
-                        }
-                      : const {},
-                  onHorseTap: (playerIndex, horseIndex) {
-                    if (playerIndex != state.currentPlayerIndex) return;
-                    setState(() => _selectedHorse = horseIndex);
-                  },
+            // The journey, tilted into the landscape.
+            Align(
+              alignment: const Alignment(0, -0.32),
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.0014)
+                  ..rotateX(tilt),
+                child: SizedBox(
+                  width: boardSide,
+                  height: boardSide,
+                  child: BoardWidget(
+                    state: state,
+                    preview: boardPreview,
+                    billboardAngle: tilt,
+                    selectableHorses: selectable,
+                    onHorseTap: (playerIndex, horseIndex) {
+                      if (playerIndex != state.currentPlayerIndex) return;
+                      setState(() => _selectedHorse = horseIndex);
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
 
           // ---- Floating HUD ----
           SafeArea(

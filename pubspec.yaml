@@ -70,6 +70,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/board/
+    - assets/board/horses/
     - assets/data/questions/master/
     - assets/data/questions/fr/
     - assets/data/questions/en/
