@@ -32,7 +32,7 @@ class BakedBoardScene extends StatelessWidget {
   final void Function(int playerIndex, int horseIndex)? onHorseTap;
   final BoardPreview? preview;
 
-  static const _sceneAspect = 1170 / 2340;
+  static const _sceneAspect = 941 / 1672;
 
   /// Where a pawn stands, in normalized scene coordinates.
   static SceneAnchor anchorFor(GameState state, int playerIndex, int horseIndex) {
@@ -100,7 +100,7 @@ class BakedBoardScene extends StatelessWidget {
                   painter: _PreviewPainter(
                     crumbs: [for (final a in crumbs) toScreen(a)],
                     beacon: toScreen(_anchorForPosition(p.destination, team, 0)),
-                    beaconScale: _anchorForPosition(p.destination, team, 0).scale * imgH / 2340,
+                    beaconScale: _anchorForPosition(p.destination, team, 0).scale * imgH / 1672,
                   ),
                 ),
               ),
@@ -112,11 +112,13 @@ class BakedBoardScene extends StatelessWidget {
           final player = state.players[pi];
           for (var hi = 0; hi < player.horses.length; hi++) {
             final key = '${player.id}:$hi';
+            final isHome = player.horses[hi].position is HomePosition;
+            if (isHome && !selectableHorses.contains(key)) continue;
             final anchor = anchorFor(state, pi, hi);
             final pos = toScreen(anchor);
             // Piece height in screen px: sized to the baked scene's own
             // pixel density so pieces match the reference board's scale.
-            final h = 168.0 * anchor.scale * imgH / 2340;
+            final h = 118.0 * anchor.scale * imgH / 1672;
             sorted.add((
               pos.dy,
               _SceneHorse(
@@ -422,7 +424,7 @@ class _PreviewPainter extends CustomPainter {
       canvas.drawCircle(c, 4, crumbPaint);
     }
     // Roughly one slab wide in scene pixels, projected to screen.
-    final r = 165 * beaconScale;
+    final r = 108 * beaconScale;
     canvas.drawOval(
       Rect.fromCenter(center: beacon, width: r, height: r * 0.55),
       Paint()

@@ -227,6 +227,35 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 8),
+                  // Four horses per stable: each player's arrivals at a
+                  // glance (the painted stables are scenery).
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (var i = 0; i < state.players.length; i++) ...[
+                        if (i > 0) const SizedBox(width: 8),
+                        _HudPill(
+                          highlight: i == state.currentPlayerIndex,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CircleAvatar(
+                                radius: 5,
+                                backgroundColor: state.players[i].team.color(colors),
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                '/${state.players[i].horses.length}',
+                                style: _hudText(context),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
                 ],
               ),
             ),
