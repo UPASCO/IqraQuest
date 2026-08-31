@@ -114,9 +114,9 @@ class BakedBoardScene extends StatelessWidget {
             final key = '${player.id}:$hi';
             final anchor = anchorFor(state, pi, hi);
             final pos = toScreen(anchor);
-            // Horse height in screen px: anchored to the baked scene's
-            // own pixel density so pieces match the world's perspective.
-            final h = 205.0 * anchor.scale * imgH / 2340;
+            // Piece height in screen px: sized to the baked scene's own
+            // pixel density so pieces match the reference board's scale.
+            final h = 168.0 * anchor.scale * imgH / 2340;
             sorted.add((
               pos.dy,
               _SceneHorse(
@@ -129,8 +129,9 @@ class BakedBoardScene extends StatelessWidget {
                 circuit: state.circuit,
                 target: pos,
                 height: h,
-                // Camps on the right face inward (west).
-                faceLeft: anchor.x > 0.5,
+                // The knight sprites face LEFT natively: flip pieces on
+                // the board's left half so every piece faces inward.
+                faceLeft: anchor.x <= 0.5,
                 selectable: selectableHorses.contains(key),
                 selected: selectedHorseKey == key,
                 toScreen: toScreen,
@@ -276,10 +277,15 @@ class _SceneHorseState extends State<_SceneHorse> with SingleTickerProviderState
       builder: (context, _) {
         final (center, lift) = _sample();
         final h = widget.height;
-        final w = h * (440 / 540);
-        // The figurine's pedestal centre sits ~92% down the sprite.
+        final w = h *
+            switch (widget.team) {
+              AppTeam.emerald => 74 / 106,
+              AppTeam.saphir || AppTeam.grenat => 79 / 96,
+              AppTeam.safran => 82 / 93,
+            };
+        // The knight's feet stand on the anchor.
         final left = center.dx - w / 2;
-        final top = center.dy - h * 0.92 - lift * h * 0.22;
+        final top = center.dy - h * 0.97 - lift * h * 0.24;
         Widget sprite = Image.asset(asset, height: h, filterQuality: FilterQuality.medium);
         if (widget.faceLeft) {
           sprite = Transform.flip(flipX: true, child: sprite);
