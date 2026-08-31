@@ -113,7 +113,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get protectedSquareLabel => 'مربع محمي';
 
   @override
-  String get freeBankExhaustedMessage => 'تم استخدام جميع أسئلة النسخة المجانية في هذه اللعبة.';
+  String get freeBankExhaustedMessage =>
+      'تم استخدام جميع أسئلة النسخة المجانية في هذه اللعبة.';
 
   @override
   String get victory => 'النصر!';
@@ -231,13 +232,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get circuitGreatRide => 'مسيرة المعرفة الكبرى';
 
   @override
-  String get circuitOasisRouteDescription => 'مسار قصير مشمس. مثالي للعبة سريعة.';
+  String get circuitOasisRouteDescription =>
+      'مسار قصير مشمس. مثالي للعبة سريعة.';
 
   @override
-  String get circuitCaravanTrailDescription => 'مخيمات وفوانيس. مسار أكثر استراتيجية.';
+  String get circuitCaravanTrailDescription =>
+      'مخيمات وفوانيس. مسار أكثر استراتيجية.';
 
   @override
-  String get circuitGreatRideDescription => 'من النهار إلى سماء النجوم. الرحلة الكبرى.';
+  String get circuitGreatRideDescription =>
+      'من النهار إلى سماء النجوم. الرحلة الكبرى.';
 
   @override
   String get cellOasis => 'واحة';
@@ -264,7 +268,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cellOasisDescription => 'حصانك في مأمن من الأسر هنا.';
 
   @override
-  String get cellChallengeOffer => 'هل تجيب عن سؤال أصعب للتقدم مربعين إضافيين؟';
+  String get cellChallengeOffer =>
+      'هل تجيب عن سؤال أصعب للتقدم مربعين إضافيين؟';
 
   @override
   String get acceptChallenge => 'اقبل التحدي';

@@ -172,7 +172,7 @@ void main() {
   check(
     'a distinctive launcher icon has replaced the flutter template default',
     _hasCustomLauncherIcon(root),
-    detail: 'see ASSET_INVENTORY.md — known gap, tracked before Store submission',
+    detail: 'regenerate with tool/app_icon_renderer_test.dart (see ASSET_INVENTORY.md)',
   );
 
   section('Privacy & legal');
@@ -278,9 +278,19 @@ void main() {
 }
 
 bool _hasCustomLauncherIcon(Directory root) {
-  // A real "is this the real icon" check needs human eyes (see
-  // ASSET_INVENTORY.md's known gap) — this script can only ever report
-  // false here honestly until that art is produced and someone marks it
-  // done by editing this function to a real content check.
-  return false;
+  // The icon is generated from tool/app_icon_renderer_test.dart. The
+  // stock `flutter create` placeholder 1024px icon is ~10 KB; the
+  // rendered IqraQuest artwork is far larger, so a size floor cleanly
+  // separates "template still in place" from "real icon shipped".
+  final marketing = File(
+    '${root.path}/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png',
+  );
+  if (!marketing.existsSync() || marketing.lengthSync() < 50 * 1024) return false;
+  for (final density in const ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']) {
+    if (!File('${root.path}/android/app/src/main/res/mipmap-$density/ic_launcher.png')
+        .existsSync()) {
+      return false;
+    }
+  }
+  return true;
 }

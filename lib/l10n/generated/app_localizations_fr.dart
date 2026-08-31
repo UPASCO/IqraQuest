@@ -141,7 +141,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => 'Débloque les 500 questions et toutes les difficultés';
+  String get premiumUnlockAll =>
+      'Débloque les 500 questions et toutes les difficultés';
 
   @override
   String get premiumOneTime => 'Paiement unique — aucun abonnement';
@@ -153,7 +154,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get purchaseSuccess => 'Merci ! Premium est activé.';
 
   @override
-  String get purchaseError => 'Achat impossible pour le moment. Réessaie plus tard.';
+  String get purchaseError =>
+      'Achat impossible pour le moment. Réessaie plus tard.';
 
   @override
   String get language => 'Langue';
@@ -199,7 +201,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get selectHorse => 'Choisis ton cheval';
 
   @override
-  String get confirmBoldGait => 'Cette allure demande une question plus difficile. On continue ?';
+  String get confirmBoldGait =>
+      'Cette allure demande une question plus difficile. On continue ?';
 
   @override
   String get knowledgeStreak => 'Élan du savoir';
@@ -211,7 +214,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get shieldEarned => 'Bouclier obtenu ! Ton cheval est protégé.';
 
   @override
-  String get grandGallopEarned => 'Grand Galop débloqué ! +2 cases quand tu veux.';
+  String get grandGallopEarned =>
+      'Grand Galop débloqué ! +2 cases quand tu veux.';
 
   @override
   String get masteryBadgeEarned => 'Badge de maîtrise obtenu !';
@@ -240,7 +244,8 @@ class AppLocalizationsFr extends AppLocalizations {
       'Campements et lanternes. Un parcours plus stratégique.';
 
   @override
-  String get circuitGreatRideDescription => 'Du jour au ciel étoilé. Le grand voyage.';
+  String get circuitGreatRideDescription =>
+      'Du jour au ciel étoilé. Le grand voyage.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -283,7 +288,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get journeyQuestion => 'Question du voyage';
 
   @override
-  String get journeyQuestionIntro => 'Une dernière question pour valider ton arrivée.';
+  String get journeyQuestionIntro =>
+      'Une dernière question pour valider ton arrivée.';
 
   @override
   String get outcomeMoved => 'Ton cheval avance !';

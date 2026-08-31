@@ -18,24 +18,17 @@ are added during Store submission — see STORE_RELEASE_CHECKLIST.md.
 | `NotoSans-Regular.ttf` | Font (variable, static instance used) | Latin-script UI (fr/en/es/pt/de/tr/id/ms/it/nl) | Google Fonts | SIL Open Font License 1.1 | N/A |
 | `NotoSansArabic-Regular.ttf` | Font (variable) | Reserved for future use / fallback | Google Fonts | SIL Open Font License 1.1 | N/A |
 | `NotoNaskhArabic-Regular.ttf` | Font | Arabic-script UI (ar, ur) | Google Fonts | SIL Open Font License 1.1 | N/A |
-| App launcher icon (`android/app/src/main/res/mipmap-*`, `ios/Runner/Assets.xcassets`) | Raster (PNG) | OS home screen | **Placeholder from `flutter create`** — not final; see below | N/A | No |
+| App launcher icon (`android/app/src/main/res/mipmap-*`, `ios/Runner/Assets.xcassets`, `web/icons`) | Raster (PNG), rendered from original vector code | OS home screen | Original — rendered by `tool/app_icon_renderer_test.dart` (arabian horse head + eight-point star; regenerate with that tool, then `python3 tool/strip_icon_alpha.py` for iOS) | Proprietary (project) | No |
 
-## Known gap: final app icon
+## App icon
 
-The launcher icon currently on disk is the default Flutter template icon
-created by `flutter create`. A distinctive IqraQuest icon (spec §23 —
-"horse profile + path/compass/star" concept, no Kaaba, no generic
-crescent/mosque, works at small size and square-with-rounded-corners) has
-**not** been finalized as exported PNG/ICO assets in this pass. The
-in-app horse identity (`HorsePainter`) is ready to be adapted into an
-icon; producing the required per-platform raster exports (iOS icon set,
-Android adaptive icon foreground/background, Play Store 512×512, App
-Store 1024×1024) is tracked in STORE_RELEASE_CHECKLIST.md as outstanding
-work before submission.
-
-## Question bank data
-
-Not a visual asset, but inventoried for completeness: `assets/data/
-questions/{master,fr,en,ar}/questions.json` are generated JSON data files
-— see CONTENT_SOURCE_POLICY.md §9 for their generation pipeline and
-`content_quality/` for their source registry.
+The launcher icon is now an original IqraQuest design: an ivory arabian
+horse head with a gold mane over a night-emerald ground and a faint
+eight-point star — no depiction of any person, no Kaaba-as-object, no
+text (spec §23 + religious constraints). It is generated, never
+hand-edited: change `AppIconPainter` in
+`tool/app_icon_renderer_test.dart`, re-run it, then run
+`tool/strip_icon_alpha.py` (App Store icons must not carry an alpha
+channel). A 1024px review copy lands in
+`build/screenshots/app_icon_1024.png`. A final on-device review pass
+before Store submission is still recommended, as for any icon.

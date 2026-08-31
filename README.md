@@ -23,6 +23,11 @@ flutter gen-l10n          # regenerates lib/l10n/generated/ from lib/l10n/*.arb
 flutter run
 ```
 
+No local machine? `CODESPACE_TESTING.md` covers testing from a GitHub
+Codespace (browser preview on desktop and phone, APK builds, and the
+TestFlight pipeline). The `.devcontainer/` in this repo installs the
+right Flutter automatically.
+
 Requires a recent Flutter stable (developed against Flutter 3.47,
 Dart 3.13). Android and iOS platforms are configured
 (`flutter create --platforms android,ios`); a `web` target is also
@@ -178,9 +183,10 @@ specification. Every visual is original vector code
 copied or generated from an external source. See
 `VISUAL_REFERENCE_NOTES.md` for the historical-inspiration research
 behind the Makkah/Madinah/horse/architecture treatment, and
-`ASSET_INVENTORY.md` for the one disclosed gap: the app launcher icon is
-still the Flutter template default and needs a final export pass before
-Store submission.
+`ASSET_INVENTORY.md` for the full asset table and `ASSET_LICENSES.md`
+for licences. The launcher icon is an original design (arabian horse
+head + eight-point star) generated from vector code by
+`tool/app_icon_renderer_test.dart`.
 
 ## Tests
 
