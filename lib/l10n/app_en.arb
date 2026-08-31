@@ -228,14 +228,18 @@
   "@chooseYourGait": {
     "description": "Header above the six horseshoe gait choices"
   },
-  "gaitSquares": "{count} squares",
+  "gaitSquares": "{count, plural, one{{count} square} other{{count} squares}}",
   "@gaitSquares": {
     "description": "How far a gait moves, shown under each horseshoe",
     "placeholders": {
       "count": {
-        "type": "int"
+        "type": "num"
       }
     }
+  },
+  "chooseFormat": "Game format",
+  "@chooseFormat": {
+    "description": "Section header above the quick/classic format choice"
   },
   "gaitAlreadyUsed": "Already used this cycle",
   "@gaitAlreadyUsed": {

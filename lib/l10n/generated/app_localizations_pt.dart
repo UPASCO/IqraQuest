@@ -141,8 +141,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll =>
-      'Desbloqueie as 500 perguntas e todas as dificuldades';
+  String get premiumUnlockAll => 'Desbloqueie as 500 perguntas e todas as dificuldades';
 
   @override
   String get premiumOneTime => 'Pagamento único — sem assinatura';
@@ -154,8 +153,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get purchaseSuccess => 'Obrigado! O Premium está ativo.';
 
   @override
-  String get purchaseError =>
-      'Não foi possível concluir a compra. Tente novamente mais tarde.';
+  String get purchaseError => 'Não foi possível concluir a compra. Tente novamente mais tarde.';
 
   @override
   String get language => 'Idioma';
@@ -185,9 +183,18 @@ class AppLocalizationsPt extends AppLocalizations {
   String get chooseYourGait => 'Escolha seu passo';
 
   @override
-  String gaitSquares(int count) {
-    return '$count casas';
+  String gaitSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count casas',
+      one: '$count casa',
+    );
+    return '$_temp0';
   }
+
+  @override
+  String get chooseFormat => 'Formato de jogo';
 
   @override
   String get gaitAlreadyUsed => 'Já usado neste ciclo';
@@ -201,8 +208,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get selectHorse => 'Escolha seu cavalo';
 
   @override
-  String get confirmBoldGait =>
-      'Este passo pede uma pergunta mais difícil. Continuar?';
+  String get confirmBoldGait => 'Este passo pede uma pergunta mais difícil. Continuar?';
 
   @override
   String get knowledgeStreak => 'Impulso do saber';
@@ -214,8 +220,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get shieldEarned => 'Escudo conquistado! Seu cavalo está protegido.';
 
   @override
-  String get grandGallopEarned =>
-      'Grande Galope desbloqueado! +2 casas quando quiser.';
+  String get grandGallopEarned => 'Grande Galope desbloqueado! +2 casas quando quiser.';
 
   @override
   String get masteryBadgeEarned => 'Emblema de maestria conquistado!';
@@ -244,8 +249,7 @@ class AppLocalizationsPt extends AppLocalizations {
       'Acampamentos e lanternas. Um percurso mais estratégico.';
 
   @override
-  String get circuitGreatRideDescription =>
-      'Do dia ao céu estrelado. A grande viagem.';
+  String get circuitGreatRideDescription => 'Do dia ao céu estrelado. A grande viagem.';
 
   @override
   String get cellOasis => 'Oásis';
@@ -269,8 +273,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get cellRelay => 'Revezamento';
 
   @override
-  String get cellOasisDescription =>
-      'Seu cavalo está a salvo de capturas aqui.';
+  String get cellOasisDescription => 'Seu cavalo está a salvo de capturas aqui.';
 
   @override
   String get cellChallengeOffer =>
@@ -289,8 +292,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get journeyQuestion => 'Pergunta da viagem';
 
   @override
-  String get journeyQuestionIntro =>
-      'Uma última pergunta para validar sua chegada.';
+  String get journeyQuestionIntro => 'Uma última pergunta para validar sua chegada.';
 
   @override
   String get outcomeMoved => 'Seu cavalo avança!';

@@ -381,11 +381,25 @@ s("chooseYourGait", "Header above the six horseshoe gait choices",
   ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
 
 s("gaitSquares", "How far a gait moves, shown under each horseshoe",
-  ph={"count": "int"},
-  fr="{count} cases", en="{count} squares", ar="{count} مربعات",
-  es="{count} casillas", pt="{count} casas", de="{count} Felder",
-  tr="{count} kare", id="{count} kotak", ur="{count} خانے",
-  ms="{count} petak", it="{count} caselle", nl="{count} vakjes")
+  ph={"count": "num"},
+  fr="{count, plural, one{{count} case} other{{count} cases}}",
+  en="{count, plural, one{{count} square} other{{count} squares}}",
+  ar="{count, plural, one{مربع واحد} two{مربعان} few{{count} مربعات} many{{count} مربعًا} other{{count} مربع}}",
+  es="{count, plural, one{{count} casilla} other{{count} casillas}}",
+  pt="{count, plural, one{{count} casa} other{{count} casas}}",
+  de="{count, plural, one{{count} Feld} other{{count} Felder}}",
+  tr="{count, plural, one{{count} kare} other{{count} kare}}",
+  id="{count, plural, other{{count} kotak}}",
+  ur="{count, plural, one{ایک خانہ} other{{count} خانے}}",
+  ms="{count, plural, other{{count} petak}}",
+  it="{count, plural, one{{count} casella} other{{count} caselle}}",
+  nl="{count, plural, one{{count} vakje} other{{count} vakjes}}")
+
+s("chooseFormat", "Section header above the quick/classic format choice",
+  fr="Format de partie", en="Game format", ar="نمط اللعبة",
+  es="Formato de partida", pt="Formato de jogo", de="Spielformat",
+  tr="Oyun formatı", id="Format permainan", ur="کھیل کی طرز",
+  ms="Format permainan", it="Formato di partita", nl="Spelvorm")
 
 s("gaitAlreadyUsed", "Hint on a gait already spent this cycle",
   fr="Déjà utilisée ce cycle", en="Already used this cycle",

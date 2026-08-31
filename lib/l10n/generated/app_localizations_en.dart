@@ -141,8 +141,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll =>
-      'Unlock all 500 questions and every difficulty';
+  String get premiumUnlockAll => 'Unlock all 500 questions and every difficulty';
 
   @override
   String get premiumOneTime => 'One-time payment — no subscription';
@@ -154,8 +153,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get purchaseSuccess => 'Thank you! Premium is now active.';
 
   @override
-  String get purchaseError =>
-      'Purchase couldn\'t be completed. Please try again later.';
+  String get purchaseError => 'Purchase couldn\'t be completed. Please try again later.';
 
   @override
   String get language => 'Language';
@@ -185,9 +183,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chooseYourGait => 'Choose your gait';
 
   @override
-  String gaitSquares(int count) {
-    return '$count squares';
+  String gaitSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count squares',
+      one: '$count square',
+    );
+    return '$_temp0';
   }
+
+  @override
+  String get chooseFormat => 'Game format';
 
   @override
   String get gaitAlreadyUsed => 'Already used this cycle';
@@ -213,8 +220,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shieldEarned => 'Shield earned! Your horse is protected.';
 
   @override
-  String get grandGallopEarned =>
-      'Grand Gallop unlocked! +2 squares whenever you choose.';
+  String get grandGallopEarned => 'Grand Gallop unlocked! +2 squares whenever you choose.';
 
   @override
   String get masteryBadgeEarned => 'Mastery badge earned!';
@@ -235,16 +241,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get circuitGreatRide => 'The Great Ride of Knowledge';
 
   @override
-  String get circuitOasisRouteDescription =>
-      'A short, sunlit course. Perfect for a quick game.';
+  String get circuitOasisRouteDescription => 'A short, sunlit course. Perfect for a quick game.';
 
   @override
-  String get circuitCaravanTrailDescription =>
-      'Camps and lanterns. A more strategic course.';
+  String get circuitCaravanTrailDescription => 'Camps and lanterns. A more strategic course.';
 
   @override
-  String get circuitGreatRideDescription =>
-      'From daylight to a starlit sky. The great journey.';
+  String get circuitGreatRideDescription => 'From daylight to a starlit sky. The great journey.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -271,8 +274,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cellOasisDescription => 'Your horse is safe from capture here.';
 
   @override
-  String get cellChallengeOffer =>
-      'Answer a harder question to move 2 extra squares?';
+  String get cellChallengeOffer => 'Answer a harder question to move 2 extra squares?';
 
   @override
   String get acceptChallenge => 'Take the challenge';
@@ -287,8 +289,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get journeyQuestion => 'Journey question';
 
   @override
-  String get journeyQuestionIntro =>
-      'One last question to make your arrival official.';
+  String get journeyQuestionIntro => 'One last question to make your arrival official.';
 
   @override
   String get outcomeMoved => 'Your horse moves ahead!';

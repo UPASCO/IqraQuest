@@ -164,6 +164,9 @@ class _GaitTileState extends State<_GaitTile> with SingleTickerProviderStateMixi
                       face: colors.surfaceElevated,
                       ink: colors.textPrimary,
                       accent: colors.primary,
+                      // The number is text, so it must be set in the
+                      // app's own face, not the platform default.
+                      fontFamily: Theme.of(context).textTheme.bodyLarge?.fontFamily,
                     ),
                   ),
                 ),
@@ -215,6 +218,7 @@ class HorseshoePainter extends CustomPainter {
     required this.face,
     required this.ink,
     required this.accent,
+    this.fontFamily,
   });
 
   final int steps;
@@ -224,6 +228,7 @@ class HorseshoePainter extends CustomPainter {
   final Color face;
   final Color ink;
   final Color accent;
+  final String? fontFamily;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -284,6 +289,7 @@ class HorseshoePainter extends CustomPainter {
       text: TextSpan(
         text: '$steps',
         style: TextStyle(
+          fontFamily: fontFamily,
           fontSize: size.shortestSide * 0.36,
           fontWeight: FontWeight.w700,
           color: used ? ink.withValues(alpha: 0.5) : ink,

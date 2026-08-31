@@ -141,8 +141,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll =>
-      'Schalte alle 500 Fragen und jeden Schwierigkeitsgrad frei';
+  String get premiumUnlockAll => 'Schalte alle 500 Fragen und jeden Schwierigkeitsgrad frei';
 
   @override
   String get premiumOneTime => 'Einmalzahlung — kein Abonnement';
@@ -185,9 +184,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get chooseYourGait => 'Wähle deine Gangart';
 
   @override
-  String gaitSquares(int count) {
-    return '$count Felder';
+  String gaitSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Felder',
+      one: '$count Feld',
+    );
+    return '$_temp0';
   }
+
+  @override
+  String get chooseFormat => 'Spielformat';
 
   @override
   String get gaitAlreadyUsed => 'In diesem Zyklus bereits genutzt';
@@ -201,8 +209,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get selectHorse => 'Wähle dein Pferd';
 
   @override
-  String get confirmBoldGait =>
-      'Diese Gangart zieht eine schwerere Frage. Weiter?';
+  String get confirmBoldGait => 'Diese Gangart zieht eine schwerere Frage. Weiter?';
 
   @override
   String get knowledgeStreak => 'Wissensschwung';
@@ -214,8 +221,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shieldEarned => 'Schild verdient! Dein Pferd ist geschützt.';
 
   @override
-  String get grandGallopEarned =>
-      'Großer Galopp freigeschaltet! +2 Felder, wann du willst.';
+  String get grandGallopEarned => 'Großer Galopp freigeschaltet! +2 Felder, wann du willst.';
 
   @override
   String get masteryBadgeEarned => 'Meisterschaftsabzeichen verdient!';
@@ -240,12 +246,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kurze, sonnige Strecke. Perfekt für ein schnelles Spiel.';
 
   @override
-  String get circuitCaravanTrailDescription =>
-      'Lager und Laternen. Eine strategischere Strecke.';
+  String get circuitCaravanTrailDescription => 'Lager und Laternen. Eine strategischere Strecke.';
 
   @override
-  String get circuitGreatRideDescription =>
-      'Vom Tag zum Sternenhimmel. Die große Reise.';
+  String get circuitGreatRideDescription => 'Vom Tag zum Sternenhimmel. Die große Reise.';
 
   @override
   String get cellOasis => 'Oase';
@@ -269,12 +273,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cellRelay => 'Staffel';
 
   @override
-  String get cellOasisDescription =>
-      'Dein Pferd ist hier vor dem Überholen sicher.';
+  String get cellOasisDescription => 'Dein Pferd ist hier vor dem Überholen sicher.';
 
   @override
-  String get cellChallengeOffer =>
-      'Eine schwerere Frage für 2 zusätzliche Felder beantworten?';
+  String get cellChallengeOffer => 'Eine schwerere Frage für 2 zusätzliche Felder beantworten?';
 
   @override
   String get acceptChallenge => 'Herausforderung annehmen';
@@ -289,8 +291,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get journeyQuestion => 'Reisefrage';
 
   @override
-  String get journeyQuestionIntro =>
-      'Eine letzte Frage, um deine Ankunft zu bestätigen.';
+  String get journeyQuestionIntro => 'Eine letzte Frage, um deine Ankunft zu bestätigen.';
 
   @override
   String get outcomeMoved => 'Dein Pferd zieht vor!';

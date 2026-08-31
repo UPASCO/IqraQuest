@@ -141,8 +141,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll =>
-      'Buka kunci 500 soalan dan semua tahap kesukaran';
+  String get premiumUnlockAll => 'Buka kunci 500 soalan dan semua tahap kesukaran';
 
   @override
   String get premiumOneTime => 'Bayaran sekali — tiada langganan';
@@ -154,8 +153,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get purchaseSuccess => 'Terima kasih! Premium kini aktif.';
 
   @override
-  String get purchaseError =>
-      'Pembelian tidak dapat diselesaikan. Sila cuba lagi kemudian.';
+  String get purchaseError => 'Pembelian tidak dapat diselesaikan. Sila cuba lagi kemudian.';
 
   @override
   String get language => 'Bahasa';
@@ -185,9 +183,13 @@ class AppLocalizationsMs extends AppLocalizations {
   String get chooseYourGait => 'Pilih langkah anda';
 
   @override
-  String gaitSquares(int count) {
-    return '$count petak';
+  String gaitSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(count, locale: localeName, other: '$count petak');
+    return '$_temp0';
   }
+
+  @override
+  String get chooseFormat => 'Format permainan';
 
   @override
   String get gaitAlreadyUsed => 'Sudah digunakan kitaran ini';
@@ -201,8 +203,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get selectHorse => 'Pilih kuda anda';
 
   @override
-  String get confirmBoldGait =>
-      'Langkah ini menarik soalan lebih sukar. Teruskan?';
+  String get confirmBoldGait => 'Langkah ini menarik soalan lebih sukar. Teruskan?';
 
   @override
   String get knowledgeStreak => 'Momentum ilmu';
@@ -214,8 +215,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get shieldEarned => 'Perisai diperoleh! Kuda anda dilindungi.';
 
   @override
-  String get grandGallopEarned =>
-      'Grand Gallop dibuka! +2 petak bila-bila anda mahu.';
+  String get grandGallopEarned => 'Grand Gallop dibuka! +2 petak bila-bila anda mahu.';
 
   @override
   String get masteryBadgeEarned => 'Lencana penguasaan diperoleh!';
@@ -244,8 +244,7 @@ class AppLocalizationsMs extends AppLocalizations {
       'Perkhemahan dan tanglung. Laluan yang lebih strategik.';
 
   @override
-  String get circuitGreatRideDescription =>
-      'Dari siang ke langit berbintang. Pengembaraan agung.';
+  String get circuitGreatRideDescription => 'Dari siang ke langit berbintang. Pengembaraan agung.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -269,12 +268,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String get cellRelay => 'Lapor';
 
   @override
-  String get cellOasisDescription =>
-      'Kuda anda selamat daripada ditangkap di sini.';
+  String get cellOasisDescription => 'Kuda anda selamat daripada ditangkap di sini.';
 
   @override
-  String get cellChallengeOffer =>
-      'Jawab soalan lebih sukar untuk maju 2 petak lagi?';
+  String get cellChallengeOffer => 'Jawab soalan lebih sukar untuk maju 2 petak lagi?';
 
   @override
   String get acceptChallenge => 'Terima cabaran';
@@ -289,8 +286,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get journeyQuestion => 'Soalan pengembaraan';
 
   @override
-  String get journeyQuestionIntro =>
-      'Satu soalan terakhir untuk mengesahkan ketibaan anda.';
+  String get journeyQuestionIntro => 'Satu soalan terakhir untuk mengesahkan ketibaan anda.';
 
   @override
   String get outcomeMoved => 'Kuda anda maju!';
@@ -320,8 +316,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get profileAdvanced => 'Lanjutan';
 
   @override
-  String get raceRulesUpdatedTitle =>
-      'Peraturan perlumbaan telah ditambah baik';
+  String get raceRulesUpdatedTitle => 'Peraturan perlumbaan telah ditambah baik';
 
   @override
   String get raceRulesUpdatedBody =>
