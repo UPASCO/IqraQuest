@@ -19,6 +19,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 sys.path.insert(0, os.path.dirname(__file__))
 from sprite_lib import (  # noqa: E402
+    star_band,
     alpha_paste,
     chaikin,
     ellipse_mask,
@@ -296,64 +297,105 @@ def bake_chest_mini(w=120):
 
 
 def bake_tent(team, width=430):
-    """A grand striped pavilion tent for one stable."""
+    """A grand pavilion tent: swooping canopy with alternating team-color
+    and ivory panels, patterned inner wall, awninged doorway, guy ropes,
+    and a carpet spread at the entrance."""
     w = width
-    h = int(width * 0.92)
+    h = int(width * 0.98)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     base_rgb = TEAM_RGB[team]
     deep = TEAM_DEEP[team]
+    ivory = (238, 224, 192)
+    ivory_deep = (150, 132, 100)
 
-    # Platform the tent stands on.
-    plat = ellipse_mask((w, h), (w * 0.03, h * 0.68, w * 0.97, h * 0.99))
-    alpha_paste(im, to_image(shade(plat, (200, 166, 120), shade_rgb=(122, 90, 54), z_scale=1.8, spec=0.15)), (0, 0))
+    apex = (w * 0.5, h * 0.055)
+    wall_top = h * 0.585
+    wall_bot = h * 0.80
 
-    # Canopy: swooping cone with scalloped hem.
-    apex = (w * 0.5, h * 0.06)
-    hem_y = h * 0.72
+    # Platform.
+    plat = ellipse_mask((w, h), (w * 0.04, wall_bot - h * 0.05, w * 0.96, h * 0.97))
+    alpha_paste(im, to_image(shade(plat, (204, 168, 122), shade_rgb=(122, 90, 54), z_scale=1.8, spec=0.15)), (0, 0))
+
+    # Inner wall (visible below the canopy hem).
+    wall = poly_mask((w, h), [[(w * 0.155, wall_top), (w * 0.845, wall_top),
+                               (w * 0.82, wall_bot), (w * 0.18, wall_bot)]], smooth=1)
+    alpha_paste(im, to_image(shade(wall, ivory, shade_rgb=ivory_deep, inflate=0.9, z_scale=2.6, spec=0.3)), (0, 0))
+    alpha_paste(im, star_band((w, h), (w * 0.19, wall_top + h * 0.015, w * 0.81, wall_top + h * 0.055),
+                              cell=int(w * 0.055), color=base_rgb, alpha=210), (0, 0))
+
+    # Guy ropes + pegs.
+    d = ImageDraw.Draw(im)
+    for sx, ex in [(0.155, 0.045), (0.845, 0.955)]:
+        d.line((w * sx, wall_top + 6, w * ex, wall_bot + h * 0.06), fill=(120, 92, 60, 220), width=3)
+        d.line((w * sx + 1, wall_top + 7, w * ex + 1, wall_bot + h * 0.06 + 1), fill=(60, 42, 26, 160), width=2)
+        peg = poly_mask((w, h), [[(w * ex - 4, wall_bot + h * 0.05), (w * ex + 4, wall_bot + h * 0.05),
+                                  (w * ex + 2, wall_bot + h * 0.085), (w * ex - 2, wall_bot + h * 0.085)]], smooth=1)
+        alpha_paste(im, to_image(shade(peg, (110, 80, 50), z_scale=2.0, spec=0.2)), (0, 0))
+
+    # Canopy: swooping silhouette with concave sides + scalloped hem.
+    hem_y = wall_top + h * 0.02
+    scallops = 7
     hem_pts = []
-    scallops = 6
     for k in range(scallops + 1):
-        x = w * 0.06 + (w * 0.88) * k / scallops
-        hem_pts.append((x, hem_y + (h * 0.075 if k % 2 == 1 else 0)))
-    canopy = [ (w * 0.06, hem_y) ] + hem_pts + [ (w * 0.94, hem_y), (w * 0.64, h * 0.14), apex, (w * 0.36, h * 0.14) ]
-    cm = poly_mask((w, h), [canopy], smooth=2)
+        x = w * 0.115 + (w * 0.77) * k / scallops
+        hem_pts.append((x, hem_y + (h * 0.055 if k % 2 == 1 else 0)))
+    canopy_poly = ([(w * 0.115, hem_y)] + hem_pts + [(w * 0.885, hem_y),
+                   (w * 0.72, h * 0.30), (w * 0.60, h * 0.115), apex,
+                   (w * 0.40, h * 0.115), (w * 0.28, h * 0.30)])
+    cm = poly_mask((w, h), [canopy_poly], smooth=2)
     tex = fbm((h, w), octaves=3, seed=8, base=5)
-    canopy_rgba = shade(cm, base_rgb, shade_rgb=deep, inflate=0.62, z_scale=4.2, spec=0.5, spec_power=22, rim=0.4, texture=tex, texture_amp=0.03)
-    # Stripes: alternate darker wedges from apex.
+    canopy = shade(cm, base_rgb, shade_rgb=deep, inflate=0.6, z_scale=4.2,
+                   spec=0.5, spec_power=22, rim=0.42, texture=tex, texture_amp=0.03)
+    # Alternating panels: recolor wedges to ivory.
     yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
     ang = np.arctan2(yy - apex[1], xx - apex[0])
-    stripes = (np.sin(ang * 13.0) > 0.1).astype(np.float32)
+    panel = (np.sin(ang * 9.0) > 0.0)
+    iv = shade(cm, ivory, shade_rgb=ivory_deep, inflate=0.6, z_scale=4.2,
+               spec=0.5, spec_power=22, rim=0.42, texture=tex, texture_amp=0.03)
+    canopy[panel] = iv[panel]
+    # Cone lambert: lit from the left.
     xxn = (xx - apex[0]) / (w * 0.5)
-    cone = np.clip(0.82 + 0.28 * (-xxn), 0.58, 1.14)
-    stripe_dark = (canopy_rgba[..., :3].astype(np.float32) * (1 - 0.20 * stripes[..., None]) * cone[..., None])
-    canopy_rgba[..., :3] = np.clip(stripe_dark, 0, 255).astype(np.uint8)
-    alpha_paste(im, to_image(canopy_rgba), (0, 0))
+    cone = np.clip(0.84 + 0.26 * (-xxn), 0.60, 1.12)
+    canopy[..., :3] = np.clip(canopy[..., :3].astype(np.float32) * cone[..., None], 0, 255).astype(np.uint8)
+    alpha_paste(im, to_image(canopy), (0, 0))
 
-    # Door: dark arch with warm light inside.
-    door = poly_mask((w, h), [[(w * 0.42, h * 0.78), (w * 0.44, h * 0.52), (w * 0.5, h * 0.44), (w * 0.56, h * 0.52), (w * 0.58, h * 0.78)]], smooth=2)
+    # Gold hem following the scallops.
+    hem_band = poly_mask((w, h), [[(w * 0.115, hem_y - 5)] + hem_pts + [(w * 0.885, hem_y - 5),
+                                   (w * 0.885, hem_y + 7), (w * 0.115, hem_y + 7)]], smooth=1)
+    hem_arr = shade(hem_band, GOLD, shade_rgb=GOLD_DEEP, z_scale=1.6, spec=0.6)
+    hem_arr[..., 3] = (hem_arr[..., 3].astype(np.float32) * np.clip(cm * 1.4, 0, 1)).astype(np.uint8)
+    alpha_paste(im, to_image(hem_arr), (0, 0))
+
+    # Awning over the door + dark doorway with warm glow.
+    door = poly_mask((w, h), [[(w * 0.42, wall_bot), (w * 0.43, wall_top + h * 0.035),
+                               (w * 0.5, wall_top + h * 0.005), (w * 0.57, wall_top + h * 0.035),
+                               (w * 0.58, wall_bot)]], smooth=2)
     da = np.zeros((h, w, 4), dtype=np.uint8)
-    da[..., 0], da[..., 1], da[..., 2] = 30, 16, 12
-    da[..., 3] = (door * 235).astype(np.uint8)
+    da[..., 0], da[..., 1], da[..., 2] = 34, 20, 14
+    da[..., 3] = (door * 240).astype(np.uint8)
     alpha_paste(im, Image.fromarray(da), (0, 0))
-    dglow = ellipse_mask((w, h), (w * 0.45, h * 0.58, w * 0.55, h * 0.76))
+    dglow = ellipse_mask((w, h), (w * 0.45, wall_top + h * 0.09, w * 0.55, wall_bot - 4)) * door
     dg = np.zeros((h, w, 4), dtype=np.uint8)
-    dg[..., 0], dg[..., 1], dg[..., 2] = 255, 176, 80
-    dg[..., 3] = (dglow * 120).astype(np.uint8)
-    alpha_paste(im, Image.fromarray(dg).filter(ImageFilter.GaussianBlur(6)), (0, 0))
+    dg[..., 0], dg[..., 1], dg[..., 2] = 255, 178, 84
+    dg[..., 3] = (dglow * 150).astype(np.uint8)
+    alpha_paste(im, Image.fromarray(dg).filter(ImageFilter.GaussianBlur(3)), (0, 0))
+    awning = poly_mask((w, h), [[(w * 0.40, wall_top + h * 0.03), (w * 0.60, wall_top + h * 0.03),
+                                 (w * 0.64, wall_top + h * 0.10), (w * 0.36, wall_top + h * 0.10)]], smooth=1)
+    aw = shade(awning, base_rgb, shade_rgb=deep, z_scale=2.6, spec=0.5)
+    alpha_paste(im, to_image(aw), (0, 0))
+
+    # Carpet at the entrance.
+    carpet = poly_mask((w, h), [[(w * 0.43, wall_bot + 2), (w * 0.57, wall_bot + 2),
+                                 (w * 0.62, h * 0.93), (w * 0.38, h * 0.93)]], smooth=1)
+    alpha_paste(im, to_image(shade(carpet, (172, 56, 46), shade_rgb=(88, 22, 18), z_scale=1.4, spec=0.2)), (0, 0))
 
     # Finial + pennant.
-    pole = rounded_rect_mask((w, h), (w * 0.492, h * 0.0, w * 0.508, h * 0.10), 3)
+    pole = rounded_rect_mask((w, h), (w * 0.493, h * 0.0, w * 0.507, h * 0.085), 3)
     alpha_paste(im, to_image(shade(pole, (90, 66, 44), z_scale=2.0, spec=0.2)), (0, 0))
-    ball = ellipse_mask((w, h), (w * 0.475, -h * 0.005, w * 0.525, h * 0.035))
+    ball = ellipse_mask((w, h), (w * 0.478, -h * 0.004, w * 0.522, h * 0.030))
     alpha_paste(im, to_image(shade(ball, GOLD, shade_rgb=GOLD_DEEP, z_scale=2.6, spec=0.85, spec_power=30)), (0, 0))
-    pennant = poly_mask((w, h), [[(w * 0.51, h * 0.005), (w * 0.70, h * 0.03), (w * 0.51, h * 0.06)]], smooth=1)
+    pennant = poly_mask((w, h), [[(w * 0.51, h * 0.004), (w * 0.73, h * 0.030), (w * 0.51, h * 0.058)]], smooth=1)
     alpha_paste(im, to_image(shade(pennant, base_rgb, shade_rgb=deep, z_scale=2.2, spec=0.4)), (0, 0))
-
-    # Gold hem trim.
-    hem = poly_mask((w, h), [[(w * 0.06, hem_y - 5), (w * 0.94, hem_y - 5), (w * 0.94, hem_y + 9), (w * 0.06, hem_y + 9)]], smooth=1)
-    hem_arr = shade(hem, GOLD, shade_rgb=GOLD_DEEP, z_scale=1.6, spec=0.6)
-    hem_arr[..., 3] = (hem_arr[..., 3].astype(np.float32) * cm).astype(np.uint8)
-    alpha_paste(im, to_image(hem_arr), (0, 0))
     return im
 
 

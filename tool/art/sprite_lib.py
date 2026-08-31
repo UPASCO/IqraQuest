@@ -181,3 +181,72 @@ def soft_shadow(mask, blur=6, opacity=0.45, squash=0.32, dy=0.0):
 
 def alpha_paste(dst: Image.Image, src: Image.Image, xy):
     dst.alpha_composite(src, dest=(int(xy[0]), int(xy[1])))
+
+
+def cast_shadow(mask, *, length=0.55, dir_x=0.35, blur=7, opacity=0.38):
+    """A LONG directional cast shadow: the silhouette sheared toward the
+    camera (down) and to one side, anchored at the sprite's feet. This is
+    what plants a sprite into a sunlit scene."""
+    h, w = mask.shape
+    im = Image.fromarray((mask * 255).astype(np.uint8))
+    sh = max(2, int(h * length))
+    sw = w + int(abs(dir_x) * sh) + 4
+    sheared = Image.new("L", (sw, sh), 0)
+    col = im.resize((w, sh), Image.LANCZOS)
+    # Shear by pasting rows with progressive x offset.
+    arr = np.asarray(col, dtype=np.float32)
+    out = np.zeros((sh, sw), dtype=np.float32)
+    for r in range(sh):
+        # r=sh-1 is at the feet (no offset); rows above shift sideways.
+        off = int(dir_x * (sh - 1 - r))
+        if dir_x >= 0:
+            out[r, off:off + w] = np.maximum(out[r, off:off + w], arr[sh - 1 - r])
+        else:
+            o = sw - w + off
+            out[r, o:o + w] = np.maximum(out[r, o:o + w], arr[sh - 1 - r])
+    sheared = Image.fromarray(out.astype(np.uint8)).filter(ImageFilter.GaussianBlur(blur))
+    rgba = np.zeros((sh, sw, 4), dtype=np.uint8)
+    rgba[..., 2] = 24
+    rgba[..., 0] = 30
+    rgba[..., 1] = 18
+    rgba[..., 3] = (np.asarray(sheared, dtype=np.float32) / 255.0 * opacity * 255).astype(np.uint8)
+    return Image.fromarray(rgba, "RGBA")
+
+
+def cracks(shape, seed=1, n=6, steps=40, width=1):
+    """Random-walk crack polylines as a [0,1] mask for stone texture."""
+    h, w = shape
+    im = Image.new("L", (w, h), 0)
+    d = ImageDraw.Draw(im)
+    rng = np.random.default_rng(seed)
+    for _ in range(n):
+        x, y = rng.uniform(0, w), rng.uniform(0, h)
+        ang = rng.uniform(0, 2 * math.pi)
+        pts = [(x, y)]
+        for _ in range(steps):
+            ang += rng.normal(0, 0.5)
+            x += math.cos(ang) * rng.uniform(2, 5)
+            y += math.sin(ang) * rng.uniform(1, 3)
+            pts.append((x, y))
+        d.line(pts, fill=180, width=width)
+    return np.asarray(im.filter(ImageFilter.GaussianBlur(0.6)), dtype=np.float32) / 255.0
+
+
+def star_band(size, box, cell=26, color=(255, 255, 255), alpha=90):
+    """A band of eight-point geometric stars — Islamic tilework accent."""
+    w, h = size
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    x0, y0, x1, y1 = box
+    y = (y0 + y1) / 2
+    r = (y1 - y0) * 0.42
+    x = x0 + cell / 2
+    while x < x1 - cell / 2:
+        pts = []
+        for k in range(16):
+            ang = math.pi * k / 8
+            rad = r if k % 2 == 0 else r * 0.5
+            pts.append((x + rad * math.cos(ang), y + rad * math.sin(ang)))
+        d.polygon(pts, fill=(*color, alpha))
+        x += cell
+    return im

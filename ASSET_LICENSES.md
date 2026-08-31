@@ -43,6 +43,20 @@ in any crop.
 | Arrival at the palace oasis | `assets/images/oasis_arrival.webp` | Owner-supplied AI concept art (crop) | Project |
 | 2.5D world band (mode selection hero) | `assets/images/world_band.webp` | Owner-supplied AI concept art (crop) | Project |
 
+### 3D pipeline inputs (`assets_3d/` — build-time only, not shipped in the app)
+
+Used by the Blender render pipeline (`tool/art3d/`) to bake the board
+scene and sprites; the app ships only the rendered images.
+
+| Asset | File | Origin | Licence |
+|---|---|---|---|
+| Venice sunset HDRI | `assets_3d/hdri/venice_sunset_1k.hdr` | Poly Haven (via three.js repo) | CC0 |
+| Blouberg sunrise HDRI | `assets_3d/hdri/blouberg_sunrise_1k.hdr` | Poly Haven (via three.js repo) | CC0 |
+| Wood PBR set (diffuse/bump/roughness) | `assets_3d/textures/wood_*.jpg` | three.js examples | MIT (three.js repo) |
+| Water normals | `assets_3d/textures/waternormals.jpg` | three.js examples | MIT (three.js repo) |
+| Brick diffuse/bump | `assets_3d/textures/brick_*.jpg` | three.js examples | MIT (three.js repo) |
+| Sand, rock (+normal), grass, wood2, waterbump | `assets_3d/textures/*.{jpg,png}` | BabylonJS/Assets | Apache-2.0 |
+
 ## Fonts
 
 | Font | Files | Origin | Licence |
