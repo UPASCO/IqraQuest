@@ -7,8 +7,6 @@ import '../../models/models.dart';
 import '../../theme/app_team.dart';
 import '../../theme/app_theme.dart';
 import '../horse_painter.dart';
-import '../geometric_motif_painter.dart';
-import '../landmarks/hijaz_landmark_painter.dart';
 import '../team_symbol_painter.dart';
 import 'board_layout.dart';
 
@@ -16,15 +14,33 @@ import 'board_layout.dart';
 /// narrative Makkah→Madinah zone backdrop (spec §14). Purely presentational
 /// — reads a [GameState] and renders it; all game logic stays in
 /// [GameEngine].
+/// What an armed gait would do, for the on-board destination preview.
+class BoardPreview {
+  const BoardPreview({required this.teamIndex, required this.from, required this.destination});
+
+  final int teamIndex;
+  final PawnPosition? from;
+  final PawnPosition destination;
+}
+
 class BoardWidget extends StatelessWidget {
   const BoardWidget({
     super.key,
     required this.state,
     this.selectableHorses = const {},
     this.onHorseTap,
+    this.preview,
+    this.billboardAngle = 0,
   });
 
   final GameState state;
+  final BoardPreview? preview;
+
+  /// When the board is tilted into the landscape by rotateX(angle), pass
+  /// the same angle here: the horses counter-rotate about their feet so
+  /// they STAND on the receding ground instead of lying flat on it —
+  /// the difference between "a tilted board" and "a world".
+  final double billboardAngle;
 
   /// Set of "playerId:horseIndex" keys the player may act on this turn.
   final Set<String> selectableHorses;
@@ -45,7 +61,12 @@ class BoardWidget extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: CustomPaint(
-                  painter: _BoardPainter(layout: layout, colors: colors, circuit: circuit),
+                  painter: _BoardPainter(
+                    layout: layout,
+                    colors: colors,
+                    circuit: circuit,
+                    preview: preview,
+                  ),
                 ),
               ),
               for (final entry in _horseEntries())
@@ -53,6 +74,7 @@ class BoardWidget extends StatelessWidget {
                   key: ValueKey('horse:${state.players[entry.$1].id}:${entry.$2}'),
                   layout: layout,
                   circuit: circuit,
+                  billboardAngle: billboardAngle,
                   playerIndex: entry.$1,
                   horseIndex: entry.$2,
                   team: state.players[entry.$1].team,
@@ -81,98 +103,79 @@ class BoardWidget extends StatelessWidget {
 }
 
 class _BoardPainter extends CustomPainter {
-  const _BoardPainter({required this.layout, required this.colors, required this.circuit});
+  const _BoardPainter({
+    required this.layout,
+    required this.colors,
+    required this.circuit,
+    this.preview,
+  });
 
   final BoardLayout layout;
   final AppSemanticColors colors;
   final Circuit circuit;
+  final BoardPreview? preview;
 
   @override
   void paint(Canvas canvas, Size size) {
-    _paintGround(canvas, size);
-    _paintCornerLandmarks(canvas, size);
+    // The environment (BoardEnvironmentPainter) owns sky and ground; the
+    // board paints only the journey itself, sitting on that landscape.
     _paintCaravanRoute(canvas, size);
     _paintFinalLanes(canvas, size);
     _paintTrack(canvas, size);
     _paintStables(canvas, size);
     _paintFinishEmblem(canvas, size);
-    _paintVignette(canvas, size);
+    _paintPreview(canvas, size);
   }
 
-  // -------------------------------------------------------------------
-  // Ground: the Makkah → Madinah narrative wash, on the same diagonal as
-  // the two corner landmarks, with a low-contrast geometric texture over
-  // it (DESIGN_SYSTEM.md §7: texture, never foreground decoration).
-  // -------------------------------------------------------------------
+  /// Breadcrumbs from the horse to where the armed gait would land, plus
+  /// a gold beacon on the destination: "if I choose 4, I arrive HERE".
+  void _paintPreview(Canvas canvas, Size size) {
+    final preview = this.preview;
+    if (preview == null) return;
+    final from = preview.from;
+    final p0 = from == null ? -1 : (circuit.progressOf(from, preview.teamIndex) ?? -1);
+    final p1 = circuit.progressOf(preview.destination, preview.teamIndex);
+    if (p1 == null) return;
 
-  void _paintGround(Canvas canvas, Size size) {
-    final rect = Offset.zero & size;
-
-    // The journey's zones sweep around the loop itself: dawn sand at the
-    // Makkah corner, warming desert, then the land greens toward the
-    // oasis and Madinah. The board reads as a route through country, not
-    // as one flat mat (spec: the board is a world).
-    canvas.drawRect(
-      rect,
-      Paint()
-        ..shader = SweepGradient(
-          center: Alignment.center,
-          startAngle: 0,
-          endAngle: math.pi * 2,
-          transform: const GradientRotation(-math.pi * 0.75),
-          colors: const [
-            Color(0xFFF2E1C1), // dawn sand (Makkah corner, top-left)
-            Color(0xFFEBCE9C), // warm desert
-            Color(0xFFDFC08E), // high desert
-            Color(0xFFC2CB97), // scrub, first green
-            Color(0xFF9DC08C), // oasis green (Madinah corner)
-            Color(0xFFBFCA9A), // returning track
-            Color(0xFFF2E1C1),
-          ],
-          stops: const [0.0, 0.18, 0.38, 0.55, 0.72, 0.88, 1.0],
-        ).createShader(rect),
-    );
-
-    canvas.save();
-    canvas.clipRect(rect);
-    GeometricMotifPainter(
-      color: const Color(0xFF4A3A22),
-      opacity: 0.05,
-      cellSize: size.shortestSide * 0.085,
-    ).paint(canvas, size);
-    canvas.restore();
-
-    _paintZoneAccents(canvas, size);
-  }
-
-  /// A few quiet landscape marks inside each zone, so the middle of the
-  /// board is country rather than empty mat: dune ridges in the desert,
-  /// palms by the oasis.
-  void _paintZoneAccents(Canvas canvas, Size size) {
-    final w = size.width, h = size.height;
-
-    // Dune ridges, upper right (desert zone).
-    final dune = Paint()
-      ..color = const Color(0xFFB99B66).withValues(alpha: 0.34)
+    final dot = Paint()..color = const Color(0xFFFFE9AE);
+    final dotEdge = Paint()
+      ..color = const Color(0xFF8A6526).withValues(alpha: 0.7)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = size.shortestSide * 0.008
-      ..strokeCap = StrokeCap.round;
-    canvas.drawPath(
-      Path()
-        ..moveTo(w * 0.60, h * 0.255)
-        ..quadraticBezierTo(w * 0.68, h * 0.225, w * 0.76, h * 0.25),
-      dune,
-    );
-    canvas.drawPath(
-      Path()
-        ..moveTo(w * 0.66, h * 0.315)
-        ..quadraticBezierTo(w * 0.73, h * 0.29, w * 0.80, h * 0.31),
-      dune,
-    );
+      ..strokeWidth = 1.4;
+    for (var p = p0 + 1; p < p1; p++) {
+      final pos = circuit.positionAt(p, preview.teamIndex);
+      final o = layout.pointFor(preview.teamIndex, pos);
+      canvas.drawCircle(o, size.shortestSide * 0.011, dot);
+      canvas.drawCircle(o, size.shortestSide * 0.011, dotEdge);
+    }
 
-    // Two palms, lower left (oasis zone).
-    _paintPalm(canvas, Offset(w * 0.255, h * 0.685), size.shortestSide * 0.045);
-    _paintPalm(canvas, Offset(w * 0.315, h * 0.725), size.shortestSide * 0.034);
+    final dest = layout.pointFor(preview.teamIndex, preview.destination);
+    final r = size.shortestSide * 0.045;
+    canvas.drawCircle(
+      dest,
+      r * 1.9,
+      Paint()
+        ..shader = ui.Gradient.radial(dest, r * 1.9, [
+          const Color(0xAAFFD873),
+          const Color(0x00FFD873),
+        ]),
+    );
+    canvas.drawCircle(
+      dest,
+      r,
+      Paint()
+        ..color = const Color(0xFFFFE9AE)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = r * 0.24,
+    );
+    canvas.drawCircle(
+      dest,
+      r * 0.66,
+      Paint()
+        ..color = const Color(0xFFB8893A)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = r * 0.13,
+    );
   }
 
   void _paintPalm(Canvas canvas, Offset base, double h) {
@@ -212,32 +215,6 @@ class _BoardPainter extends CustomPainter {
         frond,
       );
     }
-  }
-
-  void _paintCornerLandmarks(Canvas canvas, Size size) {
-    final s = size.shortestSide * 0.24;
-    canvas.save();
-    canvas.clipRect(Rect.fromLTWH(0, 0, s, s));
-    HijazLandmarkPainter(
-      scene: LandmarkScene.makkahValley,
-      skyTop: const Color(0x00000000),
-      skyBottom: const Color(0x00000000),
-      landPrimary: const Color(0xFFCFB88E),
-      landShade: const Color(0xFFA98F66),
-    ).paint(canvas, Size(s, s));
-    canvas.restore();
-
-    canvas.save();
-    canvas.translate(size.width - s, size.height - s);
-    canvas.clipRect(Rect.fromLTWH(0, 0, s, s));
-    HijazLandmarkPainter(
-      scene: LandmarkScene.madinahOasis,
-      skyTop: const Color(0x00000000),
-      skyBottom: const Color(0x00000000),
-      landPrimary: const Color(0xFF9EC08C),
-      landShade: const Color(0xFF77996B),
-    ).paint(canvas, Size(s, s));
-    canvas.restore();
   }
 
   // -------------------------------------------------------------------
@@ -448,7 +425,7 @@ class _BoardPainter extends CustomPainter {
 
   void _paintFinalLanes(Canvas canvas, Size size) {
     final teamColors = [colors.player1, colors.player2, colors.player3, colors.player4];
-    final sq = size.shortestSide * 0.042;
+    final sq = size.shortestSide * 0.034;
     final r = Radius.circular(sq * 0.32);
     for (var t = 0; t < 4; t++) {
       final tint = teamColors[t];
@@ -457,12 +434,19 @@ class _BoardPainter extends CustomPainter {
       // stepping stones: without it the four lanes read as loose confetti
       // scattered across the middle of the board.
       final exit = (circuit.entryIndexForTeam(t) - 1 + circuit.trackLength) % circuit.trackLength;
-      final trail = Path()..moveTo(layout.trackPoint(exit).dx, layout.trackPoint(exit).dy);
-      for (var step = 1; step <= circuit.finalLaneLength; step++) {
-        final q = layout.finalLanePoint(t, step);
-        trail.lineTo(q.dx, q.dy);
+      final start = layout.trackPoint(exit);
+      final pts = [
+        start,
+        for (var step = 1; step <= circuit.finalLaneLength; step++) layout.finalLanePoint(t, step),
+        layout.center,
+      ];
+      final trail = Path()..moveTo(pts.first.dx, pts.first.dy);
+      for (var i = 1; i < pts.length; i++) {
+        final prev = pts[i - 1];
+        final mid = Offset.lerp(prev, pts[i], 0.5)!;
+        trail.quadraticBezierTo(prev.dx, prev.dy, mid.dx, mid.dy);
       }
-      trail.lineTo(layout.center.dx, layout.center.dy);
+      trail.lineTo(pts.last.dx, pts.last.dy);
       canvas.drawPath(
         trail,
         Paint()
@@ -658,26 +642,6 @@ class _BoardPainter extends CustomPainter {
     );
   }
 
-  /// A soft edge darkening. Board art without one reads as flat paper;
-  /// with one it reads as a lit surface.
-  void _paintVignette(Canvas canvas, Size size) {
-    final rect = Offset.zero & size;
-    canvas.drawRect(
-      rect,
-      Paint()
-        ..shader = ui.Gradient.radial(
-          rect.center,
-          size.shortestSide * 0.72,
-          [
-            const Color(0x00000000),
-            const Color(0x00000000),
-            const Color(0xFF3A2B14).withValues(alpha: 0.18),
-          ],
-          const [0.0, 0.68, 1.0],
-        ),
-    );
-  }
-
   @override
   bool shouldRepaint(covariant _BoardPainter oldDelegate) => true;
 }
@@ -687,6 +651,7 @@ class _HorseMarker extends StatefulWidget {
     super.key,
     required this.layout,
     required this.circuit,
+    required this.billboardAngle,
     required this.playerIndex,
     required this.horseIndex,
     required this.team,
@@ -697,6 +662,7 @@ class _HorseMarker extends StatefulWidget {
 
   final BoardLayout layout;
   final Circuit circuit;
+  final double billboardAngle;
   final int playerIndex;
   final int horseIndex;
   final AppTeam team;
@@ -784,7 +750,7 @@ class _HorseMarkerState extends State<_HorseMarker> with SingleTickerProviderSta
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final tokenSize = widget.layout.size.shortestSide * 0.075;
+    final tokenSize = widget.layout.size.shortestSide * 0.088;
 
     return AnimatedBuilder(
       animation: _move,
@@ -792,8 +758,15 @@ class _HorseMarkerState extends State<_HorseMarker> with SingleTickerProviderSta
         final (center, lift) = _sample();
         return Positioned(
           left: center.dx - tokenSize / 2,
-          top: center.dy - tokenSize / 2 - lift * tokenSize * 0.28,
-          child: Transform.scale(scale: 1 + lift * 0.05, child: child),
+          top: center.dy - tokenSize - lift * tokenSize * 0.28,
+          child: Transform(
+            // Stand upright on the tilted ground, feet at the square.
+            alignment: Alignment.bottomCenter,
+            transform: Matrix4.identity()
+              ..rotateX(-widget.billboardAngle)
+              ..scaleByDouble(1 + lift * 0.05, 1 + lift * 0.05, 1, 1),
+            child: child,
+          ),
         );
       },
       child: Semantics(
@@ -823,6 +796,23 @@ class _HorseMarkerState extends State<_HorseMarker> with SingleTickerProviderSta
             child: Stack(
               clipBehavior: Clip.none,
               children: [
+                Positioned(
+                  left: tokenSize * 0.12,
+                  right: tokenSize * 0.12,
+                  bottom: -tokenSize * 0.02,
+                  child: Container(
+                    height: tokenSize * 0.14,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(99),
+                      gradient: RadialGradient(
+                        colors: [
+                          Colors.black.withValues(alpha: 0.35),
+                          Colors.black.withValues(alpha: 0),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 HorseToken(
                   coat: widget.team.coat,
                   team: widget.team,

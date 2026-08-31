@@ -11,16 +11,17 @@ class GameSaveService {
 
   Future<void> save(GameState state) => _storage.setJson(_key, state.toJson());
 
-  /// Returns null both when there is no save and when the save is
-  /// corrupted — the caller must never crash on either (spec §83); a
-  /// corrupted save is simply discarded so the user can start fresh.
+  /// Returns null both when there is no save and when the save cannot be
+  /// parsed — the caller must never crash on either (spec §83). An
+  /// unreadable save is NEVER deleted here: it may be a legacy-format
+  /// game that LegacyGameMigrationService still needs to archive
+  /// (spec §18 — user data is moved aside, not destroyed).
   GameState? load() {
     final json = _storage.getJson(_key);
     if (json == null) return null;
     try {
       return GameState.fromJson(json);
     } catch (_) {
-      _storage.remove(_key);
       return null;
     }
   }

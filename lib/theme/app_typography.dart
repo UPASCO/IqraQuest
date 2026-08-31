@@ -30,6 +30,7 @@ class AppTypography {
     return TextTheme(
       displayLarge: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 40,
         height: 1.15,
         fontWeight: FontWeight.w700,
@@ -37,54 +38,63 @@ class AppTypography {
       ),
       displayMedium: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 32,
         height: 1.2,
         fontWeight: FontWeight.w700,
       ),
       headlineLarge: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 26,
         height: 1.25,
         fontWeight: FontWeight.w700,
       ),
       headlineMedium: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 22,
         height: 1.28,
         fontWeight: FontWeight.w600,
       ),
       titleLarge: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 19,
         height: 1.3,
         fontWeight: FontWeight.w600,
       ),
       titleMedium: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 17,
         height: 1.3,
         fontWeight: FontWeight.w600,
       ),
       bodyLarge: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 17,
         height: 1.45,
         fontWeight: FontWeight.w400,
       ),
       bodyMedium: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 15,
         height: 1.45,
         fontWeight: FontWeight.w400,
       ),
       bodySmall: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 13,
         height: 1.4,
         fontWeight: FontWeight.w400,
       ),
       labelLarge: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 16,
         height: 1.2,
         fontWeight: FontWeight.w600,
@@ -92,6 +102,7 @@ class AppTypography {
       ),
       labelMedium: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 13,
         height: 1.2,
         fontWeight: FontWeight.w600,
@@ -99,6 +110,7 @@ class AppTypography {
       ),
       labelSmall: TextStyle(
         fontFamily: family,
+        fontFamilyFallback: const [AppFonts.arabic],
         fontSize: 11,
         height: 1.2,
         fontWeight: FontWeight.w600,

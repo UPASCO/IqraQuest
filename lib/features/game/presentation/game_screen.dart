@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -6,11 +8,16 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/movement_choice_service.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/board/board_widget.dart';
-import '../../../widgets/gait_selector.dart';
+import '../../../widgets/gait_selector.dart' show HorseshoePainter;
 import '../../../widgets/question_card.dart';
 import '../application/game_controller.dart';
 
+/// The game screen is the world: a full-bleed dawn landscape with the
+/// journey tilted into perspective, and every piece of UI floating over
+/// it. No app bar, no page chrome — opening this screen must feel like
+/// entering a place, not a form.
 class GameScreen extends ConsumerStatefulWidget {
   const GameScreen({super.key});
 
@@ -21,9 +28,12 @@ class GameScreen extends ConsumerStatefulWidget {
 class _GameScreenState extends ConsumerState<GameScreen> {
   int? _selectedAnswer;
   int _selectedHorse = 0;
+  MovementChoice? _armedGait;
   MovementChoice? _hoveredGait;
   bool _useGrandGallop = false;
   String? _dismissedQuestionId;
+
+  static const _movementChoices = MovementChoiceService();
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +53,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       if (previous?.gameState.currentPlayerIndex != next?.gameState.currentPlayerIndex) {
         setState(() {
           _selectedHorse = 0;
+          _armedGait = null;
           _hoveredGait = null;
           _useGrandGallop = false;
         });
@@ -65,104 +76,219 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             state.turnPhase == TurnPhase.showingFeedback ||
             state.turnPhase == TurnPhase.resolvingCell);
 
+    // The armed gait's destination, shown on the board itself before the
+    // player commits: "if I choose 4, I arrive here."
+    BoardPreview? boardPreview;
+    final armed = _armedGait;
+    if (armed != null && state.turnPhase == TurnPhase.selectingGait) {
+      final preview = ref
+          .read(gameControllerProvider.notifier)
+          .preview(_selectedHorse, armed, useGrandGallop: _useGrandGallop);
+      if (preview != null) {
+        boardPreview = BoardPreview(
+          teamIndex: state.currentPlayerIndex,
+          from: player.horses[_selectedHorse].position,
+          destination: preview.destination,
+        );
+      }
+    }
+
+    final screen = MediaQuery.sizeOf(context);
+    // Negative tilt: the TOP of the board recedes toward the horizon.
+    const tilt = -0.50;
+    final boardSide = screen.width * 1.10;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(radius: 10, backgroundColor: player.team.color(colors)),
-            const SizedBox(width: 8),
-            Flexible(child: Text(player.name, overflow: TextOverflow.ellipsis)),
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                _PlayerStrip(state: state),
-                _StreakGauge(player: player, l10n: l10n),
-                Expanded(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: BoardWidget(
-                        state: state,
-                        selectableHorses: state.turnPhase == TurnPhase.selectingGait
-                            ? {
-                                for (final i
-                                    in ref.read(gameControllerProvider.notifier).movableHorses)
-                                  '${player.id}:$i',
-                              }
-                            : const {},
-                        onHorseTap: (playerIndex, horseIndex) {
-                          if (playerIndex != state.currentPlayerIndex) return;
-                          setState(() => _selectedHorse = horseIndex);
-                        },
-                      ),
-                    ),
-                  ),
+      backgroundColor: const Color(0xFF0A3327),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          const Positioned.fill(
+            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.20)),
+          ),
+
+          // The journey, tilted into the landscape.
+          Align(
+            alignment: const Alignment(0, -0.32),
+            child: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.0014)
+                ..rotateX(tilt),
+              child: SizedBox(
+                width: boardSide,
+                height: boardSide,
+                child: BoardWidget(
+                  state: state,
+                  preview: boardPreview,
+                  billboardAngle: tilt,
+                  selectableHorses: state.turnPhase == TurnPhase.selectingGait
+                      ? {
+                          for (final i in ref.read(gameControllerProvider.notifier).movableHorses)
+                            '${player.id}:$i',
+                        }
+                      : const {},
+                  onHorseTap: (playerIndex, horseIndex) {
+                    if (playerIndex != state.currentPlayerIndex) return;
+                    setState(() => _selectedHorse = horseIndex);
+                  },
                 ),
-                if (state.turnPhase == TurnPhase.selectingGait && player.isHuman)
-                  _GaitPanel(
-                    player: player,
-                    selectedHorse: _selectedHorse,
-                    hovered: _hoveredGait,
-                    useGrandGallop: _useGrandGallop,
-                    l10n: l10n,
-                    onToggleGrandGallop: (v) => setState(() => _useGrandGallop = v),
-                    onSelect: _onGaitSelected,
-                  )
-                else
-                  _TurnBanner(session: session, l10n: l10n),
-              ],
+              ),
             ),
-            if (showQuestion)
-              _QuestionOverlay(
-                question: question,
-                isJourney: state.turnPhase == TurnPhase.answeringJourneyQuestion,
-                isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
-                selectedAnswer: _selectedAnswer,
-                lastAnswerCorrect: state.lastAnswerCorrect,
-                pointsEarned:
-                    state.lastAnswerCorrect == true && state.turnPhase == TurnPhase.showingFeedback
-                    ? _hoveredGait?.knowledgePoints
-                    : null,
-                l10n: l10n,
-                onSelect: (i) {
-                  setState(() => _selectedAnswer = i);
-                  final controller = ref.read(gameControllerProvider.notifier);
-                  switch (state.turnPhase) {
-                    case TurnPhase.answeringJourneyQuestion:
-                      controller.answerJourneyQuestion(i);
-                    case TurnPhase.resolvingCell:
-                      controller.answerCellQuestion(i);
-                    case _:
-                      controller.answerQuestion(i);
-                  }
-                },
-                onContinue: () {
-                  setState(() => _dismissedQuestionId = question.id);
-                  ref.read(gameControllerProvider.notifier).continueAfterFeedback();
-                },
+          ),
+
+          // ---- Floating HUD ----
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      _GlassIconButton(icon: Icons.arrow_back, onTap: () => context.go('/home')),
+                      const SizedBox(width: 10),
+                      _HudPill(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CircleAvatar(radius: 6, backgroundColor: player.team.color(colors)),
+                            const SizedBox(width: 8),
+                            ConstrainedBox(
+                              constraints: BoxConstraints(maxWidth: screen.width * 0.32),
+                              child: Text(
+                                player.name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: _hudText(context),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Spacer(),
+                      _HudPill(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.auto_awesome, size: 15, color: Color(0xFFEBC06A)),
+                            const SizedBox(width: 5),
+                            Text('${player.rewards.knowledgePoints}', style: _hudText(context)),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      _HudPill(
+                        highlight: player.streak.current >= 3,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.local_fire_department,
+                              size: 16,
+                              color: player.streak.current > 0
+                                  ? const Color(0xFFF0A24B)
+                                  : Colors.white38,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${player.streak.current}/${player.streak.nextThreshold}',
+                              style: _hudText(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            if (state.turnPhase == TurnPhase.resolvingCell &&
-                session.currentQuestion == null &&
-                player.isHuman)
-              _CellOfferSheet(
-                effect: state.pendingCellEffect!,
-                l10n: l10n,
-                onAccept: () => ref.read(gameControllerProvider.notifier).acceptCellChallenge(),
-                onDecline: () => ref.read(gameControllerProvider.notifier).declineCellOffer(),
+            ),
+          ),
+
+          // ---- Bottom: the play bar or the turn pill ----
+          if (state.turnPhase == TurnPhase.selectingGait && player.isHuman)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SafeArea(
+                child: _GaitBar(
+                  player: player,
+                  armed: _armedGait,
+                  selectedHorse: _selectedHorse,
+                  useGrandGallop: _useGrandGallop,
+                  l10n: l10n,
+                  difficultyFor: (c) => _movementChoices.difficultyFor(c, player.profile),
+                  onToggleGrandGallop: (v) => setState(() => _useGrandGallop = v),
+                  onTapGait: _onGaitTapped,
+                  onConfirm: _armedGait == null ? null : () => _onGaitConfirmed(_armedGait!),
+                ),
               ),
-          ],
-        ),
+            )
+          else
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SafeArea(
+                child: _TurnBanner(session: session, l10n: l10n),
+              ),
+            ),
+
+          if (showQuestion)
+            _QuestionOverlay(
+              question: question,
+              isJourney: state.turnPhase == TurnPhase.answeringJourneyQuestion,
+              isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
+              selectedAnswer: _selectedAnswer,
+              lastAnswerCorrect: state.lastAnswerCorrect,
+              pointsEarned:
+                  state.lastAnswerCorrect == true && state.turnPhase == TurnPhase.showingFeedback
+                  ? _hoveredGait?.knowledgePoints
+                  : null,
+              l10n: l10n,
+              onSelect: (i) {
+                setState(() => _selectedAnswer = i);
+                final controller = ref.read(gameControllerProvider.notifier);
+                switch (state.turnPhase) {
+                  case TurnPhase.answeringJourneyQuestion:
+                    controller.answerJourneyQuestion(i);
+                  case TurnPhase.resolvingCell:
+                    controller.answerCellQuestion(i);
+                  case _:
+                    controller.answerQuestion(i);
+                }
+              },
+              onContinue: () {
+                setState(() => _dismissedQuestionId = question.id);
+                ref.read(gameControllerProvider.notifier).continueAfterFeedback();
+              },
+            ),
+          if (state.turnPhase == TurnPhase.resolvingCell &&
+              session.currentQuestion == null &&
+              player.isHuman)
+            _CellOfferSheet(
+              effect: state.pendingCellEffect!,
+              l10n: l10n,
+              onAccept: () => ref.read(gameControllerProvider.notifier).acceptCellChallenge(),
+              onDecline: () => ref.read(gameControllerProvider.notifier).declineCellOffer(),
+            ),
+        ],
       ),
     );
   }
 
-  void _onGaitSelected(MovementChoice choice) async {
+  TextStyle? _hudText(BuildContext context) =>
+      Theme.of(context).textTheme.labelLarge
+          ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
+
+  /// First tap arms a gait and shows its destination on the board;
+  /// tapping the armed gait again (or the confirm arrow) commits it.
+  void _onGaitTapped(MovementChoice choice) {
+    if (_armedGait == choice) {
+      _onGaitConfirmed(choice);
+    } else {
+      setState(() => _armedGait = choice);
+    }
+  }
+
+  void _onGaitConfirmed(MovementChoice choice) async {
     final controller = ref.read(gameControllerProvider.notifier);
     final session = ref.read(gameControllerProvider);
     if (session == null) return;
@@ -192,137 +318,319 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       if (confirmed != true) return;
     }
 
-    setState(() => _hoveredGait = choice);
+    setState(() {
+      _hoveredGait = choice;
+      _armedGait = null;
+    });
     controller.selectGait(_selectedHorse, choice, useGrandGallop: _useGrandGallop);
     setState(() => _useGrandGallop = false);
   }
 }
 
-/// The six horseshoes plus the horse picker and the Grand Gallop toggle.
-class _GaitPanel extends StatelessWidget {
-  const _GaitPanel({
-    required this.player,
-    required this.selectedHorse,
-    required this.hovered,
-    required this.useGrandGallop,
-    required this.l10n,
-    required this.onToggleGrandGallop,
-    required this.onSelect,
-  });
+// ---------------------------------------------------------------------
+// HUD building blocks: dark glass floating over the world.
+// ---------------------------------------------------------------------
 
-  final Player player;
-  final int selectedHorse;
-  final MovementChoice? hovered;
-  final bool useGrandGallop;
-  final AppLocalizations l10n;
-  final ValueChanged<bool> onToggleGrandGallop;
-  final ValueChanged<MovementChoice> onSelect;
+class _HudPill extends StatelessWidget {
+  const _HudPill({required this.child, this.highlight = false});
 
-  static const _movementChoices = MovementChoiceService();
+  final Widget child;
+  final bool highlight;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       decoration: BoxDecoration(
-        color: colors.surfaceElevated,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        color: const Color(0xB3122E22),
+        borderRadius: BorderRadius.circular(50),
+        border: Border.all(
+          color: highlight ? const Color(0xFFEBC06A) : Colors.white.withValues(alpha: 0.14),
+          width: highlight ? 1.4 : 1,
+        ),
+      ),
+      child: child,
+    );
+  }
+}
+
+class _GlassIconButton extends StatelessWidget {
+  const _GlassIconButton({required this.icon, required this.onTap});
+
+  final IconData icon;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: const Color(0xB3122E22),
+      shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: const SizedBox(
+          width: 38,
+          height: 38,
+          child: Icon(Icons.arrow_back, size: 19, color: Color(0xFFF4ECDC)),
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------
+// The gait bar: six compact horseshoe chips in a dark glass tray. Tap to
+// arm (the board shows the destination), tap again or hit the gold arrow
+// to ride.
+// ---------------------------------------------------------------------
+
+class _GaitBar extends StatelessWidget {
+  const _GaitBar({
+    required this.player,
+    required this.armed,
+    required this.selectedHorse,
+    required this.useGrandGallop,
+    required this.l10n,
+    required this.difficultyFor,
+    required this.onToggleGrandGallop,
+    required this.onTapGait,
+    required this.onConfirm,
+  });
+
+  final Player player;
+  final MovementChoice? armed;
+  final int selectedHorse;
+  final bool useGrandGallop;
+  final AppLocalizations l10n;
+  final QuestionDifficulty Function(MovementChoice) difficultyFor;
+  final ValueChanged<bool> onToggleGrandGallop;
+  final ValueChanged<MovementChoice> onTapGait;
+  final VoidCallback? onConfirm;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+      decoration: BoxDecoration(
+        color: const Color(0xE610281E),
+        borderRadius: BorderRadius.circular(26),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.12),
-            blurRadius: 18,
-            offset: const Offset(0, -4),
+            color: Colors.black.withValues(alpha: 0.45),
+            blurRadius: 24,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Text(l10n.chooseYourGait, style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                l10n.chooseYourGait,
+                style: Theme.of(context).textTheme.labelMedium
+                    ?.copyWith(color: const Color(0xFFE9DFC8), fontWeight: FontWeight.w600),
+              ),
               const Spacer(),
               if (player.horses.length > 1)
                 Text(
                   '${l10n.selectHorse} ${selectedHorse + 1}',
-                  style: Theme.of(context).textTheme.labelSmall
-                      ?.copyWith(color: colors.textSecondary),
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.white54),
                 ),
             ],
           ),
-          const SizedBox(height: 10),
-          GaitSelector(
-            cycle: player.gaitCycle,
-            selected: hovered,
-            difficultyFor: (choice) => _movementChoices.difficultyFor(choice, player.profile),
-            onSelected: onSelect,
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              for (final choice in MovementChoice.all) ...[
+                Expanded(
+                  child: _GaitChip(
+                    choice: choice,
+                    available: player.gaitCycle.isAvailable(choice),
+                    armed: armed == choice,
+                    difficulty: difficultyFor(choice),
+                    label: l10n.gaitSquares(choice.steps),
+                    semanticLabel: l10n.gaitSemanticLabel(
+                      choice.steps,
+                      _difficultyLabel(difficultyFor(choice)),
+                      choice.knowledgePoints,
+                    ),
+                    unavailableHint: l10n.gaitAlreadyUsed,
+                    onTap: () => onTapGait(choice),
+                  ),
+                ),
+                if (choice.steps < MovementChoice.maxSteps) const SizedBox(width: 6),
+              ],
+              // The gold "ride" arrow appears once a gait is armed.
+              AnimatedSize(
+                duration: AppMotion.of(context, AppMotion.micro),
+                curve: AppMotion.easeOut,
+                child: onConfirm == null
+                    ? const SizedBox(height: 54)
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: Material(
+                          key: const Key('gait-confirm'),
+                          shape: const CircleBorder(),
+                          clipBehavior: Clip.antiAlias,
+                          child: Ink(
+                            width: 46,
+                            height: 46,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Color(0xFFF3D68A), Color(0xFFD8A032)],
+                              ),
+                            ),
+                            child: InkWell(
+                              onTap: onConfirm,
+                              child: const Icon(Icons.arrow_forward, color: Color(0xFF4A3410)),
+                            ),
+                          ),
+                        ),
+                      ),
+              ),
+            ],
           ),
-          if (player.rewards.hasGrandGallop) ...[
-            const SizedBox(height: 8),
+          if (player.rewards.hasGrandGallop)
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
               dense: true,
               value: useGrandGallop,
               onChanged: onToggleGrandGallop,
-              title: Text(l10n.useGrandGallop, style: Theme.of(context).textTheme.labelMedium),
+              activeThumbColor: const Color(0xFFEBC06A),
+              title: Text(
+                l10n.useGrandGallop,
+                style: Theme.of(context).textTheme.labelMedium
+                    ?.copyWith(color: const Color(0xFFE9DFC8)),
+              ),
             ),
-          ],
         ],
       ),
     );
   }
+
+  String _difficultyLabel(QuestionDifficulty d) => switch (d) {
+    QuestionDifficulty.easy => l10n.difficultyEasy,
+    QuestionDifficulty.medium => l10n.difficultyMedium,
+    QuestionDifficulty.hard => l10n.difficultyHard,
+  };
 }
 
-/// The "Élan du savoir" gauge — the streak that earns shields, the Grand
-/// Gallop and mastery badges.
-class _StreakGauge extends StatelessWidget {
-  const _StreakGauge({required this.player, required this.l10n});
+class _GaitChip extends StatelessWidget {
+  const _GaitChip({
+    required this.choice,
+    required this.available,
+    required this.armed,
+    required this.difficulty,
+    required this.label,
+    required this.semanticLabel,
+    required this.unavailableHint,
+    required this.onTap,
+  });
 
-  final Player player;
-  final AppLocalizations l10n;
+  final MovementChoice choice;
+  final bool available;
+  final bool armed;
+  final QuestionDifficulty difficulty;
+  final String label;
+  final String semanticLabel;
+  final String unavailableHint;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final streak = player.streak;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 6, 16, 2),
-      child: Row(
-        children: [
-          Text(
-            l10n.knowledgeStreak,
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(color: colors.textSecondary),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(999),
-              child: LinearProgressIndicator(
-                value: streak.progressToNextThreshold.clamp(0.0, 1.0),
-                minHeight: 6,
-                backgroundColor: colors.divider,
-                valueColor: AlwaysStoppedAnimation(colors.goldAccent),
-              ),
+    final pips = switch (difficulty) {
+      QuestionDifficulty.easy => 1,
+      QuestionDifficulty.medium => 2,
+      QuestionDifficulty.hard => 3,
+    };
+
+    return Semantics(
+      button: true,
+      enabled: available,
+      selected: armed,
+      label: semanticLabel,
+      hint: available ? null : unavailableHint,
+      child: GestureDetector(
+        onTap: available ? onTap : null,
+        child: AnimatedContainer(
+          duration: AppMotion.of(context, AppMotion.micro),
+          curve: AppMotion.easeOut,
+          height: 54,
+          transform: Matrix4.translationValues(0, armed ? -5 : 0, 0),
+          decoration: BoxDecoration(
+            color: armed
+                ? const Color(0xFF1E4A38)
+                : Colors.white.withValues(alpha: available ? 0.07 : 0.03),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: armed ? const Color(0xFFEBC06A) : Colors.white.withValues(alpha: 0.10),
+              width: armed ? 1.6 : 1,
             ),
           ),
-          const SizedBox(width: 8),
-          Text(
-            '${streak.current}/${streak.nextThreshold}',
-            style: Theme.of(context).textTheme.labelSmall,
+          child: Opacity(
+            opacity: available ? 1 : 0.35,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 30,
+                  height: 26,
+                  child: CustomPaint(
+                    painter: HorseshoePainter(
+                      steps: choice.steps,
+                      used: !available,
+                      selected: false,
+                      shoe: const Color(0xFFD9AF56),
+                      face: Colors.transparent,
+                      ink: const Color(0xFFF4ECDC),
+                      accent: colors.primary,
+                      fontFamily: Theme.of(context).textTheme.bodyLarge?.fontFamily,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 2),
+                // The caption stays a localized "n squares" string for
+                // screen readers and small-print clarity.
+                Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.clip,
+                  style: Theme.of(context).textTheme.labelSmall
+                      ?.copyWith(fontSize: 8.5, color: Colors.white60),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (var i = 0; i < 3; i++)
+                      Container(
+                        width: 3.6,
+                        height: 3.6,
+                        margin: const EdgeInsets.symmetric(horizontal: 1),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: i < pips ? const Color(0xFFE08A4E) : Colors.white24,
+                        ),
+                      ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          if (player.rewards.hasGrandGallop) ...[
-            const SizedBox(width: 8),
-            Icon(Icons.bolt, size: 16, color: colors.goldAccent),
-          ],
-        ],
+        ),
       ),
     );
   }
 }
 
+/// Between-turns status, floating over the world.
 class _TurnBanner extends StatelessWidget {
   const _TurnBanner({required this.session, required this.l10n});
 
@@ -331,7 +639,6 @@ class _TurnBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final outcome = session.gameState.lastMoveOutcome;
     final text = switch (outcome) {
       MoveOutcome.moved || MoveOutcome.bonusEarned => l10n.outcomeMoved,
@@ -342,66 +649,28 @@ class _TurnBanner extends StatelessWidget {
       null => session.isAiTurnInProgress ? '…' : l10n.yourTurn,
     };
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-      color: colors.surfaceElevated,
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+      decoration: BoxDecoration(
+        color: const Color(0xE610281E),
+        borderRadius: BorderRadius.circular(50),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+      ),
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.titleMedium,
+        style: Theme.of(context).textTheme.titleSmall
+            ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600),
       ),
     );
   }
 }
 
-class _PlayerStrip extends StatelessWidget {
-  const _PlayerStrip({required this.state});
-
-  final GameState state;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      child: Row(
-        children: [
-          for (var i = 0; i < state.players.length; i++)
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 3),
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                decoration: BoxDecoration(
-                  color: i == state.currentPlayerIndex
-                      ? state.players[i].team.color(colors).withValues(alpha: 0.18)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: state.players[i].team.color(colors),
-                    width: i == state.currentPlayerIndex ? 2 : 1,
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      state.players[i].name,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    Text(
-                      '${state.players[i].rewards.knowledgePoints}',
-                      style: Theme.of(context).textTheme.labelSmall
-                          ?.copyWith(color: colors.goldAccent, fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-}
+// ---------------------------------------------------------------------
+// The Question Experience: the world stays visible, softly blurred and
+// darkened; the question rises from the bottom on a parchment panel with
+// a gold arch line — native to the game, not a dialog on a gray sheet.
+// ---------------------------------------------------------------------
 
 class _QuestionOverlay extends StatelessWidget {
   const _QuestionOverlay({
@@ -426,47 +695,108 @@ class _QuestionOverlay extends StatelessWidget {
   final VoidCallback onContinue;
 
   /// Knowledge points the answer just earned; shown as an immediate
-  /// reward chip so every correct answer pays out visibly (game feel:
-  /// progression on every interaction).
+  /// reward chip so every correct answer pays out visibly.
   final int? pointsEarned;
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.sizeOf(context);
     return Positioned.fill(
-      child: Container(
-        color: Colors.black.withValues(alpha: 0.5),
-        padding: const EdgeInsets.all(20),
-        alignment: Alignment.center,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (isJourney)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Text(
-                    l10n.journeyQuestion,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+      child: Stack(
+        children: [
+          // The world dims and softens but never disappears.
+          Positioned.fill(
+            child: ClipRect(
+              child: BackdropFilter(
+                filter: ui.ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                child: const DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Color(0x3D06231A), Color(0xCC06231A)],
+                    ),
                   ),
                 ),
-              if (pointsEarned != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: _RewardChip(points: pointsEarned!),
-                ),
-              QuestionCard(
-                question: question,
-                selectedIndex: selectedAnswer,
-                isCorrect: lastAnswerCorrect,
-                onSelect: onSelect,
-                onContinue: lastAnswerCorrect != null ? onContinue : null,
               ),
-            ],
+            ),
           ),
-        ),
+          // The payout floats over the world, above the panel, where the
+          // eye already is.
+          if (pointsEarned != null)
+            Align(
+              alignment: const Alignment(0, -0.90),
+              child: _RewardChip(points: pointsEarned!),
+            ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: screen.height * 0.86),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
+                reverse: true,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (isJourney)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          l10n.journeyQuestion,
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(color: const Color(0xFFF4ECDC)),
+                        ),
+                      ),
+                    // The gold arch line crowning the panel ties it to the
+                    // game's architecture.
+                    const _ArchCrest(),
+                    QuestionCard(
+                      question: question,
+                      selectedIndex: selectedAnswer,
+                      isCorrect: lastAnswerCorrect,
+                      onSelect: onSelect,
+                      onContinue: lastAnswerCorrect != null ? onContinue : null,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+class _ArchCrest extends StatelessWidget {
+  const _ArchCrest();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: 20, width: 132, child: CustomPaint(painter: _ArchCrestPainter()));
+  }
+}
+
+class _ArchCrestPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width, h = size.height;
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.4
+      ..strokeCap = StrokeCap.round
+      ..color = const Color(0xFFEBC06A);
+    canvas.drawPath(
+      Path()
+        ..moveTo(0, h)
+        ..cubicTo(w * 0.28, h, w * 0.36, h * 0.12, w * 0.5, h * 0.06)
+        ..cubicTo(w * 0.64, h * 0.12, w * 0.72, h, w, h),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _ArchCrestPainter oldDelegate) => false;
 }
 
 /// The immediate payout of a correct answer: a gold chip that pops in,

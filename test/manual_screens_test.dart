@@ -49,9 +49,14 @@ Future<void> _settle(WidgetTester tester) async {
   }
 }
 
-Future<ProviderContainer> _pumpApp(WidgetTester tester, String initialLocation) async {
+Future<ProviderContainer> _pumpApp(
+  WidgetTester tester,
+  String initialLocation, {
+  Future<void> Function(LocalStorageService storage)? seed,
+}) async {
   SharedPreferences.setMockInitialValues({});
   final storage = await tester.runAsync(LocalStorageService.create);
+  if (seed != null) await tester.runAsync(() => seed(storage!));
   tester.view.physicalSize = _phone;
   tester.view.devicePixelRatio = 1.0;
   addTearDown(tester.view.resetPhysicalSize);
@@ -91,6 +96,10 @@ void main() {
     final bytes = File('assets/fonts/NotoSans-Regular.ttf').readAsBytesSync();
     final loader = FontLoader('NotoSans')..addFont(Future.value(ByteData.view(bytes.buffer)));
     await loader.load();
+    final naskh = File('assets/fonts/NotoNaskhArabic-Regular.ttf').readAsBytesSync();
+    final naskhLoader = FontLoader('NotoNaskhArabic')
+      ..addFont(Future.value(ByteData.view(naskh.buffer)));
+    await naskhLoader.load();
     // Material icons otherwise render as tofu boxes in widget tests.
     final iconFont = File(
       '/home/user/flutter-sdk/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf',
@@ -102,8 +111,44 @@ void main() {
     }
   });
 
-  testWidgets('home screen', (tester) async {
-    await _pumpApp(tester, '/home');
+  GameState _midJourneySave() {
+    final now = DateTime(2026, 1, 1);
+    return GameState(
+      gameId: 'seed',
+      gameMode: GameMode.solo,
+      gameVariant: GameVariant.classic,
+      circuitId: CircuitId.oasisRoute,
+      players: [
+        _human('p0', 'Amina', AppTeam.emerald).copyWith(
+          horses: const [
+            HorseState(position: TrackPosition(17)),
+            HorseState(position: TrackPosition(5)),
+          ],
+          streak: const KnowledgeStreak(current: 4, best: 6),
+        ),
+        _human('p1', 'Yusuf', AppTeam.saphir),
+      ],
+      currentPlayerIndex: 0,
+      turnPhase: TurnPhase.selectingGait,
+      askedQuestionIds: const {},
+      startedAt: now,
+      updatedAt: now,
+    );
+  }
+
+  testWidgets('home screen (mid-journey hub)', (tester) async {
+    await _pumpApp(
+      tester,
+      '/home',
+      seed: (storage) async {
+        await GameSaveService(storage).save(_midJourneySave());
+        final progress = ProgressService(storage);
+        for (var i = 0; i < 23; i++) {
+          await progress.recordAnswer(correct: true, category: QuestionCategory.quran);
+        }
+        await progress.recordGameEnd(won: true);
+      },
+    );
     await _capture(tester, 'screen_home');
   });
 
@@ -150,7 +195,12 @@ void main() {
 
     // Tap through the real UI (not the controller) so screen-local state
     // like the chosen gait — which drives the reward chip — is exercised.
+    // First tap arms the gait and shows the destination preview…
     await tester.tap(find.text('3 squares'));
+    await _settle(tester);
+    await _capture(tester, 'screen_game_preview');
+    // …the gold arrow rides.
+    await tester.tap(find.byKey(const Key('gait-confirm')));
     await _settle(tester);
     await _capture(tester, 'screen_game_question');
 
@@ -159,6 +209,23 @@ void main() {
       await tester.tap(find.text(question.answers[question.correctAnswerIndex]).first);
       await _settle(tester);
       await _capture(tester, 'screen_game_feedback');
+
+      // Continue, hand the turn over, and capture a WRONG answer too.
+      await tester.tap(find.text('Continue').last);
+      await _settle(tester);
+      if (find.text('2 squares').evaluate().isNotEmpty) {
+        await tester.tap(find.text('2 squares'));
+        await _settle(tester);
+        await tester.tap(find.byKey(const Key('gait-confirm')));
+        await _settle(tester);
+        final q2 = container.read(gameControllerProvider)!.currentQuestion;
+        if (q2 != null) {
+          final wrong = (q2.correctAnswerIndex + 1) % q2.answers.length;
+          await tester.tap(find.text(q2.answers[wrong]).first);
+          await _settle(tester);
+          await _capture(tester, 'screen_game_wrong');
+        }
+      }
     }
   });
 }

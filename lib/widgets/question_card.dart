@@ -33,77 +33,109 @@ class QuestionCard extends StatelessWidget {
     final answered = isCorrect != null;
 
     return Material(
-      color: colors.surfaceElevated,
-      elevation: 6,
-      shadowColor: Colors.black.withValues(alpha: 0.25),
-      borderRadius: BorderRadius.circular(24),
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(26),
       clipBehavior: Clip.antiAlias,
-      child: GeometricMotifBackground(
-        opacity: 0.05,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  _CategoryChip(category: question.category, label: l10n.category),
-                  const SizedBox(width: 8),
-                  _DifficultyDots(difficulty: question.difficulty),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Text(question.question, style: Theme.of(context).textTheme.headlineMedium),
-              const SizedBox(height: 20),
-              for (var i = 0; i < question.answers.length; i++) ...[
-                _AnswerTile(
-                  letter: _letters[i],
-                  text: question.answers[i],
-                  state: _tileState(i),
-                  onTap: answered || onSelect == null ? null : () => onSelect!(i),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFFCF5E4), Color(0xFFF2E3C4)],
+          ),
+          borderRadius: BorderRadius.circular(26),
+          border: Border.all(color: const Color(0xFFD8B76A), width: 1.2),
+        ),
+        child: GeometricMotifBackground(
+          opacity: 0.05,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    _CategoryChip(category: question.category, label: l10n.category),
+                    const SizedBox(width: 8),
+                    _DifficultyDots(difficulty: question.difficulty),
+                  ],
                 ),
-                const SizedBox(height: 10),
-              ],
-              if (answered) ...[
-                const SizedBox(height: 8),
-                _FeedbackBand(
-                  correct: isCorrect!,
-                  correctLabel: l10n.correctAnswer,
-                  incorrectLabel: l10n.incorrectAnswer,
-                ),
-                const SizedBox(height: 14),
-                Text(
-                  l10n.explanationLabel,
-                  style: Theme.of(context).textTheme.labelMedium
-                      ?.copyWith(color: colors.textSecondary),
-                ),
-                const SizedBox(height: 4),
-                Text(question.explanation, style: Theme.of(context).textTheme.bodyMedium),
-                const SizedBox(height: 12),
-                Text(
-                  l10n.sourceLabel,
-                  style: Theme.of(context).textTheme.labelMedium
-                      ?.copyWith(color: colors.textSecondary),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  question.sourceDisplay,
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(color: colors.textSecondary, fontStyle: FontStyle.italic),
-                ),
-                if (onContinue != null) ...[
-                  const SizedBox(height: 18),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: onContinue,
-                      child: Text(MaterialLocalizations.of(context).continueButtonLabel),
-                    ),
+                const SizedBox(height: 16),
+                Text(question.question, style: Theme.of(context).textTheme.headlineMedium),
+                const SizedBox(height: 20),
+                for (var i = 0; i < question.answers.length; i++) ...[
+                  _AnswerTile(
+                    letter: _letters[i],
+                    text: question.answers[i],
+                    state: _tileState(i),
+                    onTap: answered || onSelect == null ? null : () => onSelect!(i),
                   ),
+                  const SizedBox(height: 12),
+                ],
+                if (answered) ...[
+                  const SizedBox(height: 8),
+                  _FeedbackBand(
+                    correct: isCorrect!,
+                    correctLabel: l10n.correctAnswer,
+                    incorrectLabel: l10n.incorrectAnswer,
+                  ),
+                  const SizedBox(height: 14),
+                  Text(
+                    l10n.explanationLabel,
+                    style: Theme.of(context).textTheme.labelMedium
+                        ?.copyWith(color: colors.textSecondary),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(question.explanation, style: Theme.of(context).textTheme.bodyMedium),
+                  const SizedBox(height: 12),
+                  Text(
+                    l10n.sourceLabel,
+                    style: Theme.of(context).textTheme.labelMedium
+                        ?.copyWith(color: colors.textSecondary),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    question.sourceDisplay,
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: colors.textSecondary, fontStyle: FontStyle.italic),
+                  ),
+                  if (onContinue != null) ...[
+                    const SizedBox(height: 18),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 52,
+                      child: Material(
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        child: Ink(
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xFFF3D68A), Color(0xFFD8A032)],
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: onContinue,
+                            child: Center(
+                              child: Text(
+                                MaterialLocalizations.of(context).continueButtonLabel,
+                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: const Color(0xFF4A3410),
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 0.6,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               ],
-            ],
+            ),
           ),
         ),
       ),
@@ -139,7 +171,7 @@ class _AnswerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final (bg, border, fg) = switch (state) {
-      _AnswerTileState.neutral => (colors.surface, colors.divider, colors.textPrimary),
+      _AnswerTileState.neutral => (Colors.white, const Color(0xFFCBB98F), colors.textPrimary),
       _AnswerTileState.selected => (
         colors.primary.withValues(alpha: 0.12),
         colors.primary,
@@ -162,9 +194,10 @@ class _AnswerTile extends StatelessWidget {
       button: true,
       selected: state == _AnswerTileState.selected,
       label: '$letter. $text',
-      child: InkWell(
+      child: _PressableEdge(
+        edgeColor: border,
+        enabled: onTap != null,
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
         child: Container(
           constraints: const BoxConstraints(minHeight: 52),
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -200,6 +233,60 @@ class _AnswerTile extends StatelessWidget {
                 Icon(Icons.cancel, color: colors.error),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A game button, not a form row: the tile sits on a solid darker edge
+/// and physically presses down onto it. 80-120ms, honors Reduce Motion.
+class _PressableEdge extends StatefulWidget {
+  const _PressableEdge({
+    required this.child,
+    required this.edgeColor,
+    required this.enabled,
+    this.onTap,
+  });
+
+  final Widget child;
+  final Color edgeColor;
+  final bool enabled;
+  final VoidCallback? onTap;
+
+  @override
+  State<_PressableEdge> createState() => _PressableEdgeState();
+}
+
+class _PressableEdgeState extends State<_PressableEdge> {
+  bool _down = false;
+
+  @override
+  Widget build(BuildContext context) {
+    const depth = 4.0;
+    final pressed = _down && widget.enabled;
+    return GestureDetector(
+      onTapDown: widget.enabled ? (_) => setState(() => _down = true) : null,
+      onTapCancel: () => setState(() => _down = false),
+      onTapUp: (_) => setState(() => _down = false),
+      onTap: widget.onTap,
+      child: Padding(
+        padding: EdgeInsets.only(top: pressed ? depth : 0),
+        child: AnimatedContainer(
+          duration: AppMotion.of(context, AppMotion.tap),
+          curve: Curves.easeOut,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: pressed
+                ? const []
+                : [
+                    BoxShadow(
+                      color: Color.lerp(widget.edgeColor, Colors.black, 0.25)!,
+                      offset: const Offset(0, depth),
+                    ),
+                  ],
+          ),
+          child: widget.child,
         ),
       ),
     );

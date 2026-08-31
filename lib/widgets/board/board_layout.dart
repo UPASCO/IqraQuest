@@ -69,10 +69,14 @@ class BoardLayout {
     final exitIndex = (entry - 1 + circuit.trackLength) % circuit.trackLength;
     final trackPoints = _computeTrackPoints(size, circuit);
     final branch = trackPoints[exitIndex];
+    // The lane bows sideways on its way in, so the four approaches meet
+    // the centre as worn riding arcs rather than a straight X.
+    final normal = Offset(-(center.dy - branch.dy), center.dx - branch.dx);
     final points = <Offset>[];
     for (var step = 1; step <= circuit.finalLaneLength; step++) {
       final t = step / (circuit.finalLaneLength + 1);
-      points.add(Offset.lerp(branch, center, t)!);
+      final straight = Offset.lerp(branch, center, t)!;
+      points.add(straight + normal * (0.115 * math.sin(t * math.pi)));
     }
     // Slightly fan out each team's finish mark so 4 finishes don't overlap.
     final angle = teamIndex * (math.pi / 2);
