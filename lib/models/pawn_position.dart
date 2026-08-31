@@ -1,28 +1,11 @@
 import 'package:flutter/foundation.dart';
 
-/// The board's logical geometry (spec §39: "never screen coordinates in the
-/// business engine"). Track squares are numbered 0..[trackLength]-1 around
-/// a shared loop; each team enters the loop at its own `entryIndex` and,
-/// after a full lap, peels off into a private final lane of
-/// [finalLaneLength] squares before reaching [FinishedPosition].
-class BoardGeometry {
-  const BoardGeometry._();
-
-  static const int trackLength = 52;
-  static const int finalLaneLength = 6;
-  static const int squaresPerQuadrant = trackLength ~/ 4; // 13
-
-  /// Squares (by global track index) that are "protected" — a pawn landing
-  /// here cannot be captured (spec §44). Includes every team's entry
-  /// square plus one further waypoint per quadrant, marked with the star
-  /// motif in the UI.
-  static const Set<int> protectedSquares = {0, 8, 13, 21, 26, 34, 39, 47};
-
-  static int entryIndexForTeam(int teamIndex) => (teamIndex * squaresPerQuadrant) % trackLength;
-}
-
-/// A pawn's logical location. Never carries screen/pixel data — rendering
+/// A horse's logical location. Never carries screen/pixel data — rendering
 /// maps this to board coordinates in the presentation layer only.
+///
+/// Board geometry (track length, final-lane length, which squares are
+/// safe) belongs to the chosen [Circuit], not to a global constant, so the
+/// three courses can differ in size and layout.
 @immutable
 sealed class PawnPosition {
   const PawnPosition();
@@ -40,7 +23,9 @@ sealed class PawnPosition {
   Map<String, dynamic> toJson();
 }
 
-/// In the stable — not yet on the board. Requires a 6 to leave (spec §41).
+/// In the stable — not yet on the board. Any gait brings a horse out: the
+/// move itself is what carries it onto its entry square, so no particular
+/// number is ever required to start (spec §4).
 final class HomePosition extends PawnPosition {
   const HomePosition();
 
@@ -53,13 +38,12 @@ final class HomePosition extends PawnPosition {
   int get hashCode => 0;
 }
 
-/// On the shared circular track, at global index [index] (0..51).
+/// On the shared circular track, at global index [index]. The upper bound
+/// is the active circuit's `trackLength`, which the engine enforces.
 final class TrackPosition extends PawnPosition {
-  const TrackPosition(this.index) : assert(index >= 0 && index < BoardGeometry.trackLength);
+  const TrackPosition(this.index) : assert(index >= 0);
 
   final int index;
-
-  bool get isProtected => BoardGeometry.protectedSquares.contains(index);
 
   @override
   Map<String, dynamic> toJson() => {'type': 'track', 'index': index};
@@ -70,10 +54,11 @@ final class TrackPosition extends PawnPosition {
   int get hashCode => Object.hash('track', index);
 }
 
-/// In the pawn's own private final lane, [step] squares from the track
-/// exit (1..6). Never shared with another team, so never capturable.
+/// In the horse's own private final lane, [step] squares from the track
+/// exit. Never shared with another team, so never capturable. The upper
+/// bound is the active circuit's `finalLaneLength`.
 final class FinalLanePosition extends PawnPosition {
-  const FinalLanePosition(this.step) : assert(step >= 1 && step <= BoardGeometry.finalLaneLength);
+  const FinalLanePosition(this.step) : assert(step >= 1);
 
   final int step;
 

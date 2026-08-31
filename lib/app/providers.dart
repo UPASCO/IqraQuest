@@ -5,6 +5,7 @@ import '../features/game/domain/game_engine.dart';
 import '../services/daily_challenge_service.dart';
 import '../services/entitlement_service.dart';
 import '../services/game_save_service.dart';
+import '../services/legacy_game_migration_service.dart';
 import '../services/progress_service.dart';
 import '../services/purchase_service.dart';
 import '../services/question_repository.dart';
@@ -24,6 +25,9 @@ final progressServiceProvider = Provider<ProgressService>(
   (ref) => throw UnimplementedError('Override in main()'),
 );
 final gameSaveServiceProvider = Provider<GameSaveService>(
+  (ref) => throw UnimplementedError('Override in main()'),
+);
+final legacyGameMigrationServiceProvider = Provider<LegacyGameMigrationService>(
   (ref) => throw UnimplementedError('Override in main()'),
 );
 final questionRepositoryProvider = Provider<QuestionRepository>(

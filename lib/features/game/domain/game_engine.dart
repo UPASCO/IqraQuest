@@ -1,251 +1,583 @@
-import 'dart:math';
-
-import '../../../models/game_mode.dart';
+import '../../../models/circuit.dart';
 import '../../../models/game_state.dart';
+import '../../../models/knowledge_streak.dart';
+import '../../../models/move_outcome.dart';
+import '../../../models/movement_choice.dart';
 import '../../../models/pawn_position.dart';
 import '../../../models/player.dart';
 import '../../../models/turn_phase.dart';
-import 'pawn_move.dart';
 
-/// The single source of truth for IqraQuest's board-game rules.
+/// The single source of truth for IqraQuest's rules.
 ///
-/// Pure, deterministic (aside from [rollDice]) and platform-independent —
-/// no widgets, no I/O. The same instance drives human players and every AI
-/// difficulty (spec §35: "the AI never cheats, the dice stays impartial").
-/// See spec §40–§48 for the rules encoded here, and `test/features/game`
-/// for the behavioural test suite (spec §100).
+/// There is no dice and no randomness anywhere in this class: how far a
+/// horse moves is decided by the player choosing a gait, and whether it
+/// actually moves is decided by whether they answer the matching question
+/// correctly. Every board effect is fixed and previewable before the
+/// player commits (see [previewGait]).
+///
+/// Pure, deterministic, platform-independent — no widgets, no I/O. The
+/// same instance drives human players and every AI difficulty.
 class GameEngine {
-  GameEngine({Random? random}) : _random = random ?? Random();
-
-  final Random _random;
-
-  int rollDice() => _random.nextInt(6) + 1;
-
-  int teamIndexOf(GameState state, String playerId) =>
-      state.players.indexWhere((p) => p.id == playerId);
+  const GameEngine();
 
   // ---------------------------------------------------------------------
-  // Turn phase 1: question gate (spec §40)
+  // Reading the current options
   // ---------------------------------------------------------------------
 
-  /// A correct answer unlocks the dice for the current player.
-  GameState applyAnswerCorrect(GameState state, {required String questionId}) {
-    return state.copyWith(
-      turnPhase: TurnPhase.waitingForDice,
-      currentQuestionId: questionId,
-      askedQuestionIds: {...state.askedQuestionIds, questionId},
-      updatedAt: DateTime.now(),
-    );
-  }
+  /// Gaits this player has not yet spent in the current cycle.
+  List<MovementChoice> availableGaits(Player player) => player.gaitCycle.available;
 
-  /// A wrong answer forfeits this player's roll; the turn passes on.
-  GameState applyAnswerIncorrect(GameState state, {required String questionId}) {
-    final marked = state.copyWith(
-      turnPhase: TurnPhase.turnComplete,
-      currentQuestionId: questionId,
-      askedQuestionIds: {...state.askedQuestionIds, questionId},
-      lastDiceValue: null,
-      updatedAt: DateTime.now(),
-    );
-    return _endTurn(marked, rolledSix: false);
-  }
+  /// Indices of horses that can act this turn: anything not already
+  /// arrived. A horse waiting on its journey question is handled by
+  /// [answerJourneyQuestion] instead, so it is excluded here.
+  List<int> movableHorses(Player player) => [
+    for (var i = 0; i < player.horses.length; i++)
+      if (!player.horses[i].isFinished) i,
+  ];
 
-  /// Free-edition escape hatch (spec §49): once the 50-question free bank
-  /// is exhausted mid-game, the dice unlocks without a question for the
-  /// rest of *this* game — the game is never interrupted or paywalled
-  /// mid-play.
-  GameState allowDiceWithoutQuestion(GameState state) {
-    return state.copyWith(
-      turnPhase: TurnPhase.waitingForDice,
-      currentQuestionId: null,
-      freeBankExhausted: true,
-      updatedAt: DateTime.now(),
-    );
-  }
+  /// Horses that have reached the finish and still owe their "Question du
+  /// voyage" before the arrival counts (spec §10).
+  List<int> horsesAwaitingJourneyQuestion(Player player) => [
+    for (var i = 0; i < player.horses.length; i++)
+      if (player.horses[i].awaitingJourneyQuestion) i,
+  ];
 
-  // ---------------------------------------------------------------------
-  // Turn phase 2: dice + movement (spec §41–§46)
-  // ---------------------------------------------------------------------
-
-  /// Rolls the dice for the current player and computes legal moves.
-  /// If none exist, the turn is immediately resolved (still respecting the
-  /// "6 grants another question" rule).
-  ({GameState state, int diceValue, List<PawnMove> legalMoves}) applyDiceRoll(GameState state) {
-    final diceValue = rollDice();
-    return applyKnownDiceRoll(state, diceValue);
-  }
-
-  /// Same as [applyDiceRoll] but with a pre-determined value — used by
-  /// tests and by deterministic replays.
-  ({GameState state, int diceValue, List<PawnMove> legalMoves}) applyKnownDiceRoll(
+  /// What *would* happen — shown before the player commits, so the choice
+  /// is always informed and never a gamble (spec §7).
+  GaitPreview previewGait(
     GameState state,
-    int diceValue,
-  ) {
-    assert(diceValue >= 1 && diceValue <= 6);
-    final moves = legalMoves(state, diceValue);
-    var next = state.copyWith(lastDiceValue: diceValue, updatedAt: DateTime.now());
-    if (moves.isEmpty) {
-      next = next.copyWith(turnPhase: TurnPhase.turnComplete);
-      next = _endTurn(next, rolledSix: diceValue == 6);
-    } else {
-      next = next.copyWith(turnPhase: TurnPhase.waitingForPawnSelection);
-    }
-    return (state: next, diceValue: diceValue, legalMoves: moves);
-  }
-
-  /// All legal moves for the current player given [diceValue]. Never
-  /// includes an overshoot past the finish (spec §45) or a move onto a
-  /// square already held by the mover's own pawn.
-  List<PawnMove> legalMoves(GameState state, int diceValue) {
+    int horseIndex,
+    MovementChoice choice, {
+    bool useGrandGallop = false,
+  }) {
+    final circuit = state.circuit;
     final player = state.currentPlayer;
     final teamIndex = state.players.indexOf(player);
-    final entry = BoardGeometry.entryIndexForTeam(teamIndex);
-    final moves = <PawnMove>[];
+    final entry = circuit.entryIndexForTeam(teamIndex);
+    final horse = player.horses[horseIndex];
 
-    for (var i = 0; i < player.pawns.length; i++) {
-      final from = player.pawns[i];
-      final to = _destinationFor(from, diceValue, entry);
-      if (to == null) continue; // overshoot or dice==6 required but absent
-      if (_ownPawnOccupies(player, i, to)) continue;
+    final bonus = useGrandGallop && player.rewards.hasGrandGallop ? 2 : 0;
+    final destination = _destinationFor(horse.position, choice.steps + bonus, entry, circuit);
 
-      final capture = _captureAt(state, player.id, to);
-      moves.add(
-        PawnMove(
-          playerId: player.id,
-          pawnIndex: i,
-          from: from,
-          to: to,
-          capturedPlayerId: capture?.$1,
-          capturedPawnIndex: capture?.$2,
-        ),
+    final capture = _captureAt(state, player.id, destination);
+    return GaitPreview(
+      choice: choice,
+      horseIndex: horseIndex,
+      destination: destination,
+      effect: destination is TrackPosition ? circuit.effectAt(destination.index) : CellEffect.plain,
+      capturesOpponent: capture != null,
+      reachesFinish: destination is FinishedPosition,
+      usesGrandGallop: bonus > 0,
+    );
+  }
+
+  // ---------------------------------------------------------------------
+  // Turn flow
+  // ---------------------------------------------------------------------
+
+  /// Step 3–4 of a turn: the player commits to a horse and a gait. This
+  /// only *locks in* the choice — the question of the matching difficulty
+  /// is drawn next, and nothing moves until it is answered.
+  GameState commitGait(
+    GameState state,
+    int horseIndex,
+    MovementChoice choice, {
+    bool useGrandGallop = false,
+  }) {
+    assert(
+      state.currentPlayer.gaitCycle.isAvailable(choice),
+      'Gait ${choice.steps} was already spent this cycle',
+    );
+    return state.copyWith(
+      pendingGait: PendingGait(
+        horseIndex: horseIndex,
+        choice: choice,
+        usesGrandGallop: useGrandGallop && state.currentPlayer.rewards.hasGrandGallop,
+      ),
+      turnPhase: TurnPhase.answeringQuestion,
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  /// Step 6–9: resolves the answer. A correct answer advances the horse by
+  /// exactly the chosen number of squares; a wrong one leaves it where it
+  /// stands. Either way the gait is spent for this cycle, and the streak
+  /// is updated.
+  GameState applyAnswer(GameState state, {required bool correct, required String questionId}) {
+    final pending = state.pendingGait;
+    if (pending == null) return state;
+
+    final players = [...state.players];
+    final playerIndex = state.currentPlayerIndex;
+    var player = players[playerIndex];
+
+    // The gait is consumed whether the answer was right or wrong.
+    var rewards = player.rewards;
+    var streak = player.streak;
+    final unlocked = <StreakReward>[];
+
+    if (correct) {
+      final result = streak.recordCorrect();
+      streak = result.streak;
+      unlocked.addAll(result.unlocked);
+      rewards = rewards.copyWith(
+        knowledgePoints: rewards.knowledgePoints + pending.choice.knowledgePoints,
+      );
+    } else {
+      streak = streak.recordIncorrect();
+    }
+
+    player = player.copyWith(
+      gaitCycle: player.gaitCycle.consume(pending.choice),
+      streak: streak,
+      rewards: rewards,
+    );
+    players[playerIndex] = player;
+
+    var next = state.copyWith(
+      players: players,
+      currentQuestionId: questionId,
+      askedQuestionIds: {...state.askedQuestionIds, questionId},
+      lastAnswerCorrect: correct,
+      turnPhase: TurnPhase.showingFeedback,
+      updatedAt: DateTime.now(),
+    );
+
+    if (!correct) {
+      // The horse stays exactly where it was; nothing else to resolve.
+      return next.copyWith(pendingGait: null, lastMoveOutcome: MoveOutcome.stayed);
+    }
+
+    next = _moveHorse(next, pending);
+    next = _grantStreakRewards(next, unlocked, pending.horseIndex);
+    return next;
+  }
+
+  /// Applies the committed movement, any capture, and the arrival rule.
+  GameState _moveHorse(GameState state, PendingGait pending) {
+    final circuit = state.circuit;
+    final players = [...state.players];
+    final playerIndex = state.currentPlayerIndex;
+    var player = players[playerIndex];
+    final teamIndex = playerIndex;
+    final entry = circuit.entryIndexForTeam(teamIndex);
+
+    final bonus = pending.usesGrandGallop ? 2 : 0;
+    final horse = player.horses[pending.horseIndex];
+    final destination = _destinationFor(
+      horse.position,
+      pending.choice.steps + bonus,
+      entry,
+      circuit,
+    );
+
+    final horses = [...player.horses];
+    final reachedFinish = destination is FinishedPosition;
+    horses[pending.horseIndex] = horse.copyWith(
+      position: destination,
+      awaitingJourneyQuestion: reachedFinish ? true : horse.awaitingJourneyQuestion,
+    );
+
+    var rewards = player.rewards;
+    if (pending.usesGrandGallop) {
+      rewards = rewards.copyWith(hasGrandGallop: false);
+    }
+    player = player.copyWith(horses: horses, rewards: rewards);
+    players[playerIndex] = player;
+
+    var outcome = reachedFinish ? MoveOutcome.reachedFinish : MoveOutcome.moved;
+
+    // Capture: landing exactly on an opponent sends it home, unless the
+    // square is an Oasis or the opponent carries a knowledge shield.
+    final capture = _captureAt(state, player.id, destination);
+    if (capture != null) {
+      final (opponentIndex, opponentHorseIndex) = capture;
+      final opponent = players[opponentIndex];
+      final opponentHorses = [...opponent.horses];
+      final target = opponentHorses[opponentHorseIndex];
+      if (target.hasShield) {
+        // The shield absorbs the capture and is spent; the horse stays.
+        opponentHorses[opponentHorseIndex] = target.copyWith(hasShield: false);
+        outcome = MoveOutcome.blockedByShield;
+      } else {
+        opponentHorses[opponentHorseIndex] = target.copyWith(
+          position: const HomePosition(),
+          awaitingJourneyQuestion: false,
+        );
+        outcome = MoveOutcome.captured;
+      }
+      players[opponentIndex] = opponent.copyWith(horses: opponentHorses);
+    }
+
+    final effect = destination is TrackPosition
+        ? circuit.effectAt(destination.index)
+        : CellEffect.plain;
+
+    return state.copyWith(
+      players: players,
+      pendingGait: null,
+      lastMoveOutcome: outcome,
+      pendingCellEffect: _isInteractive(effect) ? effect : null,
+      landedEffect: effect,
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  /// Cells that ask the player something. The rest apply silently.
+  bool _isInteractive(CellEffect effect) => switch (effect) {
+    CellEffect.challenge || CellEffect.shortcut || CellEffect.relay || CellEffect.duel => true,
+    _ => false,
+  };
+
+  GameState _grantStreakRewards(GameState state, List<StreakReward> unlocked, int horseIndex) {
+    if (unlocked.isEmpty) return state;
+    final players = [...state.players];
+    final index = state.currentPlayerIndex;
+    var player = players[index];
+    var rewards = player.rewards;
+    var horses = [...player.horses];
+
+    for (final reward in unlocked) {
+      switch (reward) {
+        case StreakReward.shield:
+          // Attach it straight to the horse that just moved — no extra
+          // decision screen for a bonus that has only one sensible target.
+          horses[horseIndex] = horses[horseIndex].copyWith(hasShield: true);
+        case StreakReward.grandGallop:
+          rewards = rewards.copyWith(hasGrandGallop: true);
+        case StreakReward.masteryBadge:
+          // The category is decided by the caller (it needs answer
+          // history); the engine only records that one was earned.
+          break;
+      }
+    }
+
+    players[index] = player.copyWith(horses: horses, rewards: rewards);
+    return state.copyWith(players: players, justUnlocked: unlocked, updatedAt: DateTime.now());
+  }
+
+  // ---------------------------------------------------------------------
+  // Interactive cells (all deterministic — the player always knows the
+  // stake before accepting, and failing never causes a setback)
+  // ---------------------------------------------------------------------
+
+  /// The player declined the optional challenge/shortcut, or finished
+  /// resolving a cell. Moves the turn along.
+  GameState declineCellOffer(GameState state) =>
+      state.copyWith(pendingCellEffect: null, turnPhase: TurnPhase.turnComplete);
+
+  /// A Défi (challenge) cell: the player answered the optional harder
+  /// question. Success adds 2 squares; failure costs only the bonus.
+  GameState resolveChallenge(GameState state, {required bool correct, required String questionId}) {
+    var next = state.copyWith(
+      askedQuestionIds: {...state.askedQuestionIds, questionId},
+      pendingCellEffect: null,
+    );
+    if (!correct) {
+      return next.copyWith(
+        lastMoveOutcome: MoveOutcome.bonusMissed,
+        turnPhase: TurnPhase.turnComplete,
       );
     }
-    return moves;
+    next = _advanceCurrentHorse(next, 2);
+    return next.copyWith(
+      lastMoveOutcome: MoveOutcome.bonusEarned,
+      turnPhase: TurnPhase.turnComplete,
+    );
   }
 
-  PawnPosition? _destinationFor(PawnPosition from, int dice, int entry) {
-    return switch (from) {
-      HomePosition() => dice == 6 ? TrackPosition(entry) : null,
-      TrackPosition(:final index) => _advanceFromTrack(index, dice, entry),
-      FinalLanePosition(:final step) => _advanceFromFinalLane(step, dice),
-      FinishedPosition() => null,
-    };
+  /// A Raccourci (shortcut) cell: a hard question buys a jump forward.
+  /// Failing leaves the horse exactly where it already stood.
+  GameState resolveShortcut(
+    GameState state, {
+    required bool correct,
+    required String questionId,
+    required int horseIndex,
+  }) {
+    var next = state.copyWith(
+      askedQuestionIds: {...state.askedQuestionIds, questionId},
+      pendingCellEffect: null,
+    );
+    if (!correct) {
+      return next.copyWith(
+        lastMoveOutcome: MoveOutcome.bonusMissed,
+        turnPhase: TurnPhase.turnComplete,
+      );
+    }
+    next = _advanceCurrentHorse(next, state.circuit.shortcutJump, horseIndex: horseIndex);
+    return next.copyWith(
+      lastMoveOutcome: MoveOutcome.bonusEarned,
+      turnPhase: TurnPhase.turnComplete,
+    );
   }
 
-  PawnPosition? _advanceFromTrack(int index, int dice, int entry) {
-    final p = (index - entry) % BoardGeometry.trackLength;
-    final newP = p + dice;
-    if (newP <= BoardGeometry.trackLength - 1) {
-      return TrackPosition((entry + newP) % BoardGeometry.trackLength);
+  /// A Relais cell: the player hands the squares they just earned to
+  /// another of their own horses instead.
+  GameState resolveRelay(
+    GameState state, {
+    required int fromHorseIndex,
+    required int toHorseIndex,
+    required int steps,
+  }) {
+    final circuit = state.circuit;
+    final players = [...state.players];
+    final index = state.currentPlayerIndex;
+    final player = players[index];
+    final entry = circuit.entryIndexForTeam(index);
+    final horses = [...player.horses];
+
+    // Give back the squares from the horse that moved…
+    final from = horses[fromHorseIndex];
+    final fromProgress = _progressOf(from.position, entry, circuit);
+    if (fromProgress != null) {
+      horses[fromHorseIndex] = from.copyWith(
+        position: _positionAt(
+          (fromProgress - steps).clamp(0, circuit.journeyLength),
+          entry,
+          circuit,
+        ),
+        awaitingJourneyQuestion: false,
+      );
     }
-    final laneStep = newP - (BoardGeometry.trackLength - 1);
-    if (laneStep < BoardGeometry.finalLaneLength) {
-      return FinalLanePosition(laneStep);
-    }
-    if (laneStep == BoardGeometry.finalLaneLength) {
-      return const FinishedPosition();
-    }
-    return null; // overshoot — illegal
+    // …and hand them to the chosen one.
+    final to = horses[toHorseIndex];
+    final destination = _destinationFor(to.position, steps, entry, circuit);
+    horses[toHorseIndex] = to.copyWith(
+      position: destination,
+      awaitingJourneyQuestion: destination is FinishedPosition ? true : to.awaitingJourneyQuestion,
+    );
+
+    players[index] = player.copyWith(horses: horses);
+    return state.copyWith(
+      players: players,
+      pendingCellEffect: null,
+      turnPhase: TurnPhase.turnComplete,
+      updatedAt: DateTime.now(),
+    );
   }
 
-  PawnPosition? _advanceFromFinalLane(int step, int dice) {
-    final newStep = step + dice;
-    if (newStep == BoardGeometry.finalLaneLength + 1) {
-      return const FinishedPosition();
+  /// A Duel cell: both players have answered a question of equal
+  /// difficulty. The winner earns a shield; a tie changes nothing.
+  GameState resolveDuel(
+    GameState state, {
+    required bool challengerCorrect,
+    required bool opponentCorrect,
+    required int opponentIndex,
+    required int challengerHorseIndex,
+  }) {
+    if (challengerCorrect == opponentCorrect) {
+      return state.copyWith(pendingCellEffect: null, turnPhase: TurnPhase.turnComplete);
     }
-    if (newStep <= BoardGeometry.finalLaneLength) {
-      return FinalLanePosition(newStep);
-    }
-    return null; // overshoot — illegal, exact count required (spec §45)
+    final players = [...state.players];
+    final winnerIndex = challengerCorrect ? state.currentPlayerIndex : opponentIndex;
+    final winner = players[winnerIndex];
+    final horses = [...winner.horses];
+    final horseIndex = challengerCorrect
+        ? challengerHorseIndex
+        : _mostAdvancedHorse(winner, state.circuit, winnerIndex);
+    horses[horseIndex] = horses[horseIndex].copyWith(hasShield: true);
+    players[winnerIndex] = winner.copyWith(horses: horses);
+
+    return state.copyWith(
+      players: players,
+      pendingCellEffect: null,
+      turnPhase: TurnPhase.turnComplete,
+      updatedAt: DateTime.now(),
+    );
   }
 
-  bool _ownPawnOccupies(Player player, int movingPawnIndex, PawnPosition to) {
-    if (to is! TrackPosition) return false;
-    for (var i = 0; i < player.pawns.length; i++) {
-      if (i == movingPawnIndex) continue;
-      if (player.pawns[i] == to) return true;
-    }
-    return false;
+  /// Knowledge and Wisdom cells: the player keeps a sourced fact. Purely
+  /// additive — no gameplay advantage beyond the knowledge point.
+  GameState collectFact(GameState state, String factId, {int bonusPoints = 0}) {
+    final players = [...state.players];
+    final index = state.currentPlayerIndex;
+    final player = players[index];
+    players[index] = player.copyWith(
+      rewards: player.rewards.copyWith(
+        collectedFactIds: {...player.rewards.collectedFactIds, factId},
+        knowledgePoints: player.rewards.knowledgePoints + bonusPoints,
+      ),
+    );
+    return state.copyWith(players: players, updatedAt: DateTime.now());
   }
 
-  (String, int)? _captureAt(GameState state, String movingPlayerId, PawnPosition to) {
-    if (to is! TrackPosition || to.isProtected) return null;
-    for (final other in state.players) {
+  // ---------------------------------------------------------------------
+  // Arrival
+  // ---------------------------------------------------------------------
+
+  /// The "Question du voyage" that makes an arrival official (spec §10).
+  /// A wrong answer never pushes the horse back — the player simply tries
+  /// again on a later turn.
+  GameState answerJourneyQuestion(
+    GameState state, {
+    required bool correct,
+    required String questionId,
+    required int horseIndex,
+  }) {
+    final players = [...state.players];
+    final index = state.currentPlayerIndex;
+    final player = players[index];
+
+    var next = state.copyWith(
+      askedQuestionIds: {...state.askedQuestionIds, questionId},
+      currentQuestionId: questionId,
+      lastAnswerCorrect: correct,
+      updatedAt: DateTime.now(),
+    );
+    if (!correct) {
+      return next.copyWith(turnPhase: TurnPhase.showingFeedback);
+    }
+
+    final horses = [...player.horses];
+    horses[horseIndex] = horses[horseIndex].copyWith(awaitingJourneyQuestion: false);
+    players[index] = player.copyWith(horses: horses);
+    next = next.copyWith(players: players);
+
+    final winner = players[index];
+    if (winner.hasArrivedCompletely) {
+      return next.copyWith(winnerId: winner.id, turnPhase: TurnPhase.gameOver);
+    }
+    return next.copyWith(turnPhase: TurnPhase.showingFeedback);
+  }
+
+  // ---------------------------------------------------------------------
+  // Turn hand-off
+  // ---------------------------------------------------------------------
+
+  /// Ends the current turn and hands over to the next player, unless the
+  /// game is already won. There is no "roll again" — an extra turn only
+  /// ever comes from an explicitly earned bonus.
+  GameState endTurn(GameState state) {
+    if (state.turnPhase == TurnPhase.gameOver) return state;
+
+    final winner = state.players.firstWhere(
+      (p) => p.hasArrivedCompletely,
+      orElse: () => state.players.first,
+    );
+    if (winner.hasArrivedCompletely) {
+      return state.copyWith(
+        winnerId: winner.id,
+        turnPhase: TurnPhase.gameOver,
+        updatedAt: DateTime.now(),
+      );
+    }
+
+    final nextIndex = (state.currentPlayerIndex + 1) % state.players.length;
+    return state.copyWith(
+      currentPlayerIndex: nextIndex,
+      turnPhase: TurnPhase.selectingGait,
+      currentQuestionId: null,
+      pendingGait: null,
+      pendingCellEffect: null,
+      landedEffect: null,
+      lastAnswerCorrect: null,
+      lastMoveOutcome: null,
+      justUnlocked: const [],
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  // ---------------------------------------------------------------------
+  // Geometry helpers — progress along a horse's own journey
+  // ---------------------------------------------------------------------
+
+  GameState _advanceCurrentHorse(GameState state, int steps, {int? horseIndex}) {
+    final circuit = state.circuit;
+    final players = [...state.players];
+    final index = state.currentPlayerIndex;
+    final player = players[index];
+    final entry = circuit.entryIndexForTeam(index);
+    final target = horseIndex ?? _mostAdvancedHorse(player, circuit, index);
+
+    final horses = [...player.horses];
+    final destination = _destinationFor(horses[target].position, steps, entry, circuit);
+    horses[target] = horses[target].copyWith(
+      position: destination,
+      awaitingJourneyQuestion: destination is FinishedPosition
+          ? true
+          : horses[target].awaitingJourneyQuestion,
+    );
+    players[index] = player.copyWith(horses: horses);
+    return state.copyWith(players: players, updatedAt: DateTime.now());
+  }
+
+  int _mostAdvancedHorse(Player player, Circuit circuit, int teamIndex) {
+    final entry = circuit.entryIndexForTeam(teamIndex);
+    var best = 0;
+    var bestProgress = -1;
+    for (var i = 0; i < player.horses.length; i++) {
+      final p = _progressOf(player.horses[i].position, entry, circuit) ?? -1;
+      if (p > bestProgress) {
+        bestProgress = p;
+        best = i;
+      }
+    }
+    return best;
+  }
+
+  /// Where a horse ends up after [steps] squares. Leaving the stable costs
+  /// the move itself, so gait 1 puts a horse exactly on its entry square
+  /// (spec §4: no 6 required any more). Overshooting the finish is allowed
+  /// — the horse simply arrives (spec §10).
+  PawnPosition _destinationFor(PawnPosition from, int steps, int entry, Circuit circuit) {
+    final progress = _progressOf(from, entry, circuit);
+    if (progress == null) {
+      // In the stable: entering the course consumes one of the squares.
+      return _positionAt(steps - 1, entry, circuit);
+    }
+    return _positionAt(progress + steps, entry, circuit);
+  }
+
+  /// How far along its own journey a horse stands, or null if still in the
+  /// stable.
+  int? _progressOf(PawnPosition position, int entry, Circuit circuit) => switch (position) {
+    HomePosition() => null,
+    TrackPosition(:final index) => (index - entry) % circuit.trackLength,
+    FinalLanePosition(:final step) => circuit.trackLength + step - 1,
+    FinishedPosition() => circuit.journeyLength,
+  };
+
+  PawnPosition _positionAt(int progress, int entry, Circuit circuit) {
+    if (progress >= circuit.journeyLength) return const FinishedPosition();
+    if (progress >= circuit.trackLength) {
+      return FinalLanePosition(progress - circuit.trackLength + 1);
+    }
+    return TrackPosition((entry + progress) % circuit.trackLength);
+  }
+
+  /// The opponent horse standing exactly on [destination], if it can be
+  /// captured there. Oasis squares and the private final lane are safe.
+  (int, int)? _captureAt(GameState state, String movingPlayerId, PawnPosition destination) {
+    if (destination is! TrackPosition) return null;
+    if (state.circuit.isSafe(destination.index)) return null;
+    for (var p = 0; p < state.players.length; p++) {
+      final other = state.players[p];
       if (other.id == movingPlayerId) continue;
-      for (var i = 0; i < other.pawns.length; i++) {
-        if (other.pawns[i] == to) return (other.id, i);
+      for (var h = 0; h < other.horses.length; h++) {
+        if (other.horses[h].position == destination) return (p, h);
       }
     }
     return null;
   }
+}
 
-  /// Commits one [PawnMove]: relocates the pawn, sends a captured opponent
-  /// pawn back to its stable, and checks for victory (spec §47).
-  GameState applyMove(GameState state, PawnMove move) {
-    var players = List<Player>.from(state.players);
+/// What a gait would do, shown before the player commits.
+class GaitPreview {
+  const GaitPreview({
+    required this.choice,
+    required this.horseIndex,
+    required this.destination,
+    required this.effect,
+    required this.capturesOpponent,
+    required this.reachesFinish,
+    required this.usesGrandGallop,
+  });
 
-    final moverIdx = players.indexWhere((p) => p.id == move.playerId);
-    final mover = players[moverIdx];
-    final newPawns = List<PawnPosition>.from(mover.pawns);
-    newPawns[move.pawnIndex] = move.to;
-    players[moverIdx] = mover.copyWith(pawns: newPawns);
-
-    if (move.isCapture) {
-      final capturedIdx = players.indexWhere((p) => p.id == move.capturedPlayerId);
-      final captured = players[capturedIdx];
-      final capturedPawns = List<PawnPosition>.from(captured.pawns);
-      capturedPawns[move.capturedPawnIndex!] = const HomePosition();
-      players[capturedIdx] = captured.copyWith(pawns: capturedPawns);
-    }
-
-    final winner = players.firstWhere((p) => p.id == move.playerId);
-    final won = hasPlayerWon(winner, state.gameVariant);
-
-    var next = state.copyWith(
-      players: players,
-      turnPhase: TurnPhase.turnComplete,
-      winnerId: won ? winner.id : null,
-      updatedAt: DateTime.now(),
-    );
-
-    if (won) {
-      return next.copyWith(turnPhase: TurnPhase.gameOver);
-    }
-
-    return _endTurn(next, rolledSix: state.lastDiceValue == 6);
-  }
-
-  bool hasPlayerWon(Player player, GameVariant variant) => switch (variant) {
-    GameVariant.quick => player.pawns.any((p) => p is FinishedPosition),
-    GameVariant.classic => player.pawns.every((p) => p is FinishedPosition),
-  };
-
-  /// Rolling a 6 grants another turn for the *same* player, but always
-  /// gated by a fresh question (spec §46: never two rolls from one
-  /// correct answer). Any other value passes the turn to the next player.
-  GameState _endTurn(GameState state, {required bool rolledSix}) {
-    if (state.turnPhase == TurnPhase.gameOver) return state;
-    if (rolledSix) {
-      return state.copyWith(
-        turnPhase: TurnPhase.waitingForQuestion,
-        currentQuestionId: null,
-        lastDiceValue: null,
-      );
-    }
-    final nextIndex = (state.currentPlayerIndex + 1) % state.players.length;
-    return state.copyWith(
-      currentPlayerIndex: nextIndex,
-      turnPhase: TurnPhase.waitingForQuestion,
-      currentQuestionId: null,
-      lastDiceValue: null,
-    );
-  }
-
-  /// Public wrapper so the presentation layer can resolve a turn after an
-  /// animation completes (phase [TurnPhase.animatingMove] →
-  /// [TurnPhase.turnComplete] → next phase).
-  GameState completeAnimatedMove(GameState state) {
-    if (state.turnPhase == TurnPhase.gameOver) return state;
-    return _endTurn(state, rolledSix: state.lastDiceValue == 6);
-  }
+  final MovementChoice choice;
+  final int horseIndex;
+  final PawnPosition destination;
+  final CellEffect effect;
+  final bool capturesOpponent;
+  final bool reachesFinish;
+  final bool usesGrandGallop;
 }

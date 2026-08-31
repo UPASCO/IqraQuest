@@ -204,6 +204,55 @@ void main() {
   final pbxproj = File('${root.path}/ios/Runner.xcodeproj/project.pbxproj');
   check('Xcode project exists', pbxproj.existsSync());
 
+  section('Race rules (no dice, no chance)');
+  final engineFile = File('${root.path}/lib/features/game/domain/game_engine.dart');
+  check('game_engine.dart exists', engineFile.existsSync());
+  if (engineFile.existsSync()) {
+    final text = engineFile.readAsStringSync();
+    check('the engine imports no random source', !text.contains('dart:math'));
+    check('the engine instantiates no Random', !text.contains('Random'));
+  }
+
+  // A functional dice reference anywhere in lib/ means the rules change is
+  // incomplete. The migration service is allowed to *name* the old format
+  // it detects, and the l10n bundle explains the change to the player.
+  final diceOffenders = <String>[];
+  for (final entity in Directory('${root.path}/lib').listSync(recursive: true)) {
+    if (entity is! File || !entity.path.endsWith('.dart')) continue;
+    if (entity.path.endsWith('legacy_game_migration_service.dart')) continue;
+    if (entity.path.contains('l10n/generated')) continue;
+    final text = entity.readAsStringSync();
+    for (final banned in const ['rollDice', 'DiceWidget', 'lastDiceValue', 'waitingForDice']) {
+      if (text.contains(banned)) {
+        diceOffenders.add('${entity.path.split('/lib/').last}: $banned');
+      }
+    }
+  }
+  check(
+    'no dice API remains anywhere in lib/',
+    diceOffenders.isEmpty,
+    detail: diceOffenders.join(', '),
+  );
+
+  final circuitFile = File('${root.path}/lib/models/circuit.dart');
+  check('the three circuits are defined', circuitFile.existsSync());
+  if (circuitFile.existsSync()) {
+    final text = circuitFile.readAsStringSync();
+    check(
+      'circuit effects are keyed per quadrant, so fairness is structural',
+      text.contains('quadrantEffects'),
+    );
+    for (final id in const ['oasisRoute', 'caravanTrail', 'greatRide']) {
+      check('circuit $id exists', text.contains(id));
+    }
+  }
+
+  final gaitFile = File('${root.path}/lib/models/movement_choice.dart');
+  if (gaitFile.existsSync()) {
+    final text = gaitFile.readAsStringSync();
+    check('gaits run 1 to 6', text.contains('minSteps = 1') && text.contains('maxSteps = 6'));
+  }
+
   section('Purchases');
   final purchaseService = File('${root.path}/lib/services/purchase_service.dart');
   if (purchaseService.existsSync()) {

@@ -47,7 +47,8 @@ A player is never identified by color alone. Every team is a triple:
 | Safran | `player4` | 📖 Book | Black |
 
 See `lib/theme/app_team.dart` (`AppTeam`, `TeamSymbol`, `HorseCoat`). Every
-player badge, pawn, and board marker renders color + symbol together.
+player badge, horse token, and board marker renders color + symbol
+together.
 
 ## 3. Typography
 
@@ -98,15 +99,20 @@ See `lib/widgets/question_card.dart`.
 Color chip + team symbol glyph + name + (solo mode) AI difficulty tag.
 Never symbol-less.
 
-### Dice
-Ivory/bone-toned rounded cube with soft gold pip dots — not a red casino
-die. Roll animation ≤ 900ms, spring-eased settle. See
-`lib/widgets/dice_widget.dart`.
+### Gait selector
+Six horseshoes, one per gait. There is no dice anywhere in the product.
+Each shoe carries its distance as the primary numeral, its difficulty as
+a pip count (never color alone), and its knowledge points as a small
+gold caption. A gait already spent this cycle is drawn hollow *and*
+dimmed, so "unavailable" survives both color-blindness and a dark room.
+Choosing a gait previews the destination on the board before it is
+committed — nothing about a turn is ever a surprise. See
+`lib/widgets/gait_selector.dart`.
 
 ### Horse token
 See `VISUAL_REFERENCE_NOTES.md` for the full brief. Rendered with
 `HorsePainter` (`lib/widgets/horse_painter.dart`) — vector, not a raster
-import, so it scales losslessly from a 24dp board pawn to a full-bleed
+import, so it scales losslessly from a 24dp board token to a full-bleed
 home-screen hero illustration.
 
 ### Dialogs / sheets
@@ -127,9 +133,11 @@ privacy).
 - Idle horse: 2–3° head bob, 4s loop, eased.
 - Selection: soft outward glow pulse, 600ms.
 - Move: trot (1 square) / light gallop (2+ squares) with a faint dust puff
-  that fades in 400ms — never a violent capture animation; a captured pawn
-  fades and glides back to its stable with a soft golden trail, no impact.
-- Dice roll: ≤ 900ms.
+  that fades in 400ms — never a violent capture animation; a captured
+  horse fades and glides back to its stable with a soft golden trail, no
+  impact.
+- Gait selection: the chosen horseshoe lifts and the previewed
+  destination square glows, ≤ 250ms.
 - All non-essential motion is skipped when the OS "Reduce Motion" /
   `MediaQuery.disableAnimations` flag is set — see
   `lib/core/utils/motion.dart`.

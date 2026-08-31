@@ -1,6 +1,14 @@
+@Tags(['manual'])
+library;
+
 // Manual visual-QA helper, not part of CI (spec §97). Renders the horse
-// token in isolation (no app/router/riverpod overhead, so this runs fast)
-// at large size for design review, in every coat, standing and rearing.
+// and the rest of the hand-painted visual system in isolation so the art
+// can be reviewed as PNGs under build/screenshots/. Software
+// rasterization makes it slow, so it is tagged `manual` and excluded
+// from the default suite.
+//
+// Run it deliberately with:
+//   flutter test --tags=manual test/manual_screenshot_test.dart
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -19,55 +27,158 @@ Future<void> _capture(WidgetTester tester, String name) async {
   File('${dir.path}/$name.png').writeAsBytesSync(bytes!.buffer.asUint8List());
 }
 
+Future<void> _scene(WidgetTester tester, String name, Size size, Widget child) async {
+  tester.view.physicalSize = size;
+  tester.view.devicePixelRatio = 1.0;
+  await tester.pumpWidget(
+    RepaintBoundary(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(backgroundColor: const Color(0xFFF3EAD6), body: child),
+      ),
+    ),
+  );
+  await tester.pump(const Duration(milliseconds: 100));
+  await _capture(tester, name);
+}
+
+Widget _horse({
+  required HorseCoat coat,
+  required AppTeam team,
+  required HorsePose pose,
+  required double size,
+  bool saddle = true,
+  Color? color,
+}) => SizedBox(
+  width: size,
+  height: size,
+  child: CustomPaint(
+    painter: HorsePainter(coat: coat, team: team, pose: pose, showSaddle: saddle, colors: color),
+  ),
+);
+
+const _teamColors = <AppTeam, Color>{
+  AppTeam.emerald: Color(0xFF0E6B52),
+  AppTeam.saphir: Color(0xFF2A5C8A),
+  AppTeam.grenat: Color(0xFFA83B3B),
+  AppTeam.safran: Color(0xFFC89B45),
+};
+
 void main() {
-  testWidgets('horse gallery', (tester) async {
-    tester.view.physicalSize = const Size(1400, 900);
-    tester.view.devicePixelRatio = 1.0;
+  testWidgets('horse gallery — 4 coats x 4 poses', (tester) async {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
 
-    final coats = HorseCoat.values;
-    final poses = [HorsePose.standing, HorsePose.rearingProud, HorsePose.gallop];
+    const poses = HorsePose.values;
+    final teams = AppTeam.values;
 
-    await tester.pumpWidget(
-      RepaintBoundary(
-        child: MaterialApp(
-          home: Scaffold(
-            backgroundColor: const Color(0xFFEFE6D2),
-            body: Center(
-              child: Wrap(
-                spacing: 24,
-                runSpacing: 24,
+    await _scene(
+      tester,
+      'horse_gallery',
+      const Size(1040, 1080),
+      Column(
+        children: [
+          for (var r = 0; r < teams.length; r++)
+            Expanded(
+              child: Row(
                 children: [
-                  for (final coat in coats)
-                    for (final pose in poses)
-                      Container(
-                        width: 380,
-                        height: 320,
-                        color: Colors.white,
+                  for (final pose in poses)
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
                         child: Center(
-                          child: SizedBox(
-                            width: 320,
-                            height: 320 * (HorsePainter.boxH / HorsePainter.boxW),
-                            child: CustomPaint(
-                              painter: HorsePainter(
-                                coat: coat,
-                                team: AppTeam.emerald,
-                                pose: pose,
-                                colors: const Color(0xFF0E6B52),
-                              ),
-                            ),
+                          child: _horse(
+                            coat: teams[r].coat,
+                            team: teams[r],
+                            pose: pose,
+                            size: 230,
+                            color: _teamColors[teams[r]],
                           ),
                         ),
                       ),
+                    ),
                 ],
               ),
             ),
+        ],
+      ),
+    );
+  });
+
+  testWidgets('horse hero — large close-up', (tester) async {
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    await _scene(
+      tester,
+      'horse_hero',
+      const Size(900, 480),
+      Row(
+        children: [
+          Expanded(
+            child: Container(
+              color: const Color(0xFFFFF9ED),
+              child: Center(
+                child: _horse(
+                  coat: HorseCoat.chestnut,
+                  team: AppTeam.grenat,
+                  pose: HorsePose.standing,
+                  size: 440,
+                  color: const Color(0xFFA83B3B),
+                ),
+              ),
+            ),
           ),
+          Expanded(
+            child: Container(
+              color: const Color(0xFF0D1A29),
+              child: Center(
+                child: _horse(
+                  coat: HorseCoat.grayWhite,
+                  team: AppTeam.emerald,
+                  pose: HorsePose.rearingProud,
+                  size: 440,
+                  saddle: false,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  });
+
+  testWidgets('horse small sizes — board pawn legibility', (tester) async {
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    await _scene(
+      tester,
+      'horse_small',
+      const Size(1000, 260),
+      Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (final s in [24.0, 32.0, 48.0, 72.0, 110.0, 160.0])
+              for (final team in [AppTeam.emerald, AppTeam.saphir])
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: _horse(
+                    coat: team.coat,
+                    team: team,
+                    pose: HorsePose.standing,
+                    size: s,
+                    color: _teamColors[team],
+                  ),
+                ),
+          ],
         ),
       ),
     );
-    await tester.pump(const Duration(milliseconds: 100));
-    await _capture(tester, 'horse_gallery');
   });
 }

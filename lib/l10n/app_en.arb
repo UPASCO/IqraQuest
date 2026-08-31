@@ -12,7 +12,7 @@
   "@onboardingWelcomeTitle": {
     "description": "Onboarding first screen title"
   },
-  "onboardingWelcomeSubtitle": "Answer questions, roll the dice, guide your horse from Makkah to Madinah.",
+  "onboardingWelcomeSubtitle": "Answer questions, choose your gait, guide your horse from Makkah to Madinah.",
   "@onboardingWelcomeSubtitle": {
     "description": "Onboarding first screen subtitle"
   },
@@ -99,14 +99,6 @@
   "yourTurn": "Your turn",
   "@yourTurn": {
     "description": "Turn banner"
-  },
-  "rollDice": "Roll the dice",
-  "@rollDice": {
-    "description": "Dice button label"
-  },
-  "diceLocked": "Answer the question to unlock the dice",
-  "@diceLocked": {
-    "description": "Dice disabled state message"
   },
   "category": "Category",
   "@category": {
@@ -231,5 +223,253 @@
   "parentalGateInstruction": "Solve this to continue.",
   "@parentalGateInstruction": {
     "description": "Parental gate dialog body"
+  },
+  "chooseYourGait": "Choose your gait",
+  "@chooseYourGait": {
+    "description": "Header above the six horseshoe gait choices"
+  },
+  "gaitSquares": "{count} squares",
+  "@gaitSquares": {
+    "description": "How far a gait moves, shown under each horseshoe",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gaitAlreadyUsed": "Already used this cycle",
+  "@gaitAlreadyUsed": {
+    "description": "Hint on a gait already spent this cycle"
+  },
+  "gaitSemanticLabel": "Move {steps} squares, {difficulty} question, {points} knowledge points",
+  "@gaitSemanticLabel": {
+    "description": "Screen-reader label for one gait: distance, difficulty, reward",
+    "placeholders": {
+      "steps": {
+        "type": "int"
+      },
+      "difficulty": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "selectHorse": "Choose your horse",
+  "@selectHorse": {
+    "description": "Prompt to pick which horse to move"
+  },
+  "confirmBoldGait": "This gait draws a harder question. Continue?",
+  "@confirmBoldGait": {
+    "description": "Confirmation before a risky gait in child mode"
+  },
+  "knowledgeStreak": "Knowledge momentum",
+  "@knowledgeStreak": {
+    "description": "Name of the streak gauge"
+  },
+  "knowledgePointsLabel": "Knowledge points",
+  "@knowledgePointsLabel": {
+    "description": "Label for accumulated knowledge points"
+  },
+  "shieldEarned": "Shield earned! Your horse is protected.",
+  "@shieldEarned": {
+    "description": "Celebration when a 3-answer streak earns a shield"
+  },
+  "grandGallopEarned": "Grand Gallop unlocked! +2 squares whenever you choose.",
+  "@grandGallopEarned": {
+    "description": "Celebration when a 5-answer streak unlocks the Grand Gallop"
+  },
+  "masteryBadgeEarned": "Mastery badge earned!",
+  "@masteryBadgeEarned": {
+    "description": "Celebration when a 10-answer streak earns a mastery badge"
+  },
+  "useGrandGallop": "Use the Grand Gallop (+2)",
+  "@useGrandGallop": {
+    "description": "Toggle to spend the Grand Gallop on this move"
+  },
+  "chooseCircuit": "Choose your course",
+  "@chooseCircuit": {
+    "description": "Header on the circuit picker"
+  },
+  "circuitOasisRoute": "The Oasis Road",
+  "@circuitOasisRoute": {
+    "description": "Circuit name"
+  },
+  "circuitCaravanTrail": "The Caravan Trail",
+  "@circuitCaravanTrail": {
+    "description": "Circuit name"
+  },
+  "circuitGreatRide": "The Great Ride of Knowledge",
+  "@circuitGreatRide": {
+    "description": "Circuit name"
+  },
+  "circuitOasisRouteDescription": "A short, sunlit course. Perfect for a quick game.",
+  "@circuitOasisRouteDescription": {
+    "description": "Circuit description"
+  },
+  "circuitCaravanTrailDescription": "Camps and lanterns. A more strategic course.",
+  "@circuitCaravanTrailDescription": {
+    "description": "Circuit description"
+  },
+  "circuitGreatRideDescription": "From daylight to a starlit sky. The great journey.",
+  "@circuitGreatRideDescription": {
+    "description": "Circuit description"
+  },
+  "cellOasis": "Oasis",
+  "@cellOasis": {
+    "description": "Special square name"
+  },
+  "cellKnowledge": "Knowledge",
+  "@cellKnowledge": {
+    "description": "Special square name"
+  },
+  "cellChallenge": "Challenge",
+  "@cellChallenge": {
+    "description": "Special square name"
+  },
+  "cellShortcut": "Shortcut",
+  "@cellShortcut": {
+    "description": "Special square name"
+  },
+  "cellDuel": "Duel",
+  "@cellDuel": {
+    "description": "Special square name"
+  },
+  "cellWisdom": "Wisdom",
+  "@cellWisdom": {
+    "description": "Special square name"
+  },
+  "cellRelay": "Relay",
+  "@cellRelay": {
+    "description": "Special square name"
+  },
+  "cellOasisDescription": "Your horse is safe from capture here.",
+  "@cellOasisDescription": {
+    "description": "What the Oasis square does"
+  },
+  "cellChallengeOffer": "Answer a harder question to move 2 extra squares?",
+  "@cellChallengeOffer": {
+    "description": "The optional Défi offer"
+  },
+  "acceptChallenge": "Take the challenge",
+  "@acceptChallenge": {
+    "description": "Accept the optional challenge"
+  },
+  "declineChallenge": "Keep my move",
+  "@declineChallenge": {
+    "description": "Decline the optional challenge and keep the move"
+  },
+  "saveFact": "Keep this fact",
+  "@saveFact": {
+    "description": "Keep a fact in the personal collection"
+  },
+  "journeyQuestion": "Journey question",
+  "@journeyQuestion": {
+    "description": "Name of the final question that validates an arrival"
+  },
+  "journeyQuestionIntro": "One last question to make your arrival official.",
+  "@journeyQuestionIntro": {
+    "description": "Explains the journey question"
+  },
+  "outcomeMoved": "Your horse moves ahead!",
+  "@outcomeMoved": {
+    "description": "Feedback after a correct answer"
+  },
+  "outcomeStayed": "Your horse holds its ground. Nothing is lost.",
+  "@outcomeStayed": {
+    "description": "Feedback after a wrong answer — never a setback"
+  },
+  "outcomeCaptured": "You overtake an opponent!",
+  "@outcomeCaptured": {
+    "description": "Feedback when passing an opponent"
+  },
+  "outcomeShieldBlocked": "The shield protected the horse.",
+  "@outcomeShieldBlocked": {
+    "description": "Feedback when a shield absorbs an overtake"
+  },
+  "playerProfile": "Player level",
+  "@playerProfile": {
+    "description": "Label for the per-player knowledge level"
+  },
+  "profileChild": "Child",
+  "@profileChild": {
+    "description": "Player level"
+  },
+  "profileDiscovery": "Discovery",
+  "@profileDiscovery": {
+    "description": "Player level"
+  },
+  "profileIntermediate": "Intermediate",
+  "@profileIntermediate": {
+    "description": "Player level"
+  },
+  "profileAdvanced": "Advanced",
+  "@profileAdvanced": {
+    "description": "Player level"
+  },
+  "raceRulesUpdatedTitle": "The race rules have been improved",
+  "@raceRulesUpdatedTitle": {
+    "description": "Shown once when a pre-gait save is detected"
+  },
+  "raceRulesUpdatedBody": "The dice is gone: you now choose your own gait, and with it your level of risk. Your progress, badges and purchases are all kept — only the game in progress cannot continue under the new rules.",
+  "@raceRulesUpdatedBody": {
+    "description": "Explains why an old save cannot be resumed"
+  },
+  "startNewRace": "Start a new race",
+  "@startNewRace": {
+    "description": "Button to start fresh after the rules change"
+  },
+  "rulesTitle": "The rules",
+  "@rulesTitle": {
+    "description": "Title of the rules screen"
+  },
+  "ruleChooseGaitTitle": "Choose your gait",
+  "@ruleChooseGaitTitle": {
+    "description": "Rules step 1 title"
+  },
+  "ruleChooseGaitBody": "You decide how far to move, from 1 to 6 squares. The further you go, the harder the question: 1-2 easy, 3-4 medium, 5-6 hard.",
+  "@ruleChooseGaitBody": {
+    "description": "Rules step 1 body"
+  },
+  "ruleAnswerToAdvanceTitle": "Answer to advance",
+  "@ruleAnswerToAdvanceTitle": {
+    "description": "Rules step 2 title"
+  },
+  "ruleAnswerToAdvanceBody": "A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.",
+  "@ruleAnswerToAdvanceBody": {
+    "description": "Rules step 2 body"
+  },
+  "ruleGaitCycleTitle": "One gait per cycle",
+  "@ruleGaitCycleTitle": {
+    "description": "Rules step 3 title"
+  },
+  "ruleGaitCycleBody": "Each gait can be used only once. When all six are spent, the whole set comes back — so plan ahead.",
+  "@ruleGaitCycleBody": {
+    "description": "Rules step 3 body"
+  },
+  "ruleCaptureTitle": "Overtake and send home",
+  "@ruleCaptureTitle": {
+    "description": "Rules step 4 title"
+  },
+  "ruleCaptureBody": "Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.",
+  "@ruleCaptureBody": {
+    "description": "Rules step 4 body"
+  },
+  "ruleStreakTitle": "The knowledge streak",
+  "@ruleStreakTitle": {
+    "description": "Rules step 5 title"
+  },
+  "ruleStreakBody": "Three correct answers in a row earn a shield, five earn the Grand Gallop (+2 squares), and ten earn a mastery badge. Bonuses come from knowledge alone.",
+  "@ruleStreakBody": {
+    "description": "Rules step 5 body"
+  },
+  "ruleArrivalTitle": "The arrival",
+  "@ruleArrivalTitle": {
+    "description": "Rules step 6 title"
+  },
+  "ruleArrivalBody": "Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.",
+  "@ruleArrivalBody": {
+    "description": "Rules step 6 body"
   }
 }

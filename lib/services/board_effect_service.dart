@@ -1,0 +1,56 @@
+import '../models/circuit.dart';
+import '../models/movement_choice.dart';
+import '../models/player.dart';
+import '../models/question_category.dart';
+import 'movement_choice_service.dart';
+
+/// Describes what each square does, so the UI can show it on the board
+/// *before* a player commits to a gait, and so a landing resolves through
+/// one well-defined path.
+///
+/// Every effect here is deterministic and announced in advance. Nothing
+/// advances or retreats a horse at random, nothing grants a random reward,
+/// and nothing picks an opponent for you (spec §7).
+class BoardEffectService {
+  const BoardEffectService({this.movementChoices = const MovementChoiceService()});
+
+  final MovementChoiceService movementChoices;
+
+  /// A duel is fought at mid risk, so both players face a comparable
+  /// question whatever gait led the challenger there.
+  static const MovementChoice _duelGait = MovementChoice(3);
+
+  /// Squares that ask the player something before resolving. The rest
+  /// apply silently the moment the horse lands.
+  bool isInteractive(CellEffect effect) => switch (effect) {
+    CellEffect.challenge || CellEffect.shortcut || CellEffect.relay || CellEffect.duel => true,
+    CellEffect.plain || CellEffect.oasis || CellEffect.knowledge || CellEffect.wisdom => false,
+  };
+
+  /// Whether this effect can run at all right now — a Duel needs an
+  /// opponent, a Relay needs a second horse to hand the move to.
+  bool isAvailableFor(CellEffect effect, {required int playerCount, required int horseCount}) =>
+      switch (effect) {
+        CellEffect.duel => playerCount > 1,
+        CellEffect.relay => horseCount > 1,
+        _ => true,
+      };
+
+  /// The difficulty of the optional question a square asks for, or null if
+  /// it asks none.
+  QuestionDifficulty? questionDifficultyFor(CellEffect effect, PlayerProfile profile) =>
+      switch (effect) {
+        CellEffect.challenge || CellEffect.shortcut => movementChoices.bonusDifficultyFor(profile),
+        CellEffect.duel => movementChoices.difficultyFor(_duelGait, profile),
+        _ => null,
+      };
+
+  /// Extra knowledge points granted just for landing here.
+  int bonusPointsFor(CellEffect effect) => switch (effect) {
+    CellEffect.knowledge => 1,
+    _ => 0,
+  };
+
+  /// How many squares a won Défi adds (spec §7).
+  int get challengeBonusSteps => 2;
+}

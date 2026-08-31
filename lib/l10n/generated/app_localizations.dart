@@ -72,8 +72,7 @@ import 'app_localizations_ur.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -81,8 +80,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -139,7 +137,7 @@ abstract class AppLocalizations {
   /// Onboarding first screen subtitle
   ///
   /// In en, this message translates to:
-  /// **'Answer questions, roll the dice, guide your horse from Makkah to Madinah.'**
+  /// **'Answer questions, choose your gait, guide your horse from Makkah to Madinah.'**
   String get onboardingWelcomeSubtitle;
 
   /// Primary CTA button on onboarding
@@ -267,18 +265,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your turn'**
   String get yourTurn;
-
-  /// Dice button label
-  ///
-  /// In en, this message translates to:
-  /// **'Roll the dice'**
-  String get rollDice;
-
-  /// Dice disabled state message
-  ///
-  /// In en, this message translates to:
-  /// **'Answer the question to unlock the dice'**
-  String get diceLocked;
 
   /// Question card: category label
   ///
@@ -465,10 +451,357 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Solve this to continue.'**
   String get parentalGateInstruction;
+
+  /// Header above the six horseshoe gait choices
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your gait'**
+  String get chooseYourGait;
+
+  /// How far a gait moves, shown under each horseshoe
+  ///
+  /// In en, this message translates to:
+  /// **'{count} squares'**
+  String gaitSquares(int count);
+
+  /// Hint on a gait already spent this cycle
+  ///
+  /// In en, this message translates to:
+  /// **'Already used this cycle'**
+  String get gaitAlreadyUsed;
+
+  /// Screen-reader label for one gait: distance, difficulty, reward
+  ///
+  /// In en, this message translates to:
+  /// **'Move {steps} squares, {difficulty} question, {points} knowledge points'**
+  String gaitSemanticLabel(int steps, String difficulty, int points);
+
+  /// Prompt to pick which horse to move
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your horse'**
+  String get selectHorse;
+
+  /// Confirmation before a risky gait in child mode
+  ///
+  /// In en, this message translates to:
+  /// **'This gait draws a harder question. Continue?'**
+  String get confirmBoldGait;
+
+  /// Name of the streak gauge
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledge momentum'**
+  String get knowledgeStreak;
+
+  /// Label for accumulated knowledge points
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledge points'**
+  String get knowledgePointsLabel;
+
+  /// Celebration when a 3-answer streak earns a shield
+  ///
+  /// In en, this message translates to:
+  /// **'Shield earned! Your horse is protected.'**
+  String get shieldEarned;
+
+  /// Celebration when a 5-answer streak unlocks the Grand Gallop
+  ///
+  /// In en, this message translates to:
+  /// **'Grand Gallop unlocked! +2 squares whenever you choose.'**
+  String get grandGallopEarned;
+
+  /// Celebration when a 10-answer streak earns a mastery badge
+  ///
+  /// In en, this message translates to:
+  /// **'Mastery badge earned!'**
+  String get masteryBadgeEarned;
+
+  /// Toggle to spend the Grand Gallop on this move
+  ///
+  /// In en, this message translates to:
+  /// **'Use the Grand Gallop (+2)'**
+  String get useGrandGallop;
+
+  /// Header on the circuit picker
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your course'**
+  String get chooseCircuit;
+
+  /// Circuit name
+  ///
+  /// In en, this message translates to:
+  /// **'The Oasis Road'**
+  String get circuitOasisRoute;
+
+  /// Circuit name
+  ///
+  /// In en, this message translates to:
+  /// **'The Caravan Trail'**
+  String get circuitCaravanTrail;
+
+  /// Circuit name
+  ///
+  /// In en, this message translates to:
+  /// **'The Great Ride of Knowledge'**
+  String get circuitGreatRide;
+
+  /// Circuit description
+  ///
+  /// In en, this message translates to:
+  /// **'A short, sunlit course. Perfect for a quick game.'**
+  String get circuitOasisRouteDescription;
+
+  /// Circuit description
+  ///
+  /// In en, this message translates to:
+  /// **'Camps and lanterns. A more strategic course.'**
+  String get circuitCaravanTrailDescription;
+
+  /// Circuit description
+  ///
+  /// In en, this message translates to:
+  /// **'From daylight to a starlit sky. The great journey.'**
+  String get circuitGreatRideDescription;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Oasis'**
+  String get cellOasis;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledge'**
+  String get cellKnowledge;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge'**
+  String get cellChallenge;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut'**
+  String get cellShortcut;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Duel'**
+  String get cellDuel;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Wisdom'**
+  String get cellWisdom;
+
+  /// Special square name
+  ///
+  /// In en, this message translates to:
+  /// **'Relay'**
+  String get cellRelay;
+
+  /// What the Oasis square does
+  ///
+  /// In en, this message translates to:
+  /// **'Your horse is safe from capture here.'**
+  String get cellOasisDescription;
+
+  /// The optional Défi offer
+  ///
+  /// In en, this message translates to:
+  /// **'Answer a harder question to move 2 extra squares?'**
+  String get cellChallengeOffer;
+
+  /// Accept the optional challenge
+  ///
+  /// In en, this message translates to:
+  /// **'Take the challenge'**
+  String get acceptChallenge;
+
+  /// Decline the optional challenge and keep the move
+  ///
+  /// In en, this message translates to:
+  /// **'Keep my move'**
+  String get declineChallenge;
+
+  /// Keep a fact in the personal collection
+  ///
+  /// In en, this message translates to:
+  /// **'Keep this fact'**
+  String get saveFact;
+
+  /// Name of the final question that validates an arrival
+  ///
+  /// In en, this message translates to:
+  /// **'Journey question'**
+  String get journeyQuestion;
+
+  /// Explains the journey question
+  ///
+  /// In en, this message translates to:
+  /// **'One last question to make your arrival official.'**
+  String get journeyQuestionIntro;
+
+  /// Feedback after a correct answer
+  ///
+  /// In en, this message translates to:
+  /// **'Your horse moves ahead!'**
+  String get outcomeMoved;
+
+  /// Feedback after a wrong answer — never a setback
+  ///
+  /// In en, this message translates to:
+  /// **'Your horse holds its ground. Nothing is lost.'**
+  String get outcomeStayed;
+
+  /// Feedback when passing an opponent
+  ///
+  /// In en, this message translates to:
+  /// **'You overtake an opponent!'**
+  String get outcomeCaptured;
+
+  /// Feedback when a shield absorbs an overtake
+  ///
+  /// In en, this message translates to:
+  /// **'The shield protected the horse.'**
+  String get outcomeShieldBlocked;
+
+  /// Label for the per-player knowledge level
+  ///
+  /// In en, this message translates to:
+  /// **'Player level'**
+  String get playerProfile;
+
+  /// Player level
+  ///
+  /// In en, this message translates to:
+  /// **'Child'**
+  String get profileChild;
+
+  /// Player level
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery'**
+  String get profileDiscovery;
+
+  /// Player level
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get profileIntermediate;
+
+  /// Player level
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get profileAdvanced;
+
+  /// Shown once when a pre-gait save is detected
+  ///
+  /// In en, this message translates to:
+  /// **'The race rules have been improved'**
+  String get raceRulesUpdatedTitle;
+
+  /// Explains why an old save cannot be resumed
+  ///
+  /// In en, this message translates to:
+  /// **'The dice is gone: you now choose your own gait, and with it your level of risk. Your progress, badges and purchases are all kept — only the game in progress cannot continue under the new rules.'**
+  String get raceRulesUpdatedBody;
+
+  /// Button to start fresh after the rules change
+  ///
+  /// In en, this message translates to:
+  /// **'Start a new race'**
+  String get startNewRace;
+
+  /// Title of the rules screen
+  ///
+  /// In en, this message translates to:
+  /// **'The rules'**
+  String get rulesTitle;
+
+  /// Rules step 1 title
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your gait'**
+  String get ruleChooseGaitTitle;
+
+  /// Rules step 1 body
+  ///
+  /// In en, this message translates to:
+  /// **'You decide how far to move, from 1 to 6 squares. The further you go, the harder the question: 1-2 easy, 3-4 medium, 5-6 hard.'**
+  String get ruleChooseGaitBody;
+
+  /// Rules step 2 title
+  ///
+  /// In en, this message translates to:
+  /// **'Answer to advance'**
+  String get ruleAnswerToAdvanceTitle;
+
+  /// Rules step 2 body
+  ///
+  /// In en, this message translates to:
+  /// **'A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.'**
+  String get ruleAnswerToAdvanceBody;
+
+  /// Rules step 3 title
+  ///
+  /// In en, this message translates to:
+  /// **'One gait per cycle'**
+  String get ruleGaitCycleTitle;
+
+  /// Rules step 3 body
+  ///
+  /// In en, this message translates to:
+  /// **'Each gait can be used only once. When all six are spent, the whole set comes back — so plan ahead.'**
+  String get ruleGaitCycleBody;
+
+  /// Rules step 4 title
+  ///
+  /// In en, this message translates to:
+  /// **'Overtake and send home'**
+  String get ruleCaptureTitle;
+
+  /// Rules step 4 body
+  ///
+  /// In en, this message translates to:
+  /// **'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.'**
+  String get ruleCaptureBody;
+
+  /// Rules step 5 title
+  ///
+  /// In en, this message translates to:
+  /// **'The knowledge streak'**
+  String get ruleStreakTitle;
+
+  /// Rules step 5 body
+  ///
+  /// In en, this message translates to:
+  /// **'Three correct answers in a row earn a shield, five earn the Grand Gallop (+2 squares), and ten earn a mastery badge. Bonuses come from knowledge alone.'**
+  String get ruleStreakBody;
+
+  /// Rules step 6 title
+  ///
+  /// In en, this message translates to:
+  /// **'The arrival'**
+  String get ruleArrivalTitle;
+
+  /// Rules step 6 body
+  ///
+  /// In en, this message translates to:
+  /// **'Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.'**
+  String get ruleArrivalBody;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override

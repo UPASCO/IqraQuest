@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
+import '../../../services/legacy_game_migration_service.dart';
 import '../../../theme/app_team.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/geometric_motif_painter.dart';
@@ -11,11 +12,50 @@ import '../../../widgets/horse_painter.dart';
 import '../../../widgets/landmarks/hijaz_landmark_painter.dart';
 import '../../game/application/game_controller.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // A game saved under the old dice rules cannot be resumed faithfully.
+    // Explain it once, archive it rather than delete it, and let the
+    // player start a fresh race (spec §18).
+    WidgetsBinding.instance.addPostFrameCallback((_) => _checkLegacySave());
+  }
+
+  Future<void> _checkLegacySave() async {
+    final migration = ref.read(legacyGameMigrationServiceProvider);
+    if (migration.inspect() != SaveCompatibility.legacy) return;
+
+    await migration.archiveLegacySave();
+    if (!mounted) return;
+    setState(() {}); // the stale "Continue" button must disappear
+
+    if (migration.hasSeenRaceRulesNotice) return;
+    await migration.markRaceRulesNoticeSeen();
+    if (!mounted) return;
+
+    final l10n = AppLocalizations.of(context);
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.raceRulesUpdatedTitle),
+        content: Text(l10n.raceRulesUpdatedBody),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.startNewRace)),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final colors = context.colors;
     final saveService = ref.watch(gameSaveServiceProvider);

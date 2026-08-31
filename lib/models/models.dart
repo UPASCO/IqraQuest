@@ -1,7 +1,14 @@
+export 'circuit.dart';
+export 'gait_cycle.dart';
 export 'game_mode.dart';
 export 'game_state.dart';
+export 'horse_state.dart';
+export 'knowledge_streak.dart';
+export 'move_outcome.dart';
+export 'movement_choice.dart';
 export 'pawn_position.dart';
 export 'player.dart';
 export 'question.dart';
 export 'question_category.dart';
+export 'reward_inventory.dart';
 export 'turn_phase.dart';

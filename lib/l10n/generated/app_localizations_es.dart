@@ -20,7 +20,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Responde preguntas, lanza el dado y guía tu caballo de La Meca a Medina.';
+      'Responde preguntas, elige tu paso y guía tu caballo de La Meca a Medina.';
 
   @override
   String get getStarted => 'Comenzar';
@@ -86,12 +86,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get yourTurn => 'Tu turno';
 
   @override
-  String get rollDice => 'Lanzar el dado';
-
-  @override
-  String get diceLocked => 'Responde la pregunta para desbloquear el dado';
-
-  @override
   String get category => 'Categoría';
 
   @override
@@ -147,8 +141,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll =>
-      'Desbloquea las 500 preguntas y todas las dificultades';
+  String get premiumUnlockAll => 'Desbloquea las 500 preguntas y todas las dificultades';
 
   @override
   String get premiumOneTime => 'Pago único — sin suscripción';
@@ -160,8 +153,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get purchaseSuccess => '¡Gracias! Premium ya está activo.';
 
   @override
-  String get purchaseError =>
-      'No se pudo completar la compra. Inténtalo más tarde.';
+  String get purchaseError => 'No se pudo completar la compra. Inténtalo más tarde.';
 
   @override
   String get language => 'Idioma';
@@ -186,4 +178,192 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get parentalGateInstruction => 'Resuelve esto para continuar.';
+
+  @override
+  String get chooseYourGait => 'Elige tu paso';
+
+  @override
+  String gaitSquares(int count) {
+    return '$count casillas';
+  }
+
+  @override
+  String get gaitAlreadyUsed => 'Ya usado en este ciclo';
+
+  @override
+  String gaitSemanticLabel(int steps, String difficulty, int points) {
+    return 'Avanzar $steps casillas, pregunta $difficulty, $points puntos de saber';
+  }
+
+  @override
+  String get selectHorse => 'Elige tu caballo';
+
+  @override
+  String get confirmBoldGait => 'Este paso pide una pregunta más difícil. ¿Continuamos?';
+
+  @override
+  String get knowledgeStreak => 'Impulso del saber';
+
+  @override
+  String get knowledgePointsLabel => 'Puntos de saber';
+
+  @override
+  String get shieldEarned => '¡Escudo obtenido! Tu caballo está protegido.';
+
+  @override
+  String get grandGallopEarned => '¡Gran Galope desbloqueado! +2 casillas cuando quieras.';
+
+  @override
+  String get masteryBadgeEarned => '¡Insignia de maestría obtenida!';
+
+  @override
+  String get useGrandGallop => 'Usar el Gran Galope (+2)';
+
+  @override
+  String get chooseCircuit => 'Elige tu recorrido';
+
+  @override
+  String get circuitOasisRoute => 'La Ruta de los Oasis';
+
+  @override
+  String get circuitCaravanTrail => 'La Pista de las Caravanas';
+
+  @override
+  String get circuitGreatRide => 'La Gran Cabalgada del Saber';
+
+  @override
+  String get circuitOasisRouteDescription =>
+      'Recorrido corto y luminoso. Perfecto para una partida rápida.';
+
+  @override
+  String get circuitCaravanTrailDescription =>
+      'Campamentos y faroles. Un recorrido más estratégico.';
+
+  @override
+  String get circuitGreatRideDescription => 'Del día al cielo estrellado. El gran viaje.';
+
+  @override
+  String get cellOasis => 'Oasis';
+
+  @override
+  String get cellKnowledge => 'Conocimiento';
+
+  @override
+  String get cellChallenge => 'Desafío';
+
+  @override
+  String get cellShortcut => 'Atajo';
+
+  @override
+  String get cellDuel => 'Duelo';
+
+  @override
+  String get cellWisdom => 'Sabiduría';
+
+  @override
+  String get cellRelay => 'Relevo';
+
+  @override
+  String get cellOasisDescription => 'Tu caballo está a salvo de capturas aquí.';
+
+  @override
+  String get cellChallengeOffer =>
+      '¿Responder una pregunta más difícil para avanzar 2 casillas más?';
+
+  @override
+  String get acceptChallenge => 'Aceptar el desafío';
+
+  @override
+  String get declineChallenge => 'Conservar mi movimiento';
+
+  @override
+  String get saveFact => 'Guardar este dato';
+
+  @override
+  String get journeyQuestion => 'Pregunta del viaje';
+
+  @override
+  String get journeyQuestionIntro => 'Una última pregunta para validar tu llegada.';
+
+  @override
+  String get outcomeMoved => '¡Tu caballo avanza!';
+
+  @override
+  String get outcomeStayed => 'Tu caballo se queda. No pierdes nada.';
+
+  @override
+  String get outcomeCaptured => '¡Adelantas a un rival!';
+
+  @override
+  String get outcomeShieldBlocked => 'El escudo protegió al caballo.';
+
+  @override
+  String get playerProfile => 'Nivel del jugador';
+
+  @override
+  String get profileChild => 'Niño';
+
+  @override
+  String get profileDiscovery => 'Descubrimiento';
+
+  @override
+  String get profileIntermediate => 'Intermedio';
+
+  @override
+  String get profileAdvanced => 'Avanzado';
+
+  @override
+  String get raceRulesUpdatedTitle => 'Las reglas de la carrera han mejorado';
+
+  @override
+  String get raceRulesUpdatedBody =>
+      'El dado ha desaparecido: ahora eliges tu paso y, con él, tu nivel de riesgo. Tu progreso, insignias y compras se conservan; solo la partida en curso no puede continuar con las nuevas reglas.';
+
+  @override
+  String get startNewRace => 'Empezar una nueva carrera';
+
+  @override
+  String get rulesTitle => 'Las reglas';
+
+  @override
+  String get ruleChooseGaitTitle => 'Elige tu paso';
+
+  @override
+  String get ruleChooseGaitBody =>
+      'Tú decides cuántas casillas avanzar, de 1 a 6. Cuanto más lejos vayas, más difícil será la pregunta: 1-2 fácil, 3-4 media, 5-6 difícil.';
+
+  @override
+  String get ruleAnswerToAdvanceTitle => 'Responde para avanzar';
+
+  @override
+  String get ruleAnswerToAdvanceBody =>
+      'Una respuesta correcta mueve tu caballo exactamente la distancia elegida. Una respuesta incorrecta lo deja donde está: nunca retrocedes.';
+
+  @override
+  String get ruleGaitCycleTitle => 'Un paso por ciclo';
+
+  @override
+  String get ruleGaitCycleBody =>
+      'Cada paso solo se usa una vez. Cuando se agotan los seis, vuelven todos: planifica con antelación.';
+
+  @override
+  String get ruleCaptureTitle => 'Adelantar y enviar a casa';
+
+  @override
+  String get ruleCaptureBody =>
+      'Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber.';
+
+  @override
+  String get ruleStreakTitle => 'El impulso del saber';
+
+  @override
+  String get ruleStreakBody =>
+      'Tres respuestas correctas seguidas dan un escudo, cinco dan el Gran Galope (+2 casillas) y diez, una insignia de maestría. Los bonus solo se ganan con conocimiento.';
+
+  @override
+  String get ruleArrivalTitle => 'La llegada';
+
+  @override
+  String get ruleArrivalBody =>
+      'Llega al final del recorrido —pasarse de la línea está permitido— y responde la Pregunta del viaje para validar tu llegada. Un error nunca te hace retroceder: lo intentas de nuevo en el siguiente turno.';
 }

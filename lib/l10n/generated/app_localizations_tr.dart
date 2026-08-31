@@ -20,7 +20,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Soruları cevapla, zar at, atını Mekke\'den Medine\'ye götür.';
+      'Soruları cevapla, temponu seç, atını Mekke\'den Medine\'ye götür.';
 
   @override
   String get getStarted => 'Başla';
@@ -86,12 +86,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get yourTurn => 'Sıra Sende';
 
   @override
-  String get rollDice => 'Zar At';
-
-  @override
-  String get diceLocked => 'Zarı açmak için soruyu cevaplayın';
-
-  @override
   String get category => 'Kategori';
 
   @override
@@ -119,8 +113,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get protectedSquareLabel => 'Korumalı Kare';
 
   @override
-  String get freeBankExhaustedMessage =>
-      'Bu oyunda ücretsiz sürümün tüm soruları kullanıldı.';
+  String get freeBankExhaustedMessage => 'Bu oyunda ücretsiz sürümün tüm soruları kullanıldı.';
 
   @override
   String get victory => 'Zafer!';
@@ -147,8 +140,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll =>
-      '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
+  String get premiumUnlockAll => '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
 
   @override
   String get premiumOneTime => 'Tek seferlik ödeme — abonelik yok';
@@ -160,8 +152,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get purchaseSuccess => 'Teşekkürler! Premium artık aktif.';
 
   @override
-  String get purchaseError =>
-      'Satın alma tamamlanamadı. Lütfen daha sonra tekrar deneyin.';
+  String get purchaseError => 'Satın alma tamamlanamadı. Lütfen daha sonra tekrar deneyin.';
 
   @override
   String get language => 'Dil';
@@ -186,4 +177,189 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get parentalGateInstruction => 'Devam etmek için bunu çöz.';
+
+  @override
+  String get chooseYourGait => 'Temponu seç';
+
+  @override
+  String gaitSquares(int count) {
+    return '$count kare';
+  }
+
+  @override
+  String get gaitAlreadyUsed => 'Bu turda kullanıldı';
+
+  @override
+  String gaitSemanticLabel(int steps, String difficulty, int points) {
+    return '$steps kare ilerle, $difficulty soru, $points bilgi puanı';
+  }
+
+  @override
+  String get selectHorse => 'Atını seç';
+
+  @override
+  String get confirmBoldGait => 'Bu tempo daha zor bir soru getirir. Devam edilsin mi?';
+
+  @override
+  String get knowledgeStreak => 'Bilgi ivmesi';
+
+  @override
+  String get knowledgePointsLabel => 'Bilgi puanı';
+
+  @override
+  String get shieldEarned => 'Kalkan kazandın! Atın korunuyor.';
+
+  @override
+  String get grandGallopEarned => 'Büyük Dörtnal açıldı! İstediğinde +2 kare.';
+
+  @override
+  String get masteryBadgeEarned => 'Ustalık rozeti kazandın!';
+
+  @override
+  String get useGrandGallop => 'Büyük Dörtnal kullan (+2)';
+
+  @override
+  String get chooseCircuit => 'Parkurunu seç';
+
+  @override
+  String get circuitOasisRoute => 'Vahalar Yolu';
+
+  @override
+  String get circuitCaravanTrail => 'Kervan Yolu';
+
+  @override
+  String get circuitGreatRide => 'Büyük Bilgi Yolculuğu';
+
+  @override
+  String get circuitOasisRouteDescription => 'Kısa ve güneşli parkur. Hızlı bir oyun için ideal.';
+
+  @override
+  String get circuitCaravanTrailDescription => 'Kamplar ve fenerler. Daha stratejik bir parkur.';
+
+  @override
+  String get circuitGreatRideDescription => 'Gündüzden yıldızlı göğe. Büyük yolculuk.';
+
+  @override
+  String get cellOasis => 'Vaha';
+
+  @override
+  String get cellKnowledge => 'Bilgi';
+
+  @override
+  String get cellChallenge => 'Meydan okuma';
+
+  @override
+  String get cellShortcut => 'Kestirme';
+
+  @override
+  String get cellDuel => 'Düello';
+
+  @override
+  String get cellWisdom => 'Hikmet';
+
+  @override
+  String get cellRelay => 'Bayrak';
+
+  @override
+  String get cellOasisDescription => 'Atın burada yakalanmaktan güvende.';
+
+  @override
+  String get cellChallengeOffer => '2 kare fazla ilerlemek için daha zor bir soru cevaplansın mı?';
+
+  @override
+  String get acceptChallenge => 'Meydan okumayı kabul et';
+
+  @override
+  String get declineChallenge => 'Hamlemi koru';
+
+  @override
+  String get saveFact => 'Bu bilgiyi sakla';
+
+  @override
+  String get journeyQuestion => 'Yolculuk sorusu';
+
+  @override
+  String get journeyQuestionIntro => 'Varışını onaylamak için son bir soru.';
+
+  @override
+  String get outcomeMoved => 'Atın ilerliyor!';
+
+  @override
+  String get outcomeStayed => 'Atın yerinde kalıyor. Kaybın yok.';
+
+  @override
+  String get outcomeCaptured => 'Bir rakibi geçtin!';
+
+  @override
+  String get outcomeShieldBlocked => 'Kalkan atı korudu.';
+
+  @override
+  String get playerProfile => 'Oyuncu seviyesi';
+
+  @override
+  String get profileChild => 'Çocuk';
+
+  @override
+  String get profileDiscovery => 'Keşif';
+
+  @override
+  String get profileIntermediate => 'Orta';
+
+  @override
+  String get profileAdvanced => 'İleri';
+
+  @override
+  String get raceRulesUpdatedTitle => 'Yarış kuralları geliştirildi';
+
+  @override
+  String get raceRulesUpdatedBody =>
+      'Zar kalktı: artık kendi temponu, dolayısıyla risk seviyeni sen seçiyorsun. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.';
+
+  @override
+  String get startNewRace => 'Yeni bir yarış başlat';
+
+  @override
+  String get rulesTitle => 'Kurallar';
+
+  @override
+  String get ruleChooseGaitTitle => 'Temponu seç';
+
+  @override
+  String get ruleChooseGaitBody =>
+      'Kaç kare ilerleyeceğine sen karar verirsin, 1\'den 6\'ya. Ne kadar uzağa gidersen soru o kadar zorlaşır: 1-2 kolay, 3-4 orta, 5-6 zor.';
+
+  @override
+  String get ruleAnswerToAdvanceTitle => 'İlerlemek için cevapla';
+
+  @override
+  String get ruleAnswerToAdvanceBody =>
+      'Doğru cevap atını tam olarak seçtiğin kadar ilerletir. Yanlış cevap onu olduğu yerde bırakır — asla geri gitmezsin.';
+
+  @override
+  String get ruleGaitCycleTitle => 'Döngü başına bir tempo';
+
+  @override
+  String get ruleGaitCycleBody =>
+      'Her tempo yalnızca bir kez kullanılır. Altısı da bitince hepsi geri gelir — önceden planla.';
+
+  @override
+  String get ruleCaptureTitle => 'Geç ve ahıra yolla';
+
+  @override
+  String get ruleCaptureBody =>
+      'Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa.';
+
+  @override
+  String get ruleStreakTitle => 'Bilgi serisi';
+
+  @override
+  String get ruleStreakBody =>
+      'Üst üste üç doğru cevap bir kalkan, beş doğru Büyük Dörtnal (+2 kare), on doğru bir ustalık rozeti kazandırır. Bonuslar yalnızca bilgiyle gelir.';
+
+  @override
+  String get ruleArrivalTitle => 'Varış';
+
+  @override
+  String get ruleArrivalBody =>
+      'Parkurun sonuna ulaş — çizgiyi geçmek serbest — sonra varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla. Yanlış cevap seni asla geri götürmez: sıradaki turda yeniden denersin.';
 }

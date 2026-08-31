@@ -8,6 +8,7 @@ import 'app/providers.dart';
 import 'app/router.dart';
 import 'services/entitlement_service.dart';
 import 'services/game_save_service.dart';
+import 'services/legacy_game_migration_service.dart';
 import 'services/local_storage_service.dart';
 import 'services/progress_service.dart';
 import 'services/purchase_service.dart';
@@ -24,6 +25,7 @@ Future<void> main() async {
   final entitlementService = EntitlementService();
   final progressService = ProgressService(storage);
   final saveService = GameSaveService(storage);
+  final legacyMigration = LegacyGameMigrationService(storage);
   final questionRepository = QuestionRepository();
   final purchaseService = PurchaseService();
 
@@ -44,6 +46,7 @@ Future<void> main() async {
         entitlementServiceProvider.overrideWithValue(entitlementService),
         progressServiceProvider.overrideWithValue(progressService),
         gameSaveServiceProvider.overrideWithValue(saveService),
+        legacyGameMigrationServiceProvider.overrideWithValue(legacyMigration),
         questionRepositoryProvider.overrideWithValue(questionRepository),
         purchaseServiceProvider.overrideWithValue(purchaseService),
         initialSettingsProvider.overrideWithValue(settings),

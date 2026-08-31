@@ -14,13 +14,13 @@ import os
 OUT = "/home/user/IqraQuest/lib/l10n"
 LANGS = ["fr", "en", "ar", "es", "pt", "de", "tr", "id", "ur", "ms", "it", "nl"]
 
-# key -> (description, {lang: text})
+# key -> (description, placeholders, {lang: text})
 K = {}
 
-def s(key, desc, **texts):
+def s(key, desc, ph=None, **texts):
     missing = [l for l in LANGS if l not in texts]
     assert not missing, f"{key}: missing {missing}"
-    K[key] = (desc, texts)
+    K[key] = (desc, ph, texts)
 
 # ---- App -------------------------------------------------------------
 s("appName", "Application name, unchanged across locales",
@@ -44,18 +44,18 @@ s("onboardingWelcomeTitle", "Onboarding first screen title",
   it="Benvenuto su IqraQuest", nl="Welkom bij IqraQuest")
 
 s("onboardingWelcomeSubtitle", "Onboarding first screen subtitle",
-  fr="Réponds aux questions, lance le dé, guide ton cheval de La Mecque à Médine.",
-  en="Answer questions, roll the dice, guide your horse from Makkah to Madinah.",
-  ar="أجب عن الأسئلة، ألقِ النرد، وقُد حصانك من مكة إلى المدينة.",
-  es="Responde preguntas, lanza el dado y guía tu caballo de La Meca a Medina.",
-  pt="Responda perguntas, lance o dado e guie seu cavalo de Meca a Medina.",
-  de="Beantworte Fragen, würfle und führe dein Pferd von Mekka nach Medina.",
-  tr="Soruları cevapla, zar at, atını Mekke'den Medine'ye götür.",
-  id="Jawab pertanyaan, lempar dadu, dan bawa kudamu dari Makkah ke Madinah.",
-  ur="سوالات کے جواب دیں، پانسہ پھینکیں، اور اپنے گھوڑے کو مکہ سے مدینہ لے جائیں۔",
-  ms="Jawab soalan, baling dadu, dan bawa kuda anda dari Makkah ke Madinah.",
-  it="Rispondi alle domande, lancia il dado e guida il tuo cavallo dalla Mecca a Medina.",
-  nl="Beantwoord vragen, gooi de dobbelsteen en leid je paard van Mekka naar Medina.")
+  fr="Réponds aux questions, choisis ton allure, guide ton cheval de La Mecque à Médine.",
+  en="Answer questions, choose your gait, guide your horse from Makkah to Madinah.",
+  ar="أجب عن الأسئلة، اختر خطوتك، وقُد حصانك من مكة إلى المدينة.",
+  es="Responde preguntas, elige tu paso y guía tu caballo de La Meca a Medina.",
+  pt="Responda perguntas, escolha seu passo e guie seu cavalo de Meca a Medina.",
+  de="Beantworte Fragen, wähle deine Gangart und führe dein Pferd von Mekka nach Medina.",
+  tr="Soruları cevapla, temponu seç, atını Mekke'den Medine'ye götür.",
+  id="Jawab pertanyaan, pilih langkahmu, dan bawa kudamu dari Makkah ke Madinah.",
+  ur="سوالات کے جواب دیں، اپنی چال چنیں، اور اپنے گھوڑے کو مکہ سے مدینہ لے جائیں۔",
+  ms="Jawab soalan, pilih langkah anda, dan bawa kuda anda dari Makkah ke Madinah.",
+  it="Rispondi alle domande, scegli la tua andatura e guida il tuo cavallo dalla Mecca a Medina.",
+  nl="Beantwoord vragen, kies je gang en leid je paard van Mekka naar Medina.")
 
 s("getStarted", "Primary CTA button on onboarding",
   fr="Commencer", en="Get started", ar="ابدأ", es="Comenzar", pt="Começar",
@@ -161,24 +161,6 @@ s("yourTurn", "Turn banner",
   fr="À toi de jouer", en="Your turn", ar="دورك", es="Tu turno", pt="Sua vez",
   de="Du bist dran", tr="Sıra Sende", id="Giliranmu", ur="آپ کی باری",
   ms="Giliran anda", it="Tocca a te", nl="Jouw beurt")
-
-s("rollDice", "Dice button label",
-  fr="Lancer le dé", en="Roll the dice", ar="ألقِ النرد", es="Lanzar el dado",
-  pt="Lançar o dado", de="Würfeln", tr="Zar At", id="Lempar Dadu",
-  ur="پانسہ پھینکیں", ms="Baling Dadu", it="Lancia il dado", nl="Dobbelsteen gooien")
-
-s("diceLocked", "Dice disabled state message",
-  fr="Réponds à la question pour débloquer le dé",
-  en="Answer the question to unlock the dice",
-  ar="أجب عن السؤال لفتح النرد",
-  es="Responde la pregunta para desbloquear el dado",
-  pt="Responda a pergunta para desbloquear o dado",
-  de="Beantworte die Frage, um den Würfel freizuschalten",
-  tr="Zarı açmak için soruyu cevaplayın", id="Jawab pertanyaan untuk membuka dadu",
-  ur="پانسے کو کھولنے کے لیے سوال کا جواب دیں",
-  ms="Jawab soalan untuk membuka kunci dadu",
-  it="Rispondi alla domanda per sbloccare il dado",
-  nl="Beantwoord de vraag om de dobbelsteen te ontgrendelen")
 
 s("category", "Question card: category label",
   fr="Catégorie", en="Category", ar="الفئة", es="Categoría", pt="Categoria",
@@ -390,9 +372,527 @@ s("parentalGateInstruction", "Parental gate dialog body",
   ur="جاری رکھنے کے لیے یہ حل کریں۔", ms="Selesaikan ini untuk teruskan.",
   it="Risolvi questo per continuare.", nl="Los dit op om verder te gaan.")
 
+
+# ---- Gaits (the mechanic that replaced the dice) --------------------------
+s("chooseYourGait", "Header above the six horseshoe gait choices",
+  fr="Choisis ton allure", en="Choose your gait", ar="اختر خطوتك",
+  es="Elige tu paso", pt="Escolha seu passo", de="Wähle deine Gangart",
+  tr="Temponu seç", id="Pilih langkahmu", ur="اپنی چال منتخب کریں",
+  ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
+
+s("gaitSquares", "How far a gait moves, shown under each horseshoe",
+  ph={"count": "int"},
+  fr="{count} cases", en="{count} squares", ar="{count} مربعات",
+  es="{count} casillas", pt="{count} casas", de="{count} Felder",
+  tr="{count} kare", id="{count} kotak", ur="{count} خانے",
+  ms="{count} petak", it="{count} caselle", nl="{count} vakjes")
+
+s("gaitAlreadyUsed", "Hint on a gait already spent this cycle",
+  fr="Déjà utilisée ce cycle", en="Already used this cycle",
+  ar="مستخدمة في هذه الدورة", es="Ya usado en este ciclo",
+  pt="Já usado neste ciclo", de="In diesem Zyklus bereits genutzt",
+  tr="Bu turda kullanıldı", id="Sudah dipakai siklus ini",
+  ur="اس چکر میں استعمال ہو چکی", ms="Sudah digunakan kitaran ini",
+  it="Già usata in questo ciclo", nl="Al gebruikt deze cyclus")
+
+s("gaitSemanticLabel", "Screen-reader label for one gait: distance, difficulty, reward",
+  ph={"steps": "int", "difficulty": "String", "points": "int"},
+  fr="Avancer de {steps} cases, question {difficulty}, {points} points de savoir",
+  en="Move {steps} squares, {difficulty} question, {points} knowledge points",
+  ar="التقدم {steps} مربعات، سؤال {difficulty}، {points} نقاط معرفة",
+  es="Avanzar {steps} casillas, pregunta {difficulty}, {points} puntos de saber",
+  pt="Avançar {steps} casas, pergunta {difficulty}, {points} pontos de saber",
+  de="{steps} Felder vor, {difficulty} Frage, {points} Wissenspunkte",
+  tr="{steps} kare ilerle, {difficulty} soru, {points} bilgi puanı",
+  id="Maju {steps} kotak, pertanyaan {difficulty}, {points} poin pengetahuan",
+  ur="{steps} خانے آگے، {difficulty} سوال، {points} علمی پوائنٹس",
+  ms="Maju {steps} petak, soalan {difficulty}, {points} mata ilmu",
+  it="Avanza di {steps} caselle, domanda {difficulty}, {points} punti sapere",
+  nl="{steps} vakjes vooruit, {difficulty} vraag, {points} kennispunten")
+
+s("selectHorse", "Prompt to pick which horse to move",
+  fr="Choisis ton cheval", en="Choose your horse", ar="اختر حصانك",
+  es="Elige tu caballo", pt="Escolha seu cavalo", de="Wähle dein Pferd",
+  tr="Atını seç", id="Pilih kudamu", ur="اپنا گھوڑا منتخب کریں",
+  ms="Pilih kuda anda", it="Scegli il tuo cavallo", nl="Kies je paard")
+
+s("confirmBoldGait", "Confirmation before a risky gait in child mode",
+  fr="Cette allure demande une question plus difficile. On continue ?",
+  en="This gait draws a harder question. Continue?",
+  ar="هذه الخطوة تتطلب سؤالاً أصعب. هل نتابع؟",
+  es="Este paso pide una pregunta más difícil. ¿Continuamos?",
+  pt="Este passo pede uma pergunta mais difícil. Continuar?",
+  de="Diese Gangart zieht eine schwerere Frage. Weiter?",
+  tr="Bu tempo daha zor bir soru getirir. Devam edilsin mi?",
+  id="Langkah ini menarik pertanyaan lebih sulit. Lanjutkan?",
+  ur="اس چال کے لیے مشکل سوال آئے گا۔ جاری رکھیں؟",
+  ms="Langkah ini menarik soalan lebih sukar. Teruskan?",
+  it="Questa andatura porta una domanda più difficile. Continuare?",
+  nl="Deze gang trekt een moeilijkere vraag. Doorgaan?")
+
+# ---- Knowledge streak and rewards -----------------------------------------
+s("knowledgeStreak", "Name of the streak gauge",
+  fr="Élan du savoir", en="Knowledge momentum", ar="زخم المعرفة",
+  es="Impulso del saber", pt="Impulso do saber", de="Wissensschwung",
+  tr="Bilgi ivmesi", id="Momentum pengetahuan", ur="علم کی رفتار",
+  ms="Momentum ilmu", it="Slancio del sapere", nl="Kennismomentum")
+
+s("knowledgePointsLabel", "Label for accumulated knowledge points",
+  fr="Points de savoir", en="Knowledge points", ar="نقاط المعرفة",
+  es="Puntos de saber", pt="Pontos de saber", de="Wissenspunkte",
+  tr="Bilgi puanı", id="Poin pengetahuan", ur="علمی پوائنٹس",
+  ms="Mata ilmu", it="Punti sapere", nl="Kennispunten")
+
+s("shieldEarned", "Celebration when a 3-answer streak earns a shield",
+  fr="Bouclier obtenu ! Ton cheval est protégé.",
+  en="Shield earned! Your horse is protected.",
+  ar="حصلت على درع! حصانك محمي.",
+  es="¡Escudo obtenido! Tu caballo está protegido.",
+  pt="Escudo conquistado! Seu cavalo está protegido.",
+  de="Schild verdient! Dein Pferd ist geschützt.",
+  tr="Kalkan kazandın! Atın korunuyor.",
+  id="Perisai diperoleh! Kudamu terlindungi.",
+  ur="ڈھال مل گئی! آپ کا گھوڑا محفوظ ہے۔",
+  ms="Perisai diperoleh! Kuda anda dilindungi.",
+  it="Scudo ottenuto! Il tuo cavallo è protetto.",
+  nl="Schild verdiend! Je paard is beschermd.")
+
+s("grandGallopEarned", "Celebration when a 5-answer streak unlocks the Grand Gallop",
+  fr="Grand Galop débloqué ! +2 cases quand tu veux.",
+  en="Grand Gallop unlocked! +2 squares whenever you choose.",
+  ar="انطلق الركض الكبير! +2 مربعات متى شئت.",
+  es="¡Gran Galope desbloqueado! +2 casillas cuando quieras.",
+  pt="Grande Galope desbloqueado! +2 casas quando quiser.",
+  de="Großer Galopp freigeschaltet! +2 Felder, wann du willst.",
+  tr="Büyük Dörtnal açıldı! İstediğinde +2 kare.",
+  id="Grand Gallop terbuka! +2 kotak kapan pun kamu mau.",
+  ur="گرینڈ گیلپ کھل گیا! جب چاہیں +2 خانے۔",
+  ms="Grand Gallop dibuka! +2 petak bila-bila anda mahu.",
+  it="Gran Galoppo sbloccato! +2 caselle quando vuoi.",
+  nl="Grote Galop ontgrendeld! +2 vakjes wanneer je wilt.")
+
+s("masteryBadgeEarned", "Celebration when a 10-answer streak earns a mastery badge",
+  fr="Badge de maîtrise obtenu !", en="Mastery badge earned!",
+  ar="حصلت على شارة الإتقان!", es="¡Insignia de maestría obtenida!",
+  pt="Emblema de maestria conquistado!", de="Meisterschaftsabzeichen verdient!",
+  tr="Ustalık rozeti kazandın!", id="Lencana penguasaan diperoleh!",
+  ur="مہارت کا بیج مل گیا!", ms="Lencana penguasaan diperoleh!",
+  it="Distintivo di maestria ottenuto!", nl="Meesterschapsbadge verdiend!")
+
+s("useGrandGallop", "Toggle to spend the Grand Gallop on this move",
+  fr="Utiliser le Grand Galop (+2)", en="Use the Grand Gallop (+2)",
+  ar="استخدم الركض الكبير (+2)", es="Usar el Gran Galope (+2)",
+  pt="Usar o Grande Galope (+2)", de="Großen Galopp einsetzen (+2)",
+  tr="Büyük Dörtnal kullan (+2)", id="Gunakan Grand Gallop (+2)",
+  ur="گرینڈ گیلپ استعمال کریں (+2)", ms="Guna Grand Gallop (+2)",
+  it="Usa il Gran Galoppo (+2)", nl="Gebruik de Grote Galop (+2)")
+
+# ---- Circuits --------------------------------------------------------------
+s("chooseCircuit", "Header on the circuit picker",
+  fr="Choisis ton circuit", en="Choose your course", ar="اختر مسارك",
+  es="Elige tu recorrido", pt="Escolha seu percurso", de="Wähle deine Strecke",
+  tr="Parkurunu seç", id="Pilih lintasanmu", ur="اپنا راستہ منتخب کریں",
+  ms="Pilih laluan anda", it="Scegli il tuo percorso", nl="Kies je parcours")
+
+s("circuitOasisRoute", "Circuit name",
+  fr="La Route des Oasis", en="The Oasis Road", ar="طريق الواحات",
+  es="La Ruta de los Oasis", pt="A Rota dos Oásis", de="Die Oasenstraße",
+  tr="Vahalar Yolu", id="Jalur Oasis", ur="نخلستانوں کا راستہ",
+  ms="Laluan Oasis", it="La Via delle Oasi", nl="De Oaseroute")
+
+s("circuitCaravanTrail", "Circuit name",
+  fr="La Piste des Caravanes", en="The Caravan Trail", ar="درب القوافل",
+  es="La Pista de las Caravanas", pt="A Trilha das Caravanas",
+  de="Der Karawanenpfad", tr="Kervan Yolu", id="Jejak Kafilah",
+  ur="قافلوں کی پگڈنڈی", ms="Denai Kafilah", it="La Pista delle Carovane",
+  nl="Het Karavaanpad")
+
+s("circuitGreatRide", "Circuit name",
+  fr="La Grande Chevauchée du Savoir", en="The Great Ride of Knowledge",
+  ar="مسيرة المعرفة الكبرى", es="La Gran Cabalgada del Saber",
+  pt="A Grande Cavalgada do Saber", de="Der Große Ritt des Wissens",
+  tr="Büyük Bilgi Yolculuğu", id="Pacuan Agung Pengetahuan",
+  ur="علم کی عظیم سواری", ms="Pengembaraan Agung Ilmu",
+  it="La Grande Cavalcata del Sapere", nl="De Grote Rit van Kennis")
+
+s("circuitOasisRouteDescription", "Circuit description",
+  fr="Parcours court et lumineux. Parfait pour une partie rapide.",
+  en="A short, sunlit course. Perfect for a quick game.",
+  ar="مسار قصير مشمس. مثالي للعبة سريعة.",
+  es="Recorrido corto y luminoso. Perfecto para una partida rápida.",
+  pt="Percurso curto e luminoso. Perfeito para um jogo rápido.",
+  de="Kurze, sonnige Strecke. Perfekt für ein schnelles Spiel.",
+  tr="Kısa ve güneşli parkur. Hızlı bir oyun için ideal.",
+  id="Lintasan pendek dan cerah. Cocok untuk permainan cepat.",
+  ur="مختصر، روشن راستہ۔ تیز کھیل کے لیے بہترین۔",
+  ms="Laluan pendek dan cerah. Sesuai untuk permainan pantas.",
+  it="Percorso breve e luminoso. Perfetto per una partita rapida.",
+  nl="Kort, zonnig parcours. Perfect voor een snel spel.")
+
+s("circuitCaravanTrailDescription", "Circuit description",
+  fr="Campements et lanternes. Un parcours plus stratégique.",
+  en="Camps and lanterns. A more strategic course.",
+  ar="مخيمات وفوانيس. مسار أكثر استراتيجية.",
+  es="Campamentos y faroles. Un recorrido más estratégico.",
+  pt="Acampamentos e lanternas. Um percurso mais estratégico.",
+  de="Lager und Laternen. Eine strategischere Strecke.",
+  tr="Kamplar ve fenerler. Daha stratejik bir parkur.",
+  id="Perkemahan dan lentera. Lintasan yang lebih strategis.",
+  ur="پڑاؤ اور لالٹینیں۔ زیادہ حکمت عملی والا راستہ۔",
+  ms="Perkhemahan dan tanglung. Laluan yang lebih strategik.",
+  it="Accampamenti e lanterne. Un percorso più strategico.",
+  nl="Kampen en lantaarns. Een strategischer parcours.")
+
+s("circuitGreatRideDescription", "Circuit description",
+  fr="Du jour au ciel étoilé. Le grand voyage.",
+  en="From daylight to a starlit sky. The great journey.",
+  ar="من النهار إلى سماء النجوم. الرحلة الكبرى.",
+  es="Del día al cielo estrellado. El gran viaje.",
+  pt="Do dia ao céu estrelado. A grande viagem.",
+  de="Vom Tag zum Sternenhimmel. Die große Reise.",
+  tr="Gündüzden yıldızlı göğe. Büyük yolculuk.",
+  id="Dari siang ke langit berbintang. Perjalanan agung.",
+  ur="دن سے ستاروں بھرے آسمان تک۔ عظیم سفر۔",
+  ms="Dari siang ke langit berbintang. Pengembaraan agung.",
+  it="Dal giorno al cielo stellato. Il grande viaggio.",
+  nl="Van daglicht tot sterrenhemel. De grote reis.")
+
+# ---- Special squares -------------------------------------------------------
+s("cellOasis", "Special square name",
+  fr="Oasis", en="Oasis", ar="واحة", es="Oasis", pt="Oásis", de="Oase",
+  tr="Vaha", id="Oasis", ur="نخلستان", ms="Oasis", it="Oasi", nl="Oase")
+
+s("cellKnowledge", "Special square name",
+  fr="Connaissance", en="Knowledge", ar="معرفة", es="Conocimiento",
+  pt="Conhecimento", de="Wissen", tr="Bilgi", id="Pengetahuan", ur="علم",
+  ms="Ilmu", it="Conoscenza", nl="Kennis")
+
+s("cellChallenge", "Special square name",
+  fr="Défi", en="Challenge", ar="تحدٍ", es="Desafío", pt="Desafio",
+  de="Herausforderung", tr="Meydan okuma", id="Tantangan", ur="چیلنج",
+  ms="Cabaran", it="Sfida", nl="Uitdaging")
+
+s("cellShortcut", "Special square name",
+  fr="Raccourci", en="Shortcut", ar="طريق مختصر", es="Atajo", pt="Atalho",
+  de="Abkürzung", tr="Kestirme", id="Jalan pintas", ur="مختصر راستہ",
+  ms="Jalan pintas", it="Scorciatoia", nl="Kortere weg")
+
+s("cellDuel", "Special square name",
+  fr="Duel", en="Duel", ar="مبارزة", es="Duelo", pt="Duelo", de="Duell",
+  tr="Düello", id="Duel", ur="مقابلہ", ms="Pertandingan", it="Duello",
+  nl="Duel")
+
+s("cellWisdom", "Special square name",
+  fr="Sagesse", en="Wisdom", ar="حكمة", es="Sabiduría", pt="Sabedoria",
+  de="Weisheit", tr="Hikmet", id="Hikmah", ur="حکمت", ms="Hikmah",
+  it="Saggezza", nl="Wijsheid")
+
+s("cellRelay", "Special square name",
+  fr="Relais", en="Relay", ar="تناوب", es="Relevo", pt="Revezamento",
+  de="Staffel", tr="Bayrak", id="Estafet", ur="ریلے", ms="Lapor",
+  it="Staffetta", nl="Estafette")
+
+s("cellOasisDescription", "What the Oasis square does",
+  fr="Ton cheval y est protégé des captures.",
+  en="Your horse is safe from capture here.",
+  ar="حصانك في مأمن من الأسر هنا.",
+  es="Tu caballo está a salvo de capturas aquí.",
+  pt="Seu cavalo está a salvo de capturas aqui.",
+  de="Dein Pferd ist hier vor dem Überholen sicher.",
+  tr="Atın burada yakalanmaktan güvende.",
+  id="Kudamu aman dari tangkapan di sini.",
+  ur="یہاں آپ کا گھوڑا محفوظ ہے۔",
+  ms="Kuda anda selamat daripada ditangkap di sini.",
+  it="Il tuo cavallo è al sicuro qui.",
+  nl="Je paard is hier veilig.")
+
+s("cellChallengeOffer", "The optional Défi offer",
+  fr="Répondre à une question plus difficile pour avancer de 2 cases de plus ?",
+  en="Answer a harder question to move 2 extra squares?",
+  ar="هل تجيب عن سؤال أصعب للتقدم مربعين إضافيين؟",
+  es="¿Responder una pregunta más difícil para avanzar 2 casillas más?",
+  pt="Responder a uma pergunta mais difícil para avançar mais 2 casas?",
+  de="Eine schwerere Frage für 2 zusätzliche Felder beantworten?",
+  tr="2 kare fazla ilerlemek için daha zor bir soru cevaplansın mı?",
+  id="Jawab pertanyaan lebih sulit untuk maju 2 kotak lagi?",
+  ur="2 اضافی خانے آگے بڑھنے کے لیے مشکل سوال کا جواب دیں؟",
+  ms="Jawab soalan lebih sukar untuk maju 2 petak lagi?",
+  it="Rispondere a una domanda più difficile per avanzare di 2 caselle?",
+  nl="Een moeilijkere vraag beantwoorden voor 2 extra vakjes?")
+
+s("acceptChallenge", "Accept the optional challenge",
+  fr="Relever le défi", en="Take the challenge", ar="اقبل التحدي",
+  es="Aceptar el desafío", pt="Aceitar o desafio", de="Herausforderung annehmen",
+  tr="Meydan okumayı kabul et", id="Terima tantangan", ur="چیلنج قبول کریں",
+  ms="Terima cabaran", it="Accetta la sfida", nl="Neem de uitdaging aan")
+
+s("declineChallenge", "Decline the optional challenge and keep the move",
+  fr="Garder mon déplacement", en="Keep my move", ar="احتفظ بحركتي",
+  es="Conservar mi movimiento", pt="Manter meu movimento", de="Zug behalten",
+  tr="Hamlemi koru", id="Simpan langkahku", ur="اپنی چال رکھیں",
+  ms="Kekalkan langkah saya", it="Tieni la mia mossa", nl="Mijn zet houden")
+
+s("saveFact", "Keep a fact in the personal collection",
+  fr="Garder cette connaissance", en="Keep this fact", ar="احفظ هذه المعلومة",
+  es="Guardar este dato", pt="Guardar este facto", de="Diesen Fakt behalten",
+  tr="Bu bilgiyi sakla", id="Simpan fakta ini", ur="یہ بات محفوظ کریں",
+  ms="Simpan fakta ini", it="Conserva questo fatto", nl="Bewaar dit feit")
+
+# ---- Arrival ---------------------------------------------------------------
+s("journeyQuestion", "Name of the final question that validates an arrival",
+  fr="Question du voyage", en="Journey question", ar="سؤال الرحلة",
+  es="Pregunta del viaje", pt="Pergunta da viagem", de="Reisefrage",
+  tr="Yolculuk sorusu", id="Pertanyaan perjalanan", ur="سفر کا سوال",
+  ms="Soalan pengembaraan", it="Domanda del viaggio", nl="Reisvraag")
+
+s("journeyQuestionIntro", "Explains the journey question",
+  fr="Une dernière question pour valider ton arrivée.",
+  en="One last question to make your arrival official.",
+  ar="سؤال أخير لتأكيد وصولك.",
+  es="Una última pregunta para validar tu llegada.",
+  pt="Uma última pergunta para validar sua chegada.",
+  de="Eine letzte Frage, um deine Ankunft zu bestätigen.",
+  tr="Varışını onaylamak için son bir soru.",
+  id="Satu pertanyaan terakhir untuk mengesahkan kedatanganmu.",
+  ur="آپ کی آمد کی تصدیق کے لیے ایک آخری سوال۔",
+  ms="Satu soalan terakhir untuk mengesahkan ketibaan anda.",
+  it="Un'ultima domanda per convalidare il tuo arrivo.",
+  nl="Nog één vraag om je aankomst te bevestigen.")
+
+# ---- Move outcomes ---------------------------------------------------------
+s("outcomeMoved", "Feedback after a correct answer",
+  fr="Ton cheval avance !", en="Your horse moves ahead!", ar="حصانك يتقدم!",
+  es="¡Tu caballo avanza!", pt="Seu cavalo avança!", de="Dein Pferd zieht vor!",
+  tr="Atın ilerliyor!", id="Kudamu melaju!", ur="آپ کا گھوڑا آگے بڑھا!",
+  ms="Kuda anda maju!", it="Il tuo cavallo avanza!", nl="Je paard gaat vooruit!")
+
+s("outcomeStayed", "Feedback after a wrong answer — never a setback",
+  fr="Ton cheval reste sur place. Rien n'est perdu.",
+  en="Your horse holds its ground. Nothing is lost.",
+  ar="حصانك يبقى مكانه. لم تخسر شيئًا.",
+  es="Tu caballo se queda. No pierdes nada.",
+  pt="Seu cavalo fica parado. Nada se perde.",
+  de="Dein Pferd bleibt stehen. Nichts geht verloren.",
+  tr="Atın yerinde kalıyor. Kaybın yok.",
+  id="Kudamu tetap di tempat. Tidak ada yang hilang.",
+  ur="آپ کا گھوڑا وہیں رہا۔ کچھ نہیں گیا۔",
+  ms="Kuda anda kekal. Tiada apa yang hilang.",
+  it="Il tuo cavallo resta fermo. Non perdi nulla.",
+  nl="Je paard blijft staan. Er gaat niets verloren.")
+
+s("outcomeCaptured", "Feedback when passing an opponent",
+  fr="Tu dépasses un adversaire !", en="You overtake an opponent!",
+  ar="لقد تجاوزت خصمًا!", es="¡Adelantas a un rival!",
+  pt="Você ultrapassa um adversário!", de="Du überholst einen Gegner!",
+  tr="Bir rakibi geçtin!", id="Kamu menyalip lawan!",
+  ur="آپ نے حریف کو پیچھے چھوڑا!", ms="Anda memintas lawan!",
+  it="Superi un avversario!", nl="Je haalt een tegenstander in!")
+
+s("outcomeShieldBlocked", "Feedback when a shield absorbs an overtake",
+  fr="Le bouclier a protégé le cheval.", en="The shield protected the horse.",
+  ar="حمى الدرع الحصان.", es="El escudo protegió al caballo.",
+  pt="O escudo protegeu o cavalo.", de="Das Schild hat das Pferd geschützt.",
+  tr="Kalkan atı korudu.", id="Perisai melindungi kuda itu.",
+  ur="ڈھال نے گھوڑے کو بچا لیا۔", ms="Perisai melindungi kuda itu.",
+  it="Lo scudo ha protetto il cavallo.", nl="Het schild beschermde het paard.")
+
+# ---- Player profiles -------------------------------------------------------
+s("playerProfile", "Label for the per-player knowledge level",
+  fr="Niveau du joueur", en="Player level", ar="مستوى اللاعب",
+  es="Nivel del jugador", pt="Nível do jogador", de="Spielerstufe",
+  tr="Oyuncu seviyesi", id="Tingkat pemain", ur="کھلاڑی کا درجہ",
+  ms="Tahap pemain", it="Livello giocatore", nl="Spelerniveau")
+
+s("profileChild", "Player level",
+  fr="Enfant", en="Child", ar="طفل", es="Niño", pt="Criança", de="Kind",
+  tr="Çocuk", id="Anak", ur="بچہ", ms="Kanak-kanak", it="Bambino", nl="Kind")
+
+s("profileDiscovery", "Player level",
+  fr="Découverte", en="Discovery", ar="اكتشاف", es="Descubrimiento",
+  pt="Descoberta", de="Entdeckung", tr="Keşif", id="Penjelajahan",
+  ur="دریافت", ms="Penerokaan", it="Scoperta", nl="Ontdekking")
+
+s("profileIntermediate", "Player level",
+  fr="Intermédiaire", en="Intermediate", ar="متوسط", es="Intermedio",
+  pt="Intermediário", de="Mittel", tr="Orta", id="Menengah", ur="درمیانہ",
+  ms="Sederhana", it="Intermedio", nl="Gemiddeld")
+
+s("profileAdvanced", "Player level",
+  fr="Avancé", en="Advanced", ar="متقدم", es="Avanzado", pt="Avançado",
+  de="Fortgeschritten", tr="İleri", id="Lanjutan", ur="اعلیٰ",
+  ms="Lanjutan", it="Avanzato", nl="Gevorderd")
+
+# ---- Save migration --------------------------------------------------------
+s("raceRulesUpdatedTitle", "Shown once when a pre-gait save is detected",
+  fr="Les règles de course ont été améliorées",
+  en="The race rules have been improved",
+  ar="تم تحسين قواعد السباق",
+  es="Las reglas de la carrera han mejorado",
+  pt="As regras da corrida foram melhoradas",
+  de="Die Rennregeln wurden verbessert",
+  tr="Yarış kuralları geliştirildi",
+  id="Aturan balapan telah ditingkatkan",
+  ur="دوڑ کے قواعد بہتر کر دیے گئے",
+  ms="Peraturan perlumbaan telah ditambah baik",
+  it="Le regole della corsa sono state migliorate",
+  nl="De racerregels zijn verbeterd")
+
+s("raceRulesUpdatedBody", "Explains why an old save cannot be resumed",
+  fr="Le dé a disparu : c'est maintenant toi qui choisis ton allure, et donc ton niveau de risque. Ta progression, tes badges et tes achats sont conservés — seule la partie en cours ne peut pas reprendre avec les nouvelles règles.",
+  en="The dice is gone: you now choose your own gait, and with it your level of risk. Your progress, badges and purchases are all kept — only the game in progress cannot continue under the new rules.",
+  ar="اختفى النرد: أنت الآن تختار خطوتك، ومعها مستوى المخاطرة. تقدمك وشاراتك ومشترياتك محفوظة — اللعبة الجارية فقط لا يمكن متابعتها بالقواعد الجديدة.",
+  es="El dado ha desaparecido: ahora eliges tu paso y, con él, tu nivel de riesgo. Tu progreso, insignias y compras se conservan; solo la partida en curso no puede continuar con las nuevas reglas.",
+  pt="O dado acabou: agora você escolhe seu passo e, com ele, seu nível de risco. Seu progresso, emblemas e compras são mantidos — apenas o jogo em andamento não pode continuar com as novas regras.",
+  de="Der Würfel ist weg: Du wählst jetzt deine Gangart und damit dein Risiko. Fortschritt, Abzeichen und Käufe bleiben erhalten — nur das laufende Spiel kann nicht mit den neuen Regeln fortgesetzt werden.",
+  tr="Zar kalktı: artık kendi temponu, dolayısıyla risk seviyeni sen seçiyorsun. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.",
+  id="Dadu telah hilang: kini kamu memilih langkahmu sendiri, dan dengan itu tingkat risikomu. Kemajuan, lencana, dan pembelianmu tetap tersimpan — hanya permainan yang sedang berjalan tidak dapat dilanjutkan dengan aturan baru.",
+  ur="پانسہ ختم: اب آپ خود اپنی چال اور اس کے ساتھ خطرے کا درجہ چنتے ہیں۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔",
+  ms="Dadu telah tiada: kini anda memilih langkah anda sendiri, dan dengannya tahap risiko anda. Kemajuan, lencana dan pembelian anda dikekalkan — hanya permainan yang sedang berjalan tidak dapat diteruskan dengan peraturan baharu.",
+  it="Il dado non c'è più: ora scegli tu la tua andatura, e con essa il livello di rischio. Progressi, distintivi e acquisti sono conservati — solo la partita in corso non può continuare con le nuove regole.",
+  nl="De dobbelsteen is weg: jij kiest nu je eigen gang, en daarmee je risico. Je voortgang, badges en aankopen blijven behouden — alleen het lopende spel kan niet verder onder de nieuwe regels.")
+
+s("startNewRace", "Button to start fresh after the rules change",
+  fr="Commencer une nouvelle course", en="Start a new race",
+  ar="ابدأ سباقًا جديدًا", es="Empezar una nueva carrera",
+  pt="Começar uma nova corrida", de="Neues Rennen starten",
+  tr="Yeni bir yarış başlat", id="Mulai balapan baru",
+  ur="نئی دوڑ شروع کریں", ms="Mulakan perlumbaan baharu",
+  it="Inizia una nuova corsa", nl="Start een nieuwe race")
+
+# ---- Rules screen ----------------------------------------------------------
+s("rulesTitle", "Title of the rules screen",
+  fr="Les règles", en="The rules", ar="القواعد", es="Las reglas",
+  pt="As regras", de="Die Regeln", tr="Kurallar", id="Aturan main",
+  ur="قواعد", ms="Peraturan", it="Le regole", nl="De regels")
+
+s("ruleChooseGaitTitle", "Rules step 1 title",
+  fr="Choisis ton allure", en="Choose your gait", ar="اختر خطوتك",
+  es="Elige tu paso", pt="Escolha seu passo", de="Wähle deine Gangart",
+  tr="Temponu seç", id="Pilih langkahmu", ur="اپنی چال چنیں",
+  ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
+
+s("ruleChooseGaitBody", "Rules step 1 body",
+  fr="Décide toi-même de combien de cases avancer, de 1 à 6. Plus tu vas loin, plus la question est difficile : 1-2 facile, 3-4 moyenne, 5-6 difficile.",
+  en="You decide how far to move, from 1 to 6 squares. The further you go, the harder the question: 1-2 easy, 3-4 medium, 5-6 hard.",
+  ar="أنت تقرر عدد المربعات التي تتقدمها، من 1 إلى 6. كلما ابتعدت، صعب السؤال: 1-2 سهل، 3-4 متوسط، 5-6 صعب.",
+  es="Tú decides cuántas casillas avanzar, de 1 a 6. Cuanto más lejos vayas, más difícil será la pregunta: 1-2 fácil, 3-4 media, 5-6 difícil.",
+  pt="Você decide quantas casas avançar, de 1 a 6. Quanto mais longe for, mais difícil a pergunta: 1-2 fácil, 3-4 média, 5-6 difícil.",
+  de="Du entscheidest, wie weit du ziehst, von 1 bis 6 Feldern. Je weiter, desto schwerer die Frage: 1-2 leicht, 3-4 mittel, 5-6 schwer.",
+  tr="Kaç kare ilerleyeceğine sen karar verirsin, 1'den 6'ya. Ne kadar uzağa gidersen soru o kadar zorlaşır: 1-2 kolay, 3-4 orta, 5-6 zor.",
+  id="Kamu yang menentukan seberapa jauh melangkah, dari 1 sampai 6 petak. Makin jauh, makin sulit pertanyaannya: 1-2 mudah, 3-4 sedang, 5-6 sulit.",
+  ur="آپ خود طے کرتے ہیں کہ کتنے خانے آگے بڑھنا ہے، 1 سے 6 تک۔ جتنا دور جائیں گے، سوال اتنا مشکل ہوگا: 1-2 آسان، 3-4 درمیانہ، 5-6 مشکل۔",
+  ms="Anda yang menentukan sejauh mana untuk bergerak, dari 1 hingga 6 petak. Semakin jauh, semakin sukar soalannya: 1-2 mudah, 3-4 sederhana, 5-6 sukar.",
+  it="Decidi tu di quante caselle avanzare, da 1 a 6. Più vai lontano, più la domanda è difficile: 1-2 facile, 3-4 media, 5-6 difficile.",
+  nl="Jij bepaalt hoe ver je gaat, van 1 tot 6 vakjes. Hoe verder, hoe moeilijker de vraag: 1-2 makkelijk, 3-4 gemiddeld, 5-6 moeilijk.")
+
+s("ruleAnswerToAdvanceTitle", "Rules step 2 title",
+  fr="Réponds pour avancer", en="Answer to advance", ar="أجب لتتقدم",
+  es="Responde para avanzar", pt="Responda para avançar",
+  de="Antworte, um vorzurücken", tr="İlerlemek için cevapla",
+  id="Jawab untuk maju", ur="آگے بڑھنے کے لیے جواب دیں",
+  ms="Jawab untuk maju", it="Rispondi per avanzare", nl="Antwoord om vooruit te gaan")
+
+s("ruleAnswerToAdvanceBody", "Rules step 2 body",
+  fr="Une bonne réponse fait avancer ton cheval exactement du nombre de cases choisi. Une mauvaise réponse le laisse sur place : tu ne recules jamais.",
+  en="A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.",
+  ar="الإجابة الصحيحة تحرك حصانك بالضبط بالمسافة التي اخترتها. والإجابة الخاطئة تتركه مكانه — لا تتراجع أبدًا.",
+  es="Una respuesta correcta mueve tu caballo exactamente la distancia elegida. Una respuesta incorrecta lo deja donde está: nunca retrocedes.",
+  pt="Uma resposta certa move seu cavalo exatamente a distância escolhida. Uma resposta errada o deixa onde está — você nunca retrocede.",
+  de="Eine richtige Antwort bewegt dein Pferd genau um die gewählte Distanz. Eine falsche Antwort lässt es stehen — du gehst nie zurück.",
+  tr="Doğru cevap atını tam olarak seçtiğin kadar ilerletir. Yanlış cevap onu olduğu yerde bırakır — asla geri gitmezsin.",
+  id="Jawaban benar menggerakkan kudamu tepat sejauh yang kamu pilih. Jawaban salah membiarkannya di tempat — kamu tidak pernah mundur.",
+  ur="درست جواب آپ کے گھوڑے کو بالکل اتنا ہی آگے بڑھاتا ہے جتنا آپ نے چنا۔ غلط جواب اسے وہیں رکھتا ہے — آپ کبھی پیچھے نہیں ہٹتے۔",
+  ms="Jawapan betul menggerakkan kuda anda tepat sejauh yang anda pilih. Jawapan salah membiarkannya di tempatnya — anda tidak pernah berundur.",
+  it="Una risposta corretta muove il tuo cavallo esattamente della distanza scelta. Una risposta sbagliata lo lascia dov'è: non torni mai indietro.",
+  nl="Een goed antwoord verplaatst je paard precies de gekozen afstand. Een fout antwoord laat het staan — je gaat nooit achteruit.")
+
+s("ruleGaitCycleTitle", "Rules step 3 title",
+  fr="Une allure par cycle", en="One gait per cycle", ar="خطوة واحدة لكل دورة",
+  es="Un paso por ciclo", pt="Um passo por ciclo", de="Eine Gangart pro Runde",
+  tr="Döngü başına bir tempo", id="Satu langkah per siklus",
+  ur="فی چکر ایک چال", ms="Satu langkah setiap kitaran",
+  it="Un'andatura per ciclo", nl="Eén gang per cyclus")
+
+s("ruleGaitCycleBody", "Rules step 3 body",
+  fr="Chaque allure ne s'utilise qu'une fois. Quand les six sont épuisées, elles reviennent toutes : à toi d'anticiper.",
+  en="Each gait can be used only once. When all six are spent, the whole set comes back — so plan ahead.",
+  ar="كل خطوة تُستخدم مرة واحدة فقط. وعندما تنفد الست، تعود جميعها — فخطط مسبقًا.",
+  es="Cada paso solo se usa una vez. Cuando se agotan los seis, vuelven todos: planifica con antelación.",
+  pt="Cada passo só pode ser usado uma vez. Quando os seis se esgotam, todos voltam — planeje com antecedência.",
+  de="Jede Gangart kann nur einmal genutzt werden. Sind alle sechs verbraucht, kommen sie alle zurück — plane voraus.",
+  tr="Her tempo yalnızca bir kez kullanılır. Altısı da bitince hepsi geri gelir — önceden planla.",
+  id="Setiap langkah hanya bisa dipakai sekali. Ketika keenamnya habis, semuanya kembali — jadi rencanakan.",
+  ur="ہر چال صرف ایک بار استعمال ہوتی ہے۔ جب چھ ختم ہو جائیں تو سب واپس آ جاتی ہیں — پہلے سے منصوبہ بنائیں۔",
+  ms="Setiap langkah hanya boleh digunakan sekali. Apabila keenam-enamnya habis, semuanya kembali — jadi rancang lebih awal.",
+  it="Ogni andatura si usa una sola volta. Quando tutte e sei sono esaurite, tornano tutte: pianifica in anticipo.",
+  nl="Elke gang kun je maar één keer gebruiken. Als alle zes op zijn, komen ze allemaal terug — plan dus vooruit.")
+
+s("ruleCaptureTitle", "Rules step 4 title",
+  fr="Dépasser et renvoyer", en="Overtake and send home", ar="التجاوز والإعادة",
+  es="Adelantar y enviar a casa", pt="Ultrapassar e mandar de volta",
+  de="Überholen und heimschicken", tr="Geç ve ahıra yolla",
+  id="Menyalip dan memulangkan", ur="آگے نکلیں اور واپس بھیجیں",
+  ms="Memintas dan menghantar pulang", it="Sorpassa e rimanda a casa",
+  nl="Inhalen en naar huis sturen")
+
+s("ruleCaptureBody", "Rules step 4 body",
+  fr="Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir.",
+  en="Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.",
+  ar="الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة.",
+  es="Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber.",
+  pt="Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber.",
+  de="Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild.",
+  tr="Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa.",
+  id="Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan.",
+  ur="حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔",
+  ms="Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu.",
+  it="Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un'oasi o quel cavallo porti uno scudo del sapere.",
+  nl="Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt.")
+
+s("ruleStreakTitle", "Rules step 5 title",
+  fr="L'élan du savoir", en="The knowledge streak", ar="اندفاع المعرفة",
+  es="El impulso del saber", pt="O impulso do saber",
+  de="Der Schwung des Wissens", tr="Bilgi serisi", id="Rentetan pengetahuan",
+  ur="علم کی روانی", ms="Rentetan ilmu", it="Lo slancio del sapere",
+  nl="De kennisreeks")
+
+s("ruleStreakBody", "Rules step 5 body",
+  fr="Trois bonnes réponses d'affilée offrent un bouclier, cinq offrent le Grand Galop (+2 cases) et dix un badge de maîtrise. Les bonus s'obtiennent uniquement par la connaissance.",
+  en="Three correct answers in a row earn a shield, five earn the Grand Gallop (+2 squares), and ten earn a mastery badge. Bonuses come from knowledge alone.",
+  ar="ثلاث إجابات صحيحة متتالية تمنح درعًا، وخمس تمنح الركض الكبير (+2 مربع)، وعشر تمنح شارة إتقان. المكافآت تأتي من المعرفة وحدها.",
+  es="Tres respuestas correctas seguidas dan un escudo, cinco dan el Gran Galope (+2 casillas) y diez, una insignia de maestría. Los bonus solo se ganan con conocimiento.",
+  pt="Três respostas certas seguidas dão um escudo, cinco dão o Grande Galope (+2 casas) e dez, um emblema de maestria. Os bônus vêm apenas do conhecimento.",
+  de="Drei richtige Antworten in Folge bringen einen Schild, fünf den Großen Galopp (+2 Felder) und zehn ein Meisterabzeichen. Boni gibt es nur durch Wissen.",
+  tr="Üst üste üç doğru cevap bir kalkan, beş doğru Büyük Dörtnal (+2 kare), on doğru bir ustalık rozeti kazandırır. Bonuslar yalnızca bilgiyle gelir.",
+  id="Tiga jawaban benar berturut-turut memberi perisai, lima memberi Galop Agung (+2 petak), dan sepuluh memberi lencana penguasaan. Bonus hanya datang dari pengetahuan.",
+  ur="لگاتار تین درست جواب ایک ڈھال دیتے ہیں، پانچ عظیم سرپٹ (+2 خانے) اور دس مہارت کا بیج۔ انعامات صرف علم سے ملتے ہیں۔",
+  ms="Tiga jawapan betul berturut-turut memberi perisai, lima memberi Larian Agung (+2 petak), dan sepuluh memberi lencana penguasaan. Bonus datang daripada ilmu sahaja.",
+  it="Tre risposte corrette di fila danno uno scudo, cinque il Gran Galoppo (+2 caselle) e dieci un distintivo di maestria. I bonus si ottengono solo con la conoscenza.",
+  nl="Drie goede antwoorden op rij leveren een schild op, vijf de Grote Galop (+2 vakjes) en tien een meesterschapsbadge. Bonussen komen alleen uit kennis.")
+
+s("ruleArrivalTitle", "Rules step 6 title",
+  fr="L'arrivée", en="The arrival", ar="الوصول", es="La llegada",
+  pt="A chegada", de="Die Ankunft", tr="Varış", id="Kedatangan",
+  ur="آمد", ms="Ketibaan", it="L'arrivo", nl="De aankomst")
+
+s("ruleArrivalBody", "Rules step 6 body",
+  fr="Atteins le bout du parcours — dépasser la ligne est permis — puis réponds à la Question du voyage pour valider ton arrivée. Une erreur ne te fait jamais reculer : tu réessaies au tour suivant.",
+  en="Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.",
+  ar="اِبلغ نهاية المسار — وتجاوز الخط مسموح — ثم أجب عن سؤال الرحلة لتثبيت وصولك. الإجابة الخاطئة لا تعيدك أبدًا: تحاول ببساطة في الدور التالي.",
+  es="Llega al final del recorrido —pasarse de la línea está permitido— y responde la Pregunta del viaje para validar tu llegada. Un error nunca te hace retroceder: lo intentas de nuevo en el siguiente turno.",
+  pt="Chegue ao fim do percurso — passar da linha é permitido — e responda à Pergunta da viagem para validar sua chegada. Um erro nunca faz você recuar: basta tentar de novo na próxima vez.",
+  de="Erreiche das Ende der Strecke — über die Linie hinaus ist erlaubt — und beantworte dann die Frage der Reise, um deine Ankunft zu bestätigen. Ein Fehler wirft dich nie zurück: Du versuchst es einfach im nächsten Zug erneut.",
+  tr="Parkurun sonuna ulaş — çizgiyi geçmek serbest — sonra varışını resmileştirmek için Yolculuk Sorusu'nu cevapla. Yanlış cevap seni asla geri götürmez: sıradaki turda yeniden denersin.",
+  id="Capai ujung lintasan — melewati garis tidak masalah — lalu jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu. Jawaban salah tidak pernah memundurkanmu: kamu tinggal mencoba lagi di giliran berikutnya.",
+  ur="راستے کے آخر تک پہنچیں — لکیر سے آگے نکلنا ٹھیک ہے — پھر اپنی آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں۔ غلط جواب آپ کو کبھی پیچھے نہیں کرتا: آپ اگلی باری میں دوبارہ کوشش کرتے ہیں۔",
+  ms="Capai penghujung laluan — melepasi garisan tidak mengapa — kemudian jawab Soalan Perjalanan untuk mengesahkan ketibaan anda. Jawapan salah tidak pernah mengundurkan anda: anda cuba lagi pada giliran seterusnya.",
+  it="Raggiungi la fine del percorso — superare la linea è permesso — poi rispondi alla Domanda del viaggio per convalidare il tuo arrivo. Un errore non ti fa mai arretrare: riprovi al turno successivo.",
+  nl="Bereik het einde van het parcours — voorbij de streep gaan mag — en beantwoord dan de Vraag van de Reis om je aankomst te bevestigen. Een fout zet je nooit terug: je probeert het gewoon opnieuw.")
+
+
 # ---------------------------------------------------------------------
 def validate():
-    for key, (desc, texts) in K.items():
+    for key, (desc, ph, texts) in K.items():
         for lang in LANGS:
             assert texts[lang].strip(), f"{key}/{lang} is blank"
     print(f"{len(K)} keys x {len(LANGS)} languages = {len(K) * len(LANGS)} strings")
@@ -401,10 +901,15 @@ def write_arb():
     os.makedirs(OUT, exist_ok=True)
     for lang in LANGS:
         data = {"@@locale": lang}
-        for key, (desc, texts) in K.items():
+        for key, (desc, ph, texts) in K.items():
             data[key] = texts[lang]
             if lang == "en":
-                data[f"@{key}"] = {"description": desc}
+                meta = {"description": desc}
+                if ph:
+                    meta["placeholders"] = {
+                        name: {"type": kind} for name, kind in ph.items()
+                    }
+                data[f"@{key}"] = meta
         path = f"{OUT}/app_{lang}.arb"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)

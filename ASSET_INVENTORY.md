@@ -2,16 +2,17 @@
 
 Every visual and font asset shipped in this repository, per spec §119.
 IqraQuest ships **no raster image files** for its core visual identity —
-the horse, board, dice, and landmark art are all original vector code
+the horse, board, horseshoe gaits, and landmark art are all original
+vector code
 (`CustomPainter`), which scales losslessly and keeps the binary small.
 This table will grow if raster assets (app icon PNGs, store screenshots)
 are added during Store submission — see STORE_RELEASE_CHECKLIST.md.
 
 | Asset | Type | Usage | Source / Original | Licence | Localized? |
 |---|---|---|---|---|---|
-| `HorsePainter` | Vector (Dart `CustomPainter`) | Board pawns, hero art, results screen | Original, drawn for IqraQuest | Proprietary (project) | No (script-neutral) |
+| `HorsePainter` | Vector (Dart `CustomPainter`) | Board horse tokens, hero art, results screen | Original, drawn for IqraQuest | Proprietary (project) | No (script-neutral) |
 | `BoardWidget` / `BoardLayout` | Vector | Game board | Original | Proprietary (project) | No |
-| `DicePainter` | Vector | Dice roll UI | Original | Proprietary (project) | No |
+| `HorseshoePainter` (`gait_selector.dart`) | Vector | The six gait choices | Original | Proprietary (project) | No |
 | `HijazLandmarkPainter` | Vector | Home/onboarding backdrops, board zone corners | Original (see VISUAL_REFERENCE_NOTES.md) | Proprietary (project) | No |
 | `GeometricMotifPainter` | Vector (procedural 8-point star lattice) | Card/screen texture | Original, procedurally generated (not traced) | Proprietary (project) | No |
 | `NotoSans-Regular.ttf` | Font (variable, static instance used) | Latin-script UI (fr/en/es/pt/de/tr/id/ms/it/nl) | Google Fonts | SIL Open Font License 1.1 | N/A |

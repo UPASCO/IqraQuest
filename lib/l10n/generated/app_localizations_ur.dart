@@ -20,7 +20,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'سوالات کے جواب دیں، پانسہ پھینکیں، اور اپنے گھوڑے کو مکہ سے مدینہ لے جائیں۔';
+      'سوالات کے جواب دیں، اپنی چال چنیں، اور اپنے گھوڑے کو مکہ سے مدینہ لے جائیں۔';
 
   @override
   String get getStarted => 'شروع کریں';
@@ -84,12 +84,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get yourTurn => 'آپ کی باری';
-
-  @override
-  String get rollDice => 'پانسہ پھینکیں';
-
-  @override
-  String get diceLocked => 'پانسے کو کھولنے کے لیے سوال کا جواب دیں';
 
   @override
   String get category => 'زمرہ';
@@ -159,8 +153,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get purchaseSuccess => 'شکریہ! پریمیم اب فعال ہے۔';
 
   @override
-  String get purchaseError =>
-      'خریداری مکمل نہیں ہو سکی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔';
+  String get purchaseError => 'خریداری مکمل نہیں ہو سکی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔';
 
   @override
   String get language => 'زبان';
@@ -185,4 +178,189 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get parentalGateInstruction => 'جاری رکھنے کے لیے یہ حل کریں۔';
+
+  @override
+  String get chooseYourGait => 'اپنی چال منتخب کریں';
+
+  @override
+  String gaitSquares(int count) {
+    return '$count خانے';
+  }
+
+  @override
+  String get gaitAlreadyUsed => 'اس چکر میں استعمال ہو چکی';
+
+  @override
+  String gaitSemanticLabel(int steps, String difficulty, int points) {
+    return '$steps خانے آگے، $difficulty سوال، $points علمی پوائنٹس';
+  }
+
+  @override
+  String get selectHorse => 'اپنا گھوڑا منتخب کریں';
+
+  @override
+  String get confirmBoldGait => 'اس چال کے لیے مشکل سوال آئے گا۔ جاری رکھیں؟';
+
+  @override
+  String get knowledgeStreak => 'علم کی رفتار';
+
+  @override
+  String get knowledgePointsLabel => 'علمی پوائنٹس';
+
+  @override
+  String get shieldEarned => 'ڈھال مل گئی! آپ کا گھوڑا محفوظ ہے۔';
+
+  @override
+  String get grandGallopEarned => 'گرینڈ گیلپ کھل گیا! جب چاہیں +2 خانے۔';
+
+  @override
+  String get masteryBadgeEarned => 'مہارت کا بیج مل گیا!';
+
+  @override
+  String get useGrandGallop => 'گرینڈ گیلپ استعمال کریں (+2)';
+
+  @override
+  String get chooseCircuit => 'اپنا راستہ منتخب کریں';
+
+  @override
+  String get circuitOasisRoute => 'نخلستانوں کا راستہ';
+
+  @override
+  String get circuitCaravanTrail => 'قافلوں کی پگڈنڈی';
+
+  @override
+  String get circuitGreatRide => 'علم کی عظیم سواری';
+
+  @override
+  String get circuitOasisRouteDescription => 'مختصر، روشن راستہ۔ تیز کھیل کے لیے بہترین۔';
+
+  @override
+  String get circuitCaravanTrailDescription => 'پڑاؤ اور لالٹینیں۔ زیادہ حکمت عملی والا راستہ۔';
+
+  @override
+  String get circuitGreatRideDescription => 'دن سے ستاروں بھرے آسمان تک۔ عظیم سفر۔';
+
+  @override
+  String get cellOasis => 'نخلستان';
+
+  @override
+  String get cellKnowledge => 'علم';
+
+  @override
+  String get cellChallenge => 'چیلنج';
+
+  @override
+  String get cellShortcut => 'مختصر راستہ';
+
+  @override
+  String get cellDuel => 'مقابلہ';
+
+  @override
+  String get cellWisdom => 'حکمت';
+
+  @override
+  String get cellRelay => 'ریلے';
+
+  @override
+  String get cellOasisDescription => 'یہاں آپ کا گھوڑا محفوظ ہے۔';
+
+  @override
+  String get cellChallengeOffer => '2 اضافی خانے آگے بڑھنے کے لیے مشکل سوال کا جواب دیں؟';
+
+  @override
+  String get acceptChallenge => 'چیلنج قبول کریں';
+
+  @override
+  String get declineChallenge => 'اپنی چال رکھیں';
+
+  @override
+  String get saveFact => 'یہ بات محفوظ کریں';
+
+  @override
+  String get journeyQuestion => 'سفر کا سوال';
+
+  @override
+  String get journeyQuestionIntro => 'آپ کی آمد کی تصدیق کے لیے ایک آخری سوال۔';
+
+  @override
+  String get outcomeMoved => 'آپ کا گھوڑا آگے بڑھا!';
+
+  @override
+  String get outcomeStayed => 'آپ کا گھوڑا وہیں رہا۔ کچھ نہیں گیا۔';
+
+  @override
+  String get outcomeCaptured => 'آپ نے حریف کو پیچھے چھوڑا!';
+
+  @override
+  String get outcomeShieldBlocked => 'ڈھال نے گھوڑے کو بچا لیا۔';
+
+  @override
+  String get playerProfile => 'کھلاڑی کا درجہ';
+
+  @override
+  String get profileChild => 'بچہ';
+
+  @override
+  String get profileDiscovery => 'دریافت';
+
+  @override
+  String get profileIntermediate => 'درمیانہ';
+
+  @override
+  String get profileAdvanced => 'اعلیٰ';
+
+  @override
+  String get raceRulesUpdatedTitle => 'دوڑ کے قواعد بہتر کر دیے گئے';
+
+  @override
+  String get raceRulesUpdatedBody =>
+      'پانسہ ختم: اب آپ خود اپنی چال اور اس کے ساتھ خطرے کا درجہ چنتے ہیں۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔';
+
+  @override
+  String get startNewRace => 'نئی دوڑ شروع کریں';
+
+  @override
+  String get rulesTitle => 'قواعد';
+
+  @override
+  String get ruleChooseGaitTitle => 'اپنی چال چنیں';
+
+  @override
+  String get ruleChooseGaitBody =>
+      'آپ خود طے کرتے ہیں کہ کتنے خانے آگے بڑھنا ہے، 1 سے 6 تک۔ جتنا دور جائیں گے، سوال اتنا مشکل ہوگا: 1-2 آسان، 3-4 درمیانہ، 5-6 مشکل۔';
+
+  @override
+  String get ruleAnswerToAdvanceTitle => 'آگے بڑھنے کے لیے جواب دیں';
+
+  @override
+  String get ruleAnswerToAdvanceBody =>
+      'درست جواب آپ کے گھوڑے کو بالکل اتنا ہی آگے بڑھاتا ہے جتنا آپ نے چنا۔ غلط جواب اسے وہیں رکھتا ہے — آپ کبھی پیچھے نہیں ہٹتے۔';
+
+  @override
+  String get ruleGaitCycleTitle => 'فی چکر ایک چال';
+
+  @override
+  String get ruleGaitCycleBody =>
+      'ہر چال صرف ایک بار استعمال ہوتی ہے۔ جب چھ ختم ہو جائیں تو سب واپس آ جاتی ہیں — پہلے سے منصوبہ بنائیں۔';
+
+  @override
+  String get ruleCaptureTitle => 'آگے نکلیں اور واپس بھیجیں';
+
+  @override
+  String get ruleCaptureBody =>
+      'حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔';
+
+  @override
+  String get ruleStreakTitle => 'علم کی روانی';
+
+  @override
+  String get ruleStreakBody =>
+      'لگاتار تین درست جواب ایک ڈھال دیتے ہیں، پانچ عظیم سرپٹ (+2 خانے) اور دس مہارت کا بیج۔ انعامات صرف علم سے ملتے ہیں۔';
+
+  @override
+  String get ruleArrivalTitle => 'آمد';
+
+  @override
+  String get ruleArrivalBody =>
+      'راستے کے آخر تک پہنچیں — لکیر سے آگے نکلنا ٹھیک ہے — پھر اپنی آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں۔ غلط جواب آپ کو کبھی پیچھے نہیں کرتا: آپ اگلی باری میں دوبارہ کوشش کرتے ہیں۔';
 }

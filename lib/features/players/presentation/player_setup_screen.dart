@@ -25,6 +25,7 @@ class PlayerSetupScreen extends ConsumerStatefulWidget {
 
 class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   late final List<TextEditingController> _controllers;
+  late final List<PlayerProfile> _profiles;
   bool _starting = false;
 
   int get _humanCount => widget.args.mode == GameMode.solo ? 1 : widget.args.humanPlayerCount;
@@ -36,6 +37,9 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
       _humanCount,
       (i) => TextEditingController(text: 'Player ${i + 1}'),
     );
+    // Each player carries their own level, so a child and an adult can
+    // share one board fairly (spec §14).
+    _profiles = List.generate(_humanCount, (_) => PlayerProfile.intermediate);
   }
 
   @override
@@ -49,6 +53,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final colors = context.colors;
     return Scaffold(
       appBar: AppBar(title: Text(l10n.addPlayer)),
       body: SafeArea(
@@ -57,22 +62,44 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
           children: [
             for (var i = 0; i < _humanCount; i++)
               Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HorseToken(
-                      coat: _coats[i],
-                      team: _teams[i],
-                      size: 48,
-                      showSaddle: true,
-                      color: _teams[i].color(context.colors),
+                    Row(
+                      children: [
+                        HorseToken(
+                          coat: _coats[i],
+                          team: _teams[i],
+                          size: 48,
+                          color: _teams[i].color(colors),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: TextField(
+                            controller: _controllers[i],
+                            decoration: InputDecoration(labelText: l10n.playerName),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: TextField(
-                        controller: _controllers[i],
-                        decoration: InputDecoration(labelText: l10n.playerName),
-                      ),
+                    const SizedBox(height: 10),
+                    Text(
+                      l10n.playerProfile,
+                      style: Theme.of(context).textTheme.labelMedium
+                          ?.copyWith(color: colors.textSecondary),
+                    ),
+                    const SizedBox(height: 6),
+                    Wrap(
+                      spacing: 8,
+                      children: [
+                        for (final profile in PlayerProfile.values)
+                          ChoiceChip(
+                            label: Text(_profileLabel(profile, l10n)),
+                            selected: _profiles[i] == profile,
+                            onSelected: (_) => setState(() => _profiles[i] = profile),
+                          ),
+                      ],
                     ),
                   ],
                 ),
@@ -87,10 +114,10 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                         coat: _coats[_humanCount + i],
                         team: _teams[_humanCount + i],
                         size: 48,
-                        color: _teams[_humanCount + i].color(context.colors),
+                        color: _teams[_humanCount + i].color(colors),
                       ),
                       const SizedBox(width: 12),
-                      Text('AI ${i + 1} (${widget.args.aiDifficulty.name})'),
+                      Text('AI ${i + 1} · ${_aiLabel(widget.args.aiDifficulty, l10n)}'),
                     ],
                   ),
                 ),
@@ -111,9 +138,23 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
     );
   }
 
+  String _profileLabel(PlayerProfile profile, AppLocalizations l10n) => switch (profile) {
+    PlayerProfile.child => l10n.profileChild,
+    PlayerProfile.discovery => l10n.profileDiscovery,
+    PlayerProfile.intermediate => l10n.profileIntermediate,
+    PlayerProfile.advanced => l10n.profileAdvanced,
+  };
+
+  String _aiLabel(AiDifficulty difficulty, AppLocalizations l10n) => switch (difficulty) {
+    AiDifficulty.easy => l10n.difficultyEasy,
+    AiDifficulty.medium => l10n.difficultyMedium,
+    AiDifficulty.hard => l10n.difficultyHard,
+  };
+
   Future<void> _start() async {
     setState(() => _starting = true);
     final args = widget.args;
+    final horseCount = args.variant.horsesPerPlayer;
     final players = <Player>[];
 
     for (var i = 0; i < _humanCount; i++) {
@@ -124,7 +165,8 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
               ? 'Player ${i + 1}'
               : _controllers[i].text.trim(),
           team: _teams[i],
-          pawns: List.generate(args.variant.pawnsPerPlayer, (_) => const HomePosition()),
+          profile: _profiles[i],
+          horses: List.generate(horseCount, (_) => const HorseState()),
         ),
       );
     }
@@ -136,7 +178,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
             name: 'AI ${i + 1}',
             team: _teams[_humanCount + i],
             aiDifficulty: args.aiDifficulty,
-            pawns: List.generate(args.variant.pawnsPerPlayer, (_) => const HomePosition()),
+            horses: List.generate(horseCount, (_) => const HorseState()),
           ),
         );
       }
@@ -146,7 +188,12 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
     final isPremium = ref.read(premiumControllerProvider);
     final controller = ref.read(gameControllerProvider.notifier);
     controller.configure(pool: pool, isPremium: isPremium);
-    controller.startNewGame(mode: args.mode, variant: args.variant, players: players);
+    controller.startNewGame(
+      mode: args.mode,
+      variant: args.variant,
+      circuitId: args.circuitId,
+      players: players,
+    );
 
     if (mounted) context.go('/game');
   }

@@ -1,8 +1,10 @@
 # IqraQuest
 
-A family board game about Islamic knowledge: for each player's turn,
-answering a question correctly unlocks the dice roll that moves their
-arabian horse along a journey inspired by the Hijaz, from Makkah toward
+A family board game about Islamic knowledge. There is no dice: on each
+turn a player chooses an *allure* (gait) of 1 to 6 squares, and that
+choice is also their choice of difficulty — the further they commit to
+go, the harder the question they must answer to actually move. Their
+arabian horse travels a journey inspired by the Hijaz, from Makkah toward
 Madinah. Built with Flutter, fully offline, no account, no backend, no
 ads.
 
@@ -34,21 +36,23 @@ Android only).
 lib/
   app/            bootstrap, go_router config, Riverpod provider wiring
   core/            (reserved for cross-cutting utils as the app grows)
-  models/          Question, Player, PawnPosition (sealed), GameState, enums
+  models/          Question, Player, HorseState, PawnPosition (sealed),
+                    MovementChoice, GaitCycle, KnowledgeStreak, Circuit,
+                    RewardInventory, GameState, enums
   services/        QuestionRepository, GameSaveService, ProgressService,
                     PurchaseService, EntitlementService, SettingsService,
                     DailyChallengeService, LocalStorageService
   theme/           design tokens (colors, type, spacing, radius) + AppTeam
   l10n/            *.arb source + flutter gen-l10n output
   widgets/         shared UI: QuestionCard, HorseToken/HorsePainter,
-                    DiceWidget, BoardWidget, landmark & motif painters,
+                    GaitSelector, BoardWidget, landmark & motif painters,
                     ParentalGate
   features/
     onboarding/ home/ mode_selection/ players/ settings/
     purchases/ daily_challenge/ progress/ tutorial/   (presentation only)
     game/
-      domain/        GameEngine, HorseAi, PawnMove, BoardGeometry — pure
-                      Dart, no Flutter imports, fully unit-testable
+      domain/        GameEngine, HorseAi — pure Dart, no Flutter
+                      imports, no randomness, fully unit-testable
       application/   GameController (Riverpod StateNotifier) — wires the
                       engine to question selection, AI turns, autosave
       presentation/  GameScreen
@@ -78,17 +82,32 @@ a `GameState` and returns a new one, using logical board positions
 `lib/widgets/board/board_layout.dart` is the only place that maps those
 logical positions to pixels.
 
-Rules encoded and tested (`test/features/game/game_engine_test.dart`,
-17 tests): the question→dice gate, correct/incorrect handling, needing a
-6 to leave the stable, capture, protected squares, exact-count finishing
-(no overshoot), turn advancement, "a 6 grants another turn but always
-gated by a fresh question" (never two rolls from one answer), no repeated
-questions within a game, and both win conditions (Quick: first pawn home;
-Classic: all pawns home).
+Nothing in the engine is random. It contains no `Random` and does not
+import `dart:math`, and a test asserts exactly that: how far a horse
+moves is the gait its player chose, and whether it moves at all is
+whether they answered correctly.
 
-The same engine drives AI opponents (`HorseAi`) — difficulty only changes
-answer-accuracy probability and move-selection heuristics; the dice is
-never biased and the AI never sees information a human player couldn't.
+The turn is: choose a gait (1-6) → answer the question that gait draws
+(1-2 easy / 3-4 medium / 5-6 hard) → a correct answer advances the horse
+by exactly that many squares, a wrong one leaves it where it stands.
+Each gait is usable once; when all six are spent, the set refills.
+
+Rules encoded and tested (`test/features/game/game_engine_test.dart`,
+47 tests): no randomness and no surviving dice API; the gait→difficulty
+mapping; a spent gait becoming unavailable and the cycle refilling;
+correct/incorrect handling; leaving the stable with any gait; the
+preview matching what actually happens (destination, square effect,
+capture); capture, oasis safety and knowledge shields; the streak
+rewards at 3 / 5 / 10 and the fact that an error never revokes one;
+every special square applying exactly its announced effect; structural
+quadrant fairness across all three circuits; overshoot at the finish and
+the Question du voyage that validates an arrival; per-profile difficulty
+so a child and an adult can share a board; and save round-tripping.
+
+The same engine drives AI opponents (`HorseAi`) — difficulty only models
+how often the opponent *knows* an answer, plus how boldly it picks a
+gait. It picks from the same visible options, is bound by the same gait
+cycle, and never sees information a human player couldn't.
 
 ### State management & navigation
 
@@ -155,7 +174,7 @@ with machine-translated legal text.
 See `DESIGN_SYSTEM.md` for the full palette/type/spacing/component
 specification. Every visual is original vector code
 (`lib/widgets/horse_painter.dart`, `board/`, `landmarks/`,
-`geometric_motif_painter.dart`, `dice_widget.dart`) — no raster art was
+`geometric_motif_painter.dart`, `gait_selector.dart`) — no raster art was
 copied or generated from an external source. See
 `VISUAL_REFERENCE_NOTES.md` for the historical-inspiration research
 behind the Makkah/Madinah/horse/architecture treatment, and
@@ -167,22 +186,37 @@ Store submission.
 
 ```bash
 flutter analyze     # 0 issues
-flutter test         # unit + content + integration + widget-smoke tests
+flutter test         # unit + content + integration + widget tests (~5s)
+flutter test --tags=manual   # visual-QA screenshots -> build/screenshots/
 dart run tool/pre_release_check.dart   # release gate (see Content scope)
 ```
 
-As of this pass: `flutter analyze` reports zero issues; `flutter test`
-passes all 37 tests (17 `GameEngine` behavioral tests, 18 question-bank
-integrity tests across fr/en/ar including cross-language parity, 2
-controller-level integration tests, 1 full-app-boot widget smoke test).
+As of this pass: `flutter analyze` reports zero issues and `flutter test`
+passes all 79 tests — 47 `GameEngine`/rules tests, 13 controller-level
+integration tests (turn flow, no-repeat questions, save & resume,
+legacy-save migration, free vs. Premium), 17 question-bank integrity
+tests across fr/en/ar including cross-language parity, and 2 full-app
+widget tests (boot, and the one-time "race rules improved" notice). The
+visual-QA screenshot helper is tagged `manual` and excluded from the
+default suite because software rasterization makes it slow.
+
+`dart run tool/pre_release_check.dart` additionally gates the rules
+change itself: it fails if the engine ever imports `dart:math` or
+instantiates a `Random`, if any dice API reappears in `lib/`, or if the
+three circuits stop keying their effects per quadrant (which is what
+makes every starting corner structurally equal).
 
 ## Accessibility
 
-- `Semantics` labels on interactive elements (dice, pawns, answer tiles).
+- `Semantics` labels on interactive elements: each gait announces its
+  distance, its difficulty and its knowledge points
+  (`gaitSemanticLabel`), plus horses and answer tiles.
 - Color is never the sole differentiator: every team is
   color+symbol+horse-coat (`lib/theme/app_team.dart`).
 - Reduce Motion is read from `MediaQuery.disableAnimations` and honored
-  app-wide (idle horse bob, dice roll animation).
+  app-wide (idle horse bob, horse movement along the track).
+- Difficulty is never conveyed by color alone: each gait shows its
+  number, a pip count and a used/unused shape.
 - Body text targets ≥4.5:1 contrast in both day and night themes
   (`AppSemanticColors`).
 - RTL: Arabic and Urdu render right-to-left via `Directionality` in
