@@ -148,13 +148,15 @@ void main() {
     await _settle(tester);
     await _capture(tester, 'screen_game_gait');
 
-    controller.selectGait(0, const MovementChoice(3));
+    // Tap through the real UI (not the controller) so screen-local state
+    // like the chosen gait — which drives the reward chip — is exercised.
+    await tester.tap(find.text('3 squares'));
     await _settle(tester);
     await _capture(tester, 'screen_game_question');
 
     final question = container.read(gameControllerProvider)!.currentQuestion;
     if (question != null) {
-      controller.answerQuestion(question.correctAnswerIndex);
+      await tester.tap(find.text(question.answers[question.correctAnswerIndex]).first);
       await _settle(tester);
       await _capture(tester, 'screen_game_feedback');
     }

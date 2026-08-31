@@ -125,6 +125,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
                 selectedAnswer: _selectedAnswer,
                 lastAnswerCorrect: state.lastAnswerCorrect,
+                pointsEarned:
+                    state.lastAnswerCorrect == true && state.turnPhase == TurnPhase.showingFeedback
+                    ? _hoveredGait?.knowledgePoints
+                    : null,
                 l10n: l10n,
                 onSelect: (i) {
                   setState(() => _selectedAnswer = i);
@@ -409,6 +413,7 @@ class _QuestionOverlay extends StatelessWidget {
     required this.l10n,
     required this.onSelect,
     required this.onContinue,
+    this.pointsEarned,
   });
 
   final Question question;
@@ -419,6 +424,11 @@ class _QuestionOverlay extends StatelessWidget {
   final AppLocalizations l10n;
   final ValueChanged<int> onSelect;
   final VoidCallback onContinue;
+
+  /// Knowledge points the answer just earned; shown as an immediate
+  /// reward chip so every correct answer pays out visibly (game feel:
+  /// progression on every interaction).
+  final int? pointsEarned;
 
   @override
   Widget build(BuildContext context) {
@@ -439,12 +449,79 @@ class _QuestionOverlay extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
                   ),
                 ),
+              if (pointsEarned != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: _RewardChip(points: pointsEarned!),
+                ),
               QuestionCard(
                 question: question,
                 selectedIndex: selectedAnswer,
                 isCorrect: lastAnswerCorrect,
                 onSelect: onSelect,
                 onContinue: lastAnswerCorrect != null ? onContinue : null,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The immediate payout of a correct answer: a gold chip that pops in,
+/// rises, and settles. Short (one reward beat), language-free ("+2" and a
+/// star read everywhere), and skipped to its end state under Reduce
+/// Motion.
+class _RewardChip extends StatelessWidget {
+  const _RewardChip({required this.points});
+
+  final int points;
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: AppMotion.of(context, AppMotion.reward),
+      curve: AppMotion.settle,
+      builder: (context, t, child) {
+        final clamped = t.clamp(0.0, 1.0);
+        return Opacity(
+          opacity: clamped,
+          child: Transform.translate(
+            offset: Offset(0, (1 - clamped) * 16),
+            child: Transform.scale(scale: 0.7 + 0.3 * t, child: child),
+          ),
+        );
+      },
+      child: Semantics(
+        label: '+$points',
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xFFF3D68A), Color(0xFFDBA83E)],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFFDBA83E).withValues(alpha: 0.5),
+                blurRadius: 18,
+                spreadRadius: 1,
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.auto_awesome, size: 18, color: Color(0xFF5A4210)),
+              const SizedBox(width: 6),
+              Text(
+                '+$points',
+                style: Theme.of(context).textTheme.titleMedium
+                    ?.copyWith(color: const Color(0xFF5A4210), fontWeight: FontWeight.w800),
               ),
             ],
           ),

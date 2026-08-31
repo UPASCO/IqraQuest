@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'pawn_position.dart';
+
 /// What a square does when a horse lands on it. Every effect is fixed,
 /// visible on the board before the player commits to a gait, and fully
 /// deterministic — no square ever moves a horse at random, grants a random
@@ -77,6 +79,26 @@ class Circuit {
 
   /// Total distance from leaving the stable to the finish line.
   int get journeyLength => trackLength + finalLaneLength;
+
+  /// How far along its own journey a horse stands, or null if still in
+  /// the stable. This is the same geometry the engine moves by, exposed
+  /// so presentation can animate a move through every intermediate
+  /// square instead of teleporting across the board.
+  int? progressOf(PawnPosition position, int teamIndex) => switch (position) {
+    HomePosition() => null,
+    TrackPosition(:final index) => (index - entryIndexForTeam(teamIndex)) % trackLength,
+    FinalLanePosition(:final step) => trackLength + step - 1,
+    FinishedPosition() => journeyLength,
+  };
+
+  /// The square a horse stands on after [progress] steps of its journey.
+  PawnPosition positionAt(int progress, int teamIndex) {
+    if (progress >= journeyLength) return const FinishedPosition();
+    if (progress >= trackLength) {
+      return FinalLanePosition(progress - trackLength + 1);
+    }
+    return TrackPosition((entryIndexForTeam(teamIndex) + progress) % trackLength);
+  }
 
   List<int> get safeSquares => [
     for (var i = 0; i < trackLength; i++)

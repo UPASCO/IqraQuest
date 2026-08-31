@@ -8,6 +8,7 @@ import 'app_spacing.dart';
 import 'app_typography.dart';
 
 export 'app_colors.dart';
+export 'app_motion.dart';
 export 'app_radius.dart';
 export 'app_semantic_colors.dart';
 export 'app_spacing.dart';

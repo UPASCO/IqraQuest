@@ -585,6 +585,31 @@ void main() {
     });
   });
 
+  group('Circuit journey geometry (drives the board animation)', () {
+    test('positionAt and progressOf are inverse for every square', () {
+      for (final circuit in Circuit.all) {
+        for (var team = 0; team < 4; team++) {
+          for (var p = 0; p < circuit.journeyLength; p++) {
+            final pos = circuit.positionAt(p, team);
+            expect(
+              circuit.progressOf(pos, team),
+              p,
+              reason: '${circuit.id.name} team $team progress $p',
+            );
+          }
+          expect(circuit.positionAt(circuit.journeyLength, team), isA<FinishedPosition>());
+          expect(circuit.progressOf(const HomePosition(), team), isNull);
+        }
+      }
+    });
+
+    test('the journey enters the track at the team entry square', () {
+      const circuit = Circuit.oasisRoute;
+      expect(circuit.positionAt(0, 0), const TrackPosition(0));
+      expect(circuit.positionAt(0, 1), TrackPosition(circuit.squaresPerQuadrant));
+    });
+  });
+
   group('Saving and resuming', () {
     test('a game round-trips through JSON without losing gait state', () {
       var state = buildGame();
