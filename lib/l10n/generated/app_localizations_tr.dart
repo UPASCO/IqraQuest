@@ -113,7 +113,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get protectedSquareLabel => 'Korumalı Kare';
 
   @override
-  String get freeBankExhaustedMessage => 'Bu oyunda ücretsiz sürümün tüm soruları kullanıldı.';
+  String get freeBankExhaustedMessage =>
+      'Bu oyunda ücretsiz sürümün tüm soruları kullanıldı.';
 
   @override
   String get victory => 'Zafer!';
@@ -140,7 +141,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
+  String get premiumUnlockAll =>
+      '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
 
   @override
   String get premiumOneTime => 'Tek seferlik ödeme — abonelik yok';
@@ -152,7 +154,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get purchaseSuccess => 'Teşekkürler! Premium artık aktif.';
 
   @override
-  String get purchaseError => 'Satın alma tamamlanamadı. Lütfen daha sonra tekrar deneyin.';
+  String get purchaseError =>
+      'Satın alma tamamlanamadı. Lütfen daha sonra tekrar deneyin.';
 
   @override
   String get language => 'Dil';
@@ -193,6 +196,24 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get gaitNameWalk => 'Adım';
+
+  @override
+  String get gaitNameTrot => 'Tırıs';
+
+  @override
+  String get gaitNameCanter => 'Eşkin';
+
+  @override
+  String get gaitNameGallop => 'Dörtnal';
+
+  @override
+  String get gaitNameFullGallop => 'Doludizgin';
+
+  @override
+  String get gaitNameCharge => 'Hücum';
+
+  @override
   String get chooseFormat => 'Oyun formatı';
 
   @override
@@ -207,7 +228,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get selectHorse => 'Atını seç';
 
   @override
-  String get confirmBoldGait => 'Bu tempo daha zor bir soru getirir. Devam edilsin mi?';
+  String get confirmBoldGait =>
+      'Bu tempo daha zor bir soru getirir. Devam edilsin mi?';
 
   @override
   String get knowledgeStreak => 'Bilgi ivmesi';
@@ -240,13 +262,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get circuitGreatRide => 'Büyük Bilgi Yolculuğu';
 
   @override
-  String get circuitOasisRouteDescription => 'Kısa ve güneşli parkur. Hızlı bir oyun için ideal.';
+  String get circuitOasisRouteDescription =>
+      'Kısa ve güneşli parkur. Hızlı bir oyun için ideal.';
 
   @override
-  String get circuitCaravanTrailDescription => 'Kamplar ve fenerler. Daha stratejik bir parkur.';
+  String get circuitCaravanTrailDescription =>
+      'Kamplar ve fenerler. Daha stratejik bir parkur.';
 
   @override
-  String get circuitGreatRideDescription => 'Gündüzden yıldızlı göğe. Büyük yolculuk.';
+  String get circuitGreatRideDescription =>
+      'Gündüzden yıldızlı göğe. Büyük yolculuk.';
 
   @override
   String get cellOasis => 'Vaha';
@@ -273,7 +298,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get cellOasisDescription => 'Atın burada yakalanmaktan güvende.';
 
   @override
-  String get cellChallengeOffer => '2 kare fazla ilerlemek için daha zor bir soru cevaplansın mı?';
+  String get cellChallengeOffer =>
+      '2 kare fazla ilerlemek için daha zor bir soru cevaplansın mı?';
 
   @override
   String get acceptChallenge => 'Meydan okumayı kabul et';

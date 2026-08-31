@@ -237,6 +237,30 @@
       }
     }
   },
+  "gaitNameWalk": "Walk",
+  "@gaitNameWalk": {
+    "description": "Name of the 1-square gait, shown on its chip"
+  },
+  "gaitNameTrot": "Trot",
+  "@gaitNameTrot": {
+    "description": "Name of the 2-square gait, shown on its chip"
+  },
+  "gaitNameCanter": "Canter",
+  "@gaitNameCanter": {
+    "description": "Name of the 3-square gait, shown on its chip"
+  },
+  "gaitNameGallop": "Gallop",
+  "@gaitNameGallop": {
+    "description": "Name of the 4-square gait, shown on its chip"
+  },
+  "gaitNameFullGallop": "Full gallop",
+  "@gaitNameFullGallop": {
+    "description": "Name of the 5-square gait, shown on its chip"
+  },
+  "gaitNameCharge": "Charge",
+  "@gaitNameCharge": {
+    "description": "Name of the 6-square gait, shown on its chip"
+  },
   "chooseFormat": "Game format",
   "@chooseFormat": {
     "description": "Section header above the quick/classic format choice"

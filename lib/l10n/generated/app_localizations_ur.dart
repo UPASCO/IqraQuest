@@ -153,7 +153,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get purchaseSuccess => 'شکریہ! پریمیم اب فعال ہے۔';
 
   @override
-  String get purchaseError => 'خریداری مکمل نہیں ہو سکی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔';
+  String get purchaseError =>
+      'خریداری مکمل نہیں ہو سکی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔';
 
   @override
   String get language => 'زبان';
@@ -192,6 +193,24 @@ class AppLocalizationsUr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get gaitNameWalk => 'قدم';
+
+  @override
+  String get gaitNameTrot => 'دلکی';
+
+  @override
+  String get gaitNameCanter => 'پویا';
+
+  @override
+  String get gaitNameGallop => 'سرپٹ';
+
+  @override
+  String get gaitNameFullGallop => 'تیز سرپٹ';
+
+  @override
+  String get gaitNameCharge => 'یلغار';
 
   @override
   String get chooseFormat => 'کھیل کی طرز';
@@ -241,13 +260,16 @@ class AppLocalizationsUr extends AppLocalizations {
   String get circuitGreatRide => 'علم کی عظیم سواری';
 
   @override
-  String get circuitOasisRouteDescription => 'مختصر، روشن راستہ۔ تیز کھیل کے لیے بہترین۔';
+  String get circuitOasisRouteDescription =>
+      'مختصر، روشن راستہ۔ تیز کھیل کے لیے بہترین۔';
 
   @override
-  String get circuitCaravanTrailDescription => 'پڑاؤ اور لالٹینیں۔ زیادہ حکمت عملی والا راستہ۔';
+  String get circuitCaravanTrailDescription =>
+      'پڑاؤ اور لالٹینیں۔ زیادہ حکمت عملی والا راستہ۔';
 
   @override
-  String get circuitGreatRideDescription => 'دن سے ستاروں بھرے آسمان تک۔ عظیم سفر۔';
+  String get circuitGreatRideDescription =>
+      'دن سے ستاروں بھرے آسمان تک۔ عظیم سفر۔';
 
   @override
   String get cellOasis => 'نخلستان';
@@ -274,7 +296,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get cellOasisDescription => 'یہاں آپ کا گھوڑا محفوظ ہے۔';
 
   @override
-  String get cellChallengeOffer => '2 اضافی خانے آگے بڑھنے کے لیے مشکل سوال کا جواب دیں؟';
+  String get cellChallengeOffer =>
+      '2 اضافی خانے آگے بڑھنے کے لیے مشکل سوال کا جواب دیں؟';
 
   @override
   String get acceptChallenge => 'چیلنج قبول کریں';

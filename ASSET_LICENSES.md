@@ -23,6 +23,26 @@ The historical-inspiration research behind the Makkah/Madinah/horse
 treatment is documented in `VISUAL_REFERENCE_NOTES.md`; nothing was
 copied, traced, or generated from photographs.
 
+### Bitmap illustrations (`assets/images/`)
+
+Painterly concept art supplied by the project owner (AI-generated
+reference art commissioned for IqraQuest), cropped and re-encoded for
+in-app use by `lib/widgets/illustration.dart` consumers. As
+AI-generated imagery it carries no third-party copyright claim, but
+store-listing diligence should note its origin. No human figures, no
+depictions of Allah, prophets, or angels, and no Kaaba imagery appear
+in any crop.
+
+| Asset | File | Origin | Licence |
+|---|---|---|---|
+| Dawn-over-Hijaz region card | `assets/images/region_dawn.webp` | Owner-supplied AI concept art (crop) | Project |
+| Verdant-oasis region card | `assets/images/region_oasis.webp` | Owner-supplied AI concept art (crop) | Project |
+| Madinah-mountains region card | `assets/images/region_mountains.webp` | Owner-supplied AI concept art (crop) | Project |
+| Glowing reward chest | `assets/images/chest_glow.webp` | Owner-supplied AI concept art (crop) | Project |
+| Oasis waterfall vignette | `assets/images/oasis_falls.webp` | Owner-supplied AI concept art (crop) | Project |
+| Arrival at the palace oasis | `assets/images/oasis_arrival.webp` | Owner-supplied AI concept art (crop) | Project |
+| 2.5D world band (mode selection hero) | `assets/images/world_band.webp` | Owner-supplied AI concept art (crop) | Project |
+
 ## Fonts
 
 | Font | Files | Origin | Licence |

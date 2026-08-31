@@ -141,7 +141,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get premiumTitle => 'IqraQuest Premium';
 
   @override
-  String get premiumUnlockAll => 'Ontgrendel alle 500 vragen en elke moeilijkheidsgraad';
+  String get premiumUnlockAll =>
+      'Ontgrendel alle 500 vragen en elke moeilijkheidsgraad';
 
   @override
   String get premiumOneTime => 'Eenmalige betaling — geen abonnement';
@@ -153,7 +154,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get purchaseSuccess => 'Bedankt! Premium is nu actief.';
 
   @override
-  String get purchaseError => 'Aankoop kon niet worden voltooid. Probeer het later opnieuw.';
+  String get purchaseError =>
+      'Aankoop kon niet worden voltooid. Probeer het later opnieuw.';
 
   @override
   String get language => 'Taal';
@@ -194,6 +196,24 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get gaitNameWalk => 'Stap';
+
+  @override
+  String get gaitNameTrot => 'Draf';
+
+  @override
+  String get gaitNameCanter => 'Handgalop';
+
+  @override
+  String get gaitNameGallop => 'Galop';
+
+  @override
+  String get gaitNameFullGallop => 'Rengalop';
+
+  @override
+  String get gaitNameCharge => 'Charge';
+
+  @override
   String get chooseFormat => 'Spelvorm';
 
   @override
@@ -208,7 +228,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get selectHorse => 'Kies je paard';
 
   @override
-  String get confirmBoldGait => 'Deze gang trekt een moeilijkere vraag. Doorgaan?';
+  String get confirmBoldGait =>
+      'Deze gang trekt een moeilijkere vraag. Doorgaan?';
 
   @override
   String get knowledgeStreak => 'Kennismomentum';
@@ -220,7 +241,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get shieldEarned => 'Schild verdiend! Je paard is beschermd.';
 
   @override
-  String get grandGallopEarned => 'Grote Galop ontgrendeld! +2 vakjes wanneer je wilt.';
+  String get grandGallopEarned =>
+      'Grote Galop ontgrendeld! +2 vakjes wanneer je wilt.';
 
   @override
   String get masteryBadgeEarned => 'Meesterschapsbadge verdiend!';
@@ -241,13 +263,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get circuitGreatRide => 'De Grote Rit van Kennis';
 
   @override
-  String get circuitOasisRouteDescription => 'Kort, zonnig parcours. Perfect voor een snel spel.';
+  String get circuitOasisRouteDescription =>
+      'Kort, zonnig parcours. Perfect voor een snel spel.';
 
   @override
-  String get circuitCaravanTrailDescription => 'Kampen en lantaarns. Een strategischer parcours.';
+  String get circuitCaravanTrailDescription =>
+      'Kampen en lantaarns. Een strategischer parcours.';
 
   @override
-  String get circuitGreatRideDescription => 'Van daglicht tot sterrenhemel. De grote reis.';
+  String get circuitGreatRideDescription =>
+      'Van daglicht tot sterrenhemel. De grote reis.';
 
   @override
   String get cellOasis => 'Oase';
@@ -274,7 +299,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get cellOasisDescription => 'Je paard is hier veilig.';
 
   @override
-  String get cellChallengeOffer => 'Een moeilijkere vraag beantwoorden voor 2 extra vakjes?';
+  String get cellChallengeOffer =>
+      'Een moeilijkere vraag beantwoorden voor 2 extra vakjes?';
 
   @override
   String get acceptChallenge => 'Neem de uitdaging aan';
@@ -289,7 +315,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get journeyQuestion => 'Reisvraag';
 
   @override
-  String get journeyQuestionIntro => 'Nog één vraag om je aankomst te bevestigen.';
+  String get journeyQuestionIntro =>
+      'Nog één vraag om je aankomst te bevestigen.';
 
   @override
   String get outcomeMoved => 'Je paard gaat vooruit!';

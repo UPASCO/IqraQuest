@@ -9,6 +9,7 @@ import '../../../services/legacy_game_migration_service.dart';
 import '../../../theme/app_team.dart';
 import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/horse_painter.dart';
+import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
 
 /// The hub of the game, answering at a glance: where am I on the
@@ -282,36 +283,57 @@ class _JourneyCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (circuitName != null) ...[
+          if (circuitName != null && save != null) ...[
             Row(
               children: [
-                const Icon(Icons.route, size: 16, color: Color(0xFFEBC06A)),
-                const SizedBox(width: 7),
+                // A postcard of the region the journey rides through.
+                ArtPanel(
+                  asset: AppArt.forCircuit(save.circuitId),
+                  width: 58,
+                  height: 52,
+                  radius: 12,
+                ),
+                const SizedBox(width: 12),
                 Expanded(
-                  child: Text(
-                    circuitName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleSmall
-                        ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w700),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              circuitName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                color: const Color(0xFFF4ECDC),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            '${(progress * 100).round()}%',
+                            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              color: const Color(0xFFEBC06A),
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(99),
+                        child: LinearProgressIndicator(
+                          value: progress.clamp(0.02, 1.0),
+                          minHeight: 9,
+                          backgroundColor: Colors.white.withValues(alpha: 0.12),
+                          valueColor: const AlwaysStoppedAnimation(Color(0xFFE3B354)),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  '${(progress * 100).round()}%',
-                  style: Theme.of(context).textTheme.titleSmall
-                      ?.copyWith(color: const Color(0xFFEBC06A), fontWeight: FontWeight.w800),
-                ),
               ],
-            ),
-            const SizedBox(height: 10),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(99),
-              child: LinearProgressIndicator(
-                value: progress.clamp(0.02, 1.0),
-                minHeight: 9,
-                backgroundColor: Colors.white.withValues(alpha: 0.12),
-                valueColor: const AlwaysStoppedAnimation(Color(0xFFE3B354)),
-              ),
             ),
             const SizedBox(height: 14),
           ],

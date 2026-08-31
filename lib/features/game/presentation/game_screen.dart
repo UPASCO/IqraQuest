@@ -9,9 +9,9 @@ import '../../../models/models.dart';
 import '../../../services/movement_choice_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/board/board_environment.dart';
-import '../../../widgets/board/board_widget.dart'
-    show BoardPreview, BoardWidget, paintChestLandmark;
+import '../../../widgets/board/board_widget.dart' show BoardPreview, BoardWidget;
 import '../../../widgets/gait_selector.dart' show HorseshoePainter;
+import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
 import '../application/game_controller.dart';
 
@@ -460,7 +460,7 @@ class _GaitBar extends StatelessWidget {
                     available: player.gaitCycle.isAvailable(choice),
                     armed: armed == choice,
                     difficulty: difficultyFor(choice),
-                    label: l10n.gaitSquares(choice.steps),
+                    label: _gaitName(choice),
                     semanticLabel: l10n.gaitSemanticLabel(
                       choice.steps,
                       _difficultyLabel(difficultyFor(choice)),
@@ -522,6 +522,17 @@ class _GaitBar extends StatelessWidget {
       ),
     );
   }
+
+  /// Every gait has a NAME, like a real riding pace — "3 squares" is
+  /// bookkeeping, "Canter" is an identity (reference art: "Trot ×2").
+  String _gaitName(MovementChoice c) => switch (c.steps) {
+    1 => l10n.gaitNameWalk,
+    2 => l10n.gaitNameTrot,
+    3 => l10n.gaitNameCanter,
+    4 => l10n.gaitNameGallop,
+    5 => l10n.gaitNameFullGallop,
+    _ => l10n.gaitNameCharge,
+  };
 
   String _difficultyLabel(QuestionDifficulty d) => switch (d) {
     QuestionDifficulty.easy => l10n.difficultyEasy,
@@ -605,14 +616,19 @@ class _GaitChip extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 2),
-                // The caption stays a localized "n squares" string for
-                // screen readers and small-print clarity.
-                Text(
-                  label,
-                  maxLines: 1,
-                  overflow: TextOverflow.clip,
-                  style: Theme.of(context).textTheme.labelSmall
-                      ?.copyWith(fontSize: 8.5, color: Colors.white60),
+                // The gait's name; long locales ("Ventre à terre") scale
+                // down instead of clipping.
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.labelSmall
+                          ?.copyWith(fontSize: 8.5, color: Colors.white70),
+                    ),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1028,10 +1044,12 @@ class _CellOfferSheet extends StatelessWidget {
                 curve: AppMotion.settle,
                 builder: (context, t, child) =>
                     Transform.scale(scale: 0.7 + 0.3 * t.clamp(0.0, 1.0), child: child),
-                child: const SizedBox(
-                  width: 84,
-                  height: 72,
-                  child: CustomPaint(painter: _ChestBadgePainter()),
+                child: const ArtPanel(
+                  asset: AppArt.chestGlow,
+                  width: 108,
+                  height: 118,
+                  radius: 18,
+                  glow: true,
                 ),
               ),
             const SizedBox(height: 6),
@@ -1100,14 +1118,3 @@ class _CellOfferSheet extends StatelessWidget {
   }
 }
 
-class _ChestBadgePainter extends CustomPainter {
-  const _ChestBadgePainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    paintChestLandmark(canvas, size.center(Offset.zero), size.width * 0.62);
-  }
-
-  @override
-  bool shouldRepaint(covariant _ChestBadgePainter oldDelegate) => false;
-}

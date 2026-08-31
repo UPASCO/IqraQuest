@@ -72,7 +72,8 @@ import 'app_localizations_ur.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -80,7 +81,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -464,6 +466,42 @@ abstract class AppLocalizations {
   /// **'{count, plural, one{{count} square} other{{count} squares}}'**
   String gaitSquares(num count);
 
+  /// Name of the 1-square gait, shown on its chip
+  ///
+  /// In en, this message translates to:
+  /// **'Walk'**
+  String get gaitNameWalk;
+
+  /// Name of the 2-square gait, shown on its chip
+  ///
+  /// In en, this message translates to:
+  /// **'Trot'**
+  String get gaitNameTrot;
+
+  /// Name of the 3-square gait, shown on its chip
+  ///
+  /// In en, this message translates to:
+  /// **'Canter'**
+  String get gaitNameCanter;
+
+  /// Name of the 4-square gait, shown on its chip
+  ///
+  /// In en, this message translates to:
+  /// **'Gallop'**
+  String get gaitNameGallop;
+
+  /// Name of the 5-square gait, shown on its chip
+  ///
+  /// In en, this message translates to:
+  /// **'Full gallop'**
+  String get gaitNameFullGallop;
+
+  /// Name of the 6-square gait, shown on its chip
+  ///
+  /// In en, this message translates to:
+  /// **'Charge'**
+  String get gaitNameCharge;
+
   /// Section header above the quick/classic format choice
   ///
   /// In en, this message translates to:
@@ -807,7 +845,8 @@ abstract class AppLocalizations {
   String get ruleArrivalBody;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override

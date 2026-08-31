@@ -6,6 +6,7 @@ import '../../../models/circuit.dart';
 import '../../../models/game_mode.dart';
 import '../../../models/player.dart' show AiDifficulty;
 import '../../../theme/app_theme.dart';
+import '../../../widgets/illustration.dart';
 import '../../players/presentation/player_setup_args.dart';
 
 class ModeSelectionScreen extends StatefulWidget {
@@ -41,6 +42,10 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: [
+            // The world the player is about to ride into, up front —
+            // the choice below is "where do we ride", not a settings form.
+            const ArtPanel(asset: AppArt.worldBand, height: 128, radius: 20),
+            const SizedBox(height: 18),
             Text(l10n.chooseCircuit, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 12),
             // The layout of every course is fixed and shown up front, so
@@ -167,6 +172,15 @@ class _CircuitCard extends StatelessWidget {
             ),
             child: Row(
               children: [
+                // The region this circuit actually rides through.
+                ArtPanel(
+                  asset: AppArt.forCircuit(circuit.id),
+                  width: 76,
+                  height: 68,
+                  radius: 14,
+                  glow: selected,
+                ),
+                const SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

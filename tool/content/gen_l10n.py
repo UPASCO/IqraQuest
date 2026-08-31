@@ -395,6 +395,42 @@ s("gaitSquares", "How far a gait moves, shown under each horseshoe",
   it="{count, plural, one{{count} casella} other{{count} caselle}}",
   nl="{count, plural, one{{count} vakje} other{{count} vakjes}}")
 
+s("gaitNameWalk", "Name of the 1-square gait, shown on its chip",
+  fr="Pas", en="Walk", ar="مشي",
+  es="Paso", pt="Passo", de="Schritt",
+  tr="Adım", id="Jalan", ur="قدم",
+  ms="Jalan", it="Passo", nl="Stap")
+
+s("gaitNameTrot", "Name of the 2-square gait, shown on its chip",
+  fr="Trot", en="Trot", ar="خبب",
+  es="Trote", pt="Trote", de="Trab",
+  tr="Tırıs", id="Derap", ur="دلکی",
+  ms="Derap", it="Trotto", nl="Draf")
+
+s("gaitNameCanter", "Name of the 3-square gait, shown on its chip",
+  fr="Petit galop", en="Canter", ar="هرولة",
+  es="Medio galope", pt="Meio galope", de="Kanter",
+  tr="Eşkin", id="Kanter", ur="پویا",
+  ms="Kanter", it="Piccolo galoppo", nl="Handgalop")
+
+s("gaitNameGallop", "Name of the 4-square gait, shown on its chip",
+  fr="Galop", en="Gallop", ar="عدو",
+  es="Galope", pt="Galope", de="Galopp",
+  tr="Dörtnal", id="Galop", ur="سرپٹ",
+  ms="Galop", it="Galoppo", nl="Galop")
+
+s("gaitNameFullGallop", "Name of the 5-square gait, shown on its chip",
+  fr="Ventre à terre", en="Full gallop", ar="عدو كامل",
+  es="Galope tendido", pt="Galope largo", de="Renngalopp",
+  tr="Doludizgin", id="Galop penuh", ur="تیز سرپٹ",
+  ms="Galop penuh", it="Galoppo disteso", nl="Rengalop")
+
+s("gaitNameCharge", "Name of the 6-square gait, shown on its chip",
+  fr="Charge", en="Charge", ar="انطلاقة",
+  es="Carga", pt="Carga", de="Attacke",
+  tr="Hücum", id="Serbuan", ur="یلغار",
+  ms="Serbuan", it="Carica", nl="Charge")
+
 s("chooseFormat", "Section header above the quick/classic format choice",
   fr="Format de partie", en="Game format", ar="نمط اللعبة",
   es="Formato de partida", pt="Formato de jogo", de="Spielformat",

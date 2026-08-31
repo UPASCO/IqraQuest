@@ -81,6 +81,23 @@ Future<ProviderContainer> _pumpApp(
   );
   await tester.pumpWidget(scope);
   await _settle(tester);
+  // Bitmap illustrations decode on a real event loop; without this they
+  // capture as gray placeholders.
+  final ctx = tester.element(find.byType(IqraQuestApp));
+  await tester.runAsync(() async {
+    for (final asset in const [
+      'assets/images/region_dawn.webp',
+      'assets/images/region_oasis.webp',
+      'assets/images/region_mountains.webp',
+      'assets/images/chest_glow.webp',
+      'assets/images/oasis_falls.webp',
+      'assets/images/oasis_arrival.webp',
+      'assets/images/world_band.webp',
+    ]) {
+      await precacheImage(AssetImage(asset), ctx);
+    }
+  });
+  await _settle(tester);
   return ProviderScope.containerOf(tester.element(find.byType(IqraQuestApp)));
 }
 
@@ -166,8 +183,30 @@ void main() {
       mode: GameMode.family,
       variant: GameVariant.classic,
       circuitId: CircuitId.greatRide,
-      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+      players: [
+        _human('p0', 'Amina', AppTeam.emerald),
+        _human('p1', 'Yusuf', AppTeam.saphir),
+        _human('p2', 'Zaynab', AppTeam.grenat),
+        _human('p3', 'Khalid', AppTeam.safran),
+      ],
     );
+    // Ride each team a little way out so all four camps AND horses on
+    // the trail are visible: the "4-player board" proof capture.
+    final state = container.read(gameControllerProvider)!.gameState;
+    final players = [...state.players];
+    for (var t = 0; t < 4; t++) {
+      final entry = state.circuit.entryIndexForTeam(t);
+      players[t] = players[t].copyWith(
+        horses: [
+          HorseState(position: TrackPosition((entry + 2 + t * 2) % state.circuit.trackLength)),
+          const HorseState(),
+        ],
+      );
+    }
+    await tester.runAsync(
+      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+    );
+    controller.loadSaved();
     await _settle(tester);
     await _capture(tester, 'screen_game_region_fertile');
   });
@@ -197,7 +236,7 @@ void main() {
     controller.loadSaved();
     await _settle(tester);
 
-    await tester.tap(find.text('2 squares'));
+    await tester.tap(find.text('Trot'));
     await _settle(tester);
     await tester.tap(find.byKey(const Key('gait-confirm')));
     await _settle(tester);
@@ -209,6 +248,23 @@ void main() {
       await _settle(tester);
       await _capture(tester, 'screen_game_chest');
     }
+  });
+
+  testWidgets('results: arrival at the oasis', (tester) async {
+    final container = await _pumpApp(tester, '/results');
+    final controller = container.read(gameControllerProvider.notifier);
+    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    controller.configure(pool: pool!, isPremium: true);
+    // No winnerId set: the results screen then presents the first player,
+    // which is exactly what the capture needs.
+    controller.startNewGame(
+      mode: GameMode.family,
+      variant: GameVariant.classic,
+      circuitId: CircuitId.oasisRoute,
+      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+    );
+    await _settle(tester);
+    await _capture(tester, 'screen_results');
   });
 
   testWidgets('game: gait selection, question, cell offer', (tester) async {
@@ -250,7 +306,7 @@ void main() {
     // Tap through the real UI (not the controller) so screen-local state
     // like the chosen gait — which drives the reward chip — is exercised.
     // First tap arms the gait and shows the destination preview…
-    await tester.tap(find.text('3 squares'));
+    await tester.tap(find.text('Canter'));
     await _settle(tester);
     await _capture(tester, 'screen_game_preview');
     // …the gold arrow rides.
@@ -264,11 +320,14 @@ void main() {
       await _settle(tester);
       await _capture(tester, 'screen_game_feedback');
 
-      // Continue, hand the turn over, and capture a WRONG answer too.
+      // Continue: the horse now actually rides — catch it mid-hop.
       await tester.tap(find.text('Continue').last);
+      await tester.pump(const Duration(milliseconds: 120));
+      await tester.pump(const Duration(milliseconds: 130));
+      await _capture(tester, 'screen_game_moving');
       await _settle(tester);
-      if (find.text('2 squares').evaluate().isNotEmpty) {
-        await tester.tap(find.text('2 squares'));
+      if (find.text('Trot').evaluate().isNotEmpty) {
+        await tester.tap(find.text('Trot'));
         await _settle(tester);
         await tester.tap(find.byKey(const Key('gait-confirm')));
         await _settle(tester);
