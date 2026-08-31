@@ -11,30 +11,30 @@ class SceneAnchor {
 }
 
 const List<SceneAnchor> sceneTrackAnchors = [
-  SceneAnchor(0.3090, 0.2406, 0.908),
-  SceneAnchor(0.4190, 0.2406, 0.908),
-  SceneAnchor(0.5290, 0.2406, 0.908),
-  SceneAnchor(0.6389, 0.2406, 0.908),
-  SceneAnchor(0.7380, 0.2577, 0.916),
-  SceneAnchor(0.8278, 0.2894, 0.930),
-  SceneAnchor(0.9176, 0.3212, 0.945),
-  SceneAnchor(0.9337, 0.3720, 0.967),
-  SceneAnchor(0.9337, 0.4270, 0.992),
-  SceneAnchor(0.9337, 0.4819, 1.017),
-  SceneAnchor(0.8599, 0.5204, 1.034),
-  SceneAnchor(0.7779, 0.5570, 1.051),
-  SceneAnchor(0.6898, 0.5857, 1.064),
-  SceneAnchor(0.5798, 0.5857, 1.064),
-  SceneAnchor(0.4699, 0.5857, 1.064),
-  SceneAnchor(0.3599, 0.5857, 1.064),
-  SceneAnchor(0.2589, 0.5739, 1.058),
-  SceneAnchor(0.1768, 0.5373, 1.042),
-  SceneAnchor(0.0948, 0.5007, 1.025),
-  SceneAnchor(0.0651, 0.4524, 1.004),
-  SceneAnchor(0.0651, 0.3974, 0.979),
-  SceneAnchor(0.0651, 0.3424, 0.954),
-  SceneAnchor(0.1295, 0.3041, 0.937),
-  SceneAnchor(0.2193, 0.2724, 0.923),
+  SceneAnchor(0.2187, 0.2726, 0.923),
+  SceneAnchor(0.3085, 0.2408, 0.908),
+  SceneAnchor(0.4183, 0.2406, 0.908),
+  SceneAnchor(0.5283, 0.2406, 0.908),
+  SceneAnchor(0.6382, 0.2406, 0.908),
+  SceneAnchor(0.7375, 0.2575, 0.916),
+  SceneAnchor(0.8272, 0.2892, 0.930),
+  SceneAnchor(0.9170, 0.3210, 0.944),
+  SceneAnchor(0.9337, 0.3716, 0.967),
+  SceneAnchor(0.9337, 0.4266, 0.992),
+  SceneAnchor(0.9337, 0.4816, 1.017),
+  SceneAnchor(0.8605, 0.5202, 1.034),
+  SceneAnchor(0.7784, 0.5568, 1.051),
+  SceneAnchor(0.6905, 0.5857, 1.064),
+  SceneAnchor(0.5805, 0.5857, 1.064),
+  SceneAnchor(0.4706, 0.5857, 1.064),
+  SceneAnchor(0.3606, 0.5857, 1.064),
+  SceneAnchor(0.2594, 0.5742, 1.058),
+  SceneAnchor(0.1773, 0.5376, 1.042),
+  SceneAnchor(0.0953, 0.5010, 1.025),
+  SceneAnchor(0.0651, 0.4527, 1.004),
+  SceneAnchor(0.0651, 0.3978, 0.979),
+  SceneAnchor(0.0651, 0.3428, 0.954),
+  SceneAnchor(0.1289, 0.3043, 0.937),
 ];
 
 const Map<int, List<SceneAnchor>> sceneLaneAnchors = {
@@ -46,9 +46,9 @@ const Map<int, List<SceneAnchor>> sceneLaneAnchors = {
 
 const Map<int, List<SceneAnchor>> sceneCampAnchors = {
   0: [SceneAnchor(0.0092, 0.2710, 0.848), SceneAnchor(0.0734, 0.2805, 0.852), SceneAnchor(-0.0003, 0.2995, 0.860), SceneAnchor(0.0639, 0.3090, 0.864)],
-  1: [SceneAnchor(0.9420, 0.2591, 0.843), SceneAnchor(0.9872, 0.2733, 0.849), SceneAnchor(0.9325, 0.2864, 0.855), SceneAnchor(0.9777, 0.3007, 0.860)],
-  2: [SceneAnchor(0.7112, 0.6101, 0.989), SceneAnchor(0.7731, 0.6184, 0.992), SceneAnchor(0.6446, 0.6184, 0.992), SceneAnchor(0.7064, 0.6279, 0.996)],
-  3: [SceneAnchor(0.2924, 0.6101, 0.989), SceneAnchor(0.3542, 0.6184, 0.992), SceneAnchor(0.2257, 0.6184, 0.992), SceneAnchor(0.2876, 0.6279, 0.996)],
+  1: [SceneAnchor(0.8230, 0.2626, 0.845), SceneAnchor(0.8683, 0.2769, 0.851), SceneAnchor(0.8159, 0.2900, 0.856), SceneAnchor(0.8611, 0.3043, 0.862)],
+  2: [SceneAnchor(0.7398, 0.6196, 0.993), SceneAnchor(0.7969, 0.6279, 0.996), SceneAnchor(0.6826, 0.6279, 0.996), SceneAnchor(0.7398, 0.6362, 0.999)],
+  3: [SceneAnchor(0.3423, 0.6124, 0.990), SceneAnchor(0.3995, 0.6208, 0.993), SceneAnchor(0.3328, 0.6279, 0.996), SceneAnchor(0.3899, 0.6362, 0.999)],
 };
 
 const SceneAnchor sceneCenterAnchor = SceneAnchor(0.4994, 0.4114, 1.000);

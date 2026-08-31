@@ -250,9 +250,9 @@ LANES = {
 
 CAMPS = {
     "emerald": [(58, 636), (112, 652), (50, 684), (104, 700)],
-    "saphir": [(842, 616), (880, 640), (834, 662), (872, 686)],
-    "grenat": [(648, 1206), (700, 1220), (592, 1220), (644, 1236)],
-    "safran": [(296, 1206), (348, 1220), (240, 1220), (292, 1236)],
+    "saphir": [(742, 622), (780, 646), (736, 668), (774, 692)],
+    "grenat": [(672, 1222), (720, 1236), (624, 1236), (672, 1250)],
+    "safran": [(338, 1210), (386, 1224), (330, 1236), (378, 1250)],
 }
 
 CENTER = (470, 872)
@@ -266,11 +266,11 @@ def track_anchors():
         ln = math.hypot(b[0] - a[0], b[1] - a[1])
         segs.append((a, b, ln))
         total += ln
-    # Cell 0 sits where the emerald camp meets the loop: start of the top
-    # edge, then clockwise.
+    # Cell 0 sits on the green entry medallion (on the TL diagonal),
+    # then clockwise — matching the tiles pieces actually ride.
     out = []
     for i in range(24):
-        target = total * i / 24
+        target = (total * i / 24 - 93) % total
         acc = 0.0
         for a, b, ln in segs:
             if acc + ln >= target:
