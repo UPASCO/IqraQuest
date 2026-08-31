@@ -1,6 +1,6 @@
 # See store/apple/TESTFLIGHT_SETUP.md for what each of these needs to be
 # and where to find it in App Store Connect / the Apple Developer portal.
 
-app_identifier("com.upasco.iqraquest") # must match ios/Runner.xcodeproj's PRODUCT_BUNDLE_IDENTIFIER
+app_identifier("com.IqraQuest.com") # must match ios/Runner.xcodeproj's PRODUCT_BUNDLE_IDENTIFIER
 team_id(ENV["APPLE_TEAM_ID"])          # Apple Developer Team ID, e.g. "ABCDE12345"
 itc_team_id(ENV["APP_STORE_CONNECT_TEAM_ID"]) # only needed if it differs from team_id; safe to leave unset otherwise

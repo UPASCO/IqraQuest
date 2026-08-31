@@ -16,7 +16,10 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.upasco.iqraquest"
+        // The public app identity, matching the iOS bundle ID and the App
+        // Store Connect / Play Console records. The `namespace` above stays
+        // com.upasco.iqraquest: it is only the internal Kotlin package.
+        applicationId = "com.IqraQuest.com"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

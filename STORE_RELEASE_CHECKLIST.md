@@ -15,7 +15,7 @@ See `store/apple/TESTFLIGHT_SETUP.md` for the GitHub Actions pipeline
 that builds and uploads to TestFlight without a local Mac.
 
 ```text
-[ ] Final bundle ID confirmed (currently com.upasco.iqraquest — placeholder org, update if needed)
+[ ] Final bundle ID confirmed (currently com.IqraQuest.com — placeholder org, update if needed)
 [ ] ASC_KEY_ID / ASC_ISSUER_ID / ASC_KEY_CONTENT / APPLE_TEAM_ID secrets set in GitHub (store/apple/TESTFLIGHT_SETUP.md)
 [ ] App Store Connect record created
 [ ] In-App Purchase "iqraquest_full_access" configured as Non-Consumable
@@ -39,7 +39,7 @@ that builds and uploads to TestFlight without a local Mac.
 ## Google Play
 
 ```text
-[ ] Final Application ID confirmed (com.upasco.iqraquest)
+[ ] Final Application ID confirmed (com.IqraQuest.com)
 [ ] Play Console app record created
 [ ] In-app product "iqraquest_full_access" configured as a one-time product
 [ ] Google Play Billing integration tested (license-tester account)
