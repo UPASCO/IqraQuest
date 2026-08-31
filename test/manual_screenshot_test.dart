@@ -3,9 +3,9 @@ library;
 
 // Manual visual-QA helper, not part of CI (spec §97). Renders the horse
 // and the rest of the hand-painted visual system in isolation so the art
-// can be reviewed as PNGs under build/screenshots/. Software
-// rasterization makes it slow, so it is tagged `manual` and excluded
-// from the default suite.
+// can be reviewed as PNGs under build/screenshots/. It is tagged
+// `manual` and excluded from the default suite because it writes files
+// and exists for human review, not for asserting behaviour.
 //
 // Run it deliberately with:
 //   flutter test --tags=manual test/manual_screenshot_test.dart
@@ -21,10 +21,19 @@ import 'package:iqraquest/widgets/horse_painter.dart';
 Future<void> _capture(WidgetTester tester, String name) async {
   final element = find.byType(RepaintBoundary).evaluate().first;
   final boundary = element.renderObject! as RenderRepaintBoundary;
-  final image = await boundary.toImage(pixelRatio: 1);
-  final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
-  final dir = Directory('build/screenshots')..createSync(recursive: true);
-  File('${dir.path}/$name.png').writeAsBytesSync(bytes!.buffer.asUint8List());
+
+  // toImage/toByteData hand work to the raster thread, which the fake
+  // async zone a widget test runs in never drains: the futures do
+  // complete, but the test then hangs until its timeout. runAsync gives
+  // them a real event loop, which turns a 10-minute hang into an
+  // instant capture.
+  await tester.runAsync(() async {
+    final image = await boundary.toImage(pixelRatio: 1);
+    final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
+    image.dispose();
+    final dir = Directory('build/screenshots')..createSync(recursive: true);
+    File('${dir.path}/$name.png').writeAsBytesSync(bytes!.buffer.asUint8List());
+  });
 }
 
 Future<void> _scene(WidgetTester tester, String name, Size size, Widget child) async {
@@ -159,7 +168,9 @@ void main() {
     await _scene(
       tester,
       'horse_small',
-      const Size(1000, 260),
+      // 12 tokens (6 sizes x 2 teams) plus their padding need 1084px;
+      // a narrower canvas silently overflows the row.
+      const Size(1120, 260),
       Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

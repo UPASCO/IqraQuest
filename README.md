@@ -186,19 +186,27 @@ Store submission.
 
 ```bash
 flutter analyze     # 0 issues
-flutter test         # unit + content + integration + widget tests (~5s)
-flutter test --tags=manual   # visual-QA screenshots -> build/screenshots/
+flutter test         # the whole suite, ~9s
+flutter test --exclude-tags=manual     # same, minus the screenshot helper
 dart run tool/pre_release_check.dart   # release gate (see Content scope)
 ```
 
 As of this pass: `flutter analyze` reports zero issues and `flutter test`
-passes all 79 tests — 47 `GameEngine`/rules tests, 13 controller-level
-integration tests (turn flow, no-repeat questions, save & resume,
-legacy-save migration, free vs. Premium), 17 question-bank integrity
-tests across fr/en/ar including cross-language parity, and 2 full-app
-widget tests (boot, and the one-time "race rules improved" notice). The
-visual-QA screenshot helper is tagged `manual` and excluded from the
-default suite because software rasterization makes it slow.
+passes all 82 tests in about 9 seconds — 47 `GameEngine`/rules tests, 13
+controller-level integration tests (turn flow, no-repeat questions, save
+& resume, legacy-save migration, free vs. Premium), 17 question-bank
+integrity tests across fr/en/ar including cross-language parity, 2
+full-app widget tests (boot, and the one-time "race rules improved"
+notice), and 3 visual-QA scenes that render the horse art to
+`build/screenshots/` for human review.
+
+Those last three are tagged `manual` — they write files for a person to
+look at rather than asserting behaviour — so CI can drop them with
+`--exclude-tags=manual`. They used to hang for ten minutes each and then
+fail: `toImage`/`toByteData` hand work to the raster thread, which the
+fake async zone a widget test runs in never drains, so the futures
+completed but the test never did. Wrapping the capture in
+`tester.runAsync()` turns each one into an instant capture.
 
 `dart run tool/pre_release_check.dart` additionally gates the rules
 change itself: it fails if the engine ever imports `dart:math` or

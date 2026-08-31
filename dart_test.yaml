@@ -1,6 +1,6 @@
-# `manual` marks the visual-QA screenshot helper: it software-rasterizes
-# every painter, which is far too slow for the default suite. Run it
-# deliberately with `flutter test --tags=manual`.
+# `manual` marks the visual-QA screenshot helper: it writes PNGs to
+# build/screenshots/ for human review rather than asserting behaviour.
+# It runs in the default suite (it is fast), and CI can drop it with
+# `flutter test --exclude-tags=manual`.
 tags:
   manual:
-    skip: "visual-QA only — run with `flutter test --tags=manual`"
