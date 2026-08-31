@@ -18,13 +18,13 @@ are added during Store submission — see STORE_RELEASE_CHECKLIST.md.
 | `NotoSans-Regular.ttf` | Font (variable, static instance used) | Latin-script UI (fr/en/es/pt/de/tr/id/ms/it/nl) | Google Fonts | SIL Open Font License 1.1 | N/A |
 | `NotoSansArabic-Regular.ttf` | Font (variable) | Reserved for future use / fallback | Google Fonts | SIL Open Font License 1.1 | N/A |
 | `NotoNaskhArabic-Regular.ttf` | Font | Arabic-script UI (ar, ur) | Google Fonts | SIL Open Font License 1.1 | N/A |
-| App launcher icon (`android/app/src/main/res/mipmap-*`, `ios/Runner/Assets.xcassets`, `web/icons`) | Raster (PNG), rendered from original vector code | OS home screen | Original — rendered by `tool/app_icon_renderer_test.dart` (arabian horse head + eight-point star; regenerate with that tool, then `python3 tool/strip_icon_alpha.py` for iOS) | Proprietary (project) | No |
+| App launcher icon (`android/app/src/main/res/mipmap-*`, `ios/Runner/Assets.xcassets`, `web/icons`) | Raster (PNG), rendered from original vector code | OS home screen | Original — rendered by `tool/app_icon_renderer_test.dart` (arabian horse head under a gold mihrab arch, with a crescent and an eight-point star burst; regenerate with that tool, then `python3 tool/strip_icon_alpha.py` for iOS) | Proprietary (project) | No |
 
 ## App icon
 
 The launcher icon is now an original IqraQuest design: an ivory arabian
-horse head with a gold mane over a night-emerald ground and a faint
-eight-point star — no depiction of any person, no Kaaba-as-object, no
+horse head with a gold mane, framed by a gold mihrab arch with a
+crescent in its sky and an eight-point star burst behind the head — no depiction of any person, no Kaaba-as-object, no
 text (spec §23 + religious constraints). It is generated, never
 hand-edited: change `AppIconPainter` in
 `tool/app_icon_renderer_test.dart`, re-run it, then run

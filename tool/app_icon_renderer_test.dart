@@ -39,51 +39,17 @@ class AppIconPainter extends CustomPainter {
     final s = size.shortestSide;
     Offset p(double x, double y) => Offset(x * s, y * s);
 
-    // --- Golden-hour ground: luminous emerald with a warm dawn glow ---
-    canvas.drawRect(
-      Offset.zero & size,
-      Paint()..shader = ui.Gradient.linear(p(0.5, 0), p(0.5, 1), [_skyTop, _skyBottom]),
-    );
-    // Warm light rising from below — this is what keeps the icon from
-    // reading as somber on the store shelf.
+    // --- Deep emerald night, full bleed behind the arch ---
     canvas.drawRect(
       Offset.zero & size,
       Paint()
-        ..shader = ui.Gradient.radial(
-          p(0.5, 0.92),
-          0.95 * s,
-          [const Color(0x80E9B84F), const Color(0x26E9B84F), const Color(0x00E9B84F)],
-          [0.0, 0.45, 1.0],
-        ),
-    );
-    // Cool halo behind the head so the ivory pops at 20px.
-    canvas.drawCircle(
-      p(0.44, 0.42),
-      0.50 * s,
-      Paint()
-        ..shader = ui.Gradient.radial(p(0.44, 0.42), 0.50 * s, [
-          const Color(0x30F4ECDC),
-          const Color(0x00F4ECDC),
+        ..shader = ui.Gradient.linear(p(0.5, 0), p(0.5, 1), [
+          const Color(0xFF0C3D2E),
+          const Color(0xFF062419),
         ]),
     );
 
-    // --- Eight-point star as a radiant burst behind the head: filled,
-    // no outline, so the points that peek past the silhouette read as
-    // rays of light rather than stray line fragments ---
-    canvas.save();
-    canvas.translate(0.5 * s, 0.50 * s);
-    final star = Path();
-    for (var i = 0; i < 16; i++) {
-      final r = (i.isEven ? 0.54 : 0.375) * s;
-      final a = i * math.pi / 8 - math.pi / 2;
-      final v = Offset(math.cos(a) * r, math.sin(a) * r);
-      i == 0 ? star.moveTo(v.dx, v.dy) : star.lineTo(v.dx, v.dy);
-    }
-    star.close();
-    canvas.drawPath(star, Paint()..color = _gold.withValues(alpha: 0.13));
-    canvas.restore();
-
-    // --- The horse, inset-scaled about the centre for maskable targets ---
+    // Everything below scales about the centre for maskable targets.
     canvas.save();
     if (inset > 0) {
       canvas.translate(0.5 * s, 0.5 * s);
@@ -91,35 +57,85 @@ class AppIconPainter extends CustomPainter {
       canvas.translate(-0.5 * s, -0.5 * s);
     }
 
-    // Enlarge the whole head about a bottom anchor: the face should
-    // nearly fill the frame — store icons are cropped tight, not framed
-    // like portraits.
-    canvas.translate(0.46 * s, 0.99 * s);
-    canvas.scale(1.06);
-    canvas.translate(-0.46 * s, -0.99 * s);
+    // --- The Islamic arch (mihrab-style window) that frames the scene.
+    // Its interior is a lighter, dawn-lit sky, so the arch reads as an
+    // opening onto the journey — instantly "Islamic architecture" even
+    // at launcher size.
+    Path archAt(double inset) {
+      final l = inset, r = 1 - inset;
+      return Path()
+        ..moveTo(l * s, 0.975 * s)
+        ..lineTo(l * s, 0.470 * s)
+        ..cubicTo(l * s, 0.280 * s, (0.5 - 0.235) * s, 0.135 * s, 0.5 * s, 0.062 * s)
+        ..cubicTo((0.5 + 0.235) * s, 0.135 * s, r * s, 0.280 * s, r * s, 0.470 * s)
+        ..lineTo(r * s, 0.975 * s)
+        ..close();
+    }
 
-    // Mane: one flowing shape whose outer edge undulates in three soft
-    // waves — wind and motion without a single hard spike.
+    final archWindow = archAt(0.075);
+    canvas.drawPath(
+      archWindow,
+      Paint()..shader = ui.Gradient.linear(p(0.5, 0.05), p(0.5, 1), [_skyTop, _skyBottom]),
+    );
+
+    canvas.save();
+    canvas.clipPath(archWindow);
+    // Warm dawn glow rising inside the arch.
+    canvas.drawRect(
+      Offset.zero & size,
+      Paint()
+        ..shader = ui.Gradient.radial(
+          p(0.5, 0.95),
+          0.95 * s,
+          [const Color(0x80E9B84F), const Color(0x26E9B84F), const Color(0x00E9B84F)],
+          [0.0, 0.45, 1.0],
+        ),
+    );
+    // Soft eight-point star burst behind the head.
+    canvas.save();
+    canvas.translate(0.5 * s, 0.52 * s);
+    final burst = Path();
+    for (var i = 0; i < 16; i++) {
+      final r = (i.isEven ? 0.50 : 0.35) * s;
+      final a = i * math.pi / 8 - math.pi / 2;
+      final v = Offset(math.cos(a) * r, math.sin(a) * r);
+      i == 0 ? burst.moveTo(v.dx, v.dy) : burst.lineTo(v.dx, v.dy);
+    }
+    burst.close();
+    canvas.drawPath(burst, Paint()..color = _gold.withValues(alpha: 0.12));
+    canvas.restore();
+
+    // --- Crescent in the open sky beside the face: the unmistakable
+    // sign, placed where the arch window is widest so nothing clips it.
+    final crescent = Path.combine(
+      PathOperation.difference,
+      Path()..addOval(Rect.fromCircle(center: p(0.200, 0.330), radius: 0.062 * s)),
+      Path()..addOval(Rect.fromCircle(center: p(0.226, 0.314), radius: 0.053 * s)),
+    );
+    canvas.drawPath(crescent, Paint()..color = const Color(0xFFEBC06A));
+
+    // --- The horse, sized to live inside the arch ---
+    canvas.save();
+    canvas.translate(0.47 * s, 0.99 * s);
+    canvas.scale(0.94);
+    canvas.translate(-0.47 * s, -0.99 * s);
+
     final mane = Path()
       ..moveTo(0.452 * s, 0.150 * s)
-      // Outer edge: three gentle swells flowing down and back.
       ..cubicTo(0.600 * s, 0.170 * s, 0.740 * s, 0.220 * s, 0.816 * s, 0.315 * s)
       ..cubicTo(0.795 * s, 0.352 * s, 0.786 * s, 0.392 * s, 0.796 * s, 0.438 * s)
       ..cubicTo(0.840 * s, 0.485 * s, 0.864 * s, 0.550 * s, 0.868 * s, 0.628 * s)
       ..cubicTo(0.842 * s, 0.660 * s, 0.832 * s, 0.695 * s, 0.838 * s, 0.738 * s)
       ..cubicTo(0.854 * s, 0.800 * s, 0.858 * s, 0.885 * s, 0.850 * s, 0.975 * s)
-      // Base along the bottom, then the inner edge tucked under the crest.
       ..lineTo(0.640 * s, 0.975 * s)
       ..cubicTo(0.648 * s, 0.780 * s, 0.630 * s, 0.560 * s, 0.560 * s, 0.380 * s)
       ..cubicTo(0.520 * s, 0.286 * s, 0.470 * s, 0.208 * s, 0.418 * s, 0.164 * s)
       ..close();
-    final manePaint = Paint()
-      ..shader = ui.Gradient.linear(p(0.45, 0.10), p(0.85, 0.95), [_gold, _goldDeep]);
-    canvas.drawPath(mane, manePaint);
+    canvas.drawPath(
+      mane,
+      Paint()..shader = ui.Gradient.linear(p(0.45, 0.10), p(0.85, 0.95), [_gold, _goldDeep]),
+    );
 
-    // Head on a diagonal axis: muzzle low-left, poll high-centre, the
-    // crest a proud arch. Long dished face and a fine muzzle are what
-    // make it read as an Arabian.
     final head = Path()
       ..moveTo(0.415 * s, 0.975 * s)
       ..cubicTo(0.408 * s, 0.800 * s, 0.390 * s, 0.640 * s, 0.352 * s, 0.545 * s)
@@ -140,8 +156,6 @@ class AppIconPainter extends CustomPainter {
       Paint()..shader = ui.Gradient.linear(p(0.18, 0.35), p(0.70, 0.97), [_ivory, _ivoryShade]),
     );
 
-    // Eye: large, dark, gentle — with a generous highlight. This is the
-    // single biggest "attachant" lever for a young audience.
     final eye = Path()
       ..moveTo(0.300 * s, 0.392 * s)
       ..quadraticBezierTo(0.340 * s, 0.358 * s, 0.378 * s, 0.374 * s)
@@ -151,7 +165,6 @@ class AppIconPainter extends CustomPainter {
     canvas.drawCircle(p(0.352, 0.376), 0.013 * s, Paint()..color = Colors.white);
     canvas.drawCircle(p(0.330, 0.390), 0.006 * s, Paint()..color = Colors.white54);
 
-    // Nostril, following the muzzle's angle.
     canvas.drawArc(
       Rect.fromCircle(center: p(0.192, 0.532), radius: 0.017 * s),
       math.pi * 0.1,
@@ -164,7 +177,6 @@ class AppIconPainter extends CustomPainter {
         ..color = const Color(0xFF8A7455),
     );
 
-    // Mouth: a soft upward curve — calm, almost smiling.
     canvas.drawPath(
       Path()
         ..moveTo(0.168 * s, 0.560 * s)
@@ -176,7 +188,6 @@ class AppIconPainter extends CustomPainter {
         ..color = _ivoryShade,
     );
 
-    // Cheek shading for volume.
     canvas.drawPath(
       Path()
         ..moveTo(0.330 * s, 0.545 * s)
@@ -185,8 +196,27 @@ class AppIconPainter extends CustomPainter {
         ..close(),
       Paint()..color = _ivoryShade.withValues(alpha: 0.85),
     );
+    canvas.restore(); // horse scale
+    canvas.restore(); // arch clip
 
-    canvas.restore();
+    // --- Arch frame strokes on top: one confident gold line and one
+    // finer echo, the classic doubled Islamic border ---
+    canvas.drawPath(
+      archAt(0.075),
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 0.024 * s
+        ..color = _gold,
+    );
+    canvas.drawPath(
+      archAt(0.040),
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 0.009 * s
+        ..color = _gold.withValues(alpha: 0.55),
+    );
+
+    canvas.restore(); // maskable inset
   }
 
   @override
