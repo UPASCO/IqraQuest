@@ -196,7 +196,7 @@ void main() {
     final text = gradle.readAsStringSync();
     check(
       'applicationId is set to a non-default package',
-      text.contains('applicationId = "com.iqraquest.app"'),
+      text.contains('applicationId = "com.IqraQuest.com"'),
     );
   }
 

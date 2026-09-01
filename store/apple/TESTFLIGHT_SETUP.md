@@ -22,7 +22,7 @@ n'est nécessaire, et rien n'est envoyé chez Apple.
    **Nouvelle app**.
 2. Bundle ID : choisis (ou crée dans le [Developer
    Portal](https://developer.apple.com/account/resources/identifiers/list))
-   `com.iqraquest.app` — c'est déjà l'identifiant configuré dans le
+   `com.IqraQuest.com` — c'est déjà l'identifiant configuré dans le
    projet Xcode (`ios/Runner.xcodeproj`). Si tu préfères un autre
    identifiant (par ex. avec ton propre nom d'organisation), dis-le-moi
    et je le change dans le projet — mais il doit être identique des deux
