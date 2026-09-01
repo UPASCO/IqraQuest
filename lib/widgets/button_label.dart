@@ -11,10 +11,13 @@ import 'package:flutter/material.dart';
 /// [maxLines] is 1 by default; pass 2 for the rare long call to action
 /// that genuinely reads better on two balanced lines.
 class ButtonLabel extends StatelessWidget {
-  const ButtonLabel(this.text, {super.key, this.maxLines = 1});
+  const ButtonLabel(this.text, {super.key, this.maxLines = 1, this.style});
 
   final String text;
   final int maxLines;
+
+  /// Inherited from the button's own text style when omitted.
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class ButtonLabel extends StatelessWidget {
       maxLines: maxLines,
       softWrap: maxLines > 1,
       overflow: TextOverflow.ellipsis,
+      style: style,
     );
     // scaleDown only shrinks: a label that already fits is untouched, so
     // buttons keep a consistent type size across the app.

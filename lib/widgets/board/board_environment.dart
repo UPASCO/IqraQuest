@@ -112,11 +112,13 @@ class BoardEnvironmentPainter extends CustomPainter {
       final y = (math.sin(i * 78.233) * 0.5 + 0.5) * hy * 0.55;
       canvas.drawCircle(Offset(x, y + 6), i % 3 == 0 ? 1.6 : 1.0, star);
     }
-    // Crescent.
+    // Crescent, hung low enough in the sky to clear the title block the
+    // home screen lays over this scene — at hy * 0.32 it sat right
+    // against the wordmark and threw the whole header off balance.
     final crescent = Path.combine(
       PathOperation.difference,
-      Path()..addOval(Rect.fromCircle(center: Offset(w * 0.82, hy * 0.32), radius: w * 0.040)),
-      Path()..addOval(Rect.fromCircle(center: Offset(w * 0.838, hy * 0.305), radius: w * 0.034)),
+      Path()..addOval(Rect.fromCircle(center: Offset(w * 0.82, hy * 0.66), radius: w * 0.040)),
+      Path()..addOval(Rect.fromCircle(center: Offset(w * 0.838, hy * 0.645), radius: w * 0.034)),
     );
     canvas.drawPath(crescent, Paint()..color = const Color(0xFFEBC06A));
 

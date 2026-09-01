@@ -469,24 +469,31 @@ class _ShelfItem extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
+        // Opaque, not a 9%-white veil: these tiles sit over a scene that
+        // runs from night sky to pale sand, and a translucent chip with
+        // pale type on it disappears completely over the light half —
+        // that is what made "Défi du jour" unreadable on device.
         child: Material(
-          color: Colors.white.withValues(alpha: 0.09),
+          color: const Color(0xE60B2A20),
           borderRadius: BorderRadius.circular(16),
           child: InkWell(
             borderRadius: BorderRadius.circular(16),
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
               child: Column(
                 children: [
-                  Icon(icon, size: 20, color: const Color(0xFFF4ECDC)),
+                  Icon(icon, size: 20, color: const Color(0xFFF6EFE0)),
                   const SizedBox(height: 4),
-                  Text(
+                  // Scaled down rather than ellipsised: "Défi du jour"
+                  // and its 11 translations must all stay readable.
+                  ButtonLabel(
                     label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelSmall
-                        ?.copyWith(fontSize: 9.5, color: const Color(0xCCE9DFC8)),
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      fontSize: 11,
+                      height: 1.1,
+                      color: const Color(0xFFF6EFE0),
+                    ),
                   ),
                 ],
               ),
