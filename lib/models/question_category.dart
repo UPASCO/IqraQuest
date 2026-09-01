@@ -9,7 +9,9 @@ enum QuestionDifficulty { easy, medium, hard }
 /// Where a fact is anchored. Ordered by source priority (spec §53):
 /// Qur'an first, then the two most rigorously authenticated hadith
 /// collections, then well-established, non-controversial Sīra events.
-enum SourceType { quran, hadithBukhari, hadithMuslim, sira }
+/// `creed` covers descriptive articles-of-faith facts admitted under the
+/// "established fact" reference class (CONTENT_SOURCE_POLICY.md §2bis).
+enum SourceType { quran, hadithBukhari, hadithMuslim, sira, creed }
 
 /// A question may only ship in the production bank when its
 /// verification pipeline status is [verified] — see

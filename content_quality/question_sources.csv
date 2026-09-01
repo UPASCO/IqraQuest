@@ -17,24 +17,24 @@ prophets_015,prophets,quran,Quran,26:63,verified,nonControversial
 prophets_016,prophets,quran,Quran,21:78-79,verified,nonControversial
 prophets_017,prophets,quran,Quran,20:38-39,verified,nonControversial
 prophets_018,prophets,quran,Quran,7:73,verified,nonControversial
-sira_001,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_001,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
 sira_002,sira,quran,Quran,105:1-5,verified,nonControversial
-sira_003,sira,sira,Sira,well-established biography,verified,nonControversial
-sira_004,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_003,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_004,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
 sira_005,sira,quran,Quran,2:97,verified,nonControversial
-sira_006,sira,sira,Sira,well-established biography,verified,nonControversial
-sira_007,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_006,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_007,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
 sira_008,sira,quran,Quran,9:40,verified,nonControversial
 sira_009,sira,quran,Quran,3:123,verified,nonControversial
-sira_010,sira,sira,Sira,well-established biography,verified,nonControversial
-sira_011,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_010,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_011,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
 sira_012,sira,quran,Quran,2:185,verified,nonControversial
-sira_013,sira,sira,Sira,well-established biography,verified,nonControversial
-sira_014,sira,sira,Sira,well-established biography,verified,nonControversial
-sira_015,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_013,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_014,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_015,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
 sira_016,sira,quran,Quran,17:1,verified,nonControversial
-sira_017,sira,sira,Sira,well-established biography,verified,nonControversial
-sira_018,sira,sira,Sira,well-established biography,verified,nonControversial
+sira_017,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_018,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
 quran_001,quran,quran,Quran,1:1-7,verified,nonControversial
 quran_002,quran,quran,Quran,well-established count (114 surahs),verified,nonControversial
 quran_003,quran,quran,Quran,well-established (Al-Baqarah is the longest surah),verified,nonControversial
@@ -59,3 +59,65 @@ virtues_003,virtues,hadithBukhari,Sahih al-Bukhari,6018,verified,nonControversia
 virtues_004,virtues,hadithBukhari,Sahih al-Bukhari,13,verified,nonControversial
 virtues_005,virtues,hadithBukhari,Sahih al-Bukhari,10,verified,nonControversial
 virtues_006,virtues,quran,Quran,17:23-24,verified,nonControversial
+prophets_019,prophets,quran,Quran,2:31,verified,nonControversial
+prophets_020,prophets,quran,Quran,19:29-30,verified,nonControversial
+prophets_021,prophets,quran,Quran,2:127,verified,nonControversial
+prophets_022,prophets,quran,Quran,19:7,verified,nonControversial
+prophets_023,prophets,quran,Quran,20:19-20,verified,nonControversial
+prophets_024,prophets,quran,Quran,12:4,verified,nonControversial
+prophets_025,prophets,quran,Quran,7:65,verified,nonControversial
+prophets_026,prophets,quran,Quran,7:85,verified,nonControversial
+prophets_027,prophets,quran,Quran,21:87,verified,nonControversial
+prophets_028,prophets,quran,Quran,18:60-82,verified,nonControversial
+prophets_029,prophets,quran,Quran,well-established (Musa is the most-mentioned prophet by name),verified,nonControversial
+prophets_030,prophets,quran,Quran,well-established count (25 prophets named in the Quran),verified,nonControversial
+prophets_031,prophets,quran,Quran,3:49,verified,nonControversial
+prophets_032,prophets,quran,Quran,29:14,verified,nonControversial
+quran_011,quran,quran,Quran,2:255,verified,nonControversial
+quran_012,quran,quran,Quran,well-established (At-Tawba opens without the basmala),verified,nonControversial
+quran_013,quran,quran,Quran,2:282,verified,nonControversial
+quran_014,quran,quran,Quran,96:1-5,verified,nonControversial
+quran_015,quran,quran,Quran,97:3,verified,nonControversial
+quran_016,quran,quran,Quran,well-established terminology (al-mu'awwidhatan: 113 & 114),verified,nonControversial
+quran_017,quran,quran,Quran,well-established division (30 ajza'),verified,nonControversial
+quran_018,quran,quran,Quran,well-established count (Al-Fatiha: 7 verses),verified,nonControversial
+quran_019,quran,quran,Quran,57:25,verified,nonControversial
+quran_020,quran,quran,Quran,12:3,verified,nonControversial
+quran_021,quran,quran,Quran,well-established count (Al-Baqarah: 286 verses),verified,nonControversial
+quran_022,quran,quran,Quran,112:1-4,verified,nonControversial
+quran_023,quran,quran,Quran,well-established (revelation over about 23 years),verified,nonControversial
+quran_024,quran,quran,Quran,3:96,verified,nonControversial
+sira_019,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_020,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_021,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_022,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_023,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_024,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_025,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_026,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_027,sira,sira,Sira,well-established terminology (al-Ansar),verified,nonControversial
+sira_028,sira,sira,Sira,well-established terminology (al-Muhajirun),verified,nonControversial
+sira_029,sira,sira,Sira,"well-established sira event, agreed across standard biographies",verified,nonControversial
+sira_030,sira,quran,Quran,2:142-144,verified,nonControversial
+faith_009,faith,quran,Quran,5:6,verified,nonControversial
+faith_010,faith,quran,Quran,82:10-11,verified,nonControversial
+faith_011,faith,creed,Creed,"well-established (99 beautiful names, reported in al-Bukhari and Muslim)",verified,nonControversial
+faith_012,faith,quran,Quran,1:3,verified,nonControversial
+faith_013,faith,quran,Quran,1:4,verified,nonControversial
+faith_014,faith,quran,Quran,62:9,verified,nonControversial
+faith_015,faith,quran,Quran,15:9,verified,nonControversial
+faith_016,faith,quran,Quran,2:256,verified,nonControversial
+faith_017,faith,creed,Creed,well-established terminology (as-salamu 'alaykum),verified,nonControversial
+faith_018,faith,creed,Creed,well-established terminology (tawhid),verified,nonControversial
+virtues_007,virtues,quran,Quran,49:12,verified,nonControversial
+virtues_008,virtues,quran,Quran,49:10,verified,nonControversial
+virtues_009,virtues,quran,Quran,49:11,verified,nonControversial
+virtues_010,virtues,quran,Quran,14:7,verified,nonControversial
+virtues_011,virtues,quran,Quran,39:10,verified,nonControversial
+virtues_012,virtues,quran,Quran,7:31,verified,nonControversial
+virtues_013,virtues,quran,Quran,16:90,verified,nonControversial
+virtues_014,virtues,quran,Quran,83:1-3,verified,nonControversial
+virtues_015,virtues,quran,Quran,93:9-10,verified,nonControversial
+virtues_016,virtues,quran,Quran,2:83,verified,nonControversial
+virtues_017,virtues,quran,Quran,31:18,verified,nonControversial
+virtues_018,virtues,hadithBukhari,Sahih al-Bukhari,1,verified,nonControversial

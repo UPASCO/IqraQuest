@@ -778,5 +778,811 @@
     ],
     "explanation": "Le Coran demande une extrême bienveillance envers les parents, jusqu'à interdire le moindre mot de dédain.",
     "sourceDisplay": "Coran — Sourate Al-Isrâ', 17:23-24"
+  },
+  {
+    "id": "prophets_019",
+    "correctAnswerIndex": 0,
+    "question": "À quel prophète Allah enseigna-t-il les noms de toutes choses ?",
+    "answers": [
+      "Âdam",
+      "Nûh",
+      "Ibrâhîm",
+      "Mûsâ"
+    ],
+    "explanation": "Allah enseigna à Âdam les noms de toutes choses, puis les anges reconnurent la sagesse d'Allah.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:31"
+  },
+  {
+    "id": "prophets_020",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète a parlé aux gens alors qu'il était encore un bébé au berceau ?",
+    "answers": [
+      "'Îsâ",
+      "Yahyâ",
+      "Yûsuf",
+      "Ismâ'îl"
+    ],
+    "explanation": "Le bébé 'Îsâ parla depuis le berceau : « Je suis le serviteur d'Allah, Il m'a donné le Livre. »",
+    "sourceDisplay": "Coran — Sourate Maryam, 19:29-30"
+  },
+  {
+    "id": "prophets_021",
+    "correctAnswerIndex": 0,
+    "question": "Avec quel fils Ibrâhîm éleva-t-il les fondations de la Ka'ba ?",
+    "answers": [
+      "Ismâ'îl",
+      "Ishâq",
+      "Ya'qûb",
+      "Yûsuf"
+    ],
+    "explanation": "« Et quand Ibrâhîm et Ismâ'îl élevaient les assises de la Maison… » — ils bâtirent ensemble.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:127"
+  },
+  {
+    "id": "prophets_022",
+    "correctAnswerIndex": 0,
+    "question": "Quel fils fut annoncé au prophète Zakariyyâ dans sa vieillesse ?",
+    "answers": [
+      "Yahyâ",
+      "'Îsâ",
+      "Ismâ'îl",
+      "Ishâq"
+    ],
+    "explanation": "« Ô Zakariyyâ, Nous t'annonçons un garçon dont le nom sera Yahyâ. »",
+    "sourceDisplay": "Coran — Sourate Maryam, 19:7"
+  },
+  {
+    "id": "prophets_023",
+    "correctAnswerIndex": 0,
+    "question": "Que devint le bâton de Mûsâ quand Allah lui ordonna de le jeter ?",
+    "answers": [
+      "Un serpent qui rampait",
+      "Un oiseau",
+      "Une source d'eau",
+      "Une lumière"
+    ],
+    "explanation": "« Jette-le, ô Mûsâ ! » Il le jeta, et voilà que c'était un serpent qui rampait.",
+    "sourceDisplay": "Coran — Sourate Tâ-Hâ, 20:19-20"
+  },
+  {
+    "id": "prophets_024",
+    "correctAnswerIndex": 0,
+    "question": "Dans son rêve, que vit le jeune Yûsuf se prosterner devant lui ?",
+    "answers": [
+      "Onze étoiles, le soleil et la lune",
+      "Sept vaches grasses",
+      "Une pluie d'or",
+      "Un jardin de palmiers"
+    ],
+    "explanation": "Yûsuf vit onze étoiles, le soleil et la lune se prosterner devant lui — annonce de son destin.",
+    "sourceDisplay": "Coran — Sourate Yûsuf, 12:4"
+  },
+  {
+    "id": "prophets_025",
+    "correctAnswerIndex": 0,
+    "question": "À quel peuple le prophète Hûd fut-il envoyé ?",
+    "answers": [
+      "Les 'Âd",
+      "Les Thamûd",
+      "Le peuple de Madyan",
+      "Le peuple de Pharaon"
+    ],
+    "explanation": "« Et aux 'Âd, leur frère Hûd… » — il les appela à adorer Allah seul.",
+    "sourceDisplay": "Coran — Sourate Al-A'râf, 7:65"
+  },
+  {
+    "id": "prophets_026",
+    "correctAnswerIndex": 0,
+    "question": "À quel peuple le prophète Shu'ayb fut-il envoyé ?",
+    "answers": [
+      "Le peuple de Madyan",
+      "Les 'Âd",
+      "Les Thamûd",
+      "Le peuple de Nûh"
+    ],
+    "explanation": "« Et aux gens de Madyan, leur frère Shu'ayb… » — il leur ordonna la mesure et le poids justes.",
+    "sourceDisplay": "Coran — Sourate Al-A'râf, 7:85"
+  },
+  {
+    "id": "prophets_027",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète est appelé « Dhun-Nûn » (l'homme au poisson) dans le Coran ?",
+    "answers": [
+      "Yûnus",
+      "Mûsâ",
+      "Sulaymân",
+      "Ayyûb"
+    ],
+    "explanation": "« Et Dhun-Nûn, quand il partit irrité… » — c'est Yûnus, avalé ensuite par le poisson.",
+    "sourceDisplay": "Coran — Sourate Al-Anbiyâ, 21:87"
+  },
+  {
+    "id": "prophets_028",
+    "correctAnswerIndex": 0,
+    "question": "Dans quelle sourate Mûsâ voyage-t-il pour apprendre auprès d'un serviteur à qui Allah donna une science ?",
+    "answers": [
+      "Al-Kahf (La Caverne)",
+      "Yûsuf",
+      "Maryam",
+      "An-Naml"
+    ],
+    "explanation": "Dans la sourate Al-Kahf, Mûsâ accompagne un serviteur savant et apprend la patience devant ce qu'il ne comprend pas encore.",
+    "sourceDisplay": "Coran — Sourate Al-Kahf, 18:60-82"
+  },
+  {
+    "id": "prophets_029",
+    "correctAnswerIndex": 0,
+    "question": "Quel prophète est cité par son nom le plus souvent dans le Coran ?",
+    "answers": [
+      "Mûsâ",
+      "Ibrâhîm",
+      "Nûh",
+      "'Îsâ"
+    ],
+    "explanation": "Mûsâ est le prophète le plus souvent nommé dans le Coran ; son histoire avec Pharaon y revient de nombreuses fois.",
+    "sourceDisplay": "Coran — fait bien établi"
+  },
+  {
+    "id": "prophets_030",
+    "correctAnswerIndex": 0,
+    "question": "Combien de prophètes sont cités par leur nom dans le Coran ?",
+    "answers": [
+      "25",
+      "10",
+      "50",
+      "99"
+    ],
+    "explanation": "Vingt-cinq prophètes sont nommés dans le Coran, d'Âdam à Muhammad ﷺ.",
+    "sourceDisplay": "Coran — décompte bien établi"
+  },
+  {
+    "id": "prophets_031",
+    "correctAnswerIndex": 0,
+    "question": "Par la permission d'Allah, quel prophète guérissait l'aveugle-né et le lépreux ?",
+    "answers": [
+      "'Îsâ",
+      "Mûsâ",
+      "Dâwûd",
+      "Yûnus"
+    ],
+    "explanation": "'Îsâ guérissait l'aveugle-né et le lépreux par la permission d'Allah — un signe pour son peuple.",
+    "sourceDisplay": "Coran — Sourate Âl 'Imrân, 3:49"
+  },
+  {
+    "id": "prophets_032",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, combien de temps Nûh resta-t-il parmi son peuple à l'appeler vers Allah ?",
+    "answers": [
+      "950 ans",
+      "100 ans",
+      "300 ans",
+      "40 ans"
+    ],
+    "explanation": "« Il demeura parmi eux mille ans moins cinquante » — 950 ans d'appel patient.",
+    "sourceDisplay": "Coran — Sourate Al-'Ankabût, 29:14"
+  },
+  {
+    "id": "quran_011",
+    "correctAnswerIndex": 0,
+    "question": "Quel est le nom du célèbre verset 255 de la sourate Al-Baqara ?",
+    "answers": [
+      "Âyat al-Kursî (le verset du Trône)",
+      "Âyat an-Nûr",
+      "Âyat as-Sayf",
+      "Âyat ad-Dayn"
+    ],
+    "explanation": "Le verset 2:255, Âyat al-Kursî, décrit la grandeur d'Allah : « Allah ! Point de divinité à part Lui, le Vivant… »",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:255"
+  },
+  {
+    "id": "quran_012",
+    "correctAnswerIndex": 0,
+    "question": "Quelle sourate ne commence pas par « Bismillâh ir-Rahmân ir-Rahîm » ?",
+    "answers": [
+      "At-Tawba",
+      "Al-Fâtiha",
+      "Yâ-Sîn",
+      "Al-Kahf"
+    ],
+    "explanation": "At-Tawba (sourate 9) est la seule sourate qui ne s'ouvre pas par la basmala.",
+    "sourceDisplay": "Coran — fait bien établi"
+  },
+  {
+    "id": "quran_013",
+    "correctAnswerIndex": 0,
+    "question": "Quel est le sujet du plus long verset du Coran (2:282) ?",
+    "answers": [
+      "La mise par écrit des dettes",
+      "Le pèlerinage",
+      "Le jeûne",
+      "L'héritage"
+    ],
+    "explanation": "Le plus long verset du Coran enseigne d'écrire les dettes et de prendre des témoins — l'honnêteté se protège.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:282"
+  },
+  {
+    "id": "quran_014",
+    "correctAnswerIndex": 0,
+    "question": "Par quel mot commencent les tout premiers versets révélés du Coran ?",
+    "answers": [
+      "Iqra' (Lis !)",
+      "Qul (Dis !)",
+      "Sabbih (Glorifie !)",
+      "Kutiba (Il a été prescrit)"
+    ],
+    "explanation": "Les premiers versets révélés commencent par « Iqra' » : « Lis, au nom de ton Seigneur qui a créé. »",
+    "sourceDisplay": "Coran — Sourate Al-'Alaq, 96:1-5"
+  },
+  {
+    "id": "quran_015",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, la nuit d'Al-Qadr est meilleure que combien de mois ?",
+    "answers": [
+      "Mille mois",
+      "Cent mois",
+      "Douze mois",
+      "Quarante mois"
+    ],
+    "explanation": "« La nuit d'Al-Qadr est meilleure que mille mois » — une nuit de Ramadan plus précieuse qu'une vie d'adoration.",
+    "sourceDisplay": "Coran — Sourate Al-Qadr, 97:3"
+  },
+  {
+    "id": "quran_016",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on les deux dernières sourates, Al-Falaq et An-Nâs, récitées pour chercher protection ?",
+    "answers": [
+      "Al-Mu'awwidhatân (les deux protectrices)",
+      "Az-Zahrâwân",
+      "Al-Mufassal",
+      "As-Sab' at-Tiwâl"
+    ],
+    "explanation": "Al-Falaq et An-Nâs sont appelées « al-mu'awwidhatân » : on les récite pour chercher la protection d'Allah.",
+    "sourceDisplay": "Coran — terminologie bien établie"
+  },
+  {
+    "id": "quran_017",
+    "correctAnswerIndex": 0,
+    "question": "En combien de parties (juz') le Coran est-il traditionnellement divisé ?",
+    "answers": [
+      "30",
+      "10",
+      "60",
+      "114"
+    ],
+    "explanation": "Le Coran est divisé en 30 juz', ce qui aide à le lire entièrement en un mois, par exemple pendant Ramadan.",
+    "sourceDisplay": "Coran — division bien établie"
+  },
+  {
+    "id": "quran_018",
+    "correctAnswerIndex": 0,
+    "question": "Combien de versets compte la sourate Al-Fâtiha ?",
+    "answers": [
+      "7",
+      "3",
+      "10",
+      "14"
+    ],
+    "explanation": "Al-Fâtiha compte sept versets, récités dans chaque unité de prière.",
+    "sourceDisplay": "Coran — décompte bien établi"
+  },
+  {
+    "id": "quran_019",
+    "correctAnswerIndex": 0,
+    "question": "Quelle sourate porte le nom d'un métal ?",
+    "answers": [
+      "Al-Hadîd (Le Fer)",
+      "An-Nûr (La Lumière)",
+      "Ar-Ra'd (Le Tonnerre)",
+      "Ad-Dukhân (La Fumée)"
+    ],
+    "explanation": "La sourate 57 s'appelle Al-Hadîd : « Nous avons fait descendre le fer, où il y a une force redoutable et des utilités pour les gens. »",
+    "sourceDisplay": "Coran — Sourate Al-Hadîd, 57:25"
+  },
+  {
+    "id": "quran_020",
+    "correctAnswerIndex": 0,
+    "question": "Quelle histoire le Coran appelle-t-il « le plus beau des récits » ?",
+    "answers": [
+      "L'histoire de Yûsuf",
+      "L'histoire de Nûh",
+      "L'histoire des gens de la caverne",
+      "L'histoire de l'éléphant"
+    ],
+    "explanation": "« Nous te racontons le plus beau des récits » — ainsi s'ouvre l'histoire de Yûsuf.",
+    "sourceDisplay": "Coran — Sourate Yûsuf, 12:3"
+  },
+  {
+    "id": "quran_021",
+    "correctAnswerIndex": 0,
+    "question": "Combien de versets compte Al-Baqara, la plus longue sourate ?",
+    "answers": [
+      "286",
+      "114",
+      "200",
+      "365"
+    ],
+    "explanation": "Al-Baqara compte 286 versets — la plus longue sourate du Coran.",
+    "sourceDisplay": "Coran — décompte bien établi"
+  },
+  {
+    "id": "quran_022",
+    "correctAnswerIndex": 0,
+    "question": "Quelle courte sourate proclame : « Dis : Il est Allah, Unique » ?",
+    "answers": [
+      "Al-Ikhlâs",
+      "Al-Falaq",
+      "An-Nâs",
+      "Al-Kawthar"
+    ],
+    "explanation": "Al-Ikhlâs proclame l'unicité parfaite d'Allah en quatre versets.",
+    "sourceDisplay": "Coran — Sourate Al-Ikhlâs, 112:1-4"
+  },
+  {
+    "id": "quran_023",
+    "correctAnswerIndex": 0,
+    "question": "Sur environ combien d'années le Coran fut-il révélé ?",
+    "answers": [
+      "23 ans",
+      "1 an",
+      "10 ans",
+      "40 ans"
+    ],
+    "explanation": "Le Coran fut révélé progressivement sur environ 23 ans, à La Mecque puis à Médine.",
+    "sourceDisplay": "Coran — fait bien établi"
+  },
+  {
+    "id": "quran_024",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, quelle est la première Maison établie pour les gens afin d'adorer Allah ?",
+    "answers": [
+      "La Ka'ba, à Bakka (La Mecque)",
+      "La mosquée de Qubâ",
+      "Bayt al-Maqdis",
+      "La mosquée du Prophète ﷺ"
+    ],
+    "explanation": "« La première Maison établie pour les gens est celle de Bakka, bénie… » — la Ka'ba, à La Mecque.",
+    "sourceDisplay": "Coran — Sourate Âl 'Imrân, 3:96"
+  },
+  {
+    "id": "sira_019",
+    "correctAnswerIndex": 0,
+    "question": "Qui fut le premier muezzin de l'islam, choisi par le Prophète ﷺ pour appeler à la prière ?",
+    "answers": [
+      "Bilâl ibn Rabâh",
+      "Abû Bakr",
+      "'Umar ibn al-Khattâb",
+      "Salmân al-Fârisî"
+    ],
+    "explanation": "Bilâl, à la belle voix, fut choisi comme premier muezzin de l'islam.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_020",
+    "correctAnswerIndex": 0,
+    "question": "Quelle est la première mosquée fondée par le Prophète ﷺ lors de son arrivée près de Médine ?",
+    "answers": [
+      "La mosquée de Qubâ",
+      "La mosquée al-Harâm",
+      "La mosquée al-Aqsâ",
+      "La mosquée des deux qibla"
+    ],
+    "explanation": "En arrivant à Qubâ, aux portes de Médine, le Prophète ﷺ y fonda la première mosquée.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_021",
+    "correctAnswerIndex": 0,
+    "question": "Comment s'appelait la mère du Prophète ﷺ ?",
+    "answers": [
+      "Âmina",
+      "Khadîja",
+      "Halîma",
+      "Fâtima"
+    ],
+    "explanation": "Âmina bint Wahb était la mère du Prophète ﷺ ; Halîma fut sa nourrice.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_022",
+    "correctAnswerIndex": 0,
+    "question": "Comment s'appelait le père du Prophète ﷺ, décédé avant sa naissance ?",
+    "answers": [
+      "'Abdullâh",
+      "Abû Tâlib",
+      "'Abd al-Muttalib",
+      "Hamza"
+    ],
+    "explanation": "'Abdullâh, fils de 'Abd al-Muttalib, mourut avant la naissance de son fils Muhammad ﷺ.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_023",
+    "correctAnswerIndex": 0,
+    "question": "Quel surnom les Mecquois donnaient-ils au Prophète ﷺ avant la révélation, pour son honnêteté ?",
+    "answers": [
+      "Al-Amîn (le digne de confiance)",
+      "Al-Fârûq",
+      "As-Siddîq",
+      "Sayf Allâh"
+    ],
+    "explanation": "Avant même la révélation, on l'appelait al-Amîn : chacun lui confiait ses biens.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_024",
+    "correctAnswerIndex": 0,
+    "question": "En quelle année de l'hégire eut lieu la conquête pacifique de La Mecque ?",
+    "answers": [
+      "L'an 8",
+      "L'an 2",
+      "L'an 5",
+      "L'an 10"
+    ],
+    "explanation": "En l'an 8 de l'hégire, le Prophète ﷺ entra à La Mecque presque sans combat et pardonna à ses habitants.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_025",
+    "correctAnswerIndex": 0,
+    "question": "En quelle année de l'hégire le Prophète ﷺ accomplit-il son pèlerinage d'adieu ?",
+    "answers": [
+      "L'an 10",
+      "L'an 6",
+      "L'an 8",
+      "L'an 12"
+    ],
+    "explanation": "Le pèlerinage d'adieu eut lieu en l'an 10 de l'hégire ; le Prophète ﷺ y prononça son dernier sermon.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_026",
+    "correctAnswerIndex": 0,
+    "question": "Combien de filles le Prophète ﷺ a-t-il eues ?",
+    "answers": [
+      "4",
+      "1",
+      "2",
+      "7"
+    ],
+    "explanation": "Zaynab, Ruqayya, Umm Kulthûm et Fâtima — les quatre filles du Prophète ﷺ.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_027",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on les habitants de Médine qui accueillirent et aidèrent les musulmans émigrés ?",
+    "answers": [
+      "Les Ansâr (les Auxiliaires)",
+      "Les Muhâjirûn",
+      "Les Qurayshites",
+      "Les Tâbi'ûn"
+    ],
+    "explanation": "Les Ansâr, « les Auxiliaires », partagèrent leurs maisons et leurs biens avec leurs frères émigrés.",
+    "sourceDisplay": "Sîra — terminologie bien établie"
+  },
+  {
+    "id": "sira_028",
+    "correctAnswerIndex": 0,
+    "question": "Comment appelle-t-on les musulmans qui quittèrent La Mecque pour émigrer à Médine ?",
+    "answers": [
+      "Les Muhâjirûn (les Émigrés)",
+      "Les Ansâr",
+      "Les Hunafâ'",
+      "Les Ghuzât"
+    ],
+    "explanation": "Les Muhâjirûn abandonnèrent maisons et biens à La Mecque pour préserver leur foi.",
+    "sourceDisplay": "Sîra — terminologie bien établie"
+  },
+  {
+    "id": "sira_029",
+    "correctAnswerIndex": 0,
+    "question": "Pendant quel mois eut lieu la bataille de Badr ?",
+    "answers": [
+      "Ramadân",
+      "Muharram",
+      "Dhûl-Hijja",
+      "Rajab"
+    ],
+    "explanation": "La bataille de Badr eut lieu pendant Ramadân, en l'an 2 de l'hégire.",
+    "sourceDisplay": "Sîra — fait historique établi"
+  },
+  {
+    "id": "sira_030",
+    "correctAnswerIndex": 0,
+    "question": "Avant que la qibla ne soit fixée vers la Ka'ba, vers quelle ville les musulmans priaient-ils ?",
+    "answers": [
+      "Jérusalem (Bayt al-Maqdis)",
+      "Médine",
+      "Tâ'if",
+      "Damas"
+    ],
+    "explanation": "Les musulmans priaient d'abord vers Bayt al-Maqdis ; puis Allah ordonna de se tourner vers la Mosquée sacrée.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:142-144"
+  },
+  {
+    "id": "faith_009",
+    "correctAnswerIndex": 0,
+    "question": "Comment s'appelle la purification par l'eau que le musulman fait avant la prière ?",
+    "answers": [
+      "Le wudû' (les ablutions)",
+      "Le tayammum",
+      "Le ghusl",
+      "Le siwâk"
+    ],
+    "explanation": "« Quand vous vous levez pour la prière, lavez vos visages et vos mains… » — c'est le wudû'.",
+    "sourceDisplay": "Coran — Sourate Al-Mâ'ida, 5:6"
+  },
+  {
+    "id": "faith_010",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, que font les « nobles scribes » (kirâman kâtibîn) ?",
+    "answers": [
+      "Ils inscrivent les actes des humains",
+      "Ils portent le trône",
+      "Ils gardent le Paradis",
+      "Ils apportent la pluie"
+    ],
+    "explanation": "« Il y a sur vous des gardiens, de nobles scribes » — des anges inscrivent chaque acte.",
+    "sourceDisplay": "Coran — Sourate Al-Infitâr, 82:10-11"
+  },
+  {
+    "id": "faith_011",
+    "correctAnswerIndex": 0,
+    "question": "Combien de beaux noms d'Allah la tradition authentique rapporte-t-elle ?",
+    "answers": [
+      "99",
+      "50",
+      "100",
+      "114"
+    ],
+    "explanation": "Un hadith authentique rapporté par al-Bukhârî et Muslim mentionne quatre-vingt-dix-neuf noms — cent moins un.",
+    "sourceDisplay": "Croyance — fait bien établi (al-Bukhârî et Muslim)"
+  },
+  {
+    "id": "faith_012",
+    "correctAnswerIndex": 0,
+    "question": "Que signifie le nom d'Allah « Ar-Rahmân » ?",
+    "answers": [
+      "Le Tout Miséricordieux",
+      "Le Créateur",
+      "Le Roi",
+      "L'Omniscient"
+    ],
+    "explanation": "Ar-Rahmân, le Tout Miséricordieux — Sa miséricorde embrasse toute chose.",
+    "sourceDisplay": "Coran — Sourate Al-Fâtiha, 1:3"
+  },
+  {
+    "id": "faith_013",
+    "correctAnswerIndex": 0,
+    "question": "Dans Al-Fâtiha, Allah est appelé « Maître » de quel jour ?",
+    "answers": [
+      "Du Jour de la Rétribution",
+      "Du jour du vendredi",
+      "Du premier jour",
+      "Du jour de 'Arafa"
+    ],
+    "explanation": "« Maître du Jour de la Rétribution » — le jour où chacun retrouvera ses actes.",
+    "sourceDisplay": "Coran — Sourate Al-Fâtiha, 1:4"
+  },
+  {
+    "id": "faith_014",
+    "correctAnswerIndex": 0,
+    "question": "Quel jour de la semaine le Coran appelle-t-il les croyants à la prière en commun ?",
+    "answers": [
+      "Le vendredi",
+      "Le lundi",
+      "Le samedi",
+      "Le dimanche"
+    ],
+    "explanation": "« Quand on appelle à la prière du jour du vendredi, accourez au rappel d'Allah. »",
+    "sourceDisplay": "Coran — Sourate Al-Jumu'a, 62:9"
+  },
+  {
+    "id": "faith_015",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, qui garantit la préservation du Coran contre toute altération ?",
+    "answers": [
+      "Allah Lui-même",
+      "Les anges seulement",
+      "Les savants",
+      "Les rois"
+    ],
+    "explanation": "« C'est Nous qui avons fait descendre le Rappel, et c'est Nous qui en sommes les gardiens. »",
+    "sourceDisplay": "Coran — Sourate Al-Hijr, 15:9"
+  },
+  {
+    "id": "faith_016",
+    "correctAnswerIndex": 0,
+    "question": "Que déclare le Coran au sujet de l'entrée dans la religion ?",
+    "answers": [
+      "Nulle contrainte en religion",
+      "Elle se fait par serment",
+      "Elle exige un témoin",
+      "Elle se fait à l'âge adulte"
+    ],
+    "explanation": "« Nulle contrainte en religion : la bonne direction s'est distinguée de l'égarement. »",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:256"
+  },
+  {
+    "id": "faith_017",
+    "correctAnswerIndex": 0,
+    "question": "Quelle est la salutation des musulmans, souhait de paix ?",
+    "answers": [
+      "As-salâmu 'alaykum",
+      "Marhaban",
+      "Sabâh al-khayr",
+      "Ahlan wa sahlan"
+    ],
+    "explanation": "« As-salâmu 'alaykum » : que la paix soit sur vous — on y répond « wa 'alaykum as-salâm ».",
+    "sourceDisplay": "Croyance — terminologie bien établie"
+  },
+  {
+    "id": "faith_018",
+    "correctAnswerIndex": 0,
+    "question": "Comment s'appelle la croyance en l'unicité d'Allah, cœur de l'islam ?",
+    "answers": [
+      "Le tawhîd",
+      "Le tafsîr",
+      "Le tajwîd",
+      "Le tarâwîh"
+    ],
+    "explanation": "Le tawhîd — affirmer qu'Allah est Un, sans associé — est le fondement de toute la foi.",
+    "sourceDisplay": "Croyance — terminologie bien établie"
+  },
+  {
+    "id": "virtues_007",
+    "correctAnswerIndex": 0,
+    "question": "À quoi le Coran compare-t-il la médisance (parler d'un absent en mal) ?",
+    "answers": [
+      "Manger la chair de son frère mort",
+      "Boire de l'eau salée",
+      "Marcher dans le noir",
+      "Semer dans le sable"
+    ],
+    "explanation": "« L'un de vous aimerait-il manger la chair de son frère mort ? Vous en auririez horreur ! » — la médisance est aussi laide.",
+    "sourceDisplay": "Coran — Sourate Al-Hujurât, 49:12"
+  },
+  {
+    "id": "virtues_008",
+    "correctAnswerIndex": 0,
+    "question": "Comment le Coran décrit-il la relation entre les croyants ?",
+    "answers": [
+      "Ils sont frères",
+      "Ils sont concurrents",
+      "Ils sont étrangers",
+      "Ils sont associés en affaires"
+    ],
+    "explanation": "« Les croyants ne sont que des frères : réconciliez donc vos deux frères. »",
+    "sourceDisplay": "Coran — Sourate Al-Hujurât, 49:10"
+  },
+  {
+    "id": "virtues_009",
+    "correctAnswerIndex": 0,
+    "question": "Que dit le Coran sur le fait de se moquer des autres ?",
+    "answers": [
+      "C'est interdit : les moqués valent peut-être mieux que les moqueurs",
+      "C'est permis entre amis",
+      "C'est permis si c'est drôle",
+      "C'est réservé aux poètes"
+    ],
+    "explanation": "« Qu'un groupe ne se moque pas d'un autre : il se peut que ceux-ci soient meilleurs qu'eux. »",
+    "sourceDisplay": "Coran — Sourate Al-Hujurât, 49:11"
+  },
+  {
+    "id": "virtues_010",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, que promet Allah à celui qui est reconnaissant ?",
+    "answers": [
+      "Il lui accordera davantage",
+      "Une longue vie",
+      "La richesse immédiate",
+      "Un voyage"
+    ],
+    "explanation": "« Si vous êtes reconnaissants, Je vous accorderai certainement davantage. »",
+    "sourceDisplay": "Coran — Sourate Ibrâhîm, 14:7"
+  },
+  {
+    "id": "virtues_011",
+    "correctAnswerIndex": 0,
+    "question": "Selon le Coran, comment les endurants (sâbirûn) recevront-ils leur récompense ?",
+    "answers": [
+      "Pleinement, sans compter",
+      "En une seule fois",
+      "Après quarante jours",
+      "Selon leur richesse"
+    ],
+    "explanation": "« Les endurants recevront leur pleine récompense, sans compter. »",
+    "sourceDisplay": "Coran — Sourate Az-Zumar, 39:10"
+  },
+  {
+    "id": "virtues_012",
+    "correctAnswerIndex": 0,
+    "question": "« Mangez et buvez, mais… » — que dit la suite de ce verset ?",
+    "answers": [
+      "Ne gaspillez pas",
+      "Ne partagez pas",
+      "Ne parlez pas",
+      "Ne sortez pas"
+    ],
+    "explanation": "« Mangez et buvez, et ne gaspillez pas : Allah n'aime pas les gaspilleurs. »",
+    "sourceDisplay": "Coran — Sourate Al-A'râf, 7:31"
+  },
+  {
+    "id": "virtues_013",
+    "correctAnswerIndex": 0,
+    "question": "Quel verset, souvent récité au sermon du vendredi, résume ce qu'Allah ordonne ?",
+    "answers": [
+      "« Allah ordonne la justice et la bienfaisance »",
+      "« Allah ordonne le commerce »",
+      "« Allah ordonne le voyage »",
+      "« Allah ordonne le silence »"
+    ],
+    "explanation": "« Allah ordonne la justice, la bienfaisance et la générosité envers les proches… » — récité chaque vendredi.",
+    "sourceDisplay": "Coran — Sourate An-Nahl, 16:90"
+  },
+  {
+    "id": "virtues_014",
+    "correctAnswerIndex": 0,
+    "question": "Contre qui la sourate Al-Mutaffifîn ouvre-t-elle par « Malheur… » ?",
+    "answers": [
+      "Les fraudeurs dans la mesure et le poids",
+      "Les dormeurs",
+      "Les voyageurs",
+      "Les silencieux"
+    ],
+    "explanation": "« Malheur aux fraudeurs qui, en recevant, exigent la pleine mesure, et qui, en donnant, en font perdre. »",
+    "sourceDisplay": "Coran — Sourate Al-Mutaffifîn, 83:1-3"
+  },
+  {
+    "id": "virtues_015",
+    "correctAnswerIndex": 0,
+    "question": "Selon la sourate Ad-Duhâ, comment faut-il traiter l'orphelin et celui qui demande ?",
+    "answers": [
+      "Ne pas les rudoyer ni les repousser",
+      "Les ignorer",
+      "Les renvoyer à d'autres",
+      "Leur parler plus tard"
+    ],
+    "explanation": "« Quant à l'orphelin, ne le rudoie pas ; et quant au demandeur, ne le repousse pas. »",
+    "sourceDisplay": "Coran — Sourate Ad-Duhâ, 93:9-10"
+  },
+  {
+    "id": "virtues_016",
+    "correctAnswerIndex": 0,
+    "question": "Comment le Coran ordonne-t-il de parler aux gens ?",
+    "answers": [
+      "Avec de bonnes paroles",
+      "À voix très basse",
+      "Le moins possible",
+      "Seulement aux proches"
+    ],
+    "explanation": "« …et dites aux gens de bonnes paroles » — la parole douce est une adoration.",
+    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:83"
+  },
+  {
+    "id": "virtues_017",
+    "correctAnswerIndex": 0,
+    "question": "Dans ses conseils à son fils, que dit Luqmân sur la démarche et l'orgueil ?",
+    "answers": [
+      "Ne marche pas sur terre avec arrogance",
+      "Marche toujours vite",
+      "Marche seulement la nuit",
+      "Ne marche jamais seul"
+    ],
+    "explanation": "« Ne détourne pas ton visage des gens par orgueil, et ne foule pas la terre avec arrogance. »",
+    "sourceDisplay": "Coran — Sourate Luqmân, 31:18"
+  },
+  {
+    "id": "virtues_018",
+    "correctAnswerIndex": 0,
+    "question": "Selon le tout premier hadith du recueil d'al-Bukhârî, de quoi dépendent les actes ?",
+    "answers": [
+      "Des intentions",
+      "Des résultats",
+      "Des habitudes",
+      "Des témoins"
+    ],
+    "explanation": "« Les actes ne valent que par les intentions, et chacun n'a que ce qu'il a eu l'intention de faire. »",
+    "sourceDisplay": "Sahîh al-Bukhârî — hadith n°1"
   }
 ]

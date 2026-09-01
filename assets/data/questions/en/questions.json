@@ -778,5 +778,811 @@
     ],
     "explanation": "The Quran calls for the utmost kindness to parents, forbidding even the slightest word of contempt.",
     "sourceDisplay": "Quran — Surah Al-Isra, 17:23-24"
+  },
+  {
+    "id": "prophets_019",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet did Allah teach the names of all things?",
+    "answers": [
+      "Adam",
+      "Nuh (Noah)",
+      "Ibrahim (Abraham)",
+      "Musa (Moses)"
+    ],
+    "explanation": "Allah taught Adam the names of all things, and the angels acknowledged Allah's wisdom.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:31"
+  },
+  {
+    "id": "prophets_020",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet spoke to people while still a baby in the cradle?",
+    "answers": [
+      "Isa (Jesus)",
+      "Yahya (John)",
+      "Yusuf (Joseph)",
+      "Ismail (Ishmael)"
+    ],
+    "explanation": "Baby Isa spoke from the cradle: 'I am the servant of Allah; He has given me the Scripture.'",
+    "sourceDisplay": "Quran — Surah Maryam, 19:29-30"
+  },
+  {
+    "id": "prophets_021",
+    "correctAnswerIndex": 0,
+    "question": "With which son did Ibrahim raise the foundations of the Ka'bah?",
+    "answers": [
+      "Ismail (Ishmael)",
+      "Ishaq (Isaac)",
+      "Yaqub (Jacob)",
+      "Yusuf (Joseph)"
+    ],
+    "explanation": "'And when Ibrahim and Ismail were raising the foundations of the House…' — they built together.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:127"
+  },
+  {
+    "id": "prophets_022",
+    "correctAnswerIndex": 0,
+    "question": "Which son was announced to the prophet Zakariyya in his old age?",
+    "answers": [
+      "Yahya (John)",
+      "Isa (Jesus)",
+      "Ismail (Ishmael)",
+      "Ishaq (Isaac)"
+    ],
+    "explanation": "'O Zakariyya, We give you good news of a boy whose name will be Yahya.'",
+    "sourceDisplay": "Quran — Surah Maryam, 19:7"
+  },
+  {
+    "id": "prophets_023",
+    "correctAnswerIndex": 0,
+    "question": "What did Musa's staff become when Allah told him to cast it down?",
+    "answers": [
+      "A moving serpent",
+      "A bird",
+      "A spring of water",
+      "A light"
+    ],
+    "explanation": "'Throw it down, O Musa!' He threw it, and it became a serpent, moving swiftly.",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:19-20"
+  },
+  {
+    "id": "prophets_024",
+    "correctAnswerIndex": 0,
+    "question": "In his dream, what did young Yusuf see bowing before him?",
+    "answers": [
+      "Eleven stars, the sun and the moon",
+      "Seven fat cows",
+      "A rain of gold",
+      "A garden of palms"
+    ],
+    "explanation": "Yusuf saw eleven stars and the sun and the moon prostrating to him — a sign of his destiny.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:4"
+  },
+  {
+    "id": "prophets_025",
+    "correctAnswerIndex": 0,
+    "question": "To which people was the prophet Hud sent?",
+    "answers": [
+      "The 'Ad",
+      "The Thamud",
+      "The people of Madyan",
+      "Pharaoh's people"
+    ],
+    "explanation": "'And to 'Ad, their brother Hud…' — he called them to worship Allah alone.",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:65"
+  },
+  {
+    "id": "prophets_026",
+    "correctAnswerIndex": 0,
+    "question": "To which people was the prophet Shu'ayb sent?",
+    "answers": [
+      "The people of Madyan",
+      "The 'Ad",
+      "The Thamud",
+      "The people of Nuh"
+    ],
+    "explanation": "'And to Madyan, their brother Shu'ayb…' — he commanded them to give fair measure and weight.",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:85"
+  },
+  {
+    "id": "prophets_027",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet is called 'Dhun-Nun' (the man of the fish) in the Quran?",
+    "answers": [
+      "Yunus (Jonah)",
+      "Musa (Moses)",
+      "Sulayman (Solomon)",
+      "Ayyub (Job)"
+    ],
+    "explanation": "'And Dhun-Nun, when he went off in anger…' — this is Yunus, later swallowed by the fish.",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:87"
+  },
+  {
+    "id": "prophets_028",
+    "correctAnswerIndex": 0,
+    "question": "In which surah does Musa travel to learn from a servant to whom Allah gave special knowledge?",
+    "answers": [
+      "Al-Kahf (The Cave)",
+      "Yusuf",
+      "Maryam",
+      "An-Naml"
+    ],
+    "explanation": "In Surah Al-Kahf, Musa accompanies a knowledgeable servant and learns patience with what he does not yet understand.",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:60-82"
+  },
+  {
+    "id": "prophets_029",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet is mentioned by name most often in the Quran?",
+    "answers": [
+      "Musa (Moses)",
+      "Ibrahim (Abraham)",
+      "Nuh (Noah)",
+      "Isa (Jesus)"
+    ],
+    "explanation": "Musa is the most frequently named prophet in the Quran; his story with Pharaoh returns many times.",
+    "sourceDisplay": "Quran — well-established fact"
+  },
+  {
+    "id": "prophets_030",
+    "correctAnswerIndex": 0,
+    "question": "How many prophets are mentioned by name in the Quran?",
+    "answers": [
+      "25",
+      "10",
+      "50",
+      "99"
+    ],
+    "explanation": "Twenty-five prophets are named in the Quran, from Adam to Muhammad ﷺ.",
+    "sourceDisplay": "Quran — well-established count"
+  },
+  {
+    "id": "prophets_031",
+    "correctAnswerIndex": 0,
+    "question": "By Allah's permission, which prophet healed the blind and the leper?",
+    "answers": [
+      "Isa (Jesus)",
+      "Musa (Moses)",
+      "Dawud (David)",
+      "Yunus (Jonah)"
+    ],
+    "explanation": "Isa healed the blind and the leper by Allah's permission — a sign for his people.",
+    "sourceDisplay": "Quran — Surah Al 'Imran, 3:49"
+  },
+  {
+    "id": "prophets_032",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, how long did Nuh remain among his people calling them to Allah?",
+    "answers": [
+      "950 years",
+      "100 years",
+      "300 years",
+      "40 years"
+    ],
+    "explanation": "'He remained among them a thousand years minus fifty' — 950 years of patient calling.",
+    "sourceDisplay": "Quran — Surah Al-'Ankabut, 29:14"
+  },
+  {
+    "id": "quran_011",
+    "correctAnswerIndex": 0,
+    "question": "What is the famous verse 255 of Surah Al-Baqarah called?",
+    "answers": [
+      "Ayat al-Kursi (the Throne Verse)",
+      "Ayat an-Nur",
+      "Ayat as-Sayf",
+      "Ayat ad-Dayn"
+    ],
+    "explanation": "Verse 2:255, Ayat al-Kursi, describes Allah's greatness: 'Allah — there is no deity except Him, the Ever-Living…'",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:255"
+  },
+  {
+    "id": "quran_012",
+    "correctAnswerIndex": 0,
+    "question": "Which surah does not begin with 'Bismillah ir-Rahman ir-Rahim'?",
+    "answers": [
+      "At-Tawba",
+      "Al-Fatiha",
+      "Ya-Sin",
+      "Al-Kahf"
+    ],
+    "explanation": "At-Tawba (surah 9) is the only surah that does not open with the basmala.",
+    "sourceDisplay": "Quran — well-established fact"
+  },
+  {
+    "id": "quran_013",
+    "correctAnswerIndex": 0,
+    "question": "What is the subject of the longest verse of the Quran (2:282)?",
+    "answers": [
+      "Writing down debts",
+      "The pilgrimage",
+      "Fasting",
+      "Inheritance"
+    ],
+    "explanation": "The Quran's longest verse teaches writing debts down and taking witnesses — honesty is protected.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:282"
+  },
+  {
+    "id": "quran_014",
+    "correctAnswerIndex": 0,
+    "question": "With which word do the very first revealed verses of the Quran begin?",
+    "answers": [
+      "Iqra' (Read!)",
+      "Qul (Say!)",
+      "Sabbih (Glorify!)",
+      "Kutiba (It was decreed)"
+    ],
+    "explanation": "The first revealed verses begin with 'Iqra'': 'Read, in the name of your Lord who created.'",
+    "sourceDisplay": "Quran — Surah Al-'Alaq, 96:1-5"
+  },
+  {
+    "id": "quran_015",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, the Night of Al-Qadr is better than how many months?",
+    "answers": [
+      "A thousand months",
+      "A hundred months",
+      "Twelve months",
+      "Forty months"
+    ],
+    "explanation": "'The Night of Al-Qadr is better than a thousand months' — one night of Ramadan worth more than a lifetime of worship.",
+    "sourceDisplay": "Quran — Surah Al-Qadr, 97:3"
+  },
+  {
+    "id": "quran_016",
+    "correctAnswerIndex": 0,
+    "question": "What are the last two surahs, Al-Falaq and An-Nas, recited for protection, called?",
+    "answers": [
+      "Al-Mu'awwidhatan (the two protectors)",
+      "Az-Zahrawan",
+      "Al-Mufassal",
+      "As-Sab' at-Tiwal"
+    ],
+    "explanation": "Al-Falaq and An-Nas are called 'al-mu'awwidhatan': they are recited to seek Allah's protection.",
+    "sourceDisplay": "Quran — well-established terminology"
+  },
+  {
+    "id": "quran_017",
+    "correctAnswerIndex": 0,
+    "question": "Into how many parts (juz') is the Quran traditionally divided?",
+    "answers": [
+      "30",
+      "10",
+      "60",
+      "114"
+    ],
+    "explanation": "The Quran is divided into 30 juz', which helps complete it in a month — for example during Ramadan.",
+    "sourceDisplay": "Quran — well-established division"
+  },
+  {
+    "id": "quran_018",
+    "correctAnswerIndex": 0,
+    "question": "How many verses does Surah Al-Fatiha contain?",
+    "answers": [
+      "7",
+      "3",
+      "10",
+      "14"
+    ],
+    "explanation": "Al-Fatiha has seven verses, recited in every unit of the prayer.",
+    "sourceDisplay": "Quran — well-established count"
+  },
+  {
+    "id": "quran_019",
+    "correctAnswerIndex": 0,
+    "question": "Which surah is named after a metal?",
+    "answers": [
+      "Al-Hadid (Iron)",
+      "An-Nur (The Light)",
+      "Ar-Ra'd (The Thunder)",
+      "Ad-Dukhan (The Smoke)"
+    ],
+    "explanation": "Surah 57 is called Al-Hadid: 'We sent down iron, in which is great might and benefits for people.'",
+    "sourceDisplay": "Quran — Surah Al-Hadid, 57:25"
+  },
+  {
+    "id": "quran_020",
+    "correctAnswerIndex": 0,
+    "question": "Which story does the Quran call 'the best of stories'?",
+    "answers": [
+      "The story of Yusuf",
+      "The story of Nuh",
+      "The story of the people of the cave",
+      "The story of the elephant"
+    ],
+    "explanation": "'We relate to you the best of stories' — so opens the story of Yusuf.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:3"
+  },
+  {
+    "id": "quran_021",
+    "correctAnswerIndex": 0,
+    "question": "How many verses does Al-Baqarah, the longest surah, contain?",
+    "answers": [
+      "286",
+      "114",
+      "200",
+      "365"
+    ],
+    "explanation": "Al-Baqarah has 286 verses — the longest surah of the Quran.",
+    "sourceDisplay": "Quran — well-established count"
+  },
+  {
+    "id": "quran_022",
+    "correctAnswerIndex": 0,
+    "question": "Which short surah proclaims: 'Say: He is Allah, the One'?",
+    "answers": [
+      "Al-Ikhlas",
+      "Al-Falaq",
+      "An-Nas",
+      "Al-Kawthar"
+    ],
+    "explanation": "Al-Ikhlas proclaims Allah's perfect oneness in four verses.",
+    "sourceDisplay": "Quran — Surah Al-Ikhlas, 112:1-4"
+  },
+  {
+    "id": "quran_023",
+    "correctAnswerIndex": 0,
+    "question": "Over roughly how many years was the Quran revealed?",
+    "answers": [
+      "23 years",
+      "1 year",
+      "10 years",
+      "40 years"
+    ],
+    "explanation": "The Quran was revealed gradually over about 23 years, in Makkah and then Madinah.",
+    "sourceDisplay": "Quran — well-established fact"
+  },
+  {
+    "id": "quran_024",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, what was the first House established for people to worship Allah?",
+    "answers": [
+      "The Ka'bah, at Bakkah (Makkah)",
+      "The mosque of Quba",
+      "Bayt al-Maqdis",
+      "The Prophet's ﷺ mosque"
+    ],
+    "explanation": "'The first House established for mankind is the one at Bakkah, blessed…' — the Ka'bah in Makkah.",
+    "sourceDisplay": "Quran — Surah Al 'Imran, 3:96"
+  },
+  {
+    "id": "sira_019",
+    "correctAnswerIndex": 0,
+    "question": "Who was the first muezzin of Islam, chosen by the Prophet ﷺ to call to prayer?",
+    "answers": [
+      "Bilal ibn Rabah",
+      "Abu Bakr",
+      "'Umar ibn al-Khattab",
+      "Salman al-Farisi"
+    ],
+    "explanation": "Bilal, with his beautiful voice, was chosen as Islam's first muezzin.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_020",
+    "correctAnswerIndex": 0,
+    "question": "What was the first mosque founded by the Prophet ﷺ upon arriving near Madinah?",
+    "answers": [
+      "The mosque of Quba",
+      "Al-Haram mosque",
+      "Al-Aqsa mosque",
+      "The mosque of the two qiblas"
+    ],
+    "explanation": "Arriving at Quba, at the gates of Madinah, the Prophet ﷺ founded the first mosque there.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_021",
+    "correctAnswerIndex": 0,
+    "question": "What was the name of the Prophet's ﷺ mother?",
+    "answers": [
+      "Amina",
+      "Khadija",
+      "Halima",
+      "Fatima"
+    ],
+    "explanation": "Amina bint Wahb was the Prophet's ﷺ mother; Halima was his wet-nurse.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_022",
+    "correctAnswerIndex": 0,
+    "question": "What was the name of the Prophet's ﷺ father, who passed away before his birth?",
+    "answers": [
+      "'Abdullah",
+      "Abu Talib",
+      "'Abd al-Muttalib",
+      "Hamza"
+    ],
+    "explanation": "'Abdullah, son of 'Abd al-Muttalib, passed away before his son Muhammad ﷺ was born.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_023",
+    "correctAnswerIndex": 0,
+    "question": "What nickname did the Makkans give the Prophet ﷺ before revelation, for his honesty?",
+    "answers": [
+      "Al-Amin (the trustworthy)",
+      "Al-Faruq",
+      "As-Siddiq",
+      "Sayf Allah"
+    ],
+    "explanation": "Even before revelation he was called al-Amin: people entrusted him with their belongings.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_024",
+    "correctAnswerIndex": 0,
+    "question": "In which year of the Hijra did the peaceful conquest of Makkah take place?",
+    "answers": [
+      "Year 8",
+      "Year 2",
+      "Year 5",
+      "Year 10"
+    ],
+    "explanation": "In year 8 AH the Prophet ﷺ entered Makkah almost without fighting and pardoned its people.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_025",
+    "correctAnswerIndex": 0,
+    "question": "In which year of the Hijra did the Prophet ﷺ perform his Farewell Pilgrimage?",
+    "answers": [
+      "Year 10",
+      "Year 6",
+      "Year 8",
+      "Year 12"
+    ],
+    "explanation": "The Farewell Pilgrimage took place in year 10 AH; the Prophet ﷺ delivered his final sermon there.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_026",
+    "correctAnswerIndex": 0,
+    "question": "How many daughters did the Prophet ﷺ have?",
+    "answers": [
+      "4",
+      "1",
+      "2",
+      "7"
+    ],
+    "explanation": "Zaynab, Ruqayya, Umm Kulthum and Fatima — the Prophet's ﷺ four daughters.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_027",
+    "correctAnswerIndex": 0,
+    "question": "What are the people of Madinah who welcomed and helped the emigrant Muslims called?",
+    "answers": [
+      "The Ansar (the Helpers)",
+      "The Muhajirun",
+      "The Quraysh",
+      "The Tabi'un"
+    ],
+    "explanation": "The Ansar, 'the Helpers', shared their homes and wealth with their emigrant brothers.",
+    "sourceDisplay": "Sira — well-established terminology"
+  },
+  {
+    "id": "sira_028",
+    "correctAnswerIndex": 0,
+    "question": "What are the Muslims who left Makkah to emigrate to Madinah called?",
+    "answers": [
+      "The Muhajirun (the Emigrants)",
+      "The Ansar",
+      "The Hunafa'",
+      "The Ghuzat"
+    ],
+    "explanation": "The Muhajirun left homes and belongings in Makkah to preserve their faith.",
+    "sourceDisplay": "Sira — well-established terminology"
+  },
+  {
+    "id": "sira_029",
+    "correctAnswerIndex": 0,
+    "question": "During which month did the Battle of Badr take place?",
+    "answers": [
+      "Ramadan",
+      "Muharram",
+      "Dhul-Hijjah",
+      "Rajab"
+    ],
+    "explanation": "The Battle of Badr took place during Ramadan, in year 2 AH.",
+    "sourceDisplay": "Sira — well-established historical fact"
+  },
+  {
+    "id": "sira_030",
+    "correctAnswerIndex": 0,
+    "question": "Before the qibla was fixed toward the Ka'bah, toward which city did Muslims pray?",
+    "answers": [
+      "Jerusalem (Bayt al-Maqdis)",
+      "Madinah",
+      "Ta'if",
+      "Damascus"
+    ],
+    "explanation": "Muslims first prayed toward Bayt al-Maqdis; then Allah commanded turning toward the Sacred Mosque.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:142-144"
+  },
+  {
+    "id": "faith_009",
+    "correctAnswerIndex": 0,
+    "question": "What is the water purification a Muslim performs before prayer called?",
+    "answers": [
+      "Wudu (ablution)",
+      "Tayammum",
+      "Ghusl",
+      "Siwak"
+    ],
+    "explanation": "'When you rise for prayer, wash your faces and your hands…' — this is wudu.",
+    "sourceDisplay": "Quran — Surah Al-Ma'idah, 5:6"
+  },
+  {
+    "id": "faith_010",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, what do the 'noble scribes' (kiraman katibin) do?",
+    "answers": [
+      "They record people's deeds",
+      "They carry the Throne",
+      "They guard Paradise",
+      "They bring the rain"
+    ],
+    "explanation": "'Over you are guardians, noble scribes' — angels record every deed.",
+    "sourceDisplay": "Quran — Surah Al-Infitar, 82:10-11"
+  },
+  {
+    "id": "faith_011",
+    "correctAnswerIndex": 0,
+    "question": "How many beautiful names of Allah does the authentic tradition report?",
+    "answers": [
+      "99",
+      "50",
+      "100",
+      "114"
+    ],
+    "explanation": "An authentic hadith reported by al-Bukhari and Muslim mentions ninety-nine names — one hundred minus one.",
+    "sourceDisplay": "Creed — well-established (al-Bukhari and Muslim)"
+  },
+  {
+    "id": "faith_012",
+    "correctAnswerIndex": 0,
+    "question": "What does Allah's name 'Ar-Rahman' mean?",
+    "answers": [
+      "The Most Merciful",
+      "The Creator",
+      "The King",
+      "The All-Knowing"
+    ],
+    "explanation": "Ar-Rahman, the Most Merciful — His mercy embraces all things.",
+    "sourceDisplay": "Quran — Surah Al-Fatiha, 1:3"
+  },
+  {
+    "id": "faith_013",
+    "correctAnswerIndex": 0,
+    "question": "In Al-Fatiha, Allah is called 'Master' of which day?",
+    "answers": [
+      "The Day of Judgment",
+      "Friday",
+      "The first day",
+      "The day of 'Arafah"
+    ],
+    "explanation": "'Master of the Day of Judgment' — the day everyone meets their deeds.",
+    "sourceDisplay": "Quran — Surah Al-Fatiha, 1:4"
+  },
+  {
+    "id": "faith_014",
+    "correctAnswerIndex": 0,
+    "question": "On which day of the week does the Quran call believers to congregational prayer?",
+    "answers": [
+      "Friday",
+      "Monday",
+      "Saturday",
+      "Sunday"
+    ],
+    "explanation": "'When the call to prayer is made on Friday, hasten to the remembrance of Allah.'",
+    "sourceDisplay": "Quran — Surah Al-Jumu'ah, 62:9"
+  },
+  {
+    "id": "faith_015",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, who guarantees the Quran's preservation from any alteration?",
+    "answers": [
+      "Allah Himself",
+      "Only the angels",
+      "The scholars",
+      "The kings"
+    ],
+    "explanation": "'Indeed, We sent down the Reminder, and indeed We are its Guardian.'",
+    "sourceDisplay": "Quran — Surah Al-Hijr, 15:9"
+  },
+  {
+    "id": "faith_016",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran declare about entering the religion?",
+    "answers": [
+      "There is no compulsion in religion",
+      "It is done by oath",
+      "It requires a witness",
+      "It happens at adulthood"
+    ],
+    "explanation": "'There is no compulsion in religion: right guidance is distinct from error.'",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:256"
+  },
+  {
+    "id": "faith_017",
+    "correctAnswerIndex": 0,
+    "question": "What is the Muslims' greeting, a wish of peace?",
+    "answers": [
+      "As-salamu 'alaykum",
+      "Marhaban",
+      "Sabah al-khayr",
+      "Ahlan wa sahlan"
+    ],
+    "explanation": "'As-salamu 'alaykum': peace be upon you — answered with 'wa 'alaykum as-salam'.",
+    "sourceDisplay": "Creed — well-established terminology"
+  },
+  {
+    "id": "faith_018",
+    "correctAnswerIndex": 0,
+    "question": "What is the belief in the oneness of Allah, the heart of Islam, called?",
+    "answers": [
+      "Tawhid",
+      "Tafsir",
+      "Tajwid",
+      "Tarawih"
+    ],
+    "explanation": "Tawhid — affirming that Allah is One, without partner — is the foundation of all faith.",
+    "sourceDisplay": "Creed — well-established terminology"
+  },
+  {
+    "id": "virtues_007",
+    "correctAnswerIndex": 0,
+    "question": "To what does the Quran compare backbiting (speaking ill of someone absent)?",
+    "answers": [
+      "Eating the flesh of one's dead brother",
+      "Drinking salt water",
+      "Walking in darkness",
+      "Sowing in sand"
+    ],
+    "explanation": "'Would one of you like to eat the flesh of his dead brother? You would detest it!' — backbiting is that ugly.",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:12"
+  },
+  {
+    "id": "virtues_008",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the relationship between believers?",
+    "answers": [
+      "They are brothers",
+      "They are competitors",
+      "They are strangers",
+      "They are business partners"
+    ],
+    "explanation": "'The believers are but brothers, so make peace between your two brothers.'",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:10"
+  },
+  {
+    "id": "virtues_009",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say about mocking other people?",
+    "answers": [
+      "It is forbidden: the mocked may be better than the mockers",
+      "It is allowed among friends",
+      "It is allowed if funny",
+      "It is reserved for poets"
+    ],
+    "explanation": "'Let no people ridicule another people: perhaps they are better than them.'",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:11"
+  },
+  {
+    "id": "virtues_010",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, what does Allah promise the one who is grateful?",
+    "answers": [
+      "He will surely give them more",
+      "A long life",
+      "Immediate wealth",
+      "A journey"
+    ],
+    "explanation": "'If you are grateful, I will surely increase you.'",
+    "sourceDisplay": "Quran — Surah Ibrahim, 14:7"
+  },
+  {
+    "id": "virtues_011",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, how will the patient (sabirun) be given their reward?",
+    "answers": [
+      "In full, without measure",
+      "All at once",
+      "After forty days",
+      "According to their wealth"
+    ],
+    "explanation": "'The patient will be given their reward in full, without account.'",
+    "sourceDisplay": "Quran — Surah Az-Zumar, 39:10"
+  },
+  {
+    "id": "virtues_012",
+    "correctAnswerIndex": 0,
+    "question": "'Eat and drink, but…' — how does this verse continue?",
+    "answers": [
+      "Do not waste",
+      "Do not share",
+      "Do not speak",
+      "Do not go out"
+    ],
+    "explanation": "'Eat and drink, but do not be excessive: Allah does not love the wasteful.'",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:31"
+  },
+  {
+    "id": "virtues_013",
+    "correctAnswerIndex": 0,
+    "question": "Which verse, often recited in the Friday sermon, sums up what Allah commands?",
+    "answers": [
+      "'Allah commands justice and good conduct'",
+      "'Allah commands trade'",
+      "'Allah commands travel'",
+      "'Allah commands silence'"
+    ],
+    "explanation": "'Allah commands justice, good conduct and generosity to relatives…' — recited every Friday.",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:90"
+  },
+  {
+    "id": "virtues_014",
+    "correctAnswerIndex": 0,
+    "question": "Against whom does Surah Al-Mutaffifin open with 'Woe…'?",
+    "answers": [
+      "Those who cheat in measure and weight",
+      "Those who sleep",
+      "Those who travel",
+      "Those who stay silent"
+    ],
+    "explanation": "'Woe to those who give less: who demand full measure when receiving, but give less when measuring for others.'",
+    "sourceDisplay": "Quran — Surah Al-Mutaffifin, 83:1-3"
+  },
+  {
+    "id": "virtues_015",
+    "correctAnswerIndex": 0,
+    "question": "According to Surah Ad-Duha, how should the orphan and the one who asks be treated?",
+    "answers": [
+      "Neither oppressed nor turned away",
+      "Ignored",
+      "Sent to others",
+      "Spoken to later"
+    ],
+    "explanation": "'As for the orphan, do not oppress him; and as for the one who asks, do not repel him.'",
+    "sourceDisplay": "Quran — Surah Ad-Duha, 93:9-10"
+  },
+  {
+    "id": "virtues_016",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran command people to be spoken to?",
+    "answers": [
+      "With good words",
+      "In a very low voice",
+      "As little as possible",
+      "Only to relatives"
+    ],
+    "explanation": "'…and speak good words to people' — kind speech is itself worship.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:83"
+  },
+  {
+    "id": "virtues_017",
+    "correctAnswerIndex": 0,
+    "question": "In his advice to his son, what does Luqman say about walking and pride?",
+    "answers": [
+      "Do not walk on the earth arrogantly",
+      "Always walk fast",
+      "Only walk at night",
+      "Never walk alone"
+    ],
+    "explanation": "'Do not turn your cheek from people in pride, and do not walk the earth arrogantly.'",
+    "sourceDisplay": "Quran — Surah Luqman, 31:18"
+  },
+  {
+    "id": "virtues_018",
+    "correctAnswerIndex": 0,
+    "question": "According to the very first hadith of al-Bukhari's collection, what are deeds judged by?",
+    "answers": [
+      "Intentions",
+      "Results",
+      "Habits",
+      "Witnesses"
+    ],
+    "explanation": "'Actions are but by intentions, and every person shall have only what they intended.'",
+    "sourceDisplay": "Sahih al-Bukhari — hadith no. 1"
   }
 ]
