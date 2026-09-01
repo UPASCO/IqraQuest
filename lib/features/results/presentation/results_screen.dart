@@ -8,6 +8,7 @@ import '../../../models/models.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
+import '../../../widgets/button_label.dart';
 
 /// The end of the journey is the game's biggest hero moment: the rider
 /// has actually ARRIVED somewhere — at the palace oasis — so the screen
@@ -138,7 +139,7 @@ class ResultsScreen extends ConsumerWidget {
                       foregroundColor: const Color(0xCCE9DFC8),
                       minimumSize: const Size.fromHeight(44),
                     ),
-                    child: Text(l10n.backToHome),
+                    child: ButtonLabel(l10n.backToHome),
                   ),
                 ],
               ),

@@ -297,19 +297,23 @@ s("premiumTitle", "Premium sheet title",
   tr="IqraQuest Premium", id="IqraQuest Premium", ur="اقرا کویسٹ پریمیم",
   ms="IqraQuest Premium", it="IqraQuest Premium", nl="IqraQuest Premium")
 
+# No question count here: the real, current bank size is shown right
+# below by premiumQuestionsIncluded, read from the bank itself. A
+# hardcoded number goes stale and reads as a false claim to App Review
+# (App Store guideline 2.3.1) the moment the bank differs from it.
 s("premiumUnlockAll", "Premium sheet value proposition",
-  fr="Débloque les 500 questions et toutes les difficultés",
-  en="Unlock all 500 questions and every difficulty",
-  ar="افتح جميع الأسئلة الـ500 وكل مستويات الصعوبة",
-  es="Desbloquea las 500 preguntas y todas las dificultades",
-  pt="Desbloqueie as 500 perguntas e todas as dificuldades",
-  de="Schalte alle 500 Fragen und jeden Schwierigkeitsgrad frei",
-  tr="500 sorunun ve tüm zorluk seviyelerinin kilidini açın",
-  id="Buka 500 pertanyaan dan semua tingkat kesulitan",
-  ur="تمام 500 سوالات اور ہر مشکل درجہ کھولیں",
-  ms="Buka kunci 500 soalan dan semua tahap kesukaran",
-  it="Sblocca tutte le 500 domande e ogni livello di difficoltà",
-  nl="Ontgrendel alle 500 vragen en elke moeilijkheidsgraad")
+  fr="Débloque toute la banque de questions et toutes les difficultés",
+  en="Unlock the full question bank and every difficulty",
+  ar="افتح بنك الأسئلة كاملاً وكل مستويات الصعوبة",
+  es="Desbloquea todo el banco de preguntas y todas las dificultades",
+  pt="Desbloqueie todo o banco de perguntas e todas as dificuldades",
+  de="Schalte die gesamte Fragensammlung und jeden Schwierigkeitsgrad frei",
+  tr="Tüm soru bankasının ve her zorluk seviyesinin kilidini açın",
+  id="Buka seluruh bank pertanyaan dan semua tingkat kesulitan",
+  ur="سوالات کا مکمل ذخیرہ اور ہر مشکل درجہ کھولیں",
+  ms="Buka kunci seluruh bank soalan dan semua tahap kesukaran",
+  it="Sblocca l'intero archivio di domande e ogni livello di difficoltà",
+  nl="Ontgrendel de volledige vragenbank en elke moeilijkheidsgraad")
 
 s("premiumOneTime", "Premium sheet: pricing model note",
   fr="Paiement unique — aucun abonnement", en="One-time payment — no subscription",

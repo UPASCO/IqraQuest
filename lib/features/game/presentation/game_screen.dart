@@ -17,6 +17,7 @@ import '../../../widgets/gait_selector.dart' show HorseshoePainter;
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
 import '../application/game_controller.dart';
+import '../../../widgets/button_label.dart';
 
 /// The game screen is the world: a full-bleed dawn landscape with the
 /// journey tilted into perspective, and every piece of UI floating over
@@ -77,7 +78,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               const SizedBox(height: 24),
               TextButton(
                 onPressed: () => context.go('/home'),
-                child: Text(l10n.backToHome),
+                child: ButtonLabel(l10n.backToHome),
               ),
             ],
           ),
@@ -1203,7 +1204,7 @@ class _CellOfferSheet extends StatelessWidget {
                       foregroundColor: const Color(0xCCE9DFC8),
                       minimumSize: const Size.fromHeight(48),
                     ),
-                    child: Text(l10n.declineChallenge),
+                    child: ButtonLabel(l10n.declineChallenge),
                   ),
                 ),
                 const SizedBox(width: 12),

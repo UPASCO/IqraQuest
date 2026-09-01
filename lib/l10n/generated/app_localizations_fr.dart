@@ -157,7 +157,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Débloque les 500 questions et toutes les difficultés';
+      'Débloque toute la banque de questions et toutes les difficultés';
 
   @override
   String get premiumOneTime => 'Paiement unique — aucun abonnement';

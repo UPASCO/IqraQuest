@@ -156,7 +156,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumTitle => 'إكرا كويست بريميوم';
 
   @override
-  String get premiumUnlockAll => 'افتح جميع الأسئلة الـ500 وكل مستويات الصعوبة';
+  String get premiumUnlockAll => 'افتح بنك الأسئلة كاملاً وكل مستويات الصعوبة';
 
   @override
   String get premiumOneTime => 'دفعة واحدة — بدون اشتراك';

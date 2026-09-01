@@ -25,6 +25,8 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     required this.player4,
     required this.divider,
     required this.protectedSquare,
+    required this.onScene,
+    required this.onSceneDim,
   });
 
   final Color primary;
@@ -46,6 +48,13 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   final Color divider;
   final Color protectedSquare;
 
+  /// Text and icons drawn directly on a painted scene (the board diorama,
+  /// the onboarding hero). A scene is dark in BOTH themes, so these do
+  /// not flip with day/night the way [textPrimary] does — using
+  /// [textPrimary] over a scene is what made those screens unreadable.
+  final Color onScene;
+  final Color onSceneDim;
+
   static const AppSemanticColors day = AppSemanticColors(
     primary: AppColors.emerald,
     primaryDark: AppColors.deepEmerald,
@@ -65,6 +74,8 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     player4: AppColors.player4Safran,
     divider: Color(0x1F1B1712),
     protectedSquare: AppColors.softGold,
+    onScene: Color(0xFFF6EFE0),
+    onSceneDim: Color(0xCCE4D9BF),
   );
 
   static const AppSemanticColors night = AppSemanticColors(
@@ -86,6 +97,8 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     player4: Color(0xFFDDA24C),
     divider: Color(0x24F7F0DF),
     protectedSquare: AppColors.softGold,
+    onScene: Color(0xFFF6EFE0),
+    onSceneDim: Color(0xCCE4D9BF),
   );
 
   @override
@@ -108,6 +121,8 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     Color? player4,
     Color? divider,
     Color? protectedSquare,
+    Color? onScene,
+    Color? onSceneDim,
   }) {
     return AppSemanticColors(
       primary: primary ?? this.primary,
@@ -128,6 +143,8 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
       player4: player4 ?? this.player4,
       divider: divider ?? this.divider,
       protectedSquare: protectedSquare ?? this.protectedSquare,
+      onScene: onScene ?? this.onScene,
+      onSceneDim: onSceneDim ?? this.onSceneDim,
     );
   }
 
@@ -153,6 +170,8 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
       player4: Color.lerp(player4, other.player4, t)!,
       divider: Color.lerp(divider, other.divider, t)!,
       protectedSquare: Color.lerp(protectedSquare, other.protectedSquare, t)!,
+      onScene: Color.lerp(onScene, other.onScene, t)!,
+      onSceneDim: Color.lerp(onSceneDim, other.onSceneDim, t)!,
     );
   }
 }

@@ -157,7 +157,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Buka 500 pertanyaan dan semua tingkat kesulitan';
+      'Buka seluruh bank pertanyaan dan semua tingkat kesulitan';
 
   @override
   String get premiumOneTime => 'Pembayaran sekali — tanpa langganan';

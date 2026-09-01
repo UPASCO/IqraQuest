@@ -157,7 +157,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Desbloqueie as 500 perguntas e todas as dificuldades';
+      'Desbloqueie todo o banco de perguntas e todas as dificuldades';
 
   @override
   String get premiumOneTime => 'Pagamento único — sem assinatura';

@@ -157,7 +157,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Schalte alle 500 Fragen und jeden Schwierigkeitsgrad frei';
+      'Schalte die gesamte Fragensammlung und jeden Schwierigkeitsgrad frei';
 
   @override
   String get premiumOneTime => 'Einmalzahlung — kein Abonnement';

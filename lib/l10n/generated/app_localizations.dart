@@ -409,7 +409,7 @@ abstract class AppLocalizations {
   /// Premium sheet value proposition
   ///
   /// In en, this message translates to:
-  /// **'Unlock all 500 questions and every difficulty'**
+  /// **'Unlock the full question bank and every difficulty'**
   String get premiumUnlockAll;
 
   /// Premium sheet: pricing model note

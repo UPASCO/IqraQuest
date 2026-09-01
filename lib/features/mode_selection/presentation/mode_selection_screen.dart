@@ -8,6 +8,7 @@ import '../../../models/player.dart' show AiDifficulty;
 import '../../../theme/app_theme.dart';
 import '../../../widgets/illustration.dart';
 import '../../players/presentation/player_setup_args.dart';
+import '../../../widgets/button_label.dart';
 
 class ModeSelectionScreen extends StatefulWidget {
   const ModeSelectionScreen({super.key, required this.mode});
@@ -66,10 +67,10 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                 visualDensity: VisualDensity.compact,
               ),
               segments: [
-                ButtonSegment(value: GameVariant.quick, label: Text(l10n.quickGame)),
-                ButtonSegment(value: GameVariant.classic, label: Text(l10n.classicGame)),
+                ButtonSegment(value: GameVariant.quick, label: ButtonLabel(l10n.quickGame)),
+                ButtonSegment(value: GameVariant.classic, label: ButtonLabel(l10n.classicGame)),
                 if (!_isSolo)
-                  ButtonSegment(value: GameVariant.family, label: Text(l10n.familyMode)),
+                  ButtonSegment(value: GameVariant.family, label: ButtonLabel(l10n.familyMode)),
               ],
               selected: {_variant},
               onSelectionChanged: (s) => setState(() => _variant = s.first),
@@ -84,9 +85,12 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                   visualDensity: VisualDensity.compact,
                 ),
                 segments: [
-                  ButtonSegment(value: AiDifficulty.easy, label: Text(l10n.difficultyEasy)),
-                  ButtonSegment(value: AiDifficulty.medium, label: Text(l10n.difficultyMedium)),
-                  ButtonSegment(value: AiDifficulty.hard, label: Text(l10n.difficultyHard)),
+                  ButtonSegment(value: AiDifficulty.easy, label: ButtonLabel(l10n.difficultyEasy)),
+                  ButtonSegment(
+                    value: AiDifficulty.medium,
+                    label: ButtonLabel(l10n.difficultyMedium),
+                  ),
+                  ButtonSegment(value: AiDifficulty.hard, label: ButtonLabel(l10n.difficultyHard)),
                 ],
                 selected: {_difficulty},
                 onSelectionChanged: (s) => setState(() => _difficulty = s.first),
@@ -122,7 +126,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                   ),
                 );
               },
-              child: Text(MaterialLocalizations.of(context).continueButtonLabel),
+              child: ButtonLabel(MaterialLocalizations.of(context).continueButtonLabel),
             ),
           ],
         ),
@@ -250,3 +254,4 @@ class _CountStepper extends StatelessWidget {
     );
   }
 }
+

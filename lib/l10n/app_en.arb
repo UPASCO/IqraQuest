@@ -192,7 +192,7 @@
   "@premiumTitle": {
     "description": "Premium sheet title"
   },
-  "premiumUnlockAll": "Unlock all 500 questions and every difficulty",
+  "premiumUnlockAll": "Unlock the full question bank and every difficulty",
   "@premiumUnlockAll": {
     "description": "Premium sheet value proposition"
   },

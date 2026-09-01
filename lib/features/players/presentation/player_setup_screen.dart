@@ -10,6 +10,7 @@ import '../../../theme/app_theme.dart';
 import '../../../widgets/horse_painter.dart';
 import '../../game/application/game_controller.dart';
 import 'player_setup_args.dart';
+import '../../../widgets/button_label.dart';
 
 const _teams = [AppTeam.emerald, AppTeam.saphir, AppTeam.grenat, AppTeam.safran];
 const _coats = [HorseCoat.grayWhite, HorseCoat.bay, HorseCoat.chestnut, HorseCoat.black];
@@ -143,7 +144,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                       height: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : Text(l10n.startGame),
+                  : ButtonLabel(l10n.startGame),
             ),
           ],
         ),

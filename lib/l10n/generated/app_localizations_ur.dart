@@ -156,7 +156,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get premiumTitle => 'اقرا کویسٹ پریمیم';
 
   @override
-  String get premiumUnlockAll => 'تمام 500 سوالات اور ہر مشکل درجہ کھولیں';
+  String get premiumUnlockAll => 'سوالات کا مکمل ذخیرہ اور ہر مشکل درجہ کھولیں';
 
   @override
   String get premiumOneTime => 'یک وقتی ادائیگی — کوئی سبسکرپشن نہیں';

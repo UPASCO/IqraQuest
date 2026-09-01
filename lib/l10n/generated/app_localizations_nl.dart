@@ -157,7 +157,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Ontgrendel alle 500 vragen en elke moeilijkheidsgraad';
+      'Ontgrendel de volledige vragenbank en elke moeilijkheidsgraad';
 
   @override
   String get premiumOneTime => 'Eenmalige betaling — geen abonnement';

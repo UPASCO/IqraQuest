@@ -157,7 +157,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      '500 sorunun ve tüm zorluk seviyelerinin kilidini açın';
+      'Tüm soru bankasının ve her zorluk seviyesinin kilidini açın';
 
   @override
   String get premiumOneTime => 'Tek seferlik ödeme — abonelik yok';

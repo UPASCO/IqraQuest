@@ -11,6 +11,7 @@ import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/horse_painter.dart';
 import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
+import '../../../widgets/button_label.dart';
 
 /// The hub of the game, answering at a glance: where am I on the
 /// journey, what is my streak, and what do I do next. One dominant CTA
@@ -52,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         title: Text(l10n.raceRulesUpdatedTitle),
         content: Text(l10n.raceRulesUpdatedBody),
         actions: [
-          TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.startNewRace)),
+          TextButton(onPressed: () => Navigator.of(context).pop(), child: ButtonLabel(l10n.startNewRace)),
         ],
       ),
     );

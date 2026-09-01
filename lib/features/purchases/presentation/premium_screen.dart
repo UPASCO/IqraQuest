@@ -10,6 +10,7 @@ import '../../../services/purchase_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/geometric_motif_painter.dart';
 import '../../../widgets/parental_gate.dart';
+import '../../../widgets/button_label.dart';
 
 class PremiumScreen extends ConsumerStatefulWidget {
   const PremiumScreen({super.key});
@@ -109,7 +110,7 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                           },
                     // Never hardcode a price — always read it from the
                     // Store's own ProductDetails (spec §73–§74).
-                    child: Text(product == null ? '…' : l10n.premiumCta(product.price)),
+                    child: ButtonLabel(product == null ? '…' : l10n.premiumCta(product.price)),
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton(
@@ -118,7 +119,7 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                         purchases.restorePurchases();
                       }
                     },
-                    child: Text(l10n.restorePurchases),
+                    child: ButtonLabel(l10n.restorePurchases),
                   ),
                   if (_uiState == PurchaseUiState.storeUnavailable ||
                       _uiState == PurchaseUiState.error) ...[
