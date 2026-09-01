@@ -291,6 +291,24 @@
   "@teamSafran": {
     "description": "Team colour name"
   },
+  "premiumCta": "Unlock everything — {price}",
+  "@premiumCta": {
+    "description": "Premium purchase button: unlock everything at the Store price",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumQuestionsIncluded": "{count} verified questions, each with its source — and the bank keeps growing.",
+  "@premiumQuestionsIncluded": {
+    "description": "Premium screen: how many verified questions the full bank holds today",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
   "darkMode": "Dark mode",
   "@darkMode": {
     "description": "Settings item"

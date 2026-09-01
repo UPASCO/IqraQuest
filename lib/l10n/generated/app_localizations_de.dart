@@ -224,6 +224,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get teamSafran => 'Safran';
 
   @override
+  String premiumCta(String price) {
+    return 'Alles freischalten — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return '$count geprüfte Fragen, jede mit Quelle — und die Sammlung wächst weiter.';
+  }
+
+  @override
   String get darkMode => 'Dunkelmodus';
 
   @override

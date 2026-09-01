@@ -222,6 +222,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get teamSafran => 'زعفراني';
 
   @override
+  String premiumCta(String price) {
+    return 'فتح الكل — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return '$count سؤالًا موثقًا، لكل منها مصدره — والمجموعة تكبر باستمرار.';
+  }
+
+  @override
   String get darkMode => 'الوضع الليلي';
 
   @override

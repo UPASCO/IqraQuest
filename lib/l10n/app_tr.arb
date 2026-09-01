@@ -67,6 +67,8 @@
   "teamSaphir": "safir",
   "teamGrenat": "lal",
   "teamSafran": "safran",
+  "premiumCta": "Tümünün kilidini aç — {price}",
+  "premiumQuestionsIncluded": "Kaynağıyla birlikte {count} doğrulanmış soru — ve soru bankası büyümeye devam ediyor.",
   "darkMode": "Karanlık Mod",
   "about": "Hakkında",
   "privacyPolicy": "Gizlilik Politikası",

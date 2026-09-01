@@ -224,6 +224,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get teamSafran => 'safran';
 
   @override
+  String premiumCta(String price) {
+    return 'Tümünün kilidini aç — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return 'Kaynağıyla birlikte $count doğrulanmış soru — ve soru bankası büyümeye devam ediyor.';
+  }
+
+  @override
   String get darkMode => 'Karanlık Mod';
 
   @override

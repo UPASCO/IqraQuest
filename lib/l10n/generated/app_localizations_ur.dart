@@ -223,6 +223,16 @@ class AppLocalizationsUr extends AppLocalizations {
   String get teamSafran => 'زعفرانی';
 
   @override
+  String premiumCta(String price) {
+    return 'سب کھولیں — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return '$count تصدیق شدہ سوالات، ہر ایک اپنے ماخذ کے ساتھ — اور ذخیرہ بڑھتا رہتا ہے۔';
+  }
+
+  @override
   String get darkMode => 'ڈارک موڈ';
 
   @override

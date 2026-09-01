@@ -67,6 +67,8 @@
   "teamSaphir": "Saphir",
   "teamGrenat": "Granat",
   "teamSafran": "Safran",
+  "premiumCta": "Alles freischalten — {price}",
+  "premiumQuestionsIncluded": "{count} geprüfte Fragen, jede mit Quelle — und die Sammlung wächst weiter.",
   "darkMode": "Dunkelmodus",
   "about": "Über",
   "privacyPolicy": "Datenschutzerklärung",

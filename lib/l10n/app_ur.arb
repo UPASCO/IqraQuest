@@ -67,6 +67,8 @@
   "teamSaphir": "نیلم",
   "teamGrenat": "یاقوتی",
   "teamSafran": "زعفرانی",
+  "premiumCta": "سب کھولیں — {price}",
+  "premiumQuestionsIncluded": "{count} تصدیق شدہ سوالات، ہر ایک اپنے ماخذ کے ساتھ — اور ذخیرہ بڑھتا رہتا ہے۔",
   "darkMode": "ڈارک موڈ",
   "about": "بارے میں",
   "privacyPolicy": "رازداری کی پالیسی",

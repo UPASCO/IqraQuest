@@ -520,6 +520,18 @@ abstract class AppLocalizations {
   /// **'saffron'**
   String get teamSafran;
 
+  /// Premium purchase button: unlock everything at the Store price
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock everything — {price}'**
+  String premiumCta(String price);
+
+  /// Premium screen: how many verified questions the full bank holds today
+  ///
+  /// In en, this message translates to:
+  /// **'{count} verified questions, each with its source — and the bank keeps growing.'**
+  String premiumQuestionsIncluded(num count);
+
   /// Settings item
   ///
   /// In en, this message translates to:

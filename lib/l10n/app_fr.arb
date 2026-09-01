@@ -67,6 +67,8 @@
   "teamSaphir": "saphir",
   "teamGrenat": "grenat",
   "teamSafran": "safran",
+  "premiumCta": "Tout débloquer — {price}",
+  "premiumQuestionsIncluded": "{count} questions vérifiées, chacune avec sa source — et la banque continue de grandir.",
   "darkMode": "Mode nuit",
   "about": "À propos",
   "privacyPolicy": "Politique de confidentialité",

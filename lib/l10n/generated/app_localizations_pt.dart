@@ -224,6 +224,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get teamSafran => 'açafrão';
 
   @override
+  String premiumCta(String price) {
+    return 'Desbloquear tudo — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return '$count perguntas verificadas, cada uma com sua fonte — e o banco continua crescendo.';
+  }
+
+  @override
   String get darkMode => 'Modo escuro';
 
   @override

@@ -67,6 +67,8 @@
   "teamSaphir": "ياقوتي أزرق",
   "teamGrenat": "عقيقي",
   "teamSafran": "زعفراني",
+  "premiumCta": "فتح الكل — {price}",
+  "premiumQuestionsIncluded": "{count} سؤالًا موثقًا، لكل منها مصدره — والمجموعة تكبر باستمرار.",
   "darkMode": "الوضع الليلي",
   "about": "حول التطبيق",
   "privacyPolicy": "سياسة الخصوصية",

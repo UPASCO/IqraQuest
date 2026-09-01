@@ -67,6 +67,8 @@
   "teamSaphir": "zafiro",
   "teamGrenat": "granate",
   "teamSafran": "azafrán",
+  "premiumCta": "Desbloquear todo — {price}",
+  "premiumQuestionsIncluded": "{count} preguntas verificadas, cada una con su fuente — y el banco sigue creciendo.",
   "darkMode": "Modo oscuro",
   "about": "Acerca de",
   "privacyPolicy": "Política de privacidad",

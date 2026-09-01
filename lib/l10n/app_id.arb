@@ -67,6 +67,8 @@
   "teamSaphir": "safir",
   "teamGrenat": "merah delima",
   "teamSafran": "safron",
+  "premiumCta": "Buka semua — {price}",
+  "premiumQuestionsIncluded": "{count} pertanyaan terverifikasi, masing-masing dengan sumbernya — dan bank soal terus bertambah.",
   "darkMode": "Mode Gelap",
   "about": "Tentang",
   "privacyPolicy": "Kebijakan Privasi",

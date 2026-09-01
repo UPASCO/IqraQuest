@@ -449,6 +449,30 @@ s("teamSafran", "Team colour name",
   de="Safran", tr="safran", id="safron", ur="زعفرانی", ms="safron",
   it="zafferano", nl="saffraan")
 
+s("premiumCta", "Premium purchase button: unlock everything at the Store price",
+  ph={"price": "String"},
+  fr="Tout débloquer — {price}", en="Unlock everything — {price}",
+  ar="فتح الكل — {price}", es="Desbloquear todo — {price}",
+  pt="Desbloquear tudo — {price}", de="Alles freischalten — {price}",
+  tr="Tümünün kilidini aç — {price}", id="Buka semua — {price}",
+  ur="سب کھولیں — {price}", ms="Buka semua — {price}",
+  it="Sblocca tutto — {price}", nl="Alles ontgrendelen — {price}")
+
+s("premiumQuestionsIncluded", "Premium screen: how many verified questions the full bank holds today",
+  ph={"count": "num"},
+  fr="{count} questions vérifiées, chacune avec sa source — et la banque continue de grandir.",
+  en="{count} verified questions, each with its source — and the bank keeps growing.",
+  ar="{count} سؤالًا موثقًا، لكل منها مصدره — والمجموعة تكبر باستمرار.",
+  es="{count} preguntas verificadas, cada una con su fuente — y el banco sigue creciendo.",
+  pt="{count} perguntas verificadas, cada uma com sua fonte — e o banco continua crescendo.",
+  de="{count} geprüfte Fragen, jede mit Quelle — und die Sammlung wächst weiter.",
+  tr="Kaynağıyla birlikte {count} doğrulanmış soru — ve soru bankası büyümeye devam ediyor.",
+  id="{count} pertanyaan terverifikasi, masing-masing dengan sumbernya — dan bank soal terus bertambah.",
+  ur="{count} تصدیق شدہ سوالات، ہر ایک اپنے ماخذ کے ساتھ — اور ذخیرہ بڑھتا رہتا ہے۔",
+  ms="{count} soalan disahkan, setiap satu dengan sumbernya — dan bank soalan terus berkembang.",
+  it="{count} domande verificate, ognuna con la sua fonte — e la raccolta continua a crescere.",
+  nl="{count} geverifieerde vragen, elk met bron — en de vragenbank blijft groeien.")
+
 s("darkMode", "Settings item",
   fr="Mode nuit", en="Dark mode", ar="الوضع الليلي", es="Modo oscuro",
   pt="Modo escuro", de="Dunkelmodus", tr="Karanlık Mod", id="Mode Gelap",

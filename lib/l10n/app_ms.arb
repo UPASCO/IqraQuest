@@ -67,6 +67,8 @@
   "teamSaphir": "nilam",
   "teamGrenat": "delima",
   "teamSafran": "safron",
+  "premiumCta": "Buka semua — {price}",
+  "premiumQuestionsIncluded": "{count} soalan disahkan, setiap satu dengan sumbernya — dan bank soalan terus berkembang.",
   "darkMode": "Mod Gelap",
   "about": "Tentang",
   "privacyPolicy": "Dasar Privasi",

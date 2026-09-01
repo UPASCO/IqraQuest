@@ -224,6 +224,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get teamSafran => 'saffraan';
 
   @override
+  String premiumCta(String price) {
+    return 'Alles ontgrendelen — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return '$count geverifieerde vragen, elk met bron — en de vragenbank blijft groeien.';
+  }
+
+  @override
   String get darkMode => 'Donkere modus';
 
   @override

@@ -67,6 +67,8 @@
   "teamSaphir": "saffier",
   "teamGrenat": "granaat",
   "teamSafran": "saffraan",
+  "premiumCta": "Alles ontgrendelen — {price}",
+  "premiumQuestionsIncluded": "{count} geverifieerde vragen, elk met bron — en de vragenbank blijft groeien.",
   "darkMode": "Donkere modus",
   "about": "Over",
   "privacyPolicy": "Privacybeleid",

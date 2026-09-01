@@ -67,6 +67,8 @@
   "teamSaphir": "zaffiro",
   "teamGrenat": "granata",
   "teamSafran": "zafferano",
+  "premiumCta": "Sblocca tutto — {price}",
+  "premiumQuestionsIncluded": "{count} domande verificate, ognuna con la sua fonte — e la raccolta continua a crescere.",
   "darkMode": "Modalità scura",
   "about": "Informazioni",
   "privacyPolicy": "Informativa sulla privacy",

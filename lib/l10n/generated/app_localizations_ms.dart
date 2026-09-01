@@ -225,6 +225,16 @@ class AppLocalizationsMs extends AppLocalizations {
   String get teamSafran => 'safron';
 
   @override
+  String premiumCta(String price) {
+    return 'Buka semua — $price';
+  }
+
+  @override
+  String premiumQuestionsIncluded(num count) {
+    return '$count soalan disahkan, setiap satu dengan sumbernya — dan bank soalan terus berkembang.';
+  }
+
+  @override
   String get darkMode => 'Mod Gelap';
 
   @override

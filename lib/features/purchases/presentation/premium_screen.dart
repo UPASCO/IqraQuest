@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/providers.dart';
+import '../../../features/game/application/game_controller.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../services/purchase_service.dart';
 import '../../../theme/app_theme.dart';
@@ -30,6 +31,12 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
       setState(() => _uiState = s);
       if (s == PurchaseUiState.purchased || s == PurchaseUiState.restored) {
         ref.read(premiumControllerProvider.notifier).grant();
+        // A game already in progress gets the full bank immediately —
+        // the buyer must not have to finish the free game first.
+        final game = ref.read(gameControllerProvider.notifier);
+        ref.read(questionPoolProvider.future).then((pool) {
+          game.configure(pool: pool, isPremium: true);
+        });
       }
     });
   }
@@ -72,12 +79,28 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                   style: Theme.of(context).textTheme.bodyMedium
                       ?.copyWith(color: colors.textSecondary),
                 ),
+                const SizedBox(height: 8),
+                // The honest pitch: the real size of today's verified
+                // bank, read from the bank itself (never a hardcoded
+                // marketing number).
+                Consumer(
+                  builder: (context, ref, _) =>
+                      ref.watch(questionPoolProvider).maybeWhen(
+                            data: (pool) => Text(
+                              l10n.premiumQuestionsIncluded(pool.length),
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(color: colors.textSecondary),
+                            ),
+                            orElse: () => const SizedBox.shrink(),
+                          ),
+                ),
                 const SizedBox(height: 32),
                 if (isPremium)
                   Text(l10n.purchaseSuccess, style: Theme.of(context).textTheme.titleMedium)
                 else ...[
                   ElevatedButton(
-                    onPressed: _uiState == PurchaseUiState.purchasing
+                    onPressed: product == null || _uiState == PurchaseUiState.purchasing
                         ? null
                         : () async {
                             if (await ParentalGate.show(context)) {
@@ -86,7 +109,7 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                           },
                     // Never hardcode a price — always read it from the
                     // Store's own ProductDetails (spec §73–§74).
-                    child: Text(product?.price ?? '—'),
+                    child: Text(product == null ? '…' : l10n.premiumCta(product.price)),
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton(
@@ -97,7 +120,8 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                     },
                     child: Text(l10n.restorePurchases),
                   ),
-                  if (_uiState == PurchaseUiState.storeUnavailable) ...[
+                  if (_uiState == PurchaseUiState.storeUnavailable ||
+                      _uiState == PurchaseUiState.error) ...[
                     const SizedBox(height: 16),
                     Text(
                       l10n.purchaseError,

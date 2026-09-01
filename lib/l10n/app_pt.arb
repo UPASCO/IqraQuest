@@ -67,6 +67,8 @@
   "teamSaphir": "safira",
   "teamGrenat": "grená",
   "teamSafran": "açafrão",
+  "premiumCta": "Desbloquear tudo — {price}",
+  "premiumQuestionsIncluded": "{count} perguntas verificadas, cada uma com sua fonte — e o banco continua crescendo.",
   "darkMode": "Modo escuro",
   "about": "Sobre",
   "privacyPolicy": "Política de Privacidade",
