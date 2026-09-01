@@ -11,6 +11,7 @@ import '../services/purchase_service.dart';
 import '../services/question_repository.dart';
 import '../services/settings_service.dart';
 import '../services/sound_service.dart';
+import '../services/share_service.dart';
 
 /// Service instances are constructed once in `main()` (they need an
 /// `await`) and injected here via `ProviderScope(overrides: ...)`. Every
@@ -84,6 +85,9 @@ final soundServiceProvider = Provider<SoundService>((ref) {
   ref.onDispose(service.dispose);
   return service;
 });
+
+/// Platform share sheet for scores; overridden with a fake in tests.
+final shareServiceProvider = Provider<ShareService>((ref) => const ShareService());
 
 class PremiumController extends StateNotifier<bool> {
   PremiumController(this._entitlements, bool initial) : super(initial);

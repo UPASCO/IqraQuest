@@ -36,64 +36,89 @@ class PurchaseService {
   final _stateController = StreamController<PurchaseUiState>.broadcast();
   Stream<PurchaseUiState> get stateStream => _stateController.stream;
 
+  /// The last state emitted. [initialize] runs at bootstrap, long before
+  /// the premium screen subscribes, and a broadcast stream does not
+  /// replay: without this a store that answered "unavailable" during
+  /// startup left the screen on "connecting to the store…" forever.
+  PurchaseUiState get state => _state;
+  PurchaseUiState _state = PurchaseUiState.idle;
+
+  void _emit(PurchaseUiState s) {
+    _state = s;
+    _stateController.add(s);
+  }
+
   ProductDetails? _premiumProduct;
   ProductDetails? get premiumProduct => _premiumProduct;
 
   Future<void> initialize() async {
-    final available = await _iap.isAvailable();
+    _emit(PurchaseUiState.loadingProduct);
+    final bool available;
+    try {
+      available = await _iap.isAvailable();
+    } catch (_) {
+      // No store plugin on this platform (web preview, some test rigs):
+      // the screen must say so rather than spin.
+      _emit(PurchaseUiState.storeUnavailable);
+      return;
+    }
     if (!available) {
-      _stateController.add(PurchaseUiState.storeUnavailable);
+      _emit(PurchaseUiState.storeUnavailable);
       return;
     }
 
     _subscription = _iap.purchaseStream.listen(
       _onPurchaseUpdate,
-      onError: (_) => _stateController.add(PurchaseUiState.error),
+      onError: (_) => _emit(PurchaseUiState.error),
     );
 
-    _stateController.add(PurchaseUiState.loadingProduct);
+    _emit(PurchaseUiState.loadingProduct);
     final response = await _iap.queryProductDetails({kPremiumProductId});
     if (response.error != null || response.productDetails.isEmpty) {
-      _stateController.add(PurchaseUiState.error);
+      _emit(PurchaseUiState.error);
       return;
     }
     _premiumProduct = response.productDetails.first;
-    _stateController.add(PurchaseUiState.idle);
+    _emit(PurchaseUiState.idle);
   }
 
   Future<void> buyPremium() async {
     final product = _premiumProduct;
     if (product == null) {
-      _stateController.add(PurchaseUiState.error);
+      _emit(PurchaseUiState.error);
       return;
     }
-    _stateController.add(PurchaseUiState.purchasing);
+    _emit(PurchaseUiState.purchasing);
     final param = PurchaseParam(productDetails: product);
     await _iap.buyNonConsumable(purchaseParam: param);
   }
 
   Future<void> restorePurchases() async {
-    await _iap.restorePurchases();
+    try {
+      await _iap.restorePurchases();
+    } catch (_) {
+      _emit(PurchaseUiState.error);
+    }
   }
 
   void _onPurchaseUpdate(List<PurchaseDetails> purchases) {
     for (final purchase in purchases) {
       switch (purchase.status) {
         case PurchaseStatus.pending:
-          _stateController.add(PurchaseUiState.pending);
+          _emit(PurchaseUiState.pending);
         case PurchaseStatus.purchased:
           _entitlements.grantPremium();
-          _stateController.add(PurchaseUiState.purchased);
+          _emit(PurchaseUiState.purchased);
           _complete(purchase);
         case PurchaseStatus.restored:
           _entitlements.grantPremium();
-          _stateController.add(PurchaseUiState.restored);
+          _emit(PurchaseUiState.restored);
           _complete(purchase);
         case PurchaseStatus.error:
-          _stateController.add(PurchaseUiState.error);
+          _emit(PurchaseUiState.error);
           _complete(purchase);
         case PurchaseStatus.canceled:
-          _stateController.add(PurchaseUiState.canceled);
+          _emit(PurchaseUiState.canceled);
           _complete(purchase);
       }
     }

@@ -7,13 +7,12 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../theme/app_team.dart';
 import '../../../theme/app_theme.dart';
-import '../../../widgets/horse_painter.dart';
+import '../../../widgets/knight_sprite.dart';
 import '../../game/application/game_controller.dart';
 import 'player_setup_args.dart';
 import '../../../widgets/button_label.dart';
 
 const _teams = kBoardSeats;
-const _coats = [HorseCoat.grayWhite, HorseCoat.bay, HorseCoat.chestnut, HorseCoat.black];
 
 class PlayerSetupScreen extends ConsumerStatefulWidget {
   const PlayerSetupScreen({super.key, required this.args});
@@ -69,7 +68,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
     final l10n = AppLocalizations.of(context);
     final colors = context.colors;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.addPlayer)),
+      appBar: AppBar(title: Text(l10n.ridersTitle)),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(20),
@@ -82,12 +81,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                   children: [
                     Row(
                       children: [
-                        HorseToken(
-                          coat: _coats[i],
-                          team: _teams[i],
-                          size: 48,
-                          color: _teams[i].color(colors),
-                        ),
+                        KnightSprite(team: _teams[i], height: 56),
                         const SizedBox(width: 12),
                         Expanded(
                           child: TextField(
@@ -134,12 +128,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Row(
                     children: [
-                      HorseToken(
-                        coat: _coats[_humanCount + i],
-                        team: _teams[_humanCount + i],
-                        size: 48,
-                        color: _teams[_humanCount + i].color(colors),
-                      ),
+                      KnightSprite(team: _teams[_humanCount + i], height: 56),
                       const SizedBox(width: 12),
                       Text('${l10n.aiPlayerName(i + 1)} · ${_aiLabel(widget.args.aiDifficulty, l10n)}'),
                     ],

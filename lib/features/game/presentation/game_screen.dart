@@ -12,7 +12,6 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/sound_service.dart';
 import '../../../theme/app_theme.dart';
-import '../../../widgets/board/board_widget.dart' show BoardPreview;
 import '../../../widgets/board/cross_board_scene.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
@@ -59,6 +58,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   int _revealValue = 1;
   int _revealPips = 1;
   Timer? _revealTimer;
+  Timer? _resultsTimer;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,15 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       _playCuesFor(previous, next);
       if (next?.gameState.turnPhase == TurnPhase.gameOver &&
           previous?.gameState.turnPhase != TurnPhase.gameOver) {
-        context.go('/results');
+        // The winning ride is the one ride nobody should miss: let the
+        // horse reach the centre before the results board takes over.
+        _resultsTimer?.cancel();
+        _resultsTimer = Timer(
+          AppMotion.of(context, AppMotion.moveMax) + const Duration(milliseconds: 450),
+          () {
+            if (mounted) context.go('/results');
+          },
+        );
       }
       if (previous?.currentQuestion?.id != next?.currentQuestion?.id) {
         setState(() => _selectedAnswer = null);
@@ -117,17 +125,12 @@ class _GameScreenState extends ConsumerState<GameScreen> {
 
     // Where the drawn card sends this horse, drawn on the board itself
     // so the ride is never a surprise: "this card takes me here."
-    BoardPreview? boardPreview;
+    ({int teamIndex, PawnPosition destination})? boardPreview;
     final pending = state.pendingGait;
     final drawnPreview = session.preview;
     if (pending != null && drawnPreview != null) {
-      boardPreview = BoardPreview(
-        teamIndex: state.currentPlayerIndex,
-        from: player.horses[pending.horseIndex].position,
-        destination: drawnPreview.destination,
-      );
+      boardPreview = (teamIndex: state.currentPlayerIndex, destination: drawnPreview.destination);
     }
-
 
     final selectable = state.turnPhase == TurnPhase.selectingGait
         ? {
@@ -153,12 +156,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           Positioned.fill(
             child: CrossBoardScene(
               state: _frozenBoard ?? state,
-              preview: boardPreview == null
-                  ? null
-                  : (
-                      teamIndex: boardPreview.teamIndex,
-                      destination: boardPreview.destination,
-                    ),
+              preview: boardPreview,
               selectableHorses: selectable,
               onHorseTap: (playerIndex, horseIndex) {
                 if (playerIndex != state.currentPlayerIndex) return;
@@ -313,6 +311,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               lastAnswerCorrect: state.lastAnswerCorrect,
               compact: _compactFeedback && state.lastAnswerCorrect != null,
               largeText: player.profile.isChildMode,
+              stakeSteps: state.turnPhase == TurnPhase.answeringQuestion
+                  ? state.pendingGait?.choice.steps
+                  : null,
               pointsEarned: state.lastAnswerCorrect == true && _pointsEarned != null
                   ? _pointsEarned
                   : null,
@@ -362,7 +363,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   void _onDrawCard() {
     if (_revealing) return;
     final controller = ref.read(gameControllerProvider.notifier);
-    ref.read(soundServiceProvider).play(Sfx.gaitSelect);
+    ref.read(soundServiceProvider).play(Sfx.cardDraw);
     HapticFeedback.selectionClick();
     controller.drawCard(_selectedHorse);
 
@@ -433,6 +434,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   @override
   void dispose() {
     _revealTimer?.cancel();
+    _resultsTimer?.cancel();
     _beatTimer?.cancel();
     super.dispose();
   }
@@ -447,13 +449,11 @@ class _GameScreenState extends ConsumerState<GameScreen> {
 
     if (nextState.turnPhase == TurnPhase.gameOver &&
         prevState.turnPhase != TurnPhase.gameOver) {
-      // The fanfare belongs to a human win; an AI win ends quietly.
       final winner =
           nextState.players.where((p) => p.id == nextState.winnerId).firstOrNull;
-      if (winner == null || winner.isHuman) {
-        sound.play(Sfx.victory);
-        HapticFeedback.heavyImpact();
-      }
+      // The fanfare itself belongs to the results board; here only the
+      // arrival is felt.
+      if (winner == null || winner.isHuman) HapticFeedback.heavyImpact();
       return;
     }
     if (nextState.turnPhase == TurnPhase.showingFeedback &&
@@ -637,11 +637,16 @@ class _QuestionOverlay extends StatelessWidget {
     this.streakCurrent = 0,
     this.compact = false,
     this.largeText = false,
+    this.stakeSteps,
   });
 
   final Question question;
   final bool isJourney;
   final bool isCellBonus;
+
+  /// Squares the drawn card is worth, shown above the question so the
+  /// child never loses sight of what the answer buys.
+  final int? stakeSteps;
   final int? selectedAnswer;
   final bool? lastAnswerCorrect;
 
@@ -748,7 +753,9 @@ class _QuestionOverlay extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 2),
+                  // Below the two HUD rows, over the top of the plate:
+                  // a chip that lands on the rider's name pill hides it.
+                  padding: const EdgeInsets.only(top: 104),
                   child: justUnlocked != null
                       // The unlock IS the payout: one hero beat, no
                       // competing chip.
@@ -776,6 +783,11 @@ class _QuestionOverlay extends StatelessWidget {
                               ?.copyWith(color: const Color(0xFFF4ECDC)),
                         ),
                       ),
+                    if (stakeSteps != null && lastAnswerCorrect == null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: _StakeChip(steps: stakeSteps!, l10n: l10n),
+                      ),
                     // The gold arch line crowning the panel ties it to the
                     // game's architecture.
                     const _ArchCrest(),
@@ -796,6 +808,70 @@ class _QuestionOverlay extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// The drawn card's value, restated right above the question: "5 — worth
+/// 5 squares". The card flip was a second ago; this keeps the stake in
+/// view while the child reads.
+class _StakeChip extends StatelessWidget {
+  const _StakeChip({required this.steps, required this.l10n});
+
+  final int steps;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    final worth = l10n.cardWorth(steps);
+    return Semantics(
+      label: worth,
+      child: ExcludeSemantics(
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(6, 4, 14, 4),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            color: const Color(0xCC0A2A2E),
+            border: Border.all(color: const Color(0xFFC59F4A), width: 1.2),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 26,
+                height: 26,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFF3D68A), Color(0xFFDBA83E)],
+                  ),
+                ),
+                child: Text(
+                  '$steps',
+                  style: const TextStyle(
+                    color: Color(0xFF3A2A08),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 15,
+                    height: 1,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                worth,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: const Color(0xFFF4ECDC),
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -77,6 +77,31 @@ class AppLocalizationsEs extends AppLocalizations {
   String get chooseTeam => 'Elegir equipo';
 
   @override
+  String get ridersTitle => 'Los jinetes';
+
+  @override
+  String get storeLoading => 'Conectando con la tienda…';
+
+  @override
+  String get storeUnavailableCta => 'Tienda no disponible';
+
+  @override
+  String get premiumBenefitBank =>
+      'Todo el banco de preguntas, cada una con su fuente';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'Los seis niveles de dificultad, del más fácil al más difícil';
+
+  @override
+  String get premiumBenefitFamily =>
+      'Una sola compra para toda la familia, sin anuncios';
+
+  @override
+  String get progressEmpty =>
+      'Juega una primera partida: tu progreso aparecerá aquí.';
+
+  @override
   String get addPlayer => 'Añadir jugador';
 
   @override
@@ -465,6 +490,43 @@ class AppLocalizationsEs extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name se queda.';
   }
+
+  @override
+  String get shareScore => 'Compartir';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return '¡$name ganó la carrera IqraQuest con $points ⭐! ¿Te animas?';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return '¡$score/$total en el reto del día de IqraQuest! ¿Lo superas?';
+  }
+
+  @override
+  String get dailyChallengeDone => 'Reto del día completado';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$score aciertos de $total',
+      one: '$score acierto de $total',
+      zero: 'Ningún acierto de $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'Vuelve mañana para un nuevo reto.';
+
+  @override
+  String get aiOpponentsLabel => 'Rivales';
+
+  @override
+  String get playersLabel => 'Jugadores';
 
   @override
   String get outcomeMoved => '¡Tu caballo avanza!';

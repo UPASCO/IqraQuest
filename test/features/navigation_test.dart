@@ -129,12 +129,7 @@ void main() {
     await settle(tester);
     expect(find.text(en.chooseCircuit), findsOneWidget, reason: 'mode selection opens');
 
-    // The Continue CTA (bottom of the scrolling form) leads into setup.
-    await tester.scrollUntilVisible(
-      find.byType(ElevatedButton),
-      200,
-      scrollable: find.byType(Scrollable).first,
-    );
+    // The Continue CTA is pinned under the form, so it needs no scroll.
     await tester.tap(find.byType(ElevatedButton));
     await settle(tester);
     await tester.scrollUntilVisible(

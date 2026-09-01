@@ -145,6 +145,59 @@ s("chooseTeam", "Team/color picker label",
   pt="Escolher equipe", de="Team wählen", tr="Takım seçin", id="Pilih tim",
   ur="ٹیم منتخب کریں", ms="Pilih pasukan", it="Scegli squadra", nl="Kies team")
 
+s("ridersTitle", "Player setup screen title: the riders about to take the track",
+  fr="Les cavaliers", en="The riders", ar="الفرسان", es="Los jinetes",
+  pt="Os cavaleiros", de="Die Reiter", tr="Biniciler", id="Para penunggang",
+  ur="سوار", ms="Para penunggang", it="I cavalieri", nl="De ruiters")
+
+s("storeLoading", "Premium screen: button label while the Store product is still loading",
+  fr="Connexion à la boutique…", en="Connecting to the store…", ar="جارٍ الاتصال بالمتجر…",
+  es="Conectando con la tienda…", pt="Ligando à loja…", de="Verbindung zum Store…",
+  tr="Mağazaya bağlanılıyor…", id="Menghubungkan ke toko…", ur="اسٹور سے رابطہ ہو رہا ہے…",
+  ms="Menyambung ke kedai…", it="Connessione allo store…", nl="Verbinden met de store…")
+
+s("storeUnavailableCta", "Premium screen: disabled button label when the Store cannot be reached",
+  fr="Boutique indisponible", en="Store unavailable", ar="المتجر غير متاح",
+  es="Tienda no disponible", pt="Loja indisponível", de="Store nicht verfügbar",
+  tr="Mağaza kullanılamıyor", id="Toko tidak tersedia", ur="اسٹور دستیاب نہیں",
+  ms="Kedai tidak tersedia", it="Store non disponibile", nl="Store niet beschikbaar")
+
+s("premiumBenefitBank", "Premium benefit row: the complete question bank",
+  fr="Toute la banque de questions, chacune avec sa source",
+  en="The whole question bank, each with its source",
+  ar="بنك الأسئلة كاملاً، كل سؤال بمصدره", es="Todo el banco de preguntas, cada una con su fuente",
+  pt="Todo o banco de perguntas, cada uma com a sua fonte", de="Die ganze Fragensammlung, jede mit Quelle",
+  tr="Tüm soru bankası, her biri kaynağıyla", id="Seluruh bank soal, masing-masing dengan sumbernya",
+  ur="پورا سوالات کا ذخیرہ، ہر ایک اپنے ماخذ کے ساتھ", ms="Seluruh bank soalan, setiap satu dengan sumbernya",
+  it="Tutta la banca di domande, ognuna con la sua fonte", nl="De hele vragenbank, elk met bron")
+
+s("premiumBenefitDifficulty", "Premium benefit row: every difficulty level",
+  fr="Les six niveaux de difficulté, du plus facile au plus dur",
+  en="All six difficulty levels, from easiest to hardest",
+  ar="مستويات الصعوبة الستة كلها، من الأسهل إلى الأصعب", es="Los seis niveles de dificultad, del más fácil al más difícil",
+  pt="Os seis níveis de dificuldade, do mais fácil ao mais difícil", de="Alle sechs Schwierigkeitsstufen, von leicht bis schwer",
+  tr="Altı zorluk seviyesinin tamamı, en kolaydan en zora", id="Keenam tingkat kesulitan, dari termudah hingga tersulit",
+  ur="چھ کے چھ مشکل درجے، آسان ترین سے مشکل ترین تک", ms="Kesemua enam tahap kesukaran, dari paling mudah ke paling sukar",
+  it="Tutti e sei i livelli di difficoltà, dal più facile al più difficile", nl="Alle zes moeilijkheidsniveaus, van makkelijk tot moeilijk")
+
+s("premiumBenefitFamily", "Premium benefit row: one purchase for the whole family, no ads",
+  fr="Un seul achat pour toute la famille, sans publicité",
+  en="One purchase for the whole family, no ads",
+  ar="شراء واحد لكل العائلة، بدون إعلانات", es="Una sola compra para toda la familia, sin anuncios",
+  pt="Uma única compra para toda a família, sem anúncios", de="Ein Kauf für die ganze Familie, ohne Werbung",
+  tr="Tüm aile için tek bir satın alma, reklamsız", id="Satu pembelian untuk seluruh keluarga, tanpa iklan",
+  ur="پورے خاندان کے لیے ایک ہی خریداری، بغیر اشتہارات", ms="Satu pembelian untuk seisi keluarga, tanpa iklan",
+  it="Un solo acquisto per tutta la famiglia, senza pubblicità", nl="Eén aankoop voor het hele gezin, zonder advertenties")
+
+s("progressEmpty", "Progress screen hint shown before any game has been played",
+  fr="Joue une première partie : tes progrès s'afficheront ici.",
+  en="Play a first game: your progress will show up here.",
+  ar="العب أول مباراة: سيظهر تقدمك هنا.", es="Juega una primera partida: tu progreso aparecerá aquí.",
+  pt="Joga uma primeira partida: o teu progresso aparece aqui.", de="Spiel eine erste Partie: dein Fortschritt erscheint hier.",
+  tr="İlk oyununu oyna: ilerlemen burada görünecek.", id="Mainkan permainan pertama: kemajuanmu akan muncul di sini.",
+  ur="پہلا کھیل کھیلو: تمہاری پیش رفت یہاں نظر آئے گی۔", ms="Main permainan pertama: kemajuan anda akan dipaparkan di sini.",
+  it="Gioca una prima partita: i tuoi progressi appariranno qui.", nl="Speel een eerste spel: je voortgang verschijnt hier.")
+
 s("addPlayer", "Add another player button",
   fr="Ajouter un joueur", en="Add player", ar="إضافة لاعب", es="Añadir jugador",
   pt="Adicionar jogador", de="Spieler hinzufügen", tr="Oyuncu Ekle",
@@ -547,7 +600,7 @@ s("circuitSpecialSquares", "How eventful a board is, shown on its card",
   ph={"count": "num"},
   fr="{count, plural, one{{count} case spéciale} other{{count} cases spéciales}}",
   en="{count, plural, one{{count} special square} other{{count} special squares}}",
-  ar="{count, plural, one{مربع خاص واحد} other{{count} مربعات خاصة}}",
+  ar="{count, plural, =0{لا مربعات خاصة} one{مربع خاص واحد} two{مربعان خاصان} few{{count} مربعات خاصة} many{{count} مربعًا خاصًا} other{{count} مربع خاص}}",
   es="{count, plural, one{{count} casilla especial} other{{count} casillas especiales}}",
   pt="{count, plural, one{{count} casa especial} other{{count} casas especiais}}",
   de="{count, plural, one{{count} Sonderfeld} other{{count} Sonderfelder}}",
@@ -574,7 +627,7 @@ s("cardWorth", "What the drawn card is worth, under its value",
   ph={"count": "num"},
   fr="{count, plural, one{Vaut {count} case} other{Vaut {count} cases}}",
   en="{count, plural, one{Worth {count} square} other{Worth {count} squares}}",
-  ar="{count, plural, one{يساوي مربعًا واحدًا} other{يساوي {count} مربعات}}",
+  ar="{count, plural, one{يساوي مربعًا واحدًا} two{يساوي مربعين} few{يساوي {count} مربعات} many{يساوي {count} مربعًا} other{يساوي {count} مربع}}",
   es="{count, plural, one{Vale {count} casilla} other{Vale {count} casillas}}",
   pt="{count, plural, one{Vale {count} casa} other{Vale {count} casas}}",
   de="{count, plural, one{Wert: {count} Feld} other{Wert: {count} Felder}}",
@@ -962,6 +1015,80 @@ s("opponentStayed", "Turn banner: the AI opponent answered wrong and stays put",
   es="{name} se queda.", pt="{name} fica parado.", de="{name} bleibt stehen.",
   tr="{name} yerinde kalıyor.", id="{name} tetap di tempat.", ur="{name} وہیں رہا۔",
   ms="{name} kekal.", it="{name} resta fermo.", nl="{name} blijft staan.")
+
+s("shareScore", "Button: share the score card (results and daily challenge)",
+  fr="Partager", en="Share", ar="مشاركة", es="Compartir", pt="Partilhar",
+  de="Teilen", tr="Paylaş", id="Bagikan", ur="شیئر کریں", ms="Kongsi",
+  it="Condividi", nl="Delen")
+
+s("shareVictoryText", "Share text after a race: winner and stars",
+  ph={"name": "String", "points": "int"},
+  fr="{name} a gagné la course IqraQuest avec {points} ⭐ ! À toi de jouer ?",
+  en="{name} won the IqraQuest race with {points} ⭐! Your turn?",
+  ar="فاز {name} بسباق IqraQuest بـ {points} ⭐! هل تجرّب دورك؟",
+  es="¡{name} ganó la carrera IqraQuest con {points} ⭐! ¿Te animas?",
+  pt="{name} venceu a corrida IqraQuest com {points} ⭐! E tu?",
+  de="{name} hat das IqraQuest-Rennen mit {points} ⭐ gewonnen! Du auch?",
+  tr="{name} IqraQuest yarışını {points} ⭐ ile kazandı! Sıra sende mi?",
+  id="{name} memenangkan balapan IqraQuest dengan {points} ⭐! Giliranmu?",
+  ur="{name} نے IqraQuest ریس {points} ⭐ کے ساتھ جیت لی! آپ کی باری؟",
+  ms="{name} memenangi lumba IqraQuest dengan {points} ⭐! Giliran anda?",
+  it="{name} ha vinto la corsa IqraQuest con {points} ⭐! Tocca a te?",
+  nl="{name} won de IqraQuest-race met {points} ⭐! Jij ook?")
+
+s("shareDailyText", "Share text after the daily challenge: score out of total",
+  ph={"score": "int", "total": "int"},
+  fr="{score}/{total} au défi du jour IqraQuest ! Tu fais mieux ?",
+  en="{score}/{total} on today's IqraQuest challenge! Can you beat it?",
+  ar="{score}/{total} في تحدي اليوم من IqraQuest! هل تتفوّق عليّ؟",
+  es="¡{score}/{total} en el reto del día de IqraQuest! ¿Lo superas?",
+  pt="{score}/{total} no desafio do dia IqraQuest! Consegues melhor?",
+  de="{score}/{total} bei der IqraQuest-Tagesaufgabe! Schaffst du mehr?",
+  tr="IqraQuest günün mücadelesinde {score}/{total}! Geçebilir misin?",
+  id="{score}/{total} di tantangan harian IqraQuest! Bisa lebih baik?",
+  ur="IqraQuest کے آج کے چیلنج میں {score}/{total}! آپ بہتر کر سکتے ہیں؟",
+  ms="{score}/{total} dalam cabaran harian IqraQuest! Boleh lebih baik?",
+  it="{score}/{total} alla sfida del giorno IqraQuest! Fai di meglio?",
+  nl="{score}/{total} bij de IqraQuest-daguitdaging! Doe jij het beter?")
+
+s("dailyChallengeDone", "Daily challenge summary title once all questions are answered",
+  fr="Défi du jour terminé", en="Today's challenge done", ar="اكتمل تحدي اليوم",
+  es="Reto del día completado", pt="Desafio do dia concluído", de="Tagesaufgabe geschafft",
+  tr="Günün mücadelesi tamam", id="Tantangan harian selesai", ur="آج کا چیلنج مکمل",
+  ms="Cabaran harian selesai", it="Sfida del giorno completata", nl="Daguitdaging voltooid")
+
+s("dailyChallengeScore", "Daily challenge summary: right answers out of total",
+  ph={"score": "num", "total": "int"},
+  fr="{score, plural, =0{Aucune bonne réponse sur {total}} one{{score} bonne réponse sur {total}} other{{score} bonnes réponses sur {total}}}",
+  en="{score, plural, =0{None right out of {total}} one{{score} right out of {total}} other{{score} right out of {total}}}",
+  ar="{score, plural, =0{لا إجابات صحيحة من {total}} one{إجابة صحيحة واحدة من {total}} two{إجابتان صحيحتان من {total}} few{{score} إجابات صحيحة من {total}} many{{score} إجابة صحيحة من {total}} other{{score} إجابة صحيحة من {total}}}",
+  es="{score, plural, =0{Ningún acierto de {total}} one{{score} acierto de {total}} other{{score} aciertos de {total}}}",
+  pt="{score, plural, =0{Nenhuma certa em {total}} one{{score} certa em {total}} other{{score} certas em {total}}}",
+  de="{score, plural, other{{score} von {total} richtig}}",
+  tr="{score, plural, other{{total} sorudan {score} doğru}}",
+  id="{score, plural, other{{score} benar dari {total}}}",
+  ur="{score, plural, other{{total} میں سے {score} درست}}",
+  ms="{score, plural, other{{score} betul daripada {total}}}",
+  it="{score, plural, =0{Nessuna risposta giusta su {total}} one{{score} giusta su {total}} other{{score} giuste su {total}}}",
+  nl="{score, plural, other{{score} goed van de {total}}}")
+
+s("dailyChallengeComeBack", "Daily challenge summary: invitation to return tomorrow",
+  fr="Reviens demain pour un nouveau défi.", en="Come back tomorrow for a new one.",
+  ar="عُد غدًا لتحدٍّ جديد.", es="Vuelve mañana para un nuevo reto.",
+  pt="Volta amanhã para um novo desafio.", de="Morgen wartet eine neue Aufgabe.",
+  tr="Yarın yeni bir mücadele için gel.", id="Kembali besok untuk tantangan baru.",
+  ur="نئے چیلنج کے لیے کل پھر آئیں۔", ms="Kembali esok untuk cabaran baharu.",
+  it="Torna domani per una nuova sfida.", nl="Kom morgen terug voor een nieuwe.")
+
+s("aiOpponentsLabel", "Mode selection: stepper label for the number of computer riders",
+  fr="Adversaires", en="Opponents", ar="الخصوم", es="Rivales", pt="Adversários",
+  de="Gegner", tr="Rakipler", id="Lawan", ur="حریف", ms="Lawan", it="Avversari",
+  nl="Tegenstanders")
+
+s("playersLabel", "Mode selection: stepper label for the number of human riders",
+  fr="Joueurs", en="Players", ar="اللاعبون", es="Jugadores", pt="Jogadores",
+  de="Spieler", tr="Oyuncular", id="Pemain", ur="کھلاڑی", ms="Pemain", it="Giocatori",
+  nl="Spelers")
 
 # ---- Move outcomes ---------------------------------------------------------
 s("outcomeMoved", "Feedback after a correct answer",

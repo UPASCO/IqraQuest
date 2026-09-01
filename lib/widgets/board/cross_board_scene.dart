@@ -55,7 +55,7 @@ class CrossBoardScene extends StatelessWidget {
         final left = (constraints.maxWidth - side) / 2;
         final top = (constraints.maxHeight - side) / 2;
         Offset toScreen(SceneAnchor a) => Offset(left + a.x * side, top + a.y * side);
-        final pieceSize = side * 0.052;
+        final pieceSize = side * 0.072;
 
         return Stack(
           children: [
@@ -184,7 +184,6 @@ class CrossBoardScene extends StatelessWidget {
     final anchor = _anchorFor(player.horses[horseIndex].position, playerIndex, horseIndex);
     final at = toScreen(anchor);
     final selectable = selectableHorses.contains('${player.id}:$horseIndex');
-    final color = team.color(context.colors);
 
     // The ride is the one thing a child must be able to watch: a piece
     // that jumps from square to square is a teleport, and a teleport
@@ -196,7 +195,7 @@ class CrossBoardScene extends StatelessWidget {
       duration: AppMotion.of(context, AppMotion.moveMax),
       curve: Curves.easeInOutCubic,
       left: at.dx - pieceSize / 2,
-      top: at.dy - pieceSize * 0.86,
+      top: at.dy - pieceSize * 1.15,
       width: pieceSize,
       height: pieceSize * 1.4,
       child: Semantics(
@@ -204,12 +203,19 @@ class CrossBoardScene extends StatelessWidget {
         label: '${player.name} — ${horseIndex + 1}',
         child: GestureDetector(
           onTap: onHorseTap == null ? null : () => onHorseTap!(playerIndex, horseIndex),
-          child: CustomPaint(
-            painter: _KnightPainter(
-              color: color,
-              rimmed: selectable,
-              gold: context.colors.goldAccent,
-            ),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (selectable)
+                CustomPaint(painter: _SelectRingPainter(context.colors.goldAccent)),
+              Image.asset(
+                'assets/board/horses/horse_${team.name}.webp',
+                fit: BoxFit.contain,
+                alignment: Alignment.bottomCenter,
+                filterQuality: FilterQuality.medium,
+                excludeFromSemantics: true,
+              ),
+            ],
           ),
         ),
       ),
@@ -217,62 +223,33 @@ class CrossBoardScene extends StatelessWidget {
   }
 }
 
-/// A knight in the team's colour, in the silhouette the reference board
-/// uses for its pieces: a turned base under a horse's head.
-class _KnightPainter extends CustomPainter {
-  const _KnightPainter({required this.color, required this.rimmed, required this.gold});
+/// The gold ring under a horse the player may pick this turn. The knight
+/// itself is the baked sprite from the board pack, one per team.
+class _SelectRingPainter extends CustomPainter {
+  const _SelectRingPainter(this.gold);
 
-  final Color color;
-  final bool rimmed;
   final Color gold;
 
   @override
   void paint(Canvas canvas, Size size) {
     final w = size.width;
     final h = size.height;
-    final body = Paint()..color = color;
-    final shade = Paint()..color = Color.lerp(color, Colors.black, 0.32)!;
-    final light = Paint()..color = Color.lerp(color, Colors.white, 0.30)!;
-
-    // base
-    final baseRect = Rect.fromLTWH(w * 0.14, h * 0.74, w * 0.72, h * 0.20);
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(baseRect, Radius.circular(w * 0.10)),
-      shade,
+    final rect = Rect.fromLTWH(w * 0.02, h * 0.70, w * 0.96, h * 0.26);
+    canvas.drawOval(
+      rect,
+      Paint()
+        ..color = gold.withValues(alpha: 0.45)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
     );
-    canvas.drawOval(Rect.fromLTWH(w * 0.10, h * 0.70, w * 0.80, h * 0.14), body);
-
-    // neck and head
-    final head = Path()
-      ..moveTo(w * 0.34, h * 0.74)
-      ..lineTo(w * 0.30, h * 0.36)
-      ..quadraticBezierTo(w * 0.30, h * 0.12, w * 0.56, h * 0.10)
-      ..quadraticBezierTo(w * 0.86, h * 0.12, w * 0.80, h * 0.34)
-      ..lineTo(w * 0.60, h * 0.42)
-      ..lineTo(w * 0.66, h * 0.74)
-      ..close();
-    canvas.drawPath(head, body);
-    canvas.drawPath(
-      Path()
-        ..moveTo(w * 0.56, h * 0.12)
-        ..quadraticBezierTo(w * 0.84, h * 0.14, w * 0.78, h * 0.34)
-        ..lineTo(w * 0.62, h * 0.40)
-        ..close(),
-      light,
+    canvas.drawOval(
+      rect,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = w * 0.08
+        ..color = gold,
     );
-
-    if (rimmed) {
-      canvas.drawOval(
-        Rect.fromLTWH(w * 0.06, h * 0.66, w * 0.88, h * 0.22),
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = w * 0.07
-          ..color = gold,
-      );
-    }
   }
 
   @override
-  bool shouldRepaint(_KnightPainter old) =>
-      old.color != color || old.rimmed != rimmed || old.gold != gold;
+  bool shouldRepaint(_SelectRingPainter old) => old.gold != gold;
 }

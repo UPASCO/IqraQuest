@@ -250,6 +250,48 @@ abstract class AppLocalizations {
   /// **'Choose team'**
   String get chooseTeam;
 
+  /// Player setup screen title: the riders about to take the track
+  ///
+  /// In en, this message translates to:
+  /// **'The riders'**
+  String get ridersTitle;
+
+  /// Premium screen: button label while the Store product is still loading
+  ///
+  /// In en, this message translates to:
+  /// **'Connecting to the store…'**
+  String get storeLoading;
+
+  /// Premium screen: disabled button label when the Store cannot be reached
+  ///
+  /// In en, this message translates to:
+  /// **'Store unavailable'**
+  String get storeUnavailableCta;
+
+  /// Premium benefit row: the complete question bank
+  ///
+  /// In en, this message translates to:
+  /// **'The whole question bank, each with its source'**
+  String get premiumBenefitBank;
+
+  /// Premium benefit row: every difficulty level
+  ///
+  /// In en, this message translates to:
+  /// **'All six difficulty levels, from easiest to hardest'**
+  String get premiumBenefitDifficulty;
+
+  /// Premium benefit row: one purchase for the whole family, no ads
+  ///
+  /// In en, this message translates to:
+  /// **'One purchase for the whole family, no ads'**
+  String get premiumBenefitFamily;
+
+  /// Progress screen hint shown before any game has been played
+  ///
+  /// In en, this message translates to:
+  /// **'Play a first game: your progress will show up here.'**
+  String get progressEmpty;
+
   /// Add another player button
   ///
   /// In en, this message translates to:
@@ -903,6 +945,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name} holds its ground.'**
   String opponentStayed(String name);
+
+  /// Button: share the score card (results and daily challenge)
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareScore;
+
+  /// Share text after a race: winner and stars
+  ///
+  /// In en, this message translates to:
+  /// **'{name} won the IqraQuest race with {points} ⭐! Your turn?'**
+  String shareVictoryText(String name, int points);
+
+  /// Share text after the daily challenge: score out of total
+  ///
+  /// In en, this message translates to:
+  /// **'{score}/{total} on today\'s IqraQuest challenge! Can you beat it?'**
+  String shareDailyText(int score, int total);
+
+  /// Daily challenge summary title once all questions are answered
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s challenge done'**
+  String get dailyChallengeDone;
+
+  /// Daily challenge summary: right answers out of total
+  ///
+  /// In en, this message translates to:
+  /// **'{score, plural, =0{None right out of {total}} one{{score} right out of {total}} other{{score} right out of {total}}}'**
+  String dailyChallengeScore(num score, int total);
+
+  /// Daily challenge summary: invitation to return tomorrow
+  ///
+  /// In en, this message translates to:
+  /// **'Come back tomorrow for a new one.'**
+  String get dailyChallengeComeBack;
+
+  /// Mode selection: stepper label for the number of computer riders
+  ///
+  /// In en, this message translates to:
+  /// **'Opponents'**
+  String get aiOpponentsLabel;
+
+  /// Mode selection: stepper label for the number of human riders
+  ///
+  /// In en, this message translates to:
+  /// **'Players'**
+  String get playersLabel;
 
   /// Feedback after a correct answer
   ///

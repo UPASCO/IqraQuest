@@ -16,17 +16,40 @@ class ProgressScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.progress)),
       body: SafeArea(
-        child: GridView.count(
+        child: ListView(
           padding: const EdgeInsets.all(20),
-          crossAxisCount: 2,
-          mainAxisSpacing: 12,
-          crossAxisSpacing: 12,
-          childAspectRatio: 1.3,
           children: [
-            _StatTile(label: l10n.gamesPlayed, value: '${stats.gamesPlayed}'),
-            _StatTile(label: l10n.winRate, value: '${(stats.winRate * 100).round()}%'),
-            _StatTile(label: l10n.questionsAnswered, value: '${stats.questionsAnswered}'),
-            _StatTile(label: l10n.streak, value: '${stats.dayStreak}'),
+            if (stats.gamesPlayed == 0)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Icon(Icons.flag_outlined, color: context.colors.goldAccent),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        l10n.progressEmpty,
+                        style: Theme.of(context).textTheme.bodyMedium
+                            ?.copyWith(color: context.colors.textSecondary),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              childAspectRatio: 1.3,
+              children: [
+                _StatTile(label: l10n.gamesPlayed, value: '${stats.gamesPlayed}'),
+                _StatTile(label: l10n.winRate, value: '${(stats.winRate * 100).round()}%'),
+                _StatTile(label: l10n.questionsAnswered, value: '${stats.questionsAnswered}'),
+                _StatTile(label: l10n.streak, value: '${stats.dayStreak}'),
+              ],
+            ),
           ],
         ),
       ),

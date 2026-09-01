@@ -77,6 +77,31 @@ class AppLocalizationsIt extends AppLocalizations {
   String get chooseTeam => 'Scegli squadra';
 
   @override
+  String get ridersTitle => 'I cavalieri';
+
+  @override
+  String get storeLoading => 'Connessione allo store…';
+
+  @override
+  String get storeUnavailableCta => 'Store non disponibile';
+
+  @override
+  String get premiumBenefitBank =>
+      'Tutta la banca di domande, ognuna con la sua fonte';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'Tutti e sei i livelli di difficoltà, dal più facile al più difficile';
+
+  @override
+  String get premiumBenefitFamily =>
+      'Un solo acquisto per tutta la famiglia, senza pubblicità';
+
+  @override
+  String get progressEmpty =>
+      'Gioca una prima partita: i tuoi progressi appariranno qui.';
+
+  @override
   String get addPlayer => 'Aggiungi giocatore';
 
   @override
@@ -464,6 +489,43 @@ class AppLocalizationsIt extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name resta fermo.';
   }
+
+  @override
+  String get shareScore => 'Condividi';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return '$name ha vinto la corsa IqraQuest con $points ⭐! Tocca a te?';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return '$score/$total alla sfida del giorno IqraQuest! Fai di meglio?';
+  }
+
+  @override
+  String get dailyChallengeDone => 'Sfida del giorno completata';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$score giuste su $total',
+      one: '$score giusta su $total',
+      zero: 'Nessuna risposta giusta su $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'Torna domani per una nuova sfida.';
+
+  @override
+  String get aiOpponentsLabel => 'Avversari';
+
+  @override
+  String get playersLabel => 'Giocatori';
 
   @override
   String get outcomeMoved => 'Il tuo cavallo avanza!';

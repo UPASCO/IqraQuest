@@ -3,28 +3,31 @@
 **App name:** IqraQuest
 
 **Short description (80 char max):**
-Choose your pace, answer, ride — a family board game about Islam.
+Draw a card, answer, ride — the classic horse race board game, with knowledge.
 
 **Full description:**
-IqraQuest is a warm, beautifully illustrated board game for the whole
-family (ages 7-99). Guide your arabian horse across a journey inspired
-by the Hijaz. There is no dice: you choose your own gait, from 1 to 6
-squares, and that choice is also your choice of difficulty. The further
-you commit to go, the harder the question you must answer to get there.
+IqraQuest is the classic four-stable horse race board game, remade for
+the whole family (ages 7-99) around what you know of Islam. A 52-square
+cross board adorned with Madinah, Al-Aqsa, Arafat and Mina, four
+stables, and no dice at all: on your turn you draw a card. Its value, 1
+to 6, is how many squares you ride — and also the level of the question
+you must get right to ride them. A 6 takes you far, but you have to
+earn it.
 
 Features:
-- Solo mode against 1-3 AI opponents across three difficulty levels
-- Family mode for 2-4 players on one device
-- Quick game (one horse each) or Classic game (two horses each)
-- Three named circuits, their layouts shown before you start
-- A knowledge streak: a shield at three correct answers in a row, the
-  Grand Gallop at five, a mastery badge at ten — bonuses come from
-  knowing, never from luck
-- A difficulty level per player, so a child and an adult can share a
-  board fairly
-- Every question ships with its exact source (Qur'an or authenticated
-  hadith) and a short explanation
-- A free five-question Daily Challenge, fully offline
+- A fair deck: every value comes out as often as every other
+- Solo mode against 1-3 opponents, three levels
+- Family mode for 2-4 players on one device, each at their own question
+  level
+- Quick games (one horse each) or Classic (two horses each)
+- Three courses, from calm to eventful: oases, knowledge squares, bonus
+  challenges, shortcuts, duels — all visible on the board, none random
+- Knowledge streak: a shield at three right answers in a row, the Grand
+  Gallop at five, a mastery badge at ten
+- Every question cites its exact source (Qur'an or authenticated hadith)
+  with a short explanation
+- A free five-question Daily Challenge, offline, with a shareable score
+- Share your race board as a picture after every win
 - Progress tracking: games played, accuracy, category mastery, streaks
 - No account, no ads, no tracking — everything stays on your device
 - One optional one-time purchase unlocks the full question bank; no

@@ -3,28 +3,33 @@
 **Nom de l'app :** IqraQuest
 
 **Description courte (80 car. max) :**
-Choisis ton allure, réponds, avance — jeu de plateau familial sur l'islam.
+Pioche une carte, réponds, avance — les petits chevaux, version savoir.
 
 **Description complète :**
-IqraQuest est un jeu de plateau chaleureux et soigné, pour toute la
-famille (7 à 99 ans). Guidez votre cheval arabe à travers un voyage
-inspiré du Hijaz. Il n'y a pas de dé : vous choisissez vous-même votre
-allure, de 1 à 6 cases, et ce choix est aussi celui de votre difficulté.
-Plus vous décidez d'aller loin, plus la question est difficile.
+IqraQuest est le jeu des petits chevaux, revisité pour toute la famille
+(7 à 99 ans) autour de ce que vous savez de l'islam. Un plateau en croix
+de 52 cases orné de Médine, d'Al-Aqsa, d'Arafat et de Mina, quatre
+écuries, et pas un seul dé : à votre tour, vous piochez une carte. Sa
+valeur, de 1 à 6, c'est le nombre de cases à parcourir — et aussi le
+niveau de la question à réussir pour avancer. Une carte 6 emmène loin,
+mais il faudra la mériter.
 
 Fonctionnalités :
-- Mode Solo contre 1 à 3 IA, trois niveaux de difficulté
-- Mode Famille de 2 à 4 joueurs sur un même appareil
+- Une pioche équitable : chaque valeur sort autant que les autres
+- Mode Solo contre 1 à 3 adversaires, trois niveaux
+- Mode Famille de 2 à 4 joueurs sur un même appareil, chacun avec son
+  propre niveau de questions
 - Partie Rapide (un cheval chacun) ou Classique (deux chevaux chacun)
-- Trois parcours nommés, dont le tracé est visible avant de commencer
+- Trois parcours, du plus paisible au plus mouvementé : oasis, cases
+  savoir, défis bonus, raccourcis, duels — tout visible sur le plateau,
+  rien de tiré au sort
 - L'élan du savoir : un bouclier à trois bonnes réponses d'affilée, le
-  Grand Galop à cinq, un badge de maîtrise à dix — les bonus viennent de
-  la connaissance, jamais de la chance
-- Un niveau de difficulté par joueur, pour qu'un enfant et un adulte
-  partagent équitablement le plateau
-- Chaque question est accompagnée de sa source exacte (Coran ou hadith
-  authentique) et d'une courte explication
-- Un Défi du jour gratuit de cinq questions, entièrement hors connexion
+  Grand Galop à cinq, un badge de maîtrise à dix
+- Chaque question cite sa source exacte (Coran ou hadith authentique)
+  avec une courte explication
+- Un Défi du jour gratuit de cinq questions, hors connexion, avec un
+  score à partager
+- Partagez votre tableau de course en image après chaque victoire
 - Suivi de la progression : parties jouées, précision, maîtrise par
   catégorie, séries
 - Aucun compte, aucune publicité, aucun traçage — tout reste sur votre

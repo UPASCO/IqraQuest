@@ -77,6 +77,29 @@ class AppLocalizationsTr extends AppLocalizations {
   String get chooseTeam => 'Takım seçin';
 
   @override
+  String get ridersTitle => 'Biniciler';
+
+  @override
+  String get storeLoading => 'Mağazaya bağlanılıyor…';
+
+  @override
+  String get storeUnavailableCta => 'Mağaza kullanılamıyor';
+
+  @override
+  String get premiumBenefitBank => 'Tüm soru bankası, her biri kaynağıyla';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'Altı zorluk seviyesinin tamamı, en kolaydan en zora';
+
+  @override
+  String get premiumBenefitFamily =>
+      'Tüm aile için tek bir satın alma, reklamsız';
+
+  @override
+  String get progressEmpty => 'İlk oyununu oyna: ilerlemen burada görünecek.';
+
+  @override
   String get addPlayer => 'Oyuncu Ekle';
 
   @override
@@ -461,6 +484,41 @@ class AppLocalizationsTr extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name yerinde kalıyor.';
   }
+
+  @override
+  String get shareScore => 'Paylaş';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return '$name IqraQuest yarışını $points ⭐ ile kazandı! Sıra sende mi?';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return 'IqraQuest günün mücadelesinde $score/$total! Geçebilir misin?';
+  }
+
+  @override
+  String get dailyChallengeDone => 'Günün mücadelesi tamam';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$total sorudan $score doğru',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'Yarın yeni bir mücadele için gel.';
+
+  @override
+  String get aiOpponentsLabel => 'Rakipler';
+
+  @override
+  String get playersLabel => 'Oyuncular';
 
   @override
   String get outcomeMoved => 'Atın ilerliyor!';

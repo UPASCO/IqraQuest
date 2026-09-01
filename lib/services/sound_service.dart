@@ -10,13 +10,15 @@ enum Sfx {
   tap('tap'),
   gaitSelect('gait_select'),
   gaitConfirm('gait_confirm'),
+  cardDraw('card_draw'),
   moveHoofs('move_hoofs'),
   correct('correct'),
   wrong('wrong'),
   chest('chest'),
   streak('streak'),
   water('water'),
-  victory('victory');
+  victory('victory'),
+  fanfare('fanfare');
 
   const Sfx(this.file);
 

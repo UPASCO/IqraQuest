@@ -88,6 +88,34 @@
   "@chooseTeam": {
     "description": "Team/color picker label"
   },
+  "ridersTitle": "The riders",
+  "@ridersTitle": {
+    "description": "Player setup screen title: the riders about to take the track"
+  },
+  "storeLoading": "Connecting to the store…",
+  "@storeLoading": {
+    "description": "Premium screen: button label while the Store product is still loading"
+  },
+  "storeUnavailableCta": "Store unavailable",
+  "@storeUnavailableCta": {
+    "description": "Premium screen: disabled button label when the Store cannot be reached"
+  },
+  "premiumBenefitBank": "The whole question bank, each with its source",
+  "@premiumBenefitBank": {
+    "description": "Premium benefit row: the complete question bank"
+  },
+  "premiumBenefitDifficulty": "All six difficulty levels, from easiest to hardest",
+  "@premiumBenefitDifficulty": {
+    "description": "Premium benefit row: every difficulty level"
+  },
+  "premiumBenefitFamily": "One purchase for the whole family, no ads",
+  "@premiumBenefitFamily": {
+    "description": "Premium benefit row: one purchase for the whole family, no ads"
+  },
+  "progressEmpty": "Play a first game: your progress will show up here.",
+  "@progressEmpty": {
+    "description": "Progress screen hint shown before any game has been played"
+  },
   "addPlayer": "Add player",
   "@addPlayer": {
     "description": "Add another player button"
@@ -620,6 +648,62 @@
         "type": "String"
       }
     }
+  },
+  "shareScore": "Share",
+  "@shareScore": {
+    "description": "Button: share the score card (results and daily challenge)"
+  },
+  "shareVictoryText": "{name} won the IqraQuest race with {points} ⭐! Your turn?",
+  "@shareVictoryText": {
+    "description": "Share text after a race: winner and stars",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "shareDailyText": "{score}/{total} on today's IqraQuest challenge! Can you beat it?",
+  "@shareDailyText": {
+    "description": "Share text after the daily challenge: score out of total",
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyChallengeDone": "Today's challenge done",
+  "@dailyChallengeDone": {
+    "description": "Daily challenge summary title once all questions are answered"
+  },
+  "dailyChallengeScore": "{score, plural, =0{None right out of {total}} one{{score} right out of {total}} other{{score} right out of {total}}}",
+  "@dailyChallengeScore": {
+    "description": "Daily challenge summary: right answers out of total",
+    "placeholders": {
+      "score": {
+        "type": "num"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyChallengeComeBack": "Come back tomorrow for a new one.",
+  "@dailyChallengeComeBack": {
+    "description": "Daily challenge summary: invitation to return tomorrow"
+  },
+  "aiOpponentsLabel": "Opponents",
+  "@aiOpponentsLabel": {
+    "description": "Mode selection: stepper label for the number of computer riders"
+  },
+  "playersLabel": "Players",
+  "@playersLabel": {
+    "description": "Mode selection: stepper label for the number of human riders"
   },
   "outcomeMoved": "Your horse moves ahead!",
   "@outcomeMoved": {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app/app_version.dart';
 import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 
@@ -96,7 +97,10 @@ class SettingsScreen extends ConsumerWidget {
               trailing: const Icon(Icons.chevron_right),
               onTap: () => context.push('/tutorial'),
             ),
-            ListTile(title: Text(l10n.about), subtitle: const Text('IqraQuest')),
+            ListTile(
+              title: Text(l10n.about),
+              subtitle: Text('${l10n.appName} · $kAppVersion'),
+            ),
           ],
         ),
       ),

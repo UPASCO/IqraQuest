@@ -77,6 +77,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String get chooseTeam => 'Choisir l\'équipe';
 
   @override
+  String get ridersTitle => 'Les cavaliers';
+
+  @override
+  String get storeLoading => 'Connexion à la boutique…';
+
+  @override
+  String get storeUnavailableCta => 'Boutique indisponible';
+
+  @override
+  String get premiumBenefitBank =>
+      'Toute la banque de questions, chacune avec sa source';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'Les six niveaux de difficulté, du plus facile au plus dur';
+
+  @override
+  String get premiumBenefitFamily =>
+      'Un seul achat pour toute la famille, sans publicité';
+
+  @override
+  String get progressEmpty =>
+      'Joue une première partie : tes progrès s\'afficheront ici.';
+
+  @override
   String get addPlayer => 'Ajouter un joueur';
 
   @override
@@ -464,6 +489,43 @@ class AppLocalizationsFr extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name reste sur place.';
   }
+
+  @override
+  String get shareScore => 'Partager';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return '$name a gagné la course IqraQuest avec $points ⭐ ! À toi de jouer ?';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return '$score/$total au défi du jour IqraQuest ! Tu fais mieux ?';
+  }
+
+  @override
+  String get dailyChallengeDone => 'Défi du jour terminé';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$score bonnes réponses sur $total',
+      one: '$score bonne réponse sur $total',
+      zero: 'Aucune bonne réponse sur $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'Reviens demain pour un nouveau défi.';
+
+  @override
+  String get aiOpponentsLabel => 'Adversaires';
+
+  @override
+  String get playersLabel => 'Joueurs';
 
   @override
   String get outcomeMoved => 'Ton cheval avance !';

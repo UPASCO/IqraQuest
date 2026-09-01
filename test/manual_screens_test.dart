@@ -88,7 +88,7 @@ Future<ProviderContainer> _pumpApp(
   final ctx = tester.element(find.byType(IqraQuestApp));
   await tester.runAsync(() async {
     for (final asset in const [
-      'assets/board/scene_oasis.webp',
+      'assets/board/cross_board.webp',
       'assets/board/horses/horse_emerald.webp',
       'assets/board/horses/horse_saphir.webp',
       'assets/board/horses/horse_grenat.webp',

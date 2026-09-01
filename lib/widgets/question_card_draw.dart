@@ -6,6 +6,7 @@ import '../l10n/generated/app_localizations.dart';
 import '../theme/app_theme.dart';
 import 'button_label.dart';
 import 'geometric_motif_painter.dart';
+import 'ornate_frame.dart';
 
 /// How long the turned card is held on screen before the question
 /// arrives. Long enough to read the value, short enough that a four
@@ -39,10 +40,16 @@ class DrawDeck extends StatelessWidget {
     return Semantics(
       button: true,
       enabled: enabled,
-      label: l10n.drawCard,
+      label: horseHint == null ? l10n.drawCard : '${l10n.drawCard}. $horseHint',
+      // One announcement, not "Draw a card, Draw a card": the label
+      // above already says what the text inside says.
+      excludeSemantics: true,
       child: Material(
-        color: const Color(0xE60B2A20),
-        borderRadius: BorderRadius.circular(22),
+        color: const Color(0xF20F3A3E),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(22),
+          side: const BorderSide(color: Color(0x99C59F4A), width: 1.2),
+        ),
         child: InkWell(
           borderRadius: BorderRadius.circular(22),
           onTap: enabled ? onDraw : null,
@@ -111,7 +118,9 @@ class _DeckStack extends StatelessWidget {
   }
 }
 
-/// The back of a card: deep green, gold rim, the app's geometric motif.
+/// The back of a card: the board plate in miniature — its teal ground,
+/// its double gold rule and its corner stars — so the deck and the
+/// board it is played on are one set.
 class _CardBack extends StatelessWidget {
   const _CardBack({required this.width, required this.height});
 
@@ -121,26 +130,39 @@ class _CardBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final inset = width * 0.11;
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(width * 0.16),
+        borderRadius: BorderRadius.circular(width * 0.10),
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFF11543E), Color(0xFF06251C)],
+          colors: [Color(0xFF14484C), OrnatePalette.groundDeep],
         ),
-        border: Border.all(color: colors.goldAccent.withValues(alpha: 0.75), width: 1.4),
+        border: Border.all(color: OrnatePalette.goldDeep.withValues(alpha: 0.9), width: 1.2),
         boxShadow: const [
           BoxShadow(color: Color(0x73000000), blurRadius: 10, offset: Offset(0, 4)),
         ],
       ),
       clipBehavior: Clip.antiAlias,
-      child: GeometricMotifBackground(
-        opacity: 0.22,
-        color: colors.goldAccent,
-        child: const SizedBox.expand(),
+      child: CustomPaint(
+        foregroundPainter: OrnateFramePainter(
+          inset: inset,
+          starSize: width * 0.075,
+          gap: width * 0.028,
+          thin: 1,
+          thick: math.max(1.4, width * 0.012),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(inset * 1.5),
+          child: GeometricMotifBackground(
+            opacity: 0.20,
+            color: colors.goldAccent,
+            child: const SizedBox.expand(),
+          ),
+        ),
       ),
     );
   }

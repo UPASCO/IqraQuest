@@ -5,41 +5,42 @@
 **Sous-titre (30 car. max) :** Jeu de plateau sur l'islam
 
 **Texte promotionnel :**
-Choisis ton allure, réponds, avance — un jeu de plateau familial sur l'islam, de 7 à 99 ans.
+Pioche une carte, réponds, avance ton cheval — le jeu des petits chevaux, version savoir, de 7 à 99 ans.
 
 **Description :**
-IqraQuest est un jeu de plateau chaleureux et soigné, pour toute la
-famille. Guidez votre cheval arabe à travers un voyage inspiré du Hijaz.
-Il n'y a pas de dé : vous choisissez vous-même votre allure, de 1 à 6
-cases, et ce choix est aussi celui de votre difficulté. Plus vous
-décidez d'aller loin, plus la question à laquelle répondre est
-difficile. Rien, dans cette course, n'est laissé au hasard.
+IqraQuest est le jeu des petits chevaux, revisité pour toute la famille
+autour de ce que vous savez de l'islam. Un plateau en croix de 52 cases,
+orné de Médine, d'Al-Aqsa, d'Arafat et de Mina, quatre écuries, et pas
+un seul dé : à votre tour, vous piochez une carte. La valeur de la carte,
+de 1 à 6, c'est le nombre de cases à parcourir — et c'est aussi le niveau
+de la question qu'il faut réussir pour avancer. Une carte 6 emmène loin,
+mais il faudra la mériter.
 
-- Mode Solo contre 1 à 3 IA (trois niveaux de difficulté), ou mode
-  Famille de 2 à 4 joueurs sur un même appareil.
-- Trois parcours nommés, dont le tracé est visible avant de commencer :
-  la Route de l'Oasis, la Piste des Caravanes et la Grande Chevauchée.
-- Deux façons de jouer : Rapide (un cheval chacun) ou Classique (deux
-  chevaux chacun, ramenez-les tous).
-- L'élan du savoir récompense ce que vous connaissez : un bouclier à
-  trois bonnes réponses d'affilée, le Grand Galop à cinq, un badge de
-  maîtrise à dix. Les bonus s'obtiennent uniquement par la connaissance,
-  jamais par chance.
-- Un niveau de difficulté par joueur, pour qu'un enfant et un adulte
-  puissent vraiment jouer sur le même plateau.
-- Chaque question est accompagnée de sa source exacte — un verset du
-  Coran ou un hadith authentique — et d'une courte explication, jamais
-  un vague « selon la tradition ».
-- Un Défi du jour gratuit, cinq questions par jour, entièrement hors
-  connexion.
-- Suivez votre progression : parties jouées, précision, maîtrise par
-  catégorie, série quotidienne.
+- Une pioche équitable : chaque carte sort autant de fois que les
+  autres, personne ne peut « choisir » sa chance.
+- Mode Solo contre 1 à 3 adversaires (trois niveaux), ou mode Famille
+  de 2 à 4 joueurs sur un même appareil, chacun avec son propre niveau de
+  questions — un enfant de 7 ans et un adulte jouent vraiment ensemble.
+- Partie Rapide (un cheval chacun) ou Classique (deux chevaux chacun,
+  ramenez-les tous à l'écurie).
+- Trois parcours, du plus paisible au plus mouvementé : oasis abritées,
+  cases savoir, défis bonus, raccourcis, duels — tout est visible sur le
+  plateau avant de jouer, rien n'est tiré au sort.
+- L'élan du savoir récompense les bonnes réponses d'affilée : un
+  bouclier à trois, le Grand Galop à cinq, un badge de maîtrise à dix.
+- Chaque question cite sa source exacte — un verset du Coran ou un
+  hadith authentique — avec une courte explication.
+- Un Défi du jour gratuit, cinq questions, hors connexion, avec un score
+  à partager.
+- Partagez votre tableau de course en une image après chaque victoire.
+- Suivi de la progression : parties, précision, maîtrise par catégorie,
+  série quotidienne.
 - Aucun compte. Aucune publicité. Aucun traçage. Tout reste sur votre
   appareil.
 - Un achat unique optionnel débloque toute la banque de questions —
   jamais d'abonnement.
 
-**Mots-clés :** islam,quiz,jeu de plateau,famille,enfants,coran,hadith,prophètes,éducation,chevaux
+**Mots-clés :** islam,quiz,petits chevaux,jeu de plateau,famille,enfants,coran,hadith,prophètes,éducation
 
 **Description du déblocage Premium :** Débloquez l'intégralité de la
 banque de questions — un seul paiement, aucun abonnement, fonctionne

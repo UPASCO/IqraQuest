@@ -47,7 +47,10 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
             // the choice below is "where do we ride", not a settings form.
             const ArtPanel(asset: AppArt.worldBand, height: 128, radius: 20),
             const SizedBox(height: 18),
-            Text(l10n.chooseCircuit, style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              l10n.chooseCircuit,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             const SizedBox(height: 12),
             // The layout of every course is fixed and shown up front, so
             // the choice is strategic rather than a surprise (spec §6).
@@ -59,47 +62,73 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                 l10n: l10n,
               ),
             const SizedBox(height: 24),
-            Text(l10n.chooseFormat, style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              l10n.chooseFormat,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 12),
             SegmentedButton<GameVariant>(
               showSelectedIcon: false,
               style: const ButtonStyle(
-                padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 8)),
+                padding: WidgetStatePropertyAll(
+                  EdgeInsets.symmetric(horizontal: 8),
+                ),
                 visualDensity: VisualDensity.compact,
               ),
               segments: [
-                ButtonSegment(value: GameVariant.quick, label: ButtonLabel(l10n.quickGame)),
-                ButtonSegment(value: GameVariant.classic, label: ButtonLabel(l10n.classicGame)),
+                ButtonSegment(
+                  value: GameVariant.quick,
+                  label: ButtonLabel(l10n.quickGame),
+                ),
+                ButtonSegment(
+                  value: GameVariant.classic,
+                  label: ButtonLabel(l10n.classicGame),
+                ),
                 if (!_isSolo)
-                  ButtonSegment(value: GameVariant.family, label: ButtonLabel(l10n.familyMode)),
+                  ButtonSegment(
+                    value: GameVariant.family,
+                    label: ButtonLabel(l10n.familyMode),
+                  ),
               ],
               selected: {_variant},
               onSelectionChanged: (s) => setState(() => _variant = s.first),
             ),
             const SizedBox(height: 24),
             if (_isSolo) ...[
-              Text(l10n.chooseDifficulty, style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                l10n.chooseDifficulty,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               const SizedBox(height: 12),
               SegmentedButton<AiDifficulty>(
                 showSelectedIcon: false,
                 style: const ButtonStyle(
-                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 8)),
+                  padding: WidgetStatePropertyAll(
+                    EdgeInsets.symmetric(horizontal: 8),
+                  ),
                   visualDensity: VisualDensity.compact,
                 ),
                 segments: [
-                  ButtonSegment(value: AiDifficulty.easy, label: ButtonLabel(l10n.difficultyEasy)),
+                  ButtonSegment(
+                    value: AiDifficulty.easy,
+                    label: ButtonLabel(l10n.difficultyEasy),
+                  ),
                   ButtonSegment(
                     value: AiDifficulty.medium,
                     label: ButtonLabel(l10n.difficultyMedium),
                   ),
-                  ButtonSegment(value: AiDifficulty.hard, label: ButtonLabel(l10n.difficultyHard)),
+                  ButtonSegment(
+                    value: AiDifficulty.hard,
+                    label: ButtonLabel(l10n.difficultyHard),
+                  ),
                 ],
                 selected: {_difficulty},
-                onSelectionChanged: (s) => setState(() => _difficulty = s.first),
+                onSelectionChanged: (s) =>
+                    setState(() => _difficulty = s.first),
               ),
               const SizedBox(height: 20),
               _CountStepper(
-                label: l10n.soloMode,
+                label: l10n.aiOpponentsLabel,
                 value: _aiCount,
                 min: 1,
                 max: 3,
@@ -107,31 +136,44 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
               ),
             ] else
               _CountStepper(
-                label: l10n.addPlayer,
+                label: l10n.playersLabel,
                 value: _humanCount,
                 min: 2,
                 max: 4,
                 onChanged: (v) => setState(() => _humanCount = v),
               ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                context.push(
-                  '/player-setup',
-                  extra: PlayerSetupArgs(
-                    mode: _isSolo ? GameMode.solo : GameMode.family,
-                    variant: _variant,
-                    circuitId: _circuit,
-                    aiOpponentCount: _aiCount,
-                    aiDifficulty: _difficulty,
-                    humanPlayerCount: _humanCount,
-                  ),
-                );
-              },
-              child: ButtonLabel(MaterialLocalizations.of(context).continueButtonLabel),
-            ),
+            const SizedBox(height: 8),
           ],
         ),
+      ),
+      // Pinned, not at the end of the list: on a phone the list is taller
+      // than the screen, and a child who has picked a course must not
+      // have to hunt for the way forward below the fold.
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+          child: ElevatedButton(
+            onPressed: _continue,
+            child: ButtonLabel(
+              MaterialLocalizations.of(context).continueButtonLabel,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _continue() {
+    context.push(
+      '/player-setup',
+      extra: PlayerSetupArgs(
+        mode: _isSolo ? GameMode.solo : GameMode.family,
+        variant: _variant,
+        circuitId: _circuit,
+        aiOpponentCount: _aiCount,
+        aiDifficulty: _difficulty,
+        humanPlayerCount: _humanCount,
       ),
     );
   }
@@ -154,15 +196,26 @@ class _CircuitCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final (name, description) = switch (circuit.id) {
-      CircuitId.oasisRoute => (l10n.circuitOasisRoute, l10n.circuitOasisRouteDescription),
-      CircuitId.caravanTrail => (l10n.circuitCaravanTrail, l10n.circuitCaravanTrailDescription),
-      CircuitId.greatRide => (l10n.circuitGreatRide, l10n.circuitGreatRideDescription),
+      CircuitId.oasisRoute => (
+        l10n.circuitOasisRoute,
+        l10n.circuitOasisRouteDescription,
+      ),
+      CircuitId.caravanTrail => (
+        l10n.circuitCaravanTrail,
+        l10n.circuitCaravanTrailDescription,
+      ),
+      CircuitId.greatRide => (
+        l10n.circuitGreatRide,
+        l10n.circuitGreatRideDescription,
+      ),
     };
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Material(
-        color: selected ? colors.primary.withValues(alpha: 0.12) : colors.surfaceElevated,
+        color: selected
+            ? colors.primary.withValues(alpha: 0.12)
+            : colors.surfaceElevated,
         borderRadius: BorderRadius.circular(20),
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
@@ -191,7 +244,10 @@ class _CircuitCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(name, style: Theme.of(context).textTheme.titleMedium),
+                      Text(
+                        name,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       const SizedBox(height: 4),
                       Text(
                         description,
@@ -237,7 +293,9 @@ class _CountStepper extends StatelessWidget {
     final colors = context.colors;
     return Row(
       children: [
-        Expanded(child: Text(label, style: Theme.of(context).textTheme.titleMedium)),
+        Expanded(
+          child: Text(label, style: Theme.of(context).textTheme.titleMedium),
+        ),
         IconButton(
           onPressed: value > min ? () => onChanged(value - 1) : null,
           tooltip: '−1',
@@ -245,7 +303,8 @@ class _CountStepper extends StatelessWidget {
         ),
         Text(
           '$value',
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: colors.primary),
+          style: Theme.of(context).textTheme.headlineMedium
+              ?.copyWith(color: colors.primary),
         ),
         IconButton(
           onPressed: value < max ? () => onChanged(value + 1) : null,
@@ -256,4 +315,3 @@ class _CountStepper extends StatelessWidget {
     );
   }
 }
-

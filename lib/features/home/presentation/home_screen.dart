@@ -9,6 +9,7 @@ import '../../../services/legacy_game_migration_service.dart';
 import '../../../theme/app_team.dart';
 import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/horse_painter.dart';
+import '../../../widgets/ornate_frame.dart';
 import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
 import '../../../widgets/button_label.dart';
@@ -274,21 +275,13 @@ class _JourneyCard extends StatelessWidget {
       progress = best / circuit.journeyLength;
     }
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(18, 16, 18, 16),
-      decoration: BoxDecoration(
-        color: const Color(0xE610281E),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.40),
-            blurRadius: 24,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
+    // Framed in the plate's gold: the card on the home screen and the
+    // board it leads to are one set.
+    return OrnateFrame(
+      padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
+      inset: 8,
+      starSize: 11,
+      fill: const Color(0xF20F3A3E),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

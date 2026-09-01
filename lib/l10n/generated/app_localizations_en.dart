@@ -77,6 +77,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chooseTeam => 'Choose team';
 
   @override
+  String get ridersTitle => 'The riders';
+
+  @override
+  String get storeLoading => 'Connecting to the store…';
+
+  @override
+  String get storeUnavailableCta => 'Store unavailable';
+
+  @override
+  String get premiumBenefitBank =>
+      'The whole question bank, each with its source';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'All six difficulty levels, from easiest to hardest';
+
+  @override
+  String get premiumBenefitFamily =>
+      'One purchase for the whole family, no ads';
+
+  @override
+  String get progressEmpty =>
+      'Play a first game: your progress will show up here.';
+
+  @override
   String get addPlayer => 'Add player';
 
   @override
@@ -464,6 +489,43 @@ class AppLocalizationsEn extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name holds its ground.';
   }
+
+  @override
+  String get shareScore => 'Share';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return '$name won the IqraQuest race with $points ⭐! Your turn?';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return '$score/$total on today\'s IqraQuest challenge! Can you beat it?';
+  }
+
+  @override
+  String get dailyChallengeDone => 'Today\'s challenge done';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$score right out of $total',
+      one: '$score right out of $total',
+      zero: 'None right out of $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'Come back tomorrow for a new one.';
+
+  @override
+  String get aiOpponentsLabel => 'Opponents';
+
+  @override
+  String get playersLabel => 'Players';
 
   @override
   String get outcomeMoved => 'Your horse moves ahead!';

@@ -77,6 +77,31 @@ class AppLocalizationsId extends AppLocalizations {
   String get chooseTeam => 'Pilih tim';
 
   @override
+  String get ridersTitle => 'Para penunggang';
+
+  @override
+  String get storeLoading => 'Menghubungkan ke toko…';
+
+  @override
+  String get storeUnavailableCta => 'Toko tidak tersedia';
+
+  @override
+  String get premiumBenefitBank =>
+      'Seluruh bank soal, masing-masing dengan sumbernya';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'Keenam tingkat kesulitan, dari termudah hingga tersulit';
+
+  @override
+  String get premiumBenefitFamily =>
+      'Satu pembelian untuk seluruh keluarga, tanpa iklan';
+
+  @override
+  String get progressEmpty =>
+      'Mainkan permainan pertama: kemajuanmu akan muncul di sini.';
+
+  @override
   String get addPlayer => 'Tambah Pemain';
 
   @override
@@ -462,6 +487,41 @@ class AppLocalizationsId extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name tetap di tempat.';
   }
+
+  @override
+  String get shareScore => 'Bagikan';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return '$name memenangkan balapan IqraQuest dengan $points ⭐! Giliranmu?';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return '$score/$total di tantangan harian IqraQuest! Bisa lebih baik?';
+  }
+
+  @override
+  String get dailyChallengeDone => 'Tantangan harian selesai';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$score benar dari $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'Kembali besok untuk tantangan baru.';
+
+  @override
+  String get aiOpponentsLabel => 'Lawan';
+
+  @override
+  String get playersLabel => 'Pemain';
 
   @override
   String get outcomeMoved => 'Kudamu melaju!';

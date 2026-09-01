@@ -192,3 +192,44 @@ save(
     ),
     gain=0.7,
 )
+
+# Card drawn: a paper swish as the card leaves the deck, then a bright
+# two-note turn as it lands face up. Short — it opens every turn.
+save(
+    "card_draw",
+    seq(
+        (0.00, 0.9 * noise_burst(0.16, lp=0.30, a=0.004, r=0.12)),
+        (0.10, 0.5 * noise_burst(0.10, lp=0.55, r=0.08)),
+        (0.18, 0.8 * tone(note(4), 0.22, r=0.16)),
+        (0.30, tone(note(7), 0.40, r=0.30)),
+        (0.30, 0.35 * tone(note(7), 0.40, harmonics=((2, 0.5), (3, 0.2)), r=0.30)),
+    ),
+    gain=0.6,
+)
+
+# End of the race: a fuller instrumental flourish for the results board.
+# Same hijaz colour as the in-game victory cue, but with a frame-drum
+# hit under it, the melody doubled an octave up and a long held chord —
+# a "tada" that is still an instrument, not a slot machine.
+drum = lambda: mix(
+    tone(82, 0.32, harmonics=((1, 1.0), (2, 0.3)), bend=-0.4, r=0.28),
+    0.5 * noise_burst(0.08, lp=0.22, r=0.06),
+)
+phrase = [(0.00, 0), (0.15, 2), (0.30, 4), (0.45, 7)]
+save(
+    "fanfare",
+    seq(
+        (0.00, 0.6 * drum()),
+        *[(s, 0.8 * tone(note(n), 0.45)) for s, n in phrase],
+        *[(s, 0.45 * tone(note(n, 1), 0.40, harmonics=((1, 1.0), (2, 0.2)))) for s, n in phrase],
+        (0.60, 0.8 * drum()),
+        (0.62, 1.3 * tone(note(0, 1), 1.6, r=1.2)),
+        (0.62, 0.9 * tone(note(4), 1.6, r=1.2)),
+        (0.62, 0.7 * tone(note(2, 1), 1.6, r=1.2)),
+        (0.62, 0.35 * tone(note(0, 2), 1.4, harmonics=((1, 1.0), (2, 0.15)), r=1.1)),
+        (0.62, 0.30 * noise_burst(1.3, lp=0.04, r=1.2, tremolo=0.3)),
+        (0.95, 0.35 * tone(note(4, 1), 0.9, r=0.8)),
+        (1.10, 0.30 * tone(note(7, 1), 0.9, r=0.8)),
+    ),
+    gain=0.78,
+)

@@ -6,11 +6,13 @@
 // a label that fits in French at 100% and blows its row in German at
 // 130%. Catching it here is much cheaper than catching it in review.
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:iqraquest/app/app.dart';
 import 'package:iqraquest/app/providers.dart';
 import 'package:iqraquest/app/router.dart';
+import 'package:iqraquest/features/game/application/game_controller.dart';
 import 'package:iqraquest/models/models.dart';
 import 'package:iqraquest/services/entitlement_service.dart';
 import 'package:iqraquest/services/game_save_service.dart';
@@ -52,6 +54,7 @@ Future<void> _pump(
   required Size size,
   required double textScale,
   GameState? save,
+  String? languageCode,
 }) async {
   SharedPreferences.setMockInitialValues({});
   final storage = await tester.runAsync(LocalStorageService.create);
@@ -71,19 +74,46 @@ Future<void> _pump(
         entitlementServiceProvider.overrideWithValue(EntitlementService()),
         progressServiceProvider.overrideWithValue(ProgressService(storage)),
         gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
-        legacyGameMigrationServiceProvider
-            .overrideWithValue(LegacyGameMigrationService(storage)),
+        legacyGameMigrationServiceProvider.overrideWithValue(
+          LegacyGameMigrationService(storage),
+        ),
         questionRepositoryProvider.overrideWithValue(QuestionRepository()),
         purchaseServiceProvider.overrideWith((ref) => PurchaseService()),
-        initialSettingsProvider.overrideWithValue(const AppSettings()),
+        initialSettingsProvider.overrideWithValue(
+          AppSettings(languageCode: languageCode),
+        ),
         initialPremiumProvider.overrideWithValue(true),
-        appRouterProvider.overrideWithValue(buildAppRouter(initialLocation: route)),
+        appRouterProvider.overrideWithValue(
+          buildAppRouter(initialLocation: route),
+        ),
       ],
       child: MediaQuery(
         data: MediaQueryData(textScaler: TextScaler.linear(textScale)),
         child: const IqraQuestApp(),
       ),
     ),
+  );
+  await _settle(tester);
+}
+
+/// The results board reads the live session, not a save: start one with
+/// four long-named riders so the podium rows are the ones that wrap.
+Future<void> _startGameForResults(WidgetTester tester) async {
+  final container = ProviderScope.containerOf(
+    tester.element(find.byType(IqraQuestApp)),
+  );
+  // A screen rendered by an earlier test may have started loading the
+  // same asset inside its fake-async zone; rootBundle caches that
+  // never-completing future by key and a real await on it hangs forever.
+  rootBundle.clear();
+  final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+  final controller = container.read(gameControllerProvider.notifier);
+  controller.configure(pool: pool!, isPremium: true);
+  controller.startNewGame(
+    mode: GameMode.family,
+    variant: GameVariant.classic,
+    circuitId: CircuitId.oasisRoute,
+    players: _gameInProgress().players,
   );
   await _settle(tester);
 }
@@ -114,7 +144,10 @@ GameState _gameInProgress() {
 }
 
 void main() {
-  for (final (label, size) in [('small 320x568', _small), ('large 430x932', _large)]) {
+  for (final (label, size) in [
+    ('small 320x568', _small),
+    ('large 430x932', _large),
+  ]) {
     for (final scale in [1.0, 1.3]) {
       group('$label at text scale $scale', () {
         for (final route in _routes) {
@@ -125,11 +158,73 @@ void main() {
         }
 
         testWidgets('/game lays out without overflow', (tester) async {
-          await _pump(tester, '/game',
-              size: size, textScale: scale, save: _gameInProgress());
+          await _pump(
+            tester,
+            '/game',
+            size: size,
+            textScale: scale,
+            save: _gameInProgress(),
+          );
           expect(tester.takeException(), isNull, reason: '/game overflowed');
+        });
+
+        testWidgets('/results lays out without overflow', (tester) async {
+          await _pump(tester, '/results', size: size, textScale: scale);
+          await _startGameForResults(tester);
+          expect(tester.takeException(), isNull, reason: '/results overflowed');
         });
       });
     }
   }
+
+  // Right-to-left is not a mirror of the French layout: Arabic runs
+  // wider on some labels, narrower on others, and every hard-coded
+  // "left" becomes a bug. The floor phone at the large text size is the
+  // harshest combination, so it is the one that gates.
+  group('Arabic (RTL) on the small phone at text scale 1.3', () {
+    for (final route in _routes) {
+      testWidgets('$route lays out without overflow', (tester) async {
+        await _pump(
+          tester,
+          route,
+          size: _small,
+          textScale: 1.3,
+          languageCode: 'ar',
+        );
+        expect(
+          tester.takeException(),
+          isNull,
+          reason: '$route overflowed in RTL',
+        );
+      });
+    }
+
+    testWidgets('/game lays out without overflow', (tester) async {
+      await _pump(
+        tester,
+        '/game',
+        size: _small,
+        textScale: 1.3,
+        languageCode: 'ar',
+        save: _gameInProgress(),
+      );
+      expect(tester.takeException(), isNull, reason: '/game overflowed in RTL');
+    });
+
+    testWidgets('/results lays out without overflow', (tester) async {
+      await _pump(
+        tester,
+        '/results',
+        size: _small,
+        textScale: 1.3,
+        languageCode: 'ar',
+      );
+      await _startGameForResults(tester);
+      expect(
+        tester.takeException(),
+        isNull,
+        reason: '/results overflowed in RTL',
+      );
+    });
+  });
 }

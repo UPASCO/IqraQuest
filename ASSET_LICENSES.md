@@ -58,18 +58,16 @@ in any crop.
 | Arrival at the palace oasis | `assets/images/oasis_arrival.webp` | Owner-supplied AI concept art (crop) | Project |
 | 2.5D world band (mode selection hero) | `assets/images/world_band.webp` | Owner-supplied AI concept art (crop) | Project |
 
-### Playable board scene (`assets/board/`)
+### Knight pieces (`assets/board/horses/`)
 
-The live game board is the owner's own board illustration (supplied
-AI-generated concept art commissioned for IqraQuest), surgically cleaned
-and extended by `tool/art/board_from_ref.py`; the four knight pieces are
-extracted from the same illustration (one sculpt, recoloured per team).
-Same origin and diligence notes as the bitmap illustrations above: no
-human figures, no depictions of Allah, prophets, or angels, no Kaaba.
+The four knight figurines were extracted from the owner's earlier oasis
+board illustration (supplied AI-generated concept art commissioned for
+IqraQuest) by `tool/art/board_from_ref.py`: one sculpt, recoloured per
+team. Same origin and diligence notes as the bitmap illustrations above:
+no human figures, no depictions of Allah, prophets, or angels, no Kaaba.
 
 | Asset | File | Origin | Licence |
 |---|---|---|---|
-| Oasis-route board scene (941x2080) | `assets/board/scene_oasis.webp` | Owner-supplied AI board illustration, cleaned/extended in-repo | Project |
 | Knight piece, emerald | `assets/board/horses/horse_emerald.webp` | Extracted from the same illustration, matted + disc base drawn in-repo | Project |
 | Knight piece, sapphire | `assets/board/horses/horse_saphir.webp` | Recoloured from the emerald sculpt in-repo | Project |
 | Knight piece, garnet | `assets/board/horses/horse_grenat.webp` | Recoloured from the emerald sculpt in-repo | Project |
@@ -115,6 +113,7 @@ original works of this project and carry the project's licence.
 | `assets/audio/tap.wav` | UI tap | synthesized in-repo | project |
 | `assets/audio/gait_select.wav` | gait armed | synthesized in-repo | project |
 | `assets/audio/gait_confirm.wav` | gait committed | synthesized in-repo | project |
+| `assets/audio/card_draw.wav` | card drawn from the deck (paper swish + turn) | synthesized in-repo | project |
 | `assets/audio/move_hoofs.wav` | horse moves | synthesized in-repo | project |
 | `assets/audio/correct.wav` | right answer | synthesized in-repo | project |
 | `assets/audio/wrong.wav` | wrong answer (gentle) | synthesized in-repo | project |
@@ -122,6 +121,7 @@ original works of this project and carry the project's licence.
 | `assets/audio/streak.wav` | streak reward unlocked | synthesized in-repo | project |
 | `assets/audio/water.wav` | oasis arrival | synthesized in-repo | project |
 | `assets/audio/victory.wav` | game won (short warm flourish) | synthesized in-repo | project |
+| `assets/audio/fanfare.wav` | results board (fuller instrumental flourish, frame drum + held chord) | synthesized in-repo | project |
 
 Spec prohibitions honoured by construction: **no Quranic recitation** as
 a game effect, **no adhan** as a notification sound, and **no

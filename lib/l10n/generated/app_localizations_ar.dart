@@ -77,6 +77,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get chooseTeam => 'اختر الفريق';
 
   @override
+  String get ridersTitle => 'الفرسان';
+
+  @override
+  String get storeLoading => 'جارٍ الاتصال بالمتجر…';
+
+  @override
+  String get storeUnavailableCta => 'المتجر غير متاح';
+
+  @override
+  String get premiumBenefitBank => 'بنك الأسئلة كاملاً، كل سؤال بمصدره';
+
+  @override
+  String get premiumBenefitDifficulty =>
+      'مستويات الصعوبة الستة كلها، من الأسهل إلى الأصعب';
+
+  @override
+  String get premiumBenefitFamily => 'شراء واحد لكل العائلة، بدون إعلانات';
+
+  @override
+  String get progressEmpty => 'العب أول مباراة: سيظهر تقدمك هنا.';
+
+  @override
   String get addPlayer => 'إضافة لاعب';
 
   @override
@@ -269,8 +291,12 @@ class AppLocalizationsAr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count مربعات خاصة',
+      other: '$count مربع خاص',
+      many: '$count مربعًا خاصًا',
+      few: '$count مربعات خاصة',
+      two: 'مربعان خاصان',
       one: 'مربع خاص واحد',
+      zero: 'لا مربعات خاصة',
     );
     return '$_temp0';
   }
@@ -286,7 +312,10 @@ class AppLocalizationsAr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'يساوي $count مربعات',
+      other: 'يساوي $count مربع',
+      many: 'يساوي $count مربعًا',
+      few: 'يساوي $count مربعات',
+      two: 'يساوي مربعين',
       one: 'يساوي مربعًا واحدًا',
     );
     return '$_temp0';
@@ -463,6 +492,46 @@ class AppLocalizationsAr extends AppLocalizations {
   String opponentStayed(String name) {
     return '$name يبقى مكانه.';
   }
+
+  @override
+  String get shareScore => 'مشاركة';
+
+  @override
+  String shareVictoryText(String name, int points) {
+    return 'فاز $name بسباق IqraQuest بـ $points ⭐! هل تجرّب دورك؟';
+  }
+
+  @override
+  String shareDailyText(int score, int total) {
+    return '$score/$total في تحدي اليوم من IqraQuest! هل تتفوّق عليّ؟';
+  }
+
+  @override
+  String get dailyChallengeDone => 'اكتمل تحدي اليوم';
+
+  @override
+  String dailyChallengeScore(num score, int total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      score,
+      locale: localeName,
+      other: '$score إجابة صحيحة من $total',
+      many: '$score إجابة صحيحة من $total',
+      few: '$score إجابات صحيحة من $total',
+      two: 'إجابتان صحيحتان من $total',
+      one: 'إجابة صحيحة واحدة من $total',
+      zero: 'لا إجابات صحيحة من $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyChallengeComeBack => 'عُد غدًا لتحدٍّ جديد.';
+
+  @override
+  String get aiOpponentsLabel => 'الخصوم';
+
+  @override
+  String get playersLabel => 'اللاعبون';
 
   @override
   String get outcomeMoved => 'حصانك يتقدم!';

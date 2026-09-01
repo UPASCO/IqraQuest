@@ -28,6 +28,8 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
   void initState() {
     super.initState();
     final purchases = ref.read(purchaseServiceProvider);
+    // Catch up on what the store already said during bootstrap.
+    _uiState = purchases.state;
     _sub = purchases.stateStream.listen((s) {
       if (!mounted) return;
       setState(() => _uiState = s);
@@ -68,7 +70,11 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.workspace_premium, size: 72, color: colors.goldAccent),
+                Icon(
+                  Icons.workspace_premium,
+                  size: 72,
+                  color: colors.goldAccent,
+                ),
                 const SizedBox(height: 20),
                 Text(
                   l10n.premiumUnlockAll,
@@ -86,23 +92,44 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                 // bank, read from the bank itself (never a hardcoded
                 // marketing number).
                 Consumer(
-                  builder: (context, ref, _) =>
-                      ref.watch(questionPoolProvider).maybeWhen(
-                            data: (pool) => Text(
-                              l10n.premiumQuestionsIncluded(pool.length),
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(color: colors.textSecondary),
-                            ),
-                            orElse: () => const SizedBox.shrink(),
-                          ),
+                  builder: (context, ref, _) => ref
+                      .watch(questionPoolProvider)
+                      .maybeWhen(
+                        data: (pool) => Text(
+                          l10n.premiumQuestionsIncluded(pool.length),
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: colors.textSecondary),
+                        ),
+                        orElse: () => const SizedBox.shrink(),
+                      ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 20),
+                // What the purchase actually buys, in three lines a
+                // parent can check against the app itself.
+                _BenefitRow(
+                  icon: Icons.menu_book_rounded,
+                  text: l10n.premiumBenefitBank,
+                ),
+                _BenefitRow(
+                  icon: Icons.stairs_rounded,
+                  text: l10n.premiumBenefitDifficulty,
+                ),
+                _BenefitRow(
+                  icon: Icons.family_restroom_rounded,
+                  text: l10n.premiumBenefitFamily,
+                ),
+                const SizedBox(height: 24),
                 if (isPremium)
-                  Text(l10n.purchaseSuccess, style: Theme.of(context).textTheme.titleMedium)
+                  Text(
+                    l10n.purchaseSuccess,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  )
                 else ...[
                   ElevatedButton(
-                    onPressed: product == null || _uiState == PurchaseUiState.purchasing
+                    onPressed:
+                        product == null ||
+                            _uiState == PurchaseUiState.purchasing
                         ? null
                         : () async {
                             if (await ParentalGate.show(context)) {
@@ -111,7 +138,14 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                           },
                     // Never hardcode a price — always read it from the
                     // Store's own ProductDetails (spec §73–§74).
-                    child: ButtonLabel(product == null ? '…' : l10n.premiumCta(product.price)),
+                    child: ButtonLabel(
+                      product != null
+                          ? l10n.premiumCta(product.price)
+                          : _uiState == PurchaseUiState.storeUnavailable ||
+                                _uiState == PurchaseUiState.error
+                          ? l10n.storeUnavailableCta
+                          : l10n.storeLoading,
+                    ),
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton(
@@ -136,6 +170,39 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _BenefitRow extends StatelessWidget {
+  const _BenefitRow({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [
+          Container(
+            width: 36,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: colors.goldAccent.withValues(alpha: 0.18),
+            ),
+            child: Icon(icon, size: 20, color: colors.goldAccent),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+          ),
+        ],
       ),
     );
   }
