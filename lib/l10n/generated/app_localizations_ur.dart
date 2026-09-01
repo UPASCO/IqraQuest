@@ -422,6 +422,47 @@ class AppLocalizationsUr extends AppLocalizations {
   String get journeyQuestionIntro => 'آپ کی آمد کی تصدیق کے لیے ایک آخری سوال۔';
 
   @override
+  String opponentThinking(String name) {
+    return '$name سوچ رہا ہے…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name نے $count نکالا';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'صحیح جواب: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'ریس بورڈ';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count درست';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return '$count کا سلسلہ';
+  }
+
+  @override
+  String get playAgainSameRiders => 'ایک اور ریس!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name آگے بڑھا!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name وہیں رہا۔';
+  }
+
+  @override
   String get outcomeMoved => 'آپ کا گھوڑا آگے بڑھا!';
 
   @override

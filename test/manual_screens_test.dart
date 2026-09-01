@@ -27,6 +27,7 @@ import 'package:iqraquest/services/purchase_service.dart';
 import 'package:iqraquest/services/question_repository.dart';
 import 'package:iqraquest/services/settings_service.dart';
 import 'package:iqraquest/features/game/application/game_controller.dart';
+import 'package:iqraquest/features/game/presentation/game_screen.dart';
 import 'package:iqraquest/theme/app_team.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -269,6 +270,8 @@ void main() {
     if (q != null) {
       await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
       await _settle(tester);
+      await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
+      await _settle(tester);
       await tester.tap(find.text('Continue').last);
       await _settle(tester);
       await _capture(tester, 'screen_game_chest');
@@ -342,6 +345,8 @@ void main() {
     if (q != null) {
       await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
       await _settle(tester);
+      await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
+      await _settle(tester);
       await tester.tap(find.text('Continue').last);
       await tester.pump(const Duration(milliseconds: 120));
       await tester.pump(const Duration(milliseconds: 110));
@@ -414,11 +419,13 @@ void main() {
       await _settle(tester);
       await _capture(tester, 'screen_game_feedback');
 
-      // Continue: the horse now actually rides — catch it mid-hop.
-      await tester.tap(find.text('Continue').last);
-      await tester.pump(const Duration(milliseconds: 120));
-      await tester.pump(const Duration(milliseconds: 130));
+      // Second beat: the card folds to a sheet and the horse rides in
+      // full view — catch it mid-ride.
+      await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
+      await tester.pump(const Duration(milliseconds: 250));
       await _capture(tester, 'screen_game_moving');
+      await _settle(tester);
+      await tester.tap(find.text('Continue').last);
       await _settle(tester);
       if (find.text('Trot').evaluate().isNotEmpty) {
         await tester.tap(find.text('Trot'));

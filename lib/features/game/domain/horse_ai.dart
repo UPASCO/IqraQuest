@@ -8,8 +8,7 @@ import '../../../models/player.dart';
 import 'game_engine.dart';
 
 /// AI opponents play through the exact same [GameEngine] as a human: they
-/// pick a horse and a gait from the same visible options, and they are
-/// bound by the same gait cycle.
+/// draw from the same deck and choose only which horse the card moves.
 ///
 /// The one thing that *is* simulated is whether the AI "knows" the answer
 /// — an AI cannot genuinely answer a quiz question, so its accuracy is
@@ -28,13 +27,19 @@ class HorseAi {
   };
 
   /// Models whether this opponent knows the answer at the difficulty its
-  /// chosen gait drew.
+  /// drawn card carries.
   bool decideAnswerCorrect(AiDifficulty difficulty) =>
       _random.nextDouble() < _answerAccuracy[difficulty]!;
 
-  /// Picks a horse and one of the player's remaining gaits. Never returns
-  /// a gait the cycle has already spent.
-  ({int horseIndex, MovementChoice choice, bool useGrandGallop}) chooseGait({
+  /// Picks which horse the opponent's card will move.
+  ///
+  /// The opponent draws exactly as a human does: the value is the
+  /// deck's, never its own. All it decides is the horse, and it decides
+  /// that before the draw — so a horse is scored on what it would do
+  /// across every value the deck can produce, not on one it was let to
+  /// choose. An opponent that picked its own value was quietly playing
+  /// a different game from the child across the board.
+  int chooseHorse({
     required GameState state,
     required GameEngine engine,
     required AiDifficulty difficulty,
@@ -44,37 +49,26 @@ class HorseAi {
     final horses = engine.movableHorses(player);
     assert(gaits.isNotEmpty && horses.isNotEmpty);
 
-    final options = <({int horseIndex, MovementChoice choice, double score})>[];
+    final options = <({int horseIndex, double score})>[];
     for (final horseIndex in horses) {
+      var total = 0.0;
       for (final choice in gaits) {
-        final preview = engine.previewGait(state, horseIndex, choice);
-        options.add((
-          horseIndex: horseIndex,
-          choice: choice,
-          score: _score(preview, state, difficulty),
-        ));
+        total += _score(engine.previewGait(state, horseIndex, choice), state, difficulty);
       }
+      options.add((horseIndex: horseIndex, score: total / gaits.length));
     }
     options.sort((a, b) => b.score.compareTo(a.score));
 
     final picked = switch (difficulty) {
       // A beginner opponent plays it safe and a little haphazardly.
       AiDifficulty.easy => options[_random.nextInt(options.length)],
-      // Competent, not omniscient: usually the best move, sometimes the
+      // Competent, not omniscient: usually the best horse, sometimes the
       // second-best.
       AiDifficulty.medium =>
         options.length > 1 && _random.nextDouble() < 0.3 ? options[1] : options.first,
       AiDifficulty.hard => options.first,
     };
-
-    // Spend a Grand Galop only when it converts a move into an arrival.
-    final withBonus =
-        player.rewards.hasGrandGallop &&
-        engine
-            .previewGait(state, picked.horseIndex, picked.choice, useGrandGallop: true)
-            .reachesFinish;
-
-    return (horseIndex: picked.horseIndex, choice: picked.choice, useGrandGallop: withBonus);
+    return picked.horseIndex;
   }
 
   double _score(GaitPreview preview, GameState state, AiDifficulty difficulty) {

@@ -16,6 +16,8 @@ class QuestionCard extends StatelessWidget {
     required this.isCorrect,
     required this.onSelect,
     required this.onContinue,
+    this.brief = false,
+    this.largeText = false,
   });
 
   final Question question;
@@ -23,6 +25,15 @@ class QuestionCard extends StatelessWidget {
   final bool? isCorrect;
   final ValueChanged<int>? onSelect;
   final VoidCallback? onContinue;
+
+  /// Once answered, show only the verdict on the tiles — no explanation,
+  /// no button. The screen then hands over to [AnswerFeedbackSheet] so
+  /// the ride on the board is not hidden behind a wall of text.
+  final bool brief;
+
+  /// Child level: bigger answer type and taller tiles, so a young reader
+  /// can read and hit them without help.
+  final bool largeText;
 
   static const _letters = ['A', 'B', 'C', 'D'];
 
@@ -86,11 +97,12 @@ class QuestionCard extends StatelessWidget {
                     letter: _letters[i],
                     text: question.answers[i],
                     state: _tileState(i),
+                    large: largeText,
                     onTap: answered || onSelect == null ? null : () => onSelect!(i),
                   ),
                   const SizedBox(height: 12),
                 ],
-                if (answered) ...[
+                if (answered && !brief) ...[
                   const SizedBox(height: 8),
                   _FeedbackBand(
                     correct: isCorrect!,
@@ -178,12 +190,14 @@ class _AnswerTile extends StatelessWidget {
     required this.text,
     required this.state,
     required this.onTap,
+    this.large = false,
   });
 
   final String letter;
   final String text;
   final _AnswerTileState state;
   final VoidCallback? onTap;
+  final bool large;
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +231,7 @@ class _AnswerTile extends StatelessWidget {
         enabled: onTap != null,
         onTap: onTap,
         child: Container(
-          constraints: const BoxConstraints(minHeight: 52),
+          constraints: BoxConstraints(minHeight: large ? 60 : 52),
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           decoration: BoxDecoration(
             color: bg,
@@ -242,7 +256,10 @@ class _AnswerTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   text,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: fg),
+                  style: large
+                      ? Theme.of(context).textTheme.titleMedium
+                          ?.copyWith(color: fg, fontWeight: FontWeight.w600, height: 1.3)
+                      : Theme.of(context).textTheme.bodyLarge?.copyWith(color: fg),
                 ),
               ),
               if (state == _AnswerTileState.correct)
@@ -305,6 +322,121 @@ class _PressableEdgeState extends State<_PressableEdge> {
                   ],
           ),
           child: widget.child,
+        ),
+      ),
+    );
+  }
+}
+
+/// The second beat of an answer: the verdict, the right answer when the
+/// player missed it, the explanation and its source, and the way on.
+///
+/// Lives at the bottom of the screen with the board unblurred above it,
+/// so the horse is seen riding while the player reads why.
+class AnswerFeedbackSheet extends StatelessWidget {
+  const AnswerFeedbackSheet({
+    super.key,
+    required this.question,
+    required this.isCorrect,
+    required this.onContinue,
+    this.showExplanation = true,
+  });
+
+  final Question question;
+  final bool isCorrect;
+  final VoidCallback onContinue;
+
+  /// Off for the child level: the verdict and the right answer are the
+  /// lesson; a paragraph of sources is for the grown-ups' level.
+  final bool showExplanation;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(26),
+      clipBehavior: Clip.antiAlias,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFFCF5E4), Color(0xFFF2E3C4)],
+          ),
+          borderRadius: BorderRadius.circular(26),
+          border: Border.all(color: const Color(0xFFD8B76A), width: 1.2),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 18, 20, 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _FeedbackBand(
+                correct: isCorrect,
+                correctLabel: l10n.correctAnswer,
+                incorrectLabel: l10n.incorrectAnswer,
+              ),
+              if (!isCorrect) ...[
+                const SizedBox(height: 12),
+                Text(
+                  l10n.correctAnswerWas(question.answers[question.correctAnswerIndex]),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: QuestionCard._ink,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+              if (showExplanation) ...[
+                const SizedBox(height: 12),
+                Text(
+                  question.explanation,
+                  style: Theme.of(context).textTheme.bodyMedium
+                      ?.copyWith(color: QuestionCard._ink, height: 1.4),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  question.sourceDisplay,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: QuestionCard._inkSoft,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 54,
+                child: Material(
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  child: Ink(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xFFF3D68A), Color(0xFFD8A032)],
+                      ),
+                    ),
+                    child: InkWell(
+                      onTap: onContinue,
+                      child: Center(
+                        child: Text(
+                          MaterialLocalizations.of(context).continueButtonLabel,
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: const Color(0xFF4A3410),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 0.6,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

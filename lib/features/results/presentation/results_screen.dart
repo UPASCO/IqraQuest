@@ -6,13 +6,18 @@ import 'package:go_router/go_router.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/button_label.dart';
+import '../../../widgets/fit_or_scroll.dart';
 import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
-import '../../../widgets/button_label.dart';
 
 /// The end of the journey is the game's biggest hero moment: the rider
 /// has actually ARRIVED somewhere — at the palace oasis — so the screen
 /// shows that place, not a dialog that says "victory".
+///
+/// Under the arrival sits the race board: every rider's stars, right
+/// answers and best streak. The rematch is one tap and keeps the same
+/// riders — "again!" is the whole reason a family game gets replayed.
 class ResultsScreen extends ConsumerWidget {
   const ResultsScreen({super.key});
 
@@ -34,11 +39,26 @@ class ResultsScreen extends ConsumerWidget {
       onPopInvokedWithResult: (didPop, _) {
         if (!didPop) context.go('/home');
       },
-      child: _body(context, l10n, winner, aiWon),
+      child: _body(context, ref, l10n, state, winner, aiWon),
     );
   }
 
-  Widget _body(BuildContext context, AppLocalizations l10n, Player? winner, bool aiWon) {
+  Widget _body(
+    BuildContext context,
+    WidgetRef ref,
+    AppLocalizations l10n,
+    GameState? state,
+    Player? winner,
+    bool aiWon,
+  ) {
+    final colors = context.colors;
+    // Finished horses first, then stars: the podium order players expect.
+    final ranked = [...?state?.players]..sort((a, b) {
+        final byArrivals = _arrivals(b).compareTo(_arrivals(a));
+        if (byArrivals != 0) return byArrivals;
+        return b.rewards.knowledgePoints.compareTo(a.rewards.knowledgePoints);
+      });
+
     return Scaffold(
       backgroundColor: const Color(0xFF0B1D33),
       body: Stack(
@@ -55,9 +75,10 @@ class ResultsScreen extends ConsumerWidget {
             ),
           ),
           SafeArea(
-            child: Padding(
+            child: FitOrScroll(
               padding: const EdgeInsets.fromLTRB(22, 12, 22, 18),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Spacer(),
                   // The destination itself, glowing in the night.
@@ -72,12 +93,12 @@ class ResultsScreen extends ConsumerWidget {
                     child: const ArtPanel(
                       asset: AppArt.oasisArrival,
                       width: double.infinity,
-                      height: 300,
+                      height: 210,
                       radius: 26,
                       glow: true,
                     ),
                   ),
-                  const SizedBox(height: 26),
+                  const SizedBox(height: 18),
                   Text(
                     aiWon && winner != null ? l10n.opponentWins(winner.name) : l10n.victory,
                     textAlign: TextAlign.center,
@@ -91,7 +112,7 @@ class ResultsScreen extends ConsumerWidget {
                     ),
                   ),
                   if (winner != null) ...[
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                     Text(
                       aiWon ? l10n.wellRidden : winner.name,
                       textAlign: TextAlign.center,
@@ -101,7 +122,17 @@ class ResultsScreen extends ConsumerWidget {
                       ),
                     ),
                   ],
+                  if (ranked.isNotEmpty) ...[
+                    const SizedBox(height: 18),
+                    _Scoreboard(
+                      players: ranked,
+                      winnerId: winner?.id,
+                      l10n: l10n,
+                      teamColor: (p) => p.team.color(colors),
+                    ),
+                  ],
                   const Spacer(),
+                  const SizedBox(height: 18),
                   SizedBox(
                     width: double.infinity,
                     height: 56,
@@ -117,10 +148,16 @@ class ResultsScreen extends ConsumerWidget {
                           ),
                         ),
                         child: InkWell(
-                          onTap: () => context.go('/home'),
+                          key: const Key('race-again'),
+                          onTap: () {
+                            final again =
+                                ref.read(gameControllerProvider.notifier).restartSameSetup();
+                            context.go(again ? '/game' : '/home');
+                          },
                           child: Center(
                             child: Text(
-                              l10n.playAgain.toUpperCase(),
+                              l10n.playAgainSameRiders.toUpperCase(),
+                              textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: const Color(0xFF4A3410),
                                 fontWeight: FontWeight.w800,
@@ -145,6 +182,134 @@ class ResultsScreen extends ConsumerWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  static int _arrivals(Player p) =>
+      p.horses.where((h) => h.position is FinishedPosition).length;
+}
+
+/// One row per rider: colour, name, stars, right answers, best streak.
+/// Three numbers, three icons — readable by a child who cannot yet read
+/// the words.
+class _Scoreboard extends StatelessWidget {
+  const _Scoreboard({
+    required this.players,
+    required this.winnerId,
+    required this.l10n,
+    required this.teamColor,
+  });
+
+  final List<Player> players;
+  final String? winnerId;
+  final AppLocalizations l10n;
+  final Color Function(Player) teamColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final label = Theme.of(context).textTheme.labelMedium?.copyWith(
+      color: const Color(0xB3E9DFC8),
+      letterSpacing: 0.8,
+    );
+    final row = Theme.of(context).textTheme.bodyMedium?.copyWith(
+      color: const Color(0xFFF4ECDC),
+      fontWeight: FontWeight.w600,
+    );
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
+      decoration: BoxDecoration(
+        color: const Color(0x8010283F),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.scoreboardTitle.toUpperCase(), style: label),
+          const SizedBox(height: 8),
+          for (final p in players)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                children: [
+                  if (p.id == winnerId)
+                    const Padding(
+                      padding: EdgeInsets.only(right: 4),
+                      child: Icon(Icons.emoji_events, size: 16, color: Color(0xFFF3D68A)),
+                    ),
+                  CircleAvatar(radius: 6, backgroundColor: teamColor(p)),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      p.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: row,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  _Stat(
+                    icon: Icons.auto_awesome,
+                    color: const Color(0xFFEBC06A),
+                    text: '${p.rewards.knowledgePoints}',
+                    semantics: '${p.rewards.knowledgePoints}',
+                    style: row,
+                  ),
+                  const SizedBox(width: 10),
+                  _Stat(
+                    icon: Icons.check_circle,
+                    color: const Color(0xFF7ED09A),
+                    text: '${_correct(p)}',
+                    semantics: l10n.scoreboardCorrect(_correct(p)),
+                    style: row,
+                  ),
+                  const SizedBox(width: 10),
+                  _Stat(
+                    icon: Icons.local_fire_department,
+                    color: const Color(0xFFF0A24B),
+                    text: '${p.streak.best}',
+                    semantics: l10n.scoreboardBestStreak(p.streak.best),
+                    style: row,
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  static int _correct(Player p) => p.answersByCategory.values.fold(0, (a, b) => a + b);
+}
+
+class _Stat extends StatelessWidget {
+  const _Stat({
+    required this.icon,
+    required this.color,
+    required this.text,
+    required this.semantics,
+    required this.style,
+  });
+
+  final IconData icon;
+  final Color color;
+  final String text;
+  final String semantics;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: semantics,
+      excludeSemantics: true,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 15, color: color),
+          const SizedBox(width: 3),
+          Text(text, style: style),
         ],
       ),
     );

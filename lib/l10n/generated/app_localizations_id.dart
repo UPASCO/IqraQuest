@@ -423,6 +423,47 @@ class AppLocalizationsId extends AppLocalizations {
       'Satu pertanyaan terakhir untuk mengesahkan kedatanganmu.';
 
   @override
+  String opponentThinking(String name) {
+    return '$name sedang berpikir…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name menarik kartu $count';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'Jawaban yang benar: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'Papan Balapan';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count benar';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return 'rentetan $count';
+  }
+
+  @override
+  String get playAgainSameRiders => 'Balapan Lagi!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name melaju!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name tetap di tempat.';
+  }
+
+  @override
   String get outcomeMoved => 'Kudamu melaju!';
 
   @override

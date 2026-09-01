@@ -547,6 +547,80 @@
   "@journeyQuestionIntro": {
     "description": "Explains the journey question"
   },
+  "opponentThinking": "{name} is thinking…",
+  "@opponentThinking": {
+    "description": "Turn banner while an AI opponent is choosing a horse",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "opponentDrew": "{name} draws a {count}",
+  "@opponentDrew": {
+    "description": "Turn banner: the AI opponent drew a card worth N squares",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "correctAnswerWas": "The right answer: {answer}",
+  "@correctAnswerWas": {
+    "description": "Feedback sheet: the right answer, shown after a wrong one",
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "scoreboardTitle": "Race board",
+  "@scoreboardTitle": {
+    "description": "Results screen: heading over the per-player score rows"
+  },
+  "scoreboardCorrect": "{count} correct",
+  "@scoreboardCorrect": {
+    "description": "Results screen: correct answers count, short",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scoreboardBestStreak": "streak of {count}",
+  "@scoreboardBestStreak": {
+    "description": "Results screen: best streak of the game, short",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playAgainSameRiders": "Race again!",
+  "@playAgainSameRiders": {
+    "description": "Results screen: restart with the same players, one tap"
+  },
+  "opponentMoved": "{name} moves ahead!",
+  "@opponentMoved": {
+    "description": "Turn banner: the AI opponent answered right and its horse moved",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "opponentStayed": "{name} holds its ground.",
+  "@opponentStayed": {
+    "description": "Turn banner: the AI opponent answered wrong and stays put",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "outcomeMoved": "Your horse moves ahead!",
   "@outcomeMoved": {
     "description": "Feedback after a correct answer"

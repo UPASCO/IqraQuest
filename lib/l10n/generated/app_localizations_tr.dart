@@ -422,6 +422,47 @@ class AppLocalizationsTr extends AppLocalizations {
   String get journeyQuestionIntro => 'Varışını onaylamak için son bir soru.';
 
   @override
+  String opponentThinking(String name) {
+    return '$name düşünüyor…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name bir $count çekti';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'Doğru cevap: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'Yarış Tablosu';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count doğru';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return '$count seri';
+  }
+
+  @override
+  String get playAgainSameRiders => 'Bir Yarış Daha!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name ilerliyor!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name yerinde kalıyor.';
+  }
+
+  @override
   String get outcomeMoved => 'Atın ilerliyor!';
 
   @override

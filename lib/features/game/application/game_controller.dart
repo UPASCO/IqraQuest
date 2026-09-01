@@ -138,6 +138,34 @@ class GameController extends StateNotifier<GameSession?> {
     _beginTurn();
   }
 
+  /// Starts the finished game over with the same riders, the same board
+  /// and the same format — the "again!" at the end of a game, which has
+  /// to be one tap or it is never said.
+  ///
+  /// Every rider starts back in the stable with a clean streak and an
+  /// empty satchel: rewards are earned by knowledge inside a game, and
+  /// carrying them over would let the last game decide the next one.
+  bool restartSameSetup() {
+    final s = state;
+    if (s == null) return false;
+    final previous = s.gameState;
+    startNewGame(
+      mode: previous.gameMode,
+      variant: previous.gameVariant,
+      circuitId: previous.circuitId,
+      players: [
+        for (final p in previous.players)
+          p.copyWith(
+            horses: [for (final _ in p.horses) const HorseState()],
+            streak: const KnowledgeStreak(),
+            rewards: const RewardInventory(),
+            answersByCategory: const {},
+          ),
+      ],
+    );
+    return true;
+  }
+
   bool loadSaved() {
     var saved = saveService.load();
     if (saved == null || saved.turnPhase == TurnPhase.gameOver) return false;
@@ -222,6 +250,15 @@ class GameController extends StateNotifier<GameSession?> {
     }
 
     final choice = MovementChoice(card.value);
+    // The card sets the distance for everyone; the question on it is
+    // dealt at the rider's own level. A seven-year-old who draws a 6
+    // rides six squares like anyone else, but answers a question that
+    // is hard *for a child* — the same tiering the gaits always had,
+    // which the deck alone would have silently thrown away.
+    final ownLevel = movementChoices.difficultyFor(choice, s.gameState.currentPlayer.profile);
+    final dealt = ownLevel == card.difficulty
+        ? card
+        : (_drawQuestion(s.gameState, ownLevel) ?? card);
     // A Grand Galop is spent on exactly the terms the opponent spends
     // it on: only when it turns this move into an arrival. Without this
     // the reward was earned by the player and usable only by the AI —
@@ -241,7 +278,7 @@ class GameController extends StateNotifier<GameSession?> {
       gameState: committed,
       // The bank stores correct answers at index 0: shuffle on draw so
       // the on-screen order never gives the answer away.
-      currentQuestion: card.withShuffledAnswers(_random),
+      currentQuestion: dealt.withShuffledAnswers(_random),
       preview: engine.previewGait(
         s.gameState,
         horseIndex,
@@ -253,7 +290,7 @@ class GameController extends StateNotifier<GameSession?> {
 
     final player = committed.currentPlayer;
     if (player.isAi) {
-      _runAiAnswer(player.aiDifficulty!, card.difficulty);
+      _runAiAnswer(player.aiDifficulty!, dealt.difficulty);
     }
   }
 
@@ -637,13 +674,15 @@ class GameController extends StateNotifier<GameSession?> {
       return;
     }
 
-    final decision = ai.chooseGait(
+    // The same deck as the human, the same draw: the opponent only
+    // decides which horse the card will carry.
+    final horse = ai.chooseHorse(
       state: current.gameState,
       engine: engine,
       difficulty: current.gameState.currentPlayer.aiDifficulty!,
     );
     state = current.copyWith(isAiTurnInProgress: false);
-    selectGait(decision.horseIndex, decision.choice, useGrandGallop: decision.useGrandGallop);
+    drawCard(horse);
   }
 
   Future<void> _runAiAnswer(AiDifficulty aiDifficulty, QuestionDifficulty _) async {

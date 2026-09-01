@@ -424,6 +424,47 @@ class AppLocalizationsAr extends AppLocalizations {
   String get journeyQuestionIntro => 'سؤال أخير لتأكيد وصولك.';
 
   @override
+  String opponentThinking(String name) {
+    return '$name يفكّر…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name يسحب $count';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'الإجابة الصحيحة: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'لوحة السباق';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count إجابات صحيحة';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return 'سلسلة من $count';
+  }
+
+  @override
+  String get playAgainSameRiders => 'سباق آخر!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name يتقدم!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name يبقى مكانه.';
+  }
+
+  @override
   String get outcomeMoved => 'حصانك يتقدم!';
 
   @override

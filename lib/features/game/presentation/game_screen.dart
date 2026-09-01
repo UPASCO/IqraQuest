@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,6 +20,11 @@ import '../../../widgets/question_card_draw.dart';
 import '../application/game_controller.dart';
 import '../../../widgets/button_label.dart';
 
+/// How long the answered card stays up, verdict on the tiles, before the
+/// board comes back and the horse rides. Long enough to read "right" or
+/// "wrong"; short enough that the ride is what the player remembers.
+const Duration kAnswerBeatDuration = Duration(milliseconds: 1000);
+
 /// The game screen is the world: a full-bleed dawn landscape with the
 /// journey tilted into perspective, and every piece of UI floating over
 /// it. No app bar, no page chrome — opening this screen must feel like
@@ -33,8 +39,19 @@ class GameScreen extends ConsumerStatefulWidget {
 class _GameScreenState extends ConsumerState<GameScreen> {
   int? _selectedAnswer;
   int _selectedHorse = 0;
-  MovementChoice? _hoveredGait;
   String? _dismissedQuestionId;
+
+  /// An answer plays in two beats. Beat one: the card shows the verdict
+  /// on its tiles and the board underneath is held at its pre-move
+  /// state. Beat two: the card folds down to a short sheet, the board is
+  /// released and the horse rides in full view. Without the hold, the
+  /// horse would move behind the blurred card and the player would only
+  /// ever see it already arrived.
+  GameState? _frozenBoard;
+  bool _compactFeedback = false;
+  bool _hoofsDeferred = false;
+  int? _pointsEarned;
+  Timer? _beatTimer;
 
   /// While the drawn card is turning over, the question sheet is held
   /// back: the player reads what the card is worth first, then answers.
@@ -50,6 +67,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final session = ref.watch(gameControllerProvider);
 
     ref.listen(gameControllerProvider, (previous, next) {
+      _beginAnswerBeatsIfNeeded(previous, next);
       _playCuesFor(previous, next);
       if (next?.gameState.turnPhase == TurnPhase.gameOver &&
           previous?.gameState.turnPhase != TurnPhase.gameOver) {
@@ -60,10 +78,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       }
       // A new turn resets the local selection helpers.
       if (previous?.gameState.currentPlayerIndex != next?.gameState.currentPlayerIndex) {
-        setState(() {
-          _selectedHorse = 0;
-          _hoveredGait = null;
-        });
+        setState(() => _selectedHorse = 0);
       }
     });
 
@@ -137,7 +152,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           // from one grid, so a square index always lands on its tile.
           Positioned.fill(
             child: CrossBoardScene(
-              state: state,
+              state: _frozenBoard ?? state,
               preview: boardPreview == null
                   ? null
                   : (
@@ -296,15 +311,17 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
               selectedAnswer: _selectedAnswer,
               lastAnswerCorrect: state.lastAnswerCorrect,
-              pointsEarned:
-                  state.lastAnswerCorrect == true && state.turnPhase == TurnPhase.showingFeedback
-                  ? _hoveredGait?.knowledgePoints
+              compact: _compactFeedback && state.lastAnswerCorrect != null,
+              largeText: player.profile.isChildMode,
+              pointsEarned: state.lastAnswerCorrect == true && _pointsEarned != null
+                  ? _pointsEarned
                   : null,
               justUnlocked: state.justUnlocked.isEmpty ? null : state.justUnlocked.first,
               streakCurrent: player.streak.current,
               l10n: l10n,
               onSelect: (i) {
                 ref.read(soundServiceProvider).play(Sfx.tap);
+                HapticFeedback.selectionClick();
                 setState(() => _selectedAnswer = i);
                 final controller = ref.read(gameControllerProvider.notifier);
                 switch (state.turnPhase) {
@@ -346,6 +363,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     if (_revealing) return;
     final controller = ref.read(gameControllerProvider.notifier);
     ref.read(soundServiceProvider).play(Sfx.gaitSelect);
+    HapticFeedback.selectionClick();
     controller.drawCard(_selectedHorse);
 
     final drawn = ref.read(gameControllerProvider)?.gameState.pendingGait;
@@ -368,9 +386,54 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     });
   }
 
+  /// Arms the two answer beats when a human's answer has just been
+  /// judged, and clears them the moment the feedback phase is left.
+  void _beginAnswerBeatsIfNeeded(GameSession? previous, GameSession? next) {
+    if (previous == null || next == null) return;
+    final prevState = previous.gameState;
+    final nextState = next.gameState;
+    final entering = nextState.turnPhase == TurnPhase.showingFeedback &&
+        prevState.turnPhase != TurnPhase.showingFeedback;
+    final leaving = nextState.turnPhase != TurnPhase.showingFeedback &&
+        prevState.turnPhase == TurnPhase.showingFeedback;
+
+    if (entering && nextState.currentPlayer.isHuman) {
+      final idx = nextState.currentPlayerIndex;
+      final before = prevState.players[idx].rewards.knowledgePoints;
+      final after = nextState.players[idx].rewards.knowledgePoints;
+      final earned = after - before;
+      _beatTimer?.cancel();
+      setState(() {
+        _frozenBoard = prevState;
+        _compactFeedback = false;
+        _pointsEarned = earned > 0 ? earned : null;
+      });
+      _beatTimer = Timer(kAnswerBeatDuration, () {
+        if (!mounted) return;
+        setState(() {
+          _frozenBoard = null;
+          _compactFeedback = true;
+        });
+        if (_hoofsDeferred) {
+          _hoofsDeferred = false;
+          ref.read(soundServiceProvider).play(Sfx.moveHoofs);
+        }
+      });
+    } else if (leaving) {
+      _beatTimer?.cancel();
+      _hoofsDeferred = false;
+      setState(() {
+        _frozenBoard = null;
+        _compactFeedback = false;
+        _pointsEarned = null;
+      });
+    }
+  }
+
   @override
   void dispose() {
     _revealTimer?.cancel();
+    _beatTimer?.cancel();
     super.dispose();
   }
 
@@ -387,12 +450,21 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       // The fanfare belongs to a human win; an AI win ends quietly.
       final winner =
           nextState.players.where((p) => p.id == nextState.winnerId).firstOrNull;
-      if (winner == null || winner.isHuman) sound.play(Sfx.victory);
+      if (winner == null || winner.isHuman) {
+        sound.play(Sfx.victory);
+        HapticFeedback.heavyImpact();
+      }
       return;
     }
     if (nextState.turnPhase == TurnPhase.showingFeedback &&
         prevState.turnPhase != TurnPhase.showingFeedback) {
-      sound.play(nextState.lastAnswerCorrect == true ? Sfx.correct : Sfx.wrong);
+      final correct = nextState.lastAnswerCorrect == true;
+      sound.play(correct ? Sfx.correct : Sfx.wrong);
+      // Felt, not only heard: a firm tap for right, a soft one for wrong.
+      // Only the human's own answers buzz the phone.
+      if (nextState.currentPlayer.isHuman) {
+        correct ? HapticFeedback.mediumImpact() : HapticFeedback.lightImpact();
+      }
     }
     if (nextState.justUnlocked.isNotEmpty &&
         nextState.justUnlocked.length != prevState.justUnlocked.length) {
@@ -413,7 +485,13 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       }
     }
     if (moved) {
-      sound.play(Sfx.moveHoofs);
+      // A human's ride is held for one beat behind the answered card; the
+      // hoofbeats wait for it so sound and motion arrive together.
+      if (_frozenBoard != null) {
+        _hoofsDeferred = true;
+      } else {
+        sound.play(Sfx.moveHoofs);
+      }
       if (nextState.landedEffect == CellEffect.oasis) sound.play(Sfx.water);
     }
   }
@@ -491,15 +569,35 @@ class _TurnBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final outcome = session.gameState.lastMoveOutcome;
-    final text = switch (outcome) {
-      MoveOutcome.moved || MoveOutcome.bonusEarned => l10n.outcomeMoved,
-      MoveOutcome.stayed || MoveOutcome.bonusMissed => l10n.outcomeStayed,
-      MoveOutcome.captured => l10n.outcomeCaptured,
-      MoveOutcome.blockedByShield => l10n.outcomeShieldBlocked,
-      MoveOutcome.reachedFinish => l10n.journeyQuestionIntro,
-      null => session.isAiTurnInProgress ? '…' : l10n.yourTurn,
-    };
+    final state = session.gameState;
+    final outcome = state.lastMoveOutcome;
+    final player = state.currentPlayer;
+    final String text;
+    if (player.isHuman) {
+      text = switch (outcome) {
+        MoveOutcome.moved || MoveOutcome.bonusEarned => l10n.outcomeMoved,
+        MoveOutcome.stayed || MoveOutcome.bonusMissed => l10n.outcomeStayed,
+        MoveOutcome.captured => l10n.outcomeCaptured,
+        MoveOutcome.blockedByShield => l10n.outcomeShieldBlocked,
+        MoveOutcome.reachedFinish => l10n.journeyQuestionIntro,
+        null => l10n.yourTurn,
+      };
+    } else {
+      // The opponent's turn is narrated, never silent: what it drew,
+      // then what happened. An unexplained pause reads as a freeze.
+      final drawn = state.pendingGait;
+      text = switch (outcome) {
+        MoveOutcome.moved || MoveOutcome.bonusEarned || MoveOutcome.reachedFinish =>
+          l10n.opponentMoved(player.name),
+        MoveOutcome.captured => l10n.outcomeCaptured,
+        MoveOutcome.stayed ||
+        MoveOutcome.bonusMissed ||
+        MoveOutcome.blockedByShield => l10n.opponentStayed(player.name),
+        null => drawn != null
+            ? l10n.opponentDrew(player.name, drawn.choice.steps)
+            : l10n.opponentThinking(player.name),
+      };
+    }
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
@@ -537,6 +635,8 @@ class _QuestionOverlay extends StatelessWidget {
     this.pointsEarned,
     this.justUnlocked,
     this.streakCurrent = 0,
+    this.compact = false,
+    this.largeText = false,
   });
 
   final Question question;
@@ -544,6 +644,13 @@ class _QuestionOverlay extends StatelessWidget {
   final bool isCellBonus;
   final int? selectedAnswer;
   final bool? lastAnswerCorrect;
+
+  /// Second beat of the answer: the world is clear (the horse is riding)
+  /// and only a short sheet sits at the bottom.
+  final bool compact;
+
+  /// Child level: bigger answers on the card.
+  final bool largeText;
   final AppLocalizations l10n;
   final ValueChanged<int> onSelect;
   final VoidCallback onContinue;
@@ -559,6 +666,60 @@ class _QuestionOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.sizeOf(context);
+    if (compact) {
+      return Positioned.fill(
+        child: Stack(
+          children: [
+            // Only the bottom is scrimmed: the board, and the horse
+            // riding across it, stay sharp above the sheet.
+            const Positioned.fill(
+              child: IgnorePointer(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 0.55, 1.0],
+                      colors: [Color(0x0006231A), Color(0x1A06231A), Color(0xB306231A)],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            if (pointsEarned != null)
+              SafeArea(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 2),
+                    child: justUnlocked != null
+                        ? _StreakBurst(unlocked: justUnlocked!, streak: streakCurrent)
+                        : _RewardChip(points: pointsEarned!),
+                  ),
+                ),
+              ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SafeArea(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: screen.height * 0.5),
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
+                    reverse: true,
+                    child: AnswerFeedbackSheet(
+                      question: question,
+                      isCorrect: lastAnswerCorrect ?? false,
+                      showExplanation: !largeText,
+                      onContinue: onContinue,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
     return Positioned.fill(
       child: Stack(
         children: [
@@ -622,8 +783,12 @@ class _QuestionOverlay extends StatelessWidget {
                       question: question,
                       selectedIndex: selectedAnswer,
                       isCorrect: lastAnswerCorrect,
+                      // Beat one holds the verdict on the tiles only;
+                      // the rest follows on the sheet.
+                      brief: true,
+                      largeText: largeText,
                       onSelect: onSelect,
-                      onContinue: lastAnswerCorrect != null ? onContinue : null,
+                      onContinue: null,
                     ),
                   ],
                 ),

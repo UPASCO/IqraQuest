@@ -425,6 +425,47 @@ class AppLocalizationsNl extends AppLocalizations {
       'Nog één vraag om je aankomst te bevestigen.';
 
   @override
+  String opponentThinking(String name) {
+    return '$name denkt na…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name trekt een $count';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'Het juiste antwoord: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'Racebord';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count goed';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return 'reeks van $count';
+  }
+
+  @override
+  String get playAgainSameRiders => 'Nog een race!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name gaat vooruit!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name blijft staan.';
+  }
+
+  @override
   String get outcomeMoved => 'Je paard gaat vooruit!';
 
   @override

@@ -426,6 +426,47 @@ class AppLocalizationsPt extends AppLocalizations {
       'Uma última pergunta para validar sua chegada.';
 
   @override
+  String opponentThinking(String name) {
+    return '$name está pensando…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name tira um $count';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'A resposta certa: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'Quadro da corrida';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count acertos';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return 'sequência de $count';
+  }
+
+  @override
+  String get playAgainSameRiders => 'Mais uma corrida!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name avança!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name fica parado.';
+  }
+
+  @override
   String get outcomeMoved => 'Seu cavalo avança!';
 
   @override

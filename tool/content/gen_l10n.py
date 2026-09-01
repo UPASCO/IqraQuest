@@ -898,6 +898,71 @@ s("journeyQuestionIntro", "Explains the journey question",
   it="Un'ultima domanda per convalidare il tuo arrivo.",
   nl="Nog één vraag om je aankomst te bevestigen.")
 
+# ---- The opponent's turn, narrated ------------------------------------------
+s("opponentThinking", "Turn banner while an AI opponent is choosing a horse",
+  ph={"name": "String"},
+  fr="{name} réfléchit…", en="{name} is thinking…", ar="{name} يفكّر…",
+  es="{name} está pensando…", pt="{name} está pensando…", de="{name} überlegt…",
+  tr="{name} düşünüyor…", id="{name} sedang berpikir…", ur="{name} سوچ رہا ہے…",
+  ms="{name} sedang berfikir…", it="{name} sta pensando…", nl="{name} denkt na…")
+
+s("opponentDrew", "Turn banner: the AI opponent drew a card worth N squares",
+  ph={"name": "String", "count": "int"},
+  fr="{name} pioche un {count}", en="{name} draws a {count}", ar="{name} يسحب {count}",
+  es="{name} saca un {count}", pt="{name} tira um {count}", de="{name} zieht eine {count}",
+  tr="{name} bir {count} çekti", id="{name} menarik kartu {count}",
+  ur="{name} نے {count} نکالا", ms="{name} menarik kad {count}",
+  it="{name} pesca un {count}", nl="{name} trekt een {count}")
+
+s("correctAnswerWas", "Feedback sheet: the right answer, shown after a wrong one",
+  ph={"answer": "String"},
+  fr="La bonne réponse : {answer}", en="The right answer: {answer}",
+  ar="الإجابة الصحيحة: {answer}", es="La respuesta correcta: {answer}",
+  pt="A resposta certa: {answer}", de="Die richtige Antwort: {answer}",
+  tr="Doğru cevap: {answer}", id="Jawaban yang benar: {answer}",
+  ur="صحیح جواب: {answer}", ms="Jawapan yang betul: {answer}",
+  it="La risposta giusta: {answer}", nl="Het juiste antwoord: {answer}")
+
+s("scoreboardTitle", "Results screen: heading over the per-player score rows",
+  fr="Tableau de la course", en="Race board", ar="لوحة السباق",
+  es="Tablero de la carrera", pt="Quadro da corrida", de="Rennstand",
+  tr="Yarış Tablosu", id="Papan Balapan", ur="ریس بورڈ", ms="Papan Perlumbaan",
+  it="Tabellone della corsa", nl="Racebord")
+
+s("scoreboardCorrect", "Results screen: correct answers count, short",
+  ph={"count": "int"},
+  fr="{count} bonnes réponses", en="{count} correct", ar="{count} إجابات صحيحة",
+  es="{count} aciertos", pt="{count} acertos", de="{count} richtig",
+  tr="{count} doğru", id="{count} benar", ur="{count} درست", ms="{count} betul",
+  it="{count} corrette", nl="{count} goed")
+
+s("scoreboardBestStreak", "Results screen: best streak of the game, short",
+  ph={"count": "int"},
+  fr="série de {count}", en="streak of {count}", ar="سلسلة من {count}",
+  es="racha de {count}", pt="sequência de {count}", de="Serie von {count}",
+  tr="{count} seri", id="rentetan {count}", ur="{count} کا سلسلہ", ms="rentetan {count}",
+  it="serie di {count}", nl="reeks van {count}")
+
+s("playAgainSameRiders", "Results screen: restart with the same players, one tap",
+  fr="Encore une course !", en="Race again!", ar="سباق آخر!", es="¡Otra carrera!",
+  pt="Mais uma corrida!", de="Noch ein Rennen!", tr="Bir Yarış Daha!",
+  id="Balapan Lagi!", ur="ایک اور ریس!", ms="Lumba Lagi!", it="Un'altra corsa!",
+  nl="Nog een race!")
+
+s("opponentMoved", "Turn banner: the AI opponent answered right and its horse moved",
+  ph={"name": "String"},
+  fr="{name} avance !", en="{name} moves ahead!", ar="{name} يتقدم!",
+  es="¡{name} avanza!", pt="{name} avança!", de="{name} zieht vor!",
+  tr="{name} ilerliyor!", id="{name} melaju!", ur="{name} آگے بڑھا!",
+  ms="{name} maju!", it="{name} avanza!", nl="{name} gaat vooruit!")
+
+s("opponentStayed", "Turn banner: the AI opponent answered wrong and stays put",
+  ph={"name": "String"},
+  fr="{name} reste sur place.", en="{name} holds its ground.", ar="{name} يبقى مكانه.",
+  es="{name} se queda.", pt="{name} fica parado.", de="{name} bleibt stehen.",
+  tr="{name} yerinde kalıyor.", id="{name} tetap di tempat.", ur="{name} وہیں رہا۔",
+  ms="{name} kekal.", it="{name} resta fermo.", nl="{name} blijft staan.")
+
 # ---- Move outcomes ---------------------------------------------------------
 s("outcomeMoved", "Feedback after a correct answer",
   fr="Ton cheval avance !", en="Your horse moves ahead!", ar="حصانك يتقدم!",

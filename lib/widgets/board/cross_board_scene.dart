@@ -74,6 +74,7 @@ class CrossBoardScene extends StatelessWidget {
 
             if (preview != null)
               Positioned(
+                key: const ValueKey('preview'),
                 left: toScreen(
                       _anchorFor(preview!.destination, preview!.teamIndex, 0),
                     ).dx -
@@ -137,6 +138,7 @@ class CrossBoardScene extends StatelessWidget {
     final width = side * 0.19;
 
     return Positioned(
+      key: ValueKey('corner-$teamIndex'),
       left: at.dx - width / 2,
       top: at.dy - side * 0.020,
       width: width,
@@ -184,7 +186,15 @@ class CrossBoardScene extends StatelessWidget {
     final selectable = selectableHorses.contains('${player.id}:$horseIndex');
     final color = team.color(context.colors);
 
-    return Positioned(
+    // The ride is the one thing a child must be able to watch: a piece
+    // that jumps from square to square is a teleport, and a teleport
+    // is exactly what made the moves "unclear". Keyed per horse so
+    // Flutter animates this piece, not whichever child now sits at
+    // its index once the preview ring comes and goes.
+    return AnimatedPositioned(
+      key: ValueKey('${player.id}:$horseIndex'),
+      duration: AppMotion.of(context, AppMotion.moveMax),
+      curve: Curves.easeInOutCubic,
       left: at.dx - pieceSize / 2,
       top: at.dy - pieceSize * 0.86,
       width: pieceSize,

@@ -850,6 +850,60 @@ abstract class AppLocalizations {
   /// **'One last question to make your arrival official.'**
   String get journeyQuestionIntro;
 
+  /// Turn banner while an AI opponent is choosing a horse
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is thinking…'**
+  String opponentThinking(String name);
+
+  /// Turn banner: the AI opponent drew a card worth N squares
+  ///
+  /// In en, this message translates to:
+  /// **'{name} draws a {count}'**
+  String opponentDrew(String name, int count);
+
+  /// Feedback sheet: the right answer, shown after a wrong one
+  ///
+  /// In en, this message translates to:
+  /// **'The right answer: {answer}'**
+  String correctAnswerWas(String answer);
+
+  /// Results screen: heading over the per-player score rows
+  ///
+  /// In en, this message translates to:
+  /// **'Race board'**
+  String get scoreboardTitle;
+
+  /// Results screen: correct answers count, short
+  ///
+  /// In en, this message translates to:
+  /// **'{count} correct'**
+  String scoreboardCorrect(int count);
+
+  /// Results screen: best streak of the game, short
+  ///
+  /// In en, this message translates to:
+  /// **'streak of {count}'**
+  String scoreboardBestStreak(int count);
+
+  /// Results screen: restart with the same players, one tap
+  ///
+  /// In en, this message translates to:
+  /// **'Race again!'**
+  String get playAgainSameRiders;
+
+  /// Turn banner: the AI opponent answered right and its horse moved
+  ///
+  /// In en, this message translates to:
+  /// **'{name} moves ahead!'**
+  String opponentMoved(String name);
+
+  /// Turn banner: the AI opponent answered wrong and stays put
+  ///
+  /// In en, this message translates to:
+  /// **'{name} holds its ground.'**
+  String opponentStayed(String name);
+
   /// Feedback after a correct answer
   ///
   /// In en, this message translates to:

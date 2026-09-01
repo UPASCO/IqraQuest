@@ -13,6 +13,7 @@ import 'package:iqraquest/app/app.dart';
 import 'package:iqraquest/app/providers.dart';
 import 'package:iqraquest/app/router.dart';
 import 'package:iqraquest/features/game/application/game_controller.dart';
+import 'package:iqraquest/features/game/presentation/game_screen.dart';
 import 'package:iqraquest/models/models.dart';
 import 'package:iqraquest/services/entitlement_service.dart';
 import 'package:iqraquest/services/game_save_service.dart';
@@ -121,6 +122,9 @@ void main() {
           ? question!.answers[question.correctAnswerIndex]
           : question!.answers[(question.correctAnswerIndex + 1) % 4];
       await tester.tap(find.text(answer).first);
+      await _settle(tester);
+      // The verdict holds for one beat before the sheet with the way on.
+      await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
       await _settle(tester);
 
       final continueLabel = find.text('Continue');

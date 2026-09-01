@@ -424,6 +424,47 @@ class AppLocalizationsMs extends AppLocalizations {
       'Satu soalan terakhir untuk mengesahkan ketibaan anda.';
 
   @override
+  String opponentThinking(String name) {
+    return '$name sedang berfikir…';
+  }
+
+  @override
+  String opponentDrew(String name, int count) {
+    return '$name menarik kad $count';
+  }
+
+  @override
+  String correctAnswerWas(String answer) {
+    return 'Jawapan yang betul: $answer';
+  }
+
+  @override
+  String get scoreboardTitle => 'Papan Perlumbaan';
+
+  @override
+  String scoreboardCorrect(int count) {
+    return '$count betul';
+  }
+
+  @override
+  String scoreboardBestStreak(int count) {
+    return 'rentetan $count';
+  }
+
+  @override
+  String get playAgainSameRiders => 'Lumba Lagi!';
+
+  @override
+  String opponentMoved(String name) {
+    return '$name maju!';
+  }
+
+  @override
+  String opponentStayed(String name) {
+    return '$name kekal.';
+  }
+
+  @override
   String get outcomeMoved => 'Kuda anda maju!';
 
   @override
