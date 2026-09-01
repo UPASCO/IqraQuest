@@ -65,7 +65,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get difficultyEasy => 'Facile';
 
   @override
-  String get difficultyMedium => 'Intermédiaire';
+  String get difficultyMedium => 'Moyen';
 
   @override
   String get difficultyHard => 'Difficile';
@@ -267,6 +267,17 @@ class AppLocalizationsFr extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count cases spéciales',
+      one: '$count case spéciale',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Piocher une carte';
 
   @override
@@ -359,15 +370,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Parcours court et lumineux. Parfait pour une partie rapide.';
+      'Le parcours le plus calme : des oasis, peu d\'imprévus.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Campements et lanternes. Un parcours plus stratégique.';
+      'Des défis et des relais en chemin. Plus tactique.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Du jour au ciel étoilé. Le grand voyage.';
+      'Le parcours le plus animé : défis, raccourcis et duels.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -465,7 +476,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Une bonne réponse fait avancer ton cheval exactement du nombre de cases choisi. Une mauvaise réponse le laisse sur place : tu ne recules jamais.';
+      'Une bonne réponse fait avancer ton cheval exactement du nombre de cases inscrit sur la carte. Une mauvaise réponse le laisse sur place : tu ne recules jamais.';
 
   @override
   String get ruleEscalierTitle => 'L\'escalier vers La Mecque';

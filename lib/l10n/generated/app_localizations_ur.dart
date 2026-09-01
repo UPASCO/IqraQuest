@@ -266,6 +266,17 @@ class AppLocalizationsUr extends AppLocalizations {
   String get placeMina => 'منیٰ';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count خاص خانے',
+      one: '$count خاص خانہ',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'کارڈ نکالیں';
 
   @override
@@ -357,15 +368,15 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'مختصر، روشن راستہ۔ تیز کھیل کے لیے بہترین۔';
+      'سب سے پرسکون راستہ: نخلستان، کم حیرتیں۔';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'پڑاؤ اور لالٹینیں۔ زیادہ حکمت عملی والا راستہ۔';
+      'راستے میں چیلنج اور ریلے۔ زیادہ حکمت عملی۔';
 
   @override
   String get circuitGreatRideDescription =>
-      'دن سے ستاروں بھرے آسمان تک۔ عظیم سفر۔';
+      'سب سے پرجوش راستہ: چیلنج، شارٹ کٹ اور مقابلے۔';
 
   @override
   String get cellOasis => 'نخلستان';
@@ -462,7 +473,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'درست جواب آپ کے گھوڑے کو بالکل اتنا ہی آگے بڑھاتا ہے جتنا آپ نے چنا۔ غلط جواب اسے وہیں رکھتا ہے — آپ کبھی پیچھے نہیں ہٹتے۔';
+      'درست جواب آپ کے گھوڑے کو کارڈ پر لکھے خانوں کے برابر آگے بڑھاتا ہے۔ غلط جواب اسے وہیں چھوڑ دیتا ہے: آپ کبھی پیچھے نہیں ہٹتے۔';
 
   @override
   String get ruleEscalierTitle => 'مکہ کی طرف زینہ';

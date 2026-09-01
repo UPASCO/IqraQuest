@@ -265,6 +265,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get placeMina => 'منى';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count مربعات خاصة',
+      one: 'مربع خاص واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'اسحب بطاقة';
 
   @override
@@ -359,15 +370,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'مسار قصير مشمس. مثالي للعبة سريعة.';
+      'أهدأ مسار: واحات وقليل من المفاجآت.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'مخيمات وفوانيس. مسار أكثر استراتيجية.';
+      'تحديات ومحطات على الطريق. أكثر تكتيكًا.';
 
   @override
   String get circuitGreatRideDescription =>
-      'من النهار إلى سماء النجوم. الرحلة الكبرى.';
+      'أكثر المسارات حيوية: تحديات واختصارات ومبارزات.';
 
   @override
   String get cellOasis => 'واحة';
@@ -464,7 +475,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'الإجابة الصحيحة تحرك حصانك بالضبط بالمسافة التي اخترتها. والإجابة الخاطئة تتركه مكانه — لا تتراجع أبدًا.';
+      'الإجابة الصحيحة تقدّم حصانك بعدد المربعات المكتوب على البطاقة تمامًا. والإجابة الخاطئة تتركه مكانه: لا تتراجع أبدًا.';
 
   @override
   String get ruleEscalierTitle => 'السلّم إلى مكة';

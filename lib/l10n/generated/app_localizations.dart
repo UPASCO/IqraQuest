@@ -226,7 +226,7 @@ abstract class AppLocalizations {
   /// **'Easy'**
   String get difficultyEasy;
 
-  /// AI/quiz difficulty level
+  /// Middle difficulty; kept short so a three-way selector stays symmetrical
   ///
   /// In en, this message translates to:
   /// **'Medium'**
@@ -598,6 +598,12 @@ abstract class AppLocalizations {
   /// **'Mina'**
   String get placeMina;
 
+  /// How eventful a board is, shown on its card
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} special square} other{{count} special squares}}'**
+  String circuitSpecialSquares(num count);
+
   /// Call to action on the face-down deck: draw this turn's card
   ///
   /// In en, this message translates to:
@@ -742,22 +748,22 @@ abstract class AppLocalizations {
   /// **'The Great Ride of Knowledge'**
   String get circuitGreatRide;
 
-  /// Circuit description
+  /// Oasis Route card description
   ///
   /// In en, this message translates to:
-  /// **'A short, sunlit course. Perfect for a quick game.'**
+  /// **'The calmest ride: oases, and few surprises.'**
   String get circuitOasisRouteDescription;
 
-  /// Circuit description
+  /// Caravan Trail card description
   ///
   /// In en, this message translates to:
-  /// **'Camps and lanterns. A more strategic course.'**
+  /// **'Challenges and relays along the way. More tactical.'**
   String get circuitCaravanTrailDescription;
 
-  /// Circuit description
+  /// Great Ride card description
   ///
   /// In en, this message translates to:
-  /// **'From daylight to a starlit sky. The great journey.'**
+  /// **'The liveliest ride: challenges, shortcuts and duels.'**
   String get circuitGreatRideDescription;
 
   /// Special square name
@@ -943,7 +949,7 @@ abstract class AppLocalizations {
   /// Rules step 2 body
   ///
   /// In en, this message translates to:
-  /// **'A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.'**
+  /// **'A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.'**
   String get ruleAnswerToAdvanceBody;
 
   /// Rules step 3 title

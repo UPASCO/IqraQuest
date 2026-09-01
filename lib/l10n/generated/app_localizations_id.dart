@@ -65,7 +65,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get difficultyEasy => 'Mudah';
 
   @override
-  String get difficultyMedium => 'Menengah';
+  String get difficultyMedium => 'Sedang';
 
   @override
   String get difficultyHard => 'Sulit';
@@ -268,6 +268,16 @@ class AppLocalizationsId extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count petak khusus',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Ambil kartu';
 
   @override
@@ -358,15 +368,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Lintasan pendek dan cerah. Cocok untuk permainan cepat.';
+      'Rute paling tenang: oase, sedikit kejutan.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Perkemahan dan lentera. Lintasan yang lebih strategis.';
+      'Tantangan dan estafet di sepanjang jalan. Lebih taktis.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Dari siang ke langit berbintang. Perjalanan agung.';
+      'Rute paling ramai: tantangan, jalan pintas, dan duel.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -464,7 +474,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Jawaban benar menggerakkan kudamu tepat sejauh yang kamu pilih. Jawaban salah membiarkannya di tempat — kamu tidak pernah mundur.';
+      'Jawaban benar memajukan kudamu tepat sebanyak petak yang tertera di kartu. Jawaban salah membiarkannya di tempat: kamu tidak pernah mundur.';
 
   @override
   String get ruleEscalierTitle => 'Tangga menuju Makkah';

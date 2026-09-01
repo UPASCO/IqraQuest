@@ -267,6 +267,17 @@ class AppLocalizationsDe extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Sonderfelder',
+      one: '$count Sonderfeld',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Karte ziehen';
 
   @override
@@ -359,15 +370,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Kurze, sonnige Strecke. Perfekt für ein schnelles Spiel.';
+      'Die ruhigste Strecke: Oasen, wenig Überraschungen.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Lager und Laternen. Eine strategischere Strecke.';
+      'Herausforderungen und Staffeln unterwegs. Taktischer.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Vom Tag zum Sternenhimmel. Die große Reise.';
+      'Die lebhafteste Strecke: Herausforderungen, Abkürzungen und Duelle.';
 
   @override
   String get cellOasis => 'Oase';
@@ -466,7 +477,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Eine richtige Antwort bewegt dein Pferd genau um die gewählte Distanz. Eine falsche Antwort lässt es stehen — du gehst nie zurück.';
+      'Eine richtige Antwort zieht dein Pferd genau um die Felder, die auf der Karte stehen. Eine falsche lässt es stehen: Du gehst nie zurück.';
 
   @override
   String get ruleEscalierTitle => 'Die Treppe nach Mekka';

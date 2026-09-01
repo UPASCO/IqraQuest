@@ -267,6 +267,17 @@ class AppLocalizationsNl extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count speciale vakjes',
+      one: '$count speciaal vakje',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Trek een kaart';
 
   @override
@@ -359,15 +370,15 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Kort, zonnig parcours. Perfect voor een snel spel.';
+      'De rustigste route: oases, weinig verrassingen.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Kampen en lantaarns. Een strategischer parcours.';
+      'Uitdagingen en estafettes onderweg. Tactischer.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Van daglicht tot sterrenhemel. De grote reis.';
+      'De levendigste route: uitdagingen, sluiproutes en duels.';
 
   @override
   String get cellOasis => 'Oase';
@@ -465,7 +476,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Een goed antwoord verplaatst je paard precies de gekozen afstand. Een fout antwoord laat het staan — je gaat nooit achteruit.';
+      'Een goed antwoord laat je paard precies het aantal vakjes op de kaart vooruit gaan. Een fout antwoord laat het staan: je gaat nooit achteruit.';
 
   @override
   String get ruleEscalierTitle => 'De trap naar Mekka';

@@ -267,6 +267,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count özel kare',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Kart çek';
 
   @override
@@ -358,15 +368,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Kısa ve güneşli parkur. Hızlı bir oyun için ideal.';
+      'En sakin parkur: vahalar, az sürpriz.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Kamplar ve fenerler. Daha stratejik bir parkur.';
+      'Yol boyunca meydan okumalar ve bayraklar. Daha taktik.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Gündüzden yıldızlı göğe. Büyük yolculuk.';
+      'En hareketli parkur: meydan okumalar, kısayollar ve düellolar.';
 
   @override
   String get cellOasis => 'Vaha';
@@ -463,7 +473,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Doğru cevap atını tam olarak seçtiğin kadar ilerletir. Yanlış cevap onu olduğu yerde bırakır — asla geri gitmezsin.';
+      'Doğru cevap atını kartta yazan kare kadar ilerletir. Yanlış cevap onu yerinde bırakır: asla geri gitmezsin.';
 
   @override
   String get ruleEscalierTitle => 'Mekke\'ye çıkan merdiven';

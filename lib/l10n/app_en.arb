@@ -74,7 +74,7 @@
   },
   "difficultyMedium": "Medium",
   "@difficultyMedium": {
-    "description": "AI/quiz difficulty level"
+    "description": "Middle difficulty; kept short so a three-way selector stays symmetrical"
   },
   "difficultyHard": "Hard",
   "@difficultyHard": {
@@ -353,6 +353,15 @@
   "@placeMina": {
     "description": "Gold corner"
   },
+  "circuitSpecialSquares": "{count, plural, one{{count} special square} other{{count} special squares}}",
+  "@circuitSpecialSquares": {
+    "description": "How eventful a board is, shown on its card",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
   "drawCard": "Draw a card",
   "@drawCard": {
     "description": "Call to action on the face-down deck: draw this turn's card"
@@ -470,17 +479,17 @@
   "@circuitGreatRide": {
     "description": "Circuit name"
   },
-  "circuitOasisRouteDescription": "A short, sunlit course. Perfect for a quick game.",
+  "circuitOasisRouteDescription": "The calmest ride: oases, and few surprises.",
   "@circuitOasisRouteDescription": {
-    "description": "Circuit description"
+    "description": "Oasis Route card description"
   },
-  "circuitCaravanTrailDescription": "Camps and lanterns. A more strategic course.",
+  "circuitCaravanTrailDescription": "Challenges and relays along the way. More tactical.",
   "@circuitCaravanTrailDescription": {
-    "description": "Circuit description"
+    "description": "Caravan Trail card description"
   },
-  "circuitGreatRideDescription": "From daylight to a starlit sky. The great journey.",
+  "circuitGreatRideDescription": "The liveliest ride: challenges, shortcuts and duels.",
   "@circuitGreatRideDescription": {
-    "description": "Circuit description"
+    "description": "Great Ride card description"
   },
   "cellOasis": "Oasis",
   "@cellOasis": {
@@ -602,7 +611,7 @@
   "@ruleAnswerToAdvanceTitle": {
     "description": "Rules step 2 title"
   },
-  "ruleAnswerToAdvanceBody": "A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.",
+  "ruleAnswerToAdvanceBody": "A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.",
   "@ruleAnswerToAdvanceBody": {
     "description": "Rules step 2 body"
   },

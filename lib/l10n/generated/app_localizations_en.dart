@@ -267,6 +267,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count special squares',
+      one: '$count special square',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Draw a card';
 
   @override
@@ -359,15 +370,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'A short, sunlit course. Perfect for a quick game.';
+      'The calmest ride: oases, and few surprises.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Camps and lanterns. A more strategic course.';
+      'Challenges and relays along the way. More tactical.';
 
   @override
   String get circuitGreatRideDescription =>
-      'From daylight to a starlit sky. The great journey.';
+      'The liveliest ride: challenges, shortcuts and duels.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -465,7 +476,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.';
+      'A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.';
 
   @override
   String get ruleEscalierTitle => 'The escalier to Mecca';

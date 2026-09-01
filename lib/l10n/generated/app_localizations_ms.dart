@@ -268,6 +268,16 @@ class AppLocalizationsMs extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count petak khas',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Cabut kad';
 
   @override
@@ -358,15 +368,15 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Laluan pendek dan cerah. Sesuai untuk permainan pantas.';
+      'Laluan paling tenang: oasis, sedikit kejutan.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Perkhemahan dan tanglung. Laluan yang lebih strategik.';
+      'Cabaran dan larian ganti di sepanjang jalan. Lebih taktikal.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Dari siang ke langit berbintang. Pengembaraan agung.';
+      'Laluan paling meriah: cabaran, jalan pintas dan pertarungan.';
 
   @override
   String get cellOasis => 'Oasis';
@@ -466,7 +476,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Jawapan betul menggerakkan kuda anda tepat sejauh yang anda pilih. Jawapan salah membiarkannya di tempatnya — anda tidak pernah berundur.';
+      'Jawapan betul menggerakkan kuda anda tepat sebanyak petak pada kad. Jawapan salah membiarkannya di tempatnya: anda tidak pernah berundur.';
 
   @override
   String get ruleEscalierTitle => 'Tangga ke Makkah';

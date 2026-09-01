@@ -65,6 +65,12 @@ class Circuit {
 
   int get trackLength => squaresPerQuadrant * 4;
 
+  /// How many squares on the whole circuit carry an effect.
+  ///
+  /// Every board is the same 52-square parcours, so distance no longer
+  /// tells them apart — how eventful the ride is does.
+  int get specialSquareCount => quadrantEffects.length * 4;
+
   int entryIndexForTeam(int teamIndex) => (teamIndex * squaresPerQuadrant) % trackLength;
 
   CellEffect effectAt(int trackIndex) {

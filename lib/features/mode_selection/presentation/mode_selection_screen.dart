@@ -198,7 +198,7 @@ class _CircuitCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        l10n.gaitSquares(circuit.trackLength),
+                        l10n.circuitSpecialSquares(circuit.specialSquareCount),
                         style: Theme.of(context).textTheme.labelSmall
                             ?.copyWith(color: colors.textSecondary),
                       ),

@@ -65,7 +65,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get difficultyEasy => 'Facile';
 
   @override
-  String get difficultyMedium => 'Intermedio';
+  String get difficultyMedium => 'Medio';
 
   @override
   String get difficultyHard => 'Difficile';
@@ -267,6 +267,17 @@ class AppLocalizationsIt extends AppLocalizations {
   String get placeMina => 'Mina';
 
   @override
+  String circuitSpecialSquares(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count caselle speciali',
+      one: '$count casella speciale',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get drawCard => 'Pesca una carta';
 
   @override
@@ -359,15 +370,15 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get circuitOasisRouteDescription =>
-      'Percorso breve e luminoso. Perfetto per una partita rapida.';
+      'Il percorso più tranquillo: oasi e poche sorprese.';
 
   @override
   String get circuitCaravanTrailDescription =>
-      'Accampamenti e lanterne. Un percorso più strategico.';
+      'Sfide e staffette lungo il cammino. Più tattico.';
 
   @override
   String get circuitGreatRideDescription =>
-      'Dal giorno al cielo stellato. Il grande viaggio.';
+      'Il percorso più vivace: sfide, scorciatoie e duelli.';
 
   @override
   String get cellOasis => 'Oasi';
@@ -466,7 +477,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Una risposta corretta muove il tuo cavallo esattamente della distanza scelta. Una risposta sbagliata lo lascia dov\'è: non torni mai indietro.';
+      'Una risposta giusta fa avanzare il tuo cavallo esattamente delle caselle indicate sulla carta. Una sbagliata lo lascia dov\'è: non torni mai indietro.';
 
   @override
   String get ruleEscalierTitle => 'La scala verso La Mecca';
