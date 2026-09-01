@@ -83,11 +83,26 @@ platform :ios do
     # --build-number=${{ github.run_number }} to `flutter build ios`
     # before this lane runs — see .github/workflows/ios-testflight.yml.
 
+    # A headless runner has no Xcode account, so automatic signing must
+    # authenticate to App Store Connect ITSELF (Xcode cloud signing):
+    # hand xcodebuild the same API key via -authenticationKey* so it can
+    # register the bundle id and create/download the distribution
+    # profile on the fly. Without this, archiving fails with
+    # "No Accounts" / "No profiles for '<bundle id>' were found".
+    api_key_path = File.absolute_path("asc_api_key.p8")
+    File.write(api_key_path, normalized_asc_key)
+    auth_args =
+      "-allowProvisioningUpdates " \
+      "-authenticationKeyPath \"#{api_key_path}\" " \
+      "-authenticationKeyID #{required_env('ASC_KEY_ID')} " \
+      "-authenticationKeyIssuerID #{required_env('ASC_ISSUER_ID')}"
+
     build_app(
       workspace: "Runner.xcworkspace",
       scheme: "Runner",
       export_method: "app-store",
-      xcargs: "-allowProvisioningUpdates",
+      xcargs: auth_args,
+      export_xcargs: auth_args,
     )
 
     upload_to_testflight(
