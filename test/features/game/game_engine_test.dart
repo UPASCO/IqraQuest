@@ -496,7 +496,7 @@ void main() {
 
     test('reaching the finish owes a Question du voyage before it counts', () {
       var state = buildGame(variant: GameVariant.quick);
-      state = withHorse(state, at: const FinalLanePosition(6));
+      state = withHorse(state, at: const FinalLanePosition(5));
       state = play(engine, state, steps: 1, correct: true, questionId: 'q1');
       final horse = state.players[0].horses[0];
       expect(horse.isFinished, isTrue);

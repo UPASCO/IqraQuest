@@ -108,7 +108,8 @@ class Circuit {
   /// Every board is the classic cross parcours of the *jeu des petits
   /// chevaux*: four arms around a centre, a 52-square circuit — 13 per
   /// quadrant — and a six-step escalier per team, climbed on an exact
-  /// count.
+  /// count of five marches — the 15x15 cross fits five, and the plate
+  /// and the rules are generated from that one grid.
   ///
   /// 13, not 14: on a cross board each quadrant runs up one side of an
   /// arm and back down the next, which always yields an odd `2a + 1`
@@ -120,7 +121,7 @@ class Circuit {
   /// which squares carry an effect, never in the distance: a race is
   /// only fair to compare when everyone runs the same course.
   static const int _squaresPerQuadrant = 13; // 13 x 4 = the 52-square circuit
-  static const int _escalierSteps = 6;
+  static const int _escalierSteps = 5;
 
   static const Circuit oasisRoute = Circuit(
     id: CircuitId.oasisRoute,

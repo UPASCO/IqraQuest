@@ -11,9 +11,8 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/sound_service.dart';
 import '../../../theme/app_theme.dart';
-import '../../../widgets/board/board_environment.dart';
-import '../../../widgets/board/baked_board_scene.dart';
-import '../../../widgets/board/board_widget.dart' show BoardPreview, BoardWidget;
+import '../../../widgets/board/board_widget.dart' show BoardPreview;
+import '../../../widgets/board/cross_board_scene.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
 import '../../../widgets/question_card_draw.dart';
@@ -114,15 +113,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       );
     }
 
-    final screen = MediaQuery.sizeOf(context);
-    // Negative tilt: the TOP of the board recedes toward the horizon.
-    const tilt = -0.50;
-    final boardSide = screen.width * 1.0;
-    final region = switch (state.circuitId) {
-      CircuitId.oasisRoute => WorldRegion.dawn,
-      CircuitId.caravanTrail => WorldRegion.solar,
-      CircuitId.greatRide => WorldRegion.fertile,
-    };
 
     final selectable = state.turnPhase == TurnPhase.selectingGait
         ? {
@@ -130,13 +120,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               '${player.id}:$i',
           }
         : const <String>{};
-    // The oasis route plays inside the baked 2.5D diorama; the other
-    // circuits still use the painted board until their scenes are baked.
-    // The baked plate is painted with a fixed number of tiles; the
-    // parcours is now the 56-square petits chevaux circuit, which no
-    // current plate matches, so this falls through to the procedural
-    // board. It turns itself back on the day a 56-tile plate ships.
-    final useDiorama = BakedBoardScene.supportsCircuit(Circuit.byId(state.circuitId));
 
     return PopScope(
       // System back mid-game behaves exactly like the in-game back
@@ -150,49 +133,24 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          if (useDiorama)
-            Positioned.fill(
-              child: BakedBoardScene(
-                state: state,
-                preview: boardPreview,
-                selectableHorses: selectable,
-                selectedHorseKey: '${player.id}:$_selectedHorse',
-                onHorseTap: (playerIndex, horseIndex) {
-                  if (playerIndex != state.currentPlayerIndex) return;
-                  setState(() => _selectedHorse = horseIndex);
-                },
-              ),
-            )
-          else ...[
-            Positioned.fill(
-              child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.20, region: region)),
+          // The classic cross board: plate and anchors are generated
+          // from one grid, so a square index always lands on its tile.
+          Positioned.fill(
+            child: CrossBoardScene(
+              state: state,
+              preview: boardPreview == null
+                  ? null
+                  : (
+                      teamIndex: boardPreview.teamIndex,
+                      destination: boardPreview.destination,
+                    ),
+              selectableHorses: selectable,
+              onHorseTap: (playerIndex, horseIndex) {
+                if (playerIndex != state.currentPlayerIndex) return;
+                setState(() => _selectedHorse = horseIndex);
+              },
             ),
-
-            // The journey, tilted into the landscape.
-            Align(
-              alignment: const Alignment(0, -0.32),
-              child: Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.0014)
-                  ..rotateX(tilt),
-                child: SizedBox(
-                  width: boardSide,
-                  height: boardSide,
-                  child: BoardWidget(
-                    state: state,
-                    preview: boardPreview,
-                    billboardAngle: tilt,
-                    selectableHorses: selectable,
-                    onHorseTap: (playerIndex, horseIndex) {
-                      if (playerIndex != state.currentPlayerIndex) return;
-                      setState(() => _selectedHorse = horseIndex);
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
 
           // ---- Floating HUD ----
           SafeArea(
@@ -212,7 +170,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                             CircleAvatar(radius: 6, backgroundColor: player.team.color(colors)),
                             const SizedBox(width: 8),
                             ConstrainedBox(
-                              constraints: BoxConstraints(maxWidth: screen.width * 0.32),
+                              constraints: BoxConstraints(
+                                maxWidth: MediaQuery.sizeOf(context).width * 0.32,
+                              ),
                               child: Text(
                                 player.name,
                                 maxLines: 1,
