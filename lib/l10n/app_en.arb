@@ -345,9 +345,9 @@
   "@placeMedina": {
     "description": "Green corner"
   },
-  "placeJerusalem": "Jerusalem",
-  "@placeJerusalem": {
-    "description": "Red corner"
+  "placeAlAqsa": "Al-Aqsa",
+  "@placeAlAqsa": {
+    "description": "Red corner: the mosque itself, not the city around it"
   },
   "placeArafat": "Mount Arafat",
   "@placeArafat": {

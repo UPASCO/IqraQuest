@@ -261,7 +261,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get placeMedina => 'Medina';
 
   @override
-  String get placeJerusalem => 'Jerusalém';
+  String get placeAlAqsa => 'Al-Aqsa';
 
   @override
   String get placeArafat => 'Monte Arafat';

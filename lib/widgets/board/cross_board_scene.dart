@@ -119,30 +119,48 @@ class CrossBoardScene extends StatelessWidget {
     final place = AppTeam.values[teamIndex].place;
     final name = switch (place) {
       HolyPlace.medina => l10n.placeMedina,
-      HolyPlace.jerusalem => l10n.placeJerusalem,
+      HolyPlace.alAqsa => l10n.placeAlAqsa,
       HolyPlace.arafat => l10n.placeArafat,
       HolyPlace.mina => l10n.placeMina,
     };
-    final at = toScreen(crossCornerAnchors[teamIndex]!);
-    final width = side * 0.20;
+    final medallion = crossCornerAnchors[teamIndex]!;
+    // Away from the middle of the board: the name sits on the coloured
+    // panel outside the illustration, never over a dark sky where it
+    // could not be read.
+    final outX = medallion.x < 0.5 ? -1.0 : 1.0;
+    final outY = medallion.y < 0.5 ? -1.0 : 1.0;
+    final at = toScreen(
+      SceneAnchor(medallion.x + outX * 0.052, medallion.y + outY * 0.086),
+    );
+    final width = side * 0.19;
 
     return Positioned(
       left: at.dx - width / 2,
-      top: at.dy - side * 0.018,
+      top: at.dy - side * 0.020,
       width: width,
       child: IgnorePointer(
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            style: TextStyle(
-              color: const Color(0xFF3A2F1E),
-              fontWeight: FontWeight.w700,
-              fontSize: side * 0.030,
-              height: 1.1,
-              letterSpacing: 0.3,
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: side * 0.012,
+            vertical: side * 0.006,
+          ),
+          decoration: BoxDecoration(
+            color: const Color(0xF2F6F0DF),
+            borderRadius: BorderRadius.circular(side * 0.016),
+            border: Border.all(color: const Color(0xB3C69E4A), width: 1.2),
+          ),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              name,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              style: TextStyle(
+                color: const Color(0xFF3A2F1E),
+                fontWeight: FontWeight.w700,
+                fontSize: side * 0.028,
+                height: 1.1,
+              ),
             ),
           ),
         ),

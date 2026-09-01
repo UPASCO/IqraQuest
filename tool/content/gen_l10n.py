@@ -537,10 +537,10 @@ s("placeMedina", "Green corner",
   de="Medina", tr="Medine", id="Madinah", ur="مدینہ", ms="Madinah",
   it="Medina", nl="Medina")
 
-s("placeJerusalem", "Red corner",
-  fr="Jérusalem", en="Jerusalem", ar="القدس", es="Jerusalén", pt="Jerusalém",
-  de="Jerusalem", tr="Kudüs", id="Yerusalem", ur="بیت المقدس", ms="Baitulmaqdis",
-  it="Gerusalemme", nl="Jeruzalem")
+s("placeAlAqsa", "Red corner: the mosque itself, not the city around it",
+  fr="Al-Aqsa", en="Al-Aqsa", ar="المسجد الأقصى", es="Al-Aqsa", pt="Al-Aqsa",
+  de="Al-Aqsa", tr="Mescid-i Aksa", id="Al-Aqsa", ur="مسجد اقصیٰ", ms="Al-Aqsa",
+  it="Al-Aqsa", nl="Al-Aqsa")
 
 s("placeArafat", "Blue corner",
   fr="Mont Arafat", en="Mount Arafat", ar="عرفات", es="Monte Arafat",

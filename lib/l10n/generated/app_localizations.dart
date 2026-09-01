@@ -586,11 +586,11 @@ abstract class AppLocalizations {
   /// **'Medina'**
   String get placeMedina;
 
-  /// Red corner
+  /// Red corner: the mosque itself, not the city around it
   ///
   /// In en, this message translates to:
-  /// **'Jerusalem'**
-  String get placeJerusalem;
+  /// **'Al-Aqsa'**
+  String get placeAlAqsa;
 
   /// Blue corner
   ///

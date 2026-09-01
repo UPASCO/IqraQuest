@@ -9,11 +9,11 @@ import 'app_semantic_colors.dart';
 /// The enum names are colours and stay that way: they are written into
 /// every save file, and renaming them would strand games in progress.
 /// The colour-to-place pairing below follows the board reference —
-/// Medina green, Jerusalem red, Arafat blue, Mina gold.
+/// Medina green, Al-Aqsa red, Arafat blue, Mina gold.
 enum AppTeam {
   emerald(symbol: TeamSymbol.star, coat: HorseCoat.grayWhite, place: HolyPlace.medina),
   saphir(symbol: TeamSymbol.compass, coat: HorseCoat.bay, place: HolyPlace.arafat),
-  grenat(symbol: TeamSymbol.lantern, coat: HorseCoat.chestnut, place: HolyPlace.jerusalem),
+  grenat(symbol: TeamSymbol.lantern, coat: HorseCoat.chestnut, place: HolyPlace.alAqsa),
   safran(symbol: TeamSymbol.book, coat: HorseCoat.black, place: HolyPlace.mina);
 
   const AppTeam({required this.symbol, required this.coat, required this.place});
@@ -35,7 +35,7 @@ enum AppTeam {
 
 /// One of the four corners of the board. Mecca sits at the centre as the
 /// destination and belongs to no team.
-enum HolyPlace { medina, jerusalem, arafat, mina }
+enum HolyPlace { medina, alAqsa, arafat, mina }
 
 /// Geometric marker shown on a player's saddle-cloth and UI badges —
 /// the non-color channel that keeps teams distinguishable.
