@@ -101,8 +101,11 @@ platform :ios do
       workspace: "Runner.xcworkspace",
       scheme: "Runner",
       export_method: "app-store",
+      # gym forwards xcargs to BOTH the archive and the export commands,
+      # so the auth args go here once — duplicating them via
+      # export_xcargs makes xcodebuild reject the export
+      # ("-authenticationKeyPath may only be provided once", exit 64).
       xcargs: auth_args,
-      export_xcargs: auth_args,
     )
 
     upload_to_testflight(
