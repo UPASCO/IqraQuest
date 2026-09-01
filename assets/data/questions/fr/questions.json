@@ -968,7 +968,7 @@
     "answers": [
       "Âyat al-Kursî (le verset du Trône)",
       "Âyat an-Nûr",
-      "Âyat as-Sayf",
+      "Âyat as-Siyâm",
       "Âyat ad-Dayn"
     ],
     "explanation": "Le verset 2:255, Âyat al-Kursî, décrit la grandeur d'Allah : « Allah ! Point de divinité à part Lui, le Vivant… »",
@@ -1211,7 +1211,7 @@
   {
     "id": "sira_024",
     "correctAnswerIndex": 0,
-    "question": "En quelle année de l'hégire eut lieu la conquête pacifique de La Mecque ?",
+    "question": "En quelle année de l'hégire eut lieu la conquête de La Mecque ?",
     "answers": [
       "L'an 8",
       "L'an 2",
@@ -1296,13 +1296,13 @@
       "Tâ'if",
       "Damas"
     ],
-    "explanation": "Les musulmans priaient d'abord vers Bayt al-Maqdis ; puis Allah ordonna de se tourner vers la Mosquée sacrée.",
-    "sourceDisplay": "Coran — Sourate Al-Baqara, 2:142-144"
+    "explanation": "Les musulmans priaient d'abord vers Bayt al-Maqdis ; puis Allah ordonna de se tourner vers la Mosquée sacrée (Coran 2:142-144).",
+    "sourceDisplay": "Sîra — fait bien établi (Coran 2:142-144)"
   },
   {
     "id": "faith_009",
     "correctAnswerIndex": 0,
-    "question": "Comment s'appelle la purification par l'eau que le musulman fait avant la prière ?",
+    "question": "Comment s'appelle la purification par l'eau que le musulman fait avant chaque prière ?",
     "answers": [
       "Le wudû' (les ablutions)",
       "Le tayammum",
@@ -1439,7 +1439,7 @@
       "Marcher dans le noir",
       "Semer dans le sable"
     ],
-    "explanation": "« L'un de vous aimerait-il manger la chair de son frère mort ? Vous en auririez horreur ! » — la médisance est aussi laide.",
+    "explanation": "« L'un de vous aimerait-il manger la chair de son frère mort ? Vous en auriez horreur ! » — la médisance est aussi laide.",
     "sourceDisplay": "Coran — Sourate Al-Hujurât, 49:12"
   },
   {

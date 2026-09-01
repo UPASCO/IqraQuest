@@ -968,7 +968,7 @@
     "answers": [
       "Ayat al-Kursi (the Throne Verse)",
       "Ayat an-Nur",
-      "Ayat as-Sayf",
+      "Ayat as-Siyam",
       "Ayat ad-Dayn"
     ],
     "explanation": "Verse 2:255, Ayat al-Kursi, describes Allah's greatness: 'Allah — there is no deity except Him, the Ever-Living…'",
@@ -1211,7 +1211,7 @@
   {
     "id": "sira_024",
     "correctAnswerIndex": 0,
-    "question": "In which year of the Hijra did the peaceful conquest of Makkah take place?",
+    "question": "In which year of the Hijra did the conquest of Makkah take place?",
     "answers": [
       "Year 8",
       "Year 2",
@@ -1296,13 +1296,13 @@
       "Ta'if",
       "Damascus"
     ],
-    "explanation": "Muslims first prayed toward Bayt al-Maqdis; then Allah commanded turning toward the Sacred Mosque.",
-    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:142-144"
+    "explanation": "Muslims first prayed toward Bayt al-Maqdis; then Allah commanded turning toward the Sacred Mosque (Quran 2:142-144).",
+    "sourceDisplay": "Sira — well-established fact (Quran 2:142-144)"
   },
   {
     "id": "faith_009",
     "correctAnswerIndex": 0,
-    "question": "What is the water purification a Muslim performs before prayer called?",
+    "question": "What is the routine water purification a Muslim performs before each prayer called?",
     "answers": [
       "Wudu (ablution)",
       "Tayammum",

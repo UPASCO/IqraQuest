@@ -17,7 +17,11 @@ class DailyChallengeService {
     final sorted = [...pool]..sort((a, b) => a.id.compareTo(b.id));
     final rng = Random(seed);
     final shuffled = [...sorted]..shuffle(rng);
-    return shuffled.take(questionsPerChallenge).toList();
+    // Answer order is shuffled too (the bank stores the correct answer
+    // first); same seed = same challenge for everyone on a given day.
+    return [
+      for (final q in shuffled.take(questionsPerChallenge)) q.withShuffledAnswers(rng),
+    ];
   }
 
   String dateKey(DateTime date) =>

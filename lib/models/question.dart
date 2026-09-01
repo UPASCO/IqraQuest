@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 
 import 'question_category.dart';
@@ -57,6 +59,33 @@ class Question {
   String get correctAnswer => answers[correctAnswerIndex];
 
   bool isCorrect(int selectedIndex) => selectedIndex == correctAnswerIndex;
+
+  /// The same question with its answers in a random display order.
+  ///
+  /// The bank stores every correct answer at index 0 (a deliberate
+  /// authoring convention that keeps the canonical data reviewable), so
+  /// each question MUST be shuffled once when it is drawn — otherwise
+  /// "always tap the first option" wins the game.
+  Question withShuffledAnswers(Random random) {
+    final order = [0, 1, 2, 3]..shuffle(random);
+    return Question(
+      id: id,
+      category: category,
+      difficulty: difficulty,
+      ageLevel: ageLevel,
+      question: question,
+      answers: [for (final i in order) answers[i]],
+      correctAnswerIndex: order.indexOf(correctAnswerIndex),
+      explanation: explanation,
+      sourceType: sourceType,
+      sourceWork: sourceWork,
+      sourceReference: sourceReference,
+      sourceDisplay: sourceDisplay,
+      sourceVerificationStatus: sourceVerificationStatus,
+      consensusStatus: consensusStatus,
+      isFree: isFree,
+    );
+  }
 
   factory Question.fromJson(Map<String, dynamic> json) {
     return Question(

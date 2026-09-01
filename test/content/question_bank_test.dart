@@ -1,4 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'dart:math';
+
 import 'package:iqraquest/models/question_category.dart';
 import 'package:iqraquest/services/question_repository.dart';
 
@@ -105,6 +107,28 @@ void main() {
       final freeIds = questions.where((q) => q.isFree).map((q) => q.id).toSet();
       expect(repo.isFreeBankExhausted(pool: questions, askedQuestionIds: freeIds), isTrue);
       expect(repo.isFreeBankExhausted(pool: questions, askedQuestionIds: {}), isFalse);
+    });
+  });
+
+  group('Answer display order', () {
+    test('shuffling keeps the right answer right and varies its position', () async {
+      final questions = await repo.loadAll('en');
+      // Authoring convention: canonical data stores the correct answer
+      // first, which is exactly why draws must shuffle.
+      expect(questions.every((q) => q.correctAnswerIndex == 0), isTrue);
+
+      final rng = Random(7);
+      final positions = <int>{};
+      for (final q in questions) {
+        final shuffled = q.withShuffledAnswers(rng);
+        positions.add(shuffled.correctAnswerIndex);
+        expect(shuffled.correctAnswer, q.correctAnswer,
+            reason: 'the marked answer must stay the true one');
+        expect(shuffled.answers.toSet(), q.answers.toSet());
+        expect(shuffled.isCorrect(shuffled.correctAnswerIndex), isTrue);
+      }
+      expect(positions.length, 4,
+          reason: 'across the bank the right answer must land on every slot');
     });
   });
 }

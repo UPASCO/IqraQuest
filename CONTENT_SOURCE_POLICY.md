@@ -48,6 +48,11 @@ Such a question is admitted only when ALL of these hold:
 At the slightest doubt about whether a fact qualifies, the standing rule
 applies unchanged: **do not use the question.**
 
+Entries in this class carry `sourceType: "sira"` for biographical
+facts, `"quran"` for Qur'anic-sciences counts and terminology, or
+`"creed"` for articles-of-faith terminology (the shahada wording, the
+greeting of peace, tawhid, the ninety-nine names).
+
 ## 2. Source priority
 
 1. **Qurʾān** — facts explicitly stated in the text. Every such question

@@ -232,17 +232,21 @@ class GameController extends StateNotifier<GameSession?> {
       difficulty: difficulty,
       random: _random,
     );
-    if (fresh != null) return fresh;
+    // The bank stores correct answers at index 0: shuffle on draw so the
+    // on-screen order never gives the answer away.
+    if (fresh != null) return fresh.withShuffledAnswers(_random);
     // Every question of this difficulty has been asked once this game
     // (quick in the free edition): recycle rather than degrade into
     // questionless moves — bonuses must come from knowledge, always.
-    return questionRepository.pickQuestion(
-      pool: _pool,
-      askedQuestionIds: const {},
-      isPremium: _isPremium,
-      difficulty: difficulty,
-      random: _random,
-    );
+    return questionRepository
+        .pickQuestion(
+          pool: _pool,
+          askedQuestionIds: const {},
+          isPremium: _isPremium,
+          difficulty: difficulty,
+          random: _random,
+        )
+        ?.withShuffledAnswers(_random);
   }
 
   // ---------------------------------------------------------------------

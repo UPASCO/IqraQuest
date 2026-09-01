@@ -610,9 +610,9 @@
     ]
   },
   {
-    "sourceType": "quran",
-    "sourceWork": "Quran",
-    "sourceReference": "2:142-144",
+    "sourceType": "sira",
+    "sourceWork": "Sira",
+    "sourceReference": "well-established (first qibla; change commanded in Quran 2:142-144)",
     "questionIds": [
       "sira_030"
     ]
