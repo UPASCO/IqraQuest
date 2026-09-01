@@ -23,9 +23,13 @@ designed for ages 7-99. Key points for review:
   collections (Ṣaḥīḥ al-Bukhārī, Ṣaḥīḥ Muslim) — see
   CONTENT_SOURCE_POLICY.md for the sourcing discipline applied to every
   question. No sect-specific or doctrinally disputed content is
-  included. Sacred sites (the Kaaba, referenced in decorative art only)
-  are never used as game mechanics, rewards, or purchasable items — see
-  DESIGN_SYSTEM.md and VISUAL_REFERENCE_NOTES.md.
+  included. The board is set among four holy places — Medina, Jerusalem
+  (al-Aqsa), Mount Arafat and Mina — with Mecca at the centre as the
+  shared destination. They are the setting the journey passes through,
+  depicted respectfully as places; they are never pieces a player moves,
+  captures, trades, wins as a reward, or buys. Nothing about a sacred
+  site is unlockable or sold — see DESIGN_SYSTEM.md and
+  VISUAL_REFERENCE_NOTES.md.
 - **No representation of Allah, the Prophets, or angels** appears
   anywhere in the app, in any form.
 

@@ -337,6 +337,26 @@
   "@chooseYourGait": {
     "description": "Header above the six horseshoe gait choices"
   },
+  "placeMecca": "Mecca",
+  "@placeMecca": {
+    "description": "Centre of the board: the destination every horse rides to"
+  },
+  "placeMedina": "Medina",
+  "@placeMedina": {
+    "description": "Green corner"
+  },
+  "placeJerusalem": "Jerusalem",
+  "@placeJerusalem": {
+    "description": "Red corner"
+  },
+  "placeArafat": "Mount Arafat",
+  "@placeArafat": {
+    "description": "Blue corner"
+  },
+  "placeMina": "Mina",
+  "@placeMina": {
+    "description": "Gold corner"
+  },
   "drawCard": "Draw a card",
   "@drawCard": {
     "description": "Call to action on the face-down deck: draw this turn's card"

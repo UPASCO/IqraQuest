@@ -253,6 +253,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get chooseYourGait => 'اختر خطوتك';
 
   @override
+  String get placeMecca => 'مكة';
+
+  @override
+  String get placeMedina => 'المدينة';
+
+  @override
+  String get placeJerusalem => 'القدس';
+
+  @override
+  String get placeArafat => 'عرفات';
+
+  @override
+  String get placeMina => 'منى';
+
+  @override
   String get drawCard => 'اسحب بطاقة';
 
   @override

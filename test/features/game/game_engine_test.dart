@@ -288,7 +288,7 @@ void main() {
 
     test('the private final lane can never be captured on', () {
       var state = buildGame();
-      state = withHorse(state, at: const TrackPosition(54));
+      state = withHorse(state, at: const TrackPosition(50));
       state = withHorse(state, player: 1, at: const FinalLanePosition(1));
       final preview = engine.previewGait(state, 0, const MovementChoice(3));
       expect(preview.destination, isA<FinalLanePosition>());

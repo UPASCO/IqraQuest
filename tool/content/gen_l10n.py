@@ -524,6 +524,34 @@ s("chooseYourGait", "Header above the six horseshoe gait choices",
   tr="Temponu seç", id="Pilih langkahmu", ur="اپنی چال منتخب کریں",
   ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
 
+# ---- The four holy places, one per corner of the board ---------------
+# Proper nouns: only the exonyms that genuinely differ per language are
+# translated; transliterations stay as they are written locally.
+s("placeMecca", "Centre of the board: the destination every horse rides to",
+  fr="La Mecque", en="Mecca", ar="مكة", es="La Meca", pt="Meca",
+  de="Mekka", tr="Mekke", id="Makkah", ur="مکہ", ms="Makkah",
+  it="La Mecca", nl="Mekka")
+
+s("placeMedina", "Green corner",
+  fr="Médine", en="Medina", ar="المدينة", es="Medina", pt="Medina",
+  de="Medina", tr="Medine", id="Madinah", ur="مدینہ", ms="Madinah",
+  it="Medina", nl="Medina")
+
+s("placeJerusalem", "Red corner",
+  fr="Jérusalem", en="Jerusalem", ar="القدس", es="Jerusalén", pt="Jerusalém",
+  de="Jerusalem", tr="Kudüs", id="Yerusalem", ur="بیت المقدس", ms="Baitulmaqdis",
+  it="Gerusalemme", nl="Jeruzalem")
+
+s("placeArafat", "Blue corner",
+  fr="Mont Arafat", en="Mount Arafat", ar="عرفات", es="Monte Arafat",
+  pt="Monte Arafat", de="Berg Arafat", tr="Arafat Dağı", id="Arafah",
+  ur="عرفات", ms="Arafah", it="Monte Arafat", nl="Berg Arafat")
+
+s("placeMina", "Gold corner",
+  fr="Mina", en="Mina", ar="منى", es="Mina", pt="Mina",
+  de="Mina", tr="Mina", id="Mina", ur="منیٰ", ms="Mina",
+  it="Mina", nl="Mina")
+
 s("drawCard", "Call to action on the face-down deck: draw this turn's card",
   fr="Piocher une carte", en="Draw a card", ar="اسحب بطاقة",
   es="Roba una carta", pt="Puxar uma carta", de="Karte ziehen",

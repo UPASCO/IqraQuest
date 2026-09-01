@@ -254,6 +254,21 @@ class AppLocalizationsUr extends AppLocalizations {
   String get chooseYourGait => 'اپنی چال منتخب کریں';
 
   @override
+  String get placeMecca => 'مکہ';
+
+  @override
+  String get placeMedina => 'مدینہ';
+
+  @override
+  String get placeJerusalem => 'بیت المقدس';
+
+  @override
+  String get placeArafat => 'عرفات';
+
+  @override
+  String get placeMina => 'منیٰ';
+
+  @override
   String get drawCard => 'کارڈ نکالیں';
 
   @override

@@ -105,13 +105,21 @@ class Circuit {
       if (isSafe(i)) i,
   ];
 
-  /// Every board is the parcours of the traditional French *jeu des
-  /// petits chevaux*: a 56-square circuit — 14 per quadrant — and a
-  /// six-step escalier per team, climbed on an exact count. The three
-  /// boards differ only in the scenery they ride through and in which
-  /// squares carry an effect, never in the distance: a race is only fair
-  /// to compare when everyone runs the same course.
-  static const int _squaresPerQuadrant = 14; // 14 x 4 = the 56-square circuit
+  /// Every board is the classic cross parcours of the *jeu des petits
+  /// chevaux*: four arms around a centre, a 52-square circuit — 13 per
+  /// quadrant — and a six-step escalier per team, climbed on an exact
+  /// count.
+  ///
+  /// 13, not 14: on a cross board each quadrant runs up one side of an
+  /// arm and back down the next, which always yields an odd `2a + 1`
+  /// squares for an arm of length `a`. 52 (a = 6) is the classic count
+  /// of this board family; 56 belongs to the square-ring variant, whose
+  /// shape the reference board is not.
+  ///
+  /// The three boards differ only in the places they ride through and in
+  /// which squares carry an effect, never in the distance: a race is
+  /// only fair to compare when everyone runs the same course.
+  static const int _squaresPerQuadrant = 13; // 13 x 4 = the 52-square circuit
   static const int _escalierSteps = 6;
 
   static const Circuit oasisRoute = Circuit(

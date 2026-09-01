@@ -255,6 +255,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get chooseYourGait => 'Temponu seç';
 
   @override
+  String get placeMecca => 'Mekke';
+
+  @override
+  String get placeMedina => 'Medine';
+
+  @override
+  String get placeJerusalem => 'Kudüs';
+
+  @override
+  String get placeArafat => 'Arafat Dağı';
+
+  @override
+  String get placeMina => 'Mina';
+
+  @override
   String get drawCard => 'Kart çek';
 
   @override

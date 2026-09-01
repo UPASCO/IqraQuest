@@ -256,6 +256,21 @@ class AppLocalizationsId extends AppLocalizations {
   String get chooseYourGait => 'Pilih langkahmu';
 
   @override
+  String get placeMecca => 'Makkah';
+
+  @override
+  String get placeMedina => 'Madinah';
+
+  @override
+  String get placeJerusalem => 'Yerusalem';
+
+  @override
+  String get placeArafat => 'Arafah';
+
+  @override
+  String get placeMina => 'Mina';
+
+  @override
   String get drawCard => 'Ambil kartu';
 
   @override

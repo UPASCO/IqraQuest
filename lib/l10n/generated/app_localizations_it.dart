@@ -255,6 +255,21 @@ class AppLocalizationsIt extends AppLocalizations {
   String get chooseYourGait => 'Scegli la tua andatura';
 
   @override
+  String get placeMecca => 'La Mecca';
+
+  @override
+  String get placeMedina => 'Medina';
+
+  @override
+  String get placeJerusalem => 'Gerusalemme';
+
+  @override
+  String get placeArafat => 'Monte Arafat';
+
+  @override
+  String get placeMina => 'Mina';
+
+  @override
   String get drawCard => 'Pesca una carta';
 
   @override

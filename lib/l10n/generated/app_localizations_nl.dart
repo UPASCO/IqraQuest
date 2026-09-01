@@ -255,6 +255,21 @@ class AppLocalizationsNl extends AppLocalizations {
   String get chooseYourGait => 'Kies je gang';
 
   @override
+  String get placeMecca => 'Mekka';
+
+  @override
+  String get placeMedina => 'Medina';
+
+  @override
+  String get placeJerusalem => 'Jeruzalem';
+
+  @override
+  String get placeArafat => 'Berg Arafat';
+
+  @override
+  String get placeMina => 'Mina';
+
+  @override
   String get drawCard => 'Trek een kaart';
 
   @override

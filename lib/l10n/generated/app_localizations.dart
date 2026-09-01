@@ -574,6 +574,36 @@ abstract class AppLocalizations {
   /// **'Choose your gait'**
   String get chooseYourGait;
 
+  /// Centre of the board: the destination every horse rides to
+  ///
+  /// In en, this message translates to:
+  /// **'Mecca'**
+  String get placeMecca;
+
+  /// Green corner
+  ///
+  /// In en, this message translates to:
+  /// **'Medina'**
+  String get placeMedina;
+
+  /// Red corner
+  ///
+  /// In en, this message translates to:
+  /// **'Jerusalem'**
+  String get placeJerusalem;
+
+  /// Blue corner
+  ///
+  /// In en, this message translates to:
+  /// **'Mount Arafat'**
+  String get placeArafat;
+
+  /// Gold corner
+  ///
+  /// In en, this message translates to:
+  /// **'Mina'**
+  String get placeMina;
+
   /// Call to action on the face-down deck: draw this turn's card
   ///
   /// In en, this message translates to:
