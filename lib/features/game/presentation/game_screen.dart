@@ -318,9 +318,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
 
           if (_revealing)
             Positioned.fill(
-              child: ColoredBox(
-                color: const Color(0xB306251C),
-                child: DrawnCardReveal(value: _revealValue, difficultyPips: _revealPips),
+              // Absorbing: a ColoredBox does not hit-test itself, so
+              // without this a tap during the flip would fall straight
+              // through to the deck underneath and start another draw.
+              child: AbsorbPointer(
+                child: ColoredBox(
+                  color: const Color(0xB306251C),
+                  child: DrawnCardReveal(value: _revealValue, difficultyPips: _revealPips),
+                ),
               ),
             ),
 
