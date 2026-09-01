@@ -32,7 +32,7 @@ class BakedBoardScene extends StatelessWidget {
   final void Function(int playerIndex, int horseIndex)? onHorseTap;
   final BoardPreview? preview;
 
-  static const _sceneAspect = 941 / 1672;
+  static const _sceneAspect = 941 / 2080;
 
   /// Where a pawn stands, in normalized scene coordinates.
   static SceneAnchor anchorFor(GameState state, int playerIndex, int horseIndex) {
@@ -100,7 +100,7 @@ class BakedBoardScene extends StatelessWidget {
                   painter: _PreviewPainter(
                     crumbs: [for (final a in crumbs) toScreen(a)],
                     beacon: toScreen(_anchorForPosition(p.destination, team, 0)),
-                    beaconScale: _anchorForPosition(p.destination, team, 0).scale * imgH / 1672,
+                    beaconScale: _anchorForPosition(p.destination, team, 0).scale * imgH / 2080,
                   ),
                 ),
               ),
@@ -116,9 +116,10 @@ class BakedBoardScene extends StatelessWidget {
             if (isHome && !selectableHorses.contains(key)) continue;
             final anchor = anchorFor(state, pi, hi);
             final pos = toScreen(anchor);
-            // Piece height in screen px: sized to the baked scene's own
-            // pixel density so pieces match the reference board's scale.
-            final h = 118.0 * anchor.scale * imgH / 1672;
+            // Piece height in screen px: the knight sprites were lifted
+            // from this same illustration at ~106 source px, so rendering
+            // near native size keeps them in scale with the painted tiles.
+            final h = 108.0 * anchor.scale * imgH / 2080;
             sorted.add((
               pos.dy,
               _SceneHorse(
@@ -279,12 +280,7 @@ class _SceneHorseState extends State<_SceneHorse> with SingleTickerProviderState
       builder: (context, _) {
         final (center, lift) = _sample();
         final h = widget.height;
-        final w = h *
-            switch (widget.team) {
-              AppTeam.emerald => 74 / 106,
-              AppTeam.saphir || AppTeam.grenat => 79 / 96,
-              AppTeam.safran => 82 / 93,
-            };
+        final w = h * scenePieceAspect;
         // The knight's feet stand on the anchor.
         final left = center.dx - w / 2;
         final top = center.dy - h * 0.97 - lift * h * 0.24;
@@ -323,8 +319,8 @@ class _SceneHorseState extends State<_SceneHorse> with SingleTickerProviderState
                 ),
                 if (widget.horse.hasShield)
                   Positioned(
-                    top: -h * 0.06,
-                    right: w * 0.10,
+                    top: -h * 0.26,
+                    left: w * 0.5 - h * 0.11,
                     child: IgnorePointer(
                       child: Icon(
                         Icons.shield,
@@ -389,16 +385,16 @@ class _RingPainter extends CustomPainter {
     final rect = Rect.fromLTWH(0, 0, size.width, size.height);
     final paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.5 + 1.5 * t
-      ..color = color.withValues(alpha: 0.55 + 0.4 * t);
+      ..strokeWidth = 1.4 + 0.8 * t
+      ..color = color.withValues(alpha: 0.5 + 0.35 * t);
     canvas.drawOval(rect.deflate(2), paint);
     canvas.drawOval(
       rect.deflate(2),
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 7
-        ..color = color.withValues(alpha: 0.18 * t)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+        ..strokeWidth = 3.5
+        ..color = color.withValues(alpha: 0.15 * t)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.5),
     );
   }
 
@@ -424,7 +420,7 @@ class _PreviewPainter extends CustomPainter {
       canvas.drawCircle(c, 4, crumbPaint);
     }
     // Roughly one slab wide in scene pixels, projected to screen.
-    final r = 108 * beaconScale;
+    final r = 96 * beaconScale;
     canvas.drawOval(
       Rect.fromCenter(center: beacon, width: r, height: r * 0.55),
       Paint()

@@ -11,44 +11,47 @@ class SceneAnchor {
 }
 
 const List<SceneAnchor> sceneTrackAnchors = [
-  SceneAnchor(0.2528, 0.3850, 0.982),
-  SceneAnchor(0.3259, 0.3515, 0.968),
-  SceneAnchor(0.4191, 0.3499, 0.967),
-  SceneAnchor(0.5134, 0.3499, 0.967),
-  SceneAnchor(0.6077, 0.3499, 0.967),
-  SceneAnchor(0.6946, 0.3614, 0.972),
-  SceneAnchor(0.7677, 0.3949, 0.986),
-  SceneAnchor(0.8408, 0.4284, 1.000),
-  SceneAnchor(0.8587, 0.4767, 1.020),
-  SceneAnchor(0.8587, 0.5298, 1.042),
-  SceneAnchor(0.8587, 0.5828, 1.065),
-  SceneAnchor(0.8115, 0.6250, 1.082),
-  SceneAnchor(0.7453, 0.6627, 1.098),
-  SceneAnchor(0.6741, 0.6938, 1.111),
-  SceneAnchor(0.5798, 0.6938, 1.111),
-  SceneAnchor(0.4855, 0.6938, 1.111),
-  SceneAnchor(0.3913, 0.6938, 1.111),
-  SceneAnchor(0.3003, 0.6893, 1.110),
-  SceneAnchor(0.2341, 0.6516, 1.094),
-  SceneAnchor(0.1679, 0.6138, 1.078),
-  SceneAnchor(0.1403, 0.5671, 1.058),
-  SceneAnchor(0.1403, 0.5141, 1.036),
-  SceneAnchor(0.1403, 0.4610, 1.014),
-  SceneAnchor(0.1797, 0.4185, 0.996),
+  SceneAnchor(0.3528, 0.4231, 0.966),
+  SceneAnchor(0.4315, 0.4144, 0.961),
+  SceneAnchor(0.5154, 0.4139, 0.961),
+  SceneAnchor(0.5930, 0.4163, 0.962),
+  SceneAnchor(0.6642, 0.4221, 0.965),
+  SceneAnchor(0.7205, 0.4433, 0.976),
+  SceneAnchor(0.7843, 0.4577, 0.984),
+  SceneAnchor(0.8587, 0.4702, 0.990),
+  SceneAnchor(0.8905, 0.5264, 1.020),
+  SceneAnchor(0.8927, 0.5779, 1.047),
+  SceneAnchor(0.8661, 0.5995, 1.058),
+  SceneAnchor(0.8502, 0.6298, 1.074),
+  SceneAnchor(0.8183, 0.6538, 1.086),
+  SceneAnchor(0.6610, 0.6817, 1.101),
+  SceneAnchor(0.5367, 0.6885, 1.104),
+  SceneAnchor(0.3613, 0.6827, 1.101),
+  SceneAnchor(0.2232, 0.6562, 1.088),
+  SceneAnchor(0.1753, 0.6370, 1.077),
+  SceneAnchor(0.1488, 0.5962, 1.056),
+  SceneAnchor(0.1275, 0.5673, 1.041),
+  SceneAnchor(0.1296, 0.5409, 1.027),
+  SceneAnchor(0.1615, 0.4942, 1.003),
+  SceneAnchor(0.2306, 0.4726, 0.992),
+  SceneAnchor(0.2944, 0.4543, 0.982),
 ];
 
 const Map<int, List<SceneAnchor>> sceneLaneAnchors = {
-  0: [SceneAnchor(0.3698, 0.3995, 0.988), SceneAnchor(0.4070, 0.4205, 0.997), SceneAnchor(0.4442, 0.4414, 1.005), SceneAnchor(0.4803, 0.4617, 1.014)],
-  1: [SceneAnchor(0.6759, 0.3959, 0.986), SceneAnchor(0.6387, 0.4169, 0.995), SceneAnchor(0.6015, 0.4378, 1.004), SceneAnchor(0.5643, 0.4581, 1.012)],
-  2: [SceneAnchor(0.4995, 0.6471, 1.092), SceneAnchor(0.4995, 0.6172, 1.079), SceneAnchor(0.4995, 0.5873, 1.067), SceneAnchor(0.4995, 0.5598, 1.055)],
-  3: [SceneAnchor(0.3061, 0.5502, 1.051), SceneAnchor(0.3422, 0.5365, 1.045), SceneAnchor(0.3783, 0.5233, 1.040), SceneAnchor(0.4145, 0.5096, 1.034)],
+  0: [SceneAnchor(0.3316, 0.4635, 0.987), SceneAnchor(0.3656, 0.4716, 0.991), SceneAnchor(0.3996, 0.4793, 0.995), SceneAnchor(0.4315, 0.4865, 0.999)],
+  1: [SceneAnchor(0.7184, 0.4615, 0.986), SceneAnchor(0.6844, 0.4697, 0.990), SceneAnchor(0.6504, 0.4779, 0.994), SceneAnchor(0.6185, 0.4861, 0.999)],
+  2: [SceneAnchor(0.7354, 0.6125, 1.065), SceneAnchor(0.6971, 0.6029, 1.060), SceneAnchor(0.6589, 0.5928, 1.054), SceneAnchor(0.6227, 0.5837, 1.050)],
+  3: [SceneAnchor(0.3252, 0.6067, 1.062), SceneAnchor(0.3528, 0.5962, 1.056), SceneAnchor(0.3804, 0.5856, 1.051), SceneAnchor(0.4081, 0.5750, 1.045)],
 };
 
 const Map<int, List<SceneAnchor>> sceneCampAnchors = {
-  0: [SceneAnchor(0.2083, 0.3876, 0.983), SceneAnchor(0.2147, 0.3900, 0.983), SceneAnchor(0.2210, 0.3923, 0.983), SceneAnchor(0.2274, 0.3947, 0.983)],
-  1: [SceneAnchor(0.7928, 0.3876, 0.983), SceneAnchor(0.7991, 0.3900, 0.983), SceneAnchor(0.8055, 0.3923, 0.983), SceneAnchor(0.8119, 0.3947, 0.983)],
-  2: [SceneAnchor(0.7566, 0.6986, 1.113), SceneAnchor(0.7630, 0.7010, 1.113), SceneAnchor(0.7694, 0.7033, 1.113), SceneAnchor(0.7758, 0.7057, 1.113)],
-  3: [SceneAnchor(0.2465, 0.6986, 1.113), SceneAnchor(0.2529, 0.7010, 1.113), SceneAnchor(0.2593, 0.7033, 1.113), SceneAnchor(0.2657, 0.7057, 1.113)],
+  0: [SceneAnchor(0.3741, 0.4471, 0.978), SceneAnchor(0.3804, 0.4490, 0.978), SceneAnchor(0.3868, 0.4510, 0.978), SceneAnchor(0.3932, 0.4529, 0.978)],
+  1: [SceneAnchor(0.7673, 0.4846, 0.998), SceneAnchor(0.7736, 0.4865, 0.998), SceneAnchor(0.7800, 0.4885, 0.998), SceneAnchor(0.7864, 0.4904, 0.998)],
+  2: [SceneAnchor(0.7333, 0.6346, 1.076), SceneAnchor(0.7396, 0.6365, 1.076), SceneAnchor(0.7460, 0.6385, 1.076), SceneAnchor(0.7524, 0.6404, 1.076)],
+  3: [SceneAnchor(0.2710, 0.6418, 1.080), SceneAnchor(0.2774, 0.6438, 1.080), SceneAnchor(0.2837, 0.6457, 1.080), SceneAnchor(0.2901, 0.6476, 1.080)],
 };
 
-const SceneAnchor sceneCenterAnchor = SceneAnchor(0.4995, 0.5215, 1.000);
+const SceneAnchor sceneCenterAnchor = SceneAnchor(0.4995, 0.5745, 1.000);
+
+/// width / height of the generated knight sprites (all four share one canvas).
+const double scenePieceAspect = 0.7191;
