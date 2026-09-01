@@ -497,7 +497,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Drie goede antwoorden op rij leveren een schild op, vijf de Grote Galop (+2 vakjes) en tien een meesterschapsbadge. Bonussen komen alleen uit kennis.';
+      'Drie goede antwoorden op rij geven een schild, vijf de Grote Galop en tien een meesterschapsbadge. De Grote Galop wordt vanzelf ingezet, en alleen als zijn +2 vakjes genoeg zijn om de finish te halen. Bonussen komen alleen uit kennis.';
 
   @override
   String get ruleArrivalTitle => 'De aankomst';

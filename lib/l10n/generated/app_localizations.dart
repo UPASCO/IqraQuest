@@ -985,7 +985,7 @@ abstract class AppLocalizations {
   /// Rules step 5 body
   ///
   /// In en, this message translates to:
-  /// **'Three correct answers in a row earn a shield, five earn the Grand Gallop (+2 squares), and ten earn a mastery badge. Bonuses come from knowledge alone.'**
+  /// **'Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 squares are enough to reach the finish. Bonuses come from knowledge alone.'**
   String get ruleStreakBody;
 
   /// Rules step 6 title

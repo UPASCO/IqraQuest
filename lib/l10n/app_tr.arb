@@ -144,7 +144,7 @@
   "ruleCaptureTitle": "Geç ve ahıra yolla",
   "ruleCaptureBody": "Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa.",
   "ruleStreakTitle": "Bilgi serisi",
-  "ruleStreakBody": "Üst üste üç doğru cevap bir kalkan, beş doğru Büyük Dörtnal (+2 kare), on doğru bir ustalık rozeti kazandırır. Bonuslar yalnızca bilgiyle gelir.",
+  "ruleStreakBody": "Üst üste üç doğru cevap bir kalkan, beş Büyük Dörtnal, on ise ustalık rozeti kazandırır. Büyük Dörtnal kendiliğinden harcanır ve yalnızca +2 karesi bitişe ulaşmaya yettiğinde. Bonuslar yalnızca bilgiden gelir.",
   "ruleArrivalTitle": "Varış",
   "ruleArrivalBody": "Parkurun sonuna ulaş — çizgiyi geçmek serbest — sonra varışını resmileştirmek için Yolculuk Sorusu'nu cevapla. Yanlış cevap seni asla geri götürmez: sıradaki turda yeniden denersin."
 }

@@ -494,7 +494,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Üst üste üç doğru cevap bir kalkan, beş doğru Büyük Dörtnal (+2 kare), on doğru bir ustalık rozeti kazandırır. Bonuslar yalnızca bilgiyle gelir.';
+      'Üst üste üç doğru cevap bir kalkan, beş Büyük Dörtnal, on ise ustalık rozeti kazandırır. Büyük Dörtnal kendiliğinden harcanır ve yalnızca +2 karesi bitişe ulaşmaya yettiğinde. Bonuslar yalnızca bilgiden gelir.';
 
   @override
   String get ruleArrivalTitle => 'Varış';

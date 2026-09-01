@@ -144,7 +144,7 @@
   "ruleCaptureTitle": "Menyalip dan memulangkan",
   "ruleCaptureBody": "Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan.",
   "ruleStreakTitle": "Rentetan pengetahuan",
-  "ruleStreakBody": "Tiga jawaban benar berturut-turut memberi perisai, lima memberi Galop Agung (+2 petak), dan sepuluh memberi lencana penguasaan. Bonus hanya datang dari pengetahuan.",
+  "ruleStreakBody": "Tiga jawaban benar berturut-turut memberi perisai, lima memberi Grand Galop, dan sepuluh memberi lencana penguasaan. Grand Galop terpakai sendiri, dan hanya bila +2 petaknya cukup untuk mencapai garis akhir. Bonus hanya datang dari pengetahuan.",
   "ruleArrivalTitle": "Kedatangan",
   "ruleArrivalBody": "Capai ujung lintasan — melewati garis tidak masalah — lalu jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu. Jawaban salah tidak pernah memundurkanmu: kamu tinggal mencoba lagi di giliran berikutnya."
 }

@@ -144,7 +144,7 @@
   "ruleCaptureTitle": "Überholen und heimschicken",
   "ruleCaptureBody": "Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild.",
   "ruleStreakTitle": "Der Schwung des Wissens",
-  "ruleStreakBody": "Drei richtige Antworten in Folge bringen einen Schild, fünf den Großen Galopp (+2 Felder) und zehn ein Meisterabzeichen. Boni gibt es nur durch Wissen.",
+  "ruleStreakBody": "Drei richtige Antworten hintereinander bringen einen Schild, fünf den Großen Galopp und zehn ein Meisterabzeichen. Der Große Galopp wird von selbst eingesetzt, und nur wenn seine +2 Felder zum Ziel reichen. Boni kommen allein aus Wissen.",
   "ruleArrivalTitle": "Die Ankunft",
   "ruleArrivalBody": "Erreiche das Ende der Strecke — über die Linie hinaus ist erlaubt — und beantworte dann die Frage der Reise, um deine Ankunft zu bestätigen. Ein Fehler wirft dich nie zurück: Du versuchst es einfach im nächsten Zug erneut."
 }

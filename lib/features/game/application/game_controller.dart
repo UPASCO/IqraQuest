@@ -222,13 +222,32 @@ class GameController extends StateNotifier<GameSession?> {
     }
 
     final choice = MovementChoice(card.value);
-    final committed = engine.commitGait(s.gameState, horseIndex, choice);
+    // A Grand Galop is spent on exactly the terms the opponent spends
+    // it on: only when it turns this move into an arrival. Without this
+    // the reward was earned by the player and usable only by the AI —
+    // the turn no longer has a screen on which to offer the choice.
+    final useGrandGallop =
+        s.gameState.currentPlayer.rewards.hasGrandGallop &&
+        engine
+            .previewGait(s.gameState, horseIndex, choice, useGrandGallop: true)
+            .reachesFinish;
+    final committed = engine.commitGait(
+      s.gameState,
+      horseIndex,
+      choice,
+      useGrandGallop: useGrandGallop,
+    );
     state = s.copyWith(
       gameState: committed,
       // The bank stores correct answers at index 0: shuffle on draw so
       // the on-screen order never gives the answer away.
       currentQuestion: card.withShuffledAnswers(_random),
-      preview: engine.previewGait(s.gameState, horseIndex, choice),
+      preview: engine.previewGait(
+        s.gameState,
+        horseIndex,
+        choice,
+        useGrandGallop: useGrandGallop,
+      ),
     );
     _persist();
 

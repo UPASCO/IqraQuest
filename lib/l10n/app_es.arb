@@ -144,7 +144,7 @@
   "ruleCaptureTitle": "Adelantar y enviar a casa",
   "ruleCaptureBody": "Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber.",
   "ruleStreakTitle": "El impulso del saber",
-  "ruleStreakBody": "Tres respuestas correctas seguidas dan un escudo, cinco dan el Gran Galope (+2 casillas) y diez, una insignia de maestría. Los bonus solo se ganan con conocimiento.",
+  "ruleStreakBody": "Tres respuestas correctas seguidas dan un escudo, cinco el Gran Galope y diez una insignia de maestría. El Gran Galope se gasta solo, y únicamente cuando sus +2 casillas bastan para llegar a la meta. Las bonificaciones vienen solo del conocimiento.",
   "ruleArrivalTitle": "La llegada",
   "ruleArrivalBody": "Llega al final del recorrido —pasarse de la línea está permitido— y responde la Pregunta del viaje para validar tu llegada. Un error nunca te hace retroceder: lo intentas de nuevo en el siguiente turno."
 }

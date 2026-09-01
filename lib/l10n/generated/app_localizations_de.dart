@@ -498,7 +498,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Drei richtige Antworten in Folge bringen einen Schild, fünf den Großen Galopp (+2 Felder) und zehn ein Meisterabzeichen. Boni gibt es nur durch Wissen.';
+      'Drei richtige Antworten hintereinander bringen einen Schild, fünf den Großen Galopp und zehn ein Meisterabzeichen. Der Große Galopp wird von selbst eingesetzt, und nur wenn seine +2 Felder zum Ziel reichen. Boni kommen allein aus Wissen.';
 
   @override
   String get ruleArrivalTitle => 'Die Ankunft';

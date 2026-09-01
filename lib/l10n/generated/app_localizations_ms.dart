@@ -497,7 +497,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tiga jawapan betul berturut-turut memberi perisai, lima memberi Larian Agung (+2 petak), dan sepuluh memberi lencana penguasaan. Bonus datang daripada ilmu sahaja.';
+      'Tiga jawapan betul berturut-turut memberi perisai, lima memberi Grand Galop, dan sepuluh lencana penguasaan. Grand Galop dibelanjakan sendiri, dan hanya apabila +2 petaknya cukup untuk sampai ke penamat. Bonus datang daripada pengetahuan sahaja.';
 
   @override
   String get ruleArrivalTitle => 'Ketibaan';

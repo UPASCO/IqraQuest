@@ -144,7 +144,7 @@
   "ruleCaptureTitle": "Ultrapassar e mandar de volta",
   "ruleCaptureBody": "Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber.",
   "ruleStreakTitle": "O impulso do saber",
-  "ruleStreakBody": "Três respostas certas seguidas dão um escudo, cinco dão o Grande Galope (+2 casas) e dez, um emblema de maestria. Os bônus vêm apenas do conhecimento.",
+  "ruleStreakBody": "Três respostas certas seguidas dão um escudo, cinco o Grande Galope e dez uma medalha de maestria. O Grande Galope é gasto sozinho, e só quando suas +2 casas bastam para chegar ao fim. Os bônus vêm apenas do conhecimento.",
   "ruleArrivalTitle": "A chegada",
   "ruleArrivalBody": "Chegue ao fim do percurso — passar da linha é permitido — e responda à Pergunta da viagem para validar sua chegada. Um erro nunca faz você recuar: basta tentar de novo na próxima vez."
 }

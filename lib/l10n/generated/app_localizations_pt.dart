@@ -498,7 +498,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Três respostas certas seguidas dão um escudo, cinco dão o Grande Galope (+2 casas) e dez, um emblema de maestria. Os bônus vêm apenas do conhecimento.';
+      'Três respostas certas seguidas dão um escudo, cinco o Grande Galope e dez uma medalha de maestria. O Grande Galope é gasto sozinho, e só quando suas +2 casas bastam para chegar ao fim. Os bônus vêm apenas do conhecimento.';
 
   @override
   String get ruleArrivalTitle => 'A chegada';

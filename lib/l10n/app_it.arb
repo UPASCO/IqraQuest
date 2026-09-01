@@ -144,7 +144,7 @@
   "ruleCaptureTitle": "Sorpassa e rimanda a casa",
   "ruleCaptureBody": "Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un'oasi o quel cavallo porti uno scudo del sapere.",
   "ruleStreakTitle": "Lo slancio del sapere",
-  "ruleStreakBody": "Tre risposte corrette di fila danno uno scudo, cinque il Gran Galoppo (+2 caselle) e dieci un distintivo di maestria. I bonus si ottengono solo con la conoscenza.",
+  "ruleStreakBody": "Tre risposte giuste di fila danno uno scudo, cinque il Gran Galoppo e dieci un distintivo di maestria. Il Gran Galoppo si spende da solo, e solo quando le sue +2 caselle bastano a tagliare il traguardo. I bonus vengono solo dalla conoscenza.",
   "ruleArrivalTitle": "L'arrivo",
   "ruleArrivalBody": "Raggiungi la fine del percorso — superare la linea è permesso — poi rispondi alla Domanda del viaggio per convalidare il tuo arrivo. Un errore non ti fa mai arretrare: riprovi al turno successivo."
 }

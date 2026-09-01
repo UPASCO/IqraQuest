@@ -92,7 +92,17 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                         Expanded(
                           child: TextField(
                             controller: _controllers[i],
-                            decoration: InputDecoration(labelText: l10n.playerName),
+                            // Bounded on purpose: the name is shown in the
+                            // turn banner and written into the save, and
+                            // an unbounded one only ever arrives there
+                            // truncated. 16 fits every first name.
+                            maxLength: 16,
+                            textCapitalization: TextCapitalization.words,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                              labelText: l10n.playerName,
+                              counterText: '',
+                            ),
                           ),
                         ),
                       ],

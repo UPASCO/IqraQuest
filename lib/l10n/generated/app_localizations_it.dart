@@ -498,7 +498,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tre risposte corrette di fila danno uno scudo, cinque il Gran Galoppo (+2 caselle) e dieci un distintivo di maestria. I bonus si ottengono solo con la conoscenza.';
+      'Tre risposte giuste di fila danno uno scudo, cinque il Gran Galoppo e dieci un distintivo di maestria. Il Gran Galoppo si spende da solo, e solo quando le sue +2 caselle bastano a tagliare il traguardo. I bonus vengono solo dalla conoscenza.';
 
   @override
   String get ruleArrivalTitle => 'L\'arrivo';

@@ -498,7 +498,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tres respuestas correctas seguidas dan un escudo, cinco dan el Gran Galope (+2 casillas) y diez, una insignia de maestría. Los bonus solo se ganan con conocimiento.';
+      'Tres respuestas correctas seguidas dan un escudo, cinco el Gran Galope y diez una insignia de maestría. El Gran Galope se gasta solo, y únicamente cuando sus +2 casillas bastan para llegar a la meta. Las bonificaciones vienen solo del conocimiento.';
 
   @override
   String get ruleArrivalTitle => 'La llegada';

@@ -497,7 +497,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Trois bonnes réponses d\'affilée offrent un bouclier, cinq offrent le Grand Galop (+2 cases) et dix un badge de maîtrise. Les bonus s\'obtiennent uniquement par la connaissance.';
+      'Trois bonnes réponses d\'affilée offrent un bouclier, cinq le Grand Galop et dix un badge de maîtrise. Le Grand Galop se dépense tout seul, et seulement quand ses +2 cases suffisent à franchir l\'arrivée. Les bonus s\'obtiennent uniquement par la connaissance.';
 
   @override
   String get ruleArrivalTitle => 'L\'arrivée';

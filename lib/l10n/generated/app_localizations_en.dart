@@ -497,7 +497,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Three correct answers in a row earn a shield, five earn the Grand Gallop (+2 squares), and ten earn a mastery badge. Bonuses come from knowledge alone.';
+      'Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 squares are enough to reach the finish. Bonuses come from knowledge alone.';
 
   @override
   String get ruleArrivalTitle => 'The arrival';
