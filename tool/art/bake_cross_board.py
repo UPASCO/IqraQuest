@@ -3,8 +3,13 @@
 The board is set among four holy places, with Mecca at the centre as the
 shared destination every horse rides to:
 
-    Medina (green)   top-left        Arafat (blue)    top-right
-    Mina (gold)      bottom-left     Al-Aqsa (red)    bottom-right
+    Medina (green)   top-left        Al-Aqsa (red)    top-right
+    Arafat (blue)    bottom-left     Mina (gold)      bottom-right
+
+The corner panels and the centre medallion are cut from the owner's
+reference board (assets/board/ref/board_holy_sites.png); the track is
+generated, because the reference is an illustration whose painted tiles
+run from 40 to 62 px and do not fall on any single grid.
 
 Geometry is the standard 15x15 cross: a 52-square circuit and a 5-step
 escalier per team. The plate and the anchor table below come from the
@@ -64,20 +69,20 @@ TEAM_COLORS = {
 #   t3 start (14, 6)  left side of the bottom arm  -> bottom-left
 CORNERS = {
     "medina": ((0, 6), (0, 6)),
-    "arafat": ((0, 6), (9, 15)),
-    "alaqsa": ((9, 15), (9, 15)),
-    "mina": ((9, 15), (0, 6)),
+    "alaqsa": ((0, 6), (9, 15)),
+    "mina": ((9, 15), (9, 15)),
+    "arafat": ((9, 15), (0, 6)),
 }
 
 LANES = {
     "medina": [(7, c) for c in range(1, 6)],          # in from the left
-    "arafat": [(r, 7) for r in range(1, 6)],          # down from the top
-    "alaqsa": [(7, c) for c in range(13, 8, -1)],     # in from the right
-    "mina": [(r, 7) for r in range(13, 8, -1)],       # up from the bottom
+    "alaqsa": [(r, 7) for r in range(1, 6)],          # down from the top
+    "mina": [(7, c) for c in range(13, 8, -1)],       # in from the right
+    "arafat": [(r, 7) for r in range(13, 8, -1)],     # up from the bottom
 }
 
 # Index in this list IS the engine's team index (AppTeam order).
-TEAM_ORDER = ["medina", "arafat", "alaqsa", "mina"]
+TEAM_ORDER = ["medina", "alaqsa", "mina", "arafat"]
 
 CENTER = (7, 7)
 
@@ -346,35 +351,34 @@ def bake():
     d.rounded_rectangle(sbox((MARGIN, MARGIN, SIZE - MARGIN, SIZE - MARGIN)),
                         radius=S(CELL * 0.42), fill=CREAM_LO)
 
-    # --- corners -----------------------------------------------------
+    # --- corners: the owner's own panels ------------------------------
+    REF = f"{ROOT}/assets/board/ref"
     for name, color in TEAM_COLORS.items():
         box = sbox(corner_rect(name))
         pw, ph = int(box[2] - box[0]), int(box[3] - box[1])
-        panel = vgrad((pw, ph),
-                      tuple(min(255, int(c * 1.32)) for c in color),
-                      tuple(int(c * 0.70) for c in color))
+
+        panel = Image.open(f"{REF}/panel_{name}.png").convert("RGB")
+        # cover-fit so the architecture is never squashed
+        scale = max(pw / panel.width, ph / panel.height)
+        panel = panel.resize((max(1, int(panel.width * scale)),
+                              max(1, int(panel.height * scale))), Image.LANCZOS)
+        ox = (panel.width - pw) // 2
+        oy = (panel.height - ph) // 2
+        panel = panel.crop((ox, oy, ox + pw, oy + ph))
+
         pmask = Image.new("L", (pw, ph), 0)
         ImageDraw.Draw(pmask).rounded_rectangle(
             (0, 0, pw - 1, ph - 1), radius=S(CELL * 0.55), fill=255)
         im.paste(panel, (int(box[0]), int(box[1])), pmask)
         d.rounded_rectangle(box, radius=S(CELL * 0.55), outline=GOLD,
-                            width=max(1, int(S(4))))
-        inner = (box[0] + S(CELL * 0.30), box[1] + S(CELL * 0.30),
-                 box[2] - S(CELL * 0.30), box[3] - S(CELL * 0.30))
-        arabesque(d, inner, (*GOLD_LIGHT, 120), S(1.6), lobes=28)
+                            width=max(1, int(S(5))))
+        d.rounded_rectangle((box[0] + S(6), box[1] + S(6),
+                             box[2] - S(6), box[3] - S(6)),
+                            radius=S(CELL * 0.50), outline=(*GOLD_LIGHT, 150),
+                            width=max(1, int(S(1.6))))
 
-        mx, my, rr = corner_medallion(name)
-        diam = int(S(rr * 2))
-        art = circular(SCENES[name]((diam, diam)), diam)
-        im.paste(art, (int(S(mx) - diam / 2), int(S(my) - diam / 2)), art)
-        d.ellipse((S(mx - rr), S(my - rr), S(mx + rr), S(my + rr)),
-                  outline=GOLD, width=max(1, int(S(5))))
-        d.ellipse((S(mx - rr * 0.94), S(my - rr * 0.94),
-                   S(mx + rr * 0.94), S(my + rr * 0.94)),
-                  outline=(*GOLD_LIGHT, 150), width=max(1, int(S(1.6))))
-
-        # A single plinth under the four slots, so the stables read as
-        # one place rather than four loose discs.
+        # The stables sit on their own plinth in the corner nearest the
+        # centre, clear of the panel's own painted knights.
         slots = stable_slots(name)
         pad = CELL * 0.34
         px0 = min(p[0] for p in slots) - pad
@@ -382,12 +386,12 @@ def bake():
         px1 = max(p[0] for p in slots) + pad
         py1 = max(p[1] for p in slots) + pad
         d.rounded_rectangle(sbox((px0, py0, px1, py1)), radius=S(CELL * 0.34),
-                            fill=(*CREAM, 60), outline=(*GOLD, 190),
-                            width=max(1, int(S(2.4))))
+                            fill=(*color, 205), outline=GOLD,
+                            width=max(1, int(S(2.6))))
         for sx, sy in slots:
             sr = CELL * 0.30
             d.ellipse((S(sx - sr), S(sy - sr), S(sx + sr), S(sy + sr)),
-                      fill=(*CREAM, 235), outline=GOLD, width=max(1, int(S(2.4))))
+                      fill=(*CREAM, 235), outline=GOLD, width=max(1, int(S(2.2))))
 
     # --- circuit ------------------------------------------------------
     for (r, c) in track_cells():
@@ -407,31 +411,21 @@ def bake():
                           for v in TEAM_COLORS[name])
             bevel_tile(d, r, c, shade)
 
-    # --- Mecca, at the centre ----------------------------------------
+    # --- Mecca: the reference's own medallion -------------------------
     cx, cy = cell_center(*CENTER)
-    R = CELL * 1.62
-    star8(d, S(cx), S(cy), S(R * 1.16), (*GOLD, 60), rot=math.pi / 8, inner=0.72)
+    R = CELL * 1.72
+    diam = int(S(R * 2))
+    medallion = Image.open(f"{REF}/panel_centre.png").convert("RGB")
+    medallion = medallion.resize((diam, diam), Image.LANCZOS)
+    mmask = Image.new("L", (diam, diam), 0)
+    ImageDraw.Draw(mmask).ellipse((0, 0, diam - 1, diam - 1), fill=255)
+    mmask = mmask.filter(ImageFilter.GaussianBlur(max(1, diam * 0.004)))
+    im.paste(medallion, (int(S(cx) - diam / 2), int(S(cy) - diam / 2)), mmask)
     d.ellipse((S(cx - R), S(cy - R), S(cx + R), S(cy + R)),
-              fill=CREAM, outline=GOLD, width=max(1, int(S(6))))
-    arabesque(d, (S(cx - R * 0.90), S(cy - R * 0.90),
-                  S(cx + R * 0.90), S(cy + R * 0.90)),
-              (*GOLD, 130), S(1.8), lobes=24)
-    for i in range(12):
-        a = i * math.pi / 6
-        lx, ly = cx + R * 0.80 * math.cos(a), cy + R * 0.80 * math.sin(a)
-        d.ellipse((S(lx - CELL * 0.05), S(ly - CELL * 0.05),
-                   S(lx + CELL * 0.05), S(ly + CELL * 0.05)),
-                  fill=(*GOLD_LIGHT, 200))
-    # The Kaaba: a plain cube under its gold band. No figure, no ornament
-    # beyond the band.
-    cw, ch = R * 0.66, R * 0.78
-    x0, y0 = cx - cw / 2, cy - ch * 0.46
-    d.polygon([(S(x0), S(y0)), (S(x0 + cw), S(y0)),
-               (S(x0 + cw * 0.88), S(y0 - ch * 0.15)),
-               (S(x0 - cw * 0.12), S(y0 - ch * 0.15))], fill=(46, 43, 42))
-    d.rectangle((S(x0), S(y0), S(x0 + cw), S(y0 + ch)), fill=(24, 22, 22))
-    d.rectangle((S(x0), S(y0 + ch * 0.30), S(x0 + cw), S(y0 + ch * 0.41)),
-                fill=GOLD)
+              outline=GOLD, width=max(1, int(S(6))))
+    d.ellipse((S(cx - R * 0.95), S(cy - R * 0.95),
+               S(cx + R * 0.95), S(cy + R * 0.95)),
+              outline=(*GOLD_LIGHT, 160), width=max(1, int(S(1.8))))
 
     im = im.resize((SIZE, SIZE), Image.LANCZOS)
     os.makedirs(os.path.dirname(OUT_IMAGE), exist_ok=True)

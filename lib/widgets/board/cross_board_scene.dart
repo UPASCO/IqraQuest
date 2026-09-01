@@ -116,7 +116,9 @@ class CrossBoardScene extends StatelessWidget {
     double side,
   ) {
     final l10n = AppLocalizations.of(context);
-    final place = AppTeam.values[teamIndex].place;
+    // A corner names its place whether or not anyone is sitting there,
+    // so this reads the seat order, never the players list.
+    final place = kBoardSeats[teamIndex].place;
     final name = switch (place) {
       HolyPlace.medina => l10n.placeMedina,
       HolyPlace.alAqsa => l10n.placeAlAqsa,
@@ -177,7 +179,7 @@ class CrossBoardScene extends StatelessWidget {
   ) {
     final player = state.players[playerIndex];
     final team = player.team;
-    final anchor = _anchorFor(player.horses[horseIndex].position, team.index, horseIndex);
+    final anchor = _anchorFor(player.horses[horseIndex].position, playerIndex, horseIndex);
     final at = toScreen(anchor);
     final selectable = selectableHorses.contains('${player.id}:$horseIndex');
     final color = team.color(context.colors);

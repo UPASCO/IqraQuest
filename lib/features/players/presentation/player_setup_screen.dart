@@ -12,7 +12,7 @@ import '../../game/application/game_controller.dart';
 import 'player_setup_args.dart';
 import '../../../widgets/button_label.dart';
 
-const _teams = [AppTeam.emerald, AppTeam.saphir, AppTeam.grenat, AppTeam.safran];
+const _teams = kBoardSeats;
 const _coats = [HorseCoat.grayWhite, HorseCoat.bay, HorseCoat.chestnut, HorseCoat.black];
 
 class PlayerSetupScreen extends ConsumerStatefulWidget {

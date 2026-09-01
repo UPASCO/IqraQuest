@@ -33,6 +33,19 @@ enum AppTeam {
   };
 }
 
+/// Seat order, and with it corner order: the player in seat n rides out
+/// of corner n (top-left, top-right, bottom-right, bottom-left). This is
+/// what puts each colour in the corner the reference board gives it, and
+/// it is the ONLY place that order is written down — deriving a corner
+/// from [AppTeam]'s own enum order instead is what mislabelled the two
+/// bottom corners whenever fewer than four people were playing.
+const List<AppTeam> kBoardSeats = [
+  AppTeam.emerald, // Medina, green, top-left
+  AppTeam.grenat, // Al-Aqsa, red, top-right
+  AppTeam.safran, // Mina, gold, bottom-right
+  AppTeam.saphir, // Arafat, blue, bottom-left
+];
+
 /// One of the four corners of the board. Mecca sits at the centre as the
 /// destination and belongs to no team.
 enum HolyPlace { medina, alAqsa, arafat, mina }
