@@ -164,6 +164,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get reduceMotion => 'Riduci animazioni';
 
   @override
+  String get soundEffects => 'Effetti sonori';
+
+  @override
   String get darkMode => 'Modalità scura';
 
   @override

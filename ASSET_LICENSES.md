@@ -69,11 +69,28 @@ The OFL licence text ships in `THIRD_PARTY_NOTICES.md`.
 
 ## Audio
 
-**None shipped yet.** The sound design pass (spec §26–§27) is still
-open. When audio lands, every file gets a row here with its exact
-origin and licence *before* it is committed, honouring the spec's
-prohibitions: no Quranic recitation as a game effect, no adhan as a
-notification sound, no casino-style win sounds.
+All shipped sounds are **synthesized from scratch** by
+`tool/audio/gen_sfx.py` (pure sine/noise synthesis, NumPy + the Python
+`wave` module — no third-party samples, no recordings). They are
+original works of this project and carry the project's licence.
+
+| File | Cue | Origin | Licence |
+|---|---|---|---|
+| `assets/audio/tap.wav` | UI tap | synthesized in-repo | project |
+| `assets/audio/gait_select.wav` | gait armed | synthesized in-repo | project |
+| `assets/audio/gait_confirm.wav` | gait committed | synthesized in-repo | project |
+| `assets/audio/move_hoofs.wav` | horse moves | synthesized in-repo | project |
+| `assets/audio/correct.wav` | right answer | synthesized in-repo | project |
+| `assets/audio/wrong.wav` | wrong answer (gentle) | synthesized in-repo | project |
+| `assets/audio/chest.wav` | cell offer appears | synthesized in-repo | project |
+| `assets/audio/streak.wav` | streak reward unlocked | synthesized in-repo | project |
+| `assets/audio/water.wav` | oasis arrival | synthesized in-repo | project |
+| `assets/audio/victory.wav` | game won (short warm flourish) | synthesized in-repo | project |
+
+Spec prohibitions honoured by construction: **no Quranic recitation** as
+a game effect, **no adhan** as a notification sound, and **no
+casino-style win sounds** (the victory cue is a short warm instrumental
+arpeggio, no coin cascades or slot bells).
 
 ## Question content
 

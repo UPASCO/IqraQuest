@@ -200,6 +200,10 @@
   "@reduceMotion": {
     "description": "Settings item: accessibility"
   },
+  "soundEffects": "Sound effects",
+  "@soundEffects": {
+    "description": "Settings item: toggle for game sound effects"
+  },
   "darkMode": "Dark mode",
   "@darkMode": {
     "description": "Settings item"

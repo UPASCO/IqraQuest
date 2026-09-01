@@ -164,6 +164,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get reduceMotion => 'Kurangi Gerakan';
 
   @override
+  String get soundEffects => 'Efek Suara';
+
+  @override
   String get darkMode => 'Mode Gelap';
 
   @override

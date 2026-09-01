@@ -163,6 +163,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get reduceMotion => 'حرکت کم کریں';
 
   @override
+  String get soundEffects => 'آوازی اثرات';
+
+  @override
   String get darkMode => 'ڈارک موڈ';
 
   @override

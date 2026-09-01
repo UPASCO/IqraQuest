@@ -418,6 +418,12 @@ abstract class AppLocalizations {
   /// **'Reduce motion'**
   String get reduceMotion;
 
+  /// Settings item: toggle for game sound effects
+  ///
+  /// In en, this message translates to:
+  /// **'Sound effects'**
+  String get soundEffects;
+
   /// Settings item
   ///
   /// In en, this message translates to:

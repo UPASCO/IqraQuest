@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app/providers.dart' show soundServiceProvider;
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/movement_choice_service.dart';
+import '../../../services/sound_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/board/baked_board_scene.dart';
@@ -44,6 +46,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final session = ref.watch(gameControllerProvider);
 
     ref.listen(gameControllerProvider, (previous, next) {
+      _playCuesFor(previous, next);
       if (next?.gameState.turnPhase == TurnPhase.gameOver &&
           previous?.gameState.turnPhase != TurnPhase.gameOver) {
         context.go('/results');
@@ -302,6 +305,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               streakCurrent: player.streak.current,
               l10n: l10n,
               onSelect: (i) {
+                ref.read(soundServiceProvider).play(Sfx.tap);
                 setState(() => _selectedAnswer = i);
                 final controller = ref.read(gameControllerProvider.notifier);
                 switch (state.turnPhase) {
@@ -342,7 +346,49 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     if (_armedGait == choice) {
       _onGaitConfirmed(choice);
     } else {
+      ref.read(soundServiceProvider).play(Sfx.gaitSelect);
       setState(() => _armedGait = choice);
+    }
+  }
+
+  /// Turns game-state transitions into sound cues; the answer feedback,
+  /// the ride itself, offers, streaks and the win each have a voice.
+  void _playCuesFor(GameSession? previous, GameSession? next) {
+    if (previous == null || next == null) return;
+    final sound = ref.read(soundServiceProvider);
+    final prevState = previous.gameState;
+    final nextState = next.gameState;
+
+    if (nextState.turnPhase == TurnPhase.gameOver &&
+        prevState.turnPhase != TurnPhase.gameOver) {
+      sound.play(Sfx.victory);
+      return;
+    }
+    if (nextState.turnPhase == TurnPhase.showingFeedback &&
+        prevState.turnPhase != TurnPhase.showingFeedback) {
+      sound.play(nextState.lastAnswerCorrect == true ? Sfx.correct : Sfx.wrong);
+    }
+    if (nextState.justUnlocked.isNotEmpty &&
+        nextState.justUnlocked.length != prevState.justUnlocked.length) {
+      sound.play(Sfx.streak);
+    }
+    if (nextState.turnPhase == TurnPhase.resolvingCell &&
+        prevState.turnPhase != TurnPhase.resolvingCell) {
+      sound.play(Sfx.chest);
+    }
+    // Any horse actually moving = hoofbeats; arriving on an oasis adds
+    // its water shimmer.
+    var moved = false;
+    for (var p = 0; p < nextState.players.length && !moved; p++) {
+      final prevHorses = prevState.players[p].horses;
+      final nextHorses = nextState.players[p].horses;
+      for (var h = 0; h < nextHorses.length && !moved; h++) {
+        moved = prevHorses[h].position != nextHorses[h].position;
+      }
+    }
+    if (moved) {
+      sound.play(Sfx.moveHoofs);
+      if (nextState.landedEffect == CellEffect.oasis) sound.play(Sfx.water);
     }
   }
 
@@ -376,6 +422,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       if (confirmed != true) return;
     }
 
+    ref.read(soundServiceProvider).play(Sfx.gaitConfirm);
     setState(() {
       _hoveredGait = choice;
       _armedGait = null;

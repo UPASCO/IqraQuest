@@ -164,6 +164,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get reduceMotion => 'Hareketi Azalt';
 
   @override
+  String get soundEffects => 'Ses Efektleri';
+
+  @override
   String get darkMode => 'Karanlık Mod';
 
   @override

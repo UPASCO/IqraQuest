@@ -10,6 +10,7 @@ import '../services/progress_service.dart';
 import '../services/purchase_service.dart';
 import '../services/question_repository.dart';
 import '../services/settings_service.dart';
+import '../services/sound_service.dart';
 
 /// Service instances are constructed once in `main()` (they need an
 /// `await`) and injected here via `ProviderScope(overrides: ...)`. Every
@@ -71,6 +72,18 @@ final settingsControllerProvider = StateNotifierProvider<SettingsController, App
   (ref) =>
       SettingsController(ref.watch(settingsServiceProvider), ref.watch(initialSettingsProvider)),
 );
+
+/// One app-wide SFX player, kept in sync with the sound setting.
+final soundServiceProvider = Provider<SoundService>((ref) {
+  final service = SoundService();
+  service.enabled = ref.read(settingsControllerProvider).soundEnabled;
+  ref.listen<AppSettings>(
+    settingsControllerProvider,
+    (_, s) => service.enabled = s.soundEnabled,
+  );
+  ref.onDispose(service.dispose);
+  return service;
+});
 
 class PremiumController extends StateNotifier<bool> {
   PremiumController(this._entitlements, bool initial) : super(initial);

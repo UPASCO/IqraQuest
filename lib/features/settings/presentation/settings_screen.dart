@@ -59,7 +59,7 @@ class SettingsScreen extends ConsumerWidget {
               onChanged: controller.setReduceMotion,
             ),
             SwitchListTile(
-              title: Text('Sound'),
+              title: Text(l10n.soundEffects),
               value: settings.soundEnabled,
               onChanged: controller.setSoundEnabled,
             ),

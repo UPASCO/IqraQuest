@@ -162,6 +162,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reduceMotion => 'تقليل الحركة';
 
   @override
+  String get soundEffects => 'المؤثرات الصوتية';
+
+  @override
   String get darkMode => 'الوضع الليلي';
 
   @override

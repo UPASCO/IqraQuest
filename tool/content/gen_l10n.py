@@ -333,6 +333,12 @@ s("reduceMotion", "Settings item: accessibility",
   tr="Hareketi Azalt", id="Kurangi Gerakan", ur="حرکت کم کریں", ms="Kurangkan Gerakan",
   it="Riduci animazioni", nl="Beweging verminderen")
 
+s("soundEffects", "Settings item: toggle for game sound effects",
+  fr="Effets sonores", en="Sound effects", ar="المؤثرات الصوتية",
+  es="Efectos de sonido", pt="Efeitos sonoros", de="Soundeffekte",
+  tr="Ses Efektleri", id="Efek Suara", ur="آوازی اثرات", ms="Kesan Bunyi",
+  it="Effetti sonori", nl="Geluidseffecten")
+
 s("darkMode", "Settings item",
   fr="Mode nuit", en="Dark mode", ar="الوضع الليلي", es="Modo oscuro",
   pt="Modo escuro", de="Dunkelmodus", tr="Karanlık Mod", id="Mode Gelap",

@@ -682,5 +682,85 @@
     "light": "upper-left-golden-hour",
     "usage": "board",
     "origin": "owner-supplied IqraQuest asset pack (reference sheets + board reference), extracted/cleaned by tool/art/extract_pack.py and tool/art/board_from_ref.py"
+  },
+  {
+    "id": "sfx_tap",
+    "file": "assets/audio/tap.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.06,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_gait_select",
+    "file": "assets/audio/gait_select.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.16,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_gait_confirm",
+    "file": "assets/audio/gait_confirm.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.28,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_move_hoofs",
+    "file": "assets/audio/move_hoofs.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.69,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_correct",
+    "file": "assets/audio/correct.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.66,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_wrong",
+    "file": "assets/audio/wrong.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.52,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_chest",
+    "file": "assets/audio/chest.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.62,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_streak",
+    "file": "assets/audio/streak.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.79,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_water",
+    "file": "assets/audio/water.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 0.8,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
+  },
+  {
+    "id": "sfx_victory",
+    "file": "assets/audio/victory.wav",
+    "category": "audio",
+    "usage": "sfx",
+    "durationSeconds": 1.48,
+    "origin": "synthesized in-repo by tool/audio/gen_sfx.py (no third-party samples; no recitation/adhan/casino sounds)"
   }
 ]
