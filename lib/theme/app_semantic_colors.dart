@@ -79,7 +79,11 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   );
 
   static const AppSemanticColors night = AppSemanticColors(
-    primary: AppColors.emerald,
+    // Not AppColors.emerald: at 0xFF0E6B52 it measured 2.3:1 on the
+    // night surface, so the progress figures and every primary accent
+    // all but vanished in dark mode. This is the same emerald the night
+    // theme already gives team 1, and it reads at 4.9:1.
+    primary: Color(0xFF35A583),
     primaryDark: AppColors.deepEmerald,
     secondary: AppColors.sand,
     goldAccent: AppColors.softGold,

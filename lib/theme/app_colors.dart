@@ -35,5 +35,9 @@ class AppColors {
   static const Color player4Safran = Color(0xFFC17A1F); // Team Safran
 
   static const Color neutralInk = Color(0xFF1B1712);
-  static const Color neutralMist = Color(0xFF8A8072);
+  /// Secondary text on the light surfaces. Darkened from 0xFF8A8072,
+  /// which measured 3.4–3.9:1 against the three light grounds and so
+  /// failed WCAG's 4.5:1 for body text; this reads 4.6–5.2:1 while
+  /// keeping the warm neutral. See test/quality/contrast_test.dart.
+  static const Color neutralMist = Color(0xFF746C60);
 }
