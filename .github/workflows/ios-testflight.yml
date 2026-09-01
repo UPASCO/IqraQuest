@@ -1,18 +1,78 @@
 name: iOS — build & upload to TestFlight
 
-# Manual trigger only, on purpose: this pipeline uploads a real build to
-# App Store Connect and costs Apple/GitHub build minutes, so it should
-# never fire on every push while the project is young. Once the team is
-# comfortable with it, this can be changed to trigger on e.g. tags
-# matching "v*" — see store/apple/TESTFLIGHT_SETUP.md.
+# Two jobs, one file:
+#
+#  - verify-build: runs on pull requests and needs NO secrets — it gates
+#    the merge on analyze + tests + an unsigned iOS release build.
+#  - build-and-upload: manual trigger only, on purpose. It uploads a
+#    real build to App Store Connect and costs Apple/GitHub build
+#    minutes, so it should never fire on every push. It checks all four
+#    Apple secrets FIRST and fails with a clear message when one is
+#    missing, instead of dying in a Ruby stack trace mid-lane.
 on:
   workflow_dispatch: {}
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "legal/**"
+      - "store/**"
 
 jobs:
-  build-and-upload:
+  verify-build:
+    # PR safety net: proves the iOS app still builds, without touching
+    # signing or App Store Connect (secrets are not available — and not
+    # needed — here).
+    if: github.event_name == 'pull_request'
     runs-on: macos-latest
     timeout-minutes: 45
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Regenerate localizations
+        run: flutter gen-l10n
+
+      - name: Static analysis
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build the iOS release (unsigned)
+        run: flutter build ios --release --no-codesign
+
+  build-and-upload:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check the Apple secrets are configured
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          missing=""
+          for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_CONTENT APPLE_TEAM_ID; do
+            eval "value=\${$name}"
+            [ -z "$value" ] && missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing GitHub secret(s):$missing"
+            echo "::error::Add them under Settings → Secrets and variables → Actions."
+            echo "::error::How to obtain each one: store/apple/TESTFLIGHT_SETUP.md"
+            exit 1
+          fi
+          echo "All four Apple secrets are present."
+
       - uses: actions/checkout@v4
 
       - uses: subosito/flutter-action@v2

@@ -4,15 +4,30 @@ default_platform(:ios)
 # secrets this lane expects (ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_CONTENT,
 # APPLE_TEAM_ID) and how to obtain each one.
 platform :ios do
+  # A missing secret must read as "add this secret", never as a Ruby
+  # KeyError stack trace (the CI checks them too, but this lane can also
+  # be run from a laptop).
+  def required_env(name)
+    value = ENV[name].to_s
+    if value.empty?
+      UI.user_error!(
+        "The #{name} secret/environment variable is not set. " \
+        "Add it (GitHub: Settings → Secrets and variables → Actions); " \
+        "see store/apple/TESTFLIGHT_SETUP.md for how to obtain it.",
+      )
+    end
+    value
+  end
+
   desc "Build the Flutter release IPA and upload it to TestFlight"
   lane :beta do
     api_key = app_store_connect_api_key(
-      key_id: ENV.fetch("ASC_KEY_ID"),
-      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_id: required_env("ASC_KEY_ID"),
+      issuer_id: required_env("ASC_ISSUER_ID"),
       # Store the raw contents of the downloaded .p8 file as the
       # ASC_KEY_CONTENT secret (not base64 — App Store Connect API keys
       # are already plain text PEM).
-      key_content: ENV.fetch("ASC_KEY_CONTENT"),
+      key_content: required_env("ASC_KEY_CONTENT"),
       is_key_content_base64: false,
       in_house: false,
     )
@@ -22,7 +37,7 @@ platform :ios do
     update_code_signing_settings(
       use_automatic_signing: true,
       path: "Runner.xcodeproj",
-      team_id: ENV.fetch("APPLE_TEAM_ID"),
+      team_id: required_env("APPLE_TEAM_ID"),
     )
 
     # NOTE: the build number is NOT set here. Flutter's Info.plist uses

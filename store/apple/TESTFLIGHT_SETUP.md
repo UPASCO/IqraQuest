@@ -6,10 +6,15 @@ besoin d'un Mac. Il te faut juste : un compte Apple Developer actif, et
 5 secrets à renseigner une fois dans GitHub. Ce document explique
 exactement quoi faire, dans l'ordre.
 
-Le pipeline se déclenche **manuellement** (bouton "Run workflow" dans
-l'onglet Actions de GitHub) — il ne se lance jamais tout seul, pour
-éviter de consommer des minutes de build ou d'envoyer des builds
-accidentels.
+L'envoi vers TestFlight se déclenche **manuellement** (bouton
+"Run workflow" dans l'onglet Actions de GitHub) — il ne se lance jamais
+tout seul, pour éviter de consommer des minutes de build ou d'envoyer
+des builds accidentels. S'il manque un secret, le pipeline s'arrête
+immédiatement avec un message qui nomme le secret manquant.
+
+Les pull requests, elles, lancent seulement un **build de
+vérification** (analyse + tests + build iOS non signé) : aucun secret
+n'est nécessaire, et rien n'est envoyé chez Apple.
 
 ## 1. Créer l'app dans App Store Connect
 
