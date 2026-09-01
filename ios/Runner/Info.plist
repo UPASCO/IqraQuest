@@ -62,5 +62,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<!-- Portrait-only apps must opt out of iPad multitasking (Apple
+	     validation rule 90474), or declare all four orientations. -->
+	<key>UIRequiresFullScreen</key>
+	<true/>
 </dict>
 </plist>
