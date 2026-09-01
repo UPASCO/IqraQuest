@@ -604,6 +604,9 @@ class GameController extends StateNotifier<GameSession?> {
     if (s == null) return;
     state = s.copyWith(isAiTurnInProgress: true);
     await Future<void>.delayed(const Duration(milliseconds: 550));
+    // The player may have left the board during that pause; a
+    // disposed notifier must not be read or written.
+    if (!mounted) return;
 
     final current = state;
     if (current == null || !current.gameState.currentPlayer.isAi) return;
@@ -626,6 +629,9 @@ class GameController extends StateNotifier<GameSession?> {
 
   Future<void> _runAiAnswer(AiDifficulty aiDifficulty, QuestionDifficulty _) async {
     await Future<void>.delayed(const Duration(milliseconds: 700));
+    // The player may have left the board during that pause; a
+    // disposed notifier must not be read or written.
+    if (!mounted) return;
     final s = state;
     final question = s?.currentQuestion;
     if (s == null || question == null) return;
@@ -637,11 +643,17 @@ class GameController extends StateNotifier<GameSession?> {
     answerQuestion(index);
 
     await Future<void>.delayed(const Duration(milliseconds: 900));
+    // The player may have left the board during that pause; a
+    // disposed notifier must not be read or written.
+    if (!mounted) return;
     if (state?.gameState.currentPlayer.isAi ?? false) _runAiCellDecision();
   }
 
   Future<void> _runAiJourneyAnswer(AiDifficulty aiDifficulty, Question question) async {
     await Future<void>.delayed(const Duration(milliseconds: 700));
+    // The player may have left the board during that pause; a
+    // disposed notifier must not be read or written.
+    if (!mounted) return;
     if (state == null) return;
     final correct = ai.decideAnswerCorrect(aiDifficulty);
     answerJourneyQuestion(
@@ -650,6 +662,9 @@ class GameController extends StateNotifier<GameSession?> {
           : (question.correctAnswerIndex + 1) % question.answers.length,
     );
     await Future<void>.delayed(const Duration(milliseconds: 600));
+    // The player may have left the board during that pause; a
+    // disposed notifier must not be read or written.
+    if (!mounted) return;
     // continueAfterFeedback, not _endTurn: the per-turn attempt guard
     // stops a retry loop, and a second arrived horse still gets its own
     // question.

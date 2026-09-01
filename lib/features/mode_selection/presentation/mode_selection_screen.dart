@@ -62,6 +62,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
             Text(l10n.chooseFormat, style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 12),
             SegmentedButton<GameVariant>(
+              showSelectedIcon: false,
               style: const ButtonStyle(
                 padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 8)),
                 visualDensity: VisualDensity.compact,
@@ -80,6 +81,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
               Text(l10n.chooseDifficulty, style: Theme.of(context).textTheme.titleMedium),
               const SizedBox(height: 12),
               SegmentedButton<AiDifficulty>(
+                showSelectedIcon: false,
                 style: const ButtonStyle(
                   padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 8)),
                   visualDensity: VisualDensity.compact,
