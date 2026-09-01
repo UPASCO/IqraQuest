@@ -9,6 +9,7 @@ import '../../../services/board_effect_service.dart';
 import '../../../services/game_save_service.dart';
 import '../../../services/movement_choice_service.dart';
 import '../../../services/progress_service.dart';
+import '../../../services/question_deck.dart';
 import '../../../services/question_repository.dart';
 import '../domain/game_engine.dart';
 import '../domain/horse_ai.dart';
@@ -94,9 +95,19 @@ class GameController extends StateNotifier<GameSession?> {
   List<Question> _pool = const [];
   bool _isPremium = false;
 
+  /// The draw pile for this game. Rebuilt whenever the playable bank
+  /// changes — buying Premium mid-game widens it immediately.
+  QuestionDeck? _deck;
+
   void configure({required List<Question> pool, required bool isPremium}) {
     _pool = pool;
     _isPremium = isPremium;
+    // Free players draw from the free bank only; it is graded across all
+    // six values so their die still has six faces.
+    _deck = QuestionDeck(
+      pool: isPremium ? pool : pool.where((q) => q.isFree).toList(),
+      random: _random,
+    );
   }
 
   // ---------------------------------------------------------------------
@@ -187,8 +198,48 @@ class GameController extends StateNotifier<GameSession?> {
     return engine.previewGait(s.gameState, horseIndex, choice, useGrandGallop: useGrandGallop);
   }
 
-  /// The player commits to a horse and a gait; the matching question is
-  /// drawn immediately.
+  /// Draws this turn's card for [horseIndex].
+  ///
+  /// The card's value is both how far the horse rides and how hard its
+  /// question is: drawing replaces rolling a die, so the player no
+  /// longer picks the distance. A value may come up twice in a row —
+  /// nothing is "spent" — exactly as a die may repeat a face.
+  void drawCard(int horseIndex) {
+    final s = state;
+    if (s == null || s.gameState.turnPhase != TurnPhase.selectingGait) return;
+
+    final card = _deck?.draw();
+    if (card == null) {
+      // No playable question at all: the turn still resolves rather than
+      // stalling or paywalling mid-game.
+      final choice = const MovementChoice(1);
+      final committed = engine.commitGait(s.gameState, horseIndex, choice);
+      state = s.copyWith(gameState: committed.copyWith(freeBankExhausted: true));
+      _persist();
+      _resolveAnswer(correct: true, questionId: 'free-bank-exhausted', category: null);
+      continueAfterFeedback();
+      return;
+    }
+
+    final choice = MovementChoice(card.value);
+    final committed = engine.commitGait(s.gameState, horseIndex, choice);
+    state = s.copyWith(
+      gameState: committed,
+      // The bank stores correct answers at index 0: shuffle on draw so
+      // the on-screen order never gives the answer away.
+      currentQuestion: card.withShuffledAnswers(_random),
+      preview: engine.previewGait(s.gameState, horseIndex, choice),
+    );
+    _persist();
+
+    final player = committed.currentPlayer;
+    if (player.isAi) {
+      _runAiAnswer(player.aiDifficulty!, card.difficulty);
+    }
+  }
+
+  /// Commits a horse and an explicit distance. Kept for the flows that
+  /// still name their own value — the AI turn and the tests.
   void selectGait(int horseIndex, MovementChoice choice, {bool useGrandGallop = false}) {
     final s = state;
     if (s == null || s.gameState.turnPhase != TurnPhase.selectingGait) return;

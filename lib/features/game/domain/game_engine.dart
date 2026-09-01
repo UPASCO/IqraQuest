@@ -24,8 +24,20 @@ class GameEngine {
   // Reading the current options
   // ---------------------------------------------------------------------
 
-  /// Gaits this player has not yet spent in the current cycle.
-  List<MovementChoice> availableGaits(Player player) => player.gaitCycle.available;
+  /// Every card value the deck can put on the table.
+  ///
+  /// A turn's distance now comes from drawing a question card, not from
+  /// the player picking a gait, so nothing is ever "spent": a draw may
+  /// legitimately produce the same value twice in a row, exactly as a
+  /// die may roll the same face twice.
+  List<MovementChoice> availableGaits(Player player) => const [
+    MovementChoice(1),
+    MovementChoice(2),
+    MovementChoice(3),
+    MovementChoice(4),
+    MovementChoice(5),
+    MovementChoice(6),
+  ];
 
   /// Indices of horses that can act this turn: anything not already
   /// arrived. A horse waiting on its journey question is handled by
@@ -84,9 +96,6 @@ class GameEngine {
     MovementChoice choice, {
     bool useGrandGallop = false,
   }) {
-    // The rule is enforced here, not just asserted: a spent gait cannot
-    // be committed again even if a UI bug offers it.
-    if (!state.currentPlayer.gaitCycle.isAvailable(choice)) return state;
     return state.copyWith(
       pendingGait: PendingGait(
         horseIndex: horseIndex,
@@ -127,7 +136,6 @@ class GameEngine {
     }
 
     player = player.copyWith(
-      gaitCycle: player.gaitCycle.consume(pending.choice),
       streak: streak,
       rewards: rewards,
     );

@@ -1,5 +1,4 @@
 export 'circuit.dart';
-export 'gait_cycle.dart';
 export 'game_mode.dart';
 export 'game_state.dart';
 export 'horse_state.dart';

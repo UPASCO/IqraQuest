@@ -524,6 +524,33 @@ s("chooseYourGait", "Header above the six horseshoe gait choices",
   tr="Temponu seç", id="Pilih langkahmu", ur="اپنی چال منتخب کریں",
   ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
 
+s("drawCard", "Call to action on the face-down deck: draw this turn's card",
+  fr="Piocher une carte", en="Draw a card", ar="اسحب بطاقة",
+  es="Roba una carta", pt="Puxar uma carta", de="Karte ziehen",
+  tr="Kart çek", id="Ambil kartu", ur="کارڈ نکالیں",
+  ms="Cabut kad", it="Pesca una carta", nl="Trek een kaart")
+
+s("drawnCardTitle", "Headline over the freshly turned card",
+  fr="Carte piochée", en="Card drawn", ar="البطاقة المسحوبة",
+  es="Carta robada", pt="Carta puxada", de="Gezogene Karte",
+  tr="Çekilen kart", id="Kartu terambil", ur="نکالا گیا کارڈ",
+  ms="Kad dicabut", it="Carta pescata", nl="Getrokken kaart")
+
+s("cardWorth", "What the drawn card is worth, under its value",
+  ph={"count": "num"},
+  fr="{count, plural, one{Vaut {count} case} other{Vaut {count} cases}}",
+  en="{count, plural, one{Worth {count} square} other{Worth {count} squares}}",
+  ar="{count, plural, one{يساوي مربعًا واحدًا} other{يساوي {count} مربعات}}",
+  es="{count, plural, one{Vale {count} casilla} other{Vale {count} casillas}}",
+  pt="{count, plural, one{Vale {count} casa} other{Vale {count} casas}}",
+  de="{count, plural, one{Wert: {count} Feld} other{Wert: {count} Felder}}",
+  tr="{count, plural, one{{count} kare değerinde} other{{count} kare değerinde}}",
+  id="{count, plural, other{Bernilai {count} petak}}",
+  ur="{count, plural, one{{count} خانہ کے برابر} other{{count} خانے کے برابر}}",
+  ms="{count, plural, other{Bernilai {count} petak}}",
+  it="{count, plural, one{Vale {count} casella} other{Vale {count} caselle}}",
+  nl="{count, plural, one{Waard: {count} vakje} other{Waard: {count} vakjes}}")
+
 s("gaitSquares", "How far a gait moves, shown under each horseshoe",
   ph={"count": "num"},
   fr="{count, plural, one{{count} case} other{{count} cases}}",

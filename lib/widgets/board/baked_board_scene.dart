@@ -36,6 +36,18 @@ class BakedBoardScene extends StatelessWidget {
   static const _sceneAspect = 941 / 2080;
 
   /// Where a pawn stands, in normalized scene coordinates.
+  /// Whether the baked plate can actually represent [circuit].
+  ///
+  /// The illustration has a fixed number of painted tiles, and a horse is
+  /// placed by indexing [sceneTrackAnchors]. If the circuit is longer
+  /// than the plate, that index wraps: two different squares would share
+  /// one painted tile and a horse would appear to ride backwards. The
+  /// game screen asks this before choosing the diorama, so a new plate
+  /// with a matching tile count enables it automatically and a
+  /// mismatched one can never be drawn wrong.
+  static bool supportsCircuit(Circuit circuit) =>
+      sceneTrackAnchors.length == circuit.trackLength;
+
   static SceneAnchor anchorFor(GameState state, int playerIndex, int horseIndex) {
     final player = state.players[playerIndex];
     final team = player.team.index;

@@ -130,7 +130,6 @@ void main() {
           a.players[p].horses.map((h) => h.position).toList(),
           b.players[p].horses.map((h) => h.position).toList(),
         );
-        expect(a.players[p].gaitCycle, b.players[p].gaitCycle);
         expect(a.players[p].streak, b.players[p].streak);
       }
     });
@@ -157,28 +156,23 @@ void main() {
       expect(const MovementChoice(6).knowledgePoints, 3);
     });
 
-    test('a spent gait becomes unavailable for the rest of the cycle', () {
+    test('a value can come up again immediately, exactly as a die repeats', () {
+      // The distance now comes from drawing a question card, not from
+      // the player picking a gait, so nothing is ever spent. A deck that
+      // refused a value it had just produced would not be a die.
       var state = buildGame();
       state = play(engine, state, steps: 4, correct: true, questionId: 'q1');
-      final available = engine.availableGaits(state.currentPlayer);
-      expect(available.map((c) => c.steps), [1, 2, 3, 5, 6]);
-      expect(state.currentPlayer.gaitCycle.isAvailable(const MovementChoice(4)), isFalse);
+      expect(engine.availableGaits(state.currentPlayer).map((c) => c.steps), [1, 2, 3, 4, 5, 6]);
+
+      final again = engine.commitGait(state, 0, const MovementChoice(4));
+      expect(again.pendingGait?.choice.steps, 4);
+      expect(again.turnPhase, TurnPhase.answeringQuestion);
     });
 
-    test('a wrong answer still spends the gait', () {
+    test('a wrong answer costs the move, not the value', () {
       var state = buildGame();
       state = play(engine, state, steps: 6, correct: false, questionId: 'q1');
-      expect(state.currentPlayer.gaitCycle.isAvailable(const MovementChoice(6)), isFalse);
-    });
-
-    test('the six gaits all refill once the cycle is complete', () {
-      var state = buildGame();
-      for (var steps = 1; steps <= 6; steps++) {
-        state = play(engine, state, steps: steps, correct: false, questionId: 'q$steps');
-      }
       expect(engine.availableGaits(state.currentPlayer).map((c) => c.steps), [1, 2, 3, 4, 5, 6]);
-      expect(state.currentPlayer.gaitCycle.completedCycles, 1);
-      expect(state.currentPlayer.gaitCycle.isFresh, isTrue);
     });
   });
 
@@ -558,7 +552,6 @@ void main() {
       expect(committed.turnPhase, TurnPhase.answeringQuestion);
       expect(committed.pendingGait?.choice.steps, 5);
       expect(committed.players[0].horses[0].position, const HomePosition());
-      expect(committed.players[0].gaitCycle.isAvailable(const MovementChoice(5)), isTrue);
     });
   });
 
@@ -628,7 +621,6 @@ void main() {
       expect(restored.currentPlayerIndex, state.currentPlayerIndex);
       expect(restored.turnPhase, state.turnPhase);
       expect(restored.askedQuestionIds, state.askedQuestionIds);
-      expect(restored.players[0].gaitCycle, state.players[0].gaitCycle);
       expect(restored.players[0].streak, state.players[0].streak);
       expect(restored.players[0].horses.first.position, state.players[0].horses.first.position);
       expect(restored.players[0].profile, state.players[0].profile);

@@ -253,6 +253,23 @@ class AppLocalizationsAr extends AppLocalizations {
   String get chooseYourGait => 'اختر خطوتك';
 
   @override
+  String get drawCard => 'اسحب بطاقة';
+
+  @override
+  String get drawnCardTitle => 'البطاقة المسحوبة';
+
+  @override
+  String cardWorth(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'يساوي $count مربعات',
+      one: 'يساوي مربعًا واحدًا',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String gaitSquares(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

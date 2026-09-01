@@ -13,6 +13,7 @@ import 'package:flutter/services.dart' show FontLoader;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:iqraquest/widgets/question_card_draw.dart';
 import 'package:iqraquest/app/app.dart';
 import 'package:iqraquest/app/providers.dart';
 import 'package:iqraquest/app/router.dart';
@@ -112,6 +113,24 @@ Player _human(String id, String name, AppTeam team, {int horseCount = 2}) => Pla
   team: team,
   horses: [for (var i = 0; i < horseCount; i++) const HorseState()],
 );
+
+
+/// Opens a turn: tap the deck, then let the card finish turning over
+/// before the question sheet is expected on screen.
+Future<void> _drawCard(WidgetTester tester) async {
+  await tester.tap(find.byKey(const Key('draw-deck')));
+  await tester.pump();
+  await tester.pump(const Duration(milliseconds: 120));
+  // The draw has to be seen: the card turns over and states its value
+  // before the question sheet covers the board.
+  expect(
+    find.byType(DrawnCardReveal),
+    findsOneWidget,
+    reason: 'the card reveal must play, not be skipped',
+  );
+  await tester.pump(kCardRevealDuration + const Duration(milliseconds: 60));
+  await _settle(tester);
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -245,10 +264,7 @@ void main() {
     controller.loadSaved();
     await _settle(tester);
 
-    await tester.tap(find.text('Trot'));
-    await _settle(tester);
-    await tester.tap(find.byKey(const Key('gait-confirm')));
-    await _settle(tester);
+    await _drawCard(tester);
     final q = container.read(gameControllerProvider)!.currentQuestion;
     if (q != null) {
       await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
@@ -318,14 +334,10 @@ void main() {
     await _settle(tester);
     await _capture(tester, 'screen_gate_board');
 
-    // Arm a gait: the destination beacon appears on the diorama itself.
-    await tester.tap(find.text('Canter'));
-    await _settle(tester);
+    // Draw the turn's card: the value it turns over is the distance,
+    // and the destination beacon appears on the board itself.
+    await _drawCard(tester);
     await _capture(tester, 'screen_gate_preview');
-
-    // Commit, answer, continue: the figurine rides — catch it mid-hop.
-    await tester.tap(find.byKey(const Key('gait-confirm')));
-    await _settle(tester);
     final q = container.read(gameControllerProvider)!.currentQuestion;
     if (q != null) {
       await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
@@ -355,7 +367,7 @@ void main() {
     await _capture(tester, 'screen_results');
   });
 
-  testWidgets('game: gait selection, question, cell offer', (tester) async {
+  testWidgets('game: card draw, question, cell offer', (tester) async {
     final container = await _pumpApp(tester, '/game');
     final controller = container.read(gameControllerProvider.notifier);
     final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
@@ -391,15 +403,9 @@ void main() {
     await _settle(tester);
     await _capture(tester, 'screen_game_gait');
 
-    // Tap through the real UI (not the controller) so screen-local state
-    // like the chosen gait — which drives the reward chip — is exercised.
-    // First tap arms the gait and shows the destination preview…
-    await tester.tap(find.text('Canter'));
-    await _settle(tester);
-    await _capture(tester, 'screen_game_preview');
-    // …the gold arrow rides.
-    await tester.tap(find.byKey(const Key('gait-confirm')));
-    await _settle(tester);
+    // Tap through the real UI (not the controller) so screen-local
+    // state — the reveal that holds the question back — is exercised.
+    await _drawCard(tester);
     await _capture(tester, 'screen_game_question');
 
     final question = container.read(gameControllerProvider)!.currentQuestion;
@@ -417,8 +423,7 @@ void main() {
       if (find.text('Trot').evaluate().isNotEmpty) {
         await tester.tap(find.text('Trot'));
         await _settle(tester);
-        await tester.tap(find.byKey(const Key('gait-confirm')));
-        await _settle(tester);
+        await _drawCard(tester);
         final q2 = container.read(gameControllerProvider)!.currentQuestion;
         if (q2 != null) {
           final wrong = (q2.correctAnswerIndex + 1) % q2.answers.length;

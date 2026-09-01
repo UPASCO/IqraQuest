@@ -254,6 +254,23 @@ class AppLocalizationsUr extends AppLocalizations {
   String get chooseYourGait => 'اپنی چال منتخب کریں';
 
   @override
+  String get drawCard => 'کارڈ نکالیں';
+
+  @override
+  String get drawnCardTitle => 'نکالا گیا کارڈ';
+
+  @override
+  String cardWorth(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count خانے کے برابر',
+      one: '$count خانہ کے برابر',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String gaitSquares(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

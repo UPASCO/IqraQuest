@@ -337,6 +337,23 @@
   "@chooseYourGait": {
     "description": "Header above the six horseshoe gait choices"
   },
+  "drawCard": "Draw a card",
+  "@drawCard": {
+    "description": "Call to action on the face-down deck: draw this turn's card"
+  },
+  "drawnCardTitle": "Card drawn",
+  "@drawnCardTitle": {
+    "description": "Headline over the freshly turned card"
+  },
+  "cardWorth": "{count, plural, one{Worth {count} square} other{Worth {count} squares}}",
+  "@cardWorth": {
+    "description": "What the drawn card is worth, under its value",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
   "gaitSquares": "{count, plural, one{{count} square} other{{count} squares}}",
   "@gaitSquares": {
     "description": "How far a gait moves, shown under each horseshoe",

@@ -1,5 +1,7 @@
 import 'dart:ui' as ui;
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -7,15 +9,14 @@ import 'package:go_router/go_router.dart';
 import '../../../app/providers.dart' show soundServiceProvider;
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
-import '../../../services/movement_choice_service.dart';
 import '../../../services/sound_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/board/baked_board_scene.dart';
 import '../../../widgets/board/board_widget.dart' show BoardPreview, BoardWidget;
-import '../../../widgets/gait_selector.dart' show HorseshoePainter;
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
+import '../../../widgets/question_card_draw.dart';
 import '../application/game_controller.dart';
 import '../../../widgets/button_label.dart';
 
@@ -33,12 +34,15 @@ class GameScreen extends ConsumerStatefulWidget {
 class _GameScreenState extends ConsumerState<GameScreen> {
   int? _selectedAnswer;
   int _selectedHorse = 0;
-  MovementChoice? _armedGait;
   MovementChoice? _hoveredGait;
-  bool _useGrandGallop = false;
   String? _dismissedQuestionId;
 
-  static const _movementChoices = MovementChoiceService();
+  /// While the drawn card is turning over, the question sheet is held
+  /// back: the player reads what the card is worth first, then answers.
+  bool _revealing = false;
+  int _revealValue = 1;
+  int _revealPips = 1;
+  Timer? _revealTimer;
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +63,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       if (previous?.gameState.currentPlayerIndex != next?.gameState.currentPlayerIndex) {
         setState(() {
           _selectedHorse = 0;
-          _armedGait = null;
           _hoveredGait = null;
-          _useGrandGallop = false;
         });
       }
     });
@@ -91,6 +93,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final question = session.currentQuestion;
     final showQuestion =
         question != null &&
+        !_revealing &&
         question.id != _dismissedQuestionId &&
         player.isHuman &&
         (state.turnPhase == TurnPhase.answeringQuestion ||
@@ -98,21 +101,17 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             state.turnPhase == TurnPhase.showingFeedback ||
             state.turnPhase == TurnPhase.resolvingCell);
 
-    // The armed gait's destination, shown on the board itself before the
-    // player commits: "if I choose 4, I arrive here."
+    // Where the drawn card sends this horse, drawn on the board itself
+    // so the ride is never a surprise: "this card takes me here."
     BoardPreview? boardPreview;
-    final armed = _armedGait;
-    if (armed != null && state.turnPhase == TurnPhase.selectingGait) {
-      final preview = ref
-          .read(gameControllerProvider.notifier)
-          .preview(_selectedHorse, armed, useGrandGallop: _useGrandGallop);
-      if (preview != null) {
-        boardPreview = BoardPreview(
-          teamIndex: state.currentPlayerIndex,
-          from: player.horses[_selectedHorse].position,
-          destination: preview.destination,
-        );
-      }
+    final pending = state.pendingGait;
+    final drawnPreview = session.preview;
+    if (pending != null && drawnPreview != null) {
+      boardPreview = BoardPreview(
+        teamIndex: state.currentPlayerIndex,
+        from: player.horses[pending.horseIndex].position,
+        destination: drawnPreview.destination,
+      );
     }
 
     final screen = MediaQuery.sizeOf(context);
@@ -133,7 +132,11 @@ class _GameScreenState extends ConsumerState<GameScreen> {
         : const <String>{};
     // The oasis route plays inside the baked 2.5D diorama; the other
     // circuits still use the painted board until their scenes are baked.
-    final useDiorama = state.circuitId == CircuitId.oasisRoute;
+    // The baked plate is painted with a fixed number of tiles; the
+    // parcours is now the 56-square petits chevaux circuit, which no
+    // current plate matches, so this falls through to the procedural
+    // board. It turns itself back on the day a 56-tile plate ships.
+    final useDiorama = BakedBoardScene.supportsCircuit(Circuit.byId(state.circuitId));
 
     return PopScope(
       // System back mid-game behaves exactly like the in-game back
@@ -293,16 +296,15 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: SafeArea(
-                child: _GaitBar(
-                  player: player,
-                  armed: _armedGait,
-                  selectedHorse: _selectedHorse,
-                  useGrandGallop: _useGrandGallop,
-                  l10n: l10n,
-                  difficultyFor: (c) => _movementChoices.difficultyFor(c, player.profile),
-                  onToggleGrandGallop: (v) => setState(() => _useGrandGallop = v),
-                  onTapGait: _onGaitTapped,
-                  onConfirm: _armedGait == null ? null : () => _onGaitConfirmed(_armedGait!),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
+                  child: DrawDeck(
+                    key: const Key('draw-deck'),
+                    onDraw: _onDrawCard,
+                    horseHint: player.horses.length > 1
+                        ? '${l10n.selectHorse} ${_selectedHorse + 1}'
+                        : null,
+                  ),
                 ),
               ),
             )
@@ -311,6 +313,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               alignment: Alignment.bottomCenter,
               child: SafeArea(
                 child: _TurnBanner(session: session, l10n: l10n),
+              ),
+            ),
+
+          if (_revealing)
+            Positioned.fill(
+              child: ColoredBox(
+                color: const Color(0xB306251C),
+                child: DrawnCardReveal(value: _revealValue, difficultyPips: _revealPips),
               ),
             ),
 
@@ -365,15 +375,38 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       Theme.of(context).textTheme.labelLarge
           ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
 
-  /// First tap arms a gait and shows its destination on the board;
-  /// tapping the armed gait again (or the confirm arrow) commits it.
-  void _onGaitTapped(MovementChoice choice) {
-    if (_armedGait == choice) {
-      _onGaitConfirmed(choice);
-    } else {
-      ref.read(soundServiceProvider).play(Sfx.gaitSelect);
-      setState(() => _armedGait = choice);
-    }
+  /// Draws the turn's card, then holds the question back long enough
+  /// for the card to turn over and be read.
+  void _onDrawCard() {
+    if (_revealing) return;
+    final controller = ref.read(gameControllerProvider.notifier);
+    ref.read(soundServiceProvider).play(Sfx.gaitSelect);
+    controller.drawCard(_selectedHorse);
+
+    final drawn = ref.read(gameControllerProvider)?.gameState.pendingGait;
+    final card = ref.read(gameControllerProvider)?.currentQuestion;
+    if (drawn == null) return; // the turn resolved without a card
+
+    setState(() {
+      _revealing = true;
+      _revealValue = drawn.choice.steps;
+      _revealPips = switch (card?.difficulty) {
+        QuestionDifficulty.easy => 1,
+        QuestionDifficulty.medium => 2,
+        QuestionDifficulty.hard => 3,
+        null => 1,
+      };
+    });
+    _revealTimer?.cancel();
+    _revealTimer = Timer(kCardRevealDuration, () {
+      if (mounted) setState(() => _revealing = false);
+    });
+  }
+
+  @override
+  void dispose() {
+    _revealTimer?.cancel();
+    super.dispose();
   }
 
   /// Turns game-state transitions into sound cues; the answer feedback,
@@ -420,44 +453,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     }
   }
 
-  void _onGaitConfirmed(MovementChoice choice) async {
-    final controller = ref.read(gameControllerProvider.notifier);
-    final session = ref.read(gameControllerProvider);
-    if (session == null) return;
-    final player = session.gameState.currentPlayer;
-
-    // Child mode confirms before a bold gait, so a young player never
-    // stumbles into a hard question by mistake (spec §13).
-    if (player.profile.confirmsRiskyGaits && choice.needsConfirmationForChildren) {
-      final l10n = AppLocalizations.of(context);
-      final confirmed = await showDialog<bool>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(l10n.chooseYourGait),
-          content: Text(l10n.confirmBoldGait),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: Text(MaterialLocalizations.of(context).cancelButtonLabel),
-            ),
-            FilledButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: Text(MaterialLocalizations.of(context).okButtonLabel),
-            ),
-          ],
-        ),
-      );
-      if (confirmed != true) return;
-    }
-
-    ref.read(soundServiceProvider).play(Sfx.gaitConfirm);
-    setState(() {
-      _hoveredGait = choice;
-      _armedGait = null;
-    });
-    controller.selectGait(_selectedHorse, choice, useGrandGallop: _useGrandGallop);
-    setState(() => _useGrandGallop = false);
-  }
 }
 
 // ---------------------------------------------------------------------
@@ -521,267 +516,6 @@ class _GlassIconButton extends StatelessWidget {
 // to ride.
 // ---------------------------------------------------------------------
 
-class _GaitBar extends StatelessWidget {
-  const _GaitBar({
-    required this.player,
-    required this.armed,
-    required this.selectedHorse,
-    required this.useGrandGallop,
-    required this.l10n,
-    required this.difficultyFor,
-    required this.onToggleGrandGallop,
-    required this.onTapGait,
-    required this.onConfirm,
-  });
-
-  final Player player;
-  final MovementChoice? armed;
-  final int selectedHorse;
-  final bool useGrandGallop;
-  final AppLocalizations l10n;
-  final QuestionDifficulty Function(MovementChoice) difficultyFor;
-  final ValueChanged<bool> onToggleGrandGallop;
-  final ValueChanged<MovementChoice> onTapGait;
-  final VoidCallback? onConfirm;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-      padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-      decoration: BoxDecoration(
-        color: const Color(0xE610281E),
-        borderRadius: BorderRadius.circular(26),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.45),
-            blurRadius: 24,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              Text(
-                l10n.chooseYourGait,
-                style: Theme.of(context).textTheme.labelMedium
-                    ?.copyWith(color: const Color(0xFFE9DFC8), fontWeight: FontWeight.w600),
-              ),
-              const Spacer(),
-              if (player.horses.length > 1)
-                Text(
-                  '${l10n.selectHorse} ${selectedHorse + 1}',
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.white54),
-                ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              for (final choice in MovementChoice.all) ...[
-                Expanded(
-                  child: _GaitChip(
-                    choice: choice,
-                    available: player.gaitCycle.isAvailable(choice),
-                    armed: armed == choice,
-                    difficulty: difficultyFor(choice),
-                    label: _gaitName(choice),
-                    semanticLabel: l10n.gaitSemanticLabel(
-                      choice.steps,
-                      _difficultyLabel(difficultyFor(choice)),
-                      choice.knowledgePoints,
-                    ),
-                    unavailableHint: l10n.gaitAlreadyUsed,
-                    onTap: () => onTapGait(choice),
-                  ),
-                ),
-                if (choice.steps < MovementChoice.maxSteps) const SizedBox(width: 6),
-              ],
-              // The gold "ride" arrow appears once a gait is armed.
-              AnimatedSize(
-                duration: AppMotion.of(context, AppMotion.micro),
-                curve: AppMotion.easeOut,
-                child: onConfirm == null
-                    ? const SizedBox(height: 54)
-                    : Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 8),
-                        child: Material(
-                          key: const Key('gait-confirm'),
-                          shape: const CircleBorder(),
-                          clipBehavior: Clip.antiAlias,
-                          child: Ink(
-                            width: 46,
-                            height: 46,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Color(0xFFF3D68A), Color(0xFFD8A032)],
-                              ),
-                            ),
-                            child: InkWell(
-                              onTap: onConfirm,
-                              child: const Icon(Icons.arrow_forward, color: Color(0xFF4A3410)),
-                            ),
-                          ),
-                        ),
-                      ),
-              ),
-            ],
-          ),
-          if (player.rewards.hasGrandGallop)
-            SwitchListTile(
-              contentPadding: EdgeInsets.zero,
-              dense: true,
-              value: useGrandGallop,
-              onChanged: onToggleGrandGallop,
-              activeThumbColor: const Color(0xFFEBC06A),
-              title: Text(
-                l10n.useGrandGallop,
-                style: Theme.of(context).textTheme.labelMedium
-                    ?.copyWith(color: const Color(0xFFE9DFC8)),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
-  /// Every gait has a NAME, like a real riding pace — "3 squares" is
-  /// bookkeeping, "Canter" is an identity (reference art: "Trot ×2").
-  String _gaitName(MovementChoice c) => switch (c.steps) {
-    1 => l10n.gaitNameWalk,
-    2 => l10n.gaitNameTrot,
-    3 => l10n.gaitNameCanter,
-    4 => l10n.gaitNameGallop,
-    5 => l10n.gaitNameFullGallop,
-    _ => l10n.gaitNameCharge,
-  };
-
-  String _difficultyLabel(QuestionDifficulty d) => switch (d) {
-    QuestionDifficulty.easy => l10n.difficultyEasy,
-    QuestionDifficulty.medium => l10n.difficultyMedium,
-    QuestionDifficulty.hard => l10n.difficultyHard,
-  };
-}
-
-class _GaitChip extends StatelessWidget {
-  const _GaitChip({
-    required this.choice,
-    required this.available,
-    required this.armed,
-    required this.difficulty,
-    required this.label,
-    required this.semanticLabel,
-    required this.unavailableHint,
-    required this.onTap,
-  });
-
-  final MovementChoice choice;
-  final bool available;
-  final bool armed;
-  final QuestionDifficulty difficulty;
-  final String label;
-  final String semanticLabel;
-  final String unavailableHint;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final pips = switch (difficulty) {
-      QuestionDifficulty.easy => 1,
-      QuestionDifficulty.medium => 2,
-      QuestionDifficulty.hard => 3,
-    };
-
-    return Semantics(
-      button: true,
-      enabled: available,
-      selected: armed,
-      label: semanticLabel,
-      hint: available ? null : unavailableHint,
-      child: GestureDetector(
-        onTap: available ? onTap : null,
-        child: AnimatedContainer(
-          duration: AppMotion.of(context, AppMotion.micro),
-          curve: AppMotion.easeOut,
-          height: 54,
-          transform: Matrix4.translationValues(0, armed ? -5 : 0, 0),
-          decoration: BoxDecoration(
-            color: armed
-                ? const Color(0xFF1E4A38)
-                : Colors.white.withValues(alpha: available ? 0.07 : 0.03),
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: armed ? const Color(0xFFEBC06A) : Colors.white.withValues(alpha: 0.10),
-              width: armed ? 1.6 : 1,
-            ),
-          ),
-          child: Opacity(
-            opacity: available ? 1 : 0.35,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 30,
-                  height: 26,
-                  child: CustomPaint(
-                    painter: HorseshoePainter(
-                      steps: choice.steps,
-                      used: !available,
-                      selected: false,
-                      shoe: const Color(0xFFD9AF56),
-                      face: Colors.transparent,
-                      ink: const Color(0xFFF4ECDC),
-                      accent: colors.primary,
-                      fontFamily: Theme.of(context).textTheme.bodyLarge?.fontFamily,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 2),
-                // The gait's name; long locales ("Ventre à terre") scale
-                // down instead of clipping.
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      label,
-                      maxLines: 1,
-                      style: Theme.of(context).textTheme.labelSmall
-                          ?.copyWith(fontSize: 8.5, color: Colors.white70),
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (var i = 0; i < 3; i++)
-                      Container(
-                        width: 3.6,
-                        height: 3.6,
-                        margin: const EdgeInsets.symmetric(horizontal: 1),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: i < pips ? const Color(0xFFE08A4E) : Colors.white24,
-                        ),
-                      ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 /// Between-turns status, floating over the world.
 class _TurnBanner extends StatelessWidget {

@@ -255,6 +255,23 @@ class AppLocalizationsNl extends AppLocalizations {
   String get chooseYourGait => 'Kies je gang';
 
   @override
+  String get drawCard => 'Trek een kaart';
+
+  @override
+  String get drawnCardTitle => 'Getrokken kaart';
+
+  @override
+  String cardWorth(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Waard: $count vakjes',
+      one: 'Waard: $count vakje',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String gaitSquares(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

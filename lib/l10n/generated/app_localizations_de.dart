@@ -255,6 +255,23 @@ class AppLocalizationsDe extends AppLocalizations {
   String get chooseYourGait => 'Wähle deine Gangart';
 
   @override
+  String get drawCard => 'Karte ziehen';
+
+  @override
+  String get drawnCardTitle => 'Gezogene Karte';
+
+  @override
+  String cardWorth(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Wert: $count Felder',
+      one: 'Wert: $count Feld',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String gaitSquares(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

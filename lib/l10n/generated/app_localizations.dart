@@ -574,6 +574,24 @@ abstract class AppLocalizations {
   /// **'Choose your gait'**
   String get chooseYourGait;
 
+  /// Call to action on the face-down deck: draw this turn's card
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a card'**
+  String get drawCard;
+
+  /// Headline over the freshly turned card
+  ///
+  /// In en, this message translates to:
+  /// **'Card drawn'**
+  String get drawnCardTitle;
+
+  /// What the drawn card is worth, under its value
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{Worth {count} square} other{Worth {count} squares}}'**
+  String cardWorth(num count);
+
   /// How far a gait moves, shown under each horseshoe
   ///
   /// In en, this message translates to:

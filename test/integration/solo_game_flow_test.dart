@@ -181,7 +181,6 @@ void main() {
     expect(after.gameId, before.gameId);
     expect(after.circuitId, CircuitId.caravanTrail);
     expect(after.players[0].horses[0].position, before.players[0].horses[0].position);
-    expect(after.players[0].gaitCycle, before.players[0].gaitCycle);
     expect(after.players[0].streak, before.players[0].streak);
     expect(after.askedQuestionIds, before.askedQuestionIds);
   });

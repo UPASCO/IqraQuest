@@ -152,11 +152,11 @@ void main() {
       for (var i = 0; i < 40; i++) {
         await Future<void>.delayed(const Duration(milliseconds: 50));
         await tester.pump();
-        if (find.text(en.chooseYourGait).evaluate().isNotEmpty) break;
+        if (find.text(en.drawCard).evaluate().isNotEmpty) break;
       }
     });
     await settle(tester);
-    expect(find.text(en.chooseYourGait), findsOneWidget, reason: 'the game board opens');
+    expect(find.text(en.drawCard), findsOneWidget, reason: 'the game board opens');
 
     // A game in progress is saved from its very first phase.
     expect(GameSaveService(storage).load(), isNotNull);

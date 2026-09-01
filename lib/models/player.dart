@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 
 import '../theme/app_team.dart';
-import 'gait_cycle.dart';
 import 'horse_state.dart';
 import 'knowledge_streak.dart';
 import 'question_category.dart';
@@ -35,7 +34,6 @@ class Player {
     required this.team,
     required this.horses,
     this.profile = PlayerProfile.intermediate,
-    this.gaitCycle = const GaitCycle(),
     this.streak = const KnowledgeStreak(),
     this.rewards = const RewardInventory(),
     this.aiDifficulty,
@@ -53,7 +51,6 @@ class Player {
   final List<HorseState> horses;
 
   /// Which of the six gaits are still available this cycle.
-  final GaitCycle gaitCycle;
 
   final KnowledgeStreak streak;
   final RewardInventory rewards;
@@ -87,7 +84,6 @@ class Player {
     String? name,
     List<HorseState>? horses,
     PlayerProfile? profile,
-    GaitCycle? gaitCycle,
     KnowledgeStreak? streak,
     RewardInventory? rewards,
     Map<QuestionCategory, int>? answersByCategory,
@@ -98,7 +94,6 @@ class Player {
     profile: profile ?? this.profile,
     aiDifficulty: aiDifficulty,
     horses: horses ?? this.horses,
-    gaitCycle: gaitCycle ?? this.gaitCycle,
     streak: streak ?? this.streak,
     rewards: rewards ?? this.rewards,
     answersByCategory: answersByCategory ?? this.answersByCategory,
@@ -117,7 +112,6 @@ class Player {
     horses: (json['horses'] as List)
         .map((h) => HorseState.fromJson(h as Map<String, dynamic>))
         .toList(),
-    gaitCycle: GaitCycle.fromJson(json['gaitCycle'] as Map<String, dynamic>? ?? const {}),
     streak: KnowledgeStreak.fromJson(json['streak'] as Map<String, dynamic>? ?? const {}),
     rewards: RewardInventory.fromJson(json['rewards'] as Map<String, dynamic>? ?? const {}),
     answersByCategory: {
@@ -133,7 +127,6 @@ class Player {
     'profile': profile.name,
     'aiDifficulty': aiDifficulty?.name,
     'horses': horses.map((h) => h.toJson()).toList(),
-    'gaitCycle': gaitCycle.toJson(),
     'streak': streak.toJson(),
     'rewards': rewards.toJson(),
     'answersByCategory': answersByCategory.map((k, v) => MapEntry(k.name, v)),
