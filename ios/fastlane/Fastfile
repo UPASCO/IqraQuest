@@ -3,6 +3,8 @@ default_platform(:ios)
 # See store/apple/TESTFLIGHT_SETUP.md for the full list of GitHub Actions
 # secrets this lane expects (ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_CONTENT,
 # APPLE_TEAM_ID) and how to obtain each one.
+require "base64"
+
 platform :ios do
   # A missing secret must read as "add this secret", never as a Ruby
   # KeyError stack trace (the CI checks them too, but this lane can also
@@ -19,15 +21,47 @@ platform :ios do
     value
   end
 
+  # The .p8 content survives many paste accidents: quotes around it,
+  # literal \n sequences, newlines collapsed to spaces, or the whole file
+  # pasted as base64. Re-canonicalize instead of failing with OpenSSL's
+  # cryptic "invalid curve name".
+  def normalized_asc_key
+    raw = required_env("ASC_KEY_CONTENT").strip
+    raw = raw.delete_prefix('"').delete_suffix('"').delete_prefix("'").delete_suffix("'")
+    raw = raw.gsub('\n', "\n")
+
+    unless raw.include?("BEGIN PRIVATE KEY")
+      begin
+        decoded = Base64.strict_decode64(raw.gsub(/\s+/, ""))
+        raw = decoded if decoded.include?("BEGIN PRIVATE KEY")
+      rescue ArgumentError
+        # fall through to the explicit error below
+      end
+    end
+
+    body = raw[/-----BEGIN PRIVATE KEY-----(.*?)-----END PRIVATE KEY-----/m, 1]
+    if body.nil? || body.gsub(/\s+/, "").empty?
+      UI.user_error!(
+        "ASC_KEY_CONTENT does not look like an App Store Connect .p8 key. " \
+        "Open the downloaded AuthKey_XXXXXXXXXX.p8 file in a plain-text " \
+        "editor and paste its ENTIRE content into the GitHub secret, " \
+        "including the -----BEGIN PRIVATE KEY----- and " \
+        "-----END PRIVATE KEY----- lines.",
+      )
+    end
+    clean = body.gsub(/\s+/, "")
+    "-----BEGIN PRIVATE KEY-----\n#{clean.scan(/.{1,64}/).join("\n")}\n-----END PRIVATE KEY-----\n"
+  end
+
   desc "Build the Flutter release IPA and upload it to TestFlight"
   lane :beta do
     api_key = app_store_connect_api_key(
       key_id: required_env("ASC_KEY_ID"),
       issuer_id: required_env("ASC_ISSUER_ID"),
-      # Store the raw contents of the downloaded .p8 file as the
-      # ASC_KEY_CONTENT secret (not base64 — App Store Connect API keys
-      # are already plain text PEM).
-      key_content: required_env("ASC_KEY_CONTENT"),
+      # Store the contents of the downloaded .p8 file as the
+      # ASC_KEY_CONTENT secret (plain text preferred; base64 and common
+      # paste mishaps are repaired by normalized_asc_key).
+      key_content: normalized_asc_key,
       is_key_content_base64: false,
       in_house: false,
     )
