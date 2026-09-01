@@ -242,12 +242,13 @@ void main() {
 
     test('the preview announces the square effect that actually applies', () {
       var state = buildGame();
-      // Oasis Route: quadrant offsets 0/2/4 are oasis/knowledge/wisdom.
+      // Oasis Route quadrant (14 squares): 0 oasis, 4 knowledge,
+      // 8 wisdom, 11 oasis.
       state = withHorse(state, at: const TrackPosition(0));
-      final preview = engine.previewGait(state, 0, const MovementChoice(2));
-      expect(preview.destination, const TrackPosition(2));
+      final preview = engine.previewGait(state, 0, const MovementChoice(4));
+      expect(preview.destination, const TrackPosition(4));
       expect(preview.effect, CellEffect.knowledge);
-      final after = play(engine, state, steps: 2, correct: true, questionId: 'q1');
+      final after = play(engine, state, steps: 4, correct: true, questionId: 'q1');
       expect(after.landedEffect, preview.effect);
     });
 
@@ -272,12 +273,12 @@ void main() {
 
     test('an Oasis square protects the horse standing on it', () {
       var state = buildGame();
-      state = withHorse(state, at: const TrackPosition(5));
-      state = withHorse(state, player: 1, at: const TrackPosition(6));
-      expect(Circuit.oasisRoute.effectAt(6), CellEffect.oasis);
-      expect(Circuit.oasisRoute.isSafe(6), isTrue);
+      state = withHorse(state, at: const TrackPosition(10));
+      state = withHorse(state, player: 1, at: const TrackPosition(11));
+      expect(Circuit.oasisRoute.effectAt(11), CellEffect.oasis);
+      expect(Circuit.oasisRoute.isSafe(11), isTrue);
       state = play(engine, state, steps: 1, correct: true, questionId: 'q1');
-      expect(state.players[1].horses[0].position, const TrackPosition(6));
+      expect(state.players[1].horses[0].position, const TrackPosition(11));
       expect(state.lastMoveOutcome, MoveOutcome.moved);
     });
 
@@ -293,7 +294,7 @@ void main() {
 
     test('the private final lane can never be captured on', () {
       var state = buildGame();
-      state = withHorse(state, at: const TrackPosition(22));
+      state = withHorse(state, at: const TrackPosition(54));
       state = withHorse(state, player: 1, at: const FinalLanePosition(1));
       final preview = engine.previewGait(state, 0, const MovementChoice(3));
       expect(preview.destination, isA<FinalLanePosition>());
@@ -407,7 +408,7 @@ void main() {
     test('a Connaissance square grants its point and nothing random', () {
       var state = buildGame();
       state = withHorse(state, at: const TrackPosition(0));
-      state = play(engine, state, steps: 2, correct: true, questionId: 'q1');
+      state = play(engine, state, steps: 4, correct: true, questionId: 'q1');
       expect(state.landedEffect, CellEffect.knowledge);
       expect(effects.bonusPointsFor(CellEffect.knowledge), 1);
       expect(effects.isInteractive(CellEffect.knowledge), isFalse);
@@ -415,17 +416,17 @@ void main() {
 
     test('a Défi adds exactly 2 squares when won and nothing when lost', () {
       var state = buildGame(circuitId: CircuitId.caravanTrail);
-      state = withHorse(state, at: const TrackPosition(2));
+      state = withHorse(state, at: const TrackPosition(4));
       state = play(engine, state, steps: 2, correct: true, questionId: 'q1');
       expect(state.landedEffect, CellEffect.challenge);
       expect(state.pendingCellEffect, CellEffect.challenge);
 
       final won = engine.resolveChallenge(state, correct: true, questionId: 'b1');
-      expect(won.players[0].horses[0].position, const TrackPosition(6));
+      expect(won.players[0].horses[0].position, const TrackPosition(8));
       expect(won.lastMoveOutcome, MoveOutcome.bonusEarned);
 
       final lost = engine.resolveChallenge(state, correct: false, questionId: 'b1');
-      expect(lost.players[0].horses[0].position, const TrackPosition(4));
+      expect(lost.players[0].horses[0].position, const TrackPosition(6));
       expect(lost.lastMoveOutcome, MoveOutcome.bonusMissed);
     });
 
@@ -483,7 +484,7 @@ void main() {
 
     test('a Sagesse square carries no gameplay advantage at all', () {
       var state = buildGame();
-      state = withHorse(state, at: const TrackPosition(2));
+      state = withHorse(state, at: const TrackPosition(6));
       state = play(engine, state, steps: 2, correct: true, questionId: 'q1');
       expect(state.landedEffect, CellEffect.wisdom);
       expect(effects.bonusPointsFor(CellEffect.wisdom), 0);
@@ -501,7 +502,7 @@ void main() {
 
     test('reaching the finish owes a Question du voyage before it counts', () {
       var state = buildGame(variant: GameVariant.quick);
-      state = withHorse(state, at: const FinalLanePosition(4));
+      state = withHorse(state, at: const FinalLanePosition(6));
       state = play(engine, state, steps: 1, correct: true, questionId: 'q1');
       final horse = state.players[0].horses[0];
       expect(horse.isFinished, isTrue);

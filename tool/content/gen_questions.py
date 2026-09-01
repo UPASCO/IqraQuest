@@ -1834,6 +1834,61 @@ def validate():
 # ---------------------------------------------------------------------
 # Write output
 # ---------------------------------------------------------------------
+# Card values (1-6): the face value a drawn question card is worth, and
+# at the same time its difficulty tier — 1 is the easiest question and
+# the shortest move, 6 the hardest and the longest.
+#
+# The authored bank grades questions on three levels (easy / medium /
+# hard), so each level is split into its two adjacent card values by
+# sorting on the stable question id and halving. That keeps the scale
+# monotonic — a value-2 card is never harder than a value-5 one — without
+# inventing a precision the authoring does not have. Refining a specific
+# question's tier is a matter of moving it between difficulty levels, or
+# of adding an explicit override here.
+#
+# Uniformity of the draw is NOT this function's job: QuestionDeck keeps
+# one pile per value and draws a value uniformly, so the odds match a
+# fair die whatever the bank happens to hold.
+
+_VALUE_BASE = {"easy": 1, "medium": 3, "hard": 5}
+
+
+def assign_card_values(questions):
+    """Return {question id: card value 1..6}."""
+    by_difficulty = {}
+    for q in questions:
+        by_difficulty.setdefault(q["difficulty"], []).append(q)
+    values = {}
+    for difficulty, group in by_difficulty.items():
+        group.sort(key=lambda q: q["id"])
+        half = (len(group) + 1) // 2  # the lower tier takes the odd one
+        for i, q in enumerate(group):
+            values[q["id"]] = _VALUE_BASE[difficulty] + (0 if i < half else 1)
+    return values
+
+
+def select_free_ids(questions, values, size=21):
+    """Free-tier ids, spread across all six card values.
+
+    A free player rolls the same six-sided die as everyone else, so the
+    free bank must hold at least one question of every value — otherwise
+    a value simply never comes up. Dealing round-robin over the values
+    guarantees that and keeps the free tier evenly graded.
+    """
+    by_value = {}
+    for q in questions:
+        by_value.setdefault(values[q["id"]], []).append(q["id"])
+    for ids in by_value.values():
+        ids.sort()
+    free, i = [], 0
+    while len(free) < size and i < size * 6:
+        value, rank = 1 + (i % 6), i // 6
+        pool = by_value.get(value, [])
+        if rank < len(pool):
+            free.append(pool[rank])
+        i += 1
+    return set(free)
+
 
 def write_output():
     os.makedirs(f"{OUT_ROOT}/master", exist_ok=True)
@@ -1846,13 +1901,17 @@ def write_output():
     registry = {}
     csv_rows = []
 
+    card_values = assign_card_values(Q)
+    free_ids = select_free_ids(Q, card_values)
+
     for q in Q:
         master.append(dict(
             id=q["id"], category=q["category"], difficulty=q["difficulty"],
+            value=card_values[q["id"]],
             ageLevel=q["ageLevel"], sourceType=q["sourceType"],
             sourceWork=q["sourceWork"], sourceReference=q["sourceReference"],
             sourceVerificationStatus="verified", consensusStatus="nonControversial",
-            isFree=q["isFree"],
+            isFree=q["id"] in free_ids,
         ))
         for lang in ("fr", "en", "ar"):
             content = dict(id=q["id"], correctAnswerIndex=q[lang]["correctAnswerIndex"])
@@ -1891,6 +1950,16 @@ def write_output():
                     "source_reference", "verification_status", "consensus_status"])
         w.writerows(csv_rows)
 
+    per_value = {v: sum(1 for m in master if m["value"] == v) for v in range(1, 7)}
+    free_per_value = {
+        v: sum(1 for m in master if m["value"] == v and m["isFree"]) for v in range(1, 7)
+    }
+    print("Cards per value:", per_value)
+    print("Free cards per value:", free_per_value)
+    assert all(free_per_value[v] > 0 for v in range(1, 7)), (
+        "every card value needs at least one free question, or that value "
+        "can never be drawn on the free tier"
+    )
     print("Wrote", len(master), "questions to", OUT_ROOT)
     print("Wrote source registry with", len(registry), "unique sources")
 

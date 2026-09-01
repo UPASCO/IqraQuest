@@ -105,30 +105,44 @@ class Circuit {
       if (isSafe(i)) i,
   ];
 
+  /// Every board is the parcours of the traditional French *jeu des
+  /// petits chevaux*: a 56-square circuit — 14 per quadrant — and a
+  /// six-step escalier per team, climbed on an exact count. The three
+  /// boards differ only in the scenery they ride through and in which
+  /// squares carry an effect, never in the distance: a race is only fair
+  /// to compare when everyone runs the same course.
+  static const int _squaresPerQuadrant = 14; // 14 x 4 = the 56-square circuit
+  static const int _escalierSteps = 6;
+
   static const Circuit oasisRoute = Circuit(
     id: CircuitId.oasisRoute,
-    squaresPerQuadrant: 6,
-    finalLaneLength: 4,
-    quadrantEffects: {0: CellEffect.oasis, 2: CellEffect.knowledge, 4: CellEffect.wisdom},
+    squaresPerQuadrant: _squaresPerQuadrant,
+    finalLaneLength: _escalierSteps,
+    quadrantEffects: {
+      0: CellEffect.oasis,
+      4: CellEffect.knowledge,
+      8: CellEffect.wisdom,
+      11: CellEffect.oasis,
+    },
   );
 
   static const Circuit caravanTrail = Circuit(
     id: CircuitId.caravanTrail,
-    squaresPerQuadrant: 9,
-    finalLaneLength: 5,
+    squaresPerQuadrant: _squaresPerQuadrant,
+    finalLaneLength: _escalierSteps,
     quadrantEffects: {
       0: CellEffect.oasis,
-      2: CellEffect.knowledge,
-      4: CellEffect.challenge,
-      6: CellEffect.oasis,
-      7: CellEffect.relay,
+      3: CellEffect.knowledge,
+      6: CellEffect.challenge,
+      9: CellEffect.oasis,
+      12: CellEffect.relay,
     },
   );
 
   static const Circuit greatRide = Circuit(
     id: CircuitId.greatRide,
-    squaresPerQuadrant: 13,
-    finalLaneLength: 6,
+    squaresPerQuadrant: _squaresPerQuadrant,
+    finalLaneLength: _escalierSteps,
     quadrantEffects: {
       0: CellEffect.oasis,
       2: CellEffect.knowledge,
@@ -136,7 +150,7 @@ class Circuit {
       6: CellEffect.shortcut,
       8: CellEffect.oasis,
       10: CellEffect.duel,
-      11: CellEffect.wisdom,
+      12: CellEffect.wisdom,
     },
   );
 

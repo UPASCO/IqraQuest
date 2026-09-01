@@ -18,6 +18,7 @@ class Question {
     required this.id,
     required this.category,
     required this.difficulty,
+    required this.value,
     required this.ageLevel,
     required this.question,
     required this.answers,
@@ -31,11 +32,20 @@ class Question {
     required this.consensusStatus,
     required this.isFree,
   }) : assert(answers.length == 4, 'A question must have exactly 4 answers'),
-       assert(correctAnswerIndex >= 0 && correctAnswerIndex < 4, 'correctAnswerIndex must be 0..3');
+       assert(correctAnswerIndex >= 0 && correctAnswerIndex < 4, 'correctAnswerIndex must be 0..3'),
+       assert(value >= 1 && value <= 6, 'a card value must be 1..6');
 
   final String id;
   final QuestionCategory category;
   final QuestionDifficulty difficulty;
+
+  /// The face value of this question's card, 1..6 — how many squares
+  /// answering it correctly is worth, and at the same time its
+  /// difficulty tier: 1 is the easiest question and the shortest move,
+  /// 6 the hardest and the longest. Drawing a card is what replaces
+  /// rolling a die, so this doubles as the roll.
+  final int value;
+
   final String ageLevel;
 
   final String question;
@@ -72,6 +82,7 @@ class Question {
       id: id,
       category: category,
       difficulty: difficulty,
+      value: value,
       ageLevel: ageLevel,
       question: question,
       answers: [for (final i in order) answers[i]],
@@ -92,6 +103,7 @@ class Question {
       id: json['id'] as String,
       category: QuestionCategory.values.byName(json['category'] as String),
       difficulty: QuestionDifficulty.values.byName(json['difficulty'] as String),
+      value: json['value'] as int,
       ageLevel: json['ageLevel'] as String,
       question: json['question'] as String,
       answers: List<String>.from(json['answers'] as List),
@@ -113,6 +125,7 @@ class Question {
     'id': id,
     'category': category.name,
     'difficulty': difficulty.name,
+    'value': value,
     'ageLevel': ageLevel,
     'question': question,
     'answers': answers,
