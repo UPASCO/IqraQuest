@@ -48,15 +48,34 @@ class _StatTile extends StatelessWidget {
         color: colors.surfaceElevated,
         borderRadius: BorderRadius.circular(20),
       ),
+      // The tile keeps its shape and the type adapts: at 320 px with
+      // large text the fixed display size overflowed the card.
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            value,
-            style: Theme.of(context).textTheme.displayMedium?.copyWith(color: colors.primary),
+          Flexible(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                value,
+                maxLines: 1,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  color: colors.primary,
+                ),
+              ),
+            ),
           ),
           const SizedBox(height: 6),
-          Text(label, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium),
+          Flexible(
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+          ),
         ],
       ),
     );

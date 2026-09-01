@@ -20,7 +20,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'أجب عن الأسئلة، اختر خطوتك، وقُد حصانك من مكة إلى المدينة.';
+      'اسحب بطاقة، أجب، تقدّم — وأوصل حصانك إلى مكة.';
 
   @override
   String get getStarted => 'ابدأ';
@@ -250,9 +250,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get parentalGateInstruction => 'حل هذه المسألة للمتابعة.';
 
   @override
-  String get chooseYourGait => 'اختر خطوتك';
-
-  @override
   String get placeMecca => 'مكة';
 
   @override
@@ -329,9 +326,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectHorse => 'اختر حصانك';
-
-  @override
-  String get confirmBoldGait => 'هذه الخطوة تتطلب سؤالاً أصعب. هل نتابع؟';
 
   @override
   String get knowledgeStreak => 'زخم المعرفة';
@@ -450,7 +444,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'اختفى النرد: أنت الآن تختار خطوتك، ومعها مستوى المخاطرة. تقدمك وشاراتك ومشترياتك محفوظة — اللعبة الجارية فقط لا يمكن متابعتها بالقواعد الجديدة.';
+      'تغيّرت القواعد: تسحب الآن بطاقة، وقيمتها تحدد المسافة والصعوبة معًا. تقدّمك وأوسمتك ومشترياتك محفوظة — الجولة الجارية وحدها لا يمكن استئنافها بالقواعد الجديدة.';
 
   @override
   String get startNewRace => 'ابدأ سباقًا جديدًا';
@@ -459,11 +453,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rulesTitle => 'القواعد';
 
   @override
-  String get ruleChooseGaitTitle => 'اختر خطوتك';
+  String get ruleDrawCardTitle => 'اسحب بطاقة';
 
   @override
-  String get ruleChooseGaitBody =>
-      'أنت تقرر عدد المربعات التي تتقدمها، من 1 إلى 6. كلما ابتعدت، صعب السؤال: 1-2 سهل، 3-4 متوسط، 5-6 صعب.';
+  String get ruleDrawCardBody =>
+      'في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات وصعوبة السؤال معًا: 1 الأسهل و6 الأصعب.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'أجب لتتقدم';
@@ -473,11 +467,11 @@ class AppLocalizationsAr extends AppLocalizations {
       'الإجابة الصحيحة تحرك حصانك بالضبط بالمسافة التي اخترتها. والإجابة الخاطئة تتركه مكانه — لا تتراجع أبدًا.';
 
   @override
-  String get ruleGaitCycleTitle => 'خطوة واحدة لكل دورة';
+  String get ruleEscalierTitle => 'السلّم إلى مكة';
 
   @override
-  String get ruleGaitCycleBody =>
-      'كل خطوة تُستخدم مرة واحدة فقط. وعندما تنفد الست، تعود جميعها — فخطط مسبقًا.';
+  String get ruleEscalierBody =>
+      'بعد دورة كاملة حول اللوحة، يصعد حصانك درجات سلّمه الخمس إلى مكة. وهناك لا يستطيع أحد اللحاق به.';
 
   @override
   String get ruleCaptureTitle => 'التجاوز والإعادة';

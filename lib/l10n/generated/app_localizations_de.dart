@@ -20,7 +20,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Beantworte Fragen, wähle deine Gangart und führe dein Pferd von Mekka nach Medina.';
+      'Zieh eine Karte, antworte, reite weiter — und bring dein Pferd nach Mekka.';
 
   @override
   String get getStarted => 'Loslegen';
@@ -252,9 +252,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get parentalGateInstruction => 'Löse das, um fortzufahren.';
 
   @override
-  String get chooseYourGait => 'Wähle deine Gangart';
-
-  @override
   String get placeMecca => 'Mekka';
 
   @override
@@ -328,10 +325,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get selectHorse => 'Wähle dein Pferd';
-
-  @override
-  String get confirmBoldGait =>
-      'Diese Gangart zieht eine schwerere Frage. Weiter?';
 
   @override
   String get knowledgeStreak => 'Wissensschwung';
@@ -453,7 +446,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'Der Würfel ist weg: Du wählst jetzt deine Gangart und damit dein Risiko. Fortschritt, Abzeichen und Käufe bleiben erhalten — nur das laufende Spiel kann nicht mit den neuen Regeln fortgesetzt werden.';
+      'Die Regeln haben sich geändert: Du ziehst jetzt eine Karte, und ihr Wert gibt zugleich Distanz und Schwierigkeit. Fortschritt, Abzeichen und Käufe bleiben erhalten — nur das laufende Spiel lässt sich mit den neuen Regeln nicht fortsetzen.';
 
   @override
   String get startNewRace => 'Neues Rennen starten';
@@ -462,11 +455,11 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rulesTitle => 'Die Regeln';
 
   @override
-  String get ruleChooseGaitTitle => 'Wähle deine Gangart';
+  String get ruleDrawCardTitle => 'Zieh eine Karte';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Du entscheidest, wie weit du ziehst, von 1 bis 6 Feldern. Je weiter, desto schwerer die Frage: 1-2 leicht, 3-4 mittel, 5-6 schwer.';
+  String get ruleDrawCardBody =>
+      'Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist zugleich die Zahl der Felder und die Schwierigkeit der Frage: 1 die leichteste, 6 die schwerste.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antworte, um vorzurücken';
@@ -476,11 +469,11 @@ class AppLocalizationsDe extends AppLocalizations {
       'Eine richtige Antwort bewegt dein Pferd genau um die gewählte Distanz. Eine falsche Antwort lässt es stehen — du gehst nie zurück.';
 
   @override
-  String get ruleGaitCycleTitle => 'Eine Gangart pro Runde';
+  String get ruleEscalierTitle => 'Die Treppe nach Mekka';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Jede Gangart kann nur einmal genutzt werden. Sind alle sechs verbraucht, kommen sie alle zurück — plane voraus.';
+  String get ruleEscalierBody =>
+      'Nach einer vollen Runde steigt dein Pferd die fünf Stufen seiner Treppe nach Mekka hinauf. Dort kann es niemand mehr einholen.';
 
   @override
   String get ruleCaptureTitle => 'Überholen und heimschicken';

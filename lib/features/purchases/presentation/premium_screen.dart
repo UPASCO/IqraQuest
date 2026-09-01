@@ -11,6 +11,7 @@ import '../../../theme/app_theme.dart';
 import '../../../widgets/geometric_motif_painter.dart';
 import '../../../widgets/parental_gate.dart';
 import '../../../widgets/button_label.dart';
+import '../../../widgets/fit_or_scroll.dart';
 
 class PremiumScreen extends ConsumerStatefulWidget {
   const PremiumScreen({super.key});
@@ -62,7 +63,7 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
         child: GeometricMotifBackground(
           opacity: 0.05,
           color: colors.goldAccent,
-          child: Padding(
+          child: FitOrScroll(
             padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

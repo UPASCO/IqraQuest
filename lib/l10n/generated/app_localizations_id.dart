@@ -20,7 +20,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Jawab pertanyaan, pilih langkahmu, dan bawa kudamu dari Makkah ke Madinah.';
+      'Ambil kartu, jawab, melaju — dan bawa kudamu sampai ke Makkah.';
 
   @override
   String get getStarted => 'Mulai';
@@ -253,9 +253,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get parentalGateInstruction => 'Selesaikan ini untuk melanjutkan.';
 
   @override
-  String get chooseYourGait => 'Pilih langkahmu';
-
-  @override
   String get placeMecca => 'Makkah';
 
   @override
@@ -327,10 +324,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get selectHorse => 'Pilih kudamu';
-
-  @override
-  String get confirmBoldGait =>
-      'Langkah ini menarik pertanyaan lebih sulit. Lanjutkan?';
 
   @override
   String get knowledgeStreak => 'Momentum pengetahuan';
@@ -451,7 +444,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'Dadu telah hilang: kini kamu memilih langkahmu sendiri, dan dengan itu tingkat risikomu. Kemajuan, lencana, dan pembelianmu tetap tersimpan — hanya permainan yang sedang berjalan tidak dapat dilanjutkan dengan aturan baru.';
+      'Aturannya berubah: sekarang kamu mengambil kartu, dan nilainya menentukan jarak sekaligus tingkat kesulitan. Progres, lencana, dan pembelianmu tetap tersimpan — hanya permainan yang sedang berjalan tidak bisa dilanjutkan dengan aturan baru.';
 
   @override
   String get startNewRace => 'Mulai balapan baru';
@@ -460,11 +453,11 @@ class AppLocalizationsId extends AppLocalizations {
   String get rulesTitle => 'Aturan main';
 
   @override
-  String get ruleChooseGaitTitle => 'Pilih langkahmu';
+  String get ruleDrawCardTitle => 'Ambil kartu';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Kamu yang menentukan seberapa jauh melangkah, dari 1 sampai 6 petak. Makin jauh, makin sulit pertanyaannya: 1-2 mudah, 3-4 sedang, 5-6 sulit.';
+  String get ruleDrawCardBody =>
+      'Pada giliranmu, ambil satu kartu. Nilainya, 1 sampai 6, sekaligus jumlah petak yang kamu tempuh dan tingkat kesulitan pertanyaannya: 1 termudah, 6 tersulit.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';
@@ -474,11 +467,11 @@ class AppLocalizationsId extends AppLocalizations {
       'Jawaban benar menggerakkan kudamu tepat sejauh yang kamu pilih. Jawaban salah membiarkannya di tempat — kamu tidak pernah mundur.';
 
   @override
-  String get ruleGaitCycleTitle => 'Satu langkah per siklus';
+  String get ruleEscalierTitle => 'Tangga menuju Makkah';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Setiap langkah hanya bisa dipakai sekali. Ketika keenamnya habis, semuanya kembali — jadi rencanakan.';
+  String get ruleEscalierBody =>
+      'Setelah satu putaran penuh, kudamu menaiki lima anak tangganya menuju Makkah. Di sana tidak ada yang bisa menyusulnya.';
 
   @override
   String get ruleCaptureTitle => 'Menyalip dan memulangkan';

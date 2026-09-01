@@ -20,7 +20,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Responda perguntas, escolha seu passo e guie seu cavalo de Meca a Medina.';
+      'Puxe uma carta, responda, avance — e leve seu cavalo até Meca.';
 
   @override
   String get getStarted => 'Começar';
@@ -252,9 +252,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get parentalGateInstruction => 'Resolva isto para continuar.';
 
   @override
-  String get chooseYourGait => 'Escolha seu passo';
-
-  @override
   String get placeMecca => 'Meca';
 
   @override
@@ -328,10 +325,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get selectHorse => 'Escolha seu cavalo';
-
-  @override
-  String get confirmBoldGait =>
-      'Este passo pede uma pergunta mais difícil. Continuar?';
 
   @override
   String get knowledgeStreak => 'Impulso do saber';
@@ -453,7 +446,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'O dado acabou: agora você escolhe seu passo e, com ele, seu nível de risco. Seu progresso, emblemas e compras são mantidos — apenas o jogo em andamento não pode continuar com as novas regras.';
+      'As regras mudaram: agora você puxa uma carta, e o valor dela dá ao mesmo tempo a distância e a dificuldade. Seu progresso, suas medalhas e suas compras são mantidos — só a partida em andamento não pode continuar com as novas regras.';
 
   @override
   String get startNewRace => 'Começar uma nova corrida';
@@ -462,11 +455,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get rulesTitle => 'As regras';
 
   @override
-  String get ruleChooseGaitTitle => 'Escolha seu passo';
+  String get ruleDrawCardTitle => 'Puxe uma carta';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Você decide quantas casas avançar, de 1 a 6. Quanto mais longe for, mais difícil a pergunta: 1-2 fácil, 3-4 média, 5-6 difícil.';
+  String get ruleDrawCardBody =>
+      'Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é ao mesmo tempo quantas casas você anda e o quanto a pergunta é difícil: 1 a mais fácil, 6 a mais difícil.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responda para avançar';
@@ -476,11 +469,11 @@ class AppLocalizationsPt extends AppLocalizations {
       'Uma resposta certa move seu cavalo exatamente a distância escolhida. Uma resposta errada o deixa onde está — você nunca retrocede.';
 
   @override
-  String get ruleGaitCycleTitle => 'Um passo por ciclo';
+  String get ruleEscalierTitle => 'A escada até Meca';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Cada passo só pode ser usado uma vez. Quando os seis se esgotam, todos voltam — planeje com antecedência.';
+  String get ruleEscalierBody =>
+      'Depois de uma volta completa no tabuleiro, seu cavalo sobe os cinco degraus da sua escada até Meca. Ali ninguém mais o alcança.';
 
   @override
   String get ruleCaptureTitle => 'Ultrapassar e mandar de volta';

@@ -20,7 +20,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Beantwoord vragen, kies je gang en leid je paard van Mekka naar Medina.';
+      'Trek een kaart, antwoord, rijd door — en breng je paard naar Mekka.';
 
   @override
   String get getStarted => 'Beginnen';
@@ -252,9 +252,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get parentalGateInstruction => 'Los dit op om verder te gaan.';
 
   @override
-  String get chooseYourGait => 'Kies je gang';
-
-  @override
   String get placeMecca => 'Mekka';
 
   @override
@@ -328,10 +325,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get selectHorse => 'Kies je paard';
-
-  @override
-  String get confirmBoldGait =>
-      'Deze gang trekt een moeilijkere vraag. Doorgaan?';
 
   @override
   String get knowledgeStreak => 'Kennismomentum';
@@ -452,7 +445,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'De dobbelsteen is weg: jij kiest nu je eigen gang, en daarmee je risico. Je voortgang, badges en aankopen blijven behouden — alleen het lopende spel kan niet verder onder de nieuwe regels.';
+      'De regels zijn veranderd: je trekt nu een kaart, en de waarde bepaalt zowel de afstand als de moeilijkheid. Je voortgang, badges en aankopen blijven behouden — alleen het lopende spel kan niet verder met de nieuwe regels.';
 
   @override
   String get startNewRace => 'Start een nieuwe race';
@@ -461,11 +454,11 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rulesTitle => 'De regels';
 
   @override
-  String get ruleChooseGaitTitle => 'Kies je gang';
+  String get ruleDrawCardTitle => 'Trek een kaart';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Jij bepaalt hoe ver je gaat, van 1 tot 6 vakjes. Hoe verder, hoe moeilijker de vraag: 1-2 makkelijk, 3-4 gemiddeld, 5-6 moeilijk.';
+  String get ruleDrawCardBody =>
+      'Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is zowel het aantal vakjes als de moeilijkheid van de vraag: 1 het makkelijkst, 6 het moeilijkst.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antwoord om vooruit te gaan';
@@ -475,11 +468,11 @@ class AppLocalizationsNl extends AppLocalizations {
       'Een goed antwoord verplaatst je paard precies de gekozen afstand. Een fout antwoord laat het staan — je gaat nooit achteruit.';
 
   @override
-  String get ruleGaitCycleTitle => 'Eén gang per cyclus';
+  String get ruleEscalierTitle => 'De trap naar Mekka';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Elke gang kun je maar één keer gebruiken. Als alle zes op zijn, komen ze allemaal terug — plan dus vooruit.';
+  String get ruleEscalierBody =>
+      'Na een volledige ronde beklimt je paard de vijf treden van zijn trap naar Mekka. Daar kan niemand het nog inhalen.';
 
   @override
   String get ruleCaptureTitle => 'Inhalen en naar huis sturen';

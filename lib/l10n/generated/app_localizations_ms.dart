@@ -20,7 +20,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Jawab soalan, pilih langkah anda, dan bawa kuda anda dari Makkah ke Madinah.';
+      'Cabut kad, jawab, teruskan — dan bawa kuda anda ke Makkah.';
 
   @override
   String get getStarted => 'Mulakan';
@@ -253,9 +253,6 @@ class AppLocalizationsMs extends AppLocalizations {
   String get parentalGateInstruction => 'Selesaikan ini untuk teruskan.';
 
   @override
-  String get chooseYourGait => 'Pilih langkah anda';
-
-  @override
   String get placeMecca => 'Makkah';
 
   @override
@@ -327,10 +324,6 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get selectHorse => 'Pilih kuda anda';
-
-  @override
-  String get confirmBoldGait =>
-      'Langkah ini menarik soalan lebih sukar. Teruskan?';
 
   @override
   String get knowledgeStreak => 'Momentum ilmu';
@@ -453,7 +446,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'Dadu telah tiada: kini anda memilih langkah anda sendiri, dan dengannya tahap risiko anda. Kemajuan, lencana dan pembelian anda dikekalkan — hanya permainan yang sedang berjalan tidak dapat diteruskan dengan peraturan baharu.';
+      'Peraturan telah berubah: anda kini mencabut kad, dan nilainya memberi jarak sekali gus tahap kesukaran. Kemajuan, lencana dan pembelian anda dikekalkan — hanya permainan yang sedang berjalan tidak dapat disambung dengan peraturan baharu.';
 
   @override
   String get startNewRace => 'Mulakan perlumbaan baharu';
@@ -462,11 +455,11 @@ class AppLocalizationsMs extends AppLocalizations {
   String get rulesTitle => 'Peraturan';
 
   @override
-  String get ruleChooseGaitTitle => 'Pilih langkah anda';
+  String get ruleDrawCardTitle => 'Cabut sekeping kad';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Anda yang menentukan sejauh mana untuk bergerak, dari 1 hingga 6 petak. Semakin jauh, semakin sukar soalannya: 1-2 mudah, 3-4 sederhana, 5-6 sukar.';
+  String get ruleDrawCardBody =>
+      'Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak dan sekali gus tahap kesukaran soalan: 1 paling mudah, 6 paling sukar.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';
@@ -476,11 +469,11 @@ class AppLocalizationsMs extends AppLocalizations {
       'Jawapan betul menggerakkan kuda anda tepat sejauh yang anda pilih. Jawapan salah membiarkannya di tempatnya — anda tidak pernah berundur.';
 
   @override
-  String get ruleGaitCycleTitle => 'Satu langkah setiap kitaran';
+  String get ruleEscalierTitle => 'Tangga ke Makkah';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Setiap langkah hanya boleh digunakan sekali. Apabila keenam-enamnya habis, semuanya kembali — jadi rancang lebih awal.';
+  String get ruleEscalierBody =>
+      'Selepas satu pusingan penuh, kuda anda menaiki lima anak tangga tangganya ke Makkah. Di situ tiada siapa boleh mengejarnya.';
 
   @override
   String get ruleCaptureTitle => 'Memintas dan menghantar pulang';

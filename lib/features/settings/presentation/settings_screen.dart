@@ -35,17 +35,27 @@ class SettingsScreen extends ConsumerWidget {
       body: SafeArea(
         child: ListView(
           children: [
+            // The picker sits under its label rather than beside it: as
+            // `trailing` it shared one row's height with the title and
+            // overflowed a 320 px screen at accessibility text sizes.
             ListTile(
               title: Text(l10n.language),
-              trailing: DropdownButton<String>(
-                value: language,
-                items: [
-                  for (final (code, label) in _supportedLanguages)
-                    DropdownMenuItem(value: code, child: Text(label)),
-                ],
-                onChanged: (code) {
-                  if (code != null) controller.setLanguage(code);
-                },
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: DropdownButton<String>(
+                  value: language,
+                  isExpanded: true,
+                  items: [
+                    for (final (code, label) in _supportedLanguages)
+                      DropdownMenuItem(
+                        value: code,
+                        child: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ),
+                  ],
+                  onChanged: (code) {
+                    if (code != null) controller.setLanguage(code);
+                  },
+                ),
               ),
             ),
             SwitchListTile(

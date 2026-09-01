@@ -136,10 +136,10 @@ abstract class AppLocalizations {
   /// **'Welcome to IqraQuest'**
   String get onboardingWelcomeTitle;
 
-  /// Onboarding first screen subtitle
+  /// Welcome screen subtitle
   ///
   /// In en, this message translates to:
-  /// **'Answer questions, choose your gait, guide your horse from Makkah to Madinah.'**
+  /// **'Draw a card, answer, ride on — and bring your horse home to Mecca.'**
   String get onboardingWelcomeSubtitle;
 
   /// Primary CTA button on onboarding
@@ -568,12 +568,6 @@ abstract class AppLocalizations {
   /// **'Solve this to continue.'**
   String get parentalGateInstruction;
 
-  /// Header above the six horseshoe gait choices
-  ///
-  /// In en, this message translates to:
-  /// **'Choose your gait'**
-  String get chooseYourGait;
-
   /// Centre of the board: the destination every horse rides to
   ///
   /// In en, this message translates to:
@@ -687,12 +681,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose your horse'**
   String get selectHorse;
-
-  /// Confirmation before a risky gait in child mode
-  ///
-  /// In en, this message translates to:
-  /// **'This gait draws a harder question. Continue?'**
-  String get confirmBoldGait;
 
   /// Name of the streak gauge
   ///
@@ -916,10 +904,10 @@ abstract class AppLocalizations {
   /// **'The race rules have been improved'**
   String get raceRulesUpdatedTitle;
 
-  /// Explains why an old save cannot be resumed
+  /// Legacy save notice body
   ///
   /// In en, this message translates to:
-  /// **'The dice is gone: you now choose your own gait, and with it your level of risk. Your progress, badges and purchases are all kept — only the game in progress cannot continue under the new rules.'**
+  /// **'The rules have changed: you now draw a card, and its value gives both the distance and the difficulty. Your progress, badges and purchases are kept — only the game in progress cannot resume under the new rules.'**
   String get raceRulesUpdatedBody;
 
   /// Button to start fresh after the rules change
@@ -937,14 +925,14 @@ abstract class AppLocalizations {
   /// Rules step 1 title
   ///
   /// In en, this message translates to:
-  /// **'Choose your gait'**
-  String get ruleChooseGaitTitle;
+  /// **'Draw a card'**
+  String get ruleDrawCardTitle;
 
   /// Rules step 1 body
   ///
   /// In en, this message translates to:
-  /// **'You decide how far to move, from 1 to 6 squares. The further you go, the harder the question: 1-2 easy, 3-4 medium, 5-6 hard.'**
-  String get ruleChooseGaitBody;
+  /// **'On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.'**
+  String get ruleDrawCardBody;
 
   /// Rules step 2 title
   ///
@@ -961,14 +949,14 @@ abstract class AppLocalizations {
   /// Rules step 3 title
   ///
   /// In en, this message translates to:
-  /// **'One gait per cycle'**
-  String get ruleGaitCycleTitle;
+  /// **'The escalier to Mecca'**
+  String get ruleEscalierTitle;
 
   /// Rules step 3 body
   ///
   /// In en, this message translates to:
-  /// **'Each gait can be used only once. When all six are spent, the whole set comes back — so plan ahead.'**
-  String get ruleGaitCycleBody;
+  /// **'After a full lap of the board, your horse climbs the five steps of its escalier to Mecca. Once there, no one can catch it.'**
+  String get ruleEscalierBody;
 
   /// Rules step 4 title
   ///

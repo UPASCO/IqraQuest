@@ -20,7 +20,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Réponds aux questions, choisis ton allure, guide ton cheval de La Mecque à Médine.';
+      'Pioche une carte, réponds, avance — et ramène ton cheval jusqu\'à La Mecque.';
 
   @override
   String get getStarted => 'Commencer';
@@ -252,9 +252,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get parentalGateInstruction => 'Résous ce calcul pour continuer.';
 
   @override
-  String get chooseYourGait => 'Choisis ton allure';
-
-  @override
   String get placeMecca => 'La Mecque';
 
   @override
@@ -328,10 +325,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get selectHorse => 'Choisis ton cheval';
-
-  @override
-  String get confirmBoldGait =>
-      'Cette allure demande une question plus difficile. On continue ?';
 
   @override
   String get knowledgeStreak => 'Élan du savoir';
@@ -452,7 +445,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'Le dé a disparu : c\'est maintenant toi qui choisis ton allure, et donc ton niveau de risque. Ta progression, tes badges et tes achats sont conservés — seule la partie en cours ne peut pas reprendre avec les nouvelles règles.';
+      'Les règles ont changé : on pioche maintenant une carte, et sa valeur donne à la fois la distance et la difficulté. Ta progression, tes badges et tes achats sont conservés — seule la partie en cours ne peut pas reprendre avec les nouvelles règles.';
 
   @override
   String get startNewRace => 'Commencer une nouvelle course';
@@ -461,11 +454,11 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rulesTitle => 'Les règles';
 
   @override
-  String get ruleChooseGaitTitle => 'Choisis ton allure';
+  String get ruleDrawCardTitle => 'Pioche une carte';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Décide toi-même de combien de cases avancer, de 1 à 6. Plus tu vas loin, plus la question est difficile : 1-2 facile, 3-4 moyenne, 5-6 difficile.';
+  String get ruleDrawCardBody =>
+      'À ton tour, pioche une carte. Sa valeur, de 1 à 6, est à la fois le nombre de cases et la difficulté de la question : 1 la plus facile, 6 la plus dure.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Réponds pour avancer';
@@ -475,11 +468,11 @@ class AppLocalizationsFr extends AppLocalizations {
       'Une bonne réponse fait avancer ton cheval exactement du nombre de cases choisi. Une mauvaise réponse le laisse sur place : tu ne recules jamais.';
 
   @override
-  String get ruleGaitCycleTitle => 'Une allure par cycle';
+  String get ruleEscalierTitle => 'L\'escalier vers La Mecque';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Chaque allure ne s\'utilise qu\'une fois. Quand les six sont épuisées, elles reviennent toutes : à toi d\'anticiper.';
+  String get ruleEscalierBody =>
+      'Après un tour complet du plateau, ton cheval monte les cinq marches de son escalier jusqu\'à La Mecque. Là, personne ne peut plus le rattraper.';
 
   @override
   String get ruleCaptureTitle => 'Dépasser et renvoyer';

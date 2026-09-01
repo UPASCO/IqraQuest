@@ -7,6 +7,7 @@ import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/button_label.dart';
+import '../../../widgets/fit_or_scroll.dart';
 
 /// The first screen after install. It has one job: show, in a single
 /// glance, that this is a board game raced on horseback — so it opens on
@@ -72,7 +73,7 @@ class OnboardingScreen extends ConsumerWidget {
           ),
 
           SafeArea(
-            child: Padding(
+            child: FitOrScroll(
               padding: const EdgeInsets.fromLTRB(28, 24, 28, 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,

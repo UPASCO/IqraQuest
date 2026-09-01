@@ -20,7 +20,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'سوالات کے جواب دیں، اپنی چال چنیں، اور اپنے گھوڑے کو مکہ سے مدینہ لے جائیں۔';
+      'کارڈ نکالیں، جواب دیں، آگے بڑھیں — اور اپنے گھوڑے کو مکہ پہنچائیں۔';
 
   @override
   String get getStarted => 'شروع کریں';
@@ -251,9 +251,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get parentalGateInstruction => 'جاری رکھنے کے لیے یہ حل کریں۔';
 
   @override
-  String get chooseYourGait => 'اپنی چال منتخب کریں';
-
-  @override
   String get placeMecca => 'مکہ';
 
   @override
@@ -327,9 +324,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get selectHorse => 'اپنا گھوڑا منتخب کریں';
-
-  @override
-  String get confirmBoldGait => 'اس چال کے لیے مشکل سوال آئے گا۔ جاری رکھیں؟';
 
   @override
   String get knowledgeStreak => 'علم کی رفتار';
@@ -448,7 +442,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'پانسہ ختم: اب آپ خود اپنی چال اور اس کے ساتھ خطرے کا درجہ چنتے ہیں۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔';
+      'قواعد بدل گئے ہیں: اب آپ ایک کارڈ نکالتے ہیں، اور اس کی قیمت فاصلہ اور مشکل دونوں طے کرتی ہے۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔';
 
   @override
   String get startNewRace => 'نئی دوڑ شروع کریں';
@@ -457,11 +451,11 @@ class AppLocalizationsUr extends AppLocalizations {
   String get rulesTitle => 'قواعد';
 
   @override
-  String get ruleChooseGaitTitle => 'اپنی چال چنیں';
+  String get ruleDrawCardTitle => 'ایک کارڈ نکالیں';
 
   @override
-  String get ruleChooseGaitBody =>
-      'آپ خود طے کرتے ہیں کہ کتنے خانے آگے بڑھنا ہے، 1 سے 6 تک۔ جتنا دور جائیں گے، سوال اتنا مشکل ہوگا: 1-2 آسان، 3-4 درمیانہ، 5-6 مشکل۔';
+  String get ruleDrawCardBody =>
+      'اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، بیک وقت خانوں کی تعداد اور سوال کی مشکل ہے: 1 سب سے آسان، 6 سب سے مشکل۔';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'آگے بڑھنے کے لیے جواب دیں';
@@ -471,11 +465,11 @@ class AppLocalizationsUr extends AppLocalizations {
       'درست جواب آپ کے گھوڑے کو بالکل اتنا ہی آگے بڑھاتا ہے جتنا آپ نے چنا۔ غلط جواب اسے وہیں رکھتا ہے — آپ کبھی پیچھے نہیں ہٹتے۔';
 
   @override
-  String get ruleGaitCycleTitle => 'فی چکر ایک چال';
+  String get ruleEscalierTitle => 'مکہ کی طرف زینہ';
 
   @override
-  String get ruleGaitCycleBody =>
-      'ہر چال صرف ایک بار استعمال ہوتی ہے۔ جب چھ ختم ہو جائیں تو سب واپس آ جاتی ہیں — پہلے سے منصوبہ بنائیں۔';
+  String get ruleEscalierBody =>
+      'پورے چکر کے بعد آپ کا گھوڑا اپنے زینے کی پانچ سیڑھیاں چڑھ کر مکہ پہنچتا ہے۔ وہاں اسے کوئی نہیں پکڑ سکتا۔';
 
   @override
   String get ruleCaptureTitle => 'آگے نکلیں اور واپس بھیجیں';

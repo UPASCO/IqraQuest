@@ -15,9 +15,9 @@ class TutorialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final rules = <({String title, String body})>[
-      (title: l10n.ruleChooseGaitTitle, body: l10n.ruleChooseGaitBody),
+      (title: l10n.ruleDrawCardTitle, body: l10n.ruleDrawCardBody),
       (title: l10n.ruleAnswerToAdvanceTitle, body: l10n.ruleAnswerToAdvanceBody),
-      (title: l10n.ruleGaitCycleTitle, body: l10n.ruleGaitCycleBody),
+      (title: l10n.ruleEscalierTitle, body: l10n.ruleEscalierBody),
       (title: l10n.ruleCaptureTitle, body: l10n.ruleCaptureBody),
       (title: l10n.ruleStreakTitle, body: l10n.ruleStreakBody),
       (title: l10n.ruleArrivalTitle, body: l10n.ruleArrivalBody),

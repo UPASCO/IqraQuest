@@ -43,19 +43,19 @@ s("onboardingWelcomeTitle", "Onboarding first screen title",
   ur="اقرا کویسٹ میں خوش آمدید", ms="Selamat Datang ke IqraQuest",
   it="Benvenuto su IqraQuest", nl="Welkom bij IqraQuest")
 
-s("onboardingWelcomeSubtitle", "Onboarding first screen subtitle",
-  fr="Réponds aux questions, choisis ton allure, guide ton cheval de La Mecque à Médine.",
-  en="Answer questions, choose your gait, guide your horse from Makkah to Madinah.",
-  ar="أجب عن الأسئلة، اختر خطوتك، وقُد حصانك من مكة إلى المدينة.",
-  es="Responde preguntas, elige tu paso y guía tu caballo de La Meca a Medina.",
-  pt="Responda perguntas, escolha seu passo e guie seu cavalo de Meca a Medina.",
-  de="Beantworte Fragen, wähle deine Gangart und führe dein Pferd von Mekka nach Medina.",
-  tr="Soruları cevapla, temponu seç, atını Mekke'den Medine'ye götür.",
-  id="Jawab pertanyaan, pilih langkahmu, dan bawa kudamu dari Makkah ke Madinah.",
-  ur="سوالات کے جواب دیں، اپنی چال چنیں، اور اپنے گھوڑے کو مکہ سے مدینہ لے جائیں۔",
-  ms="Jawab soalan, pilih langkah anda, dan bawa kuda anda dari Makkah ke Madinah.",
-  it="Rispondi alle domande, scegli la tua andatura e guida il tuo cavallo dalla Mecca a Medina.",
-  nl="Beantwoord vragen, kies je gang en leid je paard van Mekka naar Medina.")
+s("onboardingWelcomeSubtitle", "Welcome screen subtitle",
+  fr="Pioche une carte, réponds, avance — et ramène ton cheval jusqu'à La Mecque.",
+  en="Draw a card, answer, ride on — and bring your horse home to Mecca.",
+  ar="اسحب بطاقة، أجب، تقدّم — وأوصل حصانك إلى مكة.",
+  es="Roba una carta, responde, avanza: lleva tu caballo hasta La Meca.",
+  pt="Puxe uma carta, responda, avance — e leve seu cavalo até Meca.",
+  de="Zieh eine Karte, antworte, reite weiter — und bring dein Pferd nach Mekka.",
+  tr="Bir kart çek, cevapla, ilerle — ve atını Mekke'ye ulaştır.",
+  id="Ambil kartu, jawab, melaju — dan bawa kudamu sampai ke Makkah.",
+  ur="کارڈ نکالیں، جواب دیں، آگے بڑھیں — اور اپنے گھوڑے کو مکہ پہنچائیں۔",
+  ms="Cabut kad, jawab, teruskan — dan bawa kuda anda ke Makkah.",
+  it="Pesca una carta, rispondi, avanza — e porta il tuo cavallo fino alla Mecca.",
+  nl="Trek een kaart, antwoord, rijd door — en breng je paard naar Mekka.")
 
 s("getStarted", "Primary CTA button on onboarding",
   fr="Commencer", en="Get started", ar="ابدأ", es="Comenzar", pt="Começar",
@@ -518,15 +518,6 @@ s("parentalGateInstruction", "Parental gate dialog body",
 
 
 # ---- Gaits (the mechanic that replaced the dice) --------------------------
-s("chooseYourGait", "Header above the six horseshoe gait choices",
-  fr="Choisis ton allure", en="Choose your gait", ar="اختر خطوتك",
-  es="Elige tu paso", pt="Escolha seu passo", de="Wähle deine Gangart",
-  tr="Temponu seç", id="Pilih langkahmu", ur="اپنی چال منتخب کریں",
-  ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
-
-# ---- The four holy places, one per corner of the board ---------------
-# Proper nouns: only the exonyms that genuinely differ per language are
-# translated; transliterations stay as they are written locally.
 s("placeMecca", "Centre of the board: the destination every horse rides to",
   fr="La Mecque", en="Mecca", ar="مكة", es="La Meca", pt="Meca",
   de="Mekka", tr="Mekke", id="Makkah", ur="مکہ", ms="Makkah",
@@ -665,21 +656,6 @@ s("selectHorse", "Prompt to pick which horse to move",
   tr="Atını seç", id="Pilih kudamu", ur="اپنا گھوڑا منتخب کریں",
   ms="Pilih kuda anda", it="Scegli il tuo cavallo", nl="Kies je paard")
 
-s("confirmBoldGait", "Confirmation before a risky gait in child mode",
-  fr="Cette allure demande une question plus difficile. On continue ?",
-  en="This gait draws a harder question. Continue?",
-  ar="هذه الخطوة تتطلب سؤالاً أصعب. هل نتابع؟",
-  es="Este paso pide una pregunta más difícil. ¿Continuamos?",
-  pt="Este passo pede uma pergunta mais difícil. Continuar?",
-  de="Diese Gangart zieht eine schwerere Frage. Weiter?",
-  tr="Bu tempo daha zor bir soru getirir. Devam edilsin mi?",
-  id="Langkah ini menarik pertanyaan lebih sulit. Lanjutkan?",
-  ur="اس چال کے لیے مشکل سوال آئے گا۔ جاری رکھیں؟",
-  ms="Langkah ini menarik soalan lebih sukar. Teruskan?",
-  it="Questa andatura porta una domanda più difficile. Continuare?",
-  nl="Deze gang trekt een moeilijkere vraag. Doorgaan?")
-
-# ---- Knowledge streak and rewards -----------------------------------------
 s("knowledgeStreak", "Name of the streak gauge",
   fr="Élan du savoir", en="Knowledge momentum", ar="زخم المعرفة",
   es="Impulso del saber", pt="Impulso do saber", de="Wissensschwung",
@@ -986,19 +962,19 @@ s("raceRulesUpdatedTitle", "Shown once when a pre-gait save is detected",
   it="Le regole della corsa sono state migliorate",
   nl="De racerregels zijn verbeterd")
 
-s("raceRulesUpdatedBody", "Explains why an old save cannot be resumed",
-  fr="Le dé a disparu : c'est maintenant toi qui choisis ton allure, et donc ton niveau de risque. Ta progression, tes badges et tes achats sont conservés — seule la partie en cours ne peut pas reprendre avec les nouvelles règles.",
-  en="The dice is gone: you now choose your own gait, and with it your level of risk. Your progress, badges and purchases are all kept — only the game in progress cannot continue under the new rules.",
-  ar="اختفى النرد: أنت الآن تختار خطوتك، ومعها مستوى المخاطرة. تقدمك وشاراتك ومشترياتك محفوظة — اللعبة الجارية فقط لا يمكن متابعتها بالقواعد الجديدة.",
-  es="El dado ha desaparecido: ahora eliges tu paso y, con él, tu nivel de riesgo. Tu progreso, insignias y compras se conservan; solo la partida en curso no puede continuar con las nuevas reglas.",
-  pt="O dado acabou: agora você escolhe seu passo e, com ele, seu nível de risco. Seu progresso, emblemas e compras são mantidos — apenas o jogo em andamento não pode continuar com as novas regras.",
-  de="Der Würfel ist weg: Du wählst jetzt deine Gangart und damit dein Risiko. Fortschritt, Abzeichen und Käufe bleiben erhalten — nur das laufende Spiel kann nicht mit den neuen Regeln fortgesetzt werden.",
-  tr="Zar kalktı: artık kendi temponu, dolayısıyla risk seviyeni sen seçiyorsun. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.",
-  id="Dadu telah hilang: kini kamu memilih langkahmu sendiri, dan dengan itu tingkat risikomu. Kemajuan, lencana, dan pembelianmu tetap tersimpan — hanya permainan yang sedang berjalan tidak dapat dilanjutkan dengan aturan baru.",
-  ur="پانسہ ختم: اب آپ خود اپنی چال اور اس کے ساتھ خطرے کا درجہ چنتے ہیں۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔",
-  ms="Dadu telah tiada: kini anda memilih langkah anda sendiri, dan dengannya tahap risiko anda. Kemajuan, lencana dan pembelian anda dikekalkan — hanya permainan yang sedang berjalan tidak dapat diteruskan dengan peraturan baharu.",
-  it="Il dado non c'è più: ora scegli tu la tua andatura, e con essa il livello di rischio. Progressi, distintivi e acquisti sono conservati — solo la partita in corso non può continuare con le nuove regole.",
-  nl="De dobbelsteen is weg: jij kiest nu je eigen gang, en daarmee je risico. Je voortgang, badges en aankopen blijven behouden — alleen het lopende spel kan niet verder onder de nieuwe regels.")
+s("raceRulesUpdatedBody", "Legacy save notice body",
+  fr="Les règles ont changé : on pioche maintenant une carte, et sa valeur donne à la fois la distance et la difficulté. Ta progression, tes badges et tes achats sont conservés — seule la partie en cours ne peut pas reprendre avec les nouvelles règles.",
+  en="The rules have changed: you now draw a card, and its value gives both the distance and the difficulty. Your progress, badges and purchases are kept — only the game in progress cannot resume under the new rules.",
+  ar="تغيّرت القواعد: تسحب الآن بطاقة، وقيمتها تحدد المسافة والصعوبة معًا. تقدّمك وأوسمتك ومشترياتك محفوظة — الجولة الجارية وحدها لا يمكن استئنافها بالقواعد الجديدة.",
+  es="Las reglas han cambiado: ahora robas una carta y su valor da a la vez la distancia y la dificultad. Tu progreso, tus insignias y tus compras se conservan; solo la partida en curso no puede continuar con las nuevas reglas.",
+  pt="As regras mudaram: agora você puxa uma carta, e o valor dela dá ao mesmo tempo a distância e a dificuldade. Seu progresso, suas medalhas e suas compras são mantidos — só a partida em andamento não pode continuar com as novas regras.",
+  de="Die Regeln haben sich geändert: Du ziehst jetzt eine Karte, und ihr Wert gibt zugleich Distanz und Schwierigkeit. Fortschritt, Abzeichen und Käufe bleiben erhalten — nur das laufende Spiel lässt sich mit den neuen Regeln nicht fortsetzen.",
+  tr="Kurallar değişti: artık bir kart çekiyorsun ve kartın değeri hem mesafeyi hem zorluğu veriyor. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.",
+  id="Aturannya berubah: sekarang kamu mengambil kartu, dan nilainya menentukan jarak sekaligus tingkat kesulitan. Progres, lencana, dan pembelianmu tetap tersimpan — hanya permainan yang sedang berjalan tidak bisa dilanjutkan dengan aturan baru.",
+  ur="قواعد بدل گئے ہیں: اب آپ ایک کارڈ نکالتے ہیں، اور اس کی قیمت فاصلہ اور مشکل دونوں طے کرتی ہے۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔",
+  ms="Peraturan telah berubah: anda kini mencabut kad, dan nilainya memberi jarak sekali gus tahap kesukaran. Kemajuan, lencana dan pembelian anda dikekalkan — hanya permainan yang sedang berjalan tidak dapat disambung dengan peraturan baharu.",
+  it="Le regole sono cambiate: ora peschi una carta, e il suo valore dà insieme la distanza e la difficoltà. I tuoi progressi, i badge e gli acquisti restano — solo la partita in corso non può riprendere con le nuove regole.",
+  nl="De regels zijn veranderd: je trekt nu een kaart, en de waarde bepaalt zowel de afstand als de moeilijkheid. Je voortgang, badges en aankopen blijven behouden — alleen het lopende spel kan niet verder met de nieuwe regels.")
 
 s("startNewRace", "Button to start fresh after the rules change",
   fr="Commencer une nouvelle course", en="Start a new race",
@@ -1014,25 +990,25 @@ s("rulesTitle", "Title of the rules screen",
   pt="As regras", de="Die Regeln", tr="Kurallar", id="Aturan main",
   ur="قواعد", ms="Peraturan", it="Le regole", nl="De regels")
 
-s("ruleChooseGaitTitle", "Rules step 1 title",
-  fr="Choisis ton allure", en="Choose your gait", ar="اختر خطوتك",
-  es="Elige tu paso", pt="Escolha seu passo", de="Wähle deine Gangart",
-  tr="Temponu seç", id="Pilih langkahmu", ur="اپنی چال چنیں",
-  ms="Pilih langkah anda", it="Scegli la tua andatura", nl="Kies je gang")
+s("ruleDrawCardTitle", "Rules step 1 title",
+  fr="Pioche une carte", en="Draw a card", ar="اسحب بطاقة",
+  es="Roba una carta", pt="Puxe uma carta", de="Zieh eine Karte",
+  tr="Bir kart çek", id="Ambil kartu", ur="ایک کارڈ نکالیں",
+  ms="Cabut sekeping kad", it="Pesca una carta", nl="Trek een kaart")
 
-s("ruleChooseGaitBody", "Rules step 1 body",
-  fr="Décide toi-même de combien de cases avancer, de 1 à 6. Plus tu vas loin, plus la question est difficile : 1-2 facile, 3-4 moyenne, 5-6 difficile.",
-  en="You decide how far to move, from 1 to 6 squares. The further you go, the harder the question: 1-2 easy, 3-4 medium, 5-6 hard.",
-  ar="أنت تقرر عدد المربعات التي تتقدمها، من 1 إلى 6. كلما ابتعدت، صعب السؤال: 1-2 سهل، 3-4 متوسط، 5-6 صعب.",
-  es="Tú decides cuántas casillas avanzar, de 1 a 6. Cuanto más lejos vayas, más difícil será la pregunta: 1-2 fácil, 3-4 media, 5-6 difícil.",
-  pt="Você decide quantas casas avançar, de 1 a 6. Quanto mais longe for, mais difícil a pergunta: 1-2 fácil, 3-4 média, 5-6 difícil.",
-  de="Du entscheidest, wie weit du ziehst, von 1 bis 6 Feldern. Je weiter, desto schwerer die Frage: 1-2 leicht, 3-4 mittel, 5-6 schwer.",
-  tr="Kaç kare ilerleyeceğine sen karar verirsin, 1'den 6'ya. Ne kadar uzağa gidersen soru o kadar zorlaşır: 1-2 kolay, 3-4 orta, 5-6 zor.",
-  id="Kamu yang menentukan seberapa jauh melangkah, dari 1 sampai 6 petak. Makin jauh, makin sulit pertanyaannya: 1-2 mudah, 3-4 sedang, 5-6 sulit.",
-  ur="آپ خود طے کرتے ہیں کہ کتنے خانے آگے بڑھنا ہے، 1 سے 6 تک۔ جتنا دور جائیں گے، سوال اتنا مشکل ہوگا: 1-2 آسان، 3-4 درمیانہ، 5-6 مشکل۔",
-  ms="Anda yang menentukan sejauh mana untuk bergerak, dari 1 hingga 6 petak. Semakin jauh, semakin sukar soalannya: 1-2 mudah, 3-4 sederhana, 5-6 sukar.",
-  it="Decidi tu di quante caselle avanzare, da 1 a 6. Più vai lontano, più la domanda è difficile: 1-2 facile, 3-4 media, 5-6 difficile.",
-  nl="Jij bepaalt hoe ver je gaat, van 1 tot 6 vakjes. Hoe verder, hoe moeilijker de vraag: 1-2 makkelijk, 3-4 gemiddeld, 5-6 moeilijk.")
+s("ruleDrawCardBody", "Rules step 1 body",
+  fr="À ton tour, pioche une carte. Sa valeur, de 1 à 6, est à la fois le nombre de cases et la difficulté de la question : 1 la plus facile, 6 la plus dure.",
+  en="On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.",
+  ar="في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات وصعوبة السؤال معًا: 1 الأسهل و6 الأصعب.",
+  es="En tu turno, roba una carta. Su valor, de 1 a 6, es a la vez cuántas casillas avanzas y lo difícil que es la pregunta: 1 la más fácil, 6 la más difícil.",
+  pt="Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é ao mesmo tempo quantas casas você anda e o quanto a pergunta é difícil: 1 a mais fácil, 6 a mais difícil.",
+  de="Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist zugleich die Zahl der Felder und die Schwierigkeit der Frage: 1 die leichteste, 6 die schwerste.",
+  tr="Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri hem kaç kare ilerleyeceğin hem de sorunun zorluğudur: 1 en kolay, 6 en zor.",
+  id="Pada giliranmu, ambil satu kartu. Nilainya, 1 sampai 6, sekaligus jumlah petak yang kamu tempuh dan tingkat kesulitan pertanyaannya: 1 termudah, 6 tersulit.",
+  ur="اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، بیک وقت خانوں کی تعداد اور سوال کی مشکل ہے: 1 سب سے آسان، 6 سب سے مشکل۔",
+  ms="Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak dan sekali gus tahap kesukaran soalan: 1 paling mudah, 6 paling sukar.",
+  it="Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è insieme il numero di caselle e la difficoltà della domanda: 1 la più facile, 6 la più difficile.",
+  nl="Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is zowel het aantal vakjes als de moeilijkheid van de vraag: 1 het makkelijkst, 6 het moeilijkst.")
 
 s("ruleAnswerToAdvanceTitle", "Rules step 2 title",
   fr="Réponds pour avancer", en="Answer to advance", ar="أجب لتتقدم",
@@ -1055,26 +1031,27 @@ s("ruleAnswerToAdvanceBody", "Rules step 2 body",
   it="Una risposta corretta muove il tuo cavallo esattamente della distanza scelta. Una risposta sbagliata lo lascia dov'è: non torni mai indietro.",
   nl="Een goed antwoord verplaatst je paard precies de gekozen afstand. Een fout antwoord laat het staan — je gaat nooit achteruit.")
 
-s("ruleGaitCycleTitle", "Rules step 3 title",
-  fr="Une allure par cycle", en="One gait per cycle", ar="خطوة واحدة لكل دورة",
-  es="Un paso por ciclo", pt="Um passo por ciclo", de="Eine Gangart pro Runde",
-  tr="Döngü başına bir tempo", id="Satu langkah per siklus",
-  ur="فی چکر ایک چال", ms="Satu langkah setiap kitaran",
-  it="Un'andatura per ciclo", nl="Eén gang per cyclus")
+s("ruleEscalierTitle", "Rules step 3 title",
+  fr="L'escalier vers La Mecque", en="The escalier to Mecca",
+  ar="السلّم إلى مكة", es="La escalera hacia La Meca",
+  pt="A escada até Meca", de="Die Treppe nach Mekka",
+  tr="Mekke'ye çıkan merdiven", id="Tangga menuju Makkah",
+  ur="مکہ کی طرف زینہ", ms="Tangga ke Makkah",
+  it="La scala verso La Mecca", nl="De trap naar Mekka")
 
-s("ruleGaitCycleBody", "Rules step 3 body",
-  fr="Chaque allure ne s'utilise qu'une fois. Quand les six sont épuisées, elles reviennent toutes : à toi d'anticiper.",
-  en="Each gait can be used only once. When all six are spent, the whole set comes back — so plan ahead.",
-  ar="كل خطوة تُستخدم مرة واحدة فقط. وعندما تنفد الست، تعود جميعها — فخطط مسبقًا.",
-  es="Cada paso solo se usa una vez. Cuando se agotan los seis, vuelven todos: planifica con antelación.",
-  pt="Cada passo só pode ser usado uma vez. Quando os seis se esgotam, todos voltam — planeje com antecedência.",
-  de="Jede Gangart kann nur einmal genutzt werden. Sind alle sechs verbraucht, kommen sie alle zurück — plane voraus.",
-  tr="Her tempo yalnızca bir kez kullanılır. Altısı da bitince hepsi geri gelir — önceden planla.",
-  id="Setiap langkah hanya bisa dipakai sekali. Ketika keenamnya habis, semuanya kembali — jadi rencanakan.",
-  ur="ہر چال صرف ایک بار استعمال ہوتی ہے۔ جب چھ ختم ہو جائیں تو سب واپس آ جاتی ہیں — پہلے سے منصوبہ بنائیں۔",
-  ms="Setiap langkah hanya boleh digunakan sekali. Apabila keenam-enamnya habis, semuanya kembali — jadi rancang lebih awal.",
-  it="Ogni andatura si usa una sola volta. Quando tutte e sei sono esaurite, tornano tutte: pianifica in anticipo.",
-  nl="Elke gang kun je maar één keer gebruiken. Als alle zes op zijn, komen ze allemaal terug — plan dus vooruit.")
+s("ruleEscalierBody", "Rules step 3 body",
+  fr="Après un tour complet du plateau, ton cheval monte les cinq marches de son escalier jusqu'à La Mecque. Là, personne ne peut plus le rattraper.",
+  en="After a full lap of the board, your horse climbs the five steps of its escalier to Mecca. Once there, no one can catch it.",
+  ar="بعد دورة كاملة حول اللوحة، يصعد حصانك درجات سلّمه الخمس إلى مكة. وهناك لا يستطيع أحد اللحاق به.",
+  es="Tras una vuelta completa al tablero, tu caballo sube los cinco escalones de su escalera hacia La Meca. Allí ya nadie puede alcanzarlo.",
+  pt="Depois de uma volta completa no tabuleiro, seu cavalo sobe os cinco degraus da sua escada até Meca. Ali ninguém mais o alcança.",
+  de="Nach einer vollen Runde steigt dein Pferd die fünf Stufen seiner Treppe nach Mekka hinauf. Dort kann es niemand mehr einholen.",
+  tr="Tahtada tam bir tur attıktan sonra atın kendi merdiveninin beş basamağını çıkıp Mekke'ye ulaşır. Orada kimse ona yetişemez.",
+  id="Setelah satu putaran penuh, kudamu menaiki lima anak tangganya menuju Makkah. Di sana tidak ada yang bisa menyusulnya.",
+  ur="پورے چکر کے بعد آپ کا گھوڑا اپنے زینے کی پانچ سیڑھیاں چڑھ کر مکہ پہنچتا ہے۔ وہاں اسے کوئی نہیں پکڑ سکتا۔",
+  ms="Selepas satu pusingan penuh, kuda anda menaiki lima anak tangga tangganya ke Makkah. Di situ tiada siapa boleh mengejarnya.",
+  it="Dopo un giro completo del tabellone, il tuo cavallo sale i cinque gradini della sua scala verso La Mecca. Lì nessuno può più raggiungerlo.",
+  nl="Na een volledige ronde beklimt je paard de vijf treden van zijn trap naar Mekka. Daar kan niemand het nog inhalen.")
 
 s("ruleCaptureTitle", "Rules step 4 title",
   fr="Dépasser et renvoyer", en="Overtake and send home", ar="التجاوز والإعادة",

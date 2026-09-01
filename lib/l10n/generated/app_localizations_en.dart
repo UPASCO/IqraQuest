@@ -20,7 +20,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Answer questions, choose your gait, guide your horse from Makkah to Madinah.';
+      'Draw a card, answer, ride on — and bring your horse home to Mecca.';
 
   @override
   String get getStarted => 'Get started';
@@ -252,9 +252,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get parentalGateInstruction => 'Solve this to continue.';
 
   @override
-  String get chooseYourGait => 'Choose your gait';
-
-  @override
   String get placeMecca => 'Mecca';
 
   @override
@@ -328,9 +325,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectHorse => 'Choose your horse';
-
-  @override
-  String get confirmBoldGait => 'This gait draws a harder question. Continue?';
 
   @override
   String get knowledgeStreak => 'Knowledge momentum';
@@ -451,7 +445,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'The dice is gone: you now choose your own gait, and with it your level of risk. Your progress, badges and purchases are all kept — only the game in progress cannot continue under the new rules.';
+      'The rules have changed: you now draw a card, and its value gives both the distance and the difficulty. Your progress, badges and purchases are kept — only the game in progress cannot resume under the new rules.';
 
   @override
   String get startNewRace => 'Start a new race';
@@ -460,11 +454,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rulesTitle => 'The rules';
 
   @override
-  String get ruleChooseGaitTitle => 'Choose your gait';
+  String get ruleDrawCardTitle => 'Draw a card';
 
   @override
-  String get ruleChooseGaitBody =>
-      'You decide how far to move, from 1 to 6 squares. The further you go, the harder the question: 1-2 easy, 3-4 medium, 5-6 hard.';
+  String get ruleDrawCardBody =>
+      'On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Answer to advance';
@@ -474,11 +468,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'A correct answer moves your horse exactly the distance you chose. A wrong answer leaves it where it stands — you never go backwards.';
 
   @override
-  String get ruleGaitCycleTitle => 'One gait per cycle';
+  String get ruleEscalierTitle => 'The escalier to Mecca';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Each gait can be used only once. When all six are spent, the whole set comes back — so plan ahead.';
+  String get ruleEscalierBody =>
+      'After a full lap of the board, your horse climbs the five steps of its escalier to Mecca. Once there, no one can catch it.';
 
   @override
   String get ruleCaptureTitle => 'Overtake and send home';

@@ -20,7 +20,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Rispondi alle domande, scegli la tua andatura e guida il tuo cavallo dalla Mecca a Medina.';
+      'Pesca una carta, rispondi, avanza — e porta il tuo cavallo fino alla Mecca.';
 
   @override
   String get getStarted => 'Inizia';
@@ -252,9 +252,6 @@ class AppLocalizationsIt extends AppLocalizations {
   String get parentalGateInstruction => 'Risolvi questo per continuare.';
 
   @override
-  String get chooseYourGait => 'Scegli la tua andatura';
-
-  @override
   String get placeMecca => 'La Mecca';
 
   @override
@@ -328,10 +325,6 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get selectHorse => 'Scegli il tuo cavallo';
-
-  @override
-  String get confirmBoldGait =>
-      'Questa andatura porta una domanda più difficile. Continuare?';
 
   @override
   String get knowledgeStreak => 'Slancio del sapere';
@@ -453,7 +446,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'Il dado non c\'è più: ora scegli tu la tua andatura, e con essa il livello di rischio. Progressi, distintivi e acquisti sono conservati — solo la partita in corso non può continuare con le nuove regole.';
+      'Le regole sono cambiate: ora peschi una carta, e il suo valore dà insieme la distanza e la difficoltà. I tuoi progressi, i badge e gli acquisti restano — solo la partita in corso non può riprendere con le nuove regole.';
 
   @override
   String get startNewRace => 'Inizia una nuova corsa';
@@ -462,11 +455,11 @@ class AppLocalizationsIt extends AppLocalizations {
   String get rulesTitle => 'Le regole';
 
   @override
-  String get ruleChooseGaitTitle => 'Scegli la tua andatura';
+  String get ruleDrawCardTitle => 'Pesca una carta';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Decidi tu di quante caselle avanzare, da 1 a 6. Più vai lontano, più la domanda è difficile: 1-2 facile, 3-4 media, 5-6 difficile.';
+  String get ruleDrawCardBody =>
+      'Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è insieme il numero di caselle e la difficoltà della domanda: 1 la più facile, 6 la più difficile.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Rispondi per avanzare';
@@ -476,11 +469,11 @@ class AppLocalizationsIt extends AppLocalizations {
       'Una risposta corretta muove il tuo cavallo esattamente della distanza scelta. Una risposta sbagliata lo lascia dov\'è: non torni mai indietro.';
 
   @override
-  String get ruleGaitCycleTitle => 'Un\'andatura per ciclo';
+  String get ruleEscalierTitle => 'La scala verso La Mecca';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Ogni andatura si usa una sola volta. Quando tutte e sei sono esaurite, tornano tutte: pianifica in anticipo.';
+  String get ruleEscalierBody =>
+      'Dopo un giro completo del tabellone, il tuo cavallo sale i cinque gradini della sua scala verso La Mecca. Lì nessuno può più raggiungerlo.';
 
   @override
   String get ruleCaptureTitle => 'Sorpassa e rimanda a casa';

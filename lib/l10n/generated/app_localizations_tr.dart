@@ -20,7 +20,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Soruları cevapla, temponu seç, atını Mekke\'den Medine\'ye götür.';
+      'Bir kart çek, cevapla, ilerle — ve atını Mekke\'ye ulaştır.';
 
   @override
   String get getStarted => 'Başla';
@@ -252,9 +252,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get parentalGateInstruction => 'Devam etmek için bunu çöz.';
 
   @override
-  String get chooseYourGait => 'Temponu seç';
-
-  @override
   String get placeMecca => 'Mekke';
 
   @override
@@ -328,10 +325,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get selectHorse => 'Atını seç';
-
-  @override
-  String get confirmBoldGait =>
-      'Bu tempo daha zor bir soru getirir. Devam edilsin mi?';
 
   @override
   String get knowledgeStreak => 'Bilgi ivmesi';
@@ -450,7 +443,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get raceRulesUpdatedBody =>
-      'Zar kalktı: artık kendi temponu, dolayısıyla risk seviyeni sen seçiyorsun. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.';
+      'Kurallar değişti: artık bir kart çekiyorsun ve kartın değeri hem mesafeyi hem zorluğu veriyor. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.';
 
   @override
   String get startNewRace => 'Yeni bir yarış başlat';
@@ -459,11 +452,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rulesTitle => 'Kurallar';
 
   @override
-  String get ruleChooseGaitTitle => 'Temponu seç';
+  String get ruleDrawCardTitle => 'Bir kart çek';
 
   @override
-  String get ruleChooseGaitBody =>
-      'Kaç kare ilerleyeceğine sen karar verirsin, 1\'den 6\'ya. Ne kadar uzağa gidersen soru o kadar zorlaşır: 1-2 kolay, 3-4 orta, 5-6 zor.';
+  String get ruleDrawCardBody =>
+      'Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri hem kaç kare ilerleyeceğin hem de sorunun zorluğudur: 1 en kolay, 6 en zor.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'İlerlemek için cevapla';
@@ -473,11 +466,11 @@ class AppLocalizationsTr extends AppLocalizations {
       'Doğru cevap atını tam olarak seçtiğin kadar ilerletir. Yanlış cevap onu olduğu yerde bırakır — asla geri gitmezsin.';
 
   @override
-  String get ruleGaitCycleTitle => 'Döngü başına bir tempo';
+  String get ruleEscalierTitle => 'Mekke\'ye çıkan merdiven';
 
   @override
-  String get ruleGaitCycleBody =>
-      'Her tempo yalnızca bir kez kullanılır. Altısı da bitince hepsi geri gelir — önceden planla.';
+  String get ruleEscalierBody =>
+      'Tahtada tam bir tur attıktan sonra atın kendi merdiveninin beş basamağını çıkıp Mekke\'ye ulaşır. Orada kimse ona yetişemez.';
 
   @override
   String get ruleCaptureTitle => 'Geç ve ahıra yolla';
