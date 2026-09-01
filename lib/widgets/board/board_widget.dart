@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
+import '../../l10n/generated/app_localizations.dart';
 import '../../models/models.dart';
 import '../../theme/app_team.dart';
 import '../../theme/app_theme.dart';
@@ -856,10 +857,15 @@ class _HorseMarkerState extends State<_HorseMarker> with SingleTickerProviderSta
         );
       },
       child: Semantics(
-        label:
-            '${widget.team.name} horse ${widget.horseIndex + 1}'
-            '${widget.horse.hasShield ? ', shielded' : ''}, '
-            '${widget.selectable ? 'selectable' : 'not selectable'}',
+        label: AppLocalizations.of(context).horseSemantics(
+          switch (widget.team) {
+            AppTeam.emerald => AppLocalizations.of(context).teamEmerald,
+            AppTeam.saphir => AppLocalizations.of(context).teamSaphir,
+            AppTeam.grenat => AppLocalizations.of(context).teamGrenat,
+            AppTeam.safran => AppLocalizations.of(context).teamSafran,
+          },
+          widget.horseIndex + 1,
+        ),
         button: widget.selectable,
         child: GestureDetector(
           onTap: widget.selectable ? widget.onTap : null,

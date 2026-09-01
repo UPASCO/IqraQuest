@@ -100,6 +100,26 @@
   "@yourTurn": {
     "description": "Turn banner"
   },
+  "categoryProphets": "Prophets",
+  "@categoryProphets": {
+    "description": "Question category name"
+  },
+  "categorySira": "Sira",
+  "@categorySira": {
+    "description": "Question category name (biography of the Prophet)"
+  },
+  "categoryQuran": "Qur'an",
+  "@categoryQuran": {
+    "description": "Question category name"
+  },
+  "categoryFaith": "Faith",
+  "@categoryFaith": {
+    "description": "Question category name"
+  },
+  "categoryVirtues": "Virtues",
+  "@categoryVirtues": {
+    "description": "Question category name"
+  },
   "category": "Category",
   "@category": {
     "description": "Question card: category label"
@@ -203,6 +223,73 @@
   "soundEffects": "Sound effects",
   "@soundEffects": {
     "description": "Settings item: toggle for game sound effects"
+  },
+  "howToPlay": "How to play",
+  "@howToPlay": {
+    "description": "Settings item: opens the tutorial"
+  },
+  "privacySummary": "IqraQuest runs entirely on your device: no account, no ads, no tracking, and nothing is ever sent over the Internet.",
+  "@privacySummary": {
+    "description": "Body of the privacy dialog: the app's whole privacy story in one line"
+  },
+  "defaultPlayerName": "Player {number}",
+  "@defaultPlayerName": {
+    "description": "Default name for a human player seat",
+    "placeholders": {
+      "number": {
+        "type": "num"
+      }
+    }
+  },
+  "aiPlayerName": "Rider {number}",
+  "@aiPlayerName": {
+    "description": "Name shown for a computer opponent",
+    "placeholders": {
+      "number": {
+        "type": "num"
+      }
+    }
+  },
+  "opponentWins": "{name} wins the race!",
+  "@opponentWins": {
+    "description": "Results title when a computer opponent wins the race",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wellRidden": "A fine ride — every question learned counts.",
+  "@wellRidden": {
+    "description": "Encouraging subtitle when the player did not win"
+  },
+  "horseSemantics": "{color} horse {number}",
+  "@horseSemantics": {
+    "description": "Screen-reader label for one horse piece on the board",
+    "placeholders": {
+      "color": {
+        "type": "String"
+      },
+      "number": {
+        "type": "num"
+      }
+    }
+  },
+  "teamEmerald": "emerald",
+  "@teamEmerald": {
+    "description": "Team colour name"
+  },
+  "teamSaphir": "sapphire",
+  "@teamSaphir": {
+    "description": "Team colour name"
+  },
+  "teamGrenat": "garnet",
+  "@teamGrenat": {
+    "description": "Team colour name"
+  },
+  "teamSafran": "saffron",
+  "@teamSafran": {
+    "description": "Team colour name"
   },
   "darkMode": "Dark mode",
   "@darkMode": {

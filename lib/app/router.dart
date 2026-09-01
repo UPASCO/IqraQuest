@@ -25,7 +25,10 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
     ),
     GoRoute(
       path: '/player-setup',
-      builder: (c, s) => PlayerSetupScreen(args: s.extra as PlayerSetupArgs),
+      // A cold entry (state restoration, programmatic go) carries no
+      // args: never crash on the cast, go back to the start of the flow.
+      redirect: (c, s) => s.extra is PlayerSetupArgs ? null : '/mode-selection',
+      builder: (c, s) => PlayerSetupScreen(args: s.extra! as PlayerSetupArgs),
     ),
     GoRoute(path: '/game', builder: (c, s) => const GameScreen()),
     GoRoute(path: '/results', builder: (c, s) => const ResultsScreen()),

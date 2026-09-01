@@ -30,16 +30,29 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
 
   int get _humanCount => widget.args.mode == GameMode.solo ? 1 : widget.args.humanPlayerCount;
 
+  bool _prefilled = false;
+
   @override
   void initState() {
     super.initState();
-    _controllers = List.generate(
-      _humanCount,
-      (i) => TextEditingController(text: 'Player ${i + 1}'),
-    );
+    _controllers = List.generate(_humanCount, (_) => TextEditingController());
     // Each player carries their own level, so a child and an adult can
     // share one board fairly (spec §14).
     _profiles = List.generate(_humanCount, (_) => PlayerProfile.intermediate);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Default names come from l10n, so they are seeded once the locale
+    // is available rather than in initState.
+    if (!_prefilled) {
+      _prefilled = true;
+      final l10n = AppLocalizations.of(context);
+      for (var i = 0; i < _controllers.length; i++) {
+        _controllers[i].text = l10n.defaultPlayerName(i + 1);
+      }
+    }
   }
 
   @override
@@ -117,7 +130,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                         color: _teams[_humanCount + i].color(colors),
                       ),
                       const SizedBox(width: 12),
-                      Text('AI ${i + 1} · ${_aiLabel(widget.args.aiDifficulty, l10n)}'),
+                      Text('${l10n.aiPlayerName(i + 1)} · ${_aiLabel(widget.args.aiDifficulty, l10n)}'),
                     ],
                   ),
                 ),
@@ -157,12 +170,13 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
     final horseCount = args.variant.horsesPerPlayer;
     final players = <Player>[];
 
+    final l10n = AppLocalizations.of(context);
     for (var i = 0; i < _humanCount; i++) {
       players.add(
         Player(
           id: 'human_$i',
           name: _controllers[i].text.trim().isEmpty
-              ? 'Player ${i + 1}'
+              ? l10n.defaultPlayerName(i + 1)
               : _controllers[i].text.trim(),
           team: _teams[i],
           profile: _profiles[i],
@@ -175,7 +189,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
         players.add(
           Player(
             id: 'ai_$i',
-            name: 'AI ${i + 1}',
+            name: l10n.aiPlayerName(i + 1),
             team: _teams[_humanCount + i],
             aiDifficulty: args.aiDifficulty,
             horses: List.generate(horseCount, (_) => const HorseState()),

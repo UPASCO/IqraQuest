@@ -49,6 +49,7 @@ class GameState {
     this.currentQuestionId,
     this.pendingGait,
     this.pendingCellEffect,
+    this.pendingCellHorseIndex,
     this.landedEffect,
     this.lastAnswerCorrect,
     this.lastMoveOutcome,
@@ -85,6 +86,10 @@ class GameState {
   /// An interactive square is waiting on a player decision.
   final CellEffect? pendingCellEffect;
 
+  /// Which of the current player's horses landed on that square — the
+  /// bonus movement must go to it, never to some other horse.
+  final int? pendingCellHorseIndex;
+
   /// The effect of the square the horse just landed on (including passive
   /// ones), for feedback.
   final CellEffect? landedEffect;
@@ -115,6 +120,7 @@ class GameState {
     Set<String>? askedQuestionIds,
     Object? pendingGait = _unset,
     Object? pendingCellEffect = _unset,
+    Object? pendingCellHorseIndex = _unset,
     Object? landedEffect = _unset,
     Object? lastAnswerCorrect = _unset,
     Object? lastMoveOutcome = _unset,
@@ -139,6 +145,9 @@ class GameState {
       pendingCellEffect: identical(pendingCellEffect, _unset)
           ? this.pendingCellEffect
           : pendingCellEffect as CellEffect?,
+      pendingCellHorseIndex: identical(pendingCellHorseIndex, _unset)
+          ? this.pendingCellHorseIndex
+          : pendingCellHorseIndex as int?,
       landedEffect: identical(landedEffect, _unset)
           ? this.landedEffect
           : landedEffect as CellEffect?,
@@ -174,6 +183,11 @@ class GameState {
     pendingCellEffect: json['pendingCellEffect'] == null
         ? null
         : CellEffect.values.byName(json['pendingCellEffect'] as String),
+    pendingCellHorseIndex: json['pendingCellHorseIndex'] as int?,
+    justUnlocked: [
+      for (final r in (json['justUnlocked'] as List? ?? const []))
+        StreakReward.values.byName(r as String),
+    ],
     landedEffect: json['landedEffect'] == null
         ? null
         : CellEffect.values.byName(json['landedEffect'] as String),
@@ -200,6 +214,8 @@ class GameState {
     'askedQuestionIds': askedQuestionIds.toList(),
     'pendingGait': pendingGait?.toJson(),
     'pendingCellEffect': pendingCellEffect?.name,
+    'pendingCellHorseIndex': pendingCellHorseIndex,
+    'justUnlocked': [for (final r in justUnlocked) r.name],
     'landedEffect': landedEffect?.name,
     'lastAnswerCorrect': lastAnswerCorrect,
     'lastMoveOutcome': lastMoveOutcome?.name,

@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../l10n/generated/app_localizations.dart';
 import '../../models/models.dart';
 import '../../theme/app_motion.dart';
 import '../../theme/app_team.dart';
@@ -291,13 +292,20 @@ class _SceneHorseState extends State<_SceneHorse> with SingleTickerProviderState
         if (widget.selected) {
           sprite = Transform.scale(scale: 1.08, child: sprite);
         }
+        final l10n = AppLocalizations.of(context);
+        final teamName = switch (widget.team) {
+          AppTeam.emerald => l10n.teamEmerald,
+          AppTeam.saphir => l10n.teamSaphir,
+          AppTeam.grenat => l10n.teamGrenat,
+          AppTeam.safran => l10n.teamSafran,
+        };
         return Positioned(
           left: left,
           top: top,
           width: w,
           height: h,
           child: GestureDetector(
-            onTap: widget.onTap,
+            onTap: widget.selectable ? widget.onTap : null,
             behavior: HitTestBehavior.translucent,
             child: Stack(
               clipBehavior: Clip.none,
@@ -313,8 +321,8 @@ class _SceneHorseState extends State<_SceneHorse> with SingleTickerProviderState
                     ),
                   ),
                 Semantics(
-                  button: widget.onTap != null,
-                  label: 'horse',
+                  button: widget.selectable && widget.onTap != null,
+                  label: l10n.horseSemantics(teamName, widget.horseIndex + 1),
                   child: sprite,
                 ),
                 if (widget.horse.hasShield)
@@ -361,7 +369,12 @@ class _PulsingRingState extends State<_PulsingRing> with SingleTickerProviderSta
 
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.disableAnimationsOf(context)) _c.stop();
+    if (MediaQuery.disableAnimationsOf(context)) {
+      _c.stop();
+    } else if (!_c.isAnimating) {
+      // Restart when reduce-motion is switched back off.
+      _c.repeat(reverse: true);
+    }
     return AnimatedBuilder(
       animation: _c,
       builder: (context, _) => CustomPaint(

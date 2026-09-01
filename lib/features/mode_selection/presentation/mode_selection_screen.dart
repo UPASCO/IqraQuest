@@ -234,6 +234,7 @@ class _CountStepper extends StatelessWidget {
         Expanded(child: Text(label, style: Theme.of(context).textTheme.titleMedium)),
         IconButton(
           onPressed: value > min ? () => onChanged(value - 1) : null,
+          tooltip: '−1',
           icon: const Icon(Icons.remove_circle_outline),
         ),
         Text(
@@ -242,6 +243,7 @@ class _CountStepper extends StatelessWidget {
         ),
         IconButton(
           onPressed: value < max ? () => onChanged(value + 1) : null,
+          tooltip: '+1',
           icon: const Icon(Icons.add_circle_outline),
         ),
       ],

@@ -107,7 +107,7 @@ class _Summary extends StatelessWidget {
             const SizedBox(height: 16),
             Text('$score / $total', style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 8),
-            Text(l10n.streak, style: Theme.of(context).textTheme.bodyMedium),
+            Text(l10n.wellRidden, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),

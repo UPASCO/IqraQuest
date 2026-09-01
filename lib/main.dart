@@ -1,6 +1,7 @@
 import 'dart:async' show unawaited;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
@@ -19,6 +20,10 @@ const _onboardingCompleteKey = 'iqraquest.onboarding.complete';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // The board is composed for portrait; landscape would crop the track
+  // and the camps out of the cover-fitted scene.
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   final storage = await LocalStorageService.create();
   final settingsService = SettingsService(storage);

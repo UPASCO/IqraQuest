@@ -71,27 +71,22 @@ class SettingsScreen extends ConsumerWidget {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: Text(l10n.privacyPolicy),
-                  content: const Text(
-                    'IqraQuest collects no personal data, has no account, '
-                    'no backend, and no advertising. Progress and settings '
-                    'stay on this device. See legal/privacy_policy_en.md '
-                    'in the app repository for the full policy.',
-                  ),
+                  content: Text(l10n.privacySummary),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('OK'),
+                      child: Text(MaterialLocalizations.of(context).okButtonLabel),
                     ),
                   ],
                 ),
               ),
             ),
             ListTile(
-              title: const Text('How to play'),
+              title: Text(l10n.howToPlay),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => context.push('/tutorial'),
             ),
-            ListTile(title: Text(l10n.about), subtitle: const Text('IqraQuest 1.0')),
+            ListTile(title: Text(l10n.about), subtitle: const Text('IqraQuest')),
           ],
         ),
       ),

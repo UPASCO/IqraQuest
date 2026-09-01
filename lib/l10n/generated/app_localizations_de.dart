@@ -86,6 +86,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get yourTurn => 'Du bist dran';
 
   @override
+  String get categoryProphets => 'Propheten';
+
+  @override
+  String get categorySira => 'Sira';
+
+  @override
+  String get categoryQuran => 'Koran';
+
+  @override
+  String get categoryFaith => 'Glaube';
+
+  @override
+  String get categoryVirtues => 'Tugenden';
+
+  @override
   String get category => 'Kategorie';
 
   @override
@@ -165,6 +180,48 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get soundEffects => 'Soundeffekte';
+
+  @override
+  String get howToPlay => 'Spielanleitung';
+
+  @override
+  String get privacySummary =>
+      'IqraQuest läuft vollständig auf deinem Gerät: kein Konto, keine Werbung, kein Tracking, und nichts wird je ins Internet gesendet.';
+
+  @override
+  String defaultPlayerName(num number) {
+    return 'Spieler $number';
+  }
+
+  @override
+  String aiPlayerName(num number) {
+    return 'Reiter $number';
+  }
+
+  @override
+  String opponentWins(String name) {
+    return '$name gewinnt das Rennen!';
+  }
+
+  @override
+  String get wellRidden => 'Ein schöner Ritt — jede gelernte Frage zählt.';
+
+  @override
+  String horseSemantics(String color, num number) {
+    return '$color Pferd $number';
+  }
+
+  @override
+  String get teamEmerald => 'Smaragd';
+
+  @override
+  String get teamSaphir => 'Saphir';
+
+  @override
+  String get teamGrenat => 'Granat';
+
+  @override
+  String get teamSafran => 'Safran';
 
   @override
   String get darkMode => 'Dunkelmodus';

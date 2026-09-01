@@ -245,9 +245,7 @@ def build_scene(src_im: Image.Image) -> Image.Image:
         a = int(rng.uniform(60, 180) * (1 - y / 260))
         r = rng.uniform(0.7, 1.7)
         d.ellipse((x - r, y - r, x + r, y + r), fill=(255, 246, 220, max(a, 0)))
-    d.ellipse((W * 0.85 - 24, 56, W * 0.85 + 24, 104), fill=(250, 234, 175, 235))
-    px = np.asarray(board.crop((int(W * 0.85) - 60, 40, int(W * 0.85) - 40, 60)))[:, :, :3].mean(axis=(0, 1))
-    d.ellipse((W * 0.85 - 33, 49, W * 0.85 + 13, 97), fill=(int(px[0]), int(px[1]), int(px[2]), 255))
+    # (the single crescent is drawn once on the final tall canvas below)
 
     # --- Foreground: continue each column of sand downward, darkening
     # toward the camera; the HUD sits on top of this band. ---
@@ -287,9 +285,9 @@ def build_scene(src_im: Image.Image) -> Image.Image:
         a = int(rng.uniform(60, 185) * (1 - y / (TOP_EXT + 260)))
         r = rng.uniform(0.7, 1.8)
         d.ellipse((x - r, y - r, x + r, y + r), fill=(255, 246, 220, max(a, 0)))
-    d.ellipse((W * 0.84 - 26, 128, W * 0.84 + 26, 180), fill=(250, 234, 175, 235))
-    px = np.asarray(final.crop((int(W * 0.84) - 70, 110, int(W * 0.84) - 50, 130)), dtype=np.float32).mean(axis=(0, 1))
-    d.ellipse((W * 0.84 - 36, 120, W * 0.84 + 14, 172), fill=(int(px[0]), int(px[1]), int(px[2]), 255))
+    d.ellipse((W * 0.85 - 24, 356, W * 0.85 + 24, 404), fill=(250, 234, 175, 235))
+    px = np.asarray(final.crop((int(W * 0.85) - 70, 362, int(W * 0.85) - 50, 384)), dtype=np.float32).mean(axis=(0, 1))
+    d.ellipse((W * 0.85 - 33, 349, W * 0.85 + 15, 397), fill=(int(px[0]), int(px[1]), int(px[2]), 255))
     return final
 
 

@@ -35,14 +35,20 @@ No decorative or "faux calligraphy" fonts are used anywhere (spec §20).
 | `path_provider` | Local filesystem paths | BSD-3-Clause |
 | `collection` | Collection utilities | BSD-3-Clause |
 | `cupertino_icons` | iOS-style icon glyphs | MIT |
+| `audioplayers` | Sound-effect playback | MIT |
 | `flutter_lints` (dev only) | Static analysis rules | BSD-3-Clause |
 
 ## Original assets
 
-Every horse, board, dice, and landscape visual is original vector code
-authored for this project (`lib/widgets/`) — see ASSET_INVENTORY.md and
-VISUAL_REFERENCE_NOTES.md. No third-party illustrations, stock art, or
-existing board-game assets were copied (spec §93).
+The app's visuals are of two kinds, both fully documented in
+ASSET_LICENSES.md: original vector code authored for this project
+(`lib/widgets/` — see ASSET_INVENTORY.md and VISUAL_REFERENCE_NOTES.md),
+and bitmap illustrations supplied by the project owner (AI-generated
+concept art commissioned for IqraQuest, including the playable board
+scene and its knight pieces under `assets/board/`). All sound effects
+are synthesized in-repo (`tool/audio/gen_sfx.py`). No third-party
+illustrations, stock art, samples, or existing board-game assets were
+copied (spec §93).
 
 ## Content
 

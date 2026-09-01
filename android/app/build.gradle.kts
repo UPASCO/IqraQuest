@@ -19,7 +19,7 @@ android {
         // The public app identity, matching the iOS bundle ID and the App
         // Store Connect / Play Console records. The `namespace` above stays
         // com.upasco.iqraquest: it is only the internal Kotlin package.
-        applicationId = "com.IqraQuest.com"
+        applicationId = "com.iqraquest.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

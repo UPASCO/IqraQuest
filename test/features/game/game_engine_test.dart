@@ -469,11 +469,16 @@ void main() {
       expect(tie.players.every((p) => p.horses.every((h) => !h.hasShield)), isTrue);
     });
 
-    test('a Duel needs an opponent and a Relais needs a second horse', () {
+    test('Duel and Relais never offer a decision this release cannot resolve', () {
+      // Their interactive flows have no UI yet, so the squares apply
+      // silently whatever the table setup — the engine rules above stay
+      // tested and ready for when the screens ship.
       expect(effects.isAvailableFor(CellEffect.duel, playerCount: 1, horseCount: 2), isFalse);
-      expect(effects.isAvailableFor(CellEffect.duel, playerCount: 2, horseCount: 2), isTrue);
+      expect(effects.isAvailableFor(CellEffect.duel, playerCount: 2, horseCount: 2), isFalse);
       expect(effects.isAvailableFor(CellEffect.relay, playerCount: 2, horseCount: 1), isFalse);
-      expect(effects.isAvailableFor(CellEffect.relay, playerCount: 2, horseCount: 2), isTrue);
+      expect(effects.isAvailableFor(CellEffect.relay, playerCount: 2, horseCount: 2), isFalse);
+      expect(effects.isAvailableFor(CellEffect.challenge, playerCount: 2, horseCount: 1), isTrue);
+      expect(effects.isAvailableFor(CellEffect.shortcut, playerCount: 2, horseCount: 1), isTrue);
     });
 
     test('a Sagesse square carries no gameplay advantage at all', () {

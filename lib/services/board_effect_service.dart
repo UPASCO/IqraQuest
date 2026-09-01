@@ -29,10 +29,15 @@ class BoardEffectService {
 
   /// Whether this effect can run at all right now — a Duel needs an
   /// opponent, a Relay needs a second horse to hand the move to.
+  ///
+  /// Duel and Relay are additionally held back from this release: their
+  /// full flows (opponent's question, horse hand-off picker) have no UI
+  /// yet, and a square must never offer a decision it cannot resolve.
+  /// Until those screens ship, both squares apply silently like a plain
+  /// square — the engine rules for them stay tested and ready.
   bool isAvailableFor(CellEffect effect, {required int playerCount, required int horseCount}) =>
       switch (effect) {
-        CellEffect.duel => playerCount > 1,
-        CellEffect.relay => horseCount > 1,
+        CellEffect.duel || CellEffect.relay => false,
         _ => true,
       };
 

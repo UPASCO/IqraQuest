@@ -86,6 +86,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get yourTurn => 'دورك';
 
   @override
+  String get categoryProphets => 'الأنبياء';
+
+  @override
+  String get categorySira => 'السيرة';
+
+  @override
+  String get categoryQuran => 'القرآن';
+
+  @override
+  String get categoryFaith => 'العقيدة';
+
+  @override
+  String get categoryVirtues => 'الأخلاق';
+
+  @override
   String get category => 'الفئة';
 
   @override
@@ -163,6 +178,48 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get soundEffects => 'المؤثرات الصوتية';
+
+  @override
+  String get howToPlay => 'طريقة اللعب';
+
+  @override
+  String get privacySummary =>
+      'يعمل إكرا كويست بالكامل على جهازك: لا حساب، ولا إعلانات، ولا تتبّع، ولا يُرسل أي شيء عبر الإنترنت.';
+
+  @override
+  String defaultPlayerName(num number) {
+    return 'اللاعب $number';
+  }
+
+  @override
+  String aiPlayerName(num number) {
+    return 'الفارس $number';
+  }
+
+  @override
+  String opponentWins(String name) {
+    return '$name يفوز بالسباق!';
+  }
+
+  @override
+  String get wellRidden => 'ركوب رائع — كل سؤال تعلمته يُحتسب.';
+
+  @override
+  String horseSemantics(String color, num number) {
+    return 'حصان $color $number';
+  }
+
+  @override
+  String get teamEmerald => 'زمردي';
+
+  @override
+  String get teamSaphir => 'ياقوتي أزرق';
+
+  @override
+  String get teamGrenat => 'عقيقي';
+
+  @override
+  String get teamSafran => 'زعفراني';
 
   @override
   String get darkMode => 'الوضع الليلي';

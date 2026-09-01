@@ -26,9 +26,13 @@ class QuestionCard extends StatelessWidget {
 
   static const _letters = ['A', 'B', 'C', 'D'];
 
+  /// The card is a fixed light parchment in both themes, so its ink is
+  /// fixed dark too — theme text colors would turn cream in dark mode.
+  static const Color _ink = Color(0xFF3A2C12);
+  static const Color _inkSoft = Color(0xFF7A6842);
+
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final l10n = AppLocalizations.of(context);
     final answered = isCorrect != null;
 
@@ -56,13 +60,26 @@ class QuestionCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    _CategoryChip(category: question.category, label: l10n.category),
+                    _CategoryChip(
+                      category: question.category,
+                      label: switch (question.category) {
+                        QuestionCategory.prophets => l10n.categoryProphets,
+                        QuestionCategory.sira => l10n.categorySira,
+                        QuestionCategory.quran => l10n.categoryQuran,
+                        QuestionCategory.faith => l10n.categoryFaith,
+                        QuestionCategory.virtues => l10n.categoryVirtues,
+                      },
+                    ),
                     const SizedBox(width: 8),
                     _DifficultyDots(difficulty: question.difficulty),
                   ],
                 ),
                 const SizedBox(height: 16),
-                Text(question.question, style: Theme.of(context).textTheme.headlineMedium),
+                Text(
+                  question.question,
+                  // Fixed dark ink: the parchment stays light in dark mode.
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: _ink),
+                ),
                 const SizedBox(height: 20),
                 for (var i = 0; i < question.answers.length; i++) ...[
                   _AnswerTile(
@@ -83,22 +100,23 @@ class QuestionCard extends StatelessWidget {
                   const SizedBox(height: 14),
                   Text(
                     l10n.explanationLabel,
-                    style: Theme.of(context).textTheme.labelMedium
-                        ?.copyWith(color: colors.textSecondary),
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(color: _inkSoft),
                   ),
                   const SizedBox(height: 4),
-                  Text(question.explanation, style: Theme.of(context).textTheme.bodyMedium),
+                  Text(
+                    question.explanation,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: _ink),
+                  ),
                   const SizedBox(height: 12),
                   Text(
                     l10n.sourceLabel,
-                    style: Theme.of(context).textTheme.labelMedium
-                        ?.copyWith(color: colors.textSecondary),
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(color: _inkSoft),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     question.sourceDisplay,
                     style: Theme.of(context).textTheme.bodySmall
-                        ?.copyWith(color: colors.textSecondary, fontStyle: FontStyle.italic),
+                        ?.copyWith(color: _inkSoft, fontStyle: FontStyle.italic),
                   ),
                   if (onContinue != null) ...[
                     const SizedBox(height: 18),
@@ -171,23 +189,23 @@ class _AnswerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final (bg, border, fg) = switch (state) {
-      _AnswerTileState.neutral => (Colors.white, const Color(0xFFCBB98F), colors.textPrimary),
+      _AnswerTileState.neutral => (Colors.white, const Color(0xFFCBB98F), QuestionCard._ink),
       _AnswerTileState.selected => (
         colors.primary.withValues(alpha: 0.12),
         colors.primary,
-        colors.textPrimary,
+        QuestionCard._ink,
       ),
       _AnswerTileState.correct => (
         colors.success.withValues(alpha: 0.16),
         colors.success,
-        colors.textPrimary,
+        QuestionCard._ink,
       ),
       _AnswerTileState.incorrect => (
         colors.error.withValues(alpha: 0.14),
         colors.error,
-        colors.textPrimary,
+        QuestionCard._ink,
       ),
-      _AnswerTileState.dimmed => (colors.surface, colors.divider, colors.textSecondary),
+      _AnswerTileState.dimmed => (const Color(0xFFF0E7D2), const Color(0xFFD5C49B), QuestionCard._inkSoft),
     };
 
     return Semantics(
@@ -343,7 +361,7 @@ class _CategoryChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
-        category.name,
+        label,
         style: Theme.of(context).textTheme.labelSmall
             ?.copyWith(color: colors.goldAccent, letterSpacing: 0.4),
       ),

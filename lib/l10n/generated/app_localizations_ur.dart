@@ -86,6 +86,21 @@ class AppLocalizationsUr extends AppLocalizations {
   String get yourTurn => 'آپ کی باری';
 
   @override
+  String get categoryProphets => 'انبیاء';
+
+  @override
+  String get categorySira => 'سیرت';
+
+  @override
+  String get categoryQuran => 'قرآن';
+
+  @override
+  String get categoryFaith => 'عقیدہ';
+
+  @override
+  String get categoryVirtues => 'اخلاق';
+
+  @override
   String get category => 'زمرہ';
 
   @override
@@ -164,6 +179,48 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get soundEffects => 'آوازی اثرات';
+
+  @override
+  String get howToPlay => 'کھیلنے کا طریقہ';
+
+  @override
+  String get privacySummary =>
+      'اقرا کویسٹ مکمل طور پر آپ کے آلے پر چلتا ہے: نہ اکاؤنٹ، نہ اشتہار، نہ ٹریکنگ، اور کچھ بھی انٹرنیٹ پر نہیں بھیجا جاتا۔';
+
+  @override
+  String defaultPlayerName(num number) {
+    return 'کھلاڑی $number';
+  }
+
+  @override
+  String aiPlayerName(num number) {
+    return 'سوار $number';
+  }
+
+  @override
+  String opponentWins(String name) {
+    return '$name ریس جیت گیا!';
+  }
+
+  @override
+  String get wellRidden => 'عمدہ سواری — سیکھا ہوا ہر سوال اہم ہے۔';
+
+  @override
+  String horseSemantics(String color, num number) {
+    return '$color گھوڑا $number';
+  }
+
+  @override
+  String get teamEmerald => 'زمردی';
+
+  @override
+  String get teamSaphir => 'نیلم';
+
+  @override
+  String get teamGrenat => 'یاقوتی';
+
+  @override
+  String get teamSafran => 'زعفرانی';
 
   @override
   String get darkMode => 'ڈارک موڈ';

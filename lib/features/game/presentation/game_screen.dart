@@ -66,7 +66,23 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     });
 
     if (session == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      // No game is loaded (cold entry to /game): nothing will ever
+      // appear here, so offer the way home instead of an endless spinner.
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 24),
+              TextButton(
+                onPressed: () => context.go('/home'),
+                child: Text(l10n.backToHome),
+              ),
+            ],
+          ),
+        ),
+      );
     }
 
     final state = session.gameState;
@@ -118,7 +134,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     // circuits still use the painted board until their scenes are baked.
     final useDiorama = state.circuitId == CircuitId.oasisRoute;
 
-    return Scaffold(
+    return PopScope(
+      // System back mid-game behaves exactly like the in-game back
+      // button: home, with the autosave keeping the journey resumable.
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) context.go('/home');
+      },
+      child: Scaffold(
       backgroundColor: const Color(0xFF0A3327),
       body: Stack(
         fit: StackFit.expand,
@@ -333,6 +356,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             ),
         ],
       ),
+      ),
     );
   }
 
@@ -361,7 +385,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
 
     if (nextState.turnPhase == TurnPhase.gameOver &&
         prevState.turnPhase != TurnPhase.gameOver) {
-      sound.play(Sfx.victory);
+      // The fanfare belongs to a human win; an AI win ends quietly.
+      final winner =
+          nextState.players.where((p) => p.id == nextState.winnerId).firstOrNull;
+      if (winner == null || winner.isHuman) sound.play(Sfx.victory);
       return;
     }
     if (nextState.turnPhase == TurnPhase.showingFeedback &&
@@ -467,16 +494,20 @@ class _GlassIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: const Color(0xB3122E22),
-      shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: const SizedBox(
-          width: 38,
-          height: 38,
-          child: Icon(Icons.arrow_back, size: 19, color: Color(0xFFF4ECDC)),
+    return Semantics(
+      button: true,
+      label: MaterialLocalizations.of(context).backButtonTooltip,
+      child: Material(
+        color: const Color(0xB3122E22),
+        shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: SizedBox(
+            width: 38,
+            height: 38,
+            child: Icon(icon, size: 19, color: const Color(0xFFF4ECDC)),
+          ),
         ),
       ),
     );
@@ -576,7 +607,7 @@ class _GaitBar extends StatelessWidget {
                 child: onConfirm == null
                     ? const SizedBox(height: 54)
                     : Padding(
-                        padding: const EdgeInsets.only(left: 8),
+                        padding: const EdgeInsetsDirectional.only(start: 8),
                         child: Material(
                           key: const Key('gait-confirm'),
                           shape: const CircleBorder(),

@@ -84,10 +84,9 @@ class GameEngine {
     MovementChoice choice, {
     bool useGrandGallop = false,
   }) {
-    assert(
-      state.currentPlayer.gaitCycle.isAvailable(choice),
-      'Gait ${choice.steps} was already spent this cycle',
-    );
+    // The rule is enforced here, not just asserted: a spent gait cannot
+    // be committed again even if a UI bug offers it.
+    if (!state.currentPlayer.gaitCycle.isAvailable(choice)) return state;
     return state.copyWith(
       pendingGait: PendingGait(
         horseIndex: horseIndex,
@@ -213,11 +212,13 @@ class GameEngine {
         ? circuit.effectAt(destination.index)
         : CellEffect.plain;
 
+    final interactive = _isInteractive(effect);
     return state.copyWith(
       players: players,
       pendingGait: null,
       lastMoveOutcome: outcome,
-      pendingCellEffect: _isInteractive(effect) ? effect : null,
+      pendingCellEffect: interactive ? effect : null,
+      pendingCellHorseIndex: interactive ? pending.horseIndex : null,
       landedEffect: effect,
       updatedAt: DateTime.now(),
     );
@@ -263,8 +264,11 @@ class GameEngine {
 
   /// The player declined the optional challenge/shortcut, or finished
   /// resolving a cell. Moves the turn along.
-  GameState declineCellOffer(GameState state) =>
-      state.copyWith(pendingCellEffect: null, turnPhase: TurnPhase.turnComplete);
+  GameState declineCellOffer(GameState state) => state.copyWith(
+    pendingCellEffect: null,
+    pendingCellHorseIndex: null,
+    turnPhase: TurnPhase.turnComplete,
+  );
 
   /// A Défi (challenge) cell: the player answered the optional harder
   /// question. Success adds 2 squares; failure costs only the bonus.
@@ -272,6 +276,7 @@ class GameEngine {
     var next = state.copyWith(
       askedQuestionIds: {...state.askedQuestionIds, questionId},
       pendingCellEffect: null,
+      pendingCellHorseIndex: null,
     );
     if (!correct) {
       return next.copyWith(
@@ -279,7 +284,7 @@ class GameEngine {
         turnPhase: TurnPhase.turnComplete,
       );
     }
-    next = _advanceCurrentHorse(next, 2);
+    next = _advanceCurrentHorse(next, 2, horseIndex: state.pendingCellHorseIndex);
     return next.copyWith(
       lastMoveOutcome: MoveOutcome.bonusEarned,
       turnPhase: TurnPhase.turnComplete,
@@ -297,6 +302,7 @@ class GameEngine {
     var next = state.copyWith(
       askedQuestionIds: {...state.askedQuestionIds, questionId},
       pendingCellEffect: null,
+      pendingCellHorseIndex: null,
     );
     if (!correct) {
       return next.copyWith(
@@ -469,6 +475,7 @@ class GameEngine {
       currentQuestionId: null,
       pendingGait: null,
       pendingCellEffect: null,
+      pendingCellHorseIndex: null,
       landedEffect: null,
       lastAnswerCorrect: null,
       lastMoveOutcome: null,
@@ -485,9 +492,12 @@ class GameEngine {
     final circuit = state.circuit;
     final players = [...state.players];
     final index = state.currentPlayerIndex;
-    final player = players[index];
+    var player = players[index];
     final entry = circuit.entryIndexForTeam(index);
     final target = horseIndex ?? _mostAdvancedHorse(player, circuit, index);
+    // A finished arrival is final: a bonus can never touch (or worse,
+    // un-validate) a horse that already reached the oasis.
+    if (target < 0 || player.horses[target].position is FinishedPosition) return state;
 
     final horses = [...player.horses];
     final destination = _destinationFor(horses[target].position, steps, entry, circuit);
@@ -497,15 +507,38 @@ class GameEngine {
           ? true
           : horses[target].awaitingJourneyQuestion,
     );
-    players[index] = player.copyWith(horses: horses);
-    return state.copyWith(players: players, updatedAt: DateTime.now());
+    player = player.copyWith(horses: horses);
+    players[index] = player;
+    var next = state.copyWith(players: players, updatedAt: DateTime.now());
+
+    // Bonus movement obeys the same board rules as a normal move:
+    // landing on an unprotected opponent captures it.
+    final capture = _captureAt(next, player.id, destination);
+    if (capture != null) {
+      final (oi, ohi) = capture;
+      final opponent = players[oi];
+      final oh = [...opponent.horses];
+      if (oh[ohi].hasShield) {
+        oh[ohi] = oh[ohi].copyWith(hasShield: false);
+      } else {
+        oh[ohi] = oh[ohi].copyWith(
+          position: const HomePosition(),
+          awaitingJourneyQuestion: false,
+        );
+      }
+      players[oi] = opponent.copyWith(horses: oh);
+      next = next.copyWith(players: players, updatedAt: DateTime.now());
+    }
+    return next;
   }
 
+  /// The farthest horse still on the road; -1 if every horse is home dry.
   int _mostAdvancedHorse(Player player, Circuit circuit, int teamIndex) {
     final entry = circuit.entryIndexForTeam(teamIndex);
-    var best = 0;
+    var best = -1;
     var bestProgress = -1;
     for (var i = 0; i < player.horses.length; i++) {
+      if (player.horses[i].position is FinishedPosition) continue;
       final p = _progressOf(player.horses[i].position, entry, circuit) ?? -1;
       if (p > bestProgress) {
         bestProgress = p;

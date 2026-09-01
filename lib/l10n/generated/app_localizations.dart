@@ -268,6 +268,36 @@ abstract class AppLocalizations {
   /// **'Your turn'**
   String get yourTurn;
 
+  /// Question category name
+  ///
+  /// In en, this message translates to:
+  /// **'Prophets'**
+  String get categoryProphets;
+
+  /// Question category name (biography of the Prophet)
+  ///
+  /// In en, this message translates to:
+  /// **'Sira'**
+  String get categorySira;
+
+  /// Question category name
+  ///
+  /// In en, this message translates to:
+  /// **'Qur\'an'**
+  String get categoryQuran;
+
+  /// Question category name
+  ///
+  /// In en, this message translates to:
+  /// **'Faith'**
+  String get categoryFaith;
+
+  /// Question category name
+  ///
+  /// In en, this message translates to:
+  /// **'Virtues'**
+  String get categoryVirtues;
+
   /// Question card: category label
   ///
   /// In en, this message translates to:
@@ -423,6 +453,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sound effects'**
   String get soundEffects;
+
+  /// Settings item: opens the tutorial
+  ///
+  /// In en, this message translates to:
+  /// **'How to play'**
+  String get howToPlay;
+
+  /// Body of the privacy dialog: the app's whole privacy story in one line
+  ///
+  /// In en, this message translates to:
+  /// **'IqraQuest runs entirely on your device: no account, no ads, no tracking, and nothing is ever sent over the Internet.'**
+  String get privacySummary;
+
+  /// Default name for a human player seat
+  ///
+  /// In en, this message translates to:
+  /// **'Player {number}'**
+  String defaultPlayerName(num number);
+
+  /// Name shown for a computer opponent
+  ///
+  /// In en, this message translates to:
+  /// **'Rider {number}'**
+  String aiPlayerName(num number);
+
+  /// Results title when a computer opponent wins the race
+  ///
+  /// In en, this message translates to:
+  /// **'{name} wins the race!'**
+  String opponentWins(String name);
+
+  /// Encouraging subtitle when the player did not win
+  ///
+  /// In en, this message translates to:
+  /// **'A fine ride — every question learned counts.'**
+  String get wellRidden;
+
+  /// Screen-reader label for one horse piece on the board
+  ///
+  /// In en, this message translates to:
+  /// **'{color} horse {number}'**
+  String horseSemantics(String color, num number);
+
+  /// Team colour name
+  ///
+  /// In en, this message translates to:
+  /// **'emerald'**
+  String get teamEmerald;
+
+  /// Team colour name
+  ///
+  /// In en, this message translates to:
+  /// **'sapphire'**
+  String get teamSaphir;
+
+  /// Team colour name
+  ///
+  /// In en, this message translates to:
+  /// **'garnet'**
+  String get teamGrenat;
+
+  /// Team colour name
+  ///
+  /// In en, this message translates to:
+  /// **'saffron'**
+  String get teamSafran;
 
   /// Settings item
   ///

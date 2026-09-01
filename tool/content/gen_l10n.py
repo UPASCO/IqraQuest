@@ -162,6 +162,31 @@ s("yourTurn", "Turn banner",
   de="Du bist dran", tr="Sıra Sende", id="Giliranmu", ur="آپ کی باری",
   ms="Giliran anda", it="Tocca a te", nl="Jouw beurt")
 
+s("categoryProphets", "Question category name",
+  fr="Prophètes", en="Prophets", ar="الأنبياء", es="Profetas", pt="Profetas",
+  de="Propheten", tr="Peygamberler", id="Para Nabi", ur="انبیاء", ms="Para Nabi",
+  it="Profeti", nl="Profeten")
+
+s("categorySira", "Question category name (biography of the Prophet)",
+  fr="Sîra", en="Sira", ar="السيرة", es="Sira", pt="Sira",
+  de="Sira", tr="Siyer", id="Sirah", ur="سیرت", ms="Sirah",
+  it="Sira", nl="Sira")
+
+s("categoryQuran", "Question category name",
+  fr="Coran", en="Qur'an", ar="القرآن", es="Corán", pt="Alcorão",
+  de="Koran", tr="Kur'an", id="Al-Qur'an", ur="قرآن", ms="Al-Quran",
+  it="Corano", nl="Koran")
+
+s("categoryFaith", "Question category name",
+  fr="Foi", en="Faith", ar="العقيدة", es="Fe", pt="Fé",
+  de="Glaube", tr="İman", id="Akidah", ur="عقیدہ", ms="Akidah",
+  it="Fede", nl="Geloof")
+
+s("categoryVirtues", "Question category name",
+  fr="Vertus", en="Virtues", ar="الأخلاق", es="Virtudes", pt="Virtudes",
+  de="Tugenden", tr="Erdemler", id="Akhlak", ur="اخلاق", ms="Akhlak",
+  it="Virtù", nl="Deugden")
+
 s("category", "Question card: category label",
   fr="Catégorie", en="Category", ar="الفئة", es="Categoría", pt="Categoria",
   de="Kategorie", tr="Kategori", id="Kategori", ur="زمرہ", ms="Kategori",
@@ -338,6 +363,91 @@ s("soundEffects", "Settings item: toggle for game sound effects",
   es="Efectos de sonido", pt="Efeitos sonoros", de="Soundeffekte",
   tr="Ses Efektleri", id="Efek Suara", ur="آوازی اثرات", ms="Kesan Bunyi",
   it="Effetti sonori", nl="Geluidseffecten")
+
+s("howToPlay", "Settings item: opens the tutorial",
+  fr="Comment jouer", en="How to play", ar="طريقة اللعب", es="Cómo jugar",
+  pt="Como jogar", de="Spielanleitung", tr="Nasıl Oynanır", id="Cara Bermain",
+  ur="کھیلنے کا طریقہ", ms="Cara Bermain", it="Come si gioca", nl="Zo speel je")
+
+s("privacySummary", "Body of the privacy dialog: the app's whole privacy story in one line",
+  fr="IqraQuest fonctionne entièrement sur votre appareil : aucun compte, aucune publicité, aucun suivi, et rien n'est envoyé sur Internet.",
+  en="IqraQuest runs entirely on your device: no account, no ads, no tracking, and nothing is ever sent over the Internet.",
+  ar="يعمل إكرا كويست بالكامل على جهازك: لا حساب، ولا إعلانات، ولا تتبّع، ولا يُرسل أي شيء عبر الإنترنت.",
+  es="IqraQuest funciona íntegramente en tu dispositivo: sin cuenta, sin anuncios, sin rastreo, y nada se envía por Internet.",
+  pt="O IqraQuest funciona inteiramente no seu dispositivo: sem conta, sem anúncios, sem rastreamento, e nada é enviado pela Internet.",
+  de="IqraQuest läuft vollständig auf deinem Gerät: kein Konto, keine Werbung, kein Tracking, und nichts wird je ins Internet gesendet.",
+  tr="IqraQuest tamamen cihazınızda çalışır: hesap yok, reklam yok, izleme yok ve hiçbir şey internete gönderilmez.",
+  id="IqraQuest berjalan sepenuhnya di perangkat Anda: tanpa akun, tanpa iklan, tanpa pelacakan, dan tidak ada yang dikirim melalui Internet.",
+  ur="اقرا کویسٹ مکمل طور پر آپ کے آلے پر چلتا ہے: نہ اکاؤنٹ، نہ اشتہار، نہ ٹریکنگ، اور کچھ بھی انٹرنیٹ پر نہیں بھیجا جاتا۔",
+  ms="IqraQuest berjalan sepenuhnya pada peranti anda: tiada akaun, tiada iklan, tiada penjejakan, dan tiada apa-apa dihantar melalui Internet.",
+  it="IqraQuest funziona interamente sul tuo dispositivo: nessun account, nessuna pubblicità, nessun tracciamento, e nulla viene mai inviato su Internet.",
+  nl="IqraQuest draait volledig op je apparaat: geen account, geen advertenties, geen tracking, en er wordt nooit iets via internet verzonden.")
+
+s("defaultPlayerName", "Default name for a human player seat",
+  ph={"number": "num"},
+  fr="Joueur {number}", en="Player {number}", ar="اللاعب {number}",
+  es="Jugador {number}", pt="Jogador {number}", de="Spieler {number}",
+  tr="Oyuncu {number}", id="Pemain {number}", ur="کھلاڑی {number}",
+  ms="Pemain {number}", it="Giocatore {number}", nl="Speler {number}")
+
+s("aiPlayerName", "Name shown for a computer opponent",
+  ph={"number": "num"},
+  fr="Cavalier {number}", en="Rider {number}", ar="الفارس {number}",
+  es="Jinete {number}", pt="Cavaleiro {number}", de="Reiter {number}",
+  tr="Binici {number}", id="Penunggang {number}", ur="سوار {number}",
+  ms="Penunggang {number}", it="Cavaliere {number}", nl="Ruiter {number}")
+
+s("opponentWins", "Results title when a computer opponent wins the race",
+  ph={"name": "String"},
+  fr="{name} remporte la course !", en="{name} wins the race!",
+  ar="{name} يفوز بالسباق!", es="¡{name} gana la carrera!",
+  pt="{name} vence a corrida!", de="{name} gewinnt das Rennen!",
+  tr="Yarışı {name} kazandı!", id="{name} memenangkan balapan!",
+  ur="{name} ریس جیت گیا!", ms="{name} memenangi perlumbaan!",
+  it="{name} vince la corsa!", nl="{name} wint de race!")
+
+s("wellRidden", "Encouraging subtitle when the player did not win",
+  fr="Belle chevauchée — chaque question apprise compte.",
+  en="A fine ride — every question learned counts.",
+  ar="ركوب رائع — كل سؤال تعلمته يُحتسب.",
+  es="Buena cabalgada: cada pregunta aprendida cuenta.",
+  pt="Bela cavalgada — cada pergunta aprendida conta.",
+  de="Ein schöner Ritt — jede gelernte Frage zählt.",
+  tr="Güzel bir sürüştü — öğrenilen her soru değerlidir.",
+  id="Perjalanan yang bagus — setiap pertanyaan yang dipelajari berarti.",
+  ur="عمدہ سواری — سیکھا ہوا ہر سوال اہم ہے۔",
+  ms="Tunggangan yang baik — setiap soalan yang dipelajari bermakna.",
+  it="Bella cavalcata — ogni domanda imparata conta.",
+  nl="Een mooie rit — elke geleerde vraag telt.")
+
+s("horseSemantics", "Screen-reader label for one horse piece on the board",
+  ph={"color": "String", "number": "num"},
+  fr="Cheval {color} {number}", en="{color} horse {number}",
+  ar="حصان {color} {number}", es="Caballo {color} {number}",
+  pt="Cavalo {color} {number}", de="{color} Pferd {number}",
+  tr="{color} at {number}", id="Kuda {color} {number}",
+  ur="{color} گھوڑا {number}", ms="Kuda {color} {number}",
+  it="Cavallo {color} {number}", nl="{color} paard {number}")
+
+s("teamEmerald", "Team colour name",
+  fr="émeraude", en="emerald", ar="زمردي", es="esmeralda", pt="esmeralda",
+  de="Smaragd", tr="zümrüt", id="zamrud", ur="زمردی", ms="zamrud",
+  it="smeraldo", nl="smaragd")
+
+s("teamSaphir", "Team colour name",
+  fr="saphir", en="sapphire", ar="ياقوتي أزرق", es="zafiro", pt="safira",
+  de="Saphir", tr="safir", id="safir", ur="نیلم", ms="nilam",
+  it="zaffiro", nl="saffier")
+
+s("teamGrenat", "Team colour name",
+  fr="grenat", en="garnet", ar="عقيقي", es="granate", pt="grená",
+  de="Granat", tr="lal", id="merah delima", ur="یاقوتی", ms="delima",
+  it="granata", nl="granaat")
+
+s("teamSafran", "Team colour name",
+  fr="safran", en="saffron", ar="زعفراني", es="azafrán", pt="açafrão",
+  de="Safran", tr="safran", id="safron", ur="زعفرانی", ms="safron",
+  it="zafferano", nl="saffraan")
 
 s("darkMode", "Settings item",
   fr="Mode nuit", en="Dark mode", ar="الوضع الليلي", es="Modo oscuro",

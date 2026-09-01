@@ -1,3 +1,5 @@
+import 'dart:async' show StreamSubscription;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,18 +19,25 @@ class PremiumScreen extends ConsumerStatefulWidget {
 
 class _PremiumScreenState extends ConsumerState<PremiumScreen> {
   PurchaseUiState _uiState = PurchaseUiState.idle;
+  StreamSubscription<PurchaseUiState>? _sub;
 
   @override
   void initState() {
     super.initState();
     final purchases = ref.read(purchaseServiceProvider);
-    purchases.stateStream.listen((s) {
+    _sub = purchases.stateStream.listen((s) {
       if (!mounted) return;
       setState(() => _uiState = s);
       if (s == PurchaseUiState.purchased || s == PurchaseUiState.restored) {
         ref.read(premiumControllerProvider.notifier).grant();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    super.dispose();
   }
 
   @override

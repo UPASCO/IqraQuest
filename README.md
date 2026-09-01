@@ -258,7 +258,7 @@ No account, no backend, no ads, no analytics/tracking SDK. See
 
 - Android: `flutter build appbundle` produces the `.aab` Google Play
   expects; `android/app/build.gradle.kts` already sets
-  `applicationId = "com.IqraQuest.com"` (update if a different org is
+  `applicationId = "com.iqraquest.app"` (update if a different org is
   intended) and tracks Flutter's own `targetSdkVersion`/`compileSdk` —
   verify these meet Google's current minimum at build time (spec §112).
   The release build currently signs with the debug config; a real

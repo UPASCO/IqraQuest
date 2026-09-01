@@ -155,12 +155,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ? Icons.workspace_premium
                             : Icons.workspace_premium_outlined,
                         iconColor: const Color(0xFFE3B354),
+                        semanticLabel: l10n.premium,
                         onTap: () => context.push('/premium'),
                       ),
                       const SizedBox(width: 8),
                       _RoundGlassButton(
                         icon: Icons.settings_outlined,
                         iconColor: onSceneDim,
+                        semanticLabel: l10n.settings,
                         onTap: () => context.push('/settings'),
                       ),
                     ],
@@ -223,13 +225,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  void _continueJourney() {
+  Future<void> _continueJourney() async {
     final save = ref.read(gameSaveServiceProvider).load();
-    if (save != null) {
-      ref.read(gameControllerProvider.notifier).loadSaved();
-      context.push('/game');
-    } else {
+    if (save == null) {
       context.push('/mode-selection', extra: 'solo');
+      return;
+    }
+    // The question bank and entitlement must be live BEFORE the game
+    // resumes, or every question would silently come back null.
+    final pool = await ref.read(questionPoolProvider.future);
+    final controller = ref.read(gameControllerProvider.notifier);
+    controller.configure(pool: pool, isPremium: ref.read(premiumControllerProvider));
+    if (controller.loadSaved() && mounted) {
+      context.push('/game');
     }
   }
 }
@@ -418,21 +426,31 @@ class _StatPill extends StatelessWidget {
 }
 
 class _RoundGlassButton extends StatelessWidget {
-  const _RoundGlassButton({required this.icon, required this.iconColor, required this.onTap});
+  const _RoundGlassButton({
+    required this.icon,
+    required this.iconColor,
+    required this.onTap,
+    required this.semanticLabel,
+  });
 
   final IconData icon;
   final Color iconColor;
   final VoidCallback onTap;
+  final String semanticLabel;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: const Color(0xB3122E22),
-      shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: SizedBox(width: 38, height: 38, child: Icon(icon, size: 19, color: iconColor)),
+    return Semantics(
+      button: true,
+      label: semanticLabel,
+      child: Material(
+        color: const Color(0xB3122E22),
+        shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: SizedBox(width: 38, height: 38, child: Icon(icon, size: 19, color: iconColor)),
+        ),
       ),
     );
   }

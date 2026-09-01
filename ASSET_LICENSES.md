@@ -43,6 +43,27 @@ in any crop.
 | Arrival at the palace oasis | `assets/images/oasis_arrival.webp` | Owner-supplied AI concept art (crop) | Project |
 | 2.5D world band (mode selection hero) | `assets/images/world_band.webp` | Owner-supplied AI concept art (crop) | Project |
 
+### Playable board scene (`assets/board/`)
+
+The live game board is the owner's own board illustration (supplied
+AI-generated concept art commissioned for IqraQuest), surgically cleaned
+and extended by `tool/art/board_from_ref.py`; the four knight pieces are
+extracted from the same illustration (one sculpt, recoloured per team).
+Same origin and diligence notes as the bitmap illustrations above: no
+human figures, no depictions of Allah, prophets, or angels, no Kaaba.
+
+| Asset | File | Origin | Licence |
+|---|---|---|---|
+| Oasis-route board scene (941x2080) | `assets/board/scene_oasis.webp` | Owner-supplied AI board illustration, cleaned/extended in-repo | Project |
+| Knight piece, emerald | `assets/board/horses/horse_emerald.webp` | Extracted from the same illustration, matted + disc base drawn in-repo | Project |
+| Knight piece, sapphire | `assets/board/horses/horse_saphir.webp` | Recoloured from the emerald sculpt in-repo | Project |
+| Knight piece, garnet | `assets/board/horses/horse_grenat.webp` | Recoloured from the emerald sculpt in-repo | Project |
+| Knight piece, saffron | `assets/board/horses/horse_safran.webp` | Recoloured from the emerald sculpt in-repo | Project |
+
+`assets/board/pack/` holds build-time sprite intermediates from the same
+owner-supplied pack; they are not declared in `pubspec.yaml` and do not
+ship in the app binary.
+
 ### 3D pipeline inputs (`assets_3d/` — build-time only, not shipped in the app)
 
 Used by the Blender render pipeline (`tool/art3d/`) to bake the board

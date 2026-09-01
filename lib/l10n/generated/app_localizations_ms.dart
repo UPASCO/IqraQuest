@@ -86,6 +86,21 @@ class AppLocalizationsMs extends AppLocalizations {
   String get yourTurn => 'Giliran anda';
 
   @override
+  String get categoryProphets => 'Para Nabi';
+
+  @override
+  String get categorySira => 'Sirah';
+
+  @override
+  String get categoryQuran => 'Al-Quran';
+
+  @override
+  String get categoryFaith => 'Akidah';
+
+  @override
+  String get categoryVirtues => 'Akhlak';
+
+  @override
   String get category => 'Kategori';
 
   @override
@@ -165,6 +180,49 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get soundEffects => 'Kesan Bunyi';
+
+  @override
+  String get howToPlay => 'Cara Bermain';
+
+  @override
+  String get privacySummary =>
+      'IqraQuest berjalan sepenuhnya pada peranti anda: tiada akaun, tiada iklan, tiada penjejakan, dan tiada apa-apa dihantar melalui Internet.';
+
+  @override
+  String defaultPlayerName(num number) {
+    return 'Pemain $number';
+  }
+
+  @override
+  String aiPlayerName(num number) {
+    return 'Penunggang $number';
+  }
+
+  @override
+  String opponentWins(String name) {
+    return '$name memenangi perlumbaan!';
+  }
+
+  @override
+  String get wellRidden =>
+      'Tunggangan yang baik — setiap soalan yang dipelajari bermakna.';
+
+  @override
+  String horseSemantics(String color, num number) {
+    return 'Kuda $color $number';
+  }
+
+  @override
+  String get teamEmerald => 'zamrud';
+
+  @override
+  String get teamSaphir => 'nilam';
+
+  @override
+  String get teamGrenat => 'delima';
+
+  @override
+  String get teamSafran => 'safron';
 
   @override
   String get darkMode => 'Mod Gelap';

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../l10n/generated/app_localizations.dart';
+import '../../../models/models.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
@@ -23,7 +24,20 @@ class ResultsScreen extends ConsumerWidget {
     final winner = state == null
         ? null
         : state.players.where((p) => p.id == state.winnerId).firstOrNull ?? state.players.first;
+    // A losing child must not get a full victory fanfare for the AI:
+    // the tone shifts to a warm "well ridden" when the winner is a bot.
+    final aiWon = winner?.isAi ?? false;
 
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) context.go('/home');
+      },
+      child: _body(context, l10n, winner, aiWon),
+    );
+  }
+
+  Widget _body(BuildContext context, AppLocalizations l10n, Player? winner, bool aiWon) {
     return Scaffold(
       backgroundColor: const Color(0xFF0B1D33),
       body: Stack(
@@ -64,7 +78,7 @@ class ResultsScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 26),
                   Text(
-                    l10n.victory,
+                    aiWon && winner != null ? l10n.opponentWins(winner.name) : l10n.victory,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.displaySmall?.copyWith(
                       color: const Color(0xFFF3D68A),
@@ -78,7 +92,8 @@ class ResultsScreen extends ConsumerWidget {
                   if (winner != null) ...[
                     const SizedBox(height: 6),
                     Text(
-                      winner.name,
+                      aiWon ? l10n.wellRidden : winner.name,
+                      textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: const Color(0xFFF4ECDC),
                         fontWeight: FontWeight.w600,

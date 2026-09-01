@@ -12,7 +12,9 @@ A question is accepted into the production bank only if **all** of the
 following hold:
 
 1. The fact is clearly established.
-2. The exact source is known (work + precise reference).
+2. The exact source is known (work + precise reference), **or** the
+   fact qualifies for the "established fact" reference class defined
+   in §2bis below.
 3. The source directly supports the stated answer — no leap of
    interpretation is required.
 4. The fact is non-controversial among Muslims generally.
@@ -21,6 +23,30 @@ following hold:
 6. No weak (daʿīf) hadith is used.
 7. No uncertain or disputed narration is used.
 8. No contested doctrinal interpretation is required to answer.
+
+## 2bis. The "established fact" reference class
+
+A small class of facts is transmitted by tawātur (mass transmission) or
+is basic descriptive terminology, verifiable identically in **any**
+standard reference work: the Qurʾān has 114 sūrahs, al-Baqarah is its
+longest sūrah, the Hijra went from Makkah to Madīnah, Fāṭima (رضي الله
+عنها) married ʿAlī (رضي الله عنه), and the like. Demanding one specific
+page citation for such facts would be false precision — no single work
+is *the* source of a mass-transmitted fact — and **inventing** a precise
+citation to satisfy rule §1.2 is exactly what this policy forbids.
+
+Such a question is admitted only when ALL of these hold:
+
+1. The fact is agreed identically across standard references — any
+   standard sīra work, Qurʾānic-sciences primer, or introductory text
+   states it the same way.
+2. It is descriptive (a count, a name, a place, a sequence), never a
+   doctrinal or interpretive claim.
+3. Its `sourceReference` is prefixed `well-established` and says what
+   kind of fact it is, so the class is auditable at a glance.
+
+At the slightest doubt about whether a fact qualifies, the standing rule
+applies unchanged: **do not use the question.**
 
 ## 2. Source priority
 

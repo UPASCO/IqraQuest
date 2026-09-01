@@ -22,6 +22,7 @@ class GameSession {
     this.preview,
     this.isAiTurnInProgress = false,
     this.journeyHorseIndex,
+    this.journeyAttemptedHorses = const {},
   });
 
   final GameState gameState;
@@ -38,12 +39,17 @@ class GameSession {
   /// Set while a "Question du voyage" is being answered.
   final int? journeyHorseIndex;
 
+  /// Horses whose journey question was already attempted THIS turn — a
+  /// missed one is retried on a later turn, never in a loop (spec §10).
+  final Set<int> journeyAttemptedHorses;
+
   GameSession copyWith({
     GameState? gameState,
     Object? currentQuestion = _unset,
     Object? preview = _unset,
     bool? isAiTurnInProgress,
     Object? journeyHorseIndex = _unset,
+    Set<int>? journeyAttemptedHorses,
   }) => GameSession(
     gameState: gameState ?? this.gameState,
     currentQuestion: identical(currentQuestion, _unset)
@@ -54,6 +60,7 @@ class GameSession {
     journeyHorseIndex: identical(journeyHorseIndex, _unset)
         ? this.journeyHorseIndex
         : journeyHorseIndex as int?,
+    journeyAttemptedHorses: journeyAttemptedHorses ?? this.journeyAttemptedHorses,
   );
 }
 
@@ -117,14 +124,32 @@ class GameController extends StateNotifier<GameSession?> {
     );
     state = GameSession(gameState: gameState);
     _persist();
-    _maybeRunAiTurn();
+    _beginTurn();
   }
 
   bool loadSaved() {
-    final saved = saveService.load();
+    var saved = saveService.load();
     if (saved == null || saved.turnPhase == TurnPhase.gameOver) return false;
+    // A save can be written while a question is on screen, but the
+    // question text itself is never persisted — resume at the nearest
+    // safe decision point instead of a phase with nothing to tap.
+    saved = switch (saved.turnPhase) {
+      // The gait is only consumed when the answer resolves, so backing
+      // out to gait selection loses nothing.
+      TurnPhase.answeringQuestion => saved.copyWith(
+        turnPhase: TurnPhase.selectingGait,
+        pendingGait: null,
+      ),
+      // The journey question is re-asked by _beginTurn below.
+      TurnPhase.answeringJourneyQuestion => saved.copyWith(turnPhase: TurnPhase.selectingGait),
+      // The move already happened; the turn simply concludes.
+      TurnPhase.showingFeedback || TurnPhase.turnComplete => engine.endTurn(saved),
+      _ => saved,
+    };
+    if (saved.turnPhase == TurnPhase.gameOver) return false;
     state = GameSession(gameState: saved);
-    _maybeRunAiTurn();
+    _persist();
+    _beginTurn();
     return true;
   }
 
@@ -185,24 +210,40 @@ class GameController extends StateNotifier<GameSession?> {
     );
     _persist();
 
-    // The free bank is spent: play continues uninterrupted rather than
-    // being blocked or paywalled mid-game — the move simply succeeds.
+    // The bank holds no question of this difficulty at all (it recycles
+    // before that — see _drawQuestion): play continues uninterrupted
+    // rather than being blocked or paywalled mid-game.
     if (question == null) {
       _resolveAnswer(correct: true, questionId: 'free-bank-exhausted', category: null);
+      // No feedback screen exists for a question that was never shown:
+      // the turn moves straight along.
+      continueAfterFeedback();
       return;
     }
 
     if (player.isAi) _runAiAnswer(player.aiDifficulty!, difficulty);
   }
 
-  Question? _drawQuestion(GameState gameState, QuestionDifficulty difficulty) =>
-      questionRepository.pickQuestion(
-        pool: _pool,
-        askedQuestionIds: gameState.askedQuestionIds,
-        isPremium: _isPremium,
-        difficulty: difficulty,
-        random: _random,
-      );
+  Question? _drawQuestion(GameState gameState, QuestionDifficulty difficulty) {
+    final fresh = questionRepository.pickQuestion(
+      pool: _pool,
+      askedQuestionIds: gameState.askedQuestionIds,
+      isPremium: _isPremium,
+      difficulty: difficulty,
+      random: _random,
+    );
+    if (fresh != null) return fresh;
+    // Every question of this difficulty has been asked once this game
+    // (quick in the free edition): recycle rather than degrade into
+    // questionless moves — bonuses must come from knowledge, always.
+    return questionRepository.pickQuestion(
+      pool: _pool,
+      askedQuestionIds: const {},
+      isPremium: _isPremium,
+      difficulty: difficulty,
+      random: _random,
+    );
+  }
 
   // ---------------------------------------------------------------------
   // Turn: answering
@@ -212,6 +253,9 @@ class GameController extends StateNotifier<GameSession?> {
     final s = state;
     final question = s?.currentQuestion;
     if (s == null || question == null) return;
+    // Only one resolution per question: a double-tap during feedback
+    // must not re-award points or re-run the landing effect.
+    if (s.gameState.turnPhase != TurnPhase.answeringQuestion) return;
     _resolveAnswer(
       correct: question.isCorrect(selectedIndex),
       questionId: question.id,
@@ -240,9 +284,19 @@ class GameController extends StateNotifier<GameSession?> {
       final player = players[next.currentPlayerIndex];
       final counts = {...player.answersByCategory};
       counts[category] = (counts[category] ?? 0) + 1;
+      // The badge honours the strongest category INCLUDING the answer
+      // that just completed the streak.
+      QuestionCategory dominant = category;
+      var best = -1;
+      counts.forEach((c, n) {
+        if (n > best) {
+          best = n;
+          dominant = c;
+        }
+      });
       final rewards = next.justUnlocked.contains(StreakReward.masteryBadge)
           ? player.rewards.copyWith(
-              masteryBadges: {...player.rewards.masteryBadges, player.dominantCategory ?? category},
+              masteryBadges: {...player.rewards.masteryBadges, dominant},
             )
           : player.rewards;
       players[next.currentPlayerIndex] = player.copyWith(
@@ -287,8 +341,11 @@ class GameController extends StateNotifier<GameSession?> {
       return;
     }
 
-    // A horse that reached the finish owes its journey question.
-    final awaiting = engine.horsesAwaitingJourneyQuestion(gameState.currentPlayer);
+    // A horse that reached the finish owes its journey question — but at
+    // most once per turn: a missed one is retried on a LATER turn.
+    final awaiting = engine
+        .horsesAwaitingJourneyQuestion(gameState.currentPlayer)
+        .where((h) => !s.journeyAttemptedHorses.contains(h));
     if (awaiting.isNotEmpty) {
       startJourneyQuestion(awaiting.first);
       return;
@@ -306,11 +363,26 @@ class GameController extends StateNotifier<GameSession?> {
       currentQuestion: null,
       preview: null,
       journeyHorseIndex: null,
+      journeyAttemptedHorses: const {},
     );
     _persist();
     if (next.turnPhase == TurnPhase.gameOver) {
       final won = next.winnerId == next.players.first.id;
       progressService.recordGameEnd(won: won);
+      return;
+    }
+    _beginTurn();
+  }
+
+  /// Opens the new player's turn: a horse waiting at the finish gets its
+  /// journey question first (the retry promised "on a later turn"), then
+  /// an AI player starts thinking.
+  void _beginTurn() {
+    final s = state;
+    if (s == null || s.gameState.turnPhase != TurnPhase.selectingGait) return;
+    final awaiting = engine.horsesAwaitingJourneyQuestion(s.gameState.currentPlayer);
+    if (awaiting.isNotEmpty) {
+      startJourneyQuestion(awaiting.first);
       return;
     }
     _maybeRunAiTurn();
@@ -371,13 +443,18 @@ class GameController extends StateNotifier<GameSession?> {
         s.gameState,
         correct: correct,
         questionId: question.id,
-        horseIndex: s.preview?.horseIndex ?? 0,
+        // The bonus goes to the horse that landed on the square.
+        horseIndex: s.gameState.pendingCellHorseIndex ?? s.preview?.horseIndex ?? 0,
       ),
       _ => engine.declineCellOffer(s.gameState),
     };
 
     state = s.copyWith(gameState: next, currentQuestion: null);
     _persist();
+    // The board shows the outcome (the horse jumps, or stays); the turn
+    // itself must keep moving — a bonus jump can even reach the finish
+    // and owe its journey question right now.
+    continueAfterFeedback();
   }
 
   /// A Relais square: hand the squares just earned to another horse.
@@ -422,6 +499,7 @@ class GameController extends StateNotifier<GameSession?> {
       gameState: s.gameState.copyWith(turnPhase: TurnPhase.answeringJourneyQuestion),
       currentQuestion: question,
       journeyHorseIndex: horseIndex,
+      journeyAttemptedHorses: {...s.journeyAttemptedHorses, horseIndex},
     );
     _persist();
 
@@ -474,6 +552,13 @@ class GameController extends StateNotifier<GameSession?> {
 
     final current = state;
     if (current == null || !current.gameState.currentPlayer.isAi) return;
+    if (engine.movableHorses(current.gameState.currentPlayer).isEmpty) {
+      // Nothing can move (every horse finished or waiting on a journey
+      // retry already attempted): the turn simply passes.
+      state = current.copyWith(isAiTurnInProgress: false);
+      _endTurn();
+      return;
+    }
 
     final decision = ai.chooseGait(
       state: current.gameState,
@@ -510,7 +595,10 @@ class GameController extends StateNotifier<GameSession?> {
           : (question.correctAnswerIndex + 1) % question.answers.length,
     );
     await Future<void>.delayed(const Duration(milliseconds: 600));
-    if (state?.gameState.turnPhase != TurnPhase.gameOver) _endTurn();
+    // continueAfterFeedback, not _endTurn: the per-turn attempt guard
+    // stops a retry loop, and a second arrived horse still gets its own
+    // question.
+    if (state?.gameState.turnPhase == TurnPhase.showingFeedback) continueAfterFeedback();
   }
 
   void _runAiCellDecision() {
@@ -535,6 +623,8 @@ class GameController extends StateNotifier<GameSession?> {
               ? question.correctAnswerIndex
               : (question.correctAnswerIndex + 1) % question.answers.length,
         );
+        // answerCellQuestion already moved the turn along.
+        return;
       }
     }
     declineCellOffer();

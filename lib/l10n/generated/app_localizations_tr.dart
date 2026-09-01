@@ -86,6 +86,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get yourTurn => 'Sıra Sende';
 
   @override
+  String get categoryProphets => 'Peygamberler';
+
+  @override
+  String get categorySira => 'Siyer';
+
+  @override
+  String get categoryQuran => 'Kur\'an';
+
+  @override
+  String get categoryFaith => 'İman';
+
+  @override
+  String get categoryVirtues => 'Erdemler';
+
+  @override
   String get category => 'Kategori';
 
   @override
@@ -165,6 +180,48 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get soundEffects => 'Ses Efektleri';
+
+  @override
+  String get howToPlay => 'Nasıl Oynanır';
+
+  @override
+  String get privacySummary =>
+      'IqraQuest tamamen cihazınızda çalışır: hesap yok, reklam yok, izleme yok ve hiçbir şey internete gönderilmez.';
+
+  @override
+  String defaultPlayerName(num number) {
+    return 'Oyuncu $number';
+  }
+
+  @override
+  String aiPlayerName(num number) {
+    return 'Binici $number';
+  }
+
+  @override
+  String opponentWins(String name) {
+    return 'Yarışı $name kazandı!';
+  }
+
+  @override
+  String get wellRidden => 'Güzel bir sürüştü — öğrenilen her soru değerlidir.';
+
+  @override
+  String horseSemantics(String color, num number) {
+    return '$color at $number';
+  }
+
+  @override
+  String get teamEmerald => 'zümrüt';
+
+  @override
+  String get teamSaphir => 'safir';
+
+  @override
+  String get teamGrenat => 'lal';
+
+  @override
+  String get teamSafran => 'safran';
 
   @override
   String get darkMode => 'Karanlık Mod';
