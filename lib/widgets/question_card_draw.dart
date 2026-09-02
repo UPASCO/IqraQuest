@@ -168,16 +168,19 @@ class _CardBack extends StatelessWidget {
   }
 }
 
-/// The freshly drawn card, turning over to show what it is worth.
+/// The freshly drawn card, turning over — onto a question mark.
 ///
-/// This is the moment the die used to be: the player has no more
-/// decisions to make about distance, so the reveal has to carry the
-/// weight — the card lifts, flips, and lands on its value.
+/// The card's value is the prize of the answer, not a fact to read
+/// first: the face shows "?" and "answer to reveal its value", so the
+/// player answers for the answer's sake and the squares are discovered
+/// once the answer is judged. The flip still carries the weight of the
+/// moment the die used to be: the card lifts, turns, and lands.
 class DrawnCardReveal extends StatefulWidget {
-  const DrawnCardReveal({super.key, required this.value, required this.difficultyPips});
+  const DrawnCardReveal({super.key, this.value, required this.difficultyPips});
 
-  /// 1..6 — the squares earned and the tier of the question.
-  final int value;
+  /// The squares the card is worth, when they may be shown; null keeps
+  /// the value face down behind a question mark.
+  final int? value;
 
   /// How hard the question is, 1..3, shown as filled pips.
   final int difficultyPips;
@@ -236,7 +239,9 @@ class _DrawnCardRevealState extends State<DrawnCardReveal>
                           value: widget.value,
                           difficultyPips: widget.difficultyPips,
                           title: l10n.drawnCardTitle,
-                          worth: l10n.cardWorth(widget.value),
+                          worth: widget.value == null
+                              ? l10n.answerToReveal
+                              : l10n.cardWorth(widget.value!),
                         ),
                       )
                     : const _CardBack(width: 190, height: 256),
@@ -257,7 +262,7 @@ class _CardFace extends StatelessWidget {
     required this.worth,
   });
 
-  final int value;
+  final int? value;
   final int difficultyPips;
   final String title;
   final String worth;
@@ -294,9 +299,9 @@ class _CardFace extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '$value',
+                value == null ? '?' : '$value',
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: colors.primary,
+                  color: value == null ? colors.goldAccent : colors.primary,
                   fontWeight: FontWeight.w800,
                   height: 1,
                 ),

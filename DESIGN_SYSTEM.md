@@ -99,15 +99,34 @@ See `lib/widgets/question_card.dart`.
 Color chip + team symbol glyph + name + (solo mode) AI difficulty tag.
 Never symbol-less.
 
-### Gait selector
-Six horseshoes, one per gait. There is no dice anywhere in the product.
-Each shoe carries its distance as the primary numeral, its difficulty as
-a pip count (never color alone), and its knowledge points as a small
-gold caption. A gait already spent this cycle is drawn hollow *and*
-dimmed, so "unavailable" survives both color-blindness and a dark room.
-Choosing a gait previews the destination on the board before it is
-committed — nothing about a turn is ever a surprise. See
-`lib/widgets/gait_selector.dart`.
+### The placement turn (board as control)
+There is no dice, no distance picker and no confirmation button anywhere
+in the product. After a right answer the squares won land as a **result
+medallion** (`EarnedStepsMedallion`: gold rim, sapphire heart, the value
+in ivory, a caption "N cases gagnées" so the number is never bare — one
+reward beat, then it fades while the board is already live). On the
+plate, every horse that can ride wears a breathing gold halo; touching
+one lights its destination (`_DestinationPainter`: gold pool, breathing
+ring, turning dashes, a star for an arrival) with the squares between
+dotted and a tag above it ("Bonus +10", "capture !", "arrivée !"). The
+horse is picked up (scale 1.18, wider softer shadow), pulled onto its
+square within 1.4 piece sizes (magnet), and set down: the drop *is* the
+move. A drop anywhere else glides back in 340 ms. Hints live in the
+bottom banner (`_PlacementBanner`): "Touchez un cheval…" then "Glissez le
+cheval jusqu'à sa case dorée". See `lib/widgets/board/cross_board_scene.dart`.
+
+### Bonus medallions
+Sixteen per game, inlaid on the plate (`BonusTileArt`). Told apart by
+**shape and number, never colour alone**, after the owner's reference
+sheets: a round emerald coin for +5, a sapphire octagon with a double
+ring for +10, the eight-point *khatim* star in crimson for the rare +20
+— all with the plate's gold rim, a small gold dome over the number, an
+embossed ivory numeral with a "+" and a cast shadow. The +20 star sweeps
+a band of light every few seconds. When a horse stops on one, the square
+flares (`_BonusFlarePainter`) and "BONUS +N" pops over the board
+(`BonusCallout`: rays, expanding ring, sparks — more of each for a +20),
+then the horse rides on in its own, separate ride. Never a casino: no
+bells, no cascade, one beat.
 
 ### Horse token
 See `VISUAL_REFERENCE_NOTES.md` for the full brief. Rendered with

@@ -6,6 +6,11 @@
 // offering the next control — the deck gone and no question on screen —
 // and no unit test on the engine can see that, because the engine is
 // fine and the screen is the thing that stranded.
+//
+// The placement is played the way a thumb plays it: touch a horse, see
+// its square, drag it there, let go. No button is ever looked for.
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -24,6 +29,7 @@ import 'package:iqraquest/services/purchase_service.dart';
 import 'package:iqraquest/services/question_repository.dart';
 import 'package:iqraquest/services/settings_service.dart';
 import 'package:iqraquest/theme/app_team.dart';
+import 'package:iqraquest/widgets/board/cross_board_scene.dart';
 import 'package:iqraquest/widgets/celebration_overlay.dart';
 import 'package:iqraquest/widgets/question_card_draw.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,10 +69,30 @@ GameState _stableGame() {
   );
 }
 
-/// Past the card turning over and any key moment shouted after it.
+/// Past the card turning over.
 Future<void> _pastReveal(WidgetTester tester) async {
   await tester.pump();
   await tester.pump(kCardRevealDuration + const Duration(milliseconds: 60));
+  await _settle(tester);
+}
+
+/// Past the verdict beat and through the feedback sheet.
+Future<void> _pastFeedback(WidgetTester tester) async {
+  await _settle(tester);
+  await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
+  await _settle(tester);
+  final continueLabel = find.text('Continue');
+  if (continueLabel.evaluate().isNotEmpty) {
+    await tester.ensureVisible(continueLabel.last);
+    await tester.tap(continueLabel.last);
+    await _settle(tester);
+  }
+}
+
+/// Past the ride, a bonus ride and any landing celebration.
+Future<void> _pastRide(WidgetTester tester) async {
+  await tester.pump(kRideMax + kLandingSettle + kBonusRevealBeat);
+  await tester.pump(kRideMax + kLandingSettle + const Duration(milliseconds: 200));
   await tester.pump(kCelebrationDuration + const Duration(milliseconds: 60));
   await _settle(tester);
 }
@@ -80,8 +106,8 @@ GameState _soloGame() {
     circuitId: CircuitId.oasisRoute,
     players: [
       // One horse each, already on the road: every card then has exactly
-      // one thing to do, so each draw opens a question. (The stable's
-      // own loop — a card that moves nothing — has its test below.)
+      // one thing to do. (The stable's own loop — a card that moves
+      // nothing — has its test below.)
       Player(
         id: 'p0',
         name: 'Amina',
@@ -156,6 +182,50 @@ Future<ProviderContainer> _pumpGame(
   return container;
 }
 
+/// Where a square is on screen, from the board scene's own layout.
+Offset _squareOnScreen(
+  WidgetTester tester,
+  PawnPosition position,
+  int team,
+  int horse,
+) {
+  final rect = tester.getRect(find.byKey(const Key('board-scene')));
+  final side = math.min(rect.width, rect.height);
+  final origin = Offset(
+    rect.left + (rect.width - side) / 2,
+    rect.top + (rect.height - side) / 2,
+  );
+  final a = CrossBoardScene.anchorFor(position, team, horse);
+  return origin + Offset(a.x * side, a.y * side);
+}
+
+double _pieceSize(WidgetTester tester) {
+  final rect = tester.getRect(find.byKey(const Key('board-scene')));
+  return math.min(rect.width, rect.height) * 0.072;
+}
+
+/// Picks horse [horse] of [playerId] up and sets it down so that the
+/// horse (drawn above the fingertip) lands on [target].
+Future<void> _dragHorseTo(
+  WidgetTester tester,
+  String playerId,
+  int horse,
+  Offset target,
+) async {
+  final piece = find.byKey(ValueKey('$playerId:$horse'));
+  expect(piece, findsOneWidget);
+  final from = tester.getCenter(piece);
+  final fingerTarget = target + Offset(0, _pieceSize(tester) * 0.95);
+  final gesture = await tester.startGesture(from);
+  final delta = fingerTarget - from;
+  for (var i = 1; i <= 6; i++) {
+    await gesture.moveTo(from + delta * (i / 6));
+    await tester.pump(const Duration(milliseconds: 16));
+  }
+  await gesture.up();
+  await tester.pump();
+}
+
 void main() {
   _aiDisposalGuard();
 
@@ -174,33 +244,61 @@ void main() {
       await tester.tap(find.byKey(const Key('draw-deck')));
       await _pastReveal(tester);
 
-      final question = container.read(gameControllerProvider)!.currentQuestion;
+      final session = container.read(gameControllerProvider)!;
+      final question = session.currentQuestion;
       expect(
         question,
         isNotNull,
         reason: 'turn $turn: the draw produced no question',
       );
       expect(
-        container.read(gameControllerProvider)!.gameState.turnPhase,
+        session.gameState.turnPhase,
         TurnPhase.answeringQuestion,
-        reason:
-            'turn $turn: one horse on the road means one move, no choice to make',
+        reason: 'turn $turn: the question opens straight after the draw',
       );
+      // The card's value is not on the table before the answer.
+      expect(find.byKey(const Key('placement-banner')), findsNothing);
 
       // Answer it — right or wrong, the turn must move on either way.
-      final answer = turn.isEven
+      final correct = turn.isEven;
+      final answer = correct
           ? question!.answers[question.correctAnswerIndex]
           : question!.answers[(question.correctAnswerIndex + 1) % 4];
+      await tester.ensureVisible(find.text(answer).first);
       await tester.tap(find.text(answer).first);
-      await _settle(tester);
-      // The verdict holds for one beat before the sheet with the way on.
-      await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
-      await _settle(tester);
+      await _pastFeedback(tester);
 
-      final continueLabel = find.text('Continue');
-      if (continueLabel.evaluate().isNotEmpty) {
-        await tester.tap(continueLabel.last);
-        await _settle(tester);
+      final after = container.read(gameControllerProvider)!.gameState;
+      if (correct) {
+        // The squares are won and the board waits for the hand: the
+        // banner says so, the medallion says how many, and nothing has
+        // moved yet.
+        expect(after.turnPhase, TurnPhase.choosingHorse, reason: 'turn $turn');
+        expect(find.byKey(const Key('placement-banner')), findsOneWidget);
+        expect(find.byKey(const Key('earn-medallion')), findsOneWidget);
+        expect(find.text('Continue'), findsNothing);
+        final team = after.currentPlayerIndex;
+        final pid = after.currentPlayer.id;
+        final before = after.currentPlayer.horses[0].position;
+        final move = container
+            .read(gameControllerProvider.notifier)
+            .moveFor(0)!;
+        await _dragHorseTo(
+          tester,
+          pid,
+          0,
+          _squareOnScreen(tester, move.destination, team, 0),
+        );
+        final placed = container.read(gameControllerProvider)!.gameState;
+        expect(
+          placed.players[team].horses[0].position,
+          move.destination,
+          reason: 'turn $turn: the drop did not ride from $before',
+        );
+        // Validated by the drop alone: no confirmation control appears.
+        expect(find.byKey(const Key('placement-banner')), findsNothing);
+        expect(find.byKey(const Key('move-choice')), findsNothing);
+        await _pastRide(tester);
       }
 
       expect(tester.takeException(), isNull, reason: 'turn $turn threw');
@@ -211,6 +309,15 @@ void main() {
     'a stable full of horses is never a dead end: the card passes or opens the gate',
     (tester) async {
       final container = await _pumpGame(tester, save: _stableGame());
+      final previousOnError = FlutterError.onError;
+      FlutterError.onError = (details) {
+        if (details.toString().contains('overflowed')) {
+          // ignore: avoid_print
+          print('ERRDETAILS ${details.toString()}');
+        }
+        previousOnError?.call(details);
+      };
+      addTearDown(() => FlutterError.onError = previousOnError);
 
       for (var turn = 1; turn <= 8; turn++) {
         expect(
@@ -219,65 +326,60 @@ void main() {
           reason: 'turn $turn: the deck did not come back',
         );
         await tester.tap(find.byKey(const Key('draw-deck')));
-        await tester.pump();
-        // The draw resolves at once; what the screen does next depends on it.
+        await _pastReveal(tester);
         final session = container.read(gameControllerProvider)!;
         final card = session.gameState.drawnCard;
-        final phase = session.gameState.turnPhase;
-        await _pastReveal(tester);
-        final legal = container
-            .read(gameControllerProvider.notifier)
-            .legalMoves;
-        if (phase == TurnPhase.noMove) {
+        final question = session.currentQuestion!;
+        await tester.ensureVisible(
+          find.text(question.answers[question.correctAnswerIndex]).first,
+        );
+        await tester.tap(
+          find.text(question.answers[question.correctAnswerIndex]).first,
+        );
+        await _pastFeedback(tester);
+
+        final after = container.read(gameControllerProvider)!.gameState;
+        final legal = container.read(gameControllerProvider.notifier).legalMoves;
+        if (after.turnPhase == TurnPhase.noMove) {
           expect(
             legal,
             isEmpty,
             reason: 'turn $turn: a $card had a move and was passed',
           );
+          expect(find.byKey(const Key('turn-banner')), findsOneWidget);
           // Nothing to tap: the turn passes by itself after its beat.
           await tester.pump(kNoMoveBeat + const Duration(milliseconds: 80));
           await _settle(tester);
         } else {
+          expect(after.turnPhase, TurnPhase.choosingHorse, reason: 'turn $turn');
           expect(
             legal,
             isNotEmpty,
             reason: 'turn $turn: a $card moved nothing yet was played',
           );
-          if (phase == TurnPhase.choosingHorse) {
-            // A horse out and one still in: the sheet offers both.
-            expect(find.byKey(const Key('move-choice')), findsOneWidget);
-            await tester.tap(find.byKey(const Key('move-option-0')));
-            await _settle(tester);
-          } else {
-            // Two horses in the stable are one exit: no choice sheet, the
-            // question opens straight away.
-            expect(find.byKey(const Key('move-choice')), findsNothing);
-            expect(phase, TurnPhase.answeringQuestion);
-          }
-          final question = container
-              .read(gameControllerProvider)!
-              .currentQuestion!;
-          await tester.tap(
-            find.text(question.answers[question.correctAnswerIndex]).first,
+          // Every horse the card can move wears its halo; the gate is
+          // opened by hand, never by a sheet.
+          expect(find.byKey(const Key('move-choice')), findsNothing);
+          final team = after.currentPlayerIndex;
+          final pid = after.currentPlayer.id;
+          final move = legal.first;
+          await _dragHorseTo(
+            tester,
+            pid,
+            move.horseIndex,
+            _squareOnScreen(tester, move.destination, team, move.horseIndex),
           );
-          await _settle(tester);
-          await tester.pump(
-            kAnswerBeatDuration + const Duration(milliseconds: 60),
+          expect(
+            container
+                .read(gameControllerProvider)!
+                .gameState
+                .players[team]
+                .horses[move.horseIndex]
+                .position,
+            move.destination,
+            reason: 'turn $turn: the horse did not come out',
           );
-          await _settle(tester);
-          final continueLabel = find.text('Continue');
-          if (continueLabel.evaluate().isNotEmpty) {
-            await tester.tap(continueLabel.last);
-            await _settle(tester);
-          }
-          // A landing celebration (a capture can happen on the start
-          // square) and the ride itself both settle within this.
-          await tester.pump(
-            kAnswerBeatDuration +
-                kCelebrationDuration +
-                const Duration(milliseconds: 1400),
-          );
-          await _settle(tester);
+          await _pastRide(tester);
         }
         final thrown = tester.takeException();
         if (thrown is FlutterError) {
@@ -292,7 +394,7 @@ void main() {
   );
 
   testWidgets(
-    'a card two horses could use offers the choice, and the choice opens the question',
+    'two horses on the road: touch to compare, drop to decide — reversible until the drop',
     (tester) async {
       final now = DateTime(2026, 1, 1);
       final save = GameState(
@@ -307,7 +409,7 @@ void main() {
             team: kBoardSeats[0],
             horses: const [
               HorseState(position: TrackPosition(4)),
-              HorseState(position: TrackPosition(9)),
+              HorseState(position: TrackPosition(20)),
             ],
           ),
           Player(
@@ -328,30 +430,58 @@ void main() {
       await _pastReveal(tester);
 
       final session = container.read(gameControllerProvider)!;
-      expect(session.gameState.turnPhase, TurnPhase.choosingHorse);
-      expect(
-        find.byKey(const Key('move-choice')),
-        findsOneWidget,
-        reason: 'two horses on the road: the player picks which one rides',
+      final question = session.currentQuestion!;
+      await tester.ensureVisible(
+        find.text(question.answers[question.correctAnswerIndex]).first,
       );
-      // The card's question is held back until the horse is chosen.
-      expect(find.text(session.currentQuestion!.question), findsNothing);
+      await tester.tap(
+        find.text(question.answers[question.correctAnswerIndex]).first,
+      );
+      await _pastFeedback(tester);
 
-      await tester.tap(find.byKey(const Key('move-option-1')));
+      final controller = container.read(gameControllerProvider.notifier);
+      expect(controller.state!.gameState.turnPhase, TurnPhase.choosingHorse);
+      expect(controller.legalMoves.length, 2, reason: 'both horses can ride');
+      // Nothing is lit until a horse is touched.
+      expect(find.byKey(const ValueKey('destination')), findsNothing);
+
+      // Touch horse 2: its square lights.
+      await tester.tap(find.byKey(const ValueKey('p0:1')));
       await _settle(tester);
+      expect(find.byKey(const ValueKey('destination')), findsOneWidget);
+      final destOfSecond = tester.getCenter(find.byKey(const ValueKey('destination')));
+
+      // Touch horse 1: the light moves — the comparison is free.
+      await tester.tap(find.byKey(const ValueKey('p0:0')));
+      await _settle(tester);
+      expect(find.byKey(const ValueKey('destination')), findsOneWidget);
+      final destOfFirst = tester.getCenter(find.byKey(const ValueKey('destination')));
+      expect(destOfFirst, isNot(destOfSecond));
+      expect(controller.state!.gameState.turnPhase, TurnPhase.choosingHorse);
+
+      // A drop anywhere but the square glides back and changes nothing.
+      final dest = controller.moveFor(0)!.destination;
+      final wrong = _squareOnScreen(tester, dest, 0, 0) + const Offset(0, 140);
+      await _dragHorseTo(tester, 'p0', 0, wrong);
+      await _settle(tester);
+      expect(controller.state!.gameState.turnPhase, TurnPhase.choosingHorse);
       expect(
-        container.read(gameControllerProvider)!.gameState.turnPhase,
-        TurnPhase.answeringQuestion,
+        controller.state!.gameState.players[0].horses[0].position,
+        const TrackPosition(4),
       );
-      expect(
-        container
-            .read(gameControllerProvider)!
-            .gameState
-            .pendingGait!
-            .horseIndex,
-        1,
-      );
-      expect(find.text(session.currentQuestion!.question), findsOneWidget);
+      expect(find.byKey(const Key('placement-banner')), findsOneWidget);
+
+      // The right square: the drop is the move, validated at once.
+      await _dragHorseTo(tester, 'p0', 0, _squareOnScreen(tester, dest, 0, 0));
+      expect(controller.state!.gameState.turnPhase, TurnPhase.movingHorse);
+      expect(controller.state!.gameState.players[0].horses[0].position, dest);
+      expect(controller.state!.gameState.players[0].horses[1].position, const TrackPosition(20));
+      expect(find.byKey(const Key('placement-banner')), findsNothing);
+      expect(find.byKey(const ValueKey('destination')), findsNothing);
+      // No other horse can be picked up now.
+      expect(controller.placeHorse(1), isFalse);
+      await _pastRide(tester);
+      expect(controller.state!.gameState.currentPlayerIndex, 1);
       expect(tester.takeException(), isNull);
     },
   );

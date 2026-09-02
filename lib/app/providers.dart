@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../features/game/domain/game_engine.dart';
 import '../services/daily_challenge_service.dart';
 import '../services/entitlement_service.dart';
+import '../services/haptic_service.dart';
 import '../services/game_save_service.dart';
 import '../services/legacy_game_migration_service.dart';
 import '../services/progress_service.dart';
@@ -67,6 +68,7 @@ class SettingsController extends StateNotifier<AppSettings> {
   Future<void> setThemeMode(ThemeMode mode) => update((s) => s.copyWith(themeMode: mode));
   Future<void> setReduceMotion(bool value) => update((s) => s.copyWith(reduceMotion: value));
   Future<void> setSoundEnabled(bool value) => update((s) => s.copyWith(soundEnabled: value));
+  Future<void> setHapticsEnabled(bool value) => update((s) => s.copyWith(hapticsEnabled: value));
 }
 
 final settingsControllerProvider = StateNotifierProvider<SettingsController, AppSettings>(
@@ -83,6 +85,17 @@ final soundServiceProvider = Provider<SoundService>((ref) {
     (_, s) => service.enabled = s.soundEnabled,
   );
   ref.onDispose(service.dispose);
+  return service;
+});
+
+/// One app-wide haptics player, kept in sync with the vibration setting.
+final hapticServiceProvider = Provider<HapticService>((ref) {
+  final service = HapticService();
+  service.enabled = ref.read(settingsControllerProvider).hapticsEnabled;
+  ref.listen<AppSettings>(
+    settingsControllerProvider,
+    (_, s) => service.enabled = s.hapticsEnabled,
+  );
   return service;
 });
 

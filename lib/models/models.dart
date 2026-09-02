@@ -1,3 +1,4 @@
+export 'bonus_tile.dart';
 export 'circuit.dart';
 export 'game_mode.dart';
 export 'game_state.dart';

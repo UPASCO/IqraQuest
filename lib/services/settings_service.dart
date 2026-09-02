@@ -8,6 +8,7 @@ class AppSettings {
     this.themeMode = ThemeMode.system,
     this.reduceMotion = false,
     this.soundEnabled = true,
+    this.hapticsEnabled = true,
     this.dailyChallengeNotifications = false,
   });
 
@@ -16,6 +17,10 @@ class AppSettings {
   final ThemeMode themeMode;
   final bool reduceMotion;
   final bool soundEnabled;
+
+  /// The little buzzes of the board (a horse picked up, set down, a
+  /// bonus fired). Off, the board stays silent to the hand.
+  final bool hapticsEnabled;
   final bool dailyChallengeNotifications;
 
   AppSettings copyWith({
@@ -23,12 +28,14 @@ class AppSettings {
     ThemeMode? themeMode,
     bool? reduceMotion,
     bool? soundEnabled,
+    bool? hapticsEnabled,
     bool? dailyChallengeNotifications,
   }) => AppSettings(
     languageCode: languageCode ?? this.languageCode,
     themeMode: themeMode ?? this.themeMode,
     reduceMotion: reduceMotion ?? this.reduceMotion,
     soundEnabled: soundEnabled ?? this.soundEnabled,
+    hapticsEnabled: hapticsEnabled ?? this.hapticsEnabled,
     dailyChallengeNotifications: dailyChallengeNotifications ?? this.dailyChallengeNotifications,
   );
 }
@@ -44,6 +51,7 @@ class SettingsService {
   static const _themeKey = 'iqraquest.settings.themeMode';
   static const _reduceMotionKey = 'iqraquest.settings.reduceMotion';
   static const _soundKey = 'iqraquest.settings.sound';
+  static const _hapticsKey = 'iqraquest.settings.haptics';
   static const _notifKey = 'iqraquest.settings.dailyNotifications';
 
   AppSettings load() {
@@ -55,6 +63,7 @@ class SettingsService {
       ),
       reduceMotion: _storage.getBool(_reduceMotionKey) ?? false,
       soundEnabled: _storage.getBool(_soundKey) ?? true,
+      hapticsEnabled: _storage.getBool(_hapticsKey) ?? true,
       dailyChallengeNotifications: _storage.getBool(_notifKey) ?? false,
     );
   }
@@ -66,6 +75,7 @@ class SettingsService {
     await _storage.setString(_themeKey, settings.themeMode.name);
     await _storage.setBool(_reduceMotionKey, settings.reduceMotion);
     await _storage.setBool(_soundKey, settings.soundEnabled);
+    await _storage.setBool(_hapticsKey, settings.hapticsEnabled);
     await _storage.setBool(_notifKey, settings.dailyChallengeNotifications);
   }
 }

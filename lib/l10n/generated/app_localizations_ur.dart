@@ -706,14 +706,14 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، خانوں کی تعداد ہے۔ سوال ہمیشہ آپ کے اپنے درجے کا ہوتا ہے — آسان، درمیانہ یا ماہر — جو شروع میں آپ کے تمام کارڈز کے لیے چنا جاتا ہے۔';
+      'اپنی باری پر ایک کارڈ نکالیں: اس کا سوال فوراً کھلتا ہے، ہمیشہ آپ کے اپنے درجے کا — آسان، درمیانہ یا ماہر — جو شروع میں چنا گیا۔ اس کی قیمت، 1 سے 6 خانے، آپ کے جواب تک چھپی رہتی ہے۔';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'آگے بڑھنے کے لیے جواب دیں';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'درست جواب آپ کے گھوڑے کو کارڈ پر لکھے خانوں کے برابر آگے بڑھاتا ہے۔ غلط جواب اسے وہیں چھوڑ دیتا ہے: آپ کبھی پیچھے نہیں ہٹتے۔';
+      'درست جواب آپ کو کارڈ کے خانے جتاتا ہے۔ پھر وہ گھوڑا چنیں جو انہیں لے: اسے چھوئیں تاکہ اس کی منزل دیکھیں، پھر اسے وہاں گھسیٹیں — چھوڑنا ہی چال ہے۔ غلط جواب سب کچھ وہیں چھوڑ دیتا ہے: آپ کبھی پیچھے نہیں ہٹتے۔';
 
   @override
   String get ruleEscalierTitle => 'مکہ کی طرف زینہ';
@@ -756,4 +756,91 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'راستے کے آخر تک پہنچیں — لکیر سے آگے نکلنا ٹھیک ہے — پھر اپنی آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں۔ غلط جواب آپ کو کبھی پیچھے نہیں کرتا: آپ اگلی باری میں دوبارہ کوشش کرتے ہیں۔';
+
+  @override
+  String get hapticFeedback => 'وائبریشن';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count خانے جیتے',
+      one: '$count خانہ جیتا',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'ایک گھوڑا چنیں';
+
+  @override
+  String get touchHorseHint => 'گھوڑے کو چھوئیں تاکہ دیکھیں وہ کہاں جائے گا';
+
+  @override
+  String get dragHorseToDestination => 'گھوڑے کو اس کے سنہری خانے تک گھسیٹیں';
+
+  @override
+  String get bonusLabel => 'بونس';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value خانے';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'بونس خانہ! آپ کا گھوڑا مزید $value خانے آگے بڑھتا ہے۔';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'یہ کارڈ $value خانوں کا تھا۔';
+  }
+
+  @override
+  String get answerToReveal => 'اس کی قیمت جاننے کے لیے جواب دیں';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name گھوڑا چن رہا ہے…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name کو +$value بونس ملا!';
+  }
+
+  @override
+  String get leaderLabel => 'سب سے آگے';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name آگے نکل گیا!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'بونس خانہ +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'بونس +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      'بورڈ پر 16 بونس خانے منتظر ہیں: +5، +10 اور نایاب +20۔';
+
+  @override
+  String get ridersSubtitle =>
+      'ہر سوار اپنا درجہ چنتا ہے؛ کارڈ صرف فاصلہ طے کرتا ہے۔';
+
+  @override
+  String get ruleBonusTitle => 'بونس خانے';
+
+  @override
+  String get ruleBonusBody =>
+      'ہر کھیل میں بورڈ پر سولہ بونس خانے بانٹے جاتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل ان پر رکے وہ فوراً +5، +10 یا +20 خانے آگے بڑھتا ہے — ہر باری میں صرف ایک بار، اور خانہ سب کے لیے کھیل میں رہتا ہے۔';
 }

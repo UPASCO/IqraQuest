@@ -712,14 +712,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.';
+      'On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Answer to advance';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.';
+      'A right answer wins you the card\'s squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.';
 
   @override
   String get ruleEscalierTitle => 'The escalier to Mecca';
@@ -762,4 +762,91 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.';
+
+  @override
+  String get hapticFeedback => 'Vibration';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count squares won',
+      one: '$count square won',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Choose a horse';
+
+  @override
+  String get touchHorseHint => 'Touch a horse to see where it would go';
+
+  @override
+  String get dragHorseToDestination => 'Drag the horse to its golden square';
+
+  @override
+  String get bonusLabel => 'BONUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value squares';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Bonus square! Your horse rides on $value more squares.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'This card was worth $value squares.';
+  }
+
+  @override
+  String get answerToReveal => 'Answer to reveal its value';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name is choosing a horse…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name lands a +$value bonus!';
+  }
+
+  @override
+  String get leaderLabel => 'Leading';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name takes the lead!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Bonus square +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bonus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 bonus squares await on the board: +5, +10 and the rare +20.';
+
+  @override
+  String get ridersSubtitle =>
+      'Every rider picks their level; the card only sets the distance.';
+
+  @override
+  String get ruleBonusTitle => 'Bonus squares';
+
+  @override
+  String get ruleBonusBody =>
+      'Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.';
 }

@@ -715,14 +715,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات. أما السؤال فهو دائمًا على مستواك — سهل أو متوسط أو خبير — الذي اخترته في البداية لكل بطاقاتك.';
+      'في دورك، اسحب بطاقة: يظهر سؤالها فورًا، دائمًا على مستواك — سهل أو متوسط أو خبير — الذي اخترته في البداية. أما قيمتها، من 1 إلى 6 مربعات، فتبقى مخفية حتى تجيب.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'أجب لتتقدم';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'الإجابة الصحيحة تقدّم حصانك بعدد المربعات المكتوب على البطاقة تمامًا. والإجابة الخاطئة تتركه مكانه: لا تتراجع أبدًا.';
+      'الإجابة الصحيحة تكسبك مربعات البطاقة. اختر بعدها الحصان الذي يأخذها: المسه لترى مربع وصوله، ثم اسحبه إليه — الإفلات هو الحركة. الإجابة الخاطئة تترك كل شيء مكانه: لا تتراجع أبدًا.';
 
   @override
   String get ruleEscalierTitle => 'السلّم إلى مكة';
@@ -765,4 +765,95 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'اِبلغ نهاية المسار — وتجاوز الخط مسموح — ثم أجب عن سؤال الرحلة لتثبيت وصولك. الإجابة الخاطئة لا تعيدك أبدًا: تحاول ببساطة في الدور التالي.';
+
+  @override
+  String get hapticFeedback => 'الاهتزاز';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count مربع',
+      many: '$count مربعًا',
+      few: '$count مربعات',
+      two: 'مربعان',
+      one: 'مربع واحد',
+      zero: 'لا مربعات',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'اختر حصانًا';
+
+  @override
+  String get touchHorseHint => 'المس حصانًا لترى إلى أين سيذهب';
+
+  @override
+  String get dragHorseToDestination => 'اسحب الحصان إلى مربعه الذهبي';
+
+  @override
+  String get bonusLabel => 'مكافأة';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value مربعات';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'مربع مكافأة! يتقدّم حصانك $value مربعات إضافية.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'كانت هذه البطاقة تساوي $value مربعات.';
+  }
+
+  @override
+  String get answerToReveal => 'أجب لتكشف قيمتها';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name يختار حصانًا…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name يحصل على مكافأة +$value!';
+  }
+
+  @override
+  String get leaderLabel => 'في المقدمة';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name يتصدّر السباق!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'مربع مكافأة +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'مكافأة +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 مربع مكافأة على اللوحة: +5 و+10 و+20 النادر.';
+
+  @override
+  String get ridersSubtitle =>
+      'كل فارس يختار مستواه؛ البطاقة تحدّد المسافة فقط.';
+
+  @override
+  String get ruleBonusTitle => 'مربعات المكافأة';
+
+  @override
+  String get ruleBonusBody =>
+      'توزَّع ستة عشر مربع مكافأة على اللوحة في كل لعبة، أربعة في كل ربع. الحصان الذي يتوقف عليها تمامًا يتقدّم فورًا +5 أو +10 أو +20 مربعًا — مرة واحدة في الدور، ويبقى المربع في اللعب للجميع.';
 }

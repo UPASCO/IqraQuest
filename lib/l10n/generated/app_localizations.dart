@@ -1303,7 +1303,7 @@ abstract class AppLocalizations {
   /// Rules step 1 body
   ///
   /// In en, this message translates to:
-  /// **'On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.'**
+  /// **'On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.'**
   String get ruleDrawCardBody;
 
   /// Rules step 2 title
@@ -1315,7 +1315,7 @@ abstract class AppLocalizations {
   /// Rules step 2 body
   ///
   /// In en, this message translates to:
-  /// **'A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.'**
+  /// **'A right answer wins you the card\'s squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.'**
   String get ruleAnswerToAdvanceBody;
 
   /// Rules step 3 title
@@ -1389,6 +1389,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.'**
   String get ruleArrivalBody;
+
+  /// Settings item: toggle for the board's vibrations
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration'**
+  String get hapticFeedback;
+
+  /// Result medallion caption after a right answer: how many squares the card was worth
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} square won} other{{count} squares won}}'**
+  String squaresWon(int count);
+
+  /// Placement banner: pick which horse takes the won squares
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a horse'**
+  String get chooseHorseToMove;
+
+  /// Placement banner hint before any horse is touched
+  ///
+  /// In en, this message translates to:
+  /// **'Touch a horse to see where it would go'**
+  String get touchHorseHint;
+
+  /// Placement banner hint once a horse is selected: drag it onto the highlighted square
+  ///
+  /// In en, this message translates to:
+  /// **'Drag the horse to its golden square'**
+  String get dragHorseToDestination;
+
+  /// Word shouted when a bonus square fires, above its value
+  ///
+  /// In en, this message translates to:
+  /// **'BONUS'**
+  String get bonusLabel;
+
+  /// Bonus value with its unit, e.g. '+10 squares'
+  ///
+  /// In en, this message translates to:
+  /// **'+{value} squares'**
+  String bonusPlus(int value);
+
+  /// Turn banner while the horse rides the bonus it landed on
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus square! Your horse rides on {value} more squares.'**
+  String bonusRide(int value);
+
+  /// Feedback sheet line after a wrong answer: what the card would have moved
+  ///
+  /// In en, this message translates to:
+  /// **'This card was worth {value} squares.'**
+  String cardWasWorth(int value);
+
+  /// Face of the drawn card while its value is still hidden
+  ///
+  /// In en, this message translates to:
+  /// **'Answer to reveal its value'**
+  String get answerToReveal;
+
+  /// Turn banner while the AI opponent picks which horse takes its squares
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is choosing a horse…'**
+  String opponentPlaces(String name);
+
+  /// Turn banner when the AI opponent's horse fires a bonus square
+  ///
+  /// In en, this message translates to:
+  /// **'{name} lands a +{value} bonus!'**
+  String opponentBonus(String name, int value);
+
+  /// Small HUD tag on the rider currently ahead in the race
+  ///
+  /// In en, this message translates to:
+  /// **'Leading'**
+  String get leaderLabel;
+
+  /// Short notice when a rider overtakes to become the leader
+  ///
+  /// In en, this message translates to:
+  /// **'{name} takes the lead!'**
+  String tookTheLead(String name);
+
+  /// Screen-reader label of a bonus square on the board
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus square +{value}'**
+  String bonusSquareSemantics(int value);
+
+  /// Destination tag: this ride ends on a bonus square worth +N
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus +{value}'**
+  String moveHintBonus(int value);
+
+  /// Player setup screen: what the board holds this game
+  ///
+  /// In en, this message translates to:
+  /// **'16 bonus squares await on the board: +5, +10 and the rare +20.'**
+  String get bonusSquaresTeaser;
+
+  /// Player setup screen subtitle under the title
+  ///
+  /// In en, this message translates to:
+  /// **'Every rider picks their level; the card only sets the distance.'**
+  String get ridersSubtitle;
+
+  /// Rules step: the bonus squares
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus squares'**
+  String get ruleBonusTitle;
+
+  /// Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, once per turn
+  ///
+  /// In en, this message translates to:
+  /// **'Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.'**
+  String get ruleBonusBody;
 }
 
 class _AppLocalizationsDelegate

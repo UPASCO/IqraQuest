@@ -710,14 +710,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is het aantal vakjes. De vraag is altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin voor al je kaarten kiest.';
+      'Trek bij jouw beurt een kaart: de vraag opent meteen, altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin koos. De waarde, 1 tot 6 vakjes, blijft verborgen tot je antwoordt.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antwoord om vooruit te gaan';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Een goed antwoord laat je paard precies het aantal vakjes op de kaart vooruit gaan. Een fout antwoord laat het staan: je gaat nooit achteruit.';
+      'Een goed antwoord levert je de vakjes van de kaart op. Kies dan het paard dat ze neemt: tik erop om te zien waar het uitkomt en sleep het daarheen – loslaten is de zet. Een fout antwoord laat alles staan: je gaat nooit achteruit.';
 
   @override
   String get ruleEscalierTitle => 'De trap naar Mekka';
@@ -760,4 +760,91 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Bereik het einde van het parcours — voorbij de streep gaan mag — en beantwoord dan de Vraag van de Reis om je aankomst te bevestigen. Een fout zet je nooit terug: je probeert het gewoon opnieuw.';
+
+  @override
+  String get hapticFeedback => 'Trillingen';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count vakjes gewonnen',
+      one: '$count vakje gewonnen',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Kies een paard';
+
+  @override
+  String get touchHorseHint => 'Tik op een paard om te zien waar het heen gaat';
+
+  @override
+  String get dragHorseToDestination => 'Sleep het paard naar zijn gouden vakje';
+
+  @override
+  String get bonusLabel => 'BONUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value vakjes';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Bonusvakje! Je paard rijdt nog $value vakjes door.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'Deze kaart was $value vakjes waard.';
+  }
+
+  @override
+  String get answerToReveal => 'Antwoord om de waarde te onthullen';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name kiest een paard…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name pakt een +$value bonus!';
+  }
+
+  @override
+  String get leaderLabel => 'Aan kop';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name neemt de leiding!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Bonusvakje +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bonus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 bonusvakjes wachten op het bord: +5, +10 en de zeldzame +20.';
+
+  @override
+  String get ridersSubtitle =>
+      'Elke ruiter kiest zijn niveau; de kaart bepaalt alleen de afstand.';
+
+  @override
+  String get ruleBonusTitle => 'De bonusvakjes';
+
+  @override
+  String get ruleBonusBody =>
+      'Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 vakjes door – één keer per beurt, en het vakje blijft voor iedereen in het spel.';
 }

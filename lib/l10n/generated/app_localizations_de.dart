@@ -711,14 +711,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist die Zahl der Felder. Die Frage ist immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn für alle deine Karten gewählt hast.';
+      'Ziehe in deinem Zug eine Karte: Ihre Frage öffnet sich sofort, immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn gewählt hast. Ihr Wert, 1 bis 6 Felder, bleibt verdeckt, bis du antwortest.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antworte, um vorzurücken';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Eine richtige Antwort zieht dein Pferd genau um die Felder, die auf der Karte stehen. Eine falsche lässt es stehen: Du gehst nie zurück.';
+      'Eine richtige Antwort bringt dir die Felder der Karte ein. Wähle dann das Pferd, das sie nimmt: Tippe es an, um sein Zielfeld zu sehen, und ziehe es dorthin – das Ablegen ist der Zug. Eine falsche Antwort lässt alles stehen: Du gehst nie zurück.';
 
   @override
   String get ruleEscalierTitle => 'Die Treppe nach Mekka';
@@ -761,4 +761,91 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Erreiche das Ende der Strecke — über die Linie hinaus ist erlaubt — und beantworte dann die Frage der Reise, um deine Ankunft zu bestätigen. Ein Fehler wirft dich nie zurück: Du versuchst es einfach im nächsten Zug erneut.';
+
+  @override
+  String get hapticFeedback => 'Vibration';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Felder gewonnen',
+      one: '$count Feld gewonnen',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Wähle ein Pferd';
+
+  @override
+  String get touchHorseHint => 'Tippe ein Pferd an, um sein Ziel zu sehen';
+
+  @override
+  String get dragHorseToDestination => 'Zieh das Pferd auf sein goldenes Feld';
+
+  @override
+  String get bonusLabel => 'BONUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value Felder';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Bonusfeld! Dein Pferd reitet $value Felder weiter.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'Diese Karte war $value Felder wert.';
+  }
+
+  @override
+  String get answerToReveal => 'Antworte, um ihren Wert zu sehen';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name wählt ein Pferd…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name holt einen +$value-Bonus!';
+  }
+
+  @override
+  String get leaderLabel => 'Vorne';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name übernimmt die Führung!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Bonusfeld +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bonus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 Bonusfelder warten auf dem Brett: +5, +10 und das seltene +20.';
+
+  @override
+  String get ridersSubtitle =>
+      'Jeder Reiter wählt sein Niveau; die Karte bestimmt nur die Distanz.';
+
+  @override
+  String get ruleBonusTitle => 'Die Bonusfelder';
+
+  @override
+  String get ruleBonusBody =>
+      'Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Felder weiter – einmal pro Zug, und das Feld bleibt für alle im Spiel.';
 }

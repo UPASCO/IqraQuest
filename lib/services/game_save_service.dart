@@ -28,5 +28,18 @@ class GameSaveService {
 
   bool get hasSave => _storage.getJson(_key) != null;
 
+  /// The schema version the current save was written with, or null
+  /// when there is no readable save. The loader uses it to tell a save
+  /// from an earlier turn order apart from one of its own.
+  int? savedSchemaVersion() {
+    final json = _storage.getJson(_key);
+    if (json == null) return null;
+    try {
+      return GameState.schemaVersionOf(json);
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<void> clear() => _storage.remove(_key);
 }

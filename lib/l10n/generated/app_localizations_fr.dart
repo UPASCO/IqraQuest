@@ -711,14 +711,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'À ton tour, pioche une carte. Sa valeur, de 1 à 6, est le nombre de cases. La question, elle, est toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ pour toutes tes cartes.';
+      'À ton tour, pioche une carte : sa question s\'ouvre aussitôt, toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ. Sa valeur, de 1 à 6 cases, reste cachée jusqu\'à ta réponse.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Réponds pour avancer';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Une bonne réponse fait avancer ton cheval exactement du nombre de cases inscrit sur la carte. Une mauvaise réponse le laisse sur place : tu ne recules jamais.';
+      'Une bonne réponse te fait gagner les cases de la carte. Choisis alors le cheval qui les prend : touche-le pour voir sa case d\'arrivée, puis glisse-le jusqu\'à elle — le dépôt vaut validation. Une mauvaise réponse laisse tout sur place : tu ne recules jamais.';
 
   @override
   String get ruleEscalierTitle => 'L\'escalier vers La Mecque';
@@ -761,4 +761,92 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Atteins le bout du parcours — dépasser la ligne est permis — puis réponds à la Question du voyage pour valider ton arrivée. Une erreur ne te fait jamais reculer : tu réessaies au tour suivant.';
+
+  @override
+  String get hapticFeedback => 'Vibrations';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count cases gagnées',
+      one: '$count case gagnée',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Choisissez un cheval';
+
+  @override
+  String get touchHorseHint => 'Touchez un cheval pour voir où il irait';
+
+  @override
+  String get dragHorseToDestination =>
+      'Glissez le cheval jusqu\'à sa case dorée';
+
+  @override
+  String get bonusLabel => 'BONUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value cases';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Case bonus ! Votre cheval avance encore de $value cases.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'Cette carte valait $value cases.';
+  }
+
+  @override
+  String get answerToReveal => 'Répondez pour découvrir sa valeur';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name choisit un cheval…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name décroche un bonus +$value !';
+  }
+
+  @override
+  String get leaderLabel => 'En tête';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name passe en tête !';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Case bonus +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bonus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 cases bonus sont cachées sur le plateau : +5, +10 et la rare +20.';
+
+  @override
+  String get ridersSubtitle =>
+      'Chaque cavalier choisit son niveau ; la carte ne décide que la distance.';
+
+  @override
+  String get ruleBonusTitle => 'Les cases bonus';
+
+  @override
+  String get ruleBonusBody =>
+      'Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 cases — une seule fois par tour, et la case reste en jeu pour tous.';
 }

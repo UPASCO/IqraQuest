@@ -126,6 +126,13 @@ original works of this project and carry the project's licence.
 | `assets/audio/stable_exit.wav` | the stable gate opens on a 5 or 6 (latch, air, rising call) | synthesized in-repo | project |
 | `assets/audio/six.wav` | a 6 is drawn (two plucks an octave apart, shimmer) | synthesized in-repo | project |
 | `assets/audio/capture.wav` | an opponent's horse is captured (swoop, thud, two falling notes) | synthesized in-repo | project |
+| `assets/audio/earn.wav` | the squares are won: the result medallion lands (two plucks, shimmer) | synthesized in-repo | project |
+| `assets/audio/pickup.wav` | a horse is picked up off the plate (tiny upward pluck) | synthesized in-repo | project |
+| `assets/audio/drop.wav` | a horse is set down on its square: the move is made (hoof thud, pluck) | synthesized in-repo | project |
+| `assets/audio/snap_back.wav` | a horse dropped off its square glides back (two muted falling notes) | synthesized in-repo | project |
+| `assets/audio/bonus_small.wav` | a +5 bonus square fires (three rising plucks) | synthesized in-repo | project |
+| `assets/audio/bonus_mid.wav` | a +10 bonus square fires (four notes up, shimmer) | synthesized in-repo | project |
+| `assets/audio/bonus_big.wav` | a +20 bonus square fires (frame drum, five-note run, held chord) | synthesized in-repo | project |
 
 Spec prohibitions honoured by construction: **no Quranic recitation** as
 a game effect, **no adhan** as a notification sound, and **no

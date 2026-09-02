@@ -74,6 +74,12 @@ class SettingsScreen extends ConsumerWidget {
               value: settings.soundEnabled,
               onChanged: controller.setSoundEnabled,
             ),
+            SwitchListTile(
+              key: const Key('haptics-toggle'),
+              title: Text(l10n.hapticFeedback),
+              value: settings.hapticsEnabled,
+              onChanged: controller.setHapticsEnabled,
+            ),
             const Divider(),
             ListTile(
               title: Text(l10n.privacyPolicy),

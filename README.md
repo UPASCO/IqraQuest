@@ -94,35 +94,77 @@ moves is the gait its player chose, and whether it moves at all is
 whether they answered correctly.
 
 The rules are the classic *jeu des petits chevaux* with the deck in place
-of the die. The turn is: draw a card (1-6) → a 6 may bring one of the
-four horses out of the stable onto its start square, any value rides
-a horse already on the course; when more than one horse could use the
-card the player chooses → answer the card's question (1-2 easy / 3-4
-at the rider's own level, chosen before the game and the same whatever
-the card) → a correct answer makes the move happen, a wrong one leaves
-the horse where it stands. The free edition ends after 50 draws on the
+of the die, played **answer first, then place**. The turn is:
+
+1. **draw a card** — its question opens at once, at the rider's own
+   level (chosen before the game, the same whatever the card); the
+   card's value (1-6) stays face down;
+2. **answer** — a wrong answer moves nothing (the sheet still says what
+   the card was worth); a right one wins the card's squares, shown as a
+   gold result medallion;
+3. **place** — every horse that can ride the squares breathes a halo;
+   touching one lights its destination (and the squares between, with a
+   tag: capture, arrival, bonus…); the player compares freely, then picks
+   a horse up and sets it down on its square. **The drop is the move**:
+   nothing moves before it, and nothing asks to confirm after it. A horse
+   dropped anywhere else glides back. Even a single legal horse waits
+   for the player — no automatic move, ever;
+4. **bonus squares** — sixteen medallions are dealt onto the circuit at
+   the start of every game (`BonusLayout`): four per quadrant, +5 (×8),
+   +10 (×6), +20 (×2, always in opposite quadrants), never adjacent,
+   never on a start or effect square, every quadrant worth the same +35.
+   A horse that stops *exactly* on one flares and rides on by its value,
+   in a second, clearly separate ride — at most one bonus per turn, and
+   the square stays in play for everyone. The layout is generated once
+   from the game's seed, lives in the save, and is never recomputed.
+
+A 6 may bring one of the four horses out of the stable onto its start
+square and lets the same player draw again (right or wrong). Landing
+exactly on an opponent sends it home (a horse coming out captures on its
+start square, oasis or not); two horses of a colour never share a square,
+on a bonus ride as on any other; a Grand Galop is spent by itself, only
+when its two squares turn a ride into an arrival. A card that can move
+nothing passes the turn. The free edition ends after 50 draws on the
 leader (most arrived horses, then distance, then knowledge); Premium
-runs to the end. Landing exactly on an opponent sends it
-home (a horse coming out of its stable captures on its start square, oasis
-or not); two horses of a colour never share a square; a 6 lets the same
-player draw again. A card that can move nothing passes the turn.
+runs to the end.
 
 Rules encoded and tested (`test/features/game/game_engine_test.dart`,
-47 tests): no randomness and no surviving dice API; the gait→difficulty
-mapping; a spent gait becoming unavailable and the cycle refilling;
-correct/incorrect handling; leaving the stable with any gait; the
-preview matching what actually happens (destination, square effect,
-capture); capture, oasis safety and knowledge shields; the streak
-rewards at 3 / 5 / 10 and the fact that an error never revokes one;
-every special square applying exactly its announced effect; structural
+`placement_test.dart`, `bonus_layout_test.dart`): no randomness and no
+surviving dice API; the answer-first turn (nothing moves until the drop,
+an illegal horse is refused, state untouched); the preview matching what
+actually happens (destination, square effect, capture); capture, oasis
+safety and knowledge shields (the shield of a fresh streak goes to the
+horse set down); the streak rewards at 3 / 5 / 10 and the fact that an
+error never revokes one; every special square applying exactly its
+announced effect; the bonus layout invariants (16 squares, 4 per
+quadrant, values only 5/10/20 in 8/6/2, opposite +20s, no adjacency, no
+start or effect square, seed determinism, save round-trip, never
+recomputed); the bonus ride (fires only on an exact stop, once per turn,
+never chains, captures, can arrive, survives a save); structural
 quadrant fairness across all three circuits; overshoot at the finish and
 the Question du voyage that validates an arrival; per-profile difficulty
 so a child and an adult can share a board; and save round-tripping.
 
+`test/quality/game_length_simulation_test.dart` measures the design:
+120 whole games per format through the real engine, with and without
+the bonus squares (70% accuracy). Bonuses shorten every format by about
+40% (a two-rider quick race from a mean of 56 cards to 35; a two-rider
+classic from 209 to 124) without deciding it — the assertion holds the
+gain between 8% and 50%.
+
 The same engine drives AI opponents (`HorseAi`) — difficulty only models
-how often the opponent *knows* an answer, plus how boldly it picks a
-gait. It picks from the same visible options, is bound by the same gait
-cycle, and never sees information a human player couldn't.
+how often the opponent *knows* an answer, plus how well it picks which
+horse takes the squares. It draws from the same deck, places through
+the same `placeHorse`, and never sees information a human player
+couldn't.
+
+**Questions** are dealt by `QuestionDeck`: one pile per level, shuffled
+once, drawn *without replacement* until spent; a resumed game excludes
+what it already asked; a refilled pile keeps the last cards seen at the
+bottom; and each deal weighs the top few cards for a change of category
+and of subject (no three Qur'an cards in a row, no two Musa cards in a
+row). Linear in the pile, built for a bank of thousands
+(`test/services/question_deck_test.dart` deals 5 000 cards twice).
 
 ### State management & navigation
 
@@ -211,13 +253,15 @@ dart run tool/pre_release_check.dart   # release gate (see Content scope)
 ```
 
 As of this pass: `flutter analyze` reports zero issues and `flutter test`
-passes all 82 tests in about 9 seconds — 47 `GameEngine`/rules tests, 13
-controller-level integration tests (turn flow, no-repeat questions, save
-& resume, legacy-save migration, free vs. Premium), 17 question-bank
-integrity tests across all 12 languages including cross-language parity, 2
-full-app widget tests (boot, and the one-time "race rules improved"
-notice), and 3 visual-QA scenes that render the horse art to
-`build/screenshots/` for human review.
+passes the whole suite (300+ tests) in about half a minute — the
+`GameEngine`/rules, placement and bonus-layout tests, the controller
+integration tests (turn flow, no-repeat questions, save & resume at
+every phase of the placement turn, legacy-save migration, free vs.
+Premium, whole games to victory), the question-deck tests, the
+question-bank integrity tests across all 12 languages, the widget turn
+loop (draw → answer → drag a horse onto its lit square → bonus ride,
+through the real screen), the game-length simulation, and the visual-QA
+scenes that render art to `build/screenshots/` for human review.
 
 Those last three are tagged `manual` — they write files for a person to
 look at rather than asserting behaviour — so CI can drop them with

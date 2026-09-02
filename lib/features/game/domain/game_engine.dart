@@ -1,3 +1,4 @@
+import '../../../models/bonus_tile.dart';
 import '../../../models/circuit.dart';
 import '../../../models/game_mode.dart';
 import '../../../models/game_state.dart';
@@ -7,22 +8,36 @@ import '../../../models/movement_choice.dart';
 import '../../../models/pawn_position.dart';
 import '../../../models/player.dart';
 import '../../../models/turn_phase.dart';
+import 'bonus_layout.dart';
 
 /// The single source of truth for IqraQuest's rules: the classic *jeu
 /// des petits chevaux*, with the deck of question cards in place of the
-/// die.
+/// die, and sixteen bonus squares dealt onto the circuit at the start of
+/// every game.
 ///
-/// A turn: draw a card (1–6). A 6 may bring a horse out of the stable
-/// onto its start square; any value rides a horse already on the
-/// course that many squares. Landing exactly on an opponent sends it home;
-/// two of your own horses never share a square. A 6 earns a second draw.
-/// Whether the chosen move actually happens is decided by answering the
-/// card's question — that is the one place this game differs from the
-/// original, and the whole point of it.
+/// A turn, in order:
+///
+/// 1. draw a card ([drawCard]) — its question opens, its value stays
+///    face down;
+/// 2. answer ([applyAnswer]) — a wrong answer moves nothing; a right one
+///    wins the card's squares;
+/// 3. see what the squares can do ([openPlacement]) — which horses can
+///    ride them, and where each would land;
+/// 4. set one horse down on its destination ([placeHorse]) — the drop is
+///    the confirmation, nothing moves before it and nothing else asks
+///    after it;
+/// 5. if the horse stopped on a bonus square, it rides the bonus too
+///    ([applyPendingBonus]) — once per turn, never a chain.
+///
+/// A 6 brings a horse out of the stable onto its start square; any value
+/// rides a horse already on the course that many squares. Landing exactly
+/// on an opponent sends it home; two of your own horses never share a
+/// square. A 6 earns a second draw.
 ///
 /// There is no randomness anywhere in this class: the card is drawn by
-/// the controller's deck and handed in. Every board effect is fixed and
-/// previewable before the player commits (see [previewGait]).
+/// the controller's deck and handed in, and the bonus layout is generated
+/// once from the game's seed by `BonusLayout`. Every board effect is fixed
+/// and previewable before the player commits (see [legalMoves]).
 ///
 /// Pure, deterministic, platform-independent — no widgets, no I/O. The
 /// same instance drives human players and every AI difficulty.
@@ -59,12 +74,16 @@ class GameEngine {
   ///
   /// * a horse in the stable comes out only on a 6, and lands on its
   ///   start square (the move is the exit itself);
-  /// * a horse on the course rides exactly the card's value;
+  /// * a horse on the course rides exactly the card's value — plus the
+  ///   Grand Galop's two squares when the player holds one and those two
+  ///   squares turn the ride into an arrival;
   /// * a horse that has arrived is done;
   /// * no move may end on a square held by one of the player's own
   ///   horses — the destination is simply not available.
   ///
   /// Returns an empty list when nothing can move: the turn then passes.
+  /// Each move's destination is exactly where [placeHorse] puts the
+  /// horse, so the board can show the ride before it happens.
   List<LegalMove> legalMoves(GameState state, MovementChoice card) {
     final player = state.currentPlayer;
     final circuit = state.circuit;
@@ -78,12 +97,29 @@ class GameEngine {
       final exits = horse.isHome;
       if (exits && !card.opensStable) continue;
 
-      final destination = _destinationFor(
+      var destination = _destinationFor(
         horse.position,
         card.steps,
         entry,
         circuit,
       );
+      // A Grand Galop is spent on exactly one thing: turning this ride
+      // into an arrival.
+      var gallop = false;
+      if (!exits &&
+          player.rewards.hasGrandGallop &&
+          destination is! FinishedPosition) {
+        final withGallop = _destinationFor(
+          horse.position,
+          card.steps + 2,
+          entry,
+          circuit,
+        );
+        if (withGallop is FinishedPosition) {
+          destination = withGallop;
+          gallop = true;
+        }
+      }
       if (_ownHorseAt(player, destination, except: i)) continue;
 
       final capture = _captureAt(
@@ -92,6 +128,9 @@ class GameEngine {
         destination,
         fromStable: exits,
       );
+      final bonus = destination is TrackPosition
+          ? state.bonusAt(destination.index)
+          : null;
       moves.add(
         LegalMove(
           horseIndex: i,
@@ -102,31 +141,12 @@ class GameEngine {
               : CellEffect.plain,
           capturesOpponent: capture != null,
           reachesFinish: destination is FinishedPosition,
+          usesGrandGallop: gallop,
+          bonusValue: state.bonusUsedThisTurn ? null : bonus?.value,
         ),
       );
     }
     return moves;
-  }
-
-  /// Step 1 of a turn: the card is on the table. Decides what kind of
-  /// turn this is — a choice between horses, a single obvious move, or
-  /// nothing at all — and records the 6's second draw right away, so it
-  /// is earned by the draw and never lost to a wrong answer.
-  ///
-  /// Committing the move itself is [commitGait]; a turn with several
-  /// options waits in [TurnPhase.choosingHorse] for it, a turn with one
-  /// option is committed by the caller straight away, and a turn with
-  /// none sits in [TurnPhase.noMove] until [endTurn].
-  GameState drawCard(GameState state, MovementChoice card) {
-    final moves = legalMoves(state, card);
-    return state.copyWith(
-      drawnCard: card,
-      drawCount: state.drawCount + 1,
-      extraTurn: state.extraTurn || card.grantsExtraTurn,
-      turnPhase: moves.isEmpty ? TurnPhase.noMove : TurnPhase.choosingHorse,
-      lastMoveOutcome: moves.isEmpty ? MoveOutcome.noLegalMove : null,
-      updatedAt: DateTime.now(),
-    );
   }
 
   /// Horses that have reached the finish and still owe their "Question du
@@ -136,8 +156,8 @@ class GameEngine {
       if (player.horses[i].awaitingJourneyQuestion) i,
   ];
 
-  /// What *would* happen — shown before the player commits, so the choice
-  /// is always informed and never a gamble (spec §7).
+  /// What a card *would* do for one horse — the same geometry as
+  /// [legalMoves], for hints and the opponent's reasoning.
   GaitPreview previewGait(
     GameState state,
     int horseIndex,
@@ -173,59 +193,55 @@ class GameEngine {
   }
 
   // ---------------------------------------------------------------------
-  // Turn flow
+  // Board generation
   // ---------------------------------------------------------------------
 
-  /// Step 2 of a turn: the player commits the drawn card to one horse.
-  /// This only *locks in* the choice — the card's question is answered
-  /// next, and nothing moves until it is.
-  ///
-  /// A horse in the stable is committed as an exit: the card's value has
-  /// opened the gate, and the horse will stand on its start square.
-  GameState commitGait(
-    GameState state,
-    int horseIndex,
-    MovementChoice choice, {
-    bool useGrandGallop = false,
-  }) {
-    final horse = state.currentPlayer.horses[horseIndex];
+  /// The game's bonus squares, generated once from its seed. A state that
+  /// already carries a layout is returned untouched: the squares of a
+  /// game never move, whatever rebuilds, saves or resumes it.
+  GameState ensureBonusLayout(GameState state) {
+    if (state.bonusTiles.isNotEmpty) return state;
+    final seed = state.bonusSeed != 0
+        ? state.bonusSeed
+        : BonusLayout.seedFor(state.gameId);
     return state.copyWith(
-      pendingGait: PendingGait(
-        horseIndex: horseIndex,
-        choice: choice,
-        usesGrandGallop:
-            useGrandGallop && state.currentPlayer.rewards.hasGrandGallop,
-        exitsStable: horse.isHome,
-      ),
-      drawnCard: choice,
-      // A card committed without a draw (the direct path the tests and
-      // the empty-deck fallback use) still counts as one.
-      drawCount: state.drawnCard == null
-          ? state.drawCount + 1
-          : state.drawCount,
-      extraTurn: state.extraTurn || choice.grantsExtraTurn,
-      turnPhase: TurnPhase.answeringQuestion,
-      updatedAt: DateTime.now(),
+      bonusSeed: seed,
+      bonusTiles: BonusLayout.generate(state.circuit, seed),
     );
   }
 
-  /// Step 3: resolves the answer. A correct answer makes the committed
-  /// move happen — the horse comes out of the stable, or rides exactly
-  /// the card's value; a wrong one leaves it where it stands. Either way
-  /// the streak is updated.
+  // ---------------------------------------------------------------------
+  // Turn flow
+  // ---------------------------------------------------------------------
+
+  /// Step 1 of a turn: the card is drawn. Its question opens at once; its
+  /// value is recorded but stays face down for the player until the
+  /// answer is judged. The 6's second draw is recorded right away, so it
+  /// is earned by the draw and never lost to a wrong answer.
+  GameState drawCard(GameState state, MovementChoice card) => state.copyWith(
+    drawnCard: card,
+    drawCount: state.drawCount + 1,
+    extraTurn: state.extraTurn || card.grantsExtraTurn,
+    turnPhase: TurnPhase.answeringQuestion,
+    lastMoveOutcome: null,
+    lastAnswerCorrect: null,
+    movedHorseIndex: null,
+    updatedAt: DateTime.now(),
+  );
+
+  /// Step 2: resolves the answer. Right or wrong, the streak is updated
+  /// and the question is marked asked. A right answer wins the card's
+  /// squares — nothing moves yet: the player will pick the horse. A wrong
+  /// one leaves every horse where it stands.
   GameState applyAnswer(
     GameState state, {
     required bool correct,
     required String questionId,
   }) {
-    final pending = state.pendingGait;
-    if (pending == null) return state;
-
     final players = [...state.players];
     final playerIndex = state.currentPlayerIndex;
     var player = players[playerIndex];
 
-    // The gait is consumed whether the answer was right or wrong.
     var rewards = player.rewards;
     var streak = player.streak;
     final unlocked = <StreakReward>[];
@@ -240,6 +256,13 @@ class GameEngine {
         knowledgePoints:
             rewards.knowledgePoints + player.profile.knowledgePoints,
       );
+      for (final reward in unlocked) {
+        if (reward == StreakReward.grandGallop) {
+          rewards = rewards.copyWith(hasGrandGallop: true);
+        }
+        // A shield goes to the horse the player is about to set down
+        // (see [placeHorse]); a mastery badge is the caller's to award.
+      }
     } else {
       streak = streak.recordIncorrect();
     }
@@ -247,49 +270,161 @@ class GameEngine {
     player = player.copyWith(streak: streak, rewards: rewards);
     players[playerIndex] = player;
 
-    var next = state.copyWith(
+    return state.copyWith(
       players: players,
       currentQuestionId: questionId,
       askedQuestionIds: {...state.askedQuestionIds, questionId},
       lastAnswerCorrect: correct,
+      justUnlocked: unlocked,
       turnPhase: TurnPhase.showingFeedback,
+      lastMoveOutcome: correct ? null : MoveOutcome.stayed,
       updatedAt: DateTime.now(),
     );
-
-    if (!correct) {
-      // The horse stays exactly where it was; nothing else to resolve.
-      return next.copyWith(
-        pendingGait: null,
-        lastMoveOutcome: MoveOutcome.stayed,
-      );
-    }
-
-    next = _moveHorse(next, pending);
-    next = _grantStreakRewards(next, unlocked, pending.horseIndex);
-    return next;
   }
 
-  /// Applies the committed movement, any capture, and the arrival rule.
-  GameState _moveHorse(GameState state, PendingGait pending) {
-    final circuit = state.circuit;
+  /// Step 3: the squares are won; what can they do? Several horses, or
+  /// one — the player picks either way ([TurnPhase.choosingHorse]) — or
+  /// nothing at all ([TurnPhase.noMove]): the turn then passes after a
+  /// beat, and the 6's replay is kept.
+  GameState openPlacement(GameState state) {
+    final card = state.drawnCard;
+    if (card == null) return state;
+    final moves = legalMoves(state, card);
+    if (moves.isEmpty) {
+      // A shield earned by this answer still needs a horse: the one
+      // farthest along, or the first in the stable.
+      var next = state;
+      if (state.justUnlocked.contains(StreakReward.shield)) {
+        final target = _mostAdvancedHorse(
+          state.currentPlayer,
+          state.circuit,
+          state.currentPlayerIndex,
+        );
+        next = _attachShield(state, target < 0 ? 0 : target);
+      }
+      return next.copyWith(
+        turnPhase: TurnPhase.noMove,
+        lastMoveOutcome: MoveOutcome.noLegalMove,
+        updatedAt: DateTime.now(),
+      );
+    }
+    return state.copyWith(
+      turnPhase: TurnPhase.choosingHorse,
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  /// Step 4: the player has set [horseIndex] down on its destination.
+  /// The horse comes out of the stable or rides exactly the card's
+  /// value, captures what it lands on, and — if it stopped on a bonus
+  /// square that has not fired this turn — is handed the bonus to ride
+  /// next ([GameState.pendingBonus]). The move is final the moment this
+  /// returns: there is no confirmation step, in the rules or on screen.
+  GameState placeHorse(GameState state, int horseIndex) {
+    final card = state.drawnCard;
+    if (card == null || state.turnPhase != TurnPhase.choosingHorse) {
+      return state;
+    }
+    LegalMove? move;
+    for (final m in legalMoves(state, card)) {
+      if (m.horseIndex == horseIndex) move = m;
+    }
+    if (move == null) return state;
+
+    var next = _moveHorse(state, move);
+    if (state.justUnlocked.contains(StreakReward.shield)) {
+      next = _attachShield(next, horseIndex);
+    }
+
+    final landed = next.currentPlayer.horses[horseIndex].position;
+    PendingBonus? bonus;
+    if (landed is TrackPosition && !next.bonusUsedThisTurn) {
+      final tile = next.bonusAt(landed.index);
+      if (tile != null) {
+        bonus = PendingBonus(
+          horseIndex: horseIndex,
+          trackIndex: tile.trackIndex,
+          value: tile.value,
+        );
+      }
+    }
+    return next.copyWith(
+      turnPhase: TurnPhase.movingHorse,
+      movedHorseIndex: horseIndex,
+      pendingBonus: bonus,
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  /// Step 5: the horse rides the bonus square it stopped on — its value
+  /// in extra squares, under the same board rules as any ride (a capture
+  /// on landing, an arrival on overshoot). A bonus square reached *by*
+  /// this ride does not fire: one bonus per turn, and it stays on the
+  /// board for a later turn.
+  GameState applyPendingBonus(GameState state) {
+    final bonus = state.pendingBonus;
+    if (bonus == null) return state;
+    var next = _advanceCurrentHorse(
+      state,
+      bonus.value,
+      horseIndex: bonus.horseIndex,
+    );
+    final landed = next.currentPlayer.horses[bonus.horseIndex].position;
+    final effect = landed is TrackPosition
+        ? next.circuit.effectAt(landed.index)
+        : CellEffect.plain;
+    final outcome = landed is FinishedPosition
+        ? MoveOutcome.reachedFinish
+        : next.lastMoveOutcome == MoveOutcome.captured &&
+              !identical(next.players, state.players) &&
+              _capturedSomeone(state, next)
+        ? MoveOutcome.captured
+        : next.lastMoveOutcome;
+    return next.copyWith(
+      pendingBonus: null,
+      bonusUsedThisTurn: true,
+      lastBonusValue: bonus.value,
+      lastMoveOutcome: outcome,
+      // The extra ride lands quietly: a passive square still counts, an
+      // interactive one never asks twice in a turn.
+      landedEffect: effect,
+      pendingCellEffect: null,
+      pendingCellHorseIndex: null,
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  bool _capturedSomeone(GameState before, GameState after) {
+    for (var p = 0; p < after.players.length; p++) {
+      if (p == after.currentPlayerIndex) continue;
+      for (var h = 0; h < after.players[p].horses.length; h++) {
+        if (after.players[p].horses[h].isHome &&
+            !before.players[p].horses[h].isHome) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  /// The ride is over and everything it triggered is resolved: the turn
+  /// waits for its hand-off.
+  GameState completeMove(GameState state) => state.copyWith(
+    turnPhase: TurnPhase.turnComplete,
+    updatedAt: DateTime.now(),
+  );
+
+  /// Applies one legal move: the ride, any capture, and the arrival rule.
+  GameState _moveHorse(GameState state, LegalMove move) {
     final players = [...state.players];
     final playerIndex = state.currentPlayerIndex;
     var player = players[playerIndex];
-    final teamIndex = playerIndex;
-    final entry = circuit.entryIndexForTeam(teamIndex);
-
-    final bonus = pending.usesGrandGallop ? 2 : 0;
-    final horse = player.horses[pending.horseIndex];
-    final destination = _destinationFor(
-      horse.position,
-      pending.choice.steps + bonus,
-      entry,
-      circuit,
-    );
+    final horse = player.horses[move.horseIndex];
+    final destination = move.destination;
 
     final horses = [...player.horses];
     final reachedFinish = destination is FinishedPosition;
-    horses[pending.horseIndex] = horse.copyWith(
+    horses[move.horseIndex] = horse.copyWith(
       position: destination,
       awaitingJourneyQuestion: reachedFinish
           ? true
@@ -297,7 +432,7 @@ class GameEngine {
     );
 
     var rewards = player.rewards;
-    if (pending.usesGrandGallop) {
+    if (move.usesGrandGallop) {
       rewards = rewards.copyWith(hasGrandGallop: false);
     }
     player = player.copyWith(horses: horses, rewards: rewards);
@@ -305,7 +440,7 @@ class GameEngine {
 
     var outcome = reachedFinish
         ? MoveOutcome.reachedFinish
-        : pending.exitsStable
+        : move.exitsStable
         ? MoveOutcome.exitedStable
         : MoveOutcome.moved;
 
@@ -318,7 +453,7 @@ class GameEngine {
       state,
       player.id,
       destination,
-      fromStable: pending.exitsStable,
+      fromStable: move.exitsStable,
     );
     if (capture != null) {
       final (opponentIndex, opponentHorseIndex) = capture;
@@ -340,16 +475,14 @@ class GameEngine {
     }
 
     final effect = destination is TrackPosition
-        ? circuit.effectAt(destination.index)
+        ? state.circuit.effectAt(destination.index)
         : CellEffect.plain;
-
     final interactive = _isInteractive(effect);
     return state.copyWith(
       players: players,
-      pendingGait: null,
       lastMoveOutcome: outcome,
       pendingCellEffect: interactive ? effect : null,
-      pendingCellHorseIndex: interactive ? pending.horseIndex : null,
+      pendingCellHorseIndex: interactive ? move.horseIndex : null,
       landedEffect: effect,
       updatedAt: DateTime.now(),
     );
@@ -364,39 +497,15 @@ class GameEngine {
     _ => false,
   };
 
-  GameState _grantStreakRewards(
-    GameState state,
-    List<StreakReward> unlocked,
-    int horseIndex,
-  ) {
-    if (unlocked.isEmpty) return state;
+  GameState _attachShield(GameState state, int horseIndex) {
     final players = [...state.players];
     final index = state.currentPlayerIndex;
-    var player = players[index];
-    var rewards = player.rewards;
-    var horses = [...player.horses];
-
-    for (final reward in unlocked) {
-      switch (reward) {
-        case StreakReward.shield:
-          // Attach it straight to the horse that just moved — no extra
-          // decision screen for a bonus that has only one sensible target.
-          horses[horseIndex] = horses[horseIndex].copyWith(hasShield: true);
-        case StreakReward.grandGallop:
-          rewards = rewards.copyWith(hasGrandGallop: true);
-        case StreakReward.masteryBadge:
-          // The category is decided by the caller (it needs answer
-          // history); the engine only records that one was earned.
-          break;
-      }
-    }
-
-    players[index] = player.copyWith(horses: horses, rewards: rewards);
-    return state.copyWith(
-      players: players,
-      justUnlocked: unlocked,
-      updatedAt: DateTime.now(),
-    );
+    final player = players[index];
+    if (horseIndex < 0 || horseIndex >= player.horses.length) return state;
+    final horses = [...player.horses];
+    horses[horseIndex] = horses[horseIndex].copyWith(hasShield: true);
+    players[index] = player.copyWith(horses: horses);
+    return state.copyWith(players: players, updatedAt: DateTime.now());
   }
 
   // ---------------------------------------------------------------------
@@ -662,7 +771,6 @@ class GameEngine {
       currentPlayerIndex: nextIndex,
       turnPhase: TurnPhase.selectingGait,
       currentQuestionId: null,
-      pendingGait: null,
       pendingCellEffect: null,
       pendingCellHorseIndex: null,
       landedEffect: null,
@@ -672,6 +780,10 @@ class GameEngine {
       drawnCard: null,
       extraTurn: false,
       isBonusTurn: replays,
+      pendingBonus: null,
+      bonusUsedThisTurn: false,
+      lastBonusValue: null,
+      movedHorseIndex: null,
       updatedAt: DateTime.now(),
     );
   }
@@ -733,12 +845,26 @@ class GameEngine {
     }
 
     final horses = [...player.horses];
-    final destination = _destinationFor(
+    var destination = _destinationFor(
       horses[target].position,
       steps,
       entry,
       circuit,
     );
+    // Two of a colour never share a square, on a bonus ride as on any
+    // other: a ride that would end on one's own horse stops on the last
+    // free square before it.
+    var remaining = steps;
+    while (remaining > 0 && _ownHorseAt(player, destination, except: target)) {
+      remaining--;
+      destination = _destinationFor(
+        horses[target].position,
+        remaining,
+        entry,
+        circuit,
+      );
+    }
+    if (remaining == 0) return state;
     horses[target] = horses[target].copyWith(
       position: destination,
       awaitingJourneyQuestion: destination is FinishedPosition
@@ -763,6 +889,7 @@ class GameEngine {
           position: const HomePosition(),
           awaitingJourneyQuestion: false,
         );
+        next = next.copyWith(lastMoveOutcome: MoveOutcome.captured);
       }
       players[oi] = opponent.copyWith(horses: oh);
       next = next.copyWith(players: players, updatedAt: DateTime.now());
@@ -878,9 +1005,9 @@ class GaitPreview {
   final bool usesGrandGallop;
 }
 
-/// One thing the drawn card can do: which horse, where it lands, and
+/// One thing the won squares can do: which horse, where it lands, and
 /// what it would meet there — enough for a player to choose, and for the
-/// board to show the ride before it happens.
+/// board to show the destination the moment the horse is touched.
 class LegalMove {
   const LegalMove({
     required this.horseIndex,
@@ -889,6 +1016,8 @@ class LegalMove {
     required this.effect,
     required this.capturesOpponent,
     required this.reachesFinish,
+    this.usesGrandGallop = false,
+    this.bonusValue,
   });
 
   final int horseIndex;
@@ -900,4 +1029,12 @@ class LegalMove {
   final CellEffect effect;
   final bool capturesOpponent;
   final bool reachesFinish;
+
+  /// The Grand Galop's two squares are spent on this move (it reaches
+  /// the finish with them).
+  final bool usesGrandGallop;
+
+  /// The bonus square this move stops on, if it would fire: +5, +10 or
+  /// +20 extra squares once the horse has landed.
+  final int? bonusValue;
 }

@@ -20,13 +20,37 @@ import '../domain/horse_ai.dart';
 /// that a stable full of horses is not a stable full of waiting.
 const Duration kNoMoveBeat = Duration(milliseconds: 2500);
 
+/// One hop of a horse from square to square, and the cap on a whole
+/// ride: the controller waits exactly as long as the board animates, so
+/// the bonus square never fires before the horse has visibly stopped on
+/// it. Mirrors `AppMotion.hopPerCell` / `AppMotion.moveMax`.
+const Duration kHopPerCell = Duration(milliseconds: 170);
+const Duration kRideMax = Duration(milliseconds: 950);
+
+/// A leap out of the stable, and the settle after any landing.
+const Duration kLeapDuration = Duration(milliseconds: 640);
+const Duration kLandingSettle = Duration(milliseconds: 260);
+
+/// The bonus square flares and says its value before the horse rides
+/// on: long enough to read "+10", short enough to stay one motion.
+const Duration kBonusRevealBeat = Duration(milliseconds: 1000);
+
+/// How long a ride of [steps] squares takes on the board. A horse hops
+/// square by square up to twelve squares, and leaps beyond that (a +20
+/// bonus is a leap), exactly as `CrossBoardScene` animates it.
+Duration rideDurationFor(int steps, {bool leap = false}) {
+  if (leap || steps > 12) return kLeapDuration + kLandingSettle;
+  final hops = steps * kHopPerCell.inMilliseconds;
+  return Duration(milliseconds: min(hops, kRideMax.inMilliseconds)) +
+      kLandingSettle;
+}
+
 /// Everything the presentation layer needs to render one turn.
 @immutable
 class GameSession {
   const GameSession({
     required this.gameState,
     this.currentQuestion,
-    this.preview,
     this.isAiTurnInProgress = false,
     this.journeyHorseIndex,
     this.journeyAttemptedHorses = const {},
@@ -37,9 +61,6 @@ class GameSession {
   /// The question currently on screen (a turn question, a bonus question
   /// from an interactive square, or a journey question).
   final Question? currentQuestion;
-
-  /// What the gait the player is hovering would do, for the confirm step.
-  final GaitPreview? preview;
 
   final bool isAiTurnInProgress;
 
@@ -53,7 +74,6 @@ class GameSession {
   GameSession copyWith({
     GameState? gameState,
     Object? currentQuestion = _unset,
-    Object? preview = _unset,
     bool? isAiTurnInProgress,
     Object? journeyHorseIndex = _unset,
     Set<int>? journeyAttemptedHorses,
@@ -62,9 +82,6 @@ class GameSession {
     currentQuestion: identical(currentQuestion, _unset)
         ? this.currentQuestion
         : currentQuestion as Question?,
-    preview: identical(preview, _unset)
-        ? this.preview
-        : preview as GaitPreview?,
     isAiTurnInProgress: isAiTurnInProgress ?? this.isAiTurnInProgress,
     journeyHorseIndex: identical(journeyHorseIndex, _unset)
         ? this.journeyHorseIndex
@@ -76,8 +93,22 @@ class GameSession {
 
 const Object _unset = Object();
 
-/// Orchestrates one game: wires [GameEngine] to question selection, AI
-/// turns, autosave on every mutation, and progress tracking.
+/// Orchestrates one game: wires [GameEngine] to the question deck, the
+/// board's timing, AI turns, autosave on every mutation, and progress
+/// tracking.
+///
+/// The turn it drives, in the order the player lives it:
+///
+/// 1. [drawCard] — the question opens; the card's value stays face down;
+/// 2. [answerQuestion] — the verdict and the explanation;
+/// 3. [continueAfterFeedback] — a right answer opens the placement: the
+///    squares won are shown and every horse that can ride them lights
+///    up; a wrong one ends the turn;
+/// 4. [placeHorse] — the player set a horse down on its destination: the
+///    ride is final, nothing asks to confirm;
+/// 5. the controller waits for the ride, fires a bonus square if the
+///    horse stopped on one (once per turn), resolves the landing square,
+///    asks the journey question if the horse arrived, and hands over.
 class GameController extends StateNotifier<GameSession?> {
   GameController({
     required this.engine,
@@ -88,6 +119,7 @@ class GameController extends StateNotifier<GameSession?> {
     this.boardEffects = const BoardEffectService(),
     HorseAi? ai,
     Random? random,
+    this.animate = true,
   }) : ai = ai ?? HorseAi(),
        _random = random ?? Random(),
        super(null);
@@ -101,12 +133,19 @@ class GameController extends StateNotifier<GameSession?> {
   final HorseAi ai;
   final Random _random;
 
+  /// Whether the controller paces itself on the board's animations. Off
+  /// in headless tests and simulations, where a ride takes no time.
+  final bool animate;
+
   List<Question> _pool = const [];
   bool _isPremium = false;
 
   /// The draw pile for this game. Rebuilt whenever the playable bank
   /// changes — buying Premium mid-game widens it immediately.
   QuestionDeck? _deck;
+
+  Timer? _noMoveTimer;
+  Timer? _rideTimer;
 
   void configure({required List<Question> pool, required bool isPremium}) {
     _pool = pool;
@@ -117,6 +156,17 @@ class GameController extends StateNotifier<GameSession?> {
       pool: isPremium ? pool : pool.where((q) => q.isFree).toList(),
       random: _random,
     );
+    // A game already under way keeps its promise of no repeats: what it
+    // has asked leaves the fresh deck at once.
+    final asked = state?.gameState.askedQuestionIds;
+    if (asked != null && asked.isNotEmpty) _deck!.exclude(asked);
+  }
+
+  @override
+  void dispose() {
+    _noMoveTimer?.cancel();
+    _rideTimer?.cancel();
+    super.dispose();
   }
 
   // ---------------------------------------------------------------------
@@ -129,8 +179,9 @@ class GameController extends StateNotifier<GameSession?> {
     required CircuitId circuitId,
     required List<Player> players,
   }) {
+    _cancelTimers();
     final now = DateTime.now();
-    final gameState = GameState(
+    var gameState = GameState(
       gameId: 'g_${now.microsecondsSinceEpoch}',
       gameMode: mode,
       gameVariant: variant,
@@ -144,6 +195,9 @@ class GameController extends StateNotifier<GameSession?> {
       startedAt: now,
       updatedAt: now,
     );
+    // The sixteen bonus squares are dealt once, here, from the game's
+    // own seed — and then live in the state, never recomputed.
+    gameState = engine.ensureBonusLayout(gameState);
     state = GameSession(gameState: gameState);
     _persist();
     _beginTurn();
@@ -180,33 +234,68 @@ class GameController extends StateNotifier<GameSession?> {
   bool loadSaved() {
     var saved = saveService.load();
     if (saved == null || saved.turnPhase == TurnPhase.gameOver) return false;
+    _cancelTimers();
+    final schema = saveService.savedSchemaVersion() ?? GameState.schemaVersion;
+
+    // A save from the previous turn order (card → horse → question) at
+    // a mid-turn phase means something else there than it does now: the
+    // turn simply restarts at the deck, positions intact.
+    if (schema < GameState.schemaVersion &&
+        saved.turnPhase != TurnPhase.selectingGait) {
+      saved = engine.endTurn(
+        saved.copyWith(
+          turnPhase: TurnPhase.turnComplete,
+          drawnCard: null,
+          extraTurn: false,
+        ),
+      );
+    }
+    // An older save has no bonus squares yet: it gets its sixteen now,
+    // from its own id, and keeps them from here on.
+    saved = engine.ensureBonusLayout(saved);
+
     // A save can be written while a question is on screen, but the
     // question text itself is never persisted — resume at the nearest
     // safe decision point instead of a phase with nothing to tap.
     saved = switch (saved.turnPhase) {
-      // The gait is only consumed when the answer resolves, so backing
-      // out to gait selection loses nothing.
+      // The card was drawn but not answered: a fresh card is drawn.
       TurnPhase.answeringQuestion => saved.copyWith(
         turnPhase: TurnPhase.selectingGait,
-        pendingGait: null,
+        drawnCard: null,
+        extraTurn: false,
       ),
       // The journey question is re-asked by _beginTurn below.
       TurnPhase.answeringJourneyQuestion => saved.copyWith(
         turnPhase: TurnPhase.selectingGait,
       ),
-      // The move already happened; the turn simply concludes.
-      TurnPhase.showingFeedback ||
-      TurnPhase.turnComplete => engine.endTurn(saved),
+      // The answer was judged: a right one still owes its placement,
+      // anything else concludes the turn.
+      TurnPhase.showingFeedback =>
+        saved.lastAnswerCorrect == true &&
+                saved.drawnCard != null &&
+                saved.movedHorseIndex == null
+            ? engine.openPlacement(saved)
+            : engine.endTurn(saved),
+      // The squares are won and the horse not yet set down: persisted,
+      // so the player resumes exactly there. (An opponent's choice is
+      // made again by _beginTurn.)
+      TurnPhase.choosingHorse => saved,
+      // The horse was set down: whatever it earned is still earned. A
+      // pending bonus rides now, then the landing is resolved.
+      TurnPhase.movingHorse => engine.applyPendingBonus(saved),
       // A card that could move nothing has been seen: the turn passes.
       TurnPhase.noMove => engine.endTurn(saved),
-      // The card is on the table and the choice is still open: it is
-      // persisted, so the player resumes exactly there. (An opponent's
-      // choice is made again by _beginTurn.)
+      TurnPhase.turnComplete => engine.endTurn(saved),
       _ => saved,
     };
     if (saved.turnPhase == TurnPhase.gameOver) return false;
     state = GameSession(gameState: saved);
+    _deck?.exclude(saved.askedQuestionIds);
     _persist();
+    if (saved.turnPhase == TurnPhase.movingHorse) {
+      _settleRide();
+      return true;
+    }
     _beginTurn();
     return true;
   }
@@ -221,15 +310,16 @@ class GameController extends StateNotifier<GameSession?> {
     }
   }
 
-  // ---------------------------------------------------------------------
-  // Turn: choosing a gait
-  // ---------------------------------------------------------------------
-
-  List<MovementChoice> get availableGaits {
-    final s = state;
-    if (s == null) return const [];
-    return engine.availableGaits(s.gameState.currentPlayer);
+  void _cancelTimers() {
+    _noMoveTimer?.cancel();
+    _rideTimer?.cancel();
+    _noMoveTimer = null;
+    _rideTimer = null;
   }
+
+  // ---------------------------------------------------------------------
+  // Reading the turn
+  // ---------------------------------------------------------------------
 
   List<int> get movableHorses {
     final s = state;
@@ -237,24 +327,8 @@ class GameController extends StateNotifier<GameSession?> {
     return engine.movableHorses(s.gameState.currentPlayer);
   }
 
-  /// What a gait would do — used for the board hint and the confirmation
-  /// step on bold gaits in child mode.
-  GaitPreview? preview(
-    int horseIndex,
-    MovementChoice choice, {
-    bool useGrandGallop = false,
-  }) {
-    final s = state;
-    if (s == null) return null;
-    return engine.previewGait(
-      s.gameState,
-      horseIndex,
-      choice,
-      useGrandGallop: useGrandGallop,
-    );
-  }
-
-  /// What the drawn card can do, for the choice sheet and the board.
+  /// What the won squares can do, for the board: which horses may be
+  /// picked up and where each one lands.
   List<LegalMove> get legalMoves {
     final s = state;
     final card = s?.gameState.drawnCard;
@@ -262,13 +336,24 @@ class GameController extends StateNotifier<GameSession?> {
     return engine.legalMoves(s.gameState, card);
   }
 
-  /// Draws this turn's card.
-  ///
-  /// The card's value is both how far a horse rides and how hard its
-  /// question is: drawing replaces rolling a die. What happens next
-  /// depends on what the value can do — nothing (the turn passes after
-  /// a beat), one thing (it is committed straight away), or several
-  /// (the turn waits for [chooseMove]).
+  /// The destination of [horseIndex] under the current card, or null if
+  /// that horse cannot ride it. The board shows this the moment a horse
+  /// is touched, and validates a drop against it.
+  LegalMove? moveFor(int horseIndex) {
+    for (final m in legalMoves) {
+      if (m.horseIndex == horseIndex) return m;
+    }
+    return null;
+  }
+
+  // ---------------------------------------------------------------------
+  // Turn: drawing
+  // ---------------------------------------------------------------------
+
+  /// Draws this turn's card: its question opens at once. The card's
+  /// value — how far a horse rides — is known to the state but stays
+  /// face down on screen until the answer is judged, so the player
+  /// answers for the answer's sake and discovers the prize after.
   void drawCard() {
     final s = state;
     if (s == null || s.gameState.turnPhase != TurnPhase.selectingGait) return;
@@ -277,24 +362,12 @@ class GameController extends StateNotifier<GameSession?> {
     final card = _deck?.draw(level);
     if (card == null) {
       // No playable question at all: the turn still resolves rather than
-      // stalling or paywalling mid-game. A 6 gets a horse out (without
-      // its replay — no deck, no second draw); nothing else is drawn, so
-      // the move is the whole turn.
-      final choice = const MovementChoice(6);
+      // stalling or paywalling mid-game. The card is a 6 (a horse gets
+      // out), its answer counts as right, and the player still places.
       final drawn = engine
-          .drawCard(s.gameState, choice)
+          .drawCard(s.gameState, const MovementChoice(6))
           .copyWith(freeBankExhausted: true, extraTurn: s.gameState.extraTurn);
-      state = s.copyWith(gameState: drawn);
-      _persist();
-      final moves = legalMoves;
-      if (moves.isEmpty) {
-        _armNoMoveBeat();
-        return;
-      }
-      final committed = engine
-          .commitGait(drawn, moves.first.horseIndex, choice)
-          .copyWith(extraTurn: s.gameState.extraTurn);
-      state = state!.copyWith(gameState: committed);
+      state = s.copyWith(gameState: drawn, currentQuestion: null);
       _persist();
       _resolveAnswer(
         correct: true,
@@ -305,174 +378,28 @@ class GameController extends StateNotifier<GameSession?> {
       return;
     }
 
-    final choice = MovementChoice(card.value);
     // The card sets the distance for everyone; the question on it was
     // dealt at the rider's own level. A seven-year-old who draws a 6
     // rides six squares like anyone else and answers an easy question
     // for it; an expert who draws a 1 still faces an expert question.
-    final dealt = card.question;
-
-    final drawn = engine.drawCard(s.gameState, choice);
+    final drawn = engine.drawCard(s.gameState, MovementChoice(card.value));
     state = s.copyWith(
       gameState: drawn,
       // The bank stores correct answers at index 0: shuffle on draw so
-      // the on-screen order never gives the answer away. Held until a
-      // horse is chosen; the sheet only opens once the move is known.
-      currentQuestion: dealt.withShuffledAnswers(_random),
-      preview: null,
+      // the on-screen order never gives the answer away.
+      currentQuestion: card.question.withShuffledAnswers(_random),
     );
     _persist();
 
-    final moves = legalMoves;
-    if (moves.isEmpty) {
-      _armNoMoveBeat();
-      return;
-    }
-    // Exits are interchangeable: every horse in the stable is the same
-    // horse to bring out. One exit plus nothing else is no choice.
-    final distinct = <LegalMove>[];
-    var exitSeen = false;
-    for (final m in moves) {
-      if (m.exitsStable) {
-        if (exitSeen) continue;
-        exitSeen = true;
-      }
-      distinct.add(m);
-    }
-    if (distinct.length == 1) {
-      chooseMove(distinct.first.horseIndex);
-      return;
-    }
     final player = drawn.currentPlayer;
-    if (player.isAi) _runAiMoveChoice();
+    if (player.isAi) _runAiAnswer(player.aiDifficulty!);
   }
 
-  /// Commits the drawn card to [horseIndex]: out of the stable, or the
-  /// card's distance along the course. Then the question opens.
-  void chooseMove(int horseIndex) {
-    final s = state;
-    if (s == null || s.gameState.turnPhase != TurnPhase.choosingHorse) return;
-    final card = s.gameState.drawnCard;
-    if (card == null) return;
-    if (!legalMoves.any((m) => m.horseIndex == horseIndex)) return;
-
-    // A Grand Galop is spent on exactly the terms the opponent spends
-    // it on: only when it turns this move into an arrival.
-    final useGrandGallop =
-        s.gameState.currentPlayer.rewards.hasGrandGallop &&
-        engine
-            .previewGait(s.gameState, horseIndex, card, useGrandGallop: true)
-            .reachesFinish;
-    final committed = engine.commitGait(
-      s.gameState,
-      horseIndex,
-      card,
-      useGrandGallop: useGrandGallop,
-    );
-    // A game resumed mid-choice comes back without its question (the
-    // text is never persisted): deal one now at the rider's level.
-    final question =
-        s.currentQuestion ??
-        _drawQuestion(committed, committed.currentPlayer.profile.difficulty);
-    state = s.copyWith(
-      gameState: question == null
-          ? committed.copyWith(freeBankExhausted: true)
-          : committed,
-      currentQuestion: question,
-      preview: engine.previewGait(
-        s.gameState,
-        horseIndex,
-        card,
-        useGrandGallop: useGrandGallop,
-      ),
-    );
-    _persist();
-
-    if (question == null) {
-      _resolveAnswer(
-        correct: true,
-        questionId: 'free-bank-exhausted',
-        category: null,
-      );
-      continueAfterFeedback();
-      return;
-    }
-    final player = committed.currentPlayer;
-    if (player.isAi) _runAiAnswer(player.aiDifficulty!, question.difficulty);
-  }
-
-  /// The card on the table can move nothing: it stays in view for one
-  /// beat, then the turn passes on its own. Tapping through
-  /// ([continueAfterFeedback]) ends it sooner.
-  void _armNoMoveBeat() {
-    _noMoveTimer?.cancel();
-    _noMoveTimer = Timer(kNoMoveBeat, () {
-      if (!mounted) return;
-      if (state?.gameState.turnPhase == TurnPhase.noMove) _endTurn();
-    });
-  }
-
-  Timer? _noMoveTimer;
-
-  @override
-  void dispose() {
-    _noMoveTimer?.cancel();
-    super.dispose();
-  }
-
-  /// Commits a horse and an explicit distance. Kept for the flows that
-  /// still name their own value — the AI turn and the tests.
-  void selectGait(
-    int horseIndex,
-    MovementChoice choice, {
-    bool useGrandGallop = false,
-  }) {
-    final s = state;
-    if (s == null || s.gameState.turnPhase != TurnPhase.selectingGait) return;
-
-    final committed = engine.commitGait(
-      s.gameState,
-      horseIndex,
-      choice,
-      useGrandGallop: useGrandGallop,
-    );
-    final player = committed.currentPlayer;
-    final difficulty = movementChoices.difficultyFor(choice, player.profile);
-    final question = _drawQuestion(committed, difficulty);
-
-    state = s.copyWith(
-      gameState: question == null
-          ? committed.copyWith(freeBankExhausted: true)
-          : committed,
-      currentQuestion: question,
-      preview: engine.previewGait(
-        s.gameState,
-        horseIndex,
-        choice,
-        useGrandGallop: useGrandGallop,
-      ),
-    );
-    _persist();
-
-    // The bank holds no question of this difficulty at all (it recycles
-    // before that — see _drawQuestion): play continues uninterrupted
-    // rather than being blocked or paywalled mid-game.
-    if (question == null) {
-      _resolveAnswer(
-        correct: true,
-        questionId: 'free-bank-exhausted',
-        category: null,
-      );
-      // No feedback screen exists for a question that was never shown:
-      // the turn moves straight along.
-      continueAfterFeedback();
-      return;
-    }
-
-    if (player.isAi) _runAiAnswer(player.aiDifficulty!, difficulty);
-  }
-
+  /// A question outside the draw — a chest's, a journey's — dealt from
+  /// the same deck, so it never repeats what the game has already asked.
   Question? _drawQuestion(GameState gameState, QuestionDifficulty difficulty) {
+    final fromDeck = _deck?.drawQuestion(difficulty);
+    if (fromDeck != null) return fromDeck.withShuffledAnswers(_random);
     final fresh = questionRepository.pickQuestion(
       pool: _pool,
       askedQuestionIds: gameState.askedQuestionIds,
@@ -480,8 +407,6 @@ class GameController extends StateNotifier<GameSession?> {
       difficulty: difficulty,
       random: _random,
     );
-    // The bank stores correct answers at index 0: shuffle on draw so the
-    // on-screen order never gives the answer away.
     if (fresh != null) return fresh.withShuffledAnswers(_random);
     // Every question of this difficulty has been asked once this game
     // (quick in the free edition): recycle rather than degrade into
@@ -562,39 +487,153 @@ class GameController extends StateNotifier<GameSession?> {
       next = next.copyWith(players: players);
     }
 
-    // Passive squares apply the moment the horse lands.
-    final landed = next.landedEffect;
-    if (correct && landed != null && !boardEffects.isInteractive(landed)) {
-      final bonus = boardEffects.bonusPointsFor(landed);
-      if (bonus > 0 || landed == CellEffect.wisdom) {
-        next = engine.collectFact(
-          next,
-          '${landed.name}:$questionId',
-          bonusPoints: bonus,
-        );
-      }
-    }
-
-    state = s.copyWith(gameState: next, preview: null);
+    state = s.copyWith(gameState: next);
     _persist();
   }
 
   /// Called once the player has read the explanation and source — or
   /// tapped through a card that could move nothing.
+  ///
+  /// After the turn's own question, a right answer opens the placement
+  /// and a wrong one concludes the turn; after a journey question or a
+  /// chest, the turn concludes.
   void continueAfterFeedback() {
     final s = state;
     if (s == null) return;
     final gameState = s.gameState;
 
-    if (gameState.turnPhase == TurnPhase.noMove) {
-      _noMoveTimer?.cancel();
-      _endTurn();
+    switch (gameState.turnPhase) {
+      case TurnPhase.noMove:
+        _noMoveTimer?.cancel();
+        _endTurn();
+        return;
+      // Waiting on the board: there is nothing to continue from.
+      case TurnPhase.choosingHorse:
+      case TurnPhase.movingHorse:
+      case TurnPhase.answeringQuestion:
+      case TurnPhase.answeringJourneyQuestion:
+      case TurnPhase.selectingGait:
+      case TurnPhase.gameOver:
+        return;
+      case TurnPhase.showingFeedback:
+        final ownsPlacement =
+            s.journeyHorseIndex == null &&
+            gameState.lastAnswerCorrect == true &&
+            gameState.drawnCard != null &&
+            gameState.movedHorseIndex == null;
+        if (ownsPlacement) {
+          _openPlacement();
+          return;
+        }
+        _concludeTurn();
+      case TurnPhase.resolvingCell:
+      case TurnPhase.turnComplete:
+        _concludeTurn();
+    }
+  }
+
+  // ---------------------------------------------------------------------
+  // Turn: placing the horse
+  // ---------------------------------------------------------------------
+
+  /// The squares are won: the board shows which horses can ride them.
+  /// Nothing moves by itself — not even when only one horse could — the
+  /// player always sets the horse down. A card that moves nothing stays
+  /// in view for one beat, then the turn passes.
+  void _openPlacement() {
+    final s = state;
+    if (s == null) return;
+    final next = engine.openPlacement(s.gameState);
+    state = s.copyWith(gameState: next, currentQuestion: null);
+    _persist();
+    if (next.turnPhase == TurnPhase.noMove) {
+      _armNoMoveBeat();
       return;
     }
-    // Waiting on a horse choice: there is nothing to continue from.
-    if (gameState.turnPhase == TurnPhase.choosingHorse) return;
+    if (next.currentPlayer.isAi) _runAiPlacement();
+  }
 
-    // An interactive square is waiting on a decision.
+  /// The player set [horseIndex] down on its destination — or the
+  /// opponent chose it. The drop is the confirmation: the ride is
+  /// applied at once, and the controller then waits for the board to
+  /// show it before anything else happens.
+  ///
+  /// Returns false if that horse cannot ride the card, so a board can
+  /// snap a bad drop back without touching the state.
+  bool placeHorse(int horseIndex) {
+    final s = state;
+    if (s == null || s.gameState.turnPhase != TurnPhase.choosingHorse) {
+      return false;
+    }
+    final move = moveFor(horseIndex);
+    if (move == null) return false;
+
+    final next = engine.placeHorse(s.gameState, horseIndex);
+    if (next.turnPhase != TurnPhase.movingHorse) return false;
+    state = s.copyWith(gameState: next);
+    _persist();
+
+    final steps = move.exitsStable
+        ? 0
+        : (s.gameState.drawnCard?.steps ?? 1) + (move.usesGrandGallop ? 2 : 0);
+    _after(rideDurationFor(steps, leap: move.exitsStable), _afterRide);
+    return true;
+  }
+
+  /// The horse has visibly stopped. A bonus square under its hooves
+  /// flares for a beat, then it rides on; otherwise the landing is
+  /// resolved straight away.
+  void _afterRide() {
+    final s = state;
+    if (s == null || s.gameState.turnPhase != TurnPhase.movingHorse) return;
+    final bonus = s.gameState.pendingBonus;
+    if (bonus == null) {
+      _settleRide();
+      return;
+    }
+    _after(kBonusRevealBeat, () {
+      final current = state;
+      if (current == null || current.gameState.pendingBonus == null) return;
+      final next = engine.applyPendingBonus(current.gameState);
+      state = current.copyWith(gameState: next);
+      _persist();
+      _after(rideDurationFor(bonus.value), _settleRide);
+    });
+  }
+
+  /// Everything the ride triggered, once it is over: a passive square's
+  /// fact and point, an interactive square's offer, the journey question
+  /// of a horse that arrived — then the hand-off.
+  void _settleRide() {
+    final s = state;
+    if (s == null || s.gameState.turnPhase != TurnPhase.movingHorse) return;
+    var next = s.gameState;
+
+    final landed = next.landedEffect;
+    if (landed != null && !boardEffects.isInteractive(landed)) {
+      final bonus = boardEffects.bonusPointsFor(landed);
+      if (bonus > 0 || landed == CellEffect.wisdom) {
+        next = engine.collectFact(
+          next,
+          '${landed.name}:${next.currentQuestionId ?? next.drawCount}',
+          bonusPoints: bonus,
+        );
+      }
+    }
+    next = engine.completeMove(next);
+    state = s.copyWith(gameState: next);
+    _persist();
+    _concludeTurn();
+  }
+
+  /// The turn's ride is done and judged: an interactive square waits on
+  /// a decision, an arrived horse owes its journey question, or the turn
+  /// is handed over.
+  void _concludeTurn() {
+    final s = state;
+    if (s == null) return;
+    final gameState = s.gameState;
+
     final pendingCell = gameState.pendingCellEffect;
     if (pendingCell != null &&
         boardEffects.isAvailableFor(
@@ -602,11 +641,14 @@ class GameController extends StateNotifier<GameSession?> {
           playerCount: gameState.players.length,
           horseCount: gameState.currentPlayer.horses.length,
         )) {
-      state = s.copyWith(
-        gameState: gameState.copyWith(turnPhase: TurnPhase.resolvingCell),
-        currentQuestion: null,
-      );
-      _persist();
+      if (gameState.turnPhase != TurnPhase.resolvingCell) {
+        state = s.copyWith(
+          gameState: gameState.copyWith(turnPhase: TurnPhase.resolvingCell),
+          currentQuestion: null,
+        );
+        _persist();
+        if (gameState.currentPlayer.isAi) _runAiCellDecision();
+      }
       return;
     }
 
@@ -623,6 +665,31 @@ class GameController extends StateNotifier<GameSession?> {
     _endTurn();
   }
 
+  /// The card on the table can move nothing: it stays in view for one
+  /// beat, then the turn passes on its own. Tapping through
+  /// ([continueAfterFeedback]) ends it sooner.
+  void _armNoMoveBeat() {
+    _noMoveTimer?.cancel();
+    _noMoveTimer = Timer(animate ? kNoMoveBeat : Duration.zero, () {
+      if (!mounted) return;
+      if (state?.gameState.turnPhase == TurnPhase.noMove) _endTurn();
+    });
+  }
+
+  /// Runs [action] once the board has had [delay] to show what just
+  /// happened — or at once, headless.
+  void _after(Duration delay, void Function() action) {
+    _rideTimer?.cancel();
+    if (!animate) {
+      action();
+      return;
+    }
+    _rideTimer = Timer(delay, () {
+      if (!mounted) return;
+      action();
+    });
+  }
+
   void _endTurn() {
     final s = state;
     if (s == null) return;
@@ -630,7 +697,6 @@ class GameController extends StateNotifier<GameSession?> {
     state = s.copyWith(
       gameState: next,
       currentQuestion: null,
-      preview: null,
       journeyHorseIndex: null,
       journeyAttemptedHorses: const {},
     );
@@ -649,13 +715,20 @@ class GameController extends StateNotifier<GameSession?> {
   void _beginTurn() {
     final s = state;
     if (s == null) return;
-    if (s.gameState.turnPhase == TurnPhase.choosingHorse) {
-      // Resumed mid-choice: a human sees the sheet again; an opponent
-      // simply chooses.
-      if (s.gameState.currentPlayer.isAi) _runAiMoveChoice();
-      return;
+    switch (s.gameState.turnPhase) {
+      case TurnPhase.choosingHorse:
+        // Resumed mid-placement: a human sees the board lit again; an
+        // opponent simply chooses.
+        if (s.gameState.currentPlayer.isAi) _runAiPlacement();
+        return;
+      case TurnPhase.resolvingCell:
+        if (s.gameState.currentPlayer.isAi) _runAiCellDecision();
+        return;
+      case TurnPhase.selectingGait:
+        break;
+      case _:
+        return;
     }
-    if (s.gameState.turnPhase != TurnPhase.selectingGait) return;
     final awaiting = engine.horsesAwaitingJourneyQuestion(
       s.gameState.currentPlayer,
     );
@@ -680,7 +753,7 @@ class GameController extends StateNotifier<GameSession?> {
       currentQuestion: null,
     );
     _persist();
-    continueAfterFeedback();
+    _concludeTurn();
   }
 
   /// Draws the optional bonus question for a Défi or Raccourci square.
@@ -726,7 +799,9 @@ class GameController extends StateNotifier<GameSession?> {
         questionId: question.id,
         // The bonus goes to the horse that landed on the square.
         horseIndex:
-            s.gameState.pendingCellHorseIndex ?? s.preview?.horseIndex ?? 0,
+            s.gameState.pendingCellHorseIndex ??
+            s.gameState.movedHorseIndex ??
+            0,
       ),
       _ => engine.declineCellOffer(s.gameState),
     };
@@ -736,7 +811,7 @@ class GameController extends StateNotifier<GameSession?> {
     // The board shows the outcome (the horse jumps, or stays); the turn
     // itself must keep moving — a bonus jump can even reach the finish
     // and owe its journey question right now.
-    continueAfterFeedback();
+    _concludeTurn();
   }
 
   /// A Relais square: hand the squares just earned to another horse.
@@ -805,6 +880,7 @@ class GameController extends StateNotifier<GameSession?> {
     final question = s?.currentQuestion;
     final horseIndex = s?.journeyHorseIndex;
     if (s == null || question == null || horseIndex == null) return;
+    if (s.gameState.turnPhase != TurnPhase.answeringJourneyQuestion) return;
 
     final correct = question.isCorrect(selectedIndex);
     progressService.recordAnswer(correct: correct, category: question.category);
@@ -829,19 +905,22 @@ class GameController extends StateNotifier<GameSession?> {
   // AI turns — same engine, same visible options, never cheating
   // ---------------------------------------------------------------------
 
+  Duration _aiBeat(int milliseconds) =>
+      animate ? Duration(milliseconds: milliseconds) : Duration.zero;
+
   void _maybeRunAiTurn() {
     final s = state;
     if (s == null) return;
     if (!s.gameState.currentPlayer.isAi) return;
     if (s.gameState.turnPhase != TurnPhase.selectingGait) return;
-    _runAiGaitChoice();
+    _runAiDraw();
   }
 
-  Future<void> _runAiGaitChoice() async {
+  Future<void> _runAiDraw() async {
     final s = state;
     if (s == null) return;
     state = s.copyWith(isAiTurnInProgress: true);
-    await Future<void>.delayed(const Duration(milliseconds: 550));
+    await Future<void>.delayed(_aiBeat(550));
     // The player may have left the board during that pause; a
     // disposed notifier must not be read or written.
     if (!mounted) return;
@@ -858,15 +937,39 @@ class GameController extends StateNotifier<GameSession?> {
     }
 
     // The same deck as the human, the same draw: the opponent only
-    // decides what the card does once it is on the table.
+    // decides what the card does once the answer is judged.
     state = current.copyWith(isAiTurnInProgress: false);
     drawCard();
   }
 
-  /// The opponent's card can do more than one thing: it "thinks" for a
-  /// beat (the table says so), then commits.
-  Future<void> _runAiMoveChoice() async {
-    await Future<void>.delayed(const Duration(milliseconds: 650));
+  Future<void> _runAiAnswer(AiDifficulty aiDifficulty) async {
+    await Future<void>.delayed(_aiBeat(700));
+    if (!mounted) return;
+    final s = state;
+    final question = s?.currentQuestion;
+    if (s == null || question == null) return;
+    if (s.gameState.turnPhase != TurnPhase.answeringQuestion) return;
+
+    final correct = ai.decideAnswerCorrect(aiDifficulty);
+    final index = correct
+        ? question.correctAnswerIndex
+        : (question.correctAnswerIndex + 1) % question.answers.length;
+    answerQuestion(index);
+
+    // The verdict stays on the table for a beat, then the opponent
+    // places (or the turn passes).
+    await Future<void>.delayed(_aiBeat(900));
+    if (!mounted) return;
+    if (state?.gameState.turnPhase == TurnPhase.showingFeedback &&
+        (state?.gameState.currentPlayer.isAi ?? false)) {
+      continueAfterFeedback();
+    }
+  }
+
+  /// The opponent's squares can go to more than one horse: it "thinks"
+  /// for a beat (the table says so), then sets one down.
+  Future<void> _runAiPlacement() async {
+    await Future<void>.delayed(_aiBeat(650));
     if (!mounted) return;
     final s = state;
     if (s == null || !s.gameState.currentPlayer.isAi) return;
@@ -882,41 +985,14 @@ class GameController extends StateNotifier<GameSession?> {
       difficulty: s.gameState.currentPlayer.aiDifficulty!,
       moves: moves,
     );
-    chooseMove(horse);
-  }
-
-  Future<void> _runAiAnswer(
-    AiDifficulty aiDifficulty,
-    QuestionDifficulty _,
-  ) async {
-    await Future<void>.delayed(const Duration(milliseconds: 700));
-    // The player may have left the board during that pause; a
-    // disposed notifier must not be read or written.
-    if (!mounted) return;
-    final s = state;
-    final question = s?.currentQuestion;
-    if (s == null || question == null) return;
-
-    final correct = ai.decideAnswerCorrect(aiDifficulty);
-    final index = correct
-        ? question.correctAnswerIndex
-        : (question.correctAnswerIndex + 1) % question.answers.length;
-    answerQuestion(index);
-
-    await Future<void>.delayed(const Duration(milliseconds: 900));
-    // The player may have left the board during that pause; a
-    // disposed notifier must not be read or written.
-    if (!mounted) return;
-    if (state?.gameState.currentPlayer.isAi ?? false) _runAiCellDecision();
+    placeHorse(horse);
   }
 
   Future<void> _runAiJourneyAnswer(
     AiDifficulty aiDifficulty,
     Question question,
   ) async {
-    await Future<void>.delayed(const Duration(milliseconds: 700));
-    // The player may have left the board during that pause; a
-    // disposed notifier must not be read or written.
+    await Future<void>.delayed(_aiBeat(700));
     if (!mounted) return;
     if (state == null) return;
     final correct = ai.decideAnswerCorrect(aiDifficulty);
@@ -925,9 +1001,7 @@ class GameController extends StateNotifier<GameSession?> {
           ? question.correctAnswerIndex
           : (question.correctAnswerIndex + 1) % question.answers.length,
     );
-    await Future<void>.delayed(const Duration(milliseconds: 600));
-    // The player may have left the board during that pause; a
-    // disposed notifier must not be read or written.
+    await Future<void>.delayed(_aiBeat(600));
     if (!mounted) return;
     // continueAfterFeedback, not _endTurn: the per-turn attempt guard
     // stops a retry loop, and a second arrived horse still gets its own
@@ -937,12 +1011,15 @@ class GameController extends StateNotifier<GameSession?> {
     }
   }
 
-  void _runAiCellDecision() {
+  Future<void> _runAiCellDecision() async {
+    await Future<void>.delayed(_aiBeat(500));
+    if (!mounted) return;
     final s = state;
     if (s == null) return;
+    if (s.gameState.turnPhase != TurnPhase.resolvingCell) return;
     final effect = s.gameState.pendingCellEffect;
     if (effect == null) {
-      continueAfterFeedback();
+      declineCellOffer();
       return;
     }
     // A confident opponent takes the optional challenge; a cautious one

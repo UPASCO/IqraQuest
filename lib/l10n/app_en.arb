@@ -975,7 +975,7 @@
   "@ruleDrawCardTitle": {
     "description": "Rules step 1 title"
   },
-  "ruleDrawCardBody": "On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.",
+  "ruleDrawCardBody": "On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.",
   "@ruleDrawCardBody": {
     "description": "Rules step 1 body"
   },
@@ -983,7 +983,7 @@
   "@ruleAnswerToAdvanceTitle": {
     "description": "Rules step 2 title"
   },
-  "ruleAnswerToAdvanceBody": "A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.",
+  "ruleAnswerToAdvanceBody": "A right answer wins you the card's squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.",
   "@ruleAnswerToAdvanceBody": {
     "description": "Rules step 2 body"
   },
@@ -1034,5 +1034,133 @@
   "ruleArrivalBody": "Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.",
   "@ruleArrivalBody": {
     "description": "Rules step 6 body"
+  },
+  "hapticFeedback": "Vibration",
+  "@hapticFeedback": {
+    "description": "Settings item: toggle for the board's vibrations"
+  },
+  "squaresWon": "{count, plural, one{{count} square won} other{{count} squares won}}",
+  "@squaresWon": {
+    "description": "Result medallion caption after a right answer: how many squares the card was worth",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseHorseToMove": "Choose a horse",
+  "@chooseHorseToMove": {
+    "description": "Placement banner: pick which horse takes the won squares"
+  },
+  "touchHorseHint": "Touch a horse to see where it would go",
+  "@touchHorseHint": {
+    "description": "Placement banner hint before any horse is touched"
+  },
+  "dragHorseToDestination": "Drag the horse to its golden square",
+  "@dragHorseToDestination": {
+    "description": "Placement banner hint once a horse is selected: drag it onto the highlighted square"
+  },
+  "bonusLabel": "BONUS",
+  "@bonusLabel": {
+    "description": "Word shouted when a bonus square fires, above its value"
+  },
+  "bonusPlus": "+{value} squares",
+  "@bonusPlus": {
+    "description": "Bonus value with its unit, e.g. '+10 squares'",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "bonusRide": "Bonus square! Your horse rides on {value} more squares.",
+  "@bonusRide": {
+    "description": "Turn banner while the horse rides the bonus it landed on",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "cardWasWorth": "This card was worth {value} squares.",
+  "@cardWasWorth": {
+    "description": "Feedback sheet line after a wrong answer: what the card would have moved",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "answerToReveal": "Answer to reveal its value",
+  "@answerToReveal": {
+    "description": "Face of the drawn card while its value is still hidden"
+  },
+  "opponentPlaces": "{name} is choosing a horse…",
+  "@opponentPlaces": {
+    "description": "Turn banner while the AI opponent picks which horse takes its squares",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "opponentBonus": "{name} lands a +{value} bonus!",
+  "@opponentBonus": {
+    "description": "Turn banner when the AI opponent's horse fires a bonus square",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "leaderLabel": "Leading",
+  "@leaderLabel": {
+    "description": "Small HUD tag on the rider currently ahead in the race"
+  },
+  "tookTheLead": "{name} takes the lead!",
+  "@tookTheLead": {
+    "description": "Short notice when a rider overtakes to become the leader",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bonusSquareSemantics": "Bonus square +{value}",
+  "@bonusSquareSemantics": {
+    "description": "Screen-reader label of a bonus square on the board",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "moveHintBonus": "Bonus +{value}",
+  "@moveHintBonus": {
+    "description": "Destination tag: this ride ends on a bonus square worth +N",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "bonusSquaresTeaser": "16 bonus squares await on the board: +5, +10 and the rare +20.",
+  "@bonusSquaresTeaser": {
+    "description": "Player setup screen: what the board holds this game"
+  },
+  "ridersSubtitle": "Every rider picks their level; the card only sets the distance.",
+  "@ridersSubtitle": {
+    "description": "Player setup screen subtitle under the title"
+  },
+  "ruleBonusTitle": "Bonus squares",
+  "@ruleBonusTitle": {
+    "description": "Rules step: the bonus squares"
+  },
+  "ruleBonusBody": "Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.",
+  "@ruleBonusBody": {
+    "description": "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, once per turn"
   }
 }

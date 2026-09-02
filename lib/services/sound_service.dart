@@ -21,7 +21,24 @@ enum Sfx {
   fanfare('fanfare'),
   stableExit('stable_exit'),
   six('six'),
-  capture('capture');
+  capture('capture'),
+
+  /// The squares are won: the result medallion pops.
+  earn('earn'),
+
+  /// A horse is picked up off the plate.
+  pickup('pickup'),
+
+  /// A horse is set down on its destination — the move is made.
+  drop('drop'),
+
+  /// A horse dropped off its destination glides back.
+  snapBack('snap_back'),
+
+  /// A bonus square fires: +5, +10, +20 — each its own voice.
+  bonusSmall('bonus_small'),
+  bonusMid('bonus_mid'),
+  bonusBig('bonus_big');
 
   const Sfx(this.file);
 

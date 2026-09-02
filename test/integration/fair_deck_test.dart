@@ -4,7 +4,7 @@ import 'package:iqraquest/services/local_storage_service.dart';
 import 'package:iqraquest/theme/app_team.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'solo_game_flow_test.dart' show buildController, human;
+import 'solo_game_flow_test.dart' show buildController, finishTurn, human;
 
 /// The deck is the die. Everyone draws from it the same way — a child
 /// draws the same values as an adult and gets a question they can read;
@@ -31,36 +31,29 @@ void main() {
     for (var i = 0; i < 40; i++) {
       final s = controller.state!;
       if (s.gameState.turnPhase == TurnPhase.gameOver) break;
+      if (s.gameState.turnPhase != TurnPhase.selectingGait) break;
       controller.drawCard();
-      final drawn = controller.state!.gameState.pendingGait;
-      final q = controller.state!.currentQuestion;
-      if (drawn == null || q == null) {
-        // A card that opened nothing (no 6 for a stabled horse): the
-        // turn passes.
-        controller.continueAfterFeedback();
-        continue;
-      }
+      final drawn = controller.state!.gameState.drawnCard!;
+      final q = controller.state!.currentQuestion!;
       final player = controller.state!.gameState.currentPlayer;
       if (player.id == 'kid') {
-        values.add(drawn.choice.steps);
+        values.add(drawn.steps);
         expect(
           q.difficulty,
           QuestionDifficulty.easy,
           reason:
-              'a child drew a ${drawn.choice.steps} and got a ${q.difficulty} question',
+              'a child drew a ${drawn.steps} and got a ${q.difficulty} question',
         );
       } else {
         expect(
           q.difficulty,
           QuestionDifficulty.hard,
           reason:
-              'the expert drew a ${drawn.choice.steps} and got a ${q.difficulty} question',
+              'the expert drew a ${drawn.steps} and got a ${q.difficulty} question',
         );
       }
       controller.answerQuestion(q.correctAnswerIndex);
-      if (controller.state!.gameState.turnPhase == TurnPhase.showingFeedback) {
-        controller.continueAfterFeedback();
-      }
+      finishTurn(controller);
     }
     // The card's value is not capped for the child: the pace stays fair.
     expect(
@@ -74,7 +67,8 @@ void main() {
     'the opponent draws from the deck rather than choosing its value',
     () async {
       final storage = await LocalStorageService.create();
-      final controller = await buildController(storage);
+      // Paced like the real game, so its first beat can be observed.
+      final controller = await buildController(storage, animate: true);
       controller.startNewGame(
         mode: GameMode.solo,
         variant: GameVariant.quick,
@@ -89,15 +83,15 @@ void main() {
           ),
         ],
       );
-      // The first beat of the AI turn reveals its card.
-      await Future<void>.delayed(const Duration(milliseconds: 1200));
+      // The first beat of the AI turn draws its card.
+      await Future<void>.delayed(const Duration(milliseconds: 1000));
       final drawn = controller.state!.gameState.drawnCard;
       expect(drawn, isNotNull);
       // Any value 1..6 is legal; a hard AI choosing its own value would
       // always take a 6 to open its stable.
       expect(drawn!.steps, inInclusiveRange(1, 6));
       // Let the remaining beats run out before the controller goes away.
-      await Future<void>.delayed(const Duration(milliseconds: 3000));
+      await Future<void>.delayed(const Duration(milliseconds: 4000));
       controller.dispose();
     },
   );
@@ -114,9 +108,8 @@ void main() {
         human('Bilal', AppTeam.saphir),
       ],
     );
-    // Play one correct turn so there is state to wipe: a 6 opens the
-    // gate, so the card is sure to be played rather than passed.
-    controller.selectGait(0, const MovementChoice(6));
+    // Play one correct turn so there is state to wipe.
+    controller.drawCard();
     final q = controller.state!.currentQuestion!;
     controller.answerQuestion(q.correctAnswerIndex);
     final before = controller.state!.gameState;
@@ -128,6 +121,7 @@ void main() {
     expect(after.turnPhase, TurnPhase.selectingGait);
     expect(after.players.map((p) => p.name), ['Amina', 'Bilal']);
     expect(after.players.first.profile, PlayerProfile.easy);
+    expect(after.bonusTiles.length, 16);
     for (final p in after.players) {
       expect(p.rewards.knowledgePoints, 0);
       expect(p.streak.current, 0);

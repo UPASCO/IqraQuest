@@ -3,17 +3,19 @@ import 'dart:ui' as ui;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../app/providers.dart' show soundServiceProvider;
+import '../../../app/providers.dart'
+    show gameEngineProvider, hapticServiceProvider, soundServiceProvider;
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/sound_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/board/cross_board_scene.dart';
+import '../../../widgets/bonus_callout.dart';
 import '../../../widgets/celebration_overlay.dart';
+import '../../../widgets/earned_steps_medallion.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
 import '../../../widgets/question_card_draw.dart';
@@ -21,15 +23,28 @@ import '../application/game_controller.dart';
 import '../domain/game_engine.dart';
 import '../../../widgets/button_label.dart';
 
-/// How long the answered card stays up, verdict on the tiles, before the
-/// board comes back and the horse rides. Long enough to read "right" or
-/// "wrong"; short enough that the ride is what the player remembers.
+/// How long the answered card stays up, verdict on the tiles, before it
+/// folds down to the short sheet with the way on. Long enough to read
+/// "right" or "wrong"; short enough that the prize is what comes next.
 const Duration kAnswerBeatDuration = Duration(milliseconds: 1000);
+
+/// How long the result medallion holds the centre of the board before
+/// it gives way to the placement — the board is already live under it.
+const Duration kEarnBeat = Duration(milliseconds: 1300);
+
+/// How long "X takes the lead" stays on the HUD.
+const Duration kLeadToastDuration = Duration(milliseconds: 1900);
 
 /// The game screen is the world: a full-bleed dawn landscape with the
 /// journey tilted into perspective, and every piece of UI floating over
 /// it. No app bar, no page chrome — opening this screen must feel like
 /// entering a place, not a form.
+///
+/// A turn on it, in order: tap the deck, answer the question, read the
+/// verdict, watch the squares won land as a medallion, pick a horse up
+/// off the plate and set it down on its lit square — the drop is the
+/// move, nothing asks to confirm — then, if the horse stopped on a
+/// bonus, see it flare and ride on.
 class GameScreen extends ConsumerStatefulWidget {
   const GameScreen({super.key});
 
@@ -41,8 +56,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   int? _selectedAnswer;
   String? _dismissedQuestionId;
 
-  /// The key moment on screen, if any: a 6, an open gate, a capture, an
-  /// arrival. Held for one beat over everything else, tap to skip.
+  /// The key moment on screen, if any: a capture, an arrival. Held for
+  /// one beat over everything else, tap to skip.
   CelebrationKind? _celebration;
   String _celebrationTitle = '';
   String _celebrationBody = '';
@@ -50,24 +65,32 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   Timer? _landingTimer;
 
   /// An answer plays in two beats. Beat one: the card shows the verdict
-  /// on its tiles and the board underneath is held at its pre-move
-  /// state. Beat two: the card folds down to a short sheet, the board is
-  /// released and the horse rides in full view. Without the hold, the
-  /// horse would move behind the blurred card and the player would only
-  /// ever see it already arrived.
-  GameState? _frozenBoard;
+  /// on its tiles. Beat two: the card folds down to a short sheet with
+  /// the explanation and the way on.
   bool _compactFeedback = false;
-  bool _hoofsDeferred = false;
   int? _pointsEarned;
   Timer? _beatTimer;
 
   /// While the drawn card is turning over, the question sheet is held
-  /// back: the player reads what the card is worth first, then answers.
+  /// back: the card lands on its question mark, then the question opens.
   bool _revealing = false;
-  int _revealValue = 1;
   int _revealPips = 1;
   Timer? _revealTimer;
   Timer? _resultsTimer;
+
+  /// The squares just won, landing as a medallion over the board.
+  bool _earnBeat = false;
+  Timer? _earnTimer;
+
+  /// The placement in progress on the plate: which horse is lit, and
+  /// whether one is under the finger — for the banner's hint.
+  int? _placementSelected;
+  bool _dragging = false;
+
+  /// "X takes the lead", briefly.
+  String? _leadToast;
+  Timer? _leadTimer;
+  String? _leaderId;
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +100,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
 
     ref.listen(gameControllerProvider, (previous, next) {
       _beginAnswerBeatsIfNeeded(previous, next);
+      _beginEarnBeatIfNeeded(previous, next);
       _playCuesFor(previous, next);
       _celebrateLandingsIfNeeded(previous, next);
+      _watchTheLead(previous, next);
       if (next?.gameState.turnPhase == TurnPhase.gameOver &&
           previous?.gameState.turnPhase != TurnPhase.gameOver) {
         // The winning ride is the one ride nobody should miss: let the
@@ -94,6 +119,13 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       }
       if (previous?.currentQuestion?.id != next?.currentQuestion?.id) {
         setState(() => _selectedAnswer = null);
+      }
+      if (next?.gameState.turnPhase != TurnPhase.choosingHorse &&
+          (_placementSelected != null || _dragging)) {
+        setState(() {
+          _placementSelected = null;
+          _dragging = false;
+        });
       }
     });
 
@@ -131,25 +163,32 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             state.turnPhase == TurnPhase.showingFeedback ||
             state.turnPhase == TurnPhase.resolvingCell);
 
-    // Where the drawn card sends this horse, drawn on the board itself
-    // so the ride is never a surprise: "this card takes me here."
-    ({int teamIndex, PawnPosition destination})? boardPreview;
-    final pending = state.pendingGait;
-    final drawnPreview = session.preview;
-    if (pending != null && drawnPreview != null) {
-      boardPreview = (
+    // The placement: the board is the control. Every horse that can
+    // ride the won squares is offered with its destination; the drop
+    // validates.
+    BoardPlacement? placement;
+    if (state.turnPhase == TurnPhase.choosingHorse &&
+        player.isHuman &&
+        _celebration == null) {
+      final legal = ref.read(gameControllerProvider.notifier).legalMoves;
+      placement = BoardPlacement(
         teamIndex: state.currentPlayerIndex,
-        destination: drawnPreview.destination,
+        options: [
+          for (final m in legal)
+            PlacementOption(
+              horseIndex: m.horseIndex,
+              destination: m.destination,
+              exitsStable: m.exitsStable,
+              bonusValue: m.bonusValue,
+              capturesOpponent: m.capturesOpponent,
+              reachesFinish: m.reachesFinish,
+              tag: _tagFor(m, l10n),
+            ),
+        ],
       );
     }
-
-    // While the card waits for a horse, every horse that could use it
-    // wears the ring; tapping one on the plate is the same as tapping
-    // its line on the sheet.
-    final legal = state.turnPhase == TurnPhase.choosingHorse && player.isHuman
-        ? ref.read(gameControllerProvider.notifier).legalMoves
-        : const <LegalMove>[];
-    final selectable = {for (final m in legal) '${player.id}:${m.horseIndex}'};
+    final leader = ref.read(gameEngineProvider).leader(state);
+    final pendingBonus = state.pendingBonus;
 
     return PopScope(
       // System back mid-game behaves exactly like the in-game back
@@ -167,28 +206,54 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             // from one grid, so a square index always lands on its tile.
             // A square plate can never be wider than the phone, so the
             // board pinches up to 2.5x for a closer look at the squares;
-            // the HUD and the deck stay put above it.
+            // the HUD and the deck stay put above it. While a horse is
+            // being placed the viewer stands still: the finger on the
+            // plate is moving a horse, never the board.
             Positioned.fill(
               child: InteractiveViewer(
                 key: const Key('board-zoom'),
                 minScale: 1,
                 maxScale: 2.5,
+                panEnabled: placement == null,
+                scaleEnabled: placement == null,
                 child: CrossBoardScene(
-                  state: _frozenBoard ?? state,
-                  preview: boardPreview,
-                  selectableHorses: selectable,
-                  onHorseTap: (playerIndex, horseIndex) {
-                    if (busy || playerIndex != state.currentPlayerIndex) {
-                      return;
-                    }
-                    if (!selectable.contains('${player.id}:$horseIndex')) {
-                      return;
-                    }
+                  key: const Key('board-scene'),
+                  state: state,
+                  placement: placement,
+                  onHorseSelected: (h) {
+                    if (h == null) return;
                     ref.read(soundServiceProvider).play(Sfx.tap);
-                    HapticFeedback.selectionClick();
-                    ref
+                    ref.read(hapticServiceProvider).select();
+                    setState(() => _placementSelected = h);
+                  },
+                  onDragStarted: (h) {
+                    ref.read(soundServiceProvider).play(Sfx.pickup);
+                    ref.read(hapticServiceProvider).pickup();
+                    setState(() {
+                      _placementSelected = h;
+                      _dragging = true;
+                    });
+                  },
+                  onHorseDropped: (h) {
+                    final ok = ref
                         .read(gameControllerProvider.notifier)
-                        .chooseMove(horseIndex);
+                        .placeHorse(h);
+                    if (ok) {
+                      ref.read(soundServiceProvider).play(Sfx.drop);
+                      ref.read(hapticServiceProvider).drop();
+                      _earnTimer?.cancel();
+                      setState(() {
+                        _earnBeat = false;
+                        _placementSelected = null;
+                        _dragging = false;
+                      });
+                    }
+                    return ok;
+                  },
+                  onBadDrop: (h) {
+                    ref.read(soundServiceProvider).play(Sfx.snapBack);
+                    ref.read(hapticServiceProvider).wrongDrop();
+                    setState(() => _dragging = false);
                   },
                 ),
               ),
@@ -208,28 +273,30 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                           onTap: () => context.go('/home'),
                         ),
                         const SizedBox(width: 10),
-                        _HudPill(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CircleAvatar(
-                                radius: 6,
-                                backgroundColor: player.team.color(colors),
-                              ),
-                              const SizedBox(width: 8),
-                              ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  maxWidth:
-                                      MediaQuery.sizeOf(context).width * 0.32,
+                        // The name gives way first: a long name ellipsizes
+                        // before the points and the streak are pushed off
+                        // the phone.
+                        Flexible(
+                          child: _HudPill(
+                            highlight: true,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CircleAvatar(
+                                  radius: 6,
+                                  backgroundColor: player.team.color(colors),
                                 ),
-                                child: Text(
-                                  player.name,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: _hudText(context),
+                                const SizedBox(width: 8),
+                                Flexible(
+                                  child: Text(
+                                    player.name,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: _hudText(context),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         const Spacer(),
@@ -275,8 +342,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     ),
                     const SizedBox(height: 8),
                     // Four horses per stable: each player's arrivals at a
-                    // glance (the painted stables are scenery) — and, in
-                    // the free edition, how many of its fifty cards remain.
+                    // glance (the painted stables are scenery), the rider
+                    // ahead wearing a small gold star — and, in the free
+                    // edition, how many of its fifty cards remain.
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -312,33 +380,53 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                           if (i > 0) const SizedBox(width: 8),
                           _HudPill(
                             highlight: i == state.currentPlayerIndex,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                CircleAvatar(
-                                  radius: 5,
-                                  backgroundColor: state.players[i].team.color(
-                                    colors,
-                                  ),
+                            child: Semantics(
+                              label: state.players[i].id == leader.id
+                                  ? '${state.players[i].name}, ${l10n.leaderLabel}'
+                                  : state.players[i].name,
+                              child: ExcludeSemantics(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 5,
+                                      backgroundColor: state.players[i].team
+                                          .color(colors),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                      '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                      '/${state.players[i].horses.length}',
+                                      style: _hudText(context),
+                                    ),
+                                    if (state.players[i].id == leader.id &&
+                                        state.players.length > 1) ...[
+                                      const SizedBox(width: 4),
+                                      const Icon(
+                                        Icons.star_rounded,
+                                        key: Key('leader-star'),
+                                        size: 14,
+                                        color: Color(0xFFFFE08A),
+                                      ),
+                                    ],
+                                  ],
                                 ),
-                                const SizedBox(width: 5),
-                                Text(
-                                  '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
-                                  '/${state.players[i].horses.length}',
-                                  style: _hudText(context),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                         ],
                       ],
                     ),
+                    if (_leadToast != null) ...[
+                      const SizedBox(height: 8),
+                      _LeadToast(text: _leadToast!),
+                    ],
                   ],
                 ),
               ),
             ),
 
-            // ---- Bottom: the play bar or the turn pill ----
+            // ---- Bottom: the deck, the placement banner or the turn pill ----
             if (state.turnPhase == TurnPhase.selectingGait && player.isHuman)
               Align(
                 alignment: Alignment.bottomCenter,
@@ -355,20 +443,19 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               )
             else if (state.turnPhase == TurnPhase.choosingHorse &&
                 player.isHuman)
-              (busy
-                  ? const SizedBox.shrink()
-                  : _MoveChoiceSheet(
-                      card: state.drawnCard ?? const MovementChoice(1),
-                      moves: legal,
-                      l10n: l10n,
-                      onChoose: (horseIndex) {
-                        ref.read(soundServiceProvider).play(Sfx.tap);
-                        HapticFeedback.selectionClick();
-                        ref
-                            .read(gameControllerProvider.notifier)
-                            .chooseMove(horseIndex);
-                      },
-                    ))
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SafeArea(
+                  child: _PlacementBanner(
+                    value: state.drawnCard?.steps ?? 0,
+                    title: l10n.squaresWon(state.drawnCard?.steps ?? 0),
+                    hint: _placementSelected == null
+                        ? l10n.touchHorseHint
+                        : l10n.dragHorseToDestination,
+                    extra: state.extraTurn ? l10n.celebrateSixBody : null,
+                  ),
+                ),
+              )
             else
               Align(
                 alignment: Alignment.bottomCenter,
@@ -395,7 +482,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   child: ColoredBox(
                     color: const Color(0xB306251C),
                     child: DrawnCardReveal(
-                      value: _revealValue,
                       difficultyPips: _revealPips,
                     ),
                   ),
@@ -412,8 +498,13 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 lastAnswerCorrect: state.lastAnswerCorrect,
                 compact: _compactFeedback && state.lastAnswerCorrect != null,
                 largeText: player.profile.isChildMode,
-                stakeSteps: state.turnPhase == TurnPhase.answeringQuestion
-                    ? state.pendingGait?.choice.steps
+                note:
+                    state.lastAnswerCorrect == false &&
+                        state.turnPhase == TurnPhase.showingFeedback &&
+                        session.journeyHorseIndex == null &&
+                        state.drawnCard != null &&
+                        state.movedHorseIndex == null
+                    ? l10n.cardWasWorth(state.drawnCard!.steps)
                     : null,
                 pointsEarned:
                     state.lastAnswerCorrect == true && _pointsEarned != null
@@ -426,7 +517,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 l10n: l10n,
                 onSelect: (i) {
                   ref.read(soundServiceProvider).play(Sfx.tap);
-                  HapticFeedback.selectionClick();
+                  ref.read(hapticServiceProvider).select();
                   setState(() => _selectedAnswer = i);
                   final controller = ref.read(gameControllerProvider.notifier);
                   switch (state.turnPhase) {
@@ -459,6 +550,39 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     .declineCellOffer(),
               ),
 
+            // The prize: the squares won, as a medallion over the board.
+            // Not a modal — the horses under it are already live.
+            if (_earnBeat && state.drawnCard != null)
+              Positioned.fill(
+                key: const Key('earn-medallion'),
+                child: IgnorePointer(
+                  child: Align(
+                    alignment: const Alignment(0, -0.22),
+                    child: EarnedStepsMedallion(
+                      value: state.drawnCard!.steps,
+                      caption: l10n.squaresWon(state.drawnCard!.steps),
+                    ),
+                  ),
+                ),
+              ),
+
+            // BONUS +10: the square under the horse has fired; it rides
+            // on the moment this beat is over.
+            if (pendingBonus != null)
+              Positioned.fill(
+                key: const Key('bonus-callout'),
+                child: IgnorePointer(
+                  child: Align(
+                    alignment: const Alignment(0, -0.18),
+                    child: BonusCallout(
+                      value: pendingBonus.value,
+                      label: l10n.bonusLabel,
+                      valueText: l10n.bonusPlus(pendingBonus.value),
+                    ),
+                  ),
+                ),
+              ),
+
             if (_celebration != null)
               Positioned.fill(
                 key: const Key('celebration'),
@@ -475,6 +599,15 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     );
   }
 
+  /// What the destination holds, in two words, for the marker's tag.
+  String? _tagFor(LegalMove m, AppLocalizations l10n) {
+    if (m.reachesFinish) return l10n.moveHintFinish;
+    if (m.capturesOpponent) return l10n.moveHintCapture;
+    if (m.bonusValue != null) return l10n.moveHintBonus(m.bonusValue!);
+    if (m.effect == CellEffect.oasis) return l10n.moveHintOasis;
+    return null;
+  }
+
   /// Puts a key moment on screen for one beat. The sound is the moment's
   /// own voice, the buzz is felt only for the human's own moments.
   void _celebrate(
@@ -485,7 +618,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   }) {
     if (!mounted) return;
     if (sound != null) ref.read(soundServiceProvider).play(sound);
-    if (kind != CelebrationKind.captured) HapticFeedback.heavyImpact();
+    if (kind != CelebrationKind.captured) {
+      ref.read(hapticServiceProvider).heavy();
+    }
     _celebrationTimer?.cancel();
     setState(() {
       _celebration = kind;
@@ -501,27 +636,65 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     setState(() => _celebration = null);
   }
 
+  /// How long the board takes to show the ride that just happened, so
+  /// a burst can wait for the horse to land. A horse set down by hand is
+  /// already there; an opponent's ride and a bonus ride hop across.
+  Duration _rideHold(GameSession previous, GameSession next) {
+    final prev = previous.gameState;
+    final now = next.gameState;
+    final byHand =
+        now.currentPlayer.isHuman &&
+        prev.turnPhase == TurnPhase.choosingHorse &&
+        now.turnPhase == TurnPhase.movingHorse;
+    if (byHand) return const Duration(milliseconds: 380);
+    final idx = now.currentPlayerIndex;
+    final circuit = now.circuit;
+    var steps = 0;
+    var leap = false;
+    final before = prev.players[idx].horses;
+    final after = now.players[idx].horses;
+    for (var h = 0; h < after.length && h < before.length; h++) {
+      if (before[h].position == after[h].position) continue;
+      final p0 = circuit.progressOf(before[h].position, idx);
+      final p1 = circuit.progressOf(after[h].position, idx);
+      if (p0 == null || p1 == null) {
+        leap = true;
+      } else {
+        steps = (p1 - p0).abs();
+      }
+    }
+    return AppMotion.of(context, rideDurationFor(steps, leap: leap));
+  }
+
   /// A capture or an arrival is celebrated when the horse *lands*: after
-  /// the answer's held beat (a human's) and the ride itself, so the
-  /// burst happens where the eye already is.
+  /// the ride itself, so the burst happens where the eye already is.
   void _celebrateLandingsIfNeeded(GameSession? previous, GameSession? next) {
     if (previous == null || next == null) return;
     final prevState = previous.gameState;
     final nextState = next.gameState;
-    final entering =
-        nextState.turnPhase == TurnPhase.showingFeedback &&
-        prevState.turnPhase != TurnPhase.showingFeedback;
-    if (!entering) return;
+    // A ride happened: a horse was set down, or the bonus was ridden.
+    final rode =
+        (nextState.turnPhase == TurnPhase.movingHorse &&
+            prevState.turnPhase == TurnPhase.choosingHorse) ||
+        (prevState.pendingBonus != null && nextState.pendingBonus == null);
+    if (!rode) return;
     final outcome = nextState.lastMoveOutcome;
     if (outcome != MoveOutcome.captured &&
         outcome != MoveOutcome.reachedFinish) {
       return;
     }
+    // A bonus ride that neither captured nor arrived carries the first
+    // ride's outcome forward: only celebrate what this ride did.
+    if (prevState.pendingBonus != null &&
+        prevState.lastMoveOutcome == outcome &&
+        !_someoneWentHome(prevState, nextState) &&
+        outcome == MoveOutcome.captured) {
+      return;
+    }
 
     final mover = nextState.currentPlayer;
     final l10n = AppLocalizations.of(context);
-    final ride = AppMotion.of(context, AppMotion.moveMax);
-    final hold = mover.isHuman ? kAnswerBeatDuration + ride : ride;
+    final hold = _rideHold(previous, next);
 
     _landingTimer?.cancel();
     if (outcome == MoveOutcome.captured) {
@@ -572,68 +745,51 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     }
   }
 
+  bool _someoneWentHome(GameState before, GameState after) {
+    for (var p = 0; p < after.players.length; p++) {
+      final b = before.players[p].horses;
+      final a = after.players[p].horses;
+      for (var h = 0; h < a.length && h < b.length; h++) {
+        if (a[h].isHome && !b[h].isHome) return true;
+      }
+    }
+    return false;
+  }
+
   TextStyle? _hudText(BuildContext context) => Theme.of(context)
       .textTheme
       .labelLarge
       ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
 
   /// Draws the turn's card, then holds the question back long enough
-  /// for the card to turn over and be read — and, when the card is a
-  /// key moment, for that moment to be shouted.
+  /// for the card to turn over onto its question mark.
   void _onDrawCard() {
     if (_revealing || _celebration != null) return;
     final controller = ref.read(gameControllerProvider.notifier);
     ref.read(soundServiceProvider).play(Sfx.cardDraw);
-    HapticFeedback.selectionClick();
+    ref.read(hapticServiceProvider).select();
     controller.drawCard();
 
     final session = ref.read(gameControllerProvider);
     final drawn = session?.gameState.drawnCard;
     final card = session?.currentQuestion;
-    if (drawn == null) return; // the turn resolved without a card
+    if (drawn == null || card == null) return; // the turn resolved itself
 
     setState(() {
       _revealing = true;
-      _revealValue = drawn.steps;
       // The pips are the rider's level — the same on every card they
       // draw — never something the card decided.
-      _revealPips = switch (card?.difficulty ??
-          session?.gameState.currentPlayer.profile.difficulty) {
+      _revealPips = switch (card.difficulty) {
         QuestionDifficulty.easy => 1,
         QuestionDifficulty.medium => 2,
         QuestionDifficulty.hard => 3,
-        null => 1,
       };
     });
-
-    // What the card is worth beyond its squares: a gate opening, a
-    // second draw. Decided now, shouted once the card has been read.
-    final l10n = AppLocalizations.of(context);
-    final opensGate = controller.legalMoves.any((m) => m.exitsStable);
-    (CelebrationKind, String, String, Sfx)? moment;
-    if (drawn.grantsExtraTurn) {
-      moment = (
-        CelebrationKind.six,
-        l10n.celebrateSixTitle,
-        opensGate ? l10n.celebrateSixExitBody : l10n.celebrateSixBody,
-        Sfx.six,
-      );
-    } else if (opensGate) {
-      moment = (
-        CelebrationKind.stableOpen,
-        l10n.celebrateExitTitle,
-        l10n.celebrateExitBody,
-        Sfx.stableExit,
-      );
-    }
 
     _revealTimer?.cancel();
     _revealTimer = Timer(kCardRevealDuration, () {
       if (!mounted) return;
       setState(() => _revealing = false);
-      if (moment != null) {
-        _celebrate(moment.$1, moment.$2, moment.$3, sound: moment.$4);
-      }
     });
   }
 
@@ -657,30 +813,73 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       final earned = after - before;
       _beatTimer?.cancel();
       setState(() {
-        _frozenBoard = prevState;
         _compactFeedback = false;
         _pointsEarned = earned > 0 ? earned : null;
       });
       _beatTimer = Timer(kAnswerBeatDuration, () {
         if (!mounted) return;
-        setState(() {
-          _frozenBoard = null;
-          _compactFeedback = true;
-        });
-        if (_hoofsDeferred) {
-          _hoofsDeferred = false;
-          ref.read(soundServiceProvider).play(Sfx.moveHoofs);
-        }
+        setState(() => _compactFeedback = true);
       });
     } else if (leaving) {
       _beatTimer?.cancel();
-      _hoofsDeferred = false;
       setState(() {
-        _frozenBoard = null;
         _compactFeedback = false;
         _pointsEarned = null;
       });
     }
+  }
+
+  /// The squares are won: the medallion lands over the board for a
+  /// beat. The placement under it is already live — a quick hand can
+  /// pick a horse up before the medallion has faded.
+  void _beginEarnBeatIfNeeded(GameSession? previous, GameSession? next) {
+    if (previous == null || next == null) return;
+    final prevState = previous.gameState;
+    final nextState = next.gameState;
+    final opened =
+        (nextState.turnPhase == TurnPhase.choosingHorse ||
+            nextState.turnPhase == TurnPhase.noMove) &&
+        prevState.turnPhase == TurnPhase.showingFeedback &&
+        nextState.currentPlayer.isHuman;
+    if (!opened) return;
+    _earnTimer?.cancel();
+    setState(() => _earnBeat = true);
+    _earnTimer = Timer(AppMotion.of(context, kEarnBeat), () {
+      if (!mounted) return;
+      setState(() => _earnBeat = false);
+    });
+  }
+
+  /// A change of leader is said once, quietly, on the HUD.
+  void _watchTheLead(GameSession? previous, GameSession? next) {
+    if (next == null) return;
+    final state = next.gameState;
+    if (state.players.length < 2) return;
+    final leader = ref.read(gameEngineProvider).leader(state);
+    final wasNobody = _leaderId == null;
+    if (_leaderId == leader.id) return;
+    _leaderId = leader.id;
+    if (wasNobody || previous == null) return;
+    // Only an actual overtake — a horse that moved — not a tie-break
+    // shifting on points.
+    final moved = _anyHorseMoved(previous.gameState, state);
+    if (!moved) return;
+    _leadTimer?.cancel();
+    setState(() => _leadToast = AppLocalizations.of(context).tookTheLead(leader.name));
+    _leadTimer = Timer(kLeadToastDuration, () {
+      if (mounted) setState(() => _leadToast = null);
+    });
+  }
+
+  bool _anyHorseMoved(GameState before, GameState after) {
+    for (var p = 0; p < after.players.length && p < before.players.length; p++) {
+      final b = before.players[p].horses;
+      final a = after.players[p].horses;
+      for (var h = 0; h < a.length && h < b.length; h++) {
+        if (a[h].position != b[h].position) return true;
+      }
+    }
+    return false;
   }
 
   @override
@@ -690,16 +889,21 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     _beatTimer?.cancel();
     _celebrationTimer?.cancel();
     _landingTimer?.cancel();
+    _earnTimer?.cancel();
+    _leadTimer?.cancel();
     super.dispose();
   }
 
-  /// Turns game-state transitions into sound cues; the answer feedback,
-  /// the ride itself, offers, streaks and the win each have a voice.
+  /// Turns game-state transitions into sound and touch cues; the answer
+  /// feedback, the prize, the ride, the bonus, offers, streaks and the
+  /// win each have a voice.
   void _playCuesFor(GameSession? previous, GameSession? next) {
     if (previous == null || next == null) return;
     final sound = ref.read(soundServiceProvider);
+    final haptics = ref.read(hapticServiceProvider);
     final prevState = previous.gameState;
     final nextState = next.gameState;
+    final human = nextState.currentPlayer.isHuman;
 
     if (nextState.turnPhase == TurnPhase.gameOver &&
         prevState.turnPhase != TurnPhase.gameOver) {
@@ -708,7 +912,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           .firstOrNull;
       // The fanfare itself belongs to the results board; here only the
       // arrival is felt.
-      if (winner == null || winner.isHuman) HapticFeedback.heavyImpact();
+      if (winner == null || winner.isHuman) haptics.heavy();
       return;
     }
     if (nextState.turnPhase == TurnPhase.showingFeedback &&
@@ -717,9 +921,27 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       sound.play(correct ? Sfx.correct : Sfx.wrong);
       // Felt, not only heard: a firm tap for right, a soft one for wrong.
       // Only the human's own answers buzz the phone.
-      if (nextState.currentPlayer.isHuman) {
-        correct ? HapticFeedback.mediumImpact() : HapticFeedback.lightImpact();
-      }
+      if (human) correct ? haptics.correct() : haptics.wrong();
+    }
+    // The squares are won: the medallion lands. A 6 says so in its own
+    // voice — it is also a second draw.
+    if ((nextState.turnPhase == TurnPhase.choosingHorse ||
+            nextState.turnPhase == TurnPhase.noMove) &&
+        prevState.turnPhase == TurnPhase.showingFeedback &&
+        human) {
+      sound.play(nextState.extraTurn ? Sfx.six : Sfx.earn);
+      haptics.earn();
+    }
+    // A bonus square fires: +5, +10 and +20 each have their own voice
+    // and their own weight in the hand.
+    final bonus = nextState.pendingBonus;
+    if (bonus != null && prevState.pendingBonus == null) {
+      sound.play(switch (bonus.value) {
+        >= 20 => Sfx.bonusBig,
+        >= 10 => Sfx.bonusMid,
+        _ => Sfx.bonusSmall,
+      });
+      if (human) haptics.bonus(bonus.value);
     }
     if (nextState.justUnlocked.isNotEmpty &&
         nextState.justUnlocked.length != prevState.justUnlocked.length) {
@@ -729,25 +951,19 @@ class _GameScreenState extends ConsumerState<GameScreen> {
         prevState.turnPhase != TurnPhase.resolvingCell) {
       sound.play(Sfx.chest);
     }
-    // Any horse actually moving = hoofbeats; arriving on an oasis adds
-    // its water shimmer.
-    var moved = false;
-    for (var p = 0; p < nextState.players.length && !moved; p++) {
-      final prevHorses = prevState.players[p].horses;
-      final nextHorses = nextState.players[p].horses;
-      for (var h = 0; h < nextHorses.length && !moved; h++) {
-        moved = prevHorses[h].position != nextHorses[h].position;
-      }
+    // Any horse actually riding = hoofbeats; arriving on an oasis adds
+    // its water shimmer. A horse set down by hand has its own drop
+    // sound and does not ride.
+    final byHand =
+        human &&
+        prevState.turnPhase == TurnPhase.choosingHorse &&
+        nextState.turnPhase == TurnPhase.movingHorse;
+    if (!byHand && _anyHorseMoved(prevState, nextState)) {
+      sound.play(Sfx.moveHoofs);
     }
-    if (moved) {
-      // A human's ride is held for one beat behind the answered card; the
-      // hoofbeats wait for it so sound and motion arrive together.
-      if (_frozenBoard != null) {
-        _hoofsDeferred = true;
-      } else {
-        sound.play(Sfx.moveHoofs);
-      }
-      if (nextState.landedEffect == CellEffect.oasis) sound.play(Sfx.water);
+    if (_anyHorseMoved(prevState, nextState) &&
+        nextState.landedEffect == CellEffect.oasis) {
+      sound.play(Sfx.water);
     }
   }
 }
@@ -811,11 +1027,156 @@ class _GlassIconButton extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------------------
-// The gait bar: six compact horseshoe chips in a dark glass tray. Tap to
-// arm (the board shows the destination), tap again or hit the gold arrow
-// to ride.
-// ---------------------------------------------------------------------
+/// "X takes the lead": a gold line under the HUD, one beat.
+class _LeadToast extends StatelessWidget {
+  const _LeadToast({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+      key: const Key('lead-toast'),
+      tween: Tween(begin: 0, end: 1),
+      duration: AppMotion.of(context, AppMotion.micro),
+      builder: (context, t, child) => Opacity(
+        opacity: t.clamp(0.0, 1.0),
+        child: Transform.translate(offset: Offset(0, (1 - t) * -6), child: child),
+      ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+        decoration: BoxDecoration(
+          color: const Color(0xE6122E22),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: const Color(0xFFEBC06A), width: 1.2),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.star_rounded, size: 15, color: Color(0xFFFFE08A)),
+            const SizedBox(width: 6),
+            Text(
+              text,
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                color: const Color(0xFFFFE9AE),
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The placement's bottom banner: the squares won as a gold coin, and
+/// what to do with them — touch a horse, then drag it to its square.
+class _PlacementBanner extends StatelessWidget {
+  const _PlacementBanner({
+    required this.value,
+    required this.title,
+    required this.hint,
+    this.extra,
+  });
+
+  final int value;
+  final String title;
+  final String hint;
+
+  /// One more line: the 6's second draw.
+  final String? extra;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: const Key('placement-banner'),
+      width: double.infinity,
+      margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+      padding: const EdgeInsets.fromLTRB(14, 12, 16, 12),
+      decoration: BoxDecoration(
+        color: const Color(0xF210281E),
+        borderRadius: BorderRadius.circular(26),
+        border: Border.all(
+          color: const Color(0xFFEBC06A).withValues(alpha: 0.65),
+          width: 1.2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.5),
+            blurRadius: 26,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 46,
+            height: 46,
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFFF3D68A), Color(0xFFDBA83E)],
+              ),
+              boxShadow: [
+                BoxShadow(color: Color(0x80DBA83E), blurRadius: 14),
+              ],
+            ),
+            child: Text(
+              '$value',
+              style: const TextStyle(
+                color: Color(0xFF3A2A08),
+                fontWeight: FontWeight.w900,
+                fontSize: 24,
+                height: 1,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: const Color(0xFFF3D68A),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                AnimatedSwitcher(
+                  duration: AppMotion.of(context, AppMotion.micro),
+                  child: Text(
+                    hint,
+                    key: ValueKey(hint),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: const Color(0xFFF4ECDC),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                if (extra != null)
+                  Text(
+                    extra!,
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: const Color(0xCCE9DFC8),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          const Icon(Icons.pan_tool_alt_outlined, color: Color(0xFFEBC06A), size: 24),
+        ],
+      ),
+    );
+  }
+}
 
 /// Between-turns status, floating over the world.
 class _TurnBanner extends StatelessWidget {
@@ -830,43 +1191,58 @@ class _TurnBanner extends StatelessWidget {
     final outcome = state.lastMoveOutcome;
     final player = state.currentPlayer;
     final allHome = player.horses.every((h) => h.isHome);
+    final riding = state.pendingBonus?.value ?? state.lastBonusValue;
     final String text;
     if (player.isHuman) {
-      text = switch (outcome) {
-        MoveOutcome.moved || MoveOutcome.bonusEarned => l10n.outcomeMoved,
-        MoveOutcome.exitedStable => l10n.outcomeExited,
-        MoveOutcome.stayed || MoveOutcome.bonusMissed => l10n.outcomeStayed,
-        MoveOutcome.captured => l10n.outcomeCaptured,
-        MoveOutcome.blockedByShield => l10n.outcomeShieldBlocked,
-        MoveOutcome.reachedFinish => l10n.journeyQuestionIntro,
-        // The card was seen; now the reason, in one line.
-        MoveOutcome.noLegalMove =>
-          allHome ? l10n.noExitHint : l10n.outcomeNoLegalMove,
-        null => l10n.yourTurn,
-      };
+      if (state.turnPhase == TurnPhase.movingHorse && riding != null) {
+        text = l10n.bonusRide(riding);
+      } else {
+        text = switch (outcome) {
+          MoveOutcome.moved || MoveOutcome.bonusEarned => l10n.outcomeMoved,
+          MoveOutcome.exitedStable => l10n.outcomeExited,
+          MoveOutcome.stayed || MoveOutcome.bonusMissed => l10n.outcomeStayed,
+          MoveOutcome.captured => l10n.outcomeCaptured,
+          MoveOutcome.blockedByShield => l10n.outcomeShieldBlocked,
+          MoveOutcome.reachedFinish => l10n.journeyQuestionIntro,
+          // The card was seen; now the reason, in one line.
+          MoveOutcome.noLegalMove =>
+            allHome ? l10n.noExitHint : l10n.outcomeNoLegalMove,
+          null => l10n.yourTurn,
+        };
+      }
     } else {
-      // The opponent's turn is narrated, never silent: what it drew,
+      // The opponent's turn is narrated, never silent: what it is doing,
       // then what happened. An unexplained pause reads as a freeze.
       final drawn = state.drawnCard;
-      text = switch (outcome) {
-        MoveOutcome.moved ||
-        MoveOutcome.bonusEarned ||
-        MoveOutcome.reachedFinish => l10n.opponentMoved(player.name),
-        MoveOutcome.exitedStable => l10n.opponentExits(player.name),
-        MoveOutcome.captured => l10n.opponentCaptured(player.name),
-        MoveOutcome.noLegalMove => l10n.opponentNoMove(player.name),
-        MoveOutcome.stayed ||
-        MoveOutcome.bonusMissed ||
-        MoveOutcome.blockedByShield => l10n.opponentStayed(player.name),
-        null =>
-          drawn != null
-              ? l10n.opponentDrew(player.name, drawn.steps)
-              : state.isBonusTurn
-              ? l10n.opponentReplays(player.name)
-              : l10n.opponentThinking(player.name),
+      text = switch (state.turnPhase) {
+        TurnPhase.answeringQuestion => l10n.opponentThinking(player.name),
+        TurnPhase.choosingHorse => l10n.opponentPlaces(player.name),
+        TurnPhase.movingHorse when riding != null => l10n.opponentBonus(
+          player.name,
+          riding,
+        ),
+        TurnPhase.showingFeedback
+            when state.lastAnswerCorrect == true && drawn != null =>
+          l10n.opponentDrew(player.name, drawn.steps),
+        _ => switch (outcome) {
+          MoveOutcome.moved ||
+          MoveOutcome.bonusEarned ||
+          MoveOutcome.reachedFinish => l10n.opponentMoved(player.name),
+          MoveOutcome.exitedStable => l10n.opponentExits(player.name),
+          MoveOutcome.captured => l10n.opponentCaptured(player.name),
+          MoveOutcome.noLegalMove => l10n.opponentNoMove(player.name),
+          MoveOutcome.stayed ||
+          MoveOutcome.bonusMissed ||
+          MoveOutcome.blockedByShield => l10n.opponentStayed(player.name),
+          null =>
+            state.isBonusTurn
+                ? l10n.opponentReplays(player.name)
+                : l10n.opponentThinking(player.name),
+        },
       };
     }
     return Container(
+      key: const Key('turn-banner'),
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
       decoration: BoxDecoration(
@@ -907,21 +1283,16 @@ class _QuestionOverlay extends StatelessWidget {
     this.streakCurrent = 0,
     this.compact = false,
     this.largeText = false,
-    this.stakeSteps,
+    this.note,
   });
 
   final Question question;
   final bool isJourney;
   final bool isCellBonus;
-
-  /// Squares the drawn card is worth, shown above the question so the
-  /// child never loses sight of what the answer buys.
-  final int? stakeSteps;
   final int? selectedAnswer;
   final bool? lastAnswerCorrect;
 
-  /// Second beat of the answer: the world is clear (the horse is riding)
-  /// and only a short sheet sits at the bottom.
+  /// Second beat of the answer: a short sheet at the bottom.
   final bool compact;
 
   /// Child level: bigger answers on the card.
@@ -938,6 +1309,10 @@ class _QuestionOverlay extends StatelessWidget {
   final StreakReward? justUnlocked;
   final int streakCurrent;
 
+  /// One line under the verdict: after a wrong answer, what the card
+  /// was worth.
+  final String? note;
+
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.sizeOf(context);
@@ -945,8 +1320,8 @@ class _QuestionOverlay extends StatelessWidget {
       return Positioned.fill(
         child: Stack(
           children: [
-            // Only the bottom is scrimmed: the board, and the horse
-            // riding across it, stay sharp above the sheet.
+            // Only the bottom is scrimmed: the board stays sharp above
+            // the sheet.
             const Positioned.fill(
               child: IgnorePointer(
                 child: DecoratedBox(
@@ -992,6 +1367,7 @@ class _QuestionOverlay extends StatelessWidget {
                       question: question,
                       isCorrect: lastAnswerCorrect ?? false,
                       showExplanation: !largeText,
+                      note: note,
                       onContinue: onContinue,
                     ),
                   ),
@@ -1063,11 +1439,6 @@ class _QuestionOverlay extends StatelessWidget {
                               ?.copyWith(color: const Color(0xFFF4ECDC)),
                         ),
                       ),
-                    if (stakeSteps != null && lastAnswerCorrect == null)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: _StakeChip(steps: stakeSteps!, l10n: l10n),
-                      ),
                     // The gold arch line crowning the panel ties it to the
                     // game's architecture.
                     const _ArchCrest(),
@@ -1088,70 +1459,6 @@ class _QuestionOverlay extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// The drawn card's value, restated right above the question: "5 — worth
-/// 5 squares". The card flip was a second ago; this keeps the stake in
-/// view while the child reads.
-class _StakeChip extends StatelessWidget {
-  const _StakeChip({required this.steps, required this.l10n});
-
-  final int steps;
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    final worth = l10n.cardWorth(steps);
-    return Semantics(
-      label: worth,
-      child: ExcludeSemantics(
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(6, 4, 14, 4),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: const Color(0xCC0A2A2E),
-            border: Border.all(color: const Color(0xFFC59F4A), width: 1.2),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 26,
-                height: 26,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xFFF3D68A), Color(0xFFDBA83E)],
-                  ),
-                ),
-                child: Text(
-                  '$steps',
-                  style: const TextStyle(
-                    color: Color(0xFF3A2A08),
-                    fontWeight: FontWeight.w900,
-                    fontSize: 15,
-                    height: 1,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                worth,
-                style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: const Color(0xFFF4ECDC),
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.3,
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -1350,227 +1657,6 @@ class _RewardChip extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// The card is drawn and more than one horse could use it: bring one
-/// out of the stable, or ride one already on the road. One tap decides;
-/// the horses on the plate wear the ring and answer to a tap as well.
-class _MoveChoiceSheet extends StatelessWidget {
-  const _MoveChoiceSheet({
-    required this.card,
-    required this.moves,
-    required this.l10n,
-    required this.onChoose,
-  });
-
-  final MovementChoice card;
-  final List<LegalMove> moves;
-  final AppLocalizations l10n;
-  final ValueChanged<int> onChoose;
-
-  @override
-  Widget build(BuildContext context) {
-    // Every horse in the stable is the same horse to bring out: one
-    // line for the gate, then one per horse on the road.
-    final options =
-        <({int horseIndex, String label, List<String> tags, IconData icon})>[];
-    final exit = moves.where((m) => m.exitsStable).firstOrNull;
-    if (exit != null) {
-      options.add((
-        horseIndex: exit.horseIndex,
-        label: l10n.moveChoiceExit,
-        tags: [if (exit.capturesOpponent) l10n.moveHintCapture],
-        icon: Icons.door_sliding_outlined,
-      ));
-    }
-    for (final m in moves) {
-      if (m.exitsStable) continue;
-      options.add((
-        horseIndex: m.horseIndex,
-        label: l10n.moveChoiceAdvance(m.horseIndex + 1, card.steps),
-        tags: [
-          if (m.reachesFinish) l10n.moveHintFinish,
-          if (m.capturesOpponent) l10n.moveHintCapture,
-          if (m.effect == CellEffect.oasis) l10n.moveHintOasis,
-        ],
-        icon: Icons.arrow_circle_right_outlined,
-      ));
-    }
-
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: SafeArea(
-        child: Container(
-          key: const Key('move-choice'),
-          width: double.infinity,
-          margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
-          padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
-          decoration: BoxDecoration(
-            color: const Color(0xF210281E),
-            borderRadius: BorderRadius.circular(26),
-            border: Border.all(
-              color: const Color(0xFFEBC06A).withValues(alpha: 0.55),
-              width: 1.2,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.5),
-                blurRadius: 26,
-                offset: const Offset(0, 10),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    width: 34,
-                    height: 34,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xFFF3D68A), Color(0xFFDBA83E)],
-                      ),
-                    ),
-                    child: Text(
-                      '${card.steps}',
-                      style: const TextStyle(
-                        color: Color(0xFF3A2A08),
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18,
-                        height: 1,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      l10n.moveChoiceTitle(card.steps),
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: const Color(0xFFF3D68A),
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              for (var i = 0; i < options.length; i++)
-                Padding(
-                  padding: EdgeInsets.only(top: i == 0 ? 0 : 8),
-                  child: _MoveOption(
-                    key: Key('move-option-$i'),
-                    icon: options[i].icon,
-                    label: options[i].label,
-                    tags: options[i].tags,
-                    primary: i == 0,
-                    onTap: () => onChoose(options[i].horseIndex),
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _MoveOption extends StatelessWidget {
-  const _MoveOption({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.tags,
-    required this.primary,
-    required this.onTap,
-  });
-
-  final IconData icon;
-  final String label;
-  final List<String> tags;
-  final bool primary;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final ink = primary ? const Color(0xFF4A3410) : const Color(0xFFF4ECDC);
-    return Material(
-      clipBehavior: Clip.antiAlias,
-      color: primary ? Colors.transparent : const Color(0x1AFFFFFF),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-        side: primary
-            ? BorderSide.none
-            : BorderSide(color: Colors.white.withValues(alpha: 0.16)),
-      ),
-      child: Ink(
-        decoration: primary
-            ? const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFF3D68A), Color(0xFFD8A032)],
-                ),
-              )
-            : null,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            child: Row(
-              children: [
-                Icon(icon, size: 22, color: ink),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    label,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleSmall
-                        ?.copyWith(color: ink, fontWeight: FontWeight.w800),
-                  ),
-                ),
-                for (final tag in tags)
-                  Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 6),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 3,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: primary
-                            ? const Color(0x334A3410)
-                            : const Color(0x33EBC06A),
-                        border: Border.all(
-                          color: primary
-                              ? const Color(0x664A3410)
-                              : const Color(0xAAEBC06A),
-                        ),
-                      ),
-                      child: Text(
-                        tag,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: primary ? ink : const Color(0xFFF3D68A),
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
           ),
         ),
       ),

@@ -277,3 +277,101 @@ save(
     ),
     gain=0.6,
 )
+
+# ---------------------------------------------------------------------------
+# The placement turn: the squares are won, a horse is picked up, set down
+# (or dropped off its square), and a bonus square fires.
+
+# The squares are won: the result medallion lands. Two bright plucks a
+# fifth apart with a short shimmer — a prize, not a jackpot.
+save(
+    "earn",
+    seq(
+        (0.00, 0.9 * tone(note(4, 1), 0.26)),
+        (0.09, tone(note(7, 1), 0.42)),
+        (0.09, 0.35 * tone(note(0, 2), 0.36, harmonics=((1, 1.0), (2, 0.15)))),
+        (0.10, 0.28 * noise_burst(0.40, lp=0.05, r=0.36, tremolo=0.3)),
+    ),
+    gain=0.6,
+)
+
+# A horse picked up off the plate: one tiny upward pluck — felt more than
+# heard, so a comparison of three horses is never noisy.
+save(
+    "pickup",
+    mix(
+        tone(note(2, 1), 0.10, bend=0.22, r=0.08),
+        0.35 * noise_burst(0.04, lp=0.5, r=0.03),
+    ),
+    gain=0.42,
+)
+
+# A horse set down on its square: a soft hoof thud, then a warm pluck —
+# the move is made.
+save(
+    "drop",
+    seq(
+        (0.00, 0.9 * tone(105, 0.15, harmonics=((1, 1.0), (2, 0.3)), bend=-0.3, r=0.13)),
+        (0.00, 0.5 * noise_burst(0.05, lp=0.3, r=0.045)),
+        (0.07, 0.7 * tone(note(4), 0.24, r=0.2)),
+    ),
+    gain=0.58,
+)
+
+# A horse dropped off its square glides back: two muted falling notes —
+# a "not there", never a buzzer.
+save(
+    "snap_back",
+    seq(
+        (0.00, 0.6 * tone(note(3), 0.13, bend=-0.10, r=0.10)),
+        (0.10, 0.5 * tone(note(1), 0.18, bend=-0.16, r=0.15)),
+    ),
+    gain=0.45,
+)
+
+# +5: three quick rising plucks.
+save(
+    "bonus_small",
+    seq(
+        (0.00, 0.8 * tone(note(0, 1), 0.16)),
+        (0.08, 0.85 * tone(note(2, 1), 0.16)),
+        (0.16, tone(note(4, 1), 0.36)),
+        (0.16, 0.2 * noise_burst(0.3, lp=0.05, r=0.28)),
+    ),
+    gain=0.58,
+)
+
+# +10: four notes up with a shimmer under the last.
+save(
+    "bonus_mid",
+    seq(
+        (0.00, 0.8 * tone(note(0, 1), 0.16)),
+        (0.08, 0.85 * tone(note(2, 1), 0.16)),
+        (0.16, 0.9 * tone(note(4, 1), 0.18)),
+        (0.26, tone(note(7, 1), 0.48)),
+        (0.26, 0.4 * tone(note(4, 1), 0.48)),
+        (0.26, 0.3 * noise_burst(0.5, lp=0.05, r=0.45, tremolo=0.35)),
+    ),
+    gain=0.62,
+)
+
+# +20: the rare one. A frame-drum hit, a five-note run up two octaves and
+# a held gold chord with shimmer — the fullest thing the board says in a
+# turn, still an instrument, never a slot machine.
+save(
+    "bonus_big",
+    seq(
+        (0.00, 0.5 * drum()),
+        (0.00, 0.8 * tone(note(0), 0.18)),
+        (0.09, 0.85 * tone(note(2), 0.18)),
+        (0.18, 0.9 * tone(note(4), 0.18)),
+        (0.27, 0.95 * tone(note(0, 1), 0.20)),
+        (0.36, tone(note(4, 1), 0.22)),
+        (0.48, 1.2 * tone(note(0, 2), 1.1, r=0.9)),
+        (0.48, 0.8 * tone(note(4, 1), 1.1, r=0.9)),
+        (0.48, 0.6 * tone(note(7, 1), 1.0, r=0.8)),
+        (0.48, 0.35 * noise_burst(1.0, lp=0.04, r=0.9, tremolo=0.3)),
+        (0.78, 0.35 * tone(note(7, 2), 0.6, harmonics=((1, 1.0), (2, 0.15)), r=0.5)),
+    ),
+    gain=0.7,
+)

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import 'bonus_tile.dart';
 import 'circuit.dart';
 import 'game_mode.dart';
 import 'knowledge_streak.dart';
@@ -7,40 +8,6 @@ import 'move_outcome.dart';
 import 'movement_choice.dart';
 import 'player.dart';
 import 'turn_phase.dart';
-
-/// The gait a player has committed to this turn, before the question is
-/// answered. Nothing moves until [GameEngine.applyAnswer] resolves it.
-@immutable
-class PendingGait {
-  const PendingGait({
-    required this.horseIndex,
-    required this.choice,
-    this.usesGrandGallop = false,
-    this.exitsStable = false,
-  });
-
-  final int horseIndex;
-  final MovementChoice choice;
-  final bool usesGrandGallop;
-
-  /// The horse is leaving the stable: a correct answer puts it on its
-  /// start square rather than riding it the card's distance.
-  final bool exitsStable;
-
-  factory PendingGait.fromJson(Map<String, dynamic> json) => PendingGait(
-    horseIndex: json['horseIndex'] as int,
-    choice: MovementChoice(json['steps'] as int),
-    usesGrandGallop: json['usesGrandGallop'] as bool? ?? false,
-    exitsStable: json['exitsStable'] as bool? ?? false,
-  );
-
-  Map<String, dynamic> toJson() => {
-    'horseIndex': horseIndex,
-    'steps': choice.steps,
-    'usesGrandGallop': usesGrandGallop,
-    'exitsStable': exitsStable,
-  };
-}
 
 /// Full logical state of one game — enough to serialize, close the app,
 /// and resume identically later.
@@ -58,7 +25,12 @@ class GameState {
     required this.startedAt,
     required this.updatedAt,
     this.currentQuestionId,
-    this.pendingGait,
+    this.bonusTiles = const [],
+    this.bonusSeed = 0,
+    this.pendingBonus,
+    this.bonusUsedThisTurn = false,
+    this.lastBonusValue,
+    this.movedHorseIndex,
     this.pendingCellEffect,
     this.pendingCellHorseIndex,
     this.landedEffect,
@@ -80,10 +52,12 @@ class GameState {
   static const int freeDrawLimit = 50;
 
   /// Bumped when the save format changes incompatibly. Version 1 was the
-  /// old dice-based engine; version 2 is the gait engine. The loader uses
-  /// this to detect a legacy save and offer a fresh game rather than
-  /// silently discarding anything (spec §18).
-  static const int schemaVersion = 2;
+  /// old dice-based engine; version 2 the gait engine; version 3 adds the
+  /// bonus squares and the answer-first turn. A version 2 save still
+  /// loads — its positions are kept and its turn restarts at the deck —
+  /// while version 1 is detected as legacy and offered a fresh game
+  /// rather than silently discarded (spec §18).
+  static const int schemaVersion = 3;
 
   final String gameId;
   final GameMode gameMode;
@@ -101,8 +75,26 @@ class GameState {
   /// Every question id already asked this game — no repeats within a game.
   final Set<String> askedQuestionIds;
 
-  /// The gait locked in for this turn, awaiting its question.
-  final PendingGait? pendingGait;
+  /// The sixteen bonus squares of this game, fixed at the first draw and
+  /// kept for the whole game (see `BonusLayout`).
+  final List<BonusTile> bonusTiles;
+
+  /// The seed [bonusTiles] were generated from: a save carries it, so
+  /// the layout can be rebuilt, replayed and reproduced from a report.
+  final int bonusSeed;
+
+  /// A bonus square a horse has just landed on, waiting to be ridden.
+  final PendingBonus? pendingBonus;
+
+  /// At most one bonus square fires per turn: the extra ride it grants
+  /// can land on another bonus square without setting it off.
+  final bool bonusUsedThisTurn;
+
+  /// The bonus ridden this turn, for the board's celebration.
+  final int? lastBonusValue;
+
+  /// Which of the current player's horses was set down this turn.
+  final int? movedHorseIndex;
 
   /// An interactive square is waiting on a player decision.
   final CellEffect? pendingCellEffect;
@@ -156,6 +148,18 @@ class GameState {
 
   Player get currentPlayer => players[currentPlayerIndex];
 
+  /// The bonus square at [trackIndex], if any.
+  BonusTile? bonusAt(int trackIndex) {
+    for (final b in bonusTiles) {
+      if (b.trackIndex == trackIndex) return b;
+    }
+    return null;
+  }
+
+  /// The schema version a save was written with, for the loader.
+  static int schemaVersionOf(Map<String, dynamic> json) =>
+      json['schemaVersion'] as int? ?? 1;
+
   GameState copyWith({
     List<Player>? players,
     int? currentPlayerIndex,
@@ -163,7 +167,12 @@ class GameState {
     CircuitId? circuitId,
     Object? currentQuestionId = _unset,
     Set<String>? askedQuestionIds,
-    Object? pendingGait = _unset,
+    List<BonusTile>? bonusTiles,
+    int? bonusSeed,
+    Object? pendingBonus = _unset,
+    bool? bonusUsedThisTurn,
+    Object? lastBonusValue = _unset,
+    Object? movedHorseIndex = _unset,
     Object? pendingCellEffect = _unset,
     Object? pendingCellHorseIndex = _unset,
     Object? landedEffect = _unset,
@@ -192,9 +201,18 @@ class GameState {
           ? this.currentQuestionId
           : currentQuestionId as String?,
       askedQuestionIds: askedQuestionIds ?? this.askedQuestionIds,
-      pendingGait: identical(pendingGait, _unset)
-          ? this.pendingGait
-          : pendingGait as PendingGait?,
+      bonusTiles: bonusTiles ?? this.bonusTiles,
+      bonusSeed: bonusSeed ?? this.bonusSeed,
+      pendingBonus: identical(pendingBonus, _unset)
+          ? this.pendingBonus
+          : pendingBonus as PendingBonus?,
+      bonusUsedThisTurn: bonusUsedThisTurn ?? this.bonusUsedThisTurn,
+      lastBonusValue: identical(lastBonusValue, _unset)
+          ? this.lastBonusValue
+          : lastBonusValue as int?,
+      movedHorseIndex: identical(movedHorseIndex, _unset)
+          ? this.movedHorseIndex
+          : movedHorseIndex as int?,
       pendingCellEffect: identical(pendingCellEffect, _unset)
           ? this.pendingCellEffect
           : pendingCellEffect as CellEffect?,
@@ -242,9 +260,17 @@ class GameState {
     turnPhase: TurnPhase.values.byName(json['turnPhase'] as String),
     currentQuestionId: json['currentQuestionId'] as String?,
     askedQuestionIds: Set<String>.from(json['askedQuestionIds'] as List),
-    pendingGait: json['pendingGait'] == null
+    bonusTiles: [
+      for (final b in (json['bonusTiles'] as List? ?? const []))
+        BonusTile.fromJson(b as Map<String, dynamic>),
+    ],
+    bonusSeed: json['bonusSeed'] as int? ?? 0,
+    pendingBonus: json['pendingBonus'] == null
         ? null
-        : PendingGait.fromJson(json['pendingGait'] as Map<String, dynamic>),
+        : PendingBonus.fromJson(json['pendingBonus'] as Map<String, dynamic>),
+    bonusUsedThisTurn: json['bonusUsedThisTurn'] as bool? ?? false,
+    lastBonusValue: json['lastBonusValue'] as int?,
+    movedHorseIndex: json['movedHorseIndex'] as int?,
     pendingCellEffect: json['pendingCellEffect'] == null
         ? null
         : CellEffect.values.byName(json['pendingCellEffect'] as String),
@@ -285,7 +311,12 @@ class GameState {
     'turnPhase': turnPhase.name,
     'currentQuestionId': currentQuestionId,
     'askedQuestionIds': askedQuestionIds.toList(),
-    'pendingGait': pendingGait?.toJson(),
+    'bonusTiles': [for (final b in bonusTiles) b.toJson()],
+    'bonusSeed': bonusSeed,
+    'pendingBonus': pendingBonus?.toJson(),
+    'bonusUsedThisTurn': bonusUsedThisTurn,
+    'lastBonusValue': lastBonusValue,
+    'movedHorseIndex': movedHorseIndex,
     'pendingCellEffect': pendingCellEffect?.name,
     'pendingCellHorseIndex': pendingCellHorseIndex,
     'justUnlocked': [for (final r in justUnlocked) r.name],

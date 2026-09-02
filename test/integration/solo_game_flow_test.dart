@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:iqraquest/features/game/application/game_controller.dart';
 import 'package:iqraquest/features/game/domain/game_engine.dart';
@@ -10,12 +12,15 @@ import 'package:iqraquest/services/question_repository.dart';
 import 'package:iqraquest/theme/app_team.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Spec §20: the whole turn — choose a gait → answer the matching question
-/// → move — exercised end to end through the real controller, not just the
-/// isolated engine.
+/// The whole turn — draw → answer → win the squares → set a horse down —
+/// exercised end to end through the real controller, not just the
+/// isolated engine. Headless: the controller does not wait for the
+/// board's animations here.
 Future<GameController> buildController(
   LocalStorageService storage, {
   bool isPremium = true,
+  int seed = 7,
+  bool animate = false,
 }) async {
   final repo = QuestionRepository();
   final pool = await repo.loadAll('en');
@@ -24,6 +29,8 @@ Future<GameController> buildController(
     questionRepository: repo,
     saveService: GameSaveService(storage),
     progressService: ProgressService(storage),
+    random: Random(seed),
+    animate: animate,
   );
   controller.configure(pool: pool, isPremium: isPremium);
   return controller;
@@ -42,12 +49,25 @@ Player human(
   horses: List.generate(horses, (_) => const HorseState()),
 );
 
+/// After the verdict: continue, and if the squares can be placed, set the
+/// first legal horse down — exactly what a player would do.
+void finishTurn(GameController controller) {
+  controller.continueAfterFeedback();
+  final s = controller.state!;
+  if (s.gameState.turnPhase == TurnPhase.choosingHorse) {
+    controller.placeHorse(controller.legalMoves.first.horseIndex);
+  }
+  if (controller.state!.gameState.turnPhase == TurnPhase.noMove) {
+    controller.continueAfterFeedback();
+  }
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  test('a family game starts by asking the player to choose a gait', () async {
+  test('a family game starts at the deck, with nothing asked and nothing moved', () async {
     final storage = await LocalStorageService.create();
     final controller = await buildController(storage);
 
@@ -60,13 +80,15 @@ void main() {
 
     final session = controller.state!;
     expect(session.gameState.turnPhase, TurnPhase.selectingGait);
-    // Nothing is asked, and nothing moves, until the player chooses.
     expect(session.currentQuestion, isNull);
-    expect(controller.availableGaits.map((c) => c.steps), [1, 2, 3, 4, 5, 6]);
+    expect(controller.legalMoves, isEmpty, reason: 'no card, no move');
     expect(
       session.gameState.players[0].horses.first.position,
       const HomePosition(),
     );
+    // The sixteen bonus squares are dealt with the game.
+    expect(session.gameState.bonusTiles.length, 16);
+    expect(session.gameState.bonusSeed, isNot(0));
   });
 
   test(
@@ -84,53 +106,47 @@ void main() {
         ],
       );
 
-      controller.selectGait(0, const MovementChoice(6));
+      controller.drawCard();
       expect(
         controller.state!.gameState.turnPhase,
         TurnPhase.answeringQuestion,
       );
+      final first = controller.state!.currentQuestion!;
       expect(
-        controller.state!.currentQuestion!.difficulty,
+        first.difficulty,
         QuestionDifficulty.easy,
-        reason: 'an easy rider drawing a 6 still gets an easy question',
+        reason: 'an easy rider gets an easy question whatever the card',
       );
 
-      // Committing locks the turn: the question cannot be re-dealt once
+      // The draw locks the turn: the question cannot be re-dealt once
       // it is on screen.
-      controller.selectGait(0, const MovementChoice(1));
-      expect(
-        controller.state!.currentQuestion!.difficulty,
-        QuestionDifficulty.easy,
-      );
+      controller.drawCard();
+      expect(controller.state!.currentQuestion!.id, first.id);
 
-      controller.answerQuestion(
-        controller.state!.currentQuestion!.correctAnswerIndex,
-      );
-      controller.continueAfterFeedback();
-      // The 6 replays: same rider, still easy.
-      expect(controller.state!.gameState.currentPlayerIndex, 0);
-      controller.selectGait(0, const MovementChoice(2));
-      expect(
-        controller.state!.currentQuestion!.difficulty,
-        QuestionDifficulty.easy,
-      );
-      controller.answerQuestion(
-        controller.state!.currentQuestion!.correctAnswerIndex,
-      );
-      controller.continueAfterFeedback();
-
-      // The expert draws a 1 and gets an expert question for it.
-      expect(controller.state!.gameState.currentPlayerIndex, 1);
-      controller.selectGait(0, const MovementChoice(1));
-      expect(
-        controller.state!.currentQuestion!.difficulty,
-        QuestionDifficulty.hard,
-      );
+      // Play through until the expert's turn: every card of the child
+      // is easy, every card of the expert is hard.
+      for (var turn = 0; turn < 12; turn++) {
+        final s = controller.state!;
+        if (s.gameState.turnPhase == TurnPhase.selectingGait) {
+          controller.drawCard();
+        }
+        final q = controller.state!.currentQuestion!;
+        final rider = controller.state!.gameState.currentPlayer;
+        expect(
+          q.difficulty,
+          rider.profile == PlayerProfile.easy
+              ? QuestionDifficulty.easy
+              : QuestionDifficulty.hard,
+          reason: '${rider.id} drew a ${q.difficulty} question',
+        );
+        controller.answerQuestion(q.correctAnswerIndex);
+        finishTurn(controller);
+      }
     },
   );
 
   test(
-    'a correct answer moves the horse exactly as far as the gait promised',
+    'a right answer opens the placement; the drop rides exactly to the promised square',
     () async {
       final storage = await LocalStorageService.create();
       final controller = await buildController(storage);
@@ -141,40 +157,45 @@ void main() {
         players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
       );
 
-      // Out of the stable first: the 6 opens the gate, the horse takes its
-      // start square — and the 6 hands the turn straight back.
-      controller.selectGait(0, const MovementChoice(6));
-      final promised = controller.state!.preview!.destination;
-      final question = controller.state!.currentQuestion!;
-      controller.answerQuestion(question.correctAnswerIndex);
-
-      final horse = controller.state!.gameState.players[0].horses.first;
-      expect(horse.position, promised);
-      expect(horse.position, const TrackPosition(0));
-      expect(
-        controller.state!.gameState.lastMoveOutcome,
-        MoveOutcome.exitedStable,
-      );
-      controller.continueAfterFeedback();
-      expect(
-        controller.state!.gameState.currentPlayerIndex,
-        0,
-        reason: 'a 6 hands the turn back to the same player',
-      );
-      expect(controller.state!.gameState.isBonusTurn, isTrue);
-
-      // Then the card is the distance, exactly.
-      controller.selectGait(0, const MovementChoice(3));
-      final promised2 = controller.state!.preview!.destination;
-      controller.answerQuestion(
-        controller.state!.currentQuestion!.correctAnswerIndex,
-      );
-      final ridden = controller.state!.gameState.players[0].horses.first;
-      expect(ridden.position, promised2);
-      expect(ridden.position, const TrackPosition(3));
-      expect(controller.state!.gameState.lastMoveOutcome, MoveOutcome.moved);
-      controller.continueAfterFeedback();
-      expect(controller.state!.gameState.currentPlayerIndex, 1);
+      var placements = 0;
+      for (var turn = 0; turn < 30 && placements < 3; turn++) {
+        controller.drawCard();
+        final before = controller.state!.gameState;
+        final question = controller.state!.currentQuestion!;
+        controller.answerQuestion(question.correctAnswerIndex);
+        // Right — and still nothing has moved.
+        expect(controller.state!.gameState.lastAnswerCorrect, isTrue);
+        for (var p = 0; p < 2; p++) {
+          expect(
+            controller.state!.gameState.players[p].horses.first.position,
+            before.players[p].horses.first.position,
+            reason: 'turn $turn: a horse moved before the player placed it',
+          );
+        }
+        controller.continueAfterFeedback();
+        final s = controller.state!.gameState;
+        if (s.turnPhase == TurnPhase.choosingHorse) {
+          final move = controller.moveFor(0)!;
+          expect(controller.placeHorse(0), isTrue);
+          final horse = controller.state!.gameState.players[s.currentPlayerIndex].horses.first;
+          if (move.bonusValue == null) {
+            expect(horse.position, move.destination, reason: 'turn $turn');
+          } else {
+            // Headless, the bonus square it stopped on has already been
+            // ridden: the horse is past the promised square, by the bonus.
+            final circuit = s.circuit;
+            final promised = circuit.progressOf(move.destination, s.currentPlayerIndex)!;
+            final actual = circuit.progressOf(horse.position, s.currentPlayerIndex)!;
+            expect(actual, greaterThan(promised), reason: 'turn $turn: bonus not ridden');
+          }
+          placements++;
+        } else {
+          expect(s.turnPhase, TurnPhase.noMove);
+          controller.continueAfterFeedback();
+        }
+        expect(controller.state!.gameState.turnPhase, TurnPhase.selectingGait);
+      }
+      expect(placements, greaterThan(0));
     },
   );
 
@@ -188,7 +209,8 @@ void main() {
       players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
     );
 
-    controller.selectGait(0, const MovementChoice(2));
+    controller.drawCard();
+    final drawn = controller.state!.gameState.drawnCard!;
     final question = controller.state!.currentQuestion!;
     controller.answerQuestion(
       (question.correctAnswerIndex + 1) % question.answers.length,
@@ -201,7 +223,11 @@ void main() {
     expect(controller.state!.gameState.lastAnswerCorrect, isFalse);
 
     controller.continueAfterFeedback();
-    expect(controller.state!.gameState.currentPlayerIndex, 1);
+    // A 6 replays even when the answer was wrong; anything else hands on.
+    expect(
+      controller.state!.gameState.currentPlayerIndex,
+      drawn.grantsExtraTurn ? 0 : 1,
+    );
     expect(controller.state!.gameState.turnPhase, TurnPhase.selectingGait);
   });
 
@@ -216,9 +242,11 @@ void main() {
     );
 
     final seen = <String>{};
-    for (var turn = 0; turn < 8; turn++) {
-      final gait = controller.availableGaits.first;
-      controller.selectGait(0, gait);
+    for (var turn = 0; turn < 40; turn++) {
+      if (controller.state!.gameState.turnPhase != TurnPhase.selectingGait) {
+        break;
+      }
+      controller.drawCard();
       final question = controller.state!.currentQuestion;
       if (question == null) break; // bank exhausted — play continues anyway
       expect(
@@ -227,9 +255,10 @@ void main() {
         reason: 'question ${question.id} repeated',
       );
       controller.answerQuestion(question.correctAnswerIndex);
-      controller.continueAfterFeedback();
+      finishTurn(controller);
     }
-    expect(seen, isNotEmpty);
+    // A quick race with bonus squares can be over in a score of cards.
+    expect(seen.length, greaterThan(10));
   });
 
   test(
@@ -250,7 +279,7 @@ void main() {
       );
       expect(saveService.hasSave, isTrue);
 
-      controller.selectGait(0, const MovementChoice(4));
+      controller.drawCard();
       controller.answerQuestion(
         controller.state!.currentQuestion!.correctAnswerIndex,
       );
@@ -268,6 +297,12 @@ void main() {
       );
       expect(after.players[0].streak, before.players[0].streak);
       expect(after.askedQuestionIds, before.askedQuestionIds);
+      expect(after.bonusTiles, before.bonusTiles, reason: 'the squares never move');
+      // A right answer resumes at its placement (or the pass a 1 earns).
+      expect(
+        after.turnPhase,
+        anyOf(TurnPhase.choosingHorse, TurnPhase.noMove),
+      );
     },
   );
 
@@ -389,6 +424,7 @@ void main() {
           questionRepository: repo,
           saveService: GameSaveService(storage),
           progressService: ProgressService(storage),
+          animate: false,
         );
         // An empty pool is the extreme case of an exhausted bank.
         controller.configure(pool: const [], isPremium: false);
@@ -399,11 +435,17 @@ void main() {
           players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
         );
 
-        controller.selectGait(0, const MovementChoice(6));
+        controller.drawCard();
         final state = controller.state!.gameState;
         expect(state.freeBankExhausted, isTrue);
-        // The move the player chose still happens — play is never interrupted.
-        expect(state.players[0].horses.first.position, const TrackPosition(0));
+        // The turn goes straight to the placement: the player still
+        // chooses, and the move still happens — play is never interrupted.
+        expect(state.turnPhase, TurnPhase.choosingHorse);
+        expect(controller.placeHorse(0), isTrue);
+        expect(
+          controller.state!.gameState.players[0].horses.first.position,
+          const TrackPosition(0),
+        );
         expect(pool, isNotEmpty); // the shipped bank itself is not empty
       },
     );

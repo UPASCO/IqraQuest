@@ -704,14 +704,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri kaç kare ilerleyeceğindir. Soru ise her zaman kendi seviyendedir — kolay, orta ya da uzman — başta bütün kartların için seçtiğin seviye.';
+      'Sıran geldiğinde bir kart çek: sorusu hemen açılır, her zaman başta seçtiğin kendi seviyende — kolay, orta ya da uzman. 1 ile 6 kare arasındaki değeri sen cevaplayana kadar gizli kalır.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'İlerlemek için cevapla';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Doğru cevap atını kartta yazan kare kadar ilerletir. Yanlış cevap onu yerinde bırakır: asla geri gitmezsin.';
+      'Doğru cevap sana kartın karelerini kazandırır. Sonra onları alacak atı seç: nereye varacağını görmek için dokun, sonra oraya sürükle — bırakmak hamledir. Yanlış cevap her şeyi yerinde bırakır: asla geri gitmezsin.';
 
   @override
   String get ruleEscalierTitle => 'Mekke\'ye çıkan merdiven';
@@ -754,4 +754,90 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Parkurun sonuna ulaş — çizgiyi geçmek serbest — sonra varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla. Yanlış cevap seni asla geri götürmez: sıradaki turda yeniden denersin.';
+
+  @override
+  String get hapticFeedback => 'Titreşim';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count kare kazanıldı',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Bir at seç';
+
+  @override
+  String get touchHorseHint => 'Nereye gideceğini görmek için bir ata dokun';
+
+  @override
+  String get dragHorseToDestination => 'Atı altın karesine sürükle';
+
+  @override
+  String get bonusLabel => 'BONUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value kare';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Bonus kare! Atın $value kare daha ilerliyor.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'Bu kart $value kare değerindeydi.';
+  }
+
+  @override
+  String get answerToReveal => 'Değerini görmek için cevapla';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name bir at seçiyor…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name +$value bonus kazandı!';
+  }
+
+  @override
+  String get leaderLabel => 'Önde';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name öne geçti!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Bonus kare +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bonus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      'Tahtada 16 bonus kare seni bekliyor: +5, +10 ve nadir +20.';
+
+  @override
+  String get ridersSubtitle =>
+      'Her binici seviyesini seçer; kart yalnızca mesafeyi belirler.';
+
+  @override
+  String get ruleBonusTitle => 'Bonus kareler';
+
+  @override
+  String get ruleBonusBody =>
+      'Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 kare ilerler — turda yalnızca bir kez, ve kare herkes için oyunda kalır.';
 }

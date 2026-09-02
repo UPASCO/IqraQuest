@@ -709,14 +709,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Pada giliranmu, ambil satu kartu. Nilainya, 1 sampai 6, adalah jumlah petak yang kamu tempuh. Pertanyaannya selalu sesuai tingkatmu — mudah, menengah, atau ahli — yang dipilih di awal untuk semua kartumu.';
+      'Pada giliranmu, ambil satu kartu: pertanyaannya langsung terbuka, selalu sesuai tingkatmu — mudah, menengah, atau ahli — yang dipilih di awal. Nilainya, 1 sampai 6 petak, tetap tersembunyi sampai kamu menjawab.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Jawaban benar memajukan kudamu tepat sebanyak petak yang tertera di kartu. Jawaban salah membiarkannya di tempat: kamu tidak pernah mundur.';
+      'Jawaban benar memberimu petak-petak kartu itu. Lalu pilih kuda yang mengambilnya: sentuh untuk melihat tujuannya, lalu seret ke sana — melepasnya adalah langkahnya. Jawaban salah membiarkan semuanya di tempat: kamu tidak pernah mundur.';
 
   @override
   String get ruleEscalierTitle => 'Tangga menuju Makkah';
@@ -759,4 +759,90 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Capai ujung lintasan — melewati garis tidak masalah — lalu jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu. Jawaban salah tidak pernah memundurkanmu: kamu tinggal mencoba lagi di giliran berikutnya.';
+
+  @override
+  String get hapticFeedback => 'Getaran';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count petak dimenangkan',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Pilih seekor kuda';
+
+  @override
+  String get touchHorseHint => 'Sentuh kuda untuk melihat tujuannya';
+
+  @override
+  String get dragHorseToDestination => 'Seret kuda ke petak emasnya';
+
+  @override
+  String get bonusLabel => 'BONUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value petak';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Petak bonus! Kudamu melaju $value petak lagi.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'Kartu ini bernilai $value petak.';
+  }
+
+  @override
+  String get answerToReveal => 'Jawab untuk mengungkap nilainya';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name memilih kuda…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name mendapat bonus +$value!';
+  }
+
+  @override
+  String get leaderLabel => 'Memimpin';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name memimpin!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Petak bonus +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bonus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 petak bonus menanti di papan: +5, +10, dan +20 yang langka.';
+
+  @override
+  String get ridersSubtitle =>
+      'Setiap penunggang memilih tingkatnya; kartu hanya menentukan jarak.';
+
+  @override
+  String get ruleBonusTitle => 'Petak bonus';
+
+  @override
+  String get ruleBonusBody =>
+      'Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 petak — sekali per giliran, dan petaknya tetap berlaku untuk semua.';
 }

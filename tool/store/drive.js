@@ -94,6 +94,21 @@ const BASE = process.env.BASE || 'http://localhost:8099';
       await page.mouse.click(s.tap[0], s.tap[1]);
       await page.waitForTimeout(s.after || 1600);
     }
+    if (s.drag) {
+      // A finger drag in CSS px: down at [x1,y1], glide to [x2,y2], up.
+      const [x1, y1, x2, y2] = s.drag;
+      await page.mouse.move(x1, y1);
+      await page.mouse.down();
+      const n = s.steps || 12;
+      for (let i = 1; i <= n; i++) {
+        await page.mouse.move(x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n);
+        await page.waitForTimeout(30);
+      }
+      if (s.hold) await page.waitForTimeout(s.hold);
+      if (s.shotMid) { await page.screenshot({ path: `${OUT}/${s.shotMid}.png` }); console.log('captured', s.shotMid); }
+      await page.mouse.up();
+      await page.waitForTimeout(s.after || 1600);
+    }
     if (s.scroll) {
       await page.mouse.move(207, 500);
       await page.mouse.wheel(0, s.scroll);

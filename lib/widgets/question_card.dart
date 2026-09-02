@@ -369,11 +369,16 @@ class AnswerFeedbackSheet extends StatelessWidget {
     required this.isCorrect,
     required this.onContinue,
     this.showExplanation = true,
+    this.note,
   });
 
   final Question question;
   final bool isCorrect;
   final VoidCallback onContinue;
+
+  /// One extra line under the verdict — after a wrong answer, what the
+  /// card would have been worth, so the value is never left unknown.
+  final String? note;
 
   /// Off for the child level: the verdict and the right answer are the
   /// lesson; a paragraph of sources is for the grown-ups' level.
@@ -416,6 +421,17 @@ class AnswerFeedbackSheet extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: QuestionCard._ink,
                     fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+              if (note != null) ...[
+                const SizedBox(height: 8),
+                Text(
+                  note!,
+                  key: const Key('feedback-note'),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: QuestionCard._ink.withValues(alpha: 0.8),
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],

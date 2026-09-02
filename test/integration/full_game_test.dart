@@ -23,6 +23,9 @@ Future<GameController> buildController(
     questionRepository: repo,
     saveService: GameSaveService(storage),
     progressService: ProgressService(storage),
+    // Headless: a ride takes no time, so every step lands on a phase
+    // the screen would render a control for.
+    animate: false,
   );
   controller.configure(pool: pool, isPremium: isPremium);
   return controller;
@@ -59,9 +62,9 @@ bool driveOneStep(
       // The real draw: the deck decides the value, the rules decide what
       // it can do — including nothing at all.
       expect(
-        controller.availableGaits,
-        isNotEmpty,
-        reason: 'a turn must always offer a draw',
+        session.currentQuestion,
+        isNull,
+        reason: 'a turn must start with nothing on the table',
       );
       controller.drawCard();
     case TurnPhase.choosingHorse:
@@ -74,10 +77,18 @@ bool driveOneStep(
       // Prefer bringing a horse out, then the front runner: a plausible
       // family player, and every horse eventually leaves the stable.
       final exit = moves.where((m) => m.exitsStable).firstOrNull;
-      controller.chooseMove((exit ?? moves.last).horseIndex);
+      expect(
+        controller.placeHorse((exit ?? moves.last).horseIndex),
+        isTrue,
+        reason: 'a legal horse set down must be accepted',
+      );
+    case TurnPhase.movingHorse:
+      fail(
+        'movingHorse must never be left on screen headless: the ride settles at once',
+      );
     case TurnPhase.noMove:
       expect(
-        session.currentQuestion,
+        state.drawnCard,
         isNotNull,
         reason: 'even a card that moves nothing was drawn from the deck',
       );
@@ -302,13 +313,13 @@ void main() {
       variant: GameVariant.classic,
       circuitId: CircuitId.oasisRoute,
       players: [
-        human('p0', AppTeam.emerald, horses: 2),
-        human('p1', AppTeam.saphir, horses: 2),
+        human('p0', AppTeam.emerald, horses: 4),
+        human('p1', AppTeam.saphir, horses: 4),
       ],
     );
     expect(controller.state!.gameState.maxDraws, isNull);
     var steps = 0;
-    while (driveOneStep(controller) && steps < 6000) {
+    while (driveOneStep(controller) && steps < 20000) {
       steps++;
     }
     final end = controller.state!.gameState;
@@ -317,7 +328,7 @@ void main() {
     expect(
       end.drawCount,
       greaterThan(GameState.freeDrawLimit),
-      reason: 'a two-horse race takes well over fifty cards',
+      reason: 'a four-horse race takes well over fifty cards',
     );
   });
 
@@ -330,7 +341,7 @@ void main() {
       circuitId: CircuitId.oasisRoute,
       players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
     );
-    controller.selectGait(0, const MovementChoice(3));
+    controller.drawCard();
     expect(
       controller.state!.gameState.turnPhase,
       TurnPhase.answeringQuestion,
@@ -338,20 +349,17 @@ void main() {
     );
 
     // The app is killed and relaunched: the same save must come back at
-    // a phase with something to tap, and the gait must not be lost.
+    // a phase with something to tap, and the card must not be owed.
     final resumed = await buildController(storage);
     expect(resumed.loadSaved(), isTrue);
     expect(resumed.state!.gameState.turnPhase, TurnPhase.selectingGait);
-    expect(resumed.availableGaits.map((c) => c.steps), [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-    ], reason: 'an unresolved question refunds the committed gait');
+    expect(
+      resumed.state!.gameState.drawnCard,
+      isNull,
+      reason: 'an unanswered card goes back to the deck',
+    );
     // And the resumed game is genuinely playable.
-    resumed.selectGait(0, const MovementChoice(2));
+    resumed.drawCard();
     expect(
       resumed.state!.currentQuestion,
       isNotNull,

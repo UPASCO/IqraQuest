@@ -713,14 +713,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é quantas casas você anda. A pergunta é sempre do seu nível — fácil, intermediário ou especialista — escolhido no início para todas as suas cartas.';
+      'Na sua vez, puxe uma carta: a pergunta abre na hora, sempre do seu nível — fácil, intermediário ou especialista — escolhido no início. O valor dela, de 1 a 6 casas, fica escondido até você responder.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responda para avançar';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Uma resposta certa avança seu cavalo exatamente o número de casas da carta. Uma errada o deixa onde está: você nunca recua.';
+      'Uma resposta certa faz você ganhar as casas da carta. Escolha então o cavalo que as usa: toque nele para ver onde chegaria e arraste-o até lá — soltar é o movimento. Uma resposta errada deixa tudo onde está: você nunca recua.';
 
   @override
   String get ruleEscalierTitle => 'A escada até Meca';
@@ -763,4 +763,91 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get ruleArrivalBody =>
       'Chegue ao fim do percurso — passar da linha é permitido — e responda à Pergunta da viagem para validar sua chegada. Um erro nunca faz você recuar: basta tentar de novo na próxima vez.';
+
+  @override
+  String get hapticFeedback => 'Vibração';
+
+  @override
+  String squaresWon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count casas ganhas',
+      one: '$count casa ganha',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get chooseHorseToMove => 'Escolha um cavalo';
+
+  @override
+  String get touchHorseHint => 'Toque num cavalo para ver aonde iria';
+
+  @override
+  String get dragHorseToDestination => 'Arraste o cavalo até a casa dourada';
+
+  @override
+  String get bonusLabel => 'BÔNUS';
+
+  @override
+  String bonusPlus(int value) {
+    return '+$value casas';
+  }
+
+  @override
+  String bonusRide(int value) {
+    return 'Casa bônus! Seu cavalo avança mais $value casas.';
+  }
+
+  @override
+  String cardWasWorth(int value) {
+    return 'Esta carta valia $value casas.';
+  }
+
+  @override
+  String get answerToReveal => 'Responda para descobrir o valor';
+
+  @override
+  String opponentPlaces(String name) {
+    return '$name está escolhendo um cavalo…';
+  }
+
+  @override
+  String opponentBonus(String name, int value) {
+    return '$name ganha um bônus +$value!';
+  }
+
+  @override
+  String get leaderLabel => 'Na frente';
+
+  @override
+  String tookTheLead(String name) {
+    return '$name assume a liderança!';
+  }
+
+  @override
+  String bonusSquareSemantics(int value) {
+    return 'Casa bônus +$value';
+  }
+
+  @override
+  String moveHintBonus(int value) {
+    return 'Bônus +$value';
+  }
+
+  @override
+  String get bonusSquaresTeaser =>
+      '16 casas bônus esperam no tabuleiro: +5, +10 e a rara +20.';
+
+  @override
+  String get ridersSubtitle =>
+      'Cada cavaleiro escolhe seu nível; a carta só define a distância.';
+
+  @override
+  String get ruleBonusTitle => 'As casas bônus';
+
+  @override
+  String get ruleBonusBody =>
+      'Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 casas — uma só vez por turno, e a casa continua em jogo para todos.';
 }

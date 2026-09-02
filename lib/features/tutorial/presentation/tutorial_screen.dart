@@ -20,6 +20,7 @@ class TutorialScreen extends StatelessWidget {
         body: l10n.ruleAnswerToAdvanceBody,
       ),
       (title: l10n.ruleSixTitle, body: l10n.ruleSixBody),
+      (title: l10n.ruleBonusTitle, body: l10n.ruleBonusBody),
       (title: l10n.ruleEscalierTitle, body: l10n.ruleEscalierBody),
       (title: l10n.ruleCaptureTitle, body: l10n.ruleCaptureBody),
       (title: l10n.ruleStreakTitle, body: l10n.ruleStreakBody),

@@ -70,7 +70,11 @@ GameState withHorse(
   return state.copyWith(players: players);
 }
 
-/// One complete "choose a gait, answer the question" beat.
+/// One complete turn beat: draw the card, answer its question and — on a
+/// right answer — set [horse] down on its destination, riding any bonus
+/// square it stopped on. A horse that cannot ride the card (the stable
+/// gate shut on anything but a 6) simply stays: the engine never moves
+/// what the rules would not let a player move.
 GameState play(
   GameEngine engine,
   GameState state, {
@@ -78,19 +82,14 @@ GameState play(
   required int steps,
   required bool correct,
   required String questionId,
-  bool useGrandGallop = false,
 }) {
-  final committed = engine.commitGait(
-    state,
-    horse,
-    MovementChoice(steps),
-    useGrandGallop: useGrandGallop,
-  );
-  return engine.applyAnswer(
-    committed,
-    correct: correct,
-    questionId: questionId,
-  );
+  var next = engine.drawCard(state, MovementChoice(steps));
+  next = engine.applyAnswer(next, correct: correct, questionId: questionId);
+  if (!correct) return next;
+  next = engine.openPlacement(next);
+  if (next.turnPhase != TurnPhase.choosingHorse) return next;
+  next = engine.placeHorse(next, horse);
+  return engine.applyPendingBonus(next);
 }
 
 void main() {
@@ -204,8 +203,8 @@ void main() {
         6,
       ]);
 
-      final again = engine.commitGait(state, 0, const MovementChoice(4));
-      expect(again.pendingGait?.choice.steps, 4);
+      final again = engine.drawCard(state, const MovementChoice(4));
+      expect(again.drawnCard?.steps, 4);
       expect(again.turnPhase, TurnPhase.answeringQuestion);
     });
 
@@ -226,12 +225,12 @@ void main() {
   group('Answering decides movement', () {
     test('a correct answer advances exactly the chosen number of squares', () {
       var state = buildGame();
-      // Leaving the stable costs the move itself: gait 1 lands on the entry.
-      state = play(engine, state, steps: 1, correct: true, questionId: 'q1');
+      // Leaving the stable costs the move itself: the 6 lands on the entry.
+      state = play(engine, state, steps: 6, correct: true, questionId: 'q1');
       expect(state.players[0].horses[0].position, const TrackPosition(0));
 
-      state = engine.endTurn(state);
-      state = engine.endTurn(state); // back to player 0
+      state = engine.endTurn(state); // the 6 replays: still player 0
+      expect(state.currentPlayerIndex, 0);
       state = play(engine, state, steps: 4, correct: true, questionId: 'q2');
       expect(state.players[0].horses[0].position, const TrackPosition(4));
       expect(state.lastMoveOutcome, MoveOutcome.moved);
@@ -391,25 +390,31 @@ void main() {
       expect(state.players[0].rewards.hasGrandGallop, isTrue);
     });
 
-    test('the Grand Galop adds exactly 2 squares and is spent once', () {
-      var state = buildGame();
-      state = withHorse(state, at: const TrackPosition(1));
+    test('the Grand Galop adds exactly 2 squares, only to arrive, and is spent once', () {
+      var state = buildGame(variant: GameVariant.quick);
       final players = [...state.players];
       players[0] = players[0].copyWith(
         rewards: players[0].rewards.copyWith(hasGrandGallop: true),
       );
       state = state.copyWith(players: players);
 
-      state = play(
-        engine,
-        state,
-        steps: 3,
-        correct: true,
-        questionId: 'q1',
-        useGrandGallop: true,
-      );
-      expect(state.players[0].horses[0].position, const TrackPosition(6));
-      expect(state.players[0].rewards.hasGrandGallop, isFalse);
+      // On the open road the two squares would change nothing: the
+      // Galop is kept.
+      var road = withHorse(state, at: const TrackPosition(1));
+      expect(engine.legalMoves(road, const MovementChoice(3)).single.usesGrandGallop, isFalse);
+      road = play(engine, road, steps: 3, correct: true, questionId: 'q1');
+      expect(road.players[0].horses[0].position, const TrackPosition(4));
+      expect(road.players[0].rewards.hasGrandGallop, isTrue);
+
+      // Two short of the finish, the Galop turns the ride into an arrival
+      // — and is spent.
+      var lane = withHorse(state, at: const FinalLanePosition(2));
+      final move = engine.legalMoves(lane, const MovementChoice(3)).single;
+      expect(move.usesGrandGallop, isTrue);
+      expect(move.reachesFinish, isTrue);
+      lane = play(engine, lane, steps: 3, correct: true, questionId: 'q1');
+      expect(lane.players[0].horses[0].position, isA<FinishedPosition>());
+      expect(lane.players[0].rewards.hasGrandGallop, isFalse);
     });
 
     test('ten correct answers in a row unlock a mastery badge', () {
@@ -874,6 +879,9 @@ void main() {
       () {
         var state = buildGame();
         state = engine.drawCard(state, const MovementChoice(3));
+        expect(state.turnPhase, TurnPhase.answeringQuestion);
+        state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+        state = engine.openPlacement(state);
         expect(state.turnPhase, TurnPhase.noMove);
         expect(state.lastMoveOutcome, MoveOutcome.noLegalMove);
         expect(state.drawnCard, const MovementChoice(3));
@@ -884,6 +892,8 @@ void main() {
         var blocked = buildGame();
         blocked = withHorse(blocked, horse: 0, at: const TrackPosition(0));
         blocked = engine.drawCard(blocked, const MovementChoice(6));
+        blocked = engine.applyAnswer(blocked, correct: true, questionId: 'q1');
+        blocked = engine.openPlacement(blocked);
         expect(blocked.turnPhase, TurnPhase.choosingHorse);
         expect(blocked.extraTurn, isTrue);
       },
@@ -921,11 +931,15 @@ void main() {
     test('the card on the table and the replay survive a save', () {
       var state = buildGame();
       state = engine.drawCard(state, const MovementChoice(6));
-      state = engine.commitGait(state, 0, const MovementChoice(6));
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      state = engine.openPlacement(state);
       final restored = GameState.fromJson(state.toJson());
       expect(restored.drawnCard, const MovementChoice(6));
       expect(restored.extraTurn, isTrue);
-      expect(restored.pendingGait?.exitsStable, isTrue);
+      expect(restored.turnPhase, TurnPhase.choosingHorse);
+      final placed = GameState.fromJson(engine.placeHorse(state, 2).toJson());
+      expect(placed.movedHorseIndex, 2);
+      expect(placed.players[0].horses[2].position, const TrackPosition(0));
       final replay = GameState.fromJson(engine.endTurn(state).toJson());
       expect(replay.isBonusTurn, isTrue);
     });
@@ -1014,18 +1028,48 @@ void main() {
       final next = engine.endTurn(state);
       expect(next.currentPlayerIndex, 1);
       expect(next.turnPhase, TurnPhase.selectingGait);
-      expect(next.pendingGait, isNull);
+      expect(next.movedHorseIndex, isNull);
+      expect(next.pendingBonus, isNull);
+      expect(next.bonusUsedThisTurn, isFalse);
       expect(next.pendingCellEffect, isNull);
       expect(next.lastAnswerCorrect, isNull);
       expect(next.justUnlocked, isEmpty);
     });
 
-    test('committing a gait waits for the question before anything moves', () {
-      final state = buildGame();
-      final committed = engine.commitGait(state, 0, const MovementChoice(5));
-      expect(committed.turnPhase, TurnPhase.answeringQuestion);
-      expect(committed.pendingGait?.choice.steps, 5);
-      expect(committed.players[0].horses[0].position, const HomePosition());
+    test('nothing moves until the player has set a horse down', () {
+      var state = buildGame();
+      state = withHorse(state, at: const TrackPosition(3));
+      state = engine.drawCard(state, const MovementChoice(5));
+      expect(state.turnPhase, TurnPhase.answeringQuestion);
+      expect(state.drawnCard?.steps, 5);
+      expect(state.players[0].horses[0].position, const TrackPosition(3));
+
+      // A right answer wins the squares — and still moves nothing.
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      expect(state.turnPhase, TurnPhase.showingFeedback);
+      expect(state.players[0].horses[0].position, const TrackPosition(3));
+      state = engine.openPlacement(state);
+      expect(state.turnPhase, TurnPhase.choosingHorse);
+      expect(state.players[0].horses[0].position, const TrackPosition(3));
+
+      // Only the drop rides.
+      state = engine.placeHorse(state, 0);
+      expect(state.turnPhase, TurnPhase.movingHorse);
+      expect(state.players[0].horses[0].position, const TrackPosition(8));
+      expect(state.movedHorseIndex, 0);
+    });
+
+    test('a horse the card cannot move is refused, state untouched', () {
+      var state = buildGame();
+      state = withHorse(state, horse: 0, at: const TrackPosition(3));
+      state = engine.drawCard(state, const MovementChoice(2));
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      state = engine.openPlacement(state);
+      // Horse 1 is in the stable and a 2 does not open the gate.
+      expect(identical(engine.placeHorse(state, 1), state), isTrue);
+      // And nothing can be placed outside the placement phase.
+      final early = engine.drawCard(buildGame(), const MovementChoice(6));
+      expect(identical(engine.placeHorse(early, 0), early), isTrue);
     });
   });
 

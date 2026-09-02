@@ -1499,18 +1499,18 @@ s("ruleDrawCardTitle", "Rules step 1 title",
   ms="Cabut sekeping kad", it="Pesca una carta", nl="Trek een kaart")
 
 s("ruleDrawCardBody", "Rules step 1 body",
-  fr="À ton tour, pioche une carte. Sa valeur, de 1 à 6, est le nombre de cases. La question, elle, est toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ pour toutes tes cartes.",
-  en="On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.",
-  ar="في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات. أما السؤال فهو دائمًا على مستواك — سهل أو متوسط أو خبير — الذي اخترته في البداية لكل بطاقاتك.",
-  es="En tu turno, roba una carta. Su valor, de 1 a 6, es cuántas casillas avanzas. La pregunta siempre es de tu nivel —fácil, intermedio o experto—, elegido al principio para todas tus cartas.",
-  pt="Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é quantas casas você anda. A pergunta é sempre do seu nível — fácil, intermediário ou especialista — escolhido no início para todas as suas cartas.",
-  de="Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist die Zahl der Felder. Die Frage ist immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn für alle deine Karten gewählt hast.",
-  tr="Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri kaç kare ilerleyeceğindir. Soru ise her zaman kendi seviyendedir — kolay, orta ya da uzman — başta bütün kartların için seçtiğin seviye.",
-  id="Pada giliranmu, ambil satu kartu. Nilainya, 1 sampai 6, adalah jumlah petak yang kamu tempuh. Pertanyaannya selalu sesuai tingkatmu — mudah, menengah, atau ahli — yang dipilih di awal untuk semua kartumu.",
-  ur="اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، خانوں کی تعداد ہے۔ سوال ہمیشہ آپ کے اپنے درجے کا ہوتا ہے — آسان، درمیانہ یا ماہر — جو شروع میں آپ کے تمام کارڈز کے لیے چنا جاتا ہے۔",
-  ms="Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak. Soalannya sentiasa pada tahap anda — mudah, sederhana atau pakar — yang dipilih pada permulaan untuk semua kad anda.",
-  it="Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è il numero di caselle. La domanda è sempre del tuo livello — facile, intermedio o esperto — scelto all'inizio per tutte le tue carte.",
-  nl="Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is het aantal vakjes. De vraag is altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin voor al je kaarten kiest.")
+  fr="À ton tour, pioche une carte : sa question s'ouvre aussitôt, toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ. Sa valeur, de 1 à 6 cases, reste cachée jusqu'à ta réponse.",
+  en="On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.",
+  ar="في دورك، اسحب بطاقة: يظهر سؤالها فورًا، دائمًا على مستواك — سهل أو متوسط أو خبير — الذي اخترته في البداية. أما قيمتها، من 1 إلى 6 مربعات، فتبقى مخفية حتى تجيب.",
+  es="En tu turno, roba una carta: su pregunta se abre al instante, siempre de tu nivel —fácil, intermedio o experto—, elegido al principio. Su valor, de 1 a 6 casillas, queda oculto hasta que respondas.",
+  pt="Na sua vez, puxe uma carta: a pergunta abre na hora, sempre do seu nível — fácil, intermediário ou especialista — escolhido no início. O valor dela, de 1 a 6 casas, fica escondido até você responder.",
+  de="Ziehe in deinem Zug eine Karte: Ihre Frage öffnet sich sofort, immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn gewählt hast. Ihr Wert, 1 bis 6 Felder, bleibt verdeckt, bis du antwortest.",
+  tr="Sıran geldiğinde bir kart çek: sorusu hemen açılır, her zaman başta seçtiğin kendi seviyende — kolay, orta ya da uzman. 1 ile 6 kare arasındaki değeri sen cevaplayana kadar gizli kalır.",
+  id="Pada giliranmu, ambil satu kartu: pertanyaannya langsung terbuka, selalu sesuai tingkatmu — mudah, menengah, atau ahli — yang dipilih di awal. Nilainya, 1 sampai 6 petak, tetap tersembunyi sampai kamu menjawab.",
+  ur="اپنی باری پر ایک کارڈ نکالیں: اس کا سوال فوراً کھلتا ہے، ہمیشہ آپ کے اپنے درجے کا — آسان، درمیانہ یا ماہر — جو شروع میں چنا گیا۔ اس کی قیمت، 1 سے 6 خانے، آپ کے جواب تک چھپی رہتی ہے۔",
+  ms="Pada giliran anda, cabut sekeping kad: soalannya terbuka serta-merta, sentiasa pada tahap anda — mudah, sederhana atau pakar — yang dipilih pada permulaan. Nilainya, 1 hingga 6 petak, kekal tersembunyi sehingga anda menjawab.",
+  it="Al tuo turno pesca una carta: la sua domanda si apre subito, sempre del tuo livello — facile, intermedio o esperto — scelto all'inizio. Il suo valore, da 1 a 6 caselle, resta nascosto finché non rispondi.",
+  nl="Trek bij jouw beurt een kaart: de vraag opent meteen, altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin koos. De waarde, 1 tot 6 vakjes, blijft verborgen tot je antwoordt.")
 
 s("ruleAnswerToAdvanceTitle", "Rules step 2 title",
   fr="Réponds pour avancer", en="Answer to advance", ar="أجب لتتقدم",
@@ -1520,18 +1520,18 @@ s("ruleAnswerToAdvanceTitle", "Rules step 2 title",
   ms="Jawab untuk maju", it="Rispondi per avanzare", nl="Antwoord om vooruit te gaan")
 
 s("ruleAnswerToAdvanceBody", "Rules step 2 body",
-  fr="Une bonne réponse fait avancer ton cheval exactement du nombre de cases inscrit sur la carte. Une mauvaise réponse le laisse sur place : tu ne recules jamais.",
-  en="A right answer moves your horse exactly the number of squares on the card. A wrong one leaves it where it stands: you never go backwards.",
-  ar="الإجابة الصحيحة تقدّم حصانك بعدد المربعات المكتوب على البطاقة تمامًا. والإجابة الخاطئة تتركه مكانه: لا تتراجع أبدًا.",
-  es="Una respuesta correcta avanza tu caballo exactamente las casillas indicadas en la carta. Una incorrecta lo deja donde está: nunca retrocedes.",
-  pt="Uma resposta certa avança seu cavalo exatamente o número de casas da carta. Uma errada o deixa onde está: você nunca recua.",
-  de="Eine richtige Antwort zieht dein Pferd genau um die Felder, die auf der Karte stehen. Eine falsche lässt es stehen: Du gehst nie zurück.",
-  tr="Doğru cevap atını kartta yazan kare kadar ilerletir. Yanlış cevap onu yerinde bırakır: asla geri gitmezsin.",
-  id="Jawaban benar memajukan kudamu tepat sebanyak petak yang tertera di kartu. Jawaban salah membiarkannya di tempat: kamu tidak pernah mundur.",
-  ur="درست جواب آپ کے گھوڑے کو کارڈ پر لکھے خانوں کے برابر آگے بڑھاتا ہے۔ غلط جواب اسے وہیں چھوڑ دیتا ہے: آپ کبھی پیچھے نہیں ہٹتے۔",
-  ms="Jawapan betul menggerakkan kuda anda tepat sebanyak petak pada kad. Jawapan salah membiarkannya di tempatnya: anda tidak pernah berundur.",
-  it="Una risposta giusta fa avanzare il tuo cavallo esattamente delle caselle indicate sulla carta. Una sbagliata lo lascia dov'è: non torni mai indietro.",
-  nl="Een goed antwoord laat je paard precies het aantal vakjes op de kaart vooruit gaan. Een fout antwoord laat het staan: je gaat nooit achteruit.")
+  fr="Une bonne réponse te fait gagner les cases de la carte. Choisis alors le cheval qui les prend : touche-le pour voir sa case d'arrivée, puis glisse-le jusqu'à elle — le dépôt vaut validation. Une mauvaise réponse laisse tout sur place : tu ne recules jamais.",
+  en="A right answer wins you the card's squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.",
+  ar="الإجابة الصحيحة تكسبك مربعات البطاقة. اختر بعدها الحصان الذي يأخذها: المسه لترى مربع وصوله، ثم اسحبه إليه — الإفلات هو الحركة. الإجابة الخاطئة تترك كل شيء مكانه: لا تتراجع أبدًا.",
+  es="Una respuesta correcta te hace ganar las casillas de la carta. Elige entonces el caballo que las toma: tócalo para ver dónde llegaría y arrástralo hasta allí; soltarlo es el movimiento. Una respuesta incorrecta lo deja todo donde está: nunca retrocedes.",
+  pt="Uma resposta certa faz você ganhar as casas da carta. Escolha então o cavalo que as usa: toque nele para ver onde chegaria e arraste-o até lá — soltar é o movimento. Uma resposta errada deixa tudo onde está: você nunca recua.",
+  de="Eine richtige Antwort bringt dir die Felder der Karte ein. Wähle dann das Pferd, das sie nimmt: Tippe es an, um sein Zielfeld zu sehen, und ziehe es dorthin – das Ablegen ist der Zug. Eine falsche Antwort lässt alles stehen: Du gehst nie zurück.",
+  tr="Doğru cevap sana kartın karelerini kazandırır. Sonra onları alacak atı seç: nereye varacağını görmek için dokun, sonra oraya sürükle — bırakmak hamledir. Yanlış cevap her şeyi yerinde bırakır: asla geri gitmezsin.",
+  id="Jawaban benar memberimu petak-petak kartu itu. Lalu pilih kuda yang mengambilnya: sentuh untuk melihat tujuannya, lalu seret ke sana — melepasnya adalah langkahnya. Jawaban salah membiarkan semuanya di tempat: kamu tidak pernah mundur.",
+  ur="درست جواب آپ کو کارڈ کے خانے جتاتا ہے۔ پھر وہ گھوڑا چنیں جو انہیں لے: اسے چھوئیں تاکہ اس کی منزل دیکھیں، پھر اسے وہاں گھسیٹیں — چھوڑنا ہی چال ہے۔ غلط جواب سب کچھ وہیں چھوڑ دیتا ہے: آپ کبھی پیچھے نہیں ہٹتے۔",
+  ms="Jawapan betul memberi anda petak-petak kad itu. Kemudian pilih kuda yang mengambilnya: sentuh untuk melihat destinasinya, lalu seret ke sana — melepaskannya ialah gerakan itu. Jawapan salah membiarkan semuanya di tempatnya: anda tidak pernah berundur.",
+  it="Una risposta giusta ti fa vincere le caselle della carta. Scegli allora il cavallo che le prende: toccalo per vedere dove arriverebbe, poi trascinalo fin lì — lasciarlo è la mossa. Una risposta sbagliata lascia tutto dov'è: non torni mai indietro.",
+  nl="Een goed antwoord levert je de vakjes van de kaart op. Kies dan het paard dat ze neemt: tik erop om te zien waar het uitkomt en sleep het daarheen – loslaten is de zet. Een fout antwoord laat alles staan: je gaat nooit achteruit.")
 
 s("ruleEscalierTitle", "Rules step 3 title",
   fr="L'escalier vers La Mecque", en="The escalier to Mecca",
@@ -1656,6 +1656,191 @@ s("ruleArrivalBody", "Rules step 6 body",
   ms="Capai penghujung laluan — melepasi garisan tidak mengapa — kemudian jawab Soalan Perjalanan untuk mengesahkan ketibaan anda. Jawapan salah tidak pernah mengundurkan anda: anda cuba lagi pada giliran seterusnya.",
   it="Raggiungi la fine del percorso — superare la linea è permesso — poi rispondi alla Domanda del viaggio per convalidare il tuo arrivo. Un errore non ti fa mai arretrare: riprovi al turno successivo.",
   nl="Bereik het einde van het parcours — voorbij de streep gaan mag — en beantwoord dan de Vraag van de Reis om je aankomst te bevestigen. Een fout zet je nooit terug: je probeert het gewoon opnieuw.")
+
+
+# ---- Core gameplay evolution: answer first, place the horse, bonus squares ----
+s("hapticFeedback", "Settings item: toggle for the board's vibrations",
+  fr="Vibrations", en="Vibration", ar="الاهتزاز", es="Vibración", pt="Vibração",
+  de="Vibration", tr="Titreşim", id="Getaran", ur="وائبریشن", ms="Getaran",
+  it="Vibrazione", nl="Trillingen")
+
+s("squaresWon", "Result medallion caption after a right answer: how many squares the card was worth",
+  ph={"count": "int"},
+  fr="{count, plural, one{{count} case gagnée} other{{count} cases gagnées}}",
+  en="{count, plural, one{{count} square won} other{{count} squares won}}",
+  ar="{count, plural, =0{لا مربعات} one{مربع واحد} two{مربعان} few{{count} مربعات} many{{count} مربعًا} other{{count} مربع}}",
+  es="{count, plural, one{{count} casilla ganada} other{{count} casillas ganadas}}",
+  pt="{count, plural, one{{count} casa ganha} other{{count} casas ganhas}}",
+  de="{count, plural, one{{count} Feld gewonnen} other{{count} Felder gewonnen}}",
+  tr="{count, plural, other{{count} kare kazanıldı}}",
+  id="{count, plural, other{{count} petak dimenangkan}}",
+  ur="{count, plural, one{{count} خانہ جیتا} other{{count} خانے جیتے}}",
+  ms="{count, plural, other{{count} petak dimenangi}}",
+  it="{count, plural, one{{count} casella vinta} other{{count} caselle vinte}}",
+  nl="{count, plural, one{{count} vakje gewonnen} other{{count} vakjes gewonnen}}")
+
+s("chooseHorseToMove", "Placement banner: pick which horse takes the won squares",
+  fr="Choisissez un cheval", en="Choose a horse", ar="اختر حصانًا", es="Elige un caballo",
+  pt="Escolha um cavalo", de="Wähle ein Pferd", tr="Bir at seç", id="Pilih seekor kuda",
+  ur="ایک گھوڑا چنیں", ms="Pilih seekor kuda", it="Scegli un cavallo", nl="Kies een paard")
+
+s("touchHorseHint", "Placement banner hint before any horse is touched",
+  fr="Touchez un cheval pour voir où il irait",
+  en="Touch a horse to see where it would go",
+  ar="المس حصانًا لترى إلى أين سيذهب",
+  es="Toca un caballo para ver adónde iría",
+  pt="Toque num cavalo para ver aonde iria",
+  de="Tippe ein Pferd an, um sein Ziel zu sehen",
+  tr="Nereye gideceğini görmek için bir ata dokun",
+  id="Sentuh kuda untuk melihat tujuannya",
+  ur="گھوڑے کو چھوئیں تاکہ دیکھیں وہ کہاں جائے گا",
+  ms="Sentuh kuda untuk melihat ke mana ia pergi",
+  it="Tocca un cavallo per vedere dove andrebbe",
+  nl="Tik op een paard om te zien waar het heen gaat")
+
+s("dragHorseToDestination", "Placement banner hint once a horse is selected: drag it onto the highlighted square",
+  fr="Glissez le cheval jusqu'à sa case dorée",
+  en="Drag the horse to its golden square",
+  ar="اسحب الحصان إلى مربعه الذهبي",
+  es="Arrastra el caballo hasta su casilla dorada",
+  pt="Arraste o cavalo até a casa dourada",
+  de="Zieh das Pferd auf sein goldenes Feld",
+  tr="Atı altın karesine sürükle",
+  id="Seret kuda ke petak emasnya",
+  ur="گھوڑے کو اس کے سنہری خانے تک گھسیٹیں",
+  ms="Seret kuda ke petak emasnya",
+  it="Trascina il cavallo sulla sua casella dorata",
+  nl="Sleep het paard naar zijn gouden vakje")
+
+s("bonusLabel", "Word shouted when a bonus square fires, above its value",
+  fr="BONUS", en="BONUS", ar="مكافأة", es="BONUS", pt="BÔNUS", de="BONUS",
+  tr="BONUS", id="BONUS", ur="بونس", ms="BONUS", it="BONUS", nl="BONUS")
+
+s("bonusPlus", "Bonus value with its unit, e.g. '+10 squares'",
+  ph={"value": "int"},
+  fr="+{value} cases", en="+{value} squares", ar="+{value} مربعات", es="+{value} casillas",
+  pt="+{value} casas", de="+{value} Felder", tr="+{value} kare", id="+{value} petak",
+  ur="+{value} خانے", ms="+{value} petak", it="+{value} caselle", nl="+{value} vakjes")
+
+s("bonusRide", "Turn banner while the horse rides the bonus it landed on",
+  ph={"value": "int"},
+  fr="Case bonus ! Votre cheval avance encore de {value} cases.",
+  en="Bonus square! Your horse rides on {value} more squares.",
+  ar="مربع مكافأة! يتقدّم حصانك {value} مربعات إضافية.",
+  es="¡Casilla bonus! Tu caballo avanza {value} casillas más.",
+  pt="Casa bônus! Seu cavalo avança mais {value} casas.",
+  de="Bonusfeld! Dein Pferd reitet {value} Felder weiter.",
+  tr="Bonus kare! Atın {value} kare daha ilerliyor.",
+  id="Petak bonus! Kudamu melaju {value} petak lagi.",
+  ur="بونس خانہ! آپ کا گھوڑا مزید {value} خانے آگے بڑھتا ہے۔",
+  ms="Petak bonus! Kuda anda mara {value} petak lagi.",
+  it="Casella bonus! Il tuo cavallo avanza di altre {value} caselle.",
+  nl="Bonusvakje! Je paard rijdt nog {value} vakjes door.")
+
+s("cardWasWorth", "Feedback sheet line after a wrong answer: what the card would have moved",
+  ph={"value": "int"},
+  fr="Cette carte valait {value} cases.", en="This card was worth {value} squares.",
+  ar="كانت هذه البطاقة تساوي {value} مربعات.", es="Esta carta valía {value} casillas.",
+  pt="Esta carta valia {value} casas.", de="Diese Karte war {value} Felder wert.",
+  tr="Bu kart {value} kare değerindeydi.", id="Kartu ini bernilai {value} petak.",
+  ur="یہ کارڈ {value} خانوں کا تھا۔", ms="Kad ini bernilai {value} petak.",
+  it="Questa carta valeva {value} caselle.", nl="Deze kaart was {value} vakjes waard.")
+
+s("answerToReveal", "Face of the drawn card while its value is still hidden",
+  fr="Répondez pour découvrir sa valeur", en="Answer to reveal its value",
+  ar="أجب لتكشف قيمتها", es="Responde para descubrir su valor",
+  pt="Responda para descobrir o valor", de="Antworte, um ihren Wert zu sehen",
+  tr="Değerini görmek için cevapla", id="Jawab untuk mengungkap nilainya",
+  ur="اس کی قیمت جاننے کے لیے جواب دیں", ms="Jawab untuk mendedahkan nilainya",
+  it="Rispondi per scoprire il suo valore", nl="Antwoord om de waarde te onthullen")
+
+s("opponentPlaces", "Turn banner while the AI opponent picks which horse takes its squares",
+  ph={"name": "String"},
+  fr="{name} choisit un cheval…", en="{name} is choosing a horse…", ar="{name} يختار حصانًا…",
+  es="{name} elige un caballo…", pt="{name} está escolhendo um cavalo…", de="{name} wählt ein Pferd…",
+  tr="{name} bir at seçiyor…", id="{name} memilih kuda…", ur="{name} گھوڑا چن رہا ہے…",
+  ms="{name} memilih kuda…", it="{name} sceglie un cavallo…", nl="{name} kiest een paard…")
+
+s("opponentBonus", "Turn banner when the AI opponent's horse fires a bonus square",
+  ph={"name": "String", "value": "int"},
+  fr="{name} décroche un bonus +{value} !", en="{name} lands a +{value} bonus!",
+  ar="{name} يحصل على مكافأة +{value}!", es="¡{name} consigue un bonus +{value}!",
+  pt="{name} ganha um bônus +{value}!", de="{name} holt einen +{value}-Bonus!",
+  tr="{name} +{value} bonus kazandı!", id="{name} mendapat bonus +{value}!",
+  ur="{name} کو +{value} بونس ملا!", ms="{name} mendapat bonus +{value}!",
+  it="{name} ottiene un bonus +{value}!", nl="{name} pakt een +{value} bonus!")
+
+s("leaderLabel", "Small HUD tag on the rider currently ahead in the race",
+  fr="En tête", en="Leading", ar="في المقدمة", es="En cabeza", pt="Na frente",
+  de="Vorne", tr="Önde", id="Memimpin", ur="سب سے آگے", ms="Mendahului",
+  it="In testa", nl="Aan kop")
+
+s("tookTheLead", "Short notice when a rider overtakes to become the leader",
+  ph={"name": "String"},
+  fr="{name} passe en tête !", en="{name} takes the lead!", ar="{name} يتصدّر السباق!",
+  es="¡{name} se pone en cabeza!", pt="{name} assume a liderança!", de="{name} übernimmt die Führung!",
+  tr="{name} öne geçti!", id="{name} memimpin!", ur="{name} آگے نکل گیا!",
+  ms="{name} mendahului!", it="{name} passa in testa!", nl="{name} neemt de leiding!")
+
+s("bonusSquareSemantics", "Screen-reader label of a bonus square on the board",
+  ph={"value": "int"},
+  fr="Case bonus +{value}", en="Bonus square +{value}", ar="مربع مكافأة +{value}",
+  es="Casilla bonus +{value}", pt="Casa bônus +{value}", de="Bonusfeld +{value}",
+  tr="Bonus kare +{value}", id="Petak bonus +{value}", ur="بونس خانہ +{value}",
+  ms="Petak bonus +{value}", it="Casella bonus +{value}", nl="Bonusvakje +{value}")
+
+s("moveHintBonus", "Destination tag: this ride ends on a bonus square worth +N",
+  ph={"value": "int"},
+  fr="Bonus +{value}", en="Bonus +{value}", ar="مكافأة +{value}", es="Bonus +{value}",
+  pt="Bônus +{value}", de="Bonus +{value}", tr="Bonus +{value}", id="Bonus +{value}",
+  ur="بونس +{value}", ms="Bonus +{value}", it="Bonus +{value}", nl="Bonus +{value}")
+
+s("bonusSquaresTeaser", "Player setup screen: what the board holds this game",
+  fr="16 cases bonus sont cachées sur le plateau : +5, +10 et la rare +20.",
+  en="16 bonus squares await on the board: +5, +10 and the rare +20.",
+  ar="16 مربع مكافأة على اللوحة: +5 و+10 و+20 النادر.",
+  es="16 casillas bonus te esperan en el tablero: +5, +10 y la rara +20.",
+  pt="16 casas bônus esperam no tabuleiro: +5, +10 e a rara +20.",
+  de="16 Bonusfelder warten auf dem Brett: +5, +10 und das seltene +20.",
+  tr="Tahtada 16 bonus kare seni bekliyor: +5, +10 ve nadir +20.",
+  id="16 petak bonus menanti di papan: +5, +10, dan +20 yang langka.",
+  ur="بورڈ پر 16 بونس خانے منتظر ہیں: +5، +10 اور نایاب +20۔",
+  ms="16 petak bonus menanti di papan: +5, +10 dan +20 yang jarang.",
+  it="16 caselle bonus ti aspettano sul tabellone: +5, +10 e la rara +20.",
+  nl="16 bonusvakjes wachten op het bord: +5, +10 en de zeldzame +20.")
+
+s("ridersSubtitle", "Player setup screen subtitle under the title",
+  fr="Chaque cavalier choisit son niveau ; la carte ne décide que la distance.",
+  en="Every rider picks their level; the card only sets the distance.",
+  ar="كل فارس يختار مستواه؛ البطاقة تحدّد المسافة فقط.",
+  es="Cada jinete elige su nivel; la carta solo marca la distancia.",
+  pt="Cada cavaleiro escolhe seu nível; a carta só define a distância.",
+  de="Jeder Reiter wählt sein Niveau; die Karte bestimmt nur die Distanz.",
+  tr="Her binici seviyesini seçer; kart yalnızca mesafeyi belirler.",
+  id="Setiap penunggang memilih tingkatnya; kartu hanya menentukan jarak.",
+  ur="ہر سوار اپنا درجہ چنتا ہے؛ کارڈ صرف فاصلہ طے کرتا ہے۔",
+  ms="Setiap penunggang memilih tahapnya; kad hanya menentukan jarak.",
+  it="Ogni cavaliere sceglie il suo livello; la carta decide solo la distanza.",
+  nl="Elke ruiter kiest zijn niveau; de kaart bepaalt alleen de afstand.")
+
+s("ruleBonusTitle", "Rules step: the bonus squares",
+  fr="Les cases bonus", en="Bonus squares", ar="مربعات المكافأة", es="Las casillas bonus",
+  pt="As casas bônus", de="Die Bonusfelder", tr="Bonus kareler", id="Petak bonus",
+  ur="بونس خانے", ms="Petak bonus", it="Le caselle bonus", nl="De bonusvakjes")
+
+s("ruleBonusBody", "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, once per turn",
+  fr="Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s'arrête exactement dessus repart aussitôt de +5, +10 ou +20 cases — une seule fois par tour, et la case reste en jeu pour tous.",
+  en="Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.",
+  ar="توزَّع ستة عشر مربع مكافأة على اللوحة في كل لعبة، أربعة في كل ربع. الحصان الذي يتوقف عليها تمامًا يتقدّم فورًا +5 أو +10 أو +20 مربعًا — مرة واحدة في الدور، ويبقى المربع في اللعب للجميع.",
+  es="Dieciséis casillas bonus se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene justo en una avanza al instante +5, +10 o +20 casillas: una sola vez por turno, y la casilla sigue en juego para todos.",
+  pt="Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 casas — uma só vez por turno, e a casa continua em jogo para todos.",
+  de="Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Felder weiter – einmal pro Zug, und das Feld bleibt für alle im Spiel.",
+  tr="Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 kare ilerler — turda yalnızca bir kez, ve kare herkes için oyunda kalır.",
+  id="Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 petak — sekali per giliran, dan petaknya tetap berlaku untuk semua.",
+  ur="ہر کھیل میں بورڈ پر سولہ بونس خانے بانٹے جاتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل ان پر رکے وہ فوراً +5، +10 یا +20 خانے آگے بڑھتا ہے — ہر باری میں صرف ایک بار، اور خانہ سب کے لیے کھیل میں رہتا ہے۔",
+  ms="Enam belas petak bonus diagihkan di papan setiap permainan, empat setiap suku. Kuda yang berhenti tepat di atasnya terus mara +5, +10 atau +20 petak — sekali setiap giliran, dan petak itu kekal untuk semua.",
+  it="Sedici caselle bonus vengono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una avanza subito di +5, +10 o +20 caselle — una sola volta per turno, e la casella resta in gioco per tutti.",
+  nl="Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 vakjes door – één keer per beurt, en het vakje blijft voor iedereen in het spel.")
 
 
 # ---------------------------------------------------------------------
