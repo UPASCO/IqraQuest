@@ -99,8 +99,10 @@ See `lib/widgets/question_card.dart`.
 Color chip + team symbol glyph + name + (solo mode) AI difficulty tag.
 Never symbol-less.
 
-### Home screen key art
-The first screen is one baked picture, not a scene painted at runtime:
+### Key art (home and welcome)
+The two screens the player meets first — the welcome after install and
+the home hub — stand on the **same** baked picture, not a scene painted
+at runtime:
 `assets/images/home_hero.webp`, composed by `tool/art/bake_home_hero.py`
 from the app's own artwork — the icon's three galloping horses bled into
 the table above, the painted plate (`assets/board/cross_board.webp`) laid
@@ -108,6 +110,11 @@ on it in perspective below, a gold rim light and cast shadow under it,
 motes in the warm air, and a dark foot for the CTA. Baked at the phone's
 own aspect (1242x2688) so `BoxFit.cover` never crops its sides. The
 title takes a top scrim, since ivory type on a lit mane would not hold.
+Both screens wear it the same way: the name over the horses, the gold
+rule under it, then one framed block laid on the picture's calm foot —
+the journey card on home, the welcome plaque on onboarding — with the
+gold CTA below. The welcome plaque is deliberately compact so it rests
+on that foot instead of climbing over the board it is introducing.
 
 ### The board plate
 Baked by `tool/art/bake_cross_board.py` from the owner's reference
