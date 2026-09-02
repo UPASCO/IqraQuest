@@ -143,15 +143,27 @@ void main() {
     rootBundle.clear();
     await _pump(tester, '/daily-challenge');
     // The bank is real I/O (a large JSON decoded off the main isolate),
-    // which only completes while real time runs: let it.
-    await tester.runAsync(
-      () => Future<void>.delayed(const Duration(milliseconds: 900)),
-    );
+    // which only completes while real time runs: wait for the first card
+    // rather than for a fixed delay that a loaded machine would overrun.
+    await tester.runAsync(() async {
+      final deadline = DateTime.now().add(const Duration(seconds: 20));
+      while (find.byType(QuestionCard).evaluate().isEmpty &&
+          DateTime.now().isBefore(deadline)) {
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+        await tester.pump();
+      }
+    });
     await _settle(tester);
     final question = find.byType(QuestionCard);
     expect(question, findsOneWidget, reason: 'the day\'s first question is up');
     final q = tester.widget<QuestionCard>(question).question;
-    await tester.tap(find.text(q.answers.first).first);
+    // The day's question is date-dependent; a long one can push the
+    // answers below the fold of the smallest phone, so scroll to it —
+    // the card scrolls, only Continue must not.
+    final firstAnswer = find.text(q.answers.first).first;
+    await tester.ensureVisible(firstAnswer);
+    await _settle(tester);
+    await tester.tap(firstAnswer);
     await _settle(tester);
     _expectOnScreen(
       tester,

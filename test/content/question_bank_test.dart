@@ -54,12 +54,12 @@ void main() {
   }
 
   group('Cross-language parity', () {
-    test('fr, en and ar expose exactly the same question ids', () async {
+    test('every language exposes exactly the same question ids', () async {
       final fr = (await repo.loadAll('fr')).map((q) => q.id).toSet();
-      final en = (await QuestionRepository().loadAll('en')).map((q) => q.id).toSet();
-      final ar = (await QuestionRepository().loadAll('ar')).map((q) => q.id).toSet();
-      expect(fr, en);
-      expect(fr, ar);
+      for (final lang in QuestionRepository.supportedContentLanguages) {
+        final ids = (await QuestionRepository().loadAll(lang)).map((q) => q.id).toSet();
+        expect(ids, fr, reason: lang);
+      }
     });
 
     test('the correct answer index is identical across languages for every id', () async {

@@ -188,13 +188,18 @@ files directly, or the registry and the shipped content will drift apart.
 
 ## 10. Honest scope of the v1 bank
 
-The product brief targets 500 canonical questions × 12 languages. This
-v1 ships **60 canonical questions**, fully written and reviewed against
-every rule above in **3 languages (French, English, Arabic)** — see
-`README.md` §Content scope for the full rationale. Scaling to 500
-requires the same one-by-one sourcing discipline applied here; it is
-deliberately not something to batch-generate, because rule §1 above
-("at the slightest doubt, reject the question") cannot be verified in
-bulk. The pipeline (schema, validators, registry, CSV, `dart` loader,
-tests) is built to the full target scale and adding question #61 does not
+The product brief targets 500 canonical questions × 12 languages, and
+the bank now ships at that scale: **500 canonical questions**, each
+written and reviewed one by one against every rule above, in **all 12
+UI languages** (French, English and Arabic as the source texts; Spanish,
+Portuguese, German, Turkish, Indonesian, Urdu, Malay, Italian and Dutch
+translated entry by entry from them, with the answer order, level,
+explanation and source reference preserved and checked by the
+generator). The sourcing discipline was not relaxed to get there: rule
+§1 above ("at the slightest doubt, reject the question") was applied to
+every entry, and the translations are of the *wording* only — the facts,
+references and verification status live once, in the master file, and
+every language file is generated from it. The pipeline (schema,
+validators, registry, CSV, `dart` loader, tests) enforces the same
+counts and parity across all 12 files, and adding question #501 does not
 require touching any app code.

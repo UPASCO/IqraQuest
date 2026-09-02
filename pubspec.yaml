@@ -79,6 +79,15 @@ flutter:
     - assets/data/questions/fr/
     - assets/data/questions/en/
     - assets/data/questions/ar/
+    - assets/data/questions/es/
+    - assets/data/questions/pt/
+    - assets/data/questions/de/
+    - assets/data/questions/tr/
+    - assets/data/questions/id/
+    - assets/data/questions/ur/
+    - assets/data/questions/ms/
+    - assets/data/questions/it/
+    - assets/data/questions/nl/
 
   fonts:
     - family: NotoSans

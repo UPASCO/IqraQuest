@@ -144,10 +144,18 @@ void main() {
   testWidgets('daily challenge summary shares the day score', (tester) async {
     final log = <({String text, Uint8List? image, Rect? origin})>[];
     await pumpApp(tester, '/daily-challenge', log);
-    // Real asset IO for the question pool.
-    await tester.runAsync(
-      () => Future<void>.delayed(const Duration(milliseconds: 300)),
-    );
+    // Real asset IO for the question pool: the bank is decoded off the
+    // main isolate and only completes while real time runs, so wait for
+    // the first card rather than for a fixed delay that a loaded machine
+    // would overrun.
+    await tester.runAsync(() async {
+      final deadline = DateTime.now().add(const Duration(seconds: 20));
+      while (find.text('A').evaluate().isEmpty &&
+          DateTime.now().isBefore(deadline)) {
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+        await tester.pump();
+      }
+    });
     await settle(tester);
 
     // Play the whole challenge: always the first choice, then continue.
@@ -156,6 +164,8 @@ void main() {
         guard++ < 12) {
       final choice = find.text('A');
       expect(choice, findsOneWidget, reason: 'a question must be on screen');
+      await tester.ensureVisible(choice);
+      await settle(tester);
       await tester.tap(choice);
       await settle(tester);
       await tester.ensureVisible(find.text('Continue'));

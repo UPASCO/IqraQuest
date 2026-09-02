@@ -16,7 +16,9 @@ import '../models/question_category.dart';
 class QuestionRepository {
   QuestionRepository();
 
-  static const List<String> supportedContentLanguages = ['fr', 'en', 'ar'];
+  static const List<String> supportedContentLanguages = [
+    'fr', 'en', 'ar', 'es', 'pt', 'de', 'tr', 'id', 'ur', 'ms', 'it', 'nl',
+  ];
   static const String fallbackLanguage = 'en';
 
   List<Question>? _cache;
