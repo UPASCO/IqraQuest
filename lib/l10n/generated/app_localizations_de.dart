@@ -732,7 +732,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Jeder Spieler hat vier Pferde im Stall. Ein Pferd kommt nur mit einer 6 heraus: Antworte richtig, und es stellt sich auf sein Startfeld – und weil die 6 noch einmal zieht, reitet es gleich los. Hast du schon ein Pferd auf der Bahn, wählst du: ein weiteres herausholen oder ziehen.';
+      'Jeder Spieler hat vier Pferde, und das erste steht schon auf seinem Startfeld: Du spielst ab der allerersten Karte, ohne zu warten. Die anderen drei verlassen den Stall mit einer 6: Antworte richtig, und das Pferd nimmt das Startfeld — und da die 6 noch einmal ziehen lässt, reitet es sofort los. Du entscheidest: noch eines herausholen oder reiten.';
 
   @override
   String get ruleSixTitle => 'Die 6 zieht noch einmal';

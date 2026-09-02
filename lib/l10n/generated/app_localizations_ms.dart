@@ -731,7 +731,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Setiap pemain ada empat ekor kuda di kandang. Kuda hanya keluar dengan 6: jawab dengan betul dan ia menduduki petak permulaannya — dan kerana 6 membolehkan anda bermain lagi, ia terus berlari. Jika anda sudah ada kuda di litar, anda pilih: keluarkan seekor lagi, atau maju.';
+      'Setiap pemain mempunyai empat kuda, dan yang pertama sudah berada di petak permulaannya: anda bermain sejak kad pertama, tanpa menunggu. Tiga yang lain keluar dari kandang dengan nombor 6: jawab betul dan kuda mengambil petak permulaan — dan kerana 6 membolehkan bermain lagi, ia terus bergerak. Pilihan anda: keluarkan satu lagi, atau mara.';
 
   @override
   String get ruleSixTitle => '6 bermain lagi';

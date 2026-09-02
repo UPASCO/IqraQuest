@@ -59,6 +59,61 @@ GameState won(GameEngine engine, GameState s, int card) {
 void main() {
   const engine = GameEngine();
 
+  group('The opening line-up', () {
+    test('every rider starts with its first horse on its own start square', () {
+      const engine = GameEngine();
+      final s = game();
+      final opened = s.copyWith(
+        players: engine.openingLineUp(s.players, s.circuit),
+      );
+      for (var p = 0; p < opened.players.length; p++) {
+        final horses = opened.players[p].horses;
+        expect(
+          horses.first.position,
+          TrackPosition(s.circuit.entryIndexForTeam(p)),
+          reason: 'rider \$p opens on its own start square',
+        );
+        expect(
+          horses.skip(1).every((h) => h.position is HomePosition),
+          isTrue,
+          reason: 'only the first horse is out',
+        );
+      }
+    });
+
+    test('the first card can already ride it — no 6 to wait for', () {
+      const engine = GameEngine();
+      var s = game();
+      s = s.copyWith(players: engine.openingLineUp(s.players, s.circuit));
+      for (var value = 1; value <= 6; value++) {
+        final moves = engine.legalMoves(s, MovementChoice(value));
+        expect(
+          moves.any((m) => m.horseIndex == 0 && !m.exitsStable),
+          isTrue,
+          reason: 'a \$value must be playable from the very first card',
+        );
+      }
+      // The other three still need their 6 — and, by the classic rule,
+      // a free start square: the horse that opens the game stands on it,
+      // so the gate stays shut until it rides off. One move clears it.
+      expect(engine.legalMoves(s, const MovementChoice(3)).length, 1);
+      expect(
+        engine.legalMoves(s, const MovementChoice(6)).where((m) => m.exitsStable),
+        isEmpty,
+        reason: 'your own horse on the start square keeps the gate shut',
+      );
+      final moved = at(s, horse: 0, pos: const TrackPosition(4));
+      expect(
+        engine
+            .legalMoves(moved, const MovementChoice(6))
+            .where((m) => m.exitsStable)
+            .length,
+        3,
+        reason: 'the gate opens again once the start square is free',
+      );
+    });
+  });
+
   group('Placement', () {
     test('a right answer opens the choice; every legal horse is offered with its destination', () {
       var s = game();

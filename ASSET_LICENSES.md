@@ -133,6 +133,7 @@ original works of this project and carry the project's licence.
 | `assets/audio/bonus_small.wav` | a +5 bonus square fires (three rising plucks) | synthesized in-repo | project |
 | `assets/audio/bonus_mid.wav` | a +10 bonus square fires (four notes up, shimmer) | synthesized in-repo | project |
 | `assets/audio/bonus_big.wav` | a +20 bonus square fires (frame drum, five-note run, held chord) | synthesized in-repo | project |
+| `assets/images/home_hero.webp` | home screen key art: the app icon's own three horses composited over the painted board laid in perspective (`tool/art/bake_home_hero.py`) | composed in-repo from the owner's artwork | project |
 
 Spec prohibitions honoured by construction: **no Quranic recitation** as
 a game effect, **no adhan** as a notification sound, and **no

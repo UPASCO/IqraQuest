@@ -196,6 +196,29 @@ class GameEngine {
   // Board generation
   // ---------------------------------------------------------------------
 
+  /// The opening line-up: every rider's **first** horse already stands on
+  /// its start square.
+  ///
+  /// The classic game opens with four horses shut in and a 6 to find,
+  /// and the first minutes are a wait rather than a game — several turns
+  /// can pass with nothing to place. One horse out changes that: there
+  /// is always something to ride from the very first card. The other
+  /// three still need their 6, so the gate, the exit and the capture on
+  /// a start square all keep their meaning.
+  List<Player> openingLineUp(List<Player> players, Circuit circuit) => [
+    for (var i = 0; i < players.length; i++)
+      players[i].copyWith(
+        horses: [
+          for (var h = 0; h < players[i].horses.length; h++)
+            h == 0
+                ? players[i].horses[h].copyWith(
+                    position: TrackPosition(circuit.entryIndexForTeam(i)),
+                  )
+                : players[i].horses[h],
+        ],
+      ),
+  ];
+
   /// The game's bonus squares, generated once from its seed. A state that
   /// already carries a layout is returned untouched: the squares of a
   /// game never move, whatever rebuilds, saves or resumes it.

@@ -725,7 +725,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Her oyuncunun ahırda dört atı vardır. Bir at yalnızca 6 ile çıkar: doğru cevapla, başlangıç karesine yerleşsin — 6 yeniden oynattığı için hemen yola çıkar. Pistte zaten bir atın varsa seçersin: bir at daha çıkar ya da ilerle.';
+      'Her oyuncunun dört atı vardır ve ilki başlangıç karesinde hazır bekler: ilk karttan itibaren oynarsın, beklemeden. Diğer üçü ahırdan 6 ile çıkar: doğru cevapla, at başlangıç karesine yerleşir — ve 6 yeniden oynattığı için hemen yola koyulur. Seçim senin: bir at daha çıkar ya da ilerle.';
 
   @override
   String get ruleSixTitle => '6 yeniden oynatır';

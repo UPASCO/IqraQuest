@@ -203,7 +203,7 @@
   "ruleEscalierTitle": "Mekke'ye çıkan merdiven",
   "ruleEscalierBody": "Tahtada tam bir tur attıktan sonra atın kendi merdiveninin beş basamağını çıkıp Mekke'ye ulaşır. Orada kimse ona yetişemez.",
   "ruleExitTitle": "Ahırdan çıkmak",
-  "ruleExitBody": "Her oyuncunun ahırda dört atı vardır. Bir at yalnızca 6 ile çıkar: doğru cevapla, başlangıç karesine yerleşsin — 6 yeniden oynattığı için hemen yola çıkar. Pistte zaten bir atın varsa seçersin: bir at daha çıkar ya da ilerle.",
+  "ruleExitBody": "Her oyuncunun dört atı vardır ve ilki başlangıç karesinde hazır bekler: ilk karttan itibaren oynarsın, beklemeden. Diğer üçü ahırdan 6 ile çıkar: doğru cevapla, at başlangıç karesine yerleşir — ve 6 yeniden oynattığı için hemen yola koyulur. Seçim senin: bir at daha çıkar ya da ilerle.",
   "ruleSixTitle": "6 yeniden oynatır",
   "ruleSixBody": "Zardaki gibi: 6 çektiğinde, cevabın doğru olsun olmasın, turundan sonra yeniden oynarsın. Ve iki atın asla aynı karede duramaz.",
   "ruleCaptureTitle": "Yakala ve ahıra yolla",

@@ -733,7 +733,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Cada jugador tiene cuatro caballos en el establo. Un caballo solo sale con un 6: responde bien y ocupará su casilla de salida; y como el 6 repite turno, arranca enseguida. Si ya tienes un caballo en carrera, eliges: sacar otro o avanzar.';
+      'Cada jugador tiene cuatro caballos, y el primero ya está en su casilla de salida: juegas desde la primera carta, sin esperar. Los otros tres salen del establo con un 6: responde bien y el caballo ocupa la casilla de salida — y como el 6 hace jugar otra vez, sale enseguida. Tú eliges: sacar otro o avanzar.';
 
   @override
   String get ruleSixTitle => 'El 6 repite turno';

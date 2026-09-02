@@ -734,7 +734,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Cada jogador tem quatro cavalos no estábulo. Um cavalo só sai com um 6: responda certo e ele ocupa a casa de partida — e como o 6 joga de novo, ele parte na hora. Se você já tem um cavalo na pista, escolhe: tirar outro ou avançar.';
+      'Cada jogador tem quatro cavalos, e o primeiro já está na casa de saída: você joga desde a primeira carta, sem esperar. Os outros três saem do estábulo com um 6: responda certo e o cavalo ocupa a casa de saída — e como o 6 faz jogar de novo, ele parte na hora. A escolha é sua: tirar outro ou avançar.';
 
   @override
   String get ruleSixTitle => 'O 6 joga de novo';

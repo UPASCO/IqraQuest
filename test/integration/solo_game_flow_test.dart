@@ -67,25 +67,40 @@ void main() {
 
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  test('a family game starts at the deck, with nothing asked and nothing moved', () async {
+  test('a family game starts at the deck, with one horse already out', () async {
     final storage = await LocalStorageService.create();
     final controller = await buildController(storage);
 
     controller.startNewGame(
       mode: GameMode.family,
-      variant: GameVariant.quick,
+      variant: GameVariant.classic,
       circuitId: CircuitId.oasisRoute,
-      players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
+      players: [
+        human('p0', AppTeam.emerald, horses: 4),
+        human('p1', AppTeam.saphir, horses: 4),
+      ],
     );
 
     final session = controller.state!;
     expect(session.gameState.turnPhase, TurnPhase.selectingGait);
     expect(session.currentQuestion, isNull);
     expect(controller.legalMoves, isEmpty, reason: 'no card, no move');
-    expect(
-      session.gameState.players[0].horses.first.position,
-      const HomePosition(),
-    );
+    // Nobody waits for a 6 to start: the first horse of every rider is
+    // on its start square, the other three are still in the stable.
+    final circuit = session.gameState.circuit;
+    for (var p = 0; p < session.gameState.players.length; p++) {
+      final horses = session.gameState.players[p].horses;
+      expect(
+        horses.first.position,
+        TrackPosition(circuit.entryIndexForTeam(p)),
+        reason: 'rider $p opens on its own start square',
+      );
+      expect(
+        horses.skip(1).every((h) => h.position is HomePosition),
+        isTrue,
+        reason: 'only the first horse is out',
+      );
+    }
     // The sixteen bonus squares are dealt with the game.
     expect(session.gameState.bonusTiles.length, 16);
     expect(session.gameState.bonusSeed, isNot(0));
@@ -209,6 +224,8 @@ void main() {
       players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
     );
 
+    final opening =
+        controller.state!.gameState.players[0].horses.first.position;
     controller.drawCard();
     final drawn = controller.state!.gameState.drawnCard!;
     final question = controller.state!.currentQuestion!;
@@ -218,7 +235,8 @@ void main() {
 
     expect(
       controller.state!.gameState.players[0].horses.first.position,
-      const HomePosition(),
+      opening,
+      reason: 'a wrong answer moves nothing',
     );
     expect(controller.state!.gameState.lastAnswerCorrect, isFalse);
 
@@ -441,10 +459,16 @@ void main() {
         // The turn goes straight to the placement: the player still
         // chooses, and the move still happens — play is never interrupted.
         expect(state.turnPhase, TurnPhase.choosingHorse);
-        expect(controller.placeHorse(0), isTrue);
+        final move = controller.legalMoves.first;
+        expect(controller.placeHorse(move.horseIndex), isTrue);
         expect(
-          controller.state!.gameState.players[0].horses.first.position,
-          const TrackPosition(0),
+          controller
+              .state!
+              .gameState
+              .players[0]
+              .horses[move.horseIndex]
+              .position,
+          move.destination,
         );
         expect(pool, isNotEmpty); // the shipped bank itself is not empty
       },

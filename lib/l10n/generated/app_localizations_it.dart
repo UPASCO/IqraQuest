@@ -734,7 +734,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Ogni giocatore ha quattro cavalli nella stalla. Un cavallo esce solo con un 6: rispondi bene e prende la sua casella di partenza — e siccome il 6 fa rigiocare, parte subito. Se hai già un cavallo in gara, scegli: farne uscire un altro, o avanzare.';
+      'Ogni giocatore ha quattro cavalli, e il primo è già sulla sua casella di partenza: giochi dalla primissima carta, senza attendere. Gli altri tre escono dalla scuderia con un 6: rispondi bene e il cavallo prende la casella di partenza — e poiché il 6 fa rigiocare, parte subito. La scelta è tua: farne uscire un altro, o avanzare.';
 
   @override
   String get ruleSixTitle => 'Il 6 fa rigiocare';

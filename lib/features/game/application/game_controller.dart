@@ -198,6 +198,11 @@ class GameController extends StateNotifier<GameSession?> {
     // The sixteen bonus squares are dealt once, here, from the game's
     // own seed — and then live in the state, never recomputed.
     gameState = engine.ensureBonusLayout(gameState);
+    // Nobody waits for a 6 to start playing: the first horse of every
+    // rider is already on its start square.
+    gameState = gameState.copyWith(
+      players: engine.openingLineUp(gameState.players, gameState.circuit),
+    );
     state = GameSession(gameState: gameState);
     _persist();
     _beginTurn();

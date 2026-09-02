@@ -732,7 +732,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Chaque joueur a quatre chevaux à l\'écurie. Un cheval ne sort que sur un 6 : réponds juste et il se place sur sa case de départ — et comme le 6 fait rejouer, il repart aussitôt. Si tu as déjà un cheval en course, tu choisis : en sortir un autre, ou avancer.';
+      'Chaque joueur a quatre chevaux, et le premier est déjà sur sa case de départ : tu joues dès la première carte, sans attendre. Les trois autres sortent de l\'écurie sur un 6 : réponds juste et le cheval se place sur la case de départ — et comme le 6 fait rejouer, il repart aussitôt. À toi de choisir : en sortir un autre, ou avancer.';
 
   @override
   String get ruleSixTitle => 'Le 6 fait rejouer';

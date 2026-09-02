@@ -6,9 +6,7 @@ import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/legacy_game_migration_service.dart';
-import '../../../theme/app_team.dart';
-import '../../../widgets/board/board_environment.dart';
-import '../../../widgets/horse_painter.dart';
+import '../../../widgets/gold_rule.dart';
 import '../../../widgets/ornate_frame.dart';
 import '../../../widgets/illustration.dart';
 import '../../game/application/game_controller.dart';
@@ -79,53 +77,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          const Positioned.fill(
-            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.30, heroPath: true)),
+          // One baked picture, not a scene painted at runtime: the app
+          // icon's own three horses over the painted board laid on its
+          // table (tool/art/bake_home_hero.py). The first screen and the
+          // icon on the home screen are the same artwork.
+          Positioned.fill(
+            child: Image.asset(
+              AppArt.homeHero,
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
+              filterQuality: FilterQuality.medium,
+              errorBuilder: (_, _, _) => const ColoredBox(color: Color(0xFF0A3327)),
+            ),
           ),
-
-          // The hero: the horse on the trail, backlit by the dawn, its
-          // destination visible on the horizon behind it.
-          Align(
-            alignment: const Alignment(0, -0.10),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 300,
-                      height: 300,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: RadialGradient(colors: [Color(0x59FFE2A0), Color(0x00FFE2A0)]),
-                      ),
-                    ),
-                    const HorseToken(
-                      coat: HorseCoat.bay,
-                      team: AppTeam.saphir,
-                      pose: HorsePose.standing,
-                      size: 232,
-                    ),
-                  ],
-                ),
-                Transform.translate(
-                  offset: const Offset(0, -42),
-                  child: Container(
-                    width: 150,
-                    height: 20,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      gradient: RadialGradient(
-                        colors: [
-                          Colors.black.withValues(alpha: 0.32),
-                          Colors.black.withValues(alpha: 0),
-                        ],
-                      ),
-                    ),
+          // A scrim under the title only: the horses' manes are bright,
+          // and ivory type on them would not hold.
+          const Positioned.fill(
+            child: IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.0, 0.30, 0.55],
+                    colors: [Color(0xCC03151A), Color(0x6603151A), Color(0x0003151A)],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
 
@@ -186,6 +164,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: onSceneDim),
                   ),
+                  const SizedBox(height: 8),
+                  const GoldRule(width: 168),
+                  // The key art is the background: the column only has
+                  // to leave it room, and give it up first on a small
+                  // phone at a large text size.
                   const Spacer(),
 
                   // ---- The journey card: where I am + the dominant CTA ----

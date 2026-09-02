@@ -203,7 +203,7 @@
   "ruleEscalierTitle": "La escalera hacia La Meca",
   "ruleEscalierBody": "Tras una vuelta completa al tablero, tu caballo sube los cinco escalones de su escalera hacia La Meca. Allí ya nadie puede alcanzarlo.",
   "ruleExitTitle": "Salir del establo",
-  "ruleExitBody": "Cada jugador tiene cuatro caballos en el establo. Un caballo solo sale con un 6: responde bien y ocupará su casilla de salida; y como el 6 repite turno, arranca enseguida. Si ya tienes un caballo en carrera, eliges: sacar otro o avanzar.",
+  "ruleExitBody": "Cada jugador tiene cuatro caballos, y el primero ya está en su casilla de salida: juegas desde la primera carta, sin esperar. Los otros tres salen del establo con un 6: responde bien y el caballo ocupa la casilla de salida — y como el 6 hace jugar otra vez, sale enseguida. Tú eliges: sacar otro o avanzar.",
   "ruleSixTitle": "El 6 repite turno",
   "ruleSixBody": "Como con el dado: cuando robas un 6, vuelves a jugar después de tu turno, acertaras o no. Y dos de tus caballos nunca pueden compartir casilla.",
   "ruleCaptureTitle": "Capturar y enviar a casa",

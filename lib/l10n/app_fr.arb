@@ -203,7 +203,7 @@
   "ruleEscalierTitle": "L'escalier vers La Mecque",
   "ruleEscalierBody": "Après un tour complet du plateau, ton cheval monte les cinq marches de son escalier jusqu'à La Mecque. Là, personne ne peut plus le rattraper.",
   "ruleExitTitle": "Sortir de l'écurie",
-  "ruleExitBody": "Chaque joueur a quatre chevaux à l'écurie. Un cheval ne sort que sur un 6 : réponds juste et il se place sur sa case de départ — et comme le 6 fait rejouer, il repart aussitôt. Si tu as déjà un cheval en course, tu choisis : en sortir un autre, ou avancer.",
+  "ruleExitBody": "Chaque joueur a quatre chevaux, et le premier est déjà sur sa case de départ : tu joues dès la première carte, sans attendre. Les trois autres sortent de l'écurie sur un 6 : réponds juste et le cheval se place sur la case de départ — et comme le 6 fait rejouer, il repart aussitôt. À toi de choisir : en sortir un autre, ou avancer.",
   "ruleSixTitle": "Le 6 fait rejouer",
   "ruleSixBody": "Comme au dé : quand tu pioches un 6, tu rejoues après ton tour, que ta réponse soit bonne ou non. Et deux de tes chevaux ne peuvent jamais partager la même case.",
   "ruleCaptureTitle": "Capturer et renvoyer",

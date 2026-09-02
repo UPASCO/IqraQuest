@@ -468,7 +468,10 @@ void main() {
 
       final controller = container.read(gameControllerProvider.notifier);
       expect(controller.state!.gameState.turnPhase, TurnPhase.choosingHorse);
-      expect(controller.legalMoves.length, 2, reason: 'both horses can ride');
+      final card = controller.state!.gameState.drawnCard!;
+      // Sixteen squares apart, so no card 1..6 can make one horse land
+      // on the other: both are always offered, whatever is drawn.
+      expect(controller.legalMoves.length, 2, reason: 'both horses can ride a $card');
       // Nothing is lit until a horse is touched.
       expect(find.byKey(const ValueKey('destination')), findsNothing);
 
@@ -507,8 +510,17 @@ void main() {
       expect(find.byKey(const ValueKey('destination')), findsNothing);
       // No other horse can be picked up now.
       expect(controller.placeHorse(1), isFalse);
+      // The turn is over. A 6 earns its second draw, so the same rider
+      // may legitimately be up again — what must always be true is that
+      // the deck is back and the placement is gone.
+      final replays = card.grantsExtraTurn;
       await _pastRide(tester);
-      expect(controller.state!.gameState.currentPlayerIndex, 1);
+      expect(
+        controller.state!.gameState.currentPlayerIndex,
+        replays ? 0 : 1,
+        reason: 'a $card ${replays ? 'replays' : 'hands over'}',
+      );
+      expect(controller.state!.gameState.turnPhase, TurnPhase.selectingGait);
       expect(tester.takeException(), isNull);
     },
   );

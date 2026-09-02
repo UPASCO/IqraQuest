@@ -1336,10 +1336,10 @@ abstract class AppLocalizations {
   /// **'Leaving the stable'**
   String get ruleExitTitle;
 
-  /// Rules step body: four horses, exit on a 6, the choice
+  /// Rules step body: one horse already out, the other three on a 6
   ///
   /// In en, this message translates to:
-  /// **'Each player has four horses in the stable. A horse comes out only on a 6: answer correctly and it takes its start square — and since a 6 plays again, it rides right away. If you already have a horse on the course, you choose: bring another out, or ride.'**
+  /// **'Each player has four horses, and the first is already on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6: answer correctly and the horse takes the start square — and since a 6 plays again, it rides right away. The choice is yours: bring another out, or ride.'**
   String get ruleExitBody;
 
   /// Rules step: a 6 grants another draw

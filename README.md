@@ -118,8 +118,13 @@ of the die, played **answer first, then place**. The turn is:
    the square stays in play for everyone. The layout is generated once
    from the game's seed, lives in the save, and is never recomputed.
 
-A 6 may bring one of the four horses out of the stable onto its start
-square and lets the same player draw again (right or wrong). Landing
+Every rider's **first horse already stands on its start square**: the
+classic opening — four horses shut in and a 6 to find — spends the first
+minutes waiting, so one horse is out from the start and there is always
+something to ride from the very first card. The other three still come
+out of the stable on a 6, which also lets the same player draw again
+(right or wrong); while the first horse sits on the start square it
+keeps its own gate shut, exactly as the classic rule says. Landing
 exactly on an opponent sends it home (a horse coming out captures on its
 start square, oasis or not); two horses of a colour never share a square,
 on a bonus ride as on any other; a Grand Galop is spent by itself, only

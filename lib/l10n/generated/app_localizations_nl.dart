@@ -731,7 +731,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Elke speler heeft vier paarden in de stal. Een paard komt alleen naar buiten met een 6: antwoord goed en het neemt zijn startvak in – en omdat een 6 opnieuw speelt, rijdt het meteen door. Heb je al een paard op de baan, dan kies je: nog een naar buiten halen, of rijden.';
+      'Elke speler heeft vier paarden, en het eerste staat al op zijn startvakje: je speelt vanaf de allereerste kaart, zonder wachten. De andere drie verlaten de stal met een 6: antwoord goed en het paard neemt het startvakje — en omdat de 6 opnieuw laat spelen, vertrekt het meteen. Jij kiest: er nog een uithalen, of doorrijden.';
 
   @override
   String get ruleSixTitle => 'Een 6 speelt opnieuw';

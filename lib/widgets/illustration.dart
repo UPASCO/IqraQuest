@@ -15,6 +15,10 @@ abstract final class AppArt {
   static const oasisArrival = 'assets/images/oasis_arrival.webp';
   static const worldBand = 'assets/images/world_band.webp';
 
+  /// The home screen's key art: the icon's three galloping horses over
+  /// the painted board laid on its table (tool/art/bake_home_hero.py).
+  static const homeHero = 'assets/images/home_hero.webp';
+
   /// Each circuit rides through its own region; the card art must match
   /// the world the player will actually see in game.
   static String forCircuit(CircuitId id) => switch (id) {

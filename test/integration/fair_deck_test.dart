@@ -122,10 +122,16 @@ void main() {
     expect(after.players.map((p) => p.name), ['Amina', 'Bilal']);
     expect(after.players.first.profile, PlayerProfile.easy);
     expect(after.bonusTiles.length, 16);
-    for (final p in after.players) {
+    for (var i = 0; i < after.players.length; i++) {
+      final p = after.players[i];
       expect(p.rewards.knowledgePoints, 0);
       expect(p.streak.current, 0);
-      expect(p.horses.every((h) => h.position is HomePosition), isTrue);
+      // Back to the opening line-up: the first horse out, the rest in.
+      expect(
+        p.horses.first.position,
+        TrackPosition(after.circuit.entryIndexForTeam(i)),
+      );
+      expect(p.horses.skip(1).every((h) => h.position is HomePosition), isTrue);
     }
   });
 }

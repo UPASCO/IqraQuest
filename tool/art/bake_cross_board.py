@@ -47,6 +47,7 @@ FRAME_DEEP = (16, 58, 62)
 FRAME_DARK = (9, 36, 40)
 GOLD = (198, 158, 74)
 GOLD_LIGHT = (238, 210, 140)
+GOLD_DEEP = (138, 100, 32)   # the shadow line under the gold rules
 CREAM = (246, 240, 223)
 CREAM_HI = (255, 252, 243)
 CREAM_LO = (219, 208, 180)
@@ -117,6 +118,16 @@ def cell_box(row, col, inset=0.0):
 def cell_center(row, col):
     x0, y0, x1, y1 = cell_box(row, col)
     return ((x0 + x1) / 2, (y0 + y1) / 2)
+
+
+# The architecture inside each reference panel, as fractions of that
+# panel: inside its own painted frame, above its painted knights.
+PANEL_CROP = {
+    "medina": (0.13, 0.11, 0.90, 0.60),
+    "alaqsa": (0.11, 0.11, 0.89, 0.58),
+    "arafat": (0.11, 0.08, 0.89, 0.40),
+    "mina": (0.11, 0.08, 0.89, 0.38),
+}
 
 
 def corner_rect(name):
@@ -358,6 +369,17 @@ def bake():
         pw, ph = int(box[2] - box[0]), int(box[3] - box[1])
 
         panel = Image.open(f"{REF}/panel_{name}.png").convert("RGB")
+        # Each reference panel carries its own painted frame — a
+        # different colour per place, which is what made the four
+        # stables look mismatched — and painted knights in its lower
+        # half, which read as horses that are not anybody's piece. The
+        # panel is cropped to its architecture alone: the plate then
+        # shows one frame, its own, and only the players' pieces.
+        cx0, cy0, cx1, cy1 = PANEL_CROP[name]
+        panel = panel.crop((
+            int(panel.width * cx0), int(panel.height * cy0),
+            int(panel.width * cx1), int(panel.height * cy1),
+        ))
         # cover-fit so the architecture is never squashed
         scale = max(pw / panel.width, ph / panel.height)
         panel = panel.resize((max(1, int(panel.width * scale)),
@@ -370,12 +392,21 @@ def bake():
         ImageDraw.Draw(pmask).rounded_rectangle(
             (0, 0, pw - 1, ph - 1), radius=S(CELL * 0.55), fill=255)
         im.paste(panel, (int(box[0]), int(box[1])), pmask)
+        # One frame, drawn identically on all four panels: the plate's
+        # own double rule with an eight-point star riding each corner.
+        d.rounded_rectangle(box, radius=S(CELL * 0.55), outline=GOLD_DEEP,
+                            width=max(1, int(S(7))))
         d.rounded_rectangle(box, radius=S(CELL * 0.55), outline=GOLD,
-                            width=max(1, int(S(5))))
-        d.rounded_rectangle((box[0] + S(6), box[1] + S(6),
-                             box[2] - S(6), box[3] - S(6)),
-                            radius=S(CELL * 0.50), outline=(*GOLD_LIGHT, 150),
-                            width=max(1, int(S(1.6))))
+                            width=max(1, int(S(4))))
+        inner = (box[0] + S(9), box[1] + S(9), box[2] - S(9), box[3] - S(9))
+        d.rounded_rectangle(inner, radius=S(CELL * 0.48),
+                            outline=(*GOLD_LIGHT, 190),
+                            width=max(1, int(S(2.0))))
+        for sx, sy in [(box[0], box[1]), (box[2], box[1]),
+                       (box[0], box[3]), (box[2], box[3])]:
+            star8(d, sx, sy, S(CELL * 0.30), GOLD_DEEP)
+            star8(d, sx, sy, S(CELL * 0.24), GOLD)
+            star8(d, sx, sy, S(CELL * 0.11), GOLD_LIGHT)
 
         # The stables sit on their own plinth in the corner nearest the
         # centre, clear of the panel's own painted knights.

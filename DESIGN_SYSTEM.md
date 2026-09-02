@@ -99,6 +99,26 @@ See `lib/widgets/question_card.dart`.
 Color chip + team symbol glyph + name + (solo mode) AI difficulty tag.
 Never symbol-less.
 
+### Home screen key art
+The first screen is one baked picture, not a scene painted at runtime:
+`assets/images/home_hero.webp`, composed by `tool/art/bake_home_hero.py`
+from the app's own artwork — the icon's three galloping horses bled into
+the table above, the painted plate (`assets/board/cross_board.webp`) laid
+on it in perspective below, a gold rim light and cast shadow under it,
+motes in the warm air, and a dark foot for the CTA. Baked at the phone's
+own aspect (1242x2688) so `BoxFit.cover` never crops its sides. The
+title takes a top scrim, since ivory type on a lit mane would not hold.
+
+### The board plate
+Baked by `tool/art/bake_cross_board.py` from the owner's reference
+board. Two rules the bake enforces, because the reference cannot: each
+corner panel is cropped to its **architecture alone** — the reference
+carries its own painted frame in a different colour per place, and
+painted knights in its lower half, so the plate would otherwise show
+four mismatched frames and horses that are nobody's piece; and all four
+panels then get **one identical frame**, the plate's own double gold
+rule with an eight-point star riding each corner.
+
 ### The placement turn (board as control)
 There is no dice, no distance picker and no confirmation button anywhere
 in the product. After a right answer the squares won land as a **result
