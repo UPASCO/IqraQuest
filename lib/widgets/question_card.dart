@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../models/models.dart';
 import '../theme/app_theme.dart';
+import 'question_details_sheet.dart';
 import 'geometric_motif_painter.dart';
 
 /// The single most important component in IqraQuest (spec §27): the
@@ -138,8 +139,10 @@ class QuestionCard extends StatelessWidget {
                       fontStyle: FontStyle.italic,
                     ),
                   ),
+                  const SizedBox(height: 6),
+                  LearnMoreButton(question: question),
                   if (onContinue != null) ...[
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 12),
                     SizedBox(
                       width: double.infinity,
                       height: 52,
@@ -432,7 +435,12 @@ class AnswerFeedbackSheet extends StatelessWidget {
                   ),
                 ),
               ],
-              const SizedBox(height: 16),
+              // The lesson is one tap away on every level, the easy one
+              // included: the paragraph above is hidden there, the door
+              // to it is not.
+              const SizedBox(height: 6),
+              LearnMoreButton(question: question),
+              const SizedBox(height: 8),
               SizedBox(
                 width: double.infinity,
                 height: 54,

@@ -136,6 +136,18 @@ class AppLocalizationsMs extends AppLocalizations {
   String get incorrectAnswer => 'Tidak tepat…';
 
   @override
+  String get learnMore => 'Ketahui lebih lanjut';
+
+  @override
+  String get questionDetailsTitle => 'Di sebalik jawapan';
+
+  @override
+  String get theQuestionLabel => 'Soalan';
+
+  @override
+  String get theAnswerLabel => 'Jawapan yang betul';
+
+  @override
   String get explanationLabel => 'Penjelasan';
 
   @override

@@ -135,6 +135,18 @@ class AppLocalizationsNl extends AppLocalizations {
   String get incorrectAnswer => 'Niet helemaal…';
 
   @override
+  String get learnMore => 'Meer weten';
+
+  @override
+  String get questionDetailsTitle => 'Achter het antwoord';
+
+  @override
+  String get theQuestionLabel => 'De vraag';
+
+  @override
+  String get theAnswerLabel => 'Het juiste antwoord';
+
+  @override
   String get explanationLabel => 'Uitleg';
 
   @override

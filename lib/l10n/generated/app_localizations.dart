@@ -358,6 +358,30 @@ abstract class AppLocalizations {
   /// **'Not quite…'**
   String get incorrectAnswer;
 
+  /// Button under an answered question: opens the details sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Learn more'**
+  String get learnMore;
+
+  /// Title of the details sheet shown after an answer
+  ///
+  /// In en, this message translates to:
+  /// **'Behind the answer'**
+  String get questionDetailsTitle;
+
+  /// Details sheet section header: the question text
+  ///
+  /// In en, this message translates to:
+  /// **'The question'**
+  String get theQuestionLabel;
+
+  /// Details sheet section header: the right answer
+  ///
+  /// In en, this message translates to:
+  /// **'The right answer'**
+  String get theAnswerLabel;
+
   /// Question card section header
   ///
   /// In en, this message translates to:

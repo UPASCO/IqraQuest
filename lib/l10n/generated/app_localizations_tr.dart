@@ -134,6 +134,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get incorrectAnswer => 'Tam değil…';
 
   @override
+  String get learnMore => 'Daha fazla bilgi';
+
+  @override
+  String get questionDetailsTitle => 'Cevabın arkasında';
+
+  @override
+  String get theQuestionLabel => 'Soru';
+
+  @override
+  String get theAnswerLabel => 'Doğru cevap';
+
+  @override
   String get explanationLabel => 'Açıklama';
 
   @override

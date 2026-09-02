@@ -136,6 +136,18 @@ class AppLocalizationsId extends AppLocalizations {
   String get incorrectAnswer => 'Belum tepat…';
 
   @override
+  String get learnMore => 'Pelajari lebih lanjut';
+
+  @override
+  String get questionDetailsTitle => 'Di balik jawaban';
+
+  @override
+  String get theQuestionLabel => 'Pertanyaan';
+
+  @override
+  String get theAnswerLabel => 'Jawaban yang benar';
+
+  @override
   String get explanationLabel => 'Penjelasan';
 
   @override

@@ -133,6 +133,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get incorrectAnswer => 'ليست كذلك تمامًا…';
 
   @override
+  String get learnMore => 'اعرف المزيد';
+
+  @override
+  String get questionDetailsTitle => 'خلف الإجابة';
+
+  @override
+  String get theQuestionLabel => 'السؤال';
+
+  @override
+  String get theAnswerLabel => 'الإجابة الصحيحة';
+
+  @override
   String get explanationLabel => 'التوضيح';
 
   @override

@@ -136,6 +136,18 @@ class AppLocalizationsPt extends AppLocalizations {
   String get incorrectAnswer => 'Não exatamente…';
 
   @override
+  String get learnMore => 'Saber mais';
+
+  @override
+  String get questionDetailsTitle => 'Para saber mais';
+
+  @override
+  String get theQuestionLabel => 'A pergunta';
+
+  @override
+  String get theAnswerLabel => 'A resposta certa';
+
+  @override
   String get explanationLabel => 'Explicação';
 
   @override

@@ -136,6 +136,18 @@ class AppLocalizationsUr extends AppLocalizations {
   String get incorrectAnswer => 'بالکل نہیں…';
 
   @override
+  String get learnMore => 'مزید جانیں';
+
+  @override
+  String get questionDetailsTitle => 'جواب کے پیچھے';
+
+  @override
+  String get theQuestionLabel => 'سوال';
+
+  @override
+  String get theAnswerLabel => 'صحیح جواب';
+
+  @override
   String get explanationLabel => 'وضاحت';
 
   @override

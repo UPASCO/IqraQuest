@@ -262,6 +262,21 @@ s("incorrectAnswer", "Feedback: incorrect",
   id="Belum tepat…", ur="بالکل نہیں…", ms="Tidak tepat…", it="Non proprio…",
   nl="Niet helemaal…")
 
+s("learnMore", "Button under an answered question: opens the details sheet",
+  fr="En savoir plus", en="Learn more", ar="اعرف المزيد", es="Saber más", pt="Saber mais",
+  de="Mehr erfahren", tr="Daha fazla bilgi", id="Pelajari lebih lanjut", ur="مزید جانیں",
+  ms="Ketahui lebih lanjut", it="Scopri di più", nl="Meer weten")
+s("questionDetailsTitle", "Title of the details sheet shown after an answer",
+  fr="Pour aller plus loin", en="Behind the answer", ar="خلف الإجابة", es="Para saber más",
+  pt="Para saber mais", de="Hinter der Antwort", tr="Cevabın arkasında", id="Di balik jawaban",
+  ur="جواب کے پیچھے", ms="Di sebalik jawapan", it="Dietro la risposta", nl="Achter het antwoord")
+s("theQuestionLabel", "Details sheet section header: the question text",
+  fr="La question", en="The question", ar="السؤال", es="La pregunta", pt="A pergunta",
+  de="Die Frage", tr="Soru", id="Pertanyaan", ur="سوال", ms="Soalan", it="La domanda", nl="De vraag")
+s("theAnswerLabel", "Details sheet section header: the right answer",
+  fr="La bonne réponse", en="The right answer", ar="الإجابة الصحيحة", es="La respuesta correcta",
+  pt="A resposta certa", de="Die richtige Antwort", tr="Doğru cevap", id="Jawaban yang benar",
+  ur="صحیح جواب", ms="Jawapan yang betul", it="La risposta giusta", nl="Het juiste antwoord")
 s("explanationLabel", "Question card section header",
   fr="Explication", en="Explanation", ar="التوضيح", es="Explicación",
   pt="Explicação", de="Erklärung", tr="Açıklama", id="Penjelasan", ur="وضاحت",

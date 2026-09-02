@@ -165,6 +165,22 @@
   "@incorrectAnswer": {
     "description": "Feedback: incorrect"
   },
+  "learnMore": "Learn more",
+  "@learnMore": {
+    "description": "Button under an answered question: opens the details sheet"
+  },
+  "questionDetailsTitle": "Behind the answer",
+  "@questionDetailsTitle": {
+    "description": "Title of the details sheet shown after an answer"
+  },
+  "theQuestionLabel": "The question",
+  "@theQuestionLabel": {
+    "description": "Details sheet section header: the question text"
+  },
+  "theAnswerLabel": "The right answer",
+  "@theAnswerLabel": {
+    "description": "Details sheet section header: the right answer"
+  },
   "explanationLabel": "Explanation",
   "@explanationLabel": {
     "description": "Question card section header"
