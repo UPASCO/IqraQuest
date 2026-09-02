@@ -649,7 +649,9 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'slaan!';
+  String moveHintCapture(int value) {
+    return 'slaan! +$value';
+  }
 
   @override
   String get moveHintFinish => 'finish!';
@@ -745,7 +747,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Een paard dat de stal verlaat, slaat altijd op zijn startvak.';
+      'Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Slaan loont: je paard springt meteen 20 galop vooruit. Een paard dat de stal verlaat, slaat altijd op zijn startvak.';
 
   @override
   String get ruleStreakTitle => 'De kennisreeks';
@@ -759,7 +761,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Bereik het einde van het parcours — voorbij de streep gaan mag — en beantwoord dan de Vraag van de Reis om je aankomst te bevestigen. Een fout zet je nooit terug: je probeert het gewoon opnieuw.';
+      'De finish haal je met het exacte aantal: drie vakjes voor de oase heb je precies een 3 nodig. Een 4, 5 of 6 laat het paard staan tot de juiste kaart komt. Eenmaal daar beantwoord je de Vraag van de Reis om de aankomst te bevestigen; een fout zet je nooit terug, je probeert het gewoon opnieuw.';
 
   @override
   String get hapticFeedback => 'Trillingen';
@@ -789,7 +791,15 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value vakjes';
+    return '+$value galop';
+  }
+
+  @override
+  String get captureBonusLabel => 'SLAG';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Geslagen! Je paard springt $value galop vooruit.';
   }
 
   @override
@@ -852,5 +862,5 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 vakjes door – één keer per beurt, en het vakje blijft voor iedereen in het spel.';
+      'Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 galop door – en zet die sprong het precies op een volgend bonusvakje, dan gaat dat ook af: bonussen ketenen. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel.';
 }

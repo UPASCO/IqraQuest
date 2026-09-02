@@ -41,6 +41,10 @@ import 'bonus_layout.dart';
 ///
 /// Pure, deterministic, platform-independent — no widgets, no I/O. The
 /// same instance drives human players and every AI difficulty.
+/// What sending an opponent home is worth, in extra squares — the
+/// classic *jeu des petits chevaux* reward for a capture.
+const int kCaptureBonus = 20;
+
 class GameEngine {
   const GameEngine();
 
@@ -104,7 +108,8 @@ class GameEngine {
         circuit,
       );
       // A Grand Galop is spent on exactly one thing: turning this ride
-      // into an arrival.
+      // into an arrival — which, under the exact count, is also the one
+      // thing that can rescue a card that would otherwise overshoot.
       var gallop = false;
       if (!exits &&
           player.rewards.hasGrandGallop &&
@@ -120,6 +125,8 @@ class GameEngine {
           gallop = true;
         }
       }
+      // The card overshoots the finish: this horse simply cannot play it.
+      if (destination == null) continue;
       if (_ownHorseAt(player, destination, except: i)) continue;
 
       final capture = _captureAt(
@@ -142,7 +149,9 @@ class GameEngine {
           capturesOpponent: capture != null,
           reachesFinish: destination is FinishedPosition,
           usesGrandGallop: gallop,
-          bonusValue: state.bonusUsedThisTurn ? null : bonus?.value,
+          bonusValue: state.firedBonusTracks.contains(bonus?.trackIndex)
+              ? null
+              : bonus?.value,
         ),
       );
     }
@@ -171,12 +180,11 @@ class GameEngine {
     final horse = player.horses[horseIndex];
 
     final bonus = useGrandGallop && player.rewards.hasGrandGallop ? 2 : 0;
-    final destination = _destinationFor(
-      horse.position,
-      choice.steps + bonus,
-      entry,
-      circuit,
-    );
+    // A ride that would overshoot the finish moves nothing: the preview
+    // shows the horse exactly where it already stands.
+    final destination =
+        _destinationFor(horse.position, choice.steps + bonus, entry, circuit) ??
+        horse.position;
 
     final capture = _captureAt(state, player.id, destination);
     return GaitPreview(
@@ -359,31 +367,67 @@ class GameEngine {
       next = _attachShield(next, horseIndex);
     }
 
-    final landed = next.currentPlayer.horses[horseIndex].position;
-    PendingBonus? bonus;
-    if (landed is TrackPosition && !next.bonusUsedThisTurn) {
-      final tile = next.bonusAt(landed.index);
-      if (tile != null) {
-        bonus = PendingBonus(
-          horseIndex: horseIndex,
-          trackIndex: tile.trackIndex,
-          value: tile.value,
-        );
-      }
-    }
     return next.copyWith(
       turnPhase: TurnPhase.movingHorse,
       movedHorseIndex: horseIndex,
-      pendingBonus: bonus,
+      pendingBonus: _bonusEarnedBy(
+        next,
+        horseIndex,
+        captured: next.lastMoveOutcome == MoveOutcome.captured,
+      ),
       updatedAt: DateTime.now(),
     );
   }
 
-  /// Step 5: the horse rides the bonus square it stopped on — its value
-  /// in extra squares, under the same board rules as any ride (a capture
-  /// on landing, an arrival on overshoot). A bonus square reached *by*
-  /// this ride does not fire: one bonus per turn, and it stays on the
-  /// board for a later turn.
+  /// The extra ride a horse has just earned where it stands, if any.
+  ///
+  /// Two things pay a ride, and a capture is the louder of the two, so it
+  /// is paid first:
+  ///
+  /// * **sending an opponent home** is worth [kCaptureBonus] squares —
+  ///   the classic *jeu des petits chevaux* reward for a capture;
+  /// * **stopping exactly on a bonus square** is worth its value, unless
+  ///   that square has already fired this turn.
+  ///
+  /// Bonuses **chain**: the ride this returns is resolved by
+  /// [applyPendingBonus], which asks the same question again wherever the
+  /// horse comes to rest. A square never fires twice in one turn, which
+  /// is what makes the chain terminate.
+  PendingBonus? _bonusEarnedBy(
+    GameState state,
+    int horseIndex, {
+    required bool captured,
+  }) {
+    final landed = state.currentPlayer.horses[horseIndex].position;
+    if (landed is! TrackPosition) return null;
+    if (captured) {
+      return PendingBonus(
+        horseIndex: horseIndex,
+        trackIndex: landed.index,
+        value: kCaptureBonus,
+        fromCapture: true,
+      );
+    }
+    final tile = state.bonusAt(landed.index);
+    if (tile == null || state.firedBonusTracks.contains(tile.trackIndex)) {
+      return null;
+    }
+    return PendingBonus(
+      horseIndex: horseIndex,
+      trackIndex: tile.trackIndex,
+      value: tile.value,
+    );
+  }
+
+  /// Step 5: the horse rides the extra squares it earned — a bonus
+  /// square's value, or [kCaptureBonus] for a capture — under the same
+  /// board rules as any ride: it captures what it lands on, and it never
+  /// overshoots the finish (a ride that would is simply not made).
+  ///
+  /// **Bonuses chain.** Stopping exactly on another bonus square sets
+  /// that one off too, and a capture made by the bonus ride pays its own
+  /// twenty. A square fires at most once per turn ([firedBonusTracks]),
+  /// which both keeps the board fair and makes the chain terminate.
   GameState applyPendingBonus(GameState state) {
     final bonus = state.pendingBonus;
     if (bonus == null) return state;
@@ -392,20 +436,30 @@ class GameEngine {
       bonus.value,
       horseIndex: bonus.horseIndex,
     );
+    // The ride was impossible (it would have overshot the finish, or its
+    // own horse blocked every square): the bonus is spent all the same,
+    // or the turn would sit on it forever.
+    final rode = !identical(next, state);
     final landed = next.currentPlayer.horses[bonus.horseIndex].position;
     final effect = landed is TrackPosition
         ? next.circuit.effectAt(landed.index)
         : CellEffect.plain;
+    final captured =
+        rode &&
+        next.lastMoveOutcome == MoveOutcome.captured &&
+        _capturedSomeone(state, next);
     final outcome = landed is FinishedPosition
         ? MoveOutcome.reachedFinish
-        : next.lastMoveOutcome == MoveOutcome.captured &&
-              !identical(next.players, state.players) &&
-              _capturedSomeone(state, next)
+        : captured
         ? MoveOutcome.captured
         : next.lastMoveOutcome;
-    return next.copyWith(
+    final fired = bonus.fromCapture
+        ? state.firedBonusTracks
+        : {...state.firedBonusTracks, bonus.trackIndex};
+    next = next.copyWith(
       pendingBonus: null,
       bonusUsedThisTurn: true,
+      firedBonusTracks: fired,
       lastBonusValue: bonus.value,
       lastMoveOutcome: outcome,
       // The extra ride lands quietly: a passive square still counts, an
@@ -414,6 +468,12 @@ class GameEngine {
       pendingCellEffect: null,
       pendingCellHorseIndex: null,
       updatedAt: DateTime.now(),
+    );
+    // …and whatever it earned where it came to rest is ridden next.
+    return next.copyWith(
+      pendingBonus: rode
+          ? _bonusEarnedBy(next, bonus.horseIndex, captured: captured)
+          : null,
     );
   }
 
@@ -805,6 +865,7 @@ class GameEngine {
       isBonusTurn: replays,
       pendingBonus: null,
       bonusUsedThisTurn: false,
+      firedBonusTracks: const {},
       lastBonusValue: null,
       movedHorseIndex: null,
       updatedAt: DateTime.now(),
@@ -868,17 +929,20 @@ class GameEngine {
     }
 
     final horses = [...player.horses];
+    // The exact count rules a bonus ride exactly as it rules a card: a
+    // ride that would carry the horse past the finish does not happen.
     var destination = _destinationFor(
       horses[target].position,
       steps,
       entry,
       circuit,
     );
+    if (destination == null) return state;
     // Two of a colour never share a square, on a bonus ride as on any
     // other: a ride that would end on one's own horse stops on the last
     // free square before it.
     var remaining = steps;
-    while (remaining > 0 && _ownHorseAt(player, destination, except: target)) {
+    while (remaining > 0 && _ownHorseAt(player, destination!, except: target)) {
       remaining--;
       destination = _destinationFor(
         horses[target].position,
@@ -886,11 +950,13 @@ class GameEngine {
         entry,
         circuit,
       );
+      if (destination == null) return state;
     }
     if (remaining == 0) return state;
+    final landing = destination!;
     horses[target] = horses[target].copyWith(
-      position: destination,
-      awaitingJourneyQuestion: destination is FinishedPosition
+      position: landing,
+      awaitingJourneyQuestion: landing is FinishedPosition
           ? true
           : horses[target].awaitingJourneyQuestion,
     );
@@ -900,7 +966,7 @@ class GameEngine {
 
     // Bonus movement obeys the same board rules as a normal move:
     // landing on an unprotected opponent captures it.
-    final capture = _captureAt(next, player.id, destination);
+    final capture = _captureAt(next, player.id, landing);
     if (capture != null) {
       final (oi, ohi) = capture;
       final opponent = players[oi];
@@ -936,11 +1002,18 @@ class GameEngine {
     return best;
   }
 
-  /// Where a horse ends up after [steps] squares. A horse leaving the
-  /// stable lands on its start square whatever the card: the exit IS the
-  /// move, as in the original game. Overshooting the finish is allowed —
-  /// the horse simply arrives (spec §10).
-  PawnPosition _destinationFor(
+  /// Where a horse ends up after [steps] squares, or **null** when the
+  /// ride is not allowed to happen at all.
+  ///
+  /// A horse leaving the stable lands on its start square whatever the
+  /// card: the exit IS the move, as in the original game.
+  ///
+  /// The finish is reached on an **exact count**, as in the classic game:
+  /// three squares from the oasis you need exactly a 3, and a 4, 5 or 6
+  /// leaves the horse where it stands, waiting for the right card. Any
+  /// ride that would carry it past the finish returns null, and null is
+  /// simply not offered as a move.
+  PawnPosition? _destinationFor(
     PawnPosition from,
     int steps,
     int entry,
@@ -948,6 +1021,7 @@ class GameEngine {
   ) {
     final progress = _progressOf(from, entry, circuit);
     if (progress == null) return _positionAt(0, entry, circuit);
+    if (progress + steps > circuit.journeyLength) return null;
     return _positionAt(progress + steps, entry, circuit);
   }
 

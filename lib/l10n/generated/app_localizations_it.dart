@@ -651,7 +651,9 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'cattura!';
+  String moveHintCapture(int value) {
+    return 'cattura! +$value';
+  }
 
   @override
   String get moveHintFinish => 'arrivo!';
@@ -748,7 +750,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un\'oasi o quel cavallo porti uno scudo del sapere. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.';
+      'Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un\'oasi o quel cavallo porti uno scudo del sapere. La cattura si paga: il tuo cavallo balza subito di 20 galoppi. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.';
 
   @override
   String get ruleStreakTitle => 'Lo slancio del sapere';
@@ -762,7 +764,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Raggiungi la fine del percorso — superare la linea è permesso — poi rispondi alla Domanda del viaggio per convalidare il tuo arrivo. Un errore non ti fa mai arretrare: riprovi al turno successivo.';
+      'Il traguardo si raggiunge con il conto esatto: a tre caselle dall\'oasi ti serve esattamente un 3. Un 4, un 5 o un 6 lascia il cavallo dov\'è, in attesa della carta giusta. Una volta arrivato, rispondi alla Domanda del viaggio per convalidare l\'arrivo; un errore non ti fa mai arretrare, riprovi al turno successivo.';
 
   @override
   String get hapticFeedback => 'Vibrazione';
@@ -793,7 +795,15 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value caselle';
+    return '+$value galoppi';
+  }
+
+  @override
+  String get captureBonusLabel => 'CATTURA';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Cattura! Il tuo cavallo balza in avanti di $value galoppi.';
   }
 
   @override
@@ -856,5 +866,5 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Sedici caselle bonus vengono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una avanza subito di +5, +10 o +20 caselle — una sola volta per turno, e la casella resta in gioco per tutti.';
+      'Sedici caselle bonus vengono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una avanza subito di +5, +10 o +20 galoppi — e se quel balzo lo posa esattamente su un\'altra casella bonus, scatta anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti.';
 }

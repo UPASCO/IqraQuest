@@ -1378,9 +1378,12 @@ s("moveChoiceAdvance", "Choice sheet option: ride horse N by the card's value",
   ur="گھوڑا {number}: {count} آگے", ms="Kuda {number}: maju {count}",
   it="Cavallo {number}: avanza di {count}", nl="Paard {number}: {count} vooruit")
 
-s("moveHintCapture", "Choice sheet tag: this move captures an opponent",
-  fr="capture !", en="capture!", ar="أسر!", es="¡captura!", pt="captura!", de="schlagen!",
-  tr="yakala!", id="tangkap!", ur="پکڑ!", ms="tangkap!", it="cattura!", nl="slaan!")
+s("moveHintCapture", "Choice sheet tag: this move captures an opponent, and what the capture is worth",
+  ph={"value": "int"},
+  fr="capture ! +{value}", en="capture! +{value}", ar="أسر! +{value}",
+  es="¡captura! +{value}", pt="captura! +{value}", de="schlagen! +{value}",
+  tr="yakala! +{value}", id="tangkap! +{value}", ur="پکڑ! +{value}",
+  ms="tangkap! +{value}", it="cattura! +{value}", nl="slaan! +{value}")
 
 s("moveHintFinish", "Choice sheet tag: this move reaches the finish",
   fr="arrivée !", en="finish!", ar="الوصول!", es="¡llegada!", pt="chegada!", de="Ziel!",
@@ -1603,19 +1606,19 @@ s("ruleCaptureTitle", "Rules step 4 title",
   ms="Menangkap dan menghantar pulang", it="Cattura e rimanda a casa",
   nl="Slaan en naar huis sturen")
 
-s("ruleCaptureBody", "Rules step 4 body",
-  fr="Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. Un cheval qui sort de l'écurie capture toujours sur sa case de départ.",
-  en="Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.",
-  ar="الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.",
-  es="Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. Un caballo que sale del establo siempre captura en su casilla de salida.",
-  pt="Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. Um cavalo que sai do estábulo sempre captura na sua casa de partida.",
-  de="Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.",
-  tr="Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.",
-  id="Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan. Kuda yang keluar dari kandang selalu menangkap di petak start-nya.",
-  ur="حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔",
-  ms="Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu. Kuda yang keluar dari kandang sentiasa menangkap di petak permulaannya.",
-  it="Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un'oasi o quel cavallo porti uno scudo del sapere. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.",
-  nl="Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Een paard dat de stal verlaat, slaat altijd op zijn startvak.")
+s("ruleCaptureBody", "Rules step 4 body: a capture sends the horse home and pays twenty",
+  fr="Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. La capture se paie : ton cheval bondit aussitôt de 20 galops. Un cheval qui sort de l\'écurie capture toujours sur sa case de départ.",
+  en="Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A capture pays: your horse bounds 20 gallops forward at once. A horse leaving its stable always captures on its start square.",
+  ar="الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والأسر يُكافأ: يقفز حصانك فورًا 20 ركضة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.",
+  es="Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. La captura se paga: tu caballo salta al instante 20 galopes. Un caballo que sale del establo siempre captura en su casilla de salida.",
+  pt="Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. A captura paga: o seu cavalo salta na hora 20 galopes. Um cavalo que sai do estábulo sempre captura na sua casa de partida.",
+  de="Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Schlag zahlt sich aus: Dein Pferd springt sofort 20 Galopp vor. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.",
+  tr="Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Yakalamak ödüllendirilir: atın hemen 20 dörtnal ileri sıçrar. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.",
+  id="Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan. Menangkap ada imbalannya: kudamu langsung melompat 20 lompatan. Kuda yang keluar dari kandang selalu menangkap di petak start-nya.",
+  ur="حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ پکڑنے کا انعام ہے: آپ کا گھوڑا فوراً 20 سرپٹ آگے چھلانگ لگاتا ہے۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔",
+  ms="Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu. Tangkapan ada ganjarannya: kuda anda melompat 20 lompatan serta-merta. Kuda yang keluar dari kandang sentiasa menangkap di petak permulaannya.",
+  it="Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un\'oasi o quel cavallo porti uno scudo del sapere. La cattura si paga: il tuo cavallo balza subito di 20 galoppi. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.",
+  nl="Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Slaan loont: je paard springt meteen 20 galop vooruit. Een paard dat de stal verlaat, slaat altijd op zijn startvak.")
 
 s("ruleStreakTitle", "Rules step 5 title",
   fr="L'élan du savoir", en="The knowledge streak", ar="اندفاع المعرفة",
@@ -1643,19 +1646,19 @@ s("ruleArrivalTitle", "Rules step 6 title",
   pt="A chegada", de="Die Ankunft", tr="Varış", id="Kedatangan",
   ur="آمد", ms="Ketibaan", it="L'arrivo", nl="De aankomst")
 
-s("ruleArrivalBody", "Rules step 6 body",
-  fr="Atteins le bout du parcours — dépasser la ligne est permis — puis réponds à la Question du voyage pour valider ton arrivée. Une erreur ne te fait jamais reculer : tu réessaies au tour suivant.",
-  en="Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.",
-  ar="اِبلغ نهاية المسار — وتجاوز الخط مسموح — ثم أجب عن سؤال الرحلة لتثبيت وصولك. الإجابة الخاطئة لا تعيدك أبدًا: تحاول ببساطة في الدور التالي.",
-  es="Llega al final del recorrido —pasarse de la línea está permitido— y responde la Pregunta del viaje para validar tu llegada. Un error nunca te hace retroceder: lo intentas de nuevo en el siguiente turno.",
-  pt="Chegue ao fim do percurso — passar da linha é permitido — e responda à Pergunta da viagem para validar sua chegada. Um erro nunca faz você recuar: basta tentar de novo na próxima vez.",
-  de="Erreiche das Ende der Strecke — über die Linie hinaus ist erlaubt — und beantworte dann die Frage der Reise, um deine Ankunft zu bestätigen. Ein Fehler wirft dich nie zurück: Du versuchst es einfach im nächsten Zug erneut.",
-  tr="Parkurun sonuna ulaş — çizgiyi geçmek serbest — sonra varışını resmileştirmek için Yolculuk Sorusu'nu cevapla. Yanlış cevap seni asla geri götürmez: sıradaki turda yeniden denersin.",
-  id="Capai ujung lintasan — melewati garis tidak masalah — lalu jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu. Jawaban salah tidak pernah memundurkanmu: kamu tinggal mencoba lagi di giliran berikutnya.",
-  ur="راستے کے آخر تک پہنچیں — لکیر سے آگے نکلنا ٹھیک ہے — پھر اپنی آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں۔ غلط جواب آپ کو کبھی پیچھے نہیں کرتا: آپ اگلی باری میں دوبارہ کوشش کرتے ہیں۔",
-  ms="Capai penghujung laluan — melepasi garisan tidak mengapa — kemudian jawab Soalan Perjalanan untuk mengesahkan ketibaan anda. Jawapan salah tidak pernah mengundurkan anda: anda cuba lagi pada giliran seterusnya.",
-  it="Raggiungi la fine del percorso — superare la linea è permesso — poi rispondi alla Domanda del viaggio per convalidare il tuo arrivo. Un errore non ti fa mai arretrare: riprovi al turno successivo.",
-  nl="Bereik het einde van het parcours — voorbij de streep gaan mag — en beantwoord dan de Vraag van de Reis om je aankomst te bevestigen. Een fout zet je nooit terug: je probeert het gewoon opnieuw.")
+s("ruleArrivalBody", "Rules step 6 body: the finish is reached on an exact count",
+  fr="La ligne d'arrivée se gagne au compte exact : à trois cases de l'oasis, il te faut exactement un 3. Un 4, un 5 ou un 6 laisse le cheval où il est, et tu attends la bonne carte. Une fois arrivé, réponds à la Question du voyage pour valider ton arrivée ; une erreur ne te fait jamais reculer, tu réessaies au tour suivant.",
+  en="The finish is reached on an exact count: three squares from the oasis you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.",
+  ar="يُبلَغ خط النهاية بالعدد المضبوط: على بُعد ثلاثة مربعات من الواحة تحتاج إلى 3 تمامًا. الـ4 أو الـ5 أو الـ6 يترك الحصان مكانه في انتظار البطاقة الصحيحة. وعند الوصول أجب عن سؤال الرحلة لتثبيت وصولك؛ الإجابة الخاطئة لا تعيدك أبدًا، بل تحاول في الدور التالي.",
+  es="La meta se alcanza con el número exacto: a tres casillas del oasis necesitas justo un 3. Un 4, un 5 o un 6 deja el caballo donde está, esperando la carta correcta. Al llegar, responde la Pregunta del viaje para validar tu llegada; un error nunca te hace retroceder, lo intentas de nuevo en el siguiente turno.",
+  pt="A chegada exige o número exato: a três casas do oásis você precisa de exatamente 3. Um 4, um 5 ou um 6 deixa o cavalo onde está, esperando a carta certa. Ao chegar, responda à Pergunta da viagem para validar sua chegada; um erro nunca faz você recuar, basta tentar de novo na próxima vez.",
+  de="Das Ziel wird nur mit der genauen Zahl erreicht: drei Felder vor der Oase brauchst du genau eine 3. Eine 4, 5 oder 6 lässt das Pferd stehen, bis die richtige Karte kommt. Bist du da, beantworte die Frage der Reise, um die Ankunft zu bestätigen; ein Fehler wirft dich nie zurück, du versuchst es im nächsten Zug erneut.",
+  tr="Varış tam sayıyla kazanılır: vahaya üç kare kala tam olarak 3 gerekir. 4, 5 ya da 6 atı yerinde bırakır, doğru kartı bekler. Vardığında varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla; yanlış cevap seni asla geri götürmez, sıradaki turda yeniden denersin.",
+  id="Garis akhir dicapai dengan hitungan tepat: tiga petak dari oasis kamu butuh persis 3. Angka 4, 5, atau 6 membiarkan kuda di tempatnya, menunggu kartu yang pas. Setelah sampai, jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu; jawaban salah tidak pernah memundurkanmu, kamu tinggal mencoba lagi.",
+  ur="منزل ٹھیک گنتی سے ملتی ہے: نخلستان سے تین خانے پہلے آپ کو بالکل 3 چاہیے۔ 4، 5 یا 6 گھوڑے کو وہیں چھوڑ دیتا ہے، صحیح کارڈ کے انتظار میں۔ پہنچنے پر آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں؛ غلط جواب آپ کو کبھی پیچھے نہیں کرتا، آپ اگلی باری دوبارہ کوشش کرتے ہیں۔",
+  ms="Garisan penamat dicapai dengan kiraan tepat: tiga petak dari oasis anda perlukan tepat 3. Nombor 4, 5 atau 6 membiarkan kuda di tempatnya, menunggu kad yang betul. Setibanya, jawab Soalan Perjalanan untuk mengesahkan ketibaan anda; jawapan salah tidak pernah mengundurkan anda, anda cuba lagi pada giliran seterusnya.",
+  it="Il traguardo si raggiunge con il conto esatto: a tre caselle dall\'oasi ti serve esattamente un 3. Un 4, un 5 o un 6 lascia il cavallo dov\'è, in attesa della carta giusta. Una volta arrivato, rispondi alla Domanda del viaggio per convalidare l\'arrivo; un errore non ti fa mai arretrare, riprovi al turno successivo.",
+  nl="De finish haal je met het exacte aantal: drie vakjes voor de oase heb je precies een 3 nodig. Een 4, 5 of 6 laat het paard staan tot de juiste kaart komt. Eenmaal daar beantwoord je de Vraag van de Reis om de aankomst te bevestigen; een fout zet je nooit terug, je probeert het gewoon opnieuw.")
 
 
 # ---- Core gameplay evolution: answer first, place the horse, bonus squares ----
@@ -1716,11 +1719,30 @@ s("bonusLabel", "Word shouted when a bonus square fires, above its value",
   fr="BONUS", en="BONUS", ar="مكافأة", es="BONUS", pt="BÔNUS", de="BONUS",
   tr="BONUS", id="BONUS", ur="بونس", ms="BONUS", it="BONUS", nl="BONUS")
 
-s("bonusPlus", "Bonus value with its unit, e.g. '+10 squares'",
+s("bonusPlus", "Bonus value with its unit, e.g. '+10 gallops'",
   ph={"value": "int"},
-  fr="+{value} cases", en="+{value} squares", ar="+{value} مربعات", es="+{value} casillas",
-  pt="+{value} casas", de="+{value} Felder", tr="+{value} kare", id="+{value} petak",
-  ur="+{value} خانے", ms="+{value} petak", it="+{value} caselle", nl="+{value} vakjes")
+  fr="+{value} galops", en="+{value} gallops", ar="+{value} ركضة", es="+{value} galopes",
+  pt="+{value} galopes", de="+{value} Galopp", tr="+{value} dörtnal", id="+{value} lompatan",
+  ur="+{value} سرپٹ", ms="+{value} lompatan", it="+{value} galoppi", nl="+{value} galop")
+
+s("captureBonusLabel", "Word shouted when a capture pays its bond of extra squares",
+  fr="CAPTURE", en="CAPTURE", ar="أسر", es="CAPTURA", pt="CAPTURA", de="SCHLAG",
+  tr="YAKALAMA", id="TANGKAP", ur="پکڑ", ms="TANGKAP", it="CATTURA", nl="SLAG")
+
+s("captureBonusRide", "Turn banner while the horse rides the bond a capture paid",
+  ph={"value": "int"},
+  fr="Capture ! Votre cheval bondit de {value} galops.",
+  en="Capture! Your horse bounds {value} gallops forward.",
+  ar="أسر! يقفز حصانك {value} ركضة إلى الأمام.",
+  es="¡Captura! Tu caballo salta {value} galopes.",
+  pt="Captura! O seu cavalo salta {value} galopes.",
+  de="Geschlagen! Dein Pferd springt {value} Galopp vor.",
+  tr="Yakaladın! Atın {value} dörtnal ileri sıçrıyor.",
+  id="Tangkap! Kudamu melompat {value} lompatan ke depan.",
+  ur="پکڑ! آپ کا گھوڑا {value} سرپٹ آگے چھلانگ لگاتا ہے۔",
+  ms="Tangkap! Kuda anda melompat {value} lompatan ke hadapan.",
+  it="Cattura! Il tuo cavallo balza in avanti di {value} galoppi.",
+  nl="Geslagen! Je paard springt {value} galop vooruit.")
 
 s("bonusRide", "Turn banner while the horse rides the bonus it landed on",
   ph={"value": "int"},
@@ -1834,19 +1856,19 @@ s("ruleBonusTitle", "Rules step: the bonus squares",
   pt="As casas bônus", de="Die Bonusfelder", tr="Bonus kareler", id="Petak bonus",
   ur="بونس خانے", ms="Petak bonus", it="Le caselle bonus", nl="De bonusvakjes")
 
-s("ruleBonusBody", "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, once per turn",
-  fr="Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s'arrête exactement dessus repart aussitôt de +5, +10 ou +20 cases — une seule fois par tour, et la case reste en jeu pour tous.",
-  en="Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.",
-  ar="توزَّع ستة عشر مربع مكافأة على اللوحة في كل لعبة، أربعة في كل ربع. الحصان الذي يتوقف عليها تمامًا يتقدّم فورًا +5 أو +10 أو +20 مربعًا — مرة واحدة في الدور، ويبقى المربع في اللعب للجميع.",
-  es="Dieciséis casillas bonus se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene justo en una avanza al instante +5, +10 o +20 casillas: una sola vez por turno, y la casilla sigue en juego para todos.",
-  pt="Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 casas — uma só vez por turno, e a casa continua em jogo para todos.",
-  de="Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Felder weiter – einmal pro Zug, und das Feld bleibt für alle im Spiel.",
-  tr="Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 kare ilerler — turda yalnızca bir kez, ve kare herkes için oyunda kalır.",
-  id="Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 petak — sekali per giliran, dan petaknya tetap berlaku untuk semua.",
-  ur="ہر کھیل میں بورڈ پر سولہ بونس خانے بانٹے جاتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل ان پر رکے وہ فوراً +5، +10 یا +20 خانے آگے بڑھتا ہے — ہر باری میں صرف ایک بار، اور خانہ سب کے لیے کھیل میں رہتا ہے۔",
-  ms="Enam belas petak bonus diagihkan di papan setiap permainan, empat setiap suku. Kuda yang berhenti tepat di atasnya terus mara +5, +10 atau +20 petak — sekali setiap giliran, dan petak itu kekal untuk semua.",
-  it="Sedici caselle bonus vengono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una avanza subito di +5, +10 o +20 caselle — una sola volta per turno, e la casella resta in gioco per tutti.",
-  nl="Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 vakjes door – één keer per beurt, en het vakje blijft voor iedereen in het spel.")
+s("ruleBonusBody", "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, and they chain",
+  fr="Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s\'enchaînent. Chaque case ne sert qu\'une fois par tour, et reste en jeu pour tous.",
+  en="Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 gallops — and if that bound sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn, and stays in play for everyone.",
+  ar="توزَّع ستة عشر مربع مكافأة على اللوحة في كل لعبة، أربعة في كل ربع. الحصان الذي يتوقف عليها تمامًا يتقدّم فورًا +5 أو +10 أو +20 ركضة — وإن أوقعته هذه القفزة على مربع مكافأة آخر تمامًا انطلق بدوره: المكافآت تتسلسل. كل مربع يدفع مرة واحدة في الدور، ويبقى في اللعب للجميع.",
+  es="Dieciséis casillas bonus se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene justo en una avanza al instante +5, +10 o +20 galopes — y si ese salto lo deja justo en otra casilla bonus, esta se dispara también: los bonus se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos.",
+  pt="Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 galopes — e se esse salto o deixar exatamente noutra casa bônus, ela dispara também: os bônus se encadeiam. Cada casa paga uma vez por turno e continua em jogo para todos.",
+  de="Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Galopp weiter – und landet es damit genau auf einem weiteren Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel.",
+  tr="Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 dörtnal ilerler — ve bu sıçrayış onu tam olarak başka bir bonus kareye koyarsa o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır.",
+  id="Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 lompatan — dan bila lompatan itu mendaratkannya tepat di petak bonus lain, petak itu ikut menyala: bonus berantai. Setiap petak membayar sekali per giliran dan tetap berlaku untuk semua.",
+  ur="ہر کھیل میں بورڈ پر سولہ بونس خانے بانٹے جاتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل ان پر رکے وہ فوراً +5، +10 یا +20 سرپٹ آگے بڑھتا ہے — اور اگر وہ چھلانگ اسے بالکل کسی اور بونس خانے پر اتارے تو وہ بھی چل پڑتا ہے: بونس ایک دوسرے سے جڑ جاتے ہیں۔ ہر خانہ ہر باری میں ایک بار ادا کرتا ہے اور سب کے لیے کھیل میں رہتا ہے۔",
+  ms="Enam belas petak bonus diagihkan di papan setiap permainan, empat setiap suku. Kuda yang berhenti tepat di atasnya terus mara +5, +10 atau +20 lompatan — dan jika lompatan itu meletakkannya tepat di petak bonus lain, petak itu turut menyala: bonus berantai. Setiap petak membayar sekali setiap giliran dan kekal untuk semua.",
+  it="Sedici caselle bonus vengono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una avanza subito di +5, +10 o +20 galoppi — e se quel balzo lo posa esattamente su un\'altra casella bonus, scatta anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti.",
+  nl="Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 galop door – en zet die sprong het precies op een volgend bonusvakje, dan gaat dat ook af: bonussen ketenen. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel.")
 
 
 # ---------------------------------------------------------------------

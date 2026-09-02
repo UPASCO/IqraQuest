@@ -210,23 +210,51 @@ void main() {
       // Step two: the ride.
       s = engine.applyPendingBonus(s);
       expect(s.players[0].horses[0].position, const TrackPosition(10));
-      expect(s.pendingBonus, isNull);
       expect(s.bonusUsedThisTurn, isTrue);
       expect(s.lastBonusValue, 5);
     });
 
-    test('at most one bonus per turn: a bonus ride never chains', () {
+    test('bonuses chain: a ride that stops on another bonus sets it off too', () {
       var s = game(tiles: tiles);
       s = at(s, horse: 0, pos: const TrackPosition(3));
       s = won(engine, s, 2);
       s = engine.placeHorse(s, 0);
+      // The +5 ride lands exactly on the +10 square…
       s = engine.applyPendingBonus(s);
-      // The +5 ride landed exactly on the +10 square…
       expect(s.players[0].horses[0].position, const TrackPosition(10));
-      expect(s.bonusAt(10), isNotNull);
-      // …and it does not fire.
+      expect(s.firedBonusTracks, {5});
+      // …so the +10 is handed over in turn.
+      expect(s.pendingBonus?.value, 10);
+      expect(s.pendingBonus?.trackIndex, 10);
+      s = engine.applyPendingBonus(s);
+      expect(s.players[0].horses[0].position, const TrackPosition(20));
+      expect(s.firedBonusTracks, {5, 10});
+      expect(s.lastBonusValue, 10);
+      // Square 20 carries nothing: the chain stops there.
       expect(s.pendingBonus, isNull);
-      expect(identical(engine.applyPendingBonus(s), s), isTrue);
+    });
+
+    test('a chain always ends, and every square in it fires exactly once', () {
+      var s = game(
+        tiles: const [
+          BonusTile(trackIndex: 5, value: 20),
+          BonusTile(trackIndex: 25, value: 20),
+          BonusTile(trackIndex: 45, value: 5),
+        ],
+      );
+      s = at(s, horse: 0, pos: const TrackPosition(3));
+      s = won(engine, s, 2);
+      s = engine.placeHorse(s, 0);
+      var rides = 0;
+      while (s.pendingBonus != null) {
+        s = engine.applyPendingBonus(s);
+        rides++;
+        expect(rides, lessThan(20), reason: 'the chain has to end');
+      }
+      // 3 -> 5, +20 -> 25, +20 -> 45, +5 -> 50, which carries nothing.
+      expect(rides, 3);
+      expect(s.firedBonusTracks, {5, 25, 45});
+      expect(s.players[0].horses[0].position, const TrackPosition(50));
     });
 
     test('passing over a bonus square does nothing', () {
@@ -265,8 +293,9 @@ void main() {
     });
 
     test('a bonus ride can carry a horse home: the arrival owes its question', () {
-      var s = game(tiles: const [BonusTile(trackIndex: 50, value: 20)], variant: GameVariant.quick);
-      s = at(s, horse: 0, pos: const TrackPosition(48));
+      // 37 + 20 = 57, the exact length of the journey.
+      var s = game(tiles: const [BonusTile(trackIndex: 37, value: 20)], variant: GameVariant.quick);
+      s = at(s, horse: 0, pos: const TrackPosition(35));
       s = won(engine, s, 2);
       s = engine.applyPendingBonus(engine.placeHorse(s, 0));
       expect(s.players[0].horses[0].position, isA<FinishedPosition>());
@@ -274,11 +303,74 @@ void main() {
       expect(s.lastMoveOutcome, MoveOutcome.reachedFinish);
     });
 
+    test('a bonus ride that would overshoot the finish is not made', () {
+      // 50 + 20 = 70, well past the 57 the journey is long: the exact
+      // count rules a bonus exactly as it rules a card.
+      var s = game(tiles: const [BonusTile(trackIndex: 50, value: 20)], variant: GameVariant.quick);
+      s = at(s, horse: 0, pos: const TrackPosition(48));
+      s = won(engine, s, 2);
+      s = engine.placeHorse(s, 0);
+      expect(s.pendingBonus?.value, 20);
+      s = engine.applyPendingBonus(s);
+      expect(s.players[0].horses[0].position, const TrackPosition(50));
+      expect(s.pendingBonus, isNull, reason: 'the bonus is spent, not stuck');
+    });
+
     test('a horse coming out of the stable never lands on a bonus (start squares carry none)', () {
       var s = game(tiles: tiles);
       s = won(engine, s, 6);
       final exits = engine.legalMoves(s, s.drawnCard!);
       expect(exits.every((m) => m.bonusValue == null), isTrue);
+    });
+
+    test('sending an opponent home is worth a twenty-square bond', () {
+      var s = game();
+      s = at(s, horse: 0, pos: const TrackPosition(3));
+      s = at(s, player: 1, horse: 0, pos: const TrackPosition(5));
+      s = won(engine, s, 2);
+      s = engine.placeHorse(s, 0);
+      expect(s.lastMoveOutcome, MoveOutcome.captured);
+      expect(s.players[1].horses[0].position, const HomePosition());
+      // The capture pays its twenty, from the square it happened on.
+      expect(s.pendingBonus?.value, kCaptureBonus);
+      expect(s.pendingBonus?.fromCapture, isTrue);
+      expect(s.pendingBonus?.trackIndex, 5);
+      s = engine.applyPendingBonus(s);
+      expect(s.players[0].horses[0].position, const TrackPosition(25));
+      // A capture is not a square: nothing on the board is spent by it.
+      expect(s.firedBonusTracks, isEmpty);
+    });
+
+    test('a capture made by a bonus ride pays its twenty in turn', () {
+      var s = game(tiles: const [BonusTile(trackIndex: 5, value: 5)]);
+      s = at(s, horse: 0, pos: const TrackPosition(3));
+      s = at(s, player: 1, horse: 0, pos: const TrackPosition(10));
+      s = won(engine, s, 2);
+      s = engine.placeHorse(s, 0);
+      expect(s.pendingBonus?.value, 5);
+      // The +5 ride lands on the opponent and sends it home…
+      s = engine.applyPendingBonus(s);
+      expect(s.players[1].horses[0].position, const HomePosition());
+      expect(s.lastMoveOutcome, MoveOutcome.captured);
+      // …which is worth twenty more.
+      expect(s.pendingBonus?.value, kCaptureBonus);
+      s = engine.applyPendingBonus(s);
+      expect(s.players[0].horses[0].position, const TrackPosition(30));
+    });
+
+    test('a shield blocks the capture, so it pays nothing', () {
+      var s = game();
+      s = at(s, horse: 0, pos: const TrackPosition(3));
+      s = at(s, player: 1, horse: 0, pos: const TrackPosition(5));
+      final others = [...s.players];
+      final horses = [...others[1].horses];
+      horses[0] = horses[0].copyWith(hasShield: true);
+      others[1] = others[1].copyWith(horses: horses);
+      s = s.copyWith(players: others);
+      s = won(engine, s, 2);
+      s = engine.placeHorse(s, 0);
+      expect(s.lastMoveOutcome, MoveOutcome.blockedByShield);
+      expect(s.pendingBonus, isNull);
     });
 
     test('the pending bonus survives a save and resumes mid-ride', () {

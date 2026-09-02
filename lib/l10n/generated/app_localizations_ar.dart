@@ -654,7 +654,9 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'أسر!';
+  String moveHintCapture(int value) {
+    return 'أسر! +$value';
+  }
 
   @override
   String get moveHintFinish => 'الوصول!';
@@ -750,7 +752,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.';
+      'الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والأسر يُكافأ: يقفز حصانك فورًا 20 ركضة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.';
 
   @override
   String get ruleStreakTitle => 'اندفاع المعرفة';
@@ -764,7 +766,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'اِبلغ نهاية المسار — وتجاوز الخط مسموح — ثم أجب عن سؤال الرحلة لتثبيت وصولك. الإجابة الخاطئة لا تعيدك أبدًا: تحاول ببساطة في الدور التالي.';
+      'يُبلَغ خط النهاية بالعدد المضبوط: على بُعد ثلاثة مربعات من الواحة تحتاج إلى 3 تمامًا. الـ4 أو الـ5 أو الـ6 يترك الحصان مكانه في انتظار البطاقة الصحيحة. وعند الوصول أجب عن سؤال الرحلة لتثبيت وصولك؛ الإجابة الخاطئة لا تعيدك أبدًا، بل تحاول في الدور التالي.';
 
   @override
   String get hapticFeedback => 'الاهتزاز';
@@ -798,7 +800,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value مربعات';
+    return '+$value ركضة';
+  }
+
+  @override
+  String get captureBonusLabel => 'أسر';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'أسر! يقفز حصانك $value ركضة إلى الأمام.';
   }
 
   @override
@@ -863,5 +873,5 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'توزَّع ستة عشر مربع مكافأة على اللوحة في كل لعبة، أربعة في كل ربع. الحصان الذي يتوقف عليها تمامًا يتقدّم فورًا +5 أو +10 أو +20 مربعًا — مرة واحدة في الدور، ويبقى المربع في اللعب للجميع.';
+      'توزَّع ستة عشر مربع مكافأة على اللوحة في كل لعبة، أربعة في كل ربع. الحصان الذي يتوقف عليها تمامًا يتقدّم فورًا +5 أو +10 أو +20 ركضة — وإن أوقعته هذه القفزة على مربع مكافأة آخر تمامًا انطلق بدوره: المكافآت تتسلسل. كل مربع يدفع مرة واحدة في الدور، ويبقى في اللعب للجميع.';
 }

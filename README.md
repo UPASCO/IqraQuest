@@ -118,9 +118,20 @@ of the die, played **answer first, then place**. The turn is:
    +10 (×6), +20 (×2, always in opposite quadrants), never adjacent,
    never on a start or effect square, every quadrant worth the same +35.
    A horse that stops *exactly* on one flares and rides on by its value,
-   in a second, clearly separate ride — at most one bonus per turn, and
-   the square stays in play for everyone. The layout is generated once
-   from the game's seed, lives in the save, and is never recomputed.
+   in a second, clearly separate ride — and if that ride sets it down
+   exactly on another bonus square, **that one fires too**: bonuses
+   chain. Each square pays at most once per turn (`firedBonusTracks`,
+   which is also what makes the chain terminate) and stays in play for
+   everyone. The layout is generated once from the game's seed, lives in
+   the save, and is never recomputed;
+5. **a capture pays** — sending an opponent home is worth
+   `kCaptureBonus` = 20 extra squares, ridden exactly like a bonus, and
+   a capture made *by* a bonus ride pays its own twenty in turn;
+6. **the finish is exact** — three squares from the oasis you need
+   exactly a 3. A card that would carry a horse past the finish is not
+   offered for that horse at all, and neither is a bonus ride that would:
+   the horse waits for the right card. If no horse can play the card, the
+   turn simply passes.
 
 Every rider's **first horse already stands on its start square**: the
 classic opening — four horses shut in and a 6 to find — spends the first

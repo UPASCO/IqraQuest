@@ -432,6 +432,68 @@ void main() {
     });
 
     test(
+      'the arrival at Mecca asks a clean question, never a card already answered',
+      () async {
+        final storage = await LocalStorageService.create();
+        final controller = await buildController(storage);
+        final now = DateTime(2026, 1, 1);
+        // A horse standing at the finish, owing its journey question —
+        // and the verdict of the turn's own card still on the state, the
+        // way a real save carries it.
+        final save = GameState(
+          gameId: 'arrival',
+          gameMode: GameMode.family,
+          gameVariant: GameVariant.quick,
+          circuitId: CircuitId.oasisRoute,
+          players: [
+            human('Amina', AppTeam.emerald).copyWith(
+              horses: const [
+                HorseState(
+                  position: FinishedPosition(),
+                  awaitingJourneyQuestion: true,
+                ),
+                HorseState(position: TrackPosition(4)),
+                HorseState(),
+                HorseState(),
+              ],
+            ),
+            human('Bilal', AppTeam.saphir),
+          ],
+          currentPlayerIndex: 0,
+          turnPhase: TurnPhase.selectingGait,
+          askedQuestionIds: const {},
+          lastAnswerCorrect: true,
+          startedAt: now,
+          updatedAt: now,
+        );
+        await GameSaveService(storage).save(save);
+        expect(controller.loadSaved(), isTrue);
+
+        final s = controller.state!;
+        expect(s.gameState.turnPhase, TurnPhase.answeringJourneyQuestion);
+        expect(s.currentQuestion, isNotNull);
+        // The heart of it: nothing on the state says this question has
+        // been answered, so the card opens with live tiles and gives
+        // nothing away.
+        expect(
+          s.gameState.lastAnswerCorrect,
+          isNull,
+          reason: 'the journey question opened wearing the last verdict',
+        );
+        expect(s.gameState.justUnlocked, isEmpty);
+
+        // And it can actually be answered: the arrival is validated and
+        // the race is won.
+        final q = s.currentQuestion!;
+        controller.answerJourneyQuestion(q.correctAnswerIndex);
+        final after = controller.state!.gameState;
+        expect(after.players[0].horses[0].awaitingJourneyQuestion, isFalse);
+        expect(after.turnPhase, TurnPhase.gameOver);
+        expect(after.winnerId, after.players[0].id);
+      },
+    );
+
+    test(
       'an exhausted free bank never blocks or paywalls a turn mid-game',
       () async {
         final storage = await LocalStorageService.create();

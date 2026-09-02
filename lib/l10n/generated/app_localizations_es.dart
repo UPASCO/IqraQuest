@@ -651,7 +651,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => '¡captura!';
+  String moveHintCapture(int value) {
+    return '¡captura! +$value';
+  }
 
   @override
   String get moveHintFinish => '¡llegada!';
@@ -747,7 +749,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. Un caballo que sale del establo siempre captura en su casilla de salida.';
+      'Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. La captura se paga: tu caballo salta al instante 20 galopes. Un caballo que sale del establo siempre captura en su casilla de salida.';
 
   @override
   String get ruleStreakTitle => 'El impulso del saber';
@@ -761,7 +763,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Llega al final del recorrido —pasarse de la línea está permitido— y responde la Pregunta del viaje para validar tu llegada. Un error nunca te hace retroceder: lo intentas de nuevo en el siguiente turno.';
+      'La meta se alcanza con el número exacto: a tres casillas del oasis necesitas justo un 3. Un 4, un 5 o un 6 deja el caballo donde está, esperando la carta correcta. Al llegar, responde la Pregunta del viaje para validar tu llegada; un error nunca te hace retroceder, lo intentas de nuevo en el siguiente turno.';
 
   @override
   String get hapticFeedback => 'Vibración';
@@ -792,7 +794,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value casillas';
+    return '+$value galopes';
+  }
+
+  @override
+  String get captureBonusLabel => 'CAPTURA';
+
+  @override
+  String captureBonusRide(int value) {
+    return '¡Captura! Tu caballo salta $value galopes.';
   }
 
   @override
@@ -855,5 +865,5 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Dieciséis casillas bonus se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene justo en una avanza al instante +5, +10 o +20 casillas: una sola vez por turno, y la casilla sigue en juego para todos.';
+      'Dieciséis casillas bonus se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene justo en una avanza al instante +5, +10 o +20 galopes — y si ese salto lo deja justo en otra casilla bonus, esta se dispara también: los bonus se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos.';
 }

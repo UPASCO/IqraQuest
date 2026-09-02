@@ -134,6 +134,20 @@ them out — a chevron that vanishes each cycle reads as a flicker — and
 with motion turned off they simply hold bright. No other piece on the
 plate carries any of it.
 
+### What a ride is worth
+Three things pay extra squares, and they all ride the same way — a
+separate, visible ride after the horse has stopped, announced by the
+callout over the board:
+
+* a **bonus square** landed on exactly, worth its own +5/+10/+20;
+* a **capture**, worth `kCaptureBonus` = 20, shouted as CAPTURE rather
+  than BONUS so the two read apart;
+* the **Grand Galop**, spent silently and only to complete an arrival.
+
+They chain: each ride asks again what the new square owes. A square pays
+once per turn, which is what ends the chain. Nothing ever overshoots the
+finish — the exact count rules a bonus exactly as it rules a card.
+
 ### The board plate
 Baked by `tool/art/bake_cross_board.py` from the owner's reference
 board. Two rules the bake enforces, because the reference cannot: each

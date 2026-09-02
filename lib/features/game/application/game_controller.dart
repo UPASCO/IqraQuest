@@ -287,7 +287,7 @@ class GameController extends StateNotifier<GameSession?> {
       TurnPhase.choosingHorse => saved,
       // The horse was set down: whatever it earned is still earned. A
       // pending bonus rides now, then the landing is resolved.
-      TurnPhase.movingHorse => engine.applyPendingBonus(saved),
+      TurnPhase.movingHorse => _drainBonusChain(saved),
       // A card that could move nothing has been seen: the turn passes.
       TurnPhase.noMove => engine.endTurn(saved),
       TurnPhase.turnComplete => engine.endTurn(saved),
@@ -585,9 +585,26 @@ class GameController extends StateNotifier<GameSession?> {
     return true;
   }
 
-  /// The horse has visibly stopped. A bonus square under its hooves
-  /// flares for a beat, then it rides on; otherwise the landing is
-  /// resolved straight away.
+  /// Rides out a whole bonus chain at once, with no beats between —
+  /// how a resumed save catches up on what the turn had already earned.
+  GameState _drainBonusChain(GameState from) {
+    var next = from;
+    // Every ride spends a square, and there are only sixteen: the bound
+    // is a belt over the braces, not the thing that ends the chain.
+    for (var i = 0; i < 24 && next.pendingBonus != null; i++) {
+      next = engine.applyPendingBonus(next);
+    }
+    return next;
+  }
+
+  /// The horse has visibly stopped. Anything it earned where it stands —
+  /// a bonus square under its hooves, or the twenty squares a capture is
+  /// worth — flares for a beat and is then ridden; otherwise the landing
+  /// is resolved straight away.
+  ///
+  /// Bonuses chain, so this comes back round: each ride asks again what
+  /// the new square owes, and only a square that owes nothing hands over
+  /// to [_settleRide].
   void _afterRide() {
     final s = state;
     if (s == null || s.gameState.turnPhase != TurnPhase.movingHorse) return;
@@ -602,7 +619,7 @@ class GameController extends StateNotifier<GameSession?> {
       final next = engine.applyPendingBonus(current.gameState);
       state = current.copyWith(gameState: next);
       _persist();
-      _after(rideDurationFor(bonus.value), _settleRide);
+      _after(rideDurationFor(bonus.value), _afterRide);
     });
   }
 
@@ -648,7 +665,13 @@ class GameController extends StateNotifier<GameSession?> {
         )) {
       if (gameState.turnPhase != TurnPhase.resolvingCell) {
         state = s.copyWith(
-          gameState: gameState.copyWith(turnPhase: TurnPhase.resolvingCell),
+          gameState: gameState.copyWith(
+            turnPhase: TurnPhase.resolvingCell,
+            // Same rule as the journey question: the offer, and the
+            // question behind it, open with no verdict on them.
+            lastAnswerCorrect: null,
+            justUnlocked: const [],
+          ),
           currentQuestion: null,
         );
         _persist();
@@ -867,6 +890,10 @@ class GameController extends StateNotifier<GameSession?> {
     state = s.copyWith(
       gameState: s.gameState.copyWith(
         turnPhase: TurnPhase.answeringJourneyQuestion,
+        // A fresh question carries no verdict: the one from the turn's
+        // own card would render this card as already answered.
+        lastAnswerCorrect: null,
+        justUnlocked: const [],
       ),
       currentQuestion: question,
       journeyHorseIndex: horseIndex,

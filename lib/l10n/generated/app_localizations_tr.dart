@@ -643,7 +643,9 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'yakala!';
+  String moveHintCapture(int value) {
+    return 'yakala! +$value';
+  }
 
   @override
   String get moveHintFinish => 'varış!';
@@ -739,7 +741,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.';
+      'Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Yakalamak ödüllendirilir: atın hemen 20 dörtnal ileri sıçrar. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.';
 
   @override
   String get ruleStreakTitle => 'Bilgi serisi';
@@ -753,7 +755,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Parkurun sonuna ulaş — çizgiyi geçmek serbest — sonra varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla. Yanlış cevap seni asla geri götürmez: sıradaki turda yeniden denersin.';
+      'Varış tam sayıyla kazanılır: vahaya üç kare kala tam olarak 3 gerekir. 4, 5 ya da 6 atı yerinde bırakır, doğru kartı bekler. Vardığında varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla; yanlış cevap seni asla geri götürmez, sıradaki turda yeniden denersin.';
 
   @override
   String get hapticFeedback => 'Titreşim';
@@ -782,7 +784,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value kare';
+    return '+$value dörtnal';
+  }
+
+  @override
+  String get captureBonusLabel => 'YAKALAMA';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Yakaladın! Atın $value dörtnal ileri sıçrıyor.';
   }
 
   @override
@@ -844,5 +854,5 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 kare ilerler — turda yalnızca bir kez, ve kare herkes için oyunda kalır.';
+      'Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 dörtnal ilerler — ve bu sıçrayış onu tam olarak başka bir bonus kareye koyarsa o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır.';
 }

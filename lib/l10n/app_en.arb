@@ -887,9 +887,14 @@
       }
     }
   },
-  "moveHintCapture": "capture!",
+  "moveHintCapture": "capture! +{value}",
   "@moveHintCapture": {
-    "description": "Choice sheet tag: this move captures an opponent"
+    "description": "Choice sheet tag: this move captures an opponent, and what the capture is worth",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
   },
   "moveHintFinish": "finish!",
   "@moveHintFinish": {
@@ -1015,9 +1020,9 @@
   "@ruleCaptureTitle": {
     "description": "Rules step 4 title"
   },
-  "ruleCaptureBody": "Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.",
+  "ruleCaptureBody": "Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A capture pays: your horse bounds 20 gallops forward at once. A horse leaving its stable always captures on its start square.",
   "@ruleCaptureBody": {
-    "description": "Rules step 4 body"
+    "description": "Rules step 4 body: a capture sends the horse home and pays twenty"
   },
   "ruleStreakTitle": "The knowledge streak",
   "@ruleStreakTitle": {
@@ -1031,9 +1036,9 @@
   "@ruleArrivalTitle": {
     "description": "Rules step 6 title"
   },
-  "ruleArrivalBody": "Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.",
+  "ruleArrivalBody": "The finish is reached on an exact count: three squares from the oasis you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.",
   "@ruleArrivalBody": {
-    "description": "Rules step 6 body"
+    "description": "Rules step 6 body: the finish is reached on an exact count"
   },
   "hapticFeedback": "Vibration",
   "@hapticFeedback": {
@@ -1064,9 +1069,22 @@
   "@bonusLabel": {
     "description": "Word shouted when a bonus square fires, above its value"
   },
-  "bonusPlus": "+{value} squares",
+  "bonusPlus": "+{value} gallops",
   "@bonusPlus": {
-    "description": "Bonus value with its unit, e.g. '+10 squares'",
+    "description": "Bonus value with its unit, e.g. '+10 gallops'",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "captureBonusLabel": "CAPTURE",
+  "@captureBonusLabel": {
+    "description": "Word shouted when a capture pays its bond of extra squares"
+  },
+  "captureBonusRide": "Capture! Your horse bounds {value} gallops forward.",
+  "@captureBonusRide": {
+    "description": "Turn banner while the horse rides the bond a capture paid",
     "placeholders": {
       "value": {
         "type": "int"
@@ -1159,8 +1177,8 @@
   "@ruleBonusTitle": {
     "description": "Rules step: the bonus squares"
   },
-  "ruleBonusBody": "Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.",
+  "ruleBonusBody": "Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 gallops — and if that bound sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn, and stays in play for everyone.",
   "@ruleBonusBody": {
-    "description": "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, once per turn"
+    "description": "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, and they chain"
   }
 }

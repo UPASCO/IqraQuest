@@ -1198,11 +1198,11 @@ abstract class AppLocalizations {
   /// **'Horse {number}: ride {count} ahead'**
   String moveChoiceAdvance(int number, int count);
 
-  /// Choice sheet tag: this move captures an opponent
+  /// Choice sheet tag: this move captures an opponent, and what the capture is worth
   ///
   /// In en, this message translates to:
-  /// **'capture!'**
-  String get moveHintCapture;
+  /// **'capture! +{value}'**
+  String moveHintCapture(int value);
 
   /// Choice sheet tag: this move reaches the finish
   ///
@@ -1360,10 +1360,10 @@ abstract class AppLocalizations {
   /// **'Capture and send home'**
   String get ruleCaptureTitle;
 
-  /// Rules step 4 body
+  /// Rules step 4 body: a capture sends the horse home and pays twenty
   ///
   /// In en, this message translates to:
-  /// **'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.'**
+  /// **'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A capture pays: your horse bounds 20 gallops forward at once. A horse leaving its stable always captures on its start square.'**
   String get ruleCaptureBody;
 
   /// Rules step 5 title
@@ -1384,10 +1384,10 @@ abstract class AppLocalizations {
   /// **'The arrival'**
   String get ruleArrivalTitle;
 
-  /// Rules step 6 body
+  /// Rules step 6 body: the finish is reached on an exact count
   ///
   /// In en, this message translates to:
-  /// **'Reach the end of the course — going past the line is fine — then answer the Question of the Journey to make your arrival official. A wrong answer never pushes you back: you simply try again next turn.'**
+  /// **'The finish is reached on an exact count: three squares from the oasis you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.'**
   String get ruleArrivalBody;
 
   /// Settings item: toggle for the board's vibrations
@@ -1426,11 +1426,23 @@ abstract class AppLocalizations {
   /// **'BONUS'**
   String get bonusLabel;
 
-  /// Bonus value with its unit, e.g. '+10 squares'
+  /// Bonus value with its unit, e.g. '+10 gallops'
   ///
   /// In en, this message translates to:
-  /// **'+{value} squares'**
+  /// **'+{value} gallops'**
   String bonusPlus(int value);
+
+  /// Word shouted when a capture pays its bond of extra squares
+  ///
+  /// In en, this message translates to:
+  /// **'CAPTURE'**
+  String get captureBonusLabel;
+
+  /// Turn banner while the horse rides the bond a capture paid
+  ///
+  /// In en, this message translates to:
+  /// **'Capture! Your horse bounds {value} gallops forward.'**
+  String captureBonusRide(int value);
 
   /// Turn banner while the horse rides the bonus it landed on
   ///
@@ -1504,10 +1516,10 @@ abstract class AppLocalizations {
   /// **'Bonus squares'**
   String get ruleBonusTitle;
 
-  /// Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, once per turn
+  /// Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, and they chain
   ///
   /// In en, this message translates to:
-  /// **'Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 squares — once per turn, and the square stays in play for everyone.'**
+  /// **'Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 gallops — and if that bound sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn, and stays in play for everyone.'**
   String get ruleBonusBody;
 }
 

@@ -29,6 +29,7 @@ class GameState {
     this.bonusSeed = 0,
     this.pendingBonus,
     this.bonusUsedThisTurn = false,
+    this.firedBonusTracks = const {},
     this.lastBonusValue,
     this.movedHorseIndex,
     this.pendingCellEffect,
@@ -86,9 +87,15 @@ class GameState {
   /// A bonus square a horse has just landed on, waiting to be ridden.
   final PendingBonus? pendingBonus;
 
-  /// At most one bonus square fires per turn: the extra ride it grants
-  /// can land on another bonus square without setting it off.
+  /// At least one bonus has fired this turn. Bonuses now *chain* — a
+  /// bonus ride that stops exactly on another bonus square sets that one
+  /// off too — so this only records that the turn has already paid one,
+  /// which is what keeps the placement preview honest.
   final bool bonusUsedThisTurn;
+
+  /// The bonus squares already spent in this turn. A chain never sets the
+  /// same square off twice, which is also what makes it terminate.
+  final Set<int> firedBonusTracks;
 
   /// The bonus ridden this turn, for the board's celebration.
   final int? lastBonusValue;
@@ -171,6 +178,7 @@ class GameState {
     int? bonusSeed,
     Object? pendingBonus = _unset,
     bool? bonusUsedThisTurn,
+    Set<int>? firedBonusTracks,
     Object? lastBonusValue = _unset,
     Object? movedHorseIndex = _unset,
     Object? pendingCellEffect = _unset,
@@ -207,6 +215,7 @@ class GameState {
           ? this.pendingBonus
           : pendingBonus as PendingBonus?,
       bonusUsedThisTurn: bonusUsedThisTurn ?? this.bonusUsedThisTurn,
+      firedBonusTracks: firedBonusTracks ?? this.firedBonusTracks,
       lastBonusValue: identical(lastBonusValue, _unset)
           ? this.lastBonusValue
           : lastBonusValue as int?,
@@ -269,6 +278,9 @@ class GameState {
         ? null
         : PendingBonus.fromJson(json['pendingBonus'] as Map<String, dynamic>),
     bonusUsedThisTurn: json['bonusUsedThisTurn'] as bool? ?? false,
+    firedBonusTracks: {
+      ...?(json['firedBonusTracks'] as List<dynamic>?)?.map((e) => e as int),
+    },
     lastBonusValue: json['lastBonusValue'] as int?,
     movedHorseIndex: json['movedHorseIndex'] as int?,
     pendingCellEffect: json['pendingCellEffect'] == null
@@ -315,6 +327,7 @@ class GameState {
     'bonusSeed': bonusSeed,
     'pendingBonus': pendingBonus?.toJson(),
     'bonusUsedThisTurn': bonusUsedThisTurn,
+    'firedBonusTracks': firedBonusTracks.toList(),
     'lastBonusValue': lastBonusValue,
     'movedHorseIndex': movedHorseIndex,
     'pendingCellEffect': pendingCellEffect?.name,

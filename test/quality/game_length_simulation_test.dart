@@ -43,7 +43,10 @@ GameState _game({
     updatedAt: now,
   );
   if (bonuses) state = const GameEngine().ensureBonusLayout(state);
-  return state;
+  // The real game opens with every rider's first horse already out.
+  return state.copyWith(
+    players: const GameEngine().openingLineUp(state.players, state.circuit),
+  );
 }
 
 /// One whole game. Every rider answers right with probability
@@ -92,7 +95,12 @@ int _simulate(GameState start, Random random, {double accuracy = 0.7}) {
           }
         }
         state = engine.placeHorse(state, best.horseIndex);
-        state = engine.applyPendingBonus(state);
+        // Bonuses chain, and a capture pays its own: ride the lot.
+        var rides = 0;
+        while (state.pendingBonus != null) {
+          state = engine.applyPendingBonus(state);
+          expect(rides++, lessThan(24), reason: 'a bonus chain must end');
+        }
         state = engine.completeMove(state);
         for (final h in engine.horsesAwaitingJourneyQuestion(state.currentPlayer)) {
           state = engine.answerJourneyQuestion(

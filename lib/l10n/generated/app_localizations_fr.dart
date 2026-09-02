@@ -650,7 +650,9 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'capture !';
+  String moveHintCapture(int value) {
+    return 'capture ! +$value';
+  }
 
   @override
   String get moveHintFinish => 'arrivée !';
@@ -746,7 +748,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. Un cheval qui sort de l\'écurie capture toujours sur sa case de départ.';
+      'Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. La capture se paie : ton cheval bondit aussitôt de 20 galops. Un cheval qui sort de l\'écurie capture toujours sur sa case de départ.';
 
   @override
   String get ruleStreakTitle => 'L\'élan du savoir';
@@ -760,7 +762,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Atteins le bout du parcours — dépasser la ligne est permis — puis réponds à la Question du voyage pour valider ton arrivée. Une erreur ne te fait jamais reculer : tu réessaies au tour suivant.';
+      'La ligne d\'arrivée se gagne au compte exact : à trois cases de l\'oasis, il te faut exactement un 3. Un 4, un 5 ou un 6 laisse le cheval où il est, et tu attends la bonne carte. Une fois arrivé, réponds à la Question du voyage pour valider ton arrivée ; une erreur ne te fait jamais reculer, tu réessaies au tour suivant.';
 
   @override
   String get hapticFeedback => 'Vibrations';
@@ -791,7 +793,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value cases';
+    return '+$value galops';
+  }
+
+  @override
+  String get captureBonusLabel => 'CAPTURE';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Capture ! Votre cheval bondit de $value galops.';
   }
 
   @override
@@ -854,5 +864,5 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 cases — une seule fois par tour, et la case reste en jeu pour tous.';
+      'Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s\'enchaînent. Chaque case ne sert qu\'une fois par tour, et reste en jeu pour tous.';
 }

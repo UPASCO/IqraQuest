@@ -52,25 +52,33 @@ class PendingBonus {
     required this.horseIndex,
     required this.trackIndex,
     required this.value,
+    this.fromCapture = false,
   });
 
   /// Which of the current player's horses earned it.
   final int horseIndex;
 
-  /// The square it was earned on.
+  /// The square it was earned on. For a capture bonus this is the square
+  /// the capture happened on, so the board still has somewhere to flare.
   final int trackIndex;
 
   final int value;
+
+  /// Earned by sending an opponent home rather than by a bonus square.
+  /// A capture bonus is not a tile: it never marks a square as spent.
+  final bool fromCapture;
 
   factory PendingBonus.fromJson(Map<String, dynamic> json) => PendingBonus(
     horseIndex: json['horseIndex'] as int,
     trackIndex: json['trackIndex'] as int,
     value: json['value'] as int,
+    fromCapture: json['fromCapture'] as bool? ?? false,
   );
 
   Map<String, dynamic> toJson() => {
     'horseIndex': horseIndex,
     'trackIndex': trackIndex,
     'value': value,
+    'fromCapture': fromCapture,
   };
 }

@@ -407,12 +407,13 @@ void main() {
       expect(road.players[0].rewards.hasGrandGallop, isTrue);
 
       // Two short of the finish, the Galop turns the ride into an arrival
-      // — and is spent.
+      // — and is spent. Under the exact count the two squares have to
+      // land it exactly: from here that is a 2 plus the Galop.
       var lane = withHorse(state, at: const FinalLanePosition(2));
-      final move = engine.legalMoves(lane, const MovementChoice(3)).single;
+      final move = engine.legalMoves(lane, const MovementChoice(2)).single;
       expect(move.usesGrandGallop, isTrue);
       expect(move.reachesFinish, isTrue);
-      lane = play(engine, lane, steps: 3, correct: true, questionId: 'q1');
+      lane = play(engine, lane, steps: 2, correct: true, questionId: 'q1');
       expect(lane.players[0].horses[0].position, isA<FinishedPosition>());
       expect(lane.players[0].rewards.hasGrandGallop, isFalse);
     });
@@ -694,11 +695,39 @@ void main() {
   });
 
   group('Arrival', () {
-    test('overshooting the finish is allowed', () {
-      var state = buildGame(variant: GameVariant.quick);
-      state = withHorse(state, at: const FinalLanePosition(3));
-      state = play(engine, state, steps: 6, correct: true, questionId: 'q1');
-      expect(state.players[0].horses[0].position, isA<FinishedPosition>());
+    test('the finish is reached on an exact count, never by overshooting', () {
+      // Three squares from the oasis: only a 3 arrives.
+      final start = withHorse(
+        buildGame(variant: GameVariant.quick),
+        at: const FinalLanePosition(3),
+      );
+      for (final steps in [4, 5, 6]) {
+        expect(
+          engine
+              .legalMoves(start, MovementChoice(steps))
+              .where((m) => m.horseIndex == 0),
+          isEmpty,
+          reason: 'a \$steps overshoots the finish and moves nothing',
+        );
+        final tried = play(
+          engine,
+          start,
+          steps: steps,
+          correct: true,
+          questionId: 'q\$steps',
+        );
+        // A 6 still opens the stable — what must not happen is the horse
+        // in the lane being carried past the oasis.
+        expect(tried.players[0].horses[0].position, const FinalLanePosition(3));
+      }
+      final arrived = play(
+        engine,
+        start,
+        steps: 3,
+        correct: true,
+        questionId: 'q3',
+      );
+      expect(arrived.players[0].horses[0].position, isA<FinishedPosition>());
     });
 
     test('reaching the finish owes a Question du voyage before it counts', () {

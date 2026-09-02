@@ -650,7 +650,9 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'schlagen!';
+  String moveHintCapture(int value) {
+    return 'schlagen! +$value';
+  }
 
   @override
   String get moveHintFinish => 'Ziel!';
@@ -746,7 +748,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.';
+      'Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Schlag zahlt sich aus: Dein Pferd springt sofort 20 Galopp vor. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.';
 
   @override
   String get ruleStreakTitle => 'Der Schwung des Wissens';
@@ -760,7 +762,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Erreiche das Ende der Strecke — über die Linie hinaus ist erlaubt — und beantworte dann die Frage der Reise, um deine Ankunft zu bestätigen. Ein Fehler wirft dich nie zurück: Du versuchst es einfach im nächsten Zug erneut.';
+      'Das Ziel wird nur mit der genauen Zahl erreicht: drei Felder vor der Oase brauchst du genau eine 3. Eine 4, 5 oder 6 lässt das Pferd stehen, bis die richtige Karte kommt. Bist du da, beantworte die Frage der Reise, um die Ankunft zu bestätigen; ein Fehler wirft dich nie zurück, du versuchst es im nächsten Zug erneut.';
 
   @override
   String get hapticFeedback => 'Vibration';
@@ -790,7 +792,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value Felder';
+    return '+$value Galopp';
+  }
+
+  @override
+  String get captureBonusLabel => 'SCHLAG';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Geschlagen! Dein Pferd springt $value Galopp vor.';
   }
 
   @override
@@ -853,5 +863,5 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Felder weiter – einmal pro Zug, und das Feld bleibt für alle im Spiel.';
+      'Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Galopp weiter – und landet es damit genau auf einem weiteren Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel.';
 }

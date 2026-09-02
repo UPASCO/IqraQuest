@@ -645,7 +645,9 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'پکڑ!';
+  String moveHintCapture(int value) {
+    return 'پکڑ! +$value';
+  }
 
   @override
   String get moveHintFinish => 'منزل!';
@@ -741,7 +743,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔';
+      'حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ پکڑنے کا انعام ہے: آپ کا گھوڑا فوراً 20 سرپٹ آگے چھلانگ لگاتا ہے۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔';
 
   @override
   String get ruleStreakTitle => 'علم کی روانی';
@@ -755,7 +757,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'راستے کے آخر تک پہنچیں — لکیر سے آگے نکلنا ٹھیک ہے — پھر اپنی آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں۔ غلط جواب آپ کو کبھی پیچھے نہیں کرتا: آپ اگلی باری میں دوبارہ کوشش کرتے ہیں۔';
+      'منزل ٹھیک گنتی سے ملتی ہے: نخلستان سے تین خانے پہلے آپ کو بالکل 3 چاہیے۔ 4، 5 یا 6 گھوڑے کو وہیں چھوڑ دیتا ہے، صحیح کارڈ کے انتظار میں۔ پہنچنے پر آمد کی توثیق کے لیے سفر کے سوال کا جواب دیں؛ غلط جواب آپ کو کبھی پیچھے نہیں کرتا، آپ اگلی باری دوبارہ کوشش کرتے ہیں۔';
 
   @override
   String get hapticFeedback => 'وائبریشن';
@@ -785,7 +787,15 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value خانے';
+    return '+$value سرپٹ';
+  }
+
+  @override
+  String get captureBonusLabel => 'پکڑ';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'پکڑ! آپ کا گھوڑا $value سرپٹ آگے چھلانگ لگاتا ہے۔';
   }
 
   @override
@@ -848,5 +858,5 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'ہر کھیل میں بورڈ پر سولہ بونس خانے بانٹے جاتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل ان پر رکے وہ فوراً +5، +10 یا +20 خانے آگے بڑھتا ہے — ہر باری میں صرف ایک بار، اور خانہ سب کے لیے کھیل میں رہتا ہے۔';
+      'ہر کھیل میں بورڈ پر سولہ بونس خانے بانٹے جاتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل ان پر رکے وہ فوراً +5، +10 یا +20 سرپٹ آگے بڑھتا ہے — اور اگر وہ چھلانگ اسے بالکل کسی اور بونس خانے پر اتارے تو وہ بھی چل پڑتا ہے: بونس ایک دوسرے سے جڑ جاتے ہیں۔ ہر خانہ ہر باری میں ایک بار ادا کرتا ہے اور سب کے لیے کھیل میں رہتا ہے۔';
 }

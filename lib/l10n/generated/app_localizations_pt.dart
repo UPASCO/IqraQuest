@@ -652,7 +652,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'captura!';
+  String moveHintCapture(int value) {
+    return 'captura! +$value';
+  }
 
   @override
   String get moveHintFinish => 'chegada!';
@@ -748,7 +750,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. Um cavalo que sai do estábulo sempre captura na sua casa de partida.';
+      'Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. A captura paga: o seu cavalo salta na hora 20 galopes. Um cavalo que sai do estábulo sempre captura na sua casa de partida.';
 
   @override
   String get ruleStreakTitle => 'O impulso do saber';
@@ -762,7 +764,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Chegue ao fim do percurso — passar da linha é permitido — e responda à Pergunta da viagem para validar sua chegada. Um erro nunca faz você recuar: basta tentar de novo na próxima vez.';
+      'A chegada exige o número exato: a três casas do oásis você precisa de exatamente 3. Um 4, um 5 ou um 6 deixa o cavalo onde está, esperando a carta certa. Ao chegar, responda à Pergunta da viagem para validar sua chegada; um erro nunca faz você recuar, basta tentar de novo na próxima vez.';
 
   @override
   String get hapticFeedback => 'Vibração';
@@ -792,7 +794,15 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value casas';
+    return '+$value galopes';
+  }
+
+  @override
+  String get captureBonusLabel => 'CAPTURA';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Captura! O seu cavalo salta $value galopes.';
   }
 
   @override
@@ -855,5 +865,5 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 casas — uma só vez por turno, e a casa continua em jogo para todos.';
+      'Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 galopes — e se esse salto o deixar exatamente noutra casa bônus, ela dispara também: os bônus se encadeiam. Cada casa paga uma vez por turno e continua em jogo para todos.';
 }

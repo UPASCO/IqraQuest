@@ -648,7 +648,9 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get moveHintCapture => 'tangkap!';
+  String moveHintCapture(int value) {
+    return 'tangkap! +$value';
+  }
 
   @override
   String get moveHintFinish => 'finis!';
@@ -744,7 +746,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleCaptureBody =>
-      'Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan. Kuda yang keluar dari kandang selalu menangkap di petak start-nya.';
+      'Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan. Menangkap ada imbalannya: kudamu langsung melompat 20 lompatan. Kuda yang keluar dari kandang selalu menangkap di petak start-nya.';
 
   @override
   String get ruleStreakTitle => 'Rentetan pengetahuan';
@@ -758,7 +760,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleArrivalBody =>
-      'Capai ujung lintasan — melewati garis tidak masalah — lalu jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu. Jawaban salah tidak pernah memundurkanmu: kamu tinggal mencoba lagi di giliran berikutnya.';
+      'Garis akhir dicapai dengan hitungan tepat: tiga petak dari oasis kamu butuh persis 3. Angka 4, 5, atau 6 membiarkan kuda di tempatnya, menunggu kartu yang pas. Setelah sampai, jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu; jawaban salah tidak pernah memundurkanmu, kamu tinggal mencoba lagi.';
 
   @override
   String get hapticFeedback => 'Getaran';
@@ -787,7 +789,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String bonusPlus(int value) {
-    return '+$value petak';
+    return '+$value lompatan';
+  }
+
+  @override
+  String get captureBonusLabel => 'TANGKAP';
+
+  @override
+  String captureBonusRide(int value) {
+    return 'Tangkap! Kudamu melompat $value lompatan ke depan.';
   }
 
   @override
@@ -849,5 +859,5 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 petak — sekali per giliran, dan petaknya tetap berlaku untuk semua.';
+      'Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 lompatan — dan bila lompatan itu mendaratkannya tepat di petak bonus lain, petak itu ikut menyala: bonus berantai. Setiap petak membayar sekali per giliran dan tetap berlaku untuk semua.';
 }

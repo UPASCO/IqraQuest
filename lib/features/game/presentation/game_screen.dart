@@ -506,7 +506,16 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     state.turnPhase == TurnPhase.answeringJourneyQuestion,
                 isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
                 selectedAnswer: _selectedAnswer,
-                lastAnswerCorrect: state.lastAnswerCorrect,
+                // The verdict belongs to the question being judged, and
+                // to no other. A journey question or a special square's
+                // question opens in its own phase, and reading the
+                // previous answer's verdict there is what once showed a
+                // fresh card already answered — its tiles dead, its right
+                // answer given away.
+                lastAnswerCorrect:
+                    state.turnPhase == TurnPhase.showingFeedback
+                    ? state.lastAnswerCorrect
+                    : null,
                 compact: _compactFeedback && state.lastAnswerCorrect != null,
                 largeText: player.profile.isChildMode,
                 note:
@@ -587,7 +596,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     alignment: const Alignment(0, -0.18),
                     child: BonusCallout(
                       value: pendingBonus.value,
-                      label: l10n.bonusLabel,
+                      label: pendingBonus.fromCapture
+                          ? l10n.captureBonusLabel
+                          : l10n.bonusLabel,
                       valueText: l10n.bonusPlus(pendingBonus.value),
                     ),
                   ),
@@ -613,7 +624,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   /// What the destination holds, in two words, for the marker's tag.
   String? _tagFor(LegalMove m, AppLocalizations l10n) {
     if (m.reachesFinish) return l10n.moveHintFinish;
-    if (m.capturesOpponent) return l10n.moveHintCapture;
+    if (m.capturesOpponent) return l10n.moveHintCapture(kCaptureBonus);
     if (m.bonusValue != null) return l10n.moveHintBonus(m.bonusValue!);
     if (m.effect == CellEffect.oasis) return l10n.moveHintOasis;
     return null;
@@ -1209,10 +1220,13 @@ class _TurnBanner extends StatelessWidget {
     final player = state.currentPlayer;
     final allHome = player.horses.every((h) => h.isHome);
     final riding = state.pendingBonus?.value ?? state.lastBonusValue;
+    final fromCapture = state.pendingBonus?.fromCapture ?? false;
     final String text;
     if (player.isHuman) {
       if (state.turnPhase == TurnPhase.movingHorse && riding != null) {
-        text = l10n.bonusRide(riding);
+        text = fromCapture
+            ? l10n.captureBonusRide(riding)
+            : l10n.bonusRide(riding);
       } else {
         text = switch (outcome) {
           MoveOutcome.moved || MoveOutcome.bonusEarned => l10n.outcomeMoved,
