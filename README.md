@@ -194,9 +194,10 @@ copied or generated from an external source. See
 `VISUAL_REFERENCE_NOTES.md` for the historical-inspiration research
 behind the Makkah/Madinah/horse/architecture treatment, and
 `ASSET_INVENTORY.md` for the full asset table and `ASSET_LICENSES.md`
-for licences. The launcher icon is an original design — a golden knight
-rising out of an open book, inside a gold eight-point star on emerald
-(read, then ride) — baked from code by `tool/art/bake_app_icon.py`.
+for licences. The launcher icon is an original design — a golden horse at full
+gallop racing up the board's track toward the light of an open Book,
+a crescent above (the race for knowledge) — baked from code by
+`tool/art/bake_app_icon.py`.
 
 ## Tests
 

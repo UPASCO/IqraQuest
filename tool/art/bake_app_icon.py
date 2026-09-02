@@ -1,11 +1,11 @@
 """Bake the IqraQuest launcher icon — an original flat emblem — to every
 PNG size Android, iOS and the web target need, plus a review sheet.
 
-The mark: a gold eight-point star (the khatam of Islamic geometry, the
-badge shape that survives any launcher mask) holding an emerald field
-where a golden knight — the very figurine that rides the board — rises
-out of an open book. Read (Iqra), then ride (Quest). No person, no
-Kaaba-as-object, no text: the rules of ASSET_LICENSES / spec §23.
+The mark is the game in one glance: a golden horse at full gallop
+racing up the board's track toward the light of an open Book, with a
+crescent in the sky above it — the race for Islamic knowledge. No
+person, no Kaaba-as-object, no text: the rules of ASSET_LICENSES /
+spec §23.
 
 Run:  python3 tool/art/bake_app_icon.py [--preview]
 Writes ios/…/AppIcon.appiconset, android/…/mipmap-*/ic_launcher.png,
@@ -16,6 +16,7 @@ validation requires.
 
 from __future__ import annotations
 
+import math
 import os
 import sys
 
@@ -30,23 +31,19 @@ S = 1024  # master size
 SS = 4  # supersampling for anti-aliased masks
 
 # ---- Palette -----------------------------------------------------------
-EMERALD_TOP = (26, 138, 96)
-EMERALD_BOTTOM = (8, 62, 46)
-EMERALD_FIELD_TOP = (12, 78, 58)
-EMERALD_FIELD_BOTTOM = (6, 42, 32)
-GOLD_LIGHT = (247, 210, 120)
-GOLD = (230, 178, 78)
-GOLD_DEEP = (176, 118, 36)
-IVORY = (248, 240, 222)
-IVORY_SHADE = (224, 208, 176)
-NIGHT = (8, 30, 24)
+EMERALD_LIGHT = (30, 150, 104)
+EMERALD = (14, 96, 68)
+EMERALD_DEEP = (6, 44, 33)
+GOLD_LIGHT = (250, 214, 126)
+GOLD = (232, 180, 80)
+GOLD_DEEP = (170, 112, 34)
+IVORY = (250, 243, 226)
+IVORY_SHADE = (222, 206, 172)
+NIGHT = (6, 28, 22)
+LIGHT = (255, 238, 190)
 
 
 # ---- Raster helpers ----------------------------------------------------
-def _canvas():
-    return np.zeros((S, S, 3), dtype=np.float32)
-
-
 def poly_mask(polys, smooth=0):
     """Anti-aliased [0,1] mask of one or more polygons in 0..1 coordinates."""
     im = Image.new("L", (S * SS, S * SS), 0)
@@ -67,6 +64,20 @@ def ellipse_mask(cx, cy, rx, ry):
     return np.asarray(im, dtype=np.float32) / 255.0
 
 
+def stroke_mask(points, width, smooth=2):
+    """A ribbon of constant width along a polyline (0..1 coordinates)."""
+    pts = chaikin(points, smooth, closed=False) if smooth else list(points)
+    im = Image.new("L", (S * SS, S * SS), 0)
+    d = ImageDraw.Draw(im)
+    k = S * SS
+    d.line([(x * k, y * k) for x, y in pts], fill=255, width=int(width * k), joint="curve")
+    r = width * k / 2
+    for x, y in (pts[0], pts[-1]):
+        d.ellipse([x * k - r, y * k - r, x * k + r, y * k + r], fill=255)
+    im = im.resize((S, S), Image.LANCZOS)
+    return np.asarray(im, dtype=np.float32) / 255.0
+
+
 def blur(mask, radius):
     im = Image.fromarray((np.clip(mask, 0, 1) * 255).astype(np.uint8))
     return np.asarray(im.filter(ImageFilter.GaussianBlur(radius)), dtype=np.float32) / 255.0
@@ -79,11 +90,19 @@ def vgrad(top, bottom, y0=0.0, y1=1.0):
     return np.repeat(col[:, None, :], S, axis=1)
 
 
-def rgrad_alpha(cx, cy, r):
+def dgrad(c0, c1, x0, y0, x1, y1):
+    """Gradient along the segment (x0,y0)→(x1,y1)."""
+    yy, xx = np.mgrid[0:S, 0:S].astype(np.float32) / S
+    dx, dy = x1 - x0, y1 - y0
+    t = np.clip(((xx - x0) * dx + (yy - y0) * dy) / max(1e-6, dx * dx + dy * dy), 0, 1)
+    return np.asarray(c0, np.float32)[None, None, :] * (1 - t)[..., None] + np.asarray(c1, np.float32)[None, None, :] * t[..., None]
+
+
+def rgrad_alpha(cx, cy, r, power=1.6):
     """Radial falloff [1 at centre → 0 at r] as an SxS alpha."""
     yy, xx = np.mgrid[0:S, 0:S].astype(np.float32) / S
     d = np.sqrt((xx - cx) ** 2 + (yy - cy) ** 2) / r
-    return np.clip(1 - d, 0, 1) ** 1.6
+    return np.clip(1 - d, 0, 1) ** power
 
 
 def fill(img, mask, colour):
@@ -93,138 +112,191 @@ def fill(img, mask, colour):
     return img * (1 - m) + np.asarray(colour, np.float32)[None, None, :] * m
 
 
-def star(cx, cy, r_out, r_in, n=8, rot=-np.pi / 2):
-    pts = []
-    for i in range(2 * n):
-        r = r_out if i % 2 == 0 else r_in
-        a = rot + i * np.pi / n
-        pts.append((cx + np.cos(a) * r, cy + np.sin(a) * r))
-    return pts
+def rotated(points, cx, cy, deg):
+    a = math.radians(deg)
+    c, s = math.cos(a), math.sin(a)
+    return [(cx + (x - cx) * c - (y - cy) * s, cy + (x - cx) * s + (y - cy) * c) for x, y in points]
 
 
-# ---- The emblem --------------------------------------------------------
-def _horse(tx, scale):
-    """The knight, facing right, in a unit box mapped through tx: a long
-    wedge of a head on an arched neck, the two edges converging on the
-    muzzle — the one proportion that makes a silhouette read 'horse'."""
-    head = [
-        (0.14, 1.00), (0.08, 0.84), (0.10, 0.66), (0.18, 0.50),
-        (0.28, 0.36), (0.38, 0.24), (0.46, 0.16), (0.56, 0.14),
-        (0.66, 0.17), (0.76, 0.25), (0.86, 0.35), (0.94, 0.44),
-        (1.00, 0.52), (0.98, 0.61), (0.92, 0.68), (0.84, 0.70),
-        (0.76, 0.70), (0.68, 0.71), (0.60, 0.68), (0.55, 0.66),
-        (0.52, 0.78), (0.54, 0.90), (0.58, 1.00),
+# ---- The horse ---------------------------------------------------------
+# A racing silhouette in the flying gallop, facing right, built from
+# articulated primitives in a unit box (x right, y down): a barrel, a
+# neck raised into the wind, a wedge of a head, four legs in two tapered
+# segments each — forelegs reaching, hind legs driving — and streaming
+# mane and tail. Joints are authored, so the pose is easy to tune.
+def _taper(p0, p1, w0, w1):
+    (x0, y0), (x1, y1) = p0, p1
+    dx, dy = x1 - x0, y1 - y0
+    n = math.hypot(dx, dy) or 1.0
+    nx, ny = -dy / n, dx / n
+    return [
+        (x0 + nx * w0 / 2, y0 + ny * w0 / 2), (x1 + nx * w1 / 2, y1 + ny * w1 / 2),
+        (x1 - nx * w1 / 2, y1 - ny * w1 / 2), (x0 - nx * w0 / 2, y0 - ny * w0 / 2),
     ]
-    ear_back = [(0.40, 0.22), (0.43, 0.00), (0.51, 0.17)]
-    ear_front = [(0.53, 0.17), (0.58, -0.02), (0.66, 0.19)]
-    mane = [
-        (0.08, 0.84), (0.02, 0.66), (0.06, 0.48), (0.16, 0.33),
-        (0.28, 0.21), (0.40, 0.13), (0.48, 0.10), (0.44, 0.22),
-        (0.36, 0.31), (0.26, 0.43), (0.19, 0.57), (0.17, 0.71),
-        (0.19, 0.86),
-    ]
-    forelock = [(0.50, 0.15), (0.60, 0.12), (0.72, 0.20), (0.70, 0.27), (0.60, 0.23)]
+
+
+def _ellipse_poly(cx, cy, rx, ry, deg=0.0, n=48):
+    pts = [(cx + math.cos(2 * math.pi * i / n) * rx, cy + math.sin(2 * math.pi * i / n) * ry) for i in range(n)]
+    return rotated(pts, cx, cy, deg)
+
+
+HEAD = [
+    (0.79, 0.10), (0.88, 0.08), (0.97, 0.16), (1.04, 0.26), (1.03, 0.33),
+    (0.97, 0.37), (0.88, 0.35), (0.81, 0.28),
+]
+EARS = [[(0.815, 0.13), (0.825, -0.01), (0.865, 0.11)], [(0.865, 0.11), (0.895, 0.00), (0.92, 0.125)]]
+LEGS = [  # (joint chain, widths) — order: shoulder/hip, knee/hock, fetlock, hoof
+    ([(0.63, 0.43), (0.78, 0.50), (0.90, 0.53), (0.97, 0.55)], (0.16, 0.085, 0.06, 0.065)),   # fore, reaching
+    ([(0.59, 0.45), (0.64, 0.61), (0.67, 0.72), (0.69, 0.79)], (0.15, 0.08, 0.06, 0.065)),    # fore, under
+    ([(0.35, 0.42), (0.18, 0.53), (0.07, 0.60), (0.01, 0.64)], (0.20, 0.095, 0.065, 0.07)),   # hind, driving
+    ([(0.38, 0.45), (0.27, 0.62), (0.22, 0.73), (0.19, 0.80)], (0.18, 0.09, 0.062, 0.068)),   # hind, under
+]
+# Mane: a band along the crest streaming back, with a scalloped tail edge.
+MANE = [
+    (0.67, 0.31), (0.73, 0.22), (0.79, 0.14), (0.77, 0.08), (0.72, 0.10),
+    (0.69, 0.06), (0.65, 0.12), (0.61, 0.13), (0.59, 0.20), (0.60, 0.28),
+]
+# Tail: a long lock streaming back, thinning to a split tip.
+TAIL = [(0.30, 0.33), (0.21, 0.27), (0.11, 0.23), (0.01, 0.22)]
+TAIL_WIDTHS = (0.10, 0.08, 0.055, 0.02)
+
+
+def horse_masks(box, tilt):
+    """Body and hair masks for the horse laid in `box` (x, y, w, h) and
+    rotated by `tilt` degrees about the box centre (negative = climbing)."""
+    x, y, w, h = box
+    cx, cy = x + w / 2, y + h / 2
 
     def m(poly):
-        return [tx(x, y) for x, y in poly]
+        return rotated([(x + px * w, y + py * h) for px, py in poly], cx, cy, tilt)
 
-    body = poly_mask([m(head)], smooth=1)
-    body = np.maximum(body, poly_mask([m(ear_back), m(ear_front)]))
-    mane_m = np.maximum(poly_mask([m(mane)], smooth=2), poly_mask([m(forelock)], smooth=1))
-    return body, mane_m
+    parts = [
+        _ellipse_poly(0.49, 0.41, 0.24, 0.115, -6),           # barrel
+        _ellipse_poly(0.33, 0.41, 0.12, 0.13, 0),             # hindquarters
+        _ellipse_poly(0.64, 0.41, 0.11, 0.12, 0),             # shoulder
+        _taper((0.66, 0.38), (0.86, 0.18), 0.22, 0.15),       # neck
+    ]
+    for chain, widths in LEGS:
+        for i in range(3):
+            parts.append(_taper(chain[i], chain[i + 1], widths[i], widths[i + 1]))
+    body = poly_mask([m(p) for p in parts])
+    body = np.maximum(body, poly_mask([m(HEAD)], smooth=1))
+    body = np.maximum(body, poly_mask([m(e) for e in EARS]))
+    # Round the joints so the legs read as one limb, not four sticks.
+    for chain, widths in LEGS:
+        for i in (1, 2, 3):
+            jx, jy = chain[i]
+            body = np.maximum(body, poly_mask([m(_ellipse_poly(jx, jy, widths[i] / 2, widths[i] / 2))]))
+
+    tail_parts = [_taper(TAIL[i], TAIL[i + 1], TAIL_WIDTHS[i], TAIL_WIDTHS[i + 1]) for i in range(3)]
+    tail_parts.append(_taper((0.11, 0.23), (0.02, 0.29), 0.045, 0.015))
+    hair = np.maximum(poly_mask([m(MANE)], smooth=1), poly_mask([m(p) for p in tail_parts]))
+    for i in (1, 2):
+        jx, jy = TAIL[i]
+        hair = np.maximum(hair, poly_mask([m(_ellipse_poly(jx, jy, TAIL_WIDTHS[i] / 2, TAIL_WIDTHS[i] / 2))]))
+    return body, hair
 
 
+# ---- The icon ----------------------------------------------------------
 def render(fg_scale=1.0):
-    """The icon at master size. `fg_scale` shrinks the emblem about the
+    """The icon at master size. `fg_scale` shrinks the scene about the
     centre while the ground still bleeds full-frame (maskable targets)."""
 
     def tx(x, y):
         return (0.5 + (x - 0.5) * fg_scale, 0.5 + (y - 0.5) * fg_scale)
 
-    img = _canvas()
+    def txs(poly):
+        return [tx(*p) for p in poly]
 
-    # Ground: a living emerald, lit from the upper left.
-    img = vgrad(EMERALD_TOP, EMERALD_BOTTOM)
-    img = fill(img, rgrad_alpha(0.32, 0.18, 0.9) * 0.35, (48, 170, 118))
+    # Sky: emerald, deepest at the bottom-left where the race starts,
+    # brightest around the Book at the top-right, where it ends.
+    img = dgrad(EMERALD_DEEP, EMERALD, 0.1, 0.95, 0.75, 0.25)
+    book_c = tx(0.70, 0.30)
+    img = fill(img, rgrad_alpha(book_c[0], book_c[1], 0.62 * fg_scale, 1.2) * 0.85, EMERALD_LIGHT)
 
-    # Star shadow, then the gold star and its emerald field.
-    cx, cy = tx(0.5, 0.5)
-    r_out = 0.445 * fg_scale
-    r_in = r_out * 0.72
-    star_m = poly_mask([star(cx, cy, r_out, r_in)])
-    shadow = blur(poly_mask([star(cx, cy + 0.02 * fg_scale, r_out, r_in)]), 22)
-    img = fill(img, shadow * 0.5, NIGHT)
-    img = fill(img, star_m, vgrad(GOLD_LIGHT, GOLD_DEEP, cy - r_out, cy + r_out))
-    # A crisp lighter rim on the upper facets.
-    rim = np.clip(star_m - poly_mask([star(cx, cy + 0.012 * fg_scale, r_out, r_in)]), 0, 1)
-    img = fill(img, rim, (255, 232, 170))
+    # Rays of the Book's light, soft and few.
+    rays = np.zeros((S, S), np.float32)
+    for i in range(12):
+        a = math.radians(i * 30 + 15)
+        half = math.radians(5.5)
+        p0 = book_c
+        p1 = (p0[0] + math.cos(a - half) * 1.2, p0[1] + math.sin(a - half) * 1.2)
+        p2 = (p0[0] + math.cos(a + half) * 1.2, p0[1] + math.sin(a + half) * 1.2)
+        rays = np.maximum(rays, poly_mask([[p0, p1, p2]]))
+    rays = blur(rays, 6) * rgrad_alpha(book_c[0], book_c[1], 0.7 * fg_scale, 1.0)
+    img = fill(img, rays * 0.22, LIGHT)
+    img = fill(img, rgrad_alpha(book_c[0], book_c[1], 0.30 * fg_scale, 1.0) * 0.55, LIGHT)
 
-    field_out = r_out * 0.86
-    field_m = poly_mask([star(cx, cy, field_out, field_out * 0.72)])
-    img = fill(img, field_m, vgrad(EMERALD_FIELD_TOP, EMERALD_FIELD_BOTTOM, cy - field_out, cy + field_out))
-    # Dawn glow rising behind the book.
-    img = fill(img, field_m * rgrad_alpha(cx, cy + 0.20 * fg_scale, 0.42 * fg_scale) * 0.55, (214, 160, 66))
+    # The track: a gold ribbon curving up from the corner to the Book.
+    track_pts = [(0.02, 0.98), (0.14, 0.86), (0.30, 0.72), (0.48, 0.60), (0.60, 0.50), (0.68, 0.42)]
+    track = stroke_mask(txs(track_pts), 0.075 * fg_scale)
+    fade = dgrad((0, 0, 0), (255, 255, 255), *tx(0.05, 0.95), *tx(0.62, 0.48))[..., 0] / 255.0
+    img = fill(img, blur(track, 10) * 0.35, NIGHT)
+    img = fill(img, track * (0.45 + 0.55 * fade), dgrad(GOLD_DEEP, GOLD_LIGHT, *tx(0.05, 0.95), *tx(0.66, 0.44)))
+    # Squares along the track: the petits-chevaux board the race runs on.
+    for t in (0.18, 0.36, 0.54, 0.72):
+        i = int(t * (len(track_pts) - 1))
+        f = t * (len(track_pts) - 1) - i
+        px = track_pts[i][0] + (track_pts[i + 1][0] - track_pts[i][0]) * f
+        py = track_pts[i][1] + (track_pts[i + 1][1] - track_pts[i][1]) * f
+        sq = [(px - 0.02, py - 0.02), (px + 0.02, py - 0.02), (px + 0.02, py + 0.02), (px - 0.02, py + 0.02)]
+        img = fill(img, poly_mask([txs(rotated(sq, px, py, -38))]) * 0.55, IVORY)
 
-    # The open book, seen from the front, its pages bowing up and out;
-    # the knight is painted between cover and pages so it rises out of
-    # the book rather than standing on it.
-    bx, by, bw = 0.5, 0.745, 0.54  # centre x, baseline y, width
+    # The open Book at the end of the track, radiant.
+    bx, by, bw = 0.70, 0.30, 0.34
     cover = [
-        (bx - bw / 2 - 0.02, by - 0.06), (bx, by - 0.01), (bx + bw / 2 + 0.02, by - 0.06),
-        (bx + bw / 2 + 0.02, by + 0.03), (bx, by + 0.08), (bx - bw / 2 - 0.02, by + 0.03),
+        (bx - bw / 2 - 0.015, by + 0.010), (bx, by + 0.045), (bx + bw / 2 + 0.015, by + 0.010),
+        (bx + bw / 2 + 0.015, by + 0.075), (bx, by + 0.115), (bx - bw / 2 - 0.015, by + 0.075),
     ]
+
     def page_edge(t):
-        # The page's top edge from spine (t=0) to outer corner (t=1):
-        # bowed upward in the middle, the corner a touch above the gutter.
-        return by - 0.128 - 0.055 * 4 * t * (1 - t) - 0.012 * t
+        return by - 0.060 - 0.045 * 4 * t * (1 - t) - 0.010 * t
 
     def page_x(t):
-        return bx - 0.006 - t * (bw / 2 - 0.006)
+        return bx - 0.005 - t * (bw / 2 - 0.005)
 
-    left_page = (
-        [(page_x(t), page_edge(t)) for t in (1.0, 0.8, 0.6, 0.4, 0.2, 0.0)]
-        + [(page_x(0.0), by + 0.030), (page_x(1.0), by - 0.015)]
-    )
+    left_page = [(page_x(t), page_edge(t)) for t in (1.0, 0.75, 0.5, 0.25, 0.0)] + [(page_x(0.0), by + 0.075), (page_x(1.0), by + 0.040)]
     right_page = [(2 * bx - x, y) for x, y in left_page]
-    img = fill(img, poly_mask([[tx(*p) for p in cover]], smooth=1), vgrad(GOLD, GOLD_DEEP, by - 0.08, by + 0.09))
-
-    # The knight rising out of the book.
-    hx, hy, hw, hh = 0.30, 0.215, 0.42, 0.47  # box: left, top, width, height
-
-    def htx(x, y):
-        return tx(hx + x * hw, hy + y * hh)
-
-    body, mane = _horse(htx, fg_scale)
-    silhouette = np.maximum(body, mane)
-    img = fill(img, blur(silhouette, 14) * 0.5 * (1 - silhouette), NIGHT)
-    img = fill(img, body, vgrad(GOLD_LIGHT, GOLD, hy, hy + hh))
-    img = fill(img, mane, vgrad(GOLD, GOLD_DEEP, hy, hy + hh))
-    # Eye and nostril: the two marks that make a silhouette a face.
-    ex, ey = htx(0.70, 0.33)
-    img = fill(img, ellipse_mask(ex, ey, 0.019 * fg_scale, 0.019 * fg_scale), NIGHT)
-    img = fill(img, ellipse_mask(ex + 0.005 * fg_scale, ey - 0.006 * fg_scale, 0.006 * fg_scale, 0.006 * fg_scale), IVORY)
-    nx, ny = htx(0.94, 0.55)
-    img = fill(img, ellipse_mask(nx, ny, 0.011 * fg_scale, 0.008 * fg_scale) * 0.7, GOLD_DEEP)
-
-    pages = poly_mask([[tx(*p) for p in left_page], [tx(*p) for p in right_page]])
-    img = fill(img, blur(pages, 10) * 0.35 * (1 - pages), NIGHT)
-    img = fill(img, pages, vgrad(IVORY, IVORY_SHADE, by - 0.19, by + 0.04))
-    # Gutter: the pages curve down into the spine.
-    gutter = pages * blur(poly_mask([[tx(bx - 0.05, by - 0.25), tx(bx + 0.05, by - 0.25), tx(bx + 0.05, by + 0.1), tx(bx - 0.05, by + 0.1)]]), 12)
+    img = fill(img, blur(poly_mask([txs(cover)]), 12) * 0.35, NIGHT)
+    img = fill(img, poly_mask([txs(cover)], smooth=1), vgrad(GOLD, GOLD_DEEP, by, by + 0.12))
+    pages = poly_mask([txs(left_page), txs(right_page)])
+    img = fill(img, pages, vgrad(IVORY, IVORY_SHADE, by - 0.10, by + 0.08))
+    gutter = pages * blur(poly_mask([txs([(bx - 0.03, by - 0.2), (bx + 0.03, by - 0.2), (bx + 0.03, by + 0.1), (bx - 0.03, by + 0.1)])]), 8)
     img = fill(img, gutter * 0.6, IVORY_SHADE)
-    # Three ruled lines a page, following the bowed edge: read, not blank.
     for side in (-1, 1):
-        for dy in (0.040, 0.068, 0.096):
-            ts = (0.12, 0.3, 0.5, 0.7, 0.86)
-            top = [(bx + side * (bx - page_x(t)), page_edge(t) + dy - 0.005) for t in ts]
-            bottom = [(bx + side * (bx - page_x(t)), page_edge(t) + dy + 0.005) for t in reversed(ts)]
-            img = fill(img, poly_mask([[tx(*q) for q in top + bottom]]) * 0.32, GOLD_DEEP)
+        for dy in (0.032, 0.056, 0.080):
+            x0, x1 = bx + side * 0.03, bx + side * (bw / 2 - 0.03)
+            t0, t1 = abs(x0 - bx) / (bw / 2), abs(x1 - bx) / (bw / 2)
+            line = [(x0, page_edge(t0) + dy - 0.004), (x1, page_edge(t1) + dy - 0.004), (x1, page_edge(t1) + dy + 0.004), (x0, page_edge(t0) + dy + 0.004)]
+            img = fill(img, poly_mask([txs(line)]) * 0.35, GOLD_DEEP)
 
-    # One spark above the brow: the moment of knowing.
-    sx, sy = tx(0.725, 0.245)
-    spark = poly_mask([star(sx, sy, 0.055 * fg_scale, 0.016 * fg_scale, n=4)])
-    img = fill(img, blur(spark, 8) * 0.6, GOLD_LIGHT)
-    img = fill(img, spark, IVORY)
+    # The crescent above the Book.
+    mx, my, mr = 0.86, 0.11, 0.052
+    crescent = np.clip(ellipse_mask(*tx(mx, my), mr * fg_scale, mr * fg_scale) - ellipse_mask(*tx(mx + 0.022, my - 0.014), mr * 0.88 * fg_scale, mr * 0.88 * fg_scale), 0, 1)
+    img = fill(img, blur(crescent, 10) * 0.5, GOLD_LIGHT)
+    img = fill(img, crescent, GOLD_LIGHT)
+
+    # The horse, mid-stride on the track, climbing toward the light.
+    box = (0.01, 0.33, 0.76, 0.50)
+    box = tuple(v * fg_scale + (0.5 - 0.5 * fg_scale) * (1 if i < 2 else 0) for i, v in enumerate(box))
+    body, hair = horse_masks(box, -15)
+    silhouette = np.maximum(body, hair)
+    # Speed: three streaks fading out behind the horse.
+    for k, (y0, ln) in enumerate(((0.52, 0.16), (0.58, 0.22), (0.64, 0.14))):
+        x0 = 0.02
+        streak = stroke_mask([tx(x0, y0 + 0.02 * k), tx(x0 + ln, y0 - ln * 0.28 + 0.02 * k)], 0.018 * fg_scale, smooth=0)
+        img = fill(img, blur(streak, 3) * 0.45 * (1 - silhouette), GOLD)
+    img = fill(img, blur(silhouette, 16) * 0.55 * (1 - silhouette), NIGHT)
+    body_grad = dgrad(GOLD_LIGHT, GOLD, box[0], box[1], box[0] + box[2] * 0.4, box[1] + box[3])
+    img = fill(img, body, body_grad)
+    img = fill(img, hair, dgrad(GOLD, GOLD_DEEP, box[0] + box[2], box[1], box[0], box[1] + box[3]))
+    # Eye.
+    ex, ey = rotated([(box[0] + 0.905 * box[2], box[1] + 0.17 * box[3])], box[0] + box[2] / 2, box[1] + box[3] / 2, -14)[0]
+    img = fill(img, ellipse_mask(ex, ey, 0.011 * fg_scale, 0.011 * fg_scale), NIGHT)
+    # Dust kicked up at the hind hooves.
+    for (dx, dy, r) in ((0.07, 0.83, 0.035), (0.13, 0.86, 0.025), (0.03, 0.88, 0.02)):
+        puff = ellipse_mask(*tx(dx, dy), r * fg_scale, r * 0.75 * fg_scale)
+        img = fill(img, blur(puff, 6) * 0.35, IVORY)
 
     return Image.fromarray(np.clip(img, 0, 255).astype(np.uint8), "RGB")
 
@@ -249,10 +321,27 @@ def _save(img, rel, size, mode="RGBA"):
     out.save(path, optimize=True)
 
 
+def review_sheet(full, maskable):
+    """The icon at the sizes a home screen actually shows, plus the
+    maskable variant, in build/screenshots/."""
+    shots = os.path.join(ROOT, "build", "screenshots")
+    os.makedirs(shots, exist_ok=True)
+    full.save(os.path.join(shots, "app_icon_1024.png"))
+    sheet = Image.new("RGB", (1024, 300), (18, 18, 22))
+    x = 24
+    for size in (180, 120, 87, 60, 40):
+        thumb = full.resize((size, size), Image.LANCZOS)
+        mask = Image.new("L", (size, size), 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, size - 1, size - 1], radius=int(size * 0.22), fill=255)
+        sheet.paste(thumb, (x, 150 - size // 2), mask)
+        x += size + 40
+    sheet.paste(maskable.resize((200, 200), Image.LANCZOS), (800, 50))
+    sheet.save(os.path.join(shots, "app_icon_sheet.png"))
+
+
 def main():
     full = render(1.0)
-    maskable = render(0.78)
-
+    maskable = render(0.8)
     for name, size in IOS:
         _save(full, os.path.join(IOS_DIR, name), size, mode="RGB")
     for density, size in ANDROID:
@@ -262,27 +351,12 @@ def main():
     _save(maskable, "web/icons/Icon-maskable-192.png", 192)
     _save(maskable, "web/icons/Icon-maskable-512.png", 512)
     _save(full, "web/favicon.png", 32)
-
-    # Review sheet: the icon at the sizes a home screen actually shows.
-    shots = os.path.join(ROOT, "build", "screenshots")
-    os.makedirs(shots, exist_ok=True)
-    full.save(os.path.join(shots, "app_icon_1024.png"))
-    sheet = Image.new("RGB", (1024, 300), (18, 18, 22))
-    x = 24
-    for size in (180, 120, 87, 60, 40):
-        r = 40
-        thumb = full.resize((size, size), Image.LANCZOS)
-        mask = Image.new("L", (size, size), 0)
-        ImageDraw.Draw(mask).rounded_rectangle([0, 0, size - 1, size - 1], radius=int(size * 0.22), fill=255)
-        sheet.paste(thumb, (x, 150 - size // 2), mask)
-        x += size + 40
-    sheet.paste(maskable.resize((200, 200), Image.LANCZOS), (800, 50))
-    sheet.save(os.path.join(shots, "app_icon_sheet.png"))
+    review_sheet(full, maskable)
     print("icon baked:", len(IOS), "iOS +", len(ANDROID), "Android + 5 web; sheet in build/screenshots/")
 
 
 if __name__ == "__main__":
     if "--preview" in sys.argv:
-        render(1.0).save(os.path.join(ROOT, "build", "screenshots", "app_icon_1024.png"))
+        review_sheet(render(1.0), render(0.8))
     else:
         main()
