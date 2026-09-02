@@ -461,15 +461,20 @@ void main() {
         expect(state.turnPhase, TurnPhase.choosingHorse);
         final move = controller.legalMoves.first;
         expect(controller.placeHorse(move.horseIndex), isTrue);
-        expect(
-          controller
-              .state!
-              .gameState
-              .players[0]
-              .horses[move.horseIndex]
-              .position,
-          move.destination,
-        );
+        final after = controller.state!.gameState;
+        final landed = after.players[0].horses[move.horseIndex].position;
+        if (move.bonusValue == null) {
+          expect(landed, move.destination);
+        } else {
+          // The drop stopped on a bonus square, so the horse has already
+          // ridden on by its value: it is past the promised square.
+          final circuit = after.circuit;
+          expect(
+            circuit.progressOf(landed, 0)!,
+            greaterThan(circuit.progressOf(move.destination, 0)!),
+            reason: 'the bonus was not ridden',
+          );
+        }
         expect(pool, isNotEmpty); // the shipped bank itself is not empty
       },
     );
