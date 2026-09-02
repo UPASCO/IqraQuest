@@ -60,6 +60,19 @@ void finishTurn(GameController controller) {
   if (controller.state!.gameState.turnPhase == TurnPhase.noMove) {
     controller.continueAfterFeedback();
   }
+  // The ride can end somewhere that still owes a decision: a horse that
+  // reached the oasis owes its journey question, an interactive square
+  // owes an answer. A caller driving turn after turn has to clear those
+  // too, or the very next turn finds the deck gone and gives up.
+  if (controller.state!.gameState.turnPhase ==
+      TurnPhase.answeringJourneyQuestion) {
+    final q = controller.state!.currentQuestion;
+    if (q != null) controller.answerJourneyQuestion(q.correctAnswerIndex);
+    controller.continueAfterFeedback();
+  }
+  if (controller.state!.gameState.turnPhase == TurnPhase.resolvingCell) {
+    controller.declineCellOffer();
+  }
 }
 
 void main() {
@@ -193,15 +206,23 @@ void main() {
           final move = controller.moveFor(0)!;
           expect(controller.placeHorse(0), isTrue);
           final horse = controller.state!.gameState.players[s.currentPlayerIndex].horses.first;
-          if (move.bonusValue == null) {
+          // Two things pay an extra ride, and headless they are already
+          // ridden by the time this returns: a bonus square stopped on,
+          // and a capture (worth its bond of twenty). Either way the
+          // horse is *past* the promised square; with neither, it is
+          // exactly on it.
+          final earnsMore = move.bonusValue != null || move.capturesOpponent;
+          if (!earnsMore) {
             expect(horse.position, move.destination, reason: 'turn $turn');
           } else {
-            // Headless, the bonus square it stopped on has already been
-            // ridden: the horse is past the promised square, by the bonus.
             final circuit = s.circuit;
             final promised = circuit.progressOf(move.destination, s.currentPlayerIndex)!;
             final actual = circuit.progressOf(horse.position, s.currentPlayerIndex)!;
-            expect(actual, greaterThan(promised), reason: 'turn $turn: bonus not ridden');
+            expect(
+              actual,
+              greaterThan(promised),
+              reason: 'turn $turn: the extra ride was not made',
+            );
           }
           placements++;
         } else {
@@ -254,9 +275,16 @@ void main() {
     final controller = await buildController(storage);
     controller.startNewGame(
       mode: GameMode.family,
-      variant: GameVariant.quick,
+      // A full classic race, four horses each: with chaining bonuses and
+      // the twenty a capture pays, a one-horse race is over in ten cards,
+      // and this test needs a long game to have anything to say about
+      // repeats.
+      variant: GameVariant.classic,
       circuitId: CircuitId.oasisRoute,
-      players: [human('p0', AppTeam.emerald), human('p1', AppTeam.saphir)],
+      players: [
+        human('p0', AppTeam.emerald, horses: 4),
+        human('p1', AppTeam.saphir, horses: 4),
+      ],
     );
 
     final seen = <String>{};
@@ -275,8 +303,7 @@ void main() {
       controller.answerQuestion(question.correctAnswerIndex);
       finishTurn(controller);
     }
-    // A quick race with bonus squares can be over in a score of cards.
-    expect(seen.length, greaterThan(10));
+    expect(seen.length, greaterThan(10), reason: 'too few cards to judge');
   });
 
   test(

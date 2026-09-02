@@ -19,11 +19,14 @@ void main() {
     final controller = await buildController(storage);
     controller.startNewGame(
       mode: GameMode.family,
-      variant: GameVariant.quick,
+      // A full classic race, four horses each: with chaining bonuses and
+      // the twenty a capture pays, a one-horse race can be over before
+      // the child has drawn enough cards to show a range.
+      variant: GameVariant.classic,
       circuitId: CircuitId.oasisRoute,
       players: [
-        human('kid', AppTeam.emerald, profile: PlayerProfile.easy),
-        human('dad', AppTeam.saphir, profile: PlayerProfile.expert),
+        human('kid', AppTeam.emerald, profile: PlayerProfile.easy, horses: 4),
+        human('dad', AppTeam.saphir, profile: PlayerProfile.expert, horses: 4),
       ],
     );
 
