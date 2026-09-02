@@ -18,17 +18,18 @@ are added during Store submission — see STORE_RELEASE_CHECKLIST.md.
 | `NotoSans-Regular.ttf` | Font (variable, static instance used) | Latin-script UI (fr/en/es/pt/de/tr/id/ms/it/nl) | Google Fonts | SIL Open Font License 1.1 | N/A |
 | `NotoSansArabic-Regular.ttf` | Font (variable) | Reserved for future use / fallback | Google Fonts | SIL Open Font License 1.1 | N/A |
 | `NotoNaskhArabic-Regular.ttf` | Font | Arabic-script UI (ar, ur) | Google Fonts | SIL Open Font License 1.1 | N/A |
-| App launcher icon (`android/app/src/main/res/mipmap-*`, `ios/Runner/Assets.xcassets`, `web/icons`) | Raster (PNG), rendered from original vector code | OS home screen | Original — rendered by `tool/app_icon_renderer_test.dart` (arabian horse head under a gold mihrab arch, with a crescent and an eight-point star burst; regenerate with that tool, then `python3 tool/strip_icon_alpha.py` for iOS) | Proprietary (project) | No |
+| App launcher icon (`android/app/src/main/res/mipmap-*`, `ios/Runner/Assets.xcassets`, `web/icons`) | Raster (PNG), baked from original code | OS home screen | Original — baked by `tool/art/bake_app_icon.py` (a golden knight rising out of an open book, inside a gold eight-point star on emerald; regenerate with that script, which writes the iOS set without an alpha channel) | Proprietary (project) | No |
 
 ## App icon
 
-The launcher icon is now an original IqraQuest design: an ivory arabian
-horse head with a gold mane, framed by a gold mihrab arch with a
-crescent in its sky and an eight-point star burst behind the head — no depiction of any person, no Kaaba-as-object, no
-text (spec §23 + religious constraints). It is generated, never
-hand-edited: change `AppIconPainter` in
-`tool/app_icon_renderer_test.dart`, re-run it, then run
-`tool/strip_icon_alpha.py` (App Store icons must not carry an alpha
-channel). A 1024px review copy lands in
-`build/screenshots/app_icon_1024.png`. A final on-device review pass
-before Store submission is still recommended, as for any icon.
+The launcher icon is an original emblem: a golden knight — the very
+figurine that rides the board — rising out of an open book, inside a
+gold eight-point star (the khatam of Islamic geometry) on an emerald
+ground; read (Iqra), then ride (Quest). No depiction of any person, no
+Kaaba-as-object, no text (spec §23 + religious constraints). It is
+generated, never hand-edited: change `tool/art/bake_app_icon.py` and
+re-run it; it writes every Android, iOS and web size, the iOS set
+without an alpha channel (App Store icons must not carry one). A 1024px
+review copy and a home-screen size sheet land in `build/screenshots/`.
+A final on-device review pass before Store submission is still
+recommended, as for any icon.

@@ -172,7 +172,7 @@ void main() {
   check(
     'a distinctive launcher icon has replaced the flutter template default',
     _hasCustomLauncherIcon(root),
-    detail: 'regenerate with tool/app_icon_renderer_test.dart (see ASSET_INVENTORY.md)',
+    detail: 'regenerate with tool/art/bake_app_icon.py (see ASSET_INVENTORY.md)',
   );
 
   section('Privacy & legal');
@@ -278,7 +278,7 @@ void main() {
 }
 
 bool _hasCustomLauncherIcon(Directory root) {
-  // The icon is generated from tool/app_icon_renderer_test.dart. The
+  // The icon is baked by tool/art/bake_app_icon.py. The
   // stock `flutter create` placeholder 1024px icon is ~10 KB; the
   // rendered IqraQuest artwork is far larger, so a size floor cleanly
   // separates "template still in place" from "real icon shipped".
