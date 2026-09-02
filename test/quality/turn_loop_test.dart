@@ -347,6 +347,21 @@ void main() {
     (tester) async {
       final container = await _pumpGame(tester, save: _stableGame());
       for (var turn = 1; turn <= 8; turn++) {
+        final phase = container.read(gameControllerProvider)?.gameState.turnPhase;
+        // A chain of bonuses can carry a horse out of the stable and all
+        // the way home inside these eight cards: the arrival asks its
+        // journey question, then the race is over. Both are the loop
+        // working, not the stable being a dead end.
+        if (phase == TurnPhase.gameOver || phase == null) break;
+        if (phase == TurnPhase.answeringJourneyQuestion) {
+          final journey = container.read(gameControllerProvider)!.currentQuestion!;
+          final answer = journey.answers[journey.correctAnswerIndex];
+          await tester.ensureVisible(find.text(answer).first);
+          await tester.tap(find.text(answer).first);
+          await _pastFeedback(tester);
+          await _pastRide(tester);
+          continue;
+        }
         expect(
           find.byKey(const Key('draw-deck')),
           findsOneWidget,
