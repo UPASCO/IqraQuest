@@ -273,10 +273,13 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                           onTap: () => context.go('/home'),
                         ),
                         const SizedBox(width: 10),
-                        // The name gives way first: a long name ellipsizes
-                        // before the points and the streak are pushed off
-                        // the phone.
-                        Flexible(
+                        // Expanded, not Flexible beside a Spacer: sharing
+                        // the free space with a Spacer squeezes the pill to
+                        // nothing on a narrow phone at a large text size,
+                        // and its own padding then overflows it. Here the
+                        // name takes whatever the counters leave and
+                        // ellipsizes inside it.
+                        Expanded(
                           child: _HudPill(
                             highlight: true,
                             child: Row(
@@ -299,7 +302,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                             ),
                           ),
                         ),
-                        const Spacer(),
+                        const SizedBox(width: 8),
                         _HudPill(
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -345,8 +348,13 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     // glance (the painted stables are scenery), the rider
                     // ahead wearing a small gold star — and, in the free
                     // edition, how many of its fifty cards remain.
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    // A Wrap, not a Row: four riders, a draw counter and a
+                    // leader star fold onto a second line on a narrow phone
+                    // rather than overflow it.
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 8,
+                      runSpacing: 6,
                       children: [
                         if (state.maxDraws != null) ...[
                           _HudPill(
@@ -374,10 +382,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 8),
                         ],
                         for (var i = 0; i < state.players.length; i++) ...[
-                          if (i > 0) const SizedBox(width: 8),
                           _HudPill(
                             highlight: i == state.currentPlayerIndex,
                             child: Semantics(
@@ -419,7 +425,12 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     ),
                     if (_leadToast != null) ...[
                       const SizedBox(height: 8),
-                      _LeadToast(text: _leadToast!),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(child: _LeadToast(text: _leadToast!)),
+                        ],
+                      ),
                     ],
                   ],
                 ),
@@ -1055,11 +1066,17 @@ class _LeadToast extends StatelessWidget {
           children: [
             const Icon(Icons.star_rounded, size: 15, color: Color(0xFFFFE08A)),
             const SizedBox(width: 6),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: const Color(0xFFFFE9AE),
-                fontWeight: FontWeight.w700,
+            // "X passe en tete !" is a sentence with a name in it: it
+            // shortens rather than pushing the pill past the screen.
+            Flexible(
+              child: Text(
+                text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: const Color(0xFFFFE9AE),
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ],

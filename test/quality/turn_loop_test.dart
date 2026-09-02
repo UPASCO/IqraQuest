@@ -134,11 +134,17 @@ GameState _soloGame() {
 Future<ProviderContainer> _pumpGame(
   WidgetTester tester, {
   GameState? save,
+  Size size = const Size(390, 844),
+  double textScale = 1.0,
 }) async {
   SharedPreferences.setMockInitialValues({});
   final storage = await tester.runAsync(LocalStorageService.create);
-  tester.view.physicalSize = const Size(390, 844);
+  tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1.0;
+  if (textScale != 1.0) {
+    tester.platformDispatcher.textScaleFactorTestValue = textScale;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+  }
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
   await tester.runAsync(
@@ -228,6 +234,7 @@ Future<void> _dragHorseTo(
 
 void main() {
   _aiDisposalGuard();
+  _leadToastLayoutTest();
 
   testWidgets('a turn always hands back a control — the loop never wedges', (
     tester,
@@ -339,16 +346,6 @@ void main() {
     'a stable full of horses is never a dead end: the card passes or opens the gate',
     (tester) async {
       final container = await _pumpGame(tester, save: _stableGame());
-      final previousOnError = FlutterError.onError;
-      FlutterError.onError = (details) {
-        if (details.toString().contains('overflowed')) {
-          // ignore: avoid_print
-          print('ERRDETAILS ${details.toString()}');
-        }
-        previousOnError?.call(details);
-      };
-      addTearDown(() => FlutterError.onError = previousOnError);
-
       for (var turn = 1; turn <= 8; turn++) {
         expect(
           find.byKey(const Key('draw-deck')),
@@ -531,6 +528,86 @@ void main() {
     }
     expect(tester.takeException(), isNull);
   });
+}
+
+/// The overtake notice is the one HUD element that only a running game
+/// can produce, so no static layout audit ever renders it. Here it is
+/// forced on the floor phone at the accessibility text size, with a name
+/// as long as the setup screen allows.
+void _leadToastLayoutTest() {
+  testWidgets(
+    'the overtake notice fits the floor phone at 130% text',
+    (tester) async {
+      final now = DateTime(2026, 1, 1);
+      final save = GameState(
+        gameId: 'lead',
+        gameMode: GameMode.family,
+        gameVariant: GameVariant.quick,
+        circuitId: CircuitId.oasisRoute,
+        players: [
+          Player(
+            id: 'p0',
+            // 16 characters: the longest name the setup screen accepts.
+            name: 'Abdurrahmane1234',
+            team: kBoardSeats[0],
+            horses: const [HorseState(position: TrackPosition(3))],
+          ),
+          Player(
+            id: 'p1',
+            name: 'Oumm Abdurrahman',
+            team: kBoardSeats[1],
+            horses: const [HorseState(position: TrackPosition(20))],
+          ),
+        ],
+        currentPlayerIndex: 0,
+        turnPhase: TurnPhase.selectingGait,
+        askedQuestionIds: const {},
+        startedAt: now,
+        updatedAt: now,
+      );
+      final container = await _pumpGame(
+        tester,
+        save: save,
+        size: const Size(320, 568),
+        textScale: 1.3,
+      );
+      final controller = container.read(gameControllerProvider.notifier);
+      // The rider behind answers every card right and rides; the one in
+      // front answers wrong and stays. The lead changes within a few
+      // cards, and the notice appears.
+      var seen = false;
+      for (var turn = 0; turn < 14 && !seen; turn++) {
+        final state = container.read(gameControllerProvider)!.gameState;
+        if (state.turnPhase != TurnPhase.selectingGait) break;
+        final leading = state.currentPlayer.id == 'p1';
+        await tester.tap(find.byKey(const Key('draw-deck')));
+        await _pastReveal(tester);
+        final question = container.read(gameControllerProvider)!.currentQuestion!;
+        final index = leading
+            ? (question.correctAnswerIndex + 1) % question.answers.length
+            : question.correctAnswerIndex;
+        await tester.ensureVisible(find.text(question.answers[index]).first);
+        await tester.tap(find.text(question.answers[index]).first);
+        await _pastFeedback(tester);
+        if (container.read(gameControllerProvider)!.gameState.turnPhase ==
+            TurnPhase.choosingHorse) {
+          final move = controller.legalMoves.first;
+          controller.placeHorse(move.horseIndex);
+          await _settle(tester);
+        }
+        if (find.byKey(const Key('lead-toast')).evaluate().isNotEmpty) {
+          seen = true;
+        }
+        await _pastRide(tester);
+        expect(tester.takeException(), isNull, reason: 'turn $turn overflowed');
+      }
+      expect(
+        seen,
+        isTrue,
+        reason: 'the rider behind never overtook, so the notice was never shown',
+      );
+    },
+  );
 }
 
 /// Leaving the board while the opponent is thinking must not throw.

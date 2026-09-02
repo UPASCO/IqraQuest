@@ -159,18 +159,34 @@ void main() {
     await settle(tester);
 
     // Play the whole challenge: always the first choice, then continue.
+    // Every wait is against real time, never a fixed number of frames: a
+    // loaded machine decodes the bank slowly, and a fixed wait is exactly
+    // the kind of flake that only ever fails on the build runner.
+    Future<void> waitFor(Finder finder, String what) async {
+      await tester.runAsync(() async {
+        final deadline = DateTime.now().add(const Duration(seconds: 20));
+        while (finder.evaluate().isEmpty && DateTime.now().isBefore(deadline)) {
+          await Future<void>.delayed(const Duration(milliseconds: 100));
+          await tester.pump();
+        }
+      });
+      await settle(tester);
+      expect(finder, findsWidgets, reason: '$what never appeared');
+    }
+
     var guard = 0;
     while (find.byKey(const Key('share-score')).evaluate().isEmpty &&
-        guard++ < 12) {
-      final choice = find.text('A');
-      expect(choice, findsOneWidget, reason: 'a question must be on screen');
+        guard++ < 20) {
+      await waitFor(find.text('A'), 'a question');
+      final choice = find.text('A').first;
       await tester.ensureVisible(choice);
       await settle(tester);
       await tester.tap(choice);
       await settle(tester);
-      await tester.ensureVisible(find.text('Continue'));
+      await waitFor(find.text('Continue'), 'the way on');
+      await tester.ensureVisible(find.text('Continue').last);
       await tester.pump();
-      await tester.tap(find.text('Continue'));
+      await tester.tap(find.text('Continue').last);
       await settle(tester);
     }
     expect(find.byKey(const Key('share-score')), findsOneWidget);
