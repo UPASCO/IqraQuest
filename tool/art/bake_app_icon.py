@@ -2,10 +2,11 @@
 PNG size Android, iOS and the web target need, plus a review sheet.
 
 The mark is the game in one glance: a golden horse at full gallop
-racing up the board's track toward the light of an open Book, with a
-crescent in the sky above it — the race for Islamic knowledge. No
-person, no Kaaba-as-object, no text: the rules of ASSET_LICENSES /
-spec §23.
+racing up a petits-chevaux track — square tiles in the four stable
+colours — toward a radiant fan of question cards, a crescent in the sky
+above: the race for Islamic knowledge, won by answering. No person, no
+Kaaba-as-object, no text (the question mark is a glyph, not a word):
+the rules of ASSET_LICENSES / spec §23.
 
 Run:  python3 tool/art/bake_app_icon.py [--preview]
 Writes ios/…/AppIcon.appiconset, android/…/mipmap-*/ic_launcher.png,
@@ -21,12 +22,13 @@ import os
 import sys
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 sys.path.insert(0, os.path.dirname(__file__))
 from sprite_lib import chaikin  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+FONT_PATH = os.path.join(ROOT, "assets", "fonts", "NotoSans-Regular.ttf")
 S = 1024  # master size
 SS = 4  # supersampling for anti-aliased masks
 
@@ -41,6 +43,7 @@ IVORY = (250, 243, 226)
 IVORY_SHADE = (222, 206, 172)
 NIGHT = (6, 28, 22)
 LIGHT = (255, 238, 190)
+STABLES = [(46, 158, 96), (58, 108, 202), (224, 168, 62), (186, 82, 168)]  # emerald, sapphire, saffron, garnet
 
 
 # ---- Raster helpers ----------------------------------------------------
@@ -211,7 +214,7 @@ def render(fg_scale=1.0):
     # Sky: emerald, deepest at the bottom-left where the race starts,
     # brightest around the Book at the top-right, where it ends.
     img = dgrad(EMERALD_DEEP, EMERALD, 0.1, 0.95, 0.75, 0.25)
-    book_c = tx(0.70, 0.30)
+    book_c = tx(0.745, 0.245)
     img = fill(img, rgrad_alpha(book_c[0], book_c[1], 0.62 * fg_scale, 1.2) * 0.85, EMERALD_LIGHT)
 
     # Rays of the Book's light, soft and few.
@@ -227,57 +230,76 @@ def render(fg_scale=1.0):
     img = fill(img, rays * 0.22, LIGHT)
     img = fill(img, rgrad_alpha(book_c[0], book_c[1], 0.30 * fg_scale, 1.0) * 0.55, LIGHT)
 
-    # The track: a gold ribbon curving up from the corner to the Book.
-    track_pts = [(0.02, 0.98), (0.14, 0.86), (0.30, 0.72), (0.48, 0.60), (0.60, 0.50), (0.68, 0.42)]
-    track = stroke_mask(txs(track_pts), 0.075 * fg_scale)
-    fade = dgrad((0, 0, 0), (255, 255, 255), *tx(0.05, 0.95), *tx(0.62, 0.48))[..., 0] / 255.0
-    img = fill(img, blur(track, 10) * 0.35, NIGHT)
-    img = fill(img, track * (0.45 + 0.55 * fade), dgrad(GOLD_DEEP, GOLD_LIGHT, *tx(0.05, 0.95), *tx(0.66, 0.44)))
-    # Squares along the track: the petits-chevaux board the race runs on.
-    for t in (0.18, 0.36, 0.54, 0.72):
-        i = int(t * (len(track_pts) - 1))
-        f = t * (len(track_pts) - 1) - i
-        px = track_pts[i][0] + (track_pts[i + 1][0] - track_pts[i][0]) * f
-        py = track_pts[i][1] + (track_pts[i + 1][1] - track_pts[i][1]) * f
-        sq = [(px - 0.02, py - 0.02), (px + 0.02, py - 0.02), (px + 0.02, py + 0.02), (px - 0.02, py + 0.02)]
-        img = fill(img, poly_mask([txs(rotated(sq, px, py, -38))]) * 0.55, IVORY)
+    # The track: the petits-chevaux path itself, a curve of square tiles
+    # in the four stable colours with ivory squares between, climbing
+    # from the corner to the cards. The board is the game's first symbol.
+    track_pts = [(0.00, 0.99), (0.14, 0.86), (0.30, 0.72), (0.48, 0.60), (0.60, 0.50), (0.69, 0.42)]
+    track = stroke_mask(txs(track_pts), 0.085 * fg_scale)
+    img = fill(img, blur(track, 12) * 0.45, NIGHT)
+    img = fill(img, track, dgrad(GOLD_DEEP, GOLD, *tx(0.05, 0.95), *tx(0.66, 0.44)))
+    curve = chaikin(track_pts, 3, closed=False)
+    lengths = [0.0]
+    for (x0, y0), (x1, y1) in zip(curve, curve[1:]):
+        lengths.append(lengths[-1] + math.hypot(x1 - x0, y1 - y0))
+    total = lengths[-1]
+    n_tiles = 9
+    for k in range(n_tiles):
+        d = total * (0.06 + 0.88 * k / (n_tiles - 1))
+        i = max(1, next(j for j, L in enumerate(lengths) if L >= d))
+        f = (d - lengths[i - 1]) / max(1e-6, lengths[i] - lengths[i - 1])
+        (ax, ay), (bx_, by_) = curve[i - 1], curve[i]
+        px, py = ax + (bx_ - ax) * f, ay + (by_ - ay) * f
+        ang = math.degrees(math.atan2(by_ - ay, bx_ - ax))
+        r = 0.027
+        sq = [(px - r, py - r), (px + r, py - r), (px + r, py + r), (px - r, py + r)]
+        sq = txs(rotated(sq, px, py, ang))
+        colour = STABLES[(k // 2) % 4] if k % 2 == 0 else IVORY
+        img = fill(img, poly_mask([sq]), GOLD_DEEP)
+        inner = [(px - r * 0.8, py - r * 0.8), (px + r * 0.8, py - r * 0.8), (px + r * 0.8, py + r * 0.8), (px - r * 0.8, py + r * 0.8)]
+        img = fill(img, poly_mask([txs(rotated(inner, px, py, ang))]), colour)
 
-    # The open Book at the end of the track, radiant.
-    bx, by, bw = 0.70, 0.30, 0.34
-    cover = [
-        (bx - bw / 2 - 0.015, by + 0.010), (bx, by + 0.045), (bx + bw / 2 + 0.015, by + 0.010),
-        (bx + bw / 2 + 0.015, by + 0.075), (bx, by + 0.115), (bx - bw / 2 - 0.015, by + 0.075),
-    ]
+    # The destination: a fan of question cards, the front one carrying a
+    # bold question mark — the quiz that decides every move.
+    cx_, cy_ = 0.745, 0.245
+    cw, ch = 0.19, 0.25
 
-    def page_edge(t):
-        return by - 0.060 - 0.045 * 4 * t * (1 - t) - 0.010 * t
+    def card(dx, dy, deg, shrink=0.0):
+        # A rounded rectangle, corners sampled so no smoothing is needed.
+        w, h, r = cw / 2 - shrink, ch / 2 - shrink, 0.022
+        pts = []
+        for (sx, sy) in ((1, -1), (1, 1), (-1, 1), (-1, -1)):
+            ccx, ccy = cx_ + dx + sx * (w - r), cy_ + dy + sy * (h - r)
+            base = {(1, -1): -90, (1, 1): 0, (-1, 1): 90, (-1, -1): 180}[(sx, sy)]
+            for i in range(7):
+                a = math.radians(base + i * 15)
+                pts.append((ccx + math.cos(a) * r, ccy + math.sin(a) * r))
+        return txs(rotated(pts, cx_ + dx, cy_ + dy, deg))
 
-    def page_x(t):
-        return bx - 0.005 - t * (bw / 2 - 0.005)
+    for dx, dy, deg, face in ((-0.075, 0.015, -16, STABLES[1]), (0.075, 0.015, 16, STABLES[0])):
+        img = fill(img, blur(poly_mask([card(dx, dy, deg)]), 12) * 0.4, NIGHT)
+        img = fill(img, poly_mask([card(dx, dy, deg)]), GOLD)
+        img = fill(img, poly_mask([card(dx, dy, deg, shrink=0.009)]), face)
+    img = fill(img, blur(poly_mask([card(0, 0, 0)]), 14) * 0.5, NIGHT)
+    img = fill(img, poly_mask([card(0, 0, 0)]), GOLD)
+    img = fill(img, poly_mask([card(0, 0, 0, shrink=0.008)]), vgrad(IVORY, IVORY_SHADE, cy_ - ch / 2, cy_ + ch / 2))
+    # The question mark, set in the app's own display face.
+    glyph = Image.new("L", (S * SS, S * SS), 0)
+    font = ImageFont.truetype(FONT_PATH, int(0.24 * fg_scale * S * SS))
+    d = ImageDraw.Draw(glyph)
+    gx, gy = tx(cx_, cy_ + 0.005)
+    d.text((gx * S * SS, gy * S * SS), "?", fill=255, font=font, anchor="mm", stroke_width=int(0.006 * fg_scale * S * SS), stroke_fill=255)
+    qmask = np.asarray(glyph.resize((S, S), Image.LANCZOS), dtype=np.float32) / 255.0
+    img = fill(img, blur(qmask, 6) * 0.35, GOLD_DEEP)
+    img = fill(img, qmask, dgrad(GOLD_DEEP, GOLD, *tx(cx_, cy_ - 0.12), *tx(cx_, cy_ + 0.12)))
 
-    left_page = [(page_x(t), page_edge(t)) for t in (1.0, 0.75, 0.5, 0.25, 0.0)] + [(page_x(0.0), by + 0.075), (page_x(1.0), by + 0.040)]
-    right_page = [(2 * bx - x, y) for x, y in left_page]
-    img = fill(img, blur(poly_mask([txs(cover)]), 12) * 0.35, NIGHT)
-    img = fill(img, poly_mask([txs(cover)], smooth=1), vgrad(GOLD, GOLD_DEEP, by, by + 0.12))
-    pages = poly_mask([txs(left_page), txs(right_page)])
-    img = fill(img, pages, vgrad(IVORY, IVORY_SHADE, by - 0.10, by + 0.08))
-    gutter = pages * blur(poly_mask([txs([(bx - 0.03, by - 0.2), (bx + 0.03, by - 0.2), (bx + 0.03, by + 0.1), (bx - 0.03, by + 0.1)])]), 8)
-    img = fill(img, gutter * 0.6, IVORY_SHADE)
-    for side in (-1, 1):
-        for dy in (0.032, 0.056, 0.080):
-            x0, x1 = bx + side * 0.03, bx + side * (bw / 2 - 0.03)
-            t0, t1 = abs(x0 - bx) / (bw / 2), abs(x1 - bx) / (bw / 2)
-            line = [(x0, page_edge(t0) + dy - 0.004), (x1, page_edge(t1) + dy - 0.004), (x1, page_edge(t1) + dy + 0.004), (x0, page_edge(t0) + dy + 0.004)]
-            img = fill(img, poly_mask([txs(line)]) * 0.35, GOLD_DEEP)
-
-    # The crescent above the Book.
-    mx, my, mr = 0.86, 0.11, 0.052
+    # The crescent above the cards.
+    mx, my, mr = 0.905, 0.075, 0.046
     crescent = np.clip(ellipse_mask(*tx(mx, my), mr * fg_scale, mr * fg_scale) - ellipse_mask(*tx(mx + 0.022, my - 0.014), mr * 0.88 * fg_scale, mr * 0.88 * fg_scale), 0, 1)
     img = fill(img, blur(crescent, 10) * 0.5, GOLD_LIGHT)
     img = fill(img, crescent, GOLD_LIGHT)
 
     # The horse, mid-stride on the track, climbing toward the light.
-    box = (0.01, 0.33, 0.76, 0.50)
+    box = (0.00, 0.36, 0.73, 0.48)
     box = tuple(v * fg_scale + (0.5 - 0.5 * fg_scale) * (1 if i < 2 else 0) for i, v in enumerate(box))
     body, hair = horse_masks(box, -15)
     silhouette = np.maximum(body, hair)

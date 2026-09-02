@@ -195,8 +195,9 @@ copied or generated from an external source. See
 behind the Makkah/Madinah/horse/architecture treatment, and
 `ASSET_INVENTORY.md` for the full asset table and `ASSET_LICENSES.md`
 for licences. The launcher icon is an original design — a golden horse at full
-gallop racing up the board's track toward the light of an open Book,
-a crescent above (the race for knowledge) — baked from code by
+gallop racing up a petits-chevaux track of coloured tiles toward a
+radiant fan of question cards, a crescent above (the race for
+knowledge, won by answering) — baked from code by
 `tool/art/bake_app_icon.py`.
 
 ## Tests
