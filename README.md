@@ -63,7 +63,7 @@ lib/
                       engine to question selection, AI turns, autosave
       presentation/  GameScreen
 assets/
-  data/questions/    master/ (canonical facts) + fr/en/ar/ (translated text)
+  data/questions/    master/ (canonical facts) + one folder per UI language (12)
   fonts/             Noto Sans, Noto Naskh Arabic (bundled, offline-first)
 content_quality/      source_registry.json, question_sources.csv
 legal/                privacy_policy_{en,fr}.md
@@ -197,9 +197,9 @@ behind the Makkah/Madinah/horse/architecture treatment, and
 for licences. The launcher icon is artwork supplied by the project owner
 (`tool/art/source/app_icon_source.webp`: three horses racing across the
 board's tiles toward an open book with a glowing question mark, a
-crescent and star above, in a gold frame); `tool/art/bake_app_icon.py`
-prepares it (corners blended to the frame's green) and writes every
-platform size.
+crescent and star above); `tool/art/bake_app_icon.py` prepares it (the
+painted frame cropped away so the platform mask frames the art, small
+sizes sharpened) and writes every platform size.
 
 ## Tests
 
@@ -214,7 +214,7 @@ As of this pass: `flutter analyze` reports zero issues and `flutter test`
 passes all 82 tests in about 9 seconds — 47 `GameEngine`/rules tests, 13
 controller-level integration tests (turn flow, no-repeat questions, save
 & resume, legacy-save migration, free vs. Premium), 17 question-bank
-integrity tests across fr/en/ar including cross-language parity, 2
+integrity tests across all 12 languages including cross-language parity, 2
 full-app widget tests (boot, and the one-time "race rules improved"
 notice), and 3 visual-QA scenes that render the horse art to
 `build/screenshots/` for human review.

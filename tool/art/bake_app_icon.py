@@ -4,12 +4,16 @@ every PNG size Android, iOS and the web target need, plus a review sheet.
 The source (tool/art/source/app_icon_source.webp) is a painted emblem
 chosen by the project owner: three horses racing across the coloured
 tiles of the petits-chevaux board, an open book with a glowing question
-mark, a crescent and star, all inside a gold frame. The frame's rounded
-corners sit on plain black in the source; a launcher icon is masked by
-the platform (a squircle on iOS, a circle or squircle on Android), so
-those corners are blended to the frame's own deep green before the
-platforms cut their shape — otherwise a black wedge would show at the
-edge of every mask. Nothing else in the artwork is altered.
+mark, a crescent and star, painted inside a gold frame on black corners.
+A launcher icon is masked by the platform (a squircle on iOS, a circle
+or squircle on Android), and that mask *is* the frame: a second, painted
+frame inside it wastes a tenth of the icon and gets clipped at every
+corner, where the painted radius does not match the platform's. So the
+painted frame is cropped away — the horses and the question mark come
+out a fifth larger at every size — and the black corners are blended to
+the ground before the crop as a safety net. Sizes at or below 120 px get
+a light unsharp mask so the white horse and the "?" stay crisp on the
+home screen. Nothing else in the artwork is altered.
 
 Run:  python3 tool/art/bake_app_icon.py [--preview]
 Writes ios/…/AppIcon.appiconset, android/…/mipmap-*/ic_launcher.png,
@@ -34,9 +38,12 @@ S = 1024  # master size
 # The ground the corners are blended to: the deep green just inside the
 # frame, so the blend reads as the frame sitting on the app's own colour.
 GROUND = (8, 46, 34)
-# A hair of the outermost edge is cropped so no dark rim survives the
-# platform masks after resampling.
-CROP = 0.018
+# The painted gold frame occupies the outer ~6% of the source; cropping
+# 7.5% removes it entirely (and the black corners with it) so the
+# platform mask becomes the only frame.
+CROP = 0.075
+# Below this size the icon gets a light unsharp mask after resampling.
+SHARPEN_BELOW = 121
 
 
 def _corner_mask(rgb: np.ndarray, threshold: int = 42) -> np.ndarray:
@@ -101,11 +108,17 @@ IOS = [
 ANDROID = [("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)]
 
 
+def _resize(img, size):
+    out = img.resize((size, size), Image.LANCZOS)
+    if size < SHARPEN_BELOW:
+        out = out.filter(ImageFilter.UnsharpMask(radius=1.2, percent=60, threshold=2))
+    return out
+
+
 def _save(img, rel, size, mode="RGBA"):
     path = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    out = img.resize((size, size), Image.LANCZOS).convert(mode)
-    out.save(path, optimize=True)
+    _resize(img, size).convert(mode).save(path, optimize=True)
 
 
 def review_sheet(full, mask_variant):
@@ -117,7 +130,7 @@ def review_sheet(full, mask_variant):
     sheet = Image.new("RGB", (1024, 300), (18, 18, 22))
     x = 24
     for size in (180, 120, 87, 60, 40):
-        thumb = full.resize((size, size), Image.LANCZOS)
+        thumb = _resize(full, size)
         mask = Image.new("L", (size, size), 0)
         ImageDraw.Draw(mask).rounded_rectangle([0, 0, size - 1, size - 1], radius=int(size * 0.22), fill=255)
         sheet.paste(thumb, (x, 150 - size // 2), mask)
