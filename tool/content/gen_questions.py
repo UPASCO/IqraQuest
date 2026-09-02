@@ -66,7 +66,7 @@ add("prophets_002", "prophets", "easy", "quran", "Quran", "21:69", True,
          "أمر الله النار أن تكون بردًا وسلامًا على إبراهيم.",
          "القرآن — سورة الأنبياء، 21:69"))
 
-add("prophets_003", "prophets", "medium", "quran", "Quran", "37:142", True,
+add("prophets_003", "prophets", "easy", "quran", "Quran", "37:142", True,
     fr=L("Quel prophète fut avalé par un énorme poisson ?",
          ["Yûnus", "Ilyâs", "Idrîs", "Zakariyyâ"], 0,
          "Yûnus fut avalé par le poisson après avoir quitté son peuple en colère ; Allah lui pardonna.",
@@ -108,7 +108,7 @@ add("prophets_005", "prophets", "hard", "quran", "Quran", "4:164", True,
          "ينص القرآن على أن الله كلّم موسى تكليمًا.",
          "القرآن — سورة النساء، 4:164"))
 
-add("prophets_006", "prophets", "medium", "quran", "Quran", "27:16", False,
+add("prophets_006", "prophets", "easy", "quran", "Quran", "27:16", False,
     fr=L("Quel prophète pouvait comprendre le langage des oiseaux ?",
          ["Sulaymân", "Dâwûd", "Yûnus", "Yûsuf"], 0,
          "Allah enseigna à Sulaymân le langage des oiseaux.",
@@ -136,7 +136,7 @@ add("prophets_007", "prophets", "medium", "quran", "Quran", "17:55", False,
          "يذكر القرآن أن الزبور أُعطي لداوود.",
          "القرآن — سورة الإسراء، 17:55"))
 
-add("prophets_008", "prophets", "medium", "quran", "Quran", "3:47", False,
+add("prophets_008", "prophets", "easy", "quran", "Quran", "3:47", False,
     fr=L("Quel prophète est né sans père, par la parole d'Allah « Sois ! » et il fut ?",
          ["Îsâ", "Yahyâ", "Ismâʿîl", "Ishâq"], 0,
          "Le Coran décrit la naissance miraculeuse d'Îsâ, sans père, par la seule parole d'Allah.",
@@ -150,7 +150,7 @@ add("prophets_008", "prophets", "medium", "quran", "Quran", "3:47", False,
          "يصف القرآن ولادة عيسى المعجزة دون أب، بكلمة الله وحدها.",
          "القرآن — سورة آل عمران، 3:47"))
 
-add("prophets_009", "prophets", "medium", "quran", "Quran", "19:16", False,
+add("prophets_009", "prophets", "easy", "quran", "Quran", "19:16", False,
     fr=L("Quel chapitre (sourate) du Coran porte le nom de la mère d'un prophète ?",
          ["Maryam", "Yûsuf", "Nûh", "Hûd"], 0,
          "La sourate 19, Maryam, porte le nom de la mère du prophète Îsâ.",
@@ -220,7 +220,7 @@ add("prophets_013", "prophets", "easy", "quran", "Quran", "12:15", False,
          "ألقى إخوة يوسف به في الجُبّ حسدًا منهم.",
          "القرآن — سورة يوسف، 12:15"))
 
-add("prophets_014", "prophets", "medium", "quran", "Quran", "11:37-44", False,
+add("prophets_014", "prophets", "easy", "quran", "Quran", "11:37-44", False,
     fr=L("Le peuple de quel prophète fut anéanti par un déluge après l'avoir rejeté ?",
          ["Nûh", "Hûd", "Sâlih", "Shuʿayb"], 0,
          "Le peuple de Nûh fut englouti par le déluge après avoir persisté dans le rejet du message.",
@@ -234,7 +234,7 @@ add("prophets_014", "prophets", "medium", "quran", "Quran", "11:37-44", False,
          "أُغرق قوم نوح بالطوفان بعد إصرارهم على تكذيب رسالته.",
          "القرآن — سورة هود، 11:37-44"))
 
-add("prophets_015", "prophets", "medium", "quran", "Quran", "26:63", False,
+add("prophets_015", "prophets", "easy", "quran", "Quran", "26:63", False,
     fr=L("Quel prophète vit la mer se fendre pour sauver son peuple de Pharaon ?",
          ["Mûsâ", "Hârûn", "Yûsuf", "Ismâʿîl"], 0,
          "Allah ordonna à Mûsâ de frapper la mer, qui se fendit pour laisser passer les croyants.",
@@ -336,7 +336,7 @@ add("sira_003", "sira", "easy", "sira", "Sira", "well-established sira event, ag
          "كانت خديجة بنت خويلد أول زوجة للنبي ﷺ وأول من آمن برسالته.",
          "السيرة — حقيقة تاريخية ثابتة"))
 
-add("sira_004", "sira", "medium", "sira", "Sira", "well-established sira event, agreed across standard biographies", False,
+add("sira_004", "sira", "easy", "sira", "Sira", "well-established sira event, agreed across standard biographies", False,
     fr=L("Dans quelle grotte le Prophète ﷺ reçut-il la première révélation ?",
          ["La grotte de Hirâ'", "La grotte de Thawr", "La grotte des gens de la caverne", "La grotte de Uhud"], 0,
          "La première révélation eut lieu dans la grotte de Hirâ', sur le mont An-Nûr près de La Mecque.",
@@ -406,7 +406,7 @@ add("sira_008", "sira", "hard", "quran", "Quran", "9:40", False,
          "يشير القرآن إلى أبي بكر، الذي رافق النبي ﷺ في غار ثور أثناء الهجرة.",
          "القرآن — سورة التوبة، 9:40"))
 
-add("sira_009", "sira", "medium", "quran", "Quran", "3:123", False,
+add("sira_009", "sira", "easy", "quran", "Quran", "3:123", False,
     fr=L("Quelle bataille, mentionnée dans le Coran, vit une petite armée musulmane vaincre une force bien plus nombreuse ?",
          ["La bataille de Badr", "La bataille de Uhud", "La bataille du Fossé", "La bataille de Hunayn"], 0,
          "À Badr, Allah accorda la victoire à un petit groupe de croyants face à une armée plus nombreuse.",
@@ -448,7 +448,7 @@ add("sira_011", "sira", "medium", "sira", "Sira", "well-established sira event, 
          "أُلقيت خطبة الوداع خلال حجة النبي ﷺ الأخيرة.",
          "السيرة — حقيقة تاريخية ثابتة"))
 
-add("sira_012", "sira", "medium", "quran", "Quran", "2:185", False,
+add("sira_012", "sira", "easy", "quran", "Quran", "2:185", False,
     fr=L("Durant quel mois le Coran indique-t-il que sa révélation a commencé ?",
          ["Ramadân", "Muharram", "Rajab", "Dhul-Hijja"], 0,
          "Le Coran indique que Ramadân est le mois durant lequel le Coran a été révélé.",
@@ -490,7 +490,7 @@ add("sira_014", "sira", "medium", "sira", "Sira", "well-established sira event, 
          "رعى عبد المطلب النبي محمدًا ﷺ في صغره بعد وفاة والدته آمنة.",
          "السيرة — حقيقة تاريخية ثابتة"))
 
-add("sira_015", "sira", "medium", "sira", "Sira", "well-established sira event, agreed across standard biographies", False,
+add("sira_015", "sira", "easy", "sira", "Sira", "well-established sira event, agreed across standard biographies", False,
     fr=L("Quel oncle éleva le Prophète ﷺ après la mort de son grand-père ?",
          ["Abû Tâlib", "Al-ʿAbbâs", "Hamza", "Abû Lahab"], 0,
          "Abû Tâlib prit en charge l'éducation de son neveu après la mort de ʿAbd al-Muttalib.",
@@ -518,7 +518,7 @@ add("sira_016", "sira", "hard", "quran", "Quran", "17:1", False,
          "تفتتح سورة الإسراء بذكر هذه الرحلة الليلية المعجزة.",
          "القرآن — سورة الإسراء، 17:1"))
 
-add("sira_017", "sira", "medium", "sira", "Sira", "well-established sira event, agreed across standard biographies", False,
+add("sira_017", "sira", "easy", "sira", "Sira", "well-established sira event, agreed across standard biographies", False,
     fr=L("Laquelle des filles du Prophète ﷺ épousa ʿAlî ibn Abî Tâlib ?",
          ["Fâtima", "Zaynab", "Ruqayya", "Umm Kulthûm"], 0,
          "Fâtima, fille du Prophète ﷺ et de Khadîja, épousa ʿAlî ibn Abî Tâlib — un fait largement établi.",
@@ -564,7 +564,7 @@ add("quran_001", "quran", "easy", "quran", "Quran", "1:1-7", True,
          "الفاتحة هي السورة الأولى في القرآن الكريم.",
          "القرآن — سورة الفاتحة، 1:1-7"))
 
-add("quran_002", "quran", "medium", "quran", "Quran", "well-established count (114 surahs)", False,
+add("quran_002", "quran", "easy", "quran", "Quran", "well-established count (114 surahs)", False,
     fr=L("Combien de chapitres (sourates) compte le Coran ?",
          ["114", "99", "100", "120"], 0,
          "Le Coran est composé de 114 sourates.",
@@ -578,7 +578,7 @@ add("quran_002", "quran", "medium", "quran", "Quran", "well-established count (1
          "يتكون القرآن الكريم من 114 سورة.",
          "القرآن — عدد ثابت"))
 
-add("quran_003", "quran", "medium", "quran", "Quran", "well-established (Al-Baqarah is the longest surah)", False,
+add("quran_003", "quran", "easy", "quran", "Quran", "well-established (Al-Baqarah is the longest surah)", False,
     fr=L("Quelle est la plus longue sourate du Coran ?",
          ["Al-Baqara", "Al-Fâtiha", "Al-Kawthar", "Al-ʿAsr"], 0,
          "Al-Baqara est la plus longue sourate du Coran, avec 286 versets.",
@@ -662,7 +662,7 @@ add("quran_008", "quran", "easy", "quran", "Quran", "well-established terminolog
          "تُسمّى كل آية من آيات القرآن آيةً، ومعناها «علامة».",
          "القرآن — مصطلح ثابت"))
 
-add("quran_009", "quran", "medium", "hadithBukhari", "Sahih al-Bukhari", "756", False,
+add("quran_009", "quran", "easy", "hadithBukhari", "Sahih al-Bukhari", "756", False,
     fr=L("Quelle sourate est récitée obligatoirement à chaque unité (rakʿa) de la prière ?",
          ["Al-Fâtiha", "Al-Ikhlâs", "Al-Kawthar", "Al-Fîl"], 0,
          "La récitation d'Al-Fâtiha est un pilier de la prière rapporté dans un hadith authentique.",
@@ -736,7 +736,7 @@ add("faith_003", "faith", "easy", "hadithBukhari", "Sahih al-Bukhari", "8", Fals
          "الصلوات الخمس اليومية المفروضة ركن أساسي من أركان الإسلام.",
          "صحيح البخاري، رقم 8"))
 
-add("faith_004", "faith", "medium", "hadithBukhari", "Sahih al-Bukhari", "8", True,
+add("faith_004", "faith", "easy", "hadithBukhari", "Sahih al-Bukhari", "8", True,
     fr=L("Comment appelle-t-on l'aumône obligatoire en islam ?",
          ["La Zakât", "La Sadaqa", "Le Waqf", "Le Kaffâra"], 0,
          "La Zakât est l'aumône obligatoire, l'un des cinq piliers de l'islam.",
@@ -764,7 +764,7 @@ add("faith_005", "faith", "easy", "quran", "Quran", "2:183", False,
          "يأمر القرآن بالصيام في شهر رمضان.",
          "القرآن — سورة البقرة، 2:183"))
 
-add("faith_006", "faith", "medium", "quran", "Quran", "3:97", False,
+add("faith_006", "faith", "easy", "quran", "Quran", "3:97", False,
     fr=L("Comment appelle-t-on le pèlerinage à La Mecque, obligatoire une fois dans la vie pour qui en a la capacité ?",
          ["Le Hajj", "La ʿUmra", "Le Iʿtikâf", "Le Tawâf"], 0,
          "Le Coran rend le Hajj obligatoire pour quiconque en a la capacité, au moins une fois dans sa vie.",
@@ -778,7 +778,7 @@ add("faith_006", "faith", "medium", "quran", "Quran", "3:97", False,
          "يُوجب القرآن الحج على من استطاع إليه سبيلاً، مرة واحدة في العمر.",
          "القرآن — سورة آل عمران، 3:97"))
 
-add("faith_007", "faith", "medium", "quran", "Quran", "2:144", False,
+add("faith_007", "faith", "easy", "quran", "Quran", "2:144", False,
     fr=L("Vers quelle direction les musulmans se tournent-ils pour la prière ?",
          ["La Kaaba, à La Mecque", "Jérusalem", "Médine", "L'est"], 0,
          "Le Coran a établi la Kaaba comme direction de la prière (Qibla).",
@@ -810,7 +810,7 @@ add("faith_008", "faith", "hard", "hadithMuslim", "Sahih Muslim", "8", False,
 # VIRTUES & VALUES — 6
 # ---------------------------------------------------------------------
 
-add("virtues_001", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "6018", True,
+add("virtues_001", "virtues", "easy", "hadithBukhari", "Sahih al-Bukhari", "6018", True,
     fr=L("Selon un hadith rapporté par l'imam Al-Bukhârî, que doit faire celui qui croit en Allah et au Jour Dernier avec ses paroles ?",
          ["Dire du bien ou se taire", "Parler fort", "Ne jamais parler", "Répéter les rumeurs"], 0,
          "Le Prophète ﷺ a dit : « Que celui qui croit en Allah et au Jour Dernier dise du bien ou se taise. »",
@@ -880,7 +880,7 @@ add("virtues_005", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "10
          "قال النبي ﷺ: «المسلم من سلم المسلمون من لسانه ويده.»",
          "صحيح البخاري، رقم 10"))
 
-add("virtues_006", "virtues", "medium", "quran", "Quran", "17:23-24", False,
+add("virtues_006", "virtues", "easy", "quran", "Quran", "17:23-24", False,
     fr=L("Le Coran ordonne d'être bon envers ses parents et de ne même pas leur dire quel mot de mécontentement ?",
          ["« Uff »", "« Non »", "« Assez »", "« Attends »"], 0,
          "Le Coran demande une extrême bienveillance envers les parents, jusqu'à interdire le moindre mot de dédain.",
@@ -913,7 +913,7 @@ add("prophets_019", "prophets", "easy", "quran", "Quran", "2:31", True,
          "علّم الله آدمَ الأسماء كلها، فأقرّت الملائكة بحكمة الله.",
          "القرآن — سورة البقرة، 2:31"))
 
-add("prophets_020", "prophets", "medium", "quran", "Quran", "19:29-30", False,
+add("prophets_020", "prophets", "easy", "quran", "Quran", "19:29-30", False,
     fr=L("Quel prophète a parlé aux gens alors qu'il était encore un bébé au berceau ?",
          ["'Îsâ", "Yahyâ", "Yûsuf", "Ismâ'îl"], 0,
          "Le bébé 'Îsâ parla depuis le berceau : « Je suis le serviteur d'Allah, Il m'a donné le Livre. »",
@@ -927,7 +927,7 @@ add("prophets_020", "prophets", "medium", "quran", "Quran", "19:29-30", False,
          "تكلّم عيسى في المهد قائلًا: «إني عبد الله آتاني الكتاب».",
          "القرآن — سورة مريم، 19:29-30"))
 
-add("prophets_021", "prophets", "medium", "quran", "Quran", "2:127", False,
+add("prophets_021", "prophets", "easy", "quran", "Quran", "2:127", False,
     fr=L("Avec quel fils Ibrâhîm éleva-t-il les fondations de la Ka'ba ?",
          ["Ismâ'îl", "Ishâq", "Ya'qûb", "Yûsuf"], 0,
          "« Et quand Ibrâhîm et Ismâ'îl élevaient les assises de la Maison… » — ils bâtirent ensemble.",
@@ -1069,7 +1069,7 @@ add("prophets_030", "prophets", "hard", "quran", "Quran",
          "ذُكر في القرآن خمسة وعشرون نبيًا بأسمائهم، من آدم إلى محمد ﷺ.",
          "القرآن — عدد ثابت مشهور"))
 
-add("prophets_031", "prophets", "medium", "quran", "Quran", "3:49", False,
+add("prophets_031", "prophets", "easy", "quran", "Quran", "3:49", False,
     fr=L("Par la permission d'Allah, quel prophète guérissait l'aveugle-né et le lépreux ?",
          ["'Îsâ", "Mûsâ", "Dâwûd", "Yûnus"], 0,
          "'Îsâ guérissait l'aveugle-né et le lépreux par la permission d'Allah — un signe pour son peuple.",
@@ -1101,7 +1101,7 @@ add("prophets_032", "prophets", "hard", "quran", "Quran", "29:14", False,
 # QURAN (extension)
 # ---------------------------------------------------------------------
 
-add("quran_011", "quran", "medium", "quran", "Quran", "2:255", False,
+add("quran_011", "quran", "easy", "quran", "Quran", "2:255", False,
     fr=L("Quel est le nom du célèbre verset 255 de la sourate Al-Baqara ?",
          ["Âyat al-Kursî (le verset du Trône)", "Âyat an-Nûr", "Âyat as-Siyâm", "Âyat ad-Dayn"], 0,
          "Le verset 2:255, Âyat al-Kursî, décrit la grandeur d'Allah : « Allah ! Point de divinité à part Lui, le Vivant… »",
@@ -1144,7 +1144,7 @@ add("quran_013", "quran", "hard", "quran", "Quran", "2:282", False,
          "أطول آية في القرآن تُعلّم كتابة الديون والإشهاد عليها — صونًا للأمانة.",
          "القرآن — سورة البقرة، 2:282"))
 
-add("quran_014", "quran", "medium", "quran", "Quran", "96:1-5", False,
+add("quran_014", "quran", "easy", "quran", "Quran", "96:1-5", False,
     fr=L("Par quel mot commencent les tout premiers versets révélés du Coran ?",
          ["Iqra' (Lis !)", "Qul (Dis !)", "Sabbih (Glorifie !)", "Kutiba (Il a été prescrit)"], 0,
          "Les premiers versets révélés commencent par « Iqra' » : « Lis, au nom de ton Seigneur qui a créé. »",
@@ -1231,7 +1231,7 @@ add("quran_019", "quran", "hard", "quran", "Quran", "57:25", False,
          "السورة 57 هي الحديد: «وأنزلنا الحديد فيه بأس شديد ومنافع للناس».",
          "القرآن — سورة الحديد، 57:25"))
 
-add("quran_020", "quran", "medium", "quran", "Quran", "12:3", False,
+add("quran_020", "quran", "easy", "quran", "Quran", "12:3", False,
     fr=L("Quelle histoire le Coran appelle-t-il « le plus beau des récits » ?",
          ["L'histoire de Yûsuf", "L'histoire de Nûh", "L'histoire des gens de la caverne", "L'histoire de l'éléphant"], 0,
          "« Nous te racontons le plus beau des récits » — ainsi s'ouvre l'histoire de Yûsuf.",
@@ -1352,7 +1352,7 @@ add("sira_021", "sira", "easy", "sira", "Sira", _SIRA_REF, False,
          "آمنة بنت وهب أم النبي ﷺ؛ وحليمة مرضعته.",
          "السيرة — حقيقة تاريخية ثابتة"))
 
-add("sira_022", "sira", "medium", "sira", "Sira", _SIRA_REF, False,
+add("sira_022", "sira", "easy", "sira", "Sira", _SIRA_REF, False,
     fr=L("Comment s'appelait le père du Prophète ﷺ, décédé avant sa naissance ?",
          ["'Abdullâh", "Abû Tâlib", "'Abd al-Muttalib", "Hamza"], 0,
          "'Abdullâh, fils de 'Abd al-Muttalib, mourut avant la naissance de son fils Muhammad ﷺ.",
@@ -1422,7 +1422,7 @@ add("sira_026", "sira", "hard", "sira", "Sira", _SIRA_REF, False,
          "زينب ورقية وأم كلثوم وفاطمة — بنات النبي ﷺ الأربع.",
          "السيرة — حقيقة تاريخية ثابتة"))
 
-add("sira_027", "sira", "medium", "sira", "Sira",
+add("sira_027", "sira", "easy", "sira", "Sira",
     "well-established terminology (al-Ansar)", False,
     fr=L("Comment appelle-t-on les habitants de Médine qui accueillirent et aidèrent les musulmans émigrés ?",
          ["Les Ansâr (les Auxiliaires)", "Les Muhâjirûn", "Les Qurayshites", "Les Tâbi'ûn"], 0,
@@ -1437,7 +1437,7 @@ add("sira_027", "sira", "medium", "sira", "Sira",
          "الأنصار شاركوا إخوانهم المهاجرين بيوتهم وأموالهم.",
          "السيرة — تسمية ثابتة"))
 
-add("sira_028", "sira", "medium", "sira", "Sira",
+add("sira_028", "sira", "easy", "sira", "Sira",
     "well-established terminology (al-Muhajirun)", False,
     fr=L("Comment appelle-t-on les musulmans qui quittèrent La Mecque pour émigrer à Médine ?",
          ["Les Muhâjirûn (les Émigrés)", "Les Ansâr", "Les Hunafâ'", "Les Ghuzât"], 0,
@@ -1513,7 +1513,7 @@ add("faith_010", "faith", "medium", "quran", "Quran", "82:10-11", False,
          "«وإن عليكم لحافظين كرامًا كاتبين» — ملائكة يكتبون كل عمل.",
          "القرآن — سورة الانفطار، 82:10-11"))
 
-add("faith_011", "faith", "medium", "creed", "Creed",
+add("faith_011", "faith", "easy", "creed", "Creed",
     "well-established (99 beautiful names, reported in al-Bukhari and Muslim)", False,
     fr=L("Combien de beaux noms d'Allah la tradition authentique rapporte-t-elle ?",
          ["99", "50", "100", "114"], 0,
@@ -1613,7 +1613,7 @@ add("faith_017", "faith", "easy", "creed", "Creed",
          "«السلام عليكم» — ويُرد عليها: «وعليكم السلام».",
          "العقيدة — تسمية ثابتة"))
 
-add("faith_018", "faith", "medium", "creed", "Creed",
+add("faith_018", "faith", "easy", "creed", "Creed",
     "well-established terminology (tawhid)", False,
     fr=L("Comment s'appelle la croyance en l'unicité d'Allah, cœur de l'islam ?",
          ["Le tawhîd", "Le tafsîr", "Le tajwîd", "Le tarâwîh"], 0,
@@ -1674,7 +1674,7 @@ add("virtues_009", "virtues", "medium", "quran", "Quran", "49:11", False,
          "«لا يسخر قوم من قوم عسى أن يكونوا خيرًا منهم».",
          "القرآن — سورة الحجرات، 49:11"))
 
-add("virtues_010", "virtues", "medium", "quran", "Quran", "14:7", False,
+add("virtues_010", "virtues", "easy", "quran", "Quran", "14:7", False,
     fr=L("Selon le Coran, que promet Allah à celui qui est reconnaissant ?",
          ["Il lui accordera davantage", "Une longue vie", "La richesse immédiate", "Un voyage"], 0,
          "« Si vous êtes reconnaissants, Je vous accorderai certainement davantage. »",
@@ -1786,7 +1786,7 @@ add("virtues_017", "virtues", "medium", "quran", "Quran", "31:18", False,
          "«ولا تصعّر خدك للناس ولا تمش في الأرض مرحًا».",
          "القرآن — سورة لقمان، 31:18"))
 
-add("virtues_018", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "1", False,
+add("virtues_018", "virtues", "easy", "hadithBukhari", "Sahih al-Bukhari", "1", False,
     fr=L("Selon le tout premier hadith du recueil d'al-Bukhârî, de quoi dépendent les actes ?",
          ["Des intentions", "Des résultats", "Des habitudes", "Des témoins"], 0,
          "« Les actes ne valent que par les intentions, et chacun n'a que ce qu'il a eu l'intention de faire. »",
@@ -1799,6 +1799,28 @@ add("virtues_018", "virtues", "medium", "hadithBukhari", "Sahih al-Bukhari", "1"
          ["بالنيات", "بالنتائج", "بالعادات", "بالشهود"], 0,
          "«إنما الأعمال بالنيات وإنما لكل امرئ ما نوى».",
          "صحيح البخاري — الحديث رقم 1"))
+
+
+# ---------------------------------------------------------------------
+# Extended bank — one module per volume, each exposing register(add, L).
+# The modules live next to this script so it can run from any cwd.
+# ---------------------------------------------------------------------
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from bank_prophets_a import register as _register_prophets_a  # noqa: E402
+from bank_prophets_b import register as _register_prophets_b  # noqa: E402
+from bank_sira_a import register as _register_sira_a  # noqa: E402
+from bank_sira_b import register as _register_sira_b  # noqa: E402
+from bank_quran import register as _register_quran  # noqa: E402
+from bank_faith import register as _register_faith  # noqa: E402
+from bank_virtues import register as _register_virtues  # noqa: E402
+
+for _register in (
+    _register_prophets_a, _register_prophets_b,
+    _register_sira_a, _register_sira_b,
+    _register_quran, _register_faith, _register_virtues,
+):
+    _register(add, L)
 
 
 # ---------------------------------------------------------------------

@@ -68,7 +68,8 @@
     "sourceWork": "Quran",
     "sourceReference": "19:16",
     "questionIds": [
-      "prophets_009"
+      "prophets_009",
+      "quran_063"
     ]
   },
   {
@@ -116,7 +117,8 @@
     "sourceWork": "Quran",
     "sourceReference": "26:63",
     "questionIds": [
-      "prophets_015"
+      "prophets_015",
+      "prophets_143"
     ]
   },
   {
@@ -168,7 +170,70 @@
       "sira_024",
       "sira_025",
       "sira_026",
-      "sira_029"
+      "sira_029",
+      "sira_032",
+      "sira_033",
+      "sira_034",
+      "sira_035",
+      "sira_036",
+      "sira_039",
+      "sira_040",
+      "sira_041",
+      "sira_042",
+      "sira_043",
+      "sira_044",
+      "sira_046",
+      "sira_048",
+      "sira_052",
+      "sira_053",
+      "sira_054",
+      "sira_055",
+      "sira_060",
+      "sira_061",
+      "sira_063",
+      "sira_066",
+      "sira_067",
+      "sira_071",
+      "sira_077",
+      "sira_078",
+      "sira_081",
+      "sira_082",
+      "sira_084",
+      "sira_085",
+      "sira_087",
+      "sira_088",
+      "sira_089",
+      "sira_090",
+      "sira_097",
+      "sira_098",
+      "sira_102",
+      "sira_103",
+      "sira_104",
+      "sira_105",
+      "sira_106",
+      "sira_109",
+      "sira_110",
+      "sira_111",
+      "sira_117",
+      "sira_118",
+      "sira_125",
+      "sira_127",
+      "sira_130",
+      "sira_131",
+      "sira_132",
+      "sira_134",
+      "sira_135",
+      "sira_136",
+      "sira_137",
+      "sira_138",
+      "sira_139",
+      "sira_142",
+      "sira_143",
+      "sira_144",
+      "sira_146",
+      "sira_147",
+      "sira_149",
+      "sira_150"
     ]
   },
   {
@@ -216,7 +281,8 @@
     "sourceWork": "Quran",
     "sourceReference": "17:1",
     "questionIds": [
-      "sira_016"
+      "sira_016",
+      "faith_067"
     ]
   },
   {
@@ -398,7 +464,8 @@
     "sourceWork": "Quran",
     "sourceReference": "19:7",
     "questionIds": [
-      "prophets_022"
+      "prophets_022",
+      "prophets_108"
     ]
   },
   {
@@ -430,7 +497,8 @@
     "sourceWork": "Quran",
     "sourceReference": "7:85",
     "questionIds": [
-      "prophets_026"
+      "prophets_026",
+      "prophets_135"
     ]
   },
   {
@@ -438,7 +506,8 @@
     "sourceWork": "Quran",
     "sourceReference": "21:87",
     "questionIds": [
-      "prophets_027"
+      "prophets_027",
+      "prophets_104"
     ]
   },
   {
@@ -470,7 +539,8 @@
     "sourceWork": "Quran",
     "sourceReference": "3:49",
     "questionIds": [
-      "prophets_031"
+      "prophets_031",
+      "prophets_116"
     ]
   },
   {
@@ -486,7 +556,8 @@
     "sourceWork": "Quran",
     "sourceReference": "2:255",
     "questionIds": [
-      "quran_011"
+      "quran_011",
+      "faith_069"
     ]
   },
   {
@@ -622,7 +693,9 @@
     "sourceWork": "Quran",
     "sourceReference": "5:6",
     "questionIds": [
-      "faith_009"
+      "faith_009",
+      "faith_045",
+      "faith_046"
     ]
   },
   {
@@ -791,6 +864,2383 @@
     "sourceReference": "1",
     "questionIds": [
       "virtues_018"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:71",
+    "questionIds": [
+      "prophets_033"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:20",
+    "questionIds": [
+      "prophets_034"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:12",
+    "questionIds": [
+      "prophets_035"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:31",
+    "questionIds": [
+      "prophets_036"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:57",
+    "questionIds": [
+      "prophets_037"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:42-43",
+    "questionIds": [
+      "prophets_038"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:44",
+    "questionIds": [
+      "prophets_039"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:40",
+    "questionIds": [
+      "prophets_040"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:38",
+    "questionIds": [
+      "prophets_041"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:3",
+    "questionIds": [
+      "prophets_042"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "69:6",
+    "questionIds": [
+      "prophets_043"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:67",
+    "questionIds": [
+      "prophets_044"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:74",
+    "questionIds": [
+      "prophets_045"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:58",
+    "questionIds": [
+      "prophets_046"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:76-78",
+    "questionIds": [
+      "prophets_047"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:260",
+    "questionIds": [
+      "prophets_048"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:69",
+    "questionIds": [
+      "prophets_049"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:71",
+    "questionIds": [
+      "prophets_050",
+      "prophets_059"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:102-107",
+    "questionIds": [
+      "prophets_051"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "14:37",
+    "questionIds": [
+      "prophets_052"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:126",
+    "questionIds": [
+      "prophets_053"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:129",
+    "questionIds": [
+      "prophets_054"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:120",
+    "questionIds": [
+      "prophets_055"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:54",
+    "questionIds": [
+      "prophets_056"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:82",
+    "questionIds": [
+      "prophets_057"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "66:10",
+    "questionIds": [
+      "prophets_058"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:84",
+    "questionIds": [
+      "prophets_060"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:93-96",
+    "questionIds": [
+      "prophets_061"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:33",
+    "questionIds": [
+      "prophets_062"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:36",
+    "questionIds": [
+      "prophets_063"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:47-48",
+    "questionIds": [
+      "prophets_064"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:55",
+    "questionIds": [
+      "prophets_065"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:70",
+    "questionIds": [
+      "prophets_066"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:67",
+    "questionIds": [
+      "prophets_067"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:58",
+    "questionIds": [
+      "prophets_068"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:8",
+    "questionIds": [
+      "prophets_069"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:12-13",
+    "questionIds": [
+      "prophets_070"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:15",
+    "questionIds": [
+      "prophets_071"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:20",
+    "questionIds": [
+      "prophets_072"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:23-24",
+    "questionIds": [
+      "prophets_073"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:27",
+    "questionIds": [
+      "prophets_074"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:12",
+    "questionIds": [
+      "prophets_075"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:22",
+    "questionIds": [
+      "prophets_076"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:25-28",
+    "questionIds": [
+      "prophets_077"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:29-30",
+    "questionIds": [
+      "prophets_078"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:117-120",
+    "questionIds": [
+      "prophets_079"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:133",
+    "questionIds": [
+      "prophets_080"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "10:92",
+    "questionIds": [
+      "prophets_081"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "66:11",
+    "questionIds": [
+      "prophets_082"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:142",
+    "questionIds": [
+      "prophets_083"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:143",
+    "questionIds": [
+      "prophets_084"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:145",
+    "questionIds": [
+      "prophets_085"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:85-88",
+    "questionIds": [
+      "prophets_086"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:60",
+    "questionIds": [
+      "prophets_087"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:57",
+    "questionIds": [
+      "prophets_088"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:69",
+    "questionIds": [
+      "prophets_089"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:76-81",
+    "questionIds": [
+      "prophets_090"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "34:10",
+    "questionIds": [
+      "prophets_091"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:80",
+    "questionIds": [
+      "prophets_092"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:251",
+    "questionIds": [
+      "prophets_093"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:249",
+    "questionIds": [
+      "prophets_094"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:79",
+    "questionIds": [
+      "prophets_095"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:81",
+    "questionIds": [
+      "prophets_096"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:20-22",
+    "questionIds": [
+      "prophets_097"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:18",
+    "questionIds": [
+      "prophets_098",
+      "quran_027"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:40",
+    "questionIds": [
+      "prophets_099"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "34:13",
+    "questionIds": [
+      "prophets_100"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "34:14",
+    "questionIds": [
+      "prophets_101"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:35",
+    "questionIds": [
+      "prophets_102"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:42",
+    "questionIds": [
+      "prophets_103"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:146",
+    "questionIds": [
+      "prophets_105"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:147",
+    "questionIds": [
+      "prophets_106"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:10",
+    "questionIds": [
+      "prophets_107"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:12",
+    "questionIds": [
+      "prophets_109"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:35",
+    "questionIds": [
+      "prophets_110"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:37",
+    "questionIds": [
+      "prophets_111"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:42",
+    "questionIds": [
+      "prophets_112"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:25",
+    "questionIds": [
+      "prophets_113"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:75",
+    "questionIds": [
+      "prophets_114"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:45",
+    "questionIds": [
+      "prophets_115"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:52",
+    "questionIds": [
+      "prophets_117"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:112-114",
+    "questionIds": [
+      "prophets_118"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:157-158",
+    "questionIds": [
+      "prophets_119"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "61:6",
+    "questionIds": [
+      "prophets_120"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:125",
+    "questionIds": [
+      "prophets_121"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:85",
+    "questionIds": [
+      "prophets_122"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:48",
+    "questionIds": [
+      "prophets_123"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:40",
+    "questionIds": [
+      "prophets_124"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:107",
+    "questionIds": [
+      "prophets_125"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:56",
+    "questionIds": [
+      "prophets_126"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "68:4",
+    "questionIds": [
+      "prophets_127"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:144",
+    "questionIds": [
+      "prophets_128"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:7",
+    "questionIds": [
+      "prophets_129"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "2262",
+    "questionIds": [
+      "prophets_130"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "2379",
+    "questionIds": [
+      "prophets_131"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3442",
+    "questionIds": [
+      "prophets_132"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established count (six surahs bear a prophet's name: Yunus, Hud, Yusuf, Ibrahim, Muhammad, Nuh)",
+    "questionIds": [
+      "prophets_133"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:75",
+    "questionIds": [
+      "prophets_134"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:91",
+    "questionIds": [
+      "prophets_136"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:70",
+    "questionIds": [
+      "prophets_137"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "14:40",
+    "questionIds": [
+      "prophets_138"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:100",
+    "questionIds": [
+      "prophets_139"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:8-9",
+    "questionIds": [
+      "prophets_140"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:18",
+    "questionIds": [
+      "prophets_141"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:7",
+    "questionIds": [
+      "prophets_142"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:14",
+    "questionIds": [
+      "prophets_144"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:43-44",
+    "questionIds": [
+      "prophets_145"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:60",
+    "questionIds": [
+      "prophets_146"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:71-77",
+    "questionIds": [
+      "prophets_147"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:30",
+    "questionIds": [
+      "prophets_148"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:23",
+    "questionIds": [
+      "prophets_149"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "71:1",
+    "questionIds": [
+      "prophets_150"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "106:1",
+    "questionIds": [
+      "sira_031"
+    ]
+  },
+  {
+    "sourceType": "sira",
+    "sourceWork": "Sira",
+    "sourceReference": "well-established terminology",
+    "questionIds": [
+      "sira_037",
+      "sira_038",
+      "sira_099"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "1245",
+    "questionIds": [
+      "sira_045"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "111:1",
+    "questionIds": [
+      "sira_047",
+      "quran_038"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3231",
+    "questionIds": [
+      "sira_049"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "349",
+    "questionIds": [
+      "sira_050"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "53:14",
+    "questionIds": [
+      "sira_051"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3905",
+    "questionIds": [
+      "sira_056"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3906",
+    "questionIds": [
+      "sira_057"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:13",
+    "questionIds": [
+      "sira_058"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "2731",
+    "questionIds": [
+      "sira_059"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6452",
+    "questionIds": [
+      "sira_062"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:9",
+    "questionIds": [
+      "sira_064"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3039",
+    "questionIds": [
+      "sira_065"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:9-10",
+    "questionIds": [
+      "sira_068"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "48:18",
+    "questionIds": [
+      "sira_069"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "48:1",
+    "questionIds": [
+      "sira_070"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "7",
+    "questionIds": [
+      "sira_072"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3701",
+    "questionIds": [
+      "sira_073"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4262",
+    "questionIds": [
+      "sira_074",
+      "sira_075"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4287",
+    "questionIds": [
+      "sira_076"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:25",
+    "questionIds": [
+      "sira_079"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4418",
+    "questionIds": [
+      "sira_080"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:3",
+    "questionIds": [
+      "sira_083"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3667",
+    "questionIds": [
+      "sira_086"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6038",
+    "questionIds": [
+      "sira_091"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "75",
+    "questionIds": [
+      "sira_092"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "1395",
+    "questionIds": [
+      "sira_093"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3744",
+    "questionIds": [
+      "sira_094"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4986",
+    "questionIds": [
+      "sira_095"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4987",
+    "questionIds": [
+      "sira_096"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established count (the name Muhammad appears four times: 3:144, 33:40, 47:2, 48:29)",
+    "questionIds": [
+      "sira_100"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:21",
+    "questionIds": [
+      "sira_101"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3",
+    "questionIds": [
+      "sira_107"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4770",
+    "questionIds": [
+      "sira_108"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3212",
+    "questionIds": [
+      "sira_112"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5048",
+    "questionIds": [
+      "sira_113"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3758",
+    "questionIds": [
+      "sira_114"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4073",
+    "questionIds": [
+      "sira_115"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4055",
+    "questionIds": [
+      "sira_116"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3364",
+    "questionIds": [
+      "sira_119",
+      "sira_140"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5872",
+    "questionIds": [
+      "sira_120"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5431",
+    "questionIds": [
+      "sira_121"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "1162",
+    "questionIds": [
+      "sira_122"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3541",
+    "questionIds": [
+      "sira_123"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "917",
+    "questionIds": [
+      "sira_124"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:6",
+    "questionIds": [
+      "sira_126"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "2048",
+    "questionIds": [
+      "sira_128"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "810",
+    "questionIds": [
+      "sira_129",
+      "quran_037"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4469",
+    "questionIds": [
+      "sira_133"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "2704",
+    "questionIds": [
+      "sira_141"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3661",
+    "questionIds": [
+      "sira_145"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3149",
+    "questionIds": [
+      "sira_148"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "105:1",
+    "questionIds": [
+      "quran_025"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:68",
+    "questionIds": [
+      "quran_026"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "29:41",
+    "questionIds": [
+      "quran_028"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:67",
+    "questionIds": [
+      "quran_029"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:136",
+    "questionIds": [
+      "quran_030"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "55:13",
+    "questionIds": [
+      "quran_031"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:25",
+    "questionIds": [
+      "quran_032"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:18",
+    "questionIds": [
+      "quran_033"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:94",
+    "questionIds": [
+      "quran_034"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "24:35",
+    "questionIds": [
+      "quran_035"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5013",
+    "questionIds": [
+      "quran_036"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "109:6",
+    "questionIds": [
+      "quran_039"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "110:1-2",
+    "questionIds": [
+      "quran_040"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "103:1-3",
+    "questionIds": [
+      "quran_041"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "107:1-3",
+    "questionIds": [
+      "quran_042"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "96:2",
+    "questionIds": [
+      "quran_043"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "15:87",
+    "questionIds": [
+      "quran_044"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:1",
+    "questionIds": [
+      "quran_045"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "52:1",
+    "questionIds": [
+      "quran_046"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "53:1",
+    "questionIds": [
+      "quran_047"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "97:4",
+    "questionIds": [
+      "quran_048"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:82",
+    "questionIds": [
+      "quran_049"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:23",
+    "questionIds": [
+      "quran_050"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "4704",
+    "questionIds": [
+      "quran_051"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established terminology (makki / madani)",
+    "questionIds": [
+      "quran_052"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:1; 3:1; 29:1; 30:1; 31:1; 32:1",
+    "questionIds": [
+      "quran_053"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established terminology (al-huruf al-muqatta'a)",
+    "questionIds": [
+      "quran_054"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "47:2",
+    "questionIds": [
+      "quran_055"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "31:13",
+    "questionIds": [
+      "quran_056"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:1",
+    "questionIds": [
+      "quran_057"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "36:1",
+    "questionIds": [
+      "quran_058"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "67:1",
+    "questionIds": [
+      "quran_059"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "114:1",
+    "questionIds": [
+      "quran_060"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "113:1",
+    "questionIds": [
+      "quran_061"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:158",
+    "questionIds": [
+      "quran_062"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:37",
+    "questionIds": [
+      "quran_064"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:102",
+    "questionIds": [
+      "quran_065"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "49:13",
+    "questionIds": [
+      "quran_066"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "56:1",
+    "questionIds": [
+      "quran_067"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "68:1",
+    "questionIds": [
+      "quran_068"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "89:1-2",
+    "questionIds": [
+      "quran_069"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "91:1",
+    "questionIds": [
+      "quran_070"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "76:1",
+    "questionIds": [
+      "quran_071"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "54:17",
+    "questionIds": [
+      "quran_072"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "54:1",
+    "questionIds": [
+      "quran_073"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:32",
+    "questionIds": [
+      "quran_074"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5017",
+    "questionIds": [
+      "quran_075"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established terminology (sujud at-tilawa; e.g. 96:19)",
+    "questionIds": [
+      "quran_076"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established terminology (tajwid)",
+    "questionIds": [
+      "quran_077"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established terminology (hafiz)",
+    "questionIds": [
+      "quran_078"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "well-established terminology (mushaf)",
+    "questionIds": [
+      "quran_079"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:30",
+    "questionIds": [
+      "quran_080"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:44",
+    "questionIds": [
+      "faith_019"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:46",
+    "questionIds": [
+      "faith_020"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:86",
+    "questionIds": [
+      "faith_021"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "87:18-19",
+    "questionIds": [
+      "faith_022"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "43:77",
+    "questionIds": [
+      "faith_023"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "69:17",
+    "questionIds": [
+      "faith_024"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "32:11",
+    "questionIds": [
+      "faith_025"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "2996",
+    "questionIds": [
+      "faith_026"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "55:15",
+    "questionIds": [
+      "faith_027"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "35:6",
+    "questionIds": [
+      "faith_028"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "46:35; 42:13",
+    "questionIds": [
+      "faith_029"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "39:68",
+    "questionIds": [
+      "faith_030"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:47",
+    "questionIds": [
+      "faith_031"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:107",
+    "questionIds": [
+      "faith_032"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:12",
+    "questionIds": [
+      "faith_033"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "54:49",
+    "questionIds": [
+      "faith_034"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:48",
+    "questionIds": [
+      "faith_035"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:222",
+    "questionIds": [
+      "faith_036"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "71:10-11",
+    "questionIds": [
+      "faith_037"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "65:3",
+    "questionIds": [
+      "faith_038"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "40:60",
+    "questionIds": [
+      "faith_039"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "13:28",
+    "questionIds": [
+      "faith_040"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (the five daily prayers)",
+    "questionIds": [
+      "faith_041"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (Fajr: two rak'ahs)",
+    "questionIds": [
+      "faith_042"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (Maghrib: three rak'ahs)",
+    "questionIds": [
+      "faith_043"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (adhan / mu'adhdhin)",
+    "questionIds": [
+      "faith_044"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (khutba)",
+    "questionIds": [
+      "faith_047"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (zakat on savings: 2.5%)",
+    "questionIds": [
+      "faith_048"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "1503",
+    "questionIds": [
+      "faith_049"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:187",
+    "questionIds": [
+      "faith_050"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "1923",
+    "questionIds": [
+      "faith_051"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (iftar)",
+    "questionIds": [
+      "faith_052"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (the two Eids)",
+    "questionIds": [
+      "faith_053"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:107",
+    "questionIds": [
+      "faith_054"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (hajj in Dhul-Hijja)",
+    "questionIds": [
+      "faith_055"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (day of 'Arafat: 9 Dhul-Hijja)",
+    "questionIds": [
+      "faith_056"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (tawaf: seven circuits)",
+    "questionIds": [
+      "faith_057"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools (sa'y: seven laps)",
+    "questionIds": [
+      "faith_058"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (ihram)",
+    "questionIds": [
+      "faith_059"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "1549",
+    "questionIds": [
+      "faith_060"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (ramy al-jamarat at Mina)",
+    "questionIds": [
+      "faith_061"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (al-Hajar al-Aswad)",
+    "questionIds": [
+      "faith_062"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology (kiswa)",
+    "questionIds": [
+      "faith_063"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology ('umra)",
+    "questionIds": [
+      "faith_064"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "59:24",
+    "questionIds": [
+      "faith_065"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "39:53",
+    "questionIds": [
+      "faith_066"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "112:2",
+    "questionIds": [
+      "faith_068"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "51:58",
+    "questionIds": [
+      "faith_070"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6094",
+    "questionIds": [
+      "virtues_019"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "33",
+    "questionIds": [
+      "virtues_020"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6116",
+    "questionIds": [
+      "virtues_021"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6114",
+    "questionIds": [
+      "virtues_022"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "24",
+    "questionIds": [
+      "virtues_023"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5997",
+    "questionIds": [
+      "virtues_024"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "2363",
+    "questionIds": [
+      "virtues_025"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "3318",
+    "questionIds": [
+      "virtues_026"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6014",
+    "questionIds": [
+      "virtues_027"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "1240",
+    "questionIds": [
+      "virtues_028"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "12",
+    "questionIds": [
+      "virtues_029"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6011",
+    "questionIds": [
+      "virtues_030"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6064",
+    "questionIds": [
+      "virtues_031"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6077",
+    "questionIds": [
+      "virtues_032"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6021",
+    "questionIds": [
+      "virtues_033"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "35",
+    "questionIds": [
+      "virtues_034"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "223",
+    "questionIds": [
+      "virtues_035"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "55",
+    "questionIds": [
+      "virtues_036"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "2564",
+    "questionIds": [
+      "virtues_037"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "2699",
+    "questionIds": [
+      "virtues_038",
+      "virtues_039"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5027",
+    "questionIds": [
+      "virtues_040"
+    ]
+  },
+  {
+    "sourceType": "hadithMuslim",
+    "sourceWork": "Sahih Muslim",
+    "sourceReference": "91",
+    "questionIds": [
+      "virtues_041"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6412",
+    "questionIds": [
+      "virtues_042"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6133",
+    "questionIds": [
+      "virtues_043"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "5534",
+    "questionIds": [
+      "virtues_044"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "893",
+    "questionIds": [
+      "virtues_045"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "41:34",
+    "questionIds": [
+      "virtues_046"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:63",
+    "questionIds": [
+      "virtues_047"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:34",
+    "questionIds": [
+      "virtues_048"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:27",
+    "questionIds": [
+      "virtues_049"
+    ]
+  },
+  {
+    "sourceType": "hadithBukhari",
+    "sourceWork": "Sahih al-Bukhari",
+    "sourceReference": "6406",
+    "questionIds": [
+      "virtues_050"
     ]
   }
 ]
