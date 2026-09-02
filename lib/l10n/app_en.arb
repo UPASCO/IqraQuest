@@ -58,7 +58,7 @@
   },
   "quickGame": "Quick game",
   "@quickGame": {
-    "description": "Game variant: 1 pawn per player"
+    "description": "Game variant: four horses each, the first one home wins"
   },
   "classicGame": "Classic game",
   "@classicGame": {
@@ -104,9 +104,14 @@
   "@premiumBenefitBank": {
     "description": "Premium benefit row: the complete question bank"
   },
-  "premiumBenefitDifficulty": "All six difficulty levels, from easiest to hardest",
-  "@premiumBenefitDifficulty": {
-    "description": "Premium benefit row: every difficulty level"
+  "premiumBenefitUnlimited": "Unlimited games, all the way to Mecca (the free edition stops after {count} draws)",
+  "@premiumBenefitUnlimited": {
+    "description": "Premium benefit row: games run to the end (the free edition stops after N draws)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "premiumBenefitFamily": "One purchase for the whole family, no ads",
   "@premiumBenefitFamily": {
@@ -713,33 +718,200 @@
   "@outcomeStayed": {
     "description": "Feedback after a wrong answer — never a setback"
   },
-  "outcomeCaptured": "You overtake an opponent!",
+  "outcomeCaptured": "You capture an opponent's horse!",
   "@outcomeCaptured": {
-    "description": "Feedback when passing an opponent"
+    "description": "Feedback when landing on an opponent's horse and sending it home"
+  },
+  "outcomeExited": "Your horse leaves the stable!",
+  "@outcomeExited": {
+    "description": "Feedback after a correct answer on a 5 or 6 brought a horse out"
+  },
+  "outcomeNoLegalMove": "This card can't move any horse. Next turn!",
+  "@outcomeNoLegalMove": {
+    "description": "Banner when the drawn card can move no horse at all"
+  },
+  "noExitHint": "You need a 6 to bring a horse out of the stable.",
+  "@noExitHint": {
+    "description": "Banner when every horse is in the stable and the card is not a 6"
+  },
+  "bonusTurnHint": "Bonus turn: the 6 lets you play again!",
+  "@bonusTurnHint": {
+    "description": "Deck hint on the second draw a 6 earned"
+  },
+  "celebrateSixTitle": "SIX!",
+  "@celebrateSixTitle": {
+    "description": "Celebration title when a 6 is drawn"
+  },
+  "celebrateSixBody": "You'll draw again after this turn.",
+  "@celebrateSixBody": {
+    "description": "Celebration body when a 6 is drawn: the player draws again after this turn"
+  },
+  "celebrateSixExitBody": "A horse can come out — and you'll play again!",
+  "@celebrateSixExitBody": {
+    "description": "Celebration body when a 6 both opens the stable and grants a replay"
+  },
+  "celebrateExitTitle": "Gate open!",
+  "@celebrateExitTitle": {
+    "description": "Celebration title when the gate opens (folded into the 6 celebration)"
+  },
+  "celebrateExitBody": "A horse can leave the stable.",
+  "@celebrateExitBody": {
+    "description": "Celebration body when the gate opens (folded into the 6 celebration)"
+  },
+  "celebrateCaptureTitle": "Captured!",
+  "@celebrateCaptureTitle": {
+    "description": "Celebration title when the player captures an opponent's horse"
+  },
+  "celebrateCaptureBody": "The opponent's horse goes back to its stable.",
+  "@celebrateCaptureBody": {
+    "description": "Celebration body when the player captures an opponent's horse"
+  },
+  "celebrateCapturedTitle": "Caught…",
+  "@celebrateCapturedTitle": {
+    "description": "Notice title when the player's own horse is captured"
+  },
+  "celebrateCapturedBody": "Your horse goes back to the stable. A 6 brings it out again.",
+  "@celebrateCapturedBody": {
+    "description": "Notice body when the player's own horse is captured"
+  },
+  "celebrateArrivalTitle": "Mecca!",
+  "@celebrateArrivalTitle": {
+    "description": "Celebration title when a horse reaches the centre"
+  },
+  "celebrateArrivalBody": "Your horse has arrived. One last question to make it official!",
+  "@celebrateArrivalBody": {
+    "description": "Celebration body when a horse reaches the centre"
+  },
+  "freeLimitTitle": "End of the free race",
+  "@freeLimitTitle": {
+    "description": "Results title when the free edition's draw limit ended the race"
+  },
+  "freeLimitLeader": "In the lead: {name}",
+  "@freeLimitLeader": {
+    "description": "Results subtitle: who was ahead when the free race stopped",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "freeLimitBody": "The free edition stops after {count} draws. With Premium, the race runs all the way to Mecca.",
+  "@freeLimitBody": {
+    "description": "Results body: the free edition stops after N draws; Premium runs to the end",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "freeLimitCta": "Unlock the unlimited race",
+  "@freeLimitCta": {
+    "description": "Results button: open the Premium screen after a free race stopped"
+  },
+  "drawsCounter": "Draws: {count} of {max}",
+  "@drawsCounter": {
+    "description": "HUD pill, free edition: cards drawn out of the limit (screen-reader label)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "moveChoiceTitle": "What will you do with this {count}?",
+  "@moveChoiceTitle": {
+    "description": "Sheet title after a draw when several horses could use the card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moveChoiceExit": "Bring a horse out of the stable",
+  "@moveChoiceExit": {
+    "description": "Choice sheet option: bring a horse out of the stable"
+  },
+  "moveChoiceAdvance": "Horse {number}: ride {count} ahead",
+  "@moveChoiceAdvance": {
+    "description": "Choice sheet option: ride horse N by the card's value",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moveHintCapture": "capture!",
+  "@moveHintCapture": {
+    "description": "Choice sheet tag: this move captures an opponent"
+  },
+  "moveHintFinish": "finish!",
+  "@moveHintFinish": {
+    "description": "Choice sheet tag: this move reaches the finish"
+  },
+  "moveHintOasis": "oasis",
+  "@moveHintOasis": {
+    "description": "Choice sheet tag: this move lands on a safe oasis"
+  },
+  "opponentExits": "{name} brings a horse out!",
+  "@opponentExits": {
+    "description": "Turn banner: the AI opponent brought a horse out of its stable",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "opponentNoMove": "{name} can't move anything.",
+  "@opponentNoMove": {
+    "description": "Turn banner: the AI opponent's card could move nothing",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "opponentReplays": "{name} drew a 6 and plays again!",
+  "@opponentReplays": {
+    "description": "Turn banner: the AI opponent drew a 6 and plays again",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "opponentCaptured": "{name} captures a horse!",
+  "@opponentCaptured": {
+    "description": "Turn banner: the AI opponent captured a horse",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
   "outcomeShieldBlocked": "The shield protected the horse.",
   "@outcomeShieldBlocked": {
     "description": "Feedback when a shield absorbs an overtake"
   },
-  "playerProfile": "Player level",
+  "playerProfile": "Question level",
   "@playerProfile": {
-    "description": "Label for the per-player knowledge level"
+    "description": "Label over the per-rider question level picker"
   },
-  "profileChild": "Child",
-  "@profileChild": {
-    "description": "Player level"
+  "levelEasy": "Easy",
+  "@levelEasy": {
+    "description": "Question level a rider plays at, chosen before the game"
   },
-  "profileDiscovery": "Discovery",
-  "@profileDiscovery": {
-    "description": "Player level"
+  "levelIntermediate": "Intermediate",
+  "@levelIntermediate": {
+    "description": "Question level a rider plays at, chosen before the game"
   },
-  "profileIntermediate": "Intermediate",
-  "@profileIntermediate": {
-    "description": "Player level"
-  },
-  "profileAdvanced": "Advanced",
-  "@profileAdvanced": {
-    "description": "Player level"
+  "levelExpert": "Expert",
+  "@levelExpert": {
+    "description": "Question level a rider plays at, chosen before the game"
   },
   "raceRulesUpdatedTitle": "The race rules have been improved",
   "@raceRulesUpdatedTitle": {
@@ -761,7 +933,7 @@
   "@ruleDrawCardTitle": {
     "description": "Rules step 1 title"
   },
-  "ruleDrawCardBody": "On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.",
+  "ruleDrawCardBody": "On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.",
   "@ruleDrawCardBody": {
     "description": "Rules step 1 body"
   },
@@ -781,11 +953,27 @@
   "@ruleEscalierBody": {
     "description": "Rules step 3 body"
   },
-  "ruleCaptureTitle": "Overtake and send home",
+  "ruleExitTitle": "Leaving the stable",
+  "@ruleExitTitle": {
+    "description": "Rules step: leaving the stable on a 6"
+  },
+  "ruleExitBody": "Each player has four horses in the stable. A horse comes out only on a 6: answer correctly and it takes its start square — and since a 6 plays again, it rides right away. If you already have a horse on the course, you choose: bring another out, or ride.",
+  "@ruleExitBody": {
+    "description": "Rules step body: four horses, exit on a 6, the choice"
+  },
+  "ruleSixTitle": "A 6 plays again",
+  "@ruleSixTitle": {
+    "description": "Rules step: a 6 grants another draw"
+  },
+  "ruleSixBody": "Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.",
+  "@ruleSixBody": {
+    "description": "Rules step body: replay on 6, no two own horses on one square"
+  },
+  "ruleCaptureTitle": "Capture and send home",
   "@ruleCaptureTitle": {
     "description": "Rules step 4 title"
   },
-  "ruleCaptureBody": "Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.",
+  "ruleCaptureBody": "Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.",
   "@ruleCaptureBody": {
     "description": "Rules step 4 body"
   },

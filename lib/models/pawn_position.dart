@@ -23,9 +23,9 @@ sealed class PawnPosition {
   Map<String, dynamic> toJson();
 }
 
-/// In the stable — not yet on the board. Any gait brings a horse out: the
-/// move itself is what carries it onto its entry square, so no particular
-/// number is ever required to start (spec §4).
+/// In the stable — not yet on the board. Only a 6 brings a horse out,
+/// and it comes out onto its start square: the classic gate of the *jeu
+/// des petits chevaux* (see [MovementChoice.stableExitValues]).
 final class HomePosition extends PawnPosition {
   const HomePosition();
 
@@ -49,7 +49,8 @@ final class TrackPosition extends PawnPosition {
   Map<String, dynamic> toJson() => {'type': 'track', 'index': index};
 
   @override
-  bool operator ==(Object other) => other is TrackPosition && other.index == index;
+  bool operator ==(Object other) =>
+      other is TrackPosition && other.index == index;
   @override
   int get hashCode => Object.hash('track', index);
 }
@@ -66,7 +67,8 @@ final class FinalLanePosition extends PawnPosition {
   Map<String, dynamic> toJson() => {'type': 'finalLane', 'step': step};
 
   @override
-  bool operator ==(Object other) => other is FinalLanePosition && other.step == step;
+  bool operator ==(Object other) =>
+      other is FinalLanePosition && other.step == step;
   @override
   int get hashCode => Object.hash('finalLane', step);
 }

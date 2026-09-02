@@ -21,7 +21,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// board, and leaving a game preserves the save behind it.
 final en = AppLocalizationsEn();
 
-Future<GoRouter> pumpApp(WidgetTester tester, LocalStorageService storage) async {
+Future<GoRouter> pumpApp(
+  WidgetTester tester,
+  LocalStorageService storage,
+) async {
   final router = buildAppRouter(initialLocation: '/home');
   await tester.pumpWidget(
     ProviderScope(
@@ -30,7 +33,9 @@ Future<GoRouter> pumpApp(WidgetTester tester, LocalStorageService storage) async
         entitlementServiceProvider.overrideWithValue(EntitlementService()),
         progressServiceProvider.overrideWithValue(ProgressService(storage)),
         gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
-        legacyGameMigrationServiceProvider.overrideWithValue(LegacyGameMigrationService(storage)),
+        legacyGameMigrationServiceProvider.overrideWithValue(
+          LegacyGameMigrationService(storage),
+        ),
         questionRepositoryProvider.overrideWithValue(QuestionRepository()),
         purchaseServiceProvider.overrideWithValue(PurchaseService()),
         initialSettingsProvider.overrideWithValue(const AppSettings()),
@@ -59,29 +64,37 @@ void main() {
     rootBundle.clear();
   });
 
-  testWidgets('the home shelf opens daily challenge and progress, and back returns home',
-      (tester) async {
-    final storage = await LocalStorageService.create();
-    await pumpApp(tester, storage);
+  testWidgets(
+    'the home shelf opens daily challenge and progress, and back returns home',
+    (tester) async {
+      final storage = await LocalStorageService.create();
+      await pumpApp(tester, storage);
 
-    await tester.tap(find.text(en.dailyChallenge));
-    await settle(tester);
-    expect(find.text(en.dailyChallenge), findsWidgets);
+      await tester.tap(find.text(en.dailyChallenge));
+      await settle(tester);
+      expect(find.text(en.dailyChallenge), findsWidgets);
 
-    await tester.pageBack();
-    await settle(tester);
-    expect(find.text(en.appTagline), findsOneWidget, reason: 'back lands on home');
+      await tester.pageBack();
+      await settle(tester);
+      expect(
+        find.text(en.appTagline),
+        findsOneWidget,
+        reason: 'back lands on home',
+      );
 
-    await tester.tap(find.text(en.progress));
-    await settle(tester);
-    expect(find.text(en.progress), findsWidgets);
+      await tester.tap(find.text(en.progress));
+      await settle(tester);
+      expect(find.text(en.progress), findsWidgets);
 
-    await tester.pageBack();
-    await settle(tester);
-    expect(find.text(en.appTagline), findsOneWidget);
-  });
+      await tester.pageBack();
+      await settle(tester);
+      expect(find.text(en.appTagline), findsOneWidget);
+    },
+  );
 
-  testWidgets('settings, premium and tutorial routes all open and render', (tester) async {
+  testWidgets('settings, premium and tutorial routes all open and render', (
+    tester,
+  ) async {
     final storage = await LocalStorageService.create();
     final router = await pumpApp(tester, storage);
 
@@ -117,27 +130,36 @@ void main() {
     await tester.tap(tile);
     await settle(tester);
     expect(tester.widget<SwitchListTile>(tile).value, isFalse);
-    expect(SettingsService(storage).load().soundEnabled, isFalse,
-        reason: 'the choice survives an app restart');
+    expect(
+      SettingsService(storage).load().soundEnabled,
+      isFalse,
+      reason: 'the choice survives an app restart',
+    );
   });
 
-  testWidgets('solo flow reaches the board and leaving preserves the save', (tester) async {
+  testWidgets('solo flow reaches the board and leaving preserves the save', (
+    tester,
+  ) async {
     final storage = await LocalStorageService.create();
     final router = await pumpApp(tester, storage);
 
     await tester.tap(find.text(en.soloMode).first);
     await settle(tester);
-    expect(find.text(en.chooseCircuit), findsOneWidget, reason: 'mode selection opens');
+    expect(
+      find.text(en.chooseCircuit),
+      findsOneWidget,
+      reason: 'mode selection opens',
+    );
 
     // The Continue CTA is pinned under the form, so it needs no scroll.
     await tester.tap(find.byType(ElevatedButton));
     await settle(tester);
-    await tester.scrollUntilVisible(
+    // The start button is pinned under the list: nothing to scroll for.
+    expect(
       find.text(en.startGame),
-      200,
-      scrollable: find.byType(Scrollable).first,
+      findsOneWidget,
+      reason: 'player setup opens',
     );
-    expect(find.text(en.startGame), findsOneWidget, reason: 'player setup opens');
 
     // Starting a game loads the question bank from the asset bundle:
     // real async I/O, so interleave real waits with frame pumps until
@@ -151,14 +173,21 @@ void main() {
       }
     });
     await settle(tester);
-    expect(find.text(en.drawCard), findsOneWidget, reason: 'the game board opens');
+    expect(
+      find.text(en.drawCard),
+      findsOneWidget,
+      reason: 'the game board opens',
+    );
 
     // A game in progress is saved from its very first phase.
     expect(GameSaveService(storage).load(), isNotNull);
 
     router.go('/home');
     await settle(tester);
-    expect(find.text(en.continueGame.toUpperCase()), findsOneWidget,
-        reason: 'home offers to resume the journey left behind');
+    expect(
+      find.text(en.continueGame.toUpperCase()),
+      findsOneWidget,
+      reason: 'home offers to resume the journey left behind',
+    );
   });
 }

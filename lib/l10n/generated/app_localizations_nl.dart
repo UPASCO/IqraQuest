@@ -89,8 +89,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get premiumBenefitBank => 'De hele vragenbank, elk met bron';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Alle zes moeilijkheidsniveaus, van makkelijk tot moeilijk';
+  String premiumBenefitUnlimited(int count) {
+    return 'Onbeperkt spelen, tot aan Mekka (de gratis versie stopt na $count kaarten)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -531,25 +532,136 @@ class AppLocalizationsNl extends AppLocalizations {
   String get outcomeStayed => 'Je paard blijft staan. Er gaat niets verloren.';
 
   @override
-  String get outcomeCaptured => 'Je haalt een tegenstander in!';
+  String get outcomeCaptured => 'Je slaat een paard van de tegenstander!';
+
+  @override
+  String get outcomeExited => 'Je paard verlaat de stal!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Deze kaart kan geen paard verplaatsen. Volgende beurt!';
+
+  @override
+  String get noExitHint =>
+      'Je hebt een 6 nodig om een paard uit de stal te halen.';
+
+  @override
+  String get bonusTurnHint => 'Bonusbeurt: de 6 laat je nog een keer spelen!';
+
+  @override
+  String get celebrateSixTitle => 'ZES!';
+
+  @override
+  String get celebrateSixBody => 'Na deze beurt trek je nog een keer.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Een paard mag naar buiten – en je speelt nog een keer!';
+
+  @override
+  String get celebrateExitTitle => 'Poort open!';
+
+  @override
+  String get celebrateExitBody => 'Een paard mag de stal verlaten.';
+
+  @override
+  String get celebrateCaptureTitle => 'Geslagen!';
+
+  @override
+  String get celebrateCaptureBody =>
+      'Het paard van de tegenstander gaat terug naar zijn stal.';
+
+  @override
+  String get celebrateCapturedTitle => 'Gepakt…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Je paard gaat terug naar de stal. Met een 6 komt het weer naar buiten.';
+
+  @override
+  String get celebrateArrivalTitle => 'Mekka!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Je paard is aangekomen. Nog één vraag om het officieel te maken!';
+
+  @override
+  String get freeLimitTitle => 'Einde van de gratis race';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'Aan de leiding: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'De gratis versie stopt na $count kaarten. Met Premium gaat de race door tot aan Mekka.';
+  }
+
+  @override
+  String get freeLimitCta => 'Onbeperkte race ontgrendelen';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Kaarten: $count van $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'Wat doe je met deze $count?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Een paard uit de stal halen';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Paard $number: $count vooruit';
+  }
+
+  @override
+  String get moveHintCapture => 'slaan!';
+
+  @override
+  String get moveHintFinish => 'finish!';
+
+  @override
+  String get moveHintOasis => 'oase';
+
+  @override
+  String opponentExits(String name) {
+    return '$name haalt een paard naar buiten!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name kan niets verplaatsen.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name trok een 6 en speelt nog een keer!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name slaat een paard!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'Het schild beschermde het paard.';
 
   @override
-  String get playerProfile => 'Spelerniveau';
+  String get playerProfile => 'Vragenniveau';
 
   @override
-  String get profileChild => 'Kind';
+  String get levelEasy => 'Makkelijk';
 
   @override
-  String get profileDiscovery => 'Ontdekking';
+  String get levelIntermediate => 'Gemiddeld';
 
   @override
-  String get profileIntermediate => 'Gemiddeld';
-
-  @override
-  String get profileAdvanced => 'Gevorderd';
+  String get levelExpert => 'Expert';
 
   @override
   String get raceRulesUpdatedTitle => 'De racerregels zijn verbeterd';
@@ -569,7 +681,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is zowel het aantal vakjes als de moeilijkheid van de vraag: 1 het makkelijkst, 6 het moeilijkst.';
+      'Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is het aantal vakjes. De vraag is altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin voor al je kaarten kiest.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antwoord om vooruit te gaan';
@@ -586,11 +698,25 @@ class AppLocalizationsNl extends AppLocalizations {
       'Na een volledige ronde beklimt je paard de vijf treden van zijn trap naar Mekka. Daar kan niemand het nog inhalen.';
 
   @override
-  String get ruleCaptureTitle => 'Inhalen en naar huis sturen';
+  String get ruleExitTitle => 'De stal verlaten';
+
+  @override
+  String get ruleExitBody =>
+      'Elke speler heeft vier paarden in de stal. Een paard komt alleen naar buiten met een 6: antwoord goed en het neemt zijn startvak in – en omdat een 6 opnieuw speelt, rijdt het meteen door. Heb je al een paard op de baan, dan kies je: nog een naar buiten halen, of rijden.';
+
+  @override
+  String get ruleSixTitle => 'Een 6 speelt opnieuw';
+
+  @override
+  String get ruleSixBody =>
+      'Net als met de dobbelsteen: trek je een 6, dan speel je na je beurt nog een keer, of je antwoord nu goed was of niet. En twee van je eigen paarden delen nooit een vak.';
+
+  @override
+  String get ruleCaptureTitle => 'Slaan en naar huis sturen';
 
   @override
   String get ruleCaptureBody =>
-      'Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt.';
+      'Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Een paard dat de stal verlaat, slaat altijd op zijn startvak.';
 
   @override
   String get ruleStreakTitle => 'De kennisreeks';

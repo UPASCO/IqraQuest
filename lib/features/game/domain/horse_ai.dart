@@ -8,7 +8,8 @@ import '../../../models/player.dart';
 import 'game_engine.dart';
 
 /// AI opponents play through the exact same [GameEngine] as a human: they
-/// draw from the same deck and choose only which horse the card moves.
+/// draw from the same deck and choose only what the card does — which
+/// horse comes out, or which one rides.
 ///
 /// The one thing that *is* simulated is whether the AI "knows" the answer
 /// — an AI cannot genuinely answer a quiz question, so its accuracy is
@@ -31,83 +32,72 @@ class HorseAi {
   bool decideAnswerCorrect(AiDifficulty difficulty) =>
       _random.nextDouble() < _answerAccuracy[difficulty]!;
 
-  /// Picks which horse the opponent's card will move.
+  /// Picks which of the card's [moves] the opponent takes.
   ///
   /// The opponent draws exactly as a human does: the value is the
-  /// deck's, never its own. All it decides is the horse, and it decides
-  /// that before the draw — so a horse is scored on what it would do
-  /// across every value the deck can produce, not on one it was let to
-  /// choose. An opponent that picked its own value was quietly playing
-  /// a different game from the child across the board.
-  int chooseHorse({
+  /// deck's, never its own. All it decides is what to do with it — bring
+  /// a horse out, or ride one already on the course — and it decides
+  /// that from the same options the player would see on the board.
+  int chooseMove({
     required GameState state,
     required GameEngine engine,
     required AiDifficulty difficulty,
+    required List<LegalMove> moves,
   }) {
-    final player = state.currentPlayer;
-    final gaits = engine.availableGaits(player);
-    final horses = engine.movableHorses(player);
-    assert(gaits.isNotEmpty && horses.isNotEmpty);
-
-    final options = <({int horseIndex, double score})>[];
-    for (final horseIndex in horses) {
-      var total = 0.0;
-      for (final choice in gaits) {
-        total += _score(engine.previewGait(state, horseIndex, choice), state, difficulty);
-      }
-      options.add((horseIndex: horseIndex, score: total / gaits.length));
-    }
+    assert(moves.isNotEmpty);
+    final card = state.drawnCard ?? const MovementChoice(1);
+    final options = <({int horseIndex, double score})>[
+      for (final move in moves)
+        (
+          horseIndex: move.horseIndex,
+          score: _scoreMove(move, card, state, difficulty),
+        ),
+    ];
     options.sort((a, b) => b.score.compareTo(a.score));
 
     final picked = switch (difficulty) {
       // A beginner opponent plays it safe and a little haphazardly.
       AiDifficulty.easy => options[_random.nextInt(options.length)],
-      // Competent, not omniscient: usually the best horse, sometimes the
+      // Competent, not omniscient: usually the best move, sometimes the
       // second-best.
       AiDifficulty.medium =>
-        options.length > 1 && _random.nextDouble() < 0.3 ? options[1] : options.first,
+        options.length > 1 && _random.nextDouble() < 0.3
+            ? options[1]
+            : options.first,
       AiDifficulty.hard => options.first,
     };
     return picked.horseIndex;
   }
 
-  double _score(GaitPreview preview, GameState state, AiDifficulty difficulty) {
+  double _scoreMove(
+    LegalMove move,
+    MovementChoice card,
+    GameState state,
+    AiDifficulty difficulty,
+  ) {
     var score = 0.0;
-
-    // How likely is this opponent to actually answer at this tier? A
-    // beginner taking a "hard" gait is mostly throwing the turn away.
     final accuracy = _answerAccuracy[difficulty]!;
-    final tierPenalty = switch (preview.choice.risk) {
-      DifficultyRisk.gentle => 0.0,
-      DifficultyRisk.steady => (1 - accuracy) * 6,
-      DifficultyRisk.bold => (1 - accuracy) * 12,
-    };
-    score -= tierPenalty;
 
-    // Expected progress is the payoff, discounted by the odds of missing.
-    score += preview.choice.steps * accuracy * 1.5;
+    // Progress is the payoff, discounted by the odds of missing the
+    // question. An exit is worth a ride of a few squares: a horse on the
+    // course is a horse that can use every later card.
+    score += (move.exitsStable ? 4 : card.steps) * accuracy * 1.5;
+    if (move.exitsStable) score += 5;
 
-    if (preview.reachesFinish) score += 25;
-    if (preview.capturesOpponent) score += 14;
-    if (preview.effect == CellEffect.oasis) score += 6;
-    if (preview.effect == CellEffect.knowledge) score += 3;
-    if (preview.effect == CellEffect.challenge) score += 2;
-    if (preview.effect == CellEffect.shortcut) score += 4;
-
-    // Getting a horse out of the stable is worth doing early.
-    if (preview.destination is TrackPosition &&
-        state.currentPlayer.horses[preview.horseIndex].isHome) {
-      score += 5;
-    }
+    if (move.reachesFinish) score += 25;
+    if (move.capturesOpponent) score += 14;
+    if (move.effect == CellEffect.oasis) score += 6;
+    if (move.effect == CellEffect.knowledge) score += 3;
+    if (move.effect == CellEffect.challenge) score += 2;
+    if (move.effect == CellEffect.shortcut) score += 4;
 
     // A hard opponent also avoids parking within an opponent's reach.
     if (difficulty == AiDifficulty.hard &&
-        preview.destination is TrackPosition &&
-        preview.effect != CellEffect.oasis &&
-        _isExposed(preview.destination as TrackPosition, state)) {
+        move.destination is TrackPosition &&
+        move.effect != CellEffect.oasis &&
+        _isExposed(move.destination as TrackPosition, state)) {
       score -= 8;
     }
-
     return score;
   }
 

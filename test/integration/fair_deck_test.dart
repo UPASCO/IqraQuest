@@ -22,8 +22,8 @@ void main() {
       variant: GameVariant.quick,
       circuitId: CircuitId.oasisRoute,
       players: [
-        human('kid', AppTeam.emerald, profile: PlayerProfile.child),
-        human('dad', AppTeam.saphir, profile: PlayerProfile.advanced),
+        human('kid', AppTeam.emerald, profile: PlayerProfile.easy),
+        human('dad', AppTeam.saphir, profile: PlayerProfile.expert),
       ],
     );
 
@@ -31,10 +31,12 @@ void main() {
     for (var i = 0; i < 40; i++) {
       final s = controller.state!;
       if (s.gameState.turnPhase == TurnPhase.gameOver) break;
-      controller.drawCard(0);
+      controller.drawCard();
       final drawn = controller.state!.gameState.pendingGait;
       final q = controller.state!.currentQuestion;
       if (drawn == null || q == null) {
+        // A card that opened nothing (no 6 for a stabled horse): the
+        // turn passes.
         controller.continueAfterFeedback();
         continue;
       }
@@ -43,8 +45,16 @@ void main() {
         values.add(drawn.choice.steps);
         expect(
           q.difficulty,
-          isNot(QuestionDifficulty.hard),
-          reason: 'a child drew a ${drawn.choice.steps} and got a hard question',
+          QuestionDifficulty.easy,
+          reason:
+              'a child drew a ${drawn.choice.steps} and got a ${q.difficulty} question',
+        );
+      } else {
+        expect(
+          q.difficulty,
+          QuestionDifficulty.hard,
+          reason:
+              'the expert drew a ${drawn.choice.steps} and got a ${q.difficulty} question',
         );
       }
       controller.answerQuestion(q.correctAnswerIndex);
@@ -53,37 +63,44 @@ void main() {
       }
     }
     // The card's value is not capped for the child: the pace stays fair.
-    expect(values.length, greaterThan(2), reason: 'child only ever drew $values');
+    expect(
+      values.length,
+      greaterThan(2),
+      reason: 'child only ever drew $values',
+    );
   });
 
-  test('the opponent draws from the deck rather than choosing its value', () async {
-    final storage = await LocalStorageService.create();
-    final controller = await buildController(storage);
-    controller.startNewGame(
-      mode: GameMode.solo,
-      variant: GameVariant.quick,
-      circuitId: CircuitId.oasisRoute,
-      players: [
-        Player(
-          id: 'ai',
-          name: 'Rider',
-          team: kBoardSeats[0],
-          aiDifficulty: AiDifficulty.hard,
-          horses: const [HorseState()],
-        ),
-      ],
-    );
-    // The first beat of the AI turn reveals its card.
-    await Future<void>.delayed(const Duration(milliseconds: 1200));
-    final drawn = controller.state!.gameState.pendingGait;
-    expect(drawn, isNotNull);
-    // Any value 1..6 is legal; a hard AI choosing its own value would
-    // always take the top one.
-    expect(drawn!.choice.steps, inInclusiveRange(1, 6));
-    // Let the remaining beats run out before the controller goes away.
-    await Future<void>.delayed(const Duration(milliseconds: 3000));
-    controller.dispose();
-  });
+  test(
+    'the opponent draws from the deck rather than choosing its value',
+    () async {
+      final storage = await LocalStorageService.create();
+      final controller = await buildController(storage);
+      controller.startNewGame(
+        mode: GameMode.solo,
+        variant: GameVariant.quick,
+        circuitId: CircuitId.oasisRoute,
+        players: [
+          Player(
+            id: 'ai',
+            name: 'Rider',
+            team: kBoardSeats[0],
+            aiDifficulty: AiDifficulty.hard,
+            horses: const [HorseState()],
+          ),
+        ],
+      );
+      // The first beat of the AI turn reveals its card.
+      await Future<void>.delayed(const Duration(milliseconds: 1200));
+      final drawn = controller.state!.gameState.drawnCard;
+      expect(drawn, isNotNull);
+      // Any value 1..6 is legal; a hard AI choosing its own value would
+      // always take a 6 to open its stable.
+      expect(drawn!.steps, inInclusiveRange(1, 6));
+      // Let the remaining beats run out before the controller goes away.
+      await Future<void>.delayed(const Duration(milliseconds: 3000));
+      controller.dispose();
+    },
+  );
 
   test('race again keeps the riders and resets the board', () async {
     final storage = await LocalStorageService.create();
@@ -93,12 +110,13 @@ void main() {
       variant: GameVariant.quick,
       circuitId: CircuitId.oasisRoute,
       players: [
-        human('Amina', AppTeam.emerald, profile: PlayerProfile.child),
+        human('Amina', AppTeam.emerald, profile: PlayerProfile.easy),
         human('Bilal', AppTeam.saphir),
       ],
     );
-    // Play one correct turn so there is state to wipe.
-    controller.drawCard(0);
+    // Play one correct turn so there is state to wipe: a 6 opens the
+    // gate, so the card is sure to be played rather than passed.
+    controller.selectGait(0, const MovementChoice(6));
     final q = controller.state!.currentQuestion!;
     controller.answerQuestion(q.correctAnswerIndex);
     final before = controller.state!.gameState;
@@ -109,7 +127,7 @@ void main() {
     expect(after.gameId, isNot(before.gameId));
     expect(after.turnPhase, TurnPhase.selectingGait);
     expect(after.players.map((p) => p.name), ['Amina', 'Bilal']);
-    expect(after.players.first.profile, PlayerProfile.child);
+    expect(after.players.first.profile, PlayerProfile.easy);
     for (final p in after.players) {
       expect(p.rewards.knowledgePoints, 0);
       expect(p.streak.current, 0);

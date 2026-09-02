@@ -90,8 +90,9 @@ class AppLocalizationsMs extends AppLocalizations {
       'Seluruh bank soalan, setiap satu dengan sumbernya';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Kesemua enam tahap kesukaran, dari paling mudah ke paling sukar';
+  String premiumBenefitUnlimited(int count) {
+    return 'Permainan tanpa had, hingga ke Makkah (versi percuma berhenti selepas $count cabutan)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -531,25 +532,135 @@ class AppLocalizationsMs extends AppLocalizations {
   String get outcomeStayed => 'Kuda anda kekal. Tiada apa yang hilang.';
 
   @override
-  String get outcomeCaptured => 'Anda memintas lawan!';
+  String get outcomeCaptured => 'Anda menangkap kuda lawan!';
+
+  @override
+  String get outcomeExited => 'Kuda anda keluar dari kandang!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Kad ini tidak dapat menggerakkan mana-mana kuda. Giliran seterusnya!';
+
+  @override
+  String get noExitHint =>
+      'Anda perlukan 6 untuk mengeluarkan kuda dari kandang.';
+
+  @override
+  String get bonusTurnHint => 'Giliran bonus: 6 membuat anda bermain lagi!';
+
+  @override
+  String get celebrateSixTitle => 'ENAM!';
+
+  @override
+  String get celebrateSixBody => 'Anda akan mencabut lagi selepas giliran ini.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Seekor kuda boleh keluar — dan anda bermain lagi!';
+
+  @override
+  String get celebrateExitTitle => 'Pintu terbuka!';
+
+  @override
+  String get celebrateExitBody => 'Seekor kuda boleh keluar dari kandang.';
+
+  @override
+  String get celebrateCaptureTitle => 'Tangkap!';
+
+  @override
+  String get celebrateCaptureBody => 'Kuda lawan pulang ke kandangnya.';
+
+  @override
+  String get celebrateCapturedTitle => 'Ditangkap…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Kuda anda pulang ke kandang. 6 mengeluarkannya semula.';
+
+  @override
+  String get celebrateArrivalTitle => 'Makkah!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Kuda anda telah tiba. Satu soalan terakhir untuk mengesahkannya!';
+
+  @override
+  String get freeLimitTitle => 'Tamat perlumbaan percuma';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'Mendahului: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'Versi percuma berhenti selepas $count cabutan. Dengan Premium, perlumbaan berterusan hingga ke Makkah.';
+  }
+
+  @override
+  String get freeLimitCta => 'Buka perlumbaan tanpa had';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Cabutan: $count daripada $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'Apa yang anda mahu buat dengan $count ini?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Keluarkan kuda dari kandang';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Kuda $number: maju $count';
+  }
+
+  @override
+  String get moveHintCapture => 'tangkap!';
+
+  @override
+  String get moveHintFinish => 'tamat!';
+
+  @override
+  String get moveHintOasis => 'oasis';
+
+  @override
+  String opponentExits(String name) {
+    return '$name mengeluarkan kuda!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name tidak dapat menggerakkan apa-apa.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name mendapat 6 dan bermain lagi!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name menangkap kuda!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'Perisai melindungi kuda itu.';
 
   @override
-  String get playerProfile => 'Tahap pemain';
+  String get playerProfile => 'Tahap soalan';
 
   @override
-  String get profileChild => 'Kanak-kanak';
+  String get levelEasy => 'Mudah';
 
   @override
-  String get profileDiscovery => 'Penerokaan';
+  String get levelIntermediate => 'Sederhana';
 
   @override
-  String get profileIntermediate => 'Sederhana';
-
-  @override
-  String get profileAdvanced => 'Lanjutan';
+  String get levelExpert => 'Pakar';
 
   @override
   String get raceRulesUpdatedTitle =>
@@ -570,7 +681,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak dan sekali gus tahap kesukaran soalan: 1 paling mudah, 6 paling sukar.';
+      'Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak. Soalannya sentiasa pada tahap anda — mudah, sederhana atau pakar — yang dipilih pada permulaan untuk semua kad anda.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';
@@ -587,11 +698,25 @@ class AppLocalizationsMs extends AppLocalizations {
       'Selepas satu pusingan penuh, kuda anda menaiki lima anak tangga tangganya ke Makkah. Di situ tiada siapa boleh mengejarnya.';
 
   @override
-  String get ruleCaptureTitle => 'Memintas dan menghantar pulang';
+  String get ruleExitTitle => 'Keluar dari kandang';
+
+  @override
+  String get ruleExitBody =>
+      'Setiap pemain ada empat ekor kuda di kandang. Kuda hanya keluar dengan 6: jawab dengan betul dan ia menduduki petak permulaannya — dan kerana 6 membolehkan anda bermain lagi, ia terus berlari. Jika anda sudah ada kuda di litar, anda pilih: keluarkan seekor lagi, atau maju.';
+
+  @override
+  String get ruleSixTitle => '6 bermain lagi';
+
+  @override
+  String get ruleSixBody =>
+      'Seperti dadu: apabila anda mencabut 6, anda bermain lagi selepas giliran anda, betul atau tidak jawapannya. Dan dua ekor kuda anda tidak pernah berkongsi petak.';
+
+  @override
+  String get ruleCaptureTitle => 'Menangkap dan menghantar pulang';
 
   @override
   String get ruleCaptureBody =>
-      'Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu.';
+      'Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu. Kuda yang keluar dari kandang sentiasa menangkap di petak permulaannya.';
 
   @override
   String get ruleStreakTitle => 'Rentetan ilmu';

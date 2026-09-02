@@ -44,90 +44,108 @@ class OnboardingScreen extends ConsumerWidget {
             ),
           ),
           SafeArea(
-            child: FitOrScroll(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Spacer(flex: 2),
-                  // The real board, the one the family will play on —
-                  // not an illustration of a board.
-                  Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 420),
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: DecoratedBox(
-                          decoration: const BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x80000000),
-                                blurRadius: 30,
-                                offset: Offset(0, 14),
-                              ),
-                            ],
-                          ),
-                          child: Image.asset(
-                            'assets/board/cross_board.webp',
-                            fit: BoxFit.contain,
-                            filterQuality: FilterQuality.medium,
-                            // Art must never be the reason the screen
-                            // fails to render.
-                            errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Spacer(flex: 2),
-                  OrnateFrame(
-                    padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
+            child: Column(
+              children: [
+                Expanded(
+                  child: FitOrScroll(
+                    padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          l10n.onboardingWelcomeTitle,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            color: OrnatePalette.gold,
-                            fontWeight: FontWeight.w800,
-                            height: 1.1,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          l10n.onboardingWelcomeSubtitle,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: colors.onSceneDim,
-                            height: 1.4,
-                          ),
-                        ),
-                        const SizedBox(height: 18),
-                        // Gold, not the theme's green: a green button on a
-                        // green scene is the button the player could not find.
-                        FilledButton(
-                          onPressed: () => _finish(context, ref),
-                          style: FilledButton.styleFrom(
-                            backgroundColor: colors.goldAccent,
-                            foregroundColor: const Color(0xFF231705),
-                            minimumSize: const Size.fromHeight(56),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.2,
+                        const Spacer(flex: 2),
+                        // The real board, the one the family will play on —
+                        // not an illustration of a board.
+                        Center(
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 420),
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: DecoratedBox(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x80000000),
+                                      blurRadius: 30,
+                                      offset: Offset(0, 14),
+                                    ),
+                                  ],
+                                ),
+                                child: Image.asset(
+                                  'assets/board/cross_board.webp',
+                                  fit: BoxFit.contain,
+                                  filterQuality: FilterQuality.medium,
+                                  // Art must never be the reason the screen
+                                  // fails to render.
+                                  errorBuilder: (_, _, _) =>
+                                      const SizedBox.shrink(),
+                                ),
+                              ),
                             ),
                           ),
-                          child: ButtonLabel(l10n.getStarted),
                         ),
+                        const Spacer(flex: 2),
+                        OrnateFrame(
+                          padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                l10n.onboardingWelcomeTitle,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(
+                                      color: OrnatePalette.gold,
+                                      fontWeight: FontWeight.w800,
+                                      height: 1.1,
+                                    ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                l10n.onboardingWelcomeSubtitle,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.bodyLarge
+                                    ?.copyWith(
+                                      color: colors.onSceneDim,
+                                      height: 1.4,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
                       ],
                     ),
                   ),
-                  const Spacer(),
-                ],
-              ),
+                ),
+                // Pinned under the scroll, never inside it: the one way
+                // into the app must be on screen on the smallest phone
+                // at the largest text — a welcome that has to be
+                // scrolled for is a door the child cannot find.
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 4, 20, 16),
+                  // Gold, not the theme's green: a green button on a
+                  // green scene is the button the player could not find.
+                  child: FilledButton(
+                    onPressed: () => _finish(context, ref),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: colors.goldAccent,
+                      foregroundColor: const Color(0xFF231705),
+                      minimumSize: const Size.fromHeight(56),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      textStyle: Theme.of(context).textTheme.titleMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.2,
+                          ),
+                    ),
+                    child: ButtonLabel(l10n.getStarted),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

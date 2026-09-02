@@ -10,16 +10,19 @@ IqraQuest is the classic four-stable horse race board game, remade for
 the whole family (ages 7-99) around what you know of Islam. A 52-square
 cross board adorned with Madinah, Al-Aqsa, Arafat and Mina, four
 stables, and no dice at all: on your turn you draw a card. Its value, 1
-to 6, is how many squares you ride — and also the level of the question
-you must get right to ride them. A 6 takes you far, but you have to
-earn it.
+to 6, is how many squares you ride — if you get its question right, at
+your own level: easy, intermediate or expert, chosen at the start. A 6
+brings a horse out and plays again, just like the real game.
 
 Features:
 - A fair deck: every value comes out as often as every other
 - Solo mode against 1-3 opponents, three levels
 - Family mode for 2-4 players on one device, each at their own question
   level
-- Quick games (one horse each) or Classic (two horses each)
+- Four horses per stable. Quick games (first horse home) or Classic
+  (all four)
+- Free: 50 questions, a race of 50 draws. Premium: the whole bank,
+  unlimited races to the end
 - Three courses, from calm to eventful: oases, knowledge squares, bonus
   challenges, shortcuts, duels — all visible on the board, none random
 - Knowledge streak: a shield at three right answers in a row, the Grand

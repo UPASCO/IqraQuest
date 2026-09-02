@@ -28,7 +28,8 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   late final List<PlayerProfile> _profiles;
   bool _starting = false;
 
-  int get _humanCount => widget.args.mode == GameMode.solo ? 1 : widget.args.humanPlayerCount;
+  int get _humanCount =>
+      widget.args.mode == GameMode.solo ? 1 : widget.args.humanPlayerCount;
 
   bool _prefilled = false;
 
@@ -36,7 +37,8 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   void initState() {
     super.initState();
     _controllers = List.generate(_humanCount, (_) => TextEditingController());
-    // Each player carries their own level, so a child and an adult can
+    // Each rider picks the level of every question they will get — the
+    // card only ever decides the distance — so a child and an adult can
     // share one board fairly (spec §14).
     _profiles = List.generate(_humanCount, (_) => PlayerProfile.intermediate);
   }
@@ -115,7 +117,8 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                           ChoiceChip(
                             label: Text(_profileLabel(profile, l10n)),
                             selected: _profiles[i] == profile,
-                            onSelected: (_) => setState(() => _profiles[i] = profile),
+                            onSelected: (_) =>
+                                setState(() => _profiles[i] = profile),
                           ),
                       ],
                     ),
@@ -130,39 +133,58 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                     children: [
                       KnightSprite(team: _teams[_humanCount + i], height: 56),
                       const SizedBox(width: 12),
-                      Text('${l10n.aiPlayerName(i + 1)} · ${_aiLabel(widget.args.aiDifficulty, l10n)}'),
+                      // Bounded: at the large text size the name and its
+                      // level wrap rather than run off the small phone.
+                      Expanded(
+                        child: Text(
+                          '${l10n.aiPlayerName(i + 1)} · ${_aiLabel(widget.args.aiDifficulty, l10n)}',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: _starting ? null : _start,
-              child: _starting
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : ButtonLabel(l10n.startGame),
-            ),
+            const SizedBox(height: 8),
           ],
+        ),
+      ),
+      // Pinned under the list, never at the end of it: with four riders
+      // and their levels the list outgrows a phone, and the one button
+      // that starts the race must never be below the fold.
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+          child: ElevatedButton(
+            key: const Key('start-game'),
+            onPressed: _starting ? null : _start,
+            child: _starting
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : ButtonLabel(l10n.startGame),
+          ),
         ),
       ),
     );
   }
 
-  String _profileLabel(PlayerProfile profile, AppLocalizations l10n) => switch (profile) {
-    PlayerProfile.child => l10n.profileChild,
-    PlayerProfile.discovery => l10n.profileDiscovery,
-    PlayerProfile.intermediate => l10n.profileIntermediate,
-    PlayerProfile.advanced => l10n.profileAdvanced,
-  };
+  String _profileLabel(PlayerProfile profile, AppLocalizations l10n) =>
+      switch (profile) {
+        PlayerProfile.easy => l10n.levelEasy,
+        PlayerProfile.intermediate => l10n.levelIntermediate,
+        PlayerProfile.expert => l10n.levelExpert,
+      };
 
-  String _aiLabel(AiDifficulty difficulty, AppLocalizations l10n) => switch (difficulty) {
-    AiDifficulty.easy => l10n.difficultyEasy,
-    AiDifficulty.medium => l10n.difficultyMedium,
-    AiDifficulty.hard => l10n.difficultyHard,
-  };
+  String _aiLabel(AiDifficulty difficulty, AppLocalizations l10n) =>
+      switch (difficulty) {
+        AiDifficulty.easy => l10n.difficultyEasy,
+        AiDifficulty.medium => l10n.difficultyMedium,
+        AiDifficulty.hard => l10n.difficultyHard,
+      };
 
   Future<void> _start() async {
     setState(() => _starting = true);

@@ -90,8 +90,9 @@ class AppLocalizationsFr extends AppLocalizations {
       'Toute la banque de questions, chacune avec sa source';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Les six niveaux de difficulté, du plus facile au plus dur';
+  String premiumBenefitUnlimited(int count) {
+    return 'Des parties illimitées, jusqu\'à La Mecque (la version gratuite s\'arrête après $count pioches)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -534,25 +535,134 @@ class AppLocalizationsFr extends AppLocalizations {
   String get outcomeStayed => 'Ton cheval reste sur place. Rien n\'est perdu.';
 
   @override
-  String get outcomeCaptured => 'Tu dépasses un adversaire !';
+  String get outcomeCaptured => 'Tu captures un cheval adverse !';
+
+  @override
+  String get outcomeExited => 'Ton cheval sort de l\'écurie !';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Cette carte ne peut bouger aucun cheval. Tour suivant !';
+
+  @override
+  String get noExitHint => 'Il faut un 6 pour sortir un cheval de l\'écurie.';
+
+  @override
+  String get bonusTurnHint => 'Tour bonus : le 6 te fait rejouer !';
+
+  @override
+  String get celebrateSixTitle => 'SIX !';
+
+  @override
+  String get celebrateSixBody => 'Tu rejoueras après ce tour.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Un cheval peut sortir — et tu rejoueras !';
+
+  @override
+  String get celebrateExitTitle => 'Sortie !';
+
+  @override
+  String get celebrateExitBody => 'Un cheval peut quitter l\'écurie.';
+
+  @override
+  String get celebrateCaptureTitle => 'Capture !';
+
+  @override
+  String get celebrateCaptureBody => 'Le cheval adverse rentre à son écurie.';
+
+  @override
+  String get celebrateCapturedTitle => 'Capturé…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Ton cheval rentre à l\'écurie. Il repartira sur un 6.';
+
+  @override
+  String get celebrateArrivalTitle => 'La Mecque !';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Ton cheval est arrivé. Une dernière question pour valider !';
+
+  @override
+  String get freeLimitTitle => 'Fin de la course gratuite';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'En tête : $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'La version gratuite s\'arrête après $count pioches. Avec Premium, la course va jusqu\'à La Mecque.';
+  }
+
+  @override
+  String get freeLimitCta => 'Débloquer la course illimitée';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Pioches : $count sur $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'Que fais-tu de ce $count ?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Sortir un cheval de l\'écurie';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Cheval $number : avancer de $count';
+  }
+
+  @override
+  String get moveHintCapture => 'capture !';
+
+  @override
+  String get moveHintFinish => 'arrivée !';
+
+  @override
+  String get moveHintOasis => 'oasis';
+
+  @override
+  String opponentExits(String name) {
+    return '$name sort un cheval !';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name ne peut rien bouger.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name a fait un 6 et rejoue !';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name capture un cheval !';
+  }
 
   @override
   String get outcomeShieldBlocked => 'Le bouclier a protégé le cheval.';
 
   @override
-  String get playerProfile => 'Niveau du joueur';
+  String get playerProfile => 'Niveau des questions';
 
   @override
-  String get profileChild => 'Enfant';
+  String get levelEasy => 'Facile';
 
   @override
-  String get profileDiscovery => 'Découverte';
+  String get levelIntermediate => 'Intermédiaire';
 
   @override
-  String get profileIntermediate => 'Intermédiaire';
-
-  @override
-  String get profileAdvanced => 'Avancé';
+  String get levelExpert => 'Expert';
 
   @override
   String get raceRulesUpdatedTitle => 'Les règles de course ont été améliorées';
@@ -572,7 +682,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'À ton tour, pioche une carte. Sa valeur, de 1 à 6, est à la fois le nombre de cases et la difficulté de la question : 1 la plus facile, 6 la plus dure.';
+      'À ton tour, pioche une carte. Sa valeur, de 1 à 6, est le nombre de cases. La question, elle, est toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ pour toutes tes cartes.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Réponds pour avancer';
@@ -589,11 +699,25 @@ class AppLocalizationsFr extends AppLocalizations {
       'Après un tour complet du plateau, ton cheval monte les cinq marches de son escalier jusqu\'à La Mecque. Là, personne ne peut plus le rattraper.';
 
   @override
-  String get ruleCaptureTitle => 'Dépasser et renvoyer';
+  String get ruleExitTitle => 'Sortir de l\'écurie';
+
+  @override
+  String get ruleExitBody =>
+      'Chaque joueur a quatre chevaux à l\'écurie. Un cheval ne sort que sur un 6 : réponds juste et il se place sur sa case de départ — et comme le 6 fait rejouer, il repart aussitôt. Si tu as déjà un cheval en course, tu choisis : en sortir un autre, ou avancer.';
+
+  @override
+  String get ruleSixTitle => 'Le 6 fait rejouer';
+
+  @override
+  String get ruleSixBody =>
+      'Comme au dé : quand tu pioches un 6, tu rejoues après ton tour, que ta réponse soit bonne ou non. Et deux de tes chevaux ne peuvent jamais partager la même case.';
+
+  @override
+  String get ruleCaptureTitle => 'Capturer et renvoyer';
 
   @override
   String get ruleCaptureBody =>
-      'Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir.';
+      'Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. Un cheval qui sort de l\'écurie capture toujours sur sa case de départ.';
 
   @override
   String get ruleStreakTitle => 'L\'élan du savoir';

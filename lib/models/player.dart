@@ -11,19 +11,41 @@ import 'reward_inventory.dart';
 /// as a human and gets no hidden information.
 enum AiDifficulty { easy, medium, hard }
 
-/// Per-player knowledge level (spec §14). This is what lets a 7-year-old
-/// and an adult share the same board fairly: the gait→difficulty mapping
-/// is identical, but "hard" means something different per profile, so a
-/// child's bold gait draws a question suited to their age.
-enum PlayerProfile { child, discovery, intermediate, advanced }
+/// The level a rider plays at, chosen before the game and applied to
+/// every question they get, whatever the card. Three levels — easy,
+/// intermediate, expert — so a 7-year-old and an adult share one board
+/// fairly: the same cards, the same distances, each their own questions.
+///
+/// The names are written into every save file. Older saves carried
+/// four levels; [Player.fromJson] folds them onto these three.
+enum PlayerProfile { easy, intermediate, expert }
 
 extension PlayerProfileX on PlayerProfile {
-  /// Child mode gets larger text, optional read-aloud, a confirmation on
-  /// risky gaits, and never a countdown (spec §14).
-  bool get isChildMode => this == PlayerProfile.child;
+  /// The difficulty of every question this rider is asked.
+  QuestionDifficulty get difficulty => switch (this) {
+    PlayerProfile.easy => QuestionDifficulty.easy,
+    PlayerProfile.intermediate => QuestionDifficulty.medium,
+    PlayerProfile.expert => QuestionDifficulty.hard,
+  };
 
-  /// Whether gaits 5–6 ask for confirmation before committing.
-  bool get confirmsRiskyGaits => this == PlayerProfile.child;
+  /// What a correct answer earns: harder questions, more knowledge.
+  int get knowledgePoints => switch (this) {
+    PlayerProfile.easy => 1,
+    PlayerProfile.intermediate => 2,
+    PlayerProfile.expert => 3,
+  };
+
+  /// The easy level is the children's level: larger answers on the card,
+  /// the verdict and the right answer as the lesson (spec §14).
+  bool get isChildMode => this == PlayerProfile.easy;
+
+  /// Reads a level by name, folding the four levels of older saves
+  /// (child, discovery, intermediate, advanced) onto today's three.
+  static PlayerProfile parse(String? name) => switch (name) {
+    'easy' || 'child' || 'discovery' => PlayerProfile.easy,
+    'expert' || 'advanced' => PlayerProfile.expert,
+    _ => PlayerProfile.intermediate,
+  };
 }
 
 @immutable
@@ -66,8 +88,12 @@ class Player {
   bool get isHuman => !isAi;
 
   /// The game is won when every horse has both reached the finish and
-  /// passed its journey question.
+  /// passed its journey question — in the classic and family formats;
+  /// a quick race asks for one (see [GameVariantX.horsesToWin]).
   bool get hasArrivedCompletely => horses.every((h) => h.hasArrived);
+
+  /// Horses that reached the finish AND passed their journey question.
+  int get arrivedCount => horses.where((h) => h.hasArrived).length;
 
   /// The category this player answers best in — the badge a 10-streak
   /// awards.
@@ -103,19 +129,23 @@ class Player {
     id: json['id'] as String,
     name: json['name'] as String,
     team: AppTeam.values.byName(json['team'] as String),
-    profile: PlayerProfile.values.byName(
-      json['profile'] as String? ?? PlayerProfile.intermediate.name,
-    ),
+    profile: PlayerProfileX.parse(json['profile'] as String?),
     aiDifficulty: json['aiDifficulty'] == null
         ? null
         : AiDifficulty.values.byName(json['aiDifficulty'] as String),
     horses: (json['horses'] as List)
         .map((h) => HorseState.fromJson(h as Map<String, dynamic>))
         .toList(),
-    streak: KnowledgeStreak.fromJson(json['streak'] as Map<String, dynamic>? ?? const {}),
-    rewards: RewardInventory.fromJson(json['rewards'] as Map<String, dynamic>? ?? const {}),
+    streak: KnowledgeStreak.fromJson(
+      json['streak'] as Map<String, dynamic>? ?? const {},
+    ),
+    rewards: RewardInventory.fromJson(
+      json['rewards'] as Map<String, dynamic>? ?? const {},
+    ),
     answersByCategory: {
-      for (final entry in (json['answersByCategory'] as Map<String, dynamic>? ?? const {}).entries)
+      for (final entry
+          in (json['answersByCategory'] as Map<String, dynamic>? ?? const {})
+              .entries)
         QuestionCategory.values.byName(entry.key): entry.value as int,
     },
   );

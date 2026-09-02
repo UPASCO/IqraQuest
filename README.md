@@ -1,11 +1,12 @@
 # IqraQuest
 
-A family board game about Islamic knowledge. There is no dice: on each
-turn a player chooses an *allure* (gait) of 1 to 6 squares, and that
-choice is also their choice of difficulty — the further they commit to
-go, the harder the question they must answer to actually move. Their
-arabian horse travels a journey inspired by the Hijaz, from Makkah toward
-Madinah. Built with Flutter, fully offline, no account, no backend, no
+A family board game about Islamic knowledge: the classic *jeu des petits
+chevaux* with a deck of question cards in place of the die. On each turn
+a player draws a card worth 1 to 6 squares and must answer its question
+— at the level they chose before the game (easy, intermediate, expert) —
+to actually move. Four horses per stable, out on a 6, captures, a 6
+replays. The free edition is a race of fifty cards; Premium runs to
+Mecca. Built with Flutter, fully offline, no account, no backend, no
 ads.
 
 > See **Content scope** and **What is genuinely done vs. what remains**
@@ -92,10 +93,19 @@ import `dart:math`, and a test asserts exactly that: how far a horse
 moves is the gait its player chose, and whether it moves at all is
 whether they answered correctly.
 
-The turn is: choose a gait (1-6) → answer the question that gait draws
-(1-2 easy / 3-4 medium / 5-6 hard) → a correct answer advances the horse
-by exactly that many squares, a wrong one leaves it where it stands.
-Each gait is usable once; when all six are spent, the set refills.
+The rules are the classic *jeu des petits chevaux* with the deck in place
+of the die. The turn is: draw a card (1-6) → a 6 may bring one of the
+four horses out of the stable onto its start square, any value rides
+a horse already on the course; when more than one horse could use the
+card the player chooses → answer the card's question (1-2 easy / 3-4
+at the rider's own level, chosen before the game and the same whatever
+the card) → a correct answer makes the move happen, a wrong one leaves
+the horse where it stands. The free edition ends after 50 draws on the
+leader (most arrived horses, then distance, then knowledge); Premium
+runs to the end. Landing exactly on an opponent sends it
+home (a horse coming out of its stable captures on its start square, oasis
+or not); two horses of a colour never share a square; a 6 lets the same
+player draw again. A card that can move nothing passes the turn.
 
 Rules encoded and tested (`test/features/game/game_engine_test.dart`,
 47 tests): no randomness and no surviving dice API; the gait→difficulty

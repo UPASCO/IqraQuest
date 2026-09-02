@@ -90,8 +90,9 @@ class AppLocalizationsIt extends AppLocalizations {
       'Tutta la banca di domande, ognuna con la sua fonte';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Tutti e sei i livelli di difficoltà, dal più facile al più difficile';
+  String premiumBenefitUnlimited(int count) {
+    return 'Partite illimitate, fino alla Mecca (la versione gratuita si ferma dopo $count pescate)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -534,25 +535,135 @@ class AppLocalizationsIt extends AppLocalizations {
   String get outcomeStayed => 'Il tuo cavallo resta fermo. Non perdi nulla.';
 
   @override
-  String get outcomeCaptured => 'Superi un avversario!';
+  String get outcomeCaptured => 'Catturi un cavallo avversario!';
+
+  @override
+  String get outcomeExited => 'Il tuo cavallo esce dalla stalla!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Questa carta non può muovere nessun cavallo. Turno successivo!';
+
+  @override
+  String get noExitHint => 'Serve un 6 per far uscire un cavallo dalla stalla.';
+
+  @override
+  String get bonusTurnHint => 'Turno bonus: il 6 ti fa giocare ancora!';
+
+  @override
+  String get celebrateSixTitle => 'SEI!';
+
+  @override
+  String get celebrateSixBody => 'Pescherai di nuovo dopo questo turno.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Un cavallo può uscire — e giocherai ancora!';
+
+  @override
+  String get celebrateExitTitle => 'Uscita!';
+
+  @override
+  String get celebrateExitBody => 'Un cavallo può uscire dalla stalla.';
+
+  @override
+  String get celebrateCaptureTitle => 'Cattura!';
+
+  @override
+  String get celebrateCaptureBody =>
+      'Il cavallo avversario torna nella sua stalla.';
+
+  @override
+  String get celebrateCapturedTitle => 'Catturato…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Il tuo cavallo torna nella stalla. Un 6 lo farà uscire di nuovo.';
+
+  @override
+  String get celebrateArrivalTitle => 'La Mecca!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Il tuo cavallo è arrivato. Un\'ultima domanda per convalidarlo!';
+
+  @override
+  String get freeLimitTitle => 'Fine della corsa gratuita';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'In testa: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'La versione gratuita si ferma dopo $count pescate. Con Premium, la corsa arriva fino alla Mecca.';
+  }
+
+  @override
+  String get freeLimitCta => 'Sblocca la corsa illimitata';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Pescate: $count su $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'Che fai con questo $count?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Far uscire un cavallo dalla stalla';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Cavallo $number: avanza di $count';
+  }
+
+  @override
+  String get moveHintCapture => 'cattura!';
+
+  @override
+  String get moveHintFinish => 'arrivo!';
+
+  @override
+  String get moveHintOasis => 'oasi';
+
+  @override
+  String opponentExits(String name) {
+    return '$name fa uscire un cavallo!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name non può muovere nulla.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name ha pescato un 6 e gioca ancora!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name cattura un cavallo!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'Lo scudo ha protetto il cavallo.';
 
   @override
-  String get playerProfile => 'Livello giocatore';
+  String get playerProfile => 'Livello delle domande';
 
   @override
-  String get profileChild => 'Bambino';
+  String get levelEasy => 'Facile';
 
   @override
-  String get profileDiscovery => 'Scoperta';
+  String get levelIntermediate => 'Intermedio';
 
   @override
-  String get profileIntermediate => 'Intermedio';
-
-  @override
-  String get profileAdvanced => 'Avanzato';
+  String get levelExpert => 'Esperto';
 
   @override
   String get raceRulesUpdatedTitle =>
@@ -573,7 +684,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è insieme il numero di caselle e la difficoltà della domanda: 1 la più facile, 6 la più difficile.';
+      'Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è il numero di caselle. La domanda è sempre del tuo livello — facile, intermedio o esperto — scelto all\'inizio per tutte le tue carte.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Rispondi per avanzare';
@@ -590,11 +701,25 @@ class AppLocalizationsIt extends AppLocalizations {
       'Dopo un giro completo del tabellone, il tuo cavallo sale i cinque gradini della sua scala verso La Mecca. Lì nessuno può più raggiungerlo.';
 
   @override
-  String get ruleCaptureTitle => 'Sorpassa e rimanda a casa';
+  String get ruleExitTitle => 'Uscire dalla stalla';
+
+  @override
+  String get ruleExitBody =>
+      'Ogni giocatore ha quattro cavalli nella stalla. Un cavallo esce solo con un 6: rispondi bene e prende la sua casella di partenza — e siccome il 6 fa rigiocare, parte subito. Se hai già un cavallo in gara, scegli: farne uscire un altro, o avanzare.';
+
+  @override
+  String get ruleSixTitle => 'Il 6 fa rigiocare';
+
+  @override
+  String get ruleSixBody =>
+      'Come col dado: quando peschi un 6 giochi di nuovo dopo il tuo turno, che la risposta sia giusta o no. E due dei tuoi cavalli non possono mai condividere una casella.';
+
+  @override
+  String get ruleCaptureTitle => 'Cattura e rimanda a casa';
 
   @override
   String get ruleCaptureBody =>
-      'Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un\'oasi o quel cavallo porti uno scudo del sapere.';
+      'Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un\'oasi o quel cavallo porti uno scudo del sapere. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.';
 
   @override
   String get ruleStreakTitle => 'Lo slancio del sapere';

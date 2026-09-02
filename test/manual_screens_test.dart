@@ -13,6 +13,7 @@ import 'package:flutter/services.dart' show FontLoader;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:iqraquest/widgets/celebration_overlay.dart';
 import 'package:iqraquest/widgets/question_card_draw.dart';
 import 'package:iqraquest/app/app.dart';
 import 'package:iqraquest/app/providers.dart';
@@ -35,7 +36,8 @@ const _phone = Size(390, 844);
 
 Future<void> _capture(WidgetTester tester, String name) async {
   final boundary =
-      find.byType(RepaintBoundary).evaluate().first.renderObject! as RenderRepaintBoundary;
+      find.byType(RepaintBoundary).evaluate().first.renderObject!
+          as RenderRepaintBoundary;
   await tester.runAsync(() async {
     final image = await boundary.toImage(pixelRatio: 1);
     final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
@@ -70,14 +72,18 @@ Future<ProviderContainer> _pumpApp(
       entitlementServiceProvider.overrideWithValue(EntitlementService()),
       progressServiceProvider.overrideWithValue(ProgressService(storage)),
       gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
-      legacyGameMigrationServiceProvider.overrideWithValue(LegacyGameMigrationService(storage)),
+      legacyGameMigrationServiceProvider.overrideWithValue(
+        LegacyGameMigrationService(storage),
+      ),
       questionRepositoryProvider.overrideWithValue(QuestionRepository()),
       // Lazily, so the billing platform channel (absent in tests) is
       // only touched if a screen actually watches it.
       purchaseServiceProvider.overrideWith((ref) => PurchaseService()),
       initialSettingsProvider.overrideWithValue(const AppSettings()),
       initialPremiumProvider.overrideWithValue(true),
-      appRouterProvider.overrideWithValue(buildAppRouter(initialLocation: initialLocation)),
+      appRouterProvider.overrideWithValue(
+        buildAppRouter(initialLocation: initialLocation),
+      ),
     ],
     child: const RepaintBoundary(child: IqraQuestApp()),
   );
@@ -108,13 +114,13 @@ Future<ProviderContainer> _pumpApp(
   return ProviderScope.containerOf(tester.element(find.byType(IqraQuestApp)));
 }
 
-Player _human(String id, String name, AppTeam team, {int horseCount = 2}) => Player(
-  id: id,
-  name: name,
-  team: team,
-  horses: [for (var i = 0; i < horseCount; i++) const HorseState()],
-);
-
+Player _human(String id, String name, AppTeam team, {int horseCount = 2}) =>
+    Player(
+      id: id,
+      name: name,
+      team: team,
+      horses: [for (var i = 0; i < horseCount; i++) const HorseState()],
+    );
 
 /// Opens a turn: tap the deck, then let the card finish turning over
 /// before the question sheet is expected on screen.
@@ -130,7 +136,14 @@ Future<void> _drawCard(WidgetTester tester) async {
     reason: 'the card reveal must play, not be skipped',
   );
   await tester.pump(kCardRevealDuration + const Duration(milliseconds: 60));
+  // A 5 or a 6 shouts before play resumes.
+  await tester.pump(kCelebrationDuration + const Duration(milliseconds: 60));
   await _settle(tester);
+  // Two horses could use the card: take the first line of the sheet.
+  if (find.byKey(const Key('move-choice')).evaluate().isNotEmpty) {
+    await tester.tap(find.byKey(const Key('move-option-0')));
+    await _settle(tester);
+  }
 }
 
 void main() {
@@ -140,9 +153,11 @@ void main() {
     // Widget tests render the placeholder "Ahem" font unless the real
     // fonts are loaded — and a visual QA of block glyphs is worthless.
     final bytes = File('assets/fonts/NotoSans-Regular.ttf').readAsBytesSync();
-    final loader = FontLoader('NotoSans')..addFont(Future.value(ByteData.view(bytes.buffer)));
+    final loader = FontLoader('NotoSans')
+      ..addFont(Future.value(ByteData.view(bytes.buffer)));
     await loader.load();
-    final naskh = File('assets/fonts/NotoNaskhArabic-Regular.ttf').readAsBytesSync();
+    final naskh = File('assets/fonts/NotoNaskhArabic-Regular.ttf')
+        .readAsBytesSync();
     final naskhLoader = FontLoader('NotoNaskhArabic')
       ..addFont(Future.value(ByteData.view(naskh.buffer)));
     await naskhLoader.load();
@@ -152,7 +167,9 @@ void main() {
     );
     if (iconFont.existsSync()) {
       final icons = FontLoader('MaterialIcons')
-        ..addFont(Future.value(ByteData.view(iconFont.readAsBytesSync().buffer)));
+        ..addFont(
+          Future.value(ByteData.view(iconFont.readAsBytesSync().buffer)),
+        );
       await icons.load();
     }
   });
@@ -190,7 +207,10 @@ void main() {
         await GameSaveService(storage).save(midJourneySave());
         final progress = ProgressService(storage);
         for (var i = 0; i < 23; i++) {
-          await progress.recordAnswer(correct: true, category: QuestionCategory.quran);
+          await progress.recordAnswer(
+            correct: true,
+            category: QuestionCategory.quran,
+          );
         }
         await progress.recordGameEnd(won: true);
       },
@@ -206,7 +226,9 @@ void main() {
   testWidgets('fertile valley region (greatRide)', (tester) async {
     final container = await _pumpApp(tester, '/game');
     final controller = container.read(gameControllerProvider.notifier);
-    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final pool = await tester.runAsync(
+      () => QuestionRepository().loadAll('en'),
+    );
     controller.configure(pool: pool!, isPremium: true);
     controller.startNewGame(
       mode: GameMode.family,
@@ -227,13 +249,19 @@ void main() {
       final entry = state.circuit.entryIndexForTeam(t);
       players[t] = players[t].copyWith(
         horses: [
-          HorseState(position: TrackPosition((entry + 2 + t * 2) % state.circuit.trackLength)),
+          HorseState(
+            position: TrackPosition(
+              (entry + 2 + t * 2) % state.circuit.trackLength,
+            ),
+          ),
           const HorseState(),
         ],
       );
     }
     await tester.runAsync(
-      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+      () => container
+          .read(gameSaveServiceProvider)
+          .save(state.copyWith(players: players)),
     );
     controller.loadSaved();
     await _settle(tester);
@@ -243,13 +271,18 @@ void main() {
   testWidgets('chest offer on the solar trail (caravanTrail)', (tester) async {
     final container = await _pumpApp(tester, '/game');
     final controller = container.read(gameControllerProvider.notifier);
-    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final pool = await tester.runAsync(
+      () => QuestionRepository().loadAll('en'),
+    );
     controller.configure(pool: pool!, isPremium: true);
     controller.startNewGame(
       mode: GameMode.family,
       variant: GameVariant.classic,
       circuitId: CircuitId.caravanTrail,
-      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+      players: [
+        _human('p0', 'Amina', AppTeam.emerald),
+        _human('p1', 'Yusuf', AppTeam.saphir),
+      ],
     );
     final state = container.read(gameControllerProvider)!.gameState;
     final players = [...state.players];
@@ -260,7 +293,9 @@ void main() {
       ],
     );
     await tester.runAsync(
-      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+      () => container
+          .read(gameSaveServiceProvider)
+          .save(state.copyWith(players: players)),
     );
     controller.loadSaved();
     await _settle(tester);
@@ -278,10 +313,14 @@ void main() {
     }
   });
 
-  testWidgets('VISUAL GATE: the oasis diorama, 4 stables, 4 horses each', (tester) async {
+  testWidgets('VISUAL GATE: the oasis diorama, 4 stables, 4 horses each', (
+    tester,
+  ) async {
     final container = await _pumpApp(tester, '/game');
     final controller = container.read(gameControllerProvider.notifier);
-    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final pool = await tester.runAsync(
+      () => QuestionRepository().loadAll('en'),
+    );
     controller.configure(pool: pool!, isPremium: true);
     controller.startNewGame(
       mode: GameMode.family,
@@ -331,7 +370,9 @@ void main() {
       ],
     );
     await tester.runAsync(
-      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+      () => container
+          .read(gameSaveServiceProvider)
+          .save(state.copyWith(players: players)),
     );
     controller.loadSaved();
     await _settle(tester);
@@ -358,7 +399,9 @@ void main() {
   testWidgets('results: arrival at the oasis', (tester) async {
     final container = await _pumpApp(tester, '/results');
     final controller = container.read(gameControllerProvider.notifier);
-    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final pool = await tester.runAsync(
+      () => QuestionRepository().loadAll('en'),
+    );
     controller.configure(pool: pool!, isPremium: true);
     // No winnerId set: the results screen then presents the first player,
     // which is exactly what the capture needs.
@@ -366,7 +409,10 @@ void main() {
       mode: GameMode.family,
       variant: GameVariant.classic,
       circuitId: CircuitId.oasisRoute,
-      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+      players: [
+        _human('p0', 'Amina', AppTeam.emerald),
+        _human('p1', 'Yusuf', AppTeam.saphir),
+      ],
     );
     await _settle(tester);
     await _capture(tester, 'screen_results');
@@ -375,13 +421,18 @@ void main() {
   testWidgets('game: card draw, question, cell offer', (tester) async {
     final container = await _pumpApp(tester, '/game');
     final controller = container.read(gameControllerProvider.notifier);
-    final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final pool = await tester.runAsync(
+      () => QuestionRepository().loadAll('en'),
+    );
     controller.configure(pool: pool!, isPremium: true);
     controller.startNewGame(
       mode: GameMode.family,
       variant: GameVariant.classic,
       circuitId: CircuitId.oasisRoute,
-      players: [_human('p0', 'Amina', AppTeam.emerald), _human('p1', 'Yusuf', AppTeam.saphir)],
+      players: [
+        _human('p0', 'Amina', AppTeam.emerald),
+        _human('p1', 'Yusuf', AppTeam.saphir),
+      ],
     );
     // Some progress on the board so it doesn't look empty: mutate the
     // state and round-trip it through the save, which the controller can
@@ -402,7 +453,9 @@ void main() {
       ],
     );
     await tester.runAsync(
-      () => container.read(gameSaveServiceProvider).save(state.copyWith(players: players)),
+      () => container
+          .read(gameSaveServiceProvider)
+          .save(state.copyWith(players: players)),
     );
     controller.loadSaved();
     await _settle(tester);
@@ -415,7 +468,9 @@ void main() {
 
     final question = container.read(gameControllerProvider)!.currentQuestion;
     if (question != null) {
-      await tester.tap(find.text(question.answers[question.correctAnswerIndex]).first);
+      await tester.tap(
+        find.text(question.answers[question.correctAnswerIndex]).first,
+      );
       await _settle(tester);
       await _capture(tester, 'screen_game_feedback');
 

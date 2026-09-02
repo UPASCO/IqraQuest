@@ -202,7 +202,7 @@ abstract class AppLocalizations {
   /// **'Continue game'**
   String get continueGame;
 
-  /// Game variant: 1 pawn per player
+  /// Game variant: four horses each, the first one home wins
   ///
   /// In en, this message translates to:
   /// **'Quick game'**
@@ -274,11 +274,11 @@ abstract class AppLocalizations {
   /// **'The whole question bank, each with its source'**
   String get premiumBenefitBank;
 
-  /// Premium benefit row: every difficulty level
+  /// Premium benefit row: games run to the end (the free edition stops after N draws)
   ///
   /// In en, this message translates to:
-  /// **'All six difficulty levels, from easiest to hardest'**
-  String get premiumBenefitDifficulty;
+  /// **'Unlimited games, all the way to Mecca (the free edition stops after {count} draws)'**
+  String premiumBenefitUnlimited(int count);
 
   /// Premium benefit row: one purchase for the whole family, no ads
   ///
@@ -1006,11 +1006,191 @@ abstract class AppLocalizations {
   /// **'Your horse holds its ground. Nothing is lost.'**
   String get outcomeStayed;
 
-  /// Feedback when passing an opponent
+  /// Feedback when landing on an opponent's horse and sending it home
   ///
   /// In en, this message translates to:
-  /// **'You overtake an opponent!'**
+  /// **'You capture an opponent\'s horse!'**
   String get outcomeCaptured;
+
+  /// Feedback after a correct answer on a 5 or 6 brought a horse out
+  ///
+  /// In en, this message translates to:
+  /// **'Your horse leaves the stable!'**
+  String get outcomeExited;
+
+  /// Banner when the drawn card can move no horse at all
+  ///
+  /// In en, this message translates to:
+  /// **'This card can\'t move any horse. Next turn!'**
+  String get outcomeNoLegalMove;
+
+  /// Banner when every horse is in the stable and the card is not a 6
+  ///
+  /// In en, this message translates to:
+  /// **'You need a 6 to bring a horse out of the stable.'**
+  String get noExitHint;
+
+  /// Deck hint on the second draw a 6 earned
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus turn: the 6 lets you play again!'**
+  String get bonusTurnHint;
+
+  /// Celebration title when a 6 is drawn
+  ///
+  /// In en, this message translates to:
+  /// **'SIX!'**
+  String get celebrateSixTitle;
+
+  /// Celebration body when a 6 is drawn: the player draws again after this turn
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll draw again after this turn.'**
+  String get celebrateSixBody;
+
+  /// Celebration body when a 6 both opens the stable and grants a replay
+  ///
+  /// In en, this message translates to:
+  /// **'A horse can come out — and you\'ll play again!'**
+  String get celebrateSixExitBody;
+
+  /// Celebration title when the gate opens (folded into the 6 celebration)
+  ///
+  /// In en, this message translates to:
+  /// **'Gate open!'**
+  String get celebrateExitTitle;
+
+  /// Celebration body when the gate opens (folded into the 6 celebration)
+  ///
+  /// In en, this message translates to:
+  /// **'A horse can leave the stable.'**
+  String get celebrateExitBody;
+
+  /// Celebration title when the player captures an opponent's horse
+  ///
+  /// In en, this message translates to:
+  /// **'Captured!'**
+  String get celebrateCaptureTitle;
+
+  /// Celebration body when the player captures an opponent's horse
+  ///
+  /// In en, this message translates to:
+  /// **'The opponent\'s horse goes back to its stable.'**
+  String get celebrateCaptureBody;
+
+  /// Notice title when the player's own horse is captured
+  ///
+  /// In en, this message translates to:
+  /// **'Caught…'**
+  String get celebrateCapturedTitle;
+
+  /// Notice body when the player's own horse is captured
+  ///
+  /// In en, this message translates to:
+  /// **'Your horse goes back to the stable. A 6 brings it out again.'**
+  String get celebrateCapturedBody;
+
+  /// Celebration title when a horse reaches the centre
+  ///
+  /// In en, this message translates to:
+  /// **'Mecca!'**
+  String get celebrateArrivalTitle;
+
+  /// Celebration body when a horse reaches the centre
+  ///
+  /// In en, this message translates to:
+  /// **'Your horse has arrived. One last question to make it official!'**
+  String get celebrateArrivalBody;
+
+  /// Results title when the free edition's draw limit ended the race
+  ///
+  /// In en, this message translates to:
+  /// **'End of the free race'**
+  String get freeLimitTitle;
+
+  /// Results subtitle: who was ahead when the free race stopped
+  ///
+  /// In en, this message translates to:
+  /// **'In the lead: {name}'**
+  String freeLimitLeader(String name);
+
+  /// Results body: the free edition stops after N draws; Premium runs to the end
+  ///
+  /// In en, this message translates to:
+  /// **'The free edition stops after {count} draws. With Premium, the race runs all the way to Mecca.'**
+  String freeLimitBody(int count);
+
+  /// Results button: open the Premium screen after a free race stopped
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock the unlimited race'**
+  String get freeLimitCta;
+
+  /// HUD pill, free edition: cards drawn out of the limit (screen-reader label)
+  ///
+  /// In en, this message translates to:
+  /// **'Draws: {count} of {max}'**
+  String drawsCounter(int count, int max);
+
+  /// Sheet title after a draw when several horses could use the card
+  ///
+  /// In en, this message translates to:
+  /// **'What will you do with this {count}?'**
+  String moveChoiceTitle(int count);
+
+  /// Choice sheet option: bring a horse out of the stable
+  ///
+  /// In en, this message translates to:
+  /// **'Bring a horse out of the stable'**
+  String get moveChoiceExit;
+
+  /// Choice sheet option: ride horse N by the card's value
+  ///
+  /// In en, this message translates to:
+  /// **'Horse {number}: ride {count} ahead'**
+  String moveChoiceAdvance(int number, int count);
+
+  /// Choice sheet tag: this move captures an opponent
+  ///
+  /// In en, this message translates to:
+  /// **'capture!'**
+  String get moveHintCapture;
+
+  /// Choice sheet tag: this move reaches the finish
+  ///
+  /// In en, this message translates to:
+  /// **'finish!'**
+  String get moveHintFinish;
+
+  /// Choice sheet tag: this move lands on a safe oasis
+  ///
+  /// In en, this message translates to:
+  /// **'oasis'**
+  String get moveHintOasis;
+
+  /// Turn banner: the AI opponent brought a horse out of its stable
+  ///
+  /// In en, this message translates to:
+  /// **'{name} brings a horse out!'**
+  String opponentExits(String name);
+
+  /// Turn banner: the AI opponent's card could move nothing
+  ///
+  /// In en, this message translates to:
+  /// **'{name} can\'t move anything.'**
+  String opponentNoMove(String name);
+
+  /// Turn banner: the AI opponent drew a 6 and plays again
+  ///
+  /// In en, this message translates to:
+  /// **'{name} drew a 6 and plays again!'**
+  String opponentReplays(String name);
+
+  /// Turn banner: the AI opponent captured a horse
+  ///
+  /// In en, this message translates to:
+  /// **'{name} captures a horse!'**
+  String opponentCaptured(String name);
 
   /// Feedback when a shield absorbs an overtake
   ///
@@ -1018,35 +1198,29 @@ abstract class AppLocalizations {
   /// **'The shield protected the horse.'**
   String get outcomeShieldBlocked;
 
-  /// Label for the per-player knowledge level
+  /// Label over the per-rider question level picker
   ///
   /// In en, this message translates to:
-  /// **'Player level'**
+  /// **'Question level'**
   String get playerProfile;
 
-  /// Player level
+  /// Question level a rider plays at, chosen before the game
   ///
   /// In en, this message translates to:
-  /// **'Child'**
-  String get profileChild;
+  /// **'Easy'**
+  String get levelEasy;
 
-  /// Player level
-  ///
-  /// In en, this message translates to:
-  /// **'Discovery'**
-  String get profileDiscovery;
-
-  /// Player level
+  /// Question level a rider plays at, chosen before the game
   ///
   /// In en, this message translates to:
   /// **'Intermediate'**
-  String get profileIntermediate;
+  String get levelIntermediate;
 
-  /// Player level
+  /// Question level a rider plays at, chosen before the game
   ///
   /// In en, this message translates to:
-  /// **'Advanced'**
-  String get profileAdvanced;
+  /// **'Expert'**
+  String get levelExpert;
 
   /// Shown once when a pre-gait save is detected
   ///
@@ -1081,7 +1255,7 @@ abstract class AppLocalizations {
   /// Rules step 1 body
   ///
   /// In en, this message translates to:
-  /// **'On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.'**
+  /// **'On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.'**
   String get ruleDrawCardBody;
 
   /// Rules step 2 title
@@ -1108,16 +1282,40 @@ abstract class AppLocalizations {
   /// **'After a full lap of the board, your horse climbs the five steps of its escalier to Mecca. Once there, no one can catch it.'**
   String get ruleEscalierBody;
 
+  /// Rules step: leaving the stable on a 6
+  ///
+  /// In en, this message translates to:
+  /// **'Leaving the stable'**
+  String get ruleExitTitle;
+
+  /// Rules step body: four horses, exit on a 6, the choice
+  ///
+  /// In en, this message translates to:
+  /// **'Each player has four horses in the stable. A horse comes out only on a 6: answer correctly and it takes its start square — and since a 6 plays again, it rides right away. If you already have a horse on the course, you choose: bring another out, or ride.'**
+  String get ruleExitBody;
+
+  /// Rules step: a 6 grants another draw
+  ///
+  /// In en, this message translates to:
+  /// **'A 6 plays again'**
+  String get ruleSixTitle;
+
+  /// Rules step body: replay on 6, no two own horses on one square
+  ///
+  /// In en, this message translates to:
+  /// **'Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.'**
+  String get ruleSixBody;
+
   /// Rules step 4 title
   ///
   /// In en, this message translates to:
-  /// **'Overtake and send home'**
+  /// **'Capture and send home'**
   String get ruleCaptureTitle;
 
   /// Rules step 4 body
   ///
   /// In en, this message translates to:
-  /// **'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.'**
+  /// **'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.'**
   String get ruleCaptureBody;
 
   /// Rules step 5 title

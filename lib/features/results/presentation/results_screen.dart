@@ -50,7 +50,9 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
       final winner = _winnerOf(state);
       if (winner == null) return;
       final sound = ref.read(soundServiceProvider);
-      if (winner.isAi) {
+      // A race the free edition stopped short is not a victory either:
+      // the short warm flourish, and the pitch for the rest of the ride.
+      if (winner.isAi || (state?.endedByDrawLimit ?? false)) {
         sound.play(Sfx.victory);
       } else {
         sound.play(Sfx.fanfare);
@@ -166,7 +168,9 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              aiWon && winner != null
+              state?.endedByDrawLimit ?? false
+                  ? l10n.freeLimitTitle
+                  : aiWon && winner != null
                   ? l10n.opponentWins(winner.name)
                   : l10n.victory,
               textAlign: TextAlign.center,
@@ -186,7 +190,11 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
             if (winner != null) ...[
               const SizedBox(height: 2),
               Text(
-                aiWon ? l10n.wellRidden : winner.name,
+                state?.endedByDrawLimit ?? false
+                    ? l10n.freeLimitLeader(winner.name)
+                    : aiWon
+                    ? l10n.wellRidden
+                    : winner.name,
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -203,6 +211,22 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
                 winnerId: winner?.id,
                 l10n: l10n,
                 teamColor: (p) => p.team.color(colors),
+              ),
+            ],
+            if (state?.endedByDrawLimit ?? false) ...[
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: Text(
+                  l10n.freeLimitBody(
+                    state!.maxDraws ?? GameState.freeDrawLimit,
+                  ),
+                  textAlign: TextAlign.center,
+                  style: text.bodyMedium?.copyWith(
+                    color: OrnatePalette.ivoryDim,
+                    height: 1.35,
+                  ),
+                ),
               ),
             ],
             const SizedBox(height: 8),
@@ -236,35 +260,59 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
             ),
           ),
           SafeArea(
-            child: FitOrScroll(
-              padding: const EdgeInsets.fromLTRB(18, 12, 18, 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Spacer(),
-                  TweenAnimationBuilder<double>(
-                    tween: Tween(begin: 0, end: 1),
-                    duration: AppMotion.of(context, AppMotion.reward),
-                    curve: AppMotion.settle,
-                    builder: (context, t, child) => Transform.scale(
-                      scale: 0.9 + 0.1 * t.clamp(0.0, 1.0),
-                      child: Opacity(opacity: t.clamp(0.0, 1.0), child: child),
-                    ),
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 460),
-                        child: card,
-                      ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: FitOrScroll(
+                    padding: const EdgeInsets.fromLTRB(18, 12, 18, 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Spacer(),
+                        TweenAnimationBuilder<double>(
+                          tween: Tween(begin: 0, end: 1),
+                          duration: AppMotion.of(context, AppMotion.reward),
+                          curve: AppMotion.settle,
+                          builder: (context, t, child) => Transform.scale(
+                            scale: 0.9 + 0.1 * t.clamp(0.0, 1.0),
+                            child: Opacity(
+                              opacity: t.clamp(0.0, 1.0),
+                              child: child,
+                            ),
+                          ),
+                          child: Center(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 460),
+                              child: card,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
                     ),
                   ),
-                  const Spacer(),
-                  const SizedBox(height: 16),
-                  Center(
+                ),
+                // Pinned under the board, never at the end of a scroll:
+                // "again!" is said in the second after the race, and the
+                // button must be under the thumb on the smallest phone.
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(18, 4, 18, 16),
+                  child: Center(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 460),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
+                          // A race the free edition stopped leads to what
+                          // removes the stop; a finished race, to another.
+                          if (state?.endedByDrawLimit ?? false) ...[
+                            _GoldButton(
+                              key: const Key('unlock-unlimited'),
+                              label: l10n.freeLimitCta,
+                              onTap: () => context.push('/premium'),
+                            ),
+                            const SizedBox(height: 10),
+                          ],
                           _GoldButton(
                             key: const Key('race-again'),
                             label: l10n.playAgainSameRiders,
@@ -321,8 +369,8 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

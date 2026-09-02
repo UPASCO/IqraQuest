@@ -89,8 +89,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumBenefitBank => 'Tüm soru bankası, her biri kaynağıyla';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Altı zorluk seviyesinin tamamı, en kolaydan en zora';
+  String premiumBenefitUnlimited(int count) {
+    return 'Mekke\'ye kadar sınırsız oyun (ücretsiz sürüm $count çekilişten sonra durur)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -527,25 +528,134 @@ class AppLocalizationsTr extends AppLocalizations {
   String get outcomeStayed => 'Atın yerinde kalıyor. Kaybın yok.';
 
   @override
-  String get outcomeCaptured => 'Bir rakibi geçtin!';
+  String get outcomeCaptured => 'Rakibin atını yakaladın!';
+
+  @override
+  String get outcomeExited => 'Atın ahırdan çıkıyor!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Bu kart hiçbir atı hareket ettiremiyor. Sıradaki tur!';
+
+  @override
+  String get noExitHint => 'Ahırdan bir at çıkarmak için 6 gerekir.';
+
+  @override
+  String get bonusTurnHint => 'Bonus tur: 6 sana bir kez daha oynatıyor!';
+
+  @override
+  String get celebrateSixTitle => 'ALTI!';
+
+  @override
+  String get celebrateSixBody => 'Bu turdan sonra yeniden çekeceksin.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Bir at çıkabilir — ve yeniden oynayacaksın!';
+
+  @override
+  String get celebrateExitTitle => 'Kapı açık!';
+
+  @override
+  String get celebrateExitBody => 'Bir at ahırdan çıkabilir.';
+
+  @override
+  String get celebrateCaptureTitle => 'Yakaladın!';
+
+  @override
+  String get celebrateCaptureBody => 'Rakibin atı ahırına dönüyor.';
+
+  @override
+  String get celebrateCapturedTitle => 'Yakalandın…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Atın ahıra dönüyor. Bir 6 onu yeniden çıkarır.';
+
+  @override
+  String get celebrateArrivalTitle => 'Mekke!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Atın vardı. Resmileştirmek için son bir soru!';
+
+  @override
+  String get freeLimitTitle => 'Ücretsiz yarışın sonu';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'Önde: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'Ücretsiz sürüm $count çekilişten sonra durur. Premium ile yarış Mekke\'ye kadar sürer.';
+  }
+
+  @override
+  String get freeLimitCta => 'Sınırsız yarışın kilidini aç';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Çekiliş: $count / $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'Bu $count ile ne yapacaksın?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Ahırdan bir at çıkar';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'At $number: $count ilerle';
+  }
+
+  @override
+  String get moveHintCapture => 'yakala!';
+
+  @override
+  String get moveHintFinish => 'varış!';
+
+  @override
+  String get moveHintOasis => 'vaha';
+
+  @override
+  String opponentExits(String name) {
+    return '$name bir at çıkarıyor!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name hiçbir şeyi oynatamıyor.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name 6 çekti ve yeniden oynuyor!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name bir at yakalıyor!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'Kalkan atı korudu.';
 
   @override
-  String get playerProfile => 'Oyuncu seviyesi';
+  String get playerProfile => 'Soru seviyesi';
 
   @override
-  String get profileChild => 'Çocuk';
+  String get levelEasy => 'Kolay';
 
   @override
-  String get profileDiscovery => 'Keşif';
+  String get levelIntermediate => 'Orta';
 
   @override
-  String get profileIntermediate => 'Orta';
-
-  @override
-  String get profileAdvanced => 'İleri';
+  String get levelExpert => 'Uzman';
 
   @override
   String get raceRulesUpdatedTitle => 'Yarış kuralları geliştirildi';
@@ -565,7 +675,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri hem kaç kare ilerleyeceğin hem de sorunun zorluğudur: 1 en kolay, 6 en zor.';
+      'Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri kaç kare ilerleyeceğindir. Soru ise her zaman kendi seviyendedir — kolay, orta ya da uzman — başta bütün kartların için seçtiğin seviye.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'İlerlemek için cevapla';
@@ -582,11 +692,25 @@ class AppLocalizationsTr extends AppLocalizations {
       'Tahtada tam bir tur attıktan sonra atın kendi merdiveninin beş basamağını çıkıp Mekke\'ye ulaşır. Orada kimse ona yetişemez.';
 
   @override
-  String get ruleCaptureTitle => 'Geç ve ahıra yolla';
+  String get ruleExitTitle => 'Ahırdan çıkmak';
+
+  @override
+  String get ruleExitBody =>
+      'Her oyuncunun ahırda dört atı vardır. Bir at yalnızca 6 ile çıkar: doğru cevapla, başlangıç karesine yerleşsin — 6 yeniden oynattığı için hemen yola çıkar. Pistte zaten bir atın varsa seçersin: bir at daha çıkar ya da ilerle.';
+
+  @override
+  String get ruleSixTitle => '6 yeniden oynatır';
+
+  @override
+  String get ruleSixBody =>
+      'Zardaki gibi: 6 çektiğinde, cevabın doğru olsun olmasın, turundan sonra yeniden oynarsın. Ve iki atın asla aynı karede duramaz.';
+
+  @override
+  String get ruleCaptureTitle => 'Yakala ve ahıra yolla';
 
   @override
   String get ruleCaptureBody =>
-      'Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa.';
+      'Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.';
 
   @override
   String get ruleStreakTitle => 'Bilgi serisi';

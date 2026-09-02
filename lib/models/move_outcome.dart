@@ -17,6 +17,14 @@ enum MoveOutcome {
   /// Reached the end of the course; the journey question is now owed.
   reachedFinish,
 
+  /// A 6 brought a horse out of the stable onto its start square.
+  exitedStable,
+
+  /// The drawn card could move nothing: no 6 for a stable full of
+  /// horses, or every destination taken by the player's own horses. The
+  /// turn passes; nothing is lost.
+  noLegalMove,
+
   /// An optional cell challenge was won.
   bonusEarned,
 

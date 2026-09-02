@@ -18,7 +18,10 @@ enum Sfx {
   streak('streak'),
   water('water'),
   victory('victory'),
-  fanfare('fanfare');
+  fanfare('fanfare'),
+  stableExit('stable_exit'),
+  six('six'),
+  capture('capture');
 
   const Sfx(this.file);
 

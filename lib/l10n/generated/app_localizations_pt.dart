@@ -90,8 +90,9 @@ class AppLocalizationsPt extends AppLocalizations {
       'Todo o banco de perguntas, cada uma com a sua fonte';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Os seis níveis de dificuldade, do mais fácil ao mais difícil';
+  String premiumBenefitUnlimited(int count) {
+    return 'Partidas ilimitadas, até Meca (a versão gratuita para após $count puxadas)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -535,25 +536,135 @@ class AppLocalizationsPt extends AppLocalizations {
   String get outcomeStayed => 'Seu cavalo fica parado. Nada se perde.';
 
   @override
-  String get outcomeCaptured => 'Você ultrapassa um adversário!';
+  String get outcomeCaptured => 'Você captura um cavalo adversário!';
+
+  @override
+  String get outcomeExited => 'Seu cavalo sai do estábulo!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Esta carta não move nenhum cavalo. Próxima vez!';
+
+  @override
+  String get noExitHint =>
+      'Você precisa de um 6 para tirar um cavalo do estábulo.';
+
+  @override
+  String get bonusTurnHint => 'Vez extra: o 6 deixa você jogar de novo!';
+
+  @override
+  String get celebrateSixTitle => 'SEIS!';
+
+  @override
+  String get celebrateSixBody => 'Você vai puxar de novo depois desta vez.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Um cavalo pode sair — e você joga de novo!';
+
+  @override
+  String get celebrateExitTitle => 'Saída!';
+
+  @override
+  String get celebrateExitBody => 'Um cavalo pode sair do estábulo.';
+
+  @override
+  String get celebrateCaptureTitle => 'Captura!';
+
+  @override
+  String get celebrateCaptureBody => 'O cavalo adversário volta ao estábulo.';
+
+  @override
+  String get celebrateCapturedTitle => 'Capturado…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Seu cavalo volta ao estábulo. Um 6 o traz de volta.';
+
+  @override
+  String get celebrateArrivalTitle => 'Meca!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Seu cavalo chegou. Uma última pergunta para confirmar!';
+
+  @override
+  String get freeLimitTitle => 'Fim da corrida gratuita';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'Na frente: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'A versão gratuita para após $count puxadas. Com o Premium, a corrida vai até Meca.';
+  }
+
+  @override
+  String get freeLimitCta => 'Desbloquear a corrida ilimitada';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Puxadas: $count de $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'O que você faz com este $count?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Tirar um cavalo do estábulo';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Cavalo $number: avançar $count';
+  }
+
+  @override
+  String get moveHintCapture => 'captura!';
+
+  @override
+  String get moveHintFinish => 'chegada!';
+
+  @override
+  String get moveHintOasis => 'oásis';
+
+  @override
+  String opponentExits(String name) {
+    return '$name tira um cavalo!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name não pode mover nada.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name tirou um 6 e joga de novo!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name captura um cavalo!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'O escudo protegeu o cavalo.';
 
   @override
-  String get playerProfile => 'Nível do jogador';
+  String get playerProfile => 'Nível das perguntas';
 
   @override
-  String get profileChild => 'Criança';
+  String get levelEasy => 'Fácil';
 
   @override
-  String get profileDiscovery => 'Descoberta';
+  String get levelIntermediate => 'Intermediário';
 
   @override
-  String get profileIntermediate => 'Intermediário';
-
-  @override
-  String get profileAdvanced => 'Avançado';
+  String get levelExpert => 'Especialista';
 
   @override
   String get raceRulesUpdatedTitle => 'As regras da corrida foram melhoradas';
@@ -573,7 +684,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é ao mesmo tempo quantas casas você anda e o quanto a pergunta é difícil: 1 a mais fácil, 6 a mais difícil.';
+      'Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é quantas casas você anda. A pergunta é sempre do seu nível — fácil, intermediário ou especialista — escolhido no início para todas as suas cartas.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responda para avançar';
@@ -590,11 +701,25 @@ class AppLocalizationsPt extends AppLocalizations {
       'Depois de uma volta completa no tabuleiro, seu cavalo sobe os cinco degraus da sua escada até Meca. Ali ninguém mais o alcança.';
 
   @override
-  String get ruleCaptureTitle => 'Ultrapassar e mandar de volta';
+  String get ruleExitTitle => 'Sair do estábulo';
+
+  @override
+  String get ruleExitBody =>
+      'Cada jogador tem quatro cavalos no estábulo. Um cavalo só sai com um 6: responda certo e ele ocupa a casa de partida — e como o 6 joga de novo, ele parte na hora. Se você já tem um cavalo na pista, escolhe: tirar outro ou avançar.';
+
+  @override
+  String get ruleSixTitle => 'O 6 joga de novo';
+
+  @override
+  String get ruleSixBody =>
+      'Como no dado: quando você puxa um 6, joga de novo depois da sua vez, acertando ou não. E dois cavalos seus nunca dividem a mesma casa.';
+
+  @override
+  String get ruleCaptureTitle => 'Capturar e mandar de volta';
 
   @override
   String get ruleCaptureBody =>
-      'Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber.';
+      'Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. Um cavalo que sai do estábulo sempre captura na sua casa de partida.';
 
   @override
   String get ruleStreakTitle => 'O impulso do saber';

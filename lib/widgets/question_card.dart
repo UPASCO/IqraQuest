@@ -89,7 +89,8 @@ class QuestionCard extends StatelessWidget {
                 Text(
                   question.question,
                   // Fixed dark ink: the parchment stays light in dark mode.
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: _ink),
+                  style: Theme.of(context).textTheme.headlineMedium
+                      ?.copyWith(color: _ink),
                 ),
                 const SizedBox(height: 20),
                 for (var i = 0; i < question.answers.length; i++) ...[
@@ -98,7 +99,9 @@ class QuestionCard extends StatelessWidget {
                     text: question.answers[i],
                     state: _tileState(i),
                     large: largeText,
-                    onTap: answered || onSelect == null ? null : () => onSelect!(i),
+                    onTap: answered || onSelect == null
+                        ? null
+                        : () => onSelect!(i),
                   ),
                   const SizedBox(height: 12),
                 ],
@@ -112,23 +115,28 @@ class QuestionCard extends StatelessWidget {
                   const SizedBox(height: 14),
                   Text(
                     l10n.explanationLabel,
-                    style: Theme.of(context).textTheme.labelMedium?.copyWith(color: _inkSoft),
+                    style: Theme.of(context).textTheme.labelMedium
+                        ?.copyWith(color: _inkSoft),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     question.explanation,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: _ink),
+                    style: Theme.of(context).textTheme.bodyMedium
+                        ?.copyWith(color: _ink),
                   ),
                   const SizedBox(height: 12),
                   Text(
                     l10n.sourceLabel,
-                    style: Theme.of(context).textTheme.labelMedium?.copyWith(color: _inkSoft),
+                    style: Theme.of(context).textTheme.labelMedium
+                        ?.copyWith(color: _inkSoft),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     question.sourceDisplay,
-                    style: Theme.of(context).textTheme.bodySmall
-                        ?.copyWith(color: _inkSoft, fontStyle: FontStyle.italic),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: _inkSoft,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                   if (onContinue != null) ...[
                     const SizedBox(height: 18),
@@ -137,7 +145,9 @@ class QuestionCard extends StatelessWidget {
                       height: 52,
                       child: Material(
                         clipBehavior: Clip.antiAlias,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                         child: Ink(
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
@@ -150,12 +160,14 @@ class QuestionCard extends StatelessWidget {
                             onTap: onContinue,
                             child: Center(
                               child: Text(
-                                MaterialLocalizations.of(context).continueButtonLabel,
-                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  color: const Color(0xFF4A3410),
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: 0.6,
-                                ),
+                                MaterialLocalizations.of(context)
+                                    .continueButtonLabel,
+                                style: Theme.of(context).textTheme.titleMedium
+                                    ?.copyWith(
+                                      color: const Color(0xFF4A3410),
+                                      fontWeight: FontWeight.w800,
+                                      letterSpacing: 0.6,
+                                    ),
                               ),
                             ),
                           ),
@@ -174,7 +186,9 @@ class QuestionCard extends StatelessWidget {
 
   _AnswerTileState _tileState(int index) {
     if (isCorrect == null) {
-      return selectedIndex == index ? _AnswerTileState.selected : _AnswerTileState.neutral;
+      return selectedIndex == index
+          ? _AnswerTileState.selected
+          : _AnswerTileState.neutral;
     }
     if (index == question.correctAnswerIndex) return _AnswerTileState.correct;
     if (index == selectedIndex) return _AnswerTileState.incorrect;
@@ -203,7 +217,11 @@ class _AnswerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final (bg, border, fg) = switch (state) {
-      _AnswerTileState.neutral => (Colors.white, const Color(0xFFCBB98F), QuestionCard._ink),
+      _AnswerTileState.neutral => (
+        Colors.white,
+        const Color(0xFFCBB98F),
+        QuestionCard._ink,
+      ),
       _AnswerTileState.selected => (
         colors.primary.withValues(alpha: 0.12),
         colors.primary,
@@ -219,7 +237,11 @@ class _AnswerTile extends StatelessWidget {
         colors.error,
         QuestionCard._ink,
       ),
-      _AnswerTileState.dimmed => (const Color(0xFFF0E7D2), const Color(0xFFD5C49B), QuestionCard._inkSoft),
+      _AnswerTileState.dimmed => (
+        const Color(0xFFF0E7D2),
+        const Color(0xFFD5C49B),
+        QuestionCard._inkSoft,
+      ),
     };
 
     return Semantics(
@@ -257,9 +279,13 @@ class _AnswerTile extends StatelessWidget {
                 child: Text(
                   text,
                   style: large
-                      ? Theme.of(context).textTheme.titleMedium
-                          ?.copyWith(color: fg, fontWeight: FontWeight.w600, height: 1.3)
-                      : Theme.of(context).textTheme.bodyLarge?.copyWith(color: fg),
+                      ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: fg,
+                          fontWeight: FontWeight.w600,
+                          height: 1.3,
+                        )
+                      : Theme.of(context).textTheme.bodyLarge
+                            ?.copyWith(color: fg),
                 ),
               ),
               if (state == _AnswerTileState.correct)
@@ -381,7 +407,9 @@ class AnswerFeedbackSheet extends StatelessWidget {
               if (!isCorrect) ...[
                 const SizedBox(height: 12),
                 Text(
-                  l10n.correctAnswerWas(question.answers[question.correctAnswerIndex]),
+                  l10n.correctAnswerWas(
+                    question.answers[question.correctAnswerIndex],
+                  ),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: QuestionCard._ink,
                     fontWeight: FontWeight.w700,
@@ -410,7 +438,9 @@ class AnswerFeedbackSheet extends StatelessWidget {
                 height: 54,
                 child: Material(
                   clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   child: Ink(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
@@ -424,11 +454,12 @@ class AnswerFeedbackSheet extends StatelessWidget {
                       child: Center(
                         child: Text(
                           MaterialLocalizations.of(context).continueButtonLabel,
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: const Color(0xFF4A3410),
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 0.6,
-                          ),
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                color: const Color(0xFF4A3410),
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 0.6,
+                              ),
                         ),
                       ),
                     ),
@@ -468,9 +499,14 @@ class _FeedbackBand extends StatelessWidget {
         children: [
           Icon(correct ? Icons.check_circle : Icons.info, color: color),
           const SizedBox(width: 8),
-          Text(
-            correct ? correctLabel : incorrectLabel,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(color: color),
+          // Bounded: "Not quite — here is the answer" wraps at the large
+          // text size on a small phone instead of running off the card.
+          Expanded(
+            child: Text(
+              correct ? correctLabel : incorrectLabel,
+              style: Theme.of(context).textTheme.titleMedium
+                  ?.copyWith(color: color),
+            ),
           ),
         ],
       ),

@@ -11,18 +11,21 @@ Pioche une carte, réponds, avance ton cheval — le jeu des petits chevaux, ver
 IqraQuest est le jeu des petits chevaux, revisité pour toute la famille
 autour de ce que vous savez de l'islam. Un plateau en croix de 52 cases,
 orné de Médine, d'Al-Aqsa, d'Arafat et de Mina, quatre écuries, et pas
-un seul dé : à votre tour, vous piochez une carte. La valeur de la carte,
-de 1 à 6, c'est le nombre de cases à parcourir — et c'est aussi le niveau
-de la question qu'il faut réussir pour avancer. Une carte 6 emmène loin,
-mais il faudra la mériter.
+un seul dé : à votre tour, vous piochez une carte. Sa valeur, de 1 à 6,
+c'est le nombre de cases à parcourir — à condition de réussir la question
+qui l'accompagne, à votre niveau : facile, intermédiaire ou expert, choisi
+au départ. Un 6 fait sortir un cheval de l'écurie et rejouer, comme au
+vrai jeu.
 
 - Une pioche équitable : chaque carte sort autant de fois que les
   autres, personne ne peut « choisir » sa chance.
 - Mode Solo contre 1 à 3 adversaires (trois niveaux), ou mode Famille
   de 2 à 4 joueurs sur un même appareil, chacun avec son propre niveau de
   questions — un enfant de 7 ans et un adulte jouent vraiment ensemble.
-- Partie Rapide (un cheval chacun) ou Classique (deux chevaux chacun,
-  ramenez-les tous à l'écurie).
+- Quatre chevaux par écurie. Partie Rapide (le premier cheval arrivé
+  gagne) ou Classique (ramenez les quatre jusqu'à La Mecque).
+- Version gratuite : 50 questions et une course de 50 pioches. Premium :
+  toute la banque et des courses illimitées, jusqu'au bout.
 - Trois parcours, du plus paisible au plus mouvementé : oasis abritées,
   cases savoir, défis bonus, raccourcis, duels — tout est visible sur le
   plateau avant de jouer, rien n'est tiré au sort.

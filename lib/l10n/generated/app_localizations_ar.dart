@@ -89,8 +89,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumBenefitBank => 'بنك الأسئلة كاملاً، كل سؤال بمصدره';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'مستويات الصعوبة الستة كلها، من الأسهل إلى الأصعب';
+  String premiumBenefitUnlimited(int count) {
+    return 'مباريات غير محدودة حتى مكة (النسخة المجانية تتوقف بعد $count سحبة)';
+  }
 
   @override
   String get premiumBenefitFamily => 'شراء واحد لكل العائلة، بدون إعلانات';
@@ -540,25 +541,132 @@ class AppLocalizationsAr extends AppLocalizations {
   String get outcomeStayed => 'حصانك يبقى مكانه. لم تخسر شيئًا.';
 
   @override
-  String get outcomeCaptured => 'لقد تجاوزت خصمًا!';
+  String get outcomeCaptured => 'لقد أسرت حصان الخصم!';
+
+  @override
+  String get outcomeExited => 'حصانك يخرج من الإسطبل!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'هذه البطاقة لا تحرّك أي حصان. الدور التالي!';
+
+  @override
+  String get noExitHint => 'تحتاج إلى 6 لإخراج حصان من الإسطبل.';
+
+  @override
+  String get bonusTurnHint => 'دور إضافي: الرقم 6 يمنحك دورًا آخر!';
+
+  @override
+  String get celebrateSixTitle => 'ستة!';
+
+  @override
+  String get celebrateSixBody => 'ستسحب مرة أخرى بعد هذا الدور.';
+
+  @override
+  String get celebrateSixExitBody => 'يمكن لحصان الخروج — وستلعب مرة أخرى!';
+
+  @override
+  String get celebrateExitTitle => 'خروج!';
+
+  @override
+  String get celebrateExitBody => 'يمكن لحصان مغادرة الإسطبل.';
+
+  @override
+  String get celebrateCaptureTitle => 'أسر!';
+
+  @override
+  String get celebrateCaptureBody => 'حصان الخصم يعود إلى إسطبله.';
+
+  @override
+  String get celebrateCapturedTitle => 'أُسر…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'حصانك يعود إلى الإسطبل. سيخرج مجددًا بالرقم 6.';
+
+  @override
+  String get celebrateArrivalTitle => 'مكة!';
+
+  @override
+  String get celebrateArrivalBody => 'وصل حصانك. سؤال أخير للتثبيت!';
+
+  @override
+  String get freeLimitTitle => 'نهاية السباق المجاني';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'في الصدارة: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'تتوقف النسخة المجانية بعد $count سحبة. مع بريميوم، يمتد السباق حتى مكة.';
+  }
+
+  @override
+  String get freeLimitCta => 'افتح السباق غير المحدود';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'السحبات: $count من $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'ماذا ستفعل بهذا الرقم $count؟';
+  }
+
+  @override
+  String get moveChoiceExit => 'إخراج حصان من الإسطبل';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'الحصان $number: تقدّم $count';
+  }
+
+  @override
+  String get moveHintCapture => 'أسر!';
+
+  @override
+  String get moveHintFinish => 'الوصول!';
+
+  @override
+  String get moveHintOasis => 'واحة';
+
+  @override
+  String opponentExits(String name) {
+    return '$name يُخرج حصانًا!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name لا يستطيع تحريك شيء.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name سحب 6 ويلعب مجددًا!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name يأسر حصانًا!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'حمى الدرع الحصان.';
 
   @override
-  String get playerProfile => 'مستوى اللاعب';
+  String get playerProfile => 'مستوى الأسئلة';
 
   @override
-  String get profileChild => 'طفل';
+  String get levelEasy => 'سهل';
 
   @override
-  String get profileDiscovery => 'اكتشاف';
+  String get levelIntermediate => 'متوسط';
 
   @override
-  String get profileIntermediate => 'متوسط';
-
-  @override
-  String get profileAdvanced => 'متقدم';
+  String get levelExpert => 'خبير';
 
   @override
   String get raceRulesUpdatedTitle => 'تم تحسين قواعد السباق';
@@ -578,7 +686,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات وصعوبة السؤال معًا: 1 الأسهل و6 الأصعب.';
+      'في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات. أما السؤال فهو دائمًا على مستواك — سهل أو متوسط أو خبير — الذي اخترته في البداية لكل بطاقاتك.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'أجب لتتقدم';
@@ -595,11 +703,25 @@ class AppLocalizationsAr extends AppLocalizations {
       'بعد دورة كاملة حول اللوحة، يصعد حصانك درجات سلّمه الخمس إلى مكة. وهناك لا يستطيع أحد اللحاق به.';
 
   @override
-  String get ruleCaptureTitle => 'التجاوز والإعادة';
+  String get ruleExitTitle => 'الخروج من الإسطبل';
+
+  @override
+  String get ruleExitBody =>
+      'لكل لاعب أربعة أحصنة في الإسطبل. لا يخرج الحصان إلا بالرقم 6: أجب إجابة صحيحة ليقف على مربع انطلاقه — ولأن الرقم 6 يعيد اللعب، ينطلق فورًا. وإن كان لديك حصان في السباق، فأنت تختار: إخراج آخر أو التقدّم.';
+
+  @override
+  String get ruleSixTitle => 'الرقم 6 يعيد اللعب';
+
+  @override
+  String get ruleSixBody =>
+      'كما مع النرد: حين تسحب 6 تلعب مجددًا بعد دورك، سواء أصبت أم لا. ولا يمكن لحصانين من أحصنتك أن يتشاركا المربع نفسه أبدًا.';
+
+  @override
+  String get ruleCaptureTitle => 'الأسر والإعادة';
 
   @override
   String get ruleCaptureBody =>
-      'الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة.';
+      'الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.';
 
   @override
   String get ruleStreakTitle => 'اندفاع المعرفة';

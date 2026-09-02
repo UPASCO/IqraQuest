@@ -122,6 +122,9 @@ original works of this project and carry the project's licence.
 | `assets/audio/water.wav` | oasis arrival | synthesized in-repo | project |
 | `assets/audio/victory.wav` | game won (short warm flourish) | synthesized in-repo | project |
 | `assets/audio/fanfare.wav` | results board (fuller instrumental flourish, frame drum + held chord) | synthesized in-repo | project |
+| `assets/audio/stable_exit.wav` | the stable gate opens on a 5 or 6 (latch, air, rising call) | synthesized in-repo | project |
+| `assets/audio/six.wav` | a 6 is drawn (two plucks an octave apart, shimmer) | synthesized in-repo | project |
+| `assets/audio/capture.wav` | an opponent's horse is captured (swoop, thud, two falling notes) | synthesized in-repo | project |
 
 Spec prohibitions honoured by construction: **no Quranic recitation** as
 a game effect, **no adhan** as a notification sound, and **no

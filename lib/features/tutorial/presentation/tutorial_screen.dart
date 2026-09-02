@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../theme/app_theme.dart';
 
-/// The rules of the race, in the player's own language.
-///
-/// There is no dice here and none anywhere else in the game: a turn is a
-/// deliberate choice of gait, and the gait chosen is also the difficulty
-/// accepted.
+/// The rules of the race, in the player's own language: the classic
+/// *jeu des petits chevaux* — four horses, out on a 5 or 6, captures, a
+/// 6 replays — with the deck of question cards in place of the die.
 class TutorialScreen extends StatelessWidget {
   const TutorialScreen({super.key});
 
@@ -16,7 +14,12 @@ class TutorialScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final rules = <({String title, String body})>[
       (title: l10n.ruleDrawCardTitle, body: l10n.ruleDrawCardBody),
-      (title: l10n.ruleAnswerToAdvanceTitle, body: l10n.ruleAnswerToAdvanceBody),
+      (title: l10n.ruleExitTitle, body: l10n.ruleExitBody),
+      (
+        title: l10n.ruleAnswerToAdvanceTitle,
+        body: l10n.ruleAnswerToAdvanceBody,
+      ),
+      (title: l10n.ruleSixTitle, body: l10n.ruleSixBody),
       (title: l10n.ruleEscalierTitle, body: l10n.ruleEscalierBody),
       (title: l10n.ruleCaptureTitle, body: l10n.ruleCaptureBody),
       (title: l10n.ruleStreakTitle, body: l10n.ruleStreakBody),
@@ -60,7 +63,8 @@ class _Rule extends StatelessWidget {
               backgroundColor: colors.primary.withValues(alpha: 0.14),
               child: Text(
                 '$step',
-                style: Theme.of(context).textTheme.labelLarge?.copyWith(color: colors.primary),
+                style: Theme.of(context).textTheme.labelLarge
+                    ?.copyWith(color: colors.primary),
               ),
             ),
           ),
@@ -71,7 +75,10 @@ class _Rule extends StatelessWidget {
               children: [
                 Semantics(
                   header: true,
-                  child: Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(

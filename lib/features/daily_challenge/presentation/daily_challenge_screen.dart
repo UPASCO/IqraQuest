@@ -53,7 +53,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen> {
             }
             final question = questions[_index];
             return Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
               child: Column(
                 children: [
                   LinearProgressIndicator(
@@ -69,7 +69,9 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen> {
                         selectedIndex: _selected,
                         isCorrect: _lastCorrect,
                         onSelect: (i) => _answer(question.isCorrect(i), i),
-                        onContinue: () => _next(questions.length),
+                        // The way on is pinned under the card (below),
+                        // never at the end of a scroll.
+                        onContinue: null,
                       ),
                     ),
                   ),
@@ -79,6 +81,35 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen> {
           },
         ),
       ),
+      // Once answered, the way to the next question sits where the
+      // thumb is — on the smallest phone the explanation can run past
+      // the fold, and a button below it was a button nobody found.
+      bottomNavigationBar: _completed || _selected == null
+          ? null
+          : SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+                child: FilledButton(
+                  key: const Key('daily-continue'),
+                  onPressed: () {
+                    final pool = poolAsync.value;
+                    if (pool == null) return;
+                    final total = ref
+                        .read(dailyChallengeServiceProvider)
+                        .challengeFor(date: DateTime.now(), pool: pool)
+                        .length;
+                    _next(total);
+                  },
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size.fromHeight(52),
+                  ),
+                  child: ButtonLabel(
+                    MaterialLocalizations.of(context).continueButtonLabel,
+                  ),
+                ),
+              ),
+            ),
     );
   }
 

@@ -233,3 +233,47 @@ save(
     ),
     gain=0.78,
 )
+
+# The stable gate opens (a 5 or a 6 with a horse waiting): a latch click,
+# a swing of air, then a rising three-note call — the horse is called out.
+save(
+    "stable_exit",
+    seq(
+        (0.00, 0.6 * noise_burst(0.06, lp=0.6, r=0.05)),
+        (0.05, 0.5 * noise_burst(0.30, lp=0.10, r=0.26)),
+        (0.12, 0.8 * tone(note(0), 0.30)),
+        (0.26, 0.85 * tone(note(2), 0.32)),
+        (0.40, tone(note(4), 0.65)),
+        (0.40, 0.35 * tone(note(4, 1), 0.55, harmonics=((1, 1.0), (2, 0.2)))),
+    ),
+    gain=0.62,
+)
+
+# A six: the whole table looks up. Two bright plucks an octave apart with a
+# shimmer of air behind — a lift, not a slot machine; nothing rings or
+# cascades.
+save(
+    "six",
+    seq(
+        (0.00, 0.9 * tone(note(4), 0.35)),
+        (0.13, tone(note(4, 1), 0.55)),
+        (0.13, 0.45 * tone(note(0, 2), 0.50, harmonics=((1, 1.0), (2, 0.15)))),
+        (0.15, 0.25 * noise_burst(0.55, lp=0.05, r=0.5, tremolo=0.35)),
+        (0.36, 0.5 * tone(note(7, 1), 0.45, r=0.4)),
+    ),
+    gain=0.66,
+)
+
+# A capture: a swoop of air as the rider lands, a soft thud, then two
+# falling notes as the caught horse trots home — decisive, never harsh.
+save(
+    "capture",
+    seq(
+        (0.00, 0.9 * noise_burst(0.22, lp=0.14, a=0.01, r=0.18)),
+        (0.16, 0.8 * tone(70, 0.22, harmonics=((1, 1.0), (2, 0.25)), bend=-0.3, r=0.2)),
+        (0.16, 0.4 * noise_burst(0.06, lp=0.3, r=0.05)),
+        (0.30, 0.8 * tone(note(4), 0.28, bend=-0.08)),
+        (0.46, 0.7 * tone(note(1), 0.45, bend=-0.1)),
+    ),
+    gain=0.6,
+)

@@ -19,10 +19,20 @@ enum DifficultyRisk { gentle, steady, bold }
 /// | 5, 6  | hard         | 3                |
 @immutable
 class MovementChoice {
-  const MovementChoice(this.steps) : assert(steps >= minSteps && steps <= maxSteps);
+  const MovementChoice(this.steps)
+    : assert(steps >= minSteps && steps <= maxSteps);
 
   static const int minSteps = 1;
   static const int maxSteps = 6;
+
+  /// The value that lets a horse leave the stable: the rule of the *jeu
+  /// des petits chevaux*, where only a 6 opens the gate. Because a 6 also
+  /// replays, the horse that just came out rides on the very next draw.
+  static const Set<int> stableExitValues = {6};
+
+  /// The value that grants a second draw: a 6 always lets the same
+  /// player play again, exactly as a 6 on the die does.
+  static const int extraTurnValue = 6;
 
   /// Every gait in a cycle, in display order.
   static const List<MovementChoice> all = [
@@ -35,6 +45,12 @@ class MovementChoice {
   ];
 
   final int steps;
+
+  /// Whether this card can bring a horse out of the stable.
+  bool get opensStable => stableExitValues.contains(steps);
+
+  /// Whether this card earns the player another draw after this turn.
+  bool get grantsExtraTurn => steps == extraTurnValue;
 
   DifficultyRisk get risk => switch (steps) {
     1 || 2 => DifficultyRisk.gentle,
@@ -60,7 +76,8 @@ class MovementChoice {
   bool get needsConfirmationForChildren => steps >= 5;
 
   @override
-  bool operator ==(Object other) => other is MovementChoice && other.steps == steps;
+  bool operator ==(Object other) =>
+      other is MovementChoice && other.steps == steps;
 
   @override
   int get hashCode => steps.hashCode;

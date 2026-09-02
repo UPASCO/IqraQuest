@@ -10,7 +10,7 @@
     "sourceReference": "11:37-38",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_002",
@@ -23,7 +23,7 @@
     "sourceReference": "21:69",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_003",
@@ -36,7 +36,7 @@
     "sourceReference": "37:142",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_004",
@@ -49,7 +49,7 @@
     "sourceReference": "12:43-49",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_005",
@@ -75,7 +75,7 @@
     "sourceReference": "27:16",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_007",
@@ -88,7 +88,7 @@
     "sourceReference": "17:55",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_008",
@@ -101,7 +101,7 @@
     "sourceReference": "3:47",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_009",
@@ -114,7 +114,7 @@
     "sourceReference": "19:16",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_010",
@@ -127,7 +127,7 @@
     "sourceReference": "21:83-84",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_011",
@@ -140,7 +140,7 @@
     "sourceReference": "2:34",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_012",
@@ -153,7 +153,7 @@
     "sourceReference": "4:125",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_013",
@@ -166,7 +166,7 @@
     "sourceReference": "12:15",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_014",
@@ -179,7 +179,7 @@
     "sourceReference": "11:37-44",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_015",
@@ -192,7 +192,7 @@
     "sourceReference": "26:63",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_016",
@@ -205,7 +205,7 @@
     "sourceReference": "21:78-79",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_017",
@@ -218,7 +218,7 @@
     "sourceReference": "20:38-39",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_018",
@@ -231,7 +231,7 @@
     "sourceReference": "7:73",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "sira_001",
@@ -478,7 +478,7 @@
     "sourceReference": "1:1-7",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "quran_002",
@@ -530,7 +530,7 @@
     "sourceReference": "12:2",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "quran_006",
@@ -543,7 +543,7 @@
     "sourceReference": "19:1-16",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "quran_007",
@@ -790,7 +790,7 @@
     "sourceReference": "2:31",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_020",
@@ -842,7 +842,7 @@
     "sourceReference": "20:19-20",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_024",
@@ -868,7 +868,7 @@
     "sourceReference": "7:65",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_026",
@@ -881,7 +881,7 @@
     "sourceReference": "7:85",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_027",
@@ -894,7 +894,7 @@
     "sourceReference": "21:87",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_028",
@@ -920,7 +920,7 @@
     "sourceReference": "well-established (Musa is the most-mentioned prophet by name)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_030",
@@ -933,7 +933,7 @@
     "sourceReference": "well-established count (25 prophets named in the Quran)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "prophets_031",
@@ -959,7 +959,7 @@
     "sourceReference": "29:14",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "quran_011",
@@ -1024,7 +1024,7 @@
     "sourceReference": "97:3",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_016",
@@ -1037,7 +1037,7 @@
     "sourceReference": "well-established terminology (al-mu'awwidhatan: 113 & 114)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_017",
@@ -1050,7 +1050,7 @@
     "sourceReference": "well-established division (30 ajza')",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_018",
@@ -1063,7 +1063,7 @@
     "sourceReference": "well-established count (Al-Fatiha: 7 verses)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_019",
@@ -1089,7 +1089,7 @@
     "sourceReference": "12:3",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_021",
@@ -1115,7 +1115,7 @@
     "sourceReference": "112:1-4",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_023",
@@ -1128,7 +1128,7 @@
     "sourceReference": "well-established (revelation over about 23 years)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": true
+    "isFree": false
   },
   {
     "id": "quran_024",
@@ -1310,7 +1310,7 @@
     "sourceReference": "5:6",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_010",
@@ -1336,7 +1336,7 @@
     "sourceReference": "well-established (99 beautiful names, reported in al-Bukhari and Muslim)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_012",
@@ -1349,7 +1349,7 @@
     "sourceReference": "1:3",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_013",
@@ -1362,7 +1362,7 @@
     "sourceReference": "1:4",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_014",
@@ -1375,7 +1375,7 @@
     "sourceReference": "62:9",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_015",
@@ -1388,7 +1388,7 @@
     "sourceReference": "15:9",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_016",
@@ -1414,7 +1414,7 @@
     "sourceReference": "well-established terminology (as-salamu 'alaykum)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "faith_018",
@@ -1427,7 +1427,7 @@
     "sourceReference": "well-established terminology (tawhid)",
     "sourceVerificationStatus": "verified",
     "consensusStatus": "nonControversial",
-    "isFree": false
+    "isFree": true
   },
   {
     "id": "virtues_007",

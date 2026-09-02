@@ -107,7 +107,7 @@ s("continueGame", "Resume a saved game",
   ms="Sambung Permainan", it="Continua partita", nl="Spel voortzetten")
 
 # ---- Mode / player setup --------------------------------------------------
-s("quickGame", "Game variant: 1 pawn per player",
+s("quickGame", "Game variant: four horses each, the first one home wins",
   fr="Partie rapide", en="Quick game", ar="لعبة سريعة", es="Partida rápida",
   pt="Jogo rápido", de="Schnellspiel", tr="Hızlı Oyun", id="Permainan Cepat",
   ur="فوری کھیل", ms="Permainan Pantas", it="Partita rapida", nl="Snel spel")
@@ -171,14 +171,20 @@ s("premiumBenefitBank", "Premium benefit row: the complete question bank",
   ur="پورا سوالات کا ذخیرہ، ہر ایک اپنے ماخذ کے ساتھ", ms="Seluruh bank soalan, setiap satu dengan sumbernya",
   it="Tutta la banca di domande, ognuna con la sua fonte", nl="De hele vragenbank, elk met bron")
 
-s("premiumBenefitDifficulty", "Premium benefit row: every difficulty level",
-  fr="Les six niveaux de difficulté, du plus facile au plus dur",
-  en="All six difficulty levels, from easiest to hardest",
-  ar="مستويات الصعوبة الستة كلها، من الأسهل إلى الأصعب", es="Los seis niveles de dificultad, del más fácil al más difícil",
-  pt="Os seis níveis de dificuldade, do mais fácil ao mais difícil", de="Alle sechs Schwierigkeitsstufen, von leicht bis schwer",
-  tr="Altı zorluk seviyesinin tamamı, en kolaydan en zora", id="Keenam tingkat kesulitan, dari termudah hingga tersulit",
-  ur="چھ کے چھ مشکل درجے، آسان ترین سے مشکل ترین تک", ms="Kesemua enam tahap kesukaran, dari paling mudah ke paling sukar",
-  it="Tutti e sei i livelli di difficoltà, dal più facile al più difficile", nl="Alle zes moeilijkheidsniveaus, van makkelijk tot moeilijk")
+s("premiumBenefitUnlimited", "Premium benefit row: games run to the end (the free edition stops after N draws)",
+  ph={"count": "int"},
+  fr="Des parties illimitées, jusqu'à La Mecque (la version gratuite s'arrête après {count} pioches)",
+  en="Unlimited games, all the way to Mecca (the free edition stops after {count} draws)",
+  ar="مباريات غير محدودة حتى مكة (النسخة المجانية تتوقف بعد {count} سحبة)",
+  es="Partidas ilimitadas, hasta La Meca (la versión gratuita se detiene tras {count} robos)",
+  pt="Partidas ilimitadas, até Meca (a versão gratuita para após {count} puxadas)",
+  de="Unbegrenzte Spiele bis nach Mekka (die Gratisversion endet nach {count} Zügen)",
+  tr="Mekke'ye kadar sınırsız oyun (ücretsiz sürüm {count} çekilişten sonra durur)",
+  id="Permainan tanpa batas, sampai Makkah (versi gratis berhenti setelah {count} kali ambil kartu)",
+  ur="لامحدود کھیل، مکہ تک (مفت ورژن {count} کارڈ کے بعد رک جاتا ہے)",
+  ms="Permainan tanpa had, hingga ke Makkah (versi percuma berhenti selepas {count} cabutan)",
+  it="Partite illimitate, fino alla Mecca (la versione gratuita si ferma dopo {count} pescate)",
+  nl="Onbeperkt spelen, tot aan Mekka (de gratis versie stopt na {count} kaarten)")
 
 s("premiumBenefitFamily", "Premium benefit row: one purchase for the whole family, no ads",
   fr="Un seul achat pour toute la famille, sans publicité",
@@ -1111,13 +1117,252 @@ s("outcomeStayed", "Feedback after a wrong answer — never a setback",
   it="Il tuo cavallo resta fermo. Non perdi nulla.",
   nl="Je paard blijft staan. Er gaat niets verloren.")
 
-s("outcomeCaptured", "Feedback when passing an opponent",
-  fr="Tu dépasses un adversaire !", en="You overtake an opponent!",
-  ar="لقد تجاوزت خصمًا!", es="¡Adelantas a un rival!",
-  pt="Você ultrapassa um adversário!", de="Du überholst einen Gegner!",
-  tr="Bir rakibi geçtin!", id="Kamu menyalip lawan!",
-  ur="آپ نے حریف کو پیچھے چھوڑا!", ms="Anda memintas lawan!",
-  it="Superi un avversario!", nl="Je haalt een tegenstander in!")
+s("outcomeCaptured", "Feedback when landing on an opponent's horse and sending it home",
+  fr="Tu captures un cheval adverse !", en="You capture an opponent's horse!",
+  ar="لقد أسرت حصان الخصم!", es="¡Capturas un caballo rival!",
+  pt="Você captura um cavalo adversário!", de="Du schlägst ein gegnerisches Pferd!",
+  tr="Rakibin atını yakaladın!", id="Kamu menangkap kuda lawan!",
+  ur="آپ نے حریف کا گھوڑا پکڑ لیا!", ms="Anda menangkap kuda lawan!",
+  it="Catturi un cavallo avversario!", nl="Je slaat een paard van de tegenstander!")
+
+s("outcomeExited", "Feedback after a correct answer on a 5 or 6 brought a horse out",
+  fr="Ton cheval sort de l'écurie !", en="Your horse leaves the stable!",
+  ar="حصانك يخرج من الإسطبل!", es="¡Tu caballo sale del establo!",
+  pt="Seu cavalo sai do estábulo!", de="Dein Pferd verlässt den Stall!",
+  tr="Atın ahırdan çıkıyor!", id="Kudamu keluar dari kandang!",
+  ur="آپ کا گھوڑا اصطبل سے نکلا!", ms="Kuda anda keluar dari kandang!",
+  it="Il tuo cavallo esce dalla stalla!", nl="Je paard verlaat de stal!")
+
+s("outcomeNoLegalMove", "Banner when the drawn card can move no horse at all",
+  fr="Cette carte ne peut bouger aucun cheval. Tour suivant !",
+  en="This card can't move any horse. Next turn!",
+  ar="هذه البطاقة لا تحرّك أي حصان. الدور التالي!",
+  es="Esta carta no puede mover ningún caballo. ¡Siguiente turno!",
+  pt="Esta carta não move nenhum cavalo. Próxima vez!",
+  de="Diese Karte kann kein Pferd bewegen. Nächster Zug!",
+  tr="Bu kart hiçbir atı hareket ettiremiyor. Sıradaki tur!",
+  id="Kartu ini tak bisa menggerakkan kuda mana pun. Giliran berikutnya!",
+  ur="یہ کارڈ کسی گھوڑے کو نہیں ہلا سکتا۔ اگلی باری!",
+  ms="Kad ini tidak dapat menggerakkan mana-mana kuda. Giliran seterusnya!",
+  it="Questa carta non può muovere nessun cavallo. Turno successivo!",
+  nl="Deze kaart kan geen paard verplaatsen. Volgende beurt!")
+
+s("noExitHint", "Banner when every horse is in the stable and the card is not a 6",
+  fr="Il faut un 6 pour sortir un cheval de l'écurie.",
+  en="You need a 6 to bring a horse out of the stable.",
+  ar="تحتاج إلى 6 لإخراج حصان من الإسطبل.",
+  es="Necesitas un 6 para sacar un caballo del establo.",
+  pt="Você precisa de um 6 para tirar um cavalo do estábulo.",
+  de="Du brauchst eine 6, um ein Pferd aus dem Stall zu holen.",
+  tr="Ahırdan bir at çıkarmak için 6 gerekir.",
+  id="Kamu butuh angka 6 untuk mengeluarkan kuda dari kandang.",
+  ur="اصطبل سے گھوڑا نکالنے کے لیے 6 چاہیے۔",
+  ms="Anda perlukan 6 untuk mengeluarkan kuda dari kandang.",
+  it="Serve un 6 per far uscire un cavallo dalla stalla.",
+  nl="Je hebt een 6 nodig om een paard uit de stal te halen.")
+
+s("bonusTurnHint", "Deck hint on the second draw a 6 earned",
+  fr="Tour bonus : le 6 te fait rejouer !", en="Bonus turn: the 6 lets you play again!",
+  ar="دور إضافي: الرقم 6 يمنحك دورًا آخر!", es="Turno extra: ¡el 6 te deja jugar otra vez!",
+  pt="Vez extra: o 6 deixa você jogar de novo!", de="Bonuszug: Die 6 lässt dich noch einmal ziehen!",
+  tr="Bonus tur: 6 sana bir kez daha oynatıyor!", id="Giliran bonus: angka 6 membuatmu main lagi!",
+  ur="بونس باری: 6 آپ کو دوبارہ کھیلنے دیتا ہے!", ms="Giliran bonus: 6 membuat anda bermain lagi!",
+  it="Turno bonus: il 6 ti fa giocare ancora!", nl="Bonusbeurt: de 6 laat je nog een keer spelen!")
+
+# ---- Celebrations: the key moments, shouted -------------------------------
+s("celebrateSixTitle", "Celebration title when a 6 is drawn",
+  fr="SIX !", en="SIX!", ar="ستة!", es="¡SEIS!", pt="SEIS!", de="SECHS!",
+  tr="ALTI!", id="ENAM!", ur="چھ!", ms="ENAM!", it="SEI!", nl="ZES!")
+
+s("celebrateSixBody", "Celebration body when a 6 is drawn: the player draws again after this turn",
+  fr="Tu rejoueras après ce tour.", en="You'll draw again after this turn.",
+  ar="ستسحب مرة أخرى بعد هذا الدور.", es="Volverás a robar después de este turno.",
+  pt="Você vai puxar de novo depois desta vez.", de="Nach diesem Zug ziehst du noch einmal.",
+  tr="Bu turdan sonra yeniden çekeceksin.", id="Kamu akan mengambil kartu lagi setelah giliran ini.",
+  ur="اس باری کے بعد آپ دوبارہ کارڈ نکالیں گے۔", ms="Anda akan mencabut lagi selepas giliran ini.",
+  it="Pescherai di nuovo dopo questo turno.", nl="Na deze beurt trek je nog een keer.")
+
+s("celebrateSixExitBody", "Celebration body when a 6 both opens the stable and grants a replay",
+  fr="Un cheval peut sortir — et tu rejoueras !", en="A horse can come out — and you'll play again!",
+  ar="يمكن لحصان الخروج — وستلعب مرة أخرى!", es="Un caballo puede salir, ¡y volverás a jugar!",
+  pt="Um cavalo pode sair — e você joga de novo!", de="Ein Pferd darf raus – und du ziehst noch einmal!",
+  tr="Bir at çıkabilir — ve yeniden oynayacaksın!", id="Seekor kuda boleh keluar — dan kamu main lagi!",
+  ur="ایک گھوڑا نکل سکتا ہے — اور آپ دوبارہ کھیلیں گے!", ms="Seekor kuda boleh keluar — dan anda bermain lagi!",
+  it="Un cavallo può uscire — e giocherai ancora!", nl="Een paard mag naar buiten – en je speelt nog een keer!")
+
+s("celebrateExitTitle", "Celebration title when the gate opens (folded into the 6 celebration)",
+  fr="Sortie !", en="Gate open!", ar="خروج!", es="¡Salida!", pt="Saída!", de="Tor auf!",
+  tr="Kapı açık!", id="Gerbang terbuka!", ur="دروازہ کھلا!", ms="Pintu terbuka!",
+  it="Uscita!", nl="Poort open!")
+
+s("celebrateExitBody", "Celebration body when the gate opens (folded into the 6 celebration)",
+  fr="Un cheval peut quitter l'écurie.", en="A horse can leave the stable.",
+  ar="يمكن لحصان مغادرة الإسطبل.", es="Un caballo puede salir del establo.",
+  pt="Um cavalo pode sair do estábulo.", de="Ein Pferd darf den Stall verlassen.",
+  tr="Bir at ahırdan çıkabilir.", id="Seekor kuda boleh keluar dari kandang.",
+  ur="ایک گھوڑا اصطبل سے نکل سکتا ہے۔", ms="Seekor kuda boleh keluar dari kandang.",
+  it="Un cavallo può uscire dalla stalla.", nl="Een paard mag de stal verlaten.")
+
+s("celebrateCaptureTitle", "Celebration title when the player captures an opponent's horse",
+  fr="Capture !", en="Captured!", ar="أسر!", es="¡Captura!", pt="Captura!", de="Geschlagen!",
+  tr="Yakaladın!", id="Tangkap!", ur="پکڑ لیا!", ms="Tangkap!", it="Cattura!", nl="Geslagen!")
+
+s("celebrateCaptureBody", "Celebration body when the player captures an opponent's horse",
+  fr="Le cheval adverse rentre à son écurie.", en="The opponent's horse goes back to its stable.",
+  ar="حصان الخصم يعود إلى إسطبله.", es="El caballo rival vuelve a su establo.",
+  pt="O cavalo adversário volta ao estábulo.", de="Das gegnerische Pferd kehrt in seinen Stall zurück.",
+  tr="Rakibin atı ahırına dönüyor.", id="Kuda lawan kembali ke kandangnya.",
+  ur="حریف کا گھوڑا اپنے اصطبل واپس جاتا ہے۔", ms="Kuda lawan pulang ke kandangnya.",
+  it="Il cavallo avversario torna nella sua stalla.", nl="Het paard van de tegenstander gaat terug naar zijn stal.")
+
+s("celebrateCapturedTitle", "Notice title when the player's own horse is captured",
+  fr="Capturé…", en="Caught…", ar="أُسر…", es="Capturado…", pt="Capturado…", de="Erwischt…",
+  tr="Yakalandın…", id="Tertangkap…", ur="پکڑا گیا…", ms="Ditangkap…", it="Catturato…", nl="Gepakt…")
+
+s("celebrateCapturedBody", "Notice body when the player's own horse is captured",
+  fr="Ton cheval rentre à l'écurie. Il repartira sur un 6.",
+  en="Your horse goes back to the stable. A 6 brings it out again.",
+  ar="حصانك يعود إلى الإسطبل. سيخرج مجددًا بالرقم 6.",
+  es="Tu caballo vuelve al establo. Saldrá otra vez con un 6.",
+  pt="Seu cavalo volta ao estábulo. Um 6 o traz de volta.",
+  de="Dein Pferd kehrt in den Stall zurück. Mit einer 6 kommt es wieder raus.",
+  tr="Atın ahıra dönüyor. Bir 6 onu yeniden çıkarır.",
+  id="Kudamu kembali ke kandang. Angka 6 mengeluarkannya lagi.",
+  ur="آپ کا گھوڑا اصطبل واپس گیا۔ 6 اسے پھر نکالے گا۔",
+  ms="Kuda anda pulang ke kandang. 6 mengeluarkannya semula.",
+  it="Il tuo cavallo torna nella stalla. Un 6 lo farà uscire di nuovo.",
+  nl="Je paard gaat terug naar de stal. Met een 6 komt het weer naar buiten.")
+
+s("celebrateArrivalTitle", "Celebration title when a horse reaches the centre",
+  fr="La Mecque !", en="Mecca!", ar="مكة!", es="¡La Meca!", pt="Meca!", de="Mekka!",
+  tr="Mekke!", id="Makkah!", ur="مکہ!", ms="Makkah!", it="La Mecca!", nl="Mekka!")
+
+s("celebrateArrivalBody", "Celebration body when a horse reaches the centre",
+  fr="Ton cheval est arrivé. Une dernière question pour valider !",
+  en="Your horse has arrived. One last question to make it official!",
+  ar="وصل حصانك. سؤال أخير للتثبيت!",
+  es="Tu caballo ha llegado. ¡Una última pregunta para validarlo!",
+  pt="Seu cavalo chegou. Uma última pergunta para confirmar!",
+  de="Dein Pferd ist angekommen. Eine letzte Frage macht es offiziell!",
+  tr="Atın vardı. Resmileştirmek için son bir soru!",
+  id="Kudamu sudah tiba. Satu pertanyaan terakhir untuk mengesahkannya!",
+  ur="آپ کا گھوڑا پہنچ گیا۔ توثیق کے لیے ایک آخری سوال!",
+  ms="Kuda anda telah tiba. Satu soalan terakhir untuk mengesahkannya!",
+  it="Il tuo cavallo è arrivato. Un'ultima domanda per convalidarlo!",
+  nl="Je paard is aangekomen. Nog één vraag om het officieel te maken!")
+
+# ---- The free edition's finish line ------------------------------------------
+s("freeLimitTitle", "Results title when the free edition's draw limit ended the race",
+  fr="Fin de la course gratuite", en="End of the free race", ar="نهاية السباق المجاني",
+  es="Fin de la carrera gratuita", pt="Fim da corrida gratuita", de="Ende des Gratis-Rennens",
+  tr="Ücretsiz yarışın sonu", id="Akhir balapan gratis", ur="مفت ریس کا اختتام",
+  ms="Tamat perlumbaan percuma", it="Fine della corsa gratuita", nl="Einde van de gratis race")
+
+s("freeLimitLeader", "Results subtitle: who was ahead when the free race stopped",
+  ph={"name": "String"},
+  fr="En tête : {name}", en="In the lead: {name}", ar="في الصدارة: {name}",
+  es="En cabeza: {name}", pt="Na frente: {name}", de="In Führung: {name}",
+  tr="Önde: {name}", id="Memimpin: {name}", ur="آگے: {name}", ms="Mendahului: {name}",
+  it="In testa: {name}", nl="Aan de leiding: {name}")
+
+s("freeLimitBody", "Results body: the free edition stops after N draws; Premium runs to the end",
+  ph={"count": "int"},
+  fr="La version gratuite s'arrête après {count} pioches. Avec Premium, la course va jusqu'à La Mecque.",
+  en="The free edition stops after {count} draws. With Premium, the race runs all the way to Mecca.",
+  ar="تتوقف النسخة المجانية بعد {count} سحبة. مع بريميوم، يمتد السباق حتى مكة.",
+  es="La versión gratuita se detiene tras {count} robos. Con Premium, la carrera llega hasta La Meca.",
+  pt="A versão gratuita para após {count} puxadas. Com o Premium, a corrida vai até Meca.",
+  de="Die Gratisversion endet nach {count} Zügen. Mit Premium geht das Rennen bis nach Mekka.",
+  tr="Ücretsiz sürüm {count} çekilişten sonra durur. Premium ile yarış Mekke'ye kadar sürer.",
+  id="Versi gratis berhenti setelah {count} kali ambil kartu. Dengan Premium, balapan berlanjut sampai Makkah.",
+  ur="مفت ورژن {count} کارڈ کے بعد رک جاتا ہے۔ پریمیم کے ساتھ ریس مکہ تک جاتی ہے۔",
+  ms="Versi percuma berhenti selepas {count} cabutan. Dengan Premium, perlumbaan berterusan hingga ke Makkah.",
+  it="La versione gratuita si ferma dopo {count} pescate. Con Premium, la corsa arriva fino alla Mecca.",
+  nl="De gratis versie stopt na {count} kaarten. Met Premium gaat de race door tot aan Mekka.")
+
+s("freeLimitCta", "Results button: open the Premium screen after a free race stopped",
+  fr="Débloquer la course illimitée", en="Unlock the unlimited race", ar="افتح السباق غير المحدود",
+  es="Desbloquear la carrera ilimitada", pt="Desbloquear a corrida ilimitada",
+  de="Unbegrenztes Rennen freischalten", tr="Sınırsız yarışın kilidini aç",
+  id="Buka balapan tanpa batas", ur="لامحدود ریس کھولیں", ms="Buka perlumbaan tanpa had",
+  it="Sblocca la corsa illimitata", nl="Onbeperkte race ontgrendelen")
+
+s("drawsCounter", "HUD pill, free edition: cards drawn out of the limit (screen-reader label)",
+  ph={"count": "int", "max": "int"},
+  fr="Pioches : {count} sur {max}", en="Draws: {count} of {max}", ar="السحبات: {count} من {max}",
+  es="Robos: {count} de {max}", pt="Puxadas: {count} de {max}", de="Züge: {count} von {max}",
+  tr="Çekiliş: {count} / {max}", id="Ambil kartu: {count} dari {max}", ur="کارڈ: {max} میں سے {count}",
+  ms="Cabutan: {count} daripada {max}", it="Pescate: {count} su {max}", nl="Kaarten: {count} van {max}")
+
+# ---- The move choice: what to do with the card ------------------------------
+s("moveChoiceTitle", "Sheet title after a draw when several horses could use the card",
+  ph={"count": "int"},
+  fr="Que fais-tu de ce {count} ?", en="What will you do with this {count}?",
+  ar="ماذا ستفعل بهذا الرقم {count}؟", es="¿Qué haces con este {count}?",
+  pt="O que você faz com este {count}?", de="Was machst du mit dieser {count}?",
+  tr="Bu {count} ile ne yapacaksın?", id="Mau diapakan angka {count} ini?",
+  ur="اس {count} کا کیا کریں گے؟", ms="Apa yang anda mahu buat dengan {count} ini?",
+  it="Che fai con questo {count}?", nl="Wat doe je met deze {count}?")
+
+s("moveChoiceExit", "Choice sheet option: bring a horse out of the stable",
+  fr="Sortir un cheval de l'écurie", en="Bring a horse out of the stable",
+  ar="إخراج حصان من الإسطبل", es="Sacar un caballo del establo",
+  pt="Tirar um cavalo do estábulo", de="Ein Pferd aus dem Stall holen",
+  tr="Ahırdan bir at çıkar", id="Keluarkan kuda dari kandang",
+  ur="اصطبل سے ایک گھوڑا نکالیں", ms="Keluarkan kuda dari kandang",
+  it="Far uscire un cavallo dalla stalla", nl="Een paard uit de stal halen")
+
+s("moveChoiceAdvance", "Choice sheet option: ride horse N by the card's value",
+  ph={"number": "int", "count": "int"},
+  fr="Cheval {number} : avancer de {count}", en="Horse {number}: ride {count} ahead",
+  ar="الحصان {number}: تقدّم {count}", es="Caballo {number}: avanzar {count}",
+  pt="Cavalo {number}: avançar {count}", de="Pferd {number}: {count} vorrücken",
+  tr="At {number}: {count} ilerle", id="Kuda {number}: maju {count}",
+  ur="گھوڑا {number}: {count} آگے", ms="Kuda {number}: maju {count}",
+  it="Cavallo {number}: avanza di {count}", nl="Paard {number}: {count} vooruit")
+
+s("moveHintCapture", "Choice sheet tag: this move captures an opponent",
+  fr="capture !", en="capture!", ar="أسر!", es="¡captura!", pt="captura!", de="schlagen!",
+  tr="yakala!", id="tangkap!", ur="پکڑ!", ms="tangkap!", it="cattura!", nl="slaan!")
+
+s("moveHintFinish", "Choice sheet tag: this move reaches the finish",
+  fr="arrivée !", en="finish!", ar="الوصول!", es="¡llegada!", pt="chegada!", de="Ziel!",
+  tr="varış!", id="finis!", ur="منزل!", ms="tamat!", it="arrivo!", nl="finish!")
+
+s("moveHintOasis", "Choice sheet tag: this move lands on a safe oasis",
+  fr="oasis", en="oasis", ar="واحة", es="oasis", pt="oásis", de="Oase",
+  tr="vaha", id="oasis", ur="نخلستان", ms="oasis", it="oasi", nl="oase")
+
+s("opponentExits", "Turn banner: the AI opponent brought a horse out of its stable",
+  ph={"name": "String"},
+  fr="{name} sort un cheval !", en="{name} brings a horse out!", ar="{name} يُخرج حصانًا!",
+  es="¡{name} saca un caballo!", pt="{name} tira um cavalo!", de="{name} holt ein Pferd raus!",
+  tr="{name} bir at çıkarıyor!", id="{name} mengeluarkan kuda!", ur="{name} نے گھوڑا نکالا!",
+  ms="{name} mengeluarkan kuda!", it="{name} fa uscire un cavallo!", nl="{name} haalt een paard naar buiten!")
+
+s("opponentNoMove", "Turn banner: the AI opponent's card could move nothing",
+  ph={"name": "String"},
+  fr="{name} ne peut rien bouger.", en="{name} can't move anything.", ar="{name} لا يستطيع تحريك شيء.",
+  es="{name} no puede mover nada.", pt="{name} não pode mover nada.", de="{name} kann nichts bewegen.",
+  tr="{name} hiçbir şeyi oynatamıyor.", id="{name} tak bisa menggerakkan apa pun.",
+  ur="{name} کچھ نہیں ہلا سکتا۔", ms="{name} tidak dapat menggerakkan apa-apa.",
+  it="{name} non può muovere nulla.", nl="{name} kan niets verplaatsen.")
+
+s("opponentReplays", "Turn banner: the AI opponent drew a 6 and plays again",
+  ph={"name": "String"},
+  fr="{name} a fait un 6 et rejoue !", en="{name} drew a 6 and plays again!",
+  ar="{name} سحب 6 ويلعب مجددًا!", es="¡{name} sacó un 6 y vuelve a jugar!",
+  pt="{name} tirou um 6 e joga de novo!", de="{name} hat eine 6 gezogen und ist noch einmal dran!",
+  tr="{name} 6 çekti ve yeniden oynuyor!", id="{name} mendapat 6 dan main lagi!",
+  ur="{name} نے 6 نکالا اور دوبارہ کھیلتا ہے!", ms="{name} mendapat 6 dan bermain lagi!",
+  it="{name} ha pescato un 6 e gioca ancora!", nl="{name} trok een 6 en speelt nog een keer!")
+
+s("opponentCaptured", "Turn banner: the AI opponent captured a horse",
+  ph={"name": "String"},
+  fr="{name} capture un cheval !", en="{name} captures a horse!", ar="{name} يأسر حصانًا!",
+  es="¡{name} captura un caballo!", pt="{name} captura um cavalo!", de="{name} schlägt ein Pferd!",
+  tr="{name} bir at yakalıyor!", id="{name} menangkap kuda!", ur="{name} نے گھوڑا پکڑ لیا!",
+  ms="{name} menangkap kuda!", it="{name} cattura un cavallo!", nl="{name} slaat een paard!")
 
 s("outcomeShieldBlocked", "Feedback when a shield absorbs an overtake",
   fr="Le bouclier a protégé le cheval.", en="The shield protected the horse.",
@@ -1128,30 +1373,24 @@ s("outcomeShieldBlocked", "Feedback when a shield absorbs an overtake",
   it="Lo scudo ha protetto il cavallo.", nl="Het schild beschermde het paard.")
 
 # ---- Player profiles -------------------------------------------------------
-s("playerProfile", "Label for the per-player knowledge level",
-  fr="Niveau du joueur", en="Player level", ar="مستوى اللاعب",
-  es="Nivel del jugador", pt="Nível do jogador", de="Spielerstufe",
-  tr="Oyuncu seviyesi", id="Tingkat pemain", ur="کھلاڑی کا درجہ",
-  ms="Tahap pemain", it="Livello giocatore", nl="Spelerniveau")
+s("playerProfile", "Label over the per-rider question level picker",
+  fr="Niveau des questions", en="Question level", ar="مستوى الأسئلة",
+  es="Nivel de las preguntas", pt="Nível das perguntas", de="Fragenniveau",
+  tr="Soru seviyesi", id="Tingkat pertanyaan", ur="سوالات کا درجہ",
+  ms="Tahap soalan", it="Livello delle domande", nl="Vragenniveau")
 
-s("profileChild", "Player level",
-  fr="Enfant", en="Child", ar="طفل", es="Niño", pt="Criança", de="Kind",
-  tr="Çocuk", id="Anak", ur="بچہ", ms="Kanak-kanak", it="Bambino", nl="Kind")
+s("levelEasy", "Question level a rider plays at, chosen before the game",
+  fr="Facile", en="Easy", ar="سهل", es="Fácil", pt="Fácil", de="Leicht",
+  tr="Kolay", id="Mudah", ur="آسان", ms="Mudah", it="Facile", nl="Makkelijk")
 
-s("profileDiscovery", "Player level",
-  fr="Découverte", en="Discovery", ar="اكتشاف", es="Descubrimiento",
-  pt="Descoberta", de="Entdeckung", tr="Keşif", id="Penjelajahan",
-  ur="دریافت", ms="Penerokaan", it="Scoperta", nl="Ontdekking")
-
-s("profileIntermediate", "Player level",
+s("levelIntermediate", "Question level a rider plays at, chosen before the game",
   fr="Intermédiaire", en="Intermediate", ar="متوسط", es="Intermedio",
   pt="Intermediário", de="Mittel", tr="Orta", id="Menengah", ur="درمیانہ",
   ms="Sederhana", it="Intermedio", nl="Gemiddeld")
 
-s("profileAdvanced", "Player level",
-  fr="Avancé", en="Advanced", ar="متقدم", es="Avanzado", pt="Avançado",
-  de="Fortgeschritten", tr="İleri", id="Lanjutan", ur="اعلیٰ",
-  ms="Lanjutan", it="Avanzato", nl="Gevorderd")
+s("levelExpert", "Question level a rider plays at, chosen before the game",
+  fr="Expert", en="Expert", ar="خبير", es="Experto", pt="Especialista", de="Experte",
+  tr="Uzman", id="Ahli", ur="ماہر", ms="Pakar", it="Esperto", nl="Expert")
 
 # ---- Save migration --------------------------------------------------------
 s("raceRulesUpdatedTitle", "Shown once when a pre-gait save is detected",
@@ -1203,18 +1442,18 @@ s("ruleDrawCardTitle", "Rules step 1 title",
   ms="Cabut sekeping kad", it="Pesca una carta", nl="Trek een kaart")
 
 s("ruleDrawCardBody", "Rules step 1 body",
-  fr="À ton tour, pioche une carte. Sa valeur, de 1 à 6, est à la fois le nombre de cases et la difficulté de la question : 1 la plus facile, 6 la plus dure.",
-  en="On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.",
-  ar="في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات وصعوبة السؤال معًا: 1 الأسهل و6 الأصعب.",
-  es="En tu turno, roba una carta. Su valor, de 1 a 6, es a la vez cuántas casillas avanzas y lo difícil que es la pregunta: 1 la más fácil, 6 la más difícil.",
-  pt="Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é ao mesmo tempo quantas casas você anda e o quanto a pergunta é difícil: 1 a mais fácil, 6 a mais difícil.",
-  de="Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist zugleich die Zahl der Felder und die Schwierigkeit der Frage: 1 die leichteste, 6 die schwerste.",
-  tr="Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri hem kaç kare ilerleyeceğin hem de sorunun zorluğudur: 1 en kolay, 6 en zor.",
-  id="Pada giliranmu, ambil satu kartu. Nilainya, 1 sampai 6, sekaligus jumlah petak yang kamu tempuh dan tingkat kesulitan pertanyaannya: 1 termudah, 6 tersulit.",
-  ur="اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، بیک وقت خانوں کی تعداد اور سوال کی مشکل ہے: 1 سب سے آسان، 6 سب سے مشکل۔",
-  ms="Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak dan sekali gus tahap kesukaran soalan: 1 paling mudah, 6 paling sukar.",
-  it="Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è insieme il numero di caselle e la difficoltà della domanda: 1 la più facile, 6 la più difficile.",
-  nl="Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is zowel het aantal vakjes als de moeilijkheid van de vraag: 1 het makkelijkst, 6 het moeilijkst.")
+  fr="À ton tour, pioche une carte. Sa valeur, de 1 à 6, est le nombre de cases. La question, elle, est toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ pour toutes tes cartes.",
+  en="On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.",
+  ar="في دورك، اسحب بطاقة. قيمتها من 1 إلى 6 هي عدد المربعات. أما السؤال فهو دائمًا على مستواك — سهل أو متوسط أو خبير — الذي اخترته في البداية لكل بطاقاتك.",
+  es="En tu turno, roba una carta. Su valor, de 1 a 6, es cuántas casillas avanzas. La pregunta siempre es de tu nivel —fácil, intermedio o experto—, elegido al principio para todas tus cartas.",
+  pt="Na sua vez, puxe uma carta. O valor dela, de 1 a 6, é quantas casas você anda. A pergunta é sempre do seu nível — fácil, intermediário ou especialista — escolhido no início para todas as suas cartas.",
+  de="Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist die Zahl der Felder. Die Frage ist immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn für alle deine Karten gewählt hast.",
+  tr="Sıran geldiğinde bir kart çek. 1 ile 6 arasındaki değeri kaç kare ilerleyeceğindir. Soru ise her zaman kendi seviyendedir — kolay, orta ya da uzman — başta bütün kartların için seçtiğin seviye.",
+  id="Pada giliranmu, ambil satu kartu. Nilainya, 1 sampai 6, adalah jumlah petak yang kamu tempuh. Pertanyaannya selalu sesuai tingkatmu — mudah, menengah, atau ahli — yang dipilih di awal untuk semua kartumu.",
+  ur="اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، خانوں کی تعداد ہے۔ سوال ہمیشہ آپ کے اپنے درجے کا ہوتا ہے — آسان، درمیانہ یا ماہر — جو شروع میں آپ کے تمام کارڈز کے لیے چنا جاتا ہے۔",
+  ms="Pada giliran anda, cabut sekeping kad. Nilainya, 1 hingga 6, ialah bilangan petak. Soalannya sentiasa pada tahap anda — mudah, sederhana atau pakar — yang dipilih pada permulaan untuk semua kad anda.",
+  it="Al tuo turno pesca una carta. Il suo valore, da 1 a 6, è il numero di caselle. La domanda è sempre del tuo livello — facile, intermedio o esperto — scelto all'inizio per tutte le tue carte.",
+  nl="Trek bij jouw beurt een kaart. De waarde, 1 tot 6, is het aantal vakjes. De vraag is altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin voor al je kaarten kiest.")
 
 s("ruleAnswerToAdvanceTitle", "Rules step 2 title",
   fr="Réponds pour avancer", en="Answer to advance", ar="أجب لتتقدم",
@@ -1259,27 +1498,67 @@ s("ruleEscalierBody", "Rules step 3 body",
   it="Dopo un giro completo del tabellone, il tuo cavallo sale i cinque gradini della sua scala verso La Mecca. Lì nessuno può più raggiungerlo.",
   nl="Na een volledige ronde beklimt je paard de vijf treden van zijn trap naar Mekka. Daar kan niemand het nog inhalen.")
 
+s("ruleExitTitle", "Rules step: leaving the stable on a 6",
+  fr="Sortir de l'écurie", en="Leaving the stable", ar="الخروج من الإسطبل",
+  es="Salir del establo", pt="Sair do estábulo", de="Den Stall verlassen",
+  tr="Ahırdan çıkmak", id="Keluar dari kandang", ur="اصطبل سے نکلنا",
+  ms="Keluar dari kandang", it="Uscire dalla stalla", nl="De stal verlaten")
+
+s("ruleExitBody", "Rules step body: four horses, exit on a 6, the choice",
+  fr="Chaque joueur a quatre chevaux à l'écurie. Un cheval ne sort que sur un 6 : réponds juste et il se place sur sa case de départ — et comme le 6 fait rejouer, il repart aussitôt. Si tu as déjà un cheval en course, tu choisis : en sortir un autre, ou avancer.",
+  en="Each player has four horses in the stable. A horse comes out only on a 6: answer correctly and it takes its start square — and since a 6 plays again, it rides right away. If you already have a horse on the course, you choose: bring another out, or ride.",
+  ar="لكل لاعب أربعة أحصنة في الإسطبل. لا يخرج الحصان إلا بالرقم 6: أجب إجابة صحيحة ليقف على مربع انطلاقه — ولأن الرقم 6 يعيد اللعب، ينطلق فورًا. وإن كان لديك حصان في السباق، فأنت تختار: إخراج آخر أو التقدّم.",
+  es="Cada jugador tiene cuatro caballos en el establo. Un caballo solo sale con un 6: responde bien y ocupará su casilla de salida; y como el 6 repite turno, arranca enseguida. Si ya tienes un caballo en carrera, eliges: sacar otro o avanzar.",
+  pt="Cada jogador tem quatro cavalos no estábulo. Um cavalo só sai com um 6: responda certo e ele ocupa a casa de partida — e como o 6 joga de novo, ele parte na hora. Se você já tem um cavalo na pista, escolhe: tirar outro ou avançar.",
+  de="Jeder Spieler hat vier Pferde im Stall. Ein Pferd kommt nur mit einer 6 heraus: Antworte richtig, und es stellt sich auf sein Startfeld – und weil die 6 noch einmal zieht, reitet es gleich los. Hast du schon ein Pferd auf der Bahn, wählst du: ein weiteres herausholen oder ziehen.",
+  tr="Her oyuncunun ahırda dört atı vardır. Bir at yalnızca 6 ile çıkar: doğru cevapla, başlangıç karesine yerleşsin — 6 yeniden oynattığı için hemen yola çıkar. Pistte zaten bir atın varsa seçersin: bir at daha çıkar ya da ilerle.",
+  id="Setiap pemain punya empat kuda di kandang. Kuda hanya keluar dengan angka 6: jawab dengan benar dan ia menempati petak start — dan karena 6 memberi giliran lagi, ia langsung berlari. Jika sudah ada kudamu di lintasan, kamu memilih: keluarkan satu lagi, atau maju.",
+  ur="ہر کھلاڑی کے اصطبل میں چار گھوڑے ہیں۔ گھوڑا صرف 6 پر نکلتا ہے: درست جواب دیں اور وہ اپنے شروعاتی خانے پر آ جائے گا — اور چونکہ 6 دوبارہ کھیلنے دیتا ہے، وہ فوراً چل پڑتا ہے۔ اگر آپ کا کوئی گھوڑا پہلے سے دوڑ میں ہے تو آپ چنتے ہیں: ایک اور نکالیں یا آگے بڑھیں۔",
+  ms="Setiap pemain ada empat ekor kuda di kandang. Kuda hanya keluar dengan 6: jawab dengan betul dan ia menduduki petak permulaannya — dan kerana 6 membolehkan anda bermain lagi, ia terus berlari. Jika anda sudah ada kuda di litar, anda pilih: keluarkan seekor lagi, atau maju.",
+  it="Ogni giocatore ha quattro cavalli nella stalla. Un cavallo esce solo con un 6: rispondi bene e prende la sua casella di partenza — e siccome il 6 fa rigiocare, parte subito. Se hai già un cavallo in gara, scegli: farne uscire un altro, o avanzare.",
+  nl="Elke speler heeft vier paarden in de stal. Een paard komt alleen naar buiten met een 6: antwoord goed en het neemt zijn startvak in – en omdat een 6 opnieuw speelt, rijdt het meteen door. Heb je al een paard op de baan, dan kies je: nog een naar buiten halen, of rijden.")
+
+s("ruleSixTitle", "Rules step: a 6 grants another draw",
+  fr="Le 6 fait rejouer", en="A 6 plays again", ar="الرقم 6 يعيد اللعب",
+  es="El 6 repite turno", pt="O 6 joga de novo", de="Die 6 zieht noch einmal",
+  tr="6 yeniden oynatır", id="Angka 6 main lagi", ur="6 دوبارہ کھیل",
+  ms="6 bermain lagi", it="Il 6 fa rigiocare", nl="Een 6 speelt opnieuw")
+
+s("ruleSixBody", "Rules step body: replay on 6, no two own horses on one square",
+  fr="Comme au dé : quand tu pioches un 6, tu rejoues après ton tour, que ta réponse soit bonne ou non. Et deux de tes chevaux ne peuvent jamais partager la même case.",
+  en="Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.",
+  ar="كما مع النرد: حين تسحب 6 تلعب مجددًا بعد دورك، سواء أصبت أم لا. ولا يمكن لحصانين من أحصنتك أن يتشاركا المربع نفسه أبدًا.",
+  es="Como con el dado: cuando robas un 6, vuelves a jugar después de tu turno, acertaras o no. Y dos de tus caballos nunca pueden compartir casilla.",
+  pt="Como no dado: quando você puxa um 6, joga de novo depois da sua vez, acertando ou não. E dois cavalos seus nunca dividem a mesma casa.",
+  de="Wie beim Würfel: Ziehst du eine 6, bist du nach deinem Zug noch einmal dran, ob deine Antwort stimmte oder nicht. Und zwei deiner Pferde teilen sich nie ein Feld.",
+  tr="Zardaki gibi: 6 çektiğinde, cevabın doğru olsun olmasın, turundan sonra yeniden oynarsın. Ve iki atın asla aynı karede duramaz.",
+  id="Seperti dadu: saat mengambil 6, kamu main lagi setelah giliranmu, benar atau salah jawabannya. Dan dua kudamu tak pernah berbagi satu petak.",
+  ur="پانسے کی طرح: جب آپ 6 نکالیں تو اپنی باری کے بعد دوبارہ کھیلتے ہیں، جواب درست ہو یا نہ ہو۔ اور آپ کے دو گھوڑے کبھی ایک خانے میں نہیں ہو سکتے۔",
+  ms="Seperti dadu: apabila anda mencabut 6, anda bermain lagi selepas giliran anda, betul atau tidak jawapannya. Dan dua ekor kuda anda tidak pernah berkongsi petak.",
+  it="Come col dado: quando peschi un 6 giochi di nuovo dopo il tuo turno, che la risposta sia giusta o no. E due dei tuoi cavalli non possono mai condividere una casella.",
+  nl="Net als met de dobbelsteen: trek je een 6, dan speel je na je beurt nog een keer, of je antwoord nu goed was of niet. En twee van je eigen paarden delen nooit een vak.")
+
 s("ruleCaptureTitle", "Rules step 4 title",
-  fr="Dépasser et renvoyer", en="Overtake and send home", ar="التجاوز والإعادة",
-  es="Adelantar y enviar a casa", pt="Ultrapassar e mandar de volta",
-  de="Überholen und heimschicken", tr="Geç ve ahıra yolla",
-  id="Menyalip dan memulangkan", ur="آگے نکلیں اور واپس بھیجیں",
-  ms="Memintas dan menghantar pulang", it="Sorpassa e rimanda a casa",
-  nl="Inhalen en naar huis sturen")
+  fr="Capturer et renvoyer", en="Capture and send home", ar="الأسر والإعادة",
+  es="Capturar y enviar a casa", pt="Capturar e mandar de volta",
+  de="Schlagen und heimschicken", tr="Yakala ve ahıra yolla",
+  id="Menangkap dan memulangkan", ur="پکڑیں اور واپس بھیجیں",
+  ms="Menangkap dan menghantar pulang", it="Cattura e rimanda a casa",
+  nl="Slaan en naar huis sturen")
 
 s("ruleCaptureBody", "Rules step 4 body",
-  fr="Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir.",
-  en="Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.",
-  ar="الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة.",
-  es="Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber.",
-  pt="Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber.",
-  de="Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild.",
-  tr="Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa.",
-  id="Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan.",
-  ur="حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔",
-  ms="Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu.",
-  it="Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un'oasi o quel cavallo porti uno scudo del sapere.",
-  nl="Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt.")
+  fr="Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. Un cheval qui sort de l'écurie capture toujours sur sa case de départ.",
+  en="Landing exactly on an opponent's horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.",
+  ar="الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.",
+  es="Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. Un caballo que sale del establo siempre captura en su casilla de salida.",
+  pt="Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. Um cavalo que sai do estábulo sempre captura na sua casa de partida.",
+  de="Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.",
+  tr="Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.",
+  id="Mendarat tepat di kuda lawan mengirimnya kembali dengan tenang ke kandang — kecuali petaknya oasis, atau kuda itu membawa perisai pengetahuan. Kuda yang keluar dari kandang selalu menangkap di petak start-nya.",
+  ur="حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔",
+  ms="Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu. Kuda yang keluar dari kandang sentiasa menangkap di petak permulaannya.",
+  it="Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un'oasi o quel cavallo porti uno scudo del sapere. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.",
+  nl="Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Een paard dat de stal verlaat, slaat altijd op zijn startvak.")
 
 s("ruleStreakTitle", "Rules step 5 title",
   fr="L'élan du savoir", en="The knowledge streak", ar="اندفاع المعرفة",

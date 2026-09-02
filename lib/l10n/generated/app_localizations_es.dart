@@ -90,8 +90,9 @@ class AppLocalizationsEs extends AppLocalizations {
       'Todo el banco de preguntas, cada una con su fuente';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Los seis niveles de dificultad, del más fácil al más difícil';
+  String premiumBenefitUnlimited(int count) {
+    return 'Partidas ilimitadas, hasta La Meca (la versión gratuita se detiene tras $count robos)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -535,25 +536,134 @@ class AppLocalizationsEs extends AppLocalizations {
   String get outcomeStayed => 'Tu caballo se queda. No pierdes nada.';
 
   @override
-  String get outcomeCaptured => '¡Adelantas a un rival!';
+  String get outcomeCaptured => '¡Capturas un caballo rival!';
+
+  @override
+  String get outcomeExited => '¡Tu caballo sale del establo!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Esta carta no puede mover ningún caballo. ¡Siguiente turno!';
+
+  @override
+  String get noExitHint => 'Necesitas un 6 para sacar un caballo del establo.';
+
+  @override
+  String get bonusTurnHint => 'Turno extra: ¡el 6 te deja jugar otra vez!';
+
+  @override
+  String get celebrateSixTitle => '¡SEIS!';
+
+  @override
+  String get celebrateSixBody => 'Volverás a robar después de este turno.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Un caballo puede salir, ¡y volverás a jugar!';
+
+  @override
+  String get celebrateExitTitle => '¡Salida!';
+
+  @override
+  String get celebrateExitBody => 'Un caballo puede salir del establo.';
+
+  @override
+  String get celebrateCaptureTitle => '¡Captura!';
+
+  @override
+  String get celebrateCaptureBody => 'El caballo rival vuelve a su establo.';
+
+  @override
+  String get celebrateCapturedTitle => 'Capturado…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Tu caballo vuelve al establo. Saldrá otra vez con un 6.';
+
+  @override
+  String get celebrateArrivalTitle => '¡La Meca!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Tu caballo ha llegado. ¡Una última pregunta para validarlo!';
+
+  @override
+  String get freeLimitTitle => 'Fin de la carrera gratuita';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'En cabeza: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'La versión gratuita se detiene tras $count robos. Con Premium, la carrera llega hasta La Meca.';
+  }
+
+  @override
+  String get freeLimitCta => 'Desbloquear la carrera ilimitada';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Robos: $count de $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return '¿Qué haces con este $count?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Sacar un caballo del establo';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Caballo $number: avanzar $count';
+  }
+
+  @override
+  String get moveHintCapture => '¡captura!';
+
+  @override
+  String get moveHintFinish => '¡llegada!';
+
+  @override
+  String get moveHintOasis => 'oasis';
+
+  @override
+  String opponentExits(String name) {
+    return '¡$name saca un caballo!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name no puede mover nada.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '¡$name sacó un 6 y vuelve a jugar!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '¡$name captura un caballo!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'El escudo protegió al caballo.';
 
   @override
-  String get playerProfile => 'Nivel del jugador';
+  String get playerProfile => 'Nivel de las preguntas';
 
   @override
-  String get profileChild => 'Niño';
+  String get levelEasy => 'Fácil';
 
   @override
-  String get profileDiscovery => 'Descubrimiento';
+  String get levelIntermediate => 'Intermedio';
 
   @override
-  String get profileIntermediate => 'Intermedio';
-
-  @override
-  String get profileAdvanced => 'Avanzado';
+  String get levelExpert => 'Experto';
 
   @override
   String get raceRulesUpdatedTitle => 'Las reglas de la carrera han mejorado';
@@ -573,7 +683,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'En tu turno, roba una carta. Su valor, de 1 a 6, es a la vez cuántas casillas avanzas y lo difícil que es la pregunta: 1 la más fácil, 6 la más difícil.';
+      'En tu turno, roba una carta. Su valor, de 1 a 6, es cuántas casillas avanzas. La pregunta siempre es de tu nivel —fácil, intermedio o experto—, elegido al principio para todas tus cartas.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responde para avanzar';
@@ -590,11 +700,25 @@ class AppLocalizationsEs extends AppLocalizations {
       'Tras una vuelta completa al tablero, tu caballo sube los cinco escalones de su escalera hacia La Meca. Allí ya nadie puede alcanzarlo.';
 
   @override
-  String get ruleCaptureTitle => 'Adelantar y enviar a casa';
+  String get ruleExitTitle => 'Salir del establo';
+
+  @override
+  String get ruleExitBody =>
+      'Cada jugador tiene cuatro caballos en el establo. Un caballo solo sale con un 6: responde bien y ocupará su casilla de salida; y como el 6 repite turno, arranca enseguida. Si ya tienes un caballo en carrera, eliges: sacar otro o avanzar.';
+
+  @override
+  String get ruleSixTitle => 'El 6 repite turno';
+
+  @override
+  String get ruleSixBody =>
+      'Como con el dado: cuando robas un 6, vuelves a jugar después de tu turno, acertaras o no. Y dos de tus caballos nunca pueden compartir casilla.';
+
+  @override
+  String get ruleCaptureTitle => 'Capturar y enviar a casa';
 
   @override
   String get ruleCaptureBody =>
-      'Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber.';
+      'Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. Un caballo que sale del establo siempre captura en su casilla de salida.';
 
   @override
   String get ruleStreakTitle => 'El impulso del saber';

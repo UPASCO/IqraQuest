@@ -5,15 +5,11 @@ import 'package:iqraquest/models/question.dart';
 import 'package:iqraquest/models/question_category.dart';
 import 'package:iqraquest/services/question_deck.dart';
 
-Question q(String id, int value) => Question(
+Question q(String id, QuestionDifficulty difficulty) => Question(
   id: id,
   category: QuestionCategory.faith,
-  difficulty: switch (value) {
-    1 || 2 => QuestionDifficulty.easy,
-    3 || 4 => QuestionDifficulty.medium,
-    _ => QuestionDifficulty.hard,
-  },
-  value: value,
+  difficulty: difficulty,
+  value: 1,
   ageLevel: '7+',
   question: 'q$id',
   answers: const ['a', 'b', 'c', 'd'],
@@ -28,79 +24,109 @@ Question q(String id, int value) => Question(
   isFree: true,
 );
 
-/// A bank shaped like the real one: far more mid-value questions than
-/// high-value ones. Drawing must NOT inherit that skew.
+/// A bank shaped like the real one: far more mid-level questions than
+/// expert ones. The die must NOT inherit that skew, and a rider must
+/// only ever be asked at their own level.
 List<Question> lopsidedPool() => [
-  for (var i = 0; i < 2; i++) q('v1_$i', 1),
-  for (var i = 0; i < 3; i++) q('v2_$i', 2),
-  for (var i = 0; i < 29; i++) q('v3_$i', 3),
-  for (var i = 0; i < 28; i++) q('v4_$i', 4),
-  for (var i = 0; i < 2; i++) q('v5_$i', 5),
-  q('v6_0', 6),
+  for (var i = 0; i < 5; i++) q('e_$i', QuestionDifficulty.easy),
+  for (var i = 0; i < 57; i++) q('m_$i', QuestionDifficulty.medium),
+  for (var i = 0; i < 3; i++) q('h_$i', QuestionDifficulty.hard),
 ];
 
 void main() {
   group('QuestionDeck', () {
-    test('every value 1..6 can be drawn', () {
+    test('the die has six faces whatever the bank holds', () {
       final deck = QuestionDeck(pool: lopsidedPool(), random: Random(7));
       expect(deck.availableValues, [1, 2, 3, 4, 5, 6]);
+      expect(deck.availableLevels, QuestionDifficulty.values);
     });
 
-    test('the drawn value is uniform across 1..6', () {
-      // 29 questions of value 3 against 1 of value 6: a single shuffled
-      // stack would roll a 3 twenty-nine times as often. The deck has to
-      // behave like a fair die instead.
+    test('the drawn value is uniform across 1..6, at every level', () {
       final deck = QuestionDeck(pool: lopsidedPool(), random: Random(42));
-      final counts = <int, int>{for (var v = 1; v <= 6; v++) v: 0};
-      const draws = 6000;
-      for (var i = 0; i < draws; i++) {
-        final card = deck.draw()!;
-        counts[card.value] = counts[card.value]! + 1;
-      }
-      const expected = draws / 6;
-      for (var v = 1; v <= 6; v++) {
-        expect(
-          (counts[v]! - expected).abs() / expected,
-          lessThan(0.15),
-          reason: 'value $v came up ${counts[v]} times, expected about $expected',
-        );
+      for (final level in QuestionDifficulty.values) {
+        final counts = <int, int>{for (var v = 1; v <= 6; v++) v: 0};
+        const draws = 6000;
+        for (var i = 0; i < draws; i++) {
+          final card = deck.draw(level)!;
+          counts[card.value] = counts[card.value]! + 1;
+        }
+        const expected = draws / 6;
+        for (var v = 1; v <= 6; v++) {
+          expect(
+            (counts[v]! - expected).abs() / expected,
+            lessThan(0.15),
+            reason:
+                '$level: value $v came up ${counts[v]} times, expected about $expected',
+          );
+        }
       }
     });
 
-    test('a value does not repeat a question until its pile is spent', () {
+    test('the question is always at the level asked for, whatever the value', () {
       final deck = QuestionDeck(pool: lopsidedPool(), random: Random(3));
-      // Value 2 holds exactly three questions, so three consecutive
-      // draws of that value must all be different.
+      for (final level in QuestionDifficulty.values) {
+        for (var i = 0; i < 40; i++) {
+          final card = deck.draw(level)!;
+          expect(
+            card.question.difficulty,
+            level,
+            reason:
+                'a $level rider drew a ${card.question.difficulty} question on a ${card.value}',
+          );
+        }
+      }
+    });
+
+    test('a level does not repeat a question until its pile is spent', () {
+      final deck = QuestionDeck(pool: lopsidedPool(), random: Random(3));
+      // The hard pile holds exactly three questions, so three
+      // consecutive expert draws must all be different.
       final seen = <String>{};
       for (var i = 0; i < 3; i++) {
-        final card = deck.drawValue(2)!;
-        expect(seen.add(card.id), isTrue, reason: '${card.id} repeated early');
+        final card = deck.draw(QuestionDifficulty.hard)!;
+        expect(
+          seen.add(card.question.id),
+          isTrue,
+          reason: '${card.question.id} repeated early',
+        );
       }
       // The fourth draw reshuffles and may legitimately repeat.
-      expect(deck.drawValue(2), isNotNull);
+      expect(deck.draw(QuestionDifficulty.hard), isNotNull);
     });
 
     test('a spent pile refills instead of running dry', () {
-      final deck = QuestionDeck(pool: [q('only', 6)], random: Random(1));
+      final deck = QuestionDeck(
+        pool: [q('only', QuestionDifficulty.hard)],
+        random: Random(1),
+      );
       for (var i = 0; i < 5; i++) {
-        expect(deck.drawValue(6)?.id, 'only');
+        expect(deck.draw(QuestionDifficulty.hard)?.question.id, 'only');
       }
+    });
+
+    test('a level the bank does not hold falls back to the nearest one', () {
+      final deck = QuestionDeck(
+        pool: [
+          q('a', QuestionDifficulty.easy),
+          q('b', QuestionDifficulty.medium),
+        ],
+        random: Random(1),
+      );
+      expect(deck.availableLevels, [
+        QuestionDifficulty.easy,
+        QuestionDifficulty.medium,
+      ]);
+      expect(
+        deck.draw(QuestionDifficulty.hard)!.question.difficulty,
+        QuestionDifficulty.medium,
+      );
     });
 
     test('an empty pool draws nothing rather than throwing', () {
       final deck = QuestionDeck(pool: const [], random: Random(1));
       expect(deck.isEmpty, isTrue);
-      expect(deck.draw(), isNull);
-      expect(deck.drawValue(3), isNull);
-    });
-
-    test('a value absent from the bank is never offered', () {
-      final deck = QuestionDeck(pool: [q('a', 1), q('b', 4)], random: Random(1));
-      expect(deck.availableValues, [1, 4]);
-      expect(deck.drawValue(6), isNull);
-      for (var i = 0; i < 50; i++) {
-        expect([1, 4], contains(deck.draw()!.value));
-      }
+      expect(deck.draw(QuestionDifficulty.easy), isNull);
+      expect(deck.drawQuestion(QuestionDifficulty.medium), isNull);
     });
   });
 }

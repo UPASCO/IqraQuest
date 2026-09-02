@@ -1867,23 +1867,25 @@ def assign_card_values(questions):
     return values
 
 
-def select_free_ids(questions, values, size=21):
-    """Free-tier ids, spread across all six card values.
+def select_free_ids(questions, values, size=50):
+    """Free-tier ids: fifty questions, spread over the three levels in
+    the proportion the bank holds them.
 
-    A free player rolls the same six-sided die as everyone else, so the
-    free bank must hold at least one question of every value — otherwise
-    a value simply never comes up. Dealing round-robin over the values
-    guarantees that and keeps the free tier evenly graded.
+    The free edition deals at the rider's chosen level, so every level
+    needs a real pile of free questions — a level with one free question
+    would ask it every turn. Round-robin over the levels, in stable id
+    order, keeps the free tier graded like the whole bank.
     """
-    by_value = {}
+    by_level = {}
     for q in questions:
-        by_value.setdefault(values[q["id"]], []).append(q["id"])
-    for ids in by_value.values():
+        by_level.setdefault(q["difficulty"], []).append(q["id"])
+    for ids in by_level.values():
         ids.sort()
+    levels = ["easy", "medium", "hard"]
     free, i = [], 0
-    while len(free) < size and i < size * 6:
-        value, rank = 1 + (i % 6), i // 6
-        pool = by_value.get(value, [])
+    while len(free) < size and i < size * 3:
+        level, rank = levels[i % 3], i // 3
+        pool = by_level.get(level, [])
         if rank < len(pool):
             free.append(pool[rank])
         i += 1
@@ -1950,15 +1952,16 @@ def write_output():
                     "source_reference", "verification_status", "consensus_status"])
         w.writerows(csv_rows)
 
-    per_value = {v: sum(1 for m in master if m["value"] == v) for v in range(1, 7)}
-    free_per_value = {
-        v: sum(1 for m in master if m["value"] == v and m["isFree"]) for v in range(1, 7)
+    per_level = {d: sum(1 for m in master if m["difficulty"] == d) for d in ("easy", "medium", "hard")}
+    free_per_level = {
+        d: sum(1 for m in master if m["difficulty"] == d and m["isFree"])
+        for d in ("easy", "medium", "hard")
     }
-    print("Cards per value:", per_value)
-    print("Free cards per value:", free_per_value)
-    assert all(free_per_value[v] > 0 for v in range(1, 7)), (
-        "every card value needs at least one free question, or that value "
-        "can never be drawn on the free tier"
+    print("Questions per level:", per_level)
+    print("Free questions per level:", free_per_level)
+    assert all(free_per_level[d] >= 5 for d in free_per_level), (
+        "every level needs a real pile of free questions, or the free "
+        "edition asks the same one every turn"
     )
     print("Wrote", len(master), "questions to", OUT_ROOT)
     print("Wrote source registry with", len(registry), "unique sources")

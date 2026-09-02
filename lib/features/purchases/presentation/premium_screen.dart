@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/providers.dart';
 import '../../../features/game/application/game_controller.dart';
 import '../../../l10n/generated/app_localizations.dart';
+import '../../../models/game_state.dart';
 import '../../../services/purchase_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/geometric_motif_painter.dart';
@@ -112,65 +113,80 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                   text: l10n.premiumBenefitBank,
                 ),
                 _BenefitRow(
-                  icon: Icons.stairs_rounded,
-                  text: l10n.premiumBenefitDifficulty,
+                  icon: Icons.all_inclusive_rounded,
+                  text: l10n.premiumBenefitUnlimited(GameState.freeDrawLimit),
                 ),
                 _BenefitRow(
                   icon: Icons.family_restroom_rounded,
                   text: l10n.premiumBenefitFamily,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 8),
                 if (isPremium)
                   Text(
                     l10n.purchaseSuccess,
                     style: Theme.of(context).textTheme.titleMedium,
-                  )
-                else ...[
-                  ElevatedButton(
-                    onPressed:
-                        product == null ||
-                            _uiState == PurchaseUiState.purchasing
-                        ? null
-                        : () async {
-                            if (await ParentalGate.show(context)) {
-                              purchases.buyPremium();
-                            }
-                          },
-                    // Never hardcode a price — always read it from the
-                    // Store's own ProductDetails (spec §73–§74).
-                    child: ButtonLabel(
-                      product != null
-                          ? l10n.premiumCta(product.price)
-                          : _uiState == PurchaseUiState.storeUnavailable ||
-                                _uiState == PurchaseUiState.error
-                          ? l10n.storeUnavailableCta
-                          : l10n.storeLoading,
-                    ),
                   ),
-                  const SizedBox(height: 12),
-                  OutlinedButton(
-                    onPressed: () async {
-                      if (await ParentalGate.show(context)) {
-                        purchases.restorePurchases();
-                      }
-                    },
-                    child: ButtonLabel(l10n.restorePurchases),
-                  ),
-                  if (_uiState == PurchaseUiState.storeUnavailable ||
-                      _uiState == PurchaseUiState.error) ...[
-                    const SizedBox(height: 16),
-                    Text(
-                      l10n.purchaseError,
-                      style: TextStyle(color: colors.error),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ],
               ],
             ),
           ),
         ),
       ),
+      // The buy and restore buttons are pinned under the pitch: a parent
+      // reads the three lines, and the button is exactly where the
+      // thumb already is, whatever the phone or the text size.
+      bottomNavigationBar: isPremium
+          ? null
+          : SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ElevatedButton(
+                      onPressed:
+                          product == null ||
+                              _uiState == PurchaseUiState.purchasing
+                          ? null
+                          : () async {
+                              if (await ParentalGate.show(context)) {
+                                purchases.buyPremium();
+                              }
+                            },
+                      // Never hardcode a price — always read it from the
+                      // Store's own ProductDetails (spec §73–§74).
+                      child: ButtonLabel(
+                        product != null
+                            ? l10n.premiumCta(product.price)
+                            : _uiState == PurchaseUiState.storeUnavailable ||
+                                  _uiState == PurchaseUiState.error
+                            ? l10n.storeUnavailableCta
+                            : l10n.storeLoading,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    OutlinedButton(
+                      onPressed: () async {
+                        if (await ParentalGate.show(context)) {
+                          purchases.restorePurchases();
+                        }
+                      },
+                      child: ButtonLabel(l10n.restorePurchases),
+                    ),
+                    if (_uiState == PurchaseUiState.storeUnavailable ||
+                        _uiState == PurchaseUiState.error) ...[
+                      const SizedBox(height: 12),
+                      Text(
+                        l10n.purchaseError,
+                        style: TextStyle(color: colors.error),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }

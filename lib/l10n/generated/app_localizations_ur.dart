@@ -90,8 +90,9 @@ class AppLocalizationsUr extends AppLocalizations {
       'پورا سوالات کا ذخیرہ، ہر ایک اپنے ماخذ کے ساتھ';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'چھ کے چھ مشکل درجے، آسان ترین سے مشکل ترین تک';
+  String premiumBenefitUnlimited(int count) {
+    return 'لامحدود کھیل، مکہ تک (مفت ورژن $count کارڈ کے بعد رک جاتا ہے)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -529,25 +530,134 @@ class AppLocalizationsUr extends AppLocalizations {
   String get outcomeStayed => 'آپ کا گھوڑا وہیں رہا۔ کچھ نہیں گیا۔';
 
   @override
-  String get outcomeCaptured => 'آپ نے حریف کو پیچھے چھوڑا!';
+  String get outcomeCaptured => 'آپ نے حریف کا گھوڑا پکڑ لیا!';
+
+  @override
+  String get outcomeExited => 'آپ کا گھوڑا اصطبل سے نکلا!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'یہ کارڈ کسی گھوڑے کو نہیں ہلا سکتا۔ اگلی باری!';
+
+  @override
+  String get noExitHint => 'اصطبل سے گھوڑا نکالنے کے لیے 6 چاہیے۔';
+
+  @override
+  String get bonusTurnHint => 'بونس باری: 6 آپ کو دوبارہ کھیلنے دیتا ہے!';
+
+  @override
+  String get celebrateSixTitle => 'چھ!';
+
+  @override
+  String get celebrateSixBody => 'اس باری کے بعد آپ دوبارہ کارڈ نکالیں گے۔';
+
+  @override
+  String get celebrateSixExitBody =>
+      'ایک گھوڑا نکل سکتا ہے — اور آپ دوبارہ کھیلیں گے!';
+
+  @override
+  String get celebrateExitTitle => 'دروازہ کھلا!';
+
+  @override
+  String get celebrateExitBody => 'ایک گھوڑا اصطبل سے نکل سکتا ہے۔';
+
+  @override
+  String get celebrateCaptureTitle => 'پکڑ لیا!';
+
+  @override
+  String get celebrateCaptureBody => 'حریف کا گھوڑا اپنے اصطبل واپس جاتا ہے۔';
+
+  @override
+  String get celebrateCapturedTitle => 'پکڑا گیا…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'آپ کا گھوڑا اصطبل واپس گیا۔ 6 اسے پھر نکالے گا۔';
+
+  @override
+  String get celebrateArrivalTitle => 'مکہ!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'آپ کا گھوڑا پہنچ گیا۔ توثیق کے لیے ایک آخری سوال!';
+
+  @override
+  String get freeLimitTitle => 'مفت ریس کا اختتام';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'آگے: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'مفت ورژن $count کارڈ کے بعد رک جاتا ہے۔ پریمیم کے ساتھ ریس مکہ تک جاتی ہے۔';
+  }
+
+  @override
+  String get freeLimitCta => 'لامحدود ریس کھولیں';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'کارڈ: $max میں سے $count';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'اس $count کا کیا کریں گے؟';
+  }
+
+  @override
+  String get moveChoiceExit => 'اصطبل سے ایک گھوڑا نکالیں';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'گھوڑا $number: $count آگے';
+  }
+
+  @override
+  String get moveHintCapture => 'پکڑ!';
+
+  @override
+  String get moveHintFinish => 'منزل!';
+
+  @override
+  String get moveHintOasis => 'نخلستان';
+
+  @override
+  String opponentExits(String name) {
+    return '$name نے گھوڑا نکالا!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name کچھ نہیں ہلا سکتا۔';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name نے 6 نکالا اور دوبارہ کھیلتا ہے!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name نے گھوڑا پکڑ لیا!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'ڈھال نے گھوڑے کو بچا لیا۔';
 
   @override
-  String get playerProfile => 'کھلاڑی کا درجہ';
+  String get playerProfile => 'سوالات کا درجہ';
 
   @override
-  String get profileChild => 'بچہ';
+  String get levelEasy => 'آسان';
 
   @override
-  String get profileDiscovery => 'دریافت';
+  String get levelIntermediate => 'درمیانہ';
 
   @override
-  String get profileIntermediate => 'درمیانہ';
-
-  @override
-  String get profileAdvanced => 'اعلیٰ';
+  String get levelExpert => 'ماہر';
 
   @override
   String get raceRulesUpdatedTitle => 'دوڑ کے قواعد بہتر کر دیے گئے';
@@ -567,7 +677,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، بیک وقت خانوں کی تعداد اور سوال کی مشکل ہے: 1 سب سے آسان، 6 سب سے مشکل۔';
+      'اپنی باری پر ایک کارڈ نکالیں۔ اس کی قیمت، 1 سے 6 تک، خانوں کی تعداد ہے۔ سوال ہمیشہ آپ کے اپنے درجے کا ہوتا ہے — آسان، درمیانہ یا ماہر — جو شروع میں آپ کے تمام کارڈز کے لیے چنا جاتا ہے۔';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'آگے بڑھنے کے لیے جواب دیں';
@@ -584,11 +694,25 @@ class AppLocalizationsUr extends AppLocalizations {
       'پورے چکر کے بعد آپ کا گھوڑا اپنے زینے کی پانچ سیڑھیاں چڑھ کر مکہ پہنچتا ہے۔ وہاں اسے کوئی نہیں پکڑ سکتا۔';
 
   @override
-  String get ruleCaptureTitle => 'آگے نکلیں اور واپس بھیجیں';
+  String get ruleExitTitle => 'اصطبل سے نکلنا';
+
+  @override
+  String get ruleExitBody =>
+      'ہر کھلاڑی کے اصطبل میں چار گھوڑے ہیں۔ گھوڑا صرف 6 پر نکلتا ہے: درست جواب دیں اور وہ اپنے شروعاتی خانے پر آ جائے گا — اور چونکہ 6 دوبارہ کھیلنے دیتا ہے، وہ فوراً چل پڑتا ہے۔ اگر آپ کا کوئی گھوڑا پہلے سے دوڑ میں ہے تو آپ چنتے ہیں: ایک اور نکالیں یا آگے بڑھیں۔';
+
+  @override
+  String get ruleSixTitle => '6 دوبارہ کھیل';
+
+  @override
+  String get ruleSixBody =>
+      'پانسے کی طرح: جب آپ 6 نکالیں تو اپنی باری کے بعد دوبارہ کھیلتے ہیں، جواب درست ہو یا نہ ہو۔ اور آپ کے دو گھوڑے کبھی ایک خانے میں نہیں ہو سکتے۔';
+
+  @override
+  String get ruleCaptureTitle => 'پکڑیں اور واپس بھیجیں';
 
   @override
   String get ruleCaptureBody =>
-      'حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔';
+      'حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔';
 
   @override
   String get ruleStreakTitle => 'علم کی روانی';

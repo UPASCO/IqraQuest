@@ -138,6 +138,9 @@ GameState _gameInProgress() {
     currentPlayerIndex: 0,
     turnPhase: TurnPhase.selectingGait,
     askedQuestionIds: const {},
+    // The free edition's draw counter is one more pill in the HUD row.
+    maxDraws: GameState.freeDrawLimit,
+    drawCount: 12,
     startedAt: now,
     updatedAt: now,
   );

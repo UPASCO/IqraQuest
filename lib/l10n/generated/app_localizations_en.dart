@@ -90,8 +90,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'The whole question bank, each with its source';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'All six difficulty levels, from easiest to hardest';
+  String premiumBenefitUnlimited(int count) {
+    return 'Unlimited games, all the way to Mecca (the free edition stops after $count draws)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -534,25 +535,135 @@ class AppLocalizationsEn extends AppLocalizations {
   String get outcomeStayed => 'Your horse holds its ground. Nothing is lost.';
 
   @override
-  String get outcomeCaptured => 'You overtake an opponent!';
+  String get outcomeCaptured => 'You capture an opponent\'s horse!';
+
+  @override
+  String get outcomeExited => 'Your horse leaves the stable!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'This card can\'t move any horse. Next turn!';
+
+  @override
+  String get noExitHint => 'You need a 6 to bring a horse out of the stable.';
+
+  @override
+  String get bonusTurnHint => 'Bonus turn: the 6 lets you play again!';
+
+  @override
+  String get celebrateSixTitle => 'SIX!';
+
+  @override
+  String get celebrateSixBody => 'You\'ll draw again after this turn.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'A horse can come out — and you\'ll play again!';
+
+  @override
+  String get celebrateExitTitle => 'Gate open!';
+
+  @override
+  String get celebrateExitBody => 'A horse can leave the stable.';
+
+  @override
+  String get celebrateCaptureTitle => 'Captured!';
+
+  @override
+  String get celebrateCaptureBody =>
+      'The opponent\'s horse goes back to its stable.';
+
+  @override
+  String get celebrateCapturedTitle => 'Caught…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Your horse goes back to the stable. A 6 brings it out again.';
+
+  @override
+  String get celebrateArrivalTitle => 'Mecca!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Your horse has arrived. One last question to make it official!';
+
+  @override
+  String get freeLimitTitle => 'End of the free race';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'In the lead: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'The free edition stops after $count draws. With Premium, the race runs all the way to Mecca.';
+  }
+
+  @override
+  String get freeLimitCta => 'Unlock the unlimited race';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Draws: $count of $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'What will you do with this $count?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Bring a horse out of the stable';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Horse $number: ride $count ahead';
+  }
+
+  @override
+  String get moveHintCapture => 'capture!';
+
+  @override
+  String get moveHintFinish => 'finish!';
+
+  @override
+  String get moveHintOasis => 'oasis';
+
+  @override
+  String opponentExits(String name) {
+    return '$name brings a horse out!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name can\'t move anything.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name drew a 6 and plays again!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name captures a horse!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'The shield protected the horse.';
 
   @override
-  String get playerProfile => 'Player level';
+  String get playerProfile => 'Question level';
 
   @override
-  String get profileChild => 'Child';
+  String get levelEasy => 'Easy';
 
   @override
-  String get profileDiscovery => 'Discovery';
+  String get levelIntermediate => 'Intermediate';
 
   @override
-  String get profileIntermediate => 'Intermediate';
-
-  @override
-  String get profileAdvanced => 'Advanced';
+  String get levelExpert => 'Expert';
 
   @override
   String get raceRulesUpdatedTitle => 'The race rules have been improved';
@@ -572,7 +683,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'On your turn, draw a card. Its value, 1 to 6, is both how many squares you move and how hard the question is: 1 the easiest, 6 the hardest.';
+      'On your turn, draw a card. Its value, 1 to 6, is how many squares you move. The question is always at your own level — easy, intermediate or expert — chosen at the start for every card you draw.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Answer to advance';
@@ -589,11 +700,25 @@ class AppLocalizationsEn extends AppLocalizations {
       'After a full lap of the board, your horse climbs the five steps of its escalier to Mecca. Once there, no one can catch it.';
 
   @override
-  String get ruleCaptureTitle => 'Overtake and send home';
+  String get ruleExitTitle => 'Leaving the stable';
+
+  @override
+  String get ruleExitBody =>
+      'Each player has four horses in the stable. A horse comes out only on a 6: answer correctly and it takes its start square — and since a 6 plays again, it rides right away. If you already have a horse on the course, you choose: bring another out, or ride.';
+
+  @override
+  String get ruleSixTitle => 'A 6 plays again';
+
+  @override
+  String get ruleSixBody =>
+      'Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.';
+
+  @override
+  String get ruleCaptureTitle => 'Capture and send home';
 
   @override
   String get ruleCaptureBody =>
-      'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield.';
+      'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A horse leaving its stable always captures on its start square.';
 
   @override
   String get ruleStreakTitle => 'The knowledge streak';

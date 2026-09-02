@@ -89,8 +89,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumBenefitBank => 'Die ganze Fragensammlung, jede mit Quelle';
 
   @override
-  String get premiumBenefitDifficulty =>
-      'Alle sechs Schwierigkeitsstufen, von leicht bis schwer';
+  String premiumBenefitUnlimited(int count) {
+    return 'Unbegrenzte Spiele bis nach Mekka (die Gratisversion endet nach $count Zügen)';
+  }
 
   @override
   String get premiumBenefitFamily =>
@@ -532,25 +533,136 @@ class AppLocalizationsDe extends AppLocalizations {
   String get outcomeStayed => 'Dein Pferd bleibt stehen. Nichts geht verloren.';
 
   @override
-  String get outcomeCaptured => 'Du überholst einen Gegner!';
+  String get outcomeCaptured => 'Du schlägst ein gegnerisches Pferd!';
+
+  @override
+  String get outcomeExited => 'Dein Pferd verlässt den Stall!';
+
+  @override
+  String get outcomeNoLegalMove =>
+      'Diese Karte kann kein Pferd bewegen. Nächster Zug!';
+
+  @override
+  String get noExitHint =>
+      'Du brauchst eine 6, um ein Pferd aus dem Stall zu holen.';
+
+  @override
+  String get bonusTurnHint => 'Bonuszug: Die 6 lässt dich noch einmal ziehen!';
+
+  @override
+  String get celebrateSixTitle => 'SECHS!';
+
+  @override
+  String get celebrateSixBody => 'Nach diesem Zug ziehst du noch einmal.';
+
+  @override
+  String get celebrateSixExitBody =>
+      'Ein Pferd darf raus – und du ziehst noch einmal!';
+
+  @override
+  String get celebrateExitTitle => 'Tor auf!';
+
+  @override
+  String get celebrateExitBody => 'Ein Pferd darf den Stall verlassen.';
+
+  @override
+  String get celebrateCaptureTitle => 'Geschlagen!';
+
+  @override
+  String get celebrateCaptureBody =>
+      'Das gegnerische Pferd kehrt in seinen Stall zurück.';
+
+  @override
+  String get celebrateCapturedTitle => 'Erwischt…';
+
+  @override
+  String get celebrateCapturedBody =>
+      'Dein Pferd kehrt in den Stall zurück. Mit einer 6 kommt es wieder raus.';
+
+  @override
+  String get celebrateArrivalTitle => 'Mekka!';
+
+  @override
+  String get celebrateArrivalBody =>
+      'Dein Pferd ist angekommen. Eine letzte Frage macht es offiziell!';
+
+  @override
+  String get freeLimitTitle => 'Ende des Gratis-Rennens';
+
+  @override
+  String freeLimitLeader(String name) {
+    return 'In Führung: $name';
+  }
+
+  @override
+  String freeLimitBody(int count) {
+    return 'Die Gratisversion endet nach $count Zügen. Mit Premium geht das Rennen bis nach Mekka.';
+  }
+
+  @override
+  String get freeLimitCta => 'Unbegrenztes Rennen freischalten';
+
+  @override
+  String drawsCounter(int count, int max) {
+    return 'Züge: $count von $max';
+  }
+
+  @override
+  String moveChoiceTitle(int count) {
+    return 'Was machst du mit dieser $count?';
+  }
+
+  @override
+  String get moveChoiceExit => 'Ein Pferd aus dem Stall holen';
+
+  @override
+  String moveChoiceAdvance(int number, int count) {
+    return 'Pferd $number: $count vorrücken';
+  }
+
+  @override
+  String get moveHintCapture => 'schlagen!';
+
+  @override
+  String get moveHintFinish => 'Ziel!';
+
+  @override
+  String get moveHintOasis => 'Oase';
+
+  @override
+  String opponentExits(String name) {
+    return '$name holt ein Pferd raus!';
+  }
+
+  @override
+  String opponentNoMove(String name) {
+    return '$name kann nichts bewegen.';
+  }
+
+  @override
+  String opponentReplays(String name) {
+    return '$name hat eine 6 gezogen und ist noch einmal dran!';
+  }
+
+  @override
+  String opponentCaptured(String name) {
+    return '$name schlägt ein Pferd!';
+  }
 
   @override
   String get outcomeShieldBlocked => 'Das Schild hat das Pferd geschützt.';
 
   @override
-  String get playerProfile => 'Spielerstufe';
+  String get playerProfile => 'Fragenniveau';
 
   @override
-  String get profileChild => 'Kind';
+  String get levelEasy => 'Leicht';
 
   @override
-  String get profileDiscovery => 'Entdeckung';
+  String get levelIntermediate => 'Mittel';
 
   @override
-  String get profileIntermediate => 'Mittel';
-
-  @override
-  String get profileAdvanced => 'Fortgeschritten';
+  String get levelExpert => 'Experte';
 
   @override
   String get raceRulesUpdatedTitle => 'Die Rennregeln wurden verbessert';
@@ -570,7 +682,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist zugleich die Zahl der Felder und die Schwierigkeit der Frage: 1 die leichteste, 6 die schwerste.';
+      'Ziehe in deinem Zug eine Karte. Ihr Wert von 1 bis 6 ist die Zahl der Felder. Die Frage ist immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn für alle deine Karten gewählt hast.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antworte, um vorzurücken';
@@ -587,11 +699,25 @@ class AppLocalizationsDe extends AppLocalizations {
       'Nach einer vollen Runde steigt dein Pferd die fünf Stufen seiner Treppe nach Mekka hinauf. Dort kann es niemand mehr einholen.';
 
   @override
-  String get ruleCaptureTitle => 'Überholen und heimschicken';
+  String get ruleExitTitle => 'Den Stall verlassen';
+
+  @override
+  String get ruleExitBody =>
+      'Jeder Spieler hat vier Pferde im Stall. Ein Pferd kommt nur mit einer 6 heraus: Antworte richtig, und es stellt sich auf sein Startfeld – und weil die 6 noch einmal zieht, reitet es gleich los. Hast du schon ein Pferd auf der Bahn, wählst du: ein weiteres herausholen oder ziehen.';
+
+  @override
+  String get ruleSixTitle => 'Die 6 zieht noch einmal';
+
+  @override
+  String get ruleSixBody =>
+      'Wie beim Würfel: Ziehst du eine 6, bist du nach deinem Zug noch einmal dran, ob deine Antwort stimmte oder nicht. Und zwei deiner Pferde teilen sich nie ein Feld.';
+
+  @override
+  String get ruleCaptureTitle => 'Schlagen und heimschicken';
 
   @override
   String get ruleCaptureBody =>
-      'Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild.';
+      'Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.';
 
   @override
   String get ruleStreakTitle => 'Der Schwung des Wissens';

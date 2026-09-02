@@ -12,22 +12,33 @@ import 'turn_phase.dart';
 /// answered. Nothing moves until [GameEngine.applyAnswer] resolves it.
 @immutable
 class PendingGait {
-  const PendingGait({required this.horseIndex, required this.choice, this.usesGrandGallop = false});
+  const PendingGait({
+    required this.horseIndex,
+    required this.choice,
+    this.usesGrandGallop = false,
+    this.exitsStable = false,
+  });
 
   final int horseIndex;
   final MovementChoice choice;
   final bool usesGrandGallop;
 
+  /// The horse is leaving the stable: a correct answer puts it on its
+  /// start square rather than riding it the card's distance.
+  final bool exitsStable;
+
   factory PendingGait.fromJson(Map<String, dynamic> json) => PendingGait(
     horseIndex: json['horseIndex'] as int,
     choice: MovementChoice(json['steps'] as int),
     usesGrandGallop: json['usesGrandGallop'] as bool? ?? false,
+    exitsStable: json['exitsStable'] as bool? ?? false,
   );
 
   Map<String, dynamic> toJson() => {
     'horseIndex': horseIndex,
     'steps': choice.steps,
     'usesGrandGallop': usesGrandGallop,
+    'exitsStable': exitsStable,
   };
 }
 
@@ -56,7 +67,17 @@ class GameState {
     this.justUnlocked = const [],
     this.winnerId,
     this.freeBankExhausted = false,
+    this.drawnCard,
+    this.extraTurn = false,
+    this.isBonusTurn = false,
+    this.drawCount = 0,
+    this.maxDraws,
+    this.endedByDrawLimit = false,
   });
+
+  /// How many cards a free-edition game lasts. The race then stops on
+  /// the leader, and the results board says what Premium removes.
+  static const int freeDrawLimit = 50;
 
   /// Bumped when the save format changes incompatibly. Version 1 was the
   /// old dice-based engine; version 2 is the gait engine. The loader uses
@@ -106,6 +127,30 @@ class GameState {
   /// play continues uninterrupted, never paywalled mid-game.
   final bool freeBankExhausted;
 
+  /// The card drawn this turn, from the draw until the turn ends. It is
+  /// what the player is choosing a horse for, and what the opponent's
+  /// turn is narrated from.
+  final MovementChoice? drawnCard;
+
+  /// A 6 was drawn this turn: when the turn ends, the same player draws
+  /// again instead of handing over (the rule of the die, kept for the
+  /// deck).
+  final bool extraTurn;
+
+  /// This turn IS the second draw a 6 earned, so the table can say so.
+  final bool isBonusTurn;
+
+  /// Cards drawn since the game started, every player counted.
+  final int drawCount;
+
+  /// The free edition's ceiling on [drawCount]; null for Premium, whose
+  /// races run to Mecca.
+  final int? maxDraws;
+
+  /// The game ended because [maxDraws] was reached, not because a stable
+  /// arrived: the winner is the leader at that moment.
+  final bool endedByDrawLimit;
+
   final DateTime startedAt;
   final DateTime updatedAt;
 
@@ -127,6 +172,12 @@ class GameState {
     List<StreakReward>? justUnlocked,
     Object? winnerId = _unset,
     bool? freeBankExhausted,
+    Object? drawnCard = _unset,
+    bool? extraTurn,
+    bool? isBonusTurn,
+    int? drawCount,
+    Object? maxDraws = _unset,
+    bool? endedByDrawLimit,
     DateTime? updatedAt,
   }) {
     return GameState(
@@ -141,7 +192,9 @@ class GameState {
           ? this.currentQuestionId
           : currentQuestionId as String?,
       askedQuestionIds: askedQuestionIds ?? this.askedQuestionIds,
-      pendingGait: identical(pendingGait, _unset) ? this.pendingGait : pendingGait as PendingGait?,
+      pendingGait: identical(pendingGait, _unset)
+          ? this.pendingGait
+          : pendingGait as PendingGait?,
       pendingCellEffect: identical(pendingCellEffect, _unset)
           ? this.pendingCellEffect
           : pendingCellEffect as CellEffect?,
@@ -158,8 +211,18 @@ class GameState {
           ? this.lastMoveOutcome
           : lastMoveOutcome as MoveOutcome?,
       justUnlocked: justUnlocked ?? this.justUnlocked,
-      winnerId: identical(winnerId, _unset) ? this.winnerId : winnerId as String?,
+      winnerId: identical(winnerId, _unset)
+          ? this.winnerId
+          : winnerId as String?,
       freeBankExhausted: freeBankExhausted ?? this.freeBankExhausted,
+      drawnCard: identical(drawnCard, _unset)
+          ? this.drawnCard
+          : drawnCard as MovementChoice?,
+      extraTurn: extraTurn ?? this.extraTurn,
+      isBonusTurn: isBonusTurn ?? this.isBonusTurn,
+      drawCount: drawCount ?? this.drawCount,
+      maxDraws: identical(maxDraws, _unset) ? this.maxDraws : maxDraws as int?,
+      endedByDrawLimit: endedByDrawLimit ?? this.endedByDrawLimit,
       startedAt: startedAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -169,7 +232,9 @@ class GameState {
     gameId: json['gameId'] as String,
     gameMode: GameMode.values.byName(json['gameMode'] as String),
     gameVariant: GameVariant.values.byName(json['gameVariant'] as String),
-    circuitId: CircuitId.values.byName(json['circuitId'] as String? ?? CircuitId.oasisRoute.name),
+    circuitId: CircuitId.values.byName(
+      json['circuitId'] as String? ?? CircuitId.oasisRoute.name,
+    ),
     players: (json['players'] as List)
         .map((p) => Player.fromJson(p as Map<String, dynamic>))
         .toList(),
@@ -197,6 +262,14 @@ class GameState {
         : MoveOutcome.values.byName(json['lastMoveOutcome'] as String),
     winnerId: json['winnerId'] as String?,
     freeBankExhausted: json['freeBankExhausted'] as bool? ?? false,
+    drawnCard: json['drawnCard'] == null
+        ? null
+        : MovementChoice(json['drawnCard'] as int),
+    extraTurn: json['extraTurn'] as bool? ?? false,
+    isBonusTurn: json['isBonusTurn'] as bool? ?? false,
+    drawCount: json['drawCount'] as int? ?? 0,
+    maxDraws: json['maxDraws'] as int?,
+    endedByDrawLimit: json['endedByDrawLimit'] as bool? ?? false,
     startedAt: DateTime.parse(json['startedAt'] as String),
     updatedAt: DateTime.parse(json['updatedAt'] as String),
   );
@@ -221,6 +294,12 @@ class GameState {
     'lastMoveOutcome': lastMoveOutcome?.name,
     'winnerId': winnerId,
     'freeBankExhausted': freeBankExhausted,
+    'drawnCard': drawnCard?.steps,
+    'extraTurn': extraTurn,
+    'isBonusTurn': isBonusTurn,
+    'drawCount': drawCount,
+    'maxDraws': maxDraws,
+    'endedByDrawLimit': endedByDrawLimit,
     'startedAt': startedAt.toIso8601String(),
     'updatedAt': updatedAt.toIso8601String(),
   };
