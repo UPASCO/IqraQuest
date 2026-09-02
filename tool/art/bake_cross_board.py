@@ -39,7 +39,7 @@ OUT_ANCHORS = f"{ROOT}/lib/widgets/board/cross_anchors.g.dart"
 N = 15                  # the board is a 15x15 grid of cells
 SIZE = 1536             # final plate resolution, square
 SS = 2                  # supersample while drawing, then downsample
-MARGIN = 0.058 * SIZE
+MARGIN = 0.026 * SIZE  # a thin frame: the tiles, not the border, take the phone width
 CELL = (SIZE - 2 * MARGIN) / N
 
 # ---- palette ---------------------------------------------------------

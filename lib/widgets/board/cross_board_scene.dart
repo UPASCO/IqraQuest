@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -173,6 +174,16 @@ class _CrossBoardSceneState extends State<CrossBoardScene> {
 
         return Stack(
           children: [
+            // The table under the plate. A square board on a tall phone
+            // leaves a band above and below it; dressed as cloth, halo
+            // and cast shadow they read as the scene, not as leftover.
+            Positioned.fill(
+              child: CustomPaint(
+                painter: _TableBackdropPainter(
+                  plate: Rect.fromLTWH(left, top, side, side),
+                ),
+              ),
+            ),
             Positioned(
               left: left,
               top: top,
@@ -682,4 +693,86 @@ class _SelectRingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_SelectRingPainter old) => old.gold != gold;
+}
+
+/// The cloth the plate lies on, filling whatever the phone's aspect
+/// leaves around a square board: a vignetted emerald ground with a
+/// faint eight-point lattice, a warm halo spilling from under the
+/// plate, and the plate's own cast shadow. Painted once per layout —
+/// the pieces animate above it without ever repainting this layer.
+class _TableBackdropPainter extends CustomPainter {
+  const _TableBackdropPainter({required this.plate});
+
+  final Rect plate;
+
+  static const _clothLight = Color(0xFF0F4B39);
+  static const _clothDark = Color(0xFF07281F);
+  static const _gold = Color(0xFFE3B354);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final full = Offset.zero & size;
+    final unit = size.shortestSide;
+
+    canvas.drawRect(
+      full,
+      Paint()
+        ..shader = ui.Gradient.radial(
+          plate.center,
+          size.longestSide * 0.72,
+          const [_clothLight, _clothDark],
+        ),
+    );
+
+    // Lattice: a quiet grid of eight-point stars, the plate's own motif
+    // carried onto the cloth so the bands belong to the same object.
+    final cell = unit / 5;
+    final lattice = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.1
+      ..color = Colors.white.withValues(alpha: 0.05);
+    for (var y = cell / 2; y < size.height + cell; y += cell) {
+      for (var x = cell / 2; x < size.width + cell; x += cell) {
+        _star(canvas, Offset(x, y), cell * 0.30, lattice);
+      }
+    }
+
+    // Halo: the plate's gold frame warming the cloth around it.
+    canvas.drawRect(
+      plate.inflate(unit * 0.16),
+      Paint()
+        ..shader = ui.Gradient.radial(
+          plate.center,
+          plate.width * 0.82,
+          [_gold.withValues(alpha: 0.22), _gold.withValues(alpha: 0)],
+        ),
+    );
+
+    // Cast shadow, offset down as if lit from above.
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        plate.shift(Offset(0, unit * 0.018)).inflate(unit * 0.008),
+        Radius.circular(unit * 0.02),
+      ),
+      Paint()
+        ..color = Colors.black.withValues(alpha: 0.5)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, unit * 0.035),
+    );
+  }
+
+  /// Two squares, one turned 45°, drawn as one outline.
+  void _star(Canvas canvas, Offset c, double r, Paint paint) {
+    final path = Path();
+    for (var i = 0; i < 16; i++) {
+      final radius = i.isEven ? r : r * 0.62;
+      final a = i * math.pi / 8 - math.pi / 2;
+      final v = Offset(c.dx + math.cos(a) * radius, c.dy + math.sin(a) * radius);
+      i == 0 ? path.moveTo(v.dx, v.dy) : path.lineTo(v.dx, v.dy);
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(_TableBackdropPainter old) => old.plate != plate;
 }

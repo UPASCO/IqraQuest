@@ -165,20 +165,32 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           children: [
             // The classic cross board: plate and anchors are generated
             // from one grid, so a square index always lands on its tile.
+            // A square plate can never be wider than the phone, so the
+            // board pinches up to 2.5x for a closer look at the squares;
+            // the HUD and the deck stay put above it.
             Positioned.fill(
-              child: CrossBoardScene(
-                state: _frozenBoard ?? state,
-                preview: boardPreview,
-                selectableHorses: selectable,
-                onHorseTap: (playerIndex, horseIndex) {
-                  if (busy || playerIndex != state.currentPlayerIndex) return;
-                  if (!selectable.contains('${player.id}:$horseIndex')) return;
-                  ref.read(soundServiceProvider).play(Sfx.tap);
-                  HapticFeedback.selectionClick();
-                  ref
-                      .read(gameControllerProvider.notifier)
-                      .chooseMove(horseIndex);
-                },
+              child: InteractiveViewer(
+                key: const Key('board-zoom'),
+                minScale: 1,
+                maxScale: 2.5,
+                child: CrossBoardScene(
+                  state: _frozenBoard ?? state,
+                  preview: boardPreview,
+                  selectableHorses: selectable,
+                  onHorseTap: (playerIndex, horseIndex) {
+                    if (busy || playerIndex != state.currentPlayerIndex) {
+                      return;
+                    }
+                    if (!selectable.contains('${player.id}:$horseIndex')) {
+                      return;
+                    }
+                    ref.read(soundServiceProvider).play(Sfx.tap);
+                    HapticFeedback.selectionClick();
+                    ref
+                        .read(gameControllerProvider.notifier)
+                        .chooseMove(horseIndex);
+                  },
+                ),
               ),
             ),
 

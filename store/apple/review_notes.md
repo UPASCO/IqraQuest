@@ -9,9 +9,8 @@ designed for ages 7-99. Key points for review:
   THIRD_PARTY_NOTICES.md for the complete, short dependency list.
 - **No backend server.** All game logic, content, and progress storage
   is local to the device.
-- **Free content:** 21 of the 122 curated quiz questions in this build
-  (the bank grows toward 500 across updates; free questions recycle so a
-  free game is never blocked), unlimited Solo and Family play, both game
+- **Free content:** 50 of the 500 curated quiz questions in this build
+  (free questions recycle so a free game is never blocked), unlimited Solo and Family play, both game
   variants (Quick/Classic), the daily challenge with the free question
   bank.
 - **One-time purchase:** `iqraquest_full_access` (non-consumable)
