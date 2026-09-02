@@ -366,6 +366,32 @@
   "@about": {
     "description": "Settings item"
   },
+  "aboutDialogTitle": "About IqraQuest",
+  "@aboutDialogTitle": {
+    "description": "Title of the About dialog opened from Settings"
+  },
+  "versionLabel": "Version {version}",
+  "@versionLabel": {
+    "description": "Version line in the About dialog",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "copyrightNotice": "© {year} IqraQuest. All rights reserved.",
+  "@copyrightNotice": {
+    "description": "Copyright line in the About dialog and Settings",
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "originalWorkNotice": "IqraQuest, its game concept, rules, artwork, name and content are original works protected by copyright. Any reproduction, imitation or adaptation, in whole or in part, without written permission is prohibited.",
+  "@originalWorkNotice": {
+    "description": "Legal paragraph in the About dialog: the game concept and content are protected"
+  },
   "privacyPolicy": "Privacy Policy",
   "@privacyPolicy": {
     "description": "Settings item / legal link"

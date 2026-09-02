@@ -561,6 +561,48 @@ s("about", "Settings item",
   de="Über", tr="Hakkında", id="Tentang", ur="بارے میں", ms="Tentang",
   it="Informazioni", nl="Over")
 
+s("aboutDialogTitle", "Title of the About dialog opened from Settings",
+  fr="À propos d'IqraQuest", en="About IqraQuest", ar="حول إكرا كويست",
+  es="Acerca de IqraQuest", pt="Sobre o IqraQuest", de="Über IqraQuest",
+  tr="IqraQuest Hakkında", id="Tentang IqraQuest", ur="اقرا کویسٹ کے بارے میں",
+  ms="Tentang IqraQuest", it="Informazioni su IqraQuest", nl="Over IqraQuest")
+
+s("versionLabel", "Version line in the About dialog",
+  ph={"version": "String"},
+  fr="Version {version}", en="Version {version}", ar="الإصدار {version}",
+  es="Versión {version}", pt="Versão {version}", de="Version {version}",
+  tr="Sürüm {version}", id="Versi {version}", ur="ورژن {version}",
+  ms="Versi {version}", it="Versione {version}", nl="Versie {version}")
+
+s("copyrightNotice", "Copyright line in the About dialog and Settings",
+  ph={"year": "String"},
+  fr="© {year} IqraQuest. Tous droits réservés.",
+  en="© {year} IqraQuest. All rights reserved.",
+  ar="© {year} IqraQuest. جميع الحقوق محفوظة.",
+  es="© {year} IqraQuest. Todos los derechos reservados.",
+  pt="© {year} IqraQuest. Todos os direitos reservados.",
+  de="© {year} IqraQuest. Alle Rechte vorbehalten.",
+  tr="© {year} IqraQuest. Tüm hakları saklıdır.",
+  id="© {year} IqraQuest. Hak cipta dilindungi.",
+  ur="© {year} IqraQuest۔ جملہ حقوق محفوظ ہیں۔",
+  ms="© {year} IqraQuest. Hak cipta terpelihara.",
+  it="© {year} IqraQuest. Tutti i diritti riservati.",
+  nl="© {year} IqraQuest. Alle rechten voorbehouden.")
+
+s("originalWorkNotice", "Legal paragraph in the About dialog: the game concept and content are protected",
+  fr="IqraQuest, son concept de jeu, ses règles, ses illustrations, son nom et son contenu sont des œuvres originales protégées par le droit d'auteur. Toute reproduction, imitation ou adaptation, totale ou partielle, sans autorisation écrite est interdite.",
+  en="IqraQuest, its game concept, rules, artwork, name and content are original works protected by copyright. Any reproduction, imitation or adaptation, in whole or in part, without written permission is prohibited.",
+  ar="إكرا كويست، وفكرة اللعبة وقواعدها ورسومها واسمها ومحتواها أعمال أصلية محمية بحقوق النشر. يُمنع أي نسخ أو تقليد أو اقتباس، كليًا أو جزئيًا، دون إذن كتابي.",
+  es="IqraQuest, su concepto de juego, sus reglas, sus ilustraciones, su nombre y su contenido son obras originales protegidas por derechos de autor. Queda prohibida toda reproducción, imitación o adaptación, total o parcial, sin autorización escrita.",
+  pt="IqraQuest, o seu conceito de jogo, as suas regras, as suas ilustrações, o seu nome e o seu conteúdo são obras originais protegidas por direitos de autor. É proibida qualquer reprodução, imitação ou adaptação, total ou parcial, sem autorização escrita.",
+  de="IqraQuest, sein Spielkonzept, seine Regeln, seine Illustrationen, sein Name und seine Inhalte sind urheberrechtlich geschützte Originalwerke. Jede vollständige oder teilweise Vervielfältigung, Nachahmung oder Bearbeitung ohne schriftliche Genehmigung ist untersagt.",
+  tr="IqraQuest, oyun konsepti, kuralları, çizimleri, adı ve içeriği telif hakkıyla korunan özgün eserlerdir. Yazılı izin olmadan tamamen veya kısmen çoğaltılması, taklit edilmesi veya uyarlanması yasaktır.",
+  id="IqraQuest, konsep permainannya, aturannya, ilustrasinya, namanya, dan isinya adalah karya asli yang dilindungi hak cipta. Segala bentuk penggandaan, peniruan, atau adaptasi, seluruhnya atau sebagian, tanpa izin tertulis dilarang.",
+  ur="اقرا کویسٹ، اس کے کھیل کا تصور، قواعد، تصاویر، نام اور مواد اصل تخلیقات ہیں جو کاپی رائٹ سے محفوظ ہیں۔ تحریری اجازت کے بغیر کسی بھی طرح کی مکمل یا جزوی نقل، تقلید یا ترمیم ممنوع ہے۔",
+  ms="IqraQuest, konsep permainannya, peraturannya, ilustrasinya, namanya dan kandungannya adalah karya asli yang dilindungi hak cipta. Sebarang pengeluaran semula, peniruan atau adaptasi, sepenuhnya atau sebahagian, tanpa kebenaran bertulis adalah dilarang.",
+  it="IqraQuest, il suo concetto di gioco, le sue regole, le sue illustrazioni, il suo nome e i suoi contenuti sono opere originali protette dal diritto d'autore. È vietata qualsiasi riproduzione, imitazione o adattamento, totale o parziale, senza autorizzazione scritta.",
+  nl="IqraQuest, het spelconcept, de regels, de illustraties, de naam en de inhoud zijn originele werken die auteursrechtelijk beschermd zijn. Elke gehele of gedeeltelijke reproductie, imitatie of bewerking zonder schriftelijke toestemming is verboden.")
+
 s("privacyPolicy", "Settings item / legal link",
   fr="Politique de confidentialité", en="Privacy Policy", ar="سياسة الخصوصية",
   es="Política de privacidad", pt="Política de Privacidade", de="Datenschutzerklärung",

@@ -279,6 +279,23 @@ class AppLocalizationsMs extends AppLocalizations {
   String get about => 'Tentang';
 
   @override
+  String get aboutDialogTitle => 'Tentang IqraQuest';
+
+  @override
+  String versionLabel(String version) {
+    return 'Versi $version';
+  }
+
+  @override
+  String copyrightNotice(String year) {
+    return '© $year IqraQuest. Hak cipta terpelihara.';
+  }
+
+  @override
+  String get originalWorkNotice =>
+      'IqraQuest, konsep permainannya, peraturannya, ilustrasinya, namanya dan kandungannya adalah karya asli yang dilindungi hak cipta. Sebarang pengeluaran semula, peniruan atau adaptasi, sepenuhnya atau sebahagian, tanpa kebenaran bertulis adalah dilarang.';
+
+  @override
   String get privacyPolicy => 'Dasar Privasi';
 
   @override

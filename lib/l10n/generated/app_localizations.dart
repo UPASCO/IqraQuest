@@ -610,6 +610,30 @@ abstract class AppLocalizations {
   /// **'About'**
   String get about;
 
+  /// Title of the About dialog opened from Settings
+  ///
+  /// In en, this message translates to:
+  /// **'About IqraQuest'**
+  String get aboutDialogTitle;
+
+  /// Version line in the About dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}'**
+  String versionLabel(String version);
+
+  /// Copyright line in the About dialog and Settings
+  ///
+  /// In en, this message translates to:
+  /// **'© {year} IqraQuest. All rights reserved.'**
+  String copyrightNotice(String year);
+
+  /// Legal paragraph in the About dialog: the game concept and content are protected
+  ///
+  /// In en, this message translates to:
+  /// **'IqraQuest, its game concept, rules, artwork, name and content are original works protected by copyright. Any reproduction, imitation or adaptation, in whole or in part, without written permission is prohibited.'**
+  String get originalWorkNotice;
+
   /// Settings item / legal link
   ///
   /// In en, this message translates to:

@@ -277,6 +277,23 @@ class AppLocalizationsUr extends AppLocalizations {
   String get about => 'بارے میں';
 
   @override
+  String get aboutDialogTitle => 'اقرا کویسٹ کے بارے میں';
+
+  @override
+  String versionLabel(String version) {
+    return 'ورژن $version';
+  }
+
+  @override
+  String copyrightNotice(String year) {
+    return '© $year IqraQuest۔ جملہ حقوق محفوظ ہیں۔';
+  }
+
+  @override
+  String get originalWorkNotice =>
+      'اقرا کویسٹ، اس کے کھیل کا تصور، قواعد، تصاویر، نام اور مواد اصل تخلیقات ہیں جو کاپی رائٹ سے محفوظ ہیں۔ تحریری اجازت کے بغیر کسی بھی طرح کی مکمل یا جزوی نقل، تقلید یا ترمیم ممنوع ہے۔';
+
+  @override
   String get privacyPolicy => 'رازداری کی پالیسی';
 
   @override

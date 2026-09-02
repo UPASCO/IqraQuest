@@ -273,6 +273,23 @@ class AppLocalizationsAr extends AppLocalizations {
   String get about => 'حول التطبيق';
 
   @override
+  String get aboutDialogTitle => 'حول إكرا كويست';
+
+  @override
+  String versionLabel(String version) {
+    return 'الإصدار $version';
+  }
+
+  @override
+  String copyrightNotice(String year) {
+    return '© $year IqraQuest. جميع الحقوق محفوظة.';
+  }
+
+  @override
+  String get originalWorkNotice =>
+      'إكرا كويست، وفكرة اللعبة وقواعدها ورسومها واسمها ومحتواها أعمال أصلية محمية بحقوق النشر. يُمنع أي نسخ أو تقليد أو اقتباس، كليًا أو جزئيًا، دون إذن كتابي.';
+
+  @override
   String get privacyPolicy => 'سياسة الخصوصية';
 
   @override

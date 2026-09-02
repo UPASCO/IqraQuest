@@ -98,12 +98,79 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () => context.push('/tutorial'),
             ),
             ListTile(
+              key: const Key('about-tile'),
               title: Text(l10n.about),
-              subtitle: Text('${l10n.appName} · $kAppVersion'),
+              subtitle: Text(
+                '${l10n.appName} · $kAppVersion · '
+                '${l10n.copyrightNotice(copyrightYears(DateTime.now()))}',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => showDialog<void>(
+                context: context,
+                builder: (context) => AboutIqraQuestDialog(
+                  now: DateTime.now(),
+                ),
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Settings › About: the app's identity and the copyright it rests on.
+/// The notice is worded as a legal claim, not a footer — the concept,
+/// rules, artwork and content are the project's own work.
+class AboutIqraQuestDialog extends StatelessWidget {
+  const AboutIqraQuestDialog({super.key, required this.now});
+
+  final DateTime now;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final textTheme = Theme.of(context).textTheme;
+    return AlertDialog(
+      key: const Key('about-dialog'),
+      title: Text(l10n.aboutDialogTitle),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l10n.appName,
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(l10n.appTagline, style: textTheme.bodyMedium),
+            const SizedBox(height: 12),
+            Text(l10n.versionLabel(kAppVersion), style: textTheme.bodyMedium),
+            const SizedBox(height: 12),
+            Text(
+              l10n.copyrightNotice(copyrightYears(now)),
+              key: const Key('about-copyright'),
+              style: textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              l10n.originalWorkNotice,
+              style: textTheme.bodySmall?.copyWith(height: 1.4),
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(MaterialLocalizations.of(context).okButtonLabel),
+        ),
+      ],
     );
   }
 }
