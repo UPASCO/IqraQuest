@@ -194,11 +194,12 @@ copied or generated from an external source. See
 `VISUAL_REFERENCE_NOTES.md` for the historical-inspiration research
 behind the Makkah/Madinah/horse/architecture treatment, and
 `ASSET_INVENTORY.md` for the full asset table and `ASSET_LICENSES.md`
-for licences. The launcher icon is an original design — a golden horse at full
-gallop racing up a petits-chevaux track of coloured tiles toward a
-radiant fan of question cards, a crescent above (the race for
-knowledge, won by answering) — baked from code by
-`tool/art/bake_app_icon.py`.
+for licences. The launcher icon is artwork supplied by the project owner
+(`tool/art/source/app_icon_source.webp`: three horses racing across the
+board's tiles toward an open book with a glowing question mark, a
+crescent and star above, in a gold frame); `tool/art/bake_app_icon.py`
+prepares it (corners blended to the frame's green) and writes every
+platform size.
 
 ## Tests
 

@@ -172,7 +172,7 @@ void main() {
   check(
     'a distinctive launcher icon has replaced the flutter template default',
     _hasCustomLauncherIcon(root),
-    detail: 'regenerate with tool/art/bake_app_icon.py (see ASSET_INVENTORY.md)',
+    detail: 'regenerate from tool/art/source/app_icon_source.webp with tool/art/bake_app_icon.py (see ASSET_INVENTORY.md)',
   );
 
   section('Privacy & legal');

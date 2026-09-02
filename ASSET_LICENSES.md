@@ -32,7 +32,8 @@ never be drawn on a square the art does not have.
 | Gait selector horseshoes | `lib/widgets/gait_selector.dart` | Original | Project |
 | Hijaz landmark backdrops | `lib/widgets/landmarks/hijaz_landmark_painter.dart` | Original (see `VISUAL_REFERENCE_NOTES.md`) | Project |
 | Geometric star lattice | `lib/widgets/geometric_motif_painter.dart` | Original, procedurally generated | Project |
-| App launcher icon (all Android/iOS/web sizes) | Baked by `tool/art/bake_app_icon.py` | Original | Project |
+| App launcher icon source artwork | `tool/art/source/app_icon_source.webp` | Supplied by the project owner (original artwork, rights held by the project) | Project |
+| App launcher icon (all Android/iOS/web sizes) | Baked from the source above by `tool/art/bake_app_icon.py` | Derived from owner-supplied artwork | Project |
 
 The historical-inspiration research behind the Makkah/Madinah/horse
 treatment is documented in `VISUAL_REFERENCE_NOTES.md`; nothing was
