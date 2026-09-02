@@ -79,6 +79,28 @@ provisioning profile à gérer manuellement.
    d'export compliance pour ce build — réponds-y directement dans
    TestFlight avant de pouvoir l'assigner à des testeurs.
 
+## « Informations manquantes » sur le chiffrement
+
+App Store Connect demande à chaque upload quel chiffrement l'app utilise,
+et garde le build en **Informations manquantes** tant que personne n'a
+répondu. La réponse est désormais donnée **dans le code**, une fois pour
+toutes :
+
+```xml
+<key>ITSAppUsesNonExemptEncryption</key>
+<false/>
+```
+
+dans `ios/Runner/Info.plist`. C'est exact : IqraQuest n'embarque aucun
+chiffrement à elle — le seul qu'elle touche est celui du système (TLS
+pour les appels d'achat App Store, le Trousseau derrière
+`flutter_secure_storage`), qui est exempté. `tool/pre_release_check.dart`
+vérifie que la clé ne disparaît pas.
+
+Les builds envoyés **avant** l'ajout de cette clé gardent l'avertissement :
+il faut y répondre une fois à la main, dans TestFlight → le build →
+*Gérer* → **« Aucun des algorithmes mentionnés ci-dessus »**.
+
 ## Ce que le pipeline ne fait pas (volontairement, pour l'instant)
 
 - Il n'ajoute pas automatiquement de testeurs ni ne soumet pour la revue

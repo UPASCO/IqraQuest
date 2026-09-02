@@ -203,6 +203,25 @@ void main() {
   section('iOS');
   final pbxproj = File('${root.path}/ios/Runner.xcodeproj/project.pbxproj');
   check('Xcode project exists', pbxproj.existsSync());
+  final infoPlist = File('${root.path}/ios/Runner/Info.plist');
+  check('Info.plist exists', infoPlist.existsSync());
+  if (infoPlist.existsSync()) {
+    final text = infoPlist.readAsStringSync();
+    // Without this key App Store Connect stops every single upload at
+    // "Missing Compliance" until the same question is answered by hand.
+    final key = text.indexOf('<key>ITSAppUsesNonExemptEncryption</key>');
+    check(
+      'export compliance is declared in Info.plist',
+      key >= 0 && text.substring(key).contains('<false/>'),
+      detail:
+          'add <key>ITSAppUsesNonExemptEncryption</key><false/> — the app '
+          'uses only the operating system\'s own encryption (TLS, Keychain)',
+    );
+    check(
+      'portrait-only builds opt out of iPad multitasking',
+      text.contains('<key>UIRequiresFullScreen</key>'),
+    );
+  }
 
   section('Race rules (no dice, no chance)');
   final engineFile = File('${root.path}/lib/features/game/domain/game_engine.dart');

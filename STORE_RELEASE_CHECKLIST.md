@@ -18,6 +18,11 @@ that builds and uploads to TestFlight without a local Mac.
 [ ] Final bundle ID confirmed (currently com.IqraQuest.com — placeholder org, update if needed)
 [ ] ASC_KEY_ID / ASC_ISSUER_ID / ASC_KEY_CONTENT / APPLE_TEAM_ID secrets set in GitHub (store/apple/TESTFLIGHT_SETUP.md)
 [ ] App Store Connect record created
+[x] Export compliance answered in Info.plist (ITSAppUsesNonExemptEncryption = false) so no upload
+    ever stops at "Missing Compliance" — the app touches only the OS's own encryption (TLS for
+    the App Store purchase calls, the Keychain behind flutter_secure_storage), which is exempt.
+    Builds uploaded BEFORE this key was added still have to be answered once by hand in
+    App Store Connect: TestFlight > the build > Gérer > "Aucun des algorithmes mentionnés ci-dessus".
 [ ] In-App Purchase "iqraquest_full_access" configured as Non-Consumable
 [ ] Price tier set in App Store Connect (never hardcoded in-app — verified by pre_release_check.dart)
 [ ] Sandbox purchase tested on a real device/sandbox tester account

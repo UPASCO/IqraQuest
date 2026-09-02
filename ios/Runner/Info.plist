@@ -66,5 +66,14 @@
 	     validation rule 90474), or declare all four orientations. -->
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<!-- Export compliance, answered here rather than by hand on every
+	     upload. IqraQuest ships no cryptography of its own: the only
+	     encryption it touches is the operating system's — TLS for the
+	     App Store purchase calls, and the Keychain behind
+	     flutter_secure_storage — which is exempt. Without this key App
+	     Store Connect holds every build at "Informations manquantes"
+	     until somebody answers the same question again. -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
