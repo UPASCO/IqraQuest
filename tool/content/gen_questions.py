@@ -1914,6 +1914,92 @@ def select_free_ids(questions, values, size=50):
     return set(free)
 
 
+# ---------------------------------------------------------------------
+# The nine other UI languages. Their question text lives in
+# tool/content/i18n/<lang>/<category>.py, one dict T per file mapping a
+# question id to (question, answers[4], explanation) — the answers in
+# the same order as the source, the correct one first. The source line
+# shown under a card is not translated by hand: it is derived from the
+# canonical source fields with the labels below, so it can never drift
+# from the master.
+# ---------------------------------------------------------------------
+EXTRA_LANGS = ["es", "pt", "de", "tr", "id", "ur", "ms", "it", "nl"]
+CATEGORIES = ("prophets", "sira", "quran", "faith", "virtues")
+
+SOURCE_LABELS = {
+    "es": dict(quran="Corán", bukhari="Sahih al-Bujari", muslim="Sahih Muslim",
+               sira="Sira, hecho establecido", creed="Terminología establecida"),
+    "pt": dict(quran="Alcorão", bukhari="Sahih al-Bukhari", muslim="Sahih Muslim",
+               sira="Sira, facto estabelecido", creed="Terminologia estabelecida"),
+    "de": dict(quran="Koran", bukhari="Sahih al-Buchari", muslim="Sahih Muslim",
+               sira="Sira, gesicherte Überlieferung", creed="Gängiger Begriff"),
+    "tr": dict(quran="Kur'an", bukhari="Sahih-i Buhari", muslim="Sahih-i Müslim",
+               sira="Siyer, yerleşik bilgi", creed="Yerleşik terim"),
+    "id": dict(quran="Al-Qur'an", bukhari="Shahih al-Bukhari", muslim="Shahih Muslim",
+               sira="Sirah, fakta yang mapan", creed="Istilah yang mapan"),
+    "ur": dict(quran="قرآن", bukhari="صحیح بخاری", muslim="صحیح مسلم",
+               sira="سیرت، مسلّمہ واقعہ", creed="مسلّمہ اصطلاح"),
+    "ms": dict(quran="Al-Quran", bukhari="Sahih al-Bukhari", muslim="Sahih Muslim",
+               sira="Sirah, fakta yang mantap", creed="Istilah yang mantap"),
+    "it": dict(quran="Corano", bukhari="Sahih al-Bukhari", muslim="Sahih Muslim",
+               sira="Sira, fatto accertato", creed="Terminologia consolidata"),
+    "nl": dict(quran="Koran", bukhari="Sahih al-Boechari", muslim="Sahih Muslim",
+               sira="Sira, vaststaand feit", creed="Gangbare term"),
+}
+
+
+def source_display(lang, q):
+    labels = SOURCE_LABELS[lang]
+    ref = q["sourceReference"].strip()
+    kind = q["sourceType"]
+    if kind == "quran":
+        # Verse references pass through ("2:255", "2:1; 3:1"); anything
+        # descriptive ("well-established count…") becomes the plain label.
+        return f'{labels["quran"]} {ref}' if ref[:1].isdigit() else labels["quran"]
+    if kind == "hadithBukhari":
+        return f'{labels["bukhari"]}, {ref}'
+    if kind == "hadithMuslim":
+        return f'{labels["muslim"]}, {ref}'
+    if kind == "sira":
+        return labels["sira"]
+    return labels["creed"]
+
+
+def load_translations(lang):
+    here = os.path.dirname(os.path.abspath(__file__))
+    merged = {}
+    for cat in CATEGORIES:
+        path = os.path.join(here, "i18n", lang, f"{cat}.py")
+        if not os.path.exists(path):
+            continue
+        ns = {}
+        with open(path, encoding="utf-8") as f:
+            exec(compile(f.read(), path, "exec"), ns)
+        merged.update(ns["T"])
+    return merged
+
+
+def extra_language_content(lang):
+    """The per-language file for one extra language, or None (with a
+    note) while its translation is still incomplete."""
+    tr = load_translations(lang)
+    missing = [q["id"] for q in Q if q["id"] not in tr]
+    if missing:
+        print(f"{lang}: {len(tr)}/{len(Q)} translated, {len(missing)} missing (first: {missing[:3]}) — not written")
+        return None
+    out = []
+    for q in Q:
+        question, answers, explanation = tr[q["id"]]
+        assert len(answers) == 4 and all(a.strip() for a in answers), (lang, q["id"])
+        assert question.strip() and explanation.strip(), (lang, q["id"])
+        out.append(dict(
+            id=q["id"], correctAnswerIndex=q["en"]["correctAnswerIndex"],
+            question=question, answers=list(answers), explanation=explanation,
+            sourceDisplay=source_display(lang, q),
+        ))
+    return out
+
+
 def write_output():
     os.makedirs(f"{OUT_ROOT}/master", exist_ok=True)
     for lang in ("fr", "en", "ar"):
@@ -1964,6 +2050,14 @@ def write_output():
     for lang in ("fr", "en", "ar"):
         with open(f"{OUT_ROOT}/{lang}/questions.json", "w", encoding="utf-8") as f:
             json.dump(per_lang[lang], f, ensure_ascii=False, indent=2)
+
+    for lang in EXTRA_LANGS:
+        content = extra_language_content(lang)
+        if content is None:
+            continue
+        os.makedirs(f"{OUT_ROOT}/{lang}", exist_ok=True)
+        with open(f"{OUT_ROOT}/{lang}/questions.json", "w", encoding="utf-8") as f:
+            json.dump(content, f, ensure_ascii=False, indent=2)
 
     with open(f"{CQ_ROOT}/source_registry.json", "w", encoding="utf-8") as f:
         json.dump(list(registry.values()), f, ensure_ascii=False, indent=2)
