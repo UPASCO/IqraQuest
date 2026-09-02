@@ -1396,10 +1396,10 @@ abstract class AppLocalizations {
   /// **'Vibration'**
   String get hapticFeedback;
 
-  /// Result medallion caption after a right answer: how many squares the card was worth
+  /// Reward reveal caption after a right answer: the gallops won, i.e. how far the card carries a horse
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, one{{count} square won} other{{count} squares won}}'**
+  /// **'{count, plural, one{Won {count} gallop} other{Won {count} gallops}}'**
   String squaresWon(int count);
 
   /// Placement banner: pick which horse takes the won squares
@@ -1441,8 +1441,8 @@ abstract class AppLocalizations {
   /// Feedback sheet line after a wrong answer: what the card would have moved
   ///
   /// In en, this message translates to:
-  /// **'This card was worth {value} squares.'**
-  String cardWasWorth(int value);
+  /// **'{count, plural, one{This card was worth {count} gallop.} other{This card was worth {count} gallops.}}'**
+  String cardWasWorth(int count);
 
   /// Face of the drawn card while its value is still hidden
   ///

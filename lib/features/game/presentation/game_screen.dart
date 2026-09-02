@@ -30,7 +30,7 @@ const Duration kAnswerBeatDuration = Duration(milliseconds: 1000);
 
 /// How long the result medallion holds the centre of the board before
 /// it gives way to the placement — the board is already live under it.
-const Duration kEarnBeat = Duration(milliseconds: 1300);
+const Duration kEarnBeat = Duration(milliseconds: 1700);
 
 /// How long "X takes the lead" stays on the HUD.
 const Duration kLeadToastDuration = Duration(milliseconds: 1900);

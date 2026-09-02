@@ -116,6 +116,24 @@ the journey card on home, the welcome plaque on onboarding — with the
 gold CTA below. The welcome plaque is deliberately compact so it rests
 on that foot instead of climbing over the board it is introducing.
 
+### The reward beat, and the horses that can take it
+The drawn card never shows what it is worth: its face is a question
+mark. The worth is the **prize of the answer**, so it arrives once the
+answer is judged, as an event rather than a number — a pool of light
+opens, a gold medallion drops and turns as it lands, a shockwave rides
+out through a crown of rays, sparks fall, and the number counts up under
+a plaque reading "Gagné 5 galops" (`EarnedStepsMedallion`). The unit the
+player wins is the **galop**; `case` stays the unit of the board itself.
+
+The moment the prize lands, the horses that can take it must be found at
+a glance on a plate carrying up to sixteen pieces. Each one wears three
+marks, all breathing on the same beat: a gold chevron above the mane
+(`ready-<player>:<horse>`), its own pool of light, and a halo below with
+a ring riding outwards. The breath modulates the marks and never puts
+them out — a chevron that vanishes each cycle reads as a flicker — and
+with motion turned off they simply hold bright. No other piece on the
+plate carries any of it.
+
 ### The board plate
 Baked by `tool/art/bake_cross_board.py` from the owner's reference
 board. Two rules the bake enforces, because the reference cannot: each

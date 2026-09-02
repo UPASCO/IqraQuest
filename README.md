@@ -100,9 +100,13 @@ of the die, played **answer first, then place**. The turn is:
    level (chosen before the game, the same whatever the card); the
    card's value (1-6) stays face down;
 2. **answer** — a wrong answer moves nothing (the sheet still says what
-   the card was worth); a right one wins the card's squares, shown as a
-   gold result medallion;
-3. **place** — every horse that can ride the squares breathes a halo;
+   the card was worth); a right one wins the card's **galops**, revealed
+   as an event, never as a fact read off the card: a gold medallion drops
+   onto the board, throws a shockwave through a crown of rays, and the
+   number counts up under "Gagné 5 galops";
+3. **place** — every horse that can ride those galops is unmistakable: a
+   gold chevron above it, its own pool of light and a breathing halo
+   below, all pulsing on one beat while every other piece stays quiet;
    touching one lights its destination (and the squares between, with a
    tag: capture, arrival, bonus…); the player compares freely, then picks
    a horse up and sets it down on its square. **The drop is the move**:

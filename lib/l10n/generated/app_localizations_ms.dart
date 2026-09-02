@@ -769,7 +769,7 @@ class AppLocalizationsMs extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count petak dimenangi',
+      other: 'Menang $count lompatan',
     );
     return '$_temp0';
   }
@@ -797,8 +797,13 @@ class AppLocalizationsMs extends AppLocalizations {
   }
 
   @override
-  String cardWasWorth(int value) {
-    return 'Kad ini bernilai $value petak.';
+  String cardWasWorth(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Kad ini bernilai $count lompatan.',
+    );
+    return '$_temp0';
   }
 
   @override

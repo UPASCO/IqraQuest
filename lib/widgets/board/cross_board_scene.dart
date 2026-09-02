@@ -164,7 +164,7 @@ class _CrossBoardSceneState extends State<CrossBoardScene>
   /// on the plate breathes.
   late final AnimationController _pulse = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 1400),
+    duration: const Duration(milliseconds: 820),
   );
 
   /// The light sweeping across the +20 stars, slow and rare.
@@ -636,11 +636,11 @@ class _CrossBoardSceneState extends State<CrossBoardScene>
       CrossBoardScene.anchorFor(position, team, option.horseIndex),
     );
     final selected = _selected == option.horseIndex;
-    final w = pieceSize * 1.5;
+    final w = pieceSize * 2.0;
     return Positioned(
       key: ValueKey('halo-${option.horseIndex}'),
       left: at.dx - w / 2,
-      top: at.dy - w * 0.32,
+      top: at.dy - w * 0.26,
       width: w,
       height: w * 0.5,
       child: IgnorePointer(
@@ -951,6 +951,26 @@ class _PieceState extends State<_Piece> with TickerProviderStateMixin {
   );
   Offset? _snapFrom;
 
+  /// The blink of a horse that may be picked up. On a plate carrying up
+  /// to sixteen pieces, a quiet halo underneath is not enough: the ones
+  /// the card can move breathe, glow, and wear a chevron pointing down
+  /// at them, so the hand goes straight to them.
+  late final AnimationController _blink = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 760),
+  );
+
+  void _syncBlink() {
+    final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    final on = widget.interactive && widget.dragAt == null && !reduce;
+    if (on && !_blink.isAnimating) {
+      _blink.repeat(reverse: true);
+    } else if (!on && _blink.isAnimating) {
+      _blink.stop();
+      _blink.value = 0;
+    }
+  }
+
   /// The waypoints of the current journey, first = where it started.
   late List<SceneAnchor> _path = [_anchor(widget.position)];
   _Ride _ride = _Ride.hops;
@@ -971,16 +991,24 @@ class _PieceState extends State<_Piece> with TickerProviderStateMixin {
   Offset _toScreen(SceneAnchor a) => widget.layout.toScreen(a);
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _syncBlink();
+  }
+
+  @override
   void dispose() {
     _delay?.cancel();
     _c.dispose();
     _snap.dispose();
+    _blink.dispose();
     super.dispose();
   }
 
   @override
   void didUpdateWidget(_Piece old) {
     super.didUpdateWidget(old);
+    _syncBlink();
     if (widget.snapFrom != null && old.snapFrom == null) {
       _snapFrom = widget.snapFrom;
       final reduce = MediaQuery.disableAnimationsOf(context);
@@ -1135,7 +1163,7 @@ class _PieceState extends State<_Piece> with TickerProviderStateMixin {
     final label = '${widget.player.name} — ${widget.horseIndex + 1}';
 
     return AnimatedBuilder(
-      animation: Listenable.merge([_c, _snap]),
+      animation: Listenable.merge([_c, _snap, _blink]),
       builder: (context, child) {
         final n = _path.length - 1;
         final t = _c.value;
@@ -1204,9 +1232,22 @@ class _PieceState extends State<_Piece> with TickerProviderStateMixin {
             bump;
         final shadowAlpha = 0.30 * (1 - (lift / (size * 1.6)).clamp(0.0, 0.7));
 
+        // "Me, take me": a horse the card can move breathes on the spot
+        // and carries its own light. 0 for every other piece, so the
+        // plate never blinks all over. The breath modulates the mark; it
+        // never puts it out, or the chevron would read as a flicker —
+        // and with motion turned off it simply holds bright.
+        final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+        final ready = widget.interactive && !held && settled
+            ? (reduceMotion
+                  ? 0.85
+                  : 0.18 + 0.82 * Curves.easeInOut.transform(_blink.value))
+            : 0.0;
+        final bob = size * 0.11 * ready;
+
         return Positioned(
           left: at.dx - size / 2,
-          top: at.dy - size * 1.15 - lift,
+          top: at.dy - size * 1.15 - lift - bob,
           width: size,
           height: size * 1.4,
           child: Semantics(
@@ -1241,6 +1282,21 @@ class _PieceState extends State<_Piece> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
+                  // The light a playable horse stands in — under the
+                  // sprite, so it reads as a glow around it and never as
+                  // a disc painted on top of it.
+                  if (ready > 0)
+                    Positioned(
+                      left: -size * 0.35,
+                      right: -size * 0.35,
+                      bottom: lift * 0.9 + bob - size * 0.12,
+                      height: size * 1.5,
+                      child: IgnorePointer(
+                        child: CustomPaint(
+                          painter: _ReadyGlowPainter(k: ready),
+                        ),
+                      ),
+                    ),
                   if (widget.selected && !held)
                     Positioned(
                       left: 0,
@@ -1256,6 +1312,23 @@ class _PieceState extends State<_Piece> with TickerProviderStateMixin {
                     alignment: Alignment.bottomCenter,
                     child: Transform.flip(flipX: _faceLeft, child: child),
                   ),
+                  // The chevron: an unmistakable "this one", above the
+                  // mane where nothing else is drawn.
+                  if (ready > 0)
+                    Positioned(
+                      key: ValueKey(
+                        'ready-${widget.player.id}:${widget.horseIndex}',
+                      ),
+                      left: size * 0.08,
+                      right: size * 0.08,
+                      top: -size * 0.46 - size * 0.14 * ready,
+                      height: size * 0.44,
+                      child: IgnorePointer(
+                        child: CustomPaint(
+                          painter: _ReadyChevronPainter(k: ready),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -1345,9 +1418,11 @@ class _HaloPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final c = size.center(Offset.zero);
-    final breathe = selected ? 1.0 : 0.55 + 0.45 * pulse;
-    final rx = size.width * (0.36 + 0.10 * breathe);
-    final ry = size.height * (0.55 + 0.15 * breathe);
+    // A wide swing, not a gentle one: the ring has to be seen blinking
+    // from across the table, on a plate already full of gold.
+    final breathe = selected ? 1.0 : 0.42 + 0.58 * pulse;
+    final rx = size.width * (0.38 + 0.14 * breathe);
+    final ry = size.height * (0.58 + 0.20 * breathe);
     final rect = Rect.fromCenter(center: c, width: rx * 2, height: ry * 2);
     canvas.drawOval(
       rect,
@@ -1356,7 +1431,7 @@ class _HaloPainter extends CustomPainter {
           c,
           rx,
           [
-            const Color(0xFFFFE08A).withValues(alpha: (selected ? 0.55 : 0.42) * breathe),
+            const Color(0xFFFFE08A).withValues(alpha: (selected ? 0.70 : 0.60) * breathe),
             const Color(0x00FFE08A),
           ],
         ),
@@ -1365,13 +1440,111 @@ class _HaloPainter extends CustomPainter {
       rect.deflate(size.width * 0.06),
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = size.width * (selected ? 0.05 : 0.035)
-        ..color = const Color(0xFFEED38A).withValues(alpha: (selected ? 0.95 : 0.7) * breathe),
+        ..strokeWidth = size.width * (selected ? 0.06 : 0.05)
+        ..color = const Color(0xFFFFF0C2).withValues(alpha: (selected ? 1.0 : 0.92) * breathe),
     );
+    // A second ring riding outwards on every breath — the pool below the
+    // horse reads as a beacon rather than a stain.
+    if (!selected) {
+      canvas.drawOval(
+        Rect.fromCenter(
+          center: c,
+          width: rx * 2 * (1.06 + 0.30 * pulse),
+          height: ry * 2 * (1.06 + 0.30 * pulse),
+        ),
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = size.width * 0.03 * (1 - pulse) + 0.6
+          ..color = const Color(0xFFFFE9AE).withValues(alpha: 0.75 * (1 - pulse)),
+      );
+    }
   }
 
   @override
   bool shouldRepaint(_HaloPainter old) => old.pulse != pulse || old.selected != selected;
+}
+
+/// The light a playable horse stands in: a warm pool under the hooves
+/// and a soft aura up the body, both breathing with [k] (0..1).
+class _ReadyGlowPainter extends CustomPainter {
+  const _ReadyGlowPainter({required this.k});
+
+  final double k;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final foot = Offset(size.width / 2, size.height * 0.86);
+    final body = Offset(size.width / 2, size.height * 0.52);
+    canvas.drawCircle(
+      body,
+      size.width * 0.40,
+      Paint()
+        ..shader = ui.Gradient.radial(body, size.width * 0.40, [
+          const Color(0xFFFFE9AE).withValues(alpha: 0.26 + 0.30 * k),
+          const Color(0x00FFE9AE),
+        ]),
+    );
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: foot,
+        width: size.width * (0.52 + 0.10 * k),
+        height: size.height * (0.22 + 0.05 * k),
+      ),
+      Paint()
+        ..shader = ui.Gradient.radial(foot, size.width * 0.28, [
+          const Color(0xFFFFD877).withValues(alpha: 0.55 + 0.40 * k),
+          const Color(0x00FFD877),
+        ]),
+    );
+  }
+
+  @override
+  bool shouldRepaint(_ReadyGlowPainter old) => old.k != k;
+}
+
+/// A gold chevron over a playable horse, pointing down at it. Two
+/// strokes, no fill: at piece size it must stay a mark, not a blob.
+class _ReadyChevronPainter extends CustomPainter {
+  const _ReadyChevronPainter({required this.k});
+
+  final double k;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final drop = h * 0.18 * k;
+    final path = Path()
+      ..moveTo(w * 0.10, h * 0.22 + drop)
+      ..lineTo(w * 0.50, h * 0.72 + drop)
+      ..lineTo(w * 0.90, h * 0.22 + drop);
+    // A dark pass first, so the mark holds over the pale track squares.
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = w * 0.30
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round
+        ..color = const Color(0xFF231705).withValues(alpha: 0.72),
+    );
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = w * 0.19
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round
+        ..color = Color.lerp(
+          const Color(0xFFE0AE47),
+          const Color(0xFFFFF8E4),
+          k,
+        )!,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_ReadyChevronPainter old) => old.k != k;
 }
 
 /// Gold dots on the squares the horse would pass.

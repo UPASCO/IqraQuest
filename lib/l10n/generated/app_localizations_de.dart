@@ -770,8 +770,8 @@ class AppLocalizationsDe extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count Felder gewonnen',
-      one: '$count Feld gewonnen',
+      other: '$count Galoppsprünge gewonnen',
+      one: '$count Galopp gewonnen',
     );
     return '$_temp0';
   }
@@ -799,8 +799,14 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String cardWasWorth(int value) {
-    return 'Diese Karte war $value Felder wert.';
+  String cardWasWorth(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Diese Karte war $count Galoppsprünge wert.',
+      one: 'Diese Karte war $count Galopp wert.',
+    );
+    return '$_temp0';
   }
 
   @override

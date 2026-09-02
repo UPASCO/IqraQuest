@@ -763,7 +763,7 @@ class AppLocalizationsTr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count kare kazanıldı',
+      other: '$count dörtnal kazanıldı',
     );
     return '$_temp0';
   }
@@ -791,8 +791,13 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String cardWasWorth(int value) {
-    return 'Bu kart $value kare değerindeydi.';
+  String cardWasWorth(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Bu kart $count dörtnal değerindeydi.',
+    );
+    return '$_temp0';
   }
 
   @override

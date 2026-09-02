@@ -6,20 +6,23 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import 'ornate_frame.dart';
 
-/// The prize of a right answer, shown as an object rather than a number:
-/// a gold medallion that drops onto the table, turns a quarter as it
-/// lands, throws a ring of light and a few sparks, and holds the value
-/// large enough to read across a room. Under it, the caption says what
-/// the value is — "5 cases gagnées" — so the number is never bare.
+/// The prize of a right answer, shown as an event rather than a number.
+///
+/// The card itself never tells the player what it is worth — its face is
+/// a question mark. The worth is the reward, so it arrives here: a shaft
+/// of light opens, a gold medallion drops onto the table and turns as it
+/// lands, a shockwave rides out through a crown of rays, sparks fly, and
+/// the number **counts up** to its value under a ribbon that reads
+/// "Gagné 5 galops". Nothing else on the screen moves during it.
 ///
 /// One beat long (the reward duration), then the board takes over: the
-/// player is already looking for a horse.
-class EarnedStepsMedallion extends StatelessWidget {
+/// player is already looking for a horse to give the gallops to.
+class EarnedStepsMedallion extends StatefulWidget {
   const EarnedStepsMedallion({
     super.key,
     required this.value,
     required this.caption,
-    this.size = 168,
+    this.size = 150,
   });
 
   final int value;
@@ -27,21 +30,55 @@ class EarnedStepsMedallion extends StatelessWidget {
   final double size;
 
   @override
+  State<EarnedStepsMedallion> createState() => _EarnedStepsMedallionState();
+}
+
+class _EarnedStepsMedallionState extends State<EarnedStepsMedallion>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _c = AnimationController(
+    vsync: this,
+    duration: AppMotion.of(context, const Duration(milliseconds: 1250)),
+  )..forward();
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final size = widget.size;
     return Semantics(
       liveRegion: true,
-      label: caption,
+      label: widget.caption,
       child: ExcludeSemantics(
-        child: TweenAnimationBuilder<double>(
-          tween: Tween(begin: 0, end: 1),
-          duration: AppMotion.of(context, const Duration(milliseconds: 820)),
-          curve: Curves.easeOutCubic,
-          builder: (context, t, child) {
-            final pop = Curves.easeOutBack.transform(t.clamp(0.0, 1.0));
-            final rotation = (1 - t) * -0.45;
+        child: AnimatedBuilder(
+          animation: _c,
+          builder: (context, child) {
+            final t = _c.value;
+            // The landing: an overshoot that settles, so the medallion
+            // reads as a struck object and not a fading image.
+            final land = Curves.easeOutCubic.transform(
+              (t / 0.42).clamp(0.0, 1.0),
+            );
+            final pop = Curves.easeOutBack.transform(land);
+            final rotation = (1 - land) * -0.55;
+            // A short shiver right after it lands — the table taking the
+            // weight — then perfectly still.
+            final settle = ((t - 0.42) / 0.22).clamp(0.0, 1.0);
+            final shiver = settle < 1
+                ? math.sin(settle * math.pi * 3) * (1 - settle) * size * 0.012
+                : 0.0;
+            // The number climbs to its value: a count-up makes 5 feel
+            // like more than 2 without any extra copy.
+            final counted = (widget.value * Curves.easeOutCubic.transform(
+              ((t - 0.18) / 0.34).clamp(0.0, 1.0),
+            )).round().clamp(t < 0.18 ? 0 : 1, widget.value);
+
             return SizedBox(
-              width: size * 1.9,
-              height: size * 1.9 + 44,
+              width: size * 2.1,
+              height: size * 2.1 + 52,
               child: Stack(
                 alignment: Alignment.topCenter,
                 clipBehavior: Clip.none,
@@ -49,45 +86,62 @@ class EarnedStepsMedallion extends StatelessWidget {
                   Positioned(
                     top: 0,
                     child: SizedBox(
-                      width: size * 1.9,
-                      height: size * 1.9,
-                      child: CustomPaint(
-                        painter: _MedallionBurstPainter(t: t),
-                      ),
+                      width: size * 2.1,
+                      height: size * 2.1,
+                      child: CustomPaint(painter: _RewardBurstPainter(t: t)),
                     ),
                   ),
                   Positioned(
-                    top: size * 0.45,
+                    top: size * 0.55 + shiver,
                     child: Opacity(
-                      opacity: t.clamp(0.0, 1.0),
+                      opacity: land.clamp(0.0, 1.0),
                       child: Transform.rotate(
                         angle: rotation,
                         child: Transform.scale(
-                          scale: 0.3 + 0.7 * pop,
-                          child: child,
+                          scale: 0.25 + 0.75 * pop,
+                          child: SizedBox(
+                            width: size,
+                            height: size,
+                            child: CustomPaint(
+                              painter: _MedallionFacePainter(shine: t),
+                              child: Center(
+                                child: Text(
+                                  '$counted',
+                                  style: TextStyle(
+                                    fontSize: size * 0.5,
+                                    height: 1,
+                                    fontWeight: FontWeight.w900,
+                                    color: const Color(0xFFFFF0C2),
+                                    shadows: const [
+                                      Shadow(
+                                        color: Color(0xCC000000),
+                                        offset: Offset(0, 2),
+                                        blurRadius: 4,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  // The ribbon: the words arrive after the object, so the
+                  // eye reads the medallion first and the sentence second.
                   Positioned(
-                    top: size * 1.55,
+                    top: size * 1.72,
                     left: 0,
                     right: 0,
                     child: Opacity(
-                      opacity: ((t - 0.45) / 0.4).clamp(0.0, 1.0),
+                      opacity: ((t - 0.40) / 0.24).clamp(0.0, 1.0),
                       child: Transform.translate(
-                        offset: Offset(0, (1 - t) * 10),
-                        child: Text(
-                          caption,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: OrnatePalette.ivory,
-                            fontWeight: FontWeight.w800,
-                            shadows: const [
-                              Shadow(color: Color(0xCC000000), blurRadius: 12),
-                            ],
-                          ),
+                        offset: Offset(
+                          0,
+                          (1 - ((t - 0.40) / 0.24).clamp(0.0, 1.0)) * 14,
                         ),
+                        child: child,
                       ),
                     ),
                   ),
@@ -95,27 +149,41 @@ class EarnedStepsMedallion extends StatelessWidget {
               ),
             );
           },
-          child: SizedBox(
-            width: size,
-            height: size,
-            child: CustomPaint(
-              painter: _MedallionFacePainter(),
-              child: Center(
-                child: Text(
-                  '$value',
-                  style: TextStyle(
-                    fontSize: size * 0.5,
-                    height: 1,
-                    fontWeight: FontWeight.w900,
-                    color: const Color(0xFFFFF0C2),
-                    shadows: const [
-                      Shadow(color: Color(0xCC000000), offset: Offset(0, 2), blurRadius: 4),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+          child: Center(child: _Ribbon(text: widget.caption)),
+        ),
+      ),
+    );
+  }
+}
+
+/// The caption on a gold-ruled plaque, so the sentence is part of the
+/// object rather than type floating over the board.
+class _Ribbon extends StatelessWidget {
+  const _Ribbon({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
+      decoration: BoxDecoration(
+        color: const Color(0xF20C2B22),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: const Color(0xFFEBC06A), width: 1.4),
+        boxShadow: const [
+          BoxShadow(color: Color(0x99000000), blurRadius: 20, offset: Offset(0, 6)),
+        ],
+      ),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          color: OrnatePalette.gold,
+          fontWeight: FontWeight.w900,
+          letterSpacing: 0.2,
         ),
       ),
     );
@@ -123,8 +191,14 @@ class EarnedStepsMedallion extends StatelessWidget {
 }
 
 /// The medallion itself: brushed gold, an engraved double ring, eight
-/// small stars round the rim — the plate's own frame motif.
+/// small stars round the rim — the plate's own frame motif — with a
+/// highlight that sweeps across it once as it lands.
 class _MedallionFacePainter extends CustomPainter {
+  const _MedallionFacePainter({required this.shine});
+
+  /// 0..1 through the whole beat; drives the sweeping highlight.
+  final double shine;
+
   @override
   void paint(Canvas canvas, Size size) {
     final c = size.center(Offset.zero);
@@ -203,6 +277,28 @@ class _MedallionFacePainter extends CustomPainter {
         ..strokeCap = StrokeCap.round
         ..color = Colors.white.withValues(alpha: 0.5),
     );
+    // One pass of light across the face, once the medallion has landed.
+    final sweep = ((shine - 0.45) / 0.35).clamp(0.0, 1.0);
+    if (sweep > 0 && sweep < 1) {
+      canvas.save();
+      canvas.clipPath(Path()..addOval(Rect.fromCircle(center: c, radius: r)));
+      final x = c.dx + (sweep * 2.6 - 1.3) * r;
+      canvas.drawRect(
+        Rect.fromLTWH(x - r * 0.35, c.dy - r * 1.2, r * 0.7, r * 2.4),
+        Paint()
+          ..shader = ui.Gradient.linear(
+            Offset(x - r * 0.35, 0),
+            Offset(x + r * 0.35, 0),
+            [
+              const Color(0x00FFFFFF),
+              Colors.white.withValues(alpha: 0.42 * math.sin(sweep * math.pi)),
+              const Color(0x00FFFFFF),
+            ],
+            const [0, 0.5, 1],
+          ),
+      );
+      canvas.restore();
+    }
   }
 
   void _star(Canvas canvas, Offset c, double r, Paint paint) {
@@ -217,12 +313,14 @@ class _MedallionFacePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_MedallionFacePainter old) => false;
+  bool shouldRepaint(_MedallionFacePainter old) => old.shine != shine;
 }
 
-/// The ring of light and the sparks thrown as the medallion lands.
-class _MedallionBurstPainter extends CustomPainter {
-  const _MedallionBurstPainter({required this.t});
+/// Everything thrown as the medallion lands: a warm pool of light, a
+/// slowly turning crown of rays, a shockwave ring and a spray of sparks
+/// that fall back under their own weight.
+class _RewardBurstPainter extends CustomPainter {
+  const _RewardBurstPainter({required this.t});
 
   final double t;
 
@@ -230,41 +328,79 @@ class _MedallionBurstPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final c = Offset(size.width / 2, size.height * 0.5);
     final r = size.shortestSide / 2;
-    // Glow behind.
+
+    // The pool of light: up fast, then held.
+    final glow = Curves.easeOut.transform((t / 0.3).clamp(0.0, 1.0));
     canvas.drawCircle(
       c,
-      r * 0.7,
+      r * 0.85,
       Paint()
-        ..shader = ui.Gradient.radial(c, r * 0.7, [
-          const Color(0xFFF3D68A).withValues(alpha: 0.55 * t),
+        ..shader = ui.Gradient.radial(c, r * 0.85, [
+          const Color(0xFFF3D68A).withValues(alpha: 0.60 * glow),
+          const Color(0xFFF3D68A).withValues(alpha: 0.16 * glow),
           const Color(0x00F3D68A),
-        ]),
+        ], const [0, 0.55, 1]),
     );
-    // Expanding ring.
-    final ring = ((t - 0.2) / 0.8).clamp(0.0, 1.0);
-    if (ring > 0) {
+
+    // A crown of rays, opening out and turning a few degrees: the light
+    // behind the object, not another object.
+    final rays = Curves.easeOutCubic.transform((t / 0.5).clamp(0.0, 1.0));
+    if (rays > 0) {
+      final fade = (1 - ((t - 0.55) / 0.45).clamp(0.0, 1.0));
+      final spin = t * 0.22;
+      final paint = Paint()..color = const Color(0xFFFFE9AE).withValues(alpha: 0.28 * rays * fade);
+      for (var i = 0; i < 16; i++) {
+        final a = spin + i * math.pi / 8;
+        final long = i.isEven ? 1.0 : 0.66;
+        final inner = r * 0.30;
+        final outer = r * (0.34 + 0.62 * rays * long);
+        final w = (i.isEven ? 0.055 : 0.032) * math.pi;
+        final path = Path()
+          ..moveTo(c.dx + math.cos(a - w) * inner, c.dy + math.sin(a - w) * inner)
+          ..lineTo(c.dx + math.cos(a) * outer, c.dy + math.sin(a) * outer)
+          ..lineTo(c.dx + math.cos(a + w) * inner, c.dy + math.sin(a + w) * inner)
+          ..close();
+        canvas.drawPath(path, paint);
+      }
+    }
+
+    // The shockwave: one ring riding out and thinning to nothing.
+    final ring = ((t - 0.28) / 0.55).clamp(0.0, 1.0);
+    if (ring > 0 && ring < 1) {
       canvas.drawCircle(
         c,
-        r * (0.35 + 0.65 * ring),
+        r * (0.30 + 0.68 * Curves.easeOutCubic.transform(ring)),
         Paint()
           ..style = PaintingStyle.stroke
-          ..strokeWidth = r * 0.06 * (1 - ring) + 1
-          ..color = const Color(0xFFFFE9AE).withValues(alpha: 0.8 * (1 - ring)),
+          ..strokeWidth = r * 0.07 * (1 - ring) + 1
+          ..color = const Color(0xFFFFE9AE).withValues(alpha: 0.85 * (1 - ring)),
       );
     }
-    // Sparks.
-    final sparkT = ((t - 0.3) / 0.7).clamp(0.0, 1.0);
+
+    // Sparks: out on an arc, then falling — gravity is what stops them
+    // reading as a ring of dots.
+    final sparkT = ((t - 0.24) / 0.70).clamp(0.0, 1.0);
     if (sparkT > 0) {
-      final paint = Paint()..color = const Color(0xFFFFF0C2).withValues(alpha: 1 - sparkT);
-      for (var i = 0; i < 12; i++) {
-        final a = i * math.pi / 6 + (i.isEven ? 0.15 : -0.1);
-        final d = r * (0.45 + 0.55 * Curves.easeOut.transform(sparkT)) * (i % 3 == 0 ? 1.0 : 0.82);
-        final p = Offset(c.dx + math.cos(a) * d, c.dy + math.sin(a) * d);
-        canvas.drawCircle(p, r * 0.03 * (1 - sparkT * 0.6) + 0.5, paint);
+      final eased = Curves.easeOutCubic.transform(sparkT);
+      for (var i = 0; i < 18; i++) {
+        final a = i * math.pi / 9 + (i.isEven ? 0.17 : -0.11);
+        final reach = (i % 3 == 0 ? 1.0 : i.isEven ? 0.84 : 0.70);
+        final d = r * (0.34 + 0.62 * eased) * reach;
+        final fall = r * 0.34 * sparkT * sparkT * reach;
+        final p = Offset(c.dx + math.cos(a) * d, c.dy + math.sin(a) * d + fall);
+        canvas.drawCircle(
+          p,
+          r * 0.026 * (1 - sparkT * 0.55) + 0.6,
+          Paint()
+            ..color = (i % 4 == 0
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFFFFE7A6))
+                .withValues(alpha: (1 - sparkT).clamp(0.0, 1.0)),
+        );
       }
     }
   }
 
   @override
-  bool shouldRepaint(_MedallionBurstPainter old) => old.t != t;
+  bool shouldRepaint(_RewardBurstPainter old) => old.t != t;
 }

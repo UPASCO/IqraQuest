@@ -472,6 +472,11 @@ void main() {
       // Sixteen squares apart, so no card 1..6 can make one horse land
       // on the other: both are always offered, whatever is drawn.
       expect(controller.legalMoves.length, 2, reason: 'both horses can ride a $card');
+      // Every horse the card can move is unmistakable: it wears the
+      // chevron and stands in its own light. No other piece does.
+      expect(find.byKey(const ValueKey('ready-p0:0')), findsOneWidget);
+      expect(find.byKey(const ValueKey('ready-p0:1')), findsOneWidget);
+      expect(find.byKey(const ValueKey('ready-p1:0')), findsNothing);
       // Nothing is lit until a horse is touched.
       expect(find.byKey(const ValueKey('destination')), findsNothing);
 

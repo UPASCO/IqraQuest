@@ -774,12 +774,12 @@ class AppLocalizationsAr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count مربع',
-      many: '$count مربعًا',
-      few: '$count مربعات',
-      two: 'مربعان',
-      one: 'مربع واحد',
-      zero: 'لا مربعات',
+      other: 'ربحت $count ركضة',
+      many: 'ربحت $count ركضة',
+      few: 'ربحت $count ركضات',
+      two: 'ركضتان',
+      one: 'ركضة واحدة',
+      zero: 'لا ركضات',
     );
     return '$_temp0';
   }
@@ -807,8 +807,16 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String cardWasWorth(int value) {
-    return 'كانت هذه البطاقة تساوي $value مربعات.';
+  String cardWasWorth(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'كانت هذه البطاقة تساوي $count ركضة.',
+      few: 'كانت هذه البطاقة تساوي $count ركضات.',
+      two: 'كانت هذه البطاقة تساوي ركضتين.',
+      one: 'كانت هذه البطاقة تساوي ركضة واحدة.',
+    );
+    return '$_temp0';
   }
 
   @override

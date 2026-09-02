@@ -1039,9 +1039,9 @@
   "@hapticFeedback": {
     "description": "Settings item: toggle for the board's vibrations"
   },
-  "squaresWon": "{count, plural, one{{count} square won} other{{count} squares won}}",
+  "squaresWon": "{count, plural, one{Won {count} gallop} other{Won {count} gallops}}",
   "@squaresWon": {
-    "description": "Result medallion caption after a right answer: how many squares the card was worth",
+    "description": "Reward reveal caption after a right answer: the gallops won, i.e. how far the card carries a horse",
     "placeholders": {
       "count": {
         "type": "int"
@@ -1082,11 +1082,11 @@
       }
     }
   },
-  "cardWasWorth": "This card was worth {value} squares.",
+  "cardWasWorth": "{count, plural, one{This card was worth {count} gallop.} other{This card was worth {count} gallops.}}",
   "@cardWasWorth": {
     "description": "Feedback sheet line after a wrong answer: what the card would have moved",
     "placeholders": {
-      "value": {
+      "count": {
         "type": "int"
       }
     }
