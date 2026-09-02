@@ -235,6 +235,20 @@ void main() {
     final container = await _pumpGame(tester);
 
     for (var turn = 1; turn <= 6; turn++) {
+      final phase = container.read(gameControllerProvider)?.gameState.turnPhase;
+      // A bonus ride can carry a single-horse race to its end within a
+      // few cards: the arrival asks its journey question, then the race
+      // is over. Both are the loop working, not wedging.
+      if (phase == TurnPhase.gameOver || phase == null) break;
+      if (phase == TurnPhase.answeringJourneyQuestion) {
+        final journey = container.read(gameControllerProvider)!.currentQuestion!;
+        final answer = journey.answers[journey.correctAnswerIndex];
+        await tester.ensureVisible(find.text(answer).first);
+        await tester.tap(find.text(answer).first);
+        await _pastFeedback(tester);
+        await _pastRide(tester);
+        continue;
+      }
       expect(
         find.byKey(const Key('draw-deck')),
         findsOneWidget,
@@ -250,7 +264,14 @@ void main() {
       await tester.pump(const Duration(milliseconds: 520));
       expect(find.text('?'), findsOneWidget, reason: 'turn $turn: no question-mark face');
       final drawn = container.read(gameControllerProvider)!.gameState.drawnCard!;
-      expect(find.text('${drawn.steps}'), findsNothing, reason: 'turn $turn: value shown early');
+      expect(
+        find.descendant(
+          of: find.byType(DrawnCardReveal),
+          matching: find.text('${drawn.steps}'),
+        ),
+        findsNothing,
+        reason: 'turn $turn: value shown early',
+      );
       await _pastReveal(tester);
 
       final session = container.read(gameControllerProvider)!;
