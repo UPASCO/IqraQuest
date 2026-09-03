@@ -244,6 +244,12 @@ abstract class AppLocalizations {
   /// **'Classic game'**
   String get classicGame;
 
+  /// Why the card moved nothing: it would overshoot the finish
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{Card too big: your horse is {count} square from Mecca and needs exactly 1.} other{Card too big: your horse is {count} squares from Mecca and needs exactly {count}.}}'**
+  String noMoveOvershoot(num count);
+
   /// Heading over the row of per-rider arrival counters
   ///
   /// In en, this message translates to:

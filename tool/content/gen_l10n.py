@@ -155,6 +155,21 @@ s("classicGame", "Game variant: 4 pawns per player",
   ur="کلاسک کھیل", ms="Permainan Klasik", it="Partita classica", nl="Klassiek spel")
 
 # ---- Board HUD and the in-game menu ---------------------------------------
+s("noMoveOvershoot", "Why the card moved nothing: it would overshoot the finish",
+  ph={"count": "num"},
+  fr="{count, plural, one{Carte trop grande : ton cheval est à {count} case de La Mecque, il lui faut exactement 1.} other{Carte trop grande : ton cheval est à {count} cases de La Mecque, il lui faut exactement {count}.}}",
+  en="{count, plural, one{Card too big: your horse is {count} square from Mecca and needs exactly 1.} other{Card too big: your horse is {count} squares from Mecca and needs exactly {count}.}}",
+  ar="{count, plural, one{البطاقة كبيرة: حصانك على بُعد مربع واحد من مكة ويحتاج إلى 1 بالضبط.} two{البطاقة كبيرة: حصانك على بُعد مربعين من مكة ويحتاج إلى 2 بالضبط.} few{البطاقة كبيرة: حصانك على بُعد {count} مربعات من مكة ويحتاج إلى {count} بالضبط.} other{البطاقة كبيرة: حصانك على بُعد {count} مربعًا من مكة ويحتاج إلى {count} بالضبط.}}",
+  es="{count, plural, one{Carta demasiado grande: tu caballo está a {count} casilla de La Meca y necesita exactamente 1.} other{Carta demasiado grande: tu caballo está a {count} casillas de La Meca y necesita exactamente {count}.}}",
+  pt="{count, plural, one{Carta grande demais: o teu cavalo está a {count} casa de Meca e precisa de exatamente 1.} other{Carta grande demais: o teu cavalo está a {count} casas de Meca e precisa de exatamente {count}.}}",
+  de="{count, plural, one{Karte zu groß: Dein Pferd ist {count} Feld von Mekka entfernt und braucht genau 1.} other{Karte zu groß: Dein Pferd ist {count} Felder von Mekka entfernt und braucht genau {count}.}}",
+  tr="{count, plural, other{Kart fazla büyük: atın Mekke'ye {count} kare uzakta ve tam olarak {count} gerekiyor.}}",
+  id="{count, plural, other{Kartu terlalu besar: kudamu {count} petak dari Mekah dan butuh persis {count}.}}",
+  ur="{count, plural, one{کارڈ بہت بڑا ہے: تمہارا گھوڑا مکہ سے {count} خانہ دور ہے اور اسے بالکل 1 چاہیے۔} other{کارڈ بہت بڑا ہے: تمہارا گھوڑا مکہ سے {count} خانے دور ہے اور اسے بالکل {count} چاہیے۔}}",
+  ms="{count, plural, other{Kad terlalu besar: kudamu {count} petak dari Mekah dan perlukan tepat {count}.}}",
+  it="{count, plural, one{Carta troppo grande: il tuo cavallo è a {count} casella dalla Mecca e gli serve esattamente 1.} other{Carta troppo grande: il tuo cavallo è a {count} caselle dalla Mecca e gli serve esattamente {count}.}}",
+  nl="{count, plural, one{Kaart te groot: je paard staat {count} vakje van Mekka en heeft precies 1 nodig.} other{Kaart te groot: je paard staat {count} vakjes van Mekka en heeft precies {count} nodig.}}")
+
 s("hudArrivedHeading", "Heading over the row of per-rider arrival counters",
   fr="Chevaux arrivés", en="Horses home", ar="الخيول الواصلة",
   es="Caballos llegados", pt="Cavalos chegados", de="Angekommene Pferde",

@@ -21,6 +21,7 @@
   "continueGame": "Lanjutkan Permainan",
   "quickGame": "Permainan Cepat",
   "classicGame": "Permainan Klasik",
+  "noMoveOvershoot": "{count, plural, other{Kartu terlalu besar: kudamu {count} petak dari Mekah dan butuh persis {count}.}}",
   "hudArrivedHeading": "Kuda yang tiba",
   "hudKnowledgeShort": "ilmu",
   "hudStreakShort": "beruntun",

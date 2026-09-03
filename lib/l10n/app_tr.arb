@@ -21,6 +21,7 @@
   "continueGame": "Oyuna Devam Et",
   "quickGame": "Hızlı Oyun",
   "classicGame": "Klasik Oyun",
+  "noMoveOvershoot": "{count, plural, other{Kart fazla büyük: atın Mekke'ye {count} kare uzakta ve tam olarak {count} gerekiyor.}}",
   "hudArrivedHeading": "Varan atlar",
   "hudKnowledgeShort": "bilgi",
   "hudStreakShort": "seri",

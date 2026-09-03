@@ -75,6 +75,19 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classicGame => 'کلاسک کھیل';
 
   @override
+  String noMoveOvershoot(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          'کارڈ بہت بڑا ہے: تمہارا گھوڑا مکہ سے $count خانے دور ہے اور اسے بالکل $count چاہیے۔',
+      one:
+          'کارڈ بہت بڑا ہے: تمہارا گھوڑا مکہ سے $count خانہ دور ہے اور اسے بالکل 1 چاہیے۔',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get hudArrivedHeading => 'پہنچے ہوئے گھوڑے';
 
   @override

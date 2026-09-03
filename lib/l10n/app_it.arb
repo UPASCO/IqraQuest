@@ -21,6 +21,7 @@
   "continueGame": "Continua partita",
   "quickGame": "Partita rapida",
   "classicGame": "Partita classica",
+  "noMoveOvershoot": "{count, plural, one{Carta troppo grande: il tuo cavallo è a {count} casella dalla Mecca e gli serve esattamente 1.} other{Carta troppo grande: il tuo cavallo è a {count} caselle dalla Mecca e gli serve esattamente {count}.}}",
   "hudArrivedHeading": "Cavalli arrivati",
   "hudKnowledgeShort": "sapere",
   "hudStreakShort": "serie",

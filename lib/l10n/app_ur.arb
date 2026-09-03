@@ -21,6 +21,7 @@
   "continueGame": "کھیل جاری رکھیں",
   "quickGame": "فوری کھیل",
   "classicGame": "کلاسک کھیل",
+  "noMoveOvershoot": "{count, plural, one{کارڈ بہت بڑا ہے: تمہارا گھوڑا مکہ سے {count} خانہ دور ہے اور اسے بالکل 1 چاہیے۔} other{کارڈ بہت بڑا ہے: تمہارا گھوڑا مکہ سے {count} خانے دور ہے اور اسے بالکل {count} چاہیے۔}}",
   "hudArrivedHeading": "پہنچے ہوئے گھوڑے",
   "hudKnowledgeShort": "علم",
   "hudStreakShort": "تسلسل",

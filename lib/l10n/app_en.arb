@@ -84,6 +84,15 @@
   "@classicGame": {
     "description": "Game variant: 4 pawns per player"
   },
+  "noMoveOvershoot": "{count, plural, one{Card too big: your horse is {count} square from Mecca and needs exactly 1.} other{Card too big: your horse is {count} squares from Mecca and needs exactly {count}.}}",
+  "@noMoveOvershoot": {
+    "description": "Why the card moved nothing: it would overshoot the finish",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
   "hudArrivedHeading": "Horses home",
   "@hudArrivedHeading": {
     "description": "Heading over the row of per-rider arrival counters"

@@ -21,6 +21,7 @@
   "continueGame": "Sambung Permainan",
   "quickGame": "Permainan Pantas",
   "classicGame": "Permainan Klasik",
+  "noMoveOvershoot": "{count, plural, other{Kad terlalu besar: kudamu {count} petak dari Mekah dan perlukan tepat {count}.}}",
   "hudArrivedHeading": "Kuda yang tiba",
   "hudKnowledgeShort": "ilmu",
   "hudStreakShort": "rentetan",

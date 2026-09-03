@@ -814,6 +814,62 @@ void main() {
       expect(state.winnerId, 'p0');
     });
 
+    test('the exact count is named when a card overshoots the finish', () {
+      // "My horse is three squares from Mecca, I drew a 6, and nothing
+      // happened" is the refusal that reads as a bug. The board can now
+      // say the number the horse is waiting for.
+      var state = buildGame();
+      final circuit = state.circuit;
+      // Three from the finish, and a card that would carry it past.
+      state = withHorse(
+        state,
+        at: circuit.positionAt(circuit.journeyLength - 3, 0),
+      );
+      // A 5, not a 6: a 6 would open the stable and there would be a
+      // legal move after all — the refusal has to be the count alone.
+      state = engine.drawCard(state, const MovementChoice(5));
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      expect(engine.legalMoves(state, const MovementChoice(5)), isEmpty);
+      expect(engine.exactCountAwaited(state), 3);
+
+      // The card that fits is not a refusal at all.
+      var fits = buildGame();
+      fits = withHorse(fits, at: circuit.positionAt(circuit.journeyLength - 3, 0));
+      fits = engine.drawCard(fits, const MovementChoice(3));
+      fits = engine.applyAnswer(fits, correct: true, questionId: 'q2');
+      expect(engine.legalMoves(fits, const MovementChoice(3)), isNotEmpty);
+      expect(engine.exactCountAwaited(fits), isNull);
+
+      // A stable full of horses is a different refusal, and must not
+      // borrow this explanation.
+      var stabled = buildGame();
+      stabled = engine.drawCard(stabled, const MovementChoice(3));
+      stabled = engine.applyAnswer(stabled, correct: true, questionId: 'q3');
+      expect(engine.exactCountAwaited(stabled), isNull);
+    });
+
+    test('the closest horse to Mecca is the one the count is quoted for', () {
+      var state = buildGame();
+      final circuit = state.circuit;
+      state = withHorse(
+        state,
+        horse: 0,
+        at: circuit.positionAt(circuit.journeyLength - 4, 0),
+      );
+      state = withHorse(
+        state,
+        horse: 1,
+        at: circuit.positionAt(circuit.journeyLength - 2, 0),
+      );
+      state = engine.drawCard(state, const MovementChoice(5));
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      expect(
+        engine.exactCountAwaited(state),
+        2,
+        reason: 'the horse nearest the finish is the one being waited on',
+      );
+    });
+
     test('a duo race is won by the second horse home, not the first', () {
       expect(GameVariant.duo.horsesToWin, 2);
       var state = buildGame(variant: GameVariant.duo);

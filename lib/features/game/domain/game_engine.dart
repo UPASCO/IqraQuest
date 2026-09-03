@@ -804,6 +804,30 @@ class GameEngine {
     return next.copyWith(turnPhase: TurnPhase.showingFeedback);
   }
 
+  /// When the drawn card can move nothing, how many squares the horse
+  /// closest to Mecca still needs — the exact count it is waiting for.
+  ///
+  /// This is the refusal a player is most likely to read as a bug: the
+  /// card is big, the horse is nearly home, and nothing happens. Null
+  /// when no horse on the course was refused for that reason, so the
+  /// board can fall back to the general "this card moves nothing".
+  int? exactCountAwaited(GameState state) {
+    final card = state.drawnCard;
+    if (card == null) return null;
+    final circuit = state.circuit;
+    final team = state.currentPlayerIndex;
+    int? closest;
+    for (final horse in state.currentPlayer.horses) {
+      if (horse.isFinished) continue;
+      final progress = circuit.progressOf(horse.position, team);
+      if (progress == null) continue; // still in the stable
+      final remaining = circuit.journeyLength - progress;
+      if (card.steps <= remaining) continue; // this one could have ridden
+      if (closest == null || remaining < closest) closest = remaining;
+    }
+    return closest;
+  }
+
   /// Whether [player] has brought home what the format asks for: one
   /// horse in a quick race, all four in the classic and family games —
   /// or every horse they have, for a table set with fewer.

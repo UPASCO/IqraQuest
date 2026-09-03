@@ -21,6 +21,7 @@
   "continueGame": "Continuar jogo",
   "quickGame": "Jogo rápido",
   "classicGame": "Jogo clássico",
+  "noMoveOvershoot": "{count, plural, one{Carta grande demais: o teu cavalo está a {count} casa de Meca e precisa de exatamente 1.} other{Carta grande demais: o teu cavalo está a {count} casas de Meca e precisa de exatamente {count}.}}",
   "hudArrivedHeading": "Cavalos chegados",
   "hudKnowledgeShort": "saber",
   "hudStreakShort": "sequência",

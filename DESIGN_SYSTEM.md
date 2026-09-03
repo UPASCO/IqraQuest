@@ -207,6 +207,24 @@ the deck would otherwise sit on top of a plate that fills the height, so
 the board reserves a band at each end (22% / 18%) and the square plate
 centres between them.
 
+### Whose turn it is, and why nothing moved
+Two questions a board must answer without being asked.
+
+**Whose turn.** The rider's name used to be a pill like any other in the
+bar — a dot, a name, a counter's weight — and around a table people had
+to ask. It is a **nameplate** now (`Key('turn-nameplate')`): it wears the
+rider's own colour, says "À TOI DE JOUER" above the name, and breathes
+while the game is actually waiting on that player. A glow that never
+stops is wallpaper, so it stops the moment the turn moves on, and
+reduced motion keeps the lit look without the movement.
+
+**Why nothing moved.** "My horse is three from Mecca, I drew a 6, and
+nothing happened" is the exact count read as a bug. When a card moves
+nothing, the banner now names the reason first — the number the horse
+nearest the finish is waiting for (`GameEngine.exactCountAwaited`) —
+before falling back to the general "this card moves nothing", and a
+stable that needs a 6 keeps its own line.
+
 ### The setup screen, and the board's own mute
 A format the player cannot tell from the next one is a decoration, not a
 choice. The three race lengths are therefore shown as **four horses per

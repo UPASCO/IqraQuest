@@ -21,6 +21,7 @@
   "continueGame": "Spiel fortsetzen",
   "quickGame": "Schnellspiel",
   "classicGame": "Klassisches Spiel",
+  "noMoveOvershoot": "{count, plural, one{Karte zu groß: Dein Pferd ist {count} Feld von Mekka entfernt und braucht genau 1.} other{Karte zu groß: Dein Pferd ist {count} Felder von Mekka entfernt und braucht genau {count}.}}",
   "hudArrivedHeading": "Angekommene Pferde",
   "hudKnowledgeShort": "Wissen",
   "hudStreakShort": "Serie",

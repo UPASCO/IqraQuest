@@ -21,6 +21,7 @@
   "continueGame": "Spel voortzetten",
   "quickGame": "Snel spel",
   "classicGame": "Klassiek spel",
+  "noMoveOvershoot": "{count, plural, one{Kaart te groot: je paard staat {count} vakje van Mekka en heeft precies 1 nodig.} other{Kaart te groot: je paard staat {count} vakjes van Mekka en heeft precies {count} nodig.}}",
   "hudArrivedHeading": "Aangekomen paarden",
   "hudKnowledgeShort": "kennis",
   "hudStreakShort": "reeks",

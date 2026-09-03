@@ -312,30 +312,24 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               .setSoundEnabled(!soundOn),
                         ),
                         const SizedBox(width: 8),
-                        // The name takes the middle and ellipsizes inside
-                        // it, so the two pairs of buttons stay level.
+                        // Whose turn it is, and it must be unmissable:
+                        // around a table nobody should have to ask. The
+                        // plate wears the rider's own colour, says so in
+                        // words, and breathes while the game is waiting
+                        // on them.
                         Expanded(
                           child: Center(
-                            child: _HudPill(
-                              highlight: true,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 6,
-                                    backgroundColor: player.team.color(colors),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Flexible(
-                                    child: Text(
-                                      player.name,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: _hudText(context),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            child: _TurnNameplate(
+                              key: const Key('turn-nameplate'),
+                              name: player.name,
+                              color: player.team.color(colors),
+                              // No eyebrow on an opponent's turn: the
+                              // banner over the board already narrates
+                              // what they are doing.
+                              label: player.isHuman ? l10n.yourTurn : null,
+                              waiting:
+                                  player.isHuman &&
+                                  state.turnPhase == TurnPhase.selectingGait,
                             ),
                           ),
                         ),
@@ -1191,6 +1185,140 @@ Future<void> _openBoardMenu(
   );
 }
 
+/// Whose turn it is, said so it cannot be missed.
+///
+/// The old version was a pill like any other in the bar — a dot, a name,
+/// the same weight as a counter — and around a table people had to ask
+/// whose go it was. This one wears the rider's own colour, names the
+/// turn in words above it, and breathes gently while the game is
+/// actually waiting on that player, so a glance from across the table
+/// answers the question.
+class _TurnNameplate extends StatefulWidget {
+  const _TurnNameplate({
+    super.key,
+    required this.name,
+    required this.color,
+    required this.label,
+    required this.waiting,
+  });
+
+  final String name;
+  final Color color;
+
+  /// The line above the name ("À toi de jouer"), or null on an
+  /// opponent's turn, where the board's own banner narrates instead.
+  final String? label;
+
+  /// The game is waiting for this player to act. Only then does the
+  /// plate breathe: a glow that never stops is wallpaper.
+  final bool waiting;
+
+  @override
+  State<_TurnNameplate> createState() => _TurnNameplateState();
+}
+
+class _TurnNameplateState extends State<_TurnNameplate>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _breath = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1600),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.waiting) _breath.repeat(reverse: true);
+  }
+
+  @override
+  void didUpdateWidget(covariant _TurnNameplate old) {
+    super.didUpdateWidget(old);
+    if (widget.waiting == old.waiting) return;
+    if (widget.waiting) {
+      _breath.repeat(reverse: true);
+    } else {
+      _breath.stop();
+      _breath.value = 0;
+    }
+  }
+
+  @override
+  void dispose() {
+    _breath.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final still = AppMotion.of(context, AppMotion.micro) == Duration.zero;
+    return AnimatedBuilder(
+      animation: _breath,
+      builder: (context, _) {
+        // Reduced motion keeps the lit look, without the movement.
+        final t = still
+            ? (widget.waiting ? 0.7 : 0.0)
+            : Curves.easeInOut.transform(_breath.value);
+        return Semantics(
+          liveRegion: true,
+          label: widget.label == null
+              ? widget.name
+              : '${widget.label}, ${widget.name}',
+          child: ExcludeSemantics(
+            child: AnimatedContainer(
+              duration: AppMotion.of(context, AppMotion.micro),
+              padding: const EdgeInsets.fromLTRB(14, 5, 14, 6),
+              decoration: BoxDecoration(
+                color: Color.alphaBlend(
+                  widget.color.withValues(alpha: 0.30),
+                  const Color(0xE60C2B1F),
+                ),
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(color: widget.color, width: 1.6),
+                boxShadow: [
+                  BoxShadow(
+                    color: widget.color.withValues(
+                      alpha: 0.18 + 0.34 * t * (widget.waiting ? 1 : 0),
+                    ),
+                    blurRadius: 10 + 12 * t,
+                    spreadRadius: 0.5 + 1.5 * t,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.label != null)
+                    Text(
+                      widget.label!.toUpperCase(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: const Color(0xFFEBC06A),
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.2,
+                        height: 1.1,
+                      ),
+                    ),
+                  Text(
+                    widget.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: const Color(0xFFFFF6E2),
+                      fontWeight: FontWeight.w800,
+                      height: 1.15,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
 /// The one type style of the HUD: every pill, counter and word is set in
 /// it, so the bar reads as one instrument rather than a row of widgets.
 TextStyle? _hudText(BuildContext context) => Theme.of(context)
@@ -1497,6 +1625,9 @@ class _TurnBanner extends StatelessWidget {
     final allHome = player.horses.every((h) => h.isHome);
     final riding = state.pendingBonus?.value ?? state.lastBonusValue;
     final fromCapture = state.pendingBonus?.fromCapture ?? false;
+    final awaited = outcome == MoveOutcome.noLegalMove
+        ? const GameEngine().exactCountAwaited(state)
+        : null;
     final String text;
     if (player.isHuman) {
       if (state.turnPhase == TurnPhase.movingHorse && riding != null) {
@@ -1511,9 +1642,15 @@ class _TurnBanner extends StatelessWidget {
           MoveOutcome.captured => l10n.outcomeCaptured,
           MoveOutcome.blockedByShield => l10n.outcomeShieldBlocked,
           MoveOutcome.reachedFinish => l10n.journeyQuestionIntro,
-          // The card was seen; now the reason, in one line.
-          MoveOutcome.noLegalMove =>
-            allHome ? l10n.noExitHint : l10n.outcomeNoLegalMove,
+          // The card was seen; now the reason, in one line — and the
+          // exact count first, because "my horse is three from Mecca,
+          // I drew a six and nothing happened" is the refusal players
+          // read as a bug.
+          MoveOutcome.noLegalMove => allHome
+              ? l10n.noExitHint
+              : awaited != null
+              ? l10n.noMoveOvershoot(awaited)
+              : l10n.outcomeNoLegalMove,
           null => l10n.yourTurn,
         };
       }

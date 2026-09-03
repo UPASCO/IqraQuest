@@ -21,6 +21,7 @@
   "continueGame": "Continuar partida",
   "quickGame": "Partida rápida",
   "classicGame": "Partida clásica",
+  "noMoveOvershoot": "{count, plural, one{Carta demasiado grande: tu caballo está a {count} casilla de La Meca y necesita exactamente 1.} other{Carta demasiado grande: tu caballo está a {count} casillas de La Meca y necesita exactamente {count}.}}",
   "hudArrivedHeading": "Caballos llegados",
   "hudKnowledgeShort": "saber",
   "hudStreakShort": "racha",
