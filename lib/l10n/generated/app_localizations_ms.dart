@@ -799,18 +799,39 @@ class AppLocalizationsMs extends AppLocalizations {
   String get rulesTitle => 'Peraturan';
 
   @override
+  String get ruleGoalTitle => 'Memenangi perlumbaan';
+
+  @override
+  String get ruleGoalBody =>
+      'Setiap pemain membawa empat kuda ke Mekah, di tengah papan. Sebelum permainan, meja memilih berapa yang mesti tiba: satu untuk perlumbaan pantas, dua untuk perlumbaan duo, keempat-empatnya untuk permainan klasik. Pemain pertama yang berjaya menang.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Poin ilmu';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'Bintang pada bar mengira poin ilmumu: satu bagi setiap jawapan betul, dan satu lagi di petak Pengetahuan. Ia tidak menggerakkan kudamu — ia menyatakan apa yang kamu pelajari, dan memisahkan pemain jika permainan berhenti sebelum sesiapa tiba.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Petak khas';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Laluan yang kamu pilih membawa petak yang berfungsi, sama di keempat sukuannya: Oasis melindungi daripada tangkapan, Pengetahuan memberi satu poin ilmu, Cabaran menawarkan soalan lebih sukar untuk +2 derap, Jalan Singkat soalan sukar untuk memotong ke depan, dan Hikmah memberi satu fakta untuk disimpan. Cabaran atau Jalan Singkat yang gagal hanya merugikan bonusnya: kudamu kekal di tempatnya.';
+
+  @override
   String get ruleDrawCardTitle => 'Cabut sekeping kad';
 
   @override
   String get ruleDrawCardBody =>
-      'Pada giliran anda, cabut sekeping kad: soalannya terbuka serta-merta, sentiasa pada tahap anda — mudah, sederhana atau pakar — yang dipilih pada permulaan. Nilainya, 1 hingga 6 petak, kekal tersembunyi sehingga anda menjawab.';
+      'Pada pusinganmu, cabut satu kad. Kad itu terbalik menunjukkan nilainya — «Kad 5 derap» — kemudian soalannya terbuka, selalu pada tahapmu, yang dipilih pada mulanya: mudah, sederhana atau pakar. Jadi kamu tahu nilai jawapan betul sebelum menjawab.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Jawapan betul memberi anda petak-petak kad itu. Kemudian pilih kuda yang mengambilnya: sentuh untuk melihat destinasinya, lalu seret ke sana — melepaskannya ialah gerakan itu. Jawapan salah membiarkan semuanya di tempatnya: anda tidak pernah berundur.';
+      'Jawapan betul memberimu derap kad itu: satu derap, satu petak. Kemudian pilih kuda yang mengambilnya — sentuh untuk melihat ke mana ia akan mendarat, lalu leretkannya ke petak emasnya. Melepaskannya ialah langkahnya: tiada apa bergerak sebelumnya, tiada pengesahan selepasnya. Jawapan salah tidak menggerakkan apa-apa: kamu tidak pernah mengundur.';
 
   @override
   String get ruleEscalierTitle => 'Tangga ke Makkah';
@@ -824,14 +845,14 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Setiap pemain mempunyai empat kuda, dan yang pertama sudah berada di petak permulaannya: anda bermain sejak kad pertama, tanpa menunggu. Tiga yang lain keluar dari kandang dengan nombor 6: jawab betul dan kuda mengambil petak permulaan — dan kerana 6 membolehkan bermain lagi, ia terus bergerak. Pilihan anda: keluarkan satu lagi, atau mara.';
+      'Setiap pemain ada empat kuda, dan yang pertama sudah berada di petak mulanya: kamu bermain dari kad pertama, tanpa menunggu. Tiga yang lain keluar dari kandang dengan angka 6 — jawab betul dan kuda itu mengambil petak mula. Dua kudamu tidak boleh berkongsi satu petak: kudamu yang berada di petak mula menutup pintunya sehingga ia bergerak.';
 
   @override
   String get ruleSixTitle => '6 bermain lagi';
 
   @override
   String get ruleSixBody =>
-      'Seperti dadu: apabila anda mencabut 6, anda bermain lagi selepas giliran anda, betul atau tidak jawapannya. Dan dua ekor kuda anda tidak pernah berkongsi petak.';
+      'Seperti pada dadu: jika kamu mencabut 6, kamu bermain lagi selepas pusinganmu, betul atau salah jawapanmu.';
 
   @override
   String get ruleCaptureTitle => 'Menangkap dan menghantar pulang';
@@ -845,14 +866,14 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tiga jawapan betul berturut-turut memberi perisai, lima memberi Grand Galop, dan sepuluh lencana penguasaan. Grand Galop dibelanjakan sendiri, dan hanya apabila +2 petaknya cukup untuk sampai ke penamat. Bonus datang daripada pengetahuan sahaja.';
+      'Tiga jawapan betul berturut-turut memberi perisai, lima memberi Grand Galop, dan sepuluh lencana penguasaan. Grand Galop dibelanjakan sendiri, dan hanya apabila +2 derapnya cukup untuk sampai ke penamat. Bonus datang daripada pengetahuan sahaja.';
 
   @override
   String get ruleArrivalTitle => 'Ketibaan';
 
   @override
   String get ruleArrivalBody =>
-      'Garisan penamat dicapai dengan kiraan tepat: tiga petak dari oasis anda perlukan tepat 3. Nombor 4, 5 atau 6 membiarkan kuda di tempatnya, menunggu kad yang betul. Setibanya, jawab Soalan Perjalanan untuk mengesahkan ketibaan anda; jawapan salah tidak pernah mengundurkan anda, anda cuba lagi pada giliran seterusnya.';
+      'Garisan penamat dicapai dengan kiraan tepat: tiga petak dari Mekah anda perlukan tepat 3. Nombor 4, 5 atau 6 membiarkan kuda di tempatnya, menunggu kad yang betul. Setibanya, jawab Soalan Perjalanan untuk mengesahkan ketibaan anda; jawapan salah tidak pernah mengundurkan anda, anda cuba lagi pada giliran seterusnya.';
 
   @override
   String get hapticFeedback => 'Getaran';
@@ -951,5 +972,5 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Enam belas petak bonus diagihkan di papan setiap permainan, empat setiap suku. Kuda yang berhenti tepat di atasnya terus mara +5, +10 atau +20 lompatan — dan jika lompatan itu meletakkannya tepat di petak bonus lain, petak itu turut menyala: bonus berantai. Setiap petak membayar sekali setiap giliran dan kekal untuk semua.';
+      'Jika meja mengekalkannya, enam belas petak bonus disebar di papan setiap permainan, empat setiap sukuan. Kuda yang berhenti tepat di atasnya terus melaju +5, +10 atau +20 derap — dan jika laju itu mendaratkannya tepat di petak bonus lain, petak itu turut menyala: bonus berangkai. Setiap petak membayar sekali setiap pusingan dan kekal dalam permainan untuk semua. Tanpanya, satu kad bernilai tepat derapnya.';
 }

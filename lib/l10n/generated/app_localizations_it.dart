@@ -804,18 +804,39 @@ class AppLocalizationsIt extends AppLocalizations {
   String get rulesTitle => 'Le regole';
 
   @override
+  String get ruleGoalTitle => 'Vincere la corsa';
+
+  @override
+  String get ruleGoalBody =>
+      'Ogni giocatore conduce quattro cavalli verso la Mecca, al centro del tabellone. Prima della partita il tavolo scegli quanti devono arrivare: uno per una corsa rapida, due per una corsa in duo, tutti e quattro per la partita classica. Vince il primo che ci riesce.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Punti sapere';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'La stella nella barra conta i tuoi punti sapere: uno per ogni risposta esatta e uno in più su una casella Conoscenza. Non fanno avanzare il cavallo — dicono che cosa hai imparato e separano i giocatori se la partita finisce prima dell\'arrivo.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Le caselle speciali';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Il percorso che hai scelto porta caselle che fanno qualcosa, le stesse nei suoi quattro quarti: l\'Oasi protegge dalle catture, Conoscenza dà un punto sapere, la Sfida propone una domanda più difficile per +2 galoppi, la Scorciatoia una domanda difficile per passare avanti, e Saggezza offre un fatto da conservare. Una Sfida o una Scorciatoia mancata costa solo il bonus: il tuo cavallo resta dov\'è.';
+
+  @override
   String get ruleDrawCardTitle => 'Pesca una carta';
 
   @override
   String get ruleDrawCardBody =>
-      'Al tuo turno pesca una carta: la sua domanda si apre subito, sempre del tuo livello — facile, intermedio o esperto — scelto all\'inizio. Il suo valore, da 1 a 6 caselle, resta nascosto finché non rispondi.';
+      'Al tuo turno pesca una carta. Si gira sul suo valore — «Carta da 5 galoppi» — poi si apre la domanda, sempre al tuo livello, scelto all\'inizio: facile, intermedio o esperto. Sai quindi quanto vale una risposta esatta prima di rispondere.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Rispondi per avanzare';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Una risposta giusta ti fa vincere le caselle della carta. Scegli allora il cavallo che le prende: toccalo per vedere dove arriverebbe, poi trascinalo fin lì — lasciarlo è la mossa. Una risposta sbagliata lascia tutto dov\'è: non torni mai indietro.';
+      'Una risposta esatta ti fa guadagnare i galoppi della carta: un galoppo, una casella. Scegli poi il cavallo che li prende — toccalo per vedere dove arriverebbe, poi trascinalo sulla sua casella dorata. Lasciarlo è la mossa: nulla si muove prima, nulla chiede conferma dopo. Una risposta sbagliata non muove nulla: non torni mai indietro.';
 
   @override
   String get ruleEscalierTitle => 'La scala verso La Mecca';
@@ -829,14 +850,14 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Ogni giocatore ha quattro cavalli, e il primo è già sulla sua casella di partenza: giochi dalla primissima carta, senza attendere. Gli altri tre escono dalla scuderia con un 6: rispondi bene e il cavallo prende la casella di partenza — e poiché il 6 fa rigiocare, parte subito. La scelta è tua: farne uscire un altro, o avanzare.';
+      'Ogni giocatore ha quattro cavalli, e il primo è già sulla sua casella di partenza: giochi dalla prima carta, senza attendere. Gli altri tre escono dalla stalla con un 6 — rispondi bene e il cavallo prende la casella di partenza. Due dei tuoi cavalli non condividono mai una casella: uno dei tuoi fermo sulla casella di partenza tiene chiuso il cancello finché non avanza.';
 
   @override
   String get ruleSixTitle => 'Il 6 fa rigiocare';
 
   @override
   String get ruleSixBody =>
-      'Come col dado: quando peschi un 6 giochi di nuovo dopo il tuo turno, che la risposta sia giusta o no. E due dei tuoi cavalli non possono mai condividere una casella.';
+      'Come col dado: se peschi un 6, giochi di nuovo dopo il tuo turno, che la risposta sia esatta o no.';
 
   @override
   String get ruleCaptureTitle => 'Cattura e rimanda a casa';
@@ -850,14 +871,14 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tre risposte giuste di fila danno uno scudo, cinque il Gran Galoppo e dieci un distintivo di maestria. Il Gran Galoppo si spende da solo, e solo quando le sue +2 caselle bastano a tagliare il traguardo. I bonus vengono solo dalla conoscenza.';
+      'Tre risposte giuste di fila danno uno scudo, cinque il Gran Galoppo e dieci un distintivo di maestria. Il Gran Galoppo si spende da solo, e solo quando i suoi +2 galoppi bastano a tagliare il traguardo. I bonus vengono solo dalla conoscenza.';
 
   @override
   String get ruleArrivalTitle => 'L\'arrivo';
 
   @override
   String get ruleArrivalBody =>
-      'Il traguardo si raggiunge con il conto esatto: a tre caselle dall\'oasi ti serve esattamente un 3. Un 4, un 5 o un 6 lascia il cavallo dov\'è, in attesa della carta giusta. Una volta arrivato, rispondi alla Domanda del viaggio per convalidare l\'arrivo; un errore non ti fa mai arretrare, riprovi al turno successivo.';
+      'Il traguardo si raggiunge con il conto esatto: a tre caselle dalla Mecca ti serve esattamente un 3. Un 4, un 5 o un 6 lascia il cavallo dov\'è, in attesa della carta giusta. Una volta arrivato, rispondi alla Domanda del viaggio per convalidare l\'arrivo; un errore non ti fa mai arretrare, riprovi al turno successivo.';
 
   @override
   String get hapticFeedback => 'Vibrazione';
@@ -959,5 +980,5 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Sedici caselle bonus vengono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una avanza subito di +5, +10 o +20 galoppi — e se quel balzo lo posa esattamente su un\'altra casella bonus, scatta anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti.';
+      'Se il tavolo le tiene, sedici caselle bonus sono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una riparte subito di +5, +10 o +20 galoppi — e se quella cavalcata lo posa esattamente su un\'altra casella bonus, parte anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti. Senza di esse, una carta vale esattamente i suoi galoppi.';
 }

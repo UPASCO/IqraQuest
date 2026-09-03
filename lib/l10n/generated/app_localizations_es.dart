@@ -801,18 +801,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rulesTitle => 'Las reglas';
 
   @override
+  String get ruleGoalTitle => 'Ganar la carrera';
+
+  @override
+  String get ruleGoalBody =>
+      'Cada jugador lleva cuatro caballos hacia La Meca, en el centro del tablero. Antes de la partida, la mesa elige cuántos deben llegar: uno para una carrera rápida, dos para una carrera en dúo, los cuatro para la partida clásica. Gana el primero que lo consigue.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Puntos de saber';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'La estrella de la barra cuenta tus puntos de saber: uno por cada respuesta correcta y uno más en una casilla de Conocimiento. No hacen avanzar a tu caballo — dicen lo que has aprendido y desempatan a los jugadores si la partida termina antes de la llegada.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Las casillas especiales';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'El circuito que elegiste tiene casillas que hacen algo, las mismas en sus cuatro cuartos: el Oasis protege de las capturas, Conocimiento da un punto de saber, el Desafío ofrece una pregunta más difícil por +2 galopes, el Atajo una pregunta difícil para adelantarse, y Sabiduría regala un dato para guardar. Fallar un Desafío o un Atajo solo cuesta el bono: tu caballo se queda donde está.';
+
+  @override
   String get ruleDrawCardTitle => 'Roba una carta';
 
   @override
   String get ruleDrawCardBody =>
-      'En tu turno, roba una carta: su pregunta se abre al instante, siempre de tu nivel —fácil, intermedio o experto—, elegido al principio. Su valor, de 1 a 6 casillas, queda oculto hasta que respondas.';
+      'En tu turno, roba una carta. Se vuelve mostrando su valor — «Carta de 5 galopes» — y luego se abre su pregunta, siempre a tu nivel, elegido al principio: fácil, intermedio o experto. Así sabes lo que vale una respuesta correcta antes de responder.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responde para avanzar';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Una respuesta correcta te hace ganar las casillas de la carta. Elige entonces el caballo que las toma: tócalo para ver dónde llegaría y arrástralo hasta allí; soltarlo es el movimiento. Una respuesta incorrecta lo deja todo donde está: nunca retrocedes.';
+      'Una respuesta correcta te gana los galopes de la carta: un galope, una casilla. Elige entonces el caballo que los toma — tócalo para ver dónde llegaría y arrástralo a su casilla dorada. Soltarlo es la jugada: nada se mueve antes, nada pide confirmar después. Una respuesta incorrecta no mueve nada: nunca retrocedes.';
 
   @override
   String get ruleEscalierTitle => 'La escalera hacia La Meca';
@@ -826,14 +847,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Cada jugador tiene cuatro caballos, y el primero ya está en su casilla de salida: juegas desde la primera carta, sin esperar. Los otros tres salen del establo con un 6: responde bien y el caballo ocupa la casilla de salida — y como el 6 hace jugar otra vez, sale enseguida. Tú eliges: sacar otro o avanzar.';
+      'Cada jugador tiene cuatro caballos, y el primero ya está en su casilla de salida: juegas desde la primera carta, sin esperar. Los otros tres salen del establo con un 6 — acierta y el caballo ocupa la casilla de salida. Dos de tus caballos nunca comparten casilla: uno tuyo sobre tu casilla de salida cierra la puerta hasta que avance.';
 
   @override
   String get ruleSixTitle => 'El 6 repite turno';
 
   @override
   String get ruleSixBody =>
-      'Como con el dado: cuando robas un 6, vuelves a jugar después de tu turno, acertaras o no. Y dos de tus caballos nunca pueden compartir casilla.';
+      'Como con el dado: si sacas un 6, vuelves a jugar después de tu turno, aciertes o no.';
 
   @override
   String get ruleCaptureTitle => 'Capturar y enviar a casa';
@@ -847,14 +868,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tres respuestas correctas seguidas dan un escudo, cinco el Gran Galope y diez una insignia de maestría. El Gran Galope se gasta solo, y únicamente cuando sus +2 casillas bastan para llegar a la meta. Las bonificaciones vienen solo del conocimiento.';
+      'Tres respuestas correctas seguidas dan un escudo, cinco el Gran Galope y diez una insignia de maestría. El Gran Galope se gasta solo, y únicamente cuando sus +2 galopes bastan para llegar a la meta. Las bonificaciones vienen solo del conocimiento.';
 
   @override
   String get ruleArrivalTitle => 'La llegada';
 
   @override
   String get ruleArrivalBody =>
-      'La meta se alcanza con el número exacto: a tres casillas del oasis necesitas justo un 3. Un 4, un 5 o un 6 deja el caballo donde está, esperando la carta correcta. Al llegar, responde la Pregunta del viaje para validar tu llegada; un error nunca te hace retroceder, lo intentas de nuevo en el siguiente turno.';
+      'La meta se alcanza con el número exacto: a tres casillas de La Meca necesitas justo un 3. Un 4, un 5 o un 6 deja el caballo donde está, esperando la carta correcta. Al llegar, responde la Pregunta del viaje para validar tu llegada; un error nunca te hace retroceder, lo intentas de nuevo en el siguiente turno.';
 
   @override
   String get hapticFeedback => 'Vibración';
@@ -956,5 +977,5 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Dieciséis casillas bonus se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene justo en una avanza al instante +5, +10 o +20 galopes — y si ese salto lo deja justo en otra casilla bonus, esta se dispara también: los bonus se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos.';
+      'Si la mesa las conserva, dieciséis casillas de bonificación se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene exactamente en una sigue de inmediato +5, +10 o +20 galopes — y si esa cabalgada lo deja justo en otra casilla de bonificación, esa también se dispara: las bonificaciones se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos. Sin ellas, una carta vale exactamente sus galopes.';
 }

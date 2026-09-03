@@ -1450,16 +1450,52 @@ abstract class AppLocalizations {
   /// **'The rules'**
   String get rulesTitle;
 
+  /// Rules step 1 title: how the race is won
+  ///
+  /// In en, this message translates to:
+  /// **'Winning the race'**
+  String get ruleGoalTitle;
+
+  /// Rules step 1 body: bring 1, 2 or 4 horses to Mecca
+  ///
+  /// In en, this message translates to:
+  /// **'Each player rides four horses towards Mecca, at the centre of the board. Before the game, the table chooses how many must get there: one for a quick race, two for a duo race, all four for the classic game. The first player to manage it wins.'**
+  String get ruleGoalBody;
+
+  /// Rules step title: the knowledge points
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledge points'**
+  String get ruleKnowledgeTitle;
+
+  /// Rules step body: what the sparkle counter counts
+  ///
+  /// In en, this message translates to:
+  /// **'The sparkle in the bar counts your knowledge points: one for every right answer, and one more on a Knowledge square. They do not move your horse — they say what you have learnt, and they separate the players if the game stops before anyone arrives.'**
+  String get ruleKnowledgeBody;
+
+  /// Rules step title: the special squares
+  ///
+  /// In en, this message translates to:
+  /// **'The special squares'**
+  String get ruleSpecialCellsTitle;
+
+  /// Rules step body: oasis, knowledge, challenge, shortcut, wisdom
+  ///
+  /// In en, this message translates to:
+  /// **'The circuit you chose carries squares that do something, the same ones in each of its four quarters: the Oasis shields from capture, Knowledge gives a knowledge point, the Challenge offers a harder question for +2 gallops, the Shortcut a hard question to cut ahead, and Wisdom gives a fact to keep. A failed Challenge or Shortcut costs only the bonus: your horse stays where it is.'**
+  String get ruleSpecialCellsBody;
+
   /// Rules step 1 title
   ///
   /// In en, this message translates to:
   /// **'Draw a card'**
   String get ruleDrawCardTitle;
 
-  /// Rules step 1 body
+  /// Rules step: the card turns over onto its stake
   ///
   /// In en, this message translates to:
-  /// **'On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.'**
+  /// **'On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.'**
   String get ruleDrawCardBody;
 
   /// Rules step 2 title
@@ -1468,10 +1504,10 @@ abstract class AppLocalizations {
   /// **'Answer to advance'**
   String get ruleAnswerToAdvanceTitle;
 
-  /// Rules step 2 body
+  /// Rules step: a right answer wins the card's gallops
   ///
   /// In en, this message translates to:
-  /// **'A right answer wins you the card\'s squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.'**
+  /// **'A right answer wins you the card\'s gallops: one gallop, one square. Then choose the horse that takes them — touch it to see where it would land, then drag it onto its gold square. The drop is the move: nothing moves before it, nothing asks to confirm after it. A wrong answer moves nothing at all: you never go backwards.'**
   String get ruleAnswerToAdvanceBody;
 
   /// Rules step 3 title
@@ -1492,10 +1528,10 @@ abstract class AppLocalizations {
   /// **'Leaving the stable'**
   String get ruleExitTitle;
 
-  /// Rules step body: one horse already out, the other three on a 6
+  /// Rules step: the first horse is already out, the others need a 6
   ///
   /// In en, this message translates to:
-  /// **'Each player has four horses, and the first is already on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6: answer correctly and the horse takes the start square — and since a 6 plays again, it rides right away. The choice is yours: bring another out, or ride.'**
+  /// **'Each player has four horses, and the first already stands on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6 — answer right and the horse takes the start square. Two of your horses can never share a square: one of yours sitting on your start square keeps the gate shut until it moves on.'**
   String get ruleExitBody;
 
   /// Rules step: a 6 grants another draw
@@ -1504,10 +1540,10 @@ abstract class AppLocalizations {
   /// **'A 6 plays again'**
   String get ruleSixTitle;
 
-  /// Rules step body: replay on 6, no two own horses on one square
+  /// Rules step: a 6 replays, exactly as on the die
   ///
   /// In en, this message translates to:
-  /// **'Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.'**
+  /// **'Just as on the die: draw a 6 and you play again after your turn, whether your answer was right or wrong.'**
   String get ruleSixBody;
 
   /// Rules step 4 title
@@ -1531,7 +1567,7 @@ abstract class AppLocalizations {
   /// Rules step 5 body
   ///
   /// In en, this message translates to:
-  /// **'Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 squares are enough to reach the finish. Bonuses come from knowledge alone.'**
+  /// **'Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 gallops are enough to reach the finish. Bonuses come from knowledge alone.'**
   String get ruleStreakBody;
 
   /// Rules step 6 title
@@ -1543,7 +1579,7 @@ abstract class AppLocalizations {
   /// Rules step 6 body: the finish is reached on an exact count
   ///
   /// In en, this message translates to:
-  /// **'The finish is reached on an exact count: three squares from the oasis you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.'**
+  /// **'The finish is reached on an exact count: three squares from Mecca you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.'**
   String get ruleArrivalBody;
 
   /// Settings item: toggle for the board's vibrations
@@ -1672,10 +1708,10 @@ abstract class AppLocalizations {
   /// **'Bonus squares'**
   String get ruleBonusTitle;
 
-  /// Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, and they chain
+  /// Rules step body: sixteen bonus squares, they chain, and they are optional
   ///
   /// In en, this message translates to:
-  /// **'Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 gallops — and if that bound sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn, and stays in play for everyone.'**
+  /// **'If the table keeps them, sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides straight on by +5, +10 or +20 gallops — and if that ride sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn and stays in play for everyone. Without them, a card is worth exactly its gallops.'**
   String get ruleBonusBody;
 }
 

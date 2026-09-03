@@ -802,18 +802,39 @@ class AppLocalizationsPt extends AppLocalizations {
   String get rulesTitle => 'As regras';
 
   @override
+  String get ruleGoalTitle => 'Ganhar a corrida';
+
+  @override
+  String get ruleGoalBody =>
+      'Cada jogador leva quatro cavalos até Meca, no centro do tabuleiro. Antes do jogo, a mesa escolhe quantos têm de chegar: um para uma corrida rápida, dois para uma corrida em dupla, os quatro para o jogo clássico. Ganha o primeiro que o conseguir.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Pontos de saber';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'A estrela da barra conta os teus pontos de saber: um por cada resposta certa e um a mais numa casa de Conhecimento. Não fazem o cavalo avançar — dizem o que aprendeste e desempatam os jogadores se o jogo acabar antes da chegada.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'As casas especiais';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'O percurso que escolheste tem casas que fazem algo, as mesmas nos seus quatro quartos: o Oásis protege das capturas, Conhecimento dá um ponto de saber, o Desafio propõe uma pergunta mais difícil por +2 galopes, o Atalho uma pergunta difícil para cortar à frente, e Sabedoria oferece um facto para guardar. Falhar um Desafio ou um Atalho custa só o bónus: o teu cavalo fica onde está.';
+
+  @override
   String get ruleDrawCardTitle => 'Puxe uma carta';
 
   @override
   String get ruleDrawCardBody =>
-      'Na sua vez, puxe uma carta: a pergunta abre na hora, sempre do seu nível — fácil, intermediário ou especialista — escolhido no início. O valor dela, de 1 a 6 casas, fica escondido até você responder.';
+      'Na tua vez, tira uma carta. Ela vira mostrando o seu valor — «Carta de 5 galopes» — e depois abre a pergunta, sempre ao teu nível, escolhido no início: fácil, intermédio ou especialista. Assim sabes o que vale uma resposta certa antes de responder.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responda para avançar';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Uma resposta certa faz você ganhar as casas da carta. Escolha então o cavalo que as usa: toque nele para ver onde chegaria e arraste-o até lá — soltar é o movimento. Uma resposta errada deixa tudo onde está: você nunca recua.';
+      'Uma resposta certa dá-te os galopes da carta: um galope, uma casa. Escolhe então o cavalo que os leva — toca-lhe para ver onde chegaria e arrasta-o até à sua casa dourada. Largar é jogar: nada se move antes, nada pede confirmação depois. Uma resposta errada não move nada: nunca recuas.';
 
   @override
   String get ruleEscalierTitle => 'A escada até Meca';
@@ -827,14 +848,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Cada jogador tem quatro cavalos, e o primeiro já está na casa de saída: você joga desde a primeira carta, sem esperar. Os outros três saem do estábulo com um 6: responda certo e o cavalo ocupa a casa de saída — e como o 6 faz jogar de novo, ele parte na hora. A escolha é sua: tirar outro ou avançar.';
+      'Cada jogador tem quatro cavalos, e o primeiro já está na sua casa de partida: jogas desde a primeira carta, sem esperar. Os outros três saem do estábulo com um 6 — acerta e o cavalo ocupa a casa de partida. Dois dos teus cavalos nunca partilham uma casa: um teu na casa de partida fecha o portão até avançar.';
 
   @override
   String get ruleSixTitle => 'O 6 joga de novo';
 
   @override
   String get ruleSixBody =>
-      'Como no dado: quando você puxa um 6, joga de novo depois da sua vez, acertando ou não. E dois cavalos seus nunca dividem a mesma casa.';
+      'Como no dado: se tirares um 6, jogas outra vez depois da tua vez, tenhas acertado ou não.';
 
   @override
   String get ruleCaptureTitle => 'Capturar e mandar de volta';
@@ -848,14 +869,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Três respostas certas seguidas dão um escudo, cinco o Grande Galope e dez uma medalha de maestria. O Grande Galope é gasto sozinho, e só quando suas +2 casas bastam para chegar ao fim. Os bônus vêm apenas do conhecimento.';
+      'Três respostas certas seguidas dão um escudo, cinco o Grande Galope e dez uma medalha de maestria. O Grande Galope é gasto sozinho, e só quando seus +2 galopes bastam para chegar ao fim. Os bônus vêm apenas do conhecimento.';
 
   @override
   String get ruleArrivalTitle => 'A chegada';
 
   @override
   String get ruleArrivalBody =>
-      'A chegada exige o número exato: a três casas do oásis você precisa de exatamente 3. Um 4, um 5 ou um 6 deixa o cavalo onde está, esperando a carta certa. Ao chegar, responda à Pergunta da viagem para validar sua chegada; um erro nunca faz você recuar, basta tentar de novo na próxima vez.';
+      'A chegada exige o número exato: a três casas de Meca você precisa de exatamente 3. Um 4, um 5 ou um 6 deixa o cavalo onde está, esperando a carta certa. Ao chegar, responda à Pergunta da viagem para validar sua chegada; um erro nunca faz você recuar, basta tentar de novo na próxima vez.';
 
   @override
   String get hapticFeedback => 'Vibração';
@@ -956,5 +977,5 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Dezesseis casas bônus são distribuídas no tabuleiro a cada partida, quatro por quarto. Um cavalo que para exatamente numa delas avança na hora +5, +10 ou +20 galopes — e se esse salto o deixar exatamente noutra casa bônus, ela dispara também: os bônus se encadeiam. Cada casa paga uma vez por turno e continua em jogo para todos.';
+      'Se a mesa as mantiver, dezesseis casas de bónus são distribuídas no tabuleiro em cada jogo, quatro por quarto. Um cavalo que pare exatamente numa segue logo +5, +10 ou +20 galopes — e se essa cavalgada o deixar em cima de outra casa de bónus, essa também dispara: os bónus encadeiam-se. Cada casa paga uma vez por turno e fica em jogo para todos. Sem elas, uma carta vale exatamente os seus galopes.';
 }

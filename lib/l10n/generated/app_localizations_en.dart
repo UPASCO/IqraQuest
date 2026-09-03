@@ -800,18 +800,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rulesTitle => 'The rules';
 
   @override
+  String get ruleGoalTitle => 'Winning the race';
+
+  @override
+  String get ruleGoalBody =>
+      'Each player rides four horses towards Mecca, at the centre of the board. Before the game, the table chooses how many must get there: one for a quick race, two for a duo race, all four for the classic game. The first player to manage it wins.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Knowledge points';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'The sparkle in the bar counts your knowledge points: one for every right answer, and one more on a Knowledge square. They do not move your horse — they say what you have learnt, and they separate the players if the game stops before anyone arrives.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'The special squares';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'The circuit you chose carries squares that do something, the same ones in each of its four quarters: the Oasis shields from capture, Knowledge gives a knowledge point, the Challenge offers a harder question for +2 gallops, the Shortcut a hard question to cut ahead, and Wisdom gives a fact to keep. A failed Challenge or Shortcut costs only the bonus: your horse stays where it is.';
+
+  @override
   String get ruleDrawCardTitle => 'Draw a card';
 
   @override
   String get ruleDrawCardBody =>
-      'On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.';
+      'On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Answer to advance';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'A right answer wins you the card\'s squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.';
+      'A right answer wins you the card\'s gallops: one gallop, one square. Then choose the horse that takes them — touch it to see where it would land, then drag it onto its gold square. The drop is the move: nothing moves before it, nothing asks to confirm after it. A wrong answer moves nothing at all: you never go backwards.';
 
   @override
   String get ruleEscalierTitle => 'The escalier to Mecca';
@@ -825,14 +846,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Each player has four horses, and the first is already on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6: answer correctly and the horse takes the start square — and since a 6 plays again, it rides right away. The choice is yours: bring another out, or ride.';
+      'Each player has four horses, and the first already stands on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6 — answer right and the horse takes the start square. Two of your horses can never share a square: one of yours sitting on your start square keeps the gate shut until it moves on.';
 
   @override
   String get ruleSixTitle => 'A 6 plays again';
 
   @override
   String get ruleSixBody =>
-      'Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.';
+      'Just as on the die: draw a 6 and you play again after your turn, whether your answer was right or wrong.';
 
   @override
   String get ruleCaptureTitle => 'Capture and send home';
@@ -846,14 +867,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 squares are enough to reach the finish. Bonuses come from knowledge alone.';
+      'Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 gallops are enough to reach the finish. Bonuses come from knowledge alone.';
 
   @override
   String get ruleArrivalTitle => 'The arrival';
 
   @override
   String get ruleArrivalBody =>
-      'The finish is reached on an exact count: three squares from the oasis you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.';
+      'The finish is reached on an exact count: three squares from Mecca you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.';
 
   @override
   String get hapticFeedback => 'Vibration';
@@ -954,5 +975,5 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 gallops — and if that bound sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn, and stays in play for everyone.';
+      'If the table keeps them, sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides straight on by +5, +10 or +20 gallops — and if that ride sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn and stays in play for everyone. Without them, a card is worth exactly its gallops.';
 }

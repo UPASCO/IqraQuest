@@ -790,18 +790,39 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rulesTitle => 'Kurallar';
 
   @override
+  String get ruleGoalTitle => 'Yarışı kazanmak';
+
+  @override
+  String get ruleGoalBody =>
+      'Her oyuncu dört atını tahtanın ortasındaki Mekke\'ye götürür. Oyundan önce masa kaç atın varması gerektiğini seçer: hızlı yarış için bir, ikili yarış için iki, klasik oyun için dördü. Bunu ilk başaran kazanır.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Bilgi puanları';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'Çubuktaki yıldız bilgi puanlarını sayar: her doğru cevap için bir, Bilgi karesinde bir tane daha. Atını ilerletmezler — ne öğrendiğini söyler ve oyun varıştan önce biterse oyuncuları ayırırlar.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Özel kareler';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Seçtiğin parkurda bir şey yapan kareler var, dört çeyreğinde de aynıları: Vaha yakalanmaktan korur, Bilgi bir bilgi puanı verir, Meydan okuma +2 dörtnal için daha zor bir soru sunar, Kısayol öne geçmek için zor bir soru, Hikmet ise saklayacağın bir bilgi verir. Kaybedilen bir Meydan okuma ya da Kısayol yalnızca bonusa mal olur: atın yerinde kalır.';
+
+  @override
   String get ruleDrawCardTitle => 'Bir kart çek';
 
   @override
   String get ruleDrawCardBody =>
-      'Sıran geldiğinde bir kart çek: sorusu hemen açılır, her zaman başta seçtiğin kendi seviyende — kolay, orta ya da uzman. 1 ile 6 kare arasındaki değeri sen cevaplayana kadar gizli kalır.';
+      'Sıran gelince bir kart çek. Kart değerini göstererek dönüyor — «5 dörtnallık kart» — sonra sorusu açılır, her zaman başta seçtiğin düzeyde: kolay, orta ya da uzman. Yani doğru cevabın değerini cevaplamadan önce bilirsin.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'İlerlemek için cevapla';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Doğru cevap sana kartın karelerini kazandırır. Sonra onları alacak atı seç: nereye varacağını görmek için dokun, sonra oraya sürükle — bırakmak hamledir. Yanlış cevap her şeyi yerinde bırakır: asla geri gitmezsin.';
+      'Doğru cevap kartın dörtnallarını kazandırır: bir dörtnal, bir kare. Sonra onları alacak atı seç — nereye varacağını görmek için dokun, ardından altın karesine sürükle. Bırakmak hamledir: öncesinde hiçbir şey oynamaz, sonrasında onay istenmez. Yanlış cevap hiçbir şeyi oynatmaz: asla geri gitmezsin.';
 
   @override
   String get ruleEscalierTitle => 'Mekke\'ye çıkan merdiven';
@@ -815,14 +836,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Her oyuncunun dört atı vardır ve ilki başlangıç karesinde hazır bekler: ilk karttan itibaren oynarsın, beklemeden. Diğer üçü ahırdan 6 ile çıkar: doğru cevapla, at başlangıç karesine yerleşir — ve 6 yeniden oynattığı için hemen yola koyulur. Seçim senin: bir at daha çıkar ya da ilerle.';
+      'Her oyuncunun dört atı var ve ilki zaten başlangıç karesinde: ilk karttan itibaren oynarsın, bekleyecek bir şey yok. Diğer üçü 6 ile ahırdan çıkar — doğru cevap ver, at başlangıç karesine yerleşir. İki atın asla aynı kareyi paylaşmaz: başlangıç karende duran atın, ilerleyene kadar kapıyı kapalı tutar.';
 
   @override
   String get ruleSixTitle => '6 yeniden oynatır';
 
   @override
   String get ruleSixBody =>
-      'Zardaki gibi: 6 çektiğinde, cevabın doğru olsun olmasın, turundan sonra yeniden oynarsın. Ve iki atın asla aynı karede duramaz.';
+      'Zardaki gibi: 6 çekersen, cevabın doğru ya da yanlış olsun, turundan sonra yeniden oynarsın.';
 
   @override
   String get ruleCaptureTitle => 'Yakala ve ahıra yolla';
@@ -836,14 +857,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Üst üste üç doğru cevap bir kalkan, beş Büyük Dörtnal, on ise ustalık rozeti kazandırır. Büyük Dörtnal kendiliğinden harcanır ve yalnızca +2 karesi bitişe ulaşmaya yettiğinde. Bonuslar yalnızca bilgiden gelir.';
+      'Üst üste üç doğru cevap bir kalkan, beş Büyük Dörtnal, on ise ustalık rozeti kazandırır. Büyük Dörtnal kendiliğinden harcanır ve yalnızca +2 dörtnalı bitişe ulaşmaya yettiğinde. Bonuslar yalnızca bilgiden gelir.';
 
   @override
   String get ruleArrivalTitle => 'Varış';
 
   @override
   String get ruleArrivalBody =>
-      'Varış tam sayıyla kazanılır: vahaya üç kare kala tam olarak 3 gerekir. 4, 5 ya da 6 atı yerinde bırakır, doğru kartı bekler. Vardığında varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla; yanlış cevap seni asla geri götürmez, sıradaki turda yeniden denersin.';
+      'Varış tam sayıyla kazanılır: Mekke\'ye üç kare kala tam olarak 3 gerekir. 4, 5 ya da 6 atı yerinde bırakır, doğru kartı bekler. Vardığında varışını resmileştirmek için Yolculuk Sorusu\'nu cevapla; yanlış cevap seni asla geri götürmez, sıradaki turda yeniden denersin.';
 
   @override
   String get hapticFeedback => 'Titreşim';
@@ -942,5 +963,5 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Her oyunda tahtaya on altı bonus kare dağıtılır, her çeyreğe dört tane. Tam üzerinde duran bir at hemen +5, +10 ya da +20 dörtnal ilerler — ve bu sıçrayış onu tam olarak başka bir bonus kareye koyarsa o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır.';
+      'Masa onları tutarsa, her oyunda tahtaya on altı bonus kare dağıtılır, çeyrek başına dört. Tam üzerinde duran at hemen +5, +10 ya da +20 dörtnal daha ilerler — ve bu koşu onu tam başka bir bonus karesine indirirse o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır. Onlar olmadan bir kart tam olarak kendi dörtnalları kadar eder.';
 }

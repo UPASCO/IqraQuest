@@ -798,18 +798,39 @@ class AppLocalizationsId extends AppLocalizations {
   String get rulesTitle => 'Aturan main';
 
   @override
+  String get ruleGoalTitle => 'Memenangi balapan';
+
+  @override
+  String get ruleGoalBody =>
+      'Setiap pemain menuntun empat kuda menuju Mekah, di tengah papan. Sebelum bermain, meja memilih berapa yang harus tiba: satu untuk balapan cepat, dua untuk balapan duo, keempatnya untuk permainan klasik. Pemain pertama yang berhasil menang.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Poin ilmu';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'Bintang di bilah menghitung poin ilmumu: satu untuk setiap jawaban benar, dan satu lagi di petak Pengetahuan. Poin itu tidak menggerakkan kudamu — ia menyatakan apa yang kamu pelajari, dan memisahkan para pemain bila permainan berhenti sebelum ada yang tiba.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Petak khusus';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Lintasan yang kamu pilih memuat petak yang berfungsi, sama di keempat kuadrannya: Oase melindungi dari tangkapan, Pengetahuan memberi satu poin ilmu, Tantangan menawarkan soal lebih sulit untuk +2 derap, Jalan Pintas soal sulit untuk memotong ke depan, dan Hikmah memberi satu fakta untuk disimpan. Tantangan atau Jalan Pintas yang gagal hanya menghilangkan bonusnya: kudamu tetap di tempat.';
+
+  @override
   String get ruleDrawCardTitle => 'Ambil kartu';
 
   @override
   String get ruleDrawCardBody =>
-      'Pada giliranmu, ambil satu kartu: pertanyaannya langsung terbuka, selalu sesuai tingkatmu — mudah, menengah, atau ahli — yang dipilih di awal. Nilainya, 1 sampai 6 petak, tetap tersembunyi sampai kamu menjawab.';
+      'Pada giliranmu, ambil satu kartu. Kartu berbalik memperlihatkan nilainya — «Kartu 5 derap» — lalu pertanyaannya terbuka, selalu di tingkatmu, yang dipilih sejak awal: mudah, menengah, atau ahli. Jadi kamu tahu nilai jawaban benar sebelum menjawab.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Jawaban benar memberimu petak-petak kartu itu. Lalu pilih kuda yang mengambilnya: sentuh untuk melihat tujuannya, lalu seret ke sana — melepasnya adalah langkahnya. Jawaban salah membiarkan semuanya di tempat: kamu tidak pernah mundur.';
+      'Jawaban benar memberimu derap kartu itu: satu derap, satu petak. Lalu pilih kuda yang mengambilnya — sentuh untuk melihat ke mana ia akan mendarat, lalu geser ke petak emasnya. Melepaskannya adalah langkahnya: tak ada yang bergerak sebelumnya, tak ada konfirmasi sesudahnya. Jawaban salah tidak menggerakkan apa pun: kamu tak pernah mundur.';
 
   @override
   String get ruleEscalierTitle => 'Tangga menuju Makkah';
@@ -823,14 +844,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Setiap pemain punya empat kuda, dan yang pertama sudah berada di petak awalnya: kamu bermain sejak kartu pertama, tanpa menunggu. Tiga lainnya keluar dari kandang dengan angka 6: jawab benar dan kuda menempati petak awal — dan karena 6 memberi giliran lagi, ia langsung melaju. Pilihanmu: keluarkan satu lagi, atau maju.';
+      'Setiap pemain punya empat kuda, dan yang pertama sudah berada di petak awalnya: kamu bermain sejak kartu pertama, tanpa menunggu. Tiga lainnya keluar dari kandang dengan angka 6 — jawab benar dan kuda itu menempati petak awal. Dua kudamu tidak pernah berbagi satu petak: kudamu yang berdiri di petak awal menutup gerbangnya sampai ia maju.';
 
   @override
   String get ruleSixTitle => 'Angka 6 main lagi';
 
   @override
   String get ruleSixBody =>
-      'Seperti dadu: saat mengambil 6, kamu main lagi setelah giliranmu, benar atau salah jawabannya. Dan dua kudamu tak pernah berbagi satu petak.';
+      'Seperti pada dadu: bila kamu menarik 6, kamu bermain lagi setelah giliranmu, benar atau salah jawabanmu.';
 
   @override
   String get ruleCaptureTitle => 'Menangkap dan memulangkan';
@@ -844,14 +865,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Tiga jawaban benar berturut-turut memberi perisai, lima memberi Grand Galop, dan sepuluh memberi lencana penguasaan. Grand Galop terpakai sendiri, dan hanya bila +2 petaknya cukup untuk mencapai garis akhir. Bonus hanya datang dari pengetahuan.';
+      'Tiga jawaban benar berturut-turut memberi perisai, lima memberi Grand Galop, dan sepuluh memberi lencana penguasaan. Grand Galop terpakai sendiri, dan hanya bila +2 derapnya cukup untuk mencapai garis akhir. Bonus hanya datang dari pengetahuan.';
 
   @override
   String get ruleArrivalTitle => 'Kedatangan';
 
   @override
   String get ruleArrivalBody =>
-      'Garis akhir dicapai dengan hitungan tepat: tiga petak dari oasis kamu butuh persis 3. Angka 4, 5, atau 6 membiarkan kuda di tempatnya, menunggu kartu yang pas. Setelah sampai, jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu; jawaban salah tidak pernah memundurkanmu, kamu tinggal mencoba lagi.';
+      'Garis akhir dicapai dengan hitungan tepat: tiga petak dari Mekah kamu butuh persis 3. Angka 4, 5, atau 6 membiarkan kuda di tempatnya, menunggu kartu yang pas. Setelah sampai, jawab Pertanyaan Perjalanan untuk mengesahkan kedatanganmu; jawaban salah tidak pernah memundurkanmu, kamu tinggal mencoba lagi.';
 
   @override
   String get hapticFeedback => 'Getaran';
@@ -950,5 +971,5 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Enam belas petak bonus dibagikan di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 lompatan — dan bila lompatan itu mendaratkannya tepat di petak bonus lain, petak itu ikut menyala: bonus berantai. Setiap petak membayar sekali per giliran dan tetap berlaku untuk semua.';
+      'Bila meja mempertahankannya, enam belas petak bonus disebar di papan setiap permainan, empat per kuadran. Kuda yang berhenti tepat di atasnya langsung melaju +5, +10, atau +20 derap — dan bila laju itu mendaratkannya tepat di petak bonus lain, petak itu pun menyala: bonus berantai. Setiap petak membayar sekali per giliran dan tetap berlaku bagi semua. Tanpanya, satu kartu bernilai persis derapnya.';
 }

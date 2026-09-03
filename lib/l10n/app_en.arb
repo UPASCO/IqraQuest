@@ -1085,21 +1085,45 @@
   "@rulesTitle": {
     "description": "Title of the rules screen"
   },
+  "ruleGoalTitle": "Winning the race",
+  "@ruleGoalTitle": {
+    "description": "Rules step 1 title: how the race is won"
+  },
+  "ruleGoalBody": "Each player rides four horses towards Mecca, at the centre of the board. Before the game, the table chooses how many must get there: one for a quick race, two for a duo race, all four for the classic game. The first player to manage it wins.",
+  "@ruleGoalBody": {
+    "description": "Rules step 1 body: bring 1, 2 or 4 horses to Mecca"
+  },
+  "ruleKnowledgeTitle": "Knowledge points",
+  "@ruleKnowledgeTitle": {
+    "description": "Rules step title: the knowledge points"
+  },
+  "ruleKnowledgeBody": "The sparkle in the bar counts your knowledge points: one for every right answer, and one more on a Knowledge square. They do not move your horse — they say what you have learnt, and they separate the players if the game stops before anyone arrives.",
+  "@ruleKnowledgeBody": {
+    "description": "Rules step body: what the sparkle counter counts"
+  },
+  "ruleSpecialCellsTitle": "The special squares",
+  "@ruleSpecialCellsTitle": {
+    "description": "Rules step title: the special squares"
+  },
+  "ruleSpecialCellsBody": "The circuit you chose carries squares that do something, the same ones in each of its four quarters: the Oasis shields from capture, Knowledge gives a knowledge point, the Challenge offers a harder question for +2 gallops, the Shortcut a hard question to cut ahead, and Wisdom gives a fact to keep. A failed Challenge or Shortcut costs only the bonus: your horse stays where it is.",
+  "@ruleSpecialCellsBody": {
+    "description": "Rules step body: oasis, knowledge, challenge, shortcut, wisdom"
+  },
   "ruleDrawCardTitle": "Draw a card",
   "@ruleDrawCardTitle": {
     "description": "Rules step 1 title"
   },
-  "ruleDrawCardBody": "On your turn, draw a card: its question opens at once, always at your own level — easy, intermediate or expert — chosen at the start. Its value, 1 to 6 squares, stays hidden until you answer.",
+  "ruleDrawCardBody": "On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.",
   "@ruleDrawCardBody": {
-    "description": "Rules step 1 body"
+    "description": "Rules step: the card turns over onto its stake"
   },
   "ruleAnswerToAdvanceTitle": "Answer to advance",
   "@ruleAnswerToAdvanceTitle": {
     "description": "Rules step 2 title"
   },
-  "ruleAnswerToAdvanceBody": "A right answer wins you the card's squares. Then choose the horse that takes them: touch it to see where it would land, and drag it there — the drop is the move. A wrong answer leaves everything where it stands: you never go backwards.",
+  "ruleAnswerToAdvanceBody": "A right answer wins you the card's gallops: one gallop, one square. Then choose the horse that takes them — touch it to see where it would land, then drag it onto its gold square. The drop is the move: nothing moves before it, nothing asks to confirm after it. A wrong answer moves nothing at all: you never go backwards.",
   "@ruleAnswerToAdvanceBody": {
-    "description": "Rules step 2 body"
+    "description": "Rules step: a right answer wins the card's gallops"
   },
   "ruleEscalierTitle": "The escalier to Mecca",
   "@ruleEscalierTitle": {
@@ -1113,17 +1137,17 @@
   "@ruleExitTitle": {
     "description": "Rules step: leaving the stable on a 6"
   },
-  "ruleExitBody": "Each player has four horses, and the first is already on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6: answer correctly and the horse takes the start square — and since a 6 plays again, it rides right away. The choice is yours: bring another out, or ride.",
+  "ruleExitBody": "Each player has four horses, and the first already stands on its start square: you play from the very first card, with nothing to wait for. The other three leave the stable on a 6 — answer right and the horse takes the start square. Two of your horses can never share a square: one of yours sitting on your start square keeps the gate shut until it moves on.",
   "@ruleExitBody": {
-    "description": "Rules step body: one horse already out, the other three on a 6"
+    "description": "Rules step: the first horse is already out, the others need a 6"
   },
   "ruleSixTitle": "A 6 plays again",
   "@ruleSixTitle": {
     "description": "Rules step: a 6 grants another draw"
   },
-  "ruleSixBody": "Just like the die: when you draw a 6 you play again after your turn, whether your answer was right or not. And two of your own horses can never share a square.",
+  "ruleSixBody": "Just as on the die: draw a 6 and you play again after your turn, whether your answer was right or wrong.",
   "@ruleSixBody": {
-    "description": "Rules step body: replay on 6, no two own horses on one square"
+    "description": "Rules step: a 6 replays, exactly as on the die"
   },
   "ruleCaptureTitle": "Capture and send home",
   "@ruleCaptureTitle": {
@@ -1137,7 +1161,7 @@
   "@ruleStreakTitle": {
     "description": "Rules step 5 title"
   },
-  "ruleStreakBody": "Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 squares are enough to reach the finish. Bonuses come from knowledge alone.",
+  "ruleStreakBody": "Three correct answers in a row earn a shield, five the Grand Gallop, and ten a mastery badge. The Grand Gallop spends itself, and only when its +2 gallops are enough to reach the finish. Bonuses come from knowledge alone.",
   "@ruleStreakBody": {
     "description": "Rules step 5 body"
   },
@@ -1145,7 +1169,7 @@
   "@ruleArrivalTitle": {
     "description": "Rules step 6 title"
   },
-  "ruleArrivalBody": "The finish is reached on an exact count: three squares from the oasis you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.",
+  "ruleArrivalBody": "The finish is reached on an exact count: three squares from Mecca you need exactly a 3. A 4, a 5 or a 6 leaves the horse where it stands, waiting for the right card. Once there, answer the Question of the Journey to make the arrival official; a wrong answer never pushes you back, you simply try again next turn.",
   "@ruleArrivalBody": {
     "description": "Rules step 6 body: the finish is reached on an exact count"
   },
@@ -1286,8 +1310,8 @@
   "@ruleBonusTitle": {
     "description": "Rules step: the bonus squares"
   },
-  "ruleBonusBody": "Sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides on at once by +5, +10 or +20 gallops — and if that bound sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn, and stays in play for everyone.",
+  "ruleBonusBody": "If the table keeps them, sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides straight on by +5, +10 or +20 gallops — and if that ride sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn and stays in play for everyone. Without them, a card is worth exactly its gallops.",
   "@ruleBonusBody": {
-    "description": "Rules step body: sixteen bonus squares, four per quarter, +5/+10/+20, and they chain"
+    "description": "Rules step body: sixteen bonus squares, they chain, and they are optional"
   }
 }

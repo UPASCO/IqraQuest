@@ -798,18 +798,39 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rulesTitle => 'De regels';
 
   @override
+  String get ruleGoalTitle => 'De race winnen';
+
+  @override
+  String get ruleGoalBody =>
+      'Elke speler brengt vier paarden naar Mekka, in het midden van het bord. Voor het spel kiest de tafel hoeveel er moeten aankomen: één voor een snelle race, twee voor een duorace, alle vier voor het klassieke spel. Wie het eerst zover komt, wint.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Kennispunten';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'De ster in de balk telt je kennispunten: één voor elk goed antwoord en één extra op een Kennisvakje. Ze laten je paard niet vooruit — ze zeggen wat je hebt geleerd en scheiden de spelers als het spel stopt voordat iemand aankomt.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'De speciale vakjes';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Het gekozen parcours heeft vakjes die iets doen, in elk van zijn vier kwarten dezelfde: de Oase beschermt tegen slaan, Kennis geeft een kennispunt, de Uitdaging biedt een moeilijker vraag voor +2 galops, de Kortere Weg een moeilijke vraag om voor te komen, en Wijsheid geeft een feit om te bewaren. Een mislukte Uitdaging of Kortere Weg kost alleen de bonus: je paard blijft staan.';
+
+  @override
   String get ruleDrawCardTitle => 'Trek een kaart';
 
   @override
   String get ruleDrawCardBody =>
-      'Trek bij jouw beurt een kaart: de vraag opent meteen, altijd op jouw niveau – makkelijk, gemiddeld of expert – dat je aan het begin koos. De waarde, 1 tot 6 vakjes, blijft verborgen tot je antwoordt.';
+      'Pak op je beurt een kaart. Ze draait om op haar waarde — \"Kaart van 5 galops\" — en dan opent haar vraag, altijd op jouw niveau, vooraf gekozen: makkelijk, gemiddeld of expert. Je weet dus wat een goed antwoord waard is voordat je antwoordt.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antwoord om vooruit te gaan';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Een goed antwoord levert je de vakjes van de kaart op. Kies dan het paard dat ze neemt: tik erop om te zien waar het uitkomt en sleep het daarheen – loslaten is de zet. Een fout antwoord laat alles staan: je gaat nooit achteruit.';
+      'Een goed antwoord wint je de galops van de kaart: één galop, één vakje. Kies dan het paard dat ze neemt — tik het aan om te zien waar het zou landen en sleep het naar zijn gouden vakje. Het neerzetten is de zet: daarvoor beweegt niets, daarna vraagt niets om bevestiging. Een fout antwoord beweegt niets: je gaat nooit achteruit.';
 
   @override
   String get ruleEscalierTitle => 'De trap naar Mekka';
@@ -823,14 +844,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Elke speler heeft vier paarden, en het eerste staat al op zijn startvakje: je speelt vanaf de allereerste kaart, zonder wachten. De andere drie verlaten de stal met een 6: antwoord goed en het paard neemt het startvakje — en omdat de 6 opnieuw laat spelen, vertrekt het meteen. Jij kiest: er nog een uithalen, of doorrijden.';
+      'Elke speler heeft vier paarden, en het eerste staat al op zijn startvakje: je speelt vanaf de eerste kaart, zonder te wachten. De andere drie verlaten de stal met een 6 — antwoord goed en het paard neemt het startvakje. Twee van je paarden delen nooit een vakje: een eigen paard op je startvakje houdt de poort dicht tot het verder rijdt.';
 
   @override
   String get ruleSixTitle => 'Een 6 speelt opnieuw';
 
   @override
   String get ruleSixBody =>
-      'Net als met de dobbelsteen: trek je een 6, dan speel je na je beurt nog een keer, of je antwoord nu goed was of niet. En twee van je eigen paarden delen nooit een vak.';
+      'Net als bij de dobbelsteen: trek je een 6, dan speel je na je beurt nog eens, goed of fout geantwoord.';
 
   @override
   String get ruleCaptureTitle => 'Slaan en naar huis sturen';
@@ -844,14 +865,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Drie goede antwoorden op rij geven een schild, vijf de Grote Galop en tien een meesterschapsbadge. De Grote Galop wordt vanzelf ingezet, en alleen als zijn +2 vakjes genoeg zijn om de finish te halen. Bonussen komen alleen uit kennis.';
+      'Drie goede antwoorden op rij geven een schild, vijf de Grote Galop en tien een meesterschapsbadge. De Grote Galop wordt vanzelf ingezet, en alleen als zijn +2 galops genoeg zijn om de finish te halen. Bonussen komen alleen uit kennis.';
 
   @override
   String get ruleArrivalTitle => 'De aankomst';
 
   @override
   String get ruleArrivalBody =>
-      'De finish haal je met het exacte aantal: drie vakjes voor de oase heb je precies een 3 nodig. Een 4, 5 of 6 laat het paard staan tot de juiste kaart komt. Eenmaal daar beantwoord je de Vraag van de Reis om de aankomst te bevestigen; een fout zet je nooit terug, je probeert het gewoon opnieuw.';
+      'De finish haal je met het exacte aantal: drie vakjes voor Mekka heb je precies een 3 nodig. Een 4, 5 of 6 laat het paard staan tot de juiste kaart komt. Eenmaal daar beantwoord je de Vraag van de Reis om de aankomst te bevestigen; een fout zet je nooit terug, je probeert het gewoon opnieuw.';
 
   @override
   String get hapticFeedback => 'Trillingen';
@@ -952,5 +973,5 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Zestien bonusvakjes worden elk spel over het bord verdeeld, vier per kwart. Een paard dat er precies op stopt rijdt meteen +5, +10 of +20 galop door – en zet die sprong het precies op een volgend bonusvakje, dan gaat dat ook af: bonussen ketenen. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel.';
+      'Houdt de tafel ze, dan worden er elk spel zestien bonusvakjes op het bord verdeeld, vier per kwart. Een paard dat er precies op stopt, rijdt meteen +5, +10 of +20 galops door — en zet die rit het precies op een ander bonusvakje, dan gaat dat er ook af: bonussen schakelen door. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel. Zonder ze is een kaart precies zijn galops waard.';
 }

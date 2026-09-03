@@ -803,18 +803,39 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rulesTitle => 'Les règles';
 
   @override
+  String get ruleGoalTitle => 'Gagner la course';
+
+  @override
+  String get ruleGoalBody =>
+      'Chaque joueur mène quatre chevaux vers La Mecque, au centre du plateau. Avant la partie, la table choisit combien doivent y arriver : un seul pour une course rapide, deux pour une course en duo, les quatre pour la partie classique. Le premier joueur qui y parvient gagne.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Les points de savoir';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'L\'étoile du bandeau compte tes points de savoir : un par bonne réponse, et un de plus sur une case Connaissance. Ils ne font pas avancer ton cheval — ils disent ce que tu as appris, et départagent les joueurs si la partie s\'arrête avant l\'arrivée.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Les cases spéciales';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Le circuit choisi porte des cases qui font quelque chose, les mêmes dans ses quatre quarts : l\'Oasis protège des captures, la Connaissance donne un point de savoir, le Défi propose une question plus dure pour +2 galops, le Raccourci une question dure pour couper devant, et la Sagesse offre un fait à garder. Un Défi ou un Raccourci raté ne coûte que le bonus : ton cheval reste où il est.';
+
+  @override
   String get ruleDrawCardTitle => 'Pioche une carte';
 
   @override
   String get ruleDrawCardBody =>
-      'À ton tour, pioche une carte : sa question s\'ouvre aussitôt, toujours à ton niveau — facile, intermédiaire ou expert — choisi au départ. Sa valeur, de 1 à 6 cases, reste cachée jusqu\'à ta réponse.';
+      'À ton tour, pioche une carte. Elle se retourne sur son enjeu — « Carte à 5 galops » — puis sa question s\'ouvre, toujours à ton niveau, choisi au départ : facile, intermédiaire ou expert. Tu sais donc ce que vaut une bonne réponse avant de répondre.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Réponds pour avancer';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Une bonne réponse te fait gagner les cases de la carte. Choisis alors le cheval qui les prend : touche-le pour voir sa case d\'arrivée, puis glisse-le jusqu\'à elle — le dépôt vaut validation. Une mauvaise réponse laisse tout sur place : tu ne recules jamais.';
+      'Une bonne réponse te fait gagner les galops de la carte : un galop, une case. Choisis alors le cheval qui les prend — touche-le pour voir où il arriverait, puis glisse-le jusqu\'à sa case dorée. Le dépôt vaut validation : rien ne bouge avant, rien ne demande de confirmer après. Une mauvaise réponse laisse tout sur place : tu ne recules jamais.';
 
   @override
   String get ruleEscalierTitle => 'L\'escalier vers La Mecque';
@@ -828,14 +849,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Chaque joueur a quatre chevaux, et le premier est déjà sur sa case de départ : tu joues dès la première carte, sans attendre. Les trois autres sortent de l\'écurie sur un 6 : réponds juste et le cheval se place sur la case de départ — et comme le 6 fait rejouer, il repart aussitôt. À toi de choisir : en sortir un autre, ou avancer.';
+      'Chaque joueur a quatre chevaux, et le premier est déjà sur sa case de départ : tu joues dès la première carte, sans attendre. Les trois autres sortent de l\'écurie sur un 6 — réponds juste et le cheval se place sur la case de départ. Deux de tes chevaux ne peuvent jamais partager une case : un cheval à toi posé sur ta case de départ en bloque la sortie jusqu\'à ce qu\'il avance.';
 
   @override
   String get ruleSixTitle => 'Le 6 fait rejouer';
 
   @override
   String get ruleSixBody =>
-      'Comme au dé : quand tu pioches un 6, tu rejoues après ton tour, que ta réponse soit bonne ou non. Et deux de tes chevaux ne peuvent jamais partager la même case.';
+      'Comme au dé : quand tu pioches un 6, tu rejoues après ton tour, que ta réponse soit bonne ou non.';
 
   @override
   String get ruleCaptureTitle => 'Capturer et renvoyer';
@@ -849,14 +870,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Trois bonnes réponses d\'affilée offrent un bouclier, cinq le Grand Galop et dix un badge de maîtrise. Le Grand Galop se dépense tout seul, et seulement quand ses +2 cases suffisent à franchir l\'arrivée. Les bonus s\'obtiennent uniquement par la connaissance.';
+      'Trois bonnes réponses d\'affilée offrent un bouclier, cinq le Grand Galop et dix un badge de maîtrise. Le Grand Galop se dépense tout seul, et seulement quand ses +2 galops suffisent à franchir l\'arrivée. Les bonus s\'obtiennent uniquement par la connaissance.';
 
   @override
   String get ruleArrivalTitle => 'L\'arrivée';
 
   @override
   String get ruleArrivalBody =>
-      'La ligne d\'arrivée se gagne au compte exact : à trois cases de l\'oasis, il te faut exactement un 3. Un 4, un 5 ou un 6 laisse le cheval où il est, et tu attends la bonne carte. Une fois arrivé, réponds à la Question du voyage pour valider ton arrivée ; une erreur ne te fait jamais reculer, tu réessaies au tour suivant.';
+      'La ligne d\'arrivée se gagne au compte exact : à trois cases de La Mecque, il te faut exactement un 3. Un 4, un 5 ou un 6 laisse le cheval où il est, et tu attends la bonne carte. Une fois arrivé, réponds à la Question du voyage pour valider ton arrivée ; une erreur ne te fait jamais reculer, tu réessaies au tour suivant.';
 
   @override
   String get hapticFeedback => 'Vibrations';
@@ -958,5 +979,5 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s\'enchaînent. Chaque case ne sert qu\'une fois par tour, et reste en jeu pour tous.';
+      'Si la table les garde, seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s\'enchaînent. Chaque case ne sert qu\'une fois par tour et reste en jeu pour tous. Sans elles, une carte vaut exactement ses galops.';
 }

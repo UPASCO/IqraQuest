@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/circuit.dart';
 import '../../../models/game_mode.dart';
+import '../../../services/board_effect_service.dart';
 import '../../../models/player.dart' show AiDifficulty;
 import '../../../theme/app_theme.dart';
 import '../../../widgets/illustration.dart';
@@ -406,7 +407,7 @@ class _CircuitCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        l10n.circuitSpecialSquares(circuit.specialSquareCount),
+                        l10n.circuitSpecialSquares(_actingSquares(circuit)),
                         style: Theme.of(context).textTheme.labelSmall
                             ?.copyWith(color: colors.textSecondary),
                       ),
@@ -415,11 +416,18 @@ class _CircuitCard extends StatelessWidget {
                       // squares" says nothing about how a course rides.
                       // Named, the difference between the three boards
                       // is legible before the first card is drawn.
+                      //
+                      // Only the squares that actually do something this
+                      // release are named or counted: Duel and Relais
+                      // ride as plain squares until their flows ship
+                      // (BoardEffectService.isAvailableFor), and a card
+                      // promising them would be a card that lies.
                       Wrap(
                         spacing: 6,
                         runSpacing: 4,
                         children: [
                           for (final effect in circuit.quadrantEffects.values
+                              .where(_effectActs)
                               .toSet())
                             _EffectChip(
                               label: _effectName(effect, l10n),
@@ -469,6 +477,17 @@ class _EffectChip extends StatelessWidget {
     );
   }
 }
+
+/// Whether this square does anything a player would notice, in this
+/// release. Duel and Relais are held back — the engine knows them, the
+/// board plays them as plain squares — so they are never advertised.
+bool _effectActs(CellEffect effect) => const BoardEffectService()
+    .isAvailableFor(effect, playerCount: 4, horseCount: 4);
+
+/// How many squares of a circuit actually act, which is the number worth
+/// telling the player.
+int _actingSquares(Circuit circuit) =>
+    circuit.quadrantEffects.values.where(_effectActs).length * 4;
 
 String _effectName(CellEffect effect, AppLocalizations l10n) => switch (effect) {
   CellEffect.oasis => l10n.cellOasis,

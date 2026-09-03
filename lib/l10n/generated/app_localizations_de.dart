@@ -801,18 +801,39 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rulesTitle => 'Die Regeln';
 
   @override
+  String get ruleGoalTitle => 'Das Rennen gewinnen';
+
+  @override
+  String get ruleGoalBody =>
+      'Jeder Spieler führt vier Pferde nach Mekka, in die Mitte des Bretts. Vor dem Spiel wählt der Tisch, wie viele ankommen müssen: eines für ein schnelles Rennen, zwei für ein Duo-Rennen, alle vier für das klassische Spiel. Wer es zuerst schafft, gewinnt.';
+
+  @override
+  String get ruleKnowledgeTitle => 'Wissenspunkte';
+
+  @override
+  String get ruleKnowledgeBody =>
+      'Der Stern in der Leiste zählt deine Wissenspunkte: einen für jede richtige Antwort und einen weiteren auf einem Wissensfeld. Sie bewegen dein Pferd nicht — sie sagen, was du gelernt hast, und entscheiden zwischen den Spielern, wenn das Spiel vor der Ankunft endet.';
+
+  @override
+  String get ruleSpecialCellsTitle => 'Die Sonderfelder';
+
+  @override
+  String get ruleSpecialCellsBody =>
+      'Die gewählte Strecke trägt Felder, die etwas tun, in allen vier Vierteln dieselben: die Oase schützt vor Schlagen, Wissen gibt einen Wissenspunkt, die Herausforderung bietet eine schwerere Frage für +2 Galopps, die Abkürzung eine schwere Frage, um vorzurücken, und Weisheit schenkt eine Erkenntnis. Eine verlorene Herausforderung oder Abkürzung kostet nur den Bonus: dein Pferd bleibt stehen.';
+
+  @override
   String get ruleDrawCardTitle => 'Zieh eine Karte';
 
   @override
   String get ruleDrawCardBody =>
-      'Ziehe in deinem Zug eine Karte: Ihre Frage öffnet sich sofort, immer auf deinem Niveau – leicht, mittel oder Experte –, das du zu Beginn gewählt hast. Ihr Wert, 1 bis 6 Felder, bleibt verdeckt, bis du antwortest.';
+      'Zieh in deinem Zug eine Karte. Sie dreht sich auf ihren Wert — „Karte über 5 Galopps\" — dann öffnet sich ihre Frage, immer auf deiner Stufe, die du vorher gewählt hast: leicht, mittel oder Experte. Du weißt also vorher, was eine richtige Antwort wert ist.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antworte, um vorzurücken';
 
   @override
   String get ruleAnswerToAdvanceBody =>
-      'Eine richtige Antwort bringt dir die Felder der Karte ein. Wähle dann das Pferd, das sie nimmt: Tippe es an, um sein Zielfeld zu sehen, und ziehe es dorthin – das Ablegen ist der Zug. Eine falsche Antwort lässt alles stehen: Du gehst nie zurück.';
+      'Eine richtige Antwort gewinnt die Galopps der Karte: ein Galopp, ein Feld. Wähle dann das Pferd, das sie nimmt — tippe es an, um sein Ziel zu sehen, und zieh es auf sein goldenes Feld. Das Ablegen ist der Zug: davor bewegt sich nichts, danach fragt nichts nach einer Bestätigung. Eine falsche Antwort bewegt nichts: du gehst nie zurück.';
 
   @override
   String get ruleEscalierTitle => 'Die Treppe nach Mekka';
@@ -826,14 +847,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleExitBody =>
-      'Jeder Spieler hat vier Pferde, und das erste steht schon auf seinem Startfeld: Du spielst ab der allerersten Karte, ohne zu warten. Die anderen drei verlassen den Stall mit einer 6: Antworte richtig, und das Pferd nimmt das Startfeld — und da die 6 noch einmal ziehen lässt, reitet es sofort los. Du entscheidest: noch eines herausholen oder reiten.';
+      'Jeder Spieler hat vier Pferde, und das erste steht schon auf seinem Startfeld: du spielst ab der ersten Karte, ohne zu warten. Die anderen drei verlassen den Stall bei einer 6 — antworte richtig, und das Pferd nimmt das Startfeld. Zwei deiner Pferde teilen niemals ein Feld: eines von dir auf deinem Startfeld hält das Tor zu, bis es weiterzieht.';
 
   @override
   String get ruleSixTitle => 'Die 6 zieht noch einmal';
 
   @override
   String get ruleSixBody =>
-      'Wie beim Würfel: Ziehst du eine 6, bist du nach deinem Zug noch einmal dran, ob deine Antwort stimmte oder nicht. Und zwei deiner Pferde teilen sich nie ein Feld.';
+      'Wie beim Würfel: Ziehst du eine 6, kommst du nach deinem Zug noch einmal dran — richtig geantwortet oder nicht.';
 
   @override
   String get ruleCaptureTitle => 'Schlagen und heimschicken';
@@ -847,14 +868,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleStreakBody =>
-      'Drei richtige Antworten hintereinander bringen einen Schild, fünf den Großen Galopp und zehn ein Meisterabzeichen. Der Große Galopp wird von selbst eingesetzt, und nur wenn seine +2 Felder zum Ziel reichen. Boni kommen allein aus Wissen.';
+      'Drei richtige Antworten hintereinander bringen einen Schild, fünf den Großen Galopp und zehn ein Meisterabzeichen. Der Große Galopp wird von selbst eingesetzt, und nur wenn seine +2 Galopps zum Ziel reichen. Boni kommen allein aus Wissen.';
 
   @override
   String get ruleArrivalTitle => 'Die Ankunft';
 
   @override
   String get ruleArrivalBody =>
-      'Das Ziel wird nur mit der genauen Zahl erreicht: drei Felder vor der Oase brauchst du genau eine 3. Eine 4, 5 oder 6 lässt das Pferd stehen, bis die richtige Karte kommt. Bist du da, beantworte die Frage der Reise, um die Ankunft zu bestätigen; ein Fehler wirft dich nie zurück, du versuchst es im nächsten Zug erneut.';
+      'Das Ziel wird nur mit der genauen Zahl erreicht: drei Felder vor Mekka brauchst du genau eine 3. Eine 4, 5 oder 6 lässt das Pferd stehen, bis die richtige Karte kommt. Bist du da, beantworte die Frage der Reise, um die Ankunft zu bestätigen; ein Fehler wirft dich nie zurück, du versuchst es im nächsten Zug erneut.';
 
   @override
   String get hapticFeedback => 'Vibration';
@@ -955,5 +976,5 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleBonusBody =>
-      'Sechzehn Bonusfelder werden in jedem Spiel auf dem Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf stehen bleibt, reitet sofort +5, +10 oder +20 Galopp weiter – und landet es damit genau auf einem weiteren Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel.';
+      'Behält der Tisch sie, werden je Spiel sechzehn Bonusfelder aufs Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf hält, reitet sofort +5, +10 oder +20 Galopps weiter — und setzt dieser Ritt es genau auf ein weiteres Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel. Ohne sie zählt eine Karte genau ihre Galopps.';
 }

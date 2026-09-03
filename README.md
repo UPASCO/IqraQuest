@@ -114,6 +114,13 @@ the same distance — so what separates them is which squares carry an
 effect, and each card names them (Oasis ×8, Défi ×4, Duel ×4…) rather
 than only counting them.
 
+The **rules screen** (`/tutorial`, one tap from the board) tells the same
+thing in twelve steps, and it opens on the one that was missing: how the
+race is won. A player could once read every step and still not know what
+they were racing for. The steps then follow a turn in the order it
+happens, and each of the three counters in the HUD — arrivals, série,
+points de savoir — has the line that explains it.
+
 The rules are the classic *jeu des petits chevaux* with the deck in place
 of the die, played **answer first, then place**. The turn is:
 
