@@ -198,6 +198,32 @@ writes the app's real sound setting rather than a board-local flag that
 would forget. Its glyph and its screen-reader label both follow the
 state.
 
+### The board HUD, and the board's own menu
+"I don't understand the circled numbers" is a design bug, not a reading
+problem: a flame beside `4/5` and a card beside `8/50` are riddles. Every
+counter now carries **the word for what it counts** (`_HudStat`: glyph,
+number, word), and the per-rider score sits under one gold heading
+(`_HudGroup`: "CHEVAUX ARRIVÉS") rather than repeating the word four
+times. The full sentence goes to the screen reader; the short word on
+screen is the reminder.
+
+The bar above it is **symmetric by construction**: two glass buttons on
+the left (home, mute), two on the right (rules, menu), the rider's name
+taking and ellipsizing the middle. A regression test measures the outer
+gaps and fails if they differ by a pixel.
+
+The menu (`Key('board-menu')`) is a sheet, not a screen — the board stays
+visible behind it, because nothing in it decides anything about the race:
+the rules, the switches that change how a turn *feels* (automatic move,
+sound, vibrations, reduced motion), a restart behind one confirmation,
+and the way out, which says the game is saved.
+
+**Automatic move** is the one rule the player may soften: when a card
+leaves exactly one horse able to ride it, the drag held no decision, so
+the horse rides itself after a short beat (`kAutoPlaceBeat`, 700 ms —
+long enough to see which horse goes). Off by default; everywhere a real
+choice exists, the drop is still the move.
+
 ### Bonus medallions
 Sixteen per game, inlaid on the plate (`BonusTileArt`). Told apart by
 **shape and number, never colour alone**, after the owner's reference

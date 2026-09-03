@@ -75,6 +75,45 @@ class AppLocalizationsMs extends AppLocalizations {
   String get classicGame => 'Permainan Klasik';
 
   @override
+  String get hudArrivedHeading => 'Kuda yang tiba';
+
+  @override
+  String get hudKnowledgeShort => 'ilmu';
+
+  @override
+  String get hudStreakShort => 'rentetan';
+
+  @override
+  String get hudCardsShort => 'kad';
+
+  @override
+  String get boardMenuTitle => 'Menu permainan';
+
+  @override
+  String get boardMenuOpen => 'Buka menu permainan';
+
+  @override
+  String get autoPlaySingleMove => 'Gerakan automatik';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'Apabila hanya satu kuda boleh bermain kad itu, ia melaju sendiri.';
+
+  @override
+  String get restartRace => 'Mulakan semula perlumbaan';
+
+  @override
+  String get restartRaceConfirm =>
+      'Perlumbaan yang sedang berjalan akan hilang. Penunggang yang sama bermula semula dari kandang.';
+
+  @override
+  String get backToHome => 'Kembali ke Laman Utama';
+
+  @override
+  String get backToHomeHint =>
+      'Permainan disimpan; kamu boleh menyambungnya nanti.';
+
+  @override
   String get duoGame => 'Permainan Duo';
 
   @override
@@ -229,9 +268,6 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get gameOver => 'Permainan Tamat';
-
-  @override
-  String get backToHome => 'Kembali ke Laman Utama';
 
   @override
   String get gamesPlayed => 'Permainan Dimainkan';

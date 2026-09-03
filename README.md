@@ -156,6 +156,16 @@ of the die, played **answer first, then place**. The turn is:
    the horse waits for the right card. If no horse can play the card, the
    turn simply passes.
 
+On the board itself, the **HUD** names what it counts — every counter
+carries its word, and the four rider scores sit under one heading — and
+the **menu button** opens the few things a table asks for mid-race: the
+rules, a restart, the way out (the game is saved), and the switches for
+sound, vibrations, reduced motion and **automatic move**. That last one
+is the only rule a player may soften: with it on, a card that leaves
+exactly one horse able to ride it plays that horse by itself after a
+beat, since the drag held no decision. It is off by default, and
+everywhere a real choice exists the drop is still the move.
+
 Every rider's **first horse already stands on its start square**: the
 classic opening — four horses shut in and a 6 to find — spends the first
 minutes waiting, so one horse is out from the start and there is always

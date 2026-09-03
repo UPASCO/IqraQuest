@@ -154,6 +154,105 @@ s("classicGame", "Game variant: 4 pawns per player",
   pt="Jogo clássico", de="Klassisches Spiel", tr="Klasik Oyun", id="Permainan Klasik",
   ur="کلاسک کھیل", ms="Permainan Klasik", it="Partita classica", nl="Klassiek spel")
 
+# ---- Board HUD and the in-game menu ---------------------------------------
+s("hudArrivedHeading", "Heading over the row of per-rider arrival counters",
+  fr="Chevaux arrivés", en="Horses home", ar="الخيول الواصلة",
+  es="Caballos llegados", pt="Cavalos chegados", de="Angekommene Pferde",
+  tr="Varan atlar", id="Kuda yang tiba", ur="پہنچے ہوئے گھوڑے",
+  ms="Kuda yang tiba", it="Cavalli arrivati", nl="Aangekomen paarden")
+
+s("hudKnowledgeShort", "One-word label beside the knowledge-point counter",
+  fr="savoir", en="knowledge", ar="معرفة", es="saber", pt="saber",
+  de="Wissen", tr="bilgi", id="ilmu", ur="علم", ms="ilmu",
+  it="sapere", nl="kennis")
+
+s("hudStreakShort", "One-word label beside the streak counter",
+  fr="élan", en="streak", ar="تتابع", es="racha", pt="sequência",
+  de="Serie", tr="seri", id="beruntun", ur="تسلسل", ms="rentetan",
+  it="serie", nl="reeks")
+
+s("hudCardsShort", "One-word label beside the remaining-cards counter",
+  fr="cartes", en="cards", ar="بطاقات", es="cartas", pt="cartas",
+  de="Karten", tr="kart", id="kartu", ur="کارڈ", ms="kad",
+  it="carte", nl="kaarten")
+
+s("boardMenuTitle", "Title of the sheet opened by the board's menu button",
+  fr="Menu de la partie", en="Game menu", ar="قائمة اللعبة",
+  es="Menú de la partida", pt="Menu do jogo", de="Spielmenü",
+  tr="Oyun menüsü", id="Menu permainan", ur="کھیل کا مینو",
+  ms="Menu permainan", it="Menu della partita", nl="Spelmenu")
+
+s("boardMenuOpen", "Screen-reader label of the board's menu button",
+  fr="Ouvrir le menu de la partie", en="Open the game menu",
+  ar="افتح قائمة اللعبة", es="Abrir el menú de la partida",
+  pt="Abrir o menu do jogo", de="Spielmenü öffnen",
+  tr="Oyun menüsünü aç", id="Buka menu permainan",
+  ur="کھیل کا مینو کھولیں", ms="Buka menu permainan",
+  it="Apri il menu della partita", nl="Spelmenu openen")
+
+s("autoPlaySingleMove", "Setting: play the only possible move without asking",
+  fr="Déplacement automatique", en="Automatic move", ar="حركة تلقائية",
+  es="Movimiento automático", pt="Movimento automático",
+  de="Automatischer Zug", tr="Otomatik hamle", id="Gerakan otomatis",
+  ur="خودکار چال", ms="Gerakan automatik", it="Mossa automatica",
+  nl="Automatische zet")
+
+s("autoPlaySingleMoveHint", "What the automatic-move setting does",
+  fr="Quand un seul cheval peut jouer la carte, il avance tout seul.",
+  en="When only one horse can play the card, it rides by itself.",
+  ar="عندما يستطيع حصان واحد فقط لعب البطاقة، ينطلق وحده.",
+  es="Cuando solo un caballo puede jugar la carta, avanza solo.",
+  pt="Quando só um cavalo pode jogar a carta, ele avança sozinho.",
+  de="Kann nur ein Pferd die Karte spielen, zieht es von allein.",
+  tr="Kartı yalnızca bir at oynayabiliyorsa, kendiliğinden ilerler.",
+  id="Bila hanya satu kuda yang bisa memainkan kartu, ia melaju sendiri.",
+  ur="جب صرف ایک گھوڑا کارڈ کھیل سکے تو وہ خود آگے بڑھ جاتا ہے۔",
+  ms="Apabila hanya satu kuda boleh bermain kad itu, ia melaju sendiri.",
+  it="Quando un solo cavallo può giocare la carta, avanza da sé.",
+  nl="Kan maar één paard de kaart spelen, dan rijdt het vanzelf.")
+
+s("restartRace", "Board menu: start the same race over",
+  fr="Recommencer la course", en="Restart the race", ar="أعد السباق",
+  es="Reiniciar la carrera", pt="Recomeçar a corrida",
+  de="Rennen neu starten", tr="Yarışı yeniden başlat",
+  id="Mulai ulang balapan", ur="دوڑ دوبارہ شروع کریں",
+  ms="Mulakan semula perlumbaan", it="Ricomincia la corsa",
+  nl="Race opnieuw starten")
+
+s("restartRaceConfirm", "Confirmation before throwing the current race away",
+  fr="La course en cours sera perdue. Les mêmes cavaliers repartent de l'écurie.",
+  en="The race in progress will be lost. The same riders start again from the stable.",
+  ar="سيُفقد السباق الجاري. ينطلق الفرسان أنفسهم من الإسطبل من جديد.",
+  es="Se perderá la carrera en curso. Los mismos jinetes vuelven a salir del establo.",
+  pt="A corrida em curso será perdida. Os mesmos cavaleiros recomeçam do estábulo.",
+  de="Das laufende Rennen geht verloren. Dieselben Reiter starten wieder vom Stall.",
+  tr="Süren yarış kaybolacak. Aynı biniciler ahırdan yeniden başlar.",
+  id="Balapan yang sedang berjalan akan hilang. Penunggang yang sama mulai lagi dari kandang.",
+  ur="جاری دوڑ ختم ہو جائے گی۔ وہی سوار اصطبل سے دوبارہ شروع کریں گے۔",
+  ms="Perlumbaan yang sedang berjalan akan hilang. Penunggang yang sama bermula semula dari kandang.",
+  it="La corsa in corso andrà persa. Gli stessi cavalieri ripartono dalla stalla.",
+  nl="De lopende race gaat verloren. Dezelfde ruiters starten opnieuw vanaf de stal.")
+
+s("backToHome", "Board menu: leave the board for the home screen",
+  fr="Retour à l'accueil", en="Back to home", ar="العودة إلى الرئيسية",
+  es="Volver al inicio", pt="Voltar ao início", de="Zurück zur Startseite",
+  tr="Ana ekrana dön", id="Kembali ke beranda", ur="ہوم پر واپس",
+  ms="Kembali ke laman utama", it="Torna alla home", nl="Terug naar start")
+
+s("backToHomeHint", "Reassurance beside 'back to home': the game is kept",
+  fr="La partie est sauvegardée, tu pourras la reprendre.",
+  en="The game is saved; you can pick it up again.",
+  ar="اللعبة محفوظة، يمكنك متابعتها لاحقًا.",
+  es="La partida se guarda; podrás retomarla.",
+  pt="O jogo fica guardado; poderás retomá-lo.",
+  de="Das Spiel wird gespeichert; du kannst später weitermachen.",
+  tr="Oyun kaydedilir; daha sonra devam edebilirsin.",
+  id="Permainan tersimpan; kamu bisa melanjutkannya nanti.",
+  ur="کھیل محفوظ ہے، تم بعد میں جاری رکھ سکتے ہو۔",
+  ms="Permainan disimpan; kamu boleh menyambungnya nanti.",
+  it="La partita è salvata; potrai riprenderla.",
+  nl="Het spel is opgeslagen; je kunt later verder.")
+
 s("duoGame", "Game format: two of a player's four horses must reach Mecca",
   fr="Partie en duo", en="Duo game", ar="لعبة ثنائية", es="Partida en dúo",
   pt="Jogo em dupla", de="Duo-Spiel", tr="İkili Oyun", id="Permainan Duo",

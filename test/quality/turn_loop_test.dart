@@ -27,6 +27,7 @@ import 'package:iqraquest/services/local_storage_service.dart';
 import 'package:iqraquest/services/progress_service.dart';
 import 'package:iqraquest/services/purchase_service.dart';
 import 'package:iqraquest/services/question_repository.dart';
+import 'package:iqraquest/l10n/generated/app_localizations_en.dart';
 import 'package:iqraquest/services/settings_service.dart';
 import 'package:iqraquest/theme/app_team.dart';
 import 'package:iqraquest/widgets/board/cross_board_scene.dart';
@@ -590,6 +591,98 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('every HUD counter says what it counts, and the bar is symmetric', (
+    tester,
+  ) async {
+    // "I don't understand the circled numbers": a flame and "4/5" is not
+    // a counter, it is a riddle. Every number now carries its word, the
+    // per-rider score sits under one heading that names it, and the two
+    // pairs of buttons hold the same weight on each side of the name.
+    final en = AppLocalizationsEn();
+    await _pumpGame(tester);
+
+    expect(find.text(en.hudArrivedHeading.toUpperCase()), findsOneWidget);
+    void expectWord(String key, String word) {
+      final pill = find.byKey(Key(key));
+      expect(pill, findsOneWidget, reason: '$key is missing');
+      expect(
+        find.descendant(of: pill, matching: find.text(word)),
+        findsOneWidget,
+        reason: '$key shows a bare number with no word',
+      );
+    }
+
+    expectWord('hud-knowledge', en.hudKnowledgeShort);
+    expectWord('hud-streak', en.hudStreakShort);
+
+    // Symmetry, measured: the outermost button on each side sits the
+    // same distance from its own edge.
+    final width = tester.view.physicalSize.width / tester.view.devicePixelRatio;
+    final left = tester.getRect(find.byKey(const Key('board-back')));
+    final right = tester.getRect(find.byKey(const Key('board-menu')));
+    expect(
+      (left.left - (width - right.right)).abs(),
+      lessThan(1.0),
+      reason: 'the button bar is lopsided: ${left.left} vs ${width - right.right}',
+    );
+  });
+
+  testWidgets('the free edition names its card counter too', (tester) async {
+    // The counter only exists in the free edition, which is where a
+    // bare "8/50" was most likely to be read as a score.
+    final en = AppLocalizationsEn();
+    await _pumpGame(
+      tester,
+      save: _soloGame().copyWith(maxDraws: GameState.freeDrawLimit),
+    );
+    final pill = find.byKey(const Key('hud-cards'));
+    expect(pill, findsOneWidget);
+    expect(
+      find.descendant(of: pill, matching: find.text(en.hudCardsShort)),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('the board menu holds the rules, the switches and the way out', (
+    tester,
+  ) async {
+    final en = AppLocalizationsEn();
+    final container = await _pumpGame(tester);
+    await tester.tap(find.byKey(const Key('board-menu')));
+    await _settle(tester);
+
+    expect(find.text(en.boardMenuTitle), findsOneWidget);
+    for (final key in [
+      'menu-rules',
+      'menu-auto-move',
+      'menu-sound',
+      'menu-haptics',
+      'menu-restart',
+      'menu-home',
+    ]) {
+      expect(find.byKey(Key(key)), findsOneWidget, reason: '$key is missing');
+    }
+
+    // The automatic-move switch writes the app's setting, so the very
+    // next card obeys it.
+    expect(
+      container.read(settingsControllerProvider).autoPlaceSingleMove,
+      isFalse,
+    );
+    await tester.tap(
+      find.descendant(
+        of: find.byKey(const Key('menu-auto-move')),
+        matching: find.byType(Switch),
+      ),
+    );
+    await _settle(tester);
+    expect(
+      container.read(settingsControllerProvider).autoPlaceSingleMove,
+      isTrue,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('leaving mid-turn lands on home rather than a dead end', (
     tester,
   ) async {
@@ -702,6 +795,11 @@ void _aiDisposalGuard() {
         progressServiceProvider.overrideWithValue(ProgressService(storage)),
         gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
         questionRepositoryProvider.overrideWithValue(QuestionRepository()),
+        // The controller reads the settings for the automatic-move
+        // option, so a bare container needs them the way main() gives
+        // them.
+        settingsServiceProvider.overrideWithValue(SettingsService(storage)),
+        initialSettingsProvider.overrideWithValue(const AppSettings()),
       ],
     );
     final controller = container.read(gameControllerProvider.notifier);

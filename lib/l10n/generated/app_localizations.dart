@@ -244,6 +244,78 @@ abstract class AppLocalizations {
   /// **'Classic game'**
   String get classicGame;
 
+  /// Heading over the row of per-rider arrival counters
+  ///
+  /// In en, this message translates to:
+  /// **'Horses home'**
+  String get hudArrivedHeading;
+
+  /// One-word label beside the knowledge-point counter
+  ///
+  /// In en, this message translates to:
+  /// **'knowledge'**
+  String get hudKnowledgeShort;
+
+  /// One-word label beside the streak counter
+  ///
+  /// In en, this message translates to:
+  /// **'streak'**
+  String get hudStreakShort;
+
+  /// One-word label beside the remaining-cards counter
+  ///
+  /// In en, this message translates to:
+  /// **'cards'**
+  String get hudCardsShort;
+
+  /// Title of the sheet opened by the board's menu button
+  ///
+  /// In en, this message translates to:
+  /// **'Game menu'**
+  String get boardMenuTitle;
+
+  /// Screen-reader label of the board's menu button
+  ///
+  /// In en, this message translates to:
+  /// **'Open the game menu'**
+  String get boardMenuOpen;
+
+  /// Setting: play the only possible move without asking
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic move'**
+  String get autoPlaySingleMove;
+
+  /// What the automatic-move setting does
+  ///
+  /// In en, this message translates to:
+  /// **'When only one horse can play the card, it rides by itself.'**
+  String get autoPlaySingleMoveHint;
+
+  /// Board menu: start the same race over
+  ///
+  /// In en, this message translates to:
+  /// **'Restart the race'**
+  String get restartRace;
+
+  /// Confirmation before throwing the current race away
+  ///
+  /// In en, this message translates to:
+  /// **'The race in progress will be lost. The same riders start again from the stable.'**
+  String get restartRaceConfirm;
+
+  /// Navigation button back to home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Back to home'**
+  String get backToHome;
+
+  /// Reassurance beside 'back to home': the game is kept
+  ///
+  /// In en, this message translates to:
+  /// **'The game is saved; you can pick it up again.'**
+  String get backToHomeHint;
+
   /// Game format: two of a player's four horses must reach Mecca
   ///
   /// In en, this message translates to:
@@ -525,12 +597,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Game over'**
   String get gameOver;
-
-  /// Navigation button back to home screen
-  ///
-  /// In en, this message translates to:
-  /// **'Back to home'**
-  String get backToHome;
 
   /// Progress stat label
   ///

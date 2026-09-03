@@ -75,6 +75,44 @@ class AppLocalizationsTr extends AppLocalizations {
   String get classicGame => 'Klasik Oyun';
 
   @override
+  String get hudArrivedHeading => 'Varan atlar';
+
+  @override
+  String get hudKnowledgeShort => 'bilgi';
+
+  @override
+  String get hudStreakShort => 'seri';
+
+  @override
+  String get hudCardsShort => 'kart';
+
+  @override
+  String get boardMenuTitle => 'Oyun menüsü';
+
+  @override
+  String get boardMenuOpen => 'Oyun menüsünü aç';
+
+  @override
+  String get autoPlaySingleMove => 'Otomatik hamle';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'Kartı yalnızca bir at oynayabiliyorsa, kendiliğinden ilerler.';
+
+  @override
+  String get restartRace => 'Yarışı yeniden başlat';
+
+  @override
+  String get restartRaceConfirm =>
+      'Süren yarış kaybolacak. Aynı biniciler ahırdan yeniden başlar.';
+
+  @override
+  String get backToHome => 'Ana Sayfaya Dön';
+
+  @override
+  String get backToHomeHint => 'Oyun kaydedilir; daha sonra devam edebilirsin.';
+
+  @override
   String get duoGame => 'İkili Oyun';
 
   @override
@@ -226,9 +264,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gameOver => 'Oyun Bitti';
-
-  @override
-  String get backToHome => 'Ana Sayfaya Dön';
 
   @override
   String get gamesPlayed => 'Oynanan Oyunlar';

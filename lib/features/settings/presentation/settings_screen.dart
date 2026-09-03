@@ -80,6 +80,16 @@ class SettingsScreen extends ConsumerWidget {
               value: settings.hapticsEnabled,
               onChanged: controller.setHapticsEnabled,
             ),
+            // Also in the board's own menu, where a table actually
+            // notices it wants this — here so a player who looks for
+            // settings in the settings finds it too.
+            SwitchListTile(
+              key: const Key('auto-move-toggle'),
+              title: Text(l10n.autoPlaySingleMove),
+              subtitle: Text(l10n.autoPlaySingleMoveHint),
+              value: settings.autoPlaceSingleMove,
+              onChanged: controller.setAutoPlaceSingleMove,
+            ),
             const Divider(),
             ListTile(
               title: Text(l10n.privacyPolicy),

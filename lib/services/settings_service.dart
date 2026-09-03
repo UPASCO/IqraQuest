@@ -9,6 +9,7 @@ class AppSettings {
     this.reduceMotion = false,
     this.soundEnabled = true,
     this.hapticsEnabled = true,
+    this.autoPlaceSingleMove = false,
     this.dailyChallengeNotifications = false,
   });
 
@@ -21,6 +22,12 @@ class AppSettings {
   /// The little buzzes of the board (a horse picked up, set down, a
   /// bonus fired). Off, the board stays silent to the hand.
   final bool hapticsEnabled;
+
+  /// When a card leaves exactly one horse able to ride it, play it
+  /// without asking. Off by default: the drop is the move, and taking
+  /// that gesture away by surprise would be worse than a spare tap. On,
+  /// it removes the tap that had no decision in it.
+  final bool autoPlaceSingleMove;
   final bool dailyChallengeNotifications;
 
   AppSettings copyWith({
@@ -29,6 +36,7 @@ class AppSettings {
     bool? reduceMotion,
     bool? soundEnabled,
     bool? hapticsEnabled,
+    bool? autoPlaceSingleMove,
     bool? dailyChallengeNotifications,
   }) => AppSettings(
     languageCode: languageCode ?? this.languageCode,
@@ -36,6 +44,7 @@ class AppSettings {
     reduceMotion: reduceMotion ?? this.reduceMotion,
     soundEnabled: soundEnabled ?? this.soundEnabled,
     hapticsEnabled: hapticsEnabled ?? this.hapticsEnabled,
+    autoPlaceSingleMove: autoPlaceSingleMove ?? this.autoPlaceSingleMove,
     dailyChallengeNotifications: dailyChallengeNotifications ?? this.dailyChallengeNotifications,
   );
 }
@@ -52,6 +61,7 @@ class SettingsService {
   static const _reduceMotionKey = 'iqraquest.settings.reduceMotion';
   static const _soundKey = 'iqraquest.settings.sound';
   static const _hapticsKey = 'iqraquest.settings.haptics';
+  static const _autoPlaceKey = 'iqraquest.settings.autoPlaceSingleMove';
   static const _notifKey = 'iqraquest.settings.dailyNotifications';
 
   AppSettings load() {
@@ -64,6 +74,7 @@ class SettingsService {
       reduceMotion: _storage.getBool(_reduceMotionKey) ?? false,
       soundEnabled: _storage.getBool(_soundKey) ?? true,
       hapticsEnabled: _storage.getBool(_hapticsKey) ?? true,
+      autoPlaceSingleMove: _storage.getBool(_autoPlaceKey) ?? false,
       dailyChallengeNotifications: _storage.getBool(_notifKey) ?? false,
     );
   }
@@ -76,6 +87,7 @@ class SettingsService {
     await _storage.setBool(_reduceMotionKey, settings.reduceMotion);
     await _storage.setBool(_soundKey, settings.soundEnabled);
     await _storage.setBool(_hapticsKey, settings.hapticsEnabled);
+    await _storage.setBool(_autoPlaceKey, settings.autoPlaceSingleMove);
     await _storage.setBool(_notifKey, settings.dailyChallengeNotifications);
   }
 }

@@ -75,6 +75,44 @@ class AppLocalizationsNl extends AppLocalizations {
   String get classicGame => 'Klassiek spel';
 
   @override
+  String get hudArrivedHeading => 'Aangekomen paarden';
+
+  @override
+  String get hudKnowledgeShort => 'kennis';
+
+  @override
+  String get hudStreakShort => 'reeks';
+
+  @override
+  String get hudCardsShort => 'kaarten';
+
+  @override
+  String get boardMenuTitle => 'Spelmenu';
+
+  @override
+  String get boardMenuOpen => 'Spelmenu openen';
+
+  @override
+  String get autoPlaySingleMove => 'Automatische zet';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'Kan maar één paard de kaart spelen, dan rijdt het vanzelf.';
+
+  @override
+  String get restartRace => 'Race opnieuw starten';
+
+  @override
+  String get restartRaceConfirm =>
+      'De lopende race gaat verloren. Dezelfde ruiters starten opnieuw vanaf de stal.';
+
+  @override
+  String get backToHome => 'Terug naar start';
+
+  @override
+  String get backToHomeHint => 'Het spel is opgeslagen; je kunt later verder.';
+
+  @override
   String get duoGame => 'Duospel';
 
   @override
@@ -228,9 +266,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get gameOver => 'Spel afgelopen';
-
-  @override
-  String get backToHome => 'Terug naar start';
 
   @override
   String get gamesPlayed => 'Gespeelde spellen';

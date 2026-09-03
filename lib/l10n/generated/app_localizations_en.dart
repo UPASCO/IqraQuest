@@ -74,6 +74,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classicGame => 'Classic game';
 
   @override
+  String get hudArrivedHeading => 'Horses home';
+
+  @override
+  String get hudKnowledgeShort => 'knowledge';
+
+  @override
+  String get hudStreakShort => 'streak';
+
+  @override
+  String get hudCardsShort => 'cards';
+
+  @override
+  String get boardMenuTitle => 'Game menu';
+
+  @override
+  String get boardMenuOpen => 'Open the game menu';
+
+  @override
+  String get autoPlaySingleMove => 'Automatic move';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'When only one horse can play the card, it rides by itself.';
+
+  @override
+  String get restartRace => 'Restart the race';
+
+  @override
+  String get restartRaceConfirm =>
+      'The race in progress will be lost. The same riders start again from the stable.';
+
+  @override
+  String get backToHome => 'Back to home';
+
+  @override
+  String get backToHomeHint => 'The game is saved; you can pick it up again.';
+
+  @override
   String get duoGame => 'Duo game';
 
   @override
@@ -229,9 +267,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gameOver => 'Game over';
-
-  @override
-  String get backToHome => 'Back to home';
 
   @override
   String get gamesPlayed => 'Games played';

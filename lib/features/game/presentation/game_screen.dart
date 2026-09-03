@@ -267,6 +267,12 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             ),
 
             // ---- Floating HUD ----
+            //
+            // Read top to bottom: who is playing, where the race stands,
+            // and what this rider has earned. Every number carries the
+            // word for what it counts — a bare "4/5" beside a flame told
+            // nobody anything — and the whole stack is centred under a
+            // button bar with the same weight on both sides.
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
@@ -276,6 +282,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     Row(
                       children: [
                         _GlassIconButton(
+                          key: const Key('board-back'),
                           icon: Icons.arrow_back,
                           label: MaterialLocalizations.of(
                             context,
@@ -296,123 +303,72 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               .setSoundEnabled(!soundOn),
                         ),
                         const SizedBox(width: 8),
-                        // Expanded, not Flexible beside a Spacer: sharing
-                        // the free space with a Spacer squeezes the pill to
-                        // nothing on a narrow phone at a large text size,
-                        // and its own padding then overflows it. Here the
-                        // name takes whatever the counters leave and
-                        // ellipsizes inside it.
+                        // The name takes the middle and ellipsizes inside
+                        // it, so the two pairs of buttons stay level.
                         Expanded(
-                          child: _HudPill(
-                            highlight: true,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                CircleAvatar(
-                                  radius: 6,
-                                  backgroundColor: player.team.color(colors),
-                                ),
-                                const SizedBox(width: 8),
-                                Flexible(
-                                  child: Text(
-                                    player.name,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: _hudText(context),
+                          child: Center(
+                            child: _HudPill(
+                              highlight: true,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 6,
+                                    backgroundColor: player.team.color(colors),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(width: 8),
+                                  Flexible(
+                                    child: Text(
+                                      player.name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: _hudText(context),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(width: 8),
-                        _HudPill(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.auto_awesome,
-                                size: 15,
-                                color: Color(0xFFEBC06A),
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                '${player.rewards.knowledgePoints}',
-                                style: _hudText(context),
-                              ),
-                            ],
-                          ),
+                        _GlassIconButton(
+                          key: const Key('rules-shortcut'),
+                          icon: Icons.help_outline,
+                          label: l10n.rulesTitle,
+                          onTap: () => context.push('/tutorial'),
                         ),
-                        const SizedBox(width: 8),
-                        _HudPill(
-                          highlight: player.streak.current >= 3,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.local_fire_department,
-                                size: 16,
-                                color: player.streak.current > 0
-                                    ? const Color(0xFFF0A24B)
-                                    : Colors.white38,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                '${player.streak.current}/${player.streak.nextThreshold}',
-                                style: _hudText(context),
-                              ),
-                            ],
-                          ),
+                        const SizedBox(width: 6),
+                        _GlassIconButton(
+                          key: const Key('board-menu'),
+                          icon: Icons.menu,
+                          label: l10n.boardMenuOpen,
+                          onTap: () => _openBoardMenu(context, ref, l10n),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
-                    // Four horses per stable: each player's arrivals at a
-                    // glance (the painted stables are scenery), the rider
-                    // ahead wearing a small gold star — and, in the free
-                    // edition, how many of its fifty cards remain.
-                    // A Wrap, not a Row: four riders, a draw counter and a
-                    // leader star fold onto a second line on a narrow phone
-                    // rather than overflow it.
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 8,
-                      runSpacing: 6,
+                    const SizedBox(height: 10),
+                    // The standing of the race. One heading over the row
+                    // says what all four numbers count, which is cheaper
+                    // than repeating the word in every pill — and the
+                    // painted stables are scenery, so this is the only
+                    // place the score is actually readable.
+                    _HudGroup(
+                      heading: l10n.hudArrivedHeading,
                       children: [
-                        if (state.maxDraws != null) ...[
-                          _HudPill(
-                            child: Semantics(
-                              label: l10n.drawsCounter(
-                                state.drawCount,
-                                state.maxDraws!,
-                              ),
-                              child: ExcludeSemantics(
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(
-                                      Icons.style,
-                                      size: 15,
-                                      color: Color(0xFFEBC06A),
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      '${state.drawCount}/${state.maxDraws}',
-                                      style: _hudText(context),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                        for (var i = 0; i < state.players.length; i++) ...[
+                        for (var i = 0; i < state.players.length; i++)
                           _HudPill(
                             highlight: i == state.currentPlayerIndex,
                             child: Semantics(
                               label: state.players[i].id == leader.id
-                                  ? '${state.players[i].name}, ${l10n.leaderLabel}'
-                                  : state.players[i].name,
+                                  ? '${state.players[i].name}, '
+                                        '${l10n.hudArrivedHeading} '
+                                        '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                        '/${state.players[i].horses.length}, '
+                                        '${l10n.leaderLabel}'
+                                  : '${state.players[i].name}, '
+                                        '${l10n.hudArrivedHeading} '
+                                        '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                        '/${state.players[i].horses.length}',
                               child: ExcludeSemantics(
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -443,7 +399,52 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               ),
                             ),
                           ),
-                        ],
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    // What this rider has earned, and — in the free
+                    // edition — how far into its fifty cards the table is.
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 8,
+                      runSpacing: 6,
+                      children: [
+                        _HudStat(
+                          key: const Key('hud-knowledge'),
+                          icon: Icons.auto_awesome,
+                          iconColor: const Color(0xFFEBC06A),
+                          value: '${player.rewards.knowledgePoints}',
+                          word: l10n.hudKnowledgeShort,
+                          semantics:
+                              '${l10n.knowledgePointsLabel} : '
+                              '${player.rewards.knowledgePoints}',
+                        ),
+                        _HudStat(
+                          key: const Key('hud-streak'),
+                          icon: Icons.local_fire_department,
+                          iconColor: player.streak.current > 0
+                              ? const Color(0xFFF0A24B)
+                              : Colors.white38,
+                          value:
+                              '${player.streak.current}/${player.streak.nextThreshold}',
+                          word: l10n.hudStreakShort,
+                          highlight: player.streak.current >= 3,
+                          semantics:
+                              '${l10n.knowledgeStreak} : '
+                              '${player.streak.current} / ${player.streak.nextThreshold}',
+                        ),
+                        if (state.maxDraws != null)
+                          _HudStat(
+                            key: const Key('hud-cards'),
+                            icon: Icons.style,
+                            iconColor: const Color(0xFFEBC06A),
+                            value: '${state.drawCount}/${state.maxDraws}',
+                            word: l10n.hudCardsShort,
+                            semantics: l10n.drawsCounter(
+                              state.drawCount,
+                              state.maxDraws!,
+                            ),
+                          ),
                       ],
                     ),
                     if (_leadToast != null) ...[
@@ -813,11 +814,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     return false;
   }
 
-  TextStyle? _hudText(BuildContext context) => Theme.of(context)
-      .textTheme
-      .labelLarge
-      ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
-
   /// Draws the turn's card, then holds the question back long enough
   /// for the card to turn over onto its question mark.
   void _onDrawCard() {
@@ -1050,6 +1046,233 @@ class _HudPill extends StatelessWidget {
         ),
       ),
       child: child,
+    );
+  }
+}
+
+/// The board's own menu: the few things a table asks for mid-race
+/// without wanting to leave the game — the rules, the switches that
+/// change how a turn feels, a clean restart, and the way out (which
+/// keeps the save).
+///
+/// It is a sheet rather than a screen because the board must stay
+/// visible behind it: nothing here is a decision about the race.
+Future<void> _openBoardMenu(
+  BuildContext context,
+  WidgetRef ref,
+  AppLocalizations l10n,
+) {
+  return showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    showDragHandle: true,
+    builder: (sheetContext) => SafeArea(
+      child: Consumer(
+        builder: (context, ref, _) {
+          final settings = ref.watch(settingsControllerProvider);
+          final notifier = ref.read(settingsControllerProvider.notifier);
+          final text = Theme.of(context).textTheme;
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+                  child: Text(
+                    l10n.boardMenuTitle,
+                    textAlign: TextAlign.center,
+                    style: text.titleLarge,
+                  ),
+                ),
+                ListTile(
+                  key: const Key('menu-rules'),
+                  leading: const Icon(Icons.menu_book_outlined),
+                  title: Text(l10n.rulesTitle),
+                  onTap: () {
+                    Navigator.of(sheetContext).pop();
+                    context.push('/tutorial');
+                  },
+                ),
+                const Divider(height: 1),
+                SwitchListTile.adaptive(
+                  key: const Key('menu-auto-move'),
+                  value: settings.autoPlaceSingleMove,
+                  onChanged: notifier.setAutoPlaceSingleMove,
+                  secondary: const Icon(Icons.bolt_outlined),
+                  title: Text(l10n.autoPlaySingleMove),
+                  subtitle: Text(l10n.autoPlaySingleMoveHint),
+                ),
+                SwitchListTile.adaptive(
+                  key: const Key('menu-sound'),
+                  value: settings.soundEnabled,
+                  onChanged: notifier.setSoundEnabled,
+                  secondary: const Icon(Icons.volume_up_outlined),
+                  title: Text(l10n.soundEffects),
+                ),
+                SwitchListTile.adaptive(
+                  key: const Key('menu-haptics'),
+                  value: settings.hapticsEnabled,
+                  onChanged: notifier.setHapticsEnabled,
+                  secondary: const Icon(Icons.vibration),
+                  title: Text(l10n.hapticFeedback),
+                ),
+                SwitchListTile.adaptive(
+                  key: const Key('menu-reduce-motion'),
+                  value: settings.reduceMotion,
+                  onChanged: notifier.setReduceMotion,
+                  secondary: const Icon(Icons.animation_outlined),
+                  title: Text(l10n.reduceMotion),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  key: const Key('menu-restart'),
+                  leading: const Icon(Icons.refresh),
+                  title: Text(l10n.restartRace),
+                  onTap: () async {
+                    // Throwing a race away is asked for out loud, once.
+                    final ok = await showDialog<bool>(
+                      context: sheetContext,
+                      builder: (dialogContext) => AlertDialog(
+                        title: Text(l10n.restartRace),
+                        content: Text(l10n.restartRaceConfirm),
+                        actions: [
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.of(dialogContext).pop(false),
+                            child: Text(
+                              MaterialLocalizations.of(
+                                dialogContext,
+                              ).cancelButtonLabel,
+                            ),
+                          ),
+                          FilledButton(
+                            key: const Key('menu-restart-confirm'),
+                            onPressed: () =>
+                                Navigator.of(dialogContext).pop(true),
+                            child: Text(l10n.restartRace),
+                          ),
+                        ],
+                      ),
+                    );
+                    if (ok != true) return;
+                    ref.read(gameControllerProvider.notifier).restartSameSetup();
+                    if (sheetContext.mounted) {
+                      Navigator.of(sheetContext).pop();
+                    }
+                  },
+                ),
+                ListTile(
+                  key: const Key('menu-home'),
+                  leading: const Icon(Icons.home_outlined),
+                  title: Text(l10n.backToHome),
+                  subtitle: Text(l10n.backToHomeHint),
+                  onTap: () {
+                    Navigator.of(sheetContext).pop();
+                    context.go('/home');
+                  },
+                ),
+                const SizedBox(height: 8),
+              ],
+            ),
+          );
+        },
+      ),
+    ),
+  );
+}
+
+/// The one type style of the HUD: every pill, counter and word is set in
+/// it, so the bar reads as one instrument rather than a row of widgets.
+TextStyle? _hudText(BuildContext context) => Theme.of(context)
+    .textTheme
+    .labelLarge
+    ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
+
+/// A heading and the row of pills it explains. One word over four
+/// counters beats the same word repeated inside each of them.
+class _HudGroup extends StatelessWidget {
+  const _HudGroup({required this.heading, required this.children});
+
+  final String heading;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          heading.toUpperCase(),
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            color: const Color(0xFFEBC06A),
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.4,
+            height: 1.1,
+          ),
+        ),
+        const SizedBox(height: 5),
+        // A Wrap, not a Row: four riders fold onto a second line on a
+        // narrow phone at a large text size rather than overflow it.
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 8,
+          runSpacing: 6,
+          children: children,
+        ),
+      ],
+    );
+  }
+}
+
+/// One counter of the HUD: its glyph, its number, and **the word for what
+/// it counts**. The word is what a bare "4/5" beside a flame was missing.
+class _HudStat extends StatelessWidget {
+  const _HudStat({
+    super.key,
+    required this.icon,
+    required this.iconColor,
+    required this.value,
+    required this.word,
+    required this.semantics,
+    this.highlight = false,
+  });
+
+  final IconData icon;
+  final Color iconColor;
+  final String value;
+  final String word;
+
+  /// The full sentence a screen reader hears — the short word on screen
+  /// is a reminder, not a definition.
+  final String semantics;
+  final bool highlight;
+
+  @override
+  Widget build(BuildContext context) {
+    return _HudPill(
+      highlight: highlight,
+      child: Semantics(
+        label: semantics,
+        child: ExcludeSemantics(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 15, color: iconColor),
+              const SizedBox(width: 5),
+              Text(value, style: _hudText(context)),
+              const SizedBox(width: 4),
+              Text(
+                word,
+                style: _hudText(
+                  context,
+                )?.copyWith(color: Colors.white70, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

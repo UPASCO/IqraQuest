@@ -75,6 +75,44 @@ class AppLocalizationsPt extends AppLocalizations {
   String get classicGame => 'Jogo clássico';
 
   @override
+  String get hudArrivedHeading => 'Cavalos chegados';
+
+  @override
+  String get hudKnowledgeShort => 'saber';
+
+  @override
+  String get hudStreakShort => 'sequência';
+
+  @override
+  String get hudCardsShort => 'cartas';
+
+  @override
+  String get boardMenuTitle => 'Menu do jogo';
+
+  @override
+  String get boardMenuOpen => 'Abrir o menu do jogo';
+
+  @override
+  String get autoPlaySingleMove => 'Movimento automático';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'Quando só um cavalo pode jogar a carta, ele avança sozinho.';
+
+  @override
+  String get restartRace => 'Recomeçar a corrida';
+
+  @override
+  String get restartRaceConfirm =>
+      'A corrida em curso será perdida. Os mesmos cavaleiros recomeçam do estábulo.';
+
+  @override
+  String get backToHome => 'Voltar ao início';
+
+  @override
+  String get backToHomeHint => 'O jogo fica guardado; poderás retomá-lo.';
+
+  @override
   String get duoGame => 'Jogo em dupla';
 
   @override
@@ -230,9 +268,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get gameOver => 'Fim de jogo';
-
-  @override
-  String get backToHome => 'Voltar ao início';
 
   @override
   String get gamesPlayed => 'Partidas jogadas';

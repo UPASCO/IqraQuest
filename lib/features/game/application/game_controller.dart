@@ -8,6 +8,7 @@ import '../../../app/providers.dart';
 import '../../../models/models.dart';
 import '../../../services/board_effect_service.dart';
 import '../../../services/game_save_service.dart';
+import '../../../services/settings_service.dart';
 import '../../../services/movement_choice_service.dart';
 import '../../../services/progress_service.dart';
 import '../../../services/question_deck.dart';
@@ -30,6 +31,11 @@ const Duration kRideMax = Duration(milliseconds: 950);
 /// A leap out of the stable, and the settle after any landing.
 const Duration kLeapDuration = Duration(milliseconds: 640);
 const Duration kLandingSettle = Duration(milliseconds: 260);
+
+/// The pause before a single legal horse plays itself, when the table
+/// asked for that: long enough to see WHICH horse is going, short enough
+/// not to feel like a hang.
+const Duration kAutoPlaceBeat = Duration(milliseconds: 700);
 
 /// The bonus square flares and says its value before the horse rides
 /// on: long enough to read "+10", short enough to stay one motion.
@@ -146,6 +152,12 @@ class GameController extends StateNotifier<GameSession?> {
 
   Timer? _noMoveTimer;
   Timer? _rideTimer;
+
+  /// When one card leaves exactly one horse able to ride it, play it
+  /// without asking. Pushed in from the settings (see
+  /// [gameControllerProvider]) so a change mid-game takes effect on the
+  /// very next card.
+  bool autoPlaceSingleMove = false;
 
   void configure({required List<Question> pool, required bool isPremium}) {
     _pool = pool;
@@ -559,7 +571,27 @@ class GameController extends StateNotifier<GameSession?> {
       _armNoMoveBeat();
       return;
     }
-    if (next.currentPlayer.isAi) _runAiPlacement();
+    if (next.currentPlayer.isAi) {
+      _runAiPlacement();
+      return;
+    }
+    // The one tap that never held a decision: a single legal horse, and
+    // the table asked not to be made to drag it. Still a beat, and still
+    // the same ride — the player sees which horse goes, they just do not
+    // have to say the obvious out loud.
+    if (autoPlaceSingleMove) {
+      final moves = legalMoves;
+      if (moves.length == 1) {
+        final only = moves.first.horseIndex;
+        _after(kAutoPlaceBeat, () {
+          final now = state;
+          if (now == null) return;
+          if (now.gameState.turnPhase != TurnPhase.choosingHorse) return;
+          if (!now.gameState.currentPlayer.isHuman) return;
+          placeHorse(only);
+        });
+      }
+    }
   }
 
   /// The player set [horseIndex] down on its destination — or the
@@ -1083,10 +1115,19 @@ class GameController extends StateNotifier<GameSession?> {
 
 final gameControllerProvider =
     StateNotifierProvider<GameController, GameSession?>((ref) {
-      return GameController(
+      final controller = GameController(
         engine: ref.watch(gameEngineProvider),
         questionRepository: ref.watch(questionRepositoryProvider),
         saveService: ref.watch(gameSaveServiceProvider),
         progressService: ref.watch(progressServiceProvider),
       );
+      // Pushed rather than read: the board's own menu can flip this
+      // mid-game, and the next card must already obey it.
+      controller.autoPlaceSingleMove =
+          ref.read(settingsControllerProvider).autoPlaceSingleMove;
+      ref.listen<AppSettings>(
+        settingsControllerProvider,
+        (_, next) => controller.autoPlaceSingleMove = next.autoPlaceSingleMove,
+      );
+      return controller;
     });

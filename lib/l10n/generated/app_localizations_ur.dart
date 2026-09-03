@@ -75,6 +75,44 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classicGame => 'کلاسک کھیل';
 
   @override
+  String get hudArrivedHeading => 'پہنچے ہوئے گھوڑے';
+
+  @override
+  String get hudKnowledgeShort => 'علم';
+
+  @override
+  String get hudStreakShort => 'تسلسل';
+
+  @override
+  String get hudCardsShort => 'کارڈ';
+
+  @override
+  String get boardMenuTitle => 'کھیل کا مینو';
+
+  @override
+  String get boardMenuOpen => 'کھیل کا مینو کھولیں';
+
+  @override
+  String get autoPlaySingleMove => 'خودکار چال';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'جب صرف ایک گھوڑا کارڈ کھیل سکے تو وہ خود آگے بڑھ جاتا ہے۔';
+
+  @override
+  String get restartRace => 'دوڑ دوبارہ شروع کریں';
+
+  @override
+  String get restartRaceConfirm =>
+      'جاری دوڑ ختم ہو جائے گی۔ وہی سوار اصطبل سے دوبارہ شروع کریں گے۔';
+
+  @override
+  String get backToHome => 'ہوم پر واپس جائیں';
+
+  @override
+  String get backToHomeHint => 'کھیل محفوظ ہے، تم بعد میں جاری رکھ سکتے ہو۔';
+
+  @override
   String get duoGame => 'جوڑی کھیل';
 
   @override
@@ -229,9 +267,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get gameOver => 'کھیل ختم';
-
-  @override
-  String get backToHome => 'ہوم پر واپس جائیں';
 
   @override
   String get gamesPlayed => 'کھیلے گئے میچز';

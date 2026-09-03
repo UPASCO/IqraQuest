@@ -74,6 +74,44 @@ class AppLocalizationsAr extends AppLocalizations {
   String get classicGame => 'لعبة كلاسيكية';
 
   @override
+  String get hudArrivedHeading => 'الخيول الواصلة';
+
+  @override
+  String get hudKnowledgeShort => 'معرفة';
+
+  @override
+  String get hudStreakShort => 'تتابع';
+
+  @override
+  String get hudCardsShort => 'بطاقات';
+
+  @override
+  String get boardMenuTitle => 'قائمة اللعبة';
+
+  @override
+  String get boardMenuOpen => 'افتح قائمة اللعبة';
+
+  @override
+  String get autoPlaySingleMove => 'حركة تلقائية';
+
+  @override
+  String get autoPlaySingleMoveHint =>
+      'عندما يستطيع حصان واحد فقط لعب البطاقة، ينطلق وحده.';
+
+  @override
+  String get restartRace => 'أعد السباق';
+
+  @override
+  String get restartRaceConfirm =>
+      'سيُفقد السباق الجاري. ينطلق الفرسان أنفسهم من الإسطبل من جديد.';
+
+  @override
+  String get backToHome => 'العودة إلى الرئيسية';
+
+  @override
+  String get backToHomeHint => 'اللعبة محفوظة، يمكنك متابعتها لاحقًا.';
+
+  @override
   String get duoGame => 'لعبة ثنائية';
 
   @override
@@ -227,9 +265,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gameOver => 'انتهت اللعبة';
-
-  @override
-  String get backToHome => 'العودة إلى الرئيسية';
 
   @override
   String get gamesPlayed => 'عدد المباريات';

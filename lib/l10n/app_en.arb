@@ -84,6 +84,54 @@
   "@classicGame": {
     "description": "Game variant: 4 pawns per player"
   },
+  "hudArrivedHeading": "Horses home",
+  "@hudArrivedHeading": {
+    "description": "Heading over the row of per-rider arrival counters"
+  },
+  "hudKnowledgeShort": "knowledge",
+  "@hudKnowledgeShort": {
+    "description": "One-word label beside the knowledge-point counter"
+  },
+  "hudStreakShort": "streak",
+  "@hudStreakShort": {
+    "description": "One-word label beside the streak counter"
+  },
+  "hudCardsShort": "cards",
+  "@hudCardsShort": {
+    "description": "One-word label beside the remaining-cards counter"
+  },
+  "boardMenuTitle": "Game menu",
+  "@boardMenuTitle": {
+    "description": "Title of the sheet opened by the board's menu button"
+  },
+  "boardMenuOpen": "Open the game menu",
+  "@boardMenuOpen": {
+    "description": "Screen-reader label of the board's menu button"
+  },
+  "autoPlaySingleMove": "Automatic move",
+  "@autoPlaySingleMove": {
+    "description": "Setting: play the only possible move without asking"
+  },
+  "autoPlaySingleMoveHint": "When only one horse can play the card, it rides by itself.",
+  "@autoPlaySingleMoveHint": {
+    "description": "What the automatic-move setting does"
+  },
+  "restartRace": "Restart the race",
+  "@restartRace": {
+    "description": "Board menu: start the same race over"
+  },
+  "restartRaceConfirm": "The race in progress will be lost. The same riders start again from the stable.",
+  "@restartRaceConfirm": {
+    "description": "Confirmation before throwing the current race away"
+  },
+  "backToHome": "Back to home",
+  "@backToHome": {
+    "description": "Navigation button back to home screen"
+  },
+  "backToHomeHint": "The game is saved; you can pick it up again.",
+  "@backToHomeHint": {
+    "description": "Reassurance beside 'back to home': the game is kept"
+  },
   "duoGame": "Duo game",
   "@duoGame": {
     "description": "Game format: two of a player's four horses must reach Mecca"
@@ -281,10 +329,6 @@
   "gameOver": "Game over",
   "@gameOver": {
     "description": "End-of-game screen title (generic)"
-  },
-  "backToHome": "Back to home",
-  "@backToHome": {
-    "description": "Navigation button back to home screen"
   },
   "gamesPlayed": "Games played",
   "@gamesPlayed": {

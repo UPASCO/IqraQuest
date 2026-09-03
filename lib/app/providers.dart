@@ -69,6 +69,8 @@ class SettingsController extends StateNotifier<AppSettings> {
   Future<void> setReduceMotion(bool value) => update((s) => s.copyWith(reduceMotion: value));
   Future<void> setSoundEnabled(bool value) => update((s) => s.copyWith(soundEnabled: value));
   Future<void> setHapticsEnabled(bool value) => update((s) => s.copyWith(hapticsEnabled: value));
+  Future<void> setAutoPlaceSingleMove(bool value) =>
+      update((s) => s.copyWith(autoPlaceSingleMove: value));
 }
 
 final settingsControllerProvider = StateNotifierProvider<SettingsController, AppSettings>(
