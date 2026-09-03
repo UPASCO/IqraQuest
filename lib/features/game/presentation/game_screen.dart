@@ -19,6 +19,7 @@ import '../../../theme/app_theme.dart';
 import '../../../widgets/board/cross_board_scene.dart';
 import '../../../widgets/bonus_callout.dart';
 import '../../../widgets/celebration_overlay.dart';
+import '../../../widgets/system_bars.dart';
 import '../../../widgets/earned_steps_medallion.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
@@ -654,6 +655,17 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   onTap: _endCelebration,
                 ),
               ),
+            // Light system-bar icons over the board's dark ground:
+            // Android paints the clock, the battery and the nav-bar
+            // glyphs from what the app declares, not from what it draws,
+            // and declares nothing by default. Front-most and invisible,
+            // so it wins the annotation without touching a pixel or a
+            // gesture.
+            const Positioned.fill(
+              child: IgnorePointer(
+                child: DarkSystemBars(child: SizedBox.expand()),
+              ),
+            ),
           ],
         ),
       ),

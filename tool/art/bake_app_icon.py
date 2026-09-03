@@ -107,11 +107,33 @@ IOS = [
 ]
 ANDROID = [("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)]
 
+# Android 8+ draws a launcher icon as two layers on a 108dp canvas and
+# masks them to whatever shape the launcher wants — a circle, a squircle,
+# a teardrop. Only the central 72dp is guaranteed to survive, so the art
+# is laid inside that, and the layer behind it is the icon's own ground:
+# whatever the mask cuts at the corners blends into the same green
+# instead of the white square Android would otherwise letterbox.
+ANDROID_ADAPTIVE = [
+    ("mdpi", 108), ("hdpi", 162), ("xhdpi", 216), ("xxhdpi", 324), ("xxxhdpi", 432),
+]
+ADAPTIVE_SAFE = 72 / 108
+
 
 def _resize(img, size):
     out = img.resize((size, size), Image.LANCZOS)
     if size < SHARPEN_BELOW:
         out = out.filter(ImageFilter.UnsharpMask(radius=1.2, percent=60, threshold=2))
+    return out
+
+
+def adaptive_foreground(full: Image.Image, size: int) -> Image.Image:
+    """The art on Android's 108dp canvas, sized to the 72dp a launcher
+    mask is guaranteed to show, transparent around it."""
+    out = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    inner = int(round(size * ADAPTIVE_SAFE))
+    art = _resize(full.convert("RGBA"), inner)
+    offset = (size - inner) // 2
+    out.paste(art, (offset, offset), art)
     return out
 
 
@@ -146,13 +168,20 @@ def main():
         _save(full, os.path.join(IOS_DIR, name), size, mode="RGB")
     for density, size in ANDROID:
         _save(full, f"android/app/src/main/res/mipmap-{density}/ic_launcher.png", size)
+    for density, size in ANDROID_ADAPTIVE:
+        path = os.path.join(
+            ROOT, f"android/app/src/main/res/mipmap-{density}/ic_launcher_foreground.png"
+        )
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        adaptive_foreground(full, size).save(path, optimize=True)
     _save(full, "web/icons/Icon-192.png", 192)
     _save(full, "web/icons/Icon-512.png", 512)
     _save(mask_variant, "web/icons/Icon-maskable-192.png", 192)
     _save(mask_variant, "web/icons/Icon-maskable-512.png", 512)
     _save(full, "web/favicon.png", 32)
     review_sheet(full, mask_variant)
-    print("icon baked:", len(IOS), "iOS +", len(ANDROID), "Android + 5 web; sheet in build/screenshots/")
+    print("icon baked:", len(IOS), "iOS +", len(ANDROID), "Android +",
+          len(ANDROID_ADAPTIVE), "adaptive + 5 web; sheet in build/screenshots/")
 
 
 if __name__ == "__main__":

@@ -39,6 +39,14 @@ const _tabletPortrait = Size(834, 1194); // iPad Pro 11"
 const _tabletLandscape = Size(1194, 834);
 const _bigTabletLandscape = Size(1366, 1024); // iPad Pro 13"
 
+/// Android is not iOS with different corners: its phones are taller for
+/// their width, its tablets are wider for their height, and the same
+/// layout has to hold on both. These are the shapes Play's device
+/// catalogue is actually full of, in dp.
+const _androidPhone = Size(360, 780); // a common 20:9 Android phone
+const _androidTablet = Size(800, 1280);
+const _androidTabletLandscape = Size(1280, 800);
+
 const _routes = <String>[
   '/onboarding',
   '/home',
@@ -161,6 +169,9 @@ void main() {
     ('tablet portrait 834x1194', _tabletPortrait),
     ('tablet landscape 1194x834', _tabletLandscape),
     ('big tablet landscape 1366x1024', _bigTabletLandscape),
+    ('android phone 360x780', _androidPhone),
+    ('android tablet 800x1280', _androidTablet),
+    ('android tablet landscape 1280x800', _androidTabletLandscape),
   ]) {
     for (final scale in [1.0, 1.3]) {
       group('$label at text scale $scale', () {

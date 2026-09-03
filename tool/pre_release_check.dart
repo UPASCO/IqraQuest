@@ -223,6 +223,55 @@ void main() {
     );
   }
 
+  section('Android');
+  final manifest = File(
+    '${root.path}/android/app/src/main/AndroidManifest.xml',
+  );
+  check('AndroidManifest.xml exists', manifest.existsSync());
+  if (manifest.existsSync()) {
+    final text = manifest.readAsStringSync();
+    // A hard orientation lock in the manifest overrides main()'s rule and
+    // would keep every Android tablet in portrait.
+    check(
+      'orientation is decided at runtime, not locked in the manifest',
+      !text.contains('android:screenOrientation'),
+      detail:
+          'remove android:screenOrientation so a tablet can be turned; '
+          'main() locks a phone to portrait from its shortest side',
+    );
+    check(
+      'predictive back is opted into (Android 13+)',
+      text.contains('android:enableOnBackInvokedCallback="true"'),
+    );
+    check('a round icon is declared', text.contains('android:roundIcon'));
+  }
+  final adaptive = File(
+    '${root.path}/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml',
+  );
+  // Without an adaptive icon Android 8+ letterboxes the square PNG on a
+  // white plate, which is the most visible defect a launcher can show.
+  check('adaptive launcher icon exists', adaptive.existsSync());
+  for (final density in ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']) {
+    check(
+      'adaptive icon foreground for $density',
+      File(
+        '${root.path}/android/app/src/main/res/mipmap-$density/'
+        'ic_launcher_foreground.png',
+      ).existsSync(),
+      detail: 'run python3 tool/art/bake_app_icon.py',
+    );
+  }
+  for (final dir in ['drawable', 'drawable-v21']) {
+    final launch = File(
+      '${root.path}/android/app/src/main/res/$dir/launch_background.xml',
+    );
+    check(
+      'the $dir launch window is not white',
+      launch.existsSync() && !launch.readAsStringSync().contains('@android:color/white'),
+      detail: 'a white flash before a dark board is a visible defect',
+    );
+  }
+
   section('Race rules (no dice, no chance)');
   final engineFile = File('${root.path}/lib/features/game/domain/game_engine.dart');
   check('game_engine.dart exists', engineFile.existsSync());

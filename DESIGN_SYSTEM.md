@@ -180,6 +180,29 @@ move. A drop anywhere else glides back in 340 ms. Hints live in the
 bottom banner (`_PlacementBanner`): "Touchez un cheval…" then "Glissez le
 cheval jusqu'à sa case dorée". See `lib/widgets/board/cross_board_scene.dart`.
 
+### Android specifics
+The layout rules above are platform-neutral and the audit renders every
+screen at Android's shapes too (360x780, 800x1280 and its landscape).
+What is *not* shared is everything Android decides from declarations
+rather than from pixels, and all of it had to be said explicitly:
+
+- **the orientation lock** lived in the manifest and would have overruled
+  `main()`, keeping Android tablets in portrait. It is gone; one rule now
+  serves both platforms.
+- **the launcher icon.** Android 8+ masks it to a circle, a squircle or a
+  teardrop. Without an adaptive icon the square PNG is letterboxed on a
+  white plate; `mipmap-anydpi-v26` lays the art inside the 72dp a mask is
+  guaranteed to show, over the icon's own `#082E22`, so every mask reads
+  as a frame.
+- **the launch window** was white in both themes — a white flash before a
+  dark board. It is the app's ground now.
+- **the system bars.** Android paints the clock, the battery and the
+  nav-bar glyphs from what the app declares, and declares nothing by
+  default. `DarkSystemBars` is the front-most, invisible layer of every
+  dark screen.
+- **predictive back** (Android 13+) is opted into, so the gesture previews
+  instead of freezing; `PopScope` already handles the callback.
+
 ### Phones, and tablets
 One layout, two devices. A phone layout dropped onto an iPad does not
 break — it *strands*: the composition huddles under the status bar with

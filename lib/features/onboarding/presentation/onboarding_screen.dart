@@ -8,6 +8,7 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/button_label.dart';
 import '../../../widgets/content_width.dart';
+import '../../../widgets/system_bars.dart';
 import '../../../widgets/fit_or_scroll.dart';
 import '../../../widgets/gold_rule.dart';
 import '../../../widgets/illustration.dart';
@@ -228,6 +229,16 @@ class OnboardingScreen extends ConsumerWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          // Light system-bar icons over the dark ground: Android
+          // paints the clock, the battery and the nav-bar glyphs from
+          // what the app declares, not from what it draws, and declares
+          // nothing by default. Front-most and invisible, so it wins the
+          // annotation without touching a pixel or a gesture.
+          const Positioned.fill(
+            child: IgnorePointer(
+              child: DarkSystemBars(child: SizedBox.expand()),
             ),
           ),
         ],

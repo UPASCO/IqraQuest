@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The ground the icon art is blended to (tool/art/bake_app_icon.py
+         GROUND) and the colour the launch window is painted with, so the
+         app never opens on a white flash before its first frame. -->
+    <color name="ic_launcher_background">#082E22</color>
+    <color name="launch_background">#082E22</color>
+</resources>

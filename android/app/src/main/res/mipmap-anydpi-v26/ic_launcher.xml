@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 8+ masks a launcher icon to whatever shape the launcher
+     wants. Without this file the square PNG is letterboxed on a white
+     plate; with it, the art is laid inside the 72dp a mask is guaranteed
+     to show, on the icon's own deep green, so every mask reads as a
+     frame rather than as a crop. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/ic_launcher_background"/>
+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+</adaptive-icon>

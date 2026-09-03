@@ -114,6 +114,20 @@ the same distance — so what separates them is which squares carry an
 effect, and each card names them (Oasis ×8, Défi ×4, Duel ×4…) rather
 than only counting them.
 
+**Android is not iOS with different corners.** Its manifest used to lock
+every device to portrait, which would have kept the tablet rotation to
+iPhones and iPads alone; the lock is gone and `main()`'s one rule decides
+on both platforms. Android 8+ masks a launcher icon to whatever shape the
+launcher wants, so the app ships an adaptive icon (art inside the 72dp a
+mask is guaranteed to show, on the icon's own green) instead of a square
+PNG letterboxed on white. The launch window is the app's deep green
+rather than the platform's white, predictive back is opted into
+(Android 13+), and the screens drawn on the dark ground declare light
+system-bar icons — Android paints the clock and the nav bar from what an
+app declares, not from what it draws. `.github/workflows/android-build.yml`
+compiles the release APK on every pull request, so a malformed manifest
+or an icon that does not resolve fails there.
+
 The app is **portrait on a phone and free to turn on a tablet**: the
 board is composed for a phone held upright, while an iPad gets put down
 on a table and a table has no "up". Every screen holds one measure

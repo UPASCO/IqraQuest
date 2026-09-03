@@ -14,6 +14,7 @@ import '../../../widgets/fit_or_scroll.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/ornate_frame.dart';
 import '../../../widgets/share_capture.dart';
+import '../../../widgets/system_bars.dart';
 import '../../game/application/game_controller.dart';
 
 /// The end of the journey is the game's biggest hero moment: the rider
@@ -371,6 +372,16 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
                   ),
                 ),
               ],
+            ),
+          ),
+          // Light system-bar icons over the dark ground: Android
+          // paints the clock, the battery and the nav-bar glyphs from
+          // what the app declares, not from what it draws, and declares
+          // nothing by default. Front-most and invisible, so it wins the
+          // annotation without touching a pixel or a gesture.
+          const Positioned.fill(
+            child: IgnorePointer(
+              child: DarkSystemBars(child: SizedBox.expand()),
             ),
           ),
         ],

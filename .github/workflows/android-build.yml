@@ -1,0 +1,62 @@
+name: Android — build & verify
+
+# The Android half of the app is real code with its own manifest,
+# resources and toolchain, and none of it is exercised by the iOS
+# workflow. This job compiles it for real — a malformed manifest, a
+# missing drawable or an icon that does not resolve fails here rather
+# than on somebody's phone.
+#
+# It needs no secrets: the APK is signed with the debug key (see
+# android/app/build.gradle.kts), which is enough to prove the build.
+on:
+  workflow_dispatch: {}
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "legal/**"
+      - "store/**"
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Regenerate localizations
+        run: flutter gen-l10n
+
+      - name: Static analysis
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Release gate
+        run: dart run tool/pre_release_check.dart
+
+      # Release, not debug: this is the configuration that runs the
+      # resource pipeline over the manifest and every XML in res/, so a
+      # broken adaptive icon or launch drawable is caught here.
+      - name: Build the Android release APK
+        run: flutter build apk --release
+
+      - name: Upload the APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: iqraquest-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
