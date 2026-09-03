@@ -111,6 +111,19 @@ class AppLocalizationsId extends AppLocalizations {
       'Bila hanya satu kuda yang bisa memainkan kartu, ia melaju sendiri.';
 
   @override
+  String get testerMode => 'Mode penguji';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Membuka seluruh $total pertanyaan di perangkat ini tanpa pembelian. Pengaturan ini hanya ada di versi uji.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count dari $total pertanyaan bisa dimainkan';
+  }
+
+  @override
   String get restartRace => 'Mulai ulang balapan';
 
   @override

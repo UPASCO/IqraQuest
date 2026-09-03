@@ -125,6 +125,31 @@
   "@autoPlaySingleMoveHint": {
     "description": "What the automatic-move setting does"
   },
+  "testerMode": "Tester mode",
+  "@testerMode": {
+    "description": "Settings: tester-build switch that unlocks the full bank locally"
+  },
+  "testerModeHint": "Unlocks all {total} questions on this device, without a purchase. This setting exists only in test builds.",
+  "@testerModeHint": {
+    "description": "Settings: what the tester switch does, and that it only exists in test builds",
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "testerBankPlayable": "{count} of {total} questions playable",
+  "@testerBankPlayable": {
+    "description": "Settings: how much of the question bank the current entitlement can draw from",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "restartRace": "Restart the race",
   "@restartRace": {
     "description": "Board menu: start the same race over"

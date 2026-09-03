@@ -335,6 +335,32 @@ void main() {
     );
   }
 
+  // The tester switch unlocks the Premium bank for nothing, so the one
+  // thing that must never slip is its default: a build that nobody
+  // compiled with --dart-define=IQRAQUEST_TESTER must not carry it.
+  final flags = File('${root.path}/lib/app/build_flags.dart');
+  check('build_flags.dart exists', flags.existsSync());
+  if (flags.existsSync()) {
+    final text = flags.readAsStringSync();
+    check(
+      'the tester unlock is off unless compiled in',
+      text.contains("bool.fromEnvironment('IQRAQUEST_TESTER')") &&
+          !text.contains('defaultValue: true'),
+      detail: 'kTesterBuild must default to false',
+    );
+  }
+  final settingsScreen = File(
+    '${root.path}/lib/features/settings/presentation/settings_screen.dart',
+  );
+  if (settingsScreen.existsSync()) {
+    final text = settingsScreen.readAsStringSync();
+    check(
+      'the tester switch is behind kTesterBuild',
+      !text.contains('TesterModeTile') || text.contains('if (kTesterBuild)'),
+      detail: 'an App Store build must not show a way to unlock Premium',
+    );
+  }
+
   stdout.writeln('\n================================');
   stdout.writeln('$passes passed, $failures failed');
   if (failures > 0) {

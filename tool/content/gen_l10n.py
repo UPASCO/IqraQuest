@@ -226,6 +226,42 @@ s("autoPlaySingleMoveHint", "What the automatic-move setting does",
   it="Quando un solo cavallo può giocare la carta, avanza da sé.",
   nl="Kan maar één paard de kaart spelen, dan rijdt het vanzelf.")
 
+s("testerMode", "Settings: tester-build switch that unlocks the full bank locally",
+  fr="Mode testeur", en="Tester mode", ar="وضع المختبِر",
+  es="Modo de prueba", pt="Modo de teste", de="Testermodus",
+  tr="Test modu", id="Mode penguji", ur="ٹیسٹر موڈ",
+  ms="Mod penguji", it="Modalità tester", nl="Testersmodus")
+
+s("testerModeHint", "Settings: what the tester switch does, and that it only exists in test builds",
+  ph={"total": "int"},
+  fr="Débloque les {total} questions sur cet appareil, sans achat. Ce réglage n'existe que dans les versions de test.",
+  en="Unlocks all {total} questions on this device, without a purchase. This setting exists only in test builds.",
+  ar="يفتح جميع الأسئلة البالغ عددها {total} على هذا الجهاز دون شراء. يظهر هذا الخيار في نسخ الاختبار فقط.",
+  es="Desbloquea las {total} preguntas en este dispositivo, sin compra. Este ajuste solo existe en las versiones de prueba.",
+  pt="Desbloqueia as {total} perguntas neste aparelho, sem compra. Esta opção só existe nas versões de teste.",
+  de="Schaltet alle {total} Fragen auf diesem Gerät frei, ohne Kauf. Diese Einstellung gibt es nur in Testversionen.",
+  tr="Bu cihazdaki {total} sorunun tamamını satın alma olmadan açar. Bu ayar yalnızca test sürümlerinde bulunur.",
+  id="Membuka seluruh {total} pertanyaan di perangkat ini tanpa pembelian. Pengaturan ini hanya ada di versi uji.",
+  ur="اس ڈیوائس پر تمام {total} سوالات بغیر خریداری کے کھول دیتا ہے۔ یہ ترتیب صرف ٹیسٹ ورژن میں ہوتی ہے۔",
+  ms="Membuka kesemua {total} soalan pada peranti ini tanpa pembelian. Tetapan ini hanya ada dalam versi ujian.",
+  it="Sblocca tutte le {total} domande su questo dispositivo, senza acquisto. Questa impostazione esiste solo nelle versioni di prova.",
+  nl="Ontgrendelt alle {total} vragen op dit apparaat, zonder aankoop. Deze instelling bestaat alleen in testversies.")
+
+s("testerBankPlayable", "Settings: how much of the question bank the current entitlement can draw from",
+  ph={"count": "int", "total": "int"},
+  fr="{count} questions jouables sur {total}",
+  en="{count} of {total} questions playable",
+  ar="{count} من {total} سؤالًا قابلة للعب",
+  es="{count} de {total} preguntas jugables",
+  pt="{count} de {total} perguntas jogáveis",
+  de="{count} von {total} Fragen spielbar",
+  tr="{total} sorudan {count} tanesi oynanabilir",
+  id="{count} dari {total} pertanyaan bisa dimainkan",
+  ur="{total} میں سے {count} سوالات کھیلے جا سکتے ہیں",
+  ms="{count} daripada {total} soalan boleh dimainkan",
+  it="{count} domande giocabili su {total}",
+  nl="{count} van {total} vragen speelbaar")
+
 s("restartRace", "Board menu: start the same race over",
   fr="Recommencer la course", en="Restart the race", ar="أعد السباق",
   es="Reiniciar la carrera", pt="Recomeçar a corrida",

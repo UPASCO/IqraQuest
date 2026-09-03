@@ -115,6 +115,19 @@ class AppLocalizationsAr extends AppLocalizations {
       'عندما يستطيع حصان واحد فقط لعب البطاقة، ينطلق وحده.';
 
   @override
+  String get testerMode => 'وضع المختبِر';
+
+  @override
+  String testerModeHint(int total) {
+    return 'يفتح جميع الأسئلة البالغ عددها $total على هذا الجهاز دون شراء. يظهر هذا الخيار في نسخ الاختبار فقط.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count من $total سؤالًا قابلة للعب';
+  }
+
+  @override
   String get restartRace => 'أعد السباق';
 
   @override

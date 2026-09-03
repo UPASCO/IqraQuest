@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/app_version.dart';
+import '../../../app/build_flags.dart';
 import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../widgets/content_width.dart';
+import 'tester_mode_tile.dart';
 
 const _supportedLanguages = [
   ('fr', 'Français'),
@@ -94,6 +96,13 @@ class SettingsScreen extends ConsumerWidget {
               value: settings.autoPlaceSingleMove,
               onChanged: controller.setAutoPlaceSingleMove,
             ),
+            // Only compiled into a tester build (see kTesterBuild): the
+            // App Store binary must not carry a switch that hands out the
+            // Premium bank for nothing.
+            if (kTesterBuild) ...[
+              const Divider(),
+              const TesterModeTile(),
+            ],
             const Divider(),
             ListTile(
               title: Text(l10n.privacyPolicy),

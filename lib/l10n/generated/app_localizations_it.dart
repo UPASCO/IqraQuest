@@ -114,6 +114,19 @@ class AppLocalizationsIt extends AppLocalizations {
       'Quando un solo cavallo può giocare la carta, avanza da sé.';
 
   @override
+  String get testerMode => 'Modalità tester';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Sblocca tutte le $total domande su questo dispositivo, senza acquisto. Questa impostazione esiste solo nelle versioni di prova.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count domande giocabili su $total';
+  }
+
+  @override
   String get restartRace => 'Ricomincia la corsa';
 
   @override

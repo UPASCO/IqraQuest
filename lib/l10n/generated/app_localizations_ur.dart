@@ -113,6 +113,19 @@ class AppLocalizationsUr extends AppLocalizations {
       'جب صرف ایک گھوڑا کارڈ کھیل سکے تو وہ خود آگے بڑھ جاتا ہے۔';
 
   @override
+  String get testerMode => 'ٹیسٹر موڈ';
+
+  @override
+  String testerModeHint(int total) {
+    return 'اس ڈیوائس پر تمام $total سوالات بغیر خریداری کے کھول دیتا ہے۔ یہ ترتیب صرف ٹیسٹ ورژن میں ہوتی ہے۔';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$total میں سے $count سوالات کھیلے جا سکتے ہیں';
+  }
+
+  @override
   String get restartRace => 'دوڑ دوبارہ شروع کریں';
 
   @override

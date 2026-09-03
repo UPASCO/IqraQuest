@@ -171,6 +171,29 @@ donc échec une fois le plafond atteint).
    d'export compliance pour ce build — réponds-y directement dans
    TestFlight avant de pouvoir l'assigner à des testeurs.
 
+## 5bis. Build testeur : jouer les 500 questions
+
+La version gratuite pioche dans les **50 questions gratuites** sur les
+500 de la banque ; les 450 autres sont derrière l'achat Premium. Un
+testeur qui enchaîne les parties retombe donc toujours sur les mêmes
+questions — c'est le fonctionnement prévu, pas un bug.
+
+Pour relire tout le contenu sans passer par un achat sandbox, coche
+**« Tester build »** (`tester_unlock`) au moment du *Run workflow*. Le
+build est alors compilé avec `--dart-define=IQRAQUEST_TESTER=true` et
+gagne un réglage supplémentaire : **Réglages › Mode testeur**. L'
+interrupteur débloque la banque complète sur l'appareil (et lève la
+limite de 50 pioches par partie), et se remet dans l'autre sens pour
+retester l'expérience gratuite. Il faut **démarrer une nouvelle partie**
+après l'avoir changé : la pioche et la limite sont fixées au lancement de
+la course.
+
+Le réglage n'existe que dans ce build : sans le `--dart-define` il n'est
+pas compilé du tout (`lib/app/build_flags.dart`), donc le binaire envoyé
+à la validation App Store n'offre aucun moyen de débloquer Premium
+gratuitement. **Laisse la case décochée** pour tout build destiné à la
+revue Apple.
+
 ## « Informations manquantes » sur le chiffrement
 
 App Store Connect demande à chaque upload quel chiffrement l'app utilise,

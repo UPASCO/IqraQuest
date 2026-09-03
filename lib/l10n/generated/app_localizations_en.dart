@@ -112,6 +112,19 @@ class AppLocalizationsEn extends AppLocalizations {
       'When only one horse can play the card, it rides by itself.';
 
   @override
+  String get testerMode => 'Tester mode';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Unlocks all $total questions on this device, without a purchase. This setting exists only in test builds.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count of $total questions playable';
+  }
+
+  @override
   String get restartRace => 'Restart the race';
 
   @override

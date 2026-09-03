@@ -113,6 +113,19 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kann nur ein Pferd die Karte spielen, zieht es von allein.';
 
   @override
+  String get testerMode => 'Testermodus';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Schaltet alle $total Fragen auf diesem Gerät frei, ohne Kauf. Diese Einstellung gibt es nur in Testversionen.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count von $total Fragen spielbar';
+  }
+
+  @override
   String get restartRace => 'Rennen neu starten';
 
   @override

@@ -111,6 +111,19 @@ class AppLocalizationsTr extends AppLocalizations {
       'Kartı yalnızca bir at oynayabiliyorsa, kendiliğinden ilerler.';
 
   @override
+  String get testerMode => 'Test modu';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Bu cihazdaki $total sorunun tamamını satın alma olmadan açar. Bu ayar yalnızca test sürümlerinde bulunur.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$total sorudan $count tanesi oynanabilir';
+  }
+
+  @override
   String get restartRace => 'Yarışı yeniden başlat';
 
   @override

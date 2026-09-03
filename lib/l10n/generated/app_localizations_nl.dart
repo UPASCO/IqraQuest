@@ -113,6 +113,19 @@ class AppLocalizationsNl extends AppLocalizations {
       'Kan maar één paard de kaart spelen, dan rijdt het vanzelf.';
 
   @override
+  String get testerMode => 'Testersmodus';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Ontgrendelt alle $total vragen op dit apparaat, zonder aankoop. Deze instelling bestaat alleen in testversies.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count van $total vragen speelbaar';
+  }
+
+  @override
   String get restartRace => 'Race opnieuw starten';
 
   @override

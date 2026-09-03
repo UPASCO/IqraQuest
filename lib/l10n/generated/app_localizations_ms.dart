@@ -111,6 +111,19 @@ class AppLocalizationsMs extends AppLocalizations {
       'Apabila hanya satu kuda boleh bermain kad itu, ia melaju sendiri.';
 
   @override
+  String get testerMode => 'Mod penguji';
+
+  @override
+  String testerModeHint(int total) {
+    return 'Membuka kesemua $total soalan pada peranti ini tanpa pembelian. Tetapan ini hanya ada dalam versi ujian.';
+  }
+
+  @override
+  String testerBankPlayable(int count, int total) {
+    return '$count daripada $total soalan boleh dimainkan';
+  }
+
+  @override
   String get restartRace => 'Mulakan semula perlumbaan';
 
   @override

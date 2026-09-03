@@ -298,6 +298,24 @@ abstract class AppLocalizations {
   /// **'When only one horse can play the card, it rides by itself.'**
   String get autoPlaySingleMoveHint;
 
+  /// Settings: tester-build switch that unlocks the full bank locally
+  ///
+  /// In en, this message translates to:
+  /// **'Tester mode'**
+  String get testerMode;
+
+  /// Settings: what the tester switch does, and that it only exists in test builds
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocks all {total} questions on this device, without a purchase. This setting exists only in test builds.'**
+  String testerModeHint(int total);
+
+  /// Settings: how much of the question bank the current entitlement can draw from
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of {total} questions playable'**
+  String testerBankPlayable(int count, int total);
+
   /// Board menu: start the same race over
   ///
   /// In en, this message translates to:

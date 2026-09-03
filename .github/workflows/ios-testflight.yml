@@ -10,7 +10,15 @@ name: iOS — build & upload to TestFlight
 #    Apple secrets FIRST and fails with a clear message when one is
 #    missing, instead of dying in a Ruby stack trace mid-lane.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tester_unlock:
+        description: >-
+          Tester build: adds Settings › Tester mode, which unlocks the
+          full 500-question bank on the device without a purchase. Leave
+          OFF for anything headed to App Store review.
+        type: boolean
+        default: false
   pull_request:
     paths-ignore:
       - "**.md"
@@ -102,7 +110,15 @@ jobs:
         # --build-number must increase on every TestFlight upload for the
         # same version; the workflow run number is a simple, monotonic,
         # zero-extra-API-call source for that (see ios/fastlane/Fastfile).
-        run: flutter build ios --release --no-codesign --build-number=${{ github.run_number }}
+        #
+        # IQRAQUEST_TESTER compiles in the tester switch (lib/app/build_flags.dart).
+        # It is a dart-define rather than a runtime setting on purpose: the
+        # App Store binary is built without it and therefore cannot be
+        # talked into handing out the Premium bank.
+        run: |
+          flutter build ios --release --no-codesign \
+            --build-number=${{ github.run_number }} \
+            --dart-define=IQRAQUEST_TESTER=${{ inputs.tester_unlock }}
 
       - uses: ruby/setup-ruby@v1
         with:
