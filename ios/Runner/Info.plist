@@ -57,10 +57,15 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<!-- An iPad gets put down on a table, and a table has no "up": all
+	     four orientations are offered here, and main() decides at launch
+	     which ones to keep (a phone keeps portrait alone). -->
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<!-- Portrait-only apps must opt out of iPad multitasking (Apple
 	     validation rule 90474), or declare all four orientations. -->

@@ -31,6 +31,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 const _small = Size(320, 568); // iPhone SE 1st gen — the floor
 const _large = Size(430, 932); // iPhone Pro Max — the ceiling
 
+/// And the tablets, in both orientations. A phone layout dropped onto an
+/// iPad does not overflow — it strands: the composition huddles at the
+/// top of a screen twice its height, and turning the device sideways
+/// asks the same question of a layout that has only ever been tall.
+const _tabletPortrait = Size(834, 1194); // iPad Pro 11"
+const _tabletLandscape = Size(1194, 834);
+const _bigTabletLandscape = Size(1366, 1024); // iPad Pro 13"
+
 const _routes = <String>[
   '/onboarding',
   '/home',
@@ -150,6 +158,9 @@ void main() {
   for (final (label, size) in [
     ('small 320x568', _small),
     ('large 430x932', _large),
+    ('tablet portrait 834x1194', _tabletPortrait),
+    ('tablet landscape 1194x834', _tabletLandscape),
+    ('big tablet landscape 1366x1024', _bigTabletLandscape),
   ]) {
     for (final scale in [1.0, 1.3]) {
       group('$label at text scale $scale', () {

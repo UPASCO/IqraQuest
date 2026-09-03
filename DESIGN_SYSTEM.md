@@ -180,6 +180,33 @@ move. A drop anywhere else glides back in 340 ms. Hints live in the
 bottom banner (`_PlacementBanner`): "Touchez un cheval…" then "Glissez le
 cheval jusqu'à sa case dorée". See `lib/widgets/board/cross_board_scene.dart`.
 
+### Phones, and tablets
+One layout, two devices. A phone layout dropped onto an iPad does not
+break — it *strands*: the composition huddles under the status bar with
+half the screen empty, a circuit card stretches to eleven hundred points
+around a 76-point thumbnail, and a line of body text runs past the eye's
+measure. Two rules fix that without a second design to keep in step:
+
+- **a measure.** `kMaxContentWidth` (600) caps every column of reading
+  matter or controls. Scrolling lists grow their side margins
+  (`pagePadding`) so the scroll gesture stays at the screen edge where
+  the thumb is; fixed compositions use `ContentWidth` (an `Align` with
+  `heightFactor: 1` — a plain `Center` under a bottom bar's loose height
+  grows to fill the screen and starves the page above it), and
+  `FitOrScroll` caps its own child. A phone is narrower than the cap, so
+  none of this is visible there.
+- **centred, not stacked from the top.** A column inside `FitOrScroll`
+  sets `mainAxisAlignment: center`: on a phone it fills the screen and
+  nothing changes; on a tablet the composition sits in the middle.
+
+**Rotation** is a tablet's alone. A phone is portrait-locked — the board
+is composed for it — while an iPad gets put down on a table, and a table
+has no "up". `main()` decides at launch from the shortest side, which
+does not change with rotation. On a landscape board the floating HUD and
+the deck would otherwise sit on top of a plate that fills the height, so
+the board reserves a band at each end (22% / 18%) and the square plate
+centres between them.
+
 ### The setup screen, and the board's own mute
 A format the player cannot tell from the next one is a decoration, not a
 choice. The three race lengths are therefore shown as **four horses per

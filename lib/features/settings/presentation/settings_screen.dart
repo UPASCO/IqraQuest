@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/app_version.dart';
 import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
+import '../../../widgets/content_width.dart';
 
 const _supportedLanguages = [
   ('fr', 'Français'),
@@ -35,6 +36,9 @@ class SettingsScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(l10n.settings)),
       body: SafeArea(
         child: ListView(
+          // Wide side margins on a tablet keep the rows at a readable
+          // measure without moving the scroll gesture off the edge.
+          padding: pagePadding(context),
           children: [
             // The picker sits under its label rather than beside it: as
             // `trailing` it shared one row's height with the title and

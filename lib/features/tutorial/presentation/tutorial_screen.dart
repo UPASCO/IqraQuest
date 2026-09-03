@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/content_width.dart';
 
 /// The rules of the race, in the player's own language: the classic
 /// *jeu des petits chevaux* — four horses, out on a 5 or 6, captures, a
@@ -39,7 +40,7 @@ class TutorialScreen extends StatelessWidget {
       appBar: AppBar(title: Text(l10n.rulesTitle)),
       body: SafeArea(
         child: ListView.builder(
-          padding: const EdgeInsets.all(20),
+          padding: pagePadding(context, top: 20, bottom: 20),
           itemCount: rules.length,
           itemBuilder: (context, i) =>
               _Rule(step: i + 1, title: rules[i].title, body: rules[i].body),

@@ -7,6 +7,7 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../theme/app_team.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/content_width.dart';
 import '../../../widgets/board/bonus_tile_painter.dart';
 import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/button_label.dart';
@@ -37,8 +38,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   late final List<PlayerProfile> _profiles;
   bool _starting = false;
 
-  int get _humanCount =>
-      widget.args.mode == GameMode.solo ? 1 : widget.args.humanPlayerCount;
+  int get _humanCount => widget.args.mode == GameMode.solo ? 1 : widget.args.humanPlayerCount;
 
   bool _prefilled = false;
 
@@ -86,9 +86,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
         fit: StackFit.expand,
         children: [
           const Positioned.fill(
-            child: CustomPaint(
-              painter: BoardEnvironmentPainter(horizon: 0.26),
-            ),
+            child: CustomPaint(painter: BoardEnvironmentPainter(horizon: 0.26)),
           ),
           // A soft dark veil so the framed panels and the ivory text
           // read against the dawn.
@@ -122,16 +120,12 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                               style: textTheme.headlineSmall?.copyWith(
                                 color: OrnatePalette.ivory,
                                 fontWeight: FontWeight.w800,
-                                shadows: const [
-                                  Shadow(color: Color(0x99000000), blurRadius: 10),
-                                ],
+                                shadows: const [Shadow(color: Color(0x99000000), blurRadius: 10)],
                               ),
                             ),
                             Text(
                               l10n.ridersSubtitle,
-                              style: textTheme.bodySmall?.copyWith(
-                                color: OrnatePalette.ivoryDim,
-                              ),
+                              style: textTheme.bodySmall?.copyWith(color: OrnatePalette.ivoryDim),
                             ),
                           ],
                         ),
@@ -141,7 +135,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                 ),
                 Expanded(
                   child: ListView(
-                    padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
+                    padding: pagePadding(context, horizontal: 16, top: 10, bottom: 16),
                     children: [
                       for (var i = 0; i < _humanCount; i++)
                         Padding(
@@ -185,29 +179,31 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
           top: false,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
-            child: ElevatedButton(
-              key: const Key('start-game'),
-              onPressed: _starting ? null : _start,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFE9C25E),
-                foregroundColor: const Color(0xFF3A2A08),
-                disabledBackgroundColor: const Color(0x80E9C25E),
-                elevation: 6,
-                shadowColor: const Color(0x99DBA83E),
-                minimumSize: const Size.fromHeight(54),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  side: const BorderSide(color: Color(0xFFFFF0C2), width: 1.2),
+            child: ContentWidth(
+              child: ElevatedButton(
+                key: const Key('start-game'),
+                onPressed: _starting ? null : _start,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFE9C25E),
+                  foregroundColor: const Color(0xFF3A2A08),
+                  disabledBackgroundColor: const Color(0x80E9C25E),
+                  elevation: 6,
+                  shadowColor: const Color(0x99DBA83E),
+                  minimumSize: const Size.fromHeight(54),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    side: const BorderSide(color: Color(0xFFFFF0C2), width: 1.2),
+                  ),
+                  textStyle: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
                 ),
-                textStyle: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
+                child: _starting
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : ButtonLabel(l10n.startGame),
               ),
-              child: _starting
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : ButtonLabel(l10n.startGame),
             ),
           ),
         ),
@@ -215,12 +211,11 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
     );
   }
 
-  String _aiLabel(AiDifficulty difficulty, AppLocalizations l10n) =>
-      switch (difficulty) {
-        AiDifficulty.easy => l10n.difficultyEasy,
-        AiDifficulty.medium => l10n.difficultyMedium,
-        AiDifficulty.hard => l10n.difficultyHard,
-      };
+  String _aiLabel(AiDifficulty difficulty, AppLocalizations l10n) => switch (difficulty) {
+    AiDifficulty.easy => l10n.difficultyEasy,
+    AiDifficulty.medium => l10n.difficultyMedium,
+    AiDifficulty.hard => l10n.difficultyHard,
+  };
 
   Future<void> _start() async {
     setState(() => _starting = true);
@@ -284,9 +279,7 @@ class _GlassBackButton extends StatelessWidget {
       label: MaterialLocalizations.of(context).backButtonTooltip,
       child: Material(
         color: const Color(0xB3122E22),
-        shape: CircleBorder(
-          side: BorderSide(color: Colors.white.withValues(alpha: 0.14)),
-        ),
+        shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
@@ -348,10 +341,7 @@ class _RiderPanel extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
-                    colors: [
-                      teamColor.withValues(alpha: 0.55),
-                      teamColor.withValues(alpha: 0.0),
-                    ],
+                    colors: [teamColor.withValues(alpha: 0.55), teamColor.withValues(alpha: 0.0)],
                   ),
                 ),
                 child: KnightSprite(team: team, height: 60),
@@ -417,12 +407,11 @@ class _RiderPanel extends StatelessWidget {
     );
   }
 
-  String _profileLabel(PlayerProfile profile, AppLocalizations l10n) =>
-      switch (profile) {
-        PlayerProfile.easy => l10n.levelEasy,
-        PlayerProfile.intermediate => l10n.levelIntermediate,
-        PlayerProfile.expert => l10n.levelExpert,
-      };
+  String _profileLabel(PlayerProfile profile, AppLocalizations l10n) => switch (profile) {
+    PlayerProfile.easy => l10n.levelEasy,
+    PlayerProfile.intermediate => l10n.levelIntermediate,
+    PlayerProfile.expert => l10n.levelExpert,
+  };
 }
 
 /// A level, as a gold chip: filled when chosen, outlined otherwise.
@@ -558,11 +547,8 @@ class _BonusTeaser extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: OrnatePalette.ivory,
-                fontWeight: FontWeight.w600,
-                height: 1.3,
-              ),
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(color: OrnatePalette.ivory, fontWeight: FontWeight.w600, height: 1.3),
             ),
           ),
         ],

@@ -7,6 +7,7 @@ import '../../../models/game_mode.dart';
 import '../../../services/board_effect_service.dart';
 import '../../../models/player.dart' show AiDifficulty;
 import '../../../theme/app_theme.dart';
+import '../../../widgets/content_width.dart';
 import '../../../widgets/illustration.dart';
 import '../../players/presentation/player_setup_args.dart';
 import '../../../widgets/button_label.dart';
@@ -37,7 +38,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
       appBar: AppBar(title: Text(_isSolo ? l10n.soloMode : l10n.familyMode)),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(20),
+          padding: pagePadding(context, top: 20, bottom: 20),
           children: [
             // The world the player is about to ride into, up front —
             // the choice below is "where do we ride", not a settings form.
@@ -145,10 +146,12 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
         top: false,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
-          child: ElevatedButton(
-            onPressed: _continue,
-            child: ButtonLabel(
-              MaterialLocalizations.of(context).continueButtonLabel,
+          child: ContentWidth(
+            child: ElevatedButton(
+              onPressed: _continue,
+              child: ButtonLabel(
+                MaterialLocalizations.of(context).continueButtonLabel,
+              ),
             ),
           ),
         ),

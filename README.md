@@ -114,6 +114,15 @@ the same distance — so what separates them is which squares carry an
 effect, and each card names them (Oasis ×8, Défi ×4, Duel ×4…) rather
 than only counting them.
 
+The app is **portrait on a phone and free to turn on a tablet**: the
+board is composed for a phone held upright, while an iPad gets put down
+on a table and a table has no "up". Every screen holds one measure
+(`kMaxContentWidth`) centred on a wide screen rather than stretching
+across it, and the landscape board reserves a band at each end so the
+HUD and the deck never sit on the plate. `test/quality/layout_audit_test.dart`
+renders every screen at both phone sizes and at three tablet sizes, in
+both orientations, and fails on any overflow.
+
 The **rules screen** (`/tutorial`, one tap from the board) tells the same
 thing in twelve steps, and it opens on the one that was missing: how the
 race is won. A player could once read every step and still not know what

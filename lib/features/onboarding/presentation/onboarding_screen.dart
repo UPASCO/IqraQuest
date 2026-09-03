@@ -7,6 +7,7 @@ import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/button_label.dart';
+import '../../../widgets/content_width.dart';
 import '../../../widgets/fit_or_scroll.dart';
 import '../../../widgets/gold_rule.dart';
 import '../../../widgets/illustration.dart';
@@ -74,11 +75,7 @@ class OnboardingScreen extends ConsumerWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 stops: [0.0, 0.45, 1.0],
-                colors: [
-                  Color(0xFF0E3F36),
-                  OrnatePalette.ground,
-                  OrnatePalette.groundDeep,
-                ],
+                colors: [Color(0xFF0E3F36), OrnatePalette.ground, OrnatePalette.groundDeep],
               ),
             ),
           ),
@@ -89,6 +86,12 @@ class OnboardingScreen extends ConsumerWidget {
                   child: FitOrScroll(
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 8),
                     child: Column(
+                      // Centred, not stacked from the top: on a phone
+                      // the column fills the screen and this changes
+                      // nothing, but on a tablet it stops the whole
+                      // composition huddling under the status bar with
+                      // half the screen empty below it.
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // ---- Name, small: this is not the hub ----
@@ -128,10 +131,7 @@ class OnboardingScreen extends ConsumerWidget {
                         Text(
                           l10n.onboardingWelcomeSubtitle,
                           textAlign: TextAlign.center,
-                          style: text.bodyMedium?.copyWith(
-                            color: colors.onSceneDim,
-                            height: 1.35,
-                          ),
+                          style: text.bodyMedium?.copyWith(color: colors.onSceneDim, height: 1.35),
                         ),
                         const SizedBox(height: 14),
 
@@ -148,9 +148,8 @@ class OnboardingScreen extends ConsumerWidget {
                                 key: ValueKey('lang-$code'),
                                 label: name,
                                 selected: code == current,
-                                onTap: () => ref
-                                    .read(settingsControllerProvider.notifier)
-                                    .setLanguage(code),
+                                onTap: () =>
+                                    ref.read(settingsControllerProvider.notifier).setLanguage(code),
                               ),
                           ],
                         ),
@@ -158,9 +157,7 @@ class OnboardingScreen extends ConsumerWidget {
                         Text(
                           l10n.onboardingLanguageHint,
                           textAlign: TextAlign.center,
-                          style: text.labelSmall?.copyWith(
-                            color: colors.onSceneDim,
-                          ),
+                          style: text.labelSmall?.copyWith(color: colors.onSceneDim),
                         ),
                         const SizedBox(height: 14),
 
@@ -213,21 +210,21 @@ class OnboardingScreen extends ConsumerWidget {
                 // at the largest text.
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 4, 20, 16),
-                  child: FilledButton(
-                    onPressed: () => _finish(context, ref),
-                    style: FilledButton.styleFrom(
-                      backgroundColor: colors.goldAccent,
-                      foregroundColor: const Color(0xFF231705),
-                      minimumSize: const Size.fromHeight(56),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                  child: ContentWidth(
+                    child: FilledButton(
+                      onPressed: () => _finish(context, ref),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: colors.goldAccent,
+                        foregroundColor: const Color(0xFF231705),
+                        minimumSize: const Size.fromHeight(56),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        textStyle: text.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.2,
+                        ),
                       ),
-                      textStyle: text.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.2,
-                      ),
+                      child: ButtonLabel(l10n.getStarted),
                     ),
-                    child: ButtonLabel(l10n.getStarted),
                   ),
                 ),
               ],
@@ -259,11 +256,8 @@ class _SectionLabel extends StatelessWidget {
     return Text(
       text.toUpperCase(),
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.labelMedium?.copyWith(
-        color: OrnatePalette.gold,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 1.6,
-      ),
+      style: Theme.of(context).textTheme.labelMedium
+          ?.copyWith(color: OrnatePalette.gold, fontWeight: FontWeight.w800, letterSpacing: 1.6),
     );
   }
 }
@@ -293,10 +287,7 @@ class _LanguageChip extends StatelessWidget {
         color: selected ? gold : const Color(0x3300231A),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18),
-          side: BorderSide(
-            color: selected ? gold : gold.withValues(alpha: 0.55),
-            width: 1.1,
-          ),
+          side: BorderSide(color: selected ? gold : gold.withValues(alpha: 0.55), width: 1.1),
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(18),
@@ -381,11 +372,8 @@ class _Step extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 5,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: colors.onScene,
-                height: 1.25,
-                fontWeight: FontWeight.w600,
-              ),
+              style: Theme.of(context).textTheme.labelSmall
+                  ?.copyWith(color: colors.onScene, height: 1.25, fontWeight: FontWeight.w600),
             ),
           ),
         ],

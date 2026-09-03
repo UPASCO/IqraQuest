@@ -6,6 +6,7 @@ import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/legacy_game_migration_service.dart';
+import '../../../widgets/content_width.dart';
 import '../../../widgets/gold_rule.dart';
 import '../../../widgets/ornate_frame.dart';
 import '../../../widgets/illustration.dart';
@@ -109,7 +110,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+              // Padding, not a max-width box: the column below holds a
+              // Spacer, and a Center would loosen its height and make
+              // that Spacer unbounded. Growing the side margins holds
+              // the composition to one measure on a tablet while the
+              // key art keeps the full screen behind it.
+              padding: pagePadding(context, horizontal: 18, top: 8, bottom: 8),
               child: Column(
                 children: [
                   // ---- Top bar: identity left, streak & points, settings ----

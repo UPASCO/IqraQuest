@@ -21,9 +21,29 @@ const _onboardingCompleteKey = 'iqraquest.onboarding.complete';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // The board is composed for portrait; landscape would crop the track
-  // and the camps out of the cover-fitted scene.
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // A phone stays portrait: the board is composed for it, and landscape
+  // on a 320-point screen would crop the track and the camps out of the
+  // cover-fitted scene. A tablet is a different object — it gets put
+  // down on a table, and a table has no "up" — so it may be turned, and
+  // every screen is laid out to hold its composition either way.
+  //
+  // The shortest side is the honest test: it does not change with
+  // rotation, so the app cannot change its mind mid-turn.
+  final view = WidgetsBinding.instance.platformDispatcher.implicitView;
+  final logicalSize = view == null
+      ? null
+      : view.physicalSize / view.devicePixelRatio;
+  final isTablet = (logicalSize?.shortestSide ?? 0) >= 600;
+  await SystemChrome.setPreferredOrientations(
+    isTablet
+        ? const [
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+            DeviceOrientation.landscapeLeft,
+            DeviceOrientation.landscapeRight,
+          ]
+        : const [DeviceOrientation.portraitUp],
+  );
 
   final storage = await LocalStorageService.create();
   final settingsService = SettingsService(storage);

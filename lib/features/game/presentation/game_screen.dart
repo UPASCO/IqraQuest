@@ -103,6 +103,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     // Watched, not read: the board's own mute button has to redraw the
     // moment it is tapped.
     final soundOn = ref.watch(settingsControllerProvider).soundEnabled;
+    final boardSize = MediaQuery.sizeOf(context);
+    final landscape = boardSize.width > boardSize.height;
     final session = ref.watch(gameControllerProvider);
 
     ref.listen(gameControllerProvider, (previous, next) {
@@ -216,7 +218,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             // the HUD and the deck stay put above it. While a horse is
             // being placed the viewer stands still: the finger on the
             // plate is moving a horse, never the board.
+            // On a tablet turned sideways the plate would fill the whole
+            // height and the floating HUD and deck would sit on top of
+            // it. Reserving a band at each end keeps the square plate
+            // clear of both — a phone is portrait-locked, so this never
+            // changes anything there.
             Positioned.fill(
+              top: landscape ? boardSize.height * 0.22 : 0,
+              bottom: landscape ? boardSize.height * 0.18 : 0,
               child: InteractiveViewer(
                 key: const Key('board-zoom'),
                 minScale: 1,

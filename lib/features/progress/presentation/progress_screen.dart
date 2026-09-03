@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/content_width.dart';
 
 class ProgressScreen extends ConsumerWidget {
   const ProgressScreen({super.key});
@@ -17,7 +18,7 @@ class ProgressScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(l10n.progress)),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(20),
+          padding: pagePadding(context, top: 20, bottom: 20),
           children: [
             if (stats.gamesPlayed == 0)
               Padding(
