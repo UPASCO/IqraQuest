@@ -59,10 +59,102 @@ Dans le dépôt GitHub → **Settings** → **Secrets and variables** →
 | `ASC_KEY_CONTENT` | le contenu **texte brut** du fichier `.p8` téléchargé (ouvre-le avec un éditeur de texte, copie tout, y compris les lignes `-----BEGIN PRIVATE KEY-----` / `-----END PRIVATE KEY-----`) |
 | `APPLE_TEAM_ID` | le Team ID de l'étape 3 |
 
-Rien d'autre à faire côté certificats/profils : le pipeline utilise la
-signature automatique de Xcode pilotée par la clé API
-(`-allowProvisioningUpdates`), donc pas de fichier `.p12` ni de
-provisioning profile à gérer manuellement.
+Puis les deux secrets du certificat de distribution, décrits à l'étape
+suivante :
+
+| Nom du secret | Valeur |
+|---|---|
+| `IOS_DIST_CERT_P12` | le certificat de distribution exporté en `.p12`, encodé en base64 sur **une seule ligne** |
+| `IOS_DIST_CERT_PASSWORD` | le mot de passe choisi à l'export du `.p12` |
+
+Le provisioning profile, lui, reste géré automatiquement par Xcode via la
+clé API (`-allowProvisioningUpdates`) : rien à télécharger ni à
+renouveler à la main.
+
+## 4bis. Le certificat de distribution (à faire **une seule fois**)
+
+**Pourquoi.** Un runner GitHub démarre avec un trousseau vide. Sans
+certificat fourni, Xcode en demande un **nouveau** à Apple à chaque
+build — et Apple plafonne le nombre de certificats de distribution par
+équipe. Le build 23 est mort là-dessus :
+
+> `error: Choose a certificate to revoke. Your account has reached the
+> maximum number of certificates.`
+
+Pire : chacun de ces certificats est inutilisable, sa clé privée est
+morte avec le runner qui l'a créé. La solution est d'en créer **un**,
+dont on garde la clé privée, et de le réutiliser à chaque build.
+
+### a. Faire le ménage dans le portail Apple
+
+https://developer.apple.com/account/resources/certificates/list
+
+Révoque tous les certificats **Apple Distribution** créés par la CI
+(ils sont inutilisables). Garde uniquement celui dont tu possèdes la clé
+privée sur ton Mac, s'il y en a un — c'est celui que tu exporteras à
+l'étape b. Révoquer un certificat de distribution ne retire **aucune**
+app déjà publiée sur l'App Store.
+
+### b. Obtenir un `.p12`
+
+**Si tu as un Mac et que le certificat est déjà dans ton trousseau :**
+
+1. Ouvre **Trousseaux d'accès** → catégorie **Mes certificats**.
+2. Trouve `Apple Distribution: … (TON_TEAM_ID)` — il doit avoir une
+   flèche pour se déplier, signe que la clé privée est là.
+3. Clic droit → **Exporter…** → format **Échange d'informations
+   personnelles (.p12)** → enregistre sous `ios_dist.p12`.
+4. Choisis un mot de passe et **note-le** : c'est
+   `IOS_DIST_CERT_PASSWORD`.
+
+**Sans Mac (ou sans certificat existant)**, avec `openssl` sur
+n'importe quelle machine :
+
+```bash
+# 1. une clé privée + une demande de certificat (CSR)
+openssl genrsa -out ios_dist.key 2048
+openssl req -new -key ios_dist.key -out ios_dist.csr \
+  -subj "/emailAddress=TON_EMAIL/CN=IqraQuest Distribution/C=FR"
+```
+
+2. Portail Apple → **Certificates** → **+** → **Apple Distribution** →
+   téléverse `ios_dist.csr` → **Continue** → **Download** : tu obtiens
+   `distribution.cer`.
+
+```bash
+# 3. recoller le certificat et la clé privée dans un .p12
+openssl x509 -inform DER -in distribution.cer -out ios_dist.pem
+openssl pkcs12 -export -inkey ios_dist.key -in ios_dist.pem \
+  -name "Apple Distribution" -out ios_dist.p12 \
+  -passout pass:CHOISIS_UN_MOT_DE_PASSE
+```
+
+Garde `ios_dist.key` et `ios_dist.p12` en lieu sûr (hors du dépôt) : ce
+sont eux qui évitent d'avoir à recommencer.
+
+### c. Encoder et enregistrer les secrets
+
+```bash
+# Linux
+base64 -w0 ios_dist.p12 > ios_dist.p12.b64
+# macOS
+base64 -i ios_dist.p12 -o ios_dist.p12.b64
+```
+
+Dépôt GitHub → **Settings** → **Secrets and variables** → **Actions** :
+
+- `IOS_DIST_CERT_P12` = tout le contenu de `ios_dist.p12.b64` (une seule
+  ligne, sans retour à la ligne ni espace) ;
+- `IOS_DIST_CERT_PASSWORD` = le mot de passe du `.p12`.
+
+Ces deux fichiers ne doivent **jamais** être commités : `.p12`, `.key`,
+`.cer` et `.b64` sont ignorés par `.gitignore`.
+
+À partir de là, chaque build importe ce certificat dans un trousseau
+temporaire et signe avec — Apple n'en crée plus aucun, le plafond n'est
+plus jamais approché. Si le secret est absent, le workflow le signale en
+warning et retombe sur l'ancien comportement (création d'un certificat,
+donc échec une fois le plafond atteint).
 
 ## 5. Lancer le build
 

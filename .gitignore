@@ -46,3 +46,15 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Signing material — never commit an identity. The distribution
+# certificate lives in the IOS_DIST_CERT_P12 GitHub secret and the App
+# Store Connect key in ASC_KEY_CONTENT; the CI writes them to disk while
+# it signs (see ios/fastlane/Fastfile).
+*.p12
+*.p8
+*.cer
+*.certSigningRequest
+*.mobileprovision
+ios_dist.key
+*.p12.b64

@@ -4,6 +4,8 @@ default_platform(:ios)
 # secrets this lane expects (ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_CONTENT,
 # APPLE_TEAM_ID) and how to obtain each one.
 require "base64"
+require "shellwords"
+require "tmpdir"
 
 platform :ios do
   # A missing secret must read as "add this secret", never as a Ruby
@@ -53,6 +55,73 @@ platform :ios do
     "-----BEGIN PRIVATE KEY-----\n#{clean.scan(/.{1,64}/).join("\n")}\n-----END PRIVATE KEY-----\n"
   end
 
+  # Import the team's one distribution identity into a throwaway CI
+  # keychain, so `xcodebuild` signs with it instead of asking Apple for
+  # yet another certificate. A no-op (with a loud warning) when the
+  # secret is absent, so the lane still runs on a laptop that already
+  # holds the identity.
+  def install_distribution_certificate
+    encoded = ENV["IOS_DIST_CERT_P12"].to_s.gsub(/\s+/, "")
+    if encoded.empty?
+      UI.important(
+        "IOS_DIST_CERT_P12 is not set: signing will fall back to asking " \
+        "Apple for a NEW distribution certificate, which fails once the " \
+        "team's certificate limit is reached. See " \
+        "store/apple/TESTFLIGHT_SETUP.md, section \"Distribution " \
+        "certificate\".",
+      )
+      return
+    end
+
+    begin
+      p12 = Base64.strict_decode64(encoded)
+    rescue ArgumentError
+      UI.user_error!(
+        "IOS_DIST_CERT_P12 is not valid base64. Re-create it with " \
+        "`base64 -i ios_dist.p12 | tr -d '\\n'` and paste the whole " \
+        "single line into the GitHub secret.",
+      )
+    end
+    unless p12.start_with?("\x30")
+      UI.user_error!(
+        "IOS_DIST_CERT_P12 does not decode to a .p12 file. Make sure the " \
+        "secret holds the base64 of the exported certificate, not the " \
+        "certificate's text or a path to it.",
+      )
+    end
+
+    # setup_ci creates (and unlocks) a temporary keychain and puts it
+    # first in the search list; without it the identity would land in the
+    # runner's locked login keychain and codesign could not reach it.
+    setup_ci if ENV["CI"]
+    keychain = ENV["MATCH_KEYCHAIN_NAME"] || "fastlane_tmp_keychain"
+    keychain_password = ENV["MATCH_KEYCHAIN_PASSWORD"] || ""
+
+    # Apple's intermediate: without it the imported leaf certificate has
+    # no chain to a trusted root and codesign rejects the identity.
+    Dir.mktmpdir do |dir|
+      wwdr = File.join(dir, "AppleWWDRCAG3.cer")
+      if system("curl", "-fsSL", "-o", wwdr,
+                "https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer")
+        sh("security import #{wwdr.shellescape} -k #{keychain.shellescape} " \
+           "-T /usr/bin/codesign || true")
+      else
+        UI.important("Could not download Apple's WWDR intermediate; " \
+                     "relying on the one shipped with Xcode.")
+      end
+
+      path = File.join(dir, "ios_dist.p12")
+      File.binwrite(path, p12)
+      import_certificate(
+        certificate_path: path,
+        certificate_password: ENV["IOS_DIST_CERT_PASSWORD"].to_s,
+        keychain_name: keychain,
+        keychain_password: keychain_password,
+      )
+    end
+    UI.success("Distribution certificate imported: no new one will be created.")
+  end
+
   desc "Build the Flutter release IPA and upload it to TestFlight"
   lane :beta do
     api_key = app_store_connect_api_key(
@@ -66,8 +135,24 @@ platform :ios do
       in_house: false,
     )
 
-    # Xcode manages signing automatically using the API key above — no
-    # manually exported certificates/provisioning profiles to maintain.
+    # ONE distribution certificate, carried in a secret and reused.
+    #
+    # A hosted runner starts with an empty keychain, so Xcode's automatic
+    # signing finds no distribution identity and mints a brand new
+    # certificate on every run. Apple caps how many a team may hold, and
+    # build 23 hit that cap ("Your account has reached the maximum number
+    # of certificates"). Worse, each of those certificates is unusable:
+    # its private key died with the runner that made it.
+    #
+    # So the identity is created ONCE, exported as a .p12 and stored in
+    # the IOS_DIST_CERT_P12 secret (base64). Imported here, Xcode finds
+    # it, signs with it, and creates nothing — the cap is never
+    # approached again. See store/apple/TESTFLIGHT_SETUP.md.
+    install_distribution_certificate
+
+    # Xcode manages signing automatically using the API key above — with
+    # the certificate above already in the keychain, it only has to fetch
+    # the provisioning profile.
     update_code_signing_settings(
       use_automatic_signing: true,
       path: "Runner.xcodeproj",

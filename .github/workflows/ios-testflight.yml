@@ -59,6 +59,7 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          IOS_DIST_CERT_P12: ${{ secrets.IOS_DIST_CERT_P12 }}
         run: |
           missing=""
           for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_CONTENT APPLE_TEAM_ID; do
@@ -72,6 +73,12 @@ jobs:
             exit 1
           fi
           echo "All four Apple secrets are present."
+          if [ -z "$IOS_DIST_CERT_P12" ]; then
+            echo "::warning::IOS_DIST_CERT_P12 is not set — this build will"
+            echo "::warning::ask Apple for a NEW distribution certificate and"
+            echo "::warning::will fail once the team's limit is reached."
+            echo "::warning::See store/apple/TESTFLIGHT_SETUP.md."
+          fi
 
       - uses: actions/checkout@v4
 
@@ -110,6 +117,11 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # The team's one distribution identity, reused by every build.
+          # Without it Xcode asks Apple for a new certificate on every
+          # run and eventually hits the team's limit — see the lane.
+          IOS_DIST_CERT_P12: ${{ secrets.IOS_DIST_CERT_P12 }}
+          IOS_DIST_CERT_PASSWORD: ${{ secrets.IOS_DIST_CERT_PASSWORD }}
         run: bundle exec fastlane beta
 
       - name: Upload build artifacts (for debugging failed uploads)
