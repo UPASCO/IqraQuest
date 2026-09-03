@@ -146,6 +146,34 @@ void main() {
     _expectOnScreen(tester, find.byType(FilledButton), 'Commencer');
   });
 
+  testWidgets('onboarding: the three steps never run into each other', (
+    tester,
+  ) async {
+    // The report was "the writing overlaps at the steps": three columns
+    // of copy set edge to edge, so the end of one line sat against the
+    // start of the next. Measured on the smallest phone at the largest
+    // text, where the columns are narrowest.
+    await _pump(tester, '/onboarding');
+    final labels = [
+      for (var n = 1; n <= 3; n++) find.byKey(ValueKey('step-label-$n')),
+    ];
+    for (final l in labels) {
+      expect(l, findsOneWidget);
+      await tester.ensureVisible(l);
+    }
+    await _settle(tester);
+    final rects = [for (final l in labels) tester.getRect(l)];
+    for (var i = 0; i + 1 < rects.length; i++) {
+      expect(
+        rects[i + 1].left - rects[i].right,
+        greaterThanOrEqualTo(8.0),
+        reason:
+            'step ${i + 1} ends at ${rects[i].right} and step ${i + 2} '
+            'starts at ${rects[i + 1].left}: the copy touches',
+      );
+    }
+  });
+
   testWidgets('premium: the purchase button is on screen', (tester) async {
     await _pump(tester, '/premium', premium: false);
     _expectOnScreen(tester, find.byType(ElevatedButton), 'Unlock');

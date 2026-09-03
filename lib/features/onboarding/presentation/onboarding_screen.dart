@@ -168,9 +168,13 @@ class OnboardingScreen extends ConsumerWidget {
                         _SectionLabel(l10n.onboardingHowTo),
                         const SizedBox(height: 8),
                         OrnateFrame(
-                          padding: const EdgeInsets.fromLTRB(6, 10, 6, 10),
+                          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            // A hairline gutter between the columns: the
+                            // three lines of copy must never touch, at any
+                            // text size or in any language.
+                            spacing: 10,
                             children: [
                               // The game's own pieces, not icons: the
                               // deck's card back, the board's bonus
@@ -366,15 +370,22 @@ class _Step extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-              color: colors.onScene,
-              height: 1.2,
-              fontWeight: FontWeight.w600,
+          // The copy is kept inside its own column: a gutter here plus
+          // the row's spacing means two neighbouring lines can never
+          // run into each other, however long the translation.
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: Text(
+              label,
+              key: ValueKey('step-label-$number'),
+              textAlign: TextAlign.center,
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: colors.onScene,
+                height: 1.25,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
