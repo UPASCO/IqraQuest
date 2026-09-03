@@ -75,6 +75,44 @@ class AppLocalizationsTr extends AppLocalizations {
   String get classicGame => 'Klasik Oyun';
 
   @override
+  String get duoGame => 'İkili Oyun';
+
+  @override
+  String horsesToMecca(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Mekke\'ye $count at',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get formatQuickHint => 'En kısa yarış.';
+
+  @override
+  String get formatDuoHint => 'Bir akşamlık yarış.';
+
+  @override
+  String get formatClassicHint => 'Orijinaldeki gibi tam oyun.';
+
+  @override
+  String get bonusSquaresOption => 'Parkurda bonus kareler';
+
+  @override
+  String get bonusSquaresOn => '16 kare fazladan koşu verir: +5, +10 veya +20.';
+
+  @override
+  String get bonusSquaresOff =>
+      'Saf parkur: bir kart tam olarak kendi dörtnalları kadar eder.';
+
+  @override
+  String get muteSound => 'Sesi kapat';
+
+  @override
+  String get unmuteSound => 'Sesi aç';
+
+  @override
   String get chooseDifficulty => 'Zorluk seçin';
 
   @override

@@ -244,6 +244,66 @@ abstract class AppLocalizations {
   /// **'Classic game'**
   String get classicGame;
 
+  /// Game format: two of a player's four horses must reach Mecca
+  ///
+  /// In en, this message translates to:
+  /// **'Duo game'**
+  String get duoGame;
+
+  /// What a format asks for: how many horses must reach Mecca
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} horse to Mecca} other{{count} horses to Mecca}}'**
+  String horsesToMecca(num count);
+
+  /// Format card: how long the quick race runs
+  ///
+  /// In en, this message translates to:
+  /// **'The shortest race.'**
+  String get formatQuickHint;
+
+  /// Format card: how long the two-horse race runs
+  ///
+  /// In en, this message translates to:
+  /// **'An evening\'s race.'**
+  String get formatDuoHint;
+
+  /// Format card: how long the full race runs
+  ///
+  /// In en, this message translates to:
+  /// **'The full game, as in the original.'**
+  String get formatClassicHint;
+
+  /// Setup toggle: play with the bonus squares on the course
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus squares on the course'**
+  String get bonusSquaresOption;
+
+  /// Setup toggle, on: what the bonus squares give
+  ///
+  /// In en, this message translates to:
+  /// **'16 squares grant an extra ride: +5, +10 or +20.'**
+  String get bonusSquaresOn;
+
+  /// Setup toggle, off: the pure ride
+  ///
+  /// In en, this message translates to:
+  /// **'A pure ride: a card is worth exactly its gallops.'**
+  String get bonusSquaresOff;
+
+  /// Board button: silence the game
+  ///
+  /// In en, this message translates to:
+  /// **'Mute sound'**
+  String get muteSound;
+
+  /// Board button: bring the game's sound back
+  ///
+  /// In en, this message translates to:
+  /// **'Unmute sound'**
+  String get unmuteSound;
+
   /// AI difficulty picker label
   ///
   /// In en, this message translates to:

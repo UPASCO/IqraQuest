@@ -75,6 +75,45 @@ class AppLocalizationsMs extends AppLocalizations {
   String get classicGame => 'Permainan Klasik';
 
   @override
+  String get duoGame => 'Permainan Duo';
+
+  @override
+  String horsesToMecca(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count kuda ke Mekah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get formatQuickHint => 'Perlumbaan paling singkat.';
+
+  @override
+  String get formatDuoHint => 'Perlumbaan satu petang.';
+
+  @override
+  String get formatClassicHint => 'Permainan penuh, seperti asalnya.';
+
+  @override
+  String get bonusSquaresOption => 'Petak bonus di laluan';
+
+  @override
+  String get bonusSquaresOn =>
+      '16 petak memberi tunggangan tambahan: +5, +10 atau +20.';
+
+  @override
+  String get bonusSquaresOff =>
+      'Laluan tulen: satu kad bernilai tepat derapnya.';
+
+  @override
+  String get muteSound => 'Senyapkan bunyi';
+
+  @override
+  String get unmuteSound => 'Hidupkan bunyi';
+
+  @override
   String get chooseDifficulty => 'Pilih tahap kesukaran';
 
   @override

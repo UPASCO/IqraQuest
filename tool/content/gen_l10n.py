@@ -154,6 +154,103 @@ s("classicGame", "Game variant: 4 pawns per player",
   pt="Jogo clássico", de="Klassisches Spiel", tr="Klasik Oyun", id="Permainan Klasik",
   ur="کلاسک کھیل", ms="Permainan Klasik", it="Partita classica", nl="Klassiek spel")
 
+s("duoGame", "Game format: two of a player's four horses must reach Mecca",
+  fr="Partie en duo", en="Duo game", ar="لعبة ثنائية", es="Partida en dúo",
+  pt="Jogo em dupla", de="Duo-Spiel", tr="İkili Oyun", id="Permainan Duo",
+  ur="جوڑی کھیل", ms="Permainan Duo", it="Partita in duo", nl="Duospel")
+
+s("horsesToMecca", "What a format asks for: how many horses must reach Mecca",
+  ph={"count": "num"},
+  fr="{count, plural, one{{count} cheval à La Mecque} other{{count} chevaux à La Mecque}}",
+  en="{count, plural, one{{count} horse to Mecca} other{{count} horses to Mecca}}",
+  ar="{count, plural, one{حصان واحد إلى مكة} two{حصانان إلى مكة} few{{count} أحصنة إلى مكة} many{{count} حصانًا إلى مكة} other{{count} حصان إلى مكة}}",
+  es="{count, plural, one{{count} caballo a La Meca} other{{count} caballos a La Meca}}",
+  pt="{count, plural, one{{count} cavalo até Meca} other{{count} cavalos até Meca}}",
+  de="{count, plural, one{{count} Pferd nach Mekka} other{{count} Pferde nach Mekka}}",
+  tr="{count, plural, other{Mekke'ye {count} at}}",
+  id="{count, plural, other{{count} kuda ke Mekah}}",
+  ur="{count, plural, one{{count} گھوڑا مکہ تک} other{{count} گھوڑے مکہ تک}}",
+  ms="{count, plural, other{{count} kuda ke Mekah}}",
+  it="{count, plural, one{{count} cavallo alla Mecca} other{{count} cavalli alla Mecca}}",
+  nl="{count, plural, one{{count} paard naar Mekka} other{{count} paarden naar Mekka}}")
+
+s("formatQuickHint", "Format card: how long the quick race runs",
+  fr="La course la plus courte.", en="The shortest race.",
+  ar="أقصر سباق.", es="La carrera más corta.", pt="A corrida mais curta.",
+  de="Das kürzeste Rennen.", tr="En kısa yarış.", id="Balapan terpendek.",
+  ur="سب سے مختصر دوڑ۔", ms="Perlumbaan paling singkat.",
+  it="La corsa più breve.", nl="De kortste race.")
+
+s("formatDuoHint", "Format card: how long the two-horse race runs",
+  fr="Une course d'un soir.", en="An evening's race.",
+  ar="سباق سهرة واحدة.", es="Una carrera de una tarde.",
+  pt="Uma corrida de uma noite.", de="Ein Rennen für einen Abend.",
+  tr="Bir akşamlık yarış.", id="Balapan satu malam.",
+  ur="ایک شام کی دوڑ۔", ms="Perlumbaan satu petang.",
+  it="Una corsa di una sera.", nl="Een race voor één avond.")
+
+s("formatClassicHint", "Format card: how long the full race runs",
+  fr="La partie complète, comme au jeu d'origine.",
+  en="The full game, as in the original.",
+  ar="اللعبة الكاملة، كما في الأصل.",
+  es="La partida completa, como en el juego original.",
+  pt="O jogo completo, como no original.",
+  de="Das ganze Spiel, wie im Original.",
+  tr="Orijinaldeki gibi tam oyun.",
+  id="Permainan penuh, seperti aslinya.",
+  ur="مکمل کھیل، اصل جیسا۔",
+  ms="Permainan penuh, seperti asalnya.",
+  it="La partita completa, come nel gioco originale.",
+  nl="Het volledige spel, net als het origineel.")
+
+s("bonusSquaresOption", "Setup toggle: play with the bonus squares on the course",
+  fr="Cases bonus sur le parcours", en="Bonus squares on the course",
+  ar="مربعات المكافأة على المسار", es="Casillas de bonificación en el recorrido",
+  pt="Casas de bónus no percurso", de="Bonusfelder auf der Strecke",
+  tr="Parkurda bonus kareler", id="Petak bonus di lintasan",
+  ur="راستے پر بونس خانے", ms="Petak bonus di laluan",
+  it="Caselle bonus sul percorso", nl="Bonusvakjes op het parcours")
+
+s("bonusSquaresOn", "Setup toggle, on: what the bonus squares give",
+  fr="16 cases offrent une chevauchée en plus : +5, +10 ou +20.",
+  en="16 squares grant an extra ride: +5, +10 or +20.",
+  ar="16 مربعًا تمنح جولة إضافية: +5 أو +10 أو +20.",
+  es="16 casillas dan una cabalgada extra: +5, +10 o +20.",
+  pt="16 casas dão uma cavalgada extra: +5, +10 ou +20.",
+  de="16 Felder schenken einen Extra-Ritt: +5, +10 oder +20.",
+  tr="16 kare fazladan koşu verir: +5, +10 veya +20.",
+  id="16 petak memberi tunggangan ekstra: +5, +10, atau +20.",
+  ur="16 خانے اضافی سواری دیتے ہیں: ‎+5، ‎+10 یا ‎+20۔",
+  ms="16 petak memberi tunggangan tambahan: +5, +10 atau +20.",
+  it="16 caselle regalano una cavalcata in più: +5, +10 o +20.",
+  nl="16 vakjes geven een extra rit: +5, +10 of +20.")
+
+s("bonusSquaresOff", "Setup toggle, off: the pure ride",
+  fr="Parcours pur : une carte vaut exactement ses galops.",
+  en="A pure ride: a card is worth exactly its gallops.",
+  ar="مسار خالص: البطاقة تساوي عدد ركضاتها بالضبط.",
+  es="Recorrido puro: una carta vale exactamente sus galopes.",
+  pt="Percurso puro: uma carta vale exatamente os seus galopes.",
+  de="Reine Strecke: Eine Karte zählt genau ihre Galoppe.",
+  tr="Saf parkur: bir kart tam olarak kendi dörtnalları kadar eder.",
+  id="Lintasan murni: satu kartu bernilai persis derap-nya.",
+  ur="خالص راستہ: کارڈ بالکل اپنی سرپٹ کے برابر ہے۔",
+  ms="Laluan tulen: satu kad bernilai tepat derapnya.",
+  it="Percorso puro: una carta vale esattamente i suoi galoppi.",
+  nl="Puur parcours: een kaart is precies zijn galops waard.")
+
+s("muteSound", "Board button: silence the game",
+  fr="Couper le son", en="Mute sound", ar="كتم الصوت", es="Silenciar",
+  pt="Silenciar", de="Ton aus", tr="Sesi kapat", id="Matikan suara",
+  ur="آواز بند کریں", ms="Senyapkan bunyi", it="Disattiva audio",
+  nl="Geluid uit")
+
+s("unmuteSound", "Board button: bring the game's sound back",
+  fr="Rétablir le son", en="Unmute sound", ar="تشغيل الصوت", es="Activar sonido",
+  pt="Ativar som", de="Ton an", tr="Sesi aç", id="Nyalakan suara",
+  ur="آواز چالو کریں", ms="Hidupkan bunyi", it="Attiva audio",
+  nl="Geluid aan")
+
 s("chooseDifficulty", "AI difficulty picker label",
   fr="Choisir la difficulté", en="Choose difficulty", ar="اختر مستوى الصعوبة",
   es="Elegir dificultad", pt="Escolher dificuldade", de="Schwierigkeit wählen",

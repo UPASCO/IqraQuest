@@ -180,6 +180,24 @@ move. A drop anywhere else glides back in 340 ms. Hints live in the
 bottom banner (`_PlacementBanner`): "Touchez un cheval…" then "Glissez le
 cheval jusqu'à sa case dorée". See `lib/widgets/board/cross_board_scene.dart`.
 
+### The setup screen, and the board's own mute
+A format the player cannot tell from the next one is a decoration, not a
+choice. The three race lengths are therefore shown as **four horses per
+card, the required ones lit and the rest left in shade**, with the win
+condition as the card's headline ("2 chevaux à La Mecque") and the format
+name demoted to the line under it. The circuits, which all run the same
+52 squares, name the effects they carry as small chips (Oasis ×8, Défi
+×4…) instead of only counting them. The bonus squares are a switch on the
+same screen, whose subtitle changes with it — what the squares give when
+on, what the ride becomes when off.
+
+On the board, the mute sits **beside the back button in the floating
+HUD** (`Key('mute-toggle')`, `volume_up` / `volume_off`): a race started
+in a quiet room is silenced by the thumb already on the plate, and it
+writes the app's real sound setting rather than a board-local flag that
+would forget. Its glyph and its screen-reader label both follow the
+state.
+
 ### Bonus medallions
 Sixteen per game, inlaid on the plate (`BonusTileArt`). Told apart by
 **shape and number, never colour alone**, after the owner's reference

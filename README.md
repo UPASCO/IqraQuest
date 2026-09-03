@@ -93,6 +93,27 @@ import `dart:math`, and a test asserts exactly that: how far a horse
 moves is the gait its player chose, and whether it moves at all is
 whether they answered correctly.
 
+Before the first card a table sets two things, and both are written in
+plain sight because a choice nobody can read is not a choice:
+
+- **the finish line** — how many of your four horses must reach Mecca:
+  **one** (the shortest race), **two** (an evening), or **all four** (the
+  classic game). That is the *only* thing a format changes, so the picker
+  says it in horses rather than in names: three cards, four horses drawn
+  on each, the required ones lit. The old third format ("famille") played
+  exactly the same race as the classic and is no longer offered;
+- **bonus squares, or not** — a table that wants the pure ride switches
+  them off, and no layout is dealt at all: a card is then worth exactly
+  its own galops. A capture still pays its bond, which is a rule of the
+  race and not a square. The choice lives in the save, so a resumed game
+  never has bonuses dealt onto it after the fact.
+
+The **circuit** is picked the same way. All three run the identical
+52-square parcours — a race is only fair to compare when everyone runs
+the same distance — so what separates them is which squares carry an
+effect, and each card names them (Oasis ×8, Défi ×4, Duel ×4…) rather
+than only counting them.
+
 The rules are the classic *jeu des petits chevaux* with the deck in place
 of the die, played **answer first, then place**. The turn is:
 
@@ -161,8 +182,10 @@ error never revokes one; every special square applying exactly its
 announced effect; the bonus layout invariants (16 squares, 4 per
 quadrant, values only 5/10/20 in 8/6/2, opposite +20s, no adjacency, no
 start or effect square, seed determinism, save round-trip, never
-recomputed); the bonus ride (fires only on an exact stop, once per turn,
-never chains, captures, can arrive, survives a save); structural
+recomputed); the bonus ride (fires only on an exact stop, each square at
+most once per turn, chains onward, captures, can arrive, survives a
+save — and a race set up without bonus squares never pays one, over
+whole simulated games, while still paying every capture); structural
 quadrant fairness across all three circuits; overshoot at the finish and
 the Question du voyage that validates an arrival; per-profile difficulty
 so a child and an adult can share a board; and save round-tripping.

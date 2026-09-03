@@ -76,6 +76,47 @@ class AppLocalizationsIt extends AppLocalizations {
   String get classicGame => 'Partita classica';
 
   @override
+  String get duoGame => 'Partita in duo';
+
+  @override
+  String horsesToMecca(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count cavalli alla Mecca',
+      one: '$count cavallo alla Mecca',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get formatQuickHint => 'La corsa più breve.';
+
+  @override
+  String get formatDuoHint => 'Una corsa di una sera.';
+
+  @override
+  String get formatClassicHint =>
+      'La partita completa, come nel gioco originale.';
+
+  @override
+  String get bonusSquaresOption => 'Caselle bonus sul percorso';
+
+  @override
+  String get bonusSquaresOn =>
+      '16 caselle regalano una cavalcata in più: +5, +10 o +20.';
+
+  @override
+  String get bonusSquaresOff =>
+      'Percorso puro: una carta vale esattamente i suoi galoppi.';
+
+  @override
+  String get muteSound => 'Disattiva audio';
+
+  @override
+  String get unmuteSound => 'Attiva audio';
+
+  @override
   String get chooseDifficulty => 'Scegli difficoltà';
 
   @override

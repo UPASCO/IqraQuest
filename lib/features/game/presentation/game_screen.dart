@@ -7,7 +7,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/providers.dart'
-    show gameEngineProvider, hapticServiceProvider, soundServiceProvider;
+    show
+        gameEngineProvider,
+        hapticServiceProvider,
+        settingsControllerProvider,
+        soundServiceProvider;
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/sound_service.dart';
@@ -96,6 +100,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final colors = context.colors;
+    // Watched, not read: the board's own mute button has to redraw the
+    // moment it is tapped.
+    final soundOn = ref.watch(settingsControllerProvider).soundEnabled;
     final session = ref.watch(gameControllerProvider);
 
     ref.listen(gameControllerProvider, (previous, next) {
@@ -270,9 +277,25 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                       children: [
                         _GlassIconButton(
                           icon: Icons.arrow_back,
+                          label: MaterialLocalizations.of(
+                            context,
+                          ).backButtonTooltip,
                           onTap: () => context.go('/home'),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 6),
+                        // Silence, within reach of the thumb that is
+                        // already on the board: a table that starts a
+                        // race in a quiet room should not have to leave
+                        // the game to find the setting.
+                        _GlassIconButton(
+                          key: const Key('mute-toggle'),
+                          icon: soundOn ? Icons.volume_up : Icons.volume_off,
+                          label: soundOn ? l10n.muteSound : l10n.unmuteSound,
+                          onTap: () => ref
+                              .read(settingsControllerProvider.notifier)
+                              .setSoundEnabled(!soundOn),
+                        ),
+                        const SizedBox(width: 8),
                         // Expanded, not Flexible beside a Spacer: sharing
                         // the free space with a Spacer squeezes the pill to
                         // nothing on a narrow phone at a large text size,
@@ -1032,16 +1055,25 @@ class _HudPill extends StatelessWidget {
 }
 
 class _GlassIconButton extends StatelessWidget {
-  const _GlassIconButton({required this.icon, required this.onTap});
+  const _GlassIconButton({
+    super.key,
+    required this.icon,
+    required this.onTap,
+    required this.label,
+  });
 
   final IconData icon;
   final VoidCallback onTap;
+
+  /// What this button does, for a screen reader — never guessed from the
+  /// glyph: two of these sit side by side on the board.
+  final String label;
 
   @override
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
-      label: MaterialLocalizations.of(context).backButtonTooltip,
+      label: label,
       child: Material(
         color: const Color(0xB3122E22),
         shape: CircleBorder(

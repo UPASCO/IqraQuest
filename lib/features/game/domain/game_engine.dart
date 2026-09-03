@@ -231,6 +231,9 @@ class GameEngine {
   /// already carries a layout is returned untouched: the squares of a
   /// game never move, whatever rebuilds, saves or resumes it.
   GameState ensureBonusLayout(GameState state) {
+    // A race set up without bonus squares stays without them: no layout
+    // is generated, so nothing on the parcours can ever pay a ride.
+    if (!state.bonusesEnabled) return state;
     if (state.bonusTiles.isNotEmpty) return state;
     final seed = state.bonusSeed != 0
         ? state.bonusSeed

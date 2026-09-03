@@ -84,6 +84,51 @@
   "@classicGame": {
     "description": "Game variant: 4 pawns per player"
   },
+  "duoGame": "Duo game",
+  "@duoGame": {
+    "description": "Game format: two of a player's four horses must reach Mecca"
+  },
+  "horsesToMecca": "{count, plural, one{{count} horse to Mecca} other{{count} horses to Mecca}}",
+  "@horsesToMecca": {
+    "description": "What a format asks for: how many horses must reach Mecca",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "formatQuickHint": "The shortest race.",
+  "@formatQuickHint": {
+    "description": "Format card: how long the quick race runs"
+  },
+  "formatDuoHint": "An evening's race.",
+  "@formatDuoHint": {
+    "description": "Format card: how long the two-horse race runs"
+  },
+  "formatClassicHint": "The full game, as in the original.",
+  "@formatClassicHint": {
+    "description": "Format card: how long the full race runs"
+  },
+  "bonusSquaresOption": "Bonus squares on the course",
+  "@bonusSquaresOption": {
+    "description": "Setup toggle: play with the bonus squares on the course"
+  },
+  "bonusSquaresOn": "16 squares grant an extra ride: +5, +10 or +20.",
+  "@bonusSquaresOn": {
+    "description": "Setup toggle, on: what the bonus squares give"
+  },
+  "bonusSquaresOff": "A pure ride: a card is worth exactly its gallops.",
+  "@bonusSquaresOff": {
+    "description": "Setup toggle, off: the pure ride"
+  },
+  "muteSound": "Mute sound",
+  "@muteSound": {
+    "description": "Board button: silence the game"
+  },
+  "unmuteSound": "Unmute sound",
+  "@unmuteSound": {
+    "description": "Board button: bring the game's sound back"
+  },
   "chooseDifficulty": "Choose difficulty",
   "@chooseDifficulty": {
     "description": "AI difficulty picker label"

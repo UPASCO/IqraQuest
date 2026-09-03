@@ -74,6 +74,47 @@ class AppLocalizationsAr extends AppLocalizations {
   String get classicGame => 'لعبة كلاسيكية';
 
   @override
+  String get duoGame => 'لعبة ثنائية';
+
+  @override
+  String horsesToMecca(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count حصان إلى مكة',
+      many: '$count حصانًا إلى مكة',
+      few: '$count أحصنة إلى مكة',
+      two: 'حصانان إلى مكة',
+      one: 'حصان واحد إلى مكة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get formatQuickHint => 'أقصر سباق.';
+
+  @override
+  String get formatDuoHint => 'سباق سهرة واحدة.';
+
+  @override
+  String get formatClassicHint => 'اللعبة الكاملة، كما في الأصل.';
+
+  @override
+  String get bonusSquaresOption => 'مربعات المكافأة على المسار';
+
+  @override
+  String get bonusSquaresOn => '16 مربعًا تمنح جولة إضافية: +5 أو +10 أو +20.';
+
+  @override
+  String get bonusSquaresOff => 'مسار خالص: البطاقة تساوي عدد ركضاتها بالضبط.';
+
+  @override
+  String get muteSound => 'كتم الصوت';
+
+  @override
+  String get unmuteSound => 'تشغيل الصوت';
+
+  @override
   String get chooseDifficulty => 'اختر مستوى الصعوبة';
 
   @override

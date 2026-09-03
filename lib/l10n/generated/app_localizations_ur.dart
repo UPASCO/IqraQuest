@@ -75,6 +75,45 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classicGame => 'کلاسک کھیل';
 
   @override
+  String get duoGame => 'جوڑی کھیل';
+
+  @override
+  String horsesToMecca(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count گھوڑے مکہ تک',
+      one: '$count گھوڑا مکہ تک',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get formatQuickHint => 'سب سے مختصر دوڑ۔';
+
+  @override
+  String get formatDuoHint => 'ایک شام کی دوڑ۔';
+
+  @override
+  String get formatClassicHint => 'مکمل کھیل، اصل جیسا۔';
+
+  @override
+  String get bonusSquaresOption => 'راستے پر بونس خانے';
+
+  @override
+  String get bonusSquaresOn =>
+      '16 خانے اضافی سواری دیتے ہیں: ‎+5، ‎+10 یا ‎+20۔';
+
+  @override
+  String get bonusSquaresOff => 'خالص راستہ: کارڈ بالکل اپنی سرپٹ کے برابر ہے۔';
+
+  @override
+  String get muteSound => 'آواز بند کریں';
+
+  @override
+  String get unmuteSound => 'آواز چالو کریں';
+
+  @override
   String get chooseDifficulty => 'مشکل کا درجہ منتخب کریں';
 
   @override

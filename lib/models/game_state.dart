@@ -30,6 +30,7 @@ class GameState {
     this.pendingBonus,
     this.bonusUsedThisTurn = false,
     this.firedBonusTracks = const {},
+    this.bonusesEnabled = true,
     this.lastBonusValue,
     this.movedHorseIndex,
     this.pendingCellEffect,
@@ -96,6 +97,13 @@ class GameState {
   /// The bonus squares already spent in this turn. A chain never sets the
   /// same square off twice, which is also what makes it terminate.
   final Set<int> firedBonusTracks;
+
+  /// Whether this race is run with the sixteen bonus squares laid on the
+  /// parcours. Chosen once, before the game: some tables want the pure
+  /// classic ride, where a card is worth exactly its own squares and
+  /// nothing else. Off, no bonus square is ever generated — a capture
+  /// still pays its bond, which is a rule of the race, not a square.
+  final bool bonusesEnabled;
 
   /// The bonus ridden this turn, for the board's celebration.
   final int? lastBonusValue;
@@ -179,6 +187,7 @@ class GameState {
     Object? pendingBonus = _unset,
     bool? bonusUsedThisTurn,
     Set<int>? firedBonusTracks,
+    bool? bonusesEnabled,
     Object? lastBonusValue = _unset,
     Object? movedHorseIndex = _unset,
     Object? pendingCellEffect = _unset,
@@ -216,6 +225,7 @@ class GameState {
           : pendingBonus as PendingBonus?,
       bonusUsedThisTurn: bonusUsedThisTurn ?? this.bonusUsedThisTurn,
       firedBonusTracks: firedBonusTracks ?? this.firedBonusTracks,
+      bonusesEnabled: bonusesEnabled ?? this.bonusesEnabled,
       lastBonusValue: identical(lastBonusValue, _unset)
           ? this.lastBonusValue
           : lastBonusValue as int?,
@@ -278,6 +288,7 @@ class GameState {
         ? null
         : PendingBonus.fromJson(json['pendingBonus'] as Map<String, dynamic>),
     bonusUsedThisTurn: json['bonusUsedThisTurn'] as bool? ?? false,
+    bonusesEnabled: json['bonusesEnabled'] as bool? ?? true,
     firedBonusTracks: {
       ...?(json['firedBonusTracks'] as List<dynamic>?)?.map((e) => e as int),
     },
@@ -328,6 +339,7 @@ class GameState {
     'pendingBonus': pendingBonus?.toJson(),
     'bonusUsedThisTurn': bonusUsedThisTurn,
     'firedBonusTracks': firedBonusTracks.toList(),
+    'bonusesEnabled': bonusesEnabled,
     'lastBonusValue': lastBonusValue,
     'movedHorseIndex': movedHorseIndex,
     'pendingCellEffect': pendingCellEffect?.name,

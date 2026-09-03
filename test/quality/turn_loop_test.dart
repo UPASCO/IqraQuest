@@ -564,6 +564,32 @@ void main() {
     },
   );
 
+  testWidgets('the board can be silenced without leaving the game', (
+    tester,
+  ) async {
+    // A race started in a quiet room: the mute sits on the board itself,
+    // one tap from the thumb already there, and it is the app's real
+    // sound setting — not a per-board flag that forgets.
+    final container = await _pumpGame(tester);
+    final toggle = find.byKey(const Key('mute-toggle'));
+    expect(toggle, findsOneWidget);
+    expect(container.read(settingsControllerProvider).soundEnabled, isTrue);
+
+    await tester.tap(toggle);
+    await _settle(tester);
+    expect(container.read(settingsControllerProvider).soundEnabled, isFalse);
+    // Silent, the board says so: the glyph flips with the state.
+    expect(
+      tester.widgetList<Icon>(find.descendant(of: toggle, matching: find.byType(Icon))).first.icon,
+      Icons.volume_off,
+    );
+
+    await tester.tap(toggle);
+    await _settle(tester);
+    expect(container.read(settingsControllerProvider).soundEnabled, isTrue);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('leaving mid-turn lands on home rather than a dead end', (
     tester,
   ) async {

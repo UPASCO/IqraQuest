@@ -178,6 +178,7 @@ class GameController extends StateNotifier<GameSession?> {
     required GameVariant variant,
     required CircuitId circuitId,
     required List<Player> players,
+    bool bonusesEnabled = true,
   }) {
     _cancelTimers();
     final now = DateTime.now();
@@ -190,13 +191,15 @@ class GameController extends StateNotifier<GameSession?> {
       currentPlayerIndex: 0,
       turnPhase: TurnPhase.selectingGait,
       askedQuestionIds: const {},
+      bonusesEnabled: bonusesEnabled,
       // The free edition is a race of fifty cards; Premium runs to Mecca.
       maxDraws: _isPremium ? null : GameState.freeDrawLimit,
       startedAt: now,
       updatedAt: now,
     );
     // The sixteen bonus squares are dealt once, here, from the game's
-    // own seed — and then live in the state, never recomputed.
+    // own seed — and then live in the state, never recomputed. A race
+    // set up without them gets no layout at all.
     gameState = engine.ensureBonusLayout(gameState);
     // Nobody waits for a 6 to start playing: the first horse of every
     // rider is already on its start square.
@@ -223,6 +226,7 @@ class GameController extends StateNotifier<GameSession?> {
       mode: previous.gameMode,
       variant: previous.gameVariant,
       circuitId: previous.circuitId,
+      bonusesEnabled: previous.bonusesEnabled,
       players: [
         for (final p in previous.players)
           p.copyWith(

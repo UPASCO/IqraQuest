@@ -22,6 +22,7 @@ GameState _newGame({
   required GameVariant variant,
   required CircuitId circuit,
   required int seed,
+  bool bonusesEnabled = true,
 }) {
   final now = DateTime(2026, 1, 1);
   var state = GameState(
@@ -45,6 +46,7 @@ GameState _newGame({
     turnPhase: TurnPhase.selectingGait,
     askedQuestionIds: const {},
     bonusSeed: seed,
+    bonusesEnabled: bonusesEnabled,
     startedAt: now,
     updatedAt: now,
   );
@@ -61,6 +63,7 @@ class Tally {
   int captures = 0;
   int captureBonuses = 0;
   int bonusRides = 0;
+  int squareBonuses = 0;
   int chainsOfTwoOrMore = 0;
   int arrivals = 0;
   int blockedByExactCount = 0;
@@ -222,16 +225,19 @@ Tally _race(GameState start, Random random, {double accuracy = 0.7}) {
               reason: 'square ${bonus.trackIndex} fired twice in one turn',
             );
           }
-          final wasCaptured = state.lastMoveOutcome == MoveOutcome.captured;
+          if (!bonus.fromCapture) tally.squareBonuses++;
           state = _engine.applyPendingBonus(state);
           chain++;
           tally.bonusRides++;
           expect(chain, lessThan(24), reason: 'a bonus chain must end');
           _checkBoard(state, 'after a bonus ride on turn $guard');
-          if (!wasCaptured && state.lastMoveOutcome == MoveOutcome.captured) {
+          // A bond owed for a capture is raised only by a fresh capture,
+          // so it is the exact signal — including for a capture that
+          // follows a capture, which a lastMoveOutcome check would miss.
+          if (state.pendingBonus?.fromCapture ?? false) {
             tally.captures++;
             tally.captureBonuses++;
-            expect(state.pendingBonus?.fromCapture, isTrue);
+            expect(state.pendingBonus?.value, kCaptureBonus);
           }
         }
         if (chain >= 2) tally.chainsOfTwoOrMore++;
@@ -300,6 +306,40 @@ void main() {
           circuit: CircuitId.oasisRoute,
         ),
       ];
+
+  test('a race set up without bonus squares never pays one — and still pays captures', () {
+    // The table that wants the pure classic ride: a card is worth
+    // exactly its own gallops. Nothing on the parcours may add to it —
+    // but sending an opponent home is a rule of the race, not a square,
+    // so its twenty still has to be paid.
+    var captures = 0;
+    for (var g = 0; g < 24; g++) {
+      final start = _newGame(
+        players: 4,
+        variant: g.isEven ? GameVariant.quick : GameVariant.duo,
+        circuit: CircuitId.values[g % CircuitId.values.length],
+        seed: g,
+        bonusesEnabled: false,
+      );
+      expect(
+        start.bonusTiles,
+        isEmpty,
+        reason: 'no layout may be dealt for a race played without bonuses',
+      );
+      final t = _race(start, Random(9100 + g), accuracy: 0.55 + (g % 4) * 0.12);
+      expect(
+        t.squareBonuses,
+        0,
+        reason: 'a square paid a ride in a race played without bonuses',
+      );
+      captures += t.captures;
+    }
+    expect(
+      captures,
+      greaterThan(20),
+      reason: 'no capture happened: the capture bond is untested here',
+    );
+  });
 
   test('the rules hold over hundreds of complete races', () {
     final total = Tally();

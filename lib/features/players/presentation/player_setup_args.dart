@@ -11,6 +11,7 @@ class PlayerSetupArgs {
     this.aiOpponentCount = 1,
     this.aiDifficulty = AiDifficulty.medium,
     this.humanPlayerCount = 2,
+    this.bonusesEnabled = true,
   });
 
   final GameMode mode;
@@ -26,4 +27,8 @@ class PlayerSetupArgs {
 
   /// Family mode only: 2-4 human players.
   final int humanPlayerCount;
+
+  /// Whether the sixteen bonus squares are laid on the parcours. Off is
+  /// the pure classic ride: a card is worth exactly its own squares.
+  final bool bonusesEnabled;
 }

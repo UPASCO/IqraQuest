@@ -814,6 +814,37 @@ void main() {
       expect(state.winnerId, 'p0');
     });
 
+    test('a duo race is won by the second horse home, not the first', () {
+      expect(GameVariant.duo.horsesToWin, 2);
+      var state = buildGame(variant: GameVariant.duo);
+      state = withHorse(state, horse: 0, at: const FinishedPosition());
+      expect(
+        engine.hasWon(state, state.players[0]),
+        isFalse,
+        reason: 'one home is a quick race, not a duo',
+      );
+      expect(engine.endTurn(state).turnPhase, isNot(TurnPhase.gameOver));
+      state = withHorse(state, horse: 1, at: const FinishedPosition());
+      expect(engine.hasWon(state, state.players[0]), isTrue);
+      expect(engine.endTurn(state).winnerId, 'p0');
+      // And the other two never had to leave the stable.
+      expect(state.players[0].horses[2].isHome, isTrue);
+      expect(state.players[0].horses[3].isHome, isTrue);
+    });
+
+    test('the three offered formats ask for one, two and four horses', () {
+      expect(
+        GameVariantX.choosable.map((v) => v.horsesToWin).toList(),
+        [1, 2, 4],
+        reason: 'the picker must offer three genuinely different races',
+      );
+      expect(
+        GameVariantX.choosable.contains(GameVariant.family),
+        isFalse,
+        reason: 'family played exactly like classic and is no longer offered',
+      );
+    });
+
     test('every horse must arrive in the classic format', () {
       var state = buildGame();
       state = withHorse(state, horse: 0, at: const FinishedPosition());

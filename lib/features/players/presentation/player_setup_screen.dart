@@ -265,6 +265,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
       variant: args.variant,
       circuitId: args.circuitId,
       players: players,
+      bonusesEnabled: args.bonusesEnabled,
     );
 
     if (mounted) context.go('/game');
