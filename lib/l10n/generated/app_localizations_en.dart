@@ -483,7 +483,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectHorse => 'Choose your horse';
 
   @override
-  String get knowledgeStreak => 'Knowledge momentum';
+  String get knowledgeStreak => 'Right answers in a row';
 
   @override
   String get knowledgePointsLabel => 'Knowledge points';
@@ -842,7 +842,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Landing exactly on an opponent\'s horse sends it calmly back to its stable — unless the square is an oasis, or that horse carries a knowledge shield. A capture pays: your horse bounds 20 gallops forward at once. A horse leaving its stable always captures on its start square.';
 
   @override
-  String get ruleStreakTitle => 'The knowledge streak';
+  String get ruleStreakTitle => 'The streak of right answers';
 
   @override
   String get ruleStreakBody =>

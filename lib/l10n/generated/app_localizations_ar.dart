@@ -80,7 +80,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hudKnowledgeShort => 'معرفة';
 
   @override
-  String get hudStreakShort => 'تتابع';
+  String get hudStreakShort => 'متتالية';
 
   @override
   String get hudCardsShort => 'بطاقات';
@@ -489,7 +489,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectHorse => 'اختر حصانك';
 
   @override
-  String get knowledgeStreak => 'زخم المعرفة';
+  String get knowledgeStreak => 'إجابات صحيحة متتالية';
 
   @override
   String get knowledgePointsLabel => 'نقاط المعرفة';
@@ -846,7 +846,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'الوصول تمامًا إلى حصان الخصم يعيده بهدوء إلى إسطبله — إلا إذا كان المربع واحة أو كان ذلك الحصان يحمل درع المعرفة. والأسر يُكافأ: يقفز حصانك فورًا 20 ركضة. والحصان الخارج من إسطبله يأسر دائمًا على مربع انطلاقه.';
 
   @override
-  String get ruleStreakTitle => 'اندفاع المعرفة';
+  String get ruleStreakTitle => 'سلسلة الإجابات الصحيحة';
 
   @override
   String get ruleStreakBody =>

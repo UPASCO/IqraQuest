@@ -484,7 +484,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get selectHorse => 'Wähle dein Pferd';
 
   @override
-  String get knowledgeStreak => 'Wissensschwung';
+  String get knowledgeStreak => 'Richtige Antworten in Folge';
 
   @override
   String get knowledgePointsLabel => 'Wissenspunkte';
@@ -843,7 +843,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Wer genau auf dem Pferd eines Gegners landet, schickt es ruhig in seinen Stall zurück — außer das Feld ist eine Oase oder das Pferd trägt einen Wissensschild. Ein Schlag zahlt sich aus: Dein Pferd springt sofort 20 Galopp vor. Ein Pferd, das den Stall verlässt, schlägt auf seinem Startfeld immer.';
 
   @override
-  String get ruleStreakTitle => 'Der Schwung des Wissens';
+  String get ruleStreakTitle => 'Die Serie richtiger Antworten';
 
   @override
   String get ruleStreakBody =>

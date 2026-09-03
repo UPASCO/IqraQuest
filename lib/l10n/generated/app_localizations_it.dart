@@ -486,7 +486,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get selectHorse => 'Scegli il tuo cavallo';
 
   @override
-  String get knowledgeStreak => 'Slancio del sapere';
+  String get knowledgeStreak => 'Risposte esatte di fila';
 
   @override
   String get knowledgePointsLabel => 'Punti sapere';
@@ -846,7 +846,7 @@ class AppLocalizationsIt extends AppLocalizations {
       'Arrivare esattamente sul cavallo di un avversario lo rimanda con calma alla sua stalla, a meno che la casella sia un\'oasi o quel cavallo porti uno scudo del sapere. La cattura si paga: il tuo cavallo balza subito di 20 galoppi. Un cavallo che esce dalla stalla cattura sempre sulla sua casella di partenza.';
 
   @override
-  String get ruleStreakTitle => 'Lo slancio del sapere';
+  String get ruleStreakTitle => 'La serie di risposte esatte';
 
   @override
   String get ruleStreakBody =>

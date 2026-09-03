@@ -482,7 +482,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get selectHorse => 'Kies je paard';
 
   @override
-  String get knowledgeStreak => 'Kennismomentum';
+  String get knowledgeStreak => 'Goede antwoorden op rij';
 
   @override
   String get knowledgePointsLabel => 'Kennispunten';
@@ -840,7 +840,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Slaan loont: je paard springt meteen 20 galop vooruit. Een paard dat de stal verlaat, slaat altijd op zijn startvak.';
 
   @override
-  String get ruleStreakTitle => 'De kennisreeks';
+  String get ruleStreakTitle => 'De reeks goede antwoorden';
 
   @override
   String get ruleStreakBody =>

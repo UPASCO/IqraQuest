@@ -82,7 +82,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get hudKnowledgeShort => 'savoir';
 
   @override
-  String get hudStreakShort => 'élan';
+  String get hudStreakShort => 'série';
 
   @override
   String get hudCardsShort => 'cartes';
@@ -487,7 +487,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get selectHorse => 'Choisis ton cheval';
 
   @override
-  String get knowledgeStreak => 'Élan du savoir';
+  String get knowledgeStreak => 'Série de bonnes réponses';
 
   @override
   String get knowledgePointsLabel => 'Points de savoir';
@@ -845,7 +845,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Arriver exactement sur un cheval adverse le renvoie tranquillement à son écurie — sauf si la case est une oasis ou si ce cheval porte un bouclier du savoir. La capture se paie : ton cheval bondit aussitôt de 20 galops. Un cheval qui sort de l\'écurie capture toujours sur sa case de départ.';
 
   @override
-  String get ruleStreakTitle => 'L\'élan du savoir';
+  String get ruleStreakTitle => 'La série de bonnes réponses';
 
   @override
   String get ruleStreakBody =>

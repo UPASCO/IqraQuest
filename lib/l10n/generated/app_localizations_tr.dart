@@ -478,7 +478,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get selectHorse => 'Atını seç';
 
   @override
-  String get knowledgeStreak => 'Bilgi ivmesi';
+  String get knowledgeStreak => 'Üst üste doğru cevap';
 
   @override
   String get knowledgePointsLabel => 'Bilgi puanı';
@@ -832,7 +832,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Rakibin atının bulunduğu kareye tam olarak konmak onu sakince ahırına yollar — kare bir vaha değilse ya da o at bir bilgi kalkanı taşımıyorsa. Yakalamak ödüllendirilir: atın hemen 20 dörtnal ileri sıçrar. Ahırdan çıkan bir at başlangıç karesinde her zaman yakalar.';
 
   @override
-  String get ruleStreakTitle => 'Bilgi serisi';
+  String get ruleStreakTitle => 'Doğru cevap serisi';
 
   @override
   String get ruleStreakBody =>

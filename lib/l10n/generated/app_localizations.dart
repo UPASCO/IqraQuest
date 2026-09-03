@@ -256,7 +256,7 @@ abstract class AppLocalizations {
   /// **'knowledge'**
   String get hudKnowledgeShort;
 
-  /// One-word label beside the streak counter
+  /// One-word label beside the streak counter: right answers in a row
   ///
   /// In en, this message translates to:
   /// **'streak'**
@@ -934,10 +934,10 @@ abstract class AppLocalizations {
   /// **'Choose your horse'**
   String get selectHorse;
 
-  /// Name of the streak gauge
+  /// Name of the streak gauge: right answers in a row
   ///
   /// In en, this message translates to:
-  /// **'Knowledge momentum'**
+  /// **'Right answers in a row'**
   String get knowledgeStreak;
 
   /// Label for accumulated knowledge points
@@ -1525,7 +1525,7 @@ abstract class AppLocalizations {
   /// Rules step 5 title
   ///
   /// In en, this message translates to:
-  /// **'The knowledge streak'**
+  /// **'The streak of right answers'**
   String get ruleStreakTitle;
 
   /// Rules step 5 body

@@ -482,7 +482,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get selectHorse => 'Pilih kuda anda';
 
   @override
-  String get knowledgeStreak => 'Momentum ilmu';
+  String get knowledgeStreak => 'Jawapan betul berturut-turut';
 
   @override
   String get knowledgePointsLabel => 'Mata ilmu';
@@ -841,7 +841,7 @@ class AppLocalizationsMs extends AppLocalizations {
       'Mendarat tepat pada kuda lawan menghantarnya pulang dengan tenang ke kandang — melainkan petak itu oasis, atau kuda itu membawa perisai ilmu. Tangkapan ada ganjarannya: kuda anda melompat 20 lompatan serta-merta. Kuda yang keluar dari kandang sentiasa menangkap di petak permulaannya.';
 
   @override
-  String get ruleStreakTitle => 'Rentetan ilmu';
+  String get ruleStreakTitle => 'Rentetan jawapan betul';
 
   @override
   String get ruleStreakBody =>

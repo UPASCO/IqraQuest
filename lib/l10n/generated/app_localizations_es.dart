@@ -484,7 +484,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get selectHorse => 'Elige tu caballo';
 
   @override
-  String get knowledgeStreak => 'Impulso del saber';
+  String get knowledgeStreak => 'Respuestas correctas seguidas';
 
   @override
   String get knowledgePointsLabel => 'Puntos de saber';
@@ -843,7 +843,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Caer exactamente sobre el caballo de un rival lo devuelve con calma a su establo, salvo que la casilla sea un oasis o ese caballo lleve un escudo del saber. La captura se paga: tu caballo salta al instante 20 galopes. Un caballo que sale del establo siempre captura en su casilla de salida.';
 
   @override
-  String get ruleStreakTitle => 'El impulso del saber';
+  String get ruleStreakTitle => 'La serie de respuestas correctas';
 
   @override
   String get ruleStreakBody =>

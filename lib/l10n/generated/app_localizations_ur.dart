@@ -482,7 +482,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get selectHorse => 'اپنا گھوڑا منتخب کریں';
 
   @override
-  String get knowledgeStreak => 'علم کی رفتار';
+  String get knowledgeStreak => 'مسلسل درست جوابات';
 
   @override
   String get knowledgePointsLabel => 'علمی پوائنٹس';
@@ -836,7 +836,7 @@ class AppLocalizationsUr extends AppLocalizations {
       'حریف کے گھوڑے پر بالکل ٹھیک پہنچنا اسے سکون سے اس کے اصطبل واپس بھیج دیتا ہے — سوائے اس کے کہ خانہ نخلستان ہو یا وہ گھوڑا علم کی ڈھال رکھتا ہو۔ پکڑنے کا انعام ہے: آپ کا گھوڑا فوراً 20 سرپٹ آگے چھلانگ لگاتا ہے۔ اصطبل سے نکلنے والا گھوڑا اپنے شروعاتی خانے پر ہمیشہ پکڑتا ہے۔';
 
   @override
-  String get ruleStreakTitle => 'علم کی روانی';
+  String get ruleStreakTitle => 'درست جوابات کا سلسلہ';
 
   @override
   String get ruleStreakBody =>

@@ -94,7 +94,7 @@
   },
   "hudStreakShort": "streak",
   "@hudStreakShort": {
-    "description": "One-word label beside the streak counter"
+    "description": "One-word label beside the streak counter: right answers in a row"
   },
   "hudCardsShort": "cards",
   "@hudCardsShort": {
@@ -623,9 +623,9 @@
   "@selectHorse": {
     "description": "Prompt to pick which horse to move"
   },
-  "knowledgeStreak": "Knowledge momentum",
+  "knowledgeStreak": "Right answers in a row",
   "@knowledgeStreak": {
-    "description": "Name of the streak gauge"
+    "description": "Name of the streak gauge: right answers in a row"
   },
   "knowledgePointsLabel": "Knowledge points",
   "@knowledgePointsLabel": {
@@ -1133,7 +1133,7 @@
   "@ruleCaptureBody": {
     "description": "Rules step 4 body: a capture sends the horse home and pays twenty"
   },
-  "ruleStreakTitle": "The knowledge streak",
+  "ruleStreakTitle": "The streak of right answers",
   "@ruleStreakTitle": {
     "description": "Rules step 5 title"
   },

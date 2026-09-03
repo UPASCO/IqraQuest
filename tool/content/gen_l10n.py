@@ -166,8 +166,8 @@ s("hudKnowledgeShort", "One-word label beside the knowledge-point counter",
   de="Wissen", tr="bilgi", id="ilmu", ur="علم", ms="ilmu",
   it="sapere", nl="kennis")
 
-s("hudStreakShort", "One-word label beside the streak counter",
-  fr="élan", en="streak", ar="تتابع", es="racha", pt="sequência",
+s("hudStreakShort", "One-word label beside the streak counter: right answers in a row",
+  fr="série", en="streak", ar="متتالية", es="racha", pt="sequência",
   de="Serie", tr="seri", id="beruntun", ur="تسلسل", ms="rentetan",
   it="serie", nl="reeks")
 
@@ -1020,11 +1020,13 @@ s("selectHorse", "Prompt to pick which horse to move",
   tr="Atını seç", id="Pilih kudamu", ur="اپنا گھوڑا منتخب کریں",
   ms="Pilih kuda anda", it="Scegli il tuo cavallo", nl="Kies je paard")
 
-s("knowledgeStreak", "Name of the streak gauge",
-  fr="Élan du savoir", en="Knowledge momentum", ar="زخم المعرفة",
-  es="Impulso del saber", pt="Impulso do saber", de="Wissensschwung",
-  tr="Bilgi ivmesi", id="Momentum pengetahuan", ur="علم کی رفتار",
-  ms="Momentum ilmu", it="Slancio del sapere", nl="Kennismomentum")
+s("knowledgeStreak", "Name of the streak gauge: right answers in a row",
+  fr="Série de bonnes réponses", en="Right answers in a row",
+  ar="إجابات صحيحة متتالية", es="Respuestas correctas seguidas",
+  pt="Respostas certas seguidas", de="Richtige Antworten in Folge",
+  tr="Üst üste doğru cevap", id="Jawaban benar berturut-turut",
+  ur="مسلسل درست جوابات", ms="Jawapan betul berturut-turut",
+  it="Risposte esatte di fila", nl="Goede antwoorden op rij")
 
 s("knowledgePointsLabel", "Label for accumulated knowledge points",
   fr="Points de savoir", en="Knowledge points", ar="نقاط المعرفة",
@@ -1854,11 +1856,12 @@ s("ruleCaptureBody", "Rules step 4 body: a capture sends the horse home and pays
   nl="Precies op het paard van een tegenstander landen stuurt het rustig terug naar de stal — tenzij het vakje een oase is of dat paard een kennisschild draagt. Slaan loont: je paard springt meteen 20 galop vooruit. Een paard dat de stal verlaat, slaat altijd op zijn startvak.")
 
 s("ruleStreakTitle", "Rules step 5 title",
-  fr="L'élan du savoir", en="The knowledge streak", ar="اندفاع المعرفة",
-  es="El impulso del saber", pt="O impulso do saber",
-  de="Der Schwung des Wissens", tr="Bilgi serisi", id="Rentetan pengetahuan",
-  ur="علم کی روانی", ms="Rentetan ilmu", it="Lo slancio del sapere",
-  nl="De kennisreeks")
+  fr="La série de bonnes réponses", en="The streak of right answers",
+  ar="سلسلة الإجابات الصحيحة", es="La serie de respuestas correctas",
+  pt="A série de respostas certas", de="Die Serie richtiger Antworten",
+  tr="Doğru cevap serisi", id="Rentetan jawaban benar",
+  ur="درست جوابات کا سلسلہ", ms="Rentetan jawapan betul",
+  it="La serie di risposte esatte", nl="De reeks goede antwoorden")
 
 s("ruleStreakBody", "Rules step 5 body",
   fr="Trois bonnes réponses d'affilée offrent un bouclier, cinq le Grand Galop et dix un badge de maîtrise. Le Grand Galop se dépense tout seul, et seulement quand ses +2 cases suffisent à franchir l'arrivée. Les bonus s'obtiennent uniquement par la connaissance.",

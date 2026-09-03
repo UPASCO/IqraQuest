@@ -484,7 +484,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get selectHorse => 'Escolha seu cavalo';
 
   @override
-  String get knowledgeStreak => 'Impulso do saber';
+  String get knowledgeStreak => 'Respostas certas seguidas';
 
   @override
   String get knowledgePointsLabel => 'Pontos de saber';
@@ -844,7 +844,7 @@ class AppLocalizationsPt extends AppLocalizations {
       'Cair exatamente sobre o cavalo de um adversário o manda calmamente de volta ao estábulo — a menos que a casa seja um oásis ou que o cavalo tenha um escudo do saber. A captura paga: o seu cavalo salta na hora 20 galopes. Um cavalo que sai do estábulo sempre captura na sua casa de partida.';
 
   @override
-  String get ruleStreakTitle => 'O impulso do saber';
+  String get ruleStreakTitle => 'A série de respostas certas';
 
   @override
   String get ruleStreakBody =>
