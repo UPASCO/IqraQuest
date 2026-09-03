@@ -26,6 +26,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get getStarted => 'Başla';
 
   @override
+  String get onboardingHowTo => 'Nasıl oynanır';
+
+  @override
+  String get onboardingStepDraw => 'Bir kart çek: dörtnalını söyler';
+
+  @override
+  String get onboardingStepAnswer => 'Doğru cevapla: dörtnal senindir';
+
+  @override
+  String get onboardingStepRide => 'Atını koy ve vahaya dörtnala git';
+
+  @override
+  String get onboardingLanguageHint =>
+      'Daha sonra ayarlardan değiştirebilirsin.';
+
+  @override
   String get chooseLanguage => 'Dil seçin';
 
   @override
@@ -340,8 +356,7 @@ class AppLocalizationsTr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count kare değerinde',
-      one: '$count kare değerinde',
+      other: '$count dörtnallık kart',
     );
     return '$_temp0';
   }

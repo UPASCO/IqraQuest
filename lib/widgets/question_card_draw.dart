@@ -109,7 +109,7 @@ class _DeckStack extends StatelessWidget {
               offset: Offset(i * 3.0, i * -3.0),
               child: Transform.rotate(
                 angle: i * 0.055,
-                child: const _CardBack(width: 46, height: 62),
+                child: const CardBack(width: 46, height: 62),
               ),
             ),
         ],
@@ -121,8 +121,8 @@ class _DeckStack extends StatelessWidget {
 /// The back of a card: the board plate in miniature — its teal ground,
 /// its double gold rule and its corner stars — so the deck and the
 /// board it is played on are one set.
-class _CardBack extends StatelessWidget {
-  const _CardBack({required this.width, required this.height});
+class CardBack extends StatelessWidget {
+  const CardBack({super.key, required this.width, required this.height});
 
   final double width;
   final double height;
@@ -168,13 +168,15 @@ class _CardBack extends StatelessWidget {
   }
 }
 
-/// The freshly drawn card, turning over — onto a question mark.
+/// The freshly drawn card, turning over — onto its stake.
 ///
-/// The card's value is the prize of the answer, not a fact to read
-/// first: the face shows "?" and "answer to reveal its value", so the
-/// player answers for the answer's sake and the squares are discovered
-/// once the answer is judged. The flip still carries the weight of the
-/// moment the die used to be: the card lifts, turns, and lands.
+/// The face announces what the card is worth — "Carte à 5 galops" — so
+/// the player knows the stake of the right answer before the question
+/// is even read; the reward that follows a right answer then pays out
+/// exactly what was announced. The flip carries the weight of the
+/// moment the die used to be: the card lifts, turns, and lands. (A null
+/// value keeps the face on a question mark, for a card whose worth is
+/// deliberately withheld.)
 class DrawnCardReveal extends StatefulWidget {
   const DrawnCardReveal({super.key, this.value, required this.difficultyPips});
 
@@ -244,7 +246,7 @@ class _DrawnCardRevealState extends State<DrawnCardReveal>
                               : l10n.cardWorth(widget.value!),
                         ),
                       )
-                    : const _CardBack(width: 190, height: 256),
+                    : const CardBack(width: 190, height: 256),
               ),
             ),
           );

@@ -26,6 +26,23 @@ class AppLocalizationsIt extends AppLocalizations {
   String get getStarted => 'Inizia';
 
   @override
+  String get onboardingHowTo => 'Come si gioca';
+
+  @override
+  String get onboardingStepDraw => 'Pesca una carta: annuncia i suoi galoppi';
+
+  @override
+  String get onboardingStepAnswer => 'Rispondi bene: i galoppi sono tuoi';
+
+  @override
+  String get onboardingStepRide =>
+      'Posa il tuo cavallo e galoppa fino all\'oasi';
+
+  @override
+  String get onboardingLanguageHint =>
+      'Potrai cambiarla più tardi nelle impostazioni.';
+
+  @override
   String get chooseLanguage => 'Scegli lingua';
 
   @override
@@ -343,8 +360,8 @@ class AppLocalizationsIt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Vale $count caselle',
-      one: 'Vale $count casella',
+      other: 'Carta da $count galoppi',
+      one: 'Carta da $count galoppo',
     );
     return '$_temp0';
   }

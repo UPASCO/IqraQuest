@@ -148,6 +148,36 @@ abstract class AppLocalizations {
   /// **'Get started'**
   String get getStarted;
 
+  /// Welcome screen: heading over the three-gesture strip
+  ///
+  /// In en, this message translates to:
+  /// **'How it plays'**
+  String get onboardingHowTo;
+
+  /// Welcome screen, gesture 1: draw a card (it announces its stake)
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a card: it announces its gallops'**
+  String get onboardingStepDraw;
+
+  /// Welcome screen, gesture 2: answer right to win the gallops
+  ///
+  /// In en, this message translates to:
+  /// **'Answer right: the gallops are yours'**
+  String get onboardingStepAnswer;
+
+  /// Welcome screen, gesture 3: place a horse and ride to the oasis
+  ///
+  /// In en, this message translates to:
+  /// **'Set a horse down and ride to the oasis'**
+  String get onboardingStepRide;
+
+  /// Welcome screen: under the language chips
+  ///
+  /// In en, this message translates to:
+  /// **'You can change it later in Settings.'**
+  String get onboardingLanguageHint;
+
   /// Language picker label
   ///
   /// In en, this message translates to:
@@ -706,10 +736,10 @@ abstract class AppLocalizations {
   /// **'Card drawn'**
   String get drawnCardTitle;
 
-  /// What the drawn card is worth, under its value
+  /// The stake announced on the drawn card, and kept in view during its question: how many gallops a right answer wins
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, one{Worth {count} square} other{Worth {count} squares}}'**
+  /// **'{count, plural, one{A {count}-gallop card} other{A {count}-gallop card}}'**
   String cardWorth(num count);
 
   /// How far a gait moves, shown under each horseshoe

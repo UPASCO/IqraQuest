@@ -130,6 +130,22 @@ void main() {
     _expectOnScreen(tester, find.byType(FilledButton), 'Start');
   });
 
+  testWidgets('onboarding: a language chip re-renders the screen at once', (
+    tester,
+  ) async {
+    await _pump(tester, '/onboarding');
+    // The screen opens in the platform language (English under test).
+    expect(find.text('Get started'), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('lang-fr')));
+    await tester.tap(find.byKey(const ValueKey('lang-fr')));
+    await _settle(tester);
+    // No confirmation, no reload: the whole screen is French now, the
+    // way in included — and it is still on screen.
+    expect(find.text('Commencer'), findsOneWidget);
+    expect(find.text('Get started'), findsNothing);
+    _expectOnScreen(tester, find.byType(FilledButton), 'Commencer');
+  });
+
   testWidgets('premium: the purchase button is on screen', (tester) async {
     await _pump(tester, '/premium', premium: false);
     _expectOnScreen(tester, find.byType(ElevatedButton), 'Unlock');

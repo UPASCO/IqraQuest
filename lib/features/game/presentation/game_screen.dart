@@ -492,7 +492,11 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 child: AbsorbPointer(
                   child: ColoredBox(
                     color: const Color(0xB306251C),
+                    // The stake is announced with the card — "a
+                    // five-gallop card" — so the player knows what the
+                    // right answer is worth before reading the question.
                     child: DrawnCardReveal(
+                      value: state.drawnCard?.steps,
                       difficultyPips: _revealPips,
                     ),
                   ),
@@ -505,6 +509,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 isJourney:
                     state.turnPhase == TurnPhase.answeringJourneyQuestion,
                 isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
+                // The stake stays in view while the question is read:
+                // only the turn's own card carries one.
+                stake:
+                    state.drawnCard != null &&
+                        state.turnPhase != TurnPhase.answeringJourneyQuestion &&
+                        state.turnPhase != TurnPhase.resolvingCell
+                    ? l10n.cardWorth(state.drawnCard!.steps)
+                    : null,
                 selectedAnswer: _selectedAnswer,
                 // The verdict belongs to the question being judged, and
                 // to no other. A journey question or a special square's
@@ -1315,11 +1327,16 @@ class _QuestionOverlay extends StatelessWidget {
     this.compact = false,
     this.largeText = false,
     this.note,
+    this.stake,
   });
 
   final Question question;
   final bool isJourney;
   final bool isCellBonus;
+
+  /// What a right answer is worth — "Carte à 5 galops" — kept over the
+  /// question so the stake is never out of sight while it is played for.
+  final String? stake;
   final int? selectedAnswer;
   final bool? lastAnswerCorrect;
 
@@ -1470,6 +1487,11 @@ class _QuestionOverlay extends StatelessWidget {
                               ?.copyWith(color: const Color(0xFFF4ECDC)),
                         ),
                       ),
+                    if (stake != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: _StakePill(text: stake!),
+                      ),
                     // The gold arch line crowning the panel ties it to the
                     // game's architecture.
                     const _ArchCrest(),
@@ -1490,6 +1512,55 @@ class _QuestionOverlay extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// The stake, worn over the question as a gold pill: the number the
+/// whole card is played for, in the same gold as the prize it becomes.
+class _StakePill extends StatelessWidget {
+  const _StakePill({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      liveRegion: true,
+      child: Container(
+        key: const Key('stake-pill'),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+        decoration: BoxDecoration(
+          color: const Color(0xF20C2B22),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: const Color(0xFFEBC06A), width: 1.3),
+          boxShadow: const [
+            BoxShadow(color: Color(0x80000000), blurRadius: 14, offset: Offset(0, 4)),
+          ],
+        ),
+        // The text is flexible and ellipsizes: on the floor phone at a
+        // large text size a rigid row here is the one thing that can push
+        // the question panel off its edge.
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.style, size: 16, color: Color(0xFFEBC06A)),
+            const SizedBox(width: 7),
+            Flexible(
+              child: Text(
+                text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: const Color(0xFFF3D68A),
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

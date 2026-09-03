@@ -62,6 +62,43 @@ s("getStarted", "Primary CTA button on onboarding",
   de="Loslegen", tr="Başla", id="Mulai", ur="شروع کریں", ms="Mulakan",
   it="Inizia", nl="Beginnen")
 
+s("onboardingHowTo", "Welcome screen: heading over the three-gesture strip",
+  fr="Comment on joue", en="How it plays", ar="كيف نلعب", es="Cómo se juega",
+  pt="Como se joga", de="So wird gespielt", tr="Nasıl oynanır", id="Cara bermain",
+  ur="کیسے کھیلتے ہیں", ms="Cara bermain", it="Come si gioca", nl="Zo speel je")
+
+s("onboardingStepDraw", "Welcome screen, gesture 1: draw a card (it announces its stake)",
+  fr="Pioche une carte : elle annonce ses galops", en="Draw a card: it announces its gallops",
+  ar="اسحب بطاقة: تعلن عدد ركضاتها", es="Roba una carta: anuncia sus galopes",
+  pt="Compre uma carta: ela anuncia seus galopes", de="Zieh eine Karte: sie nennt ihren Galopp",
+  tr="Bir kart çek: dörtnalını söyler", id="Ambil kartu: ia mengumumkan lompatannya",
+  ur="کارڈ نکالیں: وہ اپنی سرپٹ بتاتا ہے", ms="Ambil kad: ia mengumumkan lompatannya",
+  it="Pesca una carta: annuncia i suoi galoppi", nl="Trek een kaart: hij noemt zijn galop")
+
+s("onboardingStepAnswer", "Welcome screen, gesture 2: answer right to win the gallops",
+  fr="Réponds juste : les galops sont à toi", en="Answer right: the gallops are yours",
+  ar="أجب إجابة صحيحة: الركضات لك", es="Acierta: los galopes son tuyos",
+  pt="Acerte: os galopes são seus", de="Antworte richtig: der Galopp gehört dir",
+  tr="Doğru cevapla: dörtnal senindir", id="Jawab benar: lompatannya milikmu",
+  ur="صحیح جواب دیں: سرپٹ آپ کی ہے", ms="Jawab betul: lompatan itu milik anda",
+  it="Rispondi bene: i galoppi sono tuoi", nl="Antwoord goed: de galop is van jou")
+
+s("onboardingStepRide", "Welcome screen, gesture 3: place a horse and ride to the oasis",
+  fr="Pose ton cheval et galope jusqu\'à l\'oasis", en="Set a horse down and ride to the oasis",
+  ar="ضع حصانك واركض حتى الواحة", es="Coloca tu caballo y galopa hasta el oasis",
+  pt="Coloque seu cavalo e galope até o oásis", de="Setz dein Pferd und reite zur Oase",
+  tr="Atını koy ve vahaya dörtnala git", id="Letakkan kudamu dan berlari ke oasis",
+  ur="اپنا گھوڑا رکھیں اور نخلستان تک سرپٹ دوڑیں", ms="Letakkan kuda anda dan berlari ke oasis",
+  it="Posa il tuo cavallo e galoppa fino all\'oasi", nl="Zet je paard neer en rijd naar de oase")
+
+s("onboardingLanguageHint", "Welcome screen: under the language chips",
+  fr="Tu pourras la changer plus tard dans les réglages.", en="You can change it later in Settings.",
+  ar="يمكنك تغييرها لاحقًا من الإعدادات.", es="Podrás cambiarla luego en los ajustes.",
+  pt="Você poderá mudá-la depois nas configurações.", de="Du kannst sie später in den Einstellungen ändern.",
+  tr="Daha sonra ayarlardan değiştirebilirsin.", id="Kamu bisa mengubahnya nanti di Pengaturan.",
+  ur="آپ اسے بعد میں ترتیبات میں بدل سکتے ہیں۔", ms="Anda boleh menukarnya kemudian dalam Tetapan.",
+  it="Potrai cambiarla più tardi nelle impostazioni.", nl="Je kunt dit later in Instellingen wijzigen.")
+
 s("chooseLanguage", "Language picker label",
   fr="Choisir la langue", en="Choose language", ar="اختر اللغة", es="Elegir idioma",
   pt="Escolher idioma", de="Sprache wählen", tr="Dil seçin", id="Pilih bahasa",
@@ -686,20 +723,20 @@ s("drawnCardTitle", "Headline over the freshly turned card",
   tr="Çekilen kart", id="Kartu terambil", ur="نکالا گیا کارڈ",
   ms="Kad dicabut", it="Carta pescata", nl="Getrokken kaart")
 
-s("cardWorth", "What the drawn card is worth, under its value",
+s("cardWorth", "The stake announced on the drawn card, and kept in view during its question: how many gallops a right answer wins",
   ph={"count": "num"},
-  fr="{count, plural, one{Vaut {count} case} other{Vaut {count} cases}}",
-  en="{count, plural, one{Worth {count} square} other{Worth {count} squares}}",
-  ar="{count, plural, one{يساوي مربعًا واحدًا} two{يساوي مربعين} few{يساوي {count} مربعات} many{يساوي {count} مربعًا} other{يساوي {count} مربع}}",
-  es="{count, plural, one{Vale {count} casilla} other{Vale {count} casillas}}",
-  pt="{count, plural, one{Vale {count} casa} other{Vale {count} casas}}",
-  de="{count, plural, one{Wert: {count} Feld} other{Wert: {count} Felder}}",
-  tr="{count, plural, one{{count} kare değerinde} other{{count} kare değerinde}}",
-  id="{count, plural, other{Bernilai {count} petak}}",
-  ur="{count, plural, one{{count} خانہ کے برابر} other{{count} خانے کے برابر}}",
-  ms="{count, plural, other{Bernilai {count} petak}}",
-  it="{count, plural, one{Vale {count} casella} other{Vale {count} caselle}}",
-  nl="{count, plural, one{Waard: {count} vakje} other{Waard: {count} vakjes}}")
+  fr="{count, plural, one{Carte à {count} galop} other{Carte à {count} galops}}",
+  en="{count, plural, one{A {count}-gallop card} other{A {count}-gallop card}}",
+  ar="{count, plural, one{بطاقة بركضة واحدة} two{بطاقة بركضتين} few{بطاقة بـ{count} ركضات} many{بطاقة بـ{count} ركضة} other{بطاقة بـ{count} ركضة}}",
+  es="{count, plural, one{Carta de {count} galope} other{Carta de {count} galopes}}",
+  pt="{count, plural, one{Carta de {count} galope} other{Carta de {count} galopes}}",
+  de="{count, plural, one{Karte über {count} Galopp} other{Karte über {count} Galopp}}",
+  tr="{count, plural, other{{count} dörtnallık kart}}",
+  id="{count, plural, other{Kartu {count} lompatan}}",
+  ur="{count, plural, one{{count} سرپٹ کا کارڈ} other{{count} سرپٹ کا کارڈ}}",
+  ms="{count, plural, other{Kad {count} lompatan}}",
+  it="{count, plural, one{Carta da {count} galoppo} other{Carta da {count} galoppi}}",
+  nl="{count, plural, one{Kaart van {count} galop} other{Kaart van {count} galop}}")
 
 s("gaitSquares", "How far a gait moves, shown under each horseshoe",
   ph={"count": "num"},

@@ -26,6 +26,22 @@ class AppLocalizationsUr extends AppLocalizations {
   String get getStarted => 'شروع کریں';
 
   @override
+  String get onboardingHowTo => 'کیسے کھیلتے ہیں';
+
+  @override
+  String get onboardingStepDraw => 'کارڈ نکالیں: وہ اپنی سرپٹ بتاتا ہے';
+
+  @override
+  String get onboardingStepAnswer => 'صحیح جواب دیں: سرپٹ آپ کی ہے';
+
+  @override
+  String get onboardingStepRide => 'اپنا گھوڑا رکھیں اور نخلستان تک سرپٹ دوڑیں';
+
+  @override
+  String get onboardingLanguageHint =>
+      'آپ اسے بعد میں ترتیبات میں بدل سکتے ہیں۔';
+
+  @override
   String get chooseLanguage => 'زبان منتخب کریں';
 
   @override
@@ -342,8 +358,8 @@ class AppLocalizationsUr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count خانے کے برابر',
-      one: '$count خانہ کے برابر',
+      other: '$count سرپٹ کا کارڈ',
+      one: '$count سرپٹ کا کارڈ',
     );
     return '$_temp0';
   }

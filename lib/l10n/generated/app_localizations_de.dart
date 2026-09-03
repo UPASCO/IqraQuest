@@ -26,6 +26,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get getStarted => 'Loslegen';
 
   @override
+  String get onboardingHowTo => 'So wird gespielt';
+
+  @override
+  String get onboardingStepDraw => 'Zieh eine Karte: sie nennt ihren Galopp';
+
+  @override
+  String get onboardingStepAnswer => 'Antworte richtig: der Galopp gehört dir';
+
+  @override
+  String get onboardingStepRide => 'Setz dein Pferd und reite zur Oase';
+
+  @override
+  String get onboardingLanguageHint =>
+      'Du kannst sie später in den Einstellungen ändern.';
+
+  @override
   String get chooseLanguage => 'Sprache wählen';
 
   @override
@@ -342,8 +358,8 @@ class AppLocalizationsDe extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Wert: $count Felder',
-      one: 'Wert: $count Feld',
+      other: 'Karte über $count Galopp',
+      one: 'Karte über $count Galopp',
     );
     return '$_temp0';
   }

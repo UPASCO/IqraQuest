@@ -20,6 +20,26 @@
   "@getStarted": {
     "description": "Primary CTA button on onboarding"
   },
+  "onboardingHowTo": "How it plays",
+  "@onboardingHowTo": {
+    "description": "Welcome screen: heading over the three-gesture strip"
+  },
+  "onboardingStepDraw": "Draw a card: it announces its gallops",
+  "@onboardingStepDraw": {
+    "description": "Welcome screen, gesture 1: draw a card (it announces its stake)"
+  },
+  "onboardingStepAnswer": "Answer right: the gallops are yours",
+  "@onboardingStepAnswer": {
+    "description": "Welcome screen, gesture 2: answer right to win the gallops"
+  },
+  "onboardingStepRide": "Set a horse down and ride to the oasis",
+  "@onboardingStepRide": {
+    "description": "Welcome screen, gesture 3: place a horse and ride to the oasis"
+  },
+  "onboardingLanguageHint": "You can change it later in Settings.",
+  "@onboardingLanguageHint": {
+    "description": "Welcome screen: under the language chips"
+  },
   "chooseLanguage": "Choose language",
   "@chooseLanguage": {
     "description": "Language picker label"
@@ -445,9 +465,9 @@
   "@drawnCardTitle": {
     "description": "Headline over the freshly turned card"
   },
-  "cardWorth": "{count, plural, one{Worth {count} square} other{Worth {count} squares}}",
+  "cardWorth": "{count, plural, one{A {count}-gallop card} other{A {count}-gallop card}}",
   "@cardWorth": {
-    "description": "What the drawn card is worth, under its value",
+    "description": "The stake announced on the drawn card, and kept in view during its question: how many gallops a right answer wins",
     "placeholders": {
       "count": {
         "type": "num"

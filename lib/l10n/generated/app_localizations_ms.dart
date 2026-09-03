@@ -26,6 +26,22 @@ class AppLocalizationsMs extends AppLocalizations {
   String get getStarted => 'Mulakan';
 
   @override
+  String get onboardingHowTo => 'Cara bermain';
+
+  @override
+  String get onboardingStepDraw => 'Ambil kad: ia mengumumkan lompatannya';
+
+  @override
+  String get onboardingStepAnswer => 'Jawab betul: lompatan itu milik anda';
+
+  @override
+  String get onboardingStepRide => 'Letakkan kuda anda dan berlari ke oasis';
+
+  @override
+  String get onboardingLanguageHint =>
+      'Anda boleh menukarnya kemudian dalam Tetapan.';
+
+  @override
   String get chooseLanguage => 'Pilih bahasa';
 
   @override
@@ -343,7 +359,7 @@ class AppLocalizationsMs extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Bernilai $count petak',
+      other: 'Kad $count lompatan',
     );
     return '$_temp0';
   }

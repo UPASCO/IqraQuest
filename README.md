@@ -96,9 +96,11 @@ whether they answered correctly.
 The rules are the classic *jeu des petits chevaux* with the deck in place
 of the die, played **answer first, then place**. The turn is:
 
-1. **draw a card** — its question opens at once, at the rider's own
-   level (chosen before the game, the same whatever the card); the
-   card's value (1-6) stays face down;
+1. **draw a card** — it turns over onto its **stake** ("Carte à 5
+   galops"): the player knows what a right answer is worth before the
+   question opens, and the stake stays pinned over the question while it
+   is played for. The question is at the rider's own level (chosen
+   before the game, the same whatever the card);
 2. **answer** — a wrong answer moves nothing (the sheet still says what
    the card was worth); a right one wins the card's **galops**, revealed
    as an event, never as a fact read off the card: a gold medallion drops

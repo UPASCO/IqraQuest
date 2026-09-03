@@ -26,6 +26,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get getStarted => 'Beginnen';
 
   @override
+  String get onboardingHowTo => 'Zo speel je';
+
+  @override
+  String get onboardingStepDraw => 'Trek een kaart: hij noemt zijn galop';
+
+  @override
+  String get onboardingStepAnswer => 'Antwoord goed: de galop is van jou';
+
+  @override
+  String get onboardingStepRide => 'Zet je paard neer en rijd naar de oase';
+
+  @override
+  String get onboardingLanguageHint =>
+      'Je kunt dit later in Instellingen wijzigen.';
+
+  @override
   String get chooseLanguage => 'Kies taal';
 
   @override
@@ -342,8 +358,8 @@ class AppLocalizationsNl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Waard: $count vakjes',
-      one: 'Waard: $count vakje',
+      other: 'Kaart van $count galop',
+      one: 'Kaart van $count galop',
     );
     return '$_temp0';
   }

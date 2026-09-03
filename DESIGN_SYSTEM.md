@@ -99,30 +99,36 @@ See `lib/widgets/question_card.dart`.
 Color chip + team symbol glyph + name + (solo mode) AI difficulty tag.
 Never symbol-less.
 
-### Key art (home and welcome)
-The two screens the player meets first — the welcome after install and
-the home hub — stand on the **same** baked picture, not a scene painted
-at runtime:
-`assets/images/home_hero.webp`, composed by `tool/art/bake_home_hero.py`
-from the app's own artwork — the icon's three galloping horses bled into
-the table above, the painted plate (`assets/board/cross_board.webp`) laid
-on it in perspective below, a gold rim light and cast shadow under it,
-motes in the warm air, and a dark foot for the CTA. Baked at the phone's
-own aspect (1242x2688) so `BoxFit.cover` never crops its sides. The
-title takes a top scrim, since ivory type on a lit mane would not hold.
-Both screens wear it the same way: the name over the horses, the gold
-rule under it, then one framed block laid on the picture's calm foot —
-the journey card on home, the welcome plaque on onboarding — with the
-gold CTA below. The welcome plaque is deliberately compact so it rests
-on that foot instead of climbing over the board it is introducing.
+### Key art (home) and the welcome screen
+The home hub stands on one baked picture, not a scene painted at
+runtime: `assets/images/home_hero.webp`, composed by
+`tool/art/bake_home_hero.py` from the app's own artwork — the icon's
+three galloping horses bled into the table above, the painted plate
+(`assets/board/cross_board.webp`) laid on it in perspective below, a
+gold rim light and cast shadow under it, motes in the warm air, and a
+dark foot for the CTA. Baked at the phone's own aspect (1242x2688) so
+`BoxFit.cover` never crops its sides. The title takes a top scrim, since
+ivory type on a lit mane would not hold.
+
+The **welcome screen** (first launch) deliberately does *not* wear that
+key art: a first screen identical to the second reads as a glitch. It
+is a threshold with three jobs the hub has not — pick the language
+(live: each chip re-renders the screen in that language at once), learn
+the three gestures of a turn with the game's own pieces as pictures (the
+deck's card back, the board's +5 medallion, a horse from the plate), and
+one way in. Its picture is the *destination* — `oasis_arrival.webp`,
+the same oasis the results board shows once a horse gets there — framed
+and glowing over the plate's cloth.
 
 ### The reward beat, and the horses that can take it
-The drawn card never shows what it is worth: its face is a question
-mark. The worth is the **prize of the answer**, so it arrives once the
-answer is judged, as an event rather than a number — a pool of light
-opens, a gold medallion drops and turns as it lands, a shockwave rides
-out through a crown of rays, sparks fall, and the number counts up under
-a plaque reading "Gagné 5 galops" (`EarnedStepsMedallion`). The unit the
+The drawn card turns over onto its **stake** — "Carte à 5 galops" — so the
+player knows what a right answer is worth before the question opens, and
+the same stake stays pinned over the question as a gold pill while it is
+played for. A right answer then pays out exactly what was announced, as an
+event rather than a number — a pool of light opens, a gold medallion drops
+and turns as it lands, a shockwave rides out through a crown of rays,
+sparks fall, and the number counts up under a plaque reading "Gagné 5
+galops" (`EarnedStepsMedallion`). The unit the
 player wins is the **galop**; `case` stays the unit of the board itself.
 
 The moment the prize lands, the horses that can take it must be found at

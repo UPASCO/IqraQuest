@@ -8,8 +8,8 @@ import 'ornate_frame.dart';
 
 /// The prize of a right answer, shown as an event rather than a number.
 ///
-/// The card itself never tells the player what it is worth — its face is
-/// a question mark. The worth is the reward, so it arrives here: a shaft
+/// The card announced its stake when it turned over; this is that stake
+/// paid out, as a moment rather than a number. It arrives here: a shaft
 /// of light opens, a gold medallion drops onto the table and turns as it
 /// lands, a shockwave rides out through a crown of rays, sparks fly, and
 /// the number **counts up** to its value under a ribbon that reads

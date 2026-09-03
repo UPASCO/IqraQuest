@@ -26,6 +26,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get getStarted => 'ابدأ';
 
   @override
+  String get onboardingHowTo => 'كيف نلعب';
+
+  @override
+  String get onboardingStepDraw => 'اسحب بطاقة: تعلن عدد ركضاتها';
+
+  @override
+  String get onboardingStepAnswer => 'أجب إجابة صحيحة: الركضات لك';
+
+  @override
+  String get onboardingStepRide => 'ضع حصانك واركض حتى الواحة';
+
+  @override
+  String get onboardingLanguageHint => 'يمكنك تغييرها لاحقًا من الإعدادات.';
+
+  @override
   String get chooseLanguage => 'اختر اللغة';
 
   @override
@@ -342,11 +357,11 @@ class AppLocalizationsAr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'يساوي $count مربع',
-      many: 'يساوي $count مربعًا',
-      few: 'يساوي $count مربعات',
-      two: 'يساوي مربعين',
-      one: 'يساوي مربعًا واحدًا',
+      other: 'بطاقة بـ$count ركضة',
+      many: 'بطاقة بـ$count ركضة',
+      few: 'بطاقة بـ$count ركضات',
+      two: 'بطاقة بركضتين',
+      one: 'بطاقة بركضة واحدة',
     );
     return '$_temp0';
   }

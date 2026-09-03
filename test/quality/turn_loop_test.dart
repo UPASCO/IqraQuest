@@ -283,22 +283,21 @@ void main() {
       );
 
       await tester.tap(find.byKey(const Key('draw-deck')));
-      // The card turns over onto a question mark: its value is the prize
-      // of the answer, not a fact to read first.
+      // The card turns over onto its stake: the player reads what a
+      // right answer is worth before reading the question.
       await tester.pump();
       expect(find.byType(DrawnCardReveal), findsOneWidget);
-      // Half a turn later the face is up: a "?", never the value.
       await tester.pump(const Duration(milliseconds: 520));
-      expect(find.text('?'), findsOneWidget, reason: 'turn $turn: no question-mark face');
       final drawn = container.read(gameControllerProvider)!.gameState.drawnCard!;
       expect(
         find.descendant(
           of: find.byType(DrawnCardReveal),
           matching: find.text('${drawn.steps}'),
         ),
-        findsNothing,
-        reason: 'turn $turn: value shown early',
+        findsOneWidget,
+        reason: 'turn $turn: the card must announce its stake',
       );
+      expect(find.text('?'), findsNothing, reason: 'turn $turn: stake withheld');
       await _pastReveal(tester);
 
       final session = container.read(gameControllerProvider)!;
