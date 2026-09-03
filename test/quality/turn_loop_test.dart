@@ -89,10 +89,21 @@ Future<void> _pastFeedback(WidgetTester tester) async {
   }
 }
 
-/// Past the ride, a bonus ride and any landing celebration.
-Future<void> _pastRide(WidgetTester tester) async {
-  await tester.pump(kRideMax + kLandingSettle + kBonusRevealBeat);
-  await tester.pump(kRideMax + kLandingSettle + const Duration(milliseconds: 200));
+/// Past the ride, every link of the chain it set off, and any landing
+/// celebration.
+///
+/// One drop is no longer one ride: bonuses chain, and a capture pays its
+/// own twenty, so a placement can be several rides with a beat before
+/// each. A fixed wait covered one of them and left the board still
+/// moving — so this waits on the game itself, pumping until the turn has
+/// left [TurnPhase.movingHorse], with a bound that no legal chain reaches.
+Future<void> _pastRide(WidgetTester tester, ProviderContainer container) async {
+  for (var i = 0; i < 16; i++) {
+    await tester.pump(kRideMax + kLandingSettle + kBonusRevealBeat);
+    await _settle(tester);
+    final phase = container.read(gameControllerProvider)?.gameState.turnPhase;
+    if (phase != TurnPhase.movingHorse) break;
+  }
   await tester.pump(kCelebrationDuration + const Duration(milliseconds: 60));
   await _settle(tester);
 }
@@ -223,9 +234,18 @@ Future<void> _dragHorseTo(
   final from = tester.getCenter(piece);
   final fingerTarget = target + Offset(0, _pieceSize(tester) * 0.95);
   final gesture = await tester.startGesture(from);
-  final delta = fingerTarget - from;
+  // A drag only begins once the finger has travelled 8 px (a tap must
+  // stay a tap). A square two steps up the track can sit so close that
+  // the whole journey is shorter than that — and a playable horse bobs,
+  // so where its centre was sampled shifts the distance by a few pixels
+  // more. Lift the finger clear first, as a thumb always does, so the
+  // drag is a drag whatever the geometry.
+  final lift = from + const Offset(0, -16);
+  await gesture.moveTo(lift);
+  await tester.pump(const Duration(milliseconds: 16));
+  final delta = fingerTarget - lift;
   for (var i = 1; i <= 6; i++) {
-    await gesture.moveTo(from + delta * (i / 6));
+    await gesture.moveTo(lift + delta * (i / 6));
     await tester.pump(const Duration(milliseconds: 16));
   }
   await gesture.up();
@@ -253,7 +273,7 @@ void main() {
         await tester.ensureVisible(find.text(answer).first);
         await tester.tap(find.text(answer).first);
         await _pastFeedback(tester);
-        await _pastRide(tester);
+        await _pastRide(tester, container);
         continue;
       }
       expect(
@@ -335,7 +355,7 @@ void main() {
         // Validated by the drop alone: no confirmation control appears.
         expect(find.byKey(const Key('placement-banner')), findsNothing);
         expect(find.byKey(const Key('move-choice')), findsNothing);
-        await _pastRide(tester);
+        await _pastRide(tester, container);
       }
 
       expect(tester.takeException(), isNull, reason: 'turn $turn threw');
@@ -359,7 +379,7 @@ void main() {
           await tester.ensureVisible(find.text(answer).first);
           await tester.tap(find.text(answer).first);
           await _pastFeedback(tester);
-          await _pastRide(tester);
+          await _pastRide(tester, container);
           continue;
         }
         expect(
@@ -421,7 +441,7 @@ void main() {
             move.destination,
             reason: 'turn $turn: the horse did not come out',
           );
-          await _pastRide(tester);
+          await _pastRide(tester, container);
         }
         final thrown = tester.takeException();
         if (thrown is FlutterError) {
@@ -534,7 +554,7 @@ void main() {
       // may legitimately be up again — what must always be true is that
       // the deck is back and the placement is gone.
       final replays = card.grantsExtraTurn;
-      await _pastRide(tester);
+      await _pastRide(tester, container);
       expect(
         controller.state!.gameState.currentPlayerIndex,
         replays ? 0 : 1,
@@ -630,7 +650,7 @@ void _leadToastLayoutTest() {
         if (find.byKey(const Key('lead-toast')).evaluate().isNotEmpty) {
           seen = true;
         }
-        await _pastRide(tester);
+        await _pastRide(tester, container);
         expect(tester.takeException(), isNull, reason: 'turn $turn overflowed');
       }
       expect(
