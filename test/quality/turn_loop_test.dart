@@ -643,6 +643,62 @@ void main() {
     );
   });
 
+  testWidgets('on a tablet the HUD never sits on the plate', (tester) async {
+    // Reported from an iPad in portrait: the name, the arrivals and the
+    // three counters were drawn over the top of the board. A 4:3 tablet
+    // leaves about 180 points above a full-width square plate and the
+    // HUD is taller than that — so the board reserves a band at each
+    // end, in both orientations, and this measures that it works.
+    // Both orientations, and the accessibility text size, where the HUD
+    // grows but the plate does not.
+    for (final (size, scale) in [
+      (const Size(834, 1194), 1.0),
+      (const Size(1194, 834), 1.0),
+      (const Size(834, 1194), 1.3),
+      (const Size(1024, 1366), 1.3),
+    ]) {
+      // A real tablet has a status bar, and SafeArea pushes the whole HUD
+      // down by it. Without that inset the test measures a screen no
+      // device has and misses the very overlap it is here for.
+      tester.view.padding = const FakeViewPadding(top: 24);
+      addTearDown(tester.view.resetPadding);
+      await _pumpGame(tester, size: size, textScale: scale);
+
+      // The plate is the centred square inside the board's box.
+      final box = tester.getRect(find.byKey(const Key('board-scene')));
+      final side = box.width < box.height ? box.width : box.height;
+      final plateTop = box.top + (box.height - side) / 2;
+      final plateBottom = plateTop + side;
+
+      var hudBottom = 0.0;
+      for (final key in ['turn-nameplate', 'hud-knowledge', 'hud-streak']) {
+        final finder = find.byKey(Key(key));
+        expect(finder, findsOneWidget, reason: '$key is missing');
+        final bottom = tester.getRect(finder).bottom;
+        if (bottom > hudBottom) hudBottom = bottom;
+      }
+      expect(
+        hudBottom,
+        lessThanOrEqualTo(plateTop),
+        reason:
+            'the HUD ends at $hudBottom and the plate starts at $plateTop '
+            'on ${size.width}x${size.height} at text scale $scale',
+      );
+
+      // And the deck below it, for the same reason.
+      final deck = find.byKey(const Key('draw-deck'));
+      if (deck.evaluate().isNotEmpty) {
+        expect(
+          tester.getRect(deck).top,
+          greaterThanOrEqualTo(plateBottom),
+          reason:
+              'the deck sits on the plate on ${size.width}x${size.height} '
+              'at text scale $scale',
+        );
+      }
+    }
+  });
+
   testWidgets('the board menu holds the rules, the switches and the way out', (
     tester,
   ) async {

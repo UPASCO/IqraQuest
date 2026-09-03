@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'dart:async';
@@ -105,7 +106,12 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     // moment it is tapped.
     final soundOn = ref.watch(settingsControllerProvider).soundEnabled;
     final boardSize = MediaQuery.sizeOf(context);
-    final landscape = boardSize.width > boardSize.height;
+    // A tablet's plate is big enough to reach the floating HUD and the
+    // deck at both ends — in PORTRAIT as much as in landscape, which is
+    // the case the first version missed: a 4:3 tablet leaves 180 points
+    // above a full-width plate and the HUD is taller than that. A phone's
+    // plate never comes close, so nothing there changes.
+    final reserveBands = boardSize.shortestSide >= 600;
     final session = ref.watch(gameControllerProvider);
 
     ref.listen(gameControllerProvider, (previous, next) {
@@ -219,14 +225,19 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             // the HUD and the deck stay put above it. While a horse is
             // being placed the viewer stands still: the finger on the
             // plate is moving a horse, never the board.
-            // On a tablet turned sideways the plate would fill the whole
-            // height and the floating HUD and deck would sit on top of
-            // it. Reserving a band at each end keeps the square plate
-            // clear of both — a phone is portrait-locked, so this never
-            // changes anything there.
+            // Reserving a band at each end keeps the square plate clear
+            // of the HUD above it and the deck below it.
             Positioned.fill(
-              top: landscape ? boardSize.height * 0.22 : 0,
-              bottom: landscape ? boardSize.height * 0.18 : 0,
+              // A floor in points as well as a fraction: the HUD's height
+              // comes from its type, not from the screen's, so on a
+              // short landscape tablet a percentage alone leaves it a
+              // pixel too little — and at a large text size, far less.
+              top: reserveBands
+                  ? math.max(220.0, boardSize.height * 0.16)
+                  : 0,
+              bottom: reserveBands
+                  ? math.max(160.0, boardSize.height * 0.13)
+                  : 0,
               child: InteractiveViewer(
                 key: const Key('board-zoom'),
                 minScale: 1,
