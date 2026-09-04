@@ -17,16 +17,16 @@ Customer Success Manager Selligent. Il remplace la v4 générée par ChatGPT, qu
 ## Structure du deck
 
 1. Titre · 2. Ordre du jour · 3. Vue d'ensemble (santé / activité)
-4. Intercalaire CDM · 5. SLA Gold · 6. Base de données · 7. Audience unique (Ucount) · 8. Sécurisation et patch du 10/09 · 9. Roadmap CDM (frise fin 2026 → Q4 2027)
-10. Intercalaire Engage · 11. Selligent by Zeta · 12. Performance email · 13. SMS et RCS · 14. SSO Engage · 15. Pixel d'ouverture et CNIL · 16. Prochaines exigences CNIL · 17. Roadmap Engage (frise aujourd'hui → Q4 2027)
-18. Vos arbitrages (cinq questions au client) · 19. Plan d'actions · 20. Contacts
+4. Intercalaire CDM · 5. SLA Gold · 6. Base de données · 7. Audience unique (Ucount) · 8. Navigation asynchrone (rapidité) · 9. Correctif SSO AdminTool et ConfigTool · 10. Roadmap CDM (frise fin 2026 → Q4 2027)
+11. Intercalaire Engage · 12. Selligent by Zeta · 13. Performance email · 14. SMS et RCS · 15. SSO Engage · 16. Pixel d'ouverture et CNIL · 17. Prochaines exigences CNIL · 18. Roadmap Engage (frise aujourd'hui → Q4 2027)
+19. Vos arbitrages (cinq questions au client) · 20. Plan d'actions · 21. Contacts
 
 ## À confirmer avant la séance
 
 - **SLA** : le deck retient les chiffres du dashboard, soit 7,9 h décomptées sur 50 (16 %) et 36,7 h de temps
   de support. Faire qualifier les 4 tickets « None » (4,35 h, dont le 550647) si le détail est demandé.
 - **Redevance base de données** : 6 900 €/an par tranche de 100 GB est affiché sur la slide. Montant à confirmer.
-- **Patch du 10/09** : mettre à jour la pastille « Déployé — en observation » et le bilan (slide 8).
+- **Les deux correctifs en cours** : mettre à jour les pastilles « En cours de résolution » sur la navigation asynchrone (redescente du 10/09) et sur le correctif SSO AdminTool / ConfigTool dès que leur statut évolue.
 - **Base de données et Ucount** : les dashboards sources sont filtrés sur la SaaS « Viasante » ;
   si ces métriques relèvent d'Engage plutôt que de CDM, déplacer les slides 6 et 7 dans la section Engage.
 - **Email** : le rapport est en mode « toutes interactions » (ouvertures bots incluses) ; re-tirer en « hors bots » si possible.

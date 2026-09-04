@@ -194,7 +194,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const s = pres.addSlide();
     header(s, { title: 'Ordre du jour', subtitle: 'Deux outils, deux séquences : votre CRM (CDM) puis votre plateforme marketing (Engage), et les actions à décider ensemble.' });
     const cols = [
-      { n: '01', title: 'CDM — votre CRM', icon: 'FiDatabase', items: ['Consommation du SLA Gold 2026–2027', 'Capacité de la base de données', 'Audience unique et licence', 'Sécurisation de la configuration et patch du 10/09', 'Orientations roadmap CDM 2026–2027'] },
+      { n: '01', title: 'CDM — votre CRM', icon: 'FiDatabase', items: ['Consommation du SLA Gold 2026–2027', 'Capacité de la base de données', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap CDM 2026–2027'] },
       { n: '02', title: 'Engage — votre plateforme marketing', icon: 'FiSend', items: ['Selligent by Zeta : ce qui change pour vous', 'Performance email vs secteur', 'Volumes SMS et option RCS', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et recommandation CNIL', 'Roadmap Engage 2026–2027'] },
       { n: '03', title: 'Synthèse', icon: 'FiFlag', items: ['Vos arbitrages : cinq questions ouvertes', 'Plan d’actions : qui fait quoi, pour quand', 'Date du prochain COPIL'] },
     ];
@@ -247,7 +247,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     txt(s, topics.map((t, i) => ({ text: t, options: { breakLine: i < topics.length - 1, bullet: { indent: 12 }, paraSpaceAfter: 3 } })), { x: M, y: 4.55, w: 7.5, h: 1.9, fontSize: 13, color: 'E6F0F2' });
     return s;
   }
-  divider('01', 'CDM — votre CRM', 'Exploitation, capacité, sécurité et trajectoire produit', ['SLA Gold : consommation et règle de décompte', 'Capacité de la base de données', 'Audience unique et licence', 'Sécurisation de la configuration et patch du 10/09', 'Orientations roadmap 2026–2027']);
+  divider('01', 'CDM — votre CRM', 'Exploitation, capacité, correctifs et trajectoire produit', ['SLA Gold : consommation et règle de décompte', 'Capacité de la base de données', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap 2026–2027']);
 
   // ===== 5. SLA =====
   {
@@ -337,31 +337,61 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     s.addNotes('NOTE INTERNE — Source : Compliance Count (calcul du 16/08/2026, données au 24/08). Juin 2025 : 701 932 → août 2026 : 824 913 (+122 981, soit +17,5 % ; ≈ +8 800/mois). Juillet 2026 : 820 039 → août : +4 874 (+0,6 %). Août 2025 : 686 466 → août 2026 : +20,2 % sur un an. La croissance mensuelle ralentit (+4,9 k en août contre ≈ +15 k fin 2025).\nFormuler le sujet licence comme une vérification contractuelle du palier Ucount (licence Gold), jamais comme un incident. Aucune source ne donne le palier contracté : ne pas parler de dépassement. Si la position n’est pas connue le 14/09, s’en tenir à « retour formel d’ici fin septembre ».\nQuestion à poser au client : cette croissance correspond-elle à son plan (adhérents, prospects) ?');
   }
 
-  // ===== 8. Sécurisation & patch =====
+  // ===== 8a. Navigation asynchrone — rapidité de l'application =====
   {
     const s = pres.addSlide();
-    header(s, { section: 'CDM', title: 'Sécurisation de la configuration et patch du 10 septembre', subtitle: 'Deux interventions techniques menées par Selligent, sans changement d’usage pour vos équipes.' });
-    // timeline
-    const steps = [
-      { date: '31 août 2026', title: 'Sécurisation de la configuration', body: 'Solution communiquée et mise en œuvre sur les accès SSO, AdminTool et ConfigTool.', status: 'LIVRÉ', fill: C.greenL, color: C.green, icon: 'FiShield' },
-      { date: '10 septembre 2026', title: 'Patch asynchrone CDM', body: 'Déploiement du correctif sur les traitements asynchrones (redescente planifiée).', status: 'DÉPLOYÉ — EN OBSERVATION', fill: C.amberL, color: C.amber, icon: 'FiSettings' },
-      { date: '14 septembre 2026', title: 'Bilan post-patch', body: 'Vérification conjointe : traitements nominaux, aucun impact opérationnel constaté.', status: 'CE JOUR', fill: C.tealL, color: C.teal, icon: 'FiCheckCircle' },
+    header(s, { section: 'CDM', title: 'Rapidité de l’application : le patch de navigation asynchrone', subtitle: 'Correctif en cours de résolution sur les temps de réponse et la fluidité de navigation dans CDM.' });
+    // statut hero
+    card(s, M, 2.15, 3.9, 4.65, { fill: C.tealXL, line: null });
+    iconCircle(s, M + 1.45, 2.55, 1.0, 'FiActivity', { bg: C.teal, fg: C.white });
+    txt(s, 'Navigation asynchrone', { x: M + 0.3, y: 3.75, w: 3.3, h: 0.5, fontSize: 17, bold: true, color: C.teal, align: 'center', valign: 'middle' });
+    pill(s, M + 0.8, 4.4, 2.3, 0.36, 'EN COURS DE RÉSOLUTION', { fill: C.amberL, color: C.amber, fontSize: 9.5 });
+    txt(s, 'Correctif développé par nos équipes produit, redescente planifiée le 10 septembre 2026.', { x: M + 0.35, y: 5.0, w: 3.2, h: 1.0, fontSize: 11.5, color: C.ink, align: 'center', valign: 'top' });
+    // three cards
+    const cx = M + 4.2, cw = (W - M - cx - 0.5) / 3;
+    const cards = [
+      { icon: 'FiClock', title: 'Le constat', items: ['Temps de réponse dégradés sur certains écrans.', 'Enchaînement des actions ralenti pour vos utilisateurs.'] },
+      { icon: 'FiTool', title: 'Ce que nous faisons', items: ['Passage de la navigation en mode asynchrone.', 'Correctif validé en interne, redescente planifiée.'] },
+      { icon: 'FiUsers', title: 'Pour vos équipes', items: ['Navigation plus fluide, sans changement d’usage.', 'Aucune action ni paramétrage de votre côté.'] },
     ];
-    const tx = M, tw = W - 2 * M, sw = (tw - 0.6) / 3, ty = 2.25;
-    hline(s, tx + sw / 2, ty + 0.35, tw - sw, C.line, 2);
-    steps.forEach((st, i) => {
-      const x = tx + i * (sw + 0.3);
-      iconCircle(s, x + sw / 2 - 0.35, ty, 0.7, st.icon, { bg: C.teal, fg: C.white });
-      txt(s, st.date, { x, y: ty + 0.85, w: sw, h: 0.3, fontSize: 11, bold: true, color: C.orange, align: 'center' });
-      card(s, x, ty + 1.25, sw, 2.2, { shadow: true, line: null });
-      txt(s, st.title, { x: x + 0.25, y: ty + 1.4, w: sw - 0.5, h: 0.4, fontSize: 13.5, bold: true, color: C.teal, valign: 'middle' });
-      txt(s, st.body, { x: x + 0.25, y: ty + 1.85, w: sw - 0.5, h: 0.9, fontSize: 11, color: C.ink });
-      pill(s, x + 0.25, ty + 2.95, Math.min(sw - 0.5, 2.6), 0.3, st.status, { fill: st.fill, color: st.color });
+    cards.forEach((c, i) => {
+      const x = cx + i * (cw + 0.25);
+      card(s, x, 2.15, cw, 4.65, { shadow: true, line: null });
+      iconCircle(s, x + 0.25, 2.4, 0.6, c.icon, { bg: C.tealL, fg: C.teal });
+      txt(s, c.title, { x: x + 0.25, y: 3.15, w: cw - 0.5, h: 0.45, fontSize: 14, bold: true, color: C.teal, valign: 'middle' });
+      hline(s, x + 0.25, 3.68, cw - 0.5);
+      bullets(s, c.items, { x: x + 0.25, y: 3.8, w: cw - 0.5, h: 2.8, fontSize: 11, gap: 8 });
     });
-    const cy = 5.85;
-    callout(s, M, cy, (tw - 0.3) / 2, 0.95, 'Périmètre', 'Accès d’administration CDM (SSO technique, AdminTool, ConfigTool) et traitements asynchrones.', { iconName: 'FiLock', fontSize: 10.5, inline: true });
-    callout(s, M + (tw - 0.3) / 2 + 0.3, cy, (tw - 0.3) / 2, 0.95, 'Pour vos équipes', 'Aucune action attendue de votre côté ; accès d’administration mieux sécurisés, bilan d’impact partagé ce jour.', { iconName: 'FiUsers', iconBg: C.green, fill: C.greenL, titleColor: C.green, fontSize: 10.5, inline: true });
-    s.addNotes('NOTE INTERNE — À METTRE À JOUR AVANT LA SÉANCE (avec Frederic Schneider / Ops, le 11/09 au plus tard) : résultat du patch du 10/09 (statut, éventuels effets de bord) → ajuster la pastille « Déployé — en observation » (→ « Validé » ou « Reporté au … ») et la phrase du bilan ; préparer les deux variantes. Rappeler en une phrase pourquoi la sécurisation a été menée (contexte de la demande du 31/08) si le client le demande.\nLes éléments 31/08 et 10/09 proviennent du suivi CSM : les confirmer avec le TPM. Sujet strictement technique CDM : ne pas le mêler au futur SSO produit Engage (slide dédiée) ni aux sujets de licence.');
+    s.addNotes('NOTE INTERNE — Sujet performance, distinct du correctif SSO traité sur la slide suivante. Patch de navigation asynchrone CDM : redescente prévue le 10/09/2026, statut « en cours de résolution ».\nÀ METTRE À JOUR AVANT LA SÉANCE avec Frederic Schneider / Ops : la redescente a-t-elle eu lieu le 10/09 ? Ajuster la pastille (« En cours de résolution » → « Déployé, en observation » ou « Reporté au … ») et la phrase de la carte de gauche. Préparer les deux variantes.\nSi le client demande un délai ferme : ne pas s’engager, dire que la redescente est planifiée et que le résultat lui sera confirmé.');
+  }
+
+  // ===== 8b. Correctif SSO AdminTool / ConfigTool =====
+  {
+    const s = pres.addSlide();
+    header(s, { section: 'CDM', title: 'Correctif SSO sur les pages AdminTool et ConfigTool', subtitle: 'Solution communiquée le 31 août 2026, correctif en cours de résolution sur l’authentification des pages d’administration.' });
+    const items = [
+      { icon: 'FiLock', title: 'Le périmètre', items: ['Authentification SSO des pages d’administration.', 'AdminTool et ConfigTool uniquement.'] },
+      { icon: 'FiFileText', title: 'Où nous en sommes', items: ['Solution communiquée le 31 août 2026.', 'Correctif en cours de résolution côté produit.'] },
+      { icon: 'FiUsers', title: 'Pour vos équipes', items: ['Aucun impact sur les utilisateurs finaux du CRM.', 'Accès d’administration mieux sécurisés à l’issue du correctif.'] },
+      { icon: 'FiAlertCircle', title: 'À ne pas confondre', items: ['Sujet technique CDM, sans lien avec le nouveau SSO Engage.', 'Le SSO Engage suit sa propre trajectoire, fenêtre cible T1 2027.'] },
+    ];
+    const n = items.length, gap = 0.22, cw = (W - 2 * M - gap * (n - 1)) / n, y0 = 2.15, ch = 3.3;
+    items.forEach((c, i) => {
+      const x = M + i * (cw + gap);
+      card(s, x, y0, cw, ch, { shadow: true, line: null });
+      iconCircle(s, x + 0.25, y0 + 0.25, 0.6, c.icon, { bg: i === 3 ? C.orange : C.teal, fg: C.white });
+      txt(s, c.title, { x: x + 0.25, y: y0 + 1.0, w: cw - 0.5, h: 0.45, fontSize: 14, bold: true, color: i === 3 ? C.orange : C.teal, valign: 'middle' });
+      hline(s, x + 0.25, y0 + 1.53, cw - 0.5);
+      bullets(s, c.items, { x: x + 0.25, y: y0 + 1.65, w: cw - 0.5, h: ch - 1.8, fontSize: 11, gap: 7 });
+    });
+    // bandeau statut
+    const by = y0 + ch + 0.35;
+    card(s, M, by, W - 2 * M, 1.15, { fill: C.tealXL, line: null });
+    iconCircle(s, M + 0.3, by + 0.3, 0.55, 'FiShield', { bg: C.teal, fg: C.white });
+    txt(s, 'Statut', { x: M + 1.05, y: by, w: 1.2, h: 1.15, fontSize: 13, bold: true, color: C.teal, valign: 'middle' });
+    txt(s, 'Correctif en cours de résolution. Nous vous confirmons la mise en production et son résultat dès la clôture du sujet.', { x: M + 2.3, y: by, w: W - 2 * M - 5.0, h: 1.15, fontSize: 12, color: C.ink, valign: 'middle' });
+    pill(s, W - M - 2.6, by + 0.4, 2.3, 0.36, 'EN COURS DE RÉSOLUTION', { fill: C.amberL, color: C.amber, fontSize: 9.5 });
+    s.addNotes('NOTE INTERNE — Sujet sécurité / configuration, distinct du patch de performance traité sur la slide précédente. Correctif SSO sur les pages AdminTool et ConfigTool : solution communiquée le 31/08/2026, statut « en cours de résolution ».\nÀ METTRE À JOUR AVANT LA SÉANCE avec Frederic Schneider / Ops : le correctif est-il passé en production ? Ajuster la pastille et la phrase du bandeau si le statut a changé.\nNe jamais mêler ce sujet au nouveau SSO produit Engage (fenêtre cible T1 2027) ni aux sujets de licence : si le client fait le rapprochement, rappeler que ce sont deux systèmes différents.');
   }
 
   // ===== 9. Roadmap CDM =====
@@ -489,7 +519,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     });
     const cy = 4.95, ch = 1.75, cw = (W - 2 * M - 0.3) / 2;
     callout(s, M, cy, cw, ch, 'Ce qui change pour vous', ['Une connexion unifiée et sécurisée à Engage.', 'Un accompagnement Selligent pour la bascule des utilisateurs.'], { iconName: 'FiCheckCircle', iconBg: C.green, fill: C.greenL, titleColor: C.green, fontSize: 10.5 });
-    callout(s, M + cw + 0.3, cy, cw, ch, 'Ce qui ne change pas', ['Aucune bascule avant la fenêtre cible du 1er trimestre 2027.', 'Sujet distinct de la sécurisation technique des accès CDM réalisée le 31 août.'], { iconName: 'FiInfo', fontSize: 10.5 });
+    callout(s, M + cw + 0.3, cy, cw, ch, 'Ce qui ne change pas', ['Aucune bascule avant la fenêtre cible du 1er trimestre 2027.', 'Sujet distinct du correctif SSO en cours sur les pages d’administration CDM.'], { iconName: 'FiInfo', fontSize: 10.5 });
     s.addNotes('NOTE INTERNE — Message à tenir : le nouveau SSO Engage est sur la trajectoire produit avec une fenêtre cible T1 2027 — aucune promesse de disponibilité antérieure, aucune autre date (les étapes intermédiaires ne sont pas sourcées). Ne pas confondre avec le sujet technique CDM (SSO / AdminTool / ConfigTool) traité le 31/08.\nPoint à clarifier avec Product avant la séance : la roadmap de juin 2026 liste un « Zeta login » (connexion unique à l’écosystème Zeta) comme disponible ; préciser si le besoin de Viasanté est ce login Zeta ou une fédération SSO avec leur annuaire d’entreprise (SAML), et si la fenêtre T1 2027 porte bien sur ce dernier. Le login Zeta est volontairement absent de la roadmap présentée pour éviter la contradiction.');
   }
 
@@ -586,24 +616,25 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
   // ===== 17. Synthèse & prochaines étapes =====
   {
     const s = pres.addSlide();
-    header(s, { section: 'SYNTHÈSE', title: 'Plan d’actions et prochaines étapes', subtitle: 'Neuf actions, un responsable et une échéance pour chacune — à ajuster avec vos arbitrages.' });
+    header(s, { section: 'SYNTHÈSE', title: 'Plan d’actions et prochaines étapes', subtitle: 'Dix actions, un responsable et une échéance pour chacune — à ajuster avec vos arbitrages.' });
     const hdr = ['Sujet', 'Action proposée', 'Qui', 'Quand (proposition)'];
     const rows = [
       ['SLA Gold', 'Suivi mensuel de la consommation dans votre reporting ; alerte dès 60 %.', 'Selligent', 'Mensuel'],
       ['Base de données', 'Analyse de la répartition de la base, puis choix entre nettoyage et extension.', 'Viasanté + Selligent', 'Octobre 2026'],
       ['Redevance volume', 'Confirmation du montant de la redevance au-delà du seuil de 50 GB.', 'Selligent', 'Septembre 2026'],
       ['Licence', 'Palier de licence à confirmer au regard du volume de contacts prévu en 2027.', 'Viasanté + Selligent', 'T4 2026'],
-      ['Sécurisation & patch', 'Bilan post-patch partagé et clôture du sujet.', 'Selligent', 'Septembre 2026'],
+      ['Navigation asynchrone', 'Redescente du patch de performance, puis confirmation du résultat.', 'Selligent', 'Septembre 2026'],
+      ['Correctif SSO admin', 'Mise en production du correctif AdminTool / ConfigTool et clôture du sujet.', 'Selligent', 'Septembre 2026'],
       ['Email', 'Plan d’optimisation du taux de clics sur les campagnes prioritaires.', 'Viasanté (Marketing)', 'T4 2026'],
       ['SMS / RCS', 'Choix du connecteur RCS (LinkMobility ou Infobip) et plan d’usage 2027.', 'Viasanté (Marketing)', 'T4 2026'],
       ['Conformité CNIL', 'Extension du consentement au suivi des clics et validation DPO par typologie.', 'Viasanté (DPO) + Selligent', 'T4 2026'],
       ['SSO Engage', 'Point d’avancement produit et préparation de la bascule.', 'Selligent', 'T1 2027'],
     ];
     const widths = [1.9, 6.0, 2.35, 1.98];
-    const tableRows = [hdr.map(h => ({ text: h, options: { bold: true, color: C.white, fill: { color: C.teal }, fontSize: 11, fontFace: FONT, valign: 'middle', margin: [4, 6, 4, 6] } }))]
-      .concat(rows.map((r, i) => r.map((cell, j) => ({ text: cell, options: { fontSize: 10.5, fontFace: FONT, color: C.ink, bold: j === 0, fill: { color: i % 2 ? C.white : C.tealXL }, valign: 'middle', margin: [3, 6, 3, 6] } }))));
-    s.addTable(tableRows, { x: M, y: 2.1, w: W - 2 * M, colW: widths, border: { type: 'solid', pt: 0.5, color: 'E1E8EB' }, rowH: 0.38 });
-    callout(s, M, 6.05, W - 2 * M, 0.75, 'Prochain COPIL', 'Proposition : décembre 2026 — bilan des actions, point capacité base de données, préparation 2027.', { iconName: 'FiCalendar', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 11.5, inline: true, titleW: 1.5 });
+    const tableRows = [hdr.map(h => ({ text: h, options: { bold: true, color: C.white, fill: { color: C.teal }, fontSize: 10.5, fontFace: FONT, valign: 'middle', margin: [3, 6, 3, 6] } }))]
+      .concat(rows.map((r, i) => r.map((cell, j) => ({ text: cell, options: { fontSize: 10, fontFace: FONT, color: C.ink, bold: j === 0, fill: { color: i % 2 ? C.white : C.tealXL }, valign: 'middle', margin: [2, 6, 2, 6] } }))));
+    s.addTable(tableRows, { x: M, y: 2.05, w: W - 2 * M, colW: widths, border: { type: 'solid', pt: 0.5, color: 'E1E8EB' }, rowH: 0.33 });
+    callout(s, M, 6.1, W - 2 * M, 0.7, 'Prochain COPIL', 'Proposition : décembre 2026 — bilan des actions, point capacité base de données, préparation 2027.', { iconName: 'FiCalendar', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 11, inline: true, titleW: 1.5 });
     s.addNotes('NOTE INTERNE — Les échéances sont des propositions Selligent (aucune n’est contractuelle) : les faire valider ou ajuster en séance ligne par ligne, noter les responsables nommément côté Viasanté. Sortie attendue : un relevé de décisions envoyé sous 48 h. Proposer une date précise pour le prochain COPIL (décembre 2026).');
   }
 
