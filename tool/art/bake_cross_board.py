@@ -37,7 +37,14 @@ OUT_IMAGE = f"{ROOT}/assets/board/cross_board.webp"
 OUT_ANCHORS = f"{ROOT}/lib/widgets/board/cross_anchors.g.dart"
 
 N = 15                  # the board is a 15x15 grid of cells
-SIZE = 1536             # final plate resolution, square
+# Final plate resolution, square. Sized for the largest screen that ever
+# shows the plate whole: an iPad Pro 12.9" gives the board ~993pt, which
+# at 2x is 1987 physical pixels — so 1536 was being stretched by 1.29x
+# there while a phone (1144px) was downscaling it. 2048 covers every
+# shipping iPad with a little to spare and still downscales on a phone.
+# Every dimension below is a fraction of SIZE and the anchor table is
+# written normalised, so this number can move without moving the board.
+SIZE = 2048             # final plate resolution, square
 SS = 2                  # supersample while drawing, then downsample
 MARGIN = 0.026 * SIZE  # a thin frame: the tiles, not the border, take the phone width
 CELL = (SIZE - 2 * MARGIN) / N
@@ -122,12 +129,37 @@ def cell_center(row, col):
 
 # The architecture inside each reference panel, as fractions of that
 # panel: inside its own painted frame, above its painted knights.
+# Taken as wide as the painted knights allow. The reference panels are
+# only 366x388, so every pixel of them the plate can use is one it does
+# not have to invent: the old Arafat and Mina crops kept a third of the
+# panel's height and were blown up 4.7x and 5.0x, which is why those two
+# corners read as mush on an iPad while Medina and Al-Aqsa held. Cropping
+# down to just above the knights drops both to ~3x and shows the whole
+# mountain and the whole tent city instead of a band across the top.
 PANEL_CROP = {
-    "medina": (0.13, 0.11, 0.90, 0.60),
-    "alaqsa": (0.11, 0.11, 0.89, 0.58),
-    "arafat": (0.11, 0.08, 0.89, 0.40),
-    "mina": (0.11, 0.08, 0.89, 0.38),
+    "medina": (0.10, 0.08, 0.93, 0.60),
+    "alaqsa": (0.09, 0.08, 0.92, 0.60),
+    "arafat": (0.10, 0.06, 0.93, 0.56),
+    "mina": (0.10, 0.06, 0.93, 0.54),
 }
+
+
+def restore(img, factor):
+    """Puts back the micro-contrast an upscale takes out.
+
+    LANCZOS gives a clean enlargement but a soft one: edges keep their
+    position and lose their bite, which on a 3x blow-up reads as
+    "blurry photo" rather than "painted panel". A small unsharp mask
+    aimed at fine detail (a sub-pixel radius, a modest percentage)
+    restores the bite without the light rims a stronger one would draw
+    around the domes. Scaled by how far the source was stretched, so a
+    panel that barely moved is barely touched.
+    """
+    if factor <= 1.05:
+        return img
+    strength = min(70, int(26 * (factor - 1.0)))
+    return img.filter(ImageFilter.UnsharpMask(radius=1.2, percent=strength,
+                                              threshold=3))
 
 
 def corner_rect(name):
@@ -384,6 +416,7 @@ def bake():
         scale = max(pw / panel.width, ph / panel.height)
         panel = panel.resize((max(1, int(panel.width * scale)),
                               max(1, int(panel.height * scale))), Image.LANCZOS)
+        panel = restore(panel, scale)
         ox = (panel.width - pw) // 2
         oy = (panel.height - ph) // 2
         panel = panel.crop((ox, oy, ox + pw, oy + ph))
@@ -447,7 +480,9 @@ def bake():
     R = CELL * 1.72
     diam = int(S(R * 2))
     medallion = Image.open(f"{REF}/panel_centre.png").convert("RGB")
+    mscale = diam / medallion.width
     medallion = medallion.resize((diam, diam), Image.LANCZOS)
+    medallion = restore(medallion, mscale)
     mmask = Image.new("L", (diam, diam), 0)
     ImageDraw.Draw(mmask).ellipse((0, 0, diam - 1, diam - 1), fill=255)
     mmask = mmask.filter(ImageFilter.GaussianBlur(max(1, diam * 0.004)))
