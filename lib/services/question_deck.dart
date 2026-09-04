@@ -19,8 +19,9 @@ class DrawnCard {
 /// A turn starts by drawing a card worth 1 to 6 squares. The value is a
 /// fair die — picked uniformly, whatever the bank happens to hold — and
 /// the question that comes with it is dealt at the rider's own level,
-/// chosen before the game: easy, intermediate or expert. The card never
-/// decides how hard the question is.
+/// chosen before the game: easy, intermediate, expert — or mixed, where
+/// each card draws its own level. The card's *value* never decides how
+/// hard the question is.
 ///
 /// The deck keeps **one pile per level**, shuffled once at the start of
 /// the game and dealt out card by card; a dealt question leaves the pile
@@ -91,6 +92,16 @@ class QuestionDeck {
   /// Cards of [level] not yet dealt in the current cycle.
   int remainingAt(QuestionDifficulty level) => _remaining[level]?.length ?? 0;
 
+  /// A level drawn for a rider on the mixed level: uniform among the
+  /// levels the bank actually holds, never a level with no cards behind
+  /// it. Exposed so a caller can mix once and reuse the answer — the
+  /// question and the points it scores must agree on one level.
+  QuestionDifficulty mixedLevel() {
+    final levels = availableLevels;
+    if (levels.isEmpty) return QuestionDifficulty.medium;
+    return levels[_random.nextInt(levels.length)];
+  }
+
   /// Removes [ids] from every pile — the questions a resumed game has
   /// already asked, so a save never repeats what the players have seen.
   void exclude(Iterable<String> ids) {
@@ -107,20 +118,28 @@ class QuestionDeck {
   /// Draws the next card for a rider playing at [level]: a value chosen
   /// uniformly in 1..6, and the next question off that level's pile.
   ///
+  /// A null [level] is the *mixed* level: the pile is chosen first,
+  /// uniformly among the levels the bank actually holds, so a rider on
+  /// that level meets easy, intermediate and expert questions in equal
+  /// measure over a game.
+  ///
   /// A level the bank does not hold falls back to the nearest one it
   /// does, so a turn is never blocked by a thin bank. Returns null only
   /// for a deck built from an empty pool.
-  DrawnCard? draw(QuestionDifficulty level) {
+  DrawnCard? draw(QuestionDifficulty? level) {
     final question = drawQuestion(level);
     if (question == null) return null;
     return DrawnCard(value: 1 + _random.nextInt(6), question: question);
   }
 
   /// The next question of [level] (or the nearest level held), without
-  /// a value — for the questions the board asks outside a draw.
-  Question? drawQuestion(QuestionDifficulty level) {
+  /// a value — for the questions the board asks outside a draw. A null
+  /// [level] mixes the three, as in [draw].
+  Question? drawQuestion(QuestionDifficulty? level) {
     if (_source.isEmpty) return null;
-    final tier = _fallbackOrder(level).firstWhere(_source.containsKey);
+    final tier = level == null
+        ? mixedLevel()
+        : _fallbackOrder(level).firstWhere(_source.containsKey);
     var pile = _remaining[tier]!;
     if (pile.isEmpty) {
       pile = _refill(tier);

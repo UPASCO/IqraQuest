@@ -820,6 +820,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get levelExpert => 'خبير';
 
   @override
+  String get levelMixed => 'متنوع';
+
+  @override
+  String get levelMixedHint =>
+      'متنوع: كل بطاقة تسحب مستواها — سهل أو متوسط أو خبير.';
+
+  @override
   String get raceRulesUpdatedTitle => 'تم تحسين قواعد السباق';
 
   @override
@@ -858,7 +865,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'في دورك، اسحب بطاقة. تنقلب على قيمتها — «بطاقة بخمس ركضات» — ثم يُفتح سؤالها، دائمًا على مستواك المختار قبل اللعب: سهل أو متوسط أو خبير. فتعرف قيمة الإجابة الصحيحة قبل أن تجيب.';
+      'في دورك، اسحب بطاقة. تنقلب على قيمتها — «بطاقة بخمس ركضات» — ثم يُفتح سؤالها، دائمًا على مستواك المختار قبل اللعب: سهل أو متوسط أو خبير أو متنوع. فتعرف قيمة الإجابة الصحيحة قبل أن تجيب.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'أجب لتتقدم';

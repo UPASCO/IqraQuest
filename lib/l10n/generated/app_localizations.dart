@@ -1450,6 +1450,18 @@ abstract class AppLocalizations {
   /// **'Expert'**
   String get levelExpert;
 
+  /// Question level a rider plays at: all three levels mixed
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed'**
+  String get levelMixed;
+
+  /// One line under the level chips, explaining the mixed level
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed: each card draws its own level — easy, intermediate or expert.'**
+  String get levelMixedHint;
+
   /// Shown once when a pre-gait save is detected
   ///
   /// In en, this message translates to:
@@ -1519,7 +1531,7 @@ abstract class AppLocalizations {
   /// Rules step: the card turns over onto its stake
   ///
   /// In en, this message translates to:
-  /// **'On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.'**
+  /// **'On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate, expert or mixed. So you know what a right answer is worth before you answer.'**
   String get ruleDrawCardBody;
 
   /// Rules step 2 title

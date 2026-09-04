@@ -12,38 +12,52 @@ import 'reward_inventory.dart';
 enum AiDifficulty { easy, medium, hard }
 
 /// The level a rider plays at, chosen before the game and applied to
-/// every question they get, whatever the card. Three levels — easy,
-/// intermediate, expert — so a 7-year-old and an adult share one board
-/// fairly: the same cards, the same distances, each their own questions.
+/// every question they get, whatever the card. Three fixed levels —
+/// easy, intermediate, expert — so a 7-year-old and an adult share one
+/// board fairly: the same cards, the same distances, each their own
+/// questions. Plus [mixed], which fixes no level at all: every card
+/// draws its own, so a single rider meets the whole bank.
 ///
 /// The names are written into every save file. Older saves carried
-/// four levels; [Player.fromJson] folds them onto these three.
-enum PlayerProfile { easy, intermediate, expert }
+/// four levels; [Player.fromJson] folds them onto these.
+enum PlayerProfile { easy, intermediate, expert, mixed }
 
 extension PlayerProfileX on PlayerProfile {
-  /// The difficulty of every question this rider is asked.
-  QuestionDifficulty get difficulty => switch (this) {
+  /// The level every question of this rider is drawn at, or null on the
+  /// [PlayerProfile.mixed] level, where each card draws its own.
+  QuestionDifficulty? get difficulty => switch (this) {
     PlayerProfile.easy => QuestionDifficulty.easy,
     PlayerProfile.intermediate => QuestionDifficulty.medium,
     PlayerProfile.expert => QuestionDifficulty.hard,
+    PlayerProfile.mixed => null,
   };
 
-  /// What a correct answer earns: harder questions, more knowledge.
-  int get knowledgePoints => switch (this) {
-    PlayerProfile.easy => 1,
-    PlayerProfile.intermediate => 2,
-    PlayerProfile.expert => 3,
-  };
+  /// Whether this rider's questions are drawn across all three levels.
+  bool get isMixed => this == PlayerProfile.mixed;
+
+  /// The level to fall back on wherever exactly one tier is needed and
+  /// the question actually asked is not in hand — a mixed rider sits in
+  /// the middle of the range they play.
+  QuestionDifficulty get nominalDifficulty =>
+      difficulty ?? QuestionDifficulty.medium;
+
+  /// What a correct answer earns. A fixed level always scores its own
+  /// level, whatever distance the card bought; a mixed rider scores the
+  /// level the card actually asked, so mixing neither pays a premium nor
+  /// costs one.
+  int knowledgePointsFor(QuestionDifficulty? asked) =>
+      (difficulty ?? asked ?? QuestionDifficulty.medium).knowledgePoints;
 
   /// The easy level is the children's level: larger answers on the card,
   /// the verdict and the right answer as the lesson (spec §14).
   bool get isChildMode => this == PlayerProfile.easy;
 
   /// Reads a level by name, folding the four levels of older saves
-  /// (child, discovery, intermediate, advanced) onto today's three.
+  /// (child, discovery, intermediate, advanced) onto today's levels.
   static PlayerProfile parse(String? name) => switch (name) {
     'easy' || 'child' || 'discovery' => PlayerProfile.easy,
     'expert' || 'advanced' => PlayerProfile.expert,
+    'mixed' => PlayerProfile.mixed,
     _ => PlayerProfile.intermediate,
   };
 }

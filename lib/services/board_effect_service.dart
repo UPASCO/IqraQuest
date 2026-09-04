@@ -41,8 +41,17 @@ class BoardEffectService {
         _ => true,
       };
 
-  /// The difficulty of the optional question a square asks for, or null if
-  /// it asks none.
+  /// Whether this square asks the player an optional question at all.
+  /// Ask this first: a null level from [questionDifficultyFor] means
+  /// "draw it mixed", not "no question".
+  bool asksQuestion(CellEffect effect) => switch (effect) {
+    CellEffect.challenge || CellEffect.shortcut || CellEffect.duel => true,
+    _ => false,
+  };
+
+  /// The level of the optional question a square asks for: null to draw
+  /// it mixed (the rider plays the mixed level), or when the square asks
+  /// none at all — see [asksQuestion].
   QuestionDifficulty? questionDifficultyFor(CellEffect effect, PlayerProfile profile) =>
       switch (effect) {
         CellEffect.challenge || CellEffect.shortcut => movementChoices.bonusDifficultyFor(profile),

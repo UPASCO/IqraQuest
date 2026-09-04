@@ -6,6 +6,18 @@ enum QuestionCategory { prophets, sira, quran, faith, virtues }
 /// exactly one of each.
 enum QuestionDifficulty { easy, medium, hard }
 
+extension QuestionDifficultyX on QuestionDifficulty {
+  /// What a correct answer at this level is worth: harder question,
+  /// more knowledge. The single source of truth for the three values —
+  /// a rider on a fixed level always scores their own level, a rider on
+  /// the mixed level scores the level the card actually asked.
+  int get knowledgePoints => switch (this) {
+    QuestionDifficulty.easy => 1,
+    QuestionDifficulty.medium => 2,
+    QuestionDifficulty.hard => 3,
+  };
+}
+
 /// Where a fact is anchored. Ordered by source priority (spec §53):
 /// Qur'an first, then the two most rigorously authenticated hadith
 /// collections, then well-established, non-controversial Sīra events.

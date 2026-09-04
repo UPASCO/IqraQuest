@@ -3,7 +3,8 @@
 A family board game about Islamic knowledge: the classic *jeu des petits
 chevaux* with a deck of question cards in place of the die. On each turn
 a player draws a card worth 1 to 6 squares and must answer its question
-— at the level they chose before the game (easy, intermediate, expert) —
+— at the level they chose before the game (easy, intermediate, expert,
+or mixed, where every card draws its own) —
 to actually move. Four horses per stable, out on a 6, captures, a 6
 replays. The free edition is a race of fifty cards; Premium runs to
 Mecca. Built with Flutter, fully offline, no account, no backend, no
@@ -151,7 +152,9 @@ of the die, played **answer first, then place**. The turn is:
    galops"): the player knows what a right answer is worth before the
    question opens, and the stake stays pinned over the question while it
    is played for. The question is at the rider's own level (chosen
-   before the game, the same whatever the card);
+   before the game, the same whatever the card) — or, on the **mixed**
+   level, at a level the deck draws for each card, uniformly among the
+   three;
 2. **answer** — a wrong answer moves nothing (the sheet still says what
    the card was worth); a right one wins the card's **galops**, revealed
    as an event, never as a fact read off the card: a gold medallion drops
@@ -250,6 +253,16 @@ bottom; and each deal weighs the top few cards for a change of category
 and of subject (no three Qur'an cards in a row, no two Musa cards in a
 row). Linear in the pile, built for a bank of thousands
 (`test/services/question_deck_test.dart` deals 5 000 cards twice).
+
+**Levels.** A rider picks one of four before the game: easy,
+intermediate, expert — each fixing the level of every question they get,
+whatever the card — or **mixed**, which fixes none: `QuestionDeck.draw`
+takes a nullable level, and a null one picks the pile first, uniformly
+among the levels the bank holds. Points follow suit: a fixed level always
+scores its own (an expert answer is worth three whatever distance it
+bought), while a mixed rider scores the level the card actually asked, so
+mixing neither pays a premium nor costs one
+(`PlayerProfileX.knowledgePointsFor`).
 
 ### State management & navigation
 

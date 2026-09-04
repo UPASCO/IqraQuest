@@ -379,6 +379,7 @@ class GameController extends StateNotifier<GameSession?> {
     final s = state;
     if (s == null || s.gameState.turnPhase != TurnPhase.selectingGait) return;
 
+    // Null on the mixed level: the deck then draws the level too.
     final level = s.gameState.currentPlayer.profile.difficulty;
     final card = _deck?.draw(level);
     if (card == null) {
@@ -418,7 +419,9 @@ class GameController extends StateNotifier<GameSession?> {
 
   /// A question outside the draw — a chest's, a journey's — dealt from
   /// the same deck, so it never repeats what the game has already asked.
-  Question? _drawQuestion(GameState gameState, QuestionDifficulty difficulty) {
+  /// A null [difficulty] draws the question mixed: the deck picks the
+  /// level itself, as it does for a rider on the mixed level.
+  Question? _drawQuestion(GameState gameState, QuestionDifficulty? difficulty) {
     final fromDeck = _deck?.drawQuestion(difficulty);
     if (fromDeck != null) return fromDeck.withShuffledAnswers(_random);
     final fresh = questionRepository.pickQuestion(
@@ -458,6 +461,7 @@ class GameController extends StateNotifier<GameSession?> {
       correct: question.isCorrect(selectedIndex),
       questionId: question.id,
       category: question.category,
+      askedLevel: question.difficulty,
     );
   }
 
@@ -465,6 +469,7 @@ class GameController extends StateNotifier<GameSession?> {
     required bool correct,
     required String questionId,
     required QuestionCategory? category,
+    QuestionDifficulty? askedLevel,
   }) {
     final s = state;
     if (s == null) return;
@@ -477,6 +482,7 @@ class GameController extends StateNotifier<GameSession?> {
       s.gameState,
       correct: correct,
       questionId: questionId,
+      askedLevel: askedLevel,
     );
 
     // Track the player's strongest category so a 10-streak can award the
@@ -828,11 +834,13 @@ class GameController extends StateNotifier<GameSession?> {
     if (effect == null) return;
 
     final profile = s.gameState.currentPlayer.profile;
-    final difficulty = boardEffects.questionDifficultyFor(effect, profile);
-    if (difficulty == null) {
+    if (!boardEffects.asksQuestion(effect)) {
       declineCellOffer();
       return;
     }
+    // Null here is the mixed level, not "no question": the square asks
+    // one, and the deck picks the level for it.
+    final difficulty = boardEffects.questionDifficultyFor(effect, profile);
     final question = _drawQuestion(s.gameState, difficulty);
     if (question == null) {
       declineCellOffer();

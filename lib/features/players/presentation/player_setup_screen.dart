@@ -402,6 +402,19 @@ class _RiderPanel extends StatelessWidget {
                 ),
             ],
           ),
+          // The mixed level is the only one whose name does not say what
+          // it does, so it explains itself the moment it is chosen.
+          if (profile.isMixed) ...[
+            const SizedBox(height: 6),
+            Text(
+              l10n.levelMixedHint,
+              key: const Key('level-mixed-hint'),
+              style: textTheme.bodySmall?.copyWith(
+                color: OrnatePalette.ivoryDim,
+                height: 1.3,
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -411,6 +424,7 @@ class _RiderPanel extends StatelessWidget {
     PlayerProfile.easy => l10n.levelEasy,
     PlayerProfile.intermediate => l10n.levelIntermediate,
     PlayerProfile.expert => l10n.levelExpert,
+    PlayerProfile.mixed => l10n.levelMixed,
   };
 }
 

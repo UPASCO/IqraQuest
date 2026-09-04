@@ -66,6 +66,61 @@ void main() {
     );
   });
 
+  test('the mixed level draws all three levels for the same rider', () async {
+    final storage = await LocalStorageService.create();
+    final controller = await buildController(storage);
+    controller.startNewGame(
+      mode: GameMode.family,
+      variant: GameVariant.classic,
+      circuitId: CircuitId.oasisRoute,
+      players: [
+        human('mix', AppTeam.emerald, profile: PlayerProfile.mixed, horses: 4),
+        human('kid', AppTeam.saphir, profile: PlayerProfile.easy, horses: 4),
+      ],
+    );
+
+    final mixedLevels = <QuestionDifficulty>{};
+    var mixedPoints = 0;
+    for (var i = 0; i < 60; i++) {
+      final s = controller.state!;
+      if (s.gameState.turnPhase == TurnPhase.gameOver) break;
+      if (s.gameState.turnPhase != TurnPhase.selectingGait) break;
+      controller.drawCard();
+      final q = controller.state!.currentQuestion!;
+      final player = controller.state!.gameState.currentPlayer;
+      if (player.id == 'mix') {
+        mixedLevels.add(q.difficulty);
+        // Points on the mixed level follow the level actually asked.
+        mixedPoints += q.difficulty.knowledgePoints;
+      } else {
+        expect(
+          q.difficulty,
+          QuestionDifficulty.easy,
+          reason: 'a fixed level is still fixed while another rider mixes',
+        );
+      }
+      controller.answerQuestion(q.correctAnswerIndex);
+      finishTurn(controller);
+    }
+
+    expect(
+      mixedLevels,
+      containsAll(QuestionDifficulty.values),
+      reason: 'the mixed rider only ever saw $mixedLevels',
+    );
+    // Every answer above was correct, so the rider banked at least the
+    // sum of the levels they were asked. It can be more: knowledge
+    // squares pay their own point on top, which is not this test's
+    // claim — `applyAnswer` is where the rate itself is pinned.
+    final mixed = controller.state!.gameState.players.firstWhere(
+      (p) => p.id == 'mix',
+    );
+    expect(
+      mixed.rewards.knowledgePoints,
+      greaterThanOrEqualTo(mixedPoints),
+    );
+  });
+
   test(
     'the opponent draws from the deck rather than choosing its value',
     () async {

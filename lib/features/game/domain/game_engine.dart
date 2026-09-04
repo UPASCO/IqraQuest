@@ -7,6 +7,7 @@ import '../../../models/move_outcome.dart';
 import '../../../models/movement_choice.dart';
 import '../../../models/pawn_position.dart';
 import '../../../models/player.dart';
+import '../../../models/question_category.dart';
 import '../../../models/turn_phase.dart';
 import 'bonus_layout.dart';
 
@@ -271,6 +272,7 @@ class GameEngine {
     GameState state, {
     required bool correct,
     required String questionId,
+    QuestionDifficulty? askedLevel,
   }) {
     final players = [...state.players];
     final playerIndex = state.currentPlayerIndex;
@@ -285,10 +287,13 @@ class GameEngine {
       streak = result.streak;
       unlocked.addAll(result.unlocked);
       // Points follow the level the rider plays at, not the card: an
-      // expert answer is worth three whatever distance it bought.
+      // expert answer is worth three whatever distance it bought. On the
+      // mixed level there is no such fixed level, so the points follow
+      // the level of the question that was actually asked.
       rewards = rewards.copyWith(
         knowledgePoints:
-            rewards.knowledgePoints + player.profile.knowledgePoints,
+            rewards.knowledgePoints +
+            player.profile.knowledgePointsFor(askedLevel),
       );
       for (final reward in unlocked) {
         if (reward == StreakReward.grandGallop) {

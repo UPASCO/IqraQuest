@@ -816,6 +816,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get levelExpert => 'Esperto';
 
   @override
+  String get levelMixed => 'Misto';
+
+  @override
+  String get levelMixedHint =>
+      'Misto: ogni carta pesca il proprio livello — facile, intermedio o esperto.';
+
+  @override
   String get raceRulesUpdatedTitle =>
       'Le regole della corsa sono state migliorate';
 
@@ -855,7 +862,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Al tuo turno pesca una carta. Si gira sul suo valore — «Carta da 5 galoppi» — poi si apre la domanda, sempre al tuo livello, scelto all\'inizio: facile, intermedio o esperto. Sai quindi quanto vale una risposta esatta prima di rispondere.';
+      'Al tuo turno pesca una carta. Si gira sul suo valore — «Carta da 5 galoppi» — poi si apre la domanda, sempre al tuo livello, scelto all\'inizio: facile, intermedio, esperto o misto. Sai quindi quanto vale una risposta esatta prima di rispondere.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Rispondi per avanzare';

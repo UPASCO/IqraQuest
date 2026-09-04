@@ -809,6 +809,13 @@ class AppLocalizationsMs extends AppLocalizations {
   String get levelExpert => 'Pakar';
 
   @override
+  String get levelMixed => 'Campuran';
+
+  @override
+  String get levelMixedHint =>
+      'Campuran: setiap kad menarik tahapnya sendiri — mudah, sederhana atau pakar.';
+
+  @override
   String get raceRulesUpdatedTitle =>
       'Peraturan perlumbaan telah ditambah baik';
 
@@ -848,7 +855,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Pada pusinganmu, cabut satu kad. Kad itu terbalik menunjukkan nilainya — «Kad 5 derap» — kemudian soalannya terbuka, selalu pada tahapmu, yang dipilih pada mulanya: mudah, sederhana atau pakar. Jadi kamu tahu nilai jawapan betul sebelum menjawab.';
+      'Pada pusinganmu, cabut satu kad. Kad itu terbalik menunjukkan nilainya — «Kad 5 derap» — kemudian soalannya terbuka, selalu pada tahapmu, yang dipilih pada mulanya: mudah, sederhana, pakar atau campuran. Jadi kamu tahu nilai jawapan betul sebelum menjawab.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';

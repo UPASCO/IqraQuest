@@ -816,6 +816,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get levelExpert => 'Expert';
 
   @override
+  String get levelMixed => 'Mixte';
+
+  @override
+  String get levelMixedHint =>
+      'Mixte : chaque carte tire son niveau — facile, intermédiaire ou expert.';
+
+  @override
   String get raceRulesUpdatedTitle => 'Les règles de course ont été améliorées';
 
   @override
@@ -854,7 +861,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'À ton tour, pioche une carte. Elle se retourne sur son enjeu — « Carte à 5 galops » — puis sa question s\'ouvre, toujours à ton niveau, choisi au départ : facile, intermédiaire ou expert. Tu sais donc ce que vaut une bonne réponse avant de répondre.';
+      'À ton tour, pioche une carte. Elle se retourne sur son enjeu — « Carte à 5 galops » — puis sa question s\'ouvre, toujours à ton niveau, choisi au départ : facile, intermédiaire, expert ou mixte. Tu sais donc ce que vaut une bonne réponse avant de répondre.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Réponds pour avancer';

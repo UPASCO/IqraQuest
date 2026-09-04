@@ -814,6 +814,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get levelExpert => 'Experte';
 
   @override
+  String get levelMixed => 'Gemischt';
+
+  @override
+  String get levelMixedHint =>
+      'Gemischt: Jede Karte zieht ihr eigenes Niveau – leicht, mittel oder Experte.';
+
+  @override
   String get raceRulesUpdatedTitle => 'Die Rennregeln wurden verbessert';
 
   @override
@@ -852,7 +859,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Zieh in deinem Zug eine Karte. Sie dreht sich auf ihren Wert — „Karte über 5 Galopps\" — dann öffnet sich ihre Frage, immer auf deiner Stufe, die du vorher gewählt hast: leicht, mittel oder Experte. Du weißt also vorher, was eine richtige Antwort wert ist.';
+      'Zieh in deinem Zug eine Karte. Sie dreht sich auf ihren Wert — „Karte über 5 Galopps\" — dann öffnet sich ihre Frage, immer auf deiner Stufe, die du vorher gewählt hast: leicht, mittel, Experte oder gemischt. Du weißt also vorher, was eine richtige Antwort wert ist.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antworte, um vorzurücken';

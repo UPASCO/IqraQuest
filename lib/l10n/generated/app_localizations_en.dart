@@ -813,6 +813,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get levelExpert => 'Expert';
 
   @override
+  String get levelMixed => 'Mixed';
+
+  @override
+  String get levelMixedHint =>
+      'Mixed: each card draws its own level — easy, intermediate or expert.';
+
+  @override
   String get raceRulesUpdatedTitle => 'The race rules have been improved';
 
   @override
@@ -851,7 +858,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.';
+      'On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate, expert or mixed. So you know what a right answer is worth before you answer.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Answer to advance';

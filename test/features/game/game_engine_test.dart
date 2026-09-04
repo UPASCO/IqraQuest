@@ -183,9 +183,56 @@ void main() {
     });
 
     test('knowledge points scale with the level played', () {
-      expect(PlayerProfile.easy.knowledgePoints, 1);
-      expect(PlayerProfile.intermediate.knowledgePoints, 2);
-      expect(PlayerProfile.expert.knowledgePoints, 3);
+      // A fixed level always scores its own, whatever level the card
+      // happened to be drawn at.
+      expect(PlayerProfile.easy.knowledgePointsFor(null), 1);
+      expect(PlayerProfile.intermediate.knowledgePointsFor(null), 2);
+      expect(PlayerProfile.expert.knowledgePointsFor(null), 3);
+      expect(
+        PlayerProfile.easy.knowledgePointsFor(QuestionDifficulty.hard),
+        1,
+        reason: 'an easy rider never scores an expert answer',
+      );
+    });
+
+    test('applyAnswer pays a mixed rider by the level it asked', () {
+      var state = buildGame(profile: PlayerProfile.mixed);
+      state = engine.drawCard(state, const MovementChoice(3));
+      state = engine.applyAnswer(
+        state,
+        correct: true,
+        questionId: 'q-hard',
+        askedLevel: QuestionDifficulty.hard,
+      );
+      expect(state.players[0].rewards.knowledgePoints, 3);
+
+      // A fixed level ignores the level asked and scores its own.
+      var fixed = buildGame(profile: PlayerProfile.easy);
+      fixed = engine.drawCard(fixed, const MovementChoice(3));
+      fixed = engine.applyAnswer(
+        fixed,
+        correct: true,
+        questionId: 'q-hard',
+        askedLevel: QuestionDifficulty.hard,
+      );
+      expect(fixed.players[0].rewards.knowledgePoints, 1);
+    });
+
+    test('the mixed level scores the level the card actually asked', () {
+      expect(PlayerProfile.mixed.difficulty, isNull);
+      expect(PlayerProfile.mixed.isMixed, isTrue);
+      expect(
+        PlayerProfile.mixed.knowledgePointsFor(QuestionDifficulty.easy),
+        1,
+      );
+      expect(
+        PlayerProfile.mixed.knowledgePointsFor(QuestionDifficulty.medium),
+        2,
+      );
+      expect(
+        PlayerProfile.mixed.knowledgePointsFor(QuestionDifficulty.hard),
+        3,
+      );
     });
 
     test('a value can come up again immediately, exactly as a die repeats', () {
@@ -1192,11 +1239,12 @@ void main() {
   group('Playing together across ages', () {
     const service = MovementChoiceService();
 
-    test('three levels, chosen up front, and the card never changes them', () {
+    test('four levels, chosen up front, and the card never changes them', () {
       expect(PlayerProfile.values, [
         PlayerProfile.easy,
         PlayerProfile.intermediate,
         PlayerProfile.expert,
+        PlayerProfile.mixed,
       ]);
       const bold = MovementChoice(6);
       expect(
@@ -1214,12 +1262,24 @@ void main() {
       expect(PlayerProfile.expert.isChildMode, isFalse);
     });
 
-    test('older saves with four levels fold onto the three', () {
+    test('older save level names still fold onto the levels shipped', () {
       expect(PlayerProfileX.parse('child'), PlayerProfile.easy);
       expect(PlayerProfileX.parse('discovery'), PlayerProfile.easy);
       expect(PlayerProfileX.parse('advanced'), PlayerProfile.expert);
       expect(PlayerProfileX.parse('intermediate'), PlayerProfile.intermediate);
+      expect(PlayerProfileX.parse('mixed'), PlayerProfile.mixed);
       expect(PlayerProfileX.parse(null), PlayerProfile.intermediate);
+    });
+
+    test('the mixed level fixes no tier, so every draw picks its own', () {
+      const bold = MovementChoice(6);
+      expect(service.difficultyFor(bold, PlayerProfile.mixed), isNull);
+      expect(service.journeyDifficultyFor(PlayerProfile.mixed), isNull);
+      // A bonus square is "one level up" — there is no level up from
+      // mixed, so it stays mixed and keeps its full range.
+      expect(service.bonusDifficultyFor(PlayerProfile.mixed), isNull);
+      // The mixed level is not the children's level.
+      expect(PlayerProfile.mixed.isChildMode, isFalse);
     });
 
     test('the bonus question is one level up, capped; the journey question is the rider\'s', () {

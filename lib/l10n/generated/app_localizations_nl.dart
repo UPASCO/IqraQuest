@@ -811,6 +811,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get levelExpert => 'Expert';
 
   @override
+  String get levelMixed => 'Gemengd';
+
+  @override
+  String get levelMixedHint =>
+      'Gemengd: elke kaart trekt zijn eigen niveau — makkelijk, gemiddeld of expert.';
+
+  @override
   String get raceRulesUpdatedTitle => 'De racerregels zijn verbeterd';
 
   @override
@@ -849,7 +856,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Pak op je beurt een kaart. Ze draait om op haar waarde — \"Kaart van 5 galops\" — en dan opent haar vraag, altijd op jouw niveau, vooraf gekozen: makkelijk, gemiddeld of expert. Je weet dus wat een goed antwoord waard is voordat je antwoordt.';
+      'Pak op je beurt een kaart. Ze draait om op haar waarde — \"Kaart van 5 galops\" — en dan opent haar vraag, altijd op jouw niveau, vooraf gekozen: makkelijk, gemiddeld, expert of gemengd. Je weet dus wat een goed antwoord waard is voordat je antwoordt.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Antwoord om vooruit te gaan';

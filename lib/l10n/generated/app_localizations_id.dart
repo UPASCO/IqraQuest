@@ -809,6 +809,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get levelExpert => 'Ahli';
 
   @override
+  String get levelMixed => 'Campuran';
+
+  @override
+  String get levelMixedHint =>
+      'Campuran: setiap kartu menarik tingkatnya sendiri — mudah, menengah, atau ahli.';
+
+  @override
   String get raceRulesUpdatedTitle => 'Aturan balapan telah ditingkatkan';
 
   @override
@@ -847,7 +854,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Pada giliranmu, ambil satu kartu. Kartu berbalik memperlihatkan nilainya — «Kartu 5 derap» — lalu pertanyaannya terbuka, selalu di tingkatmu, yang dipilih sejak awal: mudah, menengah, atau ahli. Jadi kamu tahu nilai jawaban benar sebelum menjawab.';
+      'Pada giliranmu, ambil satu kartu. Kartu berbalik memperlihatkan nilainya — «Kartu 5 derap» — lalu pertanyaannya terbuka, selalu di tingkatmu, yang dipilih sejak awal: mudah, menengah, ahli, atau campuran. Jadi kamu tahu nilai jawaban benar sebelum menjawab.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Jawab untuk maju';

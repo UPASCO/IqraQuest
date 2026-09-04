@@ -801,6 +801,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get levelExpert => 'Uzman';
 
   @override
+  String get levelMixed => 'Karışık';
+
+  @override
+  String get levelMixedHint =>
+      'Karışık: her kart kendi seviyesini çeker — kolay, orta ya da uzman.';
+
+  @override
   String get raceRulesUpdatedTitle => 'Yarış kuralları geliştirildi';
 
   @override
@@ -839,7 +846,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Sıran gelince bir kart çek. Kart değerini göstererek dönüyor — «5 dörtnallık kart» — sonra sorusu açılır, her zaman başta seçtiğin düzeyde: kolay, orta ya da uzman. Yani doğru cevabın değerini cevaplamadan önce bilirsin.';
+      'Sıran gelince bir kart çek. Kart değerini göstererek dönüyor — «5 dörtnallık kart» — sonra sorusu açılır, her zaman başta seçtiğin düzeyde: kolay, orta, uzman ya da karışık. Yani doğru cevabın değerini cevaplamadan önce bilirsin.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'İlerlemek için cevapla';

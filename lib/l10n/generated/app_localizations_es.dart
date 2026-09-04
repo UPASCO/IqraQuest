@@ -814,6 +814,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get levelExpert => 'Experto';
 
   @override
+  String get levelMixed => 'Mixto';
+
+  @override
+  String get levelMixedHint =>
+      'Mixto: cada carta saca su propio nivel: fácil, intermedio o experto.';
+
+  @override
   String get raceRulesUpdatedTitle => 'Las reglas de la carrera han mejorado';
 
   @override
@@ -852,7 +859,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'En tu turno, roba una carta. Se vuelve mostrando su valor — «Carta de 5 galopes» — y luego se abre su pregunta, siempre a tu nivel, elegido al principio: fácil, intermedio o experto. Así sabes lo que vale una respuesta correcta antes de responder.';
+      'En tu turno, roba una carta. Se vuelve mostrando su valor — «Carta de 5 galopes» — y luego se abre su pregunta, siempre a tu nivel, elegido al principio: fácil, intermedio, experto o mixto. Así sabes lo que vale una respuesta correcta antes de responder.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responde para avanzar';

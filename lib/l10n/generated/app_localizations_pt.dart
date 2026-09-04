@@ -815,6 +815,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get levelExpert => 'Especialista';
 
   @override
+  String get levelMixed => 'Misto';
+
+  @override
+  String get levelMixedHint =>
+      'Misto: cada carta tira o seu nível — fácil, intermediário ou especialista.';
+
+  @override
   String get raceRulesUpdatedTitle => 'As regras da corrida foram melhoradas';
 
   @override
@@ -853,7 +860,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'Na tua vez, tira uma carta. Ela vira mostrando o seu valor — «Carta de 5 galopes» — e depois abre a pergunta, sempre ao teu nível, escolhido no início: fácil, intermédio ou especialista. Assim sabes o que vale uma resposta certa antes de responder.';
+      'Na tua vez, tira uma carta. Ela vira mostrando o seu valor — «Carta de 5 galopes» — e depois abre a pergunta, sempre ao teu nível, escolhido no início: fácil, intermédio, especialista ou misto. Assim sabes o que vale uma resposta certa antes de responder.';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'Responda para avançar';

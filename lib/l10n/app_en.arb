@@ -1103,6 +1103,14 @@
   "@levelExpert": {
     "description": "Question level a rider plays at, chosen before the game"
   },
+  "levelMixed": "Mixed",
+  "@levelMixed": {
+    "description": "Question level a rider plays at: all three levels mixed"
+  },
+  "levelMixedHint": "Mixed: each card draws its own level — easy, intermediate or expert.",
+  "@levelMixedHint": {
+    "description": "One line under the level chips, explaining the mixed level"
+  },
   "raceRulesUpdatedTitle": "The race rules have been improved",
   "@raceRulesUpdatedTitle": {
     "description": "Shown once when a pre-gait save is detected"
@@ -1147,7 +1155,7 @@
   "@ruleDrawCardTitle": {
     "description": "Rules step 1 title"
   },
-  "ruleDrawCardBody": "On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.",
+  "ruleDrawCardBody": "On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate, expert or mixed. So you know what a right answer is worth before you answer.",
   "@ruleDrawCardBody": {
     "description": "Rules step: the card turns over onto its stake"
   },

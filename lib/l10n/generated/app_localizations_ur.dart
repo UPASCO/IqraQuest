@@ -807,6 +807,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get levelExpert => 'ماہر';
 
   @override
+  String get levelMixed => 'مخلوط';
+
+  @override
+  String get levelMixedHint =>
+      'مخلوط: ہر کارڈ اپنا درجہ نکالتا ہے — آسان، درمیانہ یا ماہر۔';
+
+  @override
   String get raceRulesUpdatedTitle => 'دوڑ کے قواعد بہتر کر دیے گئے';
 
   @override
@@ -845,7 +852,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get ruleDrawCardBody =>
-      'اپنی باری پر ایک کارڈ نکالو۔ وہ اپنی قیمت دکھاتے ہوئے پلٹتا ہے — «5 سرپٹ کا کارڈ» — پھر اس کا سوال کھلتا ہے، ہمیشہ تمہارے منتخب کردہ درجے پر: آسان، درمیانہ یا ماہر۔ یوں تم جواب دینے سے پہلے جان لیتے ہو کہ درست جواب کی قیمت کیا ہے۔';
+      'اپنی باری پر ایک کارڈ نکالو۔ وہ اپنی قیمت دکھاتے ہوئے پلٹتا ہے — «5 سرپٹ کا کارڈ» — پھر اس کا سوال کھلتا ہے، ہمیشہ تمہارے منتخب کردہ درجے پر: آسان، درمیانہ، ماہر یا مخلوط۔ یوں تم جواب دینے سے پہلے جان لیتے ہو کہ درست جواب کی قیمت کیا ہے۔';
 
   @override
   String get ruleAnswerToAdvanceTitle => 'آگے بڑھنے کے لیے جواب دیں';

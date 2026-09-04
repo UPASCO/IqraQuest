@@ -1738,6 +1738,25 @@ s("levelExpert", "Question level a rider plays at, chosen before the game",
   fr="Expert", en="Expert", ar="خبير", es="Experto", pt="Especialista", de="Experte",
   tr="Uzman", id="Ahli", ur="ماہر", ms="Pakar", it="Esperto", nl="Expert")
 
+s("levelMixed", "Question level a rider plays at: all three levels mixed",
+  fr="Mixte", en="Mixed", ar="متنوع", es="Mixto", pt="Misto", de="Gemischt",
+  tr="Karışık", id="Campuran", ur="مخلوط", ms="Campuran", it="Misto",
+  nl="Gemengd")
+
+s("levelMixedHint", "One line under the level chips, explaining the mixed level",
+  fr="Mixte : chaque carte tire son niveau — facile, intermédiaire ou expert.",
+  en="Mixed: each card draws its own level — easy, intermediate or expert.",
+  ar="متنوع: كل بطاقة تسحب مستواها — سهل أو متوسط أو خبير.",
+  es="Mixto: cada carta saca su propio nivel: fácil, intermedio o experto.",
+  pt="Misto: cada carta tira o seu nível — fácil, intermediário ou especialista.",
+  de="Gemischt: Jede Karte zieht ihr eigenes Niveau – leicht, mittel oder Experte.",
+  tr="Karışık: her kart kendi seviyesini çeker — kolay, orta ya da uzman.",
+  id="Campuran: setiap kartu menarik tingkatnya sendiri — mudah, menengah, atau ahli.",
+  ur="مخلوط: ہر کارڈ اپنا درجہ نکالتا ہے — آسان، درمیانہ یا ماہر۔",
+  ms="Campuran: setiap kad menarik tahapnya sendiri — mudah, sederhana atau pakar.",
+  it="Misto: ogni carta pesca il proprio livello — facile, intermedio o esperto.",
+  nl="Gemengd: elke kaart trekt zijn eigen niveau — makkelijk, gemiddeld of expert.")
+
 # ---- Save migration --------------------------------------------------------
 s("raceRulesUpdatedTitle", "Shown once when a pre-gait save is detected",
   fr="Les règles de course ont été améliorées",
@@ -1849,18 +1868,18 @@ s("ruleDrawCardTitle", "Rules step 1 title",
   ms="Cabut sekeping kad", it="Pesca una carta", nl="Trek een kaart")
 
 s("ruleDrawCardBody", "Rules step: the card turns over onto its stake",
-  fr="À ton tour, pioche une carte. Elle se retourne sur son enjeu — « Carte à 5 galops » — puis sa question s'ouvre, toujours à ton niveau, choisi au départ : facile, intermédiaire ou expert. Tu sais donc ce que vaut une bonne réponse avant de répondre.",
-  en="On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate or expert. So you know what a right answer is worth before you answer.",
-  ar="في دورك، اسحب بطاقة. تنقلب على قيمتها — «بطاقة بخمس ركضات» — ثم يُفتح سؤالها، دائمًا على مستواك المختار قبل اللعب: سهل أو متوسط أو خبير. فتعرف قيمة الإجابة الصحيحة قبل أن تجيب.",
-  es="En tu turno, roba una carta. Se vuelve mostrando su valor — «Carta de 5 galopes» — y luego se abre su pregunta, siempre a tu nivel, elegido al principio: fácil, intermedio o experto. Así sabes lo que vale una respuesta correcta antes de responder.",
-  pt="Na tua vez, tira uma carta. Ela vira mostrando o seu valor — «Carta de 5 galopes» — e depois abre a pergunta, sempre ao teu nível, escolhido no início: fácil, intermédio ou especialista. Assim sabes o que vale uma resposta certa antes de responder.",
-  de="Zieh in deinem Zug eine Karte. Sie dreht sich auf ihren Wert — „Karte über 5 Galopps\" — dann öffnet sich ihre Frage, immer auf deiner Stufe, die du vorher gewählt hast: leicht, mittel oder Experte. Du weißt also vorher, was eine richtige Antwort wert ist.",
-  tr="Sıran gelince bir kart çek. Kart değerini göstererek dönüyor — «5 dörtnallık kart» — sonra sorusu açılır, her zaman başta seçtiğin düzeyde: kolay, orta ya da uzman. Yani doğru cevabın değerini cevaplamadan önce bilirsin.",
-  id="Pada giliranmu, ambil satu kartu. Kartu berbalik memperlihatkan nilainya — «Kartu 5 derap» — lalu pertanyaannya terbuka, selalu di tingkatmu, yang dipilih sejak awal: mudah, menengah, atau ahli. Jadi kamu tahu nilai jawaban benar sebelum menjawab.",
-  ur="اپنی باری پر ایک کارڈ نکالو۔ وہ اپنی قیمت دکھاتے ہوئے پلٹتا ہے — «5 سرپٹ کا کارڈ» — پھر اس کا سوال کھلتا ہے، ہمیشہ تمہارے منتخب کردہ درجے پر: آسان، درمیانہ یا ماہر۔ یوں تم جواب دینے سے پہلے جان لیتے ہو کہ درست جواب کی قیمت کیا ہے۔",
-  ms="Pada pusinganmu, cabut satu kad. Kad itu terbalik menunjukkan nilainya — «Kad 5 derap» — kemudian soalannya terbuka, selalu pada tahapmu, yang dipilih pada mulanya: mudah, sederhana atau pakar. Jadi kamu tahu nilai jawapan betul sebelum menjawab.",
-  it="Al tuo turno pesca una carta. Si gira sul suo valore — «Carta da 5 galoppi» — poi si apre la domanda, sempre al tuo livello, scelto all'inizio: facile, intermedio o esperto. Sai quindi quanto vale una risposta esatta prima di rispondere.",
-  nl="Pak op je beurt een kaart. Ze draait om op haar waarde — \"Kaart van 5 galops\" — en dan opent haar vraag, altijd op jouw niveau, vooraf gekozen: makkelijk, gemiddeld of expert. Je weet dus wat een goed antwoord waard is voordat je antwoordt.")
+  fr="À ton tour, pioche une carte. Elle se retourne sur son enjeu — « Carte à 5 galops » — puis sa question s'ouvre, toujours à ton niveau, choisi au départ : facile, intermédiaire, expert ou mixte. Tu sais donc ce que vaut une bonne réponse avant de répondre.",
+  en="On your turn, draw a card. It turns over onto its stake — \"A 5-gallop card\" — and then its question opens, always at your own level, chosen before the game: easy, intermediate, expert or mixed. So you know what a right answer is worth before you answer.",
+  ar="في دورك، اسحب بطاقة. تنقلب على قيمتها — «بطاقة بخمس ركضات» — ثم يُفتح سؤالها، دائمًا على مستواك المختار قبل اللعب: سهل أو متوسط أو خبير أو متنوع. فتعرف قيمة الإجابة الصحيحة قبل أن تجيب.",
+  es="En tu turno, roba una carta. Se vuelve mostrando su valor — «Carta de 5 galopes» — y luego se abre su pregunta, siempre a tu nivel, elegido al principio: fácil, intermedio, experto o mixto. Así sabes lo que vale una respuesta correcta antes de responder.",
+  pt="Na tua vez, tira uma carta. Ela vira mostrando o seu valor — «Carta de 5 galopes» — e depois abre a pergunta, sempre ao teu nível, escolhido no início: fácil, intermédio, especialista ou misto. Assim sabes o que vale uma resposta certa antes de responder.",
+  de="Zieh in deinem Zug eine Karte. Sie dreht sich auf ihren Wert — „Karte über 5 Galopps\" — dann öffnet sich ihre Frage, immer auf deiner Stufe, die du vorher gewählt hast: leicht, mittel, Experte oder gemischt. Du weißt also vorher, was eine richtige Antwort wert ist.",
+  tr="Sıran gelince bir kart çek. Kart değerini göstererek dönüyor — «5 dörtnallık kart» — sonra sorusu açılır, her zaman başta seçtiğin düzeyde: kolay, orta, uzman ya da karışık. Yani doğru cevabın değerini cevaplamadan önce bilirsin.",
+  id="Pada giliranmu, ambil satu kartu. Kartu berbalik memperlihatkan nilainya — «Kartu 5 derap» — lalu pertanyaannya terbuka, selalu di tingkatmu, yang dipilih sejak awal: mudah, menengah, ahli, atau campuran. Jadi kamu tahu nilai jawaban benar sebelum menjawab.",
+  ur="اپنی باری پر ایک کارڈ نکالو۔ وہ اپنی قیمت دکھاتے ہوئے پلٹتا ہے — «5 سرپٹ کا کارڈ» — پھر اس کا سوال کھلتا ہے، ہمیشہ تمہارے منتخب کردہ درجے پر: آسان، درمیانہ، ماہر یا مخلوط۔ یوں تم جواب دینے سے پہلے جان لیتے ہو کہ درست جواب کی قیمت کیا ہے۔",
+  ms="Pada pusinganmu, cabut satu kad. Kad itu terbalik menunjukkan nilainya — «Kad 5 derap» — kemudian soalannya terbuka, selalu pada tahapmu, yang dipilih pada mulanya: mudah, sederhana, pakar atau campuran. Jadi kamu tahu nilai jawapan betul sebelum menjawab.",
+  it="Al tuo turno pesca una carta. Si gira sul suo valore — «Carta da 5 galoppi» — poi si apre la domanda, sempre al tuo livello, scelto all'inizio: facile, intermedio, esperto o misto. Sai quindi quanto vale una risposta esatta prima di rispondere.",
+  nl="Pak op je beurt een kaart. Ze draait om op haar waarde — \"Kaart van 5 galops\" — en dan opent haar vraag, altijd op jouw niveau, vooraf gekozen: makkelijk, gemiddeld, expert of gemengd. Je weet dus wat een goed antwoord waard is voordat je antwoordt.")
 
 s("ruleAnswerToAdvanceTitle", "Rules step 2 title",
   fr="Réponds pour avancer", en="Answer to advance", ar="أجب لتتقدم",
