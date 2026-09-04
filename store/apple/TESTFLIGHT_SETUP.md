@@ -171,10 +171,10 @@ donc échec une fois le plafond atteint).
    d'export compliance pour ce build — réponds-y directement dans
    TestFlight avant de pouvoir l'assigner à des testeurs.
 
-## 5bis. Build testeur : jouer les 500 questions
+## 5bis. Build testeur : jouer les 900 questions
 
 La version gratuite pioche dans les **50 questions gratuites** sur les
-500 de la banque ; les 450 autres sont derrière l'achat Premium. Un
+900 de la banque ; les 850 autres sont derrière l'achat Premium. Un
 testeur qui enchaîne les parties retombe donc toujours sur les mêmes
 questions — c'est le fonctionnement prévu, pas un bug.
 

@@ -15,7 +15,7 @@ on:
       tester_unlock:
         description: >-
           Tester build: adds Settings › Tester mode, which unlocks the
-          full 500-question bank on the device without a purchase. Leave
+          full 900-question bank on the device without a purchase. Leave
           OFF for anything headed to App Store review.
         type: boolean
         default: false
