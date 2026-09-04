@@ -8,8 +8,21 @@ name: Android — build & verify
 #
 # It needs no secrets: the APK is signed with the debug key (see
 # android/app/build.gradle.kts), which is enough to prove the build.
+#
+# The APK is uploaded as a run artifact, so a manual run doubles as the
+# quickest way to get a real build onto a real device — no store, no
+# review, no Apple secrets. Tick `tester_unlock` for a build that can
+# play the whole bank without a purchase.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tester_unlock:
+        description: >-
+          Tester build: adds Settings › Tester mode, which unlocks the
+          full 900-question bank on the device without a purchase, and
+          lifts the 50-draw limit. Sideload only — never for Play.
+        type: boolean
+        default: false
   pull_request:
     paths-ignore:
       - "**.md"
@@ -51,8 +64,15 @@ jobs:
       # Release, not debug: this is the configuration that runs the
       # resource pipeline over the manifest and every XML in res/, so a
       # broken adaptive icon or launch drawable is caught here.
+      #
+      # IQRAQUEST_TESTER compiles in the tester switch
+      # (lib/app/build_flags.dart). On a pull request there is no input
+      # at all, so the comparison is false and the PR gate keeps building
+      # the store configuration, exactly as before.
       - name: Build the Android release APK
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release \
+            --dart-define=IQRAQUEST_TESTER=${{ inputs.tester_unlock == true }}
 
       - name: Upload the APK
         uses: actions/upload-artifact@v4
