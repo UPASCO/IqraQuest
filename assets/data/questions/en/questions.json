@@ -3120,6 +3120,1306 @@
     "sourceDisplay": "Quran — Surah Nuh, 71:1"
   },
   {
+    "id": "prophets_151",
+    "correctAnswerIndex": 0,
+    "question": "What were Adam and his wife forbidden to approach in the Garden?",
+    "answers": [
+      "A tree",
+      "A river",
+      "A gate",
+      "A mountain"
+    ],
+    "explanation": "Allah allowed them to eat freely, except to approach one single tree.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:35"
+  },
+  {
+    "id": "prophets_152",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, what did Adam receive from his Lord after his lapse?",
+    "answers": [
+      "Words (of repentance), and Allah accepted his repentance",
+      "Wealth",
+      "A kingdom",
+      "A book"
+    ],
+    "explanation": "\"Then Adam received words from his Lord, and He accepted his repentance.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:37"
+  },
+  {
+    "id": "prophets_153",
+    "correctAnswerIndex": 0,
+    "question": "Whom does the Quran compare 'Isa to, as regards his creation?",
+    "answers": [
+      "Adam, created from dust",
+      "Nuh (Noah)",
+      "Ibrahim (Abraham)",
+      "Yahya (John)"
+    ],
+    "explanation": "\"Indeed, the likeness of 'Isa before Allah is as the likeness of Adam: He created him from dust, then said to him 'Be' and he was.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:59"
+  },
+  {
+    "id": "prophets_154",
+    "correctAnswerIndex": 0,
+    "question": "Of which prophet does the Quran say he was truthful and that Allah raised him to a high station?",
+    "answers": [
+      "Idris (Enoch)",
+      "Ilyas (Elijah)",
+      "Dhul-Kifl",
+      "Al-Yasa' (Elisha)"
+    ],
+    "explanation": "\"And mention Idris in the Book: he was truthful, a prophet; and We raised him to a high station.\"",
+    "sourceDisplay": "Quran — Surah Maryam, 19:56-57"
+  },
+  {
+    "id": "prophets_155",
+    "correctAnswerIndex": 0,
+    "question": "What did Nuh say as his people boarded the ark?",
+    "answers": [
+      "\"In the name of Allah be its sailing and its anchorage\"",
+      "\"Do not fear the sea\"",
+      "\"Take your provisions\"",
+      "\"Wait for nightfall\""
+    ],
+    "explanation": "\"Board it: in the name of Allah be its course and its mooring.\"",
+    "sourceDisplay": "Quran — Surah Hud, 11:41"
+  },
+  {
+    "id": "prophets_156",
+    "correctAnswerIndex": 0,
+    "question": "In Surah Nuh, what did the prophet Nuh ask his Lord concerning the disbelievers?",
+    "answers": [
+      "To leave none of them on the earth",
+      "To make them rich",
+      "To give them one more year",
+      "To exile them"
+    ],
+    "explanation": "\"My Lord, leave not upon the earth from among the disbelievers an inhabitant.\"",
+    "sourceDisplay": "Quran — Surah Nuh, 71:26-27"
+  },
+  {
+    "id": "prophets_157",
+    "correctAnswerIndex": 0,
+    "question": "How many of each kind was Nuh to take aboard the ark?",
+    "answers": [
+      "A pair",
+      "Three",
+      "Ten",
+      "One only"
+    ],
+    "explanation": "Allah commanded him to load into it a pair of each kind, along with his family.",
+    "sourceDisplay": "Quran — Surah Al-Mu'minun, 23:27"
+  },
+  {
+    "id": "prophets_158",
+    "correctAnswerIndex": 0,
+    "question": "Hud reminded 'Ad that Allah had made them successors after which people?",
+    "answers": [
+      "The people of Nuh (Noah)",
+      "The people of Lut (Lot)",
+      "The people of Musa (Moses)",
+      "The people of Saba"
+    ],
+    "explanation": "\"Remember when He made you successors after the people of Nuh and increased you in stature extensively.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:69"
+  },
+  {
+    "id": "prophets_159",
+    "correctAnswerIndex": 0,
+    "question": "By what were the people of 'Ad destroyed, according to Surah Al-Haqqah?",
+    "answers": [
+      "A furious, freezing wind",
+      "A flood",
+      "An earthquake",
+      "A swarm of locusts"
+    ],
+    "explanation": "\"As for 'Ad, they were destroyed by a screaming, violent wind.\"",
+    "sourceDisplay": "Quran — Surah Al-Haqqah, 69:6-7"
+  },
+  {
+    "id": "prophets_160",
+    "correctAnswerIndex": 0,
+    "question": "What did Hud reproach his people for, who built on every high place?",
+    "answers": [
+      "Building out of vanity and hoping to live forever",
+      "Farming the land",
+      "Trading far away",
+      "Travelling by night"
+    ],
+    "explanation": "\"Do you build on every elevation a sign, amusing yourselves, and take for yourselves palaces as if you would live forever?\"",
+    "sourceDisplay": "Quran — Surah Ash-Shu'ara, 26:128-129"
+  },
+  {
+    "id": "prophets_161",
+    "correctAnswerIndex": 0,
+    "question": "What did Thamud do with the mountains, according to the Quran?",
+    "answers": [
+      "They carved houses out of them",
+      "They hid gold in them",
+      "They pastured herds on them",
+      "They avoided them"
+    ],
+    "explanation": "\"You take for yourselves palaces from its plains and carve from the mountains, homes.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:74"
+  },
+  {
+    "id": "prophets_162",
+    "correctAnswerIndex": 0,
+    "question": "According to Surah Al-Qamar, the she-camel was sent to Thamud as what?",
+    "answers": [
+      "A trial for them",
+      "A reward",
+      "A gift from their king",
+      "A herd to sell"
+    ],
+    "explanation": "\"Indeed, We are sending the she-camel as a trial for them, so watch them and be patient.\"",
+    "sourceDisplay": "Quran — Surah Al-Qamar, 54:27"
+  },
+  {
+    "id": "prophets_163",
+    "correctAnswerIndex": 0,
+    "question": "What seized Thamud after they killed the she-camel?",
+    "answers": [
+      "The earthquake (ar-rajfah)",
+      "The flood",
+      "The freezing wind",
+      "Famine"
+    ],
+    "explanation": "\"So the earthquake seized them, and they lay fallen in their homes.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:78"
+  },
+  {
+    "id": "prophets_164",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was sent to the people who committed the great indecency, saying \"Will you not fear Allah?\"",
+    "answers": [
+      "Lut (Lot)",
+      "Salih",
+      "Hud",
+      "Shu'ayb"
+    ],
+    "explanation": "\"When their brother Lut said to them: 'Will you not fear Allah?'\"",
+    "sourceDisplay": "Quran — Surah Ash-Shu'ara, 26:161"
+  },
+  {
+    "id": "prophets_165",
+    "correctAnswerIndex": 0,
+    "question": "What was Lut commanded to do on the night of the punishment?",
+    "answers": [
+      "Set out by night with his family and not look back",
+      "Gather his people",
+      "Wait for dawn",
+      "Hide in the mountain"
+    ],
+    "explanation": "\"So set out with your family during a portion of the night, and let none of you look back.\"",
+    "sourceDisplay": "Quran — Surah Hud, 11:81"
+  },
+  {
+    "id": "prophets_166",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet was sent to the people of Madyan, who cheated in measure and weight?",
+    "answers": [
+      "Shu'ayb",
+      "Lut (Lot)",
+      "Hud",
+      "Ilyas (Elijah)"
+    ],
+    "explanation": "Shu'ayb ordered them to give full measure and just weight, and not to spread corruption in the land.",
+    "sourceDisplay": "Quran — Surah Hud, 11:84-85"
+  },
+  {
+    "id": "prophets_167",
+    "correctAnswerIndex": 0,
+    "question": "What did Shu'ayb tell his people he really wanted?",
+    "answers": [
+      "\"I only intend reform, as much as I am able\"",
+      "\"I only want wealth\"",
+      "\"I want to rule\"",
+      "\"I want to leave\""
+    ],
+    "explanation": "\"I only intend reform as much as I am able. And my success is not but through Allah.\"",
+    "sourceDisplay": "Quran — Surah Hud, 11:88"
+  },
+  {
+    "id": "prophets_168",
+    "correctAnswerIndex": 0,
+    "question": "After Allah tested Ibrahim with commands that he fulfilled, what did He say to him?",
+    "answers": [
+      "\"I will make you a leader (imam) for the people\"",
+      "\"I will give you a kingdom\"",
+      "\"I will make you rich\"",
+      "\"I will make you king of Babylon\""
+    ],
+    "explanation": "\"I will make you a leader for the people.\" Ibrahim asked: \"And of my descendants?\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:124"
+  },
+  {
+    "id": "prophets_169",
+    "correctAnswerIndex": 0,
+    "question": "How did Ibrahim silence the king who claimed to give life and death?",
+    "answers": [
+      "\"Allah brings the sun from the east; bring it from the west\"",
+      "\"Make the rain fall\"",
+      "\"Move this mountain\"",
+      "\"Count the stars\""
+    ],
+    "explanation": "\"Allah brings the sun from the east, so bring it from the west.\" The disbeliever was overwhelmed.",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:258"
+  },
+  {
+    "id": "prophets_170",
+    "correctAnswerIndex": 0,
+    "question": "What was Ibrahim commanded to proclaim to the people about the Sacred House?",
+    "answers": [
+      "The pilgrimage: they will come on foot and on every lean camel",
+      "Trade",
+      "War",
+      "Silence"
+    ],
+    "explanation": "\"And proclaim to the people the Hajj: they will come to you on foot and on every lean camel.\"",
+    "sourceDisplay": "Quran — Surah Al-Hajj, 22:27"
+  },
+  {
+    "id": "prophets_171",
+    "correctAnswerIndex": 0,
+    "question": "What did Ibrahim serve his honoured guests, which they did not touch?",
+    "answers": [
+      "A roasted fatted calf",
+      "Bread and water",
+      "Dates",
+      "Milk"
+    ],
+    "explanation": "He went to his household and brought a fat calf; seeing their hands not reaching for it, he felt fear.",
+    "sourceDisplay": "Quran — Surah Adh-Dhariyat, 51:24-27"
+  },
+  {
+    "id": "prophets_172",
+    "correctAnswerIndex": 0,
+    "question": "Of whom does the Quran say he is \"an excellent example\" (uswa hasana) for the believers, along with those with him?",
+    "answers": [
+      "Ibrahim (Abraham)",
+      "Nuh (Noah)",
+      "Musa (Moses)",
+      "Dawud (David)"
+    ],
+    "explanation": "\"There has been for you an excellent example in Ibrahim and those with him.\"",
+    "sourceDisplay": "Quran — Surah Al-Mumtahanah, 60:4"
+  },
+  {
+    "id": "prophets_173",
+    "correctAnswerIndex": 0,
+    "question": "In Surah Ibrahim, what did Ibrahim ask for the city of Mecca?",
+    "answers": [
+      "That it be secure, and that he and his sons be kept from worshipping idols",
+      "That it become a great market",
+      "That it have palaces",
+      "That it stay empty"
+    ],
+    "explanation": "\"My Lord, make this city secure, and keep me and my sons away from worshipping idols.\"",
+    "sourceDisplay": "Quran — Surah Ibrahim, 14:35"
+  },
+  {
+    "id": "prophets_174",
+    "correctAnswerIndex": 0,
+    "question": "What did Ibrahim say as he left his people?",
+    "answers": [
+      "\"I am going to my Lord; He will guide me\"",
+      "\"I am going to seek fortune\"",
+      "\"I will return to fight them\"",
+      "\"I am going to Egypt\""
+    ],
+    "explanation": "\"Indeed, I am going to my Lord; He will guide me.\"",
+    "sourceDisplay": "Quran — Surah As-Saffat, 37:99"
+  },
+  {
+    "id": "prophets_175",
+    "correctAnswerIndex": 0,
+    "question": "Of which prophet does the Quran say he was \"true to his promise\" and enjoined prayer and zakat on his family?",
+    "answers": [
+      "Isma'il (Ishmael)",
+      "Ishaq (Isaac)",
+      "Ya'qub (Jacob)",
+      "Yusuf (Joseph)"
+    ],
+    "explanation": "\"He was true to his promise, and he was a messenger and a prophet. He used to enjoin on his family prayer and zakat.\"",
+    "sourceDisplay": "Quran — Surah Maryam, 19:54-55"
+  },
+  {
+    "id": "prophets_176",
+    "correctAnswerIndex": 0,
+    "question": "What did Ya'qub advise Yusuf after his dream?",
+    "answers": [
+      "Not to relate it to his brothers",
+      "To tell everyone",
+      "To write it down",
+      "To forget it"
+    ],
+    "explanation": "\"O my son, do not relate your vision to your brothers, or they will plot against you.\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:5"
+  },
+  {
+    "id": "prophets_177",
+    "correctAnswerIndex": 0,
+    "question": "What sign established Yusuf's innocence before the master of the house?",
+    "answers": [
+      "His shirt torn from the back",
+      "A hidden witness",
+      "A letter",
+      "An oath"
+    ],
+    "explanation": "If the shirt was torn from behind, she lied and he is among the truthful.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:26-27"
+  },
+  {
+    "id": "prophets_178",
+    "correctAnswerIndex": 0,
+    "question": "What did the women of the city do when they saw Yusuf?",
+    "answers": [
+      "They cut their hands in astonishment",
+      "They fled",
+      "They fell silent",
+      "They laughed"
+    ],
+    "explanation": "\"When they saw him they exalted him and cut their hands, saying: 'This is no human being; this is but a noble angel.'\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:31"
+  },
+  {
+    "id": "prophets_179",
+    "correctAnswerIndex": 0,
+    "question": "What did Yusuf teach his two prison companions before interpreting their dreams?",
+    "answers": [
+      "The oneness of Allah, and that judgement belongs to Him alone",
+      "Medicine",
+      "How to calculate harvests",
+      "Poetry"
+    ],
+    "explanation": "\"Are separate lords better, or Allah, the One, the Prevailing? … Judgement is only for Allah.\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:39-40"
+  },
+  {
+    "id": "prophets_180",
+    "correctAnswerIndex": 0,
+    "question": "What did the king of Egypt say to Yusuf after speaking with him?",
+    "answers": [
+      "\"Today you are established in position and trusted with us\"",
+      "\"Return to prison\"",
+      "\"Leave Egypt\"",
+      "\"I give you my daughter\""
+    ],
+    "explanation": "\"And when he had spoken with him, he said: 'Indeed, you are today established in position and trusted.'\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:54"
+  },
+  {
+    "id": "prophets_181",
+    "correctAnswerIndex": 0,
+    "question": "How did Yusuf keep his brother with him?",
+    "answers": [
+      "The king's cup was found in his brother's bag",
+      "He bought him",
+      "He jailed him without cause",
+      "He made him a minister"
+    ],
+    "explanation": "\"Thus did We plan for Yusuf\": the cup came out of his brother's bag.",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:76"
+  },
+  {
+    "id": "prophets_182",
+    "correctAnswerIndex": 0,
+    "question": "What did Yusuf say to his brothers when they admitted their fault?",
+    "answers": [
+      "\"No blame upon you today\"",
+      "\"You will be punished\"",
+      "\"Go and never return\"",
+      "\"I have forgotten you\""
+    ],
+    "explanation": "\"No blame will there be upon you today. May Allah forgive you; He is the most merciful of the merciful.\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:92"
+  },
+  {
+    "id": "prophets_183",
+    "correctAnswerIndex": 0,
+    "question": "What did Ya'qub tell his sons about despair?",
+    "answers": [
+      "\"Do not despair of the mercy of Allah\"",
+      "\"Never travel again\"",
+      "\"Speak to no one\"",
+      "\"Write nothing down\""
+    ],
+    "explanation": "\"Do not despair of relief from Allah: none despairs of relief from Allah except the disbelieving people.\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:87"
+  },
+  {
+    "id": "prophets_184",
+    "correctAnswerIndex": 0,
+    "question": "What supplication did Yusuf make at the end of his story?",
+    "answers": [
+      "To die in submission and be joined with the righteous",
+      "To rule all Egypt",
+      "To return to Canaan",
+      "To live long"
+    ],
+    "explanation": "\"Cause me to die a Muslim and join me with the righteous.\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:101"
+  },
+  {
+    "id": "prophets_185",
+    "correctAnswerIndex": 0,
+    "question": "How did Ayyub address his Lord in his trial?",
+    "answers": [
+      "\"Adversity has touched me, and You are the Most Merciful\"",
+      "\"Why me?\"",
+      "\"Give me back my wealth\"",
+      "\"Destroy my enemies\""
+    ],
+    "explanation": "\"And remember Our servant Ayyub, when he called to his Lord: 'Satan has touched me with hardship and torment.'\"",
+    "sourceDisplay": "Quran — Surah Sad, 38:41"
+  },
+  {
+    "id": "prophets_186",
+    "correctAnswerIndex": 0,
+    "question": "What did Allah restore to Ayyub after the trial, according to Surah Sad?",
+    "answers": [
+      "His family, and the like of them with them",
+      "A kingdom",
+      "A ship",
+      "A herd of camels"
+    ],
+    "explanation": "\"And We granted him his family and a like number with them as mercy from Us and a reminder for those of understanding.\"",
+    "sourceDisplay": "Quran — Surah Sad, 38:43"
+  },
+  {
+    "id": "prophets_187",
+    "correctAnswerIndex": 0,
+    "question": "According to Surah As-Saffat, what saved Yunus from remaining in the belly of the fish?",
+    "answers": [
+      "That he was of those who glorify Allah",
+      "His strength",
+      "A passing ship",
+      "A favourable wind"
+    ],
+    "explanation": "\"And had he not been of those who exalt Allah, he would have remained inside its belly until the Day they are resurrected.\"",
+    "sourceDisplay": "Quran — Surah As-Saffat, 37:143-144"
+  },
+  {
+    "id": "prophets_188",
+    "correctAnswerIndex": 0,
+    "question": "Which people, according to the Quran, believed before the punishment reached them, and it benefited them?",
+    "answers": [
+      "The people of Yunus (Jonah)",
+      "The people of Nuh",
+      "The people of Lut",
+      "The people of Hud"
+    ],
+    "explanation": "\"Then has there not been a city that believed and its faith benefited it, except the people of Yunus?\"",
+    "sourceDisplay": "Quran — Surah Yunus, 10:98"
+  },
+  {
+    "id": "prophets_189",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran name Yunus when the Prophet ﷺ is told not to be like him in impatience?",
+    "answers": [
+      "\"The companion of the fish\" (sahib al-hut)",
+      "\"The man of the staff\"",
+      "\"The man of the mountain\"",
+      "\"The man of the well\""
+    ],
+    "explanation": "\"And be not like the companion of the fish, when he called out while he was distressed.\"",
+    "sourceDisplay": "Quran — Surah Al-Qalam, 68:48"
+  },
+  {
+    "id": "prophets_190",
+    "correctAnswerIndex": 0,
+    "question": "Which prophet rebuked his people for calling upon Ba'l and forsaking the best of creators?",
+    "answers": [
+      "Ilyas (Elijah)",
+      "Al-Yasa' (Elisha)",
+      "Yunus (Jonah)",
+      "Shu'ayb"
+    ],
+    "explanation": "\"And indeed, Ilyas was among the messengers… 'Do you call upon Ba'l and leave the best of creators?'\"",
+    "sourceDisplay": "Quran — Surah As-Saffat, 37:123-125"
+  },
+  {
+    "id": "prophets_191",
+    "correctAnswerIndex": 0,
+    "question": "Alongside Isma'il and Idris, which prophet does the Quran name among the patient whom Allah admitted into His mercy?",
+    "answers": [
+      "Dhul-Kifl",
+      "Ilyas (Elijah)",
+      "Yunus (Jonah)",
+      "Al-Yasa' (Elisha)"
+    ],
+    "explanation": "\"And Isma'il, Idris and Dhul-Kifl — all were of the patient. And We admitted them into Our mercy.\"",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:85-86"
+  },
+  {
+    "id": "prophets_192",
+    "correctAnswerIndex": 0,
+    "question": "What did Allah do for the Children of Israel at the sea, pursued by Pharaoh?",
+    "answers": [
+      "He parted the sea and saved them",
+      "He brought down night",
+      "He sent ships",
+      "He dried the sea forever"
+    ],
+    "explanation": "\"And when We parted the sea for you and saved you and drowned the people of Pharaoh.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:50"
+  },
+  {
+    "id": "prophets_193",
+    "correctAnswerIndex": 0,
+    "question": "Why did Musa ask Allah to send Harun with him?",
+    "answers": [
+      "Because he was more eloquent in speech than he",
+      "Because he was older",
+      "Because he knew Egypt",
+      "Because he could write"
+    ],
+    "explanation": "\"And my brother Harun is more fluent than me in speech, so send him with me as support, confirming me.\"",
+    "sourceDisplay": "Quran — Surah Al-Qasas, 28:34"
+  },
+  {
+    "id": "prophets_194",
+    "correctAnswerIndex": 0,
+    "question": "How were Musa and Harun to speak to Pharaoh?",
+    "answers": [
+      "With gentle speech",
+      "With threats",
+      "Without looking at him",
+      "In writing only"
+    ],
+    "explanation": "\"And speak to him with gentle speech, that perhaps he may be reminded or fear Allah.\"",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:44"
+  },
+  {
+    "id": "prophets_195",
+    "correctAnswerIndex": 0,
+    "question": "Who from Pharaoh's household defended Musa while concealing his faith?",
+    "answers": [
+      "A believing man of Pharaoh's family",
+      "The high priest",
+      "The army commander",
+      "The vizier Haman"
+    ],
+    "explanation": "\"And a believing man from the family of Pharaoh who concealed his faith said: 'Do you kill a man because he says, my Lord is Allah?'\"",
+    "sourceDisplay": "Quran — Surah Ghafir, 40:28"
+  },
+  {
+    "id": "prophets_196",
+    "correctAnswerIndex": 0,
+    "question": "What did Harun say to his people while Musa was away?",
+    "answers": [
+      "That they were only being tested by the calf, and should follow him",
+      "To keep the calf",
+      "To go to Egypt",
+      "To keep silent"
+    ],
+    "explanation": "\"O my people, you are only being tested by it. Your Lord is the Most Merciful, so follow me.\"",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:90"
+  },
+  {
+    "id": "prophets_197",
+    "correctAnswerIndex": 0,
+    "question": "What did Pharaoh's wife say on finding the infant Musa?",
+    "answers": [
+      "\"He will be a comfort of the eye for me and for you: do not kill him\"",
+      "\"Return him to his mother\"",
+      "\"Take him to the river\"",
+      "\"Sell him\""
+    ],
+    "explanation": "\"And the wife of Pharaoh said: 'A comfort of the eye for me and for you. Do not kill him; perhaps he may benefit us.'\"",
+    "sourceDisplay": "Quran — Surah Al-Qasas, 28:9"
+  },
+  {
+    "id": "prophets_198",
+    "correctAnswerIndex": 0,
+    "question": "How did Musa ask to follow the knowledgeable servant (al-Khidr)?",
+    "answers": [
+      "\"May I follow you, on condition that you teach me?\"",
+      "\"Command me and I obey\"",
+      "\"Teach me for a fee\"",
+      "\"Come with me\""
+    ],
+    "explanation": "\"May I follow you on condition that you teach me from what you have been taught of right guidance?\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:66"
+  },
+  {
+    "id": "prophets_199",
+    "correctAnswerIndex": 0,
+    "question": "In what state did Musa return to his people after seeing the calf?",
+    "answers": [
+      "Angry and grieved",
+      "Joyful",
+      "Silent",
+      "Indifferent"
+    ],
+    "explanation": "\"And when Musa returned to his people, angry and grieved… he threw down the tablets.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:150"
+  },
+  {
+    "id": "prophets_200",
+    "correctAnswerIndex": 0,
+    "question": "What message was Musa to bring Pharaoh according to Surah An-Nazi'at?",
+    "answers": [
+      "\"Would you purify yourself, and let me guide you to your Lord?\"",
+      "\"Give me back my people\"",
+      "\"Build me a palace\"",
+      "\"Leave Egypt\""
+    ],
+    "explanation": "\"Go to Pharaoh; he has transgressed. And say: would you purify yourself, and let me guide you to your Lord so you would fear Him?\"",
+    "sourceDisplay": "Quran — Surah An-Nazi'at, 79:17-19"
+  },
+  {
+    "id": "prophets_201",
+    "correctAnswerIndex": 0,
+    "question": "Who glorified Allah together with Dawud, evening and morning?",
+    "answers": [
+      "The mountains and the birds",
+      "The rivers",
+      "The stars",
+      "The winds"
+    ],
+    "explanation": "\"We subjected the mountains to glorify with him in the evening and after sunrise, and the birds, gathered together.\"",
+    "sourceDisplay": "Quran — Surah Sad, 38:18-19"
+  },
+  {
+    "id": "prophets_202",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say Allah gave Dawud, along with a firm kingdom?",
+    "answers": [
+      "Wisdom and decisive speech",
+      "Vast armies",
+      "Gold and silver",
+      "A palace of ivory"
+    ],
+    "explanation": "\"And We strengthened his kingdom and gave him wisdom and discernment in speech.\"",
+    "sourceDisplay": "Quran — Surah Sad, 38:20"
+  },
+  {
+    "id": "prophets_203",
+    "correctAnswerIndex": 0,
+    "question": "What was Dawud commanded regarding the coats of mail he made?",
+    "answers": [
+      "To measure the links precisely",
+      "To engrave his name on them",
+      "To gild them",
+      "To sell them"
+    ],
+    "explanation": "\"Make full coats of mail, and measure precisely the links.\"",
+    "sourceDisplay": "Quran — Surah Saba, 34:11"
+  },
+  {
+    "id": "prophets_204",
+    "correctAnswerIndex": 0,
+    "question": "What did Dawud and Sulaiman say when Allah gave them knowledge?",
+    "answers": [
+      "\"Praise to Allah, who has favoured us over many of His believing servants\"",
+      "\"We are the best\"",
+      "\"None equals us\"",
+      "\"We earned it\""
+    ],
+    "explanation": "\"Praise be to Allah, who has favoured us over many of His believing servants.\"",
+    "sourceDisplay": "Quran — Surah An-Naml, 27:15"
+  },
+  {
+    "id": "prophets_205",
+    "correctAnswerIndex": 0,
+    "question": "What did Sulaiman do on hearing the ant warn her people?",
+    "answers": [
+      "He smiled and asked Allah to make him grateful",
+      "He grew angry",
+      "He turned his army aside in silence",
+      "He ordered silence"
+    ],
+    "explanation": "\"So he smiled, amused at her speech, and said: 'My Lord, enable me to be grateful for Your favour.'\"",
+    "sourceDisplay": "Quran — Surah An-Naml, 27:19"
+  },
+  {
+    "id": "prophets_206",
+    "correctAnswerIndex": 0,
+    "question": "What news did the hoopoe bring Sulaiman?",
+    "answers": [
+      "A woman ruled Saba and her people prostrated to the sun",
+      "An army was approaching",
+      "A drought had struck",
+      "A treasure lay hidden"
+    ],
+    "explanation": "\"I have come to you from Saba with certain news: I found a woman ruling them… they prostrate to the sun.\"",
+    "sourceDisplay": "Quran — Surah An-Naml, 27:22-24"
+  },
+  {
+    "id": "prophets_207",
+    "correctAnswerIndex": 0,
+    "question": "What astonished the queen of Saba on entering Sulaiman's palace?",
+    "answers": [
+      "The floor of glass, which she took for water",
+      "A tame lion",
+      "A hanging garden",
+      "A throne of gold"
+    ],
+    "explanation": "\"She was told: 'Enter the palace.' Seeing it, she thought it a body of water and bared her shins. He said: 'It is a palace paved with glass.'\"",
+    "sourceDisplay": "Quran — Surah An-Naml, 27:44"
+  },
+  {
+    "id": "prophets_208",
+    "correctAnswerIndex": 0,
+    "question": "What were Sulaiman's armies made up of, according to the Quran?",
+    "answers": [
+      "Jinn, men and birds",
+      "Horsemen only",
+      "Sailors",
+      "Archers only"
+    ],
+    "explanation": "\"And gathered for Sulaiman were his soldiers of the jinn and men and birds, and they were set in rows.\"",
+    "sourceDisplay": "Quran — Surah An-Naml, 27:17"
+  },
+  {
+    "id": "prophets_209",
+    "correctAnswerIndex": 0,
+    "question": "How did Zakariyya describe his state when calling on his Lord?",
+    "answers": [
+      "\"My bones have weakened and my head has filled with white\"",
+      "\"I am rich and full\"",
+      "\"I am far from my people\"",
+      "\"I am travelling\""
+    ],
+    "explanation": "\"My Lord, my bones have weakened and my head has filled with white, and never have I been unblessed in my supplication to You.\"",
+    "sourceDisplay": "Quran — Surah Maryam, 19:4"
+  },
+  {
+    "id": "prophets_210",
+    "correctAnswerIndex": 0,
+    "question": "What sign was given to Zakariyya for the birth of Yahya?",
+    "answers": [
+      "Not to speak to people for three days except by gesture",
+      "A star",
+      "Rain out of season",
+      "A repeated dream"
+    ],
+    "explanation": "\"Your sign is that you will not speak to the people for three days except by gesture.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:41"
+  },
+  {
+    "id": "prophets_211",
+    "correctAnswerIndex": 0,
+    "question": "What was Yahya told concerning the Scripture?",
+    "answers": [
+      "\"Take the Scripture with strength\"",
+      "\"Hide the Scripture\"",
+      "\"Copy the Scripture\"",
+      "\"Read it once\""
+    ],
+    "explanation": "\"O Yahya, take the Scripture with determination.\" And We gave him judgement while yet a boy.",
+    "sourceDisplay": "Quran — Surah Maryam, 19:12"
+  },
+  {
+    "id": "prophets_212",
+    "correctAnswerIndex": 0,
+    "question": "What did the angels command Maryam after announcing that she was chosen?",
+    "answers": [
+      "To be devoutly obedient to her Lord, to prostrate and to bow",
+      "To set out on a journey",
+      "To keep silent forever",
+      "To teach in the Temple"
+    ],
+    "explanation": "\"O Maryam, be devoutly obedient to your Lord and prostrate and bow with those who bow.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:43"
+  },
+  {
+    "id": "prophets_213",
+    "correctAnswerIndex": 0,
+    "question": "What was Maryam told to shake for food at the time of the birth?",
+    "answers": [
+      "The trunk of the palm tree, to drop fresh dates",
+      "An olive tree",
+      "A fig tree",
+      "A vine"
+    ],
+    "explanation": "\"And shake toward you the trunk of the palm tree; it will drop upon you ripe, fresh dates.\"",
+    "sourceDisplay": "Quran — Surah Maryam, 19:24-26"
+  },
+  {
+    "id": "prophets_214",
+    "correctAnswerIndex": 0,
+    "question": "What did 'Isa say in the cradle that Allah had enjoined on him?",
+    "answers": [
+      "Prayer and zakat, as long as he lived",
+      "Trade",
+      "Silence",
+      "Travel"
+    ],
+    "explanation": "\"And He has enjoined upon me prayer and zakat as long as I remain alive.\"",
+    "sourceDisplay": "Quran — Surah Maryam, 19:31"
+  },
+  {
+    "id": "prophets_215",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Az-Zukhruf describe 'Isa son of Maryam?",
+    "answers": [
+      "A servant upon whom Allah bestowed favour and made an example for the Children of Israel",
+      "A king of Israel",
+      "An angel sent down",
+      "A scribe of the Temple"
+    ],
+    "explanation": "\"He was not but a servant upon whom We bestowed favour, and We made him an example for the Children of Israel.\"",
+    "sourceDisplay": "Quran — Surah Az-Zukhruf, 43:59"
+  },
+  {
+    "id": "prophets_216",
+    "correctAnswerIndex": 0,
+    "question": "What will 'Isa answer on the Day of Resurrection when Allah questions him?",
+    "answers": [
+      "\"Exalted are You! It was not for me to say what I had no right to say\"",
+      "\"I do not remember\"",
+      "\"They wrote it themselves\"",
+      "\"Ask the disciples\""
+    ],
+    "explanation": "\"Exalted are You! It was not for me to say that to which I have no right.\"",
+    "sourceDisplay": "Quran — Surah Al-Ma'idah, 5:116"
+  },
+  {
+    "id": "prophets_217",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe 'Isa son of Maryam?",
+    "answers": [
+      "The messenger of Allah, His word conveyed to Maryam, and a spirit from Him",
+      "An angel sent down",
+      "A just king",
+      "A learned scribe"
+    ],
+    "explanation": "\"The Messiah, 'Isa son of Maryam, was but a messenger of Allah and His word which He directed to Maryam and a soul from Him.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:171"
+  },
+  {
+    "id": "prophets_218",
+    "correctAnswerIndex": 0,
+    "question": "In Surah Ad-Duha, which favours does Allah remind His Prophet ﷺ of?",
+    "answers": [
+      "He sheltered him as an orphan, guided him and enriched him",
+      "He gave him a kingdom",
+      "He gave him an army",
+      "He gave him a palace"
+    ],
+    "explanation": "\"Did He not find you an orphan and give you refuge? And find you lost and guide you? And find you poor and make you self-sufficient?\"",
+    "sourceDisplay": "Quran — Surah Ad-Duha, 93:6-8"
+  },
+  {
+    "id": "prophets_219",
+    "correctAnswerIndex": 0,
+    "question": "Which promise does Surah Ash-Sharh repeat twice?",
+    "answers": [
+      "\"Indeed, with hardship comes ease\"",
+      "\"Victory is near\"",
+      "\"Paradise is promised\"",
+      "\"The enemies will perish\""
+    ],
+    "explanation": "\"For indeed, with hardship comes ease. Indeed, with hardship comes ease.\"",
+    "sourceDisplay": "Quran — Surah Ash-Sharh, 94:5-6"
+  },
+  {
+    "id": "prophets_220",
+    "correctAnswerIndex": 0,
+    "question": "What was the Prophet ﷺ granted in Surah Al-Kawthar, and what was he ordered in return?",
+    "answers": [
+      "Al-Kawthar; to pray to his Lord and sacrifice",
+      "An army; to fight",
+      "A kingdom; to rule",
+      "A treasure; to share it"
+    ],
+    "explanation": "\"Indeed, We have granted you al-Kawthar. So pray to your Lord and sacrifice.\"",
+    "sourceDisplay": "Quran — Surah Al-Kawthar, 108:1-2"
+  },
+  {
+    "id": "prophets_221",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah At-Tawbah describe the Messenger ﷺ toward the believers?",
+    "answers": [
+      "Concerned for them, kind and merciful",
+      "Harsh and distant",
+      "Rich and powerful",
+      "Silent and withdrawn"
+    ],
+    "explanation": "\"There has certainly come to you a Messenger from among yourselves… concerned over you, and to the believers kind and merciful.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:128"
+  },
+  {
+    "id": "prophets_222",
+    "correctAnswerIndex": 0,
+    "question": "According to the Quran, what would have driven people away from the Prophet ﷺ, had he been so?",
+    "answers": [
+      "Had he been rude and harsh of heart",
+      "Had he been wealthy",
+      "Had he been young",
+      "Had he been silent"
+    ],
+    "explanation": "\"So by mercy from Allah you were lenient with them. Had you been rude and harsh in heart, they would have disbanded from about you.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:159"
+  },
+  {
+    "id": "prophets_223",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of Allah's Messenger ﷺ for those who hope in Allah and the Last Day?",
+    "answers": [
+      "He is for them an excellent example",
+      "He is a king",
+      "He is a judge",
+      "He is a caravan guide"
+    ],
+    "explanation": "\"There has certainly been for you in the Messenger of Allah an excellent pattern, for anyone whose hope is in Allah and the Last Day.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahzab, 33:21"
+  },
+  {
+    "id": "prophets_224",
+    "correctAnswerIndex": 0,
+    "question": "To whom was the Prophet Muhammad ﷺ sent, according to Surah Saba?",
+    "answers": [
+      "To all mankind",
+      "To Quraysh only",
+      "To the Arabs only",
+      "To the people of Madinah"
+    ],
+    "explanation": "\"And We have not sent you except as a bringer of good tidings and a warner to all mankind.\"",
+    "sourceDisplay": "Quran — Surah Saba, 34:28"
+  },
+  {
+    "id": "prophets_225",
+    "correctAnswerIndex": 0,
+    "question": "Which verse did the Prophet ﷺ recite as the idols around the Ka'bah were removed?",
+    "answers": [
+      "\"Truth has come and falsehood has departed\"",
+      "\"We have given you a clear victory\"",
+      "\"Say: He is Allah, One\"",
+      "\"When the help of Allah comes\""
+    ],
+    "explanation": "\"And say: Truth has come and falsehood has departed. Indeed, falsehood is bound to depart.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:81"
+  },
+  {
+    "id": "prophets_226",
+    "correctAnswerIndex": 0,
+    "question": "What do the believers say about Allah's messengers, at the end of Surah Al-Baqarah?",
+    "answers": [
+      "\"We make no distinction between any of His messengers\"",
+      "\"We follow only the last\"",
+      "\"We prefer one of them\"",
+      "\"We ignore them\""
+    ],
+    "explanation": "\"We make no distinction between any of His messengers. And they said: we hear and we obey.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:285"
+  },
+  {
+    "id": "prophets_227",
+    "correctAnswerIndex": 0,
+    "question": "What single message did every messenger bring his people?",
+    "answers": [
+      "\"Worship Allah and avoid false objects of worship\"",
+      "\"Build temples\"",
+      "\"Grow rich\"",
+      "\"Write books\""
+    ],
+    "explanation": "\"And We certainly sent into every nation a messenger, saying: worship Allah and avoid taghut.\"",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:36"
+  },
+  {
+    "id": "prophets_228",
+    "correctAnswerIndex": 0,
+    "question": "In what language was each messenger sent, according to Surah Ibrahim?",
+    "answers": [
+      "In the tongue of his own people, to make things clear",
+      "In Arabic only",
+      "In Hebrew",
+      "In a heavenly language"
+    ],
+    "explanation": "\"And We did not send any messenger except in the language of his people, to state clearly for them.\"",
+    "sourceDisplay": "Quran — Surah Ibrahim, 14:4"
+  },
+  {
+    "id": "prophets_229",
+    "correctAnswerIndex": 0,
+    "question": "What was revealed to every messenger before Muhammad ﷺ, according to Surah Al-Anbiya?",
+    "answers": [
+      "That there is no deity except Him, so worship Him",
+      "To build a sanctuary",
+      "To conquer lands",
+      "To keep it secret"
+    ],
+    "explanation": "\"And We sent not before you any messenger except that We revealed to him: there is no deity except Me, so worship Me.\"",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:25"
+  },
+  {
+    "id": "prophets_230",
+    "correctAnswerIndex": 0,
+    "question": "In Surah Al-An'am, which group of prophets is listed as the guided offspring of Ibrahim?",
+    "answers": [
+      "Dawud, Sulaiman, Ayyub, Yusuf, Musa and Harun among others",
+      "Only Musa and 'Isa",
+      "Only Isma'il and Ishaq",
+      "Only Nuh and Hud"
+    ],
+    "explanation": "The passage lists a long line of prophets whom Allah guided, saying: \"And thus do We reward the doers of good.\"",
+    "sourceDisplay": "Quran — Surah Al-An'am, 6:84-86"
+  },
+  {
+    "id": "prophets_231",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say about the messengers in relation to one another?",
+    "answers": [
+      "Allah favoured some of them above others",
+      "They are all identical in rank",
+      "Only the last one counts",
+      "They knew nothing of each other"
+    ],
+    "explanation": "\"Those messengers — some of them We caused to exceed others.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:253"
+  },
+  {
+    "id": "prophets_232",
+    "correctAnswerIndex": 0,
+    "question": "What covenant did Allah take from the prophets, according to Surah Al-'Imran?",
+    "answers": [
+      "To believe in the Messenger who would come confirming what they had, and to support him",
+      "Never to leave their people",
+      "To build a temple each",
+      "To write a book each"
+    ],
+    "explanation": "\"If a Messenger comes to you confirming what is with you, you must believe in him and support him.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:81"
+  },
+  {
+    "id": "prophets_233",
+    "correctAnswerIndex": 0,
+    "question": "Which prophets does the Quran name in saying Allah ordained for them the same religion?",
+    "answers": [
+      "Nuh, Ibrahim, Musa and 'Isa, along with what was revealed to the Prophet ﷺ",
+      "Adam and Idris alone",
+      "Dawud and Sulaiman alone",
+      "Hud and Salih alone"
+    ],
+    "explanation": "\"He has ordained for you of religion what He enjoined upon Nuh, and what We have revealed to you, and what We enjoined upon Ibrahim, Musa and 'Isa.\"",
+    "sourceDisplay": "Quran — Surah Ash-Shura, 42:13"
+  },
+  {
+    "id": "prophets_234",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say about messengers whose stories it does not tell?",
+    "answers": [
+      "There are some whose story Allah did not relate to the Prophet ﷺ",
+      "They do not exist",
+      "All are named",
+      "They do not matter"
+    ],
+    "explanation": "\"Among them are those whose story We have related to you, and among them are those whose story We have not related to you.\"",
+    "sourceDisplay": "Quran — Surah Ghafir, 40:78"
+  },
+  {
+    "id": "prophets_235",
+    "correctAnswerIndex": 0,
+    "question": "From whom did Allah choose all His messengers, according to Surah Yusuf?",
+    "answers": [
+      "Men of the towns, to whom He sent revelation",
+      "Angels",
+      "Kings",
+      "Desert dwellers only"
+    ],
+    "explanation": "\"And We sent not before you except men to whom We revealed, from among the people of the cities.\"",
+    "sourceDisplay": "Quran — Surah Yusuf, 12:109"
+  },
+  {
+    "id": "prophets_236",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran recall about messengers denied before Muhammad ﷺ?",
+    "answers": [
+      "They were patient until Our help came to them",
+      "They gave up",
+      "They hid",
+      "They changed their message"
+    ],
+    "explanation": "\"Certainly were messengers denied before you, but they were patient over the denial until Our victory came to them.\"",
+    "sourceDisplay": "Quran — Surah Al-An'am, 6:34"
+  },
+  {
+    "id": "prophets_237",
+    "correctAnswerIndex": 0,
+    "question": "Which families did Allah choose above the worlds, according to Surah Al-'Imran?",
+    "answers": [
+      "Adam, Nuh, the family of Ibrahim and the family of 'Imran",
+      "The kings of Egypt",
+      "The tribes of Madinah",
+      "The people of Saba"
+    ],
+    "explanation": "\"Indeed, Allah chose Adam and Nuh and the family of Ibrahim and the family of 'Imran above the worlds.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:33"
+  },
+  {
+    "id": "prophets_238",
+    "correctAnswerIndex": 0,
+    "question": "Which favours did Musa recall to his people, inviting them to enter the Holy Land?",
+    "answers": [
+      "That Allah made prophets among them and made them kings",
+      "That He gave them ships",
+      "That He gave them gold",
+      "That He gave them horses"
+    ],
+    "explanation": "\"O my people, remember the favour of Allah upon you when He appointed among you prophets and made you kings.\"",
+    "sourceDisplay": "Quran — Surah Al-Ma'idah, 5:20"
+  },
+  {
+    "id": "prophets_239",
+    "correctAnswerIndex": 0,
+    "question": "How did the Torah and the Gospel describe the unlettered Prophet, according to the Quran?",
+    "answers": [
+      "He enjoins right, forbids wrong and relieves them of their burdens",
+      "He brings wealth",
+      "He rules by force",
+      "He builds temples"
+    ],
+    "explanation": "\"…the unlettered prophet whom they find written in what they have of the Torah and the Gospel, who enjoins upon them what is right and forbids what is wrong… and relieves them of their burden.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:157"
+  },
+  {
+    "id": "prophets_240",
+    "correctAnswerIndex": 0,
+    "question": "On whom did Nuh say he relied, challenging his people to plot?",
+    "answers": [
+      "On Allah, in whom he placed his trust",
+      "On his sons",
+      "On his tribe",
+      "On his ship"
+    ],
+    "explanation": "\"Upon Allah do I rely. So resolve upon your plan, you and your associates.\"",
+    "sourceDisplay": "Quran — Surah Yunus, 10:71"
+  },
+  {
+    "id": "prophets_241",
+    "correctAnswerIndex": 0,
+    "question": "In Ibrahim's supplication, to whom does he attribute healing when he is ill?",
+    "answers": [
+      "To Allah alone",
+      "To doctors",
+      "To herbs",
+      "To time"
+    ],
+    "explanation": "\"And when I am ill, it is He who cures me,\" said Ibrahim, describing his Lord.",
+    "sourceDisplay": "Quran — Surah Ash-Shu'ara, 26:78-80"
+  },
+  {
+    "id": "prophets_242",
+    "correctAnswerIndex": 0,
+    "question": "With what was Ibrahim's son ransomed, according to Surah As-Saffat?",
+    "answers": [
+      "A great sacrifice",
+      "A ransom of gold",
+      "A caravan",
+      "A whole herd"
+    ],
+    "explanation": "\"And We ransomed him with a great sacrifice.\"",
+    "sourceDisplay": "Quran — Surah As-Saffat, 37:107"
+  },
+  {
+    "id": "prophets_243",
+    "correctAnswerIndex": 0,
+    "question": "What do the believers declare belief in, in the verse \"Say: we have believed in Allah…\"?",
+    "answers": [
+      "In what was revealed to Ibrahim, Isma'il, Ishaq, Ya'qub, Musa, 'Isa and the prophets",
+      "In one book only",
+      "In one prophet only",
+      "In their own traditions"
+    ],
+    "explanation": "\"Say: we have believed in Allah and what has been revealed to us and what was revealed to Ibrahim, Isma'il, Ishaq, Ya'qub…\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:136"
+  },
+  {
+    "id": "prophets_244",
+    "correctAnswerIndex": 0,
+    "question": "Why does Allah relate the stories of the messengers to the Prophet ﷺ?",
+    "answers": [
+      "To make his heart firm",
+      "To occupy him",
+      "To teach him history",
+      "To entertain him"
+    ],
+    "explanation": "\"And each story We relate to you from the news of the messengers is that by which We make firm your heart.\"",
+    "sourceDisplay": "Quran — Surah Hud, 11:120"
+  },
+  {
+    "id": "prophets_245",
+    "correctAnswerIndex": 0,
+    "question": "What was the Prophet ﷺ told to say of himself at the end of Surah Al-Kahf?",
+    "answers": [
+      "\"I am only a man like you; it has been revealed that your God is one God\"",
+      "\"I am a king\"",
+      "\"I am an angel\"",
+      "\"I know the unseen\""
+    ],
+    "explanation": "\"Say: I am only a man like you, to whom it has been revealed that your God is one God.\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:110"
+  },
+  {
+    "id": "prophets_246",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Al-Fath describe those who are with the Messenger ﷺ?",
+    "answers": [
+      "Firm against the disbelievers, merciful among themselves",
+      "Rich and numerous",
+      "Silent and withdrawn",
+      "Travellers and traders"
+    ],
+    "explanation": "\"Muhammad is the Messenger of Allah; and those with him are forceful against the disbelievers, merciful among themselves.\"",
+    "sourceDisplay": "Quran — Surah Al-Fath, 48:29"
+  },
+  {
+    "id": "prophets_247",
+    "correctAnswerIndex": 0,
+    "question": "What does Surah An-Najm say of the Prophet's ﷺ speech?",
+    "answers": [
+      "He does not speak from desire: it is only a revelation revealed",
+      "He speaks as a poet",
+      "He speaks as a soothsayer",
+      "He speaks of his own accord"
+    ],
+    "explanation": "\"Your companion has not strayed, nor has he erred, nor does he speak from his own inclination. It is not but a revelation revealed.\"",
+    "sourceDisplay": "Quran — Surah An-Najm, 53:2-4"
+  },
+  {
+    "id": "prophets_248",
+    "correctAnswerIndex": 0,
+    "question": "What was the Prophet ﷺ commanded when the help of Allah and the victory came?",
+    "answers": [
+      "To glorify his Lord with praise and seek His forgiveness",
+      "To hold a feast",
+      "To build a monument",
+      "To rest"
+    ],
+    "explanation": "\"When the victory of Allah has come and the conquest… then exalt your Lord with praise and ask His forgiveness.\"",
+    "sourceDisplay": "Quran — Surah An-Nasr, 110:1-3"
+  },
+  {
+    "id": "prophets_249",
+    "correctAnswerIndex": 0,
+    "question": "Which three tasks does Surah Al-Jumu'ah give the Messenger sent to the unlettered?",
+    "answers": [
+      "To recite the verses, purify them, and teach them the Book and wisdom",
+      "To build, trade and rule",
+      "To write, count and travel",
+      "To judge, punish and tax"
+    ],
+    "explanation": "\"It is He who has sent among the unlettered a Messenger from themselves, reciting to them His verses, purifying them, and teaching them the Book and wisdom.\"",
+    "sourceDisplay": "Quran — Surah Al-Jumu'ah, 62:2"
+  },
+  {
+    "id": "prophets_250",
+    "correctAnswerIndex": 0,
+    "question": "What safeguard does the Quran mention while the Prophet ﷺ was among them?",
+    "answers": [
+      "Allah would not punish them while he was among them",
+      "They would be rich",
+      "They would always win",
+      "They would not die"
+    ],
+    "explanation": "\"But Allah would not punish them while you are among them.\"",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:33"
+  },
+  {
     "id": "sira_031",
     "correctAnswerIndex": 0,
     "question": "To which tribe did the Prophet Muhammad ﷺ belong?",
@@ -4680,6 +5980,1306 @@
     "sourceDisplay": "Sira — established fact"
   },
   {
+    "id": "sira_151",
+    "correctAnswerIndex": 0,
+    "question": "Which uncle of the Prophet ﷺ accepted Islam and became one of his staunchest defenders in Makkah?",
+    "answers": [
+      "Hamza ibn 'Abd al-Muttalib",
+      "Abu Lahab",
+      "Abu Talib",
+      "Al-'Abbas"
+    ],
+    "explanation": "Hamza, the Prophet's ﷺ uncle and foster brother, accepted Islam in Makkah and was called \"the lion of Allah\".",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_152",
+    "correctAnswerIndex": 0,
+    "question": "In whose house did the first Muslims meet secretly in Makkah?",
+    "answers": [
+      "The house of al-Arqam",
+      "The house of Abu Bakr",
+      "The house of Khadija",
+      "The house of Abu Talib"
+    ],
+    "explanation": "The house of al-Arqam ibn Abi al-Arqam, on the hill of Safa, was the first gathering and teaching place.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_153",
+    "correctAnswerIndex": 0,
+    "question": "Which companion, who accepted Islam in Makkah, was later sent as the first teacher to Yathrib?",
+    "answers": [
+      "Mus'ab ibn 'Umayr",
+      "Bilal ibn Rabah",
+      "Khalid ibn al-Walid",
+      "Abu Hurayra"
+    ],
+    "explanation": "Mus'ab ibn 'Umayr, a young Makkan of noble family, was sent to Yathrib after the pledge of 'Aqabah to teach the Quran.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_154",
+    "correctAnswerIndex": 0,
+    "question": "With what command does Surah Al-Muddaththir, which began the public call, open?",
+    "answers": [
+      "\"O you who covers himself! Arise and warn\"",
+      "\"Read, in the name of your Lord\"",
+      "\"Fight the disbelievers\"",
+      "\"Emigrate to Madinah\""
+    ],
+    "explanation": "\"O you who covers himself with a garment! Arise and warn.\"",
+    "sourceDisplay": "Quran — Surah Al-Muddaththir, 74:1-2"
+  },
+  {
+    "id": "sira_155",
+    "correctAnswerIndex": 0,
+    "question": "Which verse ordered the Prophet ﷺ to proclaim openly what he was commanded?",
+    "answers": [
+      "\"So declare openly what you are commanded\"",
+      "\"Be patient\"",
+      "\"Recite in secret\"",
+      "\"Withdraw\""
+    ],
+    "explanation": "\"So declare openly what you are commanded and turn away from the polytheists.\"",
+    "sourceDisplay": "Quran — Surah Al-Hijr, 15:94"
+  },
+  {
+    "id": "sira_156",
+    "correctAnswerIndex": 0,
+    "question": "Where did Quraysh hang the document of the boycott against Banu Hashim?",
+    "answers": [
+      "Inside the Ka'bah",
+      "On the city gate",
+      "In the market of 'Ukaz",
+      "On the hill of Safa"
+    ],
+    "explanation": "The text of the boycott was hung inside the Ka'bah, until the pact was broken and the document abandoned.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_157",
+    "correctAnswerIndex": 0,
+    "question": "In whose garden at Ta'if did the Prophet ﷺ take shelter and receive a bunch of grapes after being driven out?",
+    "answers": [
+      "The garden of 'Utba and Shayba, where the slave 'Addas served him",
+      "The chief of Ta'if's house",
+      "A passing caravan",
+      "A blacksmith's house"
+    ],
+    "explanation": "Wounded and driven from Ta'if, he took shelter in a garden where he was offered grapes, brought by a Christian slave named 'Addas.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_158",
+    "correctAnswerIndex": 0,
+    "question": "Which companion, at first a fierce opponent, accepted Islam and was named \"the one who distinguishes truth from falsehood\"?",
+    "answers": [
+      "'Umar ibn al-Khattab",
+      "Abu Sufyan",
+      "Khalid ibn al-Walid",
+      "'Amr ibn al-'As"
+    ],
+    "explanation": "'Umar ibn al-Khattab, hostile at first, accepted Islam in Makkah and was given the title al-Faruq.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_159",
+    "correctAnswerIndex": 0,
+    "question": "With which family did the Prophet ﷺ stay on reaching Madinah, where his camel knelt?",
+    "answers": [
+      "With Abu Ayyub al-Ansari",
+      "With Sa'd ibn Mu'adh",
+      "With Ubayy ibn Ka'b",
+      "With Anas ibn Malik"
+    ],
+    "explanation": "The camel knelt near the house of Abu Ayyub al-Ansari, who hosted the Prophet ﷺ on his arrival.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_160",
+    "correctAnswerIndex": 0,
+    "question": "What is the cemetery of Madinah called, where many companions are buried?",
+    "answers": [
+      "Al-Baqi'",
+      "Al-Mu'alla",
+      "Al-Hijr",
+      "Al-Quba"
+    ],
+    "explanation": "Baqi' al-Gharqad, beside the Prophet's ﷺ mosque, is the burial ground of Madinah.",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "sira_161",
+    "correctAnswerIndex": 0,
+    "question": "Which mosque does the Quran describe as \"founded on piety from the first day\"?",
+    "answers": [
+      "The mosque of Quba",
+      "The Sacred Mosque",
+      "Al-Aqsa Mosque",
+      "The mosque of Kufa"
+    ],
+    "explanation": "\"A mosque founded on righteousness from the first day is more worthy for you to stand in.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:108"
+  },
+  {
+    "id": "sira_162",
+    "correctAnswerIndex": 0,
+    "question": "In which mosque was the Prophet ﷺ praying when the command to change the qibla was revealed?",
+    "answers": [
+      "The mosque of the two qiblas (Masjid al-Qiblatayn)",
+      "The mosque of Quba",
+      "The Sacred Mosque",
+      "Al-Aqsa Mosque"
+    ],
+    "explanation": "The command came during prayer; the worshippers turned toward the Ka'bah, hence the name \"mosque of the two qiblas\".",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_163",
+    "correctAnswerIndex": 0,
+    "question": "Which obligation was prescribed to the Muslims in the second year of the Hijra?",
+    "answers": [
+      "Fasting the month of Ramadan",
+      "The pilgrimage",
+      "The night prayer",
+      "The journey to Ta'if"
+    ],
+    "explanation": "Fasting Ramadan was made obligatory in Madinah, in the second year after the Hijra.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_164",
+    "correctAnswerIndex": 0,
+    "question": "Which companion saw the words of the call to prayer in a dream, which the Prophet ﷺ then adopted?",
+    "answers": [
+      "'Abdullah ibn Zayd",
+      "Bilal ibn Rabah",
+      "Abu Bakr",
+      "Mu'adh ibn Jabal"
+    ],
+    "explanation": "'Abdullah ibn Zayd reported the dream of the adhan; the Prophet ﷺ approved it and told Bilal to call it.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_165",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of the handful of dust the Prophet ﷺ threw at Badr?",
+    "answers": [
+      "\"You did not throw when you threw, but it was Allah who threw\"",
+      "\"You aimed well\"",
+      "\"The wind carried it\"",
+      "\"The angels threw it\""
+    ],
+    "explanation": "\"And you did not throw when you threw, but it was Allah who threw.\"",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:17"
+  },
+  {
+    "id": "sira_166",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe some believers' state as they set out for Badr?",
+    "answers": [
+      "They disputed about it as though being driven toward death",
+      "They were all eager",
+      "They refused to go",
+      "They asked for a delay"
+    ],
+    "explanation": "\"Arguing with you concerning the truth after it had become clear, as if they were being driven toward death.\"",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:5-6"
+  },
+  {
+    "id": "sira_167",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran remind the believers of their state before victory?",
+    "answers": [
+      "They were few and oppressed in the land, then Allah sheltered and supported them",
+      "They were rich",
+      "They were many",
+      "They already ruled"
+    ],
+    "explanation": "\"And remember when you were few and oppressed in the land… then He sheltered you and supported you with His victory.\"",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:26"
+  },
+  {
+    "id": "sira_168",
+    "correctAnswerIndex": 0,
+    "question": "Which companion at Badr suggested moving the army to the well nearest the enemy?",
+    "answers": [
+      "Al-Hubab ibn al-Mundhir",
+      "Sa'd ibn Mu'adh",
+      "Al-Miqdad",
+      "Az-Zubayr"
+    ],
+    "explanation": "Al-Hubab ibn al-Mundhir asked whether the position was revelation or opinion; told it was opinion, he proposed advancing to the well, and the Prophet ﷺ agreed.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_169",
+    "correctAnswerIndex": 0,
+    "question": "What was the name of the watering place at which the battle of Badr took place?",
+    "answers": [
+      "Badr, a well on the caravan road",
+      "Zamzam",
+      "Quba",
+      "Al-Hudaybiyya"
+    ],
+    "explanation": "Badr was a watering place on the caravan road between Makkah and Syria; the battle took its name from it.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_170",
+    "correctAnswerIndex": 0,
+    "question": "What matter concerning the captives was addressed by revelation after Badr?",
+    "answers": [
+      "The ransom accepted for the prisoners",
+      "The sharing of water",
+      "The choice of camp",
+      "The date of return"
+    ],
+    "explanation": "The passage speaks of the captives and the ransom, then permits what was taken as lawful and good.",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:67-69"
+  },
+  {
+    "id": "sira_171",
+    "correctAnswerIndex": 0,
+    "question": "According to Surah Al-'Imran, what turned the situation at Uhud after an early success?",
+    "answers": [
+      "Disobedience and disputing about the order given",
+      "The enemy's numbers",
+      "The heat",
+      "Lack of water"
+    ],
+    "explanation": "\"…until you lost courage and fell to disputing about the order and disobeyed.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:152"
+  },
+  {
+    "id": "sira_172",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of those killed in the way of Allah?",
+    "answers": [
+      "Do not think them dead: they are alive with their Lord",
+      "They sleep until the Last Day",
+      "They return",
+      "They are forgotten"
+    ],
+    "explanation": "\"And never think of those who have been killed in the cause of Allah as dead. Rather, they are alive with their Lord, receiving provision.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:169"
+  },
+  {
+    "id": "sira_173",
+    "correctAnswerIndex": 0,
+    "question": "On which hill did the Prophet ﷺ station the archers at Uhud?",
+    "answers": [
+      "The Hill of the Archers (Jabal ar-Rumat)",
+      "Mount Safa",
+      "Mount Thawr",
+      "Mount Hira"
+    ],
+    "explanation": "Fifty archers were posted on a hill later called \"the hill of the archers\", with orders not to leave it.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_174",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Al-Ahzab describe the trial of the siege of Madinah?",
+    "answers": [
+      "Eyes turned aside, hearts reached the throats",
+      "The city fell",
+      "Only food ran short",
+      "The sky darkened"
+    ],
+    "explanation": "\"When they came at you from above you and from below you, and when eyes shifted and hearts reached the throats.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahzab, 33:10"
+  },
+  {
+    "id": "sira_175",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the outcome of the Battle of the Trench?",
+    "answers": [
+      "Allah turned back the confederates in their rage, having gained no good",
+      "A long pitched battle",
+      "A peace treaty",
+      "A Muslim retreat"
+    ],
+    "explanation": "\"And Allah repelled those who disbelieved, in their rage, not having obtained any good. And sufficient was Allah for the believers in battle.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahzab, 33:25"
+  },
+  {
+    "id": "sira_176",
+    "correctAnswerIndex": 0,
+    "question": "Where is Hudaybiyya, the place of the famous treaty?",
+    "answers": [
+      "On the edge of the sacred precinct, west of Makkah",
+      "Near Madinah",
+      "In Yemen",
+      "In Syria"
+    ],
+    "explanation": "Hudaybiyya is a place on the edge of the sacred precinct of Makkah, where the treaty was concluded.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_177",
+    "correctAnswerIndex": 0,
+    "question": "Which vision of the Prophet ﷺ does the Quran confirm after Hudaybiyya?",
+    "answers": [
+      "That they would enter the Sacred Mosque in security, heads shaved or shortened",
+      "That they would win at Khaybar",
+      "That they would build a city",
+      "That they would travel to Syria"
+    ],
+    "explanation": "\"Certainly has Allah shown to His Messenger the vision in truth: you will surely enter the Sacred Mosque, in safety.\"",
+    "sourceDisplay": "Quran — Surah Al-Fath, 48:27"
+  },
+  {
+    "id": "sira_178",
+    "correctAnswerIndex": 0,
+    "question": "What does Surah Al-Fath recall about hands withheld at Makkah?",
+    "answers": [
+      "Allah withheld their hands from you and your hands from them within Makkah",
+      "He ordered fighting",
+      "He closed the roads",
+      "He sent a storm"
+    ],
+    "explanation": "\"And it is He who withheld their hands from you and your hands from them within the area of Makkah, after He caused you to overcome them.\"",
+    "sourceDisplay": "Quran — Surah Al-Fath, 48:24"
+  },
+  {
+    "id": "sira_179",
+    "correctAnswerIndex": 0,
+    "question": "In which year of the Hijra did the expedition to Khaybar take place?",
+    "answers": [
+      "The seventh",
+      "The second",
+      "The fifth",
+      "The tenth"
+    ],
+    "explanation": "Khaybar took place in 7 AH, the year after the treaty of Hudaybiyya.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_180",
+    "correctAnswerIndex": 0,
+    "question": "What is the 'umrah performed the year after Hudaybiyya, under the terms of the treaty, called?",
+    "answers": [
+      "'Umrat al-Qada",
+      "Hijjat al-Wada'",
+      "'Umrat al-Ji'ranah",
+      "Hijjat al-Akbar"
+    ],
+    "explanation": "The treaty provided that the Muslims would return the following year; that 'umrah is called 'umrat al-qada.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_181",
+    "correctAnswerIndex": 0,
+    "question": "Which ruler, on receiving the Prophet's ﷺ letter, tore it up?",
+    "answers": [
+      "The king of Persia (Chosroes)",
+      "The Negus of Abyssinia",
+      "The governor of Bahrain",
+      "The king of Yemen"
+    ],
+    "explanation": "The Prophet ﷺ sent letters to the neighbouring rulers; the one to the king of Persia was torn up.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_182",
+    "correctAnswerIndex": 0,
+    "question": "Which companion was sent with the Prophet's ﷺ letter to the Negus of Abyssinia and to other rulers?",
+    "answers": [
+      "'Amr ibn Umayya ad-Damri",
+      "Abu Hurayra",
+      "Anas ibn Malik",
+      "Ubayy ibn Ka'b"
+    ],
+    "explanation": "Messengers were chosen from among the companions; 'Amr ibn Umayya ad-Damri was sent to the Negus.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_183",
+    "correctAnswerIndex": 0,
+    "question": "In which direction does Khaybar lie from Madinah?",
+    "answers": [
+      "To the north",
+      "To the south",
+      "To the east",
+      "To the west, on the sea"
+    ],
+    "explanation": "Khaybar is a fortified oasis north of Madinah, on the road toward Syria.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_184",
+    "correctAnswerIndex": 0,
+    "question": "What did the house of Abu Sufyan become on the day Makkah was conquered?",
+    "answers": [
+      "A place of safety for whoever entered it",
+      "A prison",
+      "A storehouse",
+      "A mosque"
+    ],
+    "explanation": "The Prophet ﷺ declared safety for whoever entered the Sacred Mosque, stayed in his own home, or entered the house of Abu Sufyan.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_185",
+    "correctAnswerIndex": 0,
+    "question": "Which year is called \"the year of the conquest\" ('am al-fath)?",
+    "answers": [
+      "8 AH",
+      "6 AH",
+      "10 AH",
+      "2 AH"
+    ],
+    "explanation": "Makkah was conquered in 8 AH, the year known as \"the year of the conquest\".",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_186",
+    "correctAnswerIndex": 0,
+    "question": "Which battle followed soon after the conquest of Makkah, against the tribes of Hawazin?",
+    "answers": [
+      "Hunayn",
+      "Badr",
+      "Uhud",
+      "Khaybar"
+    ],
+    "explanation": "Hunayn took place shortly after the conquest, in a valley between Makkah and Ta'if.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_187",
+    "correctAnswerIndex": 0,
+    "question": "What did Allah send down upon His Messenger ﷺ and the believers after their dismay at Hunayn?",
+    "answers": [
+      "His tranquillity (sakinah), and soldiers they did not see",
+      "Rain",
+      "A wind",
+      "A troop of horsemen"
+    ],
+    "explanation": "\"Then Allah sent down His tranquillity upon His Messenger and upon the believers and sent down soldiers you did not see.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:26"
+  },
+  {
+    "id": "sira_188",
+    "correctAnswerIndex": 0,
+    "question": "Which town did the Muslim army move against after Hunayn?",
+    "answers": [
+      "Ta'if",
+      "Khaybar",
+      "Tabuk",
+      "Sanaa"
+    ],
+    "explanation": "After Hunayn the Muslims laid siege to Ta'if, whose people had shut themselves in.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_189",
+    "correctAnswerIndex": 0,
+    "question": "Which expedition does the Quran call \"the hour of difficulty\" (sa'at al-'usrah)?",
+    "answers": [
+      "Tabuk",
+      "Badr",
+      "Khaybar",
+      "Hunayn"
+    ],
+    "explanation": "\"Allah has accepted the repentance of the Prophet, the emigrants and the helpers who followed him in the hour of difficulty.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:117"
+  },
+  {
+    "id": "sira_190",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of the three companions who stayed behind at Tabuk, before they were forgiven?",
+    "answers": [
+      "The earth became narrow for them despite its vastness, then Allah accepted their repentance",
+      "They were banished",
+      "They left for Yemen",
+      "They were forgotten"
+    ],
+    "explanation": "\"And the three who were left behind, until the earth closed in on them in spite of its vastness… then He accepted their repentance.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:118"
+  },
+  {
+    "id": "sira_191",
+    "correctAnswerIndex": 0,
+    "question": "In which direction lies Tabuk, the goal of the last great expedition?",
+    "answers": [
+      "To the north, toward the Syrian frontier",
+      "To the south, toward Yemen",
+      "To the east, toward Iraq",
+      "To the west, on the Red Sea"
+    ],
+    "explanation": "Tabuk is north of Madinah, on the road to Syria; it was the Prophet's ﷺ last great expedition.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_192",
+    "correctAnswerIndex": 0,
+    "question": "Which companion equipped a large part of the army of Tabuk from his own wealth?",
+    "answers": [
+      "'Uthman ibn 'Affan",
+      "Sa'd ibn Abi Waqqas",
+      "Talha ibn 'Ubaydillah",
+      "Abu Dharr"
+    ],
+    "explanation": "'Uthman ibn 'Affan provided a considerable share of the equipment of \"the army of difficulty\" (jaysh al-'usrah).",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_193",
+    "correctAnswerIndex": 0,
+    "question": "Which companion was the first to shoot an arrow in the way of Allah?",
+    "answers": [
+      "Sa'd ibn Abi Waqqas",
+      "Az-Zubayr ibn al-'Awwam",
+      "Talha ibn 'Ubaydillah",
+      "Abu 'Ubayda"
+    ],
+    "explanation": "Sa'd ibn Abi Waqqas, one of the earliest to accept Islam, is known as the first to shoot an arrow in the way of Allah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_194",
+    "correctAnswerIndex": 0,
+    "question": "Which companion is called \"the disciple (hawari) of the Messenger of Allah ﷺ\"?",
+    "answers": [
+      "Az-Zubayr ibn al-'Awwam",
+      "Abu Hurayra",
+      "Salman al-Farisi",
+      "Bilal"
+    ],
+    "explanation": "Az-Zubayr ibn al-'Awwam, the Prophet's ﷺ cousin, was called his hawari, his close support.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_195",
+    "correctAnswerIndex": 0,
+    "question": "Which companion was entrusted with knowledge of the hypocrites, and so called \"the keeper of the secret\"?",
+    "answers": [
+      "Hudhayfa ibn al-Yaman",
+      "Abu Musa al-Ash'ari",
+      "'Ammar ibn Yasir",
+      "Abu ad-Darda"
+    ],
+    "explanation": "Hudhayfa ibn al-Yaman is known as \"sahib as-sirr\", the one the Prophet ﷺ confided in about the hypocrites.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_196",
+    "correctAnswerIndex": 0,
+    "question": "Where did Salman, called \"al-Farisi\", who proposed the trench, come from?",
+    "answers": [
+      "From Persia",
+      "From Yemen",
+      "From Abyssinia",
+      "From Byzantium"
+    ],
+    "explanation": "Salman, of Persian origin, searched long for the truth before joining the Prophet ﷺ in Madinah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_197",
+    "correctAnswerIndex": 0,
+    "question": "Which woman, the mother of Anas ibn Malik, offered the Prophet ﷺ her son's service?",
+    "answers": [
+      "Umm Sulaym",
+      "Umm Salama",
+      "Umm Ayman",
+      "Umm Habiba"
+    ],
+    "explanation": "Umm Sulaym of the Ansar presented her son Anas to the Prophet ﷺ to serve him when he reached Madinah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_198",
+    "correctAnswerIndex": 0,
+    "question": "Which wife of the Prophet ﷺ was known for her great learning and narrated many hadiths?",
+    "answers": [
+      "'Aisha",
+      "Sawda",
+      "Juwayriya",
+      "Maymuna"
+    ],
+    "explanation": "'Aisha, the daughter of Abu Bakr, is among the greatest narrators of hadith and a reference in religious knowledge.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_199",
+    "correctAnswerIndex": 0,
+    "question": "Which wife of the Prophet ﷺ was his cousin, and whose marriage is mentioned in Surah Al-Ahzab?",
+    "answers": [
+      "Zaynab bint Jahsh",
+      "Hafsa",
+      "Umm Salama",
+      "Safiyya"
+    ],
+    "explanation": "The marriage to Zaynab bint Jahsh is mentioned in Surah Al-Ahzab (33:37).",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_200",
+    "correctAnswerIndex": 0,
+    "question": "Which wife of the Prophet ﷺ advised the step that broke the deadlock at Hudaybiyya?",
+    "answers": [
+      "Umm Salama",
+      "'Aisha",
+      "Hafsa",
+      "Zaynab bint Jahsh"
+    ],
+    "explanation": "Umm Salama advised the Prophet ﷺ to go out and perform the sacrifice and the shaving himself: the companions at once followed.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_201",
+    "correctAnswerIndex": 0,
+    "question": "What is the Prophet's ﷺ full name, back to his grandfather?",
+    "answers": [
+      "Muhammad ibn 'Abdillah ibn 'Abd al-Muttalib",
+      "Muhammad ibn Abi Talib",
+      "Muhammad ibn al-'Abbas",
+      "Muhammad ibn Hashim"
+    ],
+    "explanation": "He is Muhammad, son of 'Abdullah, son of 'Abd al-Muttalib, of the tribe of Quraysh.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_202",
+    "correctAnswerIndex": 0,
+    "question": "Which other name of the Prophet ﷺ, mentioned in the Quran by 'Isa, means \"most praised\"?",
+    "answers": [
+      "Ahmad",
+      "Al-Mustafa",
+      "Al-Amin",
+      "Abu-l-Qasim"
+    ],
+    "explanation": "'Isa announced a messenger to come after him \"whose name is Ahmad\" (Quran 61:6).",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "sira_203",
+    "correctAnswerIndex": 0,
+    "question": "Over how long was the Quran revealed to the Prophet ﷺ?",
+    "answers": [
+      "About twenty-three years",
+      "Ten years",
+      "Forty years",
+      "A single night"
+    ],
+    "explanation": "The revelation spanned about twenty-three years: thirteen in Makkah and ten in Madinah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_204",
+    "correctAnswerIndex": 0,
+    "question": "Which companion was the first free adult man to accept Islam?",
+    "answers": [
+      "Abu Bakr as-Siddiq",
+      "'Umar ibn al-Khattab",
+      "'Uthman ibn 'Affan",
+      "Sa'd ibn Abi Waqqas"
+    ],
+    "explanation": "Among free adult men, Abu Bakr was the first to answer the Prophet's ﷺ call.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_205",
+    "correctAnswerIndex": 0,
+    "question": "Which child was the first to accept Islam?",
+    "answers": [
+      "'Ali ibn Abi Talib",
+      "Anas ibn Malik",
+      "Usama ibn Zayd",
+      "'Abdullah ibn 'Umar"
+    ],
+    "explanation": "'Ali ibn Abi Talib, raised in the Prophet's ﷺ household, was the first among the children to believe.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_206",
+    "correctAnswerIndex": 0,
+    "question": "Which freedman of the Prophet ﷺ was the first among freedmen to accept Islam?",
+    "answers": [
+      "Zayd ibn Haritha",
+      "Bilal ibn Rabah",
+      "Suhayb ar-Rumi",
+      "Salman al-Farisi"
+    ],
+    "explanation": "Zayd ibn Haritha, freed and raised as a son by the Prophet ﷺ, was the first among freedmen to believe.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_207",
+    "correctAnswerIndex": 0,
+    "question": "Which verse ended legal adoption, saying the Prophet ﷺ is not the father of any of their men?",
+    "answers": [
+      "\"Muhammad is not the father of any of your men, but the Messenger of Allah and the seal of the prophets\"",
+      "\"Call them by their fathers\"",
+      "\"Blood ties come first\"",
+      "\"Do not adopt\""
+    ],
+    "explanation": "\"Muhammad is not the father of any one of your men, but he is the Messenger of Allah and the last of the prophets.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahzab, 33:40"
+  },
+  {
+    "id": "sira_208",
+    "correctAnswerIndex": 0,
+    "question": "On which day of the week do Muslims gather for the congregational prayer instituted in Madinah?",
+    "answers": [
+      "Friday",
+      "Saturday",
+      "Sunday",
+      "Monday"
+    ],
+    "explanation": "The Friday prayer (al-jumu'ah) was instituted in Madinah and gathers the community every week.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_209",
+    "correctAnswerIndex": 0,
+    "question": "Which companion led the prayer during the Prophet's ﷺ final illness, by his own order?",
+    "answers": [
+      "Abu Bakr as-Siddiq",
+      "'Umar ibn al-Khattab",
+      "'Ali ibn Abi Talib",
+      "Bilal"
+    ],
+    "explanation": "The Prophet ﷺ ordered that Abu Bakr lead the prayer during his illness; the companions took it as a sign.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_210",
+    "correctAnswerIndex": 0,
+    "question": "Which caliph was struck down while leading the dawn prayer?",
+    "answers": [
+      "'Umar ibn al-Khattab",
+      "Abu Bakr",
+      "'Ali ibn Abi Talib",
+      "Mu'awiya"
+    ],
+    "explanation": "'Umar ibn al-Khattab was struck during the fajr prayer in Madinah and died of his wounds.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_211",
+    "correctAnswerIndex": 0,
+    "question": "How long did the caliphate of Abu Bakr last?",
+    "answers": [
+      "About two years",
+      "Ten years",
+      "Twenty years",
+      "Thirty years"
+    ],
+    "explanation": "Abu Bakr ruled for about two years before his death, and 'Umar succeeded him.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_212",
+    "correctAnswerIndex": 0,
+    "question": "Which movement did Abu Bakr have to act against at the start of his caliphate?",
+    "answers": [
+      "The refusal of zakat and the apostasy of some tribes",
+      "An invasion from Persia",
+      "A famine",
+      "A revolt in Madinah"
+    ],
+    "explanation": "The first caliphate opened with the ridda wars, against tribes that refused zakat or left Islam.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_213",
+    "correctAnswerIndex": 0,
+    "question": "Which title did 'Umar ibn al-Khattab take as head of the community?",
+    "answers": [
+      "Amir al-Mu'minin (commander of the believers)",
+      "Sultan",
+      "Malik",
+      "Imam al-Haramayn"
+    ],
+    "explanation": "The title amir al-mu'minin was established under 'Umar and borne by the caliphs after him.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_214",
+    "correctAnswerIndex": 0,
+    "question": "Which mosque in Jerusalem was the first qibla of the Muslims?",
+    "answers": [
+      "Al-Aqsa Mosque",
+      "The mosque of Quba",
+      "The Prophet's ﷺ mosque",
+      "The Sacred Mosque"
+    ],
+    "explanation": "The Muslims prayed first toward Jerusalem, before the qibla was fixed toward the Ka'bah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_215",
+    "correctAnswerIndex": 0,
+    "question": "Which three mosques are those to which travel is specially encouraged?",
+    "answers": [
+      "The Sacred Mosque, the Prophet's ﷺ mosque and al-Aqsa",
+      "Quba, al-Aqsa and Kufa",
+      "The Sacred Mosque, Quba and Damascus",
+      "Al-Aqsa, Kufa and Basra"
+    ],
+    "explanation": "Travel is specially encouraged to three mosques: the Sacred Mosque, the Prophet's ﷺ mosque and al-Aqsa Mosque.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_216",
+    "correctAnswerIndex": 0,
+    "question": "Where did the Prophet ﷺ deliver his farewell sermon, on the day of 'Arafah?",
+    "answers": [
+      "In the valley of 'Uranah, at Mount 'Arafat",
+      "At Mina",
+      "Before the Ka'bah",
+      "At Muzdalifah"
+    ],
+    "explanation": "The farewell sermon was delivered on the day of 'Arafah, in the valley of 'Uranah at the foot of Mount 'Arafat.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_217",
+    "correctAnswerIndex": 0,
+    "question": "What did the Prophet ﷺ declare inviolable in his farewell sermon?",
+    "answers": [
+      "Everyone's blood, property and honour",
+      "The trade routes",
+      "The wells of Madinah",
+      "The palm groves"
+    ],
+    "explanation": "He declared the blood, property and honour of the Muslims sacred, as sacred as that day, that month and that city.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_218",
+    "correctAnswerIndex": 0,
+    "question": "What did the Prophet ﷺ leave his community in his farewell sermon, so that it would not go astray?",
+    "answers": [
+      "The Book of Allah",
+      "A treasure",
+      "An army",
+      "A map"
+    ],
+    "explanation": "He reminded them that he was leaving among them what they should hold to so as not to go astray: the Book of Allah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_219",
+    "correctAnswerIndex": 0,
+    "question": "Which month of the Muslim calendar marks the pilgrimage the Prophet ﷺ performed at his farewell?",
+    "answers": [
+      "Dhul-Hijjah",
+      "Ramadan",
+      "Muharram",
+      "Rajab"
+    ],
+    "explanation": "The farewell pilgrimage took place in Dhul-Hijjah of the year 10 AH.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_220",
+    "correctAnswerIndex": 0,
+    "question": "Who washed and shrouded the body of the Prophet ﷺ after his death?",
+    "answers": [
+      "The people of his household, among them 'Ali and al-'Abbas",
+      "The Ansar alone",
+      "Bilal and Anas",
+      "The people of Quba"
+    ],
+    "explanation": "His own household saw to it, among them 'Ali ibn Abi Talib and his uncle al-'Abbas.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_221",
+    "correctAnswerIndex": 0,
+    "question": "In which month of the Hijri year did the Prophet ﷺ die?",
+    "answers": [
+      "Rabi' al-Awwal",
+      "Ramadan",
+      "Shawwal",
+      "Dhul-Qa'dah"
+    ],
+    "explanation": "The Prophet ﷺ died in Madinah in the month of Rabi' al-Awwal, in the year 11 AH.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_222",
+    "correctAnswerIndex": 0,
+    "question": "Which verse did Abu Bakr recite to remind people that the Prophet ﷺ was mortal?",
+    "answers": [
+      "\"Muhammad is but a messenger; messengers have passed on before him\"",
+      "\"We sent you as a mercy\"",
+      "\"You are of a great character\"",
+      "\"When the help of Allah comes\""
+    ],
+    "explanation": "\"Muhammad is not but a messenger. Other messengers have passed on before him. So if he was to die or be killed, would you turn back on your heels?\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:144"
+  },
+  {
+    "id": "sira_223",
+    "correctAnswerIndex": 0,
+    "question": "Which companion is known above all for the sheer number of hadiths he memorised?",
+    "answers": [
+      "Abu Hurayra",
+      "Anas ibn Malik",
+      "Jabir ibn 'Abdillah",
+      "Abu Sa'id al-Khudri"
+    ],
+    "explanation": "Abu Hurayra spent the Prophet's ﷺ last years at his side and became the most prolific narrator of hadith.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_224",
+    "correctAnswerIndex": 0,
+    "question": "Which companion, the Prophet's ﷺ cousin, became the great authority on Quranic exegesis?",
+    "answers": [
+      "'Abdullah ibn 'Abbas",
+      "'Abdullah ibn 'Umar",
+      "'Abdullah ibn Mas'ud",
+      "'Abdullah ibn az-Zubayr"
+    ],
+    "explanation": "'Abdullah ibn 'Abbas, for whom the Prophet ﷺ prayed for understanding of the Book, became \"the interpreter of the Quran\".",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_225",
+    "correctAnswerIndex": 0,
+    "question": "Which companion was sent by the Prophet ﷺ as governor and judge to Yemen, and died young in Syria?",
+    "answers": [
+      "Mu'adh ibn Jabal",
+      "Abu 'Ubayda ibn al-Jarrah",
+      "'Amr ibn al-'As",
+      "Khalid ibn al-Walid"
+    ],
+    "explanation": "Mu'adh ibn Jabal, a scholar among the companions, was sent to Yemen and later died in Syria while still young.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_226",
+    "correctAnswerIndex": 0,
+    "question": "Which valley lies between the two hills of Safa and Marwa, walked during the pilgrimage?",
+    "answers": [
+      "The valley of Makkah, around the Ka'bah",
+      "The valley of 'Uranah",
+      "The valley of Mina",
+      "The valley of Badr"
+    ],
+    "explanation": "Safa and Marwa are two small hills in the valley of Makkah, today enclosed within the Sacred Mosque.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_227",
+    "correctAnswerIndex": 0,
+    "question": "Which two great Arab tribes of Madinah had been at war before the Prophet ﷺ arrived?",
+    "answers": [
+      "The Aws and the Khazraj",
+      "Quraysh and Hawazin",
+      "Thaqif and Kinana",
+      "Tamim and Bakr"
+    ],
+    "explanation": "The Aws and the Khazraj, long enemies, together formed the Ansar after the Prophet ﷺ arrived.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_228",
+    "correctAnswerIndex": 0,
+    "question": "Which verse reminds the Ansar that they had been enemies and that Allah joined their hearts?",
+    "answers": [
+      "\"You were enemies and He brought your hearts together\"",
+      "\"You were poor\"",
+      "\"You were few\"",
+      "\"You were lost\""
+    ],
+    "explanation": "\"And remember the favour of Allah upon you: when you were enemies and He brought your hearts together, and you became brothers by His favour.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:103"
+  },
+  {
+    "id": "sira_229",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran praise the Ansar in their welcome of the emigrants?",
+    "answers": [
+      "They prefer others over themselves, even in their own need",
+      "They sold them land",
+      "They lent them money",
+      "They housed them outside the city"
+    ],
+    "explanation": "\"And they give preference over themselves, even though they are in privation. And whoever is protected from the stinginess of his soul — those are the successful.\"",
+    "sourceDisplay": "Quran — Surah Al-Hashr, 59:9"
+  },
+  {
+    "id": "sira_230",
+    "correctAnswerIndex": 0,
+    "question": "What is the body of the Prophet's ﷺ sayings, actions and approvals called?",
+    "answers": [
+      "The Sunnah",
+      "The Quran",
+      "The Sira",
+      "The Tafsir"
+    ],
+    "explanation": "The Sunnah is what the Prophet ﷺ said, did or approved; the Sira is the account of his life.",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "sira_231",
+    "correctAnswerIndex": 0,
+    "question": "What is the generation after that of the companions called?",
+    "answers": [
+      "The Tabi'un (the followers)",
+      "The Ansar",
+      "The Muhajirun",
+      "The Qurra'"
+    ],
+    "explanation": "The Tabi'un are those who met the companions without having seen the Prophet ﷺ.",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "sira_232",
+    "correctAnswerIndex": 0,
+    "question": "What is the chain of narrators of a hadith called?",
+    "answers": [
+      "The isnad",
+      "The matn",
+      "The tafsir",
+      "The tajwid"
+    ],
+    "explanation": "The isnad is the chain of transmission; the matn is the text of the hadith itself.",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "sira_233",
+    "correctAnswerIndex": 0,
+    "question": "Which two hadith collections are held to be the most rigorous, called \"the two Sahihs\"?",
+    "answers": [
+      "Sahih al-Bukhari and Sahih Muslim",
+      "The Sunan of Abu Dawud and at-Tirmidhi",
+      "The Muwatta' and the Musnad",
+      "The Sunan of an-Nasa'i and Ibn Majah"
+    ],
+    "explanation": "Sahih al-Bukhari and Sahih Muslim are together called \"the two Sahihs\" (as-sahihan).",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "sira_234",
+    "correctAnswerIndex": 0,
+    "question": "In which city are the Prophet's ﷺ mosque and his grave?",
+    "answers": [
+      "Madinah",
+      "Makkah",
+      "Jerusalem",
+      "Ta'if"
+    ],
+    "explanation": "The Prophet's ﷺ mosque and his grave are in Madinah, the city of the Hijra.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_235",
+    "correctAnswerIndex": 0,
+    "question": "What epithet does Madinah carry, referring to the light attributed to it?",
+    "answers": [
+      "Al-Madinah al-Munawwarah (the radiant city)",
+      "Umm al-Qura",
+      "Dar as-Salam",
+      "Al-Mada'in"
+    ],
+    "explanation": "Madinah is called al-Munawwarah; Makkah for its part is called al-Mukarramah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_236",
+    "correctAnswerIndex": 0,
+    "question": "What name does the Quran give Makkah, \"the mother of cities\"?",
+    "answers": [
+      "Umm al-Qura",
+      "Al-Madinah",
+      "Al-Balad al-Amin",
+      "Bakkah"
+    ],
+    "explanation": "\"…that you may warn the mother of cities (Umm al-Qura) and those around it.\"",
+    "sourceDisplay": "Quran — Surah Al-An'am, 6:92"
+  },
+  {
+    "id": "sira_237",
+    "correctAnswerIndex": 0,
+    "question": "What was the trade of the Prophet's ﷺ first wife, Khadija?",
+    "answers": [
+      "A merchant",
+      "A physician",
+      "A poet",
+      "A weaver"
+    ],
+    "explanation": "Khadija bint Khuwaylid was a respected merchant of Makkah, who entrusted her caravan to the young Muhammad ﷺ.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_238",
+    "correctAnswerIndex": 0,
+    "question": "For how long was the Prophet ﷺ married to Khadija alone?",
+    "answers": [
+      "Until her death; he married no other woman in her lifetime",
+      "Two years",
+      "Five years",
+      "He married others at once"
+    ],
+    "explanation": "The Prophet ﷺ married no other woman while Khadija lived; the later marriages came after her death.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_239",
+    "correctAnswerIndex": 0,
+    "question": "What is the name of the Prophet's ﷺ uncle who protected him without accepting Islam?",
+    "answers": [
+      "Abu Talib",
+      "Hamza",
+      "Al-'Abbas",
+      "Abu Lahab"
+    ],
+    "explanation": "Abu Talib, the father of 'Ali, protected his nephew against Quraysh until his death.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_240",
+    "correctAnswerIndex": 0,
+    "question": "Which uncle of the Prophet ﷺ was taken prisoner at Badr before accepting Islam?",
+    "answers": [
+      "Al-'Abbas ibn 'Abd al-Muttalib",
+      "Abu Talib",
+      "Hamza",
+      "Az-Zubayr ibn 'Abd al-Muttalib"
+    ],
+    "explanation": "Al-'Abbas, the Prophet's ﷺ uncle and forefather of the Abbasids, was captured at Badr and later accepted Islam.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_241",
+    "correctAnswerIndex": 0,
+    "question": "What are the companions who fought at the battle of Badr called?",
+    "answers": [
+      "The Badriyyun (the people of Badr)",
+      "The Ansar",
+      "The Muhajirun",
+      "The Uhudiyyun"
+    ],
+    "explanation": "The companions present at Badr are known as the Badriyyun, and that merit is particular to them.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_242",
+    "correctAnswerIndex": 0,
+    "question": "What share of the spoils does the Quran set aside for Allah, the Messenger, the near of kin, the orphans, the poor and the traveller?",
+    "answers": [
+      "One fifth",
+      "One half",
+      "One tenth",
+      "One third"
+    ],
+    "explanation": "\"Know that whatever you take as spoils, a fifth is for Allah and for the Messenger, and for the near relatives, the orphans, the needy and the traveller.\"",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:41"
+  },
+  {
+    "id": "sira_243",
+    "correctAnswerIndex": 0,
+    "question": "Which verse, often cited with the farewell sermon, grounds the equality of peoples before Allah?",
+    "answers": [
+      "\"The most noble of you before Allah is the most righteous\"",
+      "\"Men are from one father\"",
+      "\"No soul bears another's burden\"",
+      "\"There is no compulsion in religion\""
+    ],
+    "explanation": "\"O mankind, We created you from a male and a female… the most noble of you in the sight of Allah is the most righteous.\"",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:13"
+  },
+  {
+    "id": "sira_244",
+    "correctAnswerIndex": 0,
+    "question": "How many took part in the second pledge of 'Aqabah, the decisive meeting with the people of Yathrib?",
+    "answers": [
+      "A delegation of more than seventy people",
+      "Three",
+      "Ten",
+      "Five hundred"
+    ],
+    "explanation": "The second pledge of 'Aqabah gathered a delegation of more than seventy men and women of Yathrib.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_245",
+    "correctAnswerIndex": 0,
+    "question": "How many naqibs (responsible chiefs) did the Prophet ﷺ have appointed among the people of Yathrib at the pledge of 'Aqabah?",
+    "answers": [
+      "Twelve",
+      "Four",
+      "Seven",
+      "Twenty"
+    ],
+    "explanation": "Twelve naqibs were chosen to represent the groups of the Yathrib delegation and answer for their pledge.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_246",
+    "correctAnswerIndex": 0,
+    "question": "What name did Madinah take after the Hijra?",
+    "answers": [
+      "Madinat an-Nabi, the city of the Prophet ﷺ",
+      "Yathrib",
+      "Taybah only",
+      "Al-Qura"
+    ],
+    "explanation": "Yathrib took the name Madinat an-Nabi, \"the city of the Prophet ﷺ\", shortened to al-Madinah.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_247",
+    "correctAnswerIndex": 0,
+    "question": "Which caliph had official copies of the Quran made and sent to the provinces?",
+    "answers": [
+      "'Uthman ibn 'Affan",
+      "Abu Bakr",
+      "'Umar",
+      "'Ali"
+    ],
+    "explanation": "Abu Bakr had the text collected; 'Uthman had official copies made and sent to the main cities.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_248",
+    "correctAnswerIndex": 0,
+    "question": "In which language was the Quran revealed to the Prophet ﷺ?",
+    "answers": [
+      "Arabic",
+      "Aramaic",
+      "Persian",
+      "Greek"
+    ],
+    "explanation": "The Quran was revealed in clear Arabic, the language of the Prophet's ﷺ own people.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_249",
+    "correctAnswerIndex": 0,
+    "question": "Which companion did the Prophet ﷺ send to Bahrain, returning with its tribute?",
+    "answers": [
+      "Abu 'Ubayda ibn al-Jarrah",
+      "Bilal",
+      "Anas ibn Malik",
+      "Abu Dharr"
+    ],
+    "explanation": "Abu 'Ubayda ibn al-Jarrah, called \"the trustworthy one of this community\", returned from Bahrain with its tribute.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
+    "id": "sira_250",
+    "correctAnswerIndex": 0,
+    "question": "Which event marks the start of the Muslim calendar?",
+    "answers": [
+      "The Hijra from Makkah to Madinah",
+      "The Prophet's ﷺ birth",
+      "The first revelation",
+      "The conquest of Makkah"
+    ],
+    "explanation": "The Hijri calendar begins with the year of the Hijra, a decision taken during the caliphate of 'Umar.",
+    "sourceDisplay": "Sira — established fact"
+  },
+  {
     "id": "quran_025",
     "correctAnswerIndex": 0,
     "question": "Which surah is named after the elephant?",
@@ -5408,6 +8008,916 @@
     "sourceDisplay": "Qur'an 27:30"
   },
   {
+    "id": "quran_081",
+    "correctAnswerIndex": 0,
+    "question": "What are people questioning one another about, at the start of Surah An-Naba?",
+    "answers": [
+      "The great news",
+      "The rain",
+      "The stars",
+      "The harvests"
+    ],
+    "explanation": "\"About what are they asking one another? About the great news.\"",
+    "sourceDisplay": "Quran — Surah An-Naba, 78:1-2"
+  },
+  {
+    "id": "quran_082",
+    "correctAnswerIndex": 0,
+    "question": "What does \"Al-Qari'ah\", the title of surah 101, mean?",
+    "answers": [
+      "The Striking Calamity",
+      "The dawn",
+      "The caravan",
+      "The mountain"
+    ],
+    "explanation": "\"The Striking Calamity! What is the Striking Calamity? And what can make you know what it is?\" — it is a name of the Last Day.",
+    "sourceDisplay": "Quran — Surah Al-Qari'ah, 101:1-3"
+  },
+  {
+    "id": "quran_083",
+    "correctAnswerIndex": 0,
+    "question": "In Surah Al-Qari'ah, what awaits the one whose scales are light?",
+    "answers": [
+      "His refuge will be an abyss (Hawiyah)",
+      "A garden",
+      "A spring",
+      "A house"
+    ],
+    "explanation": "\"But as for one whose scales are light, his refuge will be an abyss.\"",
+    "sourceDisplay": "Quran — Surah Al-Qari'ah, 101:6-9"
+  },
+  {
+    "id": "quran_084",
+    "correctAnswerIndex": 0,
+    "question": "What does Surah At-Takathur warn against?",
+    "answers": [
+      "Competition in amassing, which distracts",
+      "Travelling",
+      "Hunger",
+      "Silence"
+    ],
+    "explanation": "\"Competition in increase diverts you, until you visit the graveyards.\"",
+    "sourceDisplay": "Quran — Surah At-Takathur, 102:1"
+  },
+  {
+    "id": "quran_085",
+    "correctAnswerIndex": 0,
+    "question": "Against whom does Surah Al-Humazah open with \"Woe to…\"?",
+    "answers": [
+      "Every scorner and backbiter",
+      "The traveller",
+      "The sleeper",
+      "The poor"
+    ],
+    "explanation": "\"Woe to every scorner and mocker, who collects wealth and counts it.\"",
+    "sourceDisplay": "Quran — Surah Al-Humazah, 104:1"
+  },
+  {
+    "id": "quran_086",
+    "correctAnswerIndex": 0,
+    "question": "What does Surah Quraysh ask Quraysh to do, in return for the winter and summer journeys?",
+    "answers": [
+      "Worship the Lord of this House, who fed them and secured them",
+      "Build walls",
+      "Stop trading",
+      "Leave for Yemen"
+    ],
+    "explanation": "\"Let them worship the Lord of this House, who has fed them against hunger and made them safe from fear.\"",
+    "sourceDisplay": "Quran — Surah Quraysh, 106:3-4"
+  },
+  {
+    "id": "quran_087",
+    "correctAnswerIndex": 0,
+    "question": "With what question does Surah Ash-Sharh open?",
+    "answers": [
+      "\"Did We not expand for you your breast?\"",
+      "\"Have you not seen?\"",
+      "\"Who created you?\"",
+      "\"Where are you going?\""
+    ],
+    "explanation": "\"Did We not expand for you your breast?\"",
+    "sourceDisplay": "Quran — Surah Ash-Sharh, 94:1"
+  },
+  {
+    "id": "quran_088",
+    "correctAnswerIndex": 0,
+    "question": "By what does Allah swear at the start of Surah At-Tin?",
+    "answers": [
+      "By the fig, the olive, Mount Sinai and this secure city",
+      "By the night and the day",
+      "By the stars",
+      "By the sea"
+    ],
+    "explanation": "\"By the fig and the olive, and by Mount Sinai, and by this secure city.\"",
+    "sourceDisplay": "Quran — Surah At-Tin, 95:1-3"
+  },
+  {
+    "id": "quran_089",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah At-Tin describe the creation of the human being?",
+    "answers": [
+      "In the best of forms",
+      "Weak and small",
+      "From fire",
+      "From light"
+    ],
+    "explanation": "\"We have certainly created man in the best of stature.\"",
+    "sourceDisplay": "Quran — Surah At-Tin, 95:4"
+  },
+  {
+    "id": "quran_090",
+    "correctAnswerIndex": 0,
+    "question": "Which city does Allah swear by at the start of Surah Al-Balad?",
+    "answers": [
+      "Makkah, where the Prophet ﷺ dwelt",
+      "Madinah",
+      "Jerusalem",
+      "Ta'if"
+    ],
+    "explanation": "\"I swear by this city, and you are a dweller in this city.\"",
+    "sourceDisplay": "Quran — Surah Al-Balad, 90:1-2"
+  },
+  {
+    "id": "quran_091",
+    "correctAnswerIndex": 0,
+    "question": "What is the \"steep path\" that Surah Al-Balad describes?",
+    "answers": [
+      "Freeing a slave, feeding an orphan or a needy person on a day of hunger",
+      "Crossing the desert",
+      "Climbing a mountain",
+      "Crossing the sea"
+    ],
+    "explanation": "\"And what can make you know what is the steep path? It is freeing a slave, or feeding on a day of severe hunger an orphan of near relationship, or a needy person in misery.\"",
+    "sourceDisplay": "Quran — Surah Al-Balad, 90:12-16"
+  },
+  {
+    "id": "quran_092",
+    "correctAnswerIndex": 0,
+    "question": "By what does Allah swear at the start of Surah Al-Layl?",
+    "answers": [
+      "By the night when it covers and the day when it appears",
+      "By the sea and the mountain",
+      "By the fig and the olive",
+      "By the pen"
+    ],
+    "explanation": "\"By the night when it covers, and by the day when it appears… indeed, your efforts are diverse.\"",
+    "sourceDisplay": "Quran — Surah Al-Layl, 92:1-4"
+  },
+  {
+    "id": "quran_093",
+    "correctAnswerIndex": 0,
+    "question": "With what command does Surah Al-A'la open?",
+    "answers": [
+      "\"Exalt the name of your Lord, the Most High\"",
+      "\"Read\"",
+      "\"Arise\"",
+      "\"Listen\""
+    ],
+    "explanation": "\"Exalt the name of your Lord, the Most High.\"",
+    "sourceDisplay": "Quran — Surah Al-A'la, 87:1"
+  },
+  {
+    "id": "quran_094",
+    "correctAnswerIndex": 0,
+    "question": "What does the opening of Surah Al-Ghashiyah speak of?",
+    "answers": [
+      "The overwhelming event: the Last Day",
+      "A journey",
+      "A market",
+      "A battle"
+    ],
+    "explanation": "\"Has there reached you the report of the Overwhelming Event?\"",
+    "sourceDisplay": "Quran — Surah Al-Ghashiyah, 88:1"
+  },
+  {
+    "id": "quran_095",
+    "correctAnswerIndex": 0,
+    "question": "Which creature does Surah Al-Ghashiyah invite reflection upon?",
+    "answers": [
+      "The camel, and how it was created",
+      "The lion",
+      "The eagle",
+      "The fish"
+    ],
+    "explanation": "\"Then do they not look at the camels, how they are created?\"",
+    "sourceDisplay": "Quran — Surah Al-Ghashiyah, 88:17"
+  },
+  {
+    "id": "quran_096",
+    "correctAnswerIndex": 0,
+    "question": "By what does Allah swear at the start of Surah Al-Buruj?",
+    "answers": [
+      "By the sky containing great stars",
+      "By the earth",
+      "By the rivers",
+      "By the clouds"
+    ],
+    "explanation": "\"By the sky containing great stars, and by the promised Day.\"",
+    "sourceDisplay": "Quran — Surah Al-Buruj, 85:1"
+  },
+  {
+    "id": "quran_097",
+    "correctAnswerIndex": 0,
+    "question": "What does \"At-Tariq\", the title of surah 86, refer to?",
+    "answers": [
+      "The piercing night star",
+      "The door",
+      "The road",
+      "The thunder"
+    ],
+    "explanation": "\"By the sky and the night comer — and what can make you know what the night comer is? It is the piercing star.\"",
+    "sourceDisplay": "Quran — Surah At-Tariq, 86:1-3"
+  },
+  {
+    "id": "quran_098",
+    "correctAnswerIndex": 0,
+    "question": "What event does the opening of Surah Az-Zalzalah describe?",
+    "answers": [
+      "The earth shaken with its quake",
+      "A torrential rain",
+      "A violent wind",
+      "An eclipse"
+    ],
+    "explanation": "\"When the earth is shaken with its final earthquake, and the earth discharges its burdens.\"",
+    "sourceDisplay": "Quran — Surah Az-Zalzalah, 99:1"
+  },
+  {
+    "id": "quran_099",
+    "correctAnswerIndex": 0,
+    "question": "What measure does the end of Surah Az-Zalzalah set for deeds?",
+    "answers": [
+      "The weight of an atom, of good and of evil alike",
+      "A bushel",
+      "A year",
+      "A hand"
+    ],
+    "explanation": "\"So whoever does an atom's weight of good will see it, and whoever does an atom's weight of evil will see it.\"",
+    "sourceDisplay": "Quran — Surah Az-Zalzalah, 99:7-8"
+  },
+  {
+    "id": "quran_100",
+    "correctAnswerIndex": 0,
+    "question": "What does \"Al-'Adiyat\", the title of surah 100, refer to?",
+    "answers": [
+      "The racers that gallop, panting",
+      "The winds",
+      "The waves",
+      "The clouds"
+    ],
+    "explanation": "\"By the racers, panting; and the producers of sparks when striking; and the chargers at dawn.\"",
+    "sourceDisplay": "Quran — Surah Al-'Adiyat, 100:1-5"
+  },
+  {
+    "id": "quran_101",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Al-Baqarah describe the Book in its second verse?",
+    "answers": [
+      "A book about which there is no doubt, a guidance for the God-fearing",
+      "A book of history",
+      "A collection of poems",
+      "A book of law only"
+    ],
+    "explanation": "\"This is the Book about which there is no doubt, a guidance for those conscious of Allah.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:2"
+  },
+  {
+    "id": "quran_102",
+    "correctAnswerIndex": 0,
+    "question": "Which verse promises the preservation of the revealed Reminder?",
+    "answers": [
+      "\"Indeed, it is We who sent down the Reminder, and indeed, We will be its guardian\"",
+      "\"None shall read it\"",
+      "\"It will be forgotten\"",
+      "\"It will be hidden\""
+    ],
+    "explanation": "\"Indeed, it is We who sent down the Quran and indeed, We will be its guardian.\"",
+    "sourceDisplay": "Quran — Surah Al-Hijr, 15:9"
+  },
+  {
+    "id": "quran_103",
+    "correctAnswerIndex": 0,
+    "question": "What argument does the Quran make about its freedom from contradiction?",
+    "answers": [
+      "Had it come from other than Allah, they would find much contradiction in it",
+      "That it is short",
+      "That it is in Arabic",
+      "That it is ancient"
+    ],
+    "explanation": "\"Then do they not reflect upon the Quran? If it had been from other than Allah, they would have found within it much contradiction.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:82"
+  },
+  {
+    "id": "quran_104",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say would have happened to a mountain, had it been revealed upon it?",
+    "answers": [
+      "It would have been humbled and split apart from fear of Allah",
+      "It would have shone",
+      "It would have moved",
+      "It would have turned green"
+    ],
+    "explanation": "\"If We had sent down this Quran upon a mountain, you would have seen it humbled and coming apart from fear of Allah.\"",
+    "sourceDisplay": "Quran — Surah Al-Hashr, 59:21"
+  },
+  {
+    "id": "quran_105",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran command that it be recited, in Surah Al-Muzzammil?",
+    "answers": [
+      "Measuredly and distinctly (tartil)",
+      "As fast as possible",
+      "Silently",
+      "In song"
+    ],
+    "explanation": "\"And recite the Quran with measured recitation.\"",
+    "sourceDisplay": "Quran — Surah Al-Muzzammil, 73:4"
+  },
+  {
+    "id": "quran_106",
+    "correctAnswerIndex": 0,
+    "question": "What should be done when the Quran is recited, according to Surah Al-A'raf?",
+    "answers": [
+      "Listen and be silent",
+      "Answer aloud",
+      "Leave",
+      "Write"
+    ],
+    "explanation": "\"So when the Quran is recited, listen to it and pay attention, that you may receive mercy.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:204"
+  },
+  {
+    "id": "quran_107",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command be said before beginning to read it?",
+    "answers": [
+      "Seek refuge in Allah from Satan, the expelled",
+      "Count the verses",
+      "Say the ablution aloud",
+      "Recite the last verse"
+    ],
+    "explanation": "\"So when you recite the Quran, seek refuge in Allah from Satan, the expelled.\"",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:98"
+  },
+  {
+    "id": "quran_108",
+    "correctAnswerIndex": 0,
+    "question": "Why was the Book sent down, according to Surah Sad?",
+    "answers": [
+      "So that its verses would be pondered and the people of understanding reminded",
+      "So that it be copied",
+      "So that it be counted",
+      "So that it be hidden"
+    ],
+    "explanation": "\"This is a blessed Book which We have revealed to you, that they might reflect upon its verses.\"",
+    "sourceDisplay": "Quran — Surah Sad, 38:29"
+  },
+  {
+    "id": "quran_109",
+    "correctAnswerIndex": 0,
+    "question": "What challenge does Surah Al-Isra issue to mankind and jinn together?",
+    "answers": [
+      "To produce the like of this Quran, even helping one another",
+      "To cross the heavens",
+      "To count the stars",
+      "To build a city"
+    ],
+    "explanation": "\"If mankind and the jinn gathered to produce the like of this Quran, they could not produce the like of it, even if they were helpers of one another.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:88"
+  },
+  {
+    "id": "quran_110",
+    "correctAnswerIndex": 0,
+    "question": "Which supplication does the Quran teach concerning knowledge?",
+    "answers": [
+      "\"My Lord, increase me in knowledge\"",
+      "\"My Lord, give me wealth\"",
+      "\"My Lord, lengthen my life\"",
+      "\"My Lord, open the roads to me\""
+    ],
+    "explanation": "\"And say: My Lord, increase me in knowledge.\"",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:114"
+  },
+  {
+    "id": "quran_111",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Az-Zumar describe the best of narrations revealed?",
+    "answers": [
+      "A Book of similar, repeated parts, at which the skins shiver",
+      "A short book",
+      "A book of laws",
+      "A book in verse"
+    ],
+    "explanation": "\"Allah has sent down the best statement: a consistent Book wherein is reiteration. The skins shiver therefrom of those who fear their Lord.\"",
+    "sourceDisplay": "Quran — Surah Az-Zumar, 39:23"
+  },
+  {
+    "id": "quran_112",
+    "correctAnswerIndex": 0,
+    "question": "To what does the Quran compare a good word, in Surah Ibrahim?",
+    "answers": [
+      "To a good tree, firm of root and branches in the sky",
+      "To a river",
+      "To a mountain",
+      "To a star"
+    ],
+    "explanation": "\"A good word is like a good tree, whose root is firmly fixed and its branches in the sky; it gives its fruit every season.\"",
+    "sourceDisplay": "Quran — Surah Ibrahim, 14:24-25"
+  },
+  {
+    "id": "quran_113",
+    "correctAnswerIndex": 0,
+    "question": "To what does Surah Ar-Ra'd compare truth and falsehood?",
+    "answers": [
+      "To the froth the torrent carries off, and what benefits people and remains",
+      "To two mountains",
+      "To two cities",
+      "To two caravans"
+    ],
+    "explanation": "\"As for the foam, it vanishes as scum; but what benefits the people remains on the earth.\"",
+    "sourceDisplay": "Quran — Surah Ar-Ra'd, 13:17"
+  },
+  {
+    "id": "quran_114",
+    "correctAnswerIndex": 0,
+    "question": "By what do hearts find rest, according to Surah Ar-Ra'd?",
+    "answers": [
+      "By the remembrance of Allah",
+      "By wealth",
+      "By travel",
+      "By sleep"
+    ],
+    "explanation": "\"Unquestionably, by the remembrance of Allah hearts are assured.\"",
+    "sourceDisplay": "Quran — Surah Ar-Ra'd, 13:28"
+  },
+  {
+    "id": "quran_115",
+    "correctAnswerIndex": 0,
+    "question": "What does Surah Al-Kahf say of the ink needed to write the words of Allah?",
+    "answers": [
+      "The sea would run dry before the words of his Lord were exhausted",
+      "One inkwell would do",
+      "One night would do",
+      "Seven pens would do"
+    ],
+    "explanation": "\"If the sea were ink for the words of my Lord, the sea would be exhausted before the words of my Lord were exhausted.\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:109"
+  },
+  {
+    "id": "quran_116",
+    "correctAnswerIndex": 0,
+    "question": "How many seas, according to Surah Luqman, would still not exhaust the words of Allah?",
+    "answers": [
+      "Seven seas in reinforcement, and still not enough",
+      "One",
+      "Three",
+      "Twelve"
+    ],
+    "explanation": "\"And if whatever trees upon the earth were pens and the sea was ink, replenished thereafter by seven more seas, the words of Allah would not be exhausted.\"",
+    "sourceDisplay": "Quran — Surah Luqman, 31:27"
+  },
+  {
+    "id": "quran_117",
+    "correctAnswerIndex": 0,
+    "question": "What objection does the Quran say would have been raised, had it been revealed in a foreign tongue to an Arab messenger?",
+    "answers": [
+      "\"Why are its verses not explained in detail?\"",
+      "\"It is too short\"",
+      "\"It is too long\"",
+      "\"It has no title\""
+    ],
+    "explanation": "\"And if We had made it a foreign Quran, they would have said: 'Why are its verses not explained in detail?'\"",
+    "sourceDisplay": "Quran — Surah Fussilat, 41:44"
+  },
+  {
+    "id": "quran_118",
+    "correctAnswerIndex": 0,
+    "question": "To what does the Quran guide, according to Surah Al-Isra?",
+    "answers": [
+      "To that which is most upright",
+      "To wealth",
+      "To power",
+      "To rest"
+    ],
+    "explanation": "\"Indeed, this Quran guides to that which is most suitable, and gives good tidings to the believers who do righteous deeds of a great reward.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:9"
+  },
+  {
+    "id": "quran_119",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Yunus describe what has come down from the Lord?",
+    "answers": [
+      "An admonition, a healing for what is in the breasts, guidance and mercy",
+      "A reckoning",
+      "A royal decree",
+      "A treaty"
+    ],
+    "explanation": "\"O mankind, there has come to you instruction from your Lord and healing for what is in the breasts, and guidance and mercy for the believers.\"",
+    "sourceDisplay": "Quran — Surah Yunus, 10:57"
+  },
+  {
+    "id": "quran_120",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Al-Baqarah describe the Quran's role as a criterion?",
+    "answers": [
+      "Guidance for the people, clear proofs, and the criterion",
+      "A book of accounts",
+      "A collection of stories",
+      "A penal code"
+    ],
+    "explanation": "\"The month of Ramadan in which was revealed the Quran, a guidance for the people and clear proofs of guidance and criterion.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:185"
+  },
+  {
+    "id": "quran_121",
+    "correctAnswerIndex": 0,
+    "question": "By what does Allah swear at the start of Surah Qaf?",
+    "answers": [
+      "By the glorious Quran",
+      "By the mountain",
+      "By the wind",
+      "By the dawn"
+    ],
+    "explanation": "\"Qaf. By the honoured Quran.\"",
+    "sourceDisplay": "Quran — Surah Qaf, 50:1"
+  },
+  {
+    "id": "quran_122",
+    "correctAnswerIndex": 0,
+    "question": "What does \"Al-Mursalat\", the title of surah 77, refer to?",
+    "answers": [
+      "Those sent forth, one after another",
+      "The caravans",
+      "The stars",
+      "The rivers"
+    ],
+    "explanation": "\"By those sent forth in gusts, one after another.\"",
+    "sourceDisplay": "Quran — Surah Al-Mursalat, 77:1"
+  },
+  {
+    "id": "quran_123",
+    "correctAnswerIndex": 0,
+    "question": "Which register does Surah Al-Mutaffifin name for the righteous?",
+    "answers": [
+      "'Illiyyun",
+      "Sijjin",
+      "Al-Lawh",
+      "Az-Zabur"
+    ],
+    "explanation": "\"The record of the righteous is in 'Illiyyun… a register inscribed, which the near angels witness.\"",
+    "sourceDisplay": "Quran — Surah Al-Mutaffifin, 83:18-21"
+  },
+  {
+    "id": "quran_124",
+    "correctAnswerIndex": 0,
+    "question": "With what event does Surah Al-Inshiqaq open?",
+    "answers": [
+      "The sky splitting asunder",
+      "The sea overflowing",
+      "The earth turning green",
+      "The sun rising"
+    ],
+    "explanation": "\"When the sky has split asunder and has listened to its Lord, as it must.\"",
+    "sourceDisplay": "Quran — Surah Al-Inshiqaq, 84:1-2"
+  },
+  {
+    "id": "quran_125",
+    "correctAnswerIndex": 0,
+    "question": "With which sign does Surah At-Takwir open?",
+    "answers": [
+      "The sun wrapped up",
+      "The moon split",
+      "The wind rising",
+      "The thunder"
+    ],
+    "explanation": "\"When the sun is wrapped up in darkness, and when the stars fall, losing their lustre.\"",
+    "sourceDisplay": "Quran — Surah At-Takwir, 81:1"
+  },
+  {
+    "id": "quran_126",
+    "correctAnswerIndex": 0,
+    "question": "What does the last verse of Surah Al-Baqarah say about the burden placed on a soul?",
+    "answers": [
+      "Allah does not burden a soul beyond its capacity",
+      "Each soul carries double",
+      "No one is tested",
+      "All burdens are equal"
+    ],
+    "explanation": "\"Allah does not charge a soul except with that within its capacity.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:286"
+  },
+  {
+    "id": "quran_127",
+    "correctAnswerIndex": 0,
+    "question": "To what does the Quran compare spending in the way of Allah?",
+    "answers": [
+      "To a seed that grows seven ears, each with a hundred grains",
+      "To a stone",
+      "To a well",
+      "To a lamp"
+    ],
+    "explanation": "\"The example of those who spend their wealth in the way of Allah is like a seed which grows seven spikes; in each spike is a hundred grains.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:261"
+  },
+  {
+    "id": "quran_128",
+    "correctAnswerIndex": 0,
+    "question": "To what is charity nullified by reproach and injury compared?",
+    "answers": [
+      "To a rock covered with soil, stripped bare by a downpour",
+      "To a fruit tree",
+      "To a spring",
+      "To a house"
+    ],
+    "explanation": "\"His example is like that of a smooth stone upon which is dust and is hit by a downpour that leaves it bare.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:264"
+  },
+  {
+    "id": "quran_129",
+    "correctAnswerIndex": 0,
+    "question": "To what does the Quran compare the deeds of the disbelievers in Surah An-Nur?",
+    "answers": [
+      "To a mirage on a plain, which the thirsty man takes for water",
+      "To a mountain",
+      "To rain",
+      "To a garden"
+    ],
+    "explanation": "\"But those who disbelieved — their deeds are like a mirage in a lowland which a thirsty one thinks is water, until he comes to it and finds it is nothing.\"",
+    "sourceDisplay": "Quran — Surah An-Nur, 24:39"
+  },
+  {
+    "id": "quran_130",
+    "correctAnswerIndex": 0,
+    "question": "Which question opens Surah Al-'Ankabut, after the isolated letters?",
+    "answers": [
+      "\"Do people think they will be left to say 'we believe' without being tested?\"",
+      "\"Where are the heavens?\"",
+      "\"Who created the sea?\"",
+      "\"What will you do tomorrow?\""
+    ],
+    "explanation": "\"Do the people think that they will be left to say 'we believe' and they will not be tried?\"",
+    "sourceDisplay": "Quran — Surah Al-'Ankabut, 29:1-2"
+  },
+  {
+    "id": "quran_131",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Fatir describe the angels in its first verse?",
+    "answers": [
+      "Messengers having wings, two, three or four",
+      "Created from clay",
+      "Of unknown number",
+      "Resembling human beings"
+    ],
+    "explanation": "\"Praise to Allah, Creator of the heavens and the earth, who made the angels messengers having wings, two or three or four.\"",
+    "sourceDisplay": "Quran — Surah Fatir, 35:1"
+  },
+  {
+    "id": "quran_132",
+    "correctAnswerIndex": 0,
+    "question": "What sign does Surah Ar-Rum mention concerning spouses?",
+    "answers": [
+      "That He placed affection and mercy between them",
+      "That they live apart",
+      "That they work together",
+      "That they travel"
+    ],
+    "explanation": "\"And of His signs is that He created for you from yourselves mates that you may find tranquillity in them, and He placed between you affection and mercy.\"",
+    "sourceDisplay": "Quran — Surah Ar-Rum, 30:21"
+  },
+  {
+    "id": "quran_133",
+    "correctAnswerIndex": 0,
+    "question": "Which two signs does Surah Ar-Rum name just after the creation of the heavens and the earth?",
+    "answers": [
+      "The diversity of languages and colours",
+      "The day and the night",
+      "The wind and the rain",
+      "The sea and the mountain"
+    ],
+    "explanation": "\"And of His signs is the creation of the heavens and the earth and the diversity of your languages and your colours.\"",
+    "sourceDisplay": "Quran — Surah Ar-Rum, 30:22"
+  },
+  {
+    "id": "quran_134",
+    "correctAnswerIndex": 0,
+    "question": "From what does the Quran say Allah made every living thing, in Surah Al-Anbiya?",
+    "answers": [
+      "From water",
+      "From fire",
+      "From stone",
+      "From air"
+    ],
+    "explanation": "\"And We made from water every living thing. Then will they not believe?\"",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:30"
+  },
+  {
+    "id": "quran_135",
+    "correctAnswerIndex": 0,
+    "question": "What argument does the Quran give against a plurality of gods, in Surah Al-Anbiya?",
+    "answers": [
+      "Had there been gods besides Allah, the heavens and earth would be in ruin",
+      "They would hide",
+      "They would fall silent",
+      "They would vanish"
+    ],
+    "explanation": "\"Had there been within the heavens and earth gods besides Allah, they both would have been ruined.\"",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:22"
+  },
+  {
+    "id": "quran_136",
+    "correctAnswerIndex": 0,
+    "question": "Which three things does verse 16:90 say Allah commands?",
+    "answers": [
+      "Justice, excellence, and giving to relatives",
+      "Fasting, prayer and pilgrimage",
+      "Trade, travel and writing",
+      "Silence, patience and retreat"
+    ],
+    "explanation": "\"Indeed, Allah orders justice and good conduct and giving to relatives.\"",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:90"
+  },
+  {
+    "id": "quran_137",
+    "correctAnswerIndex": 0,
+    "question": "From what, according to Surah An-Nahl, comes a drink of varying colours in which is healing for people?",
+    "answers": [
+      "From the bellies of the bees",
+      "From the sea",
+      "From the palm trees",
+      "From mountain springs"
+    ],
+    "explanation": "\"There emerges from their bellies a drink of varying colours in which there is healing for people.\"",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:69"
+  },
+  {
+    "id": "quran_138",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Ar-Rahman open?",
+    "answers": [
+      "\"The Most Merciful taught the Quran\"",
+      "\"By the night\"",
+      "\"Praise be to Allah\"",
+      "\"Read\""
+    ],
+    "explanation": "\"The Most Merciful taught the Quran, created man, and taught him eloquence.\"",
+    "sourceDisplay": "Quran — Surah Ar-Rahman, 55:1-4"
+  },
+  {
+    "id": "quran_139",
+    "correctAnswerIndex": 0,
+    "question": "Into how many groups does Surah Al-Waqi'ah divide people on the Last Day?",
+    "answers": [
+      "Three",
+      "Two",
+      "Four",
+      "Seven"
+    ],
+    "explanation": "\"And you become of three kinds: the companions of the right, the companions of the left, and the forerunners.\"",
+    "sourceDisplay": "Quran — Surah Al-Waqi'ah, 56:7-10"
+  },
+  {
+    "id": "quran_140",
+    "correctAnswerIndex": 0,
+    "question": "To what does the Quran compare those who carry the Torah without acting on it?",
+    "answers": [
+      "To a donkey carrying books",
+      "To a bird",
+      "To a mountain",
+      "To a ship"
+    ],
+    "explanation": "\"The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey carrying volumes of books.\"",
+    "sourceDisplay": "Quran — Surah Al-Jumu'ah, 62:5"
+  },
+  {
+    "id": "quran_141",
+    "correctAnswerIndex": 0,
+    "question": "Which woman does the Quran hold up as an example to the believers, citing her request for a house with Allah?",
+    "answers": [
+      "The wife of Pharaoh",
+      "The queen of Saba",
+      "The wife of Nuh",
+      "The wife of Lut"
+    ],
+    "explanation": "\"And Allah presents an example of those who believed: the wife of Pharaoh, when she said: 'My Lord, build for me near You a house in Paradise.'\"",
+    "sourceDisplay": "Quran — Surah At-Tahrim, 66:11"
+  },
+  {
+    "id": "quran_142",
+    "correctAnswerIndex": 0,
+    "question": "By what other name is Surah Al-Ikhlas often known, from its subject?",
+    "answers": [
+      "The surah of oneness (at-tawhid)",
+      "The surah of the journey",
+      "The surah of light",
+      "The surah of the spoils"
+    ],
+    "explanation": "Al-Ikhlas, \"pure devotion\", is also called the surah of tawhid, for it describes Allah as the One.",
+    "sourceDisplay": "Quran — Surah Al-Ikhlas, 112:1"
+  },
+  {
+    "id": "quran_143",
+    "correctAnswerIndex": 0,
+    "question": "What does the third verse of Surah Al-Ikhlas deny?",
+    "answers": [
+      "That He begot or was begotten",
+      "That He is powerful",
+      "That He hears",
+      "That He creates"
+    ],
+    "explanation": "\"He neither begets nor is born.\"",
+    "sourceDisplay": "Quran — Surah Al-Ikhlas, 112:3"
+  },
+  {
+    "id": "quran_144",
+    "correctAnswerIndex": 0,
+    "question": "Against what does Surah An-Nas seek refuge?",
+    "answers": [
+      "The retreating whisperer, from among jinn and mankind",
+      "The storm",
+      "Illness",
+      "Poverty"
+    ],
+    "explanation": "\"…from the evil of the retreating whisperer, who whispers in the breasts of mankind, from among the jinn and mankind.\"",
+    "sourceDisplay": "Quran — Surah An-Nas, 114:4-6"
+  },
+  {
+    "id": "quran_145",
+    "correctAnswerIndex": 0,
+    "question": "How many distinct evils does Surah Al-Falaq name after \"the evil of what He created\"?",
+    "answers": [
+      "Three: the darkening night, those who blow on knots, and the envier",
+      "One",
+      "Five",
+      "Seven"
+    ],
+    "explanation": "\"…from the evil of darkness when it settles, and from the evil of the blowers in knots, and from the evil of an envier when he envies.\"",
+    "sourceDisplay": "Quran — Surah Al-Falaq, 113:2-5"
+  },
+  {
+    "id": "quran_146",
+    "correctAnswerIndex": 0,
+    "question": "Which verse of Al-Fatihah expresses the heart of worship and of seeking help?",
+    "answers": [
+      "\"You alone we worship, and You alone we ask for help\"",
+      "\"Praise be to Allah\"",
+      "\"Guide us\"",
+      "\"Master of the Day of Judgement\""
+    ],
+    "explanation": "\"You alone we worship and You alone we ask for help.\"",
+    "sourceDisplay": "Quran — Surah Al-Fatihah, 1:5"
+  },
+  {
+    "id": "quran_147",
+    "correctAnswerIndex": 0,
+    "question": "What request closes Surah Al-Fatihah?",
+    "answers": [
+      "To be guided on the straight path, the path of those favoured",
+      "Wealth",
+      "Victory",
+      "Long life"
+    ],
+    "explanation": "\"Guide us to the straight path, the path of those upon whom You have bestowed favour.\"",
+    "sourceDisplay": "Quran — Surah Al-Fatihah, 1:6-7"
+  },
+  {
+    "id": "quran_148",
+    "correctAnswerIndex": 0,
+    "question": "Which two kinds of verses does Surah Al-'Imran distinguish?",
+    "answers": [
+      "Clear verses (muhkamat) and ambiguous verses (mutashabihat)",
+      "The long and the short",
+      "The Makkan and the Madinan",
+      "The recited and the written"
+    ],
+    "explanation": "\"It is He who revealed to you the Book: in it are verses that are precise — they are the foundation of the Book — and others unspecific.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:7"
+  },
+  {
+    "id": "quran_149",
+    "correctAnswerIndex": 0,
+    "question": "What principle does verse 2:106 state about replaced verses?",
+    "answers": [
+      "Allah brings one better than it or like it",
+      "They are erased with no replacement",
+      "They are forgotten",
+      "They are rewritten by people"
+    ],
+    "explanation": "\"We do not abrogate a verse or cause it to be forgotten except that We bring forth one better than it or similar to it.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:106"
+  },
+  {
+    "id": "quran_150",
+    "correctAnswerIndex": 0,
+    "question": "Of what will the Messenger ﷺ complain to his Lord, according to Surah Al-Furqan?",
+    "answers": [
+      "That his people abandoned this Quran",
+      "That he is tired",
+      "That he is alone",
+      "That he is poor"
+    ],
+    "explanation": "\"And the Messenger will say: 'O my Lord, indeed my people have taken this Quran as a thing abandoned.'\"",
+    "sourceDisplay": "Quran — Surah Al-Furqan, 25:30"
+  },
+  {
     "id": "faith_019",
     "correctAnswerIndex": 0,
     "question": "Which Book did Allah reveal to the prophet Musa?",
@@ -6084,6 +9594,1046 @@
     "sourceDisplay": "Qur'an 51:58"
   },
   {
+    "id": "faith_071",
+    "correctAnswerIndex": 0,
+    "question": "What does the name of Allah \"As-Salam\" mean?",
+    "answers": [
+      "The Peace, free of every defect",
+      "The Creator",
+      "The Provider",
+      "The Mighty"
+    ],
+    "explanation": "As-Salam is among the names listed at the end of Surah Al-Hashr: He is the Peace, free of all imperfection.",
+    "sourceDisplay": "Quran — Surah Al-Hashr, 59:23"
+  },
+  {
+    "id": "faith_072",
+    "correctAnswerIndex": 0,
+    "question": "Which attributes does verse 59:22 place beside the name of Allah, right after \"there is no deity but He\"?",
+    "answers": [
+      "Knower of the unseen and the witnessed, the Most Merciful",
+      "The King and the Warrior",
+      "The Rich and the Generous",
+      "The Strong and the Swift"
+    ],
+    "explanation": "\"He is Allah, other than whom there is no deity, Knower of the unseen and the witnessed. He is the Entirely Merciful, the Especially Merciful.\"",
+    "sourceDisplay": "Quran — Surah Al-Hashr, 59:22"
+  },
+  {
+    "id": "faith_073",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command be done with the most beautiful names of Allah?",
+    "answers": [
+      "To call upon Him by them",
+      "Only to count them",
+      "To write them on doors",
+      "To keep silent about them"
+    ],
+    "explanation": "\"And to Allah belong the best names, so invoke Him by them.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:180"
+  },
+  {
+    "id": "faith_074",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Ta-Ha present the names of Allah?",
+    "answers": [
+      "\"Allah — there is no deity except Him. To Him belong the best names\"",
+      "\"His names are hidden\"",
+      "\"His names are countless\"",
+      "\"His names are nine\""
+    ],
+    "explanation": "\"Allah — there is no deity except Him. To Him belong the best names.\"",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:8"
+  },
+  {
+    "id": "faith_075",
+    "correctAnswerIndex": 0,
+    "question": "Which formula does the Quran use to rule out any likeness to Allah?",
+    "answers": [
+      "\"There is nothing like unto Him, and He is the Hearing, the Seeing\"",
+      "\"He is the greatest of kings\"",
+      "\"He is like light\"",
+      "\"None sees Him\""
+    ],
+    "explanation": "\"There is nothing like unto Him, and He is the Hearing, the Seeing.\"",
+    "sourceDisplay": "Quran — Surah Ash-Shura, 42:11"
+  },
+  {
+    "id": "faith_076",
+    "correctAnswerIndex": 0,
+    "question": "What does the Throne Verse say about slumber and sleep?",
+    "answers": [
+      "Neither drowsiness nor sleep overtakes Him",
+      "He sleeps at night",
+      "He rests on the seventh day",
+      "He watches every other day"
+    ],
+    "explanation": "\"Neither drowsiness overtakes Him nor sleep.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:255"
+  },
+  {
+    "id": "faith_077",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of Allah's knowledge of a falling leaf?",
+    "answers": [
+      "Not a leaf falls but He knows it",
+      "He learns of it afterwards",
+      "The angels inform Him",
+      "It is not written down"
+    ],
+    "explanation": "\"And with Him are the keys of the unseen… not a leaf falls but that He knows it.\"",
+    "sourceDisplay": "Quran — Surah Al-An'am, 6:59"
+  },
+  {
+    "id": "faith_078",
+    "correctAnswerIndex": 0,
+    "question": "Than what is Allah nearer to a person, according to Surah Qaf?",
+    "answers": [
+      "Than his jugular vein",
+      "Than his shadow",
+      "Than his voice",
+      "Than his house"
+    ],
+    "explanation": "\"And We have already created man and know what his soul whispers to him, and We are closer to him than his jugular vein.\"",
+    "sourceDisplay": "Quran — Surah Qaf, 50:16"
+  },
+  {
+    "id": "faith_079",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the angels charged with the Fire?",
+    "answers": [
+      "They do not disobey Allah and do what they are commanded",
+      "Some of them hesitate",
+      "They sleep",
+      "They choose"
+    ],
+    "explanation": "\"…angels, harsh and severe, who do not disobey Allah in what He commands them but do what they are commanded.\"",
+    "sourceDisplay": "Quran — Surah At-Tahrim, 66:6"
+  },
+  {
+    "id": "faith_080",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the angels in relation to Allah's word?",
+    "answers": [
+      "They do not precede Him in speech and act by His command",
+      "They dispute His orders",
+      "They decide on their own",
+      "They are always silent"
+    ],
+    "explanation": "\"Rather, they are honoured servants. They cannot precede Him in word, and they act by His command.\"",
+    "sourceDisplay": "Quran — Surah Al-Anbiya, 21:26-27"
+  },
+  {
+    "id": "faith_081",
+    "correctAnswerIndex": 0,
+    "question": "Which angel does the Quran name as the one who brought the revelation down upon the Prophet's ﷺ heart?",
+    "answers": [
+      "Jibril (Gabriel)",
+      "Mika'il (Michael)",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "\"Say: whoever is an enemy to Jibril — it is he who has brought it down upon your heart by permission of Allah.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:97"
+  },
+  {
+    "id": "faith_082",
+    "correctAnswerIndex": 0,
+    "question": "Which other angel is named alongside Jibril in Surah Al-Baqarah?",
+    "answers": [
+      "Mikal (Michael)",
+      "Israfil",
+      "Ridwan",
+      "Munkar"
+    ],
+    "explanation": "\"Whoever is an enemy to Allah and His angels and His messengers and Jibril and Mikal…\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:98"
+  },
+  {
+    "id": "faith_083",
+    "correctAnswerIndex": 0,
+    "question": "Which objects of belief does verse 4:136 list?",
+    "answers": [
+      "Allah, His Messenger, the Book revealed, and the Books before",
+      "The Book only",
+      "The prophets only",
+      "The angels only"
+    ],
+    "explanation": "\"O you who have believed, believe in Allah and His Messenger and the Book that He sent down upon His Messenger and the Scripture which He sent down before.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:136"
+  },
+  {
+    "id": "faith_084",
+    "correctAnswerIndex": 0,
+    "question": "Which Book does the Quran mention as given to Dawud?",
+    "answers": [
+      "The Zabur (Psalms)",
+      "The Torah",
+      "The Gospel",
+      "The Scrolls of Ibrahim"
+    ],
+    "explanation": "\"…and We gave to Dawud the Zabur.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:55"
+  },
+  {
+    "id": "faith_085",
+    "correctAnswerIndex": 0,
+    "question": "Which surah is named after the jinn, who listened to the Quran and believed?",
+    "answers": [
+      "Al-Jinn",
+      "Al-Insan",
+      "An-Nas",
+      "Al-Furqan"
+    ],
+    "explanation": "\"Say: it has been revealed to me that a group of the jinn listened and said: we have heard an amazing recitation.\"",
+    "sourceDisplay": "Quran — Surah Al-Jinn, 72:1"
+  },
+  {
+    "id": "faith_086",
+    "correctAnswerIndex": 0,
+    "question": "For what were jinn and mankind created, according to Surah Adh-Dhariyat?",
+    "answers": [
+      "That they worship Him",
+      "To fill the earth",
+      "To build",
+      "To quarrel"
+    ],
+    "explanation": "\"And I did not create the jinn and mankind except to worship Me.\"",
+    "sourceDisplay": "Quran — Surah Adh-Dhariyat, 51:56"
+  },
+  {
+    "id": "faith_087",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say about every soul and death?",
+    "answers": [
+      "Every soul will taste death",
+      "Some souls do not die",
+      "Death is a doubt",
+      "Death is endless sleep"
+    ],
+    "explanation": "\"Every soul will taste death, and you will only be given your full compensation on the Day of Resurrection.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:185"
+  },
+  {
+    "id": "faith_088",
+    "correctAnswerIndex": 0,
+    "question": "In what state will people come forth, according to Surah Az-Zalzalah, to be shown their deeds?",
+    "answers": [
+      "In scattered groups",
+      "All together in one rank",
+      "Asleep",
+      "Silent and invisible"
+    ],
+    "explanation": "\"That Day, the people will depart separated in groups to be shown their deeds.\"",
+    "sourceDisplay": "Quran — Surah Az-Zalzalah, 99:6"
+  },
+  {
+    "id": "faith_089",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Al-Kahf describe the record of deeds on the Last Day?",
+    "answers": [
+      "It leaves nothing small or great without accounting for it",
+      "It records only great deeds",
+      "It is erased",
+      "It is written by people"
+    ],
+    "explanation": "\"They will say: 'Woe to us! What is this book that leaves nothing small or great except that it has enumerated it?'\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:49"
+  },
+  {
+    "id": "faith_090",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of the limbs on the Day of Judgement?",
+    "answers": [
+      "The hands will speak and the feet will testify",
+      "They will remain silent",
+      "They will be hidden",
+      "They will be transformed"
+    ],
+    "explanation": "\"That Day, We will seal over their mouths, and their hands will speak to Us, and their feet will testify about what they used to earn.\"",
+    "sourceDisplay": "Quran — Surah Ya-Sin, 36:65"
+  },
+  {
+    "id": "faith_091",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the prayer with regard to its timing?",
+    "answers": [
+      "A decree at fixed times",
+      "Free at any hour",
+      "Once a week",
+      "Only at night"
+    ],
+    "explanation": "\"Indeed, prayer has been decreed upon the believers a decree of specified times.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:103"
+  },
+  {
+    "id": "faith_092",
+    "correctAnswerIndex": 0,
+    "question": "From what does prayer restrain, according to Surah Al-'Ankabut?",
+    "answers": [
+      "From immorality and wrongdoing",
+      "From hunger",
+      "From illness",
+      "From travel"
+    ],
+    "explanation": "\"And establish prayer: indeed, prayer prohibits immorality and wrongdoing.\"",
+    "sourceDisplay": "Quran — Surah Al-'Ankabut, 29:45"
+  },
+  {
+    "id": "faith_093",
+    "correctAnswerIndex": 0,
+    "question": "Which prayer does the Quran single out as \"the middle prayer\"?",
+    "answers": [
+      "It is named without being identified, in the command to guard the prayers",
+      "The dawn prayer only",
+      "The evening prayer only",
+      "The Friday prayer"
+    ],
+    "explanation": "\"Maintain with care the prayers and the middle prayer, and stand before Allah devoutly obedient.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:238"
+  },
+  {
+    "id": "faith_094",
+    "correctAnswerIndex": 0,
+    "question": "For what reason does the Quran command the prayer, in Surah Ta-Ha?",
+    "answers": [
+      "For the remembrance of Allah",
+      "For rest",
+      "For gathering",
+      "For counting the hours"
+    ],
+    "explanation": "\"Indeed, I am Allah. There is no deity except Me, so worship Me and establish prayer for My remembrance.\"",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:14"
+  },
+  {
+    "id": "faith_095",
+    "correctAnswerIndex": 0,
+    "question": "Which quality of prayer opens the list of successful believers, in Al-Mu'minun?",
+    "answers": [
+      "Humility (khushu') in prayer",
+      "Length",
+      "Speed",
+      "Number"
+    ],
+    "explanation": "\"Certainly will the believers have succeeded: they who are during their prayer humbly submissive.\"",
+    "sourceDisplay": "Quran — Surah Al-Mu'minun, 23:1-2"
+  },
+  {
+    "id": "faith_096",
+    "correctAnswerIndex": 0,
+    "question": "Which prayer does Surah Al-Isra describe as \"witnessed\" (mashhudah)?",
+    "answers": [
+      "The recitation at dawn",
+      "The evening prayer",
+      "The noon prayer",
+      "The Friday prayer"
+    ],
+    "explanation": "\"Establish prayer at the decline of the sun until the darkness of the night, and the recitation at dawn: indeed, the recitation at dawn is ever witnessed.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:78"
+  },
+  {
+    "id": "faith_097",
+    "correctAnswerIndex": 0,
+    "question": "Which two things does the Quran command be sought as help?",
+    "answers": [
+      "Patience and prayer",
+      "Strength and wealth",
+      "Travel and rest",
+      "Silence and solitude"
+    ],
+    "explanation": "\"O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:153"
+  },
+  {
+    "id": "faith_098",
+    "correctAnswerIndex": 0,
+    "question": "How many rak'ahs does the obligatory Dhuhr prayer have?",
+    "answers": [
+      "Four",
+      "Two",
+      "Three",
+      "Five"
+    ],
+    "explanation": "Dhuhr, 'Asr and 'Isha each have four obligatory rak'ahs; the schools agree on this.",
+    "sourceDisplay": "Established practice, agreed across the schools"
+  },
+  {
+    "id": "faith_099",
+    "correctAnswerIndex": 0,
+    "question": "Which is the last of the five obligatory daily prayers?",
+    "answers": [
+      "Al-'Isha",
+      "Al-Fajr",
+      "Al-Maghrib",
+      "Al-'Asr"
+    ],
+    "explanation": "The order is: Fajr, Dhuhr, 'Asr, Maghrib, 'Isha.",
+    "sourceDisplay": "Established practice, agreed across the schools"
+  },
+  {
+    "id": "faith_100",
+    "correctAnswerIndex": 0,
+    "question": "What is the prostration position in the prayer called?",
+    "answers": [
+      "The sujud",
+      "The ruku'",
+      "The qiyam",
+      "The tashahhud"
+    ],
+    "explanation": "Qiyam is standing, ruku' is bowing, sujud is prostration, and tashahhud is the sitting of testimony.",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "faith_101",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran provide for the sick or the traveller during Ramadan?",
+    "answers": [
+      "An equal number of days to make up",
+      "Nothing at all",
+      "A double obligation",
+      "A perpetual fast"
+    ],
+    "explanation": "\"So whoever among you is ill or on a journey, then an equal number of other days.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:184"
+  },
+  {
+    "id": "faith_102",
+    "correctAnswerIndex": 0,
+    "question": "What purpose does the Quran give to the prescribed fast?",
+    "answers": [
+      "To attain God-consciousness (taqwa)",
+      "To lose weight",
+      "To save money",
+      "To rest"
+    ],
+    "explanation": "\"Fasting is prescribed for you as it was prescribed for those before you, that you may become righteous.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:183"
+  },
+  {
+    "id": "faith_103",
+    "correctAnswerIndex": 0,
+    "question": "What does Allah answer, amid the verses on fasting, to those who ask about His nearness?",
+    "answers": [
+      "\"I am near: I respond to the call of the caller when he calls upon Me\"",
+      "\"Wait for the night\"",
+      "\"Ask the angels\"",
+      "\"Seek far away\""
+    ],
+    "explanation": "\"And when My servants ask you concerning Me, indeed I am near. I respond to the invocation of the supplicant when he calls upon Me.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:186"
+  },
+  {
+    "id": "faith_104",
+    "correctAnswerIndex": 0,
+    "question": "How many categories of zakat recipients does the Quran list?",
+    "answers": [
+      "Eight",
+      "Three",
+      "Five",
+      "Twelve"
+    ],
+    "explanation": "\"Zakat is only for the poor, the needy, those employed to collect it, those whose hearts are to be reconciled, for freeing captives, for those in debt, in the cause of Allah, and for the traveller.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:60"
+  },
+  {
+    "id": "faith_105",
+    "correctAnswerIndex": 0,
+    "question": "What effect does the Quran attribute to the zakat taken from wealth?",
+    "answers": [
+      "It purifies and causes to grow",
+      "It impoverishes",
+      "It is symbolic",
+      "It replaces the prayer"
+    ],
+    "explanation": "\"Take from their wealth a charity by which you purify them and cause them increase.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:103"
+  },
+  {
+    "id": "faith_106",
+    "correctAnswerIndex": 0,
+    "question": "Which two obligations does the Quran most often pair together?",
+    "answers": [
+      "Prayer and zakat",
+      "Fasting and travel",
+      "Pilgrimage and trade",
+      "Reading and writing"
+    ],
+    "explanation": "\"And establish prayer and give zakat; whatever good you put forward for yourselves, you will find it with Allah.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:110"
+  },
+  {
+    "id": "faith_107",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say reaches Allah in the sacrifice?",
+    "answers": [
+      "Neither the flesh nor the blood, but the piety of the believer",
+      "The flesh alone",
+      "The blood alone",
+      "The number of animals"
+    ],
+    "explanation": "\"Their meat will not reach Allah, nor will their blood, but what reaches Him is piety from you.\"",
+    "sourceDisplay": "Quran — Surah Al-Hajj, 22:37"
+  },
+  {
+    "id": "faith_108",
+    "correctAnswerIndex": 0,
+    "question": "What is the best provision for the pilgrimage, according to the Quran?",
+    "answers": [
+      "God-consciousness (taqwa)",
+      "Gold",
+      "Food",
+      "Mounts"
+    ],
+    "explanation": "\"And take provisions, but indeed, the best provision is God-consciousness.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:197"
+  },
+  {
+    "id": "faith_109",
+    "correctAnswerIndex": 0,
+    "question": "Which rite does the Quran mention around the Ancient House?",
+    "answers": [
+      "Circumambulation (tawaf)",
+      "Running in the desert",
+      "Climbing a hill",
+      "Fasting on the spot"
+    ],
+    "explanation": "\"…and let them perform tawaf around the Ancient House.\"",
+    "sourceDisplay": "Quran — Surah Al-Hajj, 22:29"
+  },
+  {
+    "id": "faith_110",
+    "correctAnswerIndex": 0,
+    "question": "Where does the Quran command Allah be remembered, after leaving 'Arafat?",
+    "answers": [
+      "At al-Mash'ar al-Haram, in Muzdalifah",
+      "On Mount Uhud",
+      "At Quba",
+      "At Ta'if"
+    ],
+    "explanation": "\"But when you depart from 'Arafat, remember Allah at al-Mash'ar al-Haram.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:198"
+  },
+  {
+    "id": "faith_111",
+    "correctAnswerIndex": 0,
+    "question": "What kind of repentance does the Quran ask of the believers?",
+    "answers": [
+      "A sincere repentance (tawbah nasuh)",
+      "A written repentance",
+      "A public repentance",
+      "A yearly repentance"
+    ],
+    "explanation": "\"O you who have believed, repent to Allah with sincere repentance.\"",
+    "sourceDisplay": "Quran — Surah At-Tahrim, 66:8"
+  },
+  {
+    "id": "faith_112",
+    "correctAnswerIndex": 0,
+    "question": "What does Surah Ash-Shura say of the acceptance of repentance?",
+    "answers": [
+      "It is He who accepts repentance from His servants and pardons misdeeds",
+      "Repentance is not accepted",
+      "An intermediary is needed",
+      "One must wait a year"
+    ],
+    "explanation": "\"And it is He who accepts repentance from His servants and pardons misdeeds, and He knows what you do.\"",
+    "sourceDisplay": "Quran — Surah Ash-Shura, 42:25"
+  },
+  {
+    "id": "faith_113",
+    "correctAnswerIndex": 0,
+    "question": "What do those praised by the Quran do after committing a wrong?",
+    "answers": [
+      "They remember Allah and ask forgiveness",
+      "They flee",
+      "They stay silent",
+      "They blame others"
+    ],
+    "explanation": "\"And those who, when they commit an immorality or wrong themselves, remember Allah and seek forgiveness for their sins.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:135"
+  },
+  {
+    "id": "faith_114",
+    "correctAnswerIndex": 0,
+    "question": "How often does the Quran command the remembrance of Allah, in Surah Al-Ahzab?",
+    "answers": [
+      "Much, morning and evening",
+      "Once a year",
+      "Once a week",
+      "Only while travelling"
+    ],
+    "explanation": "\"O you who have believed, remember Allah with much remembrance, and exalt Him morning and afternoon.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahzab, 33:41-42"
+  },
+  {
+    "id": "faith_115",
+    "correctAnswerIndex": 0,
+    "question": "On what do \"those of understanding\" reflect, at the end of Surah Al-'Imran?",
+    "answers": [
+      "The creation of the heavens and the earth, in every posture",
+      "The harvests",
+      "The caravans",
+      "The genealogies"
+    ],
+    "explanation": "\"Who remember Allah while standing, sitting, and lying on their sides, and reflect upon the creation of the heavens and the earth.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:190-191"
+  },
+  {
+    "id": "faith_116",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command be done once a decision is taken?",
+    "answers": [
+      "Place one's trust in Allah",
+      "Wait for a sign",
+      "Ask a soothsayer",
+      "Give up"
+    ],
+    "explanation": "\"And when you have decided, then rely upon Allah. Indeed, Allah loves those who rely upon Him.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:159"
+  },
+  {
+    "id": "faith_117",
+    "correctAnswerIndex": 0,
+    "question": "Toward whom does Surah Ash-Sharh direct one's longing, once the task is done?",
+    "answers": [
+      "Toward his Lord",
+      "Toward rest",
+      "Toward family",
+      "Toward people"
+    ],
+    "explanation": "\"So when you have finished, stand up, and to your Lord direct your longing.\"",
+    "sourceDisplay": "Quran — Surah Ash-Sharh, 94:7-8"
+  },
+  {
+    "id": "faith_118",
+    "correctAnswerIndex": 0,
+    "question": "To what does Surah Al-Hadid compare the life of this world?",
+    "answers": [
+      "Rain whose growth delights, then yellows and turns to debris",
+      "A long journey",
+      "A mountain",
+      "An ocean"
+    ],
+    "explanation": "\"Know that the life of this world is but amusement… like the example of a rain whose resulting plant growth pleases the tillers; then it dries and you see it turned yellow, then it becomes debris.\"",
+    "sourceDisplay": "Quran — Surah Al-Hadid, 57:20"
+  },
+  {
+    "id": "faith_119",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran declare better than wealth and children, the adornment of this world?",
+    "answers": [
+      "The enduring good deeds",
+      "Gold",
+      "Fame",
+      "Land"
+    ],
+    "explanation": "\"Wealth and children are the adornment of the life of this world, but the enduring good deeds are better with your Lord for reward.\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:46"
+  },
+  {
+    "id": "faith_120",
+    "correctAnswerIndex": 0,
+    "question": "What question does the Quran ask about the purpose of human creation?",
+    "answers": [
+      "\"Did you think We created you aimlessly?\"",
+      "\"Who named you?\"",
+      "\"Where will you go?\"",
+      "\"How many are you?\""
+    ],
+    "explanation": "\"Then did you think that We created you uselessly and that to Us you would not be returned?\"",
+    "sourceDisplay": "Quran — Surah Al-Mu'minun, 23:115"
+  },
+  {
+    "id": "faith_121",
+    "correctAnswerIndex": 0,
+    "question": "What promise does the Quran make to the one who remembers Allah?",
+    "answers": [
+      "\"Remember Me; I will remember you\"",
+      "\"You will be rich\"",
+      "\"You will live long\"",
+      "\"You will travel\""
+    ],
+    "explanation": "\"So remember Me; I will remember you. And be grateful to Me and do not deny Me.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:152"
+  },
+  {
+    "id": "faith_122",
+    "correctAnswerIndex": 0,
+    "question": "To whom does the Quran command disputes be referred?",
+    "answers": [
+      "To Allah and the Messenger ﷺ",
+      "To the elders",
+      "To the market",
+      "To the poets"
+    ],
+    "explanation": "\"And if you disagree over anything, refer it to Allah and the Messenger, if you believe in Allah and the Last Day.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:59"
+  },
+  {
+    "id": "faith_123",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Al-Anfal describe the believers' hearts at the mention of Allah?",
+    "answers": [
+      "Their hearts tremble, and their faith increases at the recitation",
+      "They harden",
+      "They fall asleep",
+      "They forget"
+    ],
+    "explanation": "\"The believers are only those who, when Allah is mentioned, their hearts become fearful, and when His verses are recited to them, it increases them in faith.\"",
+    "sourceDisplay": "Quran — Surah Al-Anfal, 8:2"
+  },
+  {
+    "id": "faith_124",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command be dedicated entirely to the Lord of the worlds?",
+    "answers": [
+      "Prayer, acts of devotion, living and dying",
+      "Trade",
+      "Harvests",
+      "Journeys"
+    ],
+    "explanation": "\"Say: indeed, my prayer, my rites of sacrifice, my living and my dying are for Allah, Lord of the worlds.\"",
+    "sourceDisplay": "Quran — Surah Al-An'am, 6:162"
+  },
+  {
+    "id": "faith_125",
+    "correctAnswerIndex": 0,
+    "question": "Which condition does Surah Al-Bayyinah set on the worship commanded?",
+    "answers": [
+      "To worship Allah sincerely, devoting religion purely to Him",
+      "To worship in public",
+      "To worship in writing",
+      "To worship only in groups"
+    ],
+    "explanation": "\"And they were not commanded except to worship Allah, sincere to Him in religion, and to establish prayer and give zakat.\"",
+    "sourceDisplay": "Quran — Surah Al-Bayyinah, 98:5"
+  },
+  {
+    "id": "faith_126",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran describe as flowing in the gardens promised to the God-fearing?",
+    "answers": [
+      "Rivers",
+      "Roads",
+      "Bridges",
+      "Wells"
+    ],
+    "explanation": "The Quran repeatedly describes the gardens \"beneath which rivers flow\".",
+    "sourceDisplay": "Quran — Surah Muhammad, 47:15"
+  },
+  {
+    "id": "faith_127",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of what is hidden from the believers as reward?",
+    "answers": [
+      "No soul knows what comfort for the eyes is kept for them",
+      "Everything is described in detail",
+      "It is riches",
+      "It is kingdoms"
+    ],
+    "explanation": "\"And no soul knows what has been hidden for them of comfort for eyes as reward for what they used to do.\"",
+    "sourceDisplay": "Quran — Surah As-Sajdah, 32:17"
+  },
+  {
+    "id": "faith_128",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran promise those who do good, beyond the best reward?",
+    "answers": [
+      "More besides (ziyadah)",
+      "A delay",
+      "A kingdom",
+      "A book"
+    ],
+    "explanation": "\"For those who have done good is the best reward and extra.\"",
+    "sourceDisplay": "Quran — Surah Yunus, 10:26"
+  },
+  {
+    "id": "faith_129",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the welcome of the God-fearing at the gate of Paradise?",
+    "answers": [
+      "\"Peace be upon you; you have become pure, so enter to abide eternally\"",
+      "In silence",
+      "After a long trial",
+      "One by one without a word"
+    ],
+    "explanation": "\"Its keepers will say: 'Peace be upon you; you have become pure, so enter it to abide eternally.'\"",
+    "sourceDisplay": "Quran — Surah Az-Zumar, 39:73"
+  },
+  {
+    "id": "faith_130",
+    "correctAnswerIndex": 0,
+    "question": "Toward what does the Quran command one hasten, in Surah Al-'Imran?",
+    "answers": [
+      "Toward forgiveness from the Lord and a Paradise as wide as the heavens and the earth",
+      "Toward the market",
+      "Toward travel",
+      "Toward wealth"
+    ],
+    "explanation": "\"And hasten to forgiveness from your Lord and a garden as wide as the heavens and earth, prepared for the righteous.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:133"
+  },
+  {
+    "id": "faith_131",
+    "correctAnswerIndex": 0,
+    "question": "What responsibility does the Quran place on the believer toward his family?",
+    "answers": [
+      "To protect them, and himself, from a Fire",
+      "To make them rich",
+      "To teach them languages",
+      "To take them travelling"
+    ],
+    "explanation": "\"O you who have believed, protect yourselves and your families from a Fire whose fuel is people and stones.\"",
+    "sourceDisplay": "Quran — Surah At-Tahrim, 66:6"
+  },
+  {
+    "id": "faith_132",
+    "correctAnswerIndex": 0,
+    "question": "How does verse 2:177 define true righteousness (al-birr)?",
+    "answers": [
+      "Belief in Allah, the Last Day, the angels, the Book and the prophets, and giving of one's wealth",
+      "Turning one's face east or west",
+      "Fasting only",
+      "Travelling"
+    ],
+    "explanation": "\"Righteousness is not that you turn your faces toward the east or the west, but righteous is one who believes in Allah, the Last Day, the angels, the Book and the prophets.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:177"
+  },
+  {
+    "id": "faith_133",
+    "correctAnswerIndex": 0,
+    "question": "Who will see the deeds performed, according to Surah At-Tawbah?",
+    "answers": [
+      "Allah, His Messenger ﷺ and the believers",
+      "No one",
+      "The angels only",
+      "The kings"
+    ],
+    "explanation": "\"And say: work, for Allah will see your deeds, and His Messenger and the believers.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:105"
+  },
+  {
+    "id": "faith_134",
+    "correctAnswerIndex": 0,
+    "question": "With which statement does Surah Al-Ikhlas end?",
+    "answers": [
+      "\"And there is none comparable to Him\"",
+      "\"He is the greatest\"",
+      "\"He is near\"",
+      "\"He is the first\""
+    ],
+    "explanation": "\"And there is none comparable to Him.\"",
+    "sourceDisplay": "Quran — Surah Al-Ikhlas, 112:4"
+  },
+  {
+    "id": "faith_135",
+    "correctAnswerIndex": 0,
+    "question": "Which four names does Surah Al-Hadid gather in a single verse?",
+    "answers": [
+      "The First, the Last, the Manifest and the Hidden",
+      "The King, the Holy, the Peace, the Faithful",
+      "The Creator, the Originator, the Fashioner, the Wise",
+      "The Living, the Sustainer, the Hearing, the Seeing"
+    ],
+    "explanation": "\"He is the First and the Last, the Manifest and the Hidden, and He is Knowing of all things.\"",
+    "sourceDisplay": "Quran — Surah Al-Hadid, 57:3"
+  },
+  {
+    "id": "faith_136",
+    "correctAnswerIndex": 0,
+    "question": "Which names does the end of Surah Al-Hashr list after \"the Sovereign\"?",
+    "answers": [
+      "The Pure, the Peace, the Bestower of Faith, the Overseer",
+      "The Creator, the Fashioner",
+      "The Forgiving, the Merciful",
+      "The Hearing, the Seeing"
+    ],
+    "explanation": "\"He is Allah, the Sovereign, the Pure, the Peace, the Bestower of Faith, the Overseer, the Exalted in Might.\"",
+    "sourceDisplay": "Quran — Surah Al-Hashr, 59:23"
+  },
+  {
+    "id": "faith_137",
+    "correctAnswerIndex": 0,
+    "question": "What is the formula \"There is no deity but Allah, Muhammad is His Messenger\" called?",
+    "answers": [
+      "The shahadah (the testimony of faith)",
+      "The basmalah",
+      "The takbirah",
+      "The tasmiyah"
+    ],
+    "explanation": "The shahadah is the first word of Islam and the first of its pillars.",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "faith_138",
+    "correctAnswerIndex": 0,
+    "question": "What is the formula \"Allahu akbar\" called?",
+    "answers": [
+      "The takbir",
+      "The tahlil",
+      "The tasbih",
+      "The tahmid"
+    ],
+    "explanation": "Takbir is \"Allahu akbar\", tasbih is \"subhan Allah\", tahmid is \"al-hamdu lillah\", and tahlil is \"la ilaha illa-llah\".",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "faith_139",
+    "correctAnswerIndex": 0,
+    "question": "What is the formula \"In the name of Allah, the Most Merciful, the Especially Merciful\" called?",
+    "answers": [
+      "The basmalah",
+      "The hamdalah",
+      "The hawqalah",
+      "The istirja'"
+    ],
+    "explanation": "The basmalah opens every surah but one; the hawqalah is \"la hawla wa la quwwata illa billah\".",
+    "sourceDisplay": "Established terminology"
+  },
+  {
+    "id": "faith_140",
+    "correctAnswerIndex": 0,
+    "question": "Which words does the Quran teach be said when calamity strikes?",
+    "answers": [
+      "\"Indeed we belong to Allah, and to Him we will return\"",
+      "\"Why me?\"",
+      "\"It will pass\"",
+      "\"It is the lot of men\""
+    ],
+    "explanation": "\"Who, when disaster strikes them, say: 'Indeed we belong to Allah, and indeed to Him we will return.'\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:156"
+  },
+  {
+    "id": "faith_141",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command be said when announcing an action for tomorrow?",
+    "answers": [
+      "\"If Allah wills\" (in sha' Allah)",
+      "\"It is promised\"",
+      "\"Without fail\"",
+      "\"I swear it\""
+    ],
+    "explanation": "\"And never say of anything: 'Indeed, I will do that tomorrow', except when adding: 'If Allah wills'.\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:23-24"
+  },
+  {
+    "id": "faith_142",
+    "correctAnswerIndex": 0,
+    "question": "Which knowledge does the Quran reserve to Allah alone, at the end of Surah Luqman?",
+    "answers": [
+      "The Hour, the rain, what is in the wombs, what one will earn tomorrow, and where one will die",
+      "The number of the stars",
+      "The names of kings",
+      "The count of days"
+    ],
+    "explanation": "\"Indeed, Allah has knowledge of the Hour and sends down the rain and knows what is in the wombs. And no soul knows what it will earn tomorrow, and no soul knows in what land it will die.\"",
+    "sourceDisplay": "Quran — Surah Luqman, 31:34"
+  },
+  {
+    "id": "faith_143",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say about the term fixed for every community?",
+    "answers": [
+      "When it comes, it is neither delayed nor advanced by an hour",
+      "It can be changed",
+      "It is unknown to Allah",
+      "It depends on kings"
+    ],
+    "explanation": "\"And for every nation is a term. So when their term has come, they will not remain behind an hour, nor will they precede it.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:34"
+  },
+  {
+    "id": "faith_144",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran promise whoever does good, male or female, while believing?",
+    "answers": [
+      "A good life, and a reward by the best of their deeds",
+      "Wealth",
+      "Power",
+      "Fame"
+    ],
+    "explanation": "\"Whoever does righteousness, whether male or female, while being a believer — We will surely cause him to live a good life.\"",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:97"
+  },
+  {
+    "id": "faith_145",
+    "correctAnswerIndex": 0,
+    "question": "What distinction does the Quran draw between \"islam\" and \"faith\" in Surah Al-Hujurat?",
+    "answers": [
+      "Saying \"we have submitted\" is not yet faith entering the hearts",
+      "They are the same word",
+      "Faith always comes first",
+      "Islam is only for scholars"
+    ],
+    "explanation": "\"The bedouins say: 'We have believed.' Say: 'You have not believed; but say we have submitted, for faith has not yet entered your hearts.'\"",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:14"
+  },
+  {
+    "id": "faith_146",
+    "correctAnswerIndex": 0,
+    "question": "Which rule does Surah Al-Ma'idah state about a single life?",
+    "answers": [
+      "Whoever kills one person, it is as if he killed all mankind; whoever saves one, as if he saved all",
+      "Each life counts as one",
+      "Only relatives count",
+      "Only numbers count"
+    ],
+    "explanation": "\"Whoever kills a soul, unless for a soul or for corruption in the land, it is as if he had slain mankind entirely; and whoever saves one, it is as if he had saved mankind entirely.\"",
+    "sourceDisplay": "Quran — Surah Al-Ma'idah, 5:32"
+  },
+  {
+    "id": "faith_147",
+    "correctAnswerIndex": 0,
+    "question": "By how much does the Quran multiply the reward of a good deed?",
+    "answers": [
+      "Tenfold",
+      "Twofold",
+      "A hundredfold",
+      "It is not multiplied"
+    ],
+    "explanation": "\"Whoever comes with a good deed will have ten times the like thereof; and whoever comes with an evil deed will not be recompensed except the like thereof.\"",
+    "sourceDisplay": "Quran — Surah Al-An'am, 6:160"
+  },
+  {
+    "id": "faith_148",
+    "correctAnswerIndex": 0,
+    "question": "How does Surah Fatir describe people's relation to Allah?",
+    "answers": [
+      "They are the poor in need of Him, and Allah is the Free of need, the Praiseworthy",
+      "They are His partners",
+      "They are independent",
+      "They are His creditors"
+    ],
+    "explanation": "\"O mankind, you are those in need of Allah, while Allah is the Free of need, the Praiseworthy.\"",
+    "sourceDisplay": "Quran — Surah Fatir, 35:15"
+  },
+  {
+    "id": "faith_149",
+    "correctAnswerIndex": 0,
+    "question": "Which four qualities save from loss, according to Surah Al-'Asr?",
+    "answers": [
+      "Faith, righteous deeds, enjoining truth and enjoining patience",
+      "Wealth, strength, beauty, cunning",
+      "Silence, sleep, seclusion, fasting",
+      "Travel, trade, writing, reading"
+    ],
+    "explanation": "\"By time, man is in loss, except those who believe and do righteous deeds and advise each other to truth and advise each other to patience.\"",
+    "sourceDisplay": "Quran — Surah Al-'Asr, 103:1-3"
+  },
+  {
+    "id": "faith_150",
+    "correctAnswerIndex": 0,
+    "question": "What do the believers declare belief in, in the penultimate verse of Surah Al-Baqarah?",
+    "answers": [
+      "In Allah, His angels, His books and His messengers",
+      "In one book",
+      "In one angel",
+      "In their forefathers"
+    ],
+    "explanation": "\"The Messenger has believed in what was revealed to him from his Lord, and so have the believers. All of them have believed in Allah and His angels and His books and His messengers.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:285"
+  },
+  {
     "id": "virtues_019",
     "correctAnswerIndex": 0,
     "question": "According to a hadith in al-Bukhari, where does truthfulness (sidq) lead?",
@@ -6498,5 +11048,655 @@
     ],
     "explanation": "\"Two words light on the tongue, heavy on the scale, beloved to the Most Merciful: Glory be to Allah and praise Him; glory be to Allah the Immense.\"",
     "sourceDisplay": "Sahih al-Bukhari, 6406"
+  },
+  {
+    "id": "virtues_051",
+    "correctAnswerIndex": 0,
+    "question": "What does Luqman advise his son about the voice?",
+    "answers": [
+      "To lower it: the most hateful of voices is the braying of the donkey",
+      "To speak very loudly",
+      "Never to speak",
+      "To sing while walking"
+    ],
+    "explanation": "\"And be moderate in your pace and lower your voice: indeed, the most disagreeable of sounds is the voice of donkeys.\"",
+    "sourceDisplay": "Quran — Surah Luqman, 31:19"
+  },
+  {
+    "id": "virtues_052",
+    "correctAnswerIndex": 0,
+    "question": "Which three counsels does Luqman give his son before speaking of patience?",
+    "answers": [
+      "Establish prayer, enjoin the right, forbid the wrong",
+      "Travel, trade, write",
+      "Eat little, sleep little, speak little",
+      "Build, plant, harvest"
+    ],
+    "explanation": "\"O my son, establish prayer, enjoin what is right, forbid what is wrong, and be patient over what befalls you.\"",
+    "sourceDisplay": "Quran — Surah Luqman, 31:17"
+  },
+  {
+    "id": "virtues_053",
+    "correctAnswerIndex": 0,
+    "question": "Which three qualities does the Quran give the God-fearing, in Surah Al-'Imran?",
+    "answers": [
+      "Spending in ease and hardship, restraining anger, pardoning people",
+      "Fasting, night prayer, silence",
+      "Building, planting, giving",
+      "Travelling, learning, teaching"
+    ],
+    "explanation": "\"Who spend in ease and in hardship, and who restrain anger and who pardon the people — and Allah loves the doers of good.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:134"
+  },
+  {
+    "id": "virtues_054",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran hold better than a charity followed by injury?",
+    "answers": [
+      "A kind word and forgiveness",
+      "A larger gift",
+      "Total silence",
+      "An oath"
+    ],
+    "explanation": "\"Kind speech and forgiveness are better than charity followed by injury.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:263"
+  },
+  {
+    "id": "virtues_055",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of charity given in secret?",
+    "answers": [
+      "It is better for the giver",
+      "It does not count",
+      "It must be announced",
+      "It is forbidden"
+    ],
+    "explanation": "\"If you disclose your charitable expenditures, they are good; but if you conceal them and give them to the poor, it is better for you.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:271"
+  },
+  {
+    "id": "virtues_056",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran forbid be given as charity?",
+    "answers": [
+      "What one would only accept oneself with eyes closed",
+      "What is new",
+      "What one loves",
+      "What comes from an inheritance"
+    ],
+    "explanation": "\"And do not aim toward the defective of it, spending from that which you would not take yourself except with closed eyes.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:267"
+  },
+  {
+    "id": "virtues_057",
+    "correctAnswerIndex": 0,
+    "question": "When is true righteousness attained, according to Surah Al-'Imran?",
+    "answers": [
+      "By spending from what one loves",
+      "By spending the surplus",
+      "By spending in public",
+      "By keeping everything"
+    ],
+    "explanation": "\"Never will you attain righteousness until you spend from that which you love.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:92"
+  },
+  {
+    "id": "virtues_058",
+    "correctAnswerIndex": 0,
+    "question": "Which image does the Quran use for balance in spending?",
+    "answers": [
+      "Neither keeping the hand chained to the neck, nor extending it completely",
+      "Shutting the door",
+      "Walking slowly",
+      "Counting twice"
+    ],
+    "explanation": "\"And do not make your hand chained to your neck, nor extend it completely, lest you sit blamed and destitute.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:29"
+  },
+  {
+    "id": "virtues_059",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe the spending of \"the servants of the Most Merciful\"?",
+    "answers": [
+      "Neither extravagant nor niggardly, but between the two",
+      "Always giving without measure",
+      "Always saving",
+      "Never giving"
+    ],
+    "explanation": "\"And those who, when they spend, are neither extravagant nor stingy, but are ever between that, moderate.\"",
+    "sourceDisplay": "Quran — Surah Al-Furqan, 25:67"
+  },
+  {
+    "id": "virtues_060",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command before entering a house that is not one's own?",
+    "answers": [
+      "To ask permission and greet its people",
+      "To knock three times then enter",
+      "To enter directly",
+      "To call from afar"
+    ],
+    "explanation": "\"Do not enter houses other than your own until you have asked permission and greeted their inhabitants.\"",
+    "sourceDisplay": "Quran — Surah An-Nur, 24:27"
+  },
+  {
+    "id": "virtues_061",
+    "correctAnswerIndex": 0,
+    "question": "What should be done if one is asked to go back, according to Surah An-Nur?",
+    "answers": [
+      "Go back: it is purer for you",
+      "Insist",
+      "Wait at the door",
+      "Enter anyway"
+    ],
+    "explanation": "\"And if you are told: 'Go back', then go back; it is purer for you.\"",
+    "sourceDisplay": "Quran — Surah An-Nur, 24:28"
+  },
+  {
+    "id": "virtues_062",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command when an unreliable person brings news?",
+    "answers": [
+      "To verify it, lest people be harmed out of ignorance",
+      "To spread it at once",
+      "To write it down",
+      "Always to ignore it"
+    ],
+    "explanation": "\"If there comes to you a disobedient one with information, investigate, lest you harm a people out of ignorance and become regretful.\"",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:6"
+  },
+  {
+    "id": "virtues_063",
+    "correctAnswerIndex": 0,
+    "question": "Which behaviour, alongside backbiting, does Surah Al-Hujurat forbid?",
+    "answers": [
+      "Spying and excessive suspicion",
+      "Travelling alone",
+      "Speaking softly",
+      "Writing letters"
+    ],
+    "explanation": "\"O you who have believed, avoid much assumption; indeed, some assumption is sin. And do not spy or backbite one another.\"",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:12"
+  },
+  {
+    "id": "virtues_064",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command when two groups of believers fight?",
+    "answers": [
+      "To reconcile them with justice",
+      "To pick a side",
+      "To ignore them",
+      "To separate them by force alone"
+    ],
+    "explanation": "\"And if two factions among the believers should fight, then make settlement between them… and act justly. Indeed, Allah loves those who act justly.\"",
+    "sourceDisplay": "Quran — Surah Al-Hujurat, 49:9"
+  },
+  {
+    "id": "virtues_065",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran expressly forbid, even toward a people one detests?",
+    "answers": [
+      "Letting hatred lead one away from justice",
+      "Trade",
+      "Speech",
+      "Neighbourliness"
+    ],
+    "explanation": "\"And do not let the hatred of a people prevent you from being just. Be just; that is nearer to righteousness.\"",
+    "sourceDisplay": "Quran — Surah Al-Ma'idah, 5:8"
+  },
+  {
+    "id": "virtues_066",
+    "correctAnswerIndex": 0,
+    "question": "Against whom does the Quran require just testimony, if need be?",
+    "answers": [
+      "Against oneself, one's parents and one's relatives",
+      "Against strangers only",
+      "Against the rich only",
+      "Against the poor only"
+    ],
+    "explanation": "\"Be persistently standing firm in justice, witnesses for Allah, even if it be against yourselves or parents and relatives.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:135"
+  },
+  {
+    "id": "virtues_067",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command be returned to those entitled to them?",
+    "answers": [
+      "Trusts (amanat)",
+      "Letters",
+      "Harvests",
+      "Stories"
+    ],
+    "explanation": "\"Indeed, Allah commands you to render trusts to whom they are due and, when you judge between people, to judge with justice.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:58"
+  },
+  {
+    "id": "virtues_068",
+    "correctAnswerIndex": 0,
+    "question": "Which people does verse 4:36 list for good treatment, after the parents?",
+    "answers": [
+      "Relatives, orphans, the poor, the near and distant neighbour, the companion, the traveller and the servant",
+      "Kings and chiefs",
+      "Merchants",
+      "Scholars only"
+    ],
+    "explanation": "\"Worship Allah and associate nothing with Him, and to parents do good, and to relatives, orphans, the needy, the near neighbour, the neighbour farther away, the companion at your side, the traveller, and those whom your right hands possess.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:36"
+  },
+  {
+    "id": "virtues_069",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command toward a debtor in hardship?",
+    "answers": [
+      "To grant him time until ease",
+      "To pursue him",
+      "To double the debt",
+      "To expel him"
+    ],
+    "explanation": "\"And if someone is in hardship, then let there be postponement until a time of ease. But if you give from your right as charity, it is better for you.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:280"
+  },
+  {
+    "id": "virtues_070",
+    "correctAnswerIndex": 0,
+    "question": "What does the longest verse of the Quran command for a debt with a set term?",
+    "answers": [
+      "That it be written down",
+      "That it be kept secret",
+      "That it be forgotten",
+      "That it be passed on orally"
+    ],
+    "explanation": "\"O you who have believed, when you contract a debt for a specified term, write it down.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:282"
+  },
+  {
+    "id": "virtues_071",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran forbid concerning the property of others?",
+    "answers": [
+      "Consuming it unjustly, or using it to bribe judges",
+      "Counting it",
+      "Selling it",
+      "Keeping it"
+    ],
+    "explanation": "\"And do not consume one another's wealth unjustly, or send it to the rulers in order to consume a portion of the wealth of the people in sin.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:188"
+  },
+  {
+    "id": "virtues_072",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command concerning the property of orphans?",
+    "answers": [
+      "To give it to them, not exchanging the good for the bad",
+      "To share it out",
+      "To sell it",
+      "To keep it for life"
+    ],
+    "explanation": "\"And give to the orphans their properties and do not substitute the defective for the good, and do not consume their properties into your own.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:2"
+  },
+  {
+    "id": "virtues_073",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran command measuring and weighing?",
+    "answers": [
+      "Give full measure and weigh with an even balance",
+      "Round in one's own favour",
+      "Weigh by eye",
+      "Measure twice"
+    ],
+    "explanation": "\"And give full measure when you measure, and weigh with an even balance. That is the best and fairest in result.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:35"
+  },
+  {
+    "id": "virtues_074",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran forbid one to follow, for lack of knowledge?",
+    "answers": [
+      "That of which one has no knowledge: hearing, sight and heart will be questioned",
+      "The shortest road",
+      "The caravans",
+      "Silence"
+    ],
+    "explanation": "\"And do not pursue that of which you have no knowledge. Indeed, the hearing, the sight and the heart — about all those one will be questioned.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:36"
+  },
+  {
+    "id": "virtues_075",
+    "correctAnswerIndex": 0,
+    "question": "Which image does the Quran give of pride in one's gait?",
+    "answers": [
+      "You cannot split the earth, nor reach the mountains in height",
+      "You go faster",
+      "You tire less",
+      "You earn respect"
+    ],
+    "explanation": "\"And do not walk upon the earth exultantly. Indeed, you will never tear the earth apart, and you will never reach the mountains in height.\"",
+    "sourceDisplay": "Quran — Surah Al-Isra, 17:37"
+  },
+  {
+    "id": "virtues_076",
+    "correctAnswerIndex": 0,
+    "question": "Which quality of speech does the Quran command, promising that deeds will be set right?",
+    "answers": [
+      "Upright, truthful speech (qawl sadid)",
+      "Brief speech",
+      "Learned speech",
+      "Written speech"
+    ],
+    "explanation": "\"O you who have believed, fear Allah and speak words of appropriate justice. He will amend for you your deeds and forgive you your sins.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahzab, 33:70-71"
+  },
+  {
+    "id": "virtues_077",
+    "correctAnswerIndex": 0,
+    "question": "What kind of speech was commanded even before a tyrant, in the Quran?",
+    "answers": [
+      "Gentle speech",
+      "Threatening speech",
+      "Ironic speech",
+      "Silence"
+    ],
+    "explanation": "\"And speak to him with gentle speech, that perhaps he may be reminded or fear Allah.\"",
+    "sourceDisplay": "Quran — Surah Ta-Ha, 20:44"
+  },
+  {
+    "id": "virtues_078",
+    "correctAnswerIndex": 0,
+    "question": "Of whom does the Quran say his speech is the best?",
+    "answers": [
+      "One who calls to Allah, does righteousness and says: I am of the Muslims",
+      "The poet",
+      "The orator",
+      "The judge"
+    ],
+    "explanation": "\"And who is better in speech than one who invites to Allah and does righteousness and says: indeed, I am of the Muslims?\"",
+    "sourceDisplay": "Quran — Surah Fussilat, 41:33"
+  },
+  {
+    "id": "virtues_079",
+    "correctAnswerIndex": 0,
+    "question": "From what do the successful believers turn away, according to Al-Mu'minun?",
+    "answers": [
+      "From idle talk (al-laghw)",
+      "From work",
+      "From travel",
+      "From meals"
+    ],
+    "explanation": "\"And they who turn away from ill speech.\"",
+    "sourceDisplay": "Quran — Surah Al-Mu'minun, 23:3"
+  },
+  {
+    "id": "virtues_080",
+    "correctAnswerIndex": 0,
+    "question": "Which two charges do the successful believers keep, according to Al-Mu'minun?",
+    "answers": [
+      "Their trusts and their covenants",
+      "Fasting and night prayer",
+      "Travel and trade",
+      "Writing and reading"
+    ],
+    "explanation": "\"And they who are to their trusts and their promises attentive.\"",
+    "sourceDisplay": "Quran — Surah Al-Mu'minun, 23:8"
+  },
+  {
+    "id": "virtues_081",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran say of one who pardons and reconciles, though he could repay evil?",
+    "answers": [
+      "His reward is due from Allah",
+      "He loses his right",
+      "He is blamed",
+      "He must stay silent"
+    ],
+    "explanation": "\"And the retribution for an evil act is an evil one like it, but whoever pardons and makes reconciliation — his reward is due from Allah.\"",
+    "sourceDisplay": "Quran — Surah Ash-Shura, 42:40"
+  },
+  {
+    "id": "virtues_082",
+    "correctAnswerIndex": 0,
+    "question": "What argument does the Quran give for pardoning one who has wronged you?",
+    "answers": [
+      "\"Do you not love that Allah should forgive you?\"",
+      "\"You will be paid in money\"",
+      "\"It will make you powerful\"",
+      "\"It will spare you a lawsuit\""
+    ],
+    "explanation": "\"Let them pardon and overlook. Would you not like that Allah should forgive you? And Allah is Forgiving and Merciful.\"",
+    "sourceDisplay": "Quran — Surah An-Nur, 24:22"
+  },
+  {
+    "id": "virtues_083",
+    "correctAnswerIndex": 0,
+    "question": "Which three instructions does verse 7:199 gather?",
+    "answers": [
+      "Take what is easily given, enjoin what is right, turn away from the ignorant",
+      "Fight, flee, be silent",
+      "Eat, drink, sleep",
+      "Count, write, read"
+    ],
+    "explanation": "\"Take what is given freely, enjoin what is good, and turn away from the ignorant.\"",
+    "sourceDisplay": "Quran — Surah Al-A'raf, 7:199"
+  },
+  {
+    "id": "virtues_084",
+    "correctAnswerIndex": 0,
+    "question": "What attitude does the Quran recommend in the face of hurtful words and trial?",
+    "answers": [
+      "Patience and God-consciousness: that is of the matters requiring determination",
+      "Immediate reply",
+      "Permanent withdrawal",
+      "Contemptuous silence"
+    ],
+    "explanation": "\"And you will surely hear much abuse from those who were given the Scripture before you. But if you are patient and fear Allah, that is of the matters requiring determination.\"",
+    "sourceDisplay": "Quran — Surah Al-'Imran, 3:186"
+  },
+  {
+    "id": "virtues_085",
+    "correctAnswerIndex": 0,
+    "question": "How does the Quran describe patience and forgiveness?",
+    "answers": [
+      "They are of the matters requiring determination",
+      "They are weakness",
+      "They are optional",
+      "They are for scholars only"
+    ],
+    "explanation": "\"And whoever is patient and forgives — indeed, that is of the matters requiring determination.\"",
+    "sourceDisplay": "Quran — Surah Ash-Shura, 42:43"
+  },
+  {
+    "id": "virtues_086",
+    "correctAnswerIndex": 0,
+    "question": "For whom does the Quran say the prayer is not burdensome?",
+    "answers": [
+      "For the humbly submissive (al-khashi'in)",
+      "For the rich",
+      "For scholars",
+      "For travellers"
+    ],
+    "explanation": "\"And seek help through patience and prayer; indeed, it is difficult except for the humbly submissive.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:45"
+  },
+  {
+    "id": "virtues_087",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran remind about what one dislikes or loves?",
+    "answers": [
+      "You may dislike a thing that is good for you, and love a thing that is bad for you",
+      "What you love is always good",
+      "What you dislike is always bad",
+      "You always know what is good"
+    ],
+    "explanation": "\"Perhaps you hate a thing and it is good for you; and perhaps you love a thing and it is bad for you. Allah knows, while you know not.\"",
+    "sourceDisplay": "Quran — Surah Al-Baqarah, 2:216"
+  },
+  {
+    "id": "virtues_088",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran promise one who fears Allah, as to relief and provision?",
+    "answers": [
+      "A way out, and provision from where he does not expect",
+      "Immediate wealth",
+      "A long journey",
+      "A public office"
+    ],
+    "explanation": "\"And whoever fears Allah, He will make for him a way out, and will provide for him from where he does not expect.\"",
+    "sourceDisplay": "Quran — Surah At-Talaq, 65:2-3"
+  },
+  {
+    "id": "virtues_089",
+    "correctAnswerIndex": 0,
+    "question": "Which gratitude does the Quran command in the same breath as gratitude to Allah?",
+    "answers": [
+      "Gratitude to one's parents",
+      "To one's master",
+      "To one's neighbour",
+      "To one's king"
+    ],
+    "explanation": "\"Be grateful to Me and to your parents; to Me is the final destination.\"",
+    "sourceDisplay": "Quran — Surah Luqman, 31:14"
+  },
+  {
+    "id": "virtues_090",
+    "correctAnswerIndex": 0,
+    "question": "What limit does the Quran set on obedience to parents?",
+    "answers": [
+      "Not to obey them if they command associating others with Allah",
+      "Never to obey them",
+      "To obey them in everything",
+      "To obey them only when travelling"
+    ],
+    "explanation": "\"But if they endeavour to make you associate with Me that of which you have no knowledge, do not obey them; but accompany them in this world with appropriate kindness.\"",
+    "sourceDisplay": "Quran — Surah Al-'Ankabut, 29:8"
+  },
+  {
+    "id": "virtues_091",
+    "correctAnswerIndex": 0,
+    "question": "Which supplication does the Quran teach for one's parents and offspring?",
+    "answers": [
+      "To be grateful for the favour, to do good, and that one's offspring be set right",
+      "To ask for wealth",
+      "To ask for a long journey",
+      "To ask for office"
+    ],
+    "explanation": "\"My Lord, enable me to be grateful for Your favour which You have bestowed upon me and upon my parents, and to work righteousness; and make righteous for me my offspring.\"",
+    "sourceDisplay": "Quran — Surah Al-Ahqaf, 46:15"
+  },
+  {
+    "id": "virtues_092",
+    "correctAnswerIndex": 0,
+    "question": "What do \"the servants of the Most Merciful\" ask concerning their families?",
+    "answers": [
+      "That they be a comfort to the eyes, and that they be an example for the righteous",
+      "That they be rich",
+      "That they be many",
+      "That they travel"
+    ],
+    "explanation": "\"Our Lord, grant us from among our wives and offspring comfort to our eyes, and make us an example for the righteous.\"",
+    "sourceDisplay": "Quran — Surah Al-Furqan, 25:74"
+  },
+  {
+    "id": "virtues_093",
+    "correctAnswerIndex": 0,
+    "question": "How do \"the servants of the Most Merciful\" behave in the face of frivolity?",
+    "answers": [
+      "They pass by with dignity",
+      "They stop to listen",
+      "They answer sharply",
+      "They write it down"
+    ],
+    "explanation": "\"And those who do not testify to falsehood, and when they pass near ill speech, they pass by with dignity.\"",
+    "sourceDisplay": "Quran — Surah Al-Furqan, 25:72"
+  },
+  {
+    "id": "virtues_094",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command in a gathering when room is asked for?",
+    "answers": [
+      "Make room: Allah will make room for you",
+      "Stay crowded",
+      "Leave",
+      "Keep silent"
+    ],
+    "explanation": "\"O you who have believed, when you are told: 'Make room in the assemblies', then make room; Allah will make room for you.\"",
+    "sourceDisplay": "Quran — Surah Al-Mujadilah, 58:11"
+  },
+  {
+    "id": "virtues_095",
+    "correctAnswerIndex": 0,
+    "question": "With whom does the Quran command one to be, in Surah At-Tawbah?",
+    "answers": [
+      "With the truthful",
+      "With the powerful",
+      "With the rich",
+      "With travellers"
+    ],
+    "explanation": "\"O you who have believed, fear Allah and be with those who are true.\"",
+    "sourceDisplay": "Quran — Surah At-Tawbah, 9:119"
+  },
+  {
+    "id": "virtues_096",
+    "correctAnswerIndex": 0,
+    "question": "With whom does the Quran command the Prophet ﷺ to keep patient company, in Al-Kahf?",
+    "answers": [
+      "Those who call upon their Lord morning and evening, seeking His face",
+      "The tribal chiefs",
+      "The rich merchants",
+      "The poets"
+    ],
+    "explanation": "\"And keep yourself patient with those who call upon their Lord in the morning and the evening, seeking His face; and let not your eyes pass beyond them.\"",
+    "sourceDisplay": "Quran — Surah Al-Kahf, 18:28"
+  },
+  {
+    "id": "virtues_097",
+    "correctAnswerIndex": 0,
+    "question": "On what does the Quran command mutual help, and on what does it forbid it?",
+    "answers": [
+      "Cooperate in righteousness and piety, not in sin and aggression",
+      "Cooperate in everything",
+      "Cooperate with no one",
+      "Cooperate only within the family"
+    ],
+    "explanation": "\"And cooperate in righteousness and piety, but do not cooperate in sin and aggression.\"",
+    "sourceDisplay": "Quran — Surah Al-Ma'idah, 5:2"
+  },
+  {
+    "id": "virtues_098",
+    "correctAnswerIndex": 0,
+    "question": "What does the Quran command about a covenant made and oaths confirmed?",
+    "answers": [
+      "To fulfil the covenant and not break oaths after confirming them",
+      "To renegotiate them",
+      "To forget them",
+      "To hide them"
+    ],
+    "explanation": "\"And fulfil the covenant of Allah when you have taken it, and do not break oaths after their confirmation.\"",
+    "sourceDisplay": "Quran — Surah An-Nahl, 16:91"
+  },
+  {
+    "id": "virtues_099",
+    "correctAnswerIndex": 0,
+    "question": "According to a hadith reported by al-Bukhari, when is a man's faith complete?",
+    "answers": [
+      "When he loves for his brother what he loves for himself",
+      "When he fasts the whole year",
+      "When he gives away all his wealth",
+      "When he travels to Makkah"
+    ],
+    "explanation": "\"None of you truly believes until he loves for his brother what he loves for himself.\"",
+    "sourceDisplay": "Sahih al-Bukhari, 13"
+  },
+  {
+    "id": "virtues_100",
+    "correctAnswerIndex": 0,
+    "question": "In which cases does the Quran see good in private conversation?",
+    "answers": [
+      "Enjoining charity, a good deed, or reconciliation between people",
+      "Discussing business",
+      "Planning a journey",
+      "Passing on news"
+    ],
+    "explanation": "\"No good is there in much of their private conversation, except for one who enjoins charity or what is right or conciliation between people.\"",
+    "sourceDisplay": "Quran — Surah An-Nisa, 4:114"
   }
 ]

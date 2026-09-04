@@ -52,7 +52,8 @@
     "sourceWork": "Quran",
     "sourceReference": "17:55",
     "questionIds": [
-      "prophets_007"
+      "prophets_007",
+      "faith_084"
     ]
   },
   {
@@ -233,7 +234,78 @@
       "sira_146",
       "sira_147",
       "sira_149",
-      "sira_150"
+      "sira_150",
+      "sira_151",
+      "sira_152",
+      "sira_153",
+      "sira_156",
+      "sira_157",
+      "sira_158",
+      "sira_159",
+      "sira_162",
+      "sira_163",
+      "sira_164",
+      "sira_168",
+      "sira_169",
+      "sira_173",
+      "sira_176",
+      "sira_179",
+      "sira_180",
+      "sira_181",
+      "sira_182",
+      "sira_183",
+      "sira_184",
+      "sira_185",
+      "sira_186",
+      "sira_188",
+      "sira_191",
+      "sira_192",
+      "sira_193",
+      "sira_194",
+      "sira_195",
+      "sira_196",
+      "sira_197",
+      "sira_198",
+      "sira_199",
+      "sira_200",
+      "sira_201",
+      "sira_203",
+      "sira_204",
+      "sira_205",
+      "sira_206",
+      "sira_208",
+      "sira_209",
+      "sira_210",
+      "sira_211",
+      "sira_212",
+      "sira_213",
+      "sira_214",
+      "sira_215",
+      "sira_216",
+      "sira_217",
+      "sira_218",
+      "sira_219",
+      "sira_220",
+      "sira_221",
+      "sira_223",
+      "sira_224",
+      "sira_225",
+      "sira_226",
+      "sira_227",
+      "sira_234",
+      "sira_235",
+      "sira_237",
+      "sira_238",
+      "sira_239",
+      "sira_240",
+      "sira_241",
+      "sira_244",
+      "sira_245",
+      "sira_246",
+      "sira_247",
+      "sira_248",
+      "sira_249",
+      "sira_250"
     ]
   },
   {
@@ -249,7 +321,8 @@
     "sourceWork": "Quran",
     "sourceReference": "2:97",
     "questionIds": [
-      "sira_005"
+      "sira_005",
+      "faith_081"
     ]
   },
   {
@@ -273,7 +346,8 @@
     "sourceWork": "Quran",
     "sourceReference": "2:185",
     "questionIds": [
-      "sira_012"
+      "sira_012",
+      "quran_120"
     ]
   },
   {
@@ -374,7 +448,8 @@
     "sourceWork": "Quran",
     "sourceReference": "2:183",
     "questionIds": [
-      "faith_005"
+      "faith_005",
+      "faith_102"
     ]
   },
   {
@@ -416,7 +491,8 @@
     "sourceWork": "Sahih al-Bukhari",
     "sourceReference": "13",
     "questionIds": [
-      "virtues_004"
+      "virtues_004",
+      "virtues_099"
     ]
   },
   {
@@ -557,7 +633,8 @@
     "sourceReference": "2:255",
     "questionIds": [
       "quran_011",
-      "faith_069"
+      "faith_069",
+      "faith_076"
     ]
   },
   {
@@ -573,7 +650,8 @@
     "sourceWork": "Quran",
     "sourceReference": "2:282",
     "questionIds": [
-      "quran_013"
+      "quran_013",
+      "virtues_070"
     ]
   },
   {
@@ -743,7 +821,8 @@
     "sourceWork": "Quran",
     "sourceReference": "15:9",
     "questionIds": [
-      "faith_015"
+      "faith_015",
+      "quran_102"
     ]
   },
   {
@@ -775,7 +854,8 @@
     "sourceWork": "Quran",
     "sourceReference": "49:12",
     "questionIds": [
-      "virtues_007"
+      "virtues_007",
+      "virtues_063"
     ]
   },
   {
@@ -823,7 +903,8 @@
     "sourceWork": "Quran",
     "sourceReference": "16:90",
     "questionIds": [
-      "virtues_013"
+      "virtues_013",
+      "quran_136"
     ]
   },
   {
@@ -1256,7 +1337,8 @@
     "sourceWork": "Quran",
     "sourceReference": "66:11",
     "questionIds": [
-      "prophets_082"
+      "prophets_082",
+      "quran_141"
     ]
   },
   {
@@ -1457,7 +1539,8 @@
     "sourceWork": "Quran",
     "sourceReference": "19:12",
     "questionIds": [
-      "prophets_109"
+      "prophets_109",
+      "prophets_211"
     ]
   },
   {
@@ -1569,7 +1652,8 @@
     "sourceWork": "Quran",
     "sourceReference": "33:40",
     "questionIds": [
-      "prophets_124"
+      "prophets_124",
+      "sira_207"
     ]
   },
   {
@@ -1601,7 +1685,8 @@
     "sourceWork": "Quran",
     "sourceReference": "3:144",
     "questionIds": [
-      "prophets_128"
+      "prophets_128",
+      "sira_222"
     ]
   },
   {
@@ -1713,7 +1798,8 @@
     "sourceWork": "Quran",
     "sourceReference": "20:14",
     "questionIds": [
-      "prophets_144"
+      "prophets_144",
+      "faith_094"
     ]
   },
   {
@@ -1767,6 +1853,803 @@
   {
     "sourceType": "quran",
     "sourceWork": "Quran",
+    "sourceReference": "2:35",
+    "questionIds": [
+      "prophets_151"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:37",
+    "questionIds": [
+      "prophets_152"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:59",
+    "questionIds": [
+      "prophets_153"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:56-57",
+    "questionIds": [
+      "prophets_154"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:41",
+    "questionIds": [
+      "prophets_155"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "71:26-27",
+    "questionIds": [
+      "prophets_156"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "23:27",
+    "questionIds": [
+      "prophets_157"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:69",
+    "questionIds": [
+      "prophets_158"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "69:6-7",
+    "questionIds": [
+      "prophets_159"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "26:128-129",
+    "questionIds": [
+      "prophets_160"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:74",
+    "questionIds": [
+      "prophets_161"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "54:27",
+    "questionIds": [
+      "prophets_162"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:78",
+    "questionIds": [
+      "prophets_163"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "26:161",
+    "questionIds": [
+      "prophets_164"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:81",
+    "questionIds": [
+      "prophets_165"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:84",
+    "questionIds": [
+      "prophets_166"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:88",
+    "questionIds": [
+      "prophets_167"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:124",
+    "questionIds": [
+      "prophets_168"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:258",
+    "questionIds": [
+      "prophets_169"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "22:27",
+    "questionIds": [
+      "prophets_170"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "51:24-27",
+    "questionIds": [
+      "prophets_171"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "60:4",
+    "questionIds": [
+      "prophets_172"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "14:35",
+    "questionIds": [
+      "prophets_173"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:99",
+    "questionIds": [
+      "prophets_174"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:54-55",
+    "questionIds": [
+      "prophets_175"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:5",
+    "questionIds": [
+      "prophets_176"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:26-27",
+    "questionIds": [
+      "prophets_177"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:31",
+    "questionIds": [
+      "prophets_178"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:39-40",
+    "questionIds": [
+      "prophets_179"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:54",
+    "questionIds": [
+      "prophets_180"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:76",
+    "questionIds": [
+      "prophets_181"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:92",
+    "questionIds": [
+      "prophets_182"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:87",
+    "questionIds": [
+      "prophets_183"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:101",
+    "questionIds": [
+      "prophets_184"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:41",
+    "questionIds": [
+      "prophets_185"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:43",
+    "questionIds": [
+      "prophets_186"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:143-144",
+    "questionIds": [
+      "prophets_187"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "10:98",
+    "questionIds": [
+      "prophets_188"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "68:48",
+    "questionIds": [
+      "prophets_189"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:123-125",
+    "questionIds": [
+      "prophets_190"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:85-86",
+    "questionIds": [
+      "prophets_191"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:50",
+    "questionIds": [
+      "prophets_192"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:34",
+    "questionIds": [
+      "prophets_193"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:44",
+    "questionIds": [
+      "prophets_194",
+      "virtues_077"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "40:28",
+    "questionIds": [
+      "prophets_195"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:90",
+    "questionIds": [
+      "prophets_196"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "28:9",
+    "questionIds": [
+      "prophets_197"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:66",
+    "questionIds": [
+      "prophets_198"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:150",
+    "questionIds": [
+      "prophets_199"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "79:17-19",
+    "questionIds": [
+      "prophets_200"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:18-19",
+    "questionIds": [
+      "prophets_201"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:20",
+    "questionIds": [
+      "prophets_202"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "34:11",
+    "questionIds": [
+      "prophets_203"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:15",
+    "questionIds": [
+      "prophets_204"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:19",
+    "questionIds": [
+      "prophets_205"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:22-23",
+    "questionIds": [
+      "prophets_206"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:44",
+    "questionIds": [
+      "prophets_207"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "27:17",
+    "questionIds": [
+      "prophets_208"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:4",
+    "questionIds": [
+      "prophets_209"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:41",
+    "questionIds": [
+      "prophets_210"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:43",
+    "questionIds": [
+      "prophets_212"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:24-26",
+    "questionIds": [
+      "prophets_213"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "19:31",
+    "questionIds": [
+      "prophets_214"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "43:59",
+    "questionIds": [
+      "prophets_215"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:116",
+    "questionIds": [
+      "prophets_216"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:171",
+    "questionIds": [
+      "prophets_217"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "93:6-8",
+    "questionIds": [
+      "prophets_218"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "94:5-6",
+    "questionIds": [
+      "prophets_219"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "108:1-2",
+    "questionIds": [
+      "prophets_220"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:128",
+    "questionIds": [
+      "prophets_221"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:159",
+    "questionIds": [
+      "prophets_222",
+      "faith_116"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:21",
+    "questionIds": [
+      "prophets_223",
+      "sira_101"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "34:28",
+    "questionIds": [
+      "prophets_224"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:81",
+    "questionIds": [
+      "prophets_225"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:285",
+    "questionIds": [
+      "prophets_226",
+      "faith_150"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:36",
+    "questionIds": [
+      "prophets_227"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "14:4",
+    "questionIds": [
+      "prophets_228"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:25",
+    "questionIds": [
+      "prophets_229"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:84-86",
+    "questionIds": [
+      "prophets_230"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:253",
+    "questionIds": [
+      "prophets_231"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:81",
+    "questionIds": [
+      "prophets_232"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "42:13",
+    "questionIds": [
+      "prophets_233"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "40:78",
+    "questionIds": [
+      "prophets_234"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "12:109",
+    "questionIds": [
+      "prophets_235"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:34",
+    "questionIds": [
+      "prophets_236"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:33",
+    "questionIds": [
+      "prophets_237"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:20",
+    "questionIds": [
+      "prophets_238"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:157",
+    "questionIds": [
+      "prophets_239"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "10:71",
+    "questionIds": [
+      "prophets_240"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "26:78-80",
+    "questionIds": [
+      "prophets_241"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "37:107",
+    "questionIds": [
+      "prophets_242",
+      "faith_054"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:136",
+    "questionIds": [
+      "prophets_243"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "11:120",
+    "questionIds": [
+      "prophets_244"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:110",
+    "questionIds": [
+      "prophets_245"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "48:29",
+    "questionIds": [
+      "prophets_246"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "53:2-4",
+    "questionIds": [
+      "prophets_247"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "110:1-3",
+    "questionIds": [
+      "prophets_248"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "62:2",
+    "questionIds": [
+      "prophets_249"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:33",
+    "questionIds": [
+      "prophets_250"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
     "sourceReference": "106:1",
     "questionIds": [
       "sira_031"
@@ -1779,7 +2662,13 @@
     "questionIds": [
       "sira_037",
       "sira_038",
-      "sira_099"
+      "sira_099",
+      "sira_160",
+      "sira_202",
+      "sira_230",
+      "sira_231",
+      "sira_232",
+      "sira_233"
     ]
   },
   {
@@ -2025,14 +2914,6 @@
     ]
   },
   {
-    "sourceType": "quran",
-    "sourceWork": "Quran",
-    "sourceReference": "33:21",
-    "questionIds": [
-      "sira_101"
-    ]
-  },
-  {
     "sourceType": "hadithBukhari",
     "sourceWork": "Sahih al-Bukhari",
     "sourceReference": "3",
@@ -2197,6 +3078,175 @@
   {
     "sourceType": "quran",
     "sourceWork": "Quran",
+    "sourceReference": "74:1-2",
+    "questionIds": [
+      "sira_154"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "15:94",
+    "questionIds": [
+      "sira_155"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:108",
+    "questionIds": [
+      "sira_161"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:17",
+    "questionIds": [
+      "sira_165"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:5-6",
+    "questionIds": [
+      "sira_166"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:26",
+    "questionIds": [
+      "sira_167"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:67-69",
+    "questionIds": [
+      "sira_170"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:152",
+    "questionIds": [
+      "sira_171"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:169",
+    "questionIds": [
+      "sira_172"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:10",
+    "questionIds": [
+      "sira_174"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:25",
+    "questionIds": [
+      "sira_175"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "48:27",
+    "questionIds": [
+      "sira_177"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "48:24",
+    "questionIds": [
+      "sira_178"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:26",
+    "questionIds": [
+      "sira_187"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:117",
+    "questionIds": [
+      "sira_189"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:118",
+    "questionIds": [
+      "sira_190"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:103",
+    "questionIds": [
+      "sira_228"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "59:9",
+    "questionIds": [
+      "sira_229"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:92",
+    "questionIds": [
+      "sira_236"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:41",
+    "questionIds": [
+      "sira_242"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "49:13",
+    "questionIds": [
+      "sira_243",
+      "quran_066"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
     "sourceReference": "105:1",
     "questionIds": [
       "quran_025"
@@ -2303,7 +3353,8 @@
     "sourceWork": "Quran",
     "sourceReference": "103:1-3",
     "questionIds": [
-      "quran_041"
+      "quran_041",
+      "faith_149"
     ]
   },
   {
@@ -2493,14 +3544,6 @@
   {
     "sourceType": "quran",
     "sourceWork": "Quran",
-    "sourceReference": "49:13",
-    "questionIds": [
-      "quran_066"
-    ]
-  },
-  {
-    "sourceType": "quran",
-    "sourceWork": "Quran",
     "sourceReference": "56:1",
     "questionIds": [
       "quran_067"
@@ -2608,6 +3651,535 @@
     "sourceReference": "27:30",
     "questionIds": [
       "quran_080"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "78:1-2",
+    "questionIds": [
+      "quran_081"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "101:1-3",
+    "questionIds": [
+      "quran_082"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "101:6-9",
+    "questionIds": [
+      "quran_083"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "102:1",
+    "questionIds": [
+      "quran_084"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "104:1",
+    "questionIds": [
+      "quran_085"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "106:3-4",
+    "questionIds": [
+      "quran_086"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "94:1",
+    "questionIds": [
+      "quran_087"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "95:1-3",
+    "questionIds": [
+      "quran_088"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "95:4",
+    "questionIds": [
+      "quran_089"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "90:1-2",
+    "questionIds": [
+      "quran_090"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "90:12-16",
+    "questionIds": [
+      "quran_091"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "92:1-4",
+    "questionIds": [
+      "quran_092"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "87:1",
+    "questionIds": [
+      "quran_093"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "88:1",
+    "questionIds": [
+      "quran_094"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "88:17",
+    "questionIds": [
+      "quran_095"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "85:1",
+    "questionIds": [
+      "quran_096"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "86:1-3",
+    "questionIds": [
+      "quran_097"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "99:1",
+    "questionIds": [
+      "quran_098"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "99:7-8",
+    "questionIds": [
+      "quran_099"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "100:1-5",
+    "questionIds": [
+      "quran_100"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:2",
+    "questionIds": [
+      "quran_101"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:82",
+    "questionIds": [
+      "quran_103"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "59:21",
+    "questionIds": [
+      "quran_104"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "73:4",
+    "questionIds": [
+      "quran_105"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:204",
+    "questionIds": [
+      "quran_106"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:98",
+    "questionIds": [
+      "quran_107"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "38:29",
+    "questionIds": [
+      "quran_108"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:88",
+    "questionIds": [
+      "quran_109"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:114",
+    "questionIds": [
+      "quran_110"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "39:23",
+    "questionIds": [
+      "quran_111"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "14:24-25",
+    "questionIds": [
+      "quran_112"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "13:17",
+    "questionIds": [
+      "quran_113"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "13:28",
+    "questionIds": [
+      "quran_114",
+      "faith_040"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:109",
+    "questionIds": [
+      "quran_115"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "31:27",
+    "questionIds": [
+      "quran_116"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "41:44",
+    "questionIds": [
+      "quran_117"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:9",
+    "questionIds": [
+      "quran_118"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "10:57",
+    "questionIds": [
+      "quran_119"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "50:1",
+    "questionIds": [
+      "quran_121"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "77:1",
+    "questionIds": [
+      "quran_122"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "83:18-21",
+    "questionIds": [
+      "quran_123"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "84:1-2",
+    "questionIds": [
+      "quran_124"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "81:1",
+    "questionIds": [
+      "quran_125"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:286",
+    "questionIds": [
+      "quran_126"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:261",
+    "questionIds": [
+      "quran_127"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:264",
+    "questionIds": [
+      "quran_128"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "24:39",
+    "questionIds": [
+      "quran_129"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "29:1-2",
+    "questionIds": [
+      "quran_130"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "35:1",
+    "questionIds": [
+      "quran_131"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "30:21",
+    "questionIds": [
+      "quran_132"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "30:22",
+    "questionIds": [
+      "quran_133"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:30",
+    "questionIds": [
+      "quran_134"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:22",
+    "questionIds": [
+      "quran_135"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:69",
+    "questionIds": [
+      "quran_137"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "55:1-4",
+    "questionIds": [
+      "quran_138"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "56:7-10",
+    "questionIds": [
+      "quran_139"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "62:5",
+    "questionIds": [
+      "quran_140"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "112:1",
+    "questionIds": [
+      "quran_142"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "112:3",
+    "questionIds": [
+      "quran_143"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "114:4-6",
+    "questionIds": [
+      "quran_144"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "113:2-5",
+    "questionIds": [
+      "quran_145"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "1:5",
+    "questionIds": [
+      "quran_146"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "1:6-7",
+    "questionIds": [
+      "quran_147"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:7",
+    "questionIds": [
+      "quran_148"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:106",
+    "questionIds": [
+      "quran_149"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:30",
+    "questionIds": [
+      "quran_150"
     ]
   },
   {
@@ -2779,14 +4351,6 @@
     ]
   },
   {
-    "sourceType": "quran",
-    "sourceWork": "Quran",
-    "sourceReference": "13:28",
-    "questionIds": [
-      "faith_040"
-    ]
-  },
-  {
     "sourceType": "creed",
     "sourceWork": "Creed",
     "sourceReference": "well-established practice, agreed across the schools (the five daily prayers)",
@@ -2872,14 +4436,6 @@
     "sourceReference": "well-established practice, agreed across the schools (the two Eids)",
     "questionIds": [
       "faith_053"
-    ]
-  },
-  {
-    "sourceType": "quran",
-    "sourceWork": "Quran",
-    "sourceReference": "37:107",
-    "questionIds": [
-      "faith_054"
     ]
   },
   {
@@ -2992,6 +4548,540 @@
     "sourceReference": "51:58",
     "questionIds": [
       "faith_070"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "59:23",
+    "questionIds": [
+      "faith_071",
+      "faith_136"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "59:22",
+    "questionIds": [
+      "faith_072"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:180",
+    "questionIds": [
+      "faith_073"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "20:8",
+    "questionIds": [
+      "faith_074"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "42:11",
+    "questionIds": [
+      "faith_075"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:59",
+    "questionIds": [
+      "faith_077"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "50:16",
+    "questionIds": [
+      "faith_078"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "66:6",
+    "questionIds": [
+      "faith_079",
+      "faith_131"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "21:26-27",
+    "questionIds": [
+      "faith_080"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:98",
+    "questionIds": [
+      "faith_082"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:136",
+    "questionIds": [
+      "faith_083"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "72:1",
+    "questionIds": [
+      "faith_085"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "51:56",
+    "questionIds": [
+      "faith_086"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:185",
+    "questionIds": [
+      "faith_087"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "99:6",
+    "questionIds": [
+      "faith_088"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:49",
+    "questionIds": [
+      "faith_089"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "36:65",
+    "questionIds": [
+      "faith_090"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:103",
+    "questionIds": [
+      "faith_091"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "29:45",
+    "questionIds": [
+      "faith_092"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:238",
+    "questionIds": [
+      "faith_093"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "23:1-2",
+    "questionIds": [
+      "faith_095"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:78",
+    "questionIds": [
+      "faith_096"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:153",
+    "questionIds": [
+      "faith_097"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established practice, agreed across the schools",
+    "questionIds": [
+      "faith_098",
+      "faith_099"
+    ]
+  },
+  {
+    "sourceType": "creed",
+    "sourceWork": "Creed",
+    "sourceReference": "well-established terminology",
+    "questionIds": [
+      "faith_100",
+      "faith_137",
+      "faith_138",
+      "faith_139"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:184",
+    "questionIds": [
+      "faith_101"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:186",
+    "questionIds": [
+      "faith_103"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:60",
+    "questionIds": [
+      "faith_104"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:103",
+    "questionIds": [
+      "faith_105"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:110",
+    "questionIds": [
+      "faith_106"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "22:37",
+    "questionIds": [
+      "faith_107"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:197",
+    "questionIds": [
+      "faith_108"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "22:29",
+    "questionIds": [
+      "faith_109"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:198",
+    "questionIds": [
+      "faith_110"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "66:8",
+    "questionIds": [
+      "faith_111"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "42:25",
+    "questionIds": [
+      "faith_112"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:135",
+    "questionIds": [
+      "faith_113"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:41-42",
+    "questionIds": [
+      "faith_114"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:190-191",
+    "questionIds": [
+      "faith_115"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "94:7-8",
+    "questionIds": [
+      "faith_117"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "57:20",
+    "questionIds": [
+      "faith_118"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:46",
+    "questionIds": [
+      "faith_119"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "23:115",
+    "questionIds": [
+      "faith_120"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:152",
+    "questionIds": [
+      "faith_121"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:59",
+    "questionIds": [
+      "faith_122"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "8:2",
+    "questionIds": [
+      "faith_123"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:162",
+    "questionIds": [
+      "faith_124"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "98:5",
+    "questionIds": [
+      "faith_125"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "47:15",
+    "questionIds": [
+      "faith_126"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "32:17",
+    "questionIds": [
+      "faith_127"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "10:26",
+    "questionIds": [
+      "faith_128"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "39:73",
+    "questionIds": [
+      "faith_129"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:133",
+    "questionIds": [
+      "faith_130"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:177",
+    "questionIds": [
+      "faith_132"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:105",
+    "questionIds": [
+      "faith_133"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "112:4",
+    "questionIds": [
+      "faith_134"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "57:3",
+    "questionIds": [
+      "faith_135"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:156",
+    "questionIds": [
+      "faith_140"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:23-24",
+    "questionIds": [
+      "faith_141"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "31:34",
+    "questionIds": [
+      "faith_142"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:34",
+    "questionIds": [
+      "faith_143"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:97",
+    "questionIds": [
+      "faith_144"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "49:14",
+    "questionIds": [
+      "faith_145"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:32",
+    "questionIds": [
+      "faith_146"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "6:160",
+    "questionIds": [
+      "faith_147"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "35:15",
+    "questionIds": [
+      "faith_148"
     ]
   },
   {
@@ -3241,6 +5331,374 @@
     "sourceReference": "6406",
     "questionIds": [
       "virtues_050"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "31:19",
+    "questionIds": [
+      "virtues_051"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "31:17",
+    "questionIds": [
+      "virtues_052"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:134",
+    "questionIds": [
+      "virtues_053"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:263",
+    "questionIds": [
+      "virtues_054"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:271",
+    "questionIds": [
+      "virtues_055"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:267",
+    "questionIds": [
+      "virtues_056"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:92",
+    "questionIds": [
+      "virtues_057"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:29",
+    "questionIds": [
+      "virtues_058"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:67",
+    "questionIds": [
+      "virtues_059"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "24:27",
+    "questionIds": [
+      "virtues_060"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "24:28",
+    "questionIds": [
+      "virtues_061"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "49:6",
+    "questionIds": [
+      "virtues_062"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "49:9",
+    "questionIds": [
+      "virtues_064"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:8",
+    "questionIds": [
+      "virtues_065"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:135",
+    "questionIds": [
+      "virtues_066"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:58",
+    "questionIds": [
+      "virtues_067"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:36",
+    "questionIds": [
+      "virtues_068"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:280",
+    "questionIds": [
+      "virtues_069"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:188",
+    "questionIds": [
+      "virtues_071"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:2",
+    "questionIds": [
+      "virtues_072"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:35",
+    "questionIds": [
+      "virtues_073"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:36",
+    "questionIds": [
+      "virtues_074"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "17:37",
+    "questionIds": [
+      "virtues_075"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "33:70-71",
+    "questionIds": [
+      "virtues_076"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "41:33",
+    "questionIds": [
+      "virtues_078"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "23:3",
+    "questionIds": [
+      "virtues_079"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "23:8",
+    "questionIds": [
+      "virtues_080"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "42:40",
+    "questionIds": [
+      "virtues_081"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "24:22",
+    "questionIds": [
+      "virtues_082"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "7:199",
+    "questionIds": [
+      "virtues_083"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "3:186",
+    "questionIds": [
+      "virtues_084"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "42:43",
+    "questionIds": [
+      "virtues_085"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:45",
+    "questionIds": [
+      "virtues_086"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "2:216",
+    "questionIds": [
+      "virtues_087"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "65:2-3",
+    "questionIds": [
+      "virtues_088"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "31:14",
+    "questionIds": [
+      "virtues_089"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "29:8",
+    "questionIds": [
+      "virtues_090"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "46:15",
+    "questionIds": [
+      "virtues_091"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:74",
+    "questionIds": [
+      "virtues_092"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "25:72",
+    "questionIds": [
+      "virtues_093"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "58:11",
+    "questionIds": [
+      "virtues_094"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "9:119",
+    "questionIds": [
+      "virtues_095"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "18:28",
+    "questionIds": [
+      "virtues_096"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "5:2",
+    "questionIds": [
+      "virtues_097"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "16:91",
+    "questionIds": [
+      "virtues_098"
+    ]
+  },
+  {
+    "sourceType": "quran",
+    "sourceWork": "Quran",
+    "sourceReference": "4:114",
+    "questionIds": [
+      "virtues_100"
     ]
   }
 ]

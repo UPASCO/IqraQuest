@@ -3120,6 +3120,1306 @@
     "sourceDisplay": "Corán 71:1"
   },
   {
+    "id": "prophets_151",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué se les prohibió acercarse a Adán y a su esposa en el Jardín?",
+    "answers": [
+      "De un árbol",
+      "De un río",
+      "De una puerta",
+      "De una montaña"
+    ],
+    "explanation": "Allah les permitió comer con holgura, salvo acercarse a un solo árbol.",
+    "sourceDisplay": "Corán 2:35"
+  },
+  {
+    "id": "prophets_152",
+    "correctAnswerIndex": 0,
+    "question": "Según el Corán, ¿qué recibió Adán de su Señor tras su falta?",
+    "answers": [
+      "Unas palabras (de arrepentimiento), y Allah aceptó su arrepentimiento",
+      "Riqueza",
+      "Un reino",
+      "Un libro"
+    ],
+    "explanation": "«Adán recibió unas palabras de su Señor, y Él aceptó su arrepentimiento».",
+    "sourceDisplay": "Corán 2:37"
+  },
+  {
+    "id": "prophets_153",
+    "correctAnswerIndex": 0,
+    "question": "¿Con quién compara el Corán a 'Isa en cuanto a su creación?",
+    "answers": [
+      "Con Adán, creado de tierra",
+      "Con Nuh (Noé)",
+      "Con Ibrahim (Abraham)",
+      "Con Yahya (Juan)"
+    ],
+    "explanation": "«El caso de 'Isa ante Allah es como el de Adán: lo creó de tierra y luego le dijo: “Sé”, y fue».",
+    "sourceDisplay": "Corán 3:59"
+  },
+  {
+    "id": "prophets_154",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué profeta dice el Corán que fue veraz y que Allah lo elevó a un lugar eminente?",
+    "answers": [
+      "Idris (Enoc)",
+      "Ilyas (Elías)",
+      "Dhul-Kifl",
+      "Al-Yasa' (Eliseo)"
+    ],
+    "explanation": "«Y recuerda en el Libro a Idris: fue veraz, un profeta; y lo elevamos a un lugar eminente».",
+    "sourceDisplay": "Corán 19:56-57"
+  },
+  {
+    "id": "prophets_155",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo Nuh cuando los suyos subieron al arca?",
+    "answers": [
+      "«En el nombre de Allah sea su singladura y su fondeadero»",
+      "«No temáis al mar»",
+      "«Tomad vuestras provisiones»",
+      "«Esperad la noche»"
+    ],
+    "explanation": "«Subid a ella: en el nombre de Allah sea su rumbo y su fondeadero».",
+    "sourceDisplay": "Corán 11:41"
+  },
+  {
+    "id": "prophets_156",
+    "correctAnswerIndex": 0,
+    "question": "En la sura Nuh, ¿qué pidió el profeta Nuh a su Señor respecto a los incrédulos?",
+    "answers": [
+      "Que no dejara sobre la tierra a ninguno de ellos",
+      "Que los enriqueciera",
+      "Que les diera un año más",
+      "Que los desterrara"
+    ],
+    "explanation": "«Señor mío, no dejes sobre la tierra a ningún incrédulo».",
+    "sourceDisplay": "Corán 71:26-27"
+  },
+  {
+    "id": "prophets_157",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántos de cada especie debía embarcar Nuh en el arca?",
+    "answers": [
+      "Una pareja",
+      "Tres",
+      "Diez",
+      "Uno solo"
+    ],
+    "explanation": "Allah le ordenó cargar en ella una pareja de cada especie, junto con su familia.",
+    "sourceDisplay": "Corán 23:27"
+  },
+  {
+    "id": "prophets_158",
+    "correctAnswerIndex": 0,
+    "question": "Hud recordó a 'Ad que Allah los había hecho sucesores ¿después de qué pueblo?",
+    "answers": [
+      "Del pueblo de Nuh (Noé)",
+      "Del pueblo de Lut (Lot)",
+      "Del pueblo de Musa (Moisés)",
+      "Del pueblo de Saba"
+    ],
+    "explanation": "«Recordad cuando os hizo sucesores después del pueblo de Nuh y os dio mayor corpulencia».",
+    "sourceDisplay": "Corán 7:69"
+  },
+  {
+    "id": "prophets_159",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué fue destruido el pueblo de 'Ad, según la sura Al-Haqqa?",
+    "answers": [
+      "Con un viento gélido y bramador",
+      "Con un diluvio",
+      "Con un terremoto",
+      "Con una plaga de langostas"
+    ],
+    "explanation": "«En cuanto a 'Ad, fueron destruidos por un viento glacial y violento».",
+    "sourceDisplay": "Corán 69:6-7"
+  },
+  {
+    "id": "prophets_160",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué reprochó Hud a su pueblo, que edificaba en cada altura?",
+    "answers": [
+      "Edificar por vanidad y esperar vivir eternamente",
+      "Cultivar la tierra",
+      "Comerciar lejos",
+      "Viajar de noche"
+    ],
+    "explanation": "«¿Edificáis en cada altura un monumento por diversión, y tomáis palacios como si fuerais a vivir eternamente?»",
+    "sourceDisplay": "Corán 26:128-129"
+  },
+  {
+    "id": "prophets_161",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hacía Zamud con las montañas, según el Corán?",
+    "answers": [
+      "Tallaba en ellas sus casas",
+      "Escondía oro en ellas",
+      "Pastoreaba rebaños en ellas",
+      "Las evitaba"
+    ],
+    "explanation": "«Tomáis palacios en sus llanuras y talláis casas en las montañas».",
+    "sourceDisplay": "Corán 7:74"
+  },
+  {
+    "id": "prophets_162",
+    "correctAnswerIndex": 0,
+    "question": "Según la sura Al-Qamar, ¿como qué fue enviada la camella a Zamud?",
+    "answers": [
+      "Como prueba para ellos",
+      "Como recompensa",
+      "Como regalo de su rey",
+      "Como rebaño para vender"
+    ],
+    "explanation": "«Vamos a enviarles la camella como prueba: obsérvalos y ten paciencia».",
+    "sourceDisplay": "Corán 54:27"
+  },
+  {
+    "id": "prophets_163",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se apoderó de Zamud tras matar a la camella?",
+    "answers": [
+      "El terremoto (ar-rayfa)",
+      "El diluvio",
+      "El viento gélido",
+      "La hambruna"
+    ],
+    "explanation": "«El terremoto se apoderó de ellos, y amanecieron yaciendo en sus casas».",
+    "sourceDisplay": "Corán 7:78"
+  },
+  {
+    "id": "prophets_164",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué profeta fue enviado al pueblo que cometía la gran indecencia, diciéndoles «¿No vais a temer a Allah?»",
+    "answers": [
+      "Lut (Lot)",
+      "Salih",
+      "Hud",
+      "Shu'ayb"
+    ],
+    "explanation": "«Cuando su hermano Lut les dijo: “¿No vais a temer a Allah?”»",
+    "sourceDisplay": "Corán 26:161"
+  },
+  {
+    "id": "prophets_165",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le ordenó a Lut la noche del castigo?",
+    "answers": [
+      "Partir de noche con su familia y no volver la vista",
+      "Reunir a su pueblo",
+      "Esperar el alba",
+      "Esconderse en la montaña"
+    ],
+    "explanation": "«Parte, pues, con tu familia en parte de la noche, y que ninguno de vosotros vuelva la vista».",
+    "sourceDisplay": "Corán 11:81"
+  },
+  {
+    "id": "prophets_166",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué profeta fue enviado a la gente de Madián, que defraudaba en la medida y el peso?",
+    "answers": [
+      "Shu'ayb",
+      "Lut (Lot)",
+      "Hud",
+      "Ilyas (Elías)"
+    ],
+    "explanation": "Shu'ayb les ordenó dar la medida completa y el peso justo, y no sembrar corrupción en la tierra.",
+    "sourceDisplay": "Corán 11:84"
+  },
+  {
+    "id": "prophets_167",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo Shu'ayb a su pueblo sobre lo que de verdad quería?",
+    "answers": [
+      "«Solo quiero la reforma, en la medida de mis fuerzas»",
+      "«Solo quiero riqueza»",
+      "«Quiero gobernar»",
+      "«Quiero marcharme»"
+    ],
+    "explanation": "«Solo quiero la reforma, en la medida de mis fuerzas. Y mi éxito solo depende de Allah».",
+    "sourceDisplay": "Corán 11:88"
+  },
+  {
+    "id": "prophets_168",
+    "correctAnswerIndex": 0,
+    "question": "Después de que Allah probara a Ibrahim con mandatos que cumplió, ¿qué le dijo?",
+    "answers": [
+      "«Voy a hacer de ti un guía (imam) para los hombres»",
+      "«Voy a darte un reino»",
+      "«Voy a enriquecerte»",
+      "«Voy a hacerte rey de Babilonia»"
+    ],
+    "explanation": "«Voy a hacer de ti un guía para los hombres». Ibrahim preguntó: «¿Y de mi descendencia?»",
+    "sourceDisplay": "Corán 2:124"
+  },
+  {
+    "id": "prophets_169",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo dejó Ibrahim sin respuesta al rey que pretendía dar la vida y la muerte?",
+    "answers": [
+      "«Allah trae el sol por oriente: tráelo tú por occidente»",
+      "«Haz caer la lluvia»",
+      "«Mueve esa montaña»",
+      "«Cuenta las estrellas»"
+    ],
+    "explanation": "«Allah trae el sol por oriente; tráelo tú por occidente». Y el incrédulo quedó confundido.",
+    "sourceDisplay": "Corán 2:258"
+  },
+  {
+    "id": "prophets_170",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le ordenó a Ibrahim proclamar a la gente sobre la Casa Sagrada?",
+    "answers": [
+      "La peregrinación: vendrán a pie y en toda montura",
+      "El comercio",
+      "La guerra",
+      "El silencio"
+    ],
+    "explanation": "«Y proclama entre los hombres la peregrinación: vendrán a ti a pie y en toda montura esbelta».",
+    "sourceDisplay": "Corán 22:27"
+  },
+  {
+    "id": "prophets_171",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ofreció Ibrahim a sus huéspedes honrados, que no lo tocaron?",
+    "answers": [
+      "Un ternero cebado asado",
+      "Pan y agua",
+      "Dátiles",
+      "Leche"
+    ],
+    "explanation": "Fue a los suyos y trajo un ternero cebado; al ver que no alargaban las manos hacia él, sintió temor.",
+    "sourceDisplay": "Corán 51:24-27"
+  },
+  {
+    "id": "prophets_172",
+    "correctAnswerIndex": 0,
+    "question": "¿De quién dice el Corán que es «un hermoso ejemplo» (uswa hasana) para los creyentes, junto con los que estaban con él?",
+    "answers": [
+      "Ibrahim (Abraham)",
+      "Nuh (Noé)",
+      "Musa (Moisés)",
+      "Dawud (David)"
+    ],
+    "explanation": "«Tenéis un hermoso ejemplo en Ibrahim y en quienes estaban con él».",
+    "sourceDisplay": "Corán 60:4"
+  },
+  {
+    "id": "prophets_173",
+    "correctAnswerIndex": 0,
+    "question": "En la sura Ibrahim, ¿qué pidió Ibrahim para la ciudad de La Meca?",
+    "answers": [
+      "Que fuera segura, y que él y sus hijos se libraran de adorar ídolos",
+      "Que se volviera un gran mercado",
+      "Que tuviera palacios",
+      "Que quedara desierta"
+    ],
+    "explanation": "«Señor mío, haz de esta ciudad un lugar seguro, y líbrame a mí y a mis hijos de adorar ídolos».",
+    "sourceDisplay": "Corán 14:35"
+  },
+  {
+    "id": "prophets_174",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo Ibrahim al dejar a su pueblo?",
+    "answers": [
+      "«Me voy a mi Señor: Él me guiará»",
+      "«Voy a buscar fortuna»",
+      "«Volveré a combatirlos»",
+      "«Me voy a Egipto»"
+    ],
+    "explanation": "«Me voy a mi Señor: Él me guiará».",
+    "sourceDisplay": "Corán 37:99"
+  },
+  {
+    "id": "prophets_175",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué profeta dice el Corán que era «fiel a su promesa» y ordenaba a los suyos la oración y el zakat?",
+    "answers": [
+      "Isma'il (Ismael)",
+      "Ishaq (Isaac)",
+      "Ya'qub (Jacob)",
+      "Yusuf (José)"
+    ],
+    "explanation": "«Era fiel a su promesa; fue un mensajero y un profeta. Ordenaba a su familia la oración y el zakat».",
+    "sourceDisplay": "Corán 19:54-55"
+  },
+  {
+    "id": "prophets_176",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aconsejó Ya'qub a Yusuf tras su sueño?",
+    "answers": [
+      "Que no se lo contara a sus hermanos",
+      "Que se lo contara a todos",
+      "Que lo escribiera",
+      "Que lo olvidara"
+    ],
+    "explanation": "«Hijito mío, no cuentes tu visión a tus hermanos, no sea que urdan algo contra ti».",
+    "sourceDisplay": "Corán 12:5"
+  },
+  {
+    "id": "prophets_177",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué indicio estableció la inocencia de Yusuf ante el señor de la casa?",
+    "answers": [
+      "Su túnica rasgada por detrás",
+      "Un testigo escondido",
+      "Una carta",
+      "Un juramento"
+    ],
+    "explanation": "Si la túnica estaba rasgada por detrás, ella mintió y él es de los veraces.",
+    "sourceDisplay": "Corán 12:26-27"
+  },
+  {
+    "id": "prophets_178",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hicieron las mujeres de la ciudad al ver a Yusuf?",
+    "answers": [
+      "Se cortaron las manos, admiradas",
+      "Huyeron",
+      "Callaron",
+      "Rieron"
+    ],
+    "explanation": "«Cuando lo vieron, quedaron maravilladas y se cortaron las manos, diciendo: “¡Este no es un ser humano; no es sino un ángel noble!”»",
+    "sourceDisplay": "Corán 12:31"
+  },
+  {
+    "id": "prophets_179",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué enseñó Yusuf a sus dos compañeros de prisión antes de interpretar sus sueños?",
+    "answers": [
+      "La unicidad de Allah, y que el juicio solo le pertenece a Él",
+      "La medicina",
+      "El cálculo de las cosechas",
+      "La poesía"
+    ],
+    "explanation": "«¿Son mejores señores separados, o Allah, el Uno, el Dominador? … El juicio solo pertenece a Allah».",
+    "sourceDisplay": "Corán 12:39-40"
+  },
+  {
+    "id": "prophets_180",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo el rey de Egipto a Yusuf tras hablar con él?",
+    "answers": [
+      "«Hoy tienes ante nosotros posición firme y confianza»",
+      "«Vuelve a la prisión»",
+      "«Sal de Egipto»",
+      "«Te doy a mi hija»"
+    ],
+    "explanation": "«Cuando hubo hablado con él, dijo: “Hoy tienes ante nosotros posición firme y confianza”».",
+    "sourceDisplay": "Corán 12:54"
+  },
+  {
+    "id": "prophets_181",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo retuvo Yusuf a su hermano consigo?",
+    "answers": [
+      "La copa del rey apareció en el equipaje de su hermano",
+      "Lo compró",
+      "Lo encarceló sin motivo",
+      "Lo nombró ministro"
+    ],
+    "explanation": "«Así inspiramos esta estratagema a Yusuf»: la copa salió del saco de su hermano.",
+    "sourceDisplay": "Corán 12:76"
+  },
+  {
+    "id": "prophets_182",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo Yusuf a sus hermanos cuando reconocieron su falta?",
+    "answers": [
+      "«Hoy no hay reproche contra vosotros»",
+      "«Seréis castigados»",
+      "«Marchaos y no volváis»",
+      "«Os he olvidado»"
+    ],
+    "explanation": "«Hoy no hay reproche contra vosotros. Que Allah os perdone: Él es el más misericordioso de los misericordiosos».",
+    "sourceDisplay": "Corán 12:92"
+  },
+  {
+    "id": "prophets_183",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo Ya'qub a sus hijos sobre la desesperación?",
+    "answers": [
+      "«No desesperéis de la misericordia de Allah»",
+      "«No volváis a partir»",
+      "«No habléis con nadie»",
+      "«No escribáis nada»"
+    ],
+    "explanation": "«No desesperéis del alivio de Allah: solo desesperan de él los incrédulos».",
+    "sourceDisplay": "Corán 12:87"
+  },
+  {
+    "id": "prophets_184",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué súplica hizo Yusuf al final de su historia?",
+    "answers": [
+      "Morir sometido (musulmán) y ser reunido con los justos",
+      "Reinar sobre todo Egipto",
+      "Volver a Canaán",
+      "Vivir mucho tiempo"
+    ],
+    "explanation": "«Hazme morir sometido y reúneme con los justos».",
+    "sourceDisplay": "Corán 12:101"
+  },
+  {
+    "id": "prophets_185",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se dirigió Ayyub a su Señor en la prueba?",
+    "answers": [
+      "«Me ha tocado la desgracia, y Tú eres el más Misericordioso»",
+      "«¿Por qué yo?»",
+      "«Devuélveme mi riqueza»",
+      "«Destruye a mis enemigos»"
+    ],
+    "explanation": "«Y recuerda a Nuestro siervo Ayyub, cuando invocó a su Señor: “El demonio me ha infligido fatiga y castigo”».",
+    "sourceDisplay": "Corán 38:41"
+  },
+  {
+    "id": "prophets_186",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué devolvió Allah a Ayyub tras la prueba, según la sura Sad?",
+    "answers": [
+      "Su familia, y otro tanto con ellos",
+      "Un reino",
+      "Un barco",
+      "Un rebaño de camellos"
+    ],
+    "explanation": "«Le devolvimos su familia y otro tanto con ellos, como misericordia de Nuestra parte y recuerdo para los dotados de entendimiento».",
+    "sourceDisplay": "Corán 38:43"
+  },
+  {
+    "id": "prophets_187",
+    "correctAnswerIndex": 0,
+    "question": "Según la sura As-Saffat, ¿qué salvó a Yunus de quedarse en el vientre del pez?",
+    "answers": [
+      "Que era de los que glorifican a Allah",
+      "Su fuerza",
+      "Un barco que pasaba",
+      "Un viento favorable"
+    ],
+    "explanation": "«Si no hubiera sido de los que glorifican, habría permanecido en su vientre hasta el día en que sean resucitados».",
+    "sourceDisplay": "Corán 37:143-144"
+  },
+  {
+    "id": "prophets_188",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué pueblo, según el Corán, creyó antes de que le alcanzara el castigo, y le aprovechó?",
+    "answers": [
+      "El pueblo de Yunus (Jonás)",
+      "El pueblo de Nuh",
+      "El pueblo de Lut",
+      "El pueblo de Hud"
+    ],
+    "explanation": "«¿Acaso hubo una ciudad que creyera y le aprovechara su fe, salvo el pueblo de Yunus?»",
+    "sourceDisplay": "Corán 10:98"
+  },
+  {
+    "id": "prophets_189",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo nombra el Corán a Yunus cuando ordena al Profeta ﷺ no ser como él en su impaciencia?",
+    "answers": [
+      "«El compañero del pez» (sahib al-hut)",
+      "«El hombre del bastón»",
+      "«El hombre de la montaña»",
+      "«El hombre del pozo»"
+    ],
+    "explanation": "«Y no seas como el compañero del pez, cuando invocó lleno de angustia».",
+    "sourceDisplay": "Corán 68:48"
+  },
+  {
+    "id": "prophets_190",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué profeta reprochó a su pueblo invocar a Ba'l y abandonar al mejor de los creadores?",
+    "answers": [
+      "Ilyas (Elías)",
+      "Al-Yasa' (Eliseo)",
+      "Yunus (Jonás)",
+      "Shu'ayb"
+    ],
+    "explanation": "«Ilyas fue de los mensajeros… “¿Invocáis a Ba'l y abandonáis al mejor de los creadores?”»",
+    "sourceDisplay": "Corán 37:123-125"
+  },
+  {
+    "id": "prophets_191",
+    "correctAnswerIndex": 0,
+    "question": "Junto a Isma'il e Idris, ¿a qué profeta menciona el Corán entre los pacientes que Allah admitió en Su misericordia?",
+    "answers": [
+      "Dhul-Kifl",
+      "Ilyas (Elías)",
+      "Yunus (Jonás)",
+      "Al-Yasa' (Eliseo)"
+    ],
+    "explanation": "«E Isma'il, Idris y Dhul-Kifl: todos fueron de los pacientes. Y los admitimos en Nuestra misericordia».",
+    "sourceDisplay": "Corán 21:85-86"
+  },
+  {
+    "id": "prophets_192",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hizo Allah por los Hijos de Israel ante el mar, perseguidos por Faraón?",
+    "answers": [
+      "Partió el mar y los salvó",
+      "Hizo caer la noche",
+      "Envió barcos",
+      "Secó el mar para siempre"
+    ],
+    "explanation": "«Y cuando partimos el mar por vosotros: os salvamos y ahogamos a la gente de Faraón».",
+    "sourceDisplay": "Corán 2:50"
+  },
+  {
+    "id": "prophets_193",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué pidió Musa a Allah que enviara a Harun con él?",
+    "answers": [
+      "Porque era más elocuente que él",
+      "Porque era mayor",
+      "Porque conocía Egipto",
+      "Porque sabía escribir"
+    ],
+    "explanation": "«Mi hermano Harun es más elocuente que yo: envíalo, pues, conmigo como apoyo que me confirme».",
+    "sourceDisplay": "Corán 28:34"
+  },
+  {
+    "id": "prophets_194",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo debían hablar Musa y Harun a Faraón?",
+    "answers": [
+      "Con palabras suaves",
+      "Con amenazas",
+      "Sin mirarlo",
+      "Solo por escrito"
+    ],
+    "explanation": "«Y habladle con palabras suaves: quizá recapacite o tema».",
+    "sourceDisplay": "Corán 20:44"
+  },
+  {
+    "id": "prophets_195",
+    "correctAnswerIndex": 0,
+    "question": "¿Quién, de la familia de Faraón, defendió a Musa ocultando su fe?",
+    "answers": [
+      "Un hombre creyente de la familia de Faraón",
+      "El sumo sacerdote",
+      "El jefe del ejército",
+      "El visir Haman"
+    ],
+    "explanation": "«Y un hombre creyente de la familia de Faraón, que ocultaba su fe, dijo: “¿Vais a matar a un hombre porque dice: mi Señor es Allah?”»",
+    "sourceDisplay": "Corán 40:28"
+  },
+  {
+    "id": "prophets_196",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo Harun a su pueblo durante la ausencia de Musa?",
+    "answers": [
+      "Que solo estaban siendo probados con el becerro, y debían seguirlo",
+      "Que guardaran el becerro",
+      "Que partieran a Egipto",
+      "Que callaran"
+    ],
+    "explanation": "«Pueblo mío, solo estáis siendo probados con él. Vuestro Señor es el Compasivo: seguidme».",
+    "sourceDisplay": "Corán 20:90"
+  },
+  {
+    "id": "prophets_197",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo la mujer de Faraón al encontrar al niño Musa?",
+    "answers": [
+      "«Será alegría para mis ojos y para los tuyos: no lo matéis»",
+      "«Devolvedlo a su madre»",
+      "«Llevadlo al río»",
+      "«Vendedlo»"
+    ],
+    "explanation": "«Y dijo la mujer de Faraón: “Alegría para mis ojos y para los tuyos. No lo matéis: quizá nos sea útil”».",
+    "sourceDisplay": "Corán 28:9"
+  },
+  {
+    "id": "prophets_198",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo pidió Musa seguir al siervo sabio (al-Jidr)?",
+    "answers": [
+      "«¿Puedo seguirte, a condición de que me enseñes?»",
+      "«Ordéname y obedeceré»",
+      "«Enséñame a cambio de un pago»",
+      "«Ven conmigo»"
+    ],
+    "explanation": "«¿Puedo seguirte a condición de que me enseñes algo de la buena dirección que se te ha enseñado?»",
+    "sourceDisplay": "Corán 18:66"
+  },
+  {
+    "id": "prophets_199",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué estado volvió Musa a su pueblo tras ver el becerro?",
+    "answers": [
+      "Airado y afligido",
+      "Alegre",
+      "Silencioso",
+      "Indiferente"
+    ],
+    "explanation": "«Y cuando Musa volvió a su pueblo, airado y afligido… arrojó las Tablas».",
+    "sourceDisplay": "Corán 7:150"
+  },
+  {
+    "id": "prophets_200",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué mensaje debía llevar Musa a Faraón según la sura An-Nazi'at?",
+    "answers": [
+      "«¿Quieres purificarte, y que te guíe hacia tu Señor?»",
+      "«Devuélveme a mi pueblo»",
+      "«Constrúyeme un palacio»",
+      "«Sal de Egipto»"
+    ],
+    "explanation": "«Ve a Faraón: se ha excedido. Y dile: ¿quieres purificarte, y que te guíe hacia tu Señor para que Le temas?»",
+    "sourceDisplay": "Corán 79:17-19"
+  },
+  {
+    "id": "prophets_201",
+    "correctAnswerIndex": 0,
+    "question": "¿Quién glorificaba a Allah junto con Dawud, al atardecer y al amanecer?",
+    "answers": [
+      "Las montañas y las aves",
+      "Los ríos",
+      "Las estrellas",
+      "Los vientos"
+    ],
+    "explanation": "«Sometimos las montañas para que glorificaran con él al atardecer y al amanecer, y las aves reunidas».",
+    "sourceDisplay": "Corán 38:18-19"
+  },
+  {
+    "id": "prophets_202",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán que Allah dio a Dawud, junto con un reino firme?",
+    "answers": [
+      "La sabiduría y el discurso decisivo",
+      "Ejércitos inmensos",
+      "Oro y plata",
+      "Un palacio de marfil"
+    ],
+    "explanation": "«Fortalecimos su reino y le dimos la sabiduría y el discernimiento en el hablar».",
+    "sourceDisplay": "Corán 38:20"
+  },
+  {
+    "id": "prophets_203",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le ordenó a Dawud al fabricar las cotas de malla?",
+    "answers": [
+      "Medir bien los eslabones",
+      "Grabar en ellas su nombre",
+      "Dorarlas",
+      "Venderlas"
+    ],
+    "explanation": "«Haz cotas de malla completas, y mide bien los eslabones».",
+    "sourceDisplay": "Corán 34:11"
+  },
+  {
+    "id": "prophets_204",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijeron Dawud y Sulaiman cuando Allah les dio el conocimiento?",
+    "answers": [
+      "«Alabado sea Allah, que nos ha favorecido sobre muchos de Sus siervos creyentes»",
+      "«Somos los mejores»",
+      "«Nadie nos iguala»",
+      "«Nos lo hemos merecido»"
+    ],
+    "explanation": "«Alabado sea Allah, que nos ha favorecido sobre muchos de Sus siervos creyentes».",
+    "sourceDisplay": "Corán 27:15"
+  },
+  {
+    "id": "prophets_205",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hizo Sulaiman al oír a la hormiga advertir a los suyos?",
+    "answers": [
+      "Sonrió y pidió a Allah ser agradecido",
+      "Se enfadó",
+      "Desvió su ejército en silencio",
+      "Ordenó silencio"
+    ],
+    "explanation": "«Sonrió al oír sus palabras y dijo: “Señor mío, permíteme agradecer Tu favor”».",
+    "sourceDisplay": "Corán 27:19"
+  },
+  {
+    "id": "prophets_206",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué noticia trajo la abubilla a Sulaiman?",
+    "answers": [
+      "Que una mujer reinaba en Saba y su pueblo se postraba ante el sol",
+      "Que un ejército se acercaba",
+      "Que había sequía",
+      "Que había un tesoro escondido"
+    ],
+    "explanation": "«Vengo de Saba con una noticia cierta: he hallado a una mujer que reina sobre ellos… se postran ante el sol».",
+    "sourceDisplay": "Corán 27:22-23"
+  },
+  {
+    "id": "prophets_207",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué asombró a la reina de Saba al entrar en el palacio de Sulaiman?",
+    "answers": [
+      "El suelo de cristal, que tomó por agua",
+      "Un león amansado",
+      "Un jardín colgante",
+      "Un trono de oro"
+    ],
+    "explanation": "«Se le dijo: “Entra en el palacio”. Al verlo, lo tomó por agua profunda y se descubrió las piernas. Él dijo: “Es un palacio pavimentado de cristal”».",
+    "sourceDisplay": "Corán 27:44"
+  },
+  {
+    "id": "prophets_208",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué estaban compuestos los ejércitos de Sulaiman, según el Corán?",
+    "answers": [
+      "De genios, hombres y aves",
+      "Solo de jinetes",
+      "De marineros",
+      "Solo de arqueros"
+    ],
+    "explanation": "«Y fueron reunidos para Sulaiman sus ejércitos de genios, hombres y aves, en filas ordenadas».",
+    "sourceDisplay": "Corán 27:17"
+  },
+  {
+    "id": "prophets_209",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describió Zakariyya su estado al invocar a su Señor?",
+    "answers": [
+      "«Mis huesos se han debilitado y mi cabeza se ha encendido de canas»",
+      "«Soy rico y saciado»",
+      "«Estoy lejos de mi pueblo»",
+      "«Estoy de viaje»"
+    ],
+    "explanation": "«Señor mío, mis huesos se han debilitado y mi cabeza se ha encendido de canas, y nunca he sido desdichado al invocarte».",
+    "sourceDisplay": "Corán 19:4"
+  },
+  {
+    "id": "prophets_210",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué señal se le dio a Zakariyya por el nacimiento de Yahya?",
+    "answers": [
+      "No hablar a la gente durante tres días, salvo por señas",
+      "Una estrella",
+      "Lluvia fuera de estación",
+      "Un sueño repetido"
+    ],
+    "explanation": "«Tu señal es que no hablarás a la gente durante tres días, salvo por señas».",
+    "sourceDisplay": "Corán 3:41"
+  },
+  {
+    "id": "prophets_211",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le dijo a Yahya respecto al Libro?",
+    "answers": [
+      "«Toma el Libro con fuerza»",
+      "«Esconde el Libro»",
+      "«Copia el Libro»",
+      "«Léelo una vez»"
+    ],
+    "explanation": "«¡Yahya, toma el Libro con determinación!» Y le dimos la sabiduría siendo aún niño.",
+    "sourceDisplay": "Corán 19:12"
+  },
+  {
+    "id": "prophets_212",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordenaron los ángeles a Maryam tras anunciarle su elección?",
+    "answers": [
+      "Ser devota a su Señor, postrarse e inclinarse",
+      "Emprender un viaje",
+      "Callar para siempre",
+      "Enseñar en el Templo"
+    ],
+    "explanation": "«Maryam, sé devota a tu Señor, póstrate e inclínate con los que se inclinan».",
+    "sourceDisplay": "Corán 3:43"
+  },
+  {
+    "id": "prophets_213",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le dijo a Maryam que sacudiera para comer, en el momento del parto?",
+    "answers": [
+      "El tronco de la palmera, para que cayeran dátiles frescos",
+      "Un olivo",
+      "Una higuera",
+      "Una vid"
+    ],
+    "explanation": "«Sacude hacia ti el tronco de la palmera: hará caer sobre ti dátiles frescos y maduros».",
+    "sourceDisplay": "Corán 19:24-26"
+  },
+  {
+    "id": "prophets_214",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dijo 'Isa en la cuna que Allah le había encomendado?",
+    "answers": [
+      "La oración y el zakat mientras viviera",
+      "El comercio",
+      "El silencio",
+      "El viaje"
+    ],
+    "explanation": "«Me ha encomendado la oración y el zakat mientras viva».",
+    "sourceDisplay": "Corán 19:31"
+  },
+  {
+    "id": "prophets_215",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Az-Zujruf a 'Isa hijo de Maryam?",
+    "answers": [
+      "Un siervo a quien Allah agració y puso como ejemplo para los Hijos de Israel",
+      "Un rey de Israel",
+      "Un ángel descendido",
+      "Un escriba del Templo"
+    ],
+    "explanation": "«No fue sino un siervo a quien agraciamos y pusimos como ejemplo para los Hijos de Israel».",
+    "sourceDisplay": "Corán 43:59"
+  },
+  {
+    "id": "prophets_216",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué responderá 'Isa el Día de la Resurrección cuando Allah lo interrogue?",
+    "answers": [
+      "«¡Gloria a Ti! No me corresponde decir lo que no tengo derecho a decir»",
+      "«No recuerdo»",
+      "«Ellos lo escribieron»",
+      "«Pregunta a los discípulos»"
+    ],
+    "explanation": "«¡Gloria a Ti! No me corresponde decir lo que no tengo derecho a decir».",
+    "sourceDisplay": "Corán 5:116"
+  },
+  {
+    "id": "prophets_217",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán a 'Isa hijo de Maryam?",
+    "answers": [
+      "El mensajero de Allah, Su palabra dirigida a Maryam y un espíritu procedente de Él",
+      "Un ángel enviado",
+      "Un rey justo",
+      "Un escriba sabio"
+    ],
+    "explanation": "«El Mesías, 'Isa hijo de Maryam, no es sino el mensajero de Allah, Su palabra que dirigió a Maryam y un espíritu procedente de Él».",
+    "sourceDisplay": "Corán 4:171"
+  },
+  {
+    "id": "prophets_218",
+    "correctAnswerIndex": 0,
+    "question": "En la sura Ad-Duha, ¿de qué favores recuerda Allah a Su Profeta ﷺ?",
+    "answers": [
+      "Lo acogió huérfano, lo guio y lo enriqueció",
+      "Le dio un reino",
+      "Le dio un ejército",
+      "Le dio un palacio"
+    ],
+    "explanation": "«¿No te halló huérfano y te dio amparo? ¿No te halló extraviado y te guio? ¿No te halló pobre y te enriqueció?»",
+    "sourceDisplay": "Corán 93:6-8"
+  },
+  {
+    "id": "prophets_219",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué promesa repite dos veces la sura Ash-Sharh?",
+    "answers": [
+      "«Con la dificultad viene la facilidad»",
+      "«La victoria está cerca»",
+      "«El Paraíso está prometido»",
+      "«Los enemigos perecerán»"
+    ],
+    "explanation": "«Con la dificultad viene la facilidad. Con la dificultad viene la facilidad».",
+    "sourceDisplay": "Corán 94:5-6"
+  },
+  {
+    "id": "prophets_220",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le concedió al Profeta ﷺ en la sura Al-Kawzar, y qué se le ordenó a cambio?",
+    "answers": [
+      "Al-Kawzar; orar a su Señor y sacrificar",
+      "Un ejército; combatir",
+      "Un reino; gobernar",
+      "Un tesoro; repartirlo"
+    ],
+    "explanation": "«Te hemos concedido al-Kawzar. Ora, pues, a tu Señor y sacrifica».",
+    "sourceDisplay": "Corán 108:1-2"
+  },
+  {
+    "id": "prophets_221",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura At-Tawba al Mensajero ﷺ para con los creyentes?",
+    "answers": [
+      "Solícito con ellos, benévolo y misericordioso",
+      "Duro y distante",
+      "Rico y poderoso",
+      "Callado y retirado"
+    ],
+    "explanation": "«Os ha llegado un Mensajero de entre vosotros… solícito con vosotros, benévolo y misericordioso con los creyentes».",
+    "sourceDisplay": "Corán 9:128"
+  },
+  {
+    "id": "prophets_222",
+    "correctAnswerIndex": 0,
+    "question": "Según el Corán, ¿qué habría alejado a la gente del Profeta ﷺ, de haber sido así?",
+    "answers": [
+      "Haber sido áspero y duro de corazón",
+      "Haber sido rico",
+      "Haber sido joven",
+      "Haber sido silencioso"
+    ],
+    "explanation": "«Por una misericordia de Allah fuiste suave con ellos. Si hubieras sido áspero y duro de corazón, se habrían dispersado de tu alrededor».",
+    "sourceDisplay": "Corán 3:159"
+  },
+  {
+    "id": "prophets_223",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán del Mensajero de Allah ﷺ para quienes esperan en Allah y el Último Día?",
+    "answers": [
+      "Es para ellos un hermoso ejemplo",
+      "Es un rey",
+      "Es un juez",
+      "Es un guía de caravanas"
+    ],
+    "explanation": "«Tenéis en el Mensajero de Allah un hermoso ejemplo para quien espera en Allah y en el Último Día».",
+    "sourceDisplay": "Corán 33:21"
+  },
+  {
+    "id": "prophets_224",
+    "correctAnswerIndex": 0,
+    "question": "¿A quién fue enviado el Profeta Muhammad ﷺ, según la sura Saba?",
+    "answers": [
+      "A toda la humanidad",
+      "Solo a Quraish",
+      "Solo a los árabes",
+      "A la gente de Medina"
+    ],
+    "explanation": "«No te hemos enviado sino como anunciador y advertidor para toda la humanidad».",
+    "sourceDisplay": "Corán 34:28"
+  },
+  {
+    "id": "prophets_225",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya recitó el Profeta ﷺ al retirarse los ídolos de alrededor de la Kaaba?",
+    "answers": [
+      "«Ha venido la verdad y se ha desvanecido lo falso»",
+      "«Te hemos dado una victoria clara»",
+      "«Di: Él es Allah, Uno»",
+      "«Cuando llegue el auxilio de Allah»"
+    ],
+    "explanation": "«Y di: ha venido la verdad y se ha desvanecido lo falso; ciertamente, lo falso está destinado a desvanecerse».",
+    "sourceDisplay": "Corán 17:81"
+  },
+  {
+    "id": "prophets_226",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dicen los creyentes acerca de los mensajeros de Allah, al final de la sura Al-Baqara?",
+    "answers": [
+      "«No hacemos distinción entre ninguno de Sus mensajeros»",
+      "«Seguimos solo al último»",
+      "«Preferimos a uno»",
+      "«Los ignoramos»"
+    ],
+    "explanation": "«No hacemos distinción entre ninguno de Sus mensajeros. Y dijeron: hemos oído y obedecido».",
+    "sourceDisplay": "Corán 2:285"
+  },
+  {
+    "id": "prophets_227",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué mensaje común llevó todo mensajero a su pueblo?",
+    "answers": [
+      "«Adorad a Allah y apartaos del tagut»",
+      "«Construid templos»",
+      "«Enriqueceos»",
+      "«Escribid libros»"
+    ],
+    "explanation": "«Enviamos a cada comunidad un mensajero: adorad a Allah y apartaos del tagut».",
+    "sourceDisplay": "Corán 16:36"
+  },
+  {
+    "id": "prophets_228",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué lengua fue enviado cada mensajero, según la sura Ibrahim?",
+    "answers": [
+      "En la lengua de su pueblo, para explicarles",
+      "Solo en árabe",
+      "En hebreo",
+      "En una lengua celestial"
+    ],
+    "explanation": "«No enviamos a ningún mensajero sino en la lengua de su pueblo, para explicarles».",
+    "sourceDisplay": "Corán 14:4"
+  },
+  {
+    "id": "prophets_229",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se reveló a cada mensajero antes de Muhammad ﷺ, según la sura Al-Anbiya?",
+    "answers": [
+      "Que no hay más dios que Él: adoradle, pues",
+      "Construir un santuario",
+      "Conquistar tierras",
+      "Guardar el secreto"
+    ],
+    "explanation": "«No enviamos antes de ti a ningún mensajero sin revelarle: no hay más dios que Yo, adoradme».",
+    "sourceDisplay": "Corán 21:25"
+  },
+  {
+    "id": "prophets_230",
+    "correctAnswerIndex": 0,
+    "question": "En la sura Al-An'am, ¿qué grupo de profetas se enumera como la descendencia guiada de Ibrahim?",
+    "answers": [
+      "Dawud, Sulaiman, Ayyub, Yusuf, Musa y Harun, entre otros",
+      "Solo Musa y 'Isa",
+      "Solo Isma'il e Ishaq",
+      "Solo Nuh y Hud"
+    ],
+    "explanation": "El pasaje enumera una larga estirpe de profetas a quienes Allah guio, y dice: «Así recompensamos a los que hacen el bien».",
+    "sourceDisplay": "Corán 6:84-86"
+  },
+  {
+    "id": "prophets_231",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán sobre los mensajeros unos respecto a otros?",
+    "answers": [
+      "Allah favoreció a unos sobre otros",
+      "Todos tienen idéntico rango",
+      "Solo cuenta el último",
+      "Se ignoraban entre sí"
+    ],
+    "explanation": "«De esos mensajeros, hemos favorecido a unos sobre otros».",
+    "sourceDisplay": "Corán 2:253"
+  },
+  {
+    "id": "prophets_232",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compromiso tomó Allah de los profetas, según la sura Al 'Imran?",
+    "answers": [
+      "Creer en el Mensajero que vendría confirmando lo que tenían, y apoyarlo",
+      "No dejar nunca a su pueblo",
+      "Construir cada uno un templo",
+      "Escribir cada uno un libro"
+    ],
+    "explanation": "«Si viene a vosotros un Mensajero que confirma lo que tenéis, habréis de creer en él y auxiliarlo».",
+    "sourceDisplay": "Corán 3:81"
+  },
+  {
+    "id": "prophets_233",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué profetas nombra el Corán al decir que Allah les prescribió la misma religión?",
+    "answers": [
+      "Nuh, Ibrahim, Musa y 'Isa, junto con lo revelado al Profeta ﷺ",
+      "Solo Adán e Idris",
+      "Solo Dawud y Sulaiman",
+      "Solo Hud y Salih"
+    ],
+    "explanation": "«Os ha prescrito en materia de religión lo que encomendó a Nuh, lo que te hemos revelado a ti, y lo que encomendamos a Ibrahim, a Musa y a 'Isa».",
+    "sourceDisplay": "Corán 42:13"
+  },
+  {
+    "id": "prophets_234",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán sobre los mensajeros cuya historia no relata?",
+    "answers": [
+      "Hay algunos cuya historia Allah no relató al Profeta ﷺ",
+      "No existen",
+      "Todos están nombrados",
+      "No tienen importancia"
+    ],
+    "explanation": "«De ellos te hemos relatado la historia de algunos, y de otros no te la hemos relatado».",
+    "sourceDisplay": "Corán 40:78"
+  },
+  {
+    "id": "prophets_235",
+    "correctAnswerIndex": 0,
+    "question": "¿De entre quiénes eligió Allah a todos Sus mensajeros, según la sura Yusuf?",
+    "answers": [
+      "De hombres de las ciudades, a quienes revelaba",
+      "De los ángeles",
+      "De los reyes",
+      "Solo de los del desierto"
+    ],
+    "explanation": "«No enviamos antes de ti sino a hombres de las ciudades, a quienes revelábamos».",
+    "sourceDisplay": "Corán 12:109"
+  },
+  {
+    "id": "prophets_236",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué recuerda el Corán sobre los mensajeros desmentidos antes de Muhammad ﷺ?",
+    "answers": [
+      "Fueron pacientes hasta que les llegó Nuestro auxilio",
+      "Se rindieron",
+      "Se escondieron",
+      "Cambiaron su mensaje"
+    ],
+    "explanation": "«Ya antes de ti fueron desmentidos mensajeros, pero tuvieron paciencia ante el desmentido hasta que les llegó Nuestro auxilio».",
+    "sourceDisplay": "Corán 6:34"
+  },
+  {
+    "id": "prophets_237",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué familias eligió Allah sobre los mundos, según la sura Al 'Imran?",
+    "answers": [
+      "Adán, Nuh, la familia de Ibrahim y la familia de 'Imran",
+      "Los reyes de Egipto",
+      "Las tribus de Medina",
+      "La gente de Saba"
+    ],
+    "explanation": "«Allah eligió a Adán, a Nuh, a la familia de Ibrahim y a la familia de 'Imran sobre los mundos».",
+    "sourceDisplay": "Corán 3:33"
+  },
+  {
+    "id": "prophets_238",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué favores recordó Musa a su pueblo al invitarlos a entrar en la Tierra Santa?",
+    "answers": [
+      "Que Allah había puesto profetas entre ellos y los había hecho reyes",
+      "Que les había dado naves",
+      "Que les había dado oro",
+      "Que les había dado caballos"
+    ],
+    "explanation": "«Pueblo mío, recordad el favor de Allah con vosotros: puso profetas entre vosotros y os hizo reyes».",
+    "sourceDisplay": "Corán 5:20"
+  },
+  {
+    "id": "prophets_239",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describían la Torá y el Evangelio al Profeta iletrado, según el Corán?",
+    "answers": [
+      "Ordena el bien, prohíbe el mal y les alivia sus cargas",
+      "Trae riqueza",
+      "Gobierna por la fuerza",
+      "Construye templos"
+    ],
+    "explanation": "«…el profeta iletrado que hallan mencionado en la Torá y el Evangelio: les ordena el bien y les prohíbe el mal… y les libra de su carga».",
+    "sourceDisplay": "Corán 7:157"
+  },
+  {
+    "id": "prophets_240",
+    "correctAnswerIndex": 0,
+    "question": "¿En quién dijo Nuh que se apoyaba al desafiar a su pueblo a conspirar?",
+    "answers": [
+      "En Allah, en quien depositaba su confianza",
+      "En sus hijos",
+      "En su tribu",
+      "En su nave"
+    ],
+    "explanation": "«En Allah confío. Poneos de acuerdo, vosotros y vuestros socios».",
+    "sourceDisplay": "Corán 10:71"
+  },
+  {
+    "id": "prophets_241",
+    "correctAnswerIndex": 0,
+    "question": "En la súplica de Ibrahim, ¿a quién atribuye la curación cuando enferma?",
+    "answers": [
+      "Solo a Allah",
+      "A los médicos",
+      "A las plantas",
+      "Al tiempo"
+    ],
+    "explanation": "«Y cuando enfermo, es Él quien me cura», dijo Ibrahim describiendo a su Señor.",
+    "sourceDisplay": "Corán 26:78-80"
+  },
+  {
+    "id": "prophets_242",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué fue rescatado el hijo de Ibrahim, según la sura As-Saffat?",
+    "answers": [
+      "Con un sacrificio inmenso",
+      "Con un rescate de oro",
+      "Con una caravana",
+      "Con un rebaño entero"
+    ],
+    "explanation": "«Y lo rescatamos con un sacrificio inmenso».",
+    "sourceDisplay": "Corán 37:107"
+  },
+  {
+    "id": "prophets_243",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué declaran creer los creyentes en la aleya «Decid: creemos en Allah…»?",
+    "answers": [
+      "En lo revelado a Ibrahim, Isma'il, Ishaq, Ya'qub, Musa, 'Isa y los profetas",
+      "En un solo libro",
+      "En un solo profeta",
+      "En sus propias tradiciones"
+    ],
+    "explanation": "«Decid: creemos en Allah y en lo que se nos ha revelado, y en lo revelado a Ibrahim, Isma'il, Ishaq, Ya'qub…»",
+    "sourceDisplay": "Corán 2:136"
+  },
+  {
+    "id": "prophets_244",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué relata Allah al Profeta ﷺ los relatos de los mensajeros?",
+    "answers": [
+      "Para afirmar su corazón",
+      "Para entretenerlo",
+      "Para enseñarle historia",
+      "Para distraerlo"
+    ],
+    "explanation": "«Y todo lo que te relatamos de las noticias de los mensajeros es para afirmar con ello tu corazón».",
+    "sourceDisplay": "Corán 11:120"
+  },
+  {
+    "id": "prophets_245",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le ordenó decir al Profeta ﷺ sobre sí mismo, al final de la sura Al-Kahf?",
+    "answers": [
+      "«Yo no soy sino un hombre como vosotros; se me ha revelado que vuestro Dios es un Dios Único»",
+      "«Soy un rey»",
+      "«Soy un ángel»",
+      "«Conozco lo oculto»"
+    ],
+    "explanation": "«Di: yo no soy sino un hombre como vosotros, a quien se le ha revelado que vuestro Dios es un Dios Único».",
+    "sourceDisplay": "Corán 18:110"
+  },
+  {
+    "id": "prophets_246",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Al-Fath a quienes están con el Mensajero ﷺ?",
+    "answers": [
+      "Duros con los incrédulos, misericordiosos entre sí",
+      "Ricos y numerosos",
+      "Silenciosos y retirados",
+      "Viajeros y comerciantes"
+    ],
+    "explanation": "«Muhammad es el Mensajero de Allah. Y quienes están con él son duros con los incrédulos, misericordiosos entre sí».",
+    "sourceDisplay": "Corán 48:29"
+  },
+  {
+    "id": "prophets_247",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice la sura An-Naym sobre las palabras del Profeta ﷺ?",
+    "answers": [
+      "No habla por capricho: no es sino una revelación inspirada",
+      "Habla como poeta",
+      "Habla como adivino",
+      "Habla por su cuenta"
+    ],
+    "explanation": "«Vuestro compañero no se ha extraviado ni se ha desviado; no habla por capricho: no es sino una revelación inspirada».",
+    "sourceDisplay": "Corán 53:2-4"
+  },
+  {
+    "id": "prophets_248",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué se le ordenó al Profeta ﷺ cuando llegó el auxilio de Allah y la victoria?",
+    "answers": [
+      "Glorificar a su Señor con alabanza y pedirle perdón",
+      "Celebrar con un banquete",
+      "Levantar un monumento",
+      "Descansar"
+    ],
+    "explanation": "«Cuando llegue el auxilio de Allah y la victoria… glorifica a tu Señor con alabanza y pídele perdón».",
+    "sourceDisplay": "Corán 110:1-3"
+  },
+  {
+    "id": "prophets_249",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tres tareas atribuye la sura Al-Yumu'a al Mensajero enviado a los iletrados?",
+    "answers": [
+      "Recitarles las aleyas, purificarlos y enseñarles el Libro y la sabiduría",
+      "Construir, comerciar y gobernar",
+      "Escribir, contar y viajar",
+      "Juzgar, castigar y recaudar"
+    ],
+    "explanation": "«Él es quien ha enviado entre los iletrados a un Mensajero de entre ellos, que les recita Sus aleyas, los purifica y les enseña el Libro y la sabiduría».",
+    "sourceDisplay": "Corán 62:2"
+  },
+  {
+    "id": "prophets_250",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué salvaguarda menciona el Corán mientras el Profeta ﷺ estaba entre ellos?",
+    "answers": [
+      "Allah no los castigaría mientras él estuviera entre ellos",
+      "Serían ricos",
+      "Vencerían siempre",
+      "No morirían"
+    ],
+    "explanation": "«Pero Allah no los iba a castigar estando tú entre ellos».",
+    "sourceDisplay": "Corán 8:33"
+  },
+  {
     "id": "sira_031",
     "correctAnswerIndex": 0,
     "question": "¿A qué tribu pertenecía el Profeta Muhammad ﷺ?",
@@ -4680,6 +5980,1306 @@
     "sourceDisplay": "Sira, hecho establecido"
   },
   {
+    "id": "sira_151",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tío del Profeta ﷺ abrazó el islam y fue uno de sus defensores más firmes en La Meca?",
+    "answers": [
+      "Hamza ibn 'Abd al-Muttalib",
+      "Abu Lahab",
+      "Abu Talib",
+      "Al-'Abbas"
+    ],
+    "explanation": "Hamza, tío y hermano de leche del Profeta ﷺ, abrazó el islam en La Meca y fue llamado «el león de Allah».",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_152",
+    "correctAnswerIndex": 0,
+    "question": "¿En casa de quién se reunían en secreto los primeros musulmanes en La Meca?",
+    "answers": [
+      "En casa de al-Arqam",
+      "En casa de Abu Bakr",
+      "En casa de Jadicha",
+      "En casa de Abu Talib"
+    ],
+    "explanation": "La casa de al-Arqam ibn Abi al-Arqam, en la colina de Safa, fue el primer lugar de reunión y enseñanza.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_153",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero, converso en La Meca, fue enviado después como primer maestro a Yazrib?",
+    "answers": [
+      "Mus'ab ibn 'Umayr",
+      "Bilal ibn Rabah",
+      "Jalid ibn al-Walid",
+      "Abu Huraira"
+    ],
+    "explanation": "Mus'ab ibn 'Umayr, joven mequí de familia noble, fue enviado a Yazrib tras el pacto de 'Aqaba para enseñar el Corán.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_154",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué orden comienza la sura Al-Muddazzir, que inició la llamada pública?",
+    "answers": [
+      "«¡Tú, el envuelto en un manto! Levántate y advierte»",
+      "«Lee, en el nombre de tu Señor»",
+      "«Combate a los incrédulos»",
+      "«Emigra a Medina»"
+    ],
+    "explanation": "«¡Tú, el envuelto en un manto! Levántate y advierte».",
+    "sourceDisplay": "Corán 74:1-2"
+  },
+  {
+    "id": "sira_155",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya ordenó al Profeta ﷺ proclamar abiertamente lo que se le mandaba?",
+    "answers": [
+      "«Proclama, pues, lo que se te ordena»",
+      "«Ten paciencia»",
+      "«Recita en secreto»",
+      "«Retírate»"
+    ],
+    "explanation": "«Proclama, pues, lo que se te ordena y apártate de los idólatras».",
+    "sourceDisplay": "Corán 15:94"
+  },
+  {
+    "id": "sira_156",
+    "correctAnswerIndex": 0,
+    "question": "¿Dónde colgó Quraish el documento del boicot contra Banu Hashim?",
+    "answers": [
+      "Dentro de la Kaaba",
+      "En la puerta de la ciudad",
+      "En el mercado de 'Ukaz",
+      "En la colina de Safa"
+    ],
+    "explanation": "El texto del boicot se colgó dentro de la Kaaba, hasta que el pacto se rompió y el documento fue abandonado.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_157",
+    "correctAnswerIndex": 0,
+    "question": "¿En el huerto de quién, en Taif, se refugió el Profeta ﷺ y recibió un racimo de uvas tras ser expulsado?",
+    "answers": [
+      "En el huerto de 'Utba y Shayba, donde le sirvió el esclavo 'Addas",
+      "En casa del jefe de Taif",
+      "En una caravana de paso",
+      "En casa de un herrero"
+    ],
+    "explanation": "Herido y expulsado de Taif, se refugió en un huerto donde le ofrecieron uvas, servidas por un esclavo cristiano llamado 'Addas.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_158",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero, al principio feroz adversario, abrazó el islam y fue llamado «el que distingue la verdad de la falsedad»?",
+    "answers": [
+      "'Umar ibn al-Jattab",
+      "Abu Sufyan",
+      "Jalid ibn al-Walid",
+      "'Amr ibn al-'As"
+    ],
+    "explanation": "'Umar ibn al-Jattab, hostil al principio, se convirtió en La Meca y recibió el título de al-Faruq.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_159",
+    "correctAnswerIndex": 0,
+    "question": "¿En casa de qué familia se alojó el Profeta ﷺ al llegar a Medina, donde se arrodilló su camella?",
+    "answers": [
+      "De Abu Ayyub al-Ansari",
+      "De Sa'd ibn Mu'adh",
+      "De Ubayy ibn Ka'b",
+      "De Anas ibn Malik"
+    ],
+    "explanation": "La camella se arrodilló junto a la casa de Abu Ayyub al-Ansari, que hospedó al Profeta ﷺ a su llegada.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_160",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama el cementerio de Medina donde están enterrados muchos compañeros?",
+    "answers": [
+      "Al-Baqi'",
+      "Al-Mu'alla",
+      "Al-Hiyr",
+      "Al-Quba"
+    ],
+    "explanation": "Baqi' al-Garqad, junto a la mezquita del Profeta ﷺ, es el cementerio de Medina.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_161",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué mezquita dice el Corán que fue «fundada sobre la piedad desde el primer día»?",
+    "answers": [
+      "La mezquita de Quba",
+      "La Mezquita Sagrada",
+      "La mezquita de Al-Aqsa",
+      "La mezquita de Kufa"
+    ],
+    "explanation": "«Una mezquita fundada sobre la piedad desde el primer día es más digna de que ores en ella».",
+    "sourceDisplay": "Corán 9:108"
+  },
+  {
+    "id": "sira_162",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué mezquita oraba el Profeta ﷺ cuando se reveló la orden de cambiar la alquibla?",
+    "answers": [
+      "La mezquita de las dos alquiblas (Masyid al-Qiblatayn)",
+      "La mezquita de Quba",
+      "La Mezquita Sagrada",
+      "La mezquita de Al-Aqsa"
+    ],
+    "explanation": "La orden llegó durante la oración; los fieles se volvieron hacia la Kaaba, de ahí el nombre «mezquita de las dos alquiblas».",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_163",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué obligación se prescribió a los musulmanes en el segundo año de la Hégira?",
+    "answers": [
+      "El ayuno del mes de Ramadán",
+      "La peregrinación",
+      "La oración nocturna",
+      "El viaje a Taif"
+    ],
+    "explanation": "El ayuno de Ramadán se hizo obligatorio en Medina, en el segundo año de la Hégira.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_164",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero vio en sueños las palabras de la llamada a la oración, adoptadas luego por el Profeta ﷺ?",
+    "answers": [
+      "'Abdullah ibn Zayd",
+      "Bilal ibn Rabah",
+      "Abu Bakr",
+      "Mu'adh ibn Yabal"
+    ],
+    "explanation": "'Abdullah ibn Zayd relató el sueño del adán; el Profeta ﷺ lo aprobó y encargó a Bilal proclamarlo.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_165",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán del puñado de tierra que el Profeta ﷺ arrojó en Badr?",
+    "answers": [
+      "«No fuiste tú quien arrojó cuando arrojaste, sino que fue Allah»",
+      "«Apuntaste bien»",
+      "«Lo llevó el viento»",
+      "«Lo arrojaron los ángeles»"
+    ],
+    "explanation": "«No fuiste tú quien arrojó cuando arrojaste, sino que fue Allah quien arrojó».",
+    "sourceDisplay": "Corán 8:17"
+  },
+  {
+    "id": "sira_166",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán el estado de algunos creyentes al salir hacia Badr?",
+    "answers": [
+      "Discutían sobre ello como si fueran llevados hacia la muerte",
+      "Todos estaban impacientes",
+      "Se negaron a partir",
+      "Pidieron un aplazamiento"
+    ],
+    "explanation": "«Discutían contigo sobre la verdad, después de haberse hecho evidente, como si fueran llevados hacia la muerte».",
+    "sourceDisplay": "Corán 8:5-6"
+  },
+  {
+    "id": "sira_167",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo recuerda el Corán a los creyentes su situación antes de la victoria?",
+    "answers": [
+      "Eran pocos y oprimidos en la tierra, y Allah les dio amparo y auxilio",
+      "Eran ricos",
+      "Eran numerosos",
+      "Ya gobernaban"
+    ],
+    "explanation": "«Recordad cuando erais pocos y oprimidos en la tierra… Él os dio amparo y os sostuvo con Su auxilio».",
+    "sourceDisplay": "Corán 8:26"
+  },
+  {
+    "id": "sira_168",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero propuso en Badr trasladar el ejército al pozo más cercano al enemigo?",
+    "answers": [
+      "Al-Hubab ibn al-Munzir",
+      "Sa'd ibn Mu'adh",
+      "Al-Miqdad",
+      "Az-Zubayr"
+    ],
+    "explanation": "Al-Hubab ibn al-Munzir preguntó si la posición venía de la revelación o del parecer; al saber que era parecer, propuso avanzar hasta el pozo, y el Profeta ﷺ aceptó.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_169",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuál era el nombre del aguadero junto al cual tuvo lugar la batalla de Badr?",
+    "answers": [
+      "Badr, un pozo en la ruta de las caravanas",
+      "Zamzam",
+      "Quba",
+      "Al-Hudaybiya"
+    ],
+    "explanation": "Badr era un aguadero en la ruta de caravanas entre La Meca y Siria; la batalla tomó de él su nombre.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_170",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué asunto relativo a los cautivos fue tratado por revelación tras Badr?",
+    "answers": [
+      "El rescate aceptado por los prisioneros",
+      "El reparto del agua",
+      "La elección del campamento",
+      "La fecha del regreso"
+    ],
+    "explanation": "El pasaje habla de los cautivos y del rescate, y luego permite lo tomado como lícito y bueno.",
+    "sourceDisplay": "Corán 8:67-69"
+  },
+  {
+    "id": "sira_171",
+    "correctAnswerIndex": 0,
+    "question": "Según la sura Al 'Imran, ¿qué cambió la situación en Uhud tras un primer éxito?",
+    "answers": [
+      "La desobediencia y la disputa sobre la orden recibida",
+      "El número del enemigo",
+      "El calor",
+      "La falta de agua"
+    ],
+    "explanation": "«…hasta que flaqueasteis, disputasteis sobre la orden y desobedecisteis».",
+    "sourceDisplay": "Corán 3:152"
+  },
+  {
+    "id": "sira_172",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán de quienes son matados en el camino de Allah?",
+    "answers": [
+      "No los creas muertos: están vivos junto a su Señor",
+      "Duermen hasta el Último Día",
+      "Regresan",
+      "Son olvidados"
+    ],
+    "explanation": "«No creas que quienes han sido matados en el camino de Allah están muertos: al contrario, están vivos junto a su Señor, bien provistos».",
+    "sourceDisplay": "Corán 3:169"
+  },
+  {
+    "id": "sira_173",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué colina apostó el Profeta ﷺ a los arqueros en Uhud?",
+    "answers": [
+      "El monte de los Arqueros (Yabal ar-Rumat)",
+      "El monte Safa",
+      "El monte Zawr",
+      "El monte Hira"
+    ],
+    "explanation": "Cincuenta arqueros fueron apostados en una colina que pasó a llamarse «el monte de los arqueros», con la orden de no abandonarla.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_174",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Al-Ahzab la prueba del asedio de Medina?",
+    "answers": [
+      "Las miradas se desviaron y los corazones llegaron a las gargantas",
+      "La ciudad cayó",
+      "Solo faltaron víveres",
+      "El cielo se oscureció"
+    ],
+    "explanation": "«Cuando vinieron a vosotros desde arriba y desde abajo, cuando las miradas se desviaron y los corazones llegaron a las gargantas».",
+    "sourceDisplay": "Corán 33:10"
+  },
+  {
+    "id": "sira_175",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán el desenlace de la batalla del Foso?",
+    "answers": [
+      "Allah rechazó a los coligados llenos de ira, sin que lograran bien alguno",
+      "Una larga batalla campal",
+      "Un tratado de paz",
+      "Una retirada de los musulmanes"
+    ],
+    "explanation": "«Y Allah rechazó a los que no creían, llenos de ira: no lograron bien alguno, y Allah bastó a los creyentes en el combate».",
+    "sourceDisplay": "Corán 33:25"
+  },
+  {
+    "id": "sira_176",
+    "correctAnswerIndex": 0,
+    "question": "¿Dónde se encuentra Hudaybiya, lugar del famoso tratado?",
+    "answers": [
+      "En el límite del recinto sagrado, al oeste de La Meca",
+      "Cerca de Medina",
+      "En Yemen",
+      "En Siria"
+    ],
+    "explanation": "Hudaybiya es un lugar situado en los límites del recinto sagrado de La Meca, donde se concluyó el tratado.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_177",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué visión del Profeta ﷺ confirma el Corán tras Hudaybiya?",
+    "answers": [
+      "Que entrarían seguros en la Mezquita Sagrada, con la cabeza rapada o el pelo cortado",
+      "Que vencerían en Jaybar",
+      "Que construirían una ciudad",
+      "Que viajarían a Siria"
+    ],
+    "explanation": "«Allah ha cumplido la visión con que agració a Su Mensajero: entraréis seguros en la Mezquita Sagrada».",
+    "sourceDisplay": "Corán 48:27"
+  },
+  {
+    "id": "sira_178",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué recuerda la sura Al-Fath sobre las manos contenidas en La Meca?",
+    "answers": [
+      "Allah contuvo sus manos contra vosotros y las vuestras contra ellos en el centro de La Meca",
+      "Ordenó combatir",
+      "Cerró los caminos",
+      "Envió una tormenta"
+    ],
+    "explanation": "«Y Él es quien, en el valle de La Meca, contuvo sus manos contra vosotros y las vuestras contra ellos, después de haberos dado la victoria sobre ellos».",
+    "sourceDisplay": "Corán 48:24"
+  },
+  {
+    "id": "sira_179",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué año de la Hégira tuvo lugar la expedición de Jaybar?",
+    "answers": [
+      "El séptimo",
+      "El segundo",
+      "El quinto",
+      "El décimo"
+    ],
+    "explanation": "Jaybar tuvo lugar en el año 7 de la Hégira, el siguiente al tratado de Hudaybiya.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_180",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la 'umra realizada al año siguiente de Hudaybiya, según los términos del tratado?",
+    "answers": [
+      "'Umrat al-Qada",
+      "Hiyyat al-Wada'",
+      "'Umrat al-Yi'rana",
+      "Al-Hayy al-Akbar"
+    ],
+    "explanation": "El tratado establecía que los musulmanes volverían al año siguiente; esa 'umra se llama 'umrat al-qada.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_181",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué soberano rompió la carta del Profeta ﷺ al recibirla?",
+    "answers": [
+      "El rey de Persia (Cosroes)",
+      "El Negus de Abisinia",
+      "El gobernador de Bahréin",
+      "El rey de Yemen"
+    ],
+    "explanation": "El Profeta ﷺ envió cartas a los soberanos vecinos; la dirigida al rey de Persia fue rota.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_182",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero llevó la carta del Profeta ﷺ al Negus de Abisinia y a otros soberanos?",
+    "answers": [
+      "'Amr ibn Umayya ad-Damri",
+      "Abu Huraira",
+      "Anas ibn Malik",
+      "Ubayy ibn Ka'b"
+    ],
+    "explanation": "Se eligieron mensajeros entre los compañeros; 'Amr ibn Umayya ad-Damri fue enviado al Negus.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_183",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué dirección se halla Jaybar respecto de Medina?",
+    "answers": [
+      "Al norte",
+      "Al sur",
+      "Al este",
+      "Al oeste, junto al mar"
+    ],
+    "explanation": "Jaybar es un oasis fortificado al norte de Medina, en la ruta hacia Siria.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_184",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué se convirtió la casa de Abu Sufyan el día de la conquista de La Meca?",
+    "answers": [
+      "En un lugar seguro para quien entrara en ella",
+      "En una prisión",
+      "En un almacén",
+      "En una mezquita"
+    ],
+    "explanation": "El Profeta ﷺ declaró seguro a quien entrara en la Mezquita Sagrada, permaneciera en su casa o entrara en la casa de Abu Sufyan.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_185",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué año se llama «el año de la conquista» ('am al-fath)?",
+    "answers": [
+      "El año 8 de la Hégira",
+      "El año 6 de la Hégira",
+      "El año 10 de la Hégira",
+      "El año 2 de la Hégira"
+    ],
+    "explanation": "La Meca fue conquistada en el año 8 de la Hégira, conocido como el año de la conquista.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_186",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué batalla siguió poco después de la conquista de La Meca, contra las tribus de Hawazin?",
+    "answers": [
+      "Hunayn",
+      "Badr",
+      "Uhud",
+      "Jaybar"
+    ],
+    "explanation": "Hunayn tuvo lugar poco después de la conquista, en un valle entre La Meca y Taif.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_187",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hizo descender Allah sobre Su Mensajero ﷺ y los creyentes tras su desconcierto en Hunayn?",
+    "answers": [
+      "Su sosiego (sakina), y tropas que no veían",
+      "Lluvia",
+      "Un viento",
+      "Un refuerzo de jinetes"
+    ],
+    "explanation": "«Luego, Allah hizo descender Su sosiego sobre Su Mensajero y sobre los creyentes, e hizo descender tropas que no veíais».",
+    "sourceDisplay": "Corán 9:26"
+  },
+  {
+    "id": "sira_188",
+    "correctAnswerIndex": 0,
+    "question": "¿Hacia qué ciudad se dirigió el ejército musulmán tras Hunayn?",
+    "answers": [
+      "Taif",
+      "Jaybar",
+      "Tabuk",
+      "Saná"
+    ],
+    "explanation": "Tras Hunayn los musulmanes sitiaron Taif, cuyos habitantes se habían atrincherado.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_189",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué expedición llama el Corán «la hora de la dificultad» (sa'at al-'usra)?",
+    "answers": [
+      "Tabuk",
+      "Badr",
+      "Jaybar",
+      "Hunayn"
+    ],
+    "explanation": "«Allah ha aceptado el arrepentimiento del Profeta, de los emigrados y de los auxiliares que le siguieron en la hora de la dificultad».",
+    "sourceDisplay": "Corán 9:117"
+  },
+  {
+    "id": "sira_190",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán de los tres compañeros que se quedaron atrás en Tabuk, antes de su perdón?",
+    "answers": [
+      "La tierra se les hizo estrecha pese a su amplitud, y luego Allah aceptó su arrepentimiento",
+      "Fueron desterrados",
+      "Se marcharon a Yemen",
+      "Fueron olvidados"
+    ],
+    "explanation": "«Y a los tres que se quedaron atrás: la tierra, con toda su amplitud, se les hizo estrecha… y luego aceptó su arrepentimiento».",
+    "sourceDisplay": "Corán 9:118"
+  },
+  {
+    "id": "sira_191",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué dirección se halla Tabuk, meta de la última gran expedición?",
+    "answers": [
+      "Al norte, hacia la frontera de Siria",
+      "Al sur, hacia Yemen",
+      "Al este, hacia Irak",
+      "Al oeste, en el mar Rojo"
+    ],
+    "explanation": "Tabuk está al norte de Medina, en la ruta de Siria; fue la última gran expedición del Profeta ﷺ.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_192",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero equipó gran parte del ejército de Tabuk con sus propios bienes?",
+    "answers": [
+      "'Uzman ibn 'Affan",
+      "Sa'd ibn Abi Waqqas",
+      "Talha ibn 'Ubaydillah",
+      "Abu Zarr"
+    ],
+    "explanation": "'Uzman ibn 'Affan aportó una parte considerable del equipo del «ejército de la dificultad» (yaysh al-'usra).",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_193",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero fue el primero en disparar una flecha en el camino de Allah?",
+    "answers": [
+      "Sa'd ibn Abi Waqqas",
+      "Az-Zubayr ibn al-'Awwam",
+      "Talha ibn 'Ubaydillah",
+      "Abu 'Ubayda"
+    ],
+    "explanation": "Sa'd ibn Abi Waqqas, de los primerísimos musulmanes, es conocido como el primero en disparar una flecha en el camino de Allah.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_194",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero es llamado «el discípulo (hawari) del Mensajero de Allah ﷺ»?",
+    "answers": [
+      "Az-Zubayr ibn al-'Awwam",
+      "Abu Huraira",
+      "Salman al-Farisi",
+      "Bilal"
+    ],
+    "explanation": "Az-Zubayr ibn al-'Awwam, primo del Profeta ﷺ, fue llamado su hawari, su apoyo cercano.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_195",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué compañero se le confió el conocimiento de los hipócritas, por lo que fue llamado «el guardián del secreto»?",
+    "answers": [
+      "Huzayfa ibn al-Yaman",
+      "Abu Musa al-Ash'ari",
+      "'Ammar ibn Yasir",
+      "Abu ad-Darda"
+    ],
+    "explanation": "Huzayfa ibn al-Yaman es conocido como «sahib as-sirr», aquel a quien el Profeta ﷺ confió lo que sabía de los hipócritas.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_196",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué tierra venía Salman, llamado «al-Farisi», que propuso el foso?",
+    "answers": [
+      "De Persia",
+      "De Yemen",
+      "De Abisinia",
+      "De Bizancio"
+    ],
+    "explanation": "Salman, de origen persa, buscó largamente la verdad antes de unirse al Profeta ﷺ en Medina.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_197",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué mujer, madre de Anas ibn Malik, ofreció al Profeta ﷺ el servicio de su hijo?",
+    "answers": [
+      "Umm Sulaym",
+      "Umm Salama",
+      "Umm Ayman",
+      "Umm Habiba"
+    ],
+    "explanation": "Umm Sulaym, de los ansar, presentó a su hijo Anas al Profeta ﷺ para servirle cuando llegó a Medina.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_198",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué esposa del Profeta ﷺ fue conocida por su gran saber y transmitió numerosos hadices?",
+    "answers": [
+      "'Aisha",
+      "Sawda",
+      "Yuwayriya",
+      "Maymuna"
+    ],
+    "explanation": "'Aisha, hija de Abu Bakr, es una de las mayores transmisoras de hadices y una referencia en ciencia religiosa.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_199",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué esposa del Profeta ﷺ era prima suya y su matrimonio se menciona en la sura Al-Ahzab?",
+    "answers": [
+      "Zaynab bint Yahsh",
+      "Hafsa",
+      "Umm Salama",
+      "Safiyya"
+    ],
+    "explanation": "El matrimonio con Zaynab bint Yahsh se menciona en la sura Al-Ahzab (33:37).",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_200",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué esposa del Profeta ﷺ aconsejó lo que desbloqueó la crisis de Hudaybiya?",
+    "answers": [
+      "Umm Salama",
+      "'Aisha",
+      "Hafsa",
+      "Zaynab bint Yahsh"
+    ],
+    "explanation": "Umm Salama aconsejó al Profeta ﷺ salir y realizar él mismo el sacrificio y el rasurado: los compañeros lo siguieron de inmediato.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_201",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuál es el nombre completo del Profeta ﷺ, hasta su abuelo?",
+    "answers": [
+      "Muhammad ibn 'Abdillah ibn 'Abd al-Muttalib",
+      "Muhammad ibn Abi Talib",
+      "Muhammad ibn al-'Abbas",
+      "Muhammad ibn Hashim"
+    ],
+    "explanation": "Es Muhammad, hijo de 'Abdullah, hijo de 'Abd al-Muttalib, de la tribu de Quraish.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_202",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué otro nombre del Profeta ﷺ, mencionado en el Corán por 'Isa, significa «el más digno de alabanza»?",
+    "answers": [
+      "Ahmad",
+      "Al-Mustafa",
+      "Al-Amin",
+      "Abu-l-Qasim"
+    ],
+    "explanation": "'Isa anunció un mensajero que vendría tras él «cuyo nombre es Ahmad» (Corán 61:6).",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_203",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuánto duró la revelación del Corán al Profeta ﷺ?",
+    "answers": [
+      "Unos veintitrés años",
+      "Diez años",
+      "Cuarenta años",
+      "Una sola noche"
+    ],
+    "explanation": "La revelación se extendió unos veintitrés años: trece en La Meca y diez en Medina.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_204",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero fue el primer hombre libre y adulto en abrazar el islam?",
+    "answers": [
+      "Abu Bakr as-Siddiq",
+      "'Umar ibn al-Jattab",
+      "'Uzman ibn 'Affan",
+      "Sa'd ibn Abi Waqqas"
+    ],
+    "explanation": "Entre los hombres libres y adultos, Abu Bakr fue el primero en responder a la llamada del Profeta ﷺ.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_205",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué niño fue el primero en abrazar el islam?",
+    "answers": [
+      "'Ali ibn Abi Talib",
+      "Anas ibn Malik",
+      "Usama ibn Zayd",
+      "'Abdullah ibn 'Umar"
+    ],
+    "explanation": "'Ali ibn Abi Talib, criado en la casa del Profeta ﷺ, fue el primero de los niños en creer.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_206",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué liberto del Profeta ﷺ fue el primero de los libertos en abrazar el islam?",
+    "answers": [
+      "Zayd ibn Hariza",
+      "Bilal ibn Rabah",
+      "Suhayb ar-Rumi",
+      "Salman al-Farisi"
+    ],
+    "explanation": "Zayd ibn Hariza, liberado y criado como un hijo por el Profeta ﷺ, fue el primero de los libertos en creer.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_207",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya puso fin a la adopción legal, diciendo que el Profeta ﷺ no es padre de ninguno de sus hombres?",
+    "answers": [
+      "«Muhammad no es padre de ninguno de vuestros hombres, sino el Mensajero de Allah y el sello de los profetas»",
+      "«Llamadlos por sus padres»",
+      "«Los lazos de sangre prevalecen»",
+      "«No adoptéis»"
+    ],
+    "explanation": "«Muhammad no es padre de ninguno de vuestros hombres, sino el Mensajero de Allah y el último de los profetas».",
+    "sourceDisplay": "Corán 33:40"
+  },
+  {
+    "id": "sira_208",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué día de la semana se reúnen los musulmanes para la oración comunitaria instituida en Medina?",
+    "answers": [
+      "El viernes",
+      "El sábado",
+      "El domingo",
+      "El lunes"
+    ],
+    "explanation": "La oración del viernes (al-yumu'a) se instituyó en Medina y reúne a la comunidad cada semana.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_209",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero dirigió la oración durante la última enfermedad del Profeta ﷺ, por orden suya?",
+    "answers": [
+      "Abu Bakr as-Siddiq",
+      "'Umar ibn al-Jattab",
+      "'Ali ibn Abi Talib",
+      "Bilal"
+    ],
+    "explanation": "El Profeta ﷺ ordenó que Abu Bakr dirigiera la oración durante su enfermedad; los compañeros lo vieron como una señal.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_210",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué califa fue herido de muerte mientras dirigía la oración del alba?",
+    "answers": [
+      "'Umar ibn al-Jattab",
+      "Abu Bakr",
+      "'Ali ibn Abi Talib",
+      "Mu'awiya"
+    ],
+    "explanation": "'Umar ibn al-Jattab fue herido durante la oración del fayr en Medina y murió de sus heridas.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_211",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuánto duró el califato de Abu Bakr?",
+    "answers": [
+      "Unos dos años",
+      "Diez años",
+      "Veinte años",
+      "Treinta años"
+    ],
+    "explanation": "Abu Bakr gobernó unos dos años antes de su muerte, y 'Umar le sucedió.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_212",
+    "correctAnswerIndex": 0,
+    "question": "¿Contra qué movimiento hubo de actuar Abu Bakr al comienzo de su califato?",
+    "answers": [
+      "La negativa a pagar el zakat y la apostasía de algunas tribus",
+      "Una invasión desde Persia",
+      "Una hambruna",
+      "Una revuelta en Medina"
+    ],
+    "explanation": "El primer califato se abrió con las llamadas guerras de la ridda, contra las tribus que negaron el zakat o abandonaron el islam.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_213",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué título adoptó 'Umar ibn al-Jattab como jefe de la comunidad?",
+    "answers": [
+      "Amir al-Mu'minin (príncipe de los creyentes)",
+      "Sultán",
+      "Malik",
+      "Imam al-Haramayn"
+    ],
+    "explanation": "El título de amir al-mu'minin se estableció con 'Umar y lo llevaron los califas posteriores.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_214",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué mezquita de Jerusalén fue la primera alquibla de los musulmanes?",
+    "answers": [
+      "La mezquita de Al-Aqsa",
+      "La mezquita de Quba",
+      "La mezquita del Profeta ﷺ",
+      "La Mezquita Sagrada"
+    ],
+    "explanation": "Los musulmanes oraron primero hacia Jerusalén, antes de que la alquibla se fijara hacia la Kaaba.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_215",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuáles son las tres mezquitas hacia las que se recomienda especialmente viajar?",
+    "answers": [
+      "La Mezquita Sagrada, la mezquita del Profeta ﷺ y Al-Aqsa",
+      "Quba, Al-Aqsa y Kufa",
+      "La Mezquita Sagrada, Quba y Damasco",
+      "Al-Aqsa, Kufa y Basora"
+    ],
+    "explanation": "Se recomienda especialmente viajar a tres mezquitas: la Mezquita Sagrada, la mezquita del Profeta ﷺ y la mezquita de Al-Aqsa.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_216",
+    "correctAnswerIndex": 0,
+    "question": "¿Dónde pronunció el Profeta ﷺ su sermón de despedida, el día de 'Arafa?",
+    "answers": [
+      "En el valle de 'Urana, en el monte 'Arafat",
+      "En Mina",
+      "Ante la Kaaba",
+      "En Muzdalifa"
+    ],
+    "explanation": "El sermón de despedida se pronunció el día de 'Arafa, en el valle de 'Urana, al pie del monte 'Arafat.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_217",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué declaró inviolable el Profeta ﷺ en su sermón de despedida?",
+    "answers": [
+      "La sangre, los bienes y el honor de cada uno",
+      "Las rutas comerciales",
+      "Los pozos de Medina",
+      "Los palmerales"
+    ],
+    "explanation": "Declaró sagrados la sangre, los bienes y el honor de los musulmanes, como es sagrado ese día, ese mes y esa ciudad.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_218",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dejó el Profeta ﷺ a su comunidad, según su sermón de despedida, para que no se extraviara?",
+    "answers": [
+      "El Libro de Allah",
+      "Un tesoro",
+      "Un ejército",
+      "Un mapa"
+    ],
+    "explanation": "Les recordó que dejaba entre ellos aquello a lo que aferrarse para no extraviarse: el Libro de Allah.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_219",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué mes del calendario musulmán se realiza la peregrinación, cumplida por el Profeta ﷺ en su despedida?",
+    "answers": [
+      "Du-l-Hiyya",
+      "Ramadán",
+      "Muharram",
+      "Rayab"
+    ],
+    "explanation": "La peregrinación de despedida tuvo lugar en Du-l-Hiyya del año 10 de la Hégira.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_220",
+    "correctAnswerIndex": 0,
+    "question": "¿Quién lavó y amortajó el cuerpo del Profeta ﷺ tras su muerte?",
+    "answers": [
+      "Los de su casa, entre ellos 'Ali y al-'Abbas",
+      "Solo los ansar",
+      "Bilal y Anas",
+      "La gente de Quba"
+    ],
+    "explanation": "Se encargó de ello su propia familia, entre ellos 'Ali ibn Abi Talib y su tío al-'Abbas.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_221",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué mes del año hegiriano murió el Profeta ﷺ?",
+    "answers": [
+      "Rabi' al-Awwal",
+      "Ramadán",
+      "Shawwal",
+      "Du-l-Qa'da"
+    ],
+    "explanation": "El Profeta ﷺ murió en Medina en el mes de Rabi' al-Awwal del año 11 de la Hégira.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_222",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya recitó Abu Bakr para recordar que el Profeta ﷺ era mortal?",
+    "answers": [
+      "«Muhammad no es sino un mensajero; antes de él pasaron otros mensajeros»",
+      "«Te hemos enviado como misericordia»",
+      "«Eres de un carácter eminente»",
+      "«Cuando llegue el auxilio de Allah»"
+    ],
+    "explanation": "«Muhammad no es sino un mensajero; antes de él pasaron otros mensajeros. Si muriera o lo mataran, ¿volveríais sobre vuestros pasos?»",
+    "sourceDisplay": "Corán 3:144"
+  },
+  {
+    "id": "sira_223",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero es conocido sobre todo por la cantidad de hadices que memorizó?",
+    "answers": [
+      "Abu Huraira",
+      "Anas ibn Malik",
+      "Yabir ibn 'Abdillah",
+      "Abu Sa'id al-Judri"
+    ],
+    "explanation": "Abu Huraira pasó los últimos años de la vida del Profeta ﷺ a su lado y fue el transmisor más prolífico de hadices.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_224",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero, primo del Profeta ﷺ, llegó a ser la gran autoridad en exégesis coránica?",
+    "answers": [
+      "'Abdullah ibn 'Abbas",
+      "'Abdullah ibn 'Umar",
+      "'Abdullah ibn Mas'ud",
+      "'Abdullah ibn az-Zubayr"
+    ],
+    "explanation": "'Abdullah ibn 'Abbas, por quien el Profeta ﷺ pidió la comprensión del Libro, fue llamado «el intérprete del Corán».",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_225",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué compañero fue enviado por el Profeta ﷺ como gobernador y juez a Yemen, y murió joven en Siria?",
+    "answers": [
+      "Mu'adh ibn Yabal",
+      "Abu 'Ubayda ibn al-Yarrah",
+      "'Amr ibn al-'As",
+      "Jalid ibn al-Walid"
+    ],
+    "explanation": "Mu'adh ibn Yabal, sabio entre los compañeros, fue enviado a Yemen y después murió en Siria siendo aún joven.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_226",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué valle se extiende entre las dos colinas de Safa y Marwa, recorridas durante la peregrinación?",
+    "answers": [
+      "El valle de La Meca, alrededor de la Kaaba",
+      "El valle de 'Urana",
+      "El valle de Mina",
+      "El valle de Badr"
+    ],
+    "explanation": "Safa y Marwa son dos pequeñas colinas del valle de La Meca, hoy incluidas dentro de la Mezquita Sagrada.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_227",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dos grandes tribus árabes de Medina se hacían la guerra antes de la llegada del Profeta ﷺ?",
+    "answers": [
+      "Los Aws y los Jazray",
+      "Quraish y Hawazin",
+      "Zaqif y Kinana",
+      "Tamim y Bakr"
+    ],
+    "explanation": "Los Aws y los Jazray, enemigos durante mucho tiempo, formaron juntos a los ansar tras la llegada del Profeta ﷺ.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_228",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya recuerda a los ansar que eran enemigos y que Allah unió sus corazones?",
+    "answers": [
+      "«Erais enemigos y Él unió vuestros corazones»",
+      "«Erais pobres»",
+      "«Erais pocos»",
+      "«Estabais perdidos»"
+    ],
+    "explanation": "«Recordad el favor de Allah con vosotros: erais enemigos y Él unió vuestros corazones, y por Su favor os hicisteis hermanos».",
+    "sourceDisplay": "Corán 3:103"
+  },
+  {
+    "id": "sira_229",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo elogia el Corán a los ansar en su acogida a los emigrados?",
+    "answers": [
+      "Los prefieren a sí mismos, aun estando necesitados",
+      "Les vendieron tierras",
+      "Les prestaron dinero",
+      "Los alojaron fuera de la ciudad"
+    ],
+    "explanation": "«Y los prefieren a sí mismos, aunque estén necesitados. Quien se guarde de su propia avaricia, esos son los triunfadores».",
+    "sourceDisplay": "Corán 59:9"
+  },
+  {
+    "id": "sira_230",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama el conjunto de dichos, actos y aprobaciones del Profeta ﷺ?",
+    "answers": [
+      "La Sunna",
+      "El Corán",
+      "La Sira",
+      "El Tafsir"
+    ],
+    "explanation": "La Sunna es lo que el Profeta ﷺ dijo, hizo o aprobó; la Sira es el relato de su vida.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_231",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la generación que siguió a la de los compañeros?",
+    "answers": [
+      "Los tabi'un (los seguidores)",
+      "Los ansar",
+      "Los muhayirun",
+      "Los qurra'"
+    ],
+    "explanation": "Los tabi'un son quienes conocieron a los compañeros sin haber visto al Profeta ﷺ.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_232",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la cadena de transmisores de un hadiz?",
+    "answers": [
+      "El isnad",
+      "El matn",
+      "El tafsir",
+      "El taywid"
+    ],
+    "explanation": "El isnad es la cadena de transmisión; el matn es el texto mismo del hadiz.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_233",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuáles son las dos colecciones de hadices tenidas por más rigurosas, llamadas «los dos Sahih»?",
+    "answers": [
+      "Sahih al-Bujari y Sahih Muslim",
+      "Los Sunan de Abu Dawud y at-Tirmidi",
+      "El Muwatta' y el Musnad",
+      "Los Sunan de an-Nasa'i e Ibn Maya"
+    ],
+    "explanation": "Sahih al-Bujari y Sahih Muslim se conocen juntos como «los dos Sahih» (as-sahihan).",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_234",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué ciudad se encuentran la mezquita del Profeta ﷺ y su tumba?",
+    "answers": [
+      "Medina",
+      "La Meca",
+      "Jerusalén",
+      "Taif"
+    ],
+    "explanation": "La mezquita del Profeta ﷺ y su tumba están en Medina, la ciudad de la Hégira.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_235",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué epíteto lleva Medina, en relación con la luz que se le atribuye?",
+    "answers": [
+      "Al-Madina al-Munawwara (la ciudad iluminada)",
+      "Umm al-Qura",
+      "Dar as-Salam",
+      "Al-Mada'in"
+    ],
+    "explanation": "A Medina se la llama al-Munawwara; a La Meca, por su parte, al-Mukarrama.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_236",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué nombre da el Corán a La Meca, «la madre de las ciudades»?",
+    "answers": [
+      "Umm al-Qura",
+      "Al-Madina",
+      "Al-Balad al-Amin",
+      "Bakka"
+    ],
+    "explanation": "«…para que adviertas a la madre de las ciudades (Umm al-Qura) y a quienes están a su alrededor».",
+    "sourceDisplay": "Corán 6:92"
+  },
+  {
+    "id": "sira_237",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuál era el oficio de Jadicha, primera esposa del Profeta ﷺ?",
+    "answers": [
+      "Comerciante",
+      "Médica",
+      "Poetisa",
+      "Tejedora"
+    ],
+    "explanation": "Jadicha bint Juwaylid era una comerciante respetada de La Meca, que confió su caravana al joven Muhammad ﷺ.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_238",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuánto tiempo estuvo el Profeta ﷺ casado solo con Jadicha?",
+    "answers": [
+      "Hasta la muerte de ella; no se casó con ninguna otra en su vida",
+      "Dos años",
+      "Cinco años",
+      "Se casó con otras enseguida"
+    ],
+    "explanation": "El Profeta ﷺ no se casó con ninguna otra mujer mientras vivió Jadicha; los demás matrimonios vinieron tras su muerte.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_239",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama el tío del Profeta ﷺ que lo protegió sin abrazar el islam?",
+    "answers": [
+      "Abu Talib",
+      "Hamza",
+      "Al-'Abbas",
+      "Abu Lahab"
+    ],
+    "explanation": "Abu Talib, padre de 'Ali, protegió a su sobrino frente a Quraish hasta su muerte.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_240",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tío del Profeta ﷺ fue hecho prisionero en Badr antes de abrazar el islam?",
+    "answers": [
+      "Al-'Abbas ibn 'Abd al-Muttalib",
+      "Abu Talib",
+      "Hamza",
+      "Az-Zubayr ibn 'Abd al-Muttalib"
+    ],
+    "explanation": "Al-'Abbas, tío del Profeta ﷺ y antepasado de los abasíes, fue capturado en Badr y después abrazó el islam.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_241",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama a los compañeros que participaron en la batalla de Badr?",
+    "answers": [
+      "Los badríes (badriyyun)",
+      "Los ansar",
+      "Los muhayirun",
+      "Los uhudíes"
+    ],
+    "explanation": "A los compañeros presentes en Badr se los conoce como badriyyun, y ese mérito les es propio.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_242",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué parte del botín reserva el Corán para Allah, el Mensajero, los parientes, los huérfanos, los pobres y el viajero?",
+    "answers": [
+      "El quinto",
+      "La mitad",
+      "El décimo",
+      "El tercio"
+    ],
+    "explanation": "«Sabed que de todo botín que toméis, un quinto es para Allah, para el Mensajero, para los parientes, los huérfanos, los pobres y el viajero».",
+    "sourceDisplay": "Corán 8:41"
+  },
+  {
+    "id": "sira_243",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya, unida al sermón de despedida, funda la igualdad de los pueblos ante Allah?",
+    "answers": [
+      "«El más noble de vosotros ante Allah es el más piadoso»",
+      "«Los hombres vienen de un solo padre»",
+      "«Nadie carga con la carga ajena»",
+      "«No hay coacción en la religión»"
+    ],
+    "explanation": "«Hombres, os hemos creado de un varón y una hembra… el más noble de vosotros ante Allah es el más piadoso».",
+    "sourceDisplay": "Corán 49:13"
+  },
+  {
+    "id": "sira_244",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántos participaron en el segundo pacto de 'Aqaba, el encuentro decisivo con la gente de Yazrib?",
+    "answers": [
+      "Una delegación de más de setenta personas",
+      "Tres",
+      "Diez",
+      "Quinientos"
+    ],
+    "explanation": "El segundo pacto de 'Aqaba reunió a una delegación de más de setenta hombres y mujeres de Yazrib.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_245",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántos naqibs (responsables) hizo designar el Profeta ﷺ entre la gente de Yazrib en el pacto de 'Aqaba?",
+    "answers": [
+      "Doce",
+      "Cuatro",
+      "Siete",
+      "Veinte"
+    ],
+    "explanation": "Se eligieron doce naqibs para representar a los grupos de la delegación de Yazrib y responder de su compromiso.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_246",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué nombre adoptó Medina tras la Hégira?",
+    "answers": [
+      "Madinat an-Nabi, la ciudad del Profeta ﷺ",
+      "Yazrib",
+      "Solo Tayba",
+      "Al-Qura"
+    ],
+    "explanation": "Yazrib pasó a llamarse Madinat an-Nabi, «la ciudad del Profeta ﷺ», abreviado como al-Madina.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_247",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué califa mandó copiar el Corán en ejemplares oficiales enviados a las provincias?",
+    "answers": [
+      "'Uzman ibn 'Affan",
+      "Abu Bakr",
+      "'Umar",
+      "'Ali"
+    ],
+    "explanation": "Abu Bakr mandó reunir el texto; 'Uzman hizo establecer copias oficiales y las envió a las grandes ciudades.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_248",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué lengua fue revelado el Corán al Profeta ﷺ?",
+    "answers": [
+      "En árabe",
+      "En arameo",
+      "En persa",
+      "En griego"
+    ],
+    "explanation": "El Corán fue revelado en lengua árabe clara, la del propio pueblo del Profeta ﷺ.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_249",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué compañero envió el Profeta ﷺ a Bahréin, y volvió con su tributo?",
+    "answers": [
+      "Abu 'Ubayda ibn al-Yarrah",
+      "Bilal",
+      "Anas ibn Malik",
+      "Abu Zarr"
+    ],
+    "explanation": "Abu 'Ubayda ibn al-Yarrah, llamado «el hombre de confianza de esta comunidad», volvió de Bahréin con su tributo.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
+    "id": "sira_250",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué acontecimiento marca el comienzo del calendario musulmán?",
+    "answers": [
+      "La Hégira de La Meca a Medina",
+      "El nacimiento del Profeta ﷺ",
+      "La primera revelación",
+      "La conquista de La Meca"
+    ],
+    "explanation": "El calendario hegiriano comienza con el año de la Hégira, decisión tomada durante el califato de 'Umar.",
+    "sourceDisplay": "Sira, hecho establecido"
+  },
+  {
     "id": "quran_025",
     "correctAnswerIndex": 0,
     "question": "¿Qué sura lleva el nombre del elefante?",
@@ -5408,6 +8008,916 @@
     "sourceDisplay": "Corán 27:30"
   },
   {
+    "id": "quran_081",
+    "correctAnswerIndex": 0,
+    "question": "¿Sobre qué se preguntan unos a otros, al comienzo de la sura An-Naba?",
+    "answers": [
+      "Sobre la gran noticia",
+      "Sobre la lluvia",
+      "Sobre las estrellas",
+      "Sobre las cosechas"
+    ],
+    "explanation": "«¿Sobre qué se preguntan unos a otros? Sobre la gran noticia».",
+    "sourceDisplay": "Corán 78:1-2"
+  },
+  {
+    "id": "quran_082",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué significa «Al-Qari'a», título de la sura 101?",
+    "answers": [
+      "La Calamidad que golpea",
+      "El alba",
+      "La caravana",
+      "La montaña"
+    ],
+    "explanation": "«¡La Calamidad! ¿Qué es la Calamidad? ¿Y cómo sabrás qué es?»: es un nombre del Último Día.",
+    "sourceDisplay": "Corán 101:1-3"
+  },
+  {
+    "id": "quran_083",
+    "correctAnswerIndex": 0,
+    "question": "En la sura Al-Qari'a, ¿qué le espera a aquel cuya balanza sea liviana?",
+    "answers": [
+      "Su refugio será un abismo (Hawiya)",
+      "Un jardín",
+      "Una fuente",
+      "Una casa"
+    ],
+    "explanation": "«En cuanto a aquel cuya balanza sea liviana, su refugio será un abismo».",
+    "sourceDisplay": "Corán 101:6-9"
+  },
+  {
+    "id": "quran_084",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué advierte la sura At-Takazur?",
+    "answers": [
+      "De la rivalidad por acumular, que distrae",
+      "Del viaje",
+      "Del hambre",
+      "Del silencio"
+    ],
+    "explanation": "«La rivalidad por acumular os distrae, hasta que visitáis los sepulcros».",
+    "sourceDisplay": "Corán 102:1"
+  },
+  {
+    "id": "quran_085",
+    "correctAnswerIndex": 0,
+    "question": "¿Contra quién comienza la sura Al-Humaza con «¡Ay de…»?",
+    "answers": [
+      "Todo difamador y maldiciente",
+      "El viajero",
+      "El durmiente",
+      "El pobre"
+    ],
+    "explanation": "«¡Ay de todo difamador y maldiciente, que amasa riqueza y la cuenta!»",
+    "sourceDisplay": "Corán 104:1"
+  },
+  {
+    "id": "quran_086",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué pide la sura Quraish a Quraish, a cambio de los viajes de invierno y verano?",
+    "answers": [
+      "Adorar al Señor de esta Casa, que los alimentó y les dio seguridad",
+      "Construir murallas",
+      "Dejar el comercio",
+      "Partir hacia Yemen"
+    ],
+    "explanation": "«Que adoren, pues, al Señor de esta Casa, que los alimentó contra el hambre y les dio seguridad frente al temor».",
+    "sourceDisplay": "Corán 106:3-4"
+  },
+  {
+    "id": "quran_087",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué pregunta comienza la sura Ash-Sharh?",
+    "answers": [
+      "«¿No te hemos ensanchado el pecho?»",
+      "«¿No has visto?»",
+      "«¿Quién te creó?»",
+      "«¿Adónde vas?»"
+    ],
+    "explanation": "«¿No te hemos ensanchado el pecho?»",
+    "sourceDisplay": "Corán 94:1"
+  },
+  {
+    "id": "quran_088",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué jura Allah al comienzo de la sura At-Tin?",
+    "answers": [
+      "Por la higuera, el olivo, el monte Sinaí y esta ciudad segura",
+      "Por la noche y el día",
+      "Por las estrellas",
+      "Por el mar"
+    ],
+    "explanation": "«¡Por la higuera y el olivo! ¡Por el monte Sinín! ¡Y por esta ciudad segura!»",
+    "sourceDisplay": "Corán 95:1-3"
+  },
+  {
+    "id": "quran_089",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura At-Tin la creación del ser humano?",
+    "answers": [
+      "En la mejor forma",
+      "Débil y pequeño",
+      "De fuego",
+      "De luz"
+    ],
+    "explanation": "«Ciertamente hemos creado al hombre en la mejor forma».",
+    "sourceDisplay": "Corán 95:4"
+  },
+  {
+    "id": "quran_090",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué ciudad jura Allah al comienzo de la sura Al-Balad?",
+    "answers": [
+      "Por La Meca, donde el Profeta ﷺ residía",
+      "Por Medina",
+      "Por Jerusalén",
+      "Por Taif"
+    ],
+    "explanation": "«¡Juro por esta ciudad! Y tú resides en esta ciudad».",
+    "sourceDisplay": "Corán 90:1-2"
+  },
+  {
+    "id": "quran_091",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuál es la «cuesta empinada» que describe la sura Al-Balad?",
+    "answers": [
+      "Liberar a un esclavo, alimentar a un huérfano o a un pobre en día de hambre",
+      "Cruzar el desierto",
+      "Subir una montaña",
+      "Cruzar el mar"
+    ],
+    "explanation": "«¿Y cómo sabrás qué es la cuesta empinada? Es liberar a un esclavo, o alimentar en día de hambre a un huérfano pariente o a un pobre en la miseria».",
+    "sourceDisplay": "Corán 90:12-16"
+  },
+  {
+    "id": "quran_092",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué jura Allah al comienzo de la sura Al-Layl?",
+    "answers": [
+      "Por la noche cuando cubre y el día cuando aparece",
+      "Por el mar y la montaña",
+      "Por la higuera y el olivo",
+      "Por el cálamo"
+    ],
+    "explanation": "«¡Por la noche cuando cubre! ¡Por el día cuando aparece! … Vuestros esfuerzos son diversos».",
+    "sourceDisplay": "Corán 92:1-4"
+  },
+  {
+    "id": "quran_093",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué orden se abre la sura Al-A'la?",
+    "answers": [
+      "«Glorifica el nombre de tu Señor, el Altísimo»",
+      "«Lee»",
+      "«Levántate»",
+      "«Escucha»"
+    ],
+    "explanation": "«Glorifica el nombre de tu Señor, el Altísimo».",
+    "sourceDisplay": "Corán 87:1"
+  },
+  {
+    "id": "quran_094",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué habla el comienzo de la sura Al-Gashiya?",
+    "answers": [
+      "Del suceso que todo lo cubre: el Último Día",
+      "De un viaje",
+      "De un mercado",
+      "De una batalla"
+    ],
+    "explanation": "«¿Te ha llegado el relato del suceso que todo lo cubre?»",
+    "sourceDisplay": "Corán 88:1"
+  },
+  {
+    "id": "quran_095",
+    "correctAnswerIndex": 0,
+    "question": "¿Sobre qué criatura invita a reflexionar la sura Al-Gashiya?",
+    "answers": [
+      "Sobre el camello, y cómo fue creado",
+      "Sobre el león",
+      "Sobre el águila",
+      "Sobre el pez"
+    ],
+    "explanation": "«¿Acaso no observan los camellos, cómo han sido creados?»",
+    "sourceDisplay": "Corán 88:17"
+  },
+  {
+    "id": "quran_096",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué jura Allah al comienzo de la sura Al-Buruy?",
+    "answers": [
+      "Por el cielo de las constelaciones",
+      "Por la tierra",
+      "Por los ríos",
+      "Por las nubes"
+    ],
+    "explanation": "«¡Por el cielo de las constelaciones! ¡Y por el día prometido!»",
+    "sourceDisplay": "Corán 85:1"
+  },
+  {
+    "id": "quran_097",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué se refiere «At-Tariq», título de la sura 86?",
+    "answers": [
+      "Al astro nocturno penetrante",
+      "A la puerta",
+      "Al camino",
+      "Al trueno"
+    ],
+    "explanation": "«¡Por el cielo y por At-Tariq! ¿Y cómo sabrás qué es At-Tariq? El astro penetrante».",
+    "sourceDisplay": "Corán 86:1-3"
+  },
+  {
+    "id": "quran_098",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué suceso describe la apertura de la sura Az-Zalzala?",
+    "answers": [
+      "La tierra sacudida por su terremoto",
+      "Una lluvia torrencial",
+      "Un viento violento",
+      "Un eclipse"
+    ],
+    "explanation": "«Cuando la tierra sea sacudida por su terremoto, y la tierra expulse sus cargas».",
+    "sourceDisplay": "Corán 99:1"
+  },
+  {
+    "id": "quran_099",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué medida fija el final de la sura Az-Zalzala para las obras?",
+    "answers": [
+      "El peso de un átomo, tanto de bien como de mal",
+      "Una fanega",
+      "Un año",
+      "Una mano"
+    ],
+    "explanation": "«Quien haga el peso de un átomo de bien, lo verá; y quien haga el peso de un átomo de mal, lo verá».",
+    "sourceDisplay": "Corán 99:7-8"
+  },
+  {
+    "id": "quran_100",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué se refiere «Al-'Adiyat», título de la sura 100?",
+    "answers": [
+      "A los corceles que galopan jadeando",
+      "A los vientos",
+      "A las olas",
+      "A las nubes"
+    ],
+    "explanation": "«¡Por los corceles jadeantes! ¡Que arrancan chispas! ¡Que atacan al amanecer!»",
+    "sourceDisplay": "Corán 100:1-5"
+  },
+  {
+    "id": "quran_101",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Al-Baqara el Libro en su segunda aleya?",
+    "answers": [
+      "Un libro sin duda alguna, guía para los piadosos",
+      "Un libro de historia",
+      "Una colección de poemas",
+      "Un libro solo de leyes"
+    ],
+    "explanation": "«Este es el Libro, sobre el cual no hay duda: es guía para los piadosos».",
+    "sourceDisplay": "Corán 2:2"
+  },
+  {
+    "id": "quran_102",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya promete la preservación del Recuerdo revelado?",
+    "answers": [
+      "«Somos Nosotros quienes hemos hecho descender el Recuerdo, y Nosotros somos su guardián»",
+      "«Nadie lo leerá»",
+      "«Será olvidado»",
+      "«Será ocultado»"
+    ],
+    "explanation": "«Ciertamente, Nosotros hemos hecho descender el Recuerdo, y Nosotros somos su guardián».",
+    "sourceDisplay": "Corán 15:9"
+  },
+  {
+    "id": "quran_103",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué argumento presenta el Corán sobre su ausencia de contradicciones?",
+    "answers": [
+      "Si viniera de otro que Allah, hallarían en él muchas contradicciones",
+      "Que es breve",
+      "Que está en árabe",
+      "Que es antiguo"
+    ],
+    "explanation": "«¿No meditan en el Corán? Si viniera de otro que Allah, hallarían en él muchas contradicciones».",
+    "sourceDisplay": "Corán 4:82"
+  },
+  {
+    "id": "quran_104",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara el Corán el efecto que habría tenido sobre una montaña?",
+    "answers": [
+      "Se habría humillado y hendido por temor a Allah",
+      "Habría brillado",
+      "Se habría movido",
+      "Se habría vuelto verde"
+    ],
+    "explanation": "«Si hubiéramos hecho descender este Corán sobre una montaña, la habrías visto humillarse y hendirse por temor a Allah».",
+    "sourceDisplay": "Corán 59:21"
+  },
+  {
+    "id": "quran_105",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo ordena el Corán que se le recite, en la sura Al-Muzzammil?",
+    "answers": [
+      "Pausada y claramente (tartil)",
+      "Lo más rápido posible",
+      "En silencio",
+      "Cantando"
+    ],
+    "explanation": "«Y recita el Corán pausada y claramente».",
+    "sourceDisplay": "Corán 73:4"
+  },
+  {
+    "id": "quran_106",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué debe hacerse cuando se recita el Corán, según la sura Al-A'raf?",
+    "answers": [
+      "Escuchar y guardar silencio",
+      "Responder en voz alta",
+      "Salir",
+      "Escribir"
+    ],
+    "explanation": "«Y cuando se recite el Corán, escuchadlo y guardad silencio, para que se os tenga misericordia».",
+    "sourceDisplay": "Corán 7:204"
+  },
+  {
+    "id": "quran_107",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán decir antes de empezar a leerlo?",
+    "answers": [
+      "Buscar refugio en Allah del demonio maldito",
+      "Contar las aleyas",
+      "Decir la ablución en voz alta",
+      "Recitar la última aleya"
+    ],
+    "explanation": "«Cuando recites el Corán, busca refugio en Allah del demonio maldito».",
+    "sourceDisplay": "Corán 16:98"
+  },
+  {
+    "id": "quran_108",
+    "correctAnswerIndex": 0,
+    "question": "¿Para qué fue revelado el Libro, según la sura Sad?",
+    "answers": [
+      "Para que se mediten sus aleyas y recuerden los dotados de entendimiento",
+      "Para que se copie",
+      "Para que se cuente",
+      "Para que se oculte"
+    ],
+    "explanation": "«Es un Libro bendito que te hemos revelado, para que mediten sus aleyas y recuerden los dotados de entendimiento».",
+    "sourceDisplay": "Corán 38:29"
+  },
+  {
+    "id": "quran_109",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué desafío lanza la sura Al-Isra a los hombres y los genios juntos?",
+    "answers": [
+      "Producir algo semejante a este Corán, aun ayudándose entre sí",
+      "Cruzar los cielos",
+      "Contar las estrellas",
+      "Construir una ciudad"
+    ],
+    "explanation": "«Si los hombres y los genios se unieran para producir algo semejante a este Corán, no podrían lograrlo, aunque se ayudaran mutuamente».",
+    "sourceDisplay": "Corán 17:88"
+  },
+  {
+    "id": "quran_110",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué súplica enseña el Corán respecto al saber?",
+    "answers": [
+      "«Señor mío, auméntame en conocimiento»",
+      "«Señor mío, dame riqueza»",
+      "«Señor mío, alarga mi vida»",
+      "«Señor mío, ábreme los caminos»"
+    ],
+    "explanation": "«Y di: Señor mío, auméntame en conocimiento».",
+    "sourceDisplay": "Corán 20:114"
+  },
+  {
+    "id": "quran_111",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Az-Zumar el mejor de los relatos revelados?",
+    "answers": [
+      "Un Libro de partes semejantes y reiteradas, ante el cual se estremecen las pieles",
+      "Un libro breve",
+      "Un libro de leyes",
+      "Un libro en verso"
+    ],
+    "explanation": "«Allah ha hecho descender el mejor de los relatos: un Libro de partes semejantes y reiteradas. Se estremecen por él las pieles de quienes temen a su Señor».",
+    "sourceDisplay": "Corán 39:23"
+  },
+  {
+    "id": "quran_112",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara el Corán la buena palabra, en la sura Ibrahim?",
+    "answers": [
+      "Con un árbol bueno, de raíz firme y ramas en el cielo",
+      "Con un río",
+      "Con una montaña",
+      "Con una estrella"
+    ],
+    "explanation": "«Una buena palabra es como un árbol bueno: su raíz es firme y sus ramas están en el cielo; da su fruto en toda estación».",
+    "sourceDisplay": "Corán 14:24-25"
+  },
+  {
+    "id": "quran_113",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara la sura Ar-Ra'd la verdad y la falsedad?",
+    "answers": [
+      "Con la espuma que arrastra el torrente, y con lo que aprovecha a la gente y permanece",
+      "Con dos montañas",
+      "Con dos ciudades",
+      "Con dos caravanas"
+    ],
+    "explanation": "«En cuanto a la espuma, se va como desecho; pero lo que aprovecha a la gente permanece en la tierra».",
+    "sourceDisplay": "Corán 13:17"
+  },
+  {
+    "id": "quran_114",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué se sosiegan los corazones, según la sura Ar-Ra'd?",
+    "answers": [
+      "Con el recuerdo de Allah",
+      "Con la riqueza",
+      "Con el viaje",
+      "Con el sueño"
+    ],
+    "explanation": "«¿Acaso no es con el recuerdo de Allah como se sosiegan los corazones?»",
+    "sourceDisplay": "Corán 13:28"
+  },
+  {
+    "id": "quran_115",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice la sura Al-Kahf sobre la tinta necesaria para escribir las palabras de Allah?",
+    "answers": [
+      "El mar se agotaría antes que las palabras de su Señor",
+      "Bastaría un tintero",
+      "Bastaría una noche",
+      "Bastarían siete cálamos"
+    ],
+    "explanation": "«Si el mar fuera tinta para las palabras de mi Señor, se agotaría el mar antes de que se agotaran las palabras de mi Señor».",
+    "sourceDisplay": "Corán 18:109"
+  },
+  {
+    "id": "quran_116",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántos mares, según la sura Luqman, no bastarían para agotar las palabras de Allah?",
+    "answers": [
+      "Siete mares más, y aun así no bastarían",
+      "Uno solo",
+      "Tres",
+      "Doce"
+    ],
+    "explanation": "«Si todos los árboles de la tierra fueran cálamos y el mar fuera tinta, con otros siete mares más, no se agotarían las palabras de Allah».",
+    "sourceDisplay": "Corán 31:27"
+  },
+  {
+    "id": "quran_117",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué objeción se habría hecho si el Corán se hubiera revelado en lengua extranjera a un mensajero árabe?",
+    "answers": [
+      "«¿Por qué no se han expuesto con claridad sus aleyas?»",
+      "«Es demasiado corto»",
+      "«Es demasiado largo»",
+      "«No tiene título»"
+    ],
+    "explanation": "«Si lo hubiéramos hecho un Corán en lengua extranjera, habrían dicho: “¿Por qué no se han expuesto con claridad sus aleyas?”»",
+    "sourceDisplay": "Corán 41:44"
+  },
+  {
+    "id": "quran_118",
+    "correctAnswerIndex": 0,
+    "question": "¿Hacia qué guía el Corán, según la sura Al-Isra?",
+    "answers": [
+      "Hacia lo que es más recto",
+      "Hacia la riqueza",
+      "Hacia el poder",
+      "Hacia el descanso"
+    ],
+    "explanation": "«Ciertamente, este Corán guía hacia lo que es más recto, y anuncia a los creyentes que obran el bien una gran recompensa».",
+    "sourceDisplay": "Corán 17:9"
+  },
+  {
+    "id": "quran_119",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Yunus lo que ha descendido del Señor?",
+    "answers": [
+      "Una exhortación, una cura para lo que hay en los pechos, guía y misericordia",
+      "Una cuenta",
+      "Un decreto real",
+      "Un tratado"
+    ],
+    "explanation": "«¡Hombres! Os ha llegado una exhortación de vuestro Señor, una cura para lo que hay en los pechos, guía y misericordia para los creyentes».",
+    "sourceDisplay": "Corán 10:57"
+  },
+  {
+    "id": "quran_120",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Al-Baqara el papel del Corán como criterio?",
+    "answers": [
+      "Guía para los hombres, pruebas claras y el discernimiento",
+      "Un libro de cuentas",
+      "Una colección de relatos",
+      "Un código penal"
+    ],
+    "explanation": "«El mes de Ramadán, en el que fue revelado el Corán como guía para los hombres y pruebas claras de la guía y del discernimiento».",
+    "sourceDisplay": "Corán 2:185"
+  },
+  {
+    "id": "quran_121",
+    "correctAnswerIndex": 0,
+    "question": "¿Por qué jura Allah al comienzo de la sura Qaf?",
+    "answers": [
+      "Por el glorioso Corán",
+      "Por la montaña",
+      "Por el viento",
+      "Por el alba"
+    ],
+    "explanation": "«Qaf. ¡Por el glorioso Corán!»",
+    "sourceDisplay": "Corán 50:1"
+  },
+  {
+    "id": "quran_122",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué se refiere «Al-Mursalat», título de la sura 77?",
+    "answers": [
+      "A los enviados uno tras otro",
+      "A las caravanas",
+      "A las estrellas",
+      "A los ríos"
+    ],
+    "explanation": "«¡Por los enviados uno tras otro!»",
+    "sourceDisplay": "Corán 77:1"
+  },
+  {
+    "id": "quran_123",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué registro nombra la sura Al-Mutaffifin para los virtuosos?",
+    "answers": [
+      "'Illiyyun",
+      "Siyyin",
+      "Al-Lawh",
+      "Az-Zabur"
+    ],
+    "explanation": "«El libro de los virtuosos estará en 'Illiyyun… un libro escrito, del que dan testimonio los allegados».",
+    "sourceDisplay": "Corán 83:18-21"
+  },
+  {
+    "id": "quran_124",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué suceso se abre la sura Al-Inshiqaq?",
+    "answers": [
+      "El cielo que se hiende",
+      "El mar que se desborda",
+      "La tierra que reverdece",
+      "El sol que sale"
+    ],
+    "explanation": "«Cuando el cielo se hienda y obedezca a su Señor, como debe».",
+    "sourceDisplay": "Corán 84:1-2"
+  },
+  {
+    "id": "quran_125",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué señal se abre la sura At-Takwir?",
+    "answers": [
+      "El sol enrollado",
+      "La luna hendida",
+      "El viento levantado",
+      "El trueno"
+    ],
+    "explanation": "«Cuando el sol sea enrollado, y cuando las estrellas pierdan su brillo».",
+    "sourceDisplay": "Corán 81:1"
+  },
+  {
+    "id": "quran_126",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice la última aleya de la sura Al-Baqara sobre la carga impuesta a un alma?",
+    "answers": [
+      "Allah no impone a nadie una carga superior a su capacidad",
+      "Cada alma carga el doble",
+      "Nadie es probado",
+      "Todas las cargas son iguales"
+    ],
+    "explanation": "«Allah no impone a nadie sino lo que está en su capacidad».",
+    "sourceDisplay": "Corán 2:286"
+  },
+  {
+    "id": "quran_127",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara el Corán el gasto en el camino de Allah?",
+    "answers": [
+      "Con un grano que produce siete espigas, con cien granos cada una",
+      "Con una piedra",
+      "Con un pozo",
+      "Con una lámpara"
+    ],
+    "explanation": "«Quienes gastan sus bienes en el camino de Allah son como un grano que produce siete espigas; en cada espiga hay cien granos».",
+    "sourceDisplay": "Corán 2:261"
+  },
+  {
+    "id": "quran_128",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué se compara la limosna anulada por el reproche y la ofensa?",
+    "answers": [
+      "Con una roca cubierta de tierra, que un aguacero deja desnuda",
+      "Con un árbol frutal",
+      "Con una fuente",
+      "Con una casa"
+    ],
+    "explanation": "«Su ejemplo es el de una roca lisa cubierta de tierra a la que alcanza un aguacero y la deja desnuda».",
+    "sourceDisplay": "Corán 2:264"
+  },
+  {
+    "id": "quran_129",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara el Corán las obras de los incrédulos en la sura An-Nur?",
+    "answers": [
+      "Con un espejismo en una llanura, que el sediento toma por agua",
+      "Con una montaña",
+      "Con la lluvia",
+      "Con un jardín"
+    ],
+    "explanation": "«Las obras de quienes no creen son como un espejismo en una llanura: el sediento cree que es agua, y cuando llega a él no halla nada».",
+    "sourceDisplay": "Corán 24:39"
+  },
+  {
+    "id": "quran_130",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué pregunta abre la sura Al-'Ankabut, tras las letras aisladas?",
+    "answers": [
+      "«¿Creen los hombres que se les dejará decir “creemos” sin ser probados?»",
+      "«¿Dónde están los cielos?»",
+      "«¿Quién creó el mar?»",
+      "«¿Qué haréis mañana?»"
+    ],
+    "explanation": "«¿Creen los hombres que se les dejará decir “creemos” sin ser probados?»",
+    "sourceDisplay": "Corán 29:1-2"
+  },
+  {
+    "id": "quran_131",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Fatir a los ángeles en su primera aleya?",
+    "answers": [
+      "Mensajeros dotados de alas, de dos, tres o cuatro",
+      "Creados de barro",
+      "De número desconocido",
+      "Semejantes a los hombres"
+    ],
+    "explanation": "«Alabado sea Allah, Creador de los cielos y la tierra, que hizo a los ángeles mensajeros dotados de dos, tres o cuatro alas».",
+    "sourceDisplay": "Corán 35:1"
+  },
+  {
+    "id": "quran_132",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué signo menciona la sura Ar-Rum respecto a los esposos?",
+    "answers": [
+      "Que puso entre ellos afecto y misericordia",
+      "Que viven separados",
+      "Que trabajan juntos",
+      "Que viajan"
+    ],
+    "explanation": "«Y entre Sus signos está el haberos creado esposas de entre vosotros para que halléis sosiego en ellas, y haber puesto entre vosotros afecto y misericordia».",
+    "sourceDisplay": "Corán 30:21"
+  },
+  {
+    "id": "quran_133",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dos signos nombra la sura Ar-Rum justo después de la creación de los cielos y la tierra?",
+    "answers": [
+      "La diversidad de lenguas y de colores",
+      "El día y la noche",
+      "El viento y la lluvia",
+      "El mar y la montaña"
+    ],
+    "explanation": "«Y entre Sus signos está la creación de los cielos y la tierra, y la diversidad de vuestras lenguas y de vuestros colores».",
+    "sourceDisplay": "Corán 30:22"
+  },
+  {
+    "id": "quran_134",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué dice el Corán que Allah hizo todo ser vivo, en la sura Al-Anbiya?",
+    "answers": [
+      "Del agua",
+      "Del fuego",
+      "De la piedra",
+      "Del aire"
+    ],
+    "explanation": "«E hicimos del agua todo ser vivo. ¿No creerán, pues?»",
+    "sourceDisplay": "Corán 21:30"
+  },
+  {
+    "id": "quran_135",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué argumento da el Corán contra la pluralidad de dioses, en la sura Al-Anbiya?",
+    "answers": [
+      "Si hubiera otros dioses aparte de Allah, los cielos y la tierra se corromperían",
+      "Se esconderían",
+      "Callarían",
+      "Desaparecerían"
+    ],
+    "explanation": "«Si hubiera en ellos otros dioses aparte de Allah, ambos se habrían corrompido».",
+    "sourceDisplay": "Corán 21:22"
+  },
+  {
+    "id": "quran_136",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tres cosas dice la aleya 16:90 que Allah ordena?",
+    "answers": [
+      "La justicia, la excelencia y la ayuda a los parientes",
+      "El ayuno, la oración y la peregrinación",
+      "El comercio, el viaje y la escritura",
+      "El silencio, la paciencia y el retiro"
+    ],
+    "explanation": "«Ciertamente, Allah ordena la justicia, la excelencia y la generosidad con los parientes».",
+    "sourceDisplay": "Corán 16:90"
+  },
+  {
+    "id": "quran_137",
+    "correctAnswerIndex": 0,
+    "question": "¿De dónde sale, según la sura An-Nahl, una bebida de colores diversos en la que hay cura para la gente?",
+    "answers": [
+      "Del vientre de las abejas",
+      "Del mar",
+      "De las palmeras",
+      "De los manantiales de la montaña"
+    ],
+    "explanation": "«De su vientre sale una bebida de colores diversos, en la que hay cura para la gente».",
+    "sourceDisplay": "Corán 16:69"
+  },
+  {
+    "id": "quran_138",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se abre la sura Ar-Rahman?",
+    "answers": [
+      "«El Compasivo enseñó el Corán»",
+      "«Por la noche»",
+      "«Alabado sea Allah»",
+      "«Lee»"
+    ],
+    "explanation": "«El Compasivo enseñó el Corán, creó al hombre y le enseñó a expresarse».",
+    "sourceDisplay": "Corán 55:1-4"
+  },
+  {
+    "id": "quran_139",
+    "correctAnswerIndex": 0,
+    "question": "¿En cuántos grupos divide la sura Al-Waqi'a a los hombres en el Último Día?",
+    "answers": [
+      "Tres",
+      "Dos",
+      "Cuatro",
+      "Siete"
+    ],
+    "explanation": "«Y seréis de tres clases: los de la derecha, los de la izquierda y los adelantados».",
+    "sourceDisplay": "Corán 56:7-10"
+  },
+  {
+    "id": "quran_140",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara el Corán a quienes portan la Torá sin aplicarla?",
+    "answers": [
+      "Con un asno cargado de libros",
+      "Con un pájaro",
+      "Con una montaña",
+      "Con un barco"
+    ],
+    "explanation": "«Quienes fueron encargados de la Torá y luego no la llevaron son como el asno que carga libros».",
+    "sourceDisplay": "Corán 62:5"
+  },
+  {
+    "id": "quran_141",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué mujer pone el Corán como ejemplo para los creyentes, citando su petición de una casa junto a Allah?",
+    "answers": [
+      "La mujer de Faraón",
+      "La reina de Saba",
+      "La mujer de Nuh",
+      "La mujer de Lut"
+    ],
+    "explanation": "«Y Allah pone como ejemplo para los creyentes a la mujer de Faraón, cuando dijo: “Señor mío, constrúyeme junto a Ti una casa en el Paraíso”».",
+    "sourceDisplay": "Corán 66:11"
+  },
+  {
+    "id": "quran_142",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué otro nombre se conoce a menudo la sura Al-Ijlas, por su tema?",
+    "answers": [
+      "La sura de la unicidad (at-tawhid)",
+      "La sura del viaje",
+      "La sura de la luz",
+      "La sura del botín"
+    ],
+    "explanation": "Al-Ijlas, «la devoción pura», se llama también la sura del tawhid, pues describe a Allah como el Uno.",
+    "sourceDisplay": "Corán 112:1"
+  },
+  {
+    "id": "quran_143",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué niega la tercera aleya de la sura Al-Ijlas?",
+    "answers": [
+      "Que haya engendrado o haya sido engendrado",
+      "Que sea poderoso",
+      "Que oiga",
+      "Que cree"
+    ],
+    "explanation": "«No ha engendrado ni ha sido engendrado».",
+    "sourceDisplay": "Corán 112:3"
+  },
+  {
+    "id": "quran_144",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué busca refugio la sura An-Nas?",
+    "answers": [
+      "Del susurrador furtivo, de entre los genios y los hombres",
+      "De la tormenta",
+      "De la enfermedad",
+      "De la pobreza"
+    ],
+    "explanation": "«…del mal del susurrador furtivo, que susurra en los pechos de los hombres, ya sea de los genios o de los hombres».",
+    "sourceDisplay": "Corán 114:4-6"
+  },
+  {
+    "id": "quran_145",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántos males distintos nombra la sura Al-Falaq tras «el mal de lo que ha creado»?",
+    "answers": [
+      "Tres: la noche que se oscurece, las que soplan en los nudos y el envidioso",
+      "Uno",
+      "Cinco",
+      "Siete"
+    ],
+    "explanation": "«…del mal de la oscuridad cuando se extiende, del mal de las que soplan en los nudos, y del mal del envidioso cuando envidia».",
+    "sourceDisplay": "Corán 113:2-5"
+  },
+  {
+    "id": "quran_146",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aleya de la Fatiha expresa el corazón de la adoración y de la petición de ayuda?",
+    "answers": [
+      "«Solo a Ti adoramos y solo a Ti pedimos ayuda»",
+      "«Alabado sea Allah»",
+      "«Guíanos»",
+      "«Dueño del Día del Juicio»"
+    ],
+    "explanation": "«Solo a Ti adoramos y solo a Ti pedimos ayuda».",
+    "sourceDisplay": "Corán 1:5"
+  },
+  {
+    "id": "quran_147",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué petición cierra la sura Al-Fatiha?",
+    "answers": [
+      "Ser guiados por el camino recto, el de los agraciados",
+      "La riqueza",
+      "La victoria",
+      "Una larga vida"
+    ],
+    "explanation": "«Guíanos por el camino recto, el camino de aquellos a quienes has agraciado».",
+    "sourceDisplay": "Corán 1:6-7"
+  },
+  {
+    "id": "quran_148",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dos tipos de aleyas distingue la sura Al 'Imran?",
+    "answers": [
+      "Las aleyas precisas (muhkamat) y las ambiguas (mutashabihat)",
+      "Las largas y las cortas",
+      "Las mequíes y las medinenses",
+      "Las recitadas y las escritas"
+    ],
+    "explanation": "«Él es quien te ha revelado el Libro: en él hay aleyas precisas, que son la base del Libro, y otras ambiguas».",
+    "sourceDisplay": "Corán 3:7"
+  },
+  {
+    "id": "quran_149",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué principio enuncia la aleya 2:106 sobre las aleyas sustituidas?",
+    "answers": [
+      "Allah trae otra mejor o semejante",
+      "Se borran sin sustituto",
+      "Se olvidan",
+      "Las reescriben los hombres"
+    ],
+    "explanation": "«No abrogamos una aleya ni la hacemos olvidar sin traer otra mejor o semejante».",
+    "sourceDisplay": "Corán 2:106"
+  },
+  {
+    "id": "quran_150",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué se quejará el Mensajero ﷺ a su Señor, según la sura Al-Furqan?",
+    "answers": [
+      "De que su pueblo abandonó este Corán",
+      "De que está cansado",
+      "De que está solo",
+      "De que es pobre"
+    ],
+    "explanation": "«Y dirá el Mensajero: “Señor mío, mi pueblo ha tomado este Corán como cosa abandonada”».",
+    "sourceDisplay": "Corán 25:30"
+  },
+  {
     "id": "faith_019",
     "correctAnswerIndex": 0,
     "question": "¿Qué Libro reveló Allah al profeta Musa?",
@@ -6084,6 +9594,1046 @@
     "sourceDisplay": "Corán 51:58"
   },
   {
+    "id": "faith_071",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué significa el nombre de Allah «As-Salam»?",
+    "answers": [
+      "La Paz, libre de todo defecto",
+      "El Creador",
+      "El Proveedor",
+      "El Poderoso"
+    ],
+    "explanation": "As-Salam figura entre los nombres enumerados al final de la sura Al-Hashr: Él es la Paz, libre de toda imperfección.",
+    "sourceDisplay": "Corán 59:23"
+  },
+  {
+    "id": "faith_072",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué atributos pone la aleya 59:22 junto al nombre de Allah, tras «no hay más dios que Él»?",
+    "answers": [
+      "Conocedor de lo oculto y lo manifiesto, el Compasivo",
+      "El Rey y el Guerrero",
+      "El Rico y el Generoso",
+      "El Fuerte y el Veloz"
+    ],
+    "explanation": "«Él es Allah, no hay más dios que Él, Conocedor de lo oculto y lo manifiesto. Él es el Compasivo, el Misericordioso».",
+    "sourceDisplay": "Corán 59:22"
+  },
+  {
+    "id": "faith_073",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán hacer con los más bellos nombres de Allah?",
+    "answers": [
+      "Invocarle por ellos",
+      "Solo contarlos",
+      "Escribirlos en las puertas",
+      "Callarlos"
+    ],
+    "explanation": "«A Allah pertenecen los nombres más bellos: invocadle, pues, por ellos».",
+    "sourceDisplay": "Corán 7:180"
+  },
+  {
+    "id": "faith_074",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo presenta la sura Ta-Ha los nombres de Allah?",
+    "answers": [
+      "«¡Allah! No hay más dios que Él. Suyos son los nombres más bellos»",
+      "«Sus nombres están ocultos»",
+      "«Sus nombres son incontables»",
+      "«Sus nombres son nueve»"
+    ],
+    "explanation": "«¡Allah! No hay más dios que Él. Suyos son los nombres más bellos».",
+    "sourceDisplay": "Corán 20:8"
+  },
+  {
+    "id": "faith_075",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué fórmula emplea el Corán para descartar toda semejanza con Allah?",
+    "answers": [
+      "«No hay nada semejante a Él; y Él es el que todo lo oye, el que todo lo ve»",
+      "«Es el mayor de los reyes»",
+      "«Es como la luz»",
+      "«Nadie Le ve»"
+    ],
+    "explanation": "«No hay nada semejante a Él; y Él es el que todo lo oye, el que todo lo ve».",
+    "sourceDisplay": "Corán 42:11"
+  },
+  {
+    "id": "faith_076",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice la Aleya del Trono sobre la somnolencia y el sueño?",
+    "answers": [
+      "Ni la somnolencia ni el sueño Le afectan",
+      "Duerme de noche",
+      "Descansa el séptimo día",
+      "Vela un día sí y otro no"
+    ],
+    "explanation": "«No Le afecta la somnolencia ni el sueño».",
+    "sourceDisplay": "Corán 2:255"
+  },
+  {
+    "id": "faith_077",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán del conocimiento de Allah sobre la hoja que cae?",
+    "answers": [
+      "No cae una hoja sin que Él lo sepa",
+      "Lo sabe después",
+      "Se lo dicen los ángeles",
+      "No está escrito"
+    ],
+    "explanation": "«Él tiene las llaves de lo oculto… no cae una hoja sin que Él lo sepa».",
+    "sourceDisplay": "Corán 6:59"
+  },
+  {
+    "id": "faith_078",
+    "correctAnswerIndex": 0,
+    "question": "¿Que qué está Allah más cerca del ser humano, según la sura Qaf?",
+    "answers": [
+      "De su vena yugular",
+      "De su sombra",
+      "De su voz",
+      "De su casa"
+    ],
+    "explanation": "«Hemos creado al hombre y sabemos lo que su alma le susurra; estamos más cerca de él que su vena yugular».",
+    "sourceDisplay": "Corán 50:16"
+  },
+  {
+    "id": "faith_079",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán a los ángeles encargados del Fuego?",
+    "answers": [
+      "No desobedecen a Allah y hacen lo que se les ordena",
+      "Algunos vacilan",
+      "Duermen",
+      "Eligen"
+    ],
+    "explanation": "«…ángeles duros y severos, que no desobedecen a Allah en lo que les ordena y hacen lo que se les manda».",
+    "sourceDisplay": "Corán 66:6"
+  },
+  {
+    "id": "faith_080",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán a los ángeles respecto de la palabra de Allah?",
+    "answers": [
+      "No se Le adelantan en el hablar y obran según Su orden",
+      "Discuten Sus órdenes",
+      "Deciden por sí solos",
+      "Callan siempre"
+    ],
+    "explanation": "«Son más bien siervos honrados: no se Le adelantan en el hablar y obran según Su orden».",
+    "sourceDisplay": "Corán 21:26-27"
+  },
+  {
+    "id": "faith_081",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ángel nombra el Corán como aquel que hizo descender la revelación al corazón del Profeta ﷺ?",
+    "answers": [
+      "Yibril (Gabriel)",
+      "Mika'il (Miguel)",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "«Di: quien sea enemigo de Yibril… él es quien lo ha hecho descender sobre tu corazón con permiso de Allah».",
+    "sourceDisplay": "Corán 2:97"
+  },
+  {
+    "id": "faith_082",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué otro ángel se nombra junto a Yibril en la sura Al-Baqara?",
+    "answers": [
+      "Mikal (Miguel)",
+      "Israfil",
+      "Ridwan",
+      "Munkar"
+    ],
+    "explanation": "«Quien sea enemigo de Allah, de Sus ángeles, de Sus mensajeros, de Yibril y de Mikal…»",
+    "sourceDisplay": "Corán 2:98"
+  },
+  {
+    "id": "faith_083",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué objetos de fe enumera la aleya 4:136?",
+    "answers": [
+      "Allah, Su Mensajero, el Libro revelado y los Libros anteriores",
+      "Solo el Libro",
+      "Solo los profetas",
+      "Solo los ángeles"
+    ],
+    "explanation": "«¡Creyentes! Creed en Allah, en Su mensajero, en el Libro que ha hecho descender sobre Su mensajero y en el Libro que hizo descender antes».",
+    "sourceDisplay": "Corán 4:136"
+  },
+  {
+    "id": "faith_084",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué Libro menciona el Corán como dado a Dawud?",
+    "answers": [
+      "El Zabur (los Salmos)",
+      "La Torá",
+      "El Evangelio",
+      "Las Escrituras de Ibrahim"
+    ],
+    "explanation": "«…y dimos a Dawud el Zabur».",
+    "sourceDisplay": "Corán 17:55"
+  },
+  {
+    "id": "faith_085",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué sura lleva el nombre de los genios, que escucharon el Corán y creyeron?",
+    "answers": [
+      "Al-Yinn",
+      "Al-Insan",
+      "An-Nas",
+      "Al-Furqan"
+    ],
+    "explanation": "«Di: se me ha revelado que un grupo de genios escuchó y dijo: hemos oído una recitación maravillosa».",
+    "sourceDisplay": "Corán 72:1"
+  },
+  {
+    "id": "faith_086",
+    "correctAnswerIndex": 0,
+    "question": "¿Para qué fueron creados los genios y los hombres, según la sura Az-Zariyat?",
+    "answers": [
+      "Para que Le adoren",
+      "Para poblar la tierra",
+      "Para construir",
+      "Para disputar"
+    ],
+    "explanation": "«No he creado a los genios y a los hombres sino para que Me adoren».",
+    "sourceDisplay": "Corán 51:56"
+  },
+  {
+    "id": "faith_087",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán acerca de toda alma y la muerte?",
+    "answers": [
+      "Toda alma probará la muerte",
+      "Algunas almas no mueren",
+      "La muerte es una duda",
+      "La muerte es un sueño sin fin"
+    ],
+    "explanation": "«Toda alma probará la muerte, y solo el Día de la Resurrección recibiréis vuestra recompensa completa».",
+    "sourceDisplay": "Corán 3:185"
+  },
+  {
+    "id": "faith_088",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué estado saldrán los hombres, según la sura Az-Zalzala, para que se les muestren sus obras?",
+    "answers": [
+      "En grupos separados",
+      "Todos juntos en una sola fila",
+      "Dormidos",
+      "Silenciosos e invisibles"
+    ],
+    "explanation": "«Ese día los hombres saldrán en grupos separados para que se les muestren sus obras».",
+    "sourceDisplay": "Corán 99:6"
+  },
+  {
+    "id": "faith_089",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Al-Kahf el registro de las obras en el Último Día?",
+    "answers": [
+      "No deja nada, pequeño ni grande, sin consignarlo",
+      "Solo registra lo grande",
+      "Se borra",
+      "Lo escriben los hombres"
+    ],
+    "explanation": "«Dirán: “¡Ay de nosotros! ¿Qué libro es este, que no deja nada, pequeño ni grande, sin consignarlo?”»",
+    "sourceDisplay": "Corán 18:49"
+  },
+  {
+    "id": "faith_090",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán de los miembros del cuerpo el Día del Juicio?",
+    "answers": [
+      "Las manos hablarán y los pies darán testimonio",
+      "Permanecerán mudos",
+      "Estarán ocultos",
+      "Serán transformados"
+    ],
+    "explanation": "«Ese día sellaremos sus bocas, y Nos hablarán sus manos y darán testimonio sus pies de lo que hacían».",
+    "sourceDisplay": "Corán 36:65"
+  },
+  {
+    "id": "faith_091",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo califica el Corán la oración en cuanto a su horario?",
+    "answers": [
+      "Una prescripción a horas fijadas",
+      "Libre a cualquier hora",
+      "Una vez por semana",
+      "Solo de noche"
+    ],
+    "explanation": "«Ciertamente, la oración es para los creyentes una prescripción en tiempos determinados».",
+    "sourceDisplay": "Corán 4:103"
+  },
+  {
+    "id": "faith_092",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué preserva la oración, según la sura Al-'Ankabut?",
+    "answers": [
+      "De la indecencia y lo reprobable",
+      "Del hambre",
+      "De la enfermedad",
+      "Del viaje"
+    ],
+    "explanation": "«Y establece la oración: la oración preserva de la indecencia y de lo reprobable».",
+    "sourceDisplay": "Corán 29:45"
+  },
+  {
+    "id": "faith_093",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué oración señala el Corán en particular como «la oración intermedia»?",
+    "answers": [
+      "Se la nombra sin identificarla, en la orden de guardar las oraciones",
+      "Solo la del alba",
+      "Solo la del ocaso",
+      "La del viernes"
+    ],
+    "explanation": "«Guardad las oraciones y la oración intermedia, y presentaos ante Allah con humildad».",
+    "sourceDisplay": "Corán 2:238"
+  },
+  {
+    "id": "faith_094",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué fin ordena el Corán la oración, en la sura Ta-Ha?",
+    "answers": [
+      "Para el recuerdo de Allah",
+      "Para descansar",
+      "Para reunirse",
+      "Para contar las horas"
+    ],
+    "explanation": "«Yo soy Allah: no hay más dios que Yo. Adórame, pues, y establece la oración para Mi recuerdo».",
+    "sourceDisplay": "Corán 20:14"
+  },
+  {
+    "id": "faith_095",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué cualidad de la oración abre la lista de los creyentes que triunfan, en Al-Mu'minun?",
+    "answers": [
+      "La humildad (jushu') en la oración",
+      "La longitud",
+      "La rapidez",
+      "El número"
+    ],
+    "explanation": "«Han triunfado los creyentes: aquellos que en su oración son humildes».",
+    "sourceDisplay": "Corán 23:1-2"
+  },
+  {
+    "id": "faith_096",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué oración describe la sura Al-Isra como «atestiguada» (mashhuda)?",
+    "answers": [
+      "La recitación del alba",
+      "La oración del ocaso",
+      "La del mediodía",
+      "La del viernes"
+    ],
+    "explanation": "«Establece la oración desde que declina el sol hasta la oscuridad de la noche, y la recitación del alba: la recitación del alba es atestiguada».",
+    "sourceDisplay": "Corán 17:78"
+  },
+  {
+    "id": "faith_097",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué dos cosas ordena el Corán buscar auxilio?",
+    "answers": [
+      "Con la paciencia y la oración",
+      "Con la fuerza y la riqueza",
+      "Con el viaje y el descanso",
+      "Con el silencio y la soledad"
+    ],
+    "explanation": "«¡Creyentes! Buscad auxilio en la paciencia y la oración: Allah está con los pacientes».",
+    "sourceDisplay": "Corán 2:153"
+  },
+  {
+    "id": "faith_098",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántas rak'as tiene la oración obligatoria del Duhr?",
+    "answers": [
+      "Cuatro",
+      "Dos",
+      "Tres",
+      "Cinco"
+    ],
+    "explanation": "El Duhr, el 'Asr y el 'Isha tienen cada uno cuatro rak'as obligatorias; en esto coinciden las escuelas.",
+    "sourceDisplay": "Terminología establecida"
+  },
+  {
+    "id": "faith_099",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuál es la última de las cinco oraciones obligatorias del día?",
+    "answers": [
+      "Al-'Isha",
+      "Al-Fayr",
+      "Al-Magrib",
+      "Al-'Asr"
+    ],
+    "explanation": "El orden es: Fayr, Duhr, 'Asr, Magrib, 'Isha.",
+    "sourceDisplay": "Terminología establecida"
+  },
+  {
+    "id": "faith_100",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la postura de postración en la oración?",
+    "answers": [
+      "El suyud",
+      "El ruku'",
+      "El qiyam",
+      "El tashahhud"
+    ],
+    "explanation": "El qiyam es estar de pie, el ruku' la inclinación, el suyud la postración y el tashahhud la sentada del testimonio.",
+    "sourceDisplay": "Terminología establecida"
+  },
+  {
+    "id": "faith_101",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué prevé el Corán para el enfermo o el viajero durante Ramadán?",
+    "answers": [
+      "Un número igual de días para recuperar",
+      "Nada en absoluto",
+      "Una obligación doble",
+      "Un ayuno perpetuo"
+    ],
+    "explanation": "«Quien de vosotros esté enfermo o de viaje, que ayune un número igual de otros días».",
+    "sourceDisplay": "Corán 2:184"
+  },
+  {
+    "id": "faith_102",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué finalidad da el Corán al ayuno prescrito?",
+    "answers": [
+      "Alcanzar la piedad (taqwa)",
+      "Adelgazar",
+      "Ahorrar",
+      "Descansar"
+    ],
+    "explanation": "«Se os ha prescrito el ayuno como se prescribió a quienes os precedieron, para que alcancéis la piedad».",
+    "sourceDisplay": "Corán 2:183"
+  },
+  {
+    "id": "faith_103",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué responde Allah, en medio de las aleyas del ayuno, a quien pregunta por Su cercanía?",
+    "answers": [
+      "«Estoy cerca: respondo a la súplica de quien Me invoca»",
+      "«Esperad la noche»",
+      "«Preguntad a los ángeles»",
+      "«Buscad lejos»"
+    ],
+    "explanation": "«Cuando Mis siervos te pregunten por Mí, ciertamente estoy cerca: respondo a la súplica del que Me invoca cuando Me invoca».",
+    "sourceDisplay": "Corán 2:186"
+  },
+  {
+    "id": "faith_104",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuántas categorías de beneficiarios del zakat enumera el Corán?",
+    "answers": [
+      "Ocho",
+      "Tres",
+      "Cinco",
+      "Doce"
+    ],
+    "explanation": "«Las limosnas son solo para los pobres, los necesitados, quienes trabajan en ellas, aquellos cuyos corazones hay que ganar, la liberación de cautivos, los endeudados, la causa de Allah y el viajero».",
+    "sourceDisplay": "Corán 9:60"
+  },
+  {
+    "id": "faith_105",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué efecto atribuye el Corán al zakat tomado de los bienes?",
+    "answers": [
+      "Purifica y hace crecer",
+      "Empobrece",
+      "Es simbólico",
+      "Sustituye a la oración"
+    ],
+    "explanation": "«Toma de sus bienes una limosna con la que los purifiques y los acrecientes».",
+    "sourceDisplay": "Corán 9:103"
+  },
+  {
+    "id": "faith_106",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dos obligaciones asocia el Corán con más frecuencia?",
+    "answers": [
+      "La oración y el zakat",
+      "El ayuno y el viaje",
+      "La peregrinación y el comercio",
+      "La lectura y la escritura"
+    ],
+    "explanation": "«Estableced la oración y dad el zakat; todo el bien que adelantéis para vosotros mismos lo hallaréis junto a Allah».",
+    "sourceDisplay": "Corán 2:110"
+  },
+  {
+    "id": "faith_107",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán que llega a Allah en el sacrificio?",
+    "answers": [
+      "Ni la carne ni la sangre, sino la piedad del creyente",
+      "Solo la carne",
+      "Solo la sangre",
+      "El número de reses"
+    ],
+    "explanation": "«Ni su carne ni su sangre llegan a Allah, pero sí Le llega la piedad de vuestra parte».",
+    "sourceDisplay": "Corán 22:37"
+  },
+  {
+    "id": "faith_108",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuál es la mejor provisión para la peregrinación, según el Corán?",
+    "answers": [
+      "La piedad",
+      "El oro",
+      "Los víveres",
+      "Las monturas"
+    ],
+    "explanation": "«Y tomad provisiones; pero la mejor provisión es la piedad».",
+    "sourceDisplay": "Corán 2:197"
+  },
+  {
+    "id": "faith_109",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué rito menciona el Corán alrededor de la Antigua Casa?",
+    "answers": [
+      "La circunvalación (tawaf)",
+      "Correr por el desierto",
+      "Subir una colina",
+      "Ayunar allí"
+    ],
+    "explanation": "«…y que den las vueltas alrededor de la Antigua Casa».",
+    "sourceDisplay": "Corán 22:29"
+  },
+  {
+    "id": "faith_110",
+    "correctAnswerIndex": 0,
+    "question": "¿Dónde ordena el Corán invocar a Allah, tras partir de 'Arafat?",
+    "answers": [
+      "Junto a al-Mash'ar al-Haram, en Muzdalifa",
+      "En el monte Uhud",
+      "En Quba",
+      "En Taif"
+    ],
+    "explanation": "«Cuando partáis en masa de 'Arafat, recordad a Allah junto a al-Mash'ar al-Haram».",
+    "sourceDisplay": "Corán 2:198"
+  },
+  {
+    "id": "faith_111",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué clase de arrepentimiento pide el Corán a los creyentes?",
+    "answers": [
+      "Un arrepentimiento sincero (tawba nasuh)",
+      "Un arrepentimiento escrito",
+      "Un arrepentimiento público",
+      "Un arrepentimiento anual"
+    ],
+    "explanation": "«¡Creyentes! Volveos a Allah con un arrepentimiento sincero».",
+    "sourceDisplay": "Corán 66:8"
+  },
+  {
+    "id": "faith_112",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice la sura Ash-Shura sobre la aceptación del arrepentimiento?",
+    "answers": [
+      "Él es quien acepta el arrepentimiento de Sus siervos y perdona las malas obras",
+      "El arrepentimiento no se acepta",
+      "Hace falta un intermediario",
+      "Hay que esperar un año"
+    ],
+    "explanation": "«Él es quien acepta el arrepentimiento de Sus siervos, perdona las malas obras y sabe lo que hacéis».",
+    "sourceDisplay": "Corán 42:25"
+  },
+  {
+    "id": "faith_113",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hacen aquellos a quienes elogia el Corán, tras cometer una falta?",
+    "answers": [
+      "Recuerdan a Allah y piden perdón",
+      "Huyen",
+      "Callan",
+      "Culpan a otros"
+    ],
+    "explanation": "«Y aquellos que, cuando cometen una indecencia o se perjudican a sí mismos, recuerdan a Allah y piden perdón por sus pecados».",
+    "sourceDisplay": "Corán 3:135"
+  },
+  {
+    "id": "faith_114",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué frecuencia ordena el Corán recordar a Allah, en la sura Al-Ahzab?",
+    "answers": [
+      "Mucho, mañana y tarde",
+      "Una vez al año",
+      "Una vez por semana",
+      "Solo de viaje"
+    ],
+    "explanation": "«¡Creyentes! Recordad mucho a Allah, y glorificadle mañana y tarde».",
+    "sourceDisplay": "Corán 33:41-42"
+  },
+  {
+    "id": "faith_115",
+    "correctAnswerIndex": 0,
+    "question": "¿Sobre qué meditan «los dotados de entendimiento», al final de la sura Al 'Imran?",
+    "answers": [
+      "Sobre la creación de los cielos y la tierra, en toda postura",
+      "Sobre las cosechas",
+      "Sobre las caravanas",
+      "Sobre las genealogías"
+    ],
+    "explanation": "«Quienes recuerdan a Allah de pie, sentados y acostados, y meditan sobre la creación de los cielos y la tierra».",
+    "sourceDisplay": "Corán 3:190-191"
+  },
+  {
+    "id": "faith_116",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena hacer el Corán una vez tomada una decisión?",
+    "answers": [
+      "Confiar en Allah",
+      "Esperar una señal",
+      "Preguntar a un adivino",
+      "Renunciar"
+    ],
+    "explanation": "«Y cuando hayas decidido, confía en Allah: Allah ama a quienes confían en Él».",
+    "sourceDisplay": "Corán 3:159"
+  },
+  {
+    "id": "faith_117",
+    "correctAnswerIndex": 0,
+    "question": "¿Hacia quién dirige la sura Ash-Sharh el anhelo, una vez concluida la tarea?",
+    "answers": [
+      "Hacia su Señor",
+      "Hacia el descanso",
+      "Hacia la familia",
+      "Hacia la gente"
+    ],
+    "explanation": "«Cuando quedes libre, esfuérzate; y a tu Señor dirige tu anhelo».",
+    "sourceDisplay": "Corán 94:7-8"
+  },
+  {
+    "id": "faith_118",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué compara la sura Al-Hadid la vida de este mundo?",
+    "answers": [
+      "Con una lluvia cuya vegetación admira, luego amarillea y se vuelve rastrojo",
+      "Con un largo viaje",
+      "Con una montaña",
+      "Con un océano"
+    ],
+    "explanation": "«Sabed que la vida de este mundo no es sino juego y distracción… como una lluvia cuya vegetación admira a los labradores; luego se seca, la ves amarillear y se vuelve rastrojo».",
+    "sourceDisplay": "Corán 57:20"
+  },
+  {
+    "id": "faith_119",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué declara el Corán mejor que los bienes y los hijos, adorno de este mundo?",
+    "answers": [
+      "Las buenas obras que perduran",
+      "El oro",
+      "La fama",
+      "Las tierras"
+    ],
+    "explanation": "«Los bienes y los hijos son el adorno de la vida de este mundo, pero las buenas obras que perduran son mejor recompensa ante tu Señor».",
+    "sourceDisplay": "Corán 18:46"
+  },
+  {
+    "id": "faith_120",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué pregunta plantea el Corán sobre el fin de la creación del hombre?",
+    "answers": [
+      "«¿Pensabais que os habíamos creado sin propósito?»",
+      "«¿Quién os nombró?»",
+      "«¿Adónde iréis?»",
+      "«¿Cuántos sois?»"
+    ],
+    "explanation": "«¿Pensabais que os habíamos creado sin propósito y que no seríais devueltos a Nosotros?»",
+    "sourceDisplay": "Corán 23:115"
+  },
+  {
+    "id": "faith_121",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué promesa hace el Corán a quien recuerda a Allah?",
+    "answers": [
+      "«Recordadme y Yo os recordaré»",
+      "«Seréis ricos»",
+      "«Viviréis mucho»",
+      "«Viajaréis»"
+    ],
+    "explanation": "«Recordadme, pues, y Yo os recordaré. Y sedme agradecidos y no Me neguéis».",
+    "sourceDisplay": "Corán 2:152"
+  },
+  {
+    "id": "faith_122",
+    "correctAnswerIndex": 0,
+    "question": "¿A quién ordena el Corán remitir las disputas?",
+    "answers": [
+      "A Allah y al Mensajero ﷺ",
+      "A los ancianos",
+      "Al mercado",
+      "A los poetas"
+    ],
+    "explanation": "«Y si disputáis sobre algo, remitidlo a Allah y al Mensajero, si creéis en Allah y en el Último Día».",
+    "sourceDisplay": "Corán 4:59"
+  },
+  {
+    "id": "faith_123",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Al-Anfal los corazones de los creyentes al mencionarse a Allah?",
+    "answers": [
+      "Sus corazones se estremecen y su fe aumenta con la recitación",
+      "Se endurecen",
+      "Se adormecen",
+      "Olvidan"
+    ],
+    "explanation": "«Los creyentes son solo aquellos cuyos corazones se estremecen cuando se menciona a Allah, y cuya fe aumenta cuando se les recitan Sus aleyas».",
+    "sourceDisplay": "Corán 8:2"
+  },
+  {
+    "id": "faith_124",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán dedicar por entero al Señor de los mundos?",
+    "answers": [
+      "La oración, los actos de devoción, la vida y la muerte",
+      "El comercio",
+      "Las cosechas",
+      "Los viajes"
+    ],
+    "explanation": "«Di: mi oración, mis actos de devoción, mi vida y mi muerte pertenecen a Allah, Señor de los mundos».",
+    "sourceDisplay": "Corán 6:162"
+  },
+  {
+    "id": "faith_125",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué condición pone la sura Al-Bayyina a la adoración ordenada?",
+    "answers": [
+      "Adorar a Allah con devoción sincera y exclusiva",
+      "Adorar en público",
+      "Adorar por escrito",
+      "Adorar solo en grupo"
+    ],
+    "explanation": "«No se les ordenó sino adorar a Allah, con devoción sincera, establecer la oración y dar el zakat».",
+    "sourceDisplay": "Corán 98:5"
+  },
+  {
+    "id": "faith_126",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué describe el Corán como fluyendo en los jardines prometidos a los piadosos?",
+    "answers": [
+      "Ríos",
+      "Caminos",
+      "Puentes",
+      "Pozos"
+    ],
+    "explanation": "El Corán describe repetidamente los jardines «bajo los cuales corren los ríos».",
+    "sourceDisplay": "Corán 47:15"
+  },
+  {
+    "id": "faith_127",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán de lo que se oculta a los creyentes como recompensa?",
+    "answers": [
+      "Nadie sabe qué alegría de los ojos les está reservada",
+      "Todo está descrito en detalle",
+      "Son riquezas",
+      "Son reinos"
+    ],
+    "explanation": "«Nadie sabe qué alegría de los ojos les está reservada, como recompensa por lo que hacían».",
+    "sourceDisplay": "Corán 32:17"
+  },
+  {
+    "id": "faith_128",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué promete el Corán a quienes obran el bien, además de la mejor recompensa?",
+    "answers": [
+      "Un aumento (ziyada)",
+      "Un aplazamiento",
+      "Un reino",
+      "Un libro"
+    ],
+    "explanation": "«Quienes obran el bien tendrán lo mejor y aún más».",
+    "sourceDisplay": "Corán 10:26"
+  },
+  {
+    "id": "faith_129",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán la acogida de los piadosos a la entrada del Paraíso?",
+    "answers": [
+      "«¡La paz sea con vosotros! Habéis sido buenos: entrad para morar eternamente»",
+      "En silencio",
+      "Tras un largo juicio",
+      "Uno a uno sin palabra"
+    ],
+    "explanation": "«Sus guardianes les dirán: “La paz sea con vosotros; habéis sido buenos: entrad para morar eternamente”».",
+    "sourceDisplay": "Corán 39:73"
+  },
+  {
+    "id": "faith_130",
+    "correctAnswerIndex": 0,
+    "question": "¿Hacia qué ordena el Corán apresurarse, en la sura Al 'Imran?",
+    "answers": [
+      "Hacia un perdón de su Señor y un Paraíso tan ancho como los cielos y la tierra",
+      "Hacia el mercado",
+      "Hacia el viaje",
+      "Hacia la riqueza"
+    ],
+    "explanation": "«Y apresuraos hacia un perdón de vuestro Señor y hacia un Jardín tan ancho como los cielos y la tierra, preparado para los piadosos».",
+    "sourceDisplay": "Corán 3:133"
+  },
+  {
+    "id": "faith_131",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué responsabilidad impone el Corán al creyente respecto de su familia?",
+    "answers": [
+      "Preservarlos, y a sí mismo, de un Fuego",
+      "Enriquecerlos",
+      "Enseñarles idiomas",
+      "Llevarlos de viaje"
+    ],
+    "explanation": "«¡Creyentes! Preservaos a vosotros mismos y a vuestras familias de un Fuego cuyo combustible son los hombres y las piedras».",
+    "sourceDisplay": "Corán 66:6"
+  },
+  {
+    "id": "faith_132",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo define la aleya 2:177 la verdadera piedad (al-birr)?",
+    "answers": [
+      "Creer en Allah, el Último Día, los ángeles, el Libro y los profetas, y dar de los bienes",
+      "Volver el rostro al este o al oeste",
+      "Solo ayunar",
+      "Viajar"
+    ],
+    "explanation": "«La piedad no consiste en volver el rostro hacia el este o el oeste, sino en creer en Allah, en el Último Día, en los ángeles, en el Libro y en los profetas».",
+    "sourceDisplay": "Corán 2:177"
+  },
+  {
+    "id": "faith_133",
+    "correctAnswerIndex": 0,
+    "question": "¿Quién verá las obras realizadas, según la sura At-Tawba?",
+    "answers": [
+      "Allah, Su Mensajero ﷺ y los creyentes",
+      "Nadie",
+      "Solo los ángeles",
+      "Los reyes"
+    ],
+    "explanation": "«Y di: obrad, pues Allah verá vuestras obras, y también Su Mensajero y los creyentes».",
+    "sourceDisplay": "Corán 9:105"
+  },
+  {
+    "id": "faith_134",
+    "correctAnswerIndex": 0,
+    "question": "¿Con qué afirmación termina la sura Al-Ijlas?",
+    "answers": [
+      "«Y no hay nadie que se Le iguale»",
+      "«Él es el más grande»",
+      "«Él está cerca»",
+      "«Él es el primero»"
+    ],
+    "explanation": "«Y no hay nadie que se Le iguale».",
+    "sourceDisplay": "Corán 112:4"
+  },
+  {
+    "id": "faith_135",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué cuatro nombres reúne la sura Al-Hadid en una sola aleya?",
+    "answers": [
+      "El Primero, el Último, el Manifiesto y el Oculto",
+      "El Rey, el Santo, la Paz, el Fiel",
+      "El Creador, el Originador, el Formador, el Sabio",
+      "El Viviente, el Sustentador, el Oyente, el Vidente"
+    ],
+    "explanation": "«Él es el Primero y el Último, el Manifiesto y el Oculto, y Él conoce todas las cosas».",
+    "sourceDisplay": "Corán 57:3"
+  },
+  {
+    "id": "faith_136",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué nombres enumera el final de la sura Al-Hashr después de «el Soberano»?",
+    "answers": [
+      "El Santo, la Paz, el que da seguridad, el Custodio",
+      "El Creador, el Formador",
+      "El Perdonador, el Misericordioso",
+      "El Oyente, el Vidente"
+    ],
+    "explanation": "«Él es Allah, el Soberano, el Santo, la Paz, el que da seguridad, el Custodio, el Poderoso».",
+    "sourceDisplay": "Corán 59:23"
+  },
+  {
+    "id": "faith_137",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la fórmula «No hay más dios que Allah, Muhammad es Su Mensajero»?",
+    "answers": [
+      "La shahada (el testimonio de fe)",
+      "La basmala",
+      "La takbira",
+      "La tasmiya"
+    ],
+    "explanation": "La shahada es la primera palabra del islam y el primero de sus pilares.",
+    "sourceDisplay": "Terminología establecida"
+  },
+  {
+    "id": "faith_138",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la fórmula «Allahu akbar»?",
+    "answers": [
+      "El takbir",
+      "El tahlil",
+      "El tasbih",
+      "El tahmid"
+    ],
+    "explanation": "El takbir es «Allahu akbar», el tasbih «subhan Allah», el tahmid «al-hamdu lillah» y el tahlil «la ilaha illa-llah».",
+    "sourceDisplay": "Terminología establecida"
+  },
+  {
+    "id": "faith_139",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se llama la fórmula «En el nombre de Allah, el Compasivo, el Misericordioso»?",
+    "answers": [
+      "La basmala",
+      "La hamdala",
+      "La hawqala",
+      "El istiryá'"
+    ],
+    "explanation": "La basmala abre todas las suras menos una; la hawqala es «la hawla wa la quwwata illa billah».",
+    "sourceDisplay": "Terminología establecida"
+  },
+  {
+    "id": "faith_140",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué palabras enseña el Corán a decir cuando sobreviene una desgracia?",
+    "answers": [
+      "«Somos de Allah y a Él retornaremos»",
+      "«¿Por qué yo?»",
+      "«Ya pasará»",
+      "«Es el destino de los hombres»"
+    ],
+    "explanation": "«Aquellos que, cuando les alcanza una desgracia, dicen: “Somos de Allah y a Él retornaremos”».",
+    "sourceDisplay": "Corán 2:156"
+  },
+  {
+    "id": "faith_141",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena decir el Corán al anunciar que se hará algo mañana?",
+    "answers": [
+      "«Si Allah quiere» (in sha' Allah)",
+      "«Está prometido»",
+      "«Sin falta»",
+      "«Lo juro»"
+    ],
+    "explanation": "«Y no digas nunca de algo: “Lo haré mañana”, sin añadir: “si Allah quiere”».",
+    "sourceDisplay": "Corán 18:23-24"
+  },
+  {
+    "id": "faith_142",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué conocimiento reserva el Corán solo a Allah, al final de la sura Luqman?",
+    "answers": [
+      "La Hora, la lluvia, lo que hay en los úteros, lo que se ganará mañana y dónde se morirá",
+      "El número de las estrellas",
+      "Los nombres de los reyes",
+      "La cuenta de los días"
+    ],
+    "explanation": "«Allah tiene el conocimiento de la Hora, hace descender la lluvia y sabe lo que hay en los úteros. Nadie sabe lo que ganará mañana ni en qué tierra morirá».",
+    "sourceDisplay": "Corán 31:34"
+  },
+  {
+    "id": "faith_143",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán sobre el plazo fijado para cada comunidad?",
+    "answers": [
+      "Cuando llega, no se retrasa ni se adelanta una hora",
+      "Es modificable",
+      "Allah no lo conoce",
+      "Depende de los reyes"
+    ],
+    "explanation": "«Cada comunidad tiene un plazo: cuando llega su plazo, no lo retrasan ni lo adelantan una hora».",
+    "sourceDisplay": "Corán 7:34"
+  },
+  {
+    "id": "faith_144",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué promete el Corán a quien obra el bien, varón o mujer, siendo creyente?",
+    "answers": [
+      "Una vida buena, y una recompensa según lo mejor de sus obras",
+      "La riqueza",
+      "El poder",
+      "La fama"
+    ],
+    "explanation": "«A quien obre el bien, varón o mujer, siendo creyente, le haremos vivir una vida buena».",
+    "sourceDisplay": "Corán 16:97"
+  },
+  {
+    "id": "faith_145",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué distinción establece el Corán entre «islam» y «fe» en la sura Al-Huyurat?",
+    "answers": [
+      "Decir «nos hemos sometido» no es todavía que la fe entre en los corazones",
+      "Son la misma palabra",
+      "La fe siempre precede",
+      "El islam es solo para los sabios"
+    ],
+    "explanation": "«Dicen los beduinos: “Creemos”. Di: “Aún no creéis; decid más bien: nos hemos sometido, pues la fe no ha entrado todavía en vuestros corazones”».",
+    "sourceDisplay": "Corán 49:14"
+  },
+  {
+    "id": "faith_146",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué regla enuncia la sura Al-Ma'ida sobre la vida de una sola persona?",
+    "answers": [
+      "Quien mata a una persona es como si matara a toda la humanidad; quien salva a una, como si la salvara toda",
+      "Cada vida cuenta por una",
+      "Solo cuentan los parientes",
+      "Solo cuenta el número"
+    ],
+    "explanation": "«Quien mate a una persona sin que sea por otra o por corrupción en la tierra, será como si hubiera matado a toda la humanidad; y quien salve una vida, será como si hubiera salvado a toda la humanidad».",
+    "sourceDisplay": "Corán 5:32"
+  },
+  {
+    "id": "faith_147",
+    "correctAnswerIndex": 0,
+    "question": "¿Por cuánto multiplica el Corán la recompensa de la buena acción?",
+    "answers": [
+      "Por diez",
+      "Por dos",
+      "Por cien",
+      "No se multiplica"
+    ],
+    "explanation": "«Quien venga con una buena acción tendrá diez veces otro tanto; y quien venga con una mala solo será retribuido con su equivalente».",
+    "sourceDisplay": "Corán 6:160"
+  },
+  {
+    "id": "faith_148",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe la sura Fatir la relación de los hombres con Allah?",
+    "answers": [
+      "Ellos son los pobres, y Allah es el Rico, el Digno de alabanza",
+      "Son Sus socios",
+      "Son independientes",
+      "Son Sus acreedores"
+    ],
+    "explanation": "«¡Hombres! Vosotros sois los pobres, necesitados de Allah, y Allah es el Rico, el Digno de alabanza».",
+    "sourceDisplay": "Corán 35:15"
+  },
+  {
+    "id": "faith_149",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué cuatro cualidades salvan de la perdición, según la sura Al-'Asr?",
+    "answers": [
+      "La fe, las buenas obras, exhortarse a la verdad y a la paciencia",
+      "La riqueza, la fuerza, la belleza, la astucia",
+      "El silencio, el sueño, el retiro, el ayuno",
+      "El viaje, el comercio, la escritura, la lectura"
+    ],
+    "explanation": "«¡Por el tiempo! El hombre está en perdición, salvo quienes creen, obran el bien, se exhortan a la verdad y se exhortan a la paciencia».",
+    "sourceDisplay": "Corán 103:1-3"
+  },
+  {
+    "id": "faith_150",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué declaran creer los creyentes, en la penúltima aleya de la sura Al-Baqara?",
+    "answers": [
+      "En Allah, Sus ángeles, Sus libros y Sus mensajeros",
+      "En un solo libro",
+      "En un solo ángel",
+      "En sus antepasados"
+    ],
+    "explanation": "«El Mensajero cree en lo que le ha sido revelado por su Señor, y también los creyentes: todos creen en Allah, en Sus ángeles, en Sus libros y en Sus mensajeros».",
+    "sourceDisplay": "Corán 2:285"
+  },
+  {
     "id": "virtues_019",
     "correctAnswerIndex": 0,
     "question": "Según un hadiz de al-Bujari, ¿adónde conduce la veracidad (sidq)?",
@@ -6498,5 +11048,655 @@
     ],
     "explanation": "«Dos palabras ligeras en la lengua, pesadas en la balanza, amadas por el Misericordioso: Gloria a Allah y alabanza a Él; gloria a Allah el Inmenso.»",
     "sourceDisplay": "Sahih al-Bujari, 6406"
+  },
+  {
+    "id": "virtues_051",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué aconseja Luqman a su hijo respecto a la voz?",
+    "answers": [
+      "Bajar la voz: la más detestable es la del asno",
+      "Hablar muy alto",
+      "No hablar nunca",
+      "Cantar al caminar"
+    ],
+    "explanation": "«Sé moderado en tu andar y baja tu voz: la más detestable de las voces es la del asno».",
+    "sourceDisplay": "Corán 31:19"
+  },
+  {
+    "id": "virtues_052",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tres recomendaciones da Luqman a su hijo antes de hablar de la paciencia?",
+    "answers": [
+      "Establecer la oración, ordenar el bien, prohibir el mal",
+      "Viajar, comerciar, escribir",
+      "Comer poco, dormir poco, hablar poco",
+      "Construir, plantar, cosechar"
+    ],
+    "explanation": "«Hijito mío, establece la oración, ordena el bien, prohíbe el mal y ten paciencia ante lo que te suceda».",
+    "sourceDisplay": "Corán 31:17"
+  },
+  {
+    "id": "virtues_053",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tres cualidades atribuye el Corán a los piadosos, en la sura Al 'Imran?",
+    "answers": [
+      "Gastar en la holgura y en la estrechez, contener la ira, perdonar a la gente",
+      "Ayunar, velar, callar",
+      "Construir, plantar, dar",
+      "Viajar, aprender, enseñar"
+    ],
+    "explanation": "«Quienes gastan en la holgura y en la estrechez, contienen la ira y perdonan a la gente: Allah ama a los que hacen el bien».",
+    "sourceDisplay": "Corán 3:134"
+  },
+  {
+    "id": "virtues_054",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué considera el Corán mejor que una limosna seguida de una ofensa?",
+    "answers": [
+      "Una palabra amable y un perdón",
+      "Un don mayor",
+      "Un silencio total",
+      "Un juramento"
+    ],
+    "explanation": "«Una palabra amable y un perdón valen más que una limosna seguida de agravio».",
+    "sourceDisplay": "Corán 2:263"
+  },
+  {
+    "id": "virtues_055",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán de la limosna dada en secreto?",
+    "answers": [
+      "Es mejor para quien la da",
+      "No cuenta",
+      "Debe anunciarse",
+      "Está prohibida"
+    ],
+    "explanation": "«Si dais limosnas públicamente, está bien; pero si las ocultáis y se las dais a los pobres, es mejor para vosotros».",
+    "sourceDisplay": "Corán 2:271"
+  },
+  {
+    "id": "virtues_056",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué prohíbe el Corán dar limosna?",
+    "answers": [
+      "De lo que uno mismo solo aceptaría cerrando los ojos",
+      "De lo nuevo",
+      "De lo que se ama",
+      "De lo heredado"
+    ],
+    "explanation": "«Y no escojáis lo peor de ello para gastarlo, cuando vosotros mismos no lo tomaríais sino cerrando los ojos».",
+    "sourceDisplay": "Corán 2:267"
+  },
+  {
+    "id": "virtues_057",
+    "correctAnswerIndex": 0,
+    "question": "¿Cuándo se alcanza la verdadera piedad, según la sura Al 'Imran?",
+    "answers": [
+      "Gastando de lo que se ama",
+      "Gastando lo sobrante",
+      "Gastando en público",
+      "Guardándolo todo"
+    ],
+    "explanation": "«No alcanzaréis la piedad hasta que gastéis de aquello que amáis».",
+    "sourceDisplay": "Corán 3:92"
+  },
+  {
+    "id": "virtues_058",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué imagen emplea el Corán para el equilibrio en el gasto?",
+    "answers": [
+      "No tener la mano atada al cuello ni extenderla del todo",
+      "Cerrar la puerta",
+      "Caminar despacio",
+      "Contar dos veces"
+    ],
+    "explanation": "«No lleves tu mano atada al cuello, ni la extiendas del todo, pues quedarías censurado y desprovisto».",
+    "sourceDisplay": "Corán 17:29"
+  },
+  {
+    "id": "virtues_059",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo describe el Corán el gasto de «los siervos del Compasivo»?",
+    "answers": [
+      "Ni derrochadores ni avaros, sino en el justo medio",
+      "Siempre generosos sin medida",
+      "Siempre ahorradores",
+      "Sin dar nunca"
+    ],
+    "explanation": "«Y quienes, cuando gastan, no derrochan ni escatiman, sino que se mantienen en un justo medio».",
+    "sourceDisplay": "Corán 25:67"
+  },
+  {
+    "id": "virtues_060",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán antes de entrar en una casa que no es la propia?",
+    "answers": [
+      "Pedir permiso y saludar a sus habitantes",
+      "Llamar tres veces y entrar",
+      "Entrar directamente",
+      "Llamar desde lejos"
+    ],
+    "explanation": "«No entréis en casas ajenas sin haber pedido permiso y saludado a sus habitantes».",
+    "sourceDisplay": "Corán 24:27"
+  },
+  {
+    "id": "virtues_061",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué hacer si se pide al visitante que se vaya, según la sura An-Nur?",
+    "answers": [
+      "Volverse: es más puro para uno",
+      "Insistir",
+      "Esperar en la puerta",
+      "Entrar igualmente"
+    ],
+    "explanation": "«Y si se os dice: “Volveos”, volveos: es más puro para vosotros».",
+    "sourceDisplay": "Corán 24:28"
+  },
+  {
+    "id": "virtues_062",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán cuando alguien poco fiable trae una noticia?",
+    "answers": [
+      "Verificarla, no sea que se perjudique a gente por ignorancia",
+      "Difundirla enseguida",
+      "Escribirla",
+      "Ignorarla siempre"
+    ],
+    "explanation": "«Si un perverso os trae una noticia, verificadla, no sea que perjudiquéis a gente por ignorancia y luego os arrepintáis».",
+    "sourceDisplay": "Corán 49:6"
+  },
+  {
+    "id": "virtues_063",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué conducta, junto a la maledicencia, prohíbe la sura Al-Huyurat?",
+    "answers": [
+      "Espiar y sospechar en exceso",
+      "Viajar solo",
+      "Hablar bajo",
+      "Escribir cartas"
+    ],
+    "explanation": "«¡Creyentes! Evitad muchas sospechas: algunas sospechas son pecado. Y no espiéis ni habléis mal unos de otros».",
+    "sourceDisplay": "Corán 49:12"
+  },
+  {
+    "id": "virtues_064",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán cuando dos grupos de creyentes combaten entre sí?",
+    "answers": [
+      "Reconciliarlos con equidad",
+      "Tomar partido",
+      "Ignorarlos",
+      "Separarlos solo por la fuerza"
+    ],
+    "explanation": "«Si dos grupos de creyentes combaten entre sí, reconciliadlos… y sed equitativos: Allah ama a los equitativos».",
+    "sourceDisplay": "Corán 49:9"
+  },
+  {
+    "id": "virtues_065",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué prohíbe expresamente el Corán, incluso hacia un pueblo al que se detesta?",
+    "answers": [
+      "Que el odio aparte de la justicia",
+      "El comercio",
+      "La palabra",
+      "La vecindad"
+    ],
+    "explanation": "«Que el odio hacia un pueblo no os lleve a ser injustos. Sed justos: eso está más cerca de la piedad».",
+    "sourceDisplay": "Corán 5:8"
+  },
+  {
+    "id": "virtues_066",
+    "correctAnswerIndex": 0,
+    "question": "¿Contra quién exige el Corán testimoniar con equidad, si es preciso?",
+    "answers": [
+      "Contra uno mismo, contra los padres y los parientes",
+      "Solo contra los extraños",
+      "Solo contra los ricos",
+      "Solo contra los pobres"
+    ],
+    "explanation": "«Sed firmes en la justicia, testigos ante Allah, aunque sea contra vosotros mismos, contra vuestros padres o vuestros parientes».",
+    "sourceDisplay": "Corán 4:135"
+  },
+  {
+    "id": "virtues_067",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán devolver a sus legítimos dueños?",
+    "answers": [
+      "Los depósitos confiados (amanat)",
+      "Las cartas",
+      "Las cosechas",
+      "Los relatos"
+    ],
+    "explanation": "«Allah os ordena devolver los depósitos a sus dueños y que, cuando juzguéis entre los hombres, juzguéis con equidad».",
+    "sourceDisplay": "Corán 4:58"
+  },
+  {
+    "id": "virtues_068",
+    "correctAnswerIndex": 0,
+    "question": "¿A qué personas enumera la aleya 4:36 para el buen trato, después de los padres?",
+    "answers": [
+      "Los parientes, los huérfanos, los pobres, el vecino cercano y el lejano, el compañero, el viajero y el sirviente",
+      "Los reyes y los jefes",
+      "Los comerciantes",
+      "Solo los sabios"
+    ],
+    "explanation": "«Adorad a Allah y no Le asociéis nada. Sed buenos con vuestros padres, con los parientes, los huérfanos, los pobres, el vecino cercano y el vecino lejano, el compañero de viaje, el viajero y aquellos que poseen vuestras diestras».",
+    "sourceDisplay": "Corán 4:36"
+  },
+  {
+    "id": "virtues_069",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán hacia un deudor en dificultad?",
+    "answers": [
+      "Concederle un plazo hasta la holgura",
+      "Perseguirlo",
+      "Doblar la deuda",
+      "Expulsarlo"
+    ],
+    "explanation": "«Y si está en dificultad, concededle un plazo hasta un momento de holgura; pero condonar es mejor para vosotros».",
+    "sourceDisplay": "Corán 2:280"
+  },
+  {
+    "id": "virtues_070",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena la aleya más larga del Corán respecto a una deuda a plazo?",
+    "answers": [
+      "Ponerla por escrito",
+      "Mantenerla en secreto",
+      "Olvidarla",
+      "Transmitirla oralmente"
+    ],
+    "explanation": "«¡Creyentes! Cuando contraigáis una deuda por un plazo determinado, ponedla por escrito».",
+    "sourceDisplay": "Corán 2:282"
+  },
+  {
+    "id": "virtues_071",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué prohíbe el Corán respecto a los bienes ajenos?",
+    "answers": [
+      "Devorarlos injustamente, o usarlos para sobornar a los jueces",
+      "Contarlos",
+      "Venderlos",
+      "Guardarlos"
+    ],
+    "explanation": "«No devoréis injustamente vuestros bienes unos a otros, ni los ofrezcáis a los jueces para devorar con pecado parte de los bienes de la gente».",
+    "sourceDisplay": "Corán 2:188"
+  },
+  {
+    "id": "virtues_072",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán respecto a los bienes de los huérfanos?",
+    "answers": [
+      "Entregárselos, sin cambiar lo bueno por lo malo",
+      "Repartirlos",
+      "Venderlos",
+      "Retenerlos de por vida"
+    ],
+    "explanation": "«Dad a los huérfanos sus bienes; no sustituyáis lo malo por lo bueno ni consumáis sus bienes junto con los vuestros».",
+    "sourceDisplay": "Corán 4:2"
+  },
+  {
+    "id": "virtues_073",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo ordena el Corán medir y pesar?",
+    "answers": [
+      "Dar la medida completa y pesar con balanza justa",
+      "Redondear en beneficio propio",
+      "Pesar a ojo",
+      "Medir dos veces"
+    ],
+    "explanation": "«Y dad la medida completa cuando midáis, y pesad con balanza justa: eso es mejor y de mejor resultado».",
+    "sourceDisplay": "Corán 17:35"
+  },
+  {
+    "id": "virtues_074",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué prohíbe seguir el Corán, por falta de conocimiento?",
+    "answers": [
+      "Aquello de lo que no se tiene conocimiento: el oído, la vista y el corazón responderán",
+      "El camino más corto",
+      "Las caravanas",
+      "El silencio"
+    ],
+    "explanation": "«No sigas aquello de lo que no tienes conocimiento: el oído, la vista y el corazón, de todo ello se será preguntado».",
+    "sourceDisplay": "Corán 17:36"
+  },
+  {
+    "id": "virtues_075",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué imagen da el Corán del orgullo al andar?",
+    "answers": [
+      "No se puede hender la tierra ni alcanzar la altura de las montañas",
+      "Se avanza más rápido",
+      "Se cansa uno menos",
+      "Se hace uno respetar"
+    ],
+    "explanation": "«Y no andes por la tierra con arrogancia: no podrás hender la tierra ni alcanzar la altura de las montañas».",
+    "sourceDisplay": "Corán 17:37"
+  },
+  {
+    "id": "virtues_076",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué cualidad de la palabra ordena el Corán, prometiendo que las obras serán rectificadas?",
+    "answers": [
+      "Una palabra justa y recta (qawl sadid)",
+      "Una palabra breve",
+      "Una palabra erudita",
+      "Una palabra escrita"
+    ],
+    "explanation": "«¡Creyentes! Temed a Allah y decid una palabra justa: Él rectificará vuestras obras y os perdonará vuestros pecados».",
+    "sourceDisplay": "Corán 33:70-71"
+  },
+  {
+    "id": "virtues_077",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué clase de palabra se ordenó incluso ante un tirano, en el Corán?",
+    "answers": [
+      "Una palabra suave",
+      "Una palabra amenazante",
+      "Una palabra irónica",
+      "El silencio"
+    ],
+    "explanation": "«Y habladle con palabras suaves: quizá recapacite o tema».",
+    "sourceDisplay": "Corán 20:44"
+  },
+  {
+    "id": "virtues_078",
+    "correctAnswerIndex": 0,
+    "question": "¿De quién dice el Corán que tiene la mejor palabra?",
+    "answers": [
+      "De quien llama a Allah, obra el bien y dice: soy de los musulmanes",
+      "Del poeta",
+      "Del orador",
+      "Del juez"
+    ],
+    "explanation": "«¿Y quién dice mejor palabra que quien llama a Allah, obra el bien y dice: ciertamente, soy de los musulmanes?»",
+    "sourceDisplay": "Corán 41:33"
+  },
+  {
+    "id": "virtues_079",
+    "correctAnswerIndex": 0,
+    "question": "¿De qué se apartan los creyentes que triunfan, según Al-Mu'minun?",
+    "answers": [
+      "De lo vano (al-lagw)",
+      "Del trabajo",
+      "De los viajes",
+      "De las comidas"
+    ],
+    "explanation": "«…y aquellos que se apartan de lo vano».",
+    "sourceDisplay": "Corán 23:3"
+  },
+  {
+    "id": "virtues_080",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dos cargas guardan los creyentes que triunfan, según Al-Mu'minun?",
+    "answers": [
+      "Los depósitos que se les confían y sus compromisos",
+      "El ayuno y la vigilia",
+      "El viaje y el comercio",
+      "La escritura y la lectura"
+    ],
+    "explanation": "«Y aquellos que cuidan los depósitos que se les confían y sus compromisos».",
+    "sourceDisplay": "Corán 23:8"
+  },
+  {
+    "id": "virtues_081",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué dice el Corán de quien perdona y reconcilia, pudiendo devolver el mal?",
+    "answers": [
+      "Su recompensa incumbe a Allah",
+      "Pierde su derecho",
+      "Es censurado",
+      "Debe callar"
+    ],
+    "explanation": "«La retribución de una mala acción es otra mala acción igual; pero quien perdone y reconcilie, su recompensa incumbe a Allah».",
+    "sourceDisplay": "Corán 42:40"
+  },
+  {
+    "id": "virtues_082",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué argumento da el Corán para perdonar a quien nos ha agraviado?",
+    "answers": [
+      "«¿No amáis que Allah os perdone?»",
+      "«Seréis compensados con dinero»",
+      "«Os hará poderosos»",
+      "«Os evitará un pleito»"
+    ],
+    "explanation": "«Que perdonen y disculpen. ¿No amáis que Allah os perdone? Allah es Perdonador, Misericordioso».",
+    "sourceDisplay": "Corán 24:22"
+  },
+  {
+    "id": "virtues_083",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué tres instrucciones reúne la aleya 7:199?",
+    "answers": [
+      "Aceptar lo que se dé de buen grado, ordenar el bien y apartarse de los ignorantes",
+      "Combatir, huir, callar",
+      "Comer, beber, dormir",
+      "Contar, escribir, leer"
+    ],
+    "explanation": "«Acepta lo que se dé de buen grado, ordena el bien y apártate de los ignorantes».",
+    "sourceDisplay": "Corán 7:199"
+  },
+  {
+    "id": "virtues_084",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué actitud recomienda el Corán ante las palabras hirientes y la prueba?",
+    "answers": [
+      "La paciencia y la piedad: eso es de los asuntos que requieren determinación",
+      "La réplica inmediata",
+      "La retirada definitiva",
+      "El silencio despectivo"
+    ],
+    "explanation": "«Oiréis muchas ofensas de quienes recibieron el Libro antes que vosotros. Pero si sois pacientes y temerosos, eso es de los asuntos que requieren determinación».",
+    "sourceDisplay": "Corán 3:186"
+  },
+  {
+    "id": "virtues_085",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo califica el Corán la paciencia y el perdón?",
+    "answers": [
+      "Son de los asuntos que requieren determinación",
+      "Son debilidad",
+      "Son opcionales",
+      "Son solo para los sabios"
+    ],
+    "explanation": "«Y quien tiene paciencia y perdona, ciertamente eso es de los asuntos que requieren determinación».",
+    "sourceDisplay": "Corán 42:43"
+  },
+  {
+    "id": "virtues_086",
+    "correctAnswerIndex": 0,
+    "question": "¿Para quiénes dice el Corán que la oración no es una carga pesada?",
+    "answers": [
+      "Para los humildes ante Allah (al-jashi'in)",
+      "Para los ricos",
+      "Para los sabios",
+      "Para los viajeros"
+    ],
+    "explanation": "«Buscad auxilio en la paciencia y la oración: ciertamente es pesada, salvo para los humildes».",
+    "sourceDisplay": "Corán 2:45"
+  },
+  {
+    "id": "virtues_087",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué recuerda el Corán sobre lo que se detesta o lo que se ama?",
+    "answers": [
+      "Puede que detestes algo que es un bien, y ames algo que es un mal",
+      "Lo que amas siempre es bueno",
+      "Lo que detestas siempre es malo",
+      "Siempre sabes lo que es bueno"
+    ],
+    "explanation": "«Puede que detestéis algo que es un bien para vosotros, y puede que améis algo que es un mal para vosotros. Allah sabe y vosotros no sabéis».",
+    "sourceDisplay": "Corán 2:216"
+  },
+  {
+    "id": "virtues_088",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué promete el Corán a quien teme a Allah, en cuanto a salida y sustento?",
+    "answers": [
+      "Una salida y un sustento de donde no lo espera",
+      "Riqueza inmediata",
+      "Un largo viaje",
+      "Un cargo público"
+    ],
+    "explanation": "«A quien teme a Allah, Él le da una salida y le provee de donde no lo espera».",
+    "sourceDisplay": "Corán 65:2-3"
+  },
+  {
+    "id": "virtues_089",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué gratitud ordena el Corán junto con la gratitud a Allah?",
+    "answers": [
+      "La gratitud hacia los padres",
+      "Hacia el amo",
+      "Hacia el vecino",
+      "Hacia el rey"
+    ],
+    "explanation": "«Sé agradecido conmigo y con tus padres: hacia Mí es el retorno».",
+    "sourceDisplay": "Corán 31:14"
+  },
+  {
+    "id": "virtues_090",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué límite pone el Corán a la obediencia a los padres?",
+    "answers": [
+      "No obedecerles si ordenan asociar algo a Allah",
+      "No obedecerles nunca",
+      "Obedecerles en todo",
+      "Obedecerles solo de viaje"
+    ],
+    "explanation": "«Y si ambos te esfuerzan a asociarme algo de lo que no tienes conocimiento, no les obedezcas; pero trátalos en este mundo con bondad».",
+    "sourceDisplay": "Corán 29:8"
+  },
+  {
+    "id": "virtues_091",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué súplica enseña el Corán respecto a los padres y la descendencia?",
+    "answers": [
+      "Agradecer el favor, obrar el bien y que la descendencia sea rectificada",
+      "Pedir riqueza",
+      "Pedir un largo viaje",
+      "Pedir un cargo"
+    ],
+    "explanation": "«Señor mío, inspírame para agradecer el favor con que me has agraciado a mí y a mis padres, y para obrar el bien; y rectifica para mí mi descendencia».",
+    "sourceDisplay": "Corán 46:15"
+  },
+  {
+    "id": "virtues_092",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué piden «los siervos del Compasivo» respecto a su familia?",
+    "answers": [
+      "Que sea alegría de los ojos, y ser un ejemplo para los piadosos",
+      "Que sea rica",
+      "Que sea numerosa",
+      "Que viaje"
+    ],
+    "explanation": "«Señor nuestro, concédenos de nuestras esposas y descendencia alegría de los ojos, y haznos ejemplo para los piadosos».",
+    "sourceDisplay": "Corán 25:74"
+  },
+  {
+    "id": "virtues_093",
+    "correctAnswerIndex": 0,
+    "question": "¿Cómo se comportan «los siervos del Compasivo» ante lo vano?",
+    "answers": [
+      "Pasan de largo con dignidad",
+      "Se detienen a escuchar",
+      "Responden con viveza",
+      "Lo escriben"
+    ],
+    "explanation": "«Y aquellos que no dan falso testimonio y que, cuando pasan junto a lo vano, pasan con dignidad».",
+    "sourceDisplay": "Corán 25:72"
+  },
+  {
+    "id": "virtues_094",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán en una reunión cuando se pide sitio?",
+    "answers": [
+      "Hacer sitio: Allah os hará sitio",
+      "Permanecer apretados",
+      "Salir",
+      "Callar"
+    ],
+    "explanation": "«¡Creyentes! Cuando se os diga: “Haced sitio en las reuniones”, hacedlo: Allah os hará sitio».",
+    "sourceDisplay": "Corán 58:11"
+  },
+  {
+    "id": "virtues_095",
+    "correctAnswerIndex": 0,
+    "question": "¿Con quién ordena el Corán estar, en la sura At-Tawba?",
+    "answers": [
+      "Con los veraces",
+      "Con los poderosos",
+      "Con los ricos",
+      "Con los viajeros"
+    ],
+    "explanation": "«¡Creyentes! Temed a Allah y estad con los veraces».",
+    "sourceDisplay": "Corán 9:119"
+  },
+  {
+    "id": "virtues_096",
+    "correctAnswerIndex": 0,
+    "question": "¿Con quién ordena el Corán al Profeta ﷺ mantenerse con paciencia, en Al-Kahf?",
+    "answers": [
+      "Con quienes invocan a su Señor mañana y tarde, deseando Su faz",
+      "Con los jefes de tribu",
+      "Con los ricos comerciantes",
+      "Con los poetas"
+    ],
+    "explanation": "«Mantente con paciencia junto a quienes invocan a su Señor mañana y tarde, deseando Su faz; y que tus ojos no se aparten de ellos».",
+    "sourceDisplay": "Corán 18:28"
+  },
+  {
+    "id": "virtues_097",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué ordena el Corán ayudarse mutuamente, y en qué lo prohíbe?",
+    "answers": [
+      "Ayudarse en la piedad y el bien, no en el pecado y la agresión",
+      "Ayudarse en todo",
+      "No ayudarse con nadie",
+      "Ayudarse solo en familia"
+    ],
+    "explanation": "«Ayudaos unos a otros en la virtud y la piedad, y no os ayudéis en el pecado y la agresión».",
+    "sourceDisplay": "Corán 5:2"
+  },
+  {
+    "id": "virtues_098",
+    "correctAnswerIndex": 0,
+    "question": "¿Qué ordena el Corán respecto al pacto concluido y los juramentos confirmados?",
+    "answers": [
+      "Cumplir el pacto y no romper los juramentos tras haberlos confirmado",
+      "Renegociarlos",
+      "Olvidarlos",
+      "Ocultarlos"
+    ],
+    "explanation": "«Cumplid el pacto de Allah cuando lo hayáis concertado, y no rompáis los juramentos después de haberlos confirmado».",
+    "sourceDisplay": "Corán 16:91"
+  },
+  {
+    "id": "virtues_099",
+    "correctAnswerIndex": 0,
+    "question": "Según un hadiz narrado por al-Bujari, ¿cuándo es completa la fe de un hombre?",
+    "answers": [
+      "Cuando ama para su hermano lo que ama para sí mismo",
+      "Cuando ayuna todo el año",
+      "Cuando da todos sus bienes",
+      "Cuando viaja a La Meca"
+    ],
+    "explanation": "«Ninguno de vosotros cree de verdad hasta que ama para su hermano lo que ama para sí mismo».",
+    "sourceDisplay": "Sahih al-Bujari, 13"
+  },
+  {
+    "id": "virtues_100",
+    "correctAnswerIndex": 0,
+    "question": "¿En qué casos ve el Corán bien en los conciliábulos?",
+    "answers": [
+      "Ordenar una limosna, una buena acción o una reconciliación entre la gente",
+      "Tratar de negocios",
+      "Preparar un viaje",
+      "Contar noticias"
+    ],
+    "explanation": "«No hay bien en muchas de sus conversaciones secretas, salvo en quien ordena una limosna, algo bueno o la reconciliación entre la gente».",
+    "sourceDisplay": "Corán 4:114"
   }
 ]

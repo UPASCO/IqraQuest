@@ -164,10 +164,14 @@ Before a new question is added, `tool/pre_release_check.dart` checks for:
 - exact duplicate `(category, sourceWork, sourceReference)` triples that
   would test the same fact twice under different ids.
 
-Full semantic near-duplicate detection (e.g. two differently-worded
-questions testing the identical fact) is a manual review step during
-content authoring, not yet automated — flagged as a known gap in
-`README.md`.
+Semantic near-duplicate detection is automated in the generator itself
+(`check_near_duplicates()` in `tool/content/gen_questions.py`), and it
+fails the build rather than warning. It rejects two things: identical
+English question wording anywhere in the bank, and any pair of questions
+in the same category citing the same non-`well-established` source whose
+English wording similarity reaches 0.72. Entries in the
+`well-established` class are exempt from the second rule only, since many
+legitimately distinct descriptive facts share that one reference label.
 
 ## 9. How the bank is generated
 
@@ -188,18 +192,26 @@ files directly, or the registry and the shipped content will drift apart.
 
 ## 10. Honest scope of the v1 bank
 
-The product brief targets 500 canonical questions × 12 languages, and
-the bank now ships at that scale: **500 canonical questions**, each
-written and reviewed one by one against every rule above, in **all 12
-UI languages** (French, English and Arabic as the source texts; Spanish,
-Portuguese, German, Turkish, Indonesian, Urdu, Malay, Italian and Dutch
-translated entry by entry from them, with the answer order, level,
-explanation and source reference preserved and checked by the
-generator). The sourcing discipline was not relaxed to get there: rule
-§1 above ("at the slightest doubt, reject the question") was applied to
-every entry, and the translations are of the *wording* only — the facts,
-references and verification status live once, in the master file, and
-every language file is generated from it. The pipeline (schema,
-validators, registry, CSV, `dart` loader, tests) enforces the same
-counts and parity across all 12 files, and adding question #501 does not
-require touching any app code.
+The bank ships **900 canonical questions**, each written and reviewed one
+by one against every rule above, in **all 12 UI languages** (French,
+English and Arabic as the source texts; Spanish, Portuguese, German,
+Turkish, Indonesian, Urdu, Malay, Italian and Dutch translated entry by
+entry from them, with the answer order, level, explanation and source
+reference preserved and checked by the generator) — 10,800 localized
+records in total.
+
+The distribution is exact and gated by `tool/pre_release_check.dart`:
+**300 easy / 300 medium / 300 hard**, and by category **prophets 250,
+sīra 250, Qur'an 150, faith 150, virtues 100**. Fifty questions are free
+(17 easy / 17 medium / 16 hard); the other 850 are behind the Premium
+unlock. The bank draws on **686 unique `(sourceWork, sourceReference)`
+pairs**.
+
+The sourcing discipline was not relaxed to get there: rule §1 above ("at
+the slightest doubt, reject the question") was applied to every entry,
+and the translations are of the *wording* only — the facts, references
+and verification status live once, in the master file, and every language
+file is generated from it. The pipeline (schema, validators,
+near-duplicate detection, registry, CSV, `dart` loader, tests) enforces
+the same counts and parity across all 12 files, and adding question #901
+does not require touching any app code.

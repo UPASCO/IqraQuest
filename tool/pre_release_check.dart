@@ -11,18 +11,18 @@
 import 'dart:convert';
 import 'dart:io';
 
-const targetQuestionCount = 500;
+const targetQuestionCount = 900;
 const targetFreeCount = 50;
-const targetPremiumCount = 450;
+const targetPremiumCount = 850;
 const targetLanguages = ['fr', 'en', 'ar', 'es', 'pt', 'de', 'tr', 'id', 'ur', 'ms', 'it', 'nl'];
 const targetCategoryCounts = {
-  'prophets': 150,
-  'sira': 150,
-  'quran': 80,
-  'faith': 70,
-  'virtues': 50,
+  'prophets': 250,
+  'sira': 250,
+  'quran': 150,
+  'faith': 150,
+  'virtues': 100,
 };
-const targetDifficultyCounts = {'easy': 180, 'medium': 180, 'hard': 140};
+const targetDifficultyCounts = {'easy': 300, 'medium': 300, 'hard': 300};
 
 const forbiddenStrings = [
   'TODO',

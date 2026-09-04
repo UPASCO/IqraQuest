@@ -3120,6 +3120,1306 @@
     "sourceDisplay": "Koran 71:1"
   },
   {
+    "id": "prophets_151",
+    "correctAnswerIndex": 0,
+    "question": "Wat mochten Adam en zijn vrouw in de Tuin niet naderen?",
+    "answers": [
+      "Een boom",
+      "Een rivier",
+      "Een poort",
+      "Een berg"
+    ],
+    "explanation": "Allah stond hun toe vrij te eten, behalve één enkele boom te naderen.",
+    "sourceDisplay": "Koran 2:35"
+  },
+  {
+    "id": "prophets_152",
+    "correctAnswerIndex": 0,
+    "question": "Wat ontving Adam volgens de Koran van zijn Heer na zijn misstap?",
+    "answers": [
+      "Woorden (van berouw), en Allah aanvaardde zijn berouw",
+      "Rijkdom",
+      "Een koninkrijk",
+      "Een boek"
+    ],
+    "explanation": "«Toen ontving Adam woorden van zijn Heer, en Hij aanvaardde zijn berouw.»",
+    "sourceDisplay": "Koran 2:37"
+  },
+  {
+    "id": "prophets_153",
+    "correctAnswerIndex": 0,
+    "question": "Met wie vergelijkt de Koran 'Isa, wat zijn schepping betreft?",
+    "answers": [
+      "Adam, geschapen uit stof",
+      "Nuh (Noach)",
+      "Ibrahim (Abraham)",
+      "Yahya (Johannes)"
+    ],
+    "explanation": "«Voorwaar, het geval van 'Isa is bij Allah als het geval van Adam: Hij schiep hem uit stof en zei toen tot hem: “Wees!” en hij was.»",
+    "sourceDisplay": "Koran 3:59"
+  },
+  {
+    "id": "prophets_154",
+    "correctAnswerIndex": 0,
+    "question": "Over welke profeet zegt de Koran dat hij waarachtig was en dat Allah hem tot een hoge plaats verhief?",
+    "answers": [
+      "Idris (Henoch)",
+      "Ilyas (Elia)",
+      "Dhul-Kifl",
+      "Al-Yasa' (Elisa)"
+    ],
+    "explanation": "«En vermeld Idris in het Boek: hij was waarachtig, een profeet; en Wij verhieven hem tot een hoge plaats.»",
+    "sourceDisplay": "Koran 19:56-57"
+  },
+  {
+    "id": "prophets_155",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei Nuh toen zijn volk aan boord van de ark ging?",
+    "answers": [
+      "«In de naam van Allah zij haar vaart en haar ankerplaats»",
+      "«Vrees de zee niet»",
+      "«Neem jullie proviand mee»",
+      "«Wacht tot het donker wordt»"
+    ],
+    "explanation": "«Ga aan boord: in de naam van Allah zij haar vaart en haar ankerplaats.»",
+    "sourceDisplay": "Koran 11:41"
+  },
+  {
+    "id": "prophets_156",
+    "correctAnswerIndex": 0,
+    "question": "Wat vroeg de profeet Nuh in soera Nuh aan zijn Heer over de ongelovigen?",
+    "answers": [
+      "Dat er van hen niemand op aarde zou achterblijven",
+      "Dat zij rijk zouden worden",
+      "Dat zij nog een jaar zouden krijgen",
+      "Dat zij verbannen zouden worden"
+    ],
+    "explanation": "«Mijn Heer, laat op aarde van de ongelovigen geen enkele bewoner achter.»",
+    "sourceDisplay": "Koran 71:26-27"
+  },
+  {
+    "id": "prophets_157",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel van elke soort moest Nuh aan boord van de ark nemen?",
+    "answers": [
+      "Een paar",
+      "Drie",
+      "Tien",
+      "Slechts één"
+    ],
+    "explanation": "Allah beval hem van elke soort een paar aan boord te laden, samen met zijn familie.",
+    "sourceDisplay": "Koran 23:27"
+  },
+  {
+    "id": "prophets_158",
+    "correctAnswerIndex": 0,
+    "question": "Hud herinnerde 'Ad eraan dat Allah hen opvolgers had gemaakt na welk volk?",
+    "answers": [
+      "Het volk van Nuh (Noach)",
+      "Het volk van Lut (Lot)",
+      "Het volk van Musa (Mozes)",
+      "Het volk van Saba"
+    ],
+    "explanation": "«Gedenk toen Hij jullie opvolgers maakte na het volk van Nuh en jullie in gestalte ruim vermeerderde.»",
+    "sourceDisplay": "Koran 7:69"
+  },
+  {
+    "id": "prophets_159",
+    "correctAnswerIndex": 0,
+    "question": "Waardoor werd het volk van 'Ad vernietigd, volgens soera Al-Haqqah?",
+    "answers": [
+      "Een razende, ijzige wind",
+      "Een vloed",
+      "Een aardbeving",
+      "Een sprinkhanenzwerm"
+    ],
+    "explanation": "«Wat 'Ad betreft, zij werden vernietigd door een gierende, geweldige wind.»",
+    "sourceDisplay": "Koran 69:6-7"
+  },
+  {
+    "id": "prophets_160",
+    "correctAnswerIndex": 0,
+    "question": "Wat verweet Hud zijn volk, dat op elke hoogte bouwde?",
+    "answers": [
+      "Uit ijdelheid bouwen en hopen eeuwig te leven",
+      "Het land bewerken",
+      "Ver weg handel drijven",
+      "'s Nachts reizen"
+    ],
+    "explanation": "«Bouwen jullie op elke hoogte een teken, om jullie te vermaken, en nemen jullie paleizen alsof jullie eeuwig zouden leven?»",
+    "sourceDisplay": "Koran 26:128-129"
+  },
+  {
+    "id": "prophets_161",
+    "correctAnswerIndex": 0,
+    "question": "Wat deed Thamud met de bergen, volgens de Koran?",
+    "answers": [
+      "Zij hieuwen er huizen uit",
+      "Zij verborgen er goud in",
+      "Zij weidden er hun kudden",
+      "Zij vermeden ze"
+    ],
+    "explanation": "«Jullie nemen paleizen uit haar vlakten en houwen huizen uit de bergen.»",
+    "sourceDisplay": "Koran 7:74"
+  },
+  {
+    "id": "prophets_162",
+    "correctAnswerIndex": 0,
+    "question": "Volgens soera Al-Qamar werd de kameelmerrie naar Thamud gezonden als wat?",
+    "answers": [
+      "Een beproeving voor hen",
+      "Een beloning",
+      "Een geschenk van hun koning",
+      "Een kudde om te verkopen"
+    ],
+    "explanation": "«Wij zenden de kameelmerrie als een beproeving voor hen; sla hen dus gade en wees geduldig.»",
+    "sourceDisplay": "Koran 54:27"
+  },
+  {
+    "id": "prophets_163",
+    "correctAnswerIndex": 0,
+    "question": "Wat greep Thamud nadat zij de kameelmerrie hadden gedood?",
+    "answers": [
+      "De aardbeving (ar-rajfah)",
+      "De vloed",
+      "De ijzige wind",
+      "De hongersnood"
+    ],
+    "explanation": "«Toen greep de aardbeving hen, en zij lagen neergeveld in hun huizen.»",
+    "sourceDisplay": "Koran 7:78"
+  },
+  {
+    "id": "prophets_164",
+    "correctAnswerIndex": 0,
+    "question": "Welke profeet werd gezonden naar het volk dat de grote schandelijkheid beging, zeggend: «Vrezen jullie Allah niet?»",
+    "answers": [
+      "Lut (Lot)",
+      "Salih",
+      "Hud",
+      "Shu'ayb"
+    ],
+    "explanation": "«Toen hun broeder Lut tot hen zei: “Vrezen jullie Allah niet?”»",
+    "sourceDisplay": "Koran 26:161"
+  },
+  {
+    "id": "prophets_165",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd Lut bevolen te doen op de nacht van de bestraffing?",
+    "answers": [
+      "Bij nacht met zijn familie vertrekken en niet omkijken",
+      "Zijn volk verzamelen",
+      "De dageraad afwachten",
+      "Zich in de berg verschuilen"
+    ],
+    "explanation": "«Vertrek dus met je familie in een deel van de nacht, en laat niemand van jullie omkijken.»",
+    "sourceDisplay": "Koran 11:81"
+  },
+  {
+    "id": "prophets_166",
+    "correctAnswerIndex": 0,
+    "question": "Welke profeet werd gezonden naar het volk van Madyan, dat bedroog in maat en gewicht?",
+    "answers": [
+      "Shu'ayb",
+      "Lut (Lot)",
+      "Hud",
+      "Ilyas (Elia)"
+    ],
+    "explanation": "Shu'ayb beval hun volle maat en eerlijk gewicht te geven, en geen verderf op aarde te zaaien.",
+    "sourceDisplay": "Koran 11:84"
+  },
+  {
+    "id": "prophets_167",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei Shu'ayb tegen zijn volk dat hij werkelijk wilde?",
+    "answers": [
+      "«Ik wil slechts verbetering, zoveel als ik kan»",
+      "«Ik wil slechts rijkdom»",
+      "«Ik wil heersen»",
+      "«Ik wil vertrekken»"
+    ],
+    "explanation": "«Ik wil slechts verbetering, zoveel als ik kan. En mijn welslagen is slechts door Allah.»",
+    "sourceDisplay": "Koran 11:88"
+  },
+  {
+    "id": "prophets_168",
+    "correctAnswerIndex": 0,
+    "question": "Nadat Allah Ibrahim had beproefd met geboden die hij vervulde, wat zei Hij tot hem?",
+    "answers": [
+      "«Ik maak jou tot een leider (imam) voor de mensen»",
+      "«Ik geef jou een koninkrijk»",
+      "«Ik maak jou rijk»",
+      "«Ik maak jou koning van Babylon»"
+    ],
+    "explanation": "«Ik maak jou tot een leider voor de mensen.» Ibrahim vroeg: «En van mijn nakomelingen?»",
+    "sourceDisplay": "Koran 2:124"
+  },
+  {
+    "id": "prophets_169",
+    "correctAnswerIndex": 0,
+    "question": "Hoe legde Ibrahim de koning het zwijgen op die beweerde leven en dood te geven?",
+    "answers": [
+      "«Allah brengt de zon uit het oosten; breng jij haar uit het westen»",
+      "«Laat de regen vallen»",
+      "«Verplaats deze berg»",
+      "«Tel de sterren»"
+    ],
+    "explanation": "«Allah brengt de zon uit het oosten, breng jij haar dan uit het westen.» De ongelovige stond verbijsterd.",
+    "sourceDisplay": "Koran 2:258"
+  },
+  {
+    "id": "prophets_170",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd Ibrahim bevolen aan de mensen te verkondigen over het Heilige Huis?",
+    "answers": [
+      "De bedevaart: zij zullen te voet komen en op elke magere kameel",
+      "De handel",
+      "De oorlog",
+      "Het zwijgen"
+    ],
+    "explanation": "«En verkondig onder de mensen de hadj: zij zullen tot jou komen te voet en op elke magere kameel.»",
+    "sourceDisplay": "Koran 22:27"
+  },
+  {
+    "id": "prophets_171",
+    "correctAnswerIndex": 0,
+    "question": "Wat zette Ibrahim zijn geëerde gasten voor, dat zij niet aanraakten?",
+    "answers": [
+      "Een geroosterd gemest kalf",
+      "Brood en water",
+      "Dadels",
+      "Melk"
+    ],
+    "explanation": "Hij ging naar zijn huisgenoten en bracht een vet kalf; toen hij zag dat hun handen er niet naar reikten, voelde hij vrees.",
+    "sourceDisplay": "Koran 51:24-27"
+  },
+  {
+    "id": "prophets_172",
+    "correctAnswerIndex": 0,
+    "question": "Over wie zegt de Koran dat hij «een uitstekend voorbeeld» (uswa hasana) is voor de gelovigen, samen met wie bij hem waren?",
+    "answers": [
+      "Ibrahim (Abraham)",
+      "Nuh (Noach)",
+      "Musa (Mozes)",
+      "Dawud (David)"
+    ],
+    "explanation": "«Er is voor jullie een uitstekend voorbeeld geweest in Ibrahim en hen die bij hem waren.»",
+    "sourceDisplay": "Koran 60:4"
+  },
+  {
+    "id": "prophets_173",
+    "correctAnswerIndex": 0,
+    "question": "Wat vroeg Ibrahim in soera Ibrahim voor de stad Mekka?",
+    "answers": [
+      "Dat zij veilig zou zijn, en dat hij en zijn zonen van afgodendienst gevrijwaard zouden blijven",
+      "Dat zij een grote markt zou worden",
+      "Dat zij paleizen zou hebben",
+      "Dat zij leeg zou blijven"
+    ],
+    "explanation": "«Mijn Heer, maak deze stad veilig, en houd mij en mijn zonen ver van het aanbidden van afgoden.»",
+    "sourceDisplay": "Koran 14:35"
+  },
+  {
+    "id": "prophets_174",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei Ibrahim toen hij zijn volk verliet?",
+    "answers": [
+      "«Ik ga naar mijn Heer; Hij zal mij leiden»",
+      "«Ik ga fortuin zoeken»",
+      "«Ik keer terug om hen te bestrijden»",
+      "«Ik ga naar Egypte»"
+    ],
+    "explanation": "«Voorwaar, ik ga naar mijn Heer; Hij zal mij leiden.»",
+    "sourceDisplay": "Koran 37:99"
+  },
+  {
+    "id": "prophets_175",
+    "correctAnswerIndex": 0,
+    "question": "Over welke profeet zegt de Koran dat hij «zijn belofte nakwam» en zijn familie het gebed en de zakat opdroeg?",
+    "answers": [
+      "Isma'il (Ismaël)",
+      "Ishaq (Isaak)",
+      "Ya'qub (Jakob)",
+      "Yusuf (Jozef)"
+    ],
+    "explanation": "«Hij kwam zijn belofte na, en hij was een gezant en een profeet. Hij droeg zijn familie het gebed en de zakat op.»",
+    "sourceDisplay": "Koran 19:54-55"
+  },
+  {
+    "id": "prophets_176",
+    "correctAnswerIndex": 0,
+    "question": "Wat raadde Ya'qub Yusuf aan na zijn droom?",
+    "answers": [
+      "Hem niet aan zijn broers te vertellen",
+      "Het aan iedereen te vertellen",
+      "Hem op te schrijven",
+      "Hem te vergeten"
+    ],
+    "explanation": "«Mijn zoon, vertel je droom niet aan je broers, anders beramen zij een list tegen jou.»",
+    "sourceDisplay": "Koran 12:5"
+  },
+  {
+    "id": "prophets_177",
+    "correctAnswerIndex": 0,
+    "question": "Welk teken bewees Yusufs onschuld voor de heer des huizes?",
+    "answers": [
+      "Zijn hemd was aan de achterkant gescheurd",
+      "Een verborgen getuige",
+      "Een brief",
+      "Een eed"
+    ],
+    "explanation": "Als het hemd van achteren gescheurd was, dan loog zij en behoort hij tot de waarachtigen.",
+    "sourceDisplay": "Koran 12:26-27"
+  },
+  {
+    "id": "prophets_178",
+    "correctAnswerIndex": 0,
+    "question": "Wat deden de vrouwen van de stad toen zij Yusuf zagen?",
+    "answers": [
+      "Zij sneden zich van verbazing in de handen",
+      "Zij vluchtten",
+      "Zij zwegen",
+      "Zij lachten"
+    ],
+    "explanation": "«Toen zij hem zagen, prezen zij hem en sneden zich in de handen, zeggend: “Dit is geen mens; dit is niet anders dan een edele engel.”»",
+    "sourceDisplay": "Koran 12:31"
+  },
+  {
+    "id": "prophets_179",
+    "correctAnswerIndex": 0,
+    "question": "Wat onderwees Yusuf zijn twee medegevangenen voordat hij hun dromen uitlegde?",
+    "answers": [
+      "De eenheid van Allah, en dat het oordeel Hem alleen toekomt",
+      "De geneeskunde",
+      "Het berekenen van oogsten",
+      "De dichtkunst"
+    ],
+    "explanation": "«Zijn verschillende heren beter, of Allah, de Ene, de Overheersende? … Het oordeel komt alleen Allah toe.»",
+    "sourceDisplay": "Koran 12:39-40"
+  },
+  {
+    "id": "prophets_180",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei de koning van Egypte tot Yusuf nadat hij met hem had gesproken?",
+    "answers": [
+      "«Vandaag ben je bij ons een man van aanzien en vertrouwen»",
+      "«Keer terug naar de gevangenis»",
+      "«Verlaat Egypte»",
+      "«Ik geef je mijn dochter»"
+    ],
+    "explanation": "«En toen hij met hem had gesproken, zei hij: “Voorwaar, je bent vandaag bij ons een man van aanzien en vertrouwen.”»",
+    "sourceDisplay": "Koran 12:54"
+  },
+  {
+    "id": "prophets_181",
+    "correctAnswerIndex": 0,
+    "question": "Hoe hield Yusuf zijn broer bij zich?",
+    "answers": [
+      "De beker van de koning werd in de zak van zijn broer gevonden",
+      "Hij kocht hem",
+      "Hij zette hem zonder reden gevangen",
+      "Hij maakte hem minister"
+    ],
+    "explanation": "«Zo beraamden Wij het voor Yusuf»: de beker kwam uit de zak van zijn broer tevoorschijn.",
+    "sourceDisplay": "Koran 12:76"
+  },
+  {
+    "id": "prophets_182",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei Yusuf tot zijn broers toen zij hun fout toegaven?",
+    "answers": [
+      "«Vandaag treft jullie geen verwijt»",
+      "«Jullie zullen gestraft worden»",
+      "«Ga en kom nooit terug»",
+      "«Ik ben jullie vergeten»"
+    ],
+    "explanation": "«Vandaag treft jullie geen verwijt. Moge Allah jullie vergeven; Hij is de Barmhartigste der barmhartigen.»",
+    "sourceDisplay": "Koran 12:92"
+  },
+  {
+    "id": "prophets_183",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei Ya'qub tot zijn zonen over wanhoop?",
+    "answers": [
+      "«Wanhoop niet aan de barmhartigheid van Allah»",
+      "«Reis nooit meer»",
+      "«Spreek met niemand»",
+      "«Schrijf niets op»"
+    ],
+    "explanation": "«Wanhoop niet aan de verlichting van Allah: niemand wanhoopt aan de verlichting van Allah behalve het ongelovige volk.»",
+    "sourceDisplay": "Koran 12:87"
+  },
+  {
+    "id": "prophets_184",
+    "correctAnswerIndex": 0,
+    "question": "Welke smeekbede deed Yusuf aan het einde van zijn verhaal?",
+    "answers": [
+      "Als overgegevene te sterven en bij de rechtschapenen gevoegd te worden",
+      "Heel Egypte te regeren",
+      "Naar Kanaän terug te keren",
+      "Lang te leven"
+    ],
+    "explanation": "«Laat mij als moslim sterven en voeg mij bij de rechtschapenen.»",
+    "sourceDisplay": "Koran 12:101"
+  },
+  {
+    "id": "prophets_185",
+    "correctAnswerIndex": 0,
+    "question": "Hoe richtte Ayyub zich tot zijn Heer in zijn beproeving?",
+    "answers": [
+      "«Tegenspoed heeft mij getroffen, en U bent de Barmhartigste»",
+      "«Waarom ik?»",
+      "«Geef mij mijn rijkdom terug»",
+      "«Vernietig mijn vijanden»"
+    ],
+    "explanation": "«En gedenk Onze dienaar Ayyub, toen hij zijn Heer aanriep: “De satan heeft mij met vermoeidheid en kwelling getroffen.”»",
+    "sourceDisplay": "Koran 38:41"
+  },
+  {
+    "id": "prophets_186",
+    "correctAnswerIndex": 0,
+    "question": "Wat gaf Allah Ayyub terug na de beproeving, volgens soera Sad?",
+    "answers": [
+      "Zijn familie, en nog eens zoveel met hen",
+      "Een koninkrijk",
+      "Een schip",
+      "Een kudde kamelen"
+    ],
+    "explanation": "«En Wij schonken hem zijn familie en nog eens zoveel met hen, als barmhartigheid van Ons en als vermaning voor de bezitters van verstand.»",
+    "sourceDisplay": "Koran 38:43"
+  },
+  {
+    "id": "prophets_187",
+    "correctAnswerIndex": 0,
+    "question": "Wat redde Yunus volgens soera As-Saffat ervan in de buik van de vis te blijven?",
+    "answers": [
+      "Dat hij tot hen behoorde die Allah verheerlijken",
+      "Zijn kracht",
+      "Een voorbijvarend schip",
+      "Een gunstige wind"
+    ],
+    "explanation": "«En als hij niet tot hen had behoord die Allah verheerlijken, dan was hij in haar buik gebleven tot de Dag waarop zij worden opgewekt.»",
+    "sourceDisplay": "Koran 37:143-144"
+  },
+  {
+    "id": "prophets_188",
+    "correctAnswerIndex": 0,
+    "question": "Welk volk geloofde volgens de Koran vóór de bestraffing hen bereikte, zodat het hun baatte?",
+    "answers": [
+      "Het volk van Yunus (Jona)",
+      "Het volk van Nuh",
+      "Het volk van Lut",
+      "Het volk van Hud"
+    ],
+    "explanation": "«Was er dan geen stad die geloofde en wier geloof haar baatte, behalve het volk van Yunus?»",
+    "sourceDisplay": "Koran 10:98"
+  },
+  {
+    "id": "prophets_189",
+    "correctAnswerIndex": 0,
+    "question": "Hoe noemt de Koran Yunus wanneer de Profeet ﷺ wordt gezegd niet als hem te zijn in ongeduld?",
+    "answers": [
+      "«De metgezel van de vis» (sahib al-hut)",
+      "«De man met de staf»",
+      "«De man van de berg»",
+      "«De man van de put»"
+    ],
+    "explanation": "«En wees niet als de metgezel van de vis, toen hij riep terwijl hij vol verdriet was.»",
+    "sourceDisplay": "Koran 68:48"
+  },
+  {
+    "id": "prophets_190",
+    "correctAnswerIndex": 0,
+    "question": "Welke profeet berispte zijn volk omdat het Ba'l aanriep en de beste der scheppers verliet?",
+    "answers": [
+      "Ilyas (Elia)",
+      "Al-Yasa' (Elisa)",
+      "Yunus (Jona)",
+      "Shu'ayb"
+    ],
+    "explanation": "«En voorwaar, Ilyas behoorde tot de gezanten… “Roepen jullie Ba'l aan en verlaten jullie de beste der scheppers?”»",
+    "sourceDisplay": "Koran 37:123-125"
+  },
+  {
+    "id": "prophets_191",
+    "correctAnswerIndex": 0,
+    "question": "Welke profeet noemt de Koran naast Isma'il en Idris onder de geduldigen die Allah in Zijn barmhartigheid opnam?",
+    "answers": [
+      "Dhul-Kifl",
+      "Ilyas (Elia)",
+      "Yunus (Jona)",
+      "Al-Yasa' (Elisa)"
+    ],
+    "explanation": "«En Isma'il, Idris en Dhul-Kifl — allen behoorden tot de geduldigen. En Wij namen hen op in Onze barmhartigheid.»",
+    "sourceDisplay": "Koran 21:85-86"
+  },
+  {
+    "id": "prophets_192",
+    "correctAnswerIndex": 0,
+    "question": "Wat deed Allah voor de Kinderen van Israël bij de zee, achtervolgd door Farao?",
+    "answers": [
+      "Hij spleet de zee en redde hen",
+      "Hij liet de nacht neerdalen",
+      "Hij zond schepen",
+      "Hij droogde de zee voorgoed uit"
+    ],
+    "explanation": "«En toen Wij voor jullie de zee spleten en jullie redden en het volk van Farao lieten verdrinken.»",
+    "sourceDisplay": "Koran 2:50"
+  },
+  {
+    "id": "prophets_193",
+    "correctAnswerIndex": 0,
+    "question": "Waarom vroeg Musa Allah om Harun met hem te zenden?",
+    "answers": [
+      "Omdat hij welsprekender was dan hij",
+      "Omdat hij ouder was",
+      "Omdat hij Egypte kende",
+      "Omdat hij kon schrijven"
+    ],
+    "explanation": "«En mijn broer Harun is welsprekender dan ik, zend hem dus met mij als steun, die mij bevestigt.»",
+    "sourceDisplay": "Koran 28:34"
+  },
+  {
+    "id": "prophets_194",
+    "correctAnswerIndex": 0,
+    "question": "Hoe moesten Musa en Harun tot Farao spreken?",
+    "answers": [
+      "Met zachte woorden",
+      "Met dreigementen",
+      "Zonder hem aan te kijken",
+      "Alleen schriftelijk"
+    ],
+    "explanation": "«En spreek tot hem met zachte woorden, opdat hij zich laat vermanen of Allah vreest.»",
+    "sourceDisplay": "Koran 20:44"
+  },
+  {
+    "id": "prophets_195",
+    "correctAnswerIndex": 0,
+    "question": "Wie uit Farao's huishouden verdedigde Musa terwijl hij zijn geloof verborg?",
+    "answers": [
+      "Een gelovige man uit de familie van Farao",
+      "De hogepriester",
+      "De legeraanvoerder",
+      "De vizier Haman"
+    ],
+    "explanation": "«En een gelovige man uit de familie van Farao, die zijn geloof verborg, zei: “Doden jullie een man omdat hij zegt: mijn Heer is Allah?”»",
+    "sourceDisplay": "Koran 40:28"
+  },
+  {
+    "id": "prophets_196",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei Harun tot zijn volk terwijl Musa afwezig was?",
+    "answers": [
+      "Dat zij slechts door het kalf beproefd werden, en hem moesten volgen",
+      "Het kalf te behouden",
+      "Naar Egypte te gaan",
+      "Te zwijgen"
+    ],
+    "explanation": "«Mijn volk, jullie worden er slechts door beproefd. En jullie Heer is de Erbarmer, volgt mij dus.»",
+    "sourceDisplay": "Koran 20:90"
+  },
+  {
+    "id": "prophets_197",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei de vrouw van Farao toen zij de zuigeling Musa vond?",
+    "answers": [
+      "«Hij is een verkoeling van het oog voor mij en voor jou: dood hem niet»",
+      "«Breng hem terug naar zijn moeder»",
+      "«Breng hem naar de rivier»",
+      "«Verkoop hem»"
+    ],
+    "explanation": "«En de vrouw van Farao zei: “Een verkoeling van het oog voor mij en voor jou. Dood hem niet; misschien baat hij ons.”»",
+    "sourceDisplay": "Koran 28:9"
+  },
+  {
+    "id": "prophets_198",
+    "correctAnswerIndex": 0,
+    "question": "Hoe vroeg Musa om de kundige dienaar (al-Khidr) te mogen volgen?",
+    "answers": [
+      "«Mag ik jou volgen, op voorwaarde dat je mij onderwijst?»",
+      "«Beveel mij en ik gehoorzaam»",
+      "«Onderwijs mij tegen betaling»",
+      "«Kom met mij mee»"
+    ],
+    "explanation": "«Mag ik jou volgen, op voorwaarde dat je mij onderwijst van wat jou aan rechte leiding is onderwezen?»",
+    "sourceDisplay": "Koran 18:66"
+  },
+  {
+    "id": "prophets_199",
+    "correctAnswerIndex": 0,
+    "question": "In welke toestand keerde Musa naar zijn volk terug nadat hij het kalf had gezien?",
+    "answers": [
+      "Toornig en bedroefd",
+      "Verheugd",
+      "Zwijgend",
+      "Onverschillig"
+    ],
+    "explanation": "«En toen Musa toornig en bedroefd tot zijn volk terugkeerde… wierp hij de tafelen neer.»",
+    "sourceDisplay": "Koran 7:150"
+  },
+  {
+    "id": "prophets_200",
+    "correctAnswerIndex": 0,
+    "question": "Welke boodschap moest Musa volgens soera An-Nazi'at aan Farao brengen?",
+    "answers": [
+      "«Wil je jezelf reinigen, en zal ik je naar je Heer leiden?»",
+      "«Geef mij mijn volk terug»",
+      "«Bouw mij een paleis»",
+      "«Verlaat Egypte»"
+    ],
+    "explanation": "«Ga naar Farao; hij heeft de perken te buiten gegaan. En zeg: wil je jezelf reinigen, en zal ik je naar je Heer leiden opdat je Hem vreest?»",
+    "sourceDisplay": "Koran 79:17-19"
+  },
+  {
+    "id": "prophets_201",
+    "correctAnswerIndex": 0,
+    "question": "Wie verheerlijkte Allah samen met Dawud, 's avonds en 's ochtends?",
+    "answers": [
+      "De bergen en de vogels",
+      "De rivieren",
+      "De sterren",
+      "De winden"
+    ],
+    "explanation": "«Wij maakten de bergen dienstbaar om met hem te verheerlijken bij avond en na zonsopgang, en de vogels, samengebracht.»",
+    "sourceDisplay": "Koran 38:18-19"
+  },
+  {
+    "id": "prophets_202",
+    "correctAnswerIndex": 0,
+    "question": "Wat gaf Allah volgens de Koran aan Dawud, naast een stevig koninkrijk?",
+    "answers": [
+      "Wijsheid en een beslissende spraak",
+      "Grote legers",
+      "Goud en zilver",
+      "Een ivoren paleis"
+    ],
+    "explanation": "«En Wij versterkten zijn koninkrijk en gaven hem wijsheid en onderscheidingsvermogen in het spreken.»",
+    "sourceDisplay": "Koran 38:20"
+  },
+  {
+    "id": "prophets_203",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd Dawud bevolen aangaande de maliënkolders die hij maakte?",
+    "answers": [
+      "De schakels nauwkeurig af te meten",
+      "Zijn naam erop te graveren",
+      "Ze te vergulden",
+      "Ze te verkopen"
+    ],
+    "explanation": "«Maak volledige maliënkolders en meet de schakels nauwkeurig af.»",
+    "sourceDisplay": "Koran 34:11"
+  },
+  {
+    "id": "prophets_204",
+    "correctAnswerIndex": 0,
+    "question": "Wat zeiden Dawud en Sulaiman toen Allah hun kennis gaf?",
+    "answers": [
+      "«Lof zij Allah, die ons boven vele van Zijn gelovige dienaren heeft begunstigd»",
+      "«Wij zijn de besten»",
+      "«Niemand evenaart ons»",
+      "«Wij hebben het verdiend»"
+    ],
+    "explanation": "«Lof zij Allah, die ons boven vele van Zijn gelovige dienaren heeft begunstigd.»",
+    "sourceDisplay": "Koran 27:15"
+  },
+  {
+    "id": "prophets_205",
+    "correctAnswerIndex": 0,
+    "question": "Wat deed Sulaiman toen hij de mier haar volk hoorde waarschuwen?",
+    "answers": [
+      "Hij glimlachte en vroeg Allah hem dankbaar te maken",
+      "Hij werd toornig",
+      "Hij liet zijn leger zwijgend omkeren",
+      "Hij gebood stilte"
+    ],
+    "explanation": "«Toen glimlachte hij, geamuseerd om haar woorden, en zei: “Mijn Heer, maak mij dankbaar voor Uw gunst.”»",
+    "sourceDisplay": "Koran 27:19"
+  },
+  {
+    "id": "prophets_206",
+    "correctAnswerIndex": 0,
+    "question": "Welk nieuws bracht de hop aan Sulaiman?",
+    "answers": [
+      "Een vrouw regeerde over Saba en haar volk knielde voor de zon",
+      "Een leger naderde",
+      "Een droogte had toegeslagen",
+      "Er lag een schat verborgen"
+    ],
+    "explanation": "«Ik ben tot jou gekomen uit Saba met zeker nieuws: ik trof een vrouw aan die over hen heerste… zij knielen voor de zon.»",
+    "sourceDisplay": "Koran 27:22-23"
+  },
+  {
+    "id": "prophets_207",
+    "correctAnswerIndex": 0,
+    "question": "Wat verbaasde de koningin van Saba bij het betreden van Sulaimans paleis?",
+    "answers": [
+      "De vloer van glas, die zij voor water hield",
+      "Een tamme leeuw",
+      "Een hangende tuin",
+      "Een gouden troon"
+    ],
+    "explanation": "«Haar werd gezegd: “Treed het paleis binnen.” Toen zij het zag, hield zij het voor een watervlakte en ontblootte haar benen. Hij zei: “Het is een paleis geplaveid met glas.”»",
+    "sourceDisplay": "Koran 27:44"
+  },
+  {
+    "id": "prophets_208",
+    "correctAnswerIndex": 0,
+    "question": "Waaruit bestonden Sulaimans legers, volgens de Koran?",
+    "answers": [
+      "Djinn, mensen en vogels",
+      "Alleen ruiters",
+      "Zeelieden",
+      "Alleen boogschutters"
+    ],
+    "explanation": "«En voor Sulaiman werden zijn troepen van djinn, mensen en vogels verzameld, en zij werden in rijen opgesteld.»",
+    "sourceDisplay": "Koran 27:17"
+  },
+  {
+    "id": "prophets_209",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschreef Zakariyya zijn toestand toen hij zijn Heer aanriep?",
+    "answers": [
+      "«Mijn beenderen zijn verzwakt en mijn hoofd is grijs geworden»",
+      "«Ik ben rijk en verzadigd»",
+      "«Ik ben ver van mijn volk»",
+      "«Ik ben op reis»"
+    ],
+    "explanation": "«Mijn Heer, mijn beenderen zijn verzwakt en mijn hoofd is grijs geworden, en nooit ben ik in mijn smeekbede tot U teleurgesteld.»",
+    "sourceDisplay": "Koran 19:4"
+  },
+  {
+    "id": "prophets_210",
+    "correctAnswerIndex": 0,
+    "question": "Welk teken werd Zakariyya gegeven voor de geboorte van Yahya?",
+    "answers": [
+      "Drie dagen niet tot de mensen spreken behalve met gebaren",
+      "Een ster",
+      "Regen buiten het seizoen",
+      "Een terugkerende droom"
+    ],
+    "explanation": "«Jouw teken is dat je drie dagen niet tot de mensen zult spreken behalve met gebaren.»",
+    "sourceDisplay": "Koran 3:41"
+  },
+  {
+    "id": "prophets_211",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd Yahya gezegd aangaande de Schrift?",
+    "answers": [
+      "«Neem de Schrift met kracht»",
+      "«Verberg de Schrift»",
+      "«Kopieer de Schrift»",
+      "«Lees haar eenmaal»"
+    ],
+    "explanation": "«O Yahya, neem de Schrift met vastberadenheid.» En Wij gaven hem het oordeel toen hij nog een kind was.",
+    "sourceDisplay": "Koran 19:12"
+  },
+  {
+    "id": "prophets_212",
+    "correctAnswerIndex": 0,
+    "question": "Wat bevolen de engelen Maryam nadat zij hadden aangekondigd dat zij uitverkoren was?",
+    "answers": [
+      "Haar Heer toegewijd te gehoorzamen, te knielen en te buigen",
+      "Op reis te gaan",
+      "Voorgoed te zwijgen",
+      "In de Tempel te onderwijzen"
+    ],
+    "explanation": "«O Maryam, gehoorzaam je Heer toegewijd, kniel neer en buig met hen die buigen.»",
+    "sourceDisplay": "Koran 3:43"
+  },
+  {
+    "id": "prophets_213",
+    "correctAnswerIndex": 0,
+    "question": "Wat moest Maryam schudden om voedsel te krijgen ten tijde van de geboorte?",
+    "answers": [
+      "De stam van de palmboom, om verse dadels te laten vallen",
+      "Een olijfboom",
+      "Een vijgenboom",
+      "Een wijnstok"
+    ],
+    "explanation": "«En schud de stam van de palmboom naar je toe; hij zal rijpe, verse dadels op je laten vallen.»",
+    "sourceDisplay": "Koran 19:24-26"
+  },
+  {
+    "id": "prophets_214",
+    "correctAnswerIndex": 0,
+    "question": "Wat zei 'Isa in de wieg dat Allah hem had opgedragen?",
+    "answers": [
+      "Het gebed en de zakat, zolang hij leefde",
+      "De handel",
+      "Het zwijgen",
+      "Het reizen"
+    ],
+    "explanation": "«En Hij heeft mij het gebed en de zakat opgedragen zolang ik leef.»",
+    "sourceDisplay": "Koran 19:31"
+  },
+  {
+    "id": "prophets_215",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Az-Zukhruf 'Isa, de zoon van Maryam?",
+    "answers": [
+      "Een dienaar aan wie Allah gunst schonk en die Hij tot voorbeeld maakte voor de Kinderen van Israël",
+      "Een koning van Israël",
+      "Een neergezonden engel",
+      "Een schrijver van de Tempel"
+    ],
+    "explanation": "«Hij was niet anders dan een dienaar aan wie Wij gunst schonken, en Wij maakten hem tot een voorbeeld voor de Kinderen van Israël.»",
+    "sourceDisplay": "Koran 43:59"
+  },
+  {
+    "id": "prophets_216",
+    "correctAnswerIndex": 0,
+    "question": "Wat zal 'Isa op de Dag der Opstanding antwoorden wanneer Allah hem ondervraagt?",
+    "answers": [
+      "«Verheven bent U! Het paste mij niet te zeggen waarop ik geen recht had»",
+      "«Ik herinner het mij niet»",
+      "«Zij hebben het zelf geschreven»",
+      "«Vraag het de discipelen»"
+    ],
+    "explanation": "«Verheven bent U! Het paste mij niet te zeggen waarop ik geen recht heb.»",
+    "sourceDisplay": "Koran 5:116"
+  },
+  {
+    "id": "prophets_217",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran 'Isa, de zoon van Maryam?",
+    "answers": [
+      "De gezant van Allah, Zijn woord dat Hij aan Maryam overbracht, en een geest van Hem",
+      "Een neergezonden engel",
+      "Een rechtvaardige koning",
+      "Een geleerde schrijver"
+    ],
+    "explanation": "«De Messias, 'Isa de zoon van Maryam, was slechts een gezant van Allah en Zijn woord dat Hij aan Maryam overbracht, en een geest van Hem.»",
+    "sourceDisplay": "Koran 4:171"
+  },
+  {
+    "id": "prophets_218",
+    "correctAnswerIndex": 0,
+    "question": "Aan welke gunsten herinnert Allah Zijn Profeet ﷺ in soera Ad-Duha?",
+    "answers": [
+      "Hij bood hem als wees onderdak, leidde hem en maakte hem onafhankelijk",
+      "Hij gaf hem een koninkrijk",
+      "Hij gaf hem een leger",
+      "Hij gaf hem een paleis"
+    ],
+    "explanation": "«Heeft Hij jou niet als wees gevonden en onderdak geboden? En jou dwalend gevonden en geleid? En jou behoeftig gevonden en onafhankelijk gemaakt?»",
+    "sourceDisplay": "Koran 93:6-8"
+  },
+  {
+    "id": "prophets_219",
+    "correctAnswerIndex": 0,
+    "question": "Welke belofte herhaalt soera Ash-Sharh tweemaal?",
+    "answers": [
+      "«Voorwaar, met de moeilijkheid komt de verlichting»",
+      "«De overwinning is nabij»",
+      "«Het Paradijs is beloofd»",
+      "«De vijanden zullen vergaan»"
+    ],
+    "explanation": "«Voorwaar, met de moeilijkheid komt de verlichting. Voorwaar, met de moeilijkheid komt de verlichting.»",
+    "sourceDisplay": "Koran 94:5-6"
+  },
+  {
+    "id": "prophets_220",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd de Profeet ﷺ in soera Al-Kawthar geschonken, en wat werd hem in ruil bevolen?",
+    "answers": [
+      "Al-Kawthar; tot zijn Heer te bidden en te offeren",
+      "Een leger; te strijden",
+      "Een koninkrijk; te heersen",
+      "Een schat; die te delen"
+    ],
+    "explanation": "«Voorwaar, Wij hebben jou al-Kawthar geschonken. Bid dus tot je Heer en offer.»",
+    "sourceDisplay": "Koran 108:1-2"
+  },
+  {
+    "id": "prophets_221",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera At-Tawbah de Gezant ﷺ tegenover de gelovigen?",
+    "answers": [
+      "Bezorgd om hen, vriendelijk en barmhartig",
+      "Hard en afstandelijk",
+      "Rijk en machtig",
+      "Zwijgzaam en teruggetrokken"
+    ],
+    "explanation": "«Voorzeker, er is tot jullie een Gezant uit jullie eigen midden gekomen… bezorgd om jullie, en voor de gelovigen vriendelijk en barmhartig.»",
+    "sourceDisplay": "Koran 9:128"
+  },
+  {
+    "id": "prophets_222",
+    "correctAnswerIndex": 0,
+    "question": "Wat zou de mensen volgens de Koran van de Profeet ﷺ hebben weggedreven, als hij zo was geweest?",
+    "answers": [
+      "Als hij ruw en hardvochtig was geweest",
+      "Als hij rijk was geweest",
+      "Als hij jong was geweest",
+      "Als hij zwijgzaam was geweest"
+    ],
+    "explanation": "«Door barmhartigheid van Allah was je zachtmoedig voor hen. Was je ruw en hardvochtig geweest, dan waren zij van je weggelopen.»",
+    "sourceDisplay": "Koran 3:159"
+  },
+  {
+    "id": "prophets_223",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over Allah's Gezant ﷺ voor wie op Allah en de Laatste Dag hoopt?",
+    "answers": [
+      "Hij is voor hen een uitstekend voorbeeld",
+      "Hij is een koning",
+      "Hij is een rechter",
+      "Hij is een karavaanleider"
+    ],
+    "explanation": "«Voorzeker, in de Gezant van Allah is voor jullie een uitstekend voorbeeld, voor wie hoopt op Allah en de Laatste Dag.»",
+    "sourceDisplay": "Koran 33:21"
+  },
+  {
+    "id": "prophets_224",
+    "correctAnswerIndex": 0,
+    "question": "Tot wie werd de profeet Mohammed ﷺ gezonden, volgens soera Saba?",
+    "answers": [
+      "Tot de gehele mensheid",
+      "Alleen tot Quraysh",
+      "Alleen tot de Arabieren",
+      "Tot de mensen van Medina"
+    ],
+    "explanation": "«En Wij hebben jou slechts gezonden als brenger van goede tijding en als waarschuwer voor de gehele mensheid.»",
+    "sourceDisplay": "Koran 34:28"
+  },
+  {
+    "id": "prophets_225",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers reciteerde de Profeet ﷺ toen de afgoden rond de Ka'ba werden verwijderd?",
+    "answers": [
+      "«De waarheid is gekomen en de valsheid is verdwenen»",
+      "«Wij hebben jou een duidelijke overwinning gegeven»",
+      "«Zeg: Hij is Allah, de Ene»",
+      "«Wanneer de hulp van Allah komt»"
+    ],
+    "explanation": "«En zeg: de waarheid is gekomen en de valsheid is verdwenen. Voorwaar, de valsheid moet wel verdwijnen.»",
+    "sourceDisplay": "Koran 17:81"
+  },
+  {
+    "id": "prophets_226",
+    "correctAnswerIndex": 0,
+    "question": "Wat zeggen de gelovigen over Allah's gezanten, aan het einde van soera Al-Baqarah?",
+    "answers": [
+      "«Wij maken geen onderscheid tussen enigen van Zijn gezanten»",
+      "«Wij volgen alleen de laatste»",
+      "«Wij verkiezen er één van»",
+      "«Wij negeren hen»"
+    ],
+    "explanation": "«Wij maken geen onderscheid tussen enigen van Zijn gezanten. En zij zeiden: wij horen en wij gehoorzamen.»",
+    "sourceDisplay": "Koran 2:285"
+  },
+  {
+    "id": "prophets_227",
+    "correctAnswerIndex": 0,
+    "question": "Welke ene boodschap bracht elke gezant aan zijn volk?",
+    "answers": [
+      "«Aanbid Allah en vermijd de valse goden»",
+      "«Bouw tempels»",
+      "«Word rijk»",
+      "«Schrijf boeken»"
+    ],
+    "explanation": "«En Wij hebben voorzeker in elke gemeenschap een gezant gezonden, zeggend: aanbid Allah en vermijd de taghut.»",
+    "sourceDisplay": "Koran 16:36"
+  },
+  {
+    "id": "prophets_228",
+    "correctAnswerIndex": 0,
+    "question": "In welke taal werd elke gezant gezonden, volgens soera Ibrahim?",
+    "answers": [
+      "In de taal van zijn eigen volk, om het hun duidelijk te maken",
+      "Alleen in het Arabisch",
+      "In het Hebreeuws",
+      "In een hemelse taal"
+    ],
+    "explanation": "«En Wij hebben geen gezant gezonden dan in de taal van zijn volk, om het hun duidelijk te maken.»",
+    "sourceDisplay": "Koran 14:4"
+  },
+  {
+    "id": "prophets_229",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd volgens soera Al-Anbiya aan elke gezant vóór Mohammed ﷺ geopenbaard?",
+    "answers": [
+      "Dat er geen god is dan Hij, aanbid Hem dus",
+      "Een heiligdom te bouwen",
+      "Landen te veroveren",
+      "Het geheim te houden"
+    ],
+    "explanation": "«En Wij hebben vóór jou geen gezant gezonden of Wij openbaarden hem: er is geen god dan Ik, aanbid Mij dus.»",
+    "sourceDisplay": "Koran 21:25"
+  },
+  {
+    "id": "prophets_230",
+    "correctAnswerIndex": 0,
+    "question": "Welke groep profeten wordt in soera Al-An'am genoemd als het geleide nageslacht van Ibrahim?",
+    "answers": [
+      "Dawud, Sulaiman, Ayyub, Yusuf, Musa en Harun onder anderen",
+      "Alleen Musa en 'Isa",
+      "Alleen Isma'il en Ishaq",
+      "Alleen Nuh en Hud"
+    ],
+    "explanation": "De passage noemt een lange reeks profeten die Allah leidde, zeggend: «En zo belonen Wij hen die goed doen.»",
+    "sourceDisplay": "Koran 6:84-86"
+  },
+  {
+    "id": "prophets_231",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over de gezanten onderling?",
+    "answers": [
+      "Allah begunstigde sommigen van hen boven anderen",
+      "Zij zijn allen gelijk in rang",
+      "Alleen de laatste telt",
+      "Zij wisten niets van elkaar"
+    ],
+    "explanation": "«Die gezanten — sommigen van hen hebben Wij boven anderen doen uitmunten.»",
+    "sourceDisplay": "Koran 2:253"
+  },
+  {
+    "id": "prophets_232",
+    "correctAnswerIndex": 0,
+    "question": "Welk verbond nam Allah van de profeten, volgens soera Al-'Imran?",
+    "answers": [
+      "Te geloven in de Gezant die zou komen ter bevestiging van wat zij hadden, en hem te steunen",
+      "Hun volk nooit te verlaten",
+      "Ieder een tempel te bouwen",
+      "Ieder een boek te schrijven"
+    ],
+    "explanation": "«Als er tot jullie een Gezant komt ter bevestiging van wat jullie hebben, dan moeten jullie in hem geloven en hem steunen.»",
+    "sourceDisplay": "Koran 3:81"
+  },
+  {
+    "id": "prophets_233",
+    "correctAnswerIndex": 0,
+    "question": "Welke profeten noemt de Koran wanneer zij zegt dat Allah voor hen dezelfde godsdienst verordende?",
+    "answers": [
+      "Nuh, Ibrahim, Musa en 'Isa, samen met wat aan de Profeet ﷺ werd geopenbaard",
+      "Alleen Adam en Idris",
+      "Alleen Dawud en Sulaiman",
+      "Alleen Hud en Salih"
+    ],
+    "explanation": "«Hij heeft voor jullie van de godsdienst verordend wat Hij Nuh opdroeg, en wat Wij aan jou openbaarden, en wat Wij Ibrahim, Musa en 'Isa opdroegen.»",
+    "sourceDisplay": "Koran 42:13"
+  },
+  {
+    "id": "prophets_234",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over gezanten wier verhalen zij niet vertelt?",
+    "answers": [
+      "Er zijn er wier verhaal Allah de Profeet ﷺ niet heeft verteld",
+      "Zij bestaan niet",
+      "Allen worden genoemd",
+      "Zij doen er niet toe"
+    ],
+    "explanation": "«Onder hen zijn er wier verhaal Wij jou hebben verteld, en onder hen zijn er wier verhaal Wij jou niet hebben verteld.»",
+    "sourceDisplay": "Koran 40:78"
+  },
+  {
+    "id": "prophets_235",
+    "correctAnswerIndex": 0,
+    "question": "Uit wie koos Allah al Zijn gezanten, volgens soera Yusuf?",
+    "answers": [
+      "Mannen uit de steden, aan wie Hij openbaring zond",
+      "Engelen",
+      "Koningen",
+      "Alleen woestijnbewoners"
+    ],
+    "explanation": "«En Wij hebben vóór jou slechts mannen gezonden aan wie Wij openbaarden, uit de bewoners van de steden.»",
+    "sourceDisplay": "Koran 12:109"
+  },
+  {
+    "id": "prophets_236",
+    "correctAnswerIndex": 0,
+    "question": "Wat herinnert de Koran over gezanten die vóór Mohammed ﷺ werden geloochend?",
+    "answers": [
+      "Zij waren geduldig tot Onze hulp tot hen kwam",
+      "Zij gaven op",
+      "Zij verborgen zich",
+      "Zij veranderden hun boodschap"
+    ],
+    "explanation": "«Voorzeker, vóór jou werden gezanten geloochend, maar zij waren geduldig onder de loochening tot Onze hulp tot hen kwam.»",
+    "sourceDisplay": "Koran 6:34"
+  },
+  {
+    "id": "prophets_237",
+    "correctAnswerIndex": 0,
+    "question": "Welke families verkoos Allah boven de werelden, volgens soera Al-'Imran?",
+    "answers": [
+      "Adam, Nuh, de familie van Ibrahim en de familie van 'Imran",
+      "De koningen van Egypte",
+      "De stammen van Medina",
+      "Het volk van Saba"
+    ],
+    "explanation": "«Voorwaar, Allah verkoos Adam en Nuh en de familie van Ibrahim en de familie van 'Imran boven de werelden.»",
+    "sourceDisplay": "Koran 3:33"
+  },
+  {
+    "id": "prophets_238",
+    "correctAnswerIndex": 0,
+    "question": "Aan welke gunsten herinnerde Musa zijn volk, toen hij hen uitnodigde het Heilige Land binnen te gaan?",
+    "answers": [
+      "Dat Allah profeten onder hen aanstelde en hen koningen maakte",
+      "Dat Hij hun schepen gaf",
+      "Dat Hij hun goud gaf",
+      "Dat Hij hun paarden gaf"
+    ],
+    "explanation": "«Mijn volk, gedenk de gunst van Allah aan jullie toen Hij onder jullie profeten aanstelde en jullie koningen maakte.»",
+    "sourceDisplay": "Koran 5:20"
+  },
+  {
+    "id": "prophets_239",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschreven de Thora en het Evangelie de ongeletterde Profeet, volgens de Koran?",
+    "answers": [
+      "Hij gebiedt het goede, verbiedt het slechte en verlicht hun lasten",
+      "Hij brengt rijkdom",
+      "Hij heerst met geweld",
+      "Hij bouwt tempels"
+    ],
+    "explanation": "«…de ongeletterde profeet die zij bij zich beschreven vinden in de Thora en het Evangelie, die hun het goede gebiedt en het slechte verbiedt… en hun lasten verlicht.»",
+    "sourceDisplay": "Koran 7:157"
+  },
+  {
+    "id": "prophets_240",
+    "correctAnswerIndex": 0,
+    "question": "Op wie zei Nuh te vertrouwen, terwijl hij zijn volk uitdaagde plannen te beramen?",
+    "answers": [
+      "Op Allah, in wie hij zijn vertrouwen stelde",
+      "Op zijn zonen",
+      "Op zijn stam",
+      "Op zijn schip"
+    ],
+    "explanation": "«Op Allah stel ik mijn vertrouwen. Beraam dus jullie plan, jullie en jullie deelgenoten.»",
+    "sourceDisplay": "Koran 10:71"
+  },
+  {
+    "id": "prophets_241",
+    "correctAnswerIndex": 0,
+    "question": "Aan wie schrijft Ibrahim in zijn smeekbede de genezing toe wanneer hij ziek is?",
+    "answers": [
+      "Aan Allah alleen",
+      "Aan artsen",
+      "Aan kruiden",
+      "Aan de tijd"
+    ],
+    "explanation": "«En wanneer ik ziek ben, is Hij het die mij geneest,» zei Ibrahim toen hij zijn Heer beschreef.",
+    "sourceDisplay": "Koran 26:78-80"
+  },
+  {
+    "id": "prophets_242",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee werd Ibrahims zoon vrijgekocht, volgens soera As-Saffat?",
+    "answers": [
+      "Met een geweldig offer",
+      "Met een losprijs van goud",
+      "Met een karavaan",
+      "Met een hele kudde"
+    ],
+    "explanation": "«En Wij kochten hem vrij met een geweldig offer.»",
+    "sourceDisplay": "Koran 37:107"
+  },
+  {
+    "id": "prophets_243",
+    "correctAnswerIndex": 0,
+    "question": "Waarin verklaren de gelovigen te geloven, in het vers «Zeg: wij geloven in Allah…»?",
+    "answers": [
+      "In wat werd geopenbaard aan Ibrahim, Isma'il, Ishaq, Ya'qub, Musa, 'Isa en de profeten",
+      "In slechts één boek",
+      "In slechts één profeet",
+      "In hun eigen tradities"
+    ],
+    "explanation": "«Zeg: wij geloven in Allah en in wat aan ons is neergezonden en in wat werd neergezonden aan Ibrahim, Isma'il, Ishaq, Ya'qub…»",
+    "sourceDisplay": "Koran 2:136"
+  },
+  {
+    "id": "prophets_244",
+    "correctAnswerIndex": 0,
+    "question": "Waarom vertelt Allah de verhalen van de gezanten aan de Profeet ﷺ?",
+    "answers": [
+      "Om zijn hart te versterken",
+      "Om hem bezig te houden",
+      "Om hem geschiedenis te leren",
+      "Om hem te vermaken"
+    ],
+    "explanation": "«En elk verhaal dat Wij jou vertellen uit het nieuws van de gezanten is datgene waarmee Wij jouw hart versterken.»",
+    "sourceDisplay": "Koran 11:120"
+  },
+  {
+    "id": "prophets_245",
+    "correctAnswerIndex": 0,
+    "question": "Wat moest de Profeet ﷺ aan het einde van soera Al-Kahf over zichzelf zeggen?",
+    "answers": [
+      "«Ik ben slechts een mens zoals jullie; mij is geopenbaard dat jullie God één God is»",
+      "«Ik ben een koning»",
+      "«Ik ben een engel»",
+      "«Ik ken het onwaarneembare»"
+    ],
+    "explanation": "«Zeg: ik ben slechts een mens zoals jullie, aan wie is geopenbaard dat jullie God één God is.»",
+    "sourceDisplay": "Koran 18:110"
+  },
+  {
+    "id": "prophets_246",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Al-Fath hen die met de Gezant ﷺ zijn?",
+    "answers": [
+      "Standvastig tegen de ongelovigen, barmhartig onder elkaar",
+      "Rijk en talrijk",
+      "Zwijgzaam en teruggetrokken",
+      "Reizigers en handelaars"
+    ],
+    "explanation": "«Mohammed is de Gezant van Allah; en zij die met hem zijn, zijn standvastig tegen de ongelovigen, barmhartig onder elkaar.»",
+    "sourceDisplay": "Koran 48:29"
+  },
+  {
+    "id": "prophets_247",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt soera An-Najm over het spreken van de Profeet ﷺ?",
+    "answers": [
+      "Hij spreekt niet uit begeerte: het is slechts een geopenbaarde openbaring",
+      "Hij spreekt als een dichter",
+      "Hij spreekt als een waarzegger",
+      "Hij spreekt uit zichzelf"
+    ],
+    "explanation": "«Jullie metgezel is niet afgedwaald, noch heeft hij gedwaald, noch spreekt hij uit begeerte. Het is niets anders dan een geopenbaarde openbaring.»",
+    "sourceDisplay": "Koran 53:2-4"
+  },
+  {
+    "id": "prophets_248",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd de Profeet ﷺ bevolen toen de hulp van Allah en de overwinning kwamen?",
+    "answers": [
+      "Zijn Heer te verheerlijken met lof en Zijn vergeving te vragen",
+      "Een feest te houden",
+      "Een monument te bouwen",
+      "Te rusten"
+    ],
+    "explanation": "«Wanneer de hulp van Allah komt en de overwinning… verheerlijk dan je Heer met lof en vraag Hem om vergeving.»",
+    "sourceDisplay": "Koran 110:1-3"
+  },
+  {
+    "id": "prophets_249",
+    "correctAnswerIndex": 0,
+    "question": "Welke drie taken geeft soera Al-Jumu'ah aan de Gezant die tot de ongeletterden werd gezonden?",
+    "answers": [
+      "De verzen voordragen, hen zuiveren, en hun het Boek en de wijsheid onderwijzen",
+      "Bouwen, handelen en heersen",
+      "Schrijven, tellen en reizen",
+      "Oordelen, straffen en belasten"
+    ],
+    "explanation": "«Hij is het die onder de ongeletterden een Gezant uit hun midden zond, die hun Zijn verzen voordraagt, hen zuivert, en hun het Boek en de wijsheid onderwijst.»",
+    "sourceDisplay": "Koran 62:2"
+  },
+  {
+    "id": "prophets_250",
+    "correctAnswerIndex": 0,
+    "question": "Welke bescherming noemt de Koran zolang de Profeet ﷺ onder hen was?",
+    "answers": [
+      "Allah zou hen niet bestraffen zolang hij onder hen was",
+      "Zij zouden rijk zijn",
+      "Zij zouden altijd winnen",
+      "Zij zouden niet sterven"
+    ],
+    "explanation": "«Maar Allah zou hen niet bestraffen terwijl jij onder hen bent.»",
+    "sourceDisplay": "Koran 8:33"
+  },
+  {
     "id": "sira_031",
     "correctAnswerIndex": 0,
     "question": "Tot welke stam behoorde de Profeet Muhammad ﷺ?",
@@ -4680,6 +5980,1306 @@
     "sourceDisplay": "Sira, vaststaand feit"
   },
   {
+    "id": "sira_151",
+    "correctAnswerIndex": 0,
+    "question": "Welke oom van de Profeet ﷺ aanvaardde de islam en werd een van zijn standvastigste verdedigers in Mekka?",
+    "answers": [
+      "Hamza ibn 'Abd al-Muttalib",
+      "Abu Lahab",
+      "Abu Talib",
+      "Al-'Abbas"
+    ],
+    "explanation": "Hamza, de oom en zoogbroeder van de Profeet ﷺ, aanvaardde de islam in Mekka en werd «de leeuw van Allah» genoemd.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_152",
+    "correctAnswerIndex": 0,
+    "question": "In wiens huis kwamen de eerste moslims in Mekka in het geheim bijeen?",
+    "answers": [
+      "Het huis van al-Arqam",
+      "Het huis van Abu Bakr",
+      "Het huis van Khadija",
+      "Het huis van Abu Talib"
+    ],
+    "explanation": "Het huis van al-Arqam ibn Abi al-Arqam, op de heuvel Safa, was de eerste plaats van samenkomst en onderricht.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_153",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel, die in Mekka de islam aanvaardde, werd later als eerste leraar naar Yathrib gezonden?",
+    "answers": [
+      "Mus'ab ibn 'Umayr",
+      "Bilal ibn Rabah",
+      "Khalid ibn al-Walid",
+      "Abu Hurayra"
+    ],
+    "explanation": "Mus'ab ibn 'Umayr, een jonge Mekkaan van voorname familie, werd na de eed van 'Aqabah naar Yathrib gezonden om de Koran te onderwijzen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_154",
+    "correctAnswerIndex": 0,
+    "question": "Met welk bevel opent soera Al-Muddaththir, waarmee de openbare oproep begon?",
+    "answers": [
+      "«O jij die je bedekt! Sta op en waarschuw»",
+      "«Lees, in de naam van je Heer»",
+      "«Bestrijd de ongelovigen»",
+      "«Emigreer naar Medina»"
+    ],
+    "explanation": "«O jij die je met een kleed bedekt! Sta op en waarschuw.»",
+    "sourceDisplay": "Koran 74:1-2"
+  },
+  {
+    "id": "sira_155",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers gebood de Profeet ﷺ openlijk te verkondigen wat hem bevolen was?",
+    "answers": [
+      "«Verkondig dus openlijk wat jou bevolen is»",
+      "«Wees geduldig»",
+      "«Reciteer in het geheim»",
+      "«Trek je terug»"
+    ],
+    "explanation": "«Verkondig dus openlijk wat jou bevolen is en wend je af van de veelgodendienaars.»",
+    "sourceDisplay": "Koran 15:94"
+  },
+  {
+    "id": "sira_156",
+    "correctAnswerIndex": 0,
+    "question": "Waar hing Quraysh het document van de boycot tegen Banu Hashim op?",
+    "answers": [
+      "Binnen in de Ka'ba",
+      "Op de stadspoort",
+      "Op de markt van 'Ukaz",
+      "Op de heuvel Safa"
+    ],
+    "explanation": "De tekst van de boycot werd binnen in de Ka'ba opgehangen, totdat het pact verbroken werd en het document werd opgegeven.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_157",
+    "correctAnswerIndex": 0,
+    "question": "In wiens tuin in Ta'if zocht de Profeet ﷺ beschutting en ontving hij een tros druiven nadat hij verjaagd was?",
+    "answers": [
+      "De tuin van 'Utba en Shayba, waar de slaaf 'Addas hem bediende",
+      "Het huis van het opperhoofd van Ta'if",
+      "Een voorbijtrekkende karavaan",
+      "Het huis van een smid"
+    ],
+    "explanation": "Gewond en uit Ta'if verjaagd zocht hij beschutting in een tuin, waar hem druiven werden aangeboden, gebracht door een christelijke slaaf genaamd 'Addas.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_158",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel, eerst een felle tegenstander, aanvaardde de islam en kreeg de naam «hij die waarheid van valsheid onderscheidt»?",
+    "answers": [
+      "'Umar ibn al-Khattab",
+      "Abu Sufyan",
+      "Khalid ibn al-Walid",
+      "'Amr ibn al-'As"
+    ],
+    "explanation": "'Umar ibn al-Khattab, aanvankelijk vijandig, aanvaardde de islam in Mekka en kreeg de titel al-Faruq.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_159",
+    "correctAnswerIndex": 0,
+    "question": "Bij welke familie verbleef de Profeet ﷺ bij aankomst in Medina, waar zijn kameel neerknielde?",
+    "answers": [
+      "Bij Abu Ayyub al-Ansari",
+      "Bij Sa'd ibn Mu'adh",
+      "Bij Ubayy ibn Ka'b",
+      "Bij Anas ibn Malik"
+    ],
+    "explanation": "De kameel knielde neer bij het huis van Abu Ayyub al-Ansari, die de Profeet ﷺ bij zijn aankomst ontving.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_160",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de begraafplaats van Medina, waar veel metgezellen begraven liggen?",
+    "answers": [
+      "Al-Baqi'",
+      "Al-Mu'alla",
+      "Al-Hijr",
+      "Al-Quba"
+    ],
+    "explanation": "Baqi' al-Gharqad, naast de moskee van de Profeet ﷺ, is de begraafplaats van Medina.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_161",
+    "correctAnswerIndex": 0,
+    "question": "Welke moskee beschrijft de Koran als «vanaf de eerste dag op vroomheid gegrondvest»?",
+    "answers": [
+      "De moskee van Quba",
+      "De Heilige Moskee",
+      "De Al-Aqsa-moskee",
+      "De moskee van Kufa"
+    ],
+    "explanation": "«Een moskee die vanaf de eerste dag op vroomheid is gegrondvest is waardiger dat jij er in staat.»",
+    "sourceDisplay": "Koran 9:108"
+  },
+  {
+    "id": "sira_162",
+    "correctAnswerIndex": 0,
+    "question": "In welke moskee bad de Profeet ﷺ toen het gebod tot verandering van de qibla werd geopenbaard?",
+    "answers": [
+      "De moskee van de twee qibla's (Masjid al-Qiblatayn)",
+      "De moskee van Quba",
+      "De Heilige Moskee",
+      "De Al-Aqsa-moskee"
+    ],
+    "explanation": "Het gebod kwam tijdens het gebed; de biddenden wendden zich naar de Ka'ba, vandaar de naam «moskee van de twee qibla's».",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_163",
+    "correctAnswerIndex": 0,
+    "question": "Welke verplichting werd de moslims in het tweede jaar van de Hidjra voorgeschreven?",
+    "answers": [
+      "Het vasten van de maand Ramadan",
+      "De bedevaart",
+      "Het nachtgebed",
+      "De reis naar Ta'if"
+    ],
+    "explanation": "Het vasten van Ramadan werd in Medina verplicht gesteld, in het tweede jaar na de Hidjra.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_164",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel zag de woorden van de gebedsoproep in een droom, die de Profeet ﷺ vervolgens overnam?",
+    "answers": [
+      "'Abdullah ibn Zayd",
+      "Bilal ibn Rabah",
+      "Abu Bakr",
+      "Mu'adh ibn Jabal"
+    ],
+    "explanation": "'Abdullah ibn Zayd verhaalde de droom van de adhan; de Profeet ﷺ keurde die goed en droeg Bilal op hem te roepen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_165",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over de handvol stof die de Profeet ﷺ bij Badr wierp?",
+    "answers": [
+      "«Jij wierp niet toen je wierp, maar het was Allah die wierp»",
+      "«Je mikte goed»",
+      "«De wind droeg het mee»",
+      "«De engelen wierpen het»"
+    ],
+    "explanation": "«En jij wierp niet toen je wierp, maar het was Allah die wierp.»",
+    "sourceDisplay": "Koran 8:17"
+  },
+  {
+    "id": "sira_166",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran de toestand van sommige gelovigen toen zij naar Badr vertrokken?",
+    "answers": [
+      "Zij twistten erover alsof zij naar de dood gedreven werden",
+      "Zij waren allen vol ijver",
+      "Zij weigerden te gaan",
+      "Zij vroegen uitstel"
+    ],
+    "explanation": "«Zij twistten met jou over de waarheid nadat die duidelijk was geworden, alsof zij naar de dood werden gedreven.»",
+    "sourceDisplay": "Koran 8:5-6"
+  },
+  {
+    "id": "sira_167",
+    "correctAnswerIndex": 0,
+    "question": "Hoe herinnert de Koran de gelovigen aan hun toestand vóór de overwinning?",
+    "answers": [
+      "Zij waren weinig in aantal en onderdrukt in het land, toen bood Allah hun onderdak en steunde hen",
+      "Zij waren rijk",
+      "Zij waren talrijk",
+      "Zij heersten al"
+    ],
+    "explanation": "«En gedenk toen jullie weinigen waren en onderdrukt in het land… toen bood Hij jullie onderdak en steunde jullie met Zijn hulp.»",
+    "sourceDisplay": "Koran 8:26"
+  },
+  {
+    "id": "sira_168",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel stelde bij Badr voor het leger naar de put het dichtst bij de vijand te verplaatsen?",
+    "answers": [
+      "Al-Hubab ibn al-Mundhir",
+      "Sa'd ibn Mu'adh",
+      "Al-Miqdad",
+      "Az-Zubayr"
+    ],
+    "explanation": "Al-Hubab ibn al-Mundhir vroeg of de stelling openbaring of mening was; toen hem gezegd werd dat het een mening was, stelde hij voor naar de put op te rukken, en de Profeet ﷺ stemde toe.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_169",
+    "correctAnswerIndex": 0,
+    "question": "Wat was de naam van de waterplaats waar de slag bij Badr plaatsvond?",
+    "answers": [
+      "Badr, een put aan de karavaanweg",
+      "Zamzam",
+      "Quba",
+      "Al-Hudaybiyya"
+    ],
+    "explanation": "Badr was een waterplaats aan de karavaanweg tussen Mekka en Syrië; de slag ontleende er haar naam aan.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_170",
+    "correctAnswerIndex": 0,
+    "question": "Welke kwestie over de gevangenen werd na Badr door openbaring behandeld?",
+    "answers": [
+      "Het losgeld dat voor de gevangenen werd aanvaard",
+      "De verdeling van het water",
+      "De keuze van het kamp",
+      "De datum van terugkeer"
+    ],
+    "explanation": "De passage spreekt over de gevangenen en het losgeld, en verklaart dan wat genomen werd toegestaan en goed.",
+    "sourceDisplay": "Koran 8:67-69"
+  },
+  {
+    "id": "sira_171",
+    "correctAnswerIndex": 0,
+    "question": "Wat keerde volgens soera Al-'Imran de situatie bij Uhud na een aanvankelijk succes?",
+    "answers": [
+      "Ongehoorzaamheid en twist over het gegeven bevel",
+      "Het aantal vijanden",
+      "De hitte",
+      "Watergebrek"
+    ],
+    "explanation": "«…totdat jullie de moed verloren en twistten over het bevel en ongehoorzaam waren.»",
+    "sourceDisplay": "Koran 3:152"
+  },
+  {
+    "id": "sira_172",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over hen die op de weg van Allah gedood zijn?",
+    "answers": [
+      "Denk niet dat zij dood zijn: zij leven bij hun Heer",
+      "Zij slapen tot de Laatste Dag",
+      "Zij keren terug",
+      "Zij zijn vergeten"
+    ],
+    "explanation": "«En denk nooit dat zij die op de weg van Allah gedood zijn dood zijn. Nee, zij leven bij hun Heer en worden voorzien.»",
+    "sourceDisplay": "Koran 3:169"
+  },
+  {
+    "id": "sira_173",
+    "correctAnswerIndex": 0,
+    "question": "Op welke heuvel plaatste de Profeet ﷺ de boogschutters bij Uhud?",
+    "answers": [
+      "De Heuvel van de Boogschutters (Jabal ar-Rumat)",
+      "De heuvel Safa",
+      "De berg Thawr",
+      "De berg Hira"
+    ],
+    "explanation": "Vijftig boogschutters werden op een heuvel geplaatst die later «de heuvel van de boogschutters» werd genoemd, met het bevel die niet te verlaten.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_174",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Al-Ahzab de beproeving van het beleg van Medina?",
+    "answers": [
+      "De ogen wendden zich af, de harten stegen tot de kelen",
+      "De stad viel",
+      "Alleen het voedsel raakte op",
+      "De hemel verduisterde"
+    ],
+    "explanation": "«Toen zij van boven jullie en van onder jullie op jullie afkwamen, en toen de ogen zich afwendden en de harten tot de kelen stegen.»",
+    "sourceDisplay": "Koran 33:10"
+  },
+  {
+    "id": "sira_175",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran de afloop van de Slag van de Gracht?",
+    "answers": [
+      "Allah dreef de bondgenoten in hun woede terug, zonder dat zij iets goeds hadden bereikt",
+      "Een lange veldslag",
+      "Een vredesverdrag",
+      "Een moslimterugtocht"
+    ],
+    "explanation": "«En Allah dreef hen die ongelovig waren terug in hun woede, zonder dat zij iets goeds hadden bereikt. En Allah was voor de gelovigen voldoende in de strijd.»",
+    "sourceDisplay": "Koran 33:25"
+  },
+  {
+    "id": "sira_176",
+    "correctAnswerIndex": 0,
+    "question": "Waar ligt Hudaybiyya, de plaats van het beroemde verdrag?",
+    "answers": [
+      "Aan de rand van het heilige gebied, ten westen van Mekka",
+      "Bij Medina",
+      "In Jemen",
+      "In Syrië"
+    ],
+    "explanation": "Hudaybiyya is een plaats aan de rand van het heilige gebied van Mekka, waar het verdrag werd gesloten.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_177",
+    "correctAnswerIndex": 0,
+    "question": "Welk visioen van de Profeet ﷺ bevestigt de Koran na Hudaybiyya?",
+    "answers": [
+      "Dat zij de Heilige Moskee veilig zouden binnengaan, met geschoren of geknipt hoofd",
+      "Dat zij bij Khaybar zouden winnen",
+      "Dat zij een stad zouden bouwen",
+      "Dat zij naar Syrië zouden reizen"
+    ],
+    "explanation": "«Voorzeker heeft Allah Zijn Gezant het visioen in waarheid getoond: jullie zullen de Heilige Moskee zeker veilig binnengaan.»",
+    "sourceDisplay": "Koran 48:27"
+  },
+  {
+    "id": "sira_178",
+    "correctAnswerIndex": 0,
+    "question": "Wat herinnert soera Al-Fath over de handen die bij Mekka werden weerhouden?",
+    "answers": [
+      "Allah weerhield hun handen van jullie en jullie handen van hen binnen Mekka",
+      "Hij beval de strijd",
+      "Hij sloot de wegen af",
+      "Hij zond een storm"
+    ],
+    "explanation": "«En Hij is het die hun handen van jullie weerhield en jullie handen van hen binnen het gebied van Mekka, nadat Hij jullie over hen had doen zegevieren.»",
+    "sourceDisplay": "Koran 48:24"
+  },
+  {
+    "id": "sira_179",
+    "correctAnswerIndex": 0,
+    "question": "In welk jaar van de Hidjra vond de expeditie naar Khaybar plaats?",
+    "answers": [
+      "Het zevende",
+      "Het tweede",
+      "Het vijfde",
+      "Het tiende"
+    ],
+    "explanation": "Khaybar vond plaats in het jaar 7 na de Hidjra, het jaar na het verdrag van Hudaybiyya.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_180",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de 'umrah die het jaar na Hudaybiyya werd verricht, volgens de voorwaarden van het verdrag?",
+    "answers": [
+      "'Umrat al-Qada",
+      "Hijjat al-Wada'",
+      "'Umrat al-Ji'ranah",
+      "Al-Hajj al-Akbar"
+    ],
+    "explanation": "Het verdrag bepaalde dat de moslims het volgende jaar zouden terugkeren; die 'umrah heet 'umrat al-qada.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_181",
+    "correctAnswerIndex": 0,
+    "question": "Welke heerser verscheurde de brief van de Profeet ﷺ bij ontvangst?",
+    "answers": [
+      "De koning van Perzië (Chosroes)",
+      "De Negus van Abessinië",
+      "De gouverneur van Bahrein",
+      "De koning van Jemen"
+    ],
+    "explanation": "De Profeet ﷺ zond brieven aan de naburige heersers; die aan de koning van Perzië werd verscheurd.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_182",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel werd met de brief van de Profeet ﷺ naar de Negus van Abessinië en naar andere heersers gezonden?",
+    "answers": [
+      "'Amr ibn Umayya ad-Damri",
+      "Abu Hurayra",
+      "Anas ibn Malik",
+      "Ubayy ibn Ka'b"
+    ],
+    "explanation": "De boodschappers werden uit de metgezellen gekozen; 'Amr ibn Umayya ad-Damri werd naar de Negus gezonden.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_183",
+    "correctAnswerIndex": 0,
+    "question": "In welke richting ligt Khaybar vanuit Medina?",
+    "answers": [
+      "Naar het noorden",
+      "Naar het zuiden",
+      "Naar het oosten",
+      "Naar het westen, aan zee"
+    ],
+    "explanation": "Khaybar is een versterkte oase ten noorden van Medina, aan de weg naar Syrië.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_184",
+    "correctAnswerIndex": 0,
+    "question": "Wat werd het huis van Abu Sufyan op de dag dat Mekka werd veroverd?",
+    "answers": [
+      "Een plaats van veiligheid voor wie er binnenging",
+      "Een gevangenis",
+      "Een pakhuis",
+      "Een moskee"
+    ],
+    "explanation": "De Profeet ﷺ verklaarde veilig wie de Heilige Moskee binnenging, in zijn eigen huis bleef, of het huis van Abu Sufyan binnenging.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_185",
+    "correctAnswerIndex": 0,
+    "question": "Welk jaar wordt «het jaar van de verovering» ('am al-fath) genoemd?",
+    "answers": [
+      "Het jaar 8 na de Hidjra",
+      "Het jaar 6 na de Hidjra",
+      "Het jaar 10 na de Hidjra",
+      "Het jaar 2 na de Hidjra"
+    ],
+    "explanation": "Mekka werd veroverd in het jaar 8 na de Hidjra, het jaar dat bekendstaat als «het jaar van de verovering».",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_186",
+    "correctAnswerIndex": 0,
+    "question": "Welke veldslag volgde kort na de verovering van Mekka, tegen de stammen van Hawazin?",
+    "answers": [
+      "Hunayn",
+      "Badr",
+      "Uhud",
+      "Khaybar"
+    ],
+    "explanation": "Hunayn vond kort na de verovering plaats, in een vallei tussen Mekka en Ta'if.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_187",
+    "correctAnswerIndex": 0,
+    "question": "Wat zond Allah neer op Zijn Gezant ﷺ en de gelovigen na hun ontsteltenis bij Hunayn?",
+    "answers": [
+      "Zijn rust (sakinah), en troepen die zij niet zagen",
+      "Regen",
+      "Een wind",
+      "Een groep ruiters"
+    ],
+    "explanation": "«Toen zond Allah Zijn rust neer op Zijn Gezant en op de gelovigen en zond troepen neer die jullie niet zagen.»",
+    "sourceDisplay": "Koran 9:26"
+  },
+  {
+    "id": "sira_188",
+    "correctAnswerIndex": 0,
+    "question": "Tegen welke stad trok het moslimleger op na Hunayn?",
+    "answers": [
+      "Ta'if",
+      "Khaybar",
+      "Tabuk",
+      "Sanaa"
+    ],
+    "explanation": "Na Hunayn belegerden de moslims Ta'if, waarvan de inwoners zich hadden opgesloten.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_189",
+    "correctAnswerIndex": 0,
+    "question": "Welke expeditie noemt de Koran «het uur van moeilijkheid» (sa'at al-'usrah)?",
+    "answers": [
+      "Tabuk",
+      "Badr",
+      "Khaybar",
+      "Hunayn"
+    ],
+    "explanation": "«Allah heeft het berouw aanvaard van de Profeet, de uitgewekenen en de helpers die hem volgden in het uur van moeilijkheid.»",
+    "sourceDisplay": "Koran 9:117"
+  },
+  {
+    "id": "sira_190",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over de drie metgezellen die bij Tabuk achterbleven, voordat zij vergeven werden?",
+    "answers": [
+      "De aarde werd hun te eng ondanks haar wijdheid, toen aanvaardde Allah hun berouw",
+      "Zij werden verbannen",
+      "Zij vertrokken naar Jemen",
+      "Zij werden vergeten"
+    ],
+    "explanation": "«En de drie die achtergelaten werden, totdat de aarde hun te eng werd ondanks haar wijdheid… toen aanvaardde Hij hun berouw.»",
+    "sourceDisplay": "Koran 9:118"
+  },
+  {
+    "id": "sira_191",
+    "correctAnswerIndex": 0,
+    "question": "In welke richting ligt Tabuk, het doel van de laatste grote expeditie?",
+    "answers": [
+      "Naar het noorden, richting de Syrische grens",
+      "Naar het zuiden, richting Jemen",
+      "Naar het oosten, richting Irak",
+      "Naar het westen, aan de Rode Zee"
+    ],
+    "explanation": "Tabuk ligt ten noorden van Medina, aan de weg naar Syrië; het was de laatste grote expeditie van de Profeet ﷺ.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_192",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel rustte een groot deel van het leger van Tabuk uit met zijn eigen vermogen?",
+    "answers": [
+      "'Uthman ibn 'Affan",
+      "Sa'd ibn Abi Waqqas",
+      "Talha ibn 'Ubaydillah",
+      "Abu Dharr"
+    ],
+    "explanation": "'Uthman ibn 'Affan leverde een aanzienlijk deel van de uitrusting van «het leger van moeilijkheid» (jaysh al-'usrah).",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_193",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel was de eerste die een pijl afschoot op de weg van Allah?",
+    "answers": [
+      "Sa'd ibn Abi Waqqas",
+      "Az-Zubayr ibn al-'Awwam",
+      "Talha ibn 'Ubaydillah",
+      "Abu 'Ubayda"
+    ],
+    "explanation": "Sa'd ibn Abi Waqqas, een van de eersten die de islam aanvaardde, staat bekend als de eerste die een pijl afschoot op de weg van Allah.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_194",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel wordt «de discipel (hawari) van de Gezant van Allah ﷺ» genoemd?",
+    "answers": [
+      "Az-Zubayr ibn al-'Awwam",
+      "Abu Hurayra",
+      "Salman al-Farisi",
+      "Bilal"
+    ],
+    "explanation": "Az-Zubayr ibn al-'Awwam, de neef van de Profeet ﷺ, werd zijn hawari genoemd, zijn naaste steun.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_195",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel werd de kennis over de huichelaars toevertrouwd, en werd daarom «de bewaarder van het geheim» genoemd?",
+    "answers": [
+      "Hudhayfa ibn al-Yaman",
+      "Abu Musa al-Ash'ari",
+      "'Ammar ibn Yasir",
+      "Abu ad-Darda"
+    ],
+    "explanation": "Hudhayfa ibn al-Yaman staat bekend als «sahib as-sirr», degene aan wie de Profeet ﷺ over de huichelaars vertrouwde.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_196",
+    "correctAnswerIndex": 0,
+    "question": "Waar kwam Salman vandaan, «al-Farisi» genoemd, die de gracht voorstelde?",
+    "answers": [
+      "Uit Perzië",
+      "Uit Jemen",
+      "Uit Abessinië",
+      "Uit Byzantium"
+    ],
+    "explanation": "Salman, van Perzische afkomst, zocht lang naar de waarheid voordat hij zich in Medina bij de Profeet ﷺ voegde.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_197",
+    "correctAnswerIndex": 0,
+    "question": "Welke vrouw, de moeder van Anas ibn Malik, bood de Profeet ﷺ de dienst van haar zoon aan?",
+    "answers": [
+      "Umm Sulaym",
+      "Umm Salama",
+      "Umm Ayman",
+      "Umm Habiba"
+    ],
+    "explanation": "Umm Sulaym van de Ansar stelde haar zoon Anas aan de Profeet ﷺ voor om hem te dienen toen hij in Medina aankwam.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_198",
+    "correctAnswerIndex": 0,
+    "question": "Welke echtgenote van de Profeet ﷺ stond bekend om haar grote geleerdheid en verhaalde veel hadiths?",
+    "answers": [
+      "'Aisha",
+      "Sawda",
+      "Juwayriya",
+      "Maymuna"
+    ],
+    "explanation": "'Aisha, de dochter van Abu Bakr, behoort tot de grootste overleveraars van hadith en is een referentie in religieuze kennis.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_199",
+    "correctAnswerIndex": 0,
+    "question": "Welke echtgenote van de Profeet ﷺ was zijn nicht, en wier huwelijk in soera Al-Ahzab wordt vermeld?",
+    "answers": [
+      "Zaynab bint Jahsh",
+      "Hafsa",
+      "Umm Salama",
+      "Safiyya"
+    ],
+    "explanation": "Het huwelijk met Zaynab bint Jahsh wordt vermeld in soera Al-Ahzab (33:37).",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_200",
+    "correctAnswerIndex": 0,
+    "question": "Welke echtgenote van de Profeet ﷺ gaf de raad die de impasse bij Hudaybiyya doorbrak?",
+    "answers": [
+      "Umm Salama",
+      "'Aisha",
+      "Hafsa",
+      "Zaynab bint Jahsh"
+    ],
+    "explanation": "Umm Salama raadde de Profeet ﷺ aan zelf naar buiten te gaan en het offer en het scheren te verrichten: de metgezellen volgden onmiddellijk.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_201",
+    "correctAnswerIndex": 0,
+    "question": "Wat is de volledige naam van de Profeet ﷺ, tot zijn grootvader?",
+    "answers": [
+      "Muhammad ibn 'Abdillah ibn 'Abd al-Muttalib",
+      "Muhammad ibn Abi Talib",
+      "Muhammad ibn al-'Abbas",
+      "Muhammad ibn Hashim"
+    ],
+    "explanation": "Hij is Mohammed, zoon van 'Abdullah, zoon van 'Abd al-Muttalib, van de stam Quraysh.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_202",
+    "correctAnswerIndex": 0,
+    "question": "Welke andere naam van de Profeet ﷺ, in de Koran genoemd door 'Isa, betekent «meest geprezen»?",
+    "answers": [
+      "Ahmad",
+      "Al-Mustafa",
+      "Al-Amin",
+      "Abu-l-Qasim"
+    ],
+    "explanation": "'Isa kondigde een gezant aan die na hem zou komen «wiens naam Ahmad is» (Koran 61:6).",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_203",
+    "correctAnswerIndex": 0,
+    "question": "Over welke periode werd de Koran aan de Profeet ﷺ geopenbaard?",
+    "answers": [
+      "Ongeveer drieëntwintig jaar",
+      "Tien jaar",
+      "Veertig jaar",
+      "Eén enkele nacht"
+    ],
+    "explanation": "De openbaring besloeg ongeveer drieëntwintig jaar: dertien in Mekka en tien in Medina.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_204",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel was de eerste vrije volwassen man die de islam aanvaardde?",
+    "answers": [
+      "Abu Bakr as-Siddiq",
+      "'Umar ibn al-Khattab",
+      "'Uthman ibn 'Affan",
+      "Sa'd ibn Abi Waqqas"
+    ],
+    "explanation": "Onder de vrije volwassen mannen was Abu Bakr de eerste die gehoor gaf aan de oproep van de Profeet ﷺ.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_205",
+    "correctAnswerIndex": 0,
+    "question": "Welk kind was het eerste dat de islam aanvaardde?",
+    "answers": [
+      "'Ali ibn Abi Talib",
+      "Anas ibn Malik",
+      "Usama ibn Zayd",
+      "'Abdullah ibn 'Umar"
+    ],
+    "explanation": "'Ali ibn Abi Talib, opgegroeid in het huis van de Profeet ﷺ, was de eerste onder de kinderen die geloofde.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_206",
+    "correctAnswerIndex": 0,
+    "question": "Welke vrijgelatene van de Profeet ﷺ was de eerste onder de vrijgelatenen die de islam aanvaardde?",
+    "answers": [
+      "Zayd ibn Haritha",
+      "Bilal ibn Rabah",
+      "Suhayb ar-Rumi",
+      "Salman al-Farisi"
+    ],
+    "explanation": "Zayd ibn Haritha, vrijgelaten en als een zoon opgevoed door de Profeet ﷺ, was de eerste onder de vrijgelatenen die geloofde.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_207",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers beëindigde de wettelijke adoptie, zeggend dat de Profeet ﷺ niet de vader is van een van hun mannen?",
+    "answers": [
+      "«Mohammed is niet de vader van een van jullie mannen, maar de Gezant van Allah en het zegel der profeten»",
+      "«Noem hen naar hun vaders»",
+      "«Bloedbanden gaan voor»",
+      "«Adopteer niet»"
+    ],
+    "explanation": "«Mohammed is niet de vader van een van jullie mannen, maar hij is de Gezant van Allah en de laatste der profeten.»",
+    "sourceDisplay": "Koran 33:40"
+  },
+  {
+    "id": "sira_208",
+    "correctAnswerIndex": 0,
+    "question": "Op welke dag van de week komen moslims bijeen voor het gemeenschapsgebed dat in Medina werd ingesteld?",
+    "answers": [
+      "Vrijdag",
+      "Zaterdag",
+      "Zondag",
+      "Maandag"
+    ],
+    "explanation": "Het vrijdaggebed (al-jumu'ah) werd in Medina ingesteld en brengt de gemeenschap elke week bijeen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_209",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel leidde het gebed tijdens de laatste ziekte van de Profeet ﷺ, op diens eigen bevel?",
+    "answers": [
+      "Abu Bakr as-Siddiq",
+      "'Umar ibn al-Khattab",
+      "'Ali ibn Abi Talib",
+      "Bilal"
+    ],
+    "explanation": "De Profeet ﷺ beval dat Abu Bakr tijdens zijn ziekte het gebed zou leiden; de metgezellen zagen dat als een teken.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_210",
+    "correctAnswerIndex": 0,
+    "question": "Welke kalief werd neergestoken terwijl hij het ochtendgebed leidde?",
+    "answers": [
+      "'Umar ibn al-Khattab",
+      "Abu Bakr",
+      "'Ali ibn Abi Talib",
+      "Mu'awiya"
+    ],
+    "explanation": "'Umar ibn al-Khattab werd tijdens het fadjr-gebed in Medina neergestoken en stierf aan zijn verwondingen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_211",
+    "correctAnswerIndex": 0,
+    "question": "Hoe lang duurde het kalifaat van Abu Bakr?",
+    "answers": [
+      "Ongeveer twee jaar",
+      "Tien jaar",
+      "Twintig jaar",
+      "Dertig jaar"
+    ],
+    "explanation": "Abu Bakr regeerde ongeveer twee jaar tot zijn dood, en 'Umar volgde hem op.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_212",
+    "correctAnswerIndex": 0,
+    "question": "Tegen welke beweging moest Abu Bakr aan het begin van zijn kalifaat optreden?",
+    "answers": [
+      "De weigering van de zakat en de afvalligheid van sommige stammen",
+      "Een invasie uit Perzië",
+      "Een hongersnood",
+      "Een opstand in Medina"
+    ],
+    "explanation": "Het eerste kalifaat begon met de ridda-oorlogen, tegen stammen die de zakat weigerden of de islam verlieten.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_213",
+    "correctAnswerIndex": 0,
+    "question": "Welke titel nam 'Umar ibn al-Khattab aan als hoofd van de gemeenschap?",
+    "answers": [
+      "Amir al-Mu'minin (bevelhebber der gelovigen)",
+      "Sultan",
+      "Malik",
+      "Imam al-Haramayn"
+    ],
+    "explanation": "De titel amir al-mu'minin werd onder 'Umar ingesteld en door de kaliefen na hem gedragen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_214",
+    "correctAnswerIndex": 0,
+    "question": "Welke moskee in Jeruzalem was de eerste qibla van de moslims?",
+    "answers": [
+      "De Al-Aqsa-moskee",
+      "De moskee van Quba",
+      "De moskee van de Profeet ﷺ",
+      "De Heilige Moskee"
+    ],
+    "explanation": "De moslims baden eerst richting Jeruzalem, voordat de qibla naar de Ka'ba werd vastgesteld.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_215",
+    "correctAnswerIndex": 0,
+    "question": "Welke drie moskeeën zijn die waarheen reizen in het bijzonder wordt aangemoedigd?",
+    "answers": [
+      "De Heilige Moskee, de moskee van de Profeet ﷺ en al-Aqsa",
+      "Quba, al-Aqsa en Kufa",
+      "De Heilige Moskee, Quba en Damascus",
+      "Al-Aqsa, Kufa en Basra"
+    ],
+    "explanation": "Reizen wordt in het bijzonder aangemoedigd naar drie moskeeën: de Heilige Moskee, de moskee van de Profeet ﷺ en de Al-Aqsa-moskee.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_216",
+    "correctAnswerIndex": 0,
+    "question": "Waar hield de Profeet ﷺ zijn afscheidspreek, op de dag van 'Arafah?",
+    "answers": [
+      "In de vallei van 'Uranah, bij de berg 'Arafat",
+      "Bij Mina",
+      "Voor de Ka'ba",
+      "Bij Muzdalifah"
+    ],
+    "explanation": "De afscheidspreek werd gehouden op de dag van 'Arafah, in de vallei van 'Uranah aan de voet van de berg 'Arafat.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_217",
+    "correctAnswerIndex": 0,
+    "question": "Wat verklaarde de Profeet ﷺ onschendbaar in zijn afscheidspreek?",
+    "answers": [
+      "Ieders bloed, bezit en eer",
+      "De handelsroutes",
+      "De putten van Medina",
+      "De palmgaarden"
+    ],
+    "explanation": "Hij verklaarde het bloed, het bezit en de eer van de moslims heilig, zo heilig als die dag, die maand en die stad.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_218",
+    "correctAnswerIndex": 0,
+    "question": "Wat liet de Profeet ﷺ zijn gemeenschap na in zijn afscheidspreek, opdat zij niet zou dwalen?",
+    "answers": [
+      "Het Boek van Allah",
+      "Een schat",
+      "Een leger",
+      "Een kaart"
+    ],
+    "explanation": "Hij herinnerde hen eraan dat hij onder hen achterliet waaraan zij zich moesten vasthouden om niet te dwalen: het Boek van Allah.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_219",
+    "correctAnswerIndex": 0,
+    "question": "Welke maand van de moslimkalender markeert de bedevaart die de Profeet ﷺ bij zijn afscheid verrichtte?",
+    "answers": [
+      "Dhul-Hijjah",
+      "Ramadan",
+      "Muharram",
+      "Rajab"
+    ],
+    "explanation": "De afscheidsbedevaart vond plaats in Dhul-Hijjah van het jaar 10 na de Hidjra.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_220",
+    "correctAnswerIndex": 0,
+    "question": "Wie waste en omhulde het lichaam van de Profeet ﷺ na zijn overlijden?",
+    "answers": [
+      "De leden van zijn huis, onder wie 'Ali en al-'Abbas",
+      "Alleen de Ansar",
+      "Bilal en Anas",
+      "De mensen van Quba"
+    ],
+    "explanation": "Zijn eigen huisgenoten verzorgden dat, onder wie 'Ali ibn Abi Talib en zijn oom al-'Abbas.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_221",
+    "correctAnswerIndex": 0,
+    "question": "In welke maand van het hidjra-jaar overleed de Profeet ﷺ?",
+    "answers": [
+      "Rabi' al-Awwal",
+      "Ramadan",
+      "Shawwal",
+      "Dhul-Qa'dah"
+    ],
+    "explanation": "De Profeet ﷺ overleed in Medina in de maand Rabi' al-Awwal, in het jaar 11 na de Hidjra.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_222",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers reciteerde Abu Bakr om de mensen eraan te herinneren dat de Profeet ﷺ sterfelijk was?",
+    "answers": [
+      "«Mohammed is slechts een gezant; vóór hem zijn gezanten heengegaan»",
+      "«Wij zonden jou als een barmhartigheid»",
+      "«Jij bent van een geweldig karakter»",
+      "«Wanneer de hulp van Allah komt»"
+    ],
+    "explanation": "«Mohammed is niet anders dan een gezant. Vóór hem zijn andere gezanten heengegaan. Als hij zou sterven of gedood worden, zouden jullie je dan op je hielen omkeren?»",
+    "sourceDisplay": "Koran 3:144"
+  },
+  {
+    "id": "sira_223",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel staat vooral bekend om het grote aantal hadiths dat hij uit het hoofd leerde?",
+    "answers": [
+      "Abu Hurayra",
+      "Anas ibn Malik",
+      "Jabir ibn 'Abdillah",
+      "Abu Sa'id al-Khudri"
+    ],
+    "explanation": "Abu Hurayra bracht de laatste jaren van de Profeet ﷺ aan diens zijde door en werd de meest productieve overleveraar van hadith.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_224",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel, de neef van de Profeet ﷺ, werd de grote autoriteit op het gebied van de Koranexegese?",
+    "answers": [
+      "'Abdullah ibn 'Abbas",
+      "'Abdullah ibn 'Umar",
+      "'Abdullah ibn Mas'ud",
+      "'Abdullah ibn az-Zubayr"
+    ],
+    "explanation": "'Abdullah ibn 'Abbas, voor wie de Profeet ﷺ om begrip van het Boek bad, werd «de uitlegger van de Koran».",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_225",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel werd door de Profeet ﷺ als gouverneur en rechter naar Jemen gezonden, en stierf jong in Syrië?",
+    "answers": [
+      "Mu'adh ibn Jabal",
+      "Abu 'Ubayda ibn al-Jarrah",
+      "'Amr ibn al-'As",
+      "Khalid ibn al-Walid"
+    ],
+    "explanation": "Mu'adh ibn Jabal, een geleerde onder de metgezellen, werd naar Jemen gezonden en stierf later in Syrië, nog jong.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_226",
+    "correctAnswerIndex": 0,
+    "question": "Welke vallei ligt tussen de twee heuvels Safa en Marwa, die tijdens de bedevaart worden belopen?",
+    "answers": [
+      "De vallei van Mekka, rond de Ka'ba",
+      "De vallei van 'Uranah",
+      "De vallei van Mina",
+      "De vallei van Badr"
+    ],
+    "explanation": "Safa en Marwa zijn twee kleine heuvels in de vallei van Mekka, tegenwoordig binnen de Heilige Moskee gelegen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_227",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee grote Arabische stammen van Medina hadden vóór de komst van de Profeet ﷺ oorlog gevoerd?",
+    "answers": [
+      "De Aws en de Khazraj",
+      "Quraysh en Hawazin",
+      "Thaqif en Kinana",
+      "Tamim en Bakr"
+    ],
+    "explanation": "De Aws en de Khazraj, lange tijd vijanden, vormden samen de Ansar na de komst van de Profeet ﷺ.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_228",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers herinnert de Ansar eraan dat zij vijanden waren en dat Allah hun harten samenbracht?",
+    "answers": [
+      "«Jullie waren vijanden en Hij bracht jullie harten samen»",
+      "«Jullie waren arm»",
+      "«Jullie waren weinigen»",
+      "«Jullie waren verdwaald»"
+    ],
+    "explanation": "«En gedenk de gunst van Allah aan jullie: toen jullie vijanden waren en Hij jullie harten samenbracht, zodat jullie door Zijn gunst broeders werden.»",
+    "sourceDisplay": "Koran 3:103"
+  },
+  {
+    "id": "sira_229",
+    "correctAnswerIndex": 0,
+    "question": "Hoe prijst de Koran de Ansar in hun ontvangst van de uitgewekenen?",
+    "answers": [
+      "Zij geven anderen de voorkeur boven zichzelf, zelfs in eigen nood",
+      "Zij verkochten hun land",
+      "Zij leenden hun geld",
+      "Zij huisvestten hen buiten de stad"
+    ],
+    "explanation": "«En zij geven anderen de voorkeur boven zichzelf, ook al verkeren zij in behoeftigheid. En wie behoed wordt voor de gierigheid van zijn ziel — zij zijn de welslagenden.»",
+    "sourceDisplay": "Koran 59:9"
+  },
+  {
+    "id": "sira_230",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet het geheel van uitspraken, handelingen en goedkeuringen van de Profeet ﷺ?",
+    "answers": [
+      "De Soenna",
+      "De Koran",
+      "De Sira",
+      "De Tafsir"
+    ],
+    "explanation": "De Soenna is wat de Profeet ﷺ zei, deed of goedkeurde; de Sira is het verhaal van zijn leven.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_231",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de generatie na die van de metgezellen?",
+    "answers": [
+      "De Tabi'un (de volgelingen)",
+      "De Ansar",
+      "De Muhajirun",
+      "De Qurra'"
+    ],
+    "explanation": "De Tabi'un zijn zij die de metgezellen ontmoetten zonder de Profeet ﷺ te hebben gezien.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_232",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de keten van overleveraars van een hadith?",
+    "answers": [
+      "De isnad",
+      "De matn",
+      "De tafsir",
+      "De tajwid"
+    ],
+    "explanation": "De isnad is de keten van overlevering; de matn is de tekst van de hadith zelf.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_233",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee hadithverzamelingen gelden als de meest strenge, «de twee Sahihs» genoemd?",
+    "answers": [
+      "Sahih al-Bukhari en Sahih Muslim",
+      "De Sunan van Abu Dawud en at-Tirmidhi",
+      "De Muwatta' en de Musnad",
+      "De Sunan van an-Nasa'i en Ibn Majah"
+    ],
+    "explanation": "Sahih al-Bukhari en Sahih Muslim worden samen «de twee Sahihs» (as-sahihan) genoemd.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_234",
+    "correctAnswerIndex": 0,
+    "question": "In welke stad bevinden zich de moskee van de Profeet ﷺ en zijn graf?",
+    "answers": [
+      "Medina",
+      "Mekka",
+      "Jeruzalem",
+      "Ta'if"
+    ],
+    "explanation": "De moskee van de Profeet ﷺ en zijn graf bevinden zich in Medina, de stad van de Hidjra.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_235",
+    "correctAnswerIndex": 0,
+    "question": "Welke bijnaam draagt Medina, verwijzend naar het licht dat eraan wordt toegeschreven?",
+    "answers": [
+      "Al-Madinah al-Munawwarah (de stralende stad)",
+      "Umm al-Qura",
+      "Dar as-Salam",
+      "Al-Mada'in"
+    ],
+    "explanation": "Medina wordt al-Munawwarah genoemd; Mekka wordt van haar kant al-Mukarramah genoemd.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_236",
+    "correctAnswerIndex": 0,
+    "question": "Welke naam geeft de Koran aan Mekka, «de moeder der steden»?",
+    "answers": [
+      "Umm al-Qura",
+      "Al-Madinah",
+      "Al-Balad al-Amin",
+      "Bakkah"
+    ],
+    "explanation": "«…opdat jij de moeder der steden (Umm al-Qura) en wie eromheen zijn waarschuwt.»",
+    "sourceDisplay": "Koran 6:92"
+  },
+  {
+    "id": "sira_237",
+    "correctAnswerIndex": 0,
+    "question": "Wat was het beroep van de eerste echtgenote van de Profeet ﷺ, Khadija?",
+    "answers": [
+      "Koopvrouw",
+      "Geneeskundige",
+      "Dichteres",
+      "Weefster"
+    ],
+    "explanation": "Khadija bint Khuwaylid was een gerespecteerde koopvrouw van Mekka, die haar karavaan aan de jonge Mohammed ﷺ toevertrouwde.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_238",
+    "correctAnswerIndex": 0,
+    "question": "Hoe lang was de Profeet ﷺ alleen met Khadija getrouwd?",
+    "answers": [
+      "Tot haar dood; tijdens haar leven huwde hij geen andere vrouw",
+      "Twee jaar",
+      "Vijf jaar",
+      "Hij huwde meteen anderen"
+    ],
+    "explanation": "De Profeet ﷺ huwde geen andere vrouw zolang Khadija leefde; de latere huwelijken kwamen na haar dood.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_239",
+    "correctAnswerIndex": 0,
+    "question": "Wat is de naam van de oom van de Profeet ﷺ die hem beschermde zonder de islam te aanvaarden?",
+    "answers": [
+      "Abu Talib",
+      "Hamza",
+      "Al-'Abbas",
+      "Abu Lahab"
+    ],
+    "explanation": "Abu Talib, de vader van 'Ali, beschermde zijn neef tegen Quraysh tot aan zijn dood.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_240",
+    "correctAnswerIndex": 0,
+    "question": "Welke oom van de Profeet ﷺ werd bij Badr gevangengenomen voordat hij de islam aanvaardde?",
+    "answers": [
+      "Al-'Abbas ibn 'Abd al-Muttalib",
+      "Abu Talib",
+      "Hamza",
+      "Az-Zubayr ibn 'Abd al-Muttalib"
+    ],
+    "explanation": "Al-'Abbas, de oom van de Profeet ﷺ en stamvader van de Abbasiden, werd bij Badr gevangengenomen en aanvaardde later de islam.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_241",
+    "correctAnswerIndex": 0,
+    "question": "Hoe worden de metgezellen genoemd die bij de slag van Badr vochten?",
+    "answers": [
+      "De Badriyyun (de mensen van Badr)",
+      "De Ansar",
+      "De Muhajirun",
+      "De Uhudiyyun"
+    ],
+    "explanation": "De metgezellen die bij Badr aanwezig waren staan bekend als de Badriyyun, en die verdienste is aan hen eigen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_242",
+    "correctAnswerIndex": 0,
+    "question": "Welk deel van de buit reserveert de Koran voor Allah, de Gezant, de naaste verwanten, de wezen, de armen en de reiziger?",
+    "answers": [
+      "Een vijfde",
+      "De helft",
+      "Een tiende",
+      "Een derde"
+    ],
+    "explanation": "«Weet dat van alles wat jullie als buit nemen, een vijfde voor Allah en voor de Gezant is, en voor de naaste verwanten, de wezen, de behoeftigen en de reiziger.»",
+    "sourceDisplay": "Koran 8:41"
+  },
+  {
+    "id": "sira_243",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers, vaak samen met de afscheidspreek aangehaald, grondvest de gelijkheid van volkeren voor Allah?",
+    "answers": [
+      "«De edelste van jullie bij Allah is de meest godvrezende»",
+      "«De mensen stammen van één vader»",
+      "«Geen ziel draagt de last van een ander»",
+      "«Er is geen dwang in de godsdienst»"
+    ],
+    "explanation": "«O mensen, Wij hebben jullie geschapen uit een man en een vrouw… de edelste van jullie bij Allah is de meest godvrezende.»",
+    "sourceDisplay": "Koran 49:13"
+  },
+  {
+    "id": "sira_244",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel mensen namen deel aan de tweede eed van 'Aqabah, de beslissende ontmoeting met de mensen van Yathrib?",
+    "answers": [
+      "Een delegatie van meer dan zeventig personen",
+      "Drie",
+      "Tien",
+      "Vijfhonderd"
+    ],
+    "explanation": "De tweede eed van 'Aqabah bracht een delegatie van meer dan zeventig mannen en vrouwen uit Yathrib bijeen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_245",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel naqibs (verantwoordelijke hoofden) liet de Profeet ﷺ bij de eed van 'Aqabah onder de mensen van Yathrib aanstellen?",
+    "answers": [
+      "Twaalf",
+      "Vier",
+      "Zeven",
+      "Twintig"
+    ],
+    "explanation": "Twaalf naqibs werden gekozen om de groepen van de delegatie uit Yathrib te vertegenwoordigen en voor hun eed in te staan.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_246",
+    "correctAnswerIndex": 0,
+    "question": "Welke naam kreeg Medina na de Hidjra?",
+    "answers": [
+      "Madinat an-Nabi, de stad van de Profeet ﷺ",
+      "Yathrib",
+      "Alleen Taybah",
+      "Al-Qura"
+    ],
+    "explanation": "Yathrib kreeg de naam Madinat an-Nabi, «de stad van de Profeet ﷺ», afgekort tot al-Madinah.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_247",
+    "correctAnswerIndex": 0,
+    "question": "Welke kalief liet officiële afschriften van de Koran maken en naar de provincies zenden?",
+    "answers": [
+      "'Uthman ibn 'Affan",
+      "Abu Bakr",
+      "'Umar",
+      "'Ali"
+    ],
+    "explanation": "Abu Bakr liet de tekst verzamelen; 'Uthman liet officiële afschriften maken en naar de belangrijkste steden zenden.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_248",
+    "correctAnswerIndex": 0,
+    "question": "In welke taal werd de Koran aan de Profeet ﷺ geopenbaard?",
+    "answers": [
+      "Het Arabisch",
+      "Het Aramees",
+      "Het Perzisch",
+      "Het Grieks"
+    ],
+    "explanation": "De Koran werd geopenbaard in duidelijk Arabisch, de taal van het eigen volk van de Profeet ﷺ.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_249",
+    "correctAnswerIndex": 0,
+    "question": "Welke metgezel zond de Profeet ﷺ naar Bahrein, die met de schatting ervan terugkeerde?",
+    "answers": [
+      "Abu 'Ubayda ibn al-Jarrah",
+      "Bilal",
+      "Anas ibn Malik",
+      "Abu Dharr"
+    ],
+    "explanation": "Abu 'Ubayda ibn al-Jarrah, «de betrouwbare van deze gemeenschap» genoemd, keerde uit Bahrein terug met de schatting ervan.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
+    "id": "sira_250",
+    "correctAnswerIndex": 0,
+    "question": "Welke gebeurtenis markeert het begin van de moslimkalender?",
+    "answers": [
+      "De Hidjra van Mekka naar Medina",
+      "De geboorte van de Profeet ﷺ",
+      "De eerste openbaring",
+      "De verovering van Mekka"
+    ],
+    "explanation": "De hidjra-kalender begint met het jaar van de Hidjra, een besluit dat tijdens het kalifaat van 'Umar werd genomen.",
+    "sourceDisplay": "Sira, vaststaand feit"
+  },
+  {
     "id": "quran_025",
     "correctAnswerIndex": 0,
     "question": "Welke soera is genoemd naar de olifant?",
@@ -5408,6 +8008,916 @@
     "sourceDisplay": "Koran 27:30"
   },
   {
+    "id": "quran_081",
+    "correctAnswerIndex": 0,
+    "question": "Waarover ondervragen de mensen elkaar, aan het begin van soera An-Naba?",
+    "answers": [
+      "Over de grote tijding",
+      "Over de regen",
+      "Over de sterren",
+      "Over de oogsten"
+    ],
+    "explanation": "«Waarover ondervragen zij elkaar? Over de grote tijding.»",
+    "sourceDisplay": "Koran 78:1-2"
+  },
+  {
+    "id": "quran_082",
+    "correctAnswerIndex": 0,
+    "question": "Wat betekent «Al-Qari'ah», de titel van soera 101?",
+    "answers": [
+      "De Slaande Ramp",
+      "De dageraad",
+      "De karavaan",
+      "De berg"
+    ],
+    "explanation": "«De Slaande Ramp! Wat is de Slaande Ramp? En wat doet jou weten wat zij is?» — het is een naam van de Laatste Dag.",
+    "sourceDisplay": "Koran 101:1-3"
+  },
+  {
+    "id": "quran_083",
+    "correctAnswerIndex": 0,
+    "question": "Wat wacht in soera Al-Qari'ah degene wiens weegschaal licht weegt?",
+    "answers": [
+      "Een afgrond (Hawiyah) als verblijf",
+      "Een tuin",
+      "Een bron",
+      "Een huis"
+    ],
+    "explanation": "«Maar wat hem betreft wiens weegschaal licht weegt, zijn verblijf zal een afgrond zijn.»",
+    "sourceDisplay": "Koran 101:6-9"
+  },
+  {
+    "id": "quran_084",
+    "correctAnswerIndex": 0,
+    "question": "Waartegen waarschuwt soera At-Takathur?",
+    "answers": [
+      "De wedijver in het vergaren, die afleidt",
+      "Het reizen",
+      "De honger",
+      "Het zwijgen"
+    ],
+    "explanation": "«De wedijver in vermeerdering leidt jullie af, totdat jullie de graven bezoeken.»",
+    "sourceDisplay": "Koran 102:1"
+  },
+  {
+    "id": "quran_085",
+    "correctAnswerIndex": 0,
+    "question": "Tegen wie opent soera Al-Humazah met «Wee…»?",
+    "answers": [
+      "Iedere lasteraar en kwaadspreker",
+      "De reiziger",
+      "De slaper",
+      "De arme"
+    ],
+    "explanation": "«Wee iedere lasteraar en kwaadspreker, die rijkdom vergaart en telt.»",
+    "sourceDisplay": "Koran 104:1"
+  },
+  {
+    "id": "quran_086",
+    "correctAnswerIndex": 0,
+    "question": "Wat vraagt soera Quraysh van Quraysh, in ruil voor de winter- en zomerreizen?",
+    "answers": [
+      "De Heer van dit Huis te aanbidden, die hen voedde en veilig stelde",
+      "Muren te bouwen",
+      "De handel te staken",
+      "Naar Jemen te vertrekken"
+    ],
+    "explanation": "«Laat hen dan de Heer van dit Huis aanbidden, die hen tegen honger voedde en hen veilig stelde tegen vrees.»",
+    "sourceDisplay": "Koran 106:3-4"
+  },
+  {
+    "id": "quran_087",
+    "correctAnswerIndex": 0,
+    "question": "Met welke vraag opent soera Ash-Sharh?",
+    "answers": [
+      "«Hebben Wij jouw borst niet verruimd?»",
+      "«Heb je niet gezien?»",
+      "«Wie heeft jou geschapen?»",
+      "«Waar ga je heen?»"
+    ],
+    "explanation": "«Hebben Wij jouw borst niet voor jou verruimd?»",
+    "sourceDisplay": "Koran 94:1"
+  },
+  {
+    "id": "quran_088",
+    "correctAnswerIndex": 0,
+    "question": "Waarbij zweert Allah aan het begin van soera At-Tin?",
+    "answers": [
+      "Bij de vijg, de olijf, de berg Sinai en deze veilige stad",
+      "Bij de nacht en de dag",
+      "Bij de sterren",
+      "Bij de zee"
+    ],
+    "explanation": "«Bij de vijg en de olijf, bij de berg Sinai, en bij deze veilige stad.»",
+    "sourceDisplay": "Koran 95:1-3"
+  },
+  {
+    "id": "quran_089",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera At-Tin de schepping van de mens?",
+    "answers": [
+      "In de beste vorm",
+      "Zwak en klein",
+      "Uit vuur",
+      "Uit licht"
+    ],
+    "explanation": "«Voorzeker, Wij hebben de mens in de beste gestalte geschapen.»",
+    "sourceDisplay": "Koran 95:4"
+  },
+  {
+    "id": "quran_090",
+    "correctAnswerIndex": 0,
+    "question": "Bij welke stad zweert Allah aan het begin van soera Al-Balad?",
+    "answers": [
+      "Mekka, waar de Profeet ﷺ verbleef",
+      "Medina",
+      "Jeruzalem",
+      "Ta'if"
+    ],
+    "explanation": "«Ik zweer bij deze stad, en jij bent een bewoner van deze stad.»",
+    "sourceDisplay": "Koran 90:1-2"
+  },
+  {
+    "id": "quran_091",
+    "correctAnswerIndex": 0,
+    "question": "Wat is de «steile weg» die soera Al-Balad beschrijft?",
+    "answers": [
+      "Een slaaf bevrijden, een wees of een behoeftige voeden op een dag van honger",
+      "De woestijn oversteken",
+      "Een berg beklimmen",
+      "De zee oversteken"
+    ],
+    "explanation": "«En wat doet jou weten wat de steile weg is? Het is het bevrijden van een slaaf, of het voeden op een dag van hevige honger van een verwante wees, of een behoeftige in ellende.»",
+    "sourceDisplay": "Koran 90:12-16"
+  },
+  {
+    "id": "quran_092",
+    "correctAnswerIndex": 0,
+    "question": "Waarbij zweert Allah aan het begin van soera Al-Layl?",
+    "answers": [
+      "Bij de nacht wanneer die bedekt en de dag wanneer die verschijnt",
+      "Bij de zee en de berg",
+      "Bij de vijg en de olijf",
+      "Bij de pen"
+    ],
+    "explanation": "«Bij de nacht wanneer die bedekt, en bij de dag wanneer die verschijnt… voorwaar, jullie streven is verschillend.»",
+    "sourceDisplay": "Koran 92:1-4"
+  },
+  {
+    "id": "quran_093",
+    "correctAnswerIndex": 0,
+    "question": "Met welk gebod opent soera Al-A'la?",
+    "answers": [
+      "«Verheerlijk de naam van jouw Heer, de Allerhoogste»",
+      "«Lees»",
+      "«Sta op»",
+      "«Luister»"
+    ],
+    "explanation": "«Verheerlijk de naam van jouw Heer, de Allerhoogste.»",
+    "sourceDisplay": "Koran 87:1"
+  },
+  {
+    "id": "quran_094",
+    "correctAnswerIndex": 0,
+    "question": "Waarover spreekt het begin van soera Al-Ghashiyah?",
+    "answers": [
+      "De overweldigende gebeurtenis: de Laatste Dag",
+      "Een reis",
+      "Een markt",
+      "Een veldslag"
+    ],
+    "explanation": "«Heeft het bericht van de Overweldigende jou bereikt?»",
+    "sourceDisplay": "Koran 88:1"
+  },
+  {
+    "id": "quran_095",
+    "correctAnswerIndex": 0,
+    "question": "Over welk schepsel nodigt soera Al-Ghashiyah uit na te denken?",
+    "answers": [
+      "De kameel, en hoe hij geschapen is",
+      "De leeuw",
+      "De adelaar",
+      "De vis"
+    ],
+    "explanation": "«Kijken zij dan niet naar de kamelen, hoe zij geschapen zijn?»",
+    "sourceDisplay": "Koran 88:17"
+  },
+  {
+    "id": "quran_096",
+    "correctAnswerIndex": 0,
+    "question": "Waarbij zweert Allah aan het begin van soera Al-Buruj?",
+    "answers": [
+      "Bij de hemel met de sterrenbeelden",
+      "Bij de aarde",
+      "Bij de rivieren",
+      "Bij de wolken"
+    ],
+    "explanation": "«Bij de hemel met de sterrenbeelden, en bij de beloofde Dag.»",
+    "sourceDisplay": "Koran 85:1"
+  },
+  {
+    "id": "quran_097",
+    "correctAnswerIndex": 0,
+    "question": "Waarnaar verwijst «At-Tariq», de titel van soera 86?",
+    "answers": [
+      "De doordringende nachtster",
+      "De deur",
+      "De weg",
+      "De donder"
+    ],
+    "explanation": "«Bij de hemel en de nachtelijke komer — en wat doet jou weten wat de nachtelijke komer is? Het is de doordringende ster.»",
+    "sourceDisplay": "Koran 86:1-3"
+  },
+  {
+    "id": "quran_098",
+    "correctAnswerIndex": 0,
+    "question": "Welke gebeurtenis beschrijft het begin van soera Az-Zalzalah?",
+    "answers": [
+      "De aarde die door haar beving geschud wordt",
+      "Een stortregen",
+      "Een hevige wind",
+      "Een verduistering"
+    ],
+    "explanation": "«Wanneer de aarde door haar laatste beving geschud wordt, en de aarde haar lasten uitwerpt.»",
+    "sourceDisplay": "Koran 99:1"
+  },
+  {
+    "id": "quran_099",
+    "correctAnswerIndex": 0,
+    "question": "Welke maatstaf stelt het einde van soera Az-Zalzalah voor de daden?",
+    "answers": [
+      "Het gewicht van een stofdeeltje, zowel goed als kwaad",
+      "Een schepel",
+      "Een jaar",
+      "Een hand"
+    ],
+    "explanation": "«Wie dan het gewicht van een stofdeeltje aan goeds doet, zal het zien; en wie het gewicht van een stofdeeltje aan kwaad doet, zal het zien.»",
+    "sourceDisplay": "Koran 99:7-8"
+  },
+  {
+    "id": "quran_100",
+    "correctAnswerIndex": 0,
+    "question": "Waarnaar verwijst «Al-'Adiyat», de titel van soera 100?",
+    "answers": [
+      "De rennende paarden die hijgend galopperen",
+      "De winden",
+      "De golven",
+      "De wolken"
+    ],
+    "explanation": "«Bij de rennenden, hijgend; en de vonkenslaanden bij het treffen; en de bestormers bij de dageraad.»",
+    "sourceDisplay": "Koran 100:1-5"
+  },
+  {
+    "id": "quran_101",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Al-Baqarah het Boek in haar tweede vers?",
+    "answers": [
+      "Een boek waarover geen twijfel bestaat, een leiding voor de godvrezenden",
+      "Een geschiedenisboek",
+      "Een dichtbundel",
+      "Een boek van louter wetten"
+    ],
+    "explanation": "«Dit is het Boek waarover geen twijfel bestaat, een leiding voor hen die Allah vrezen.»",
+    "sourceDisplay": "Koran 2:2"
+  },
+  {
+    "id": "quran_102",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers belooft de bewaring van de geopenbaarde Vermaning?",
+    "answers": [
+      "«Voorwaar, Wij hebben de Vermaning neergezonden, en voorwaar, Wij zijn haar bewaker»",
+      "«Niemand zal haar lezen»",
+      "«Zij zal vergeten worden»",
+      "«Zij zal verborgen worden»"
+    ],
+    "explanation": "«Voorwaar, Wij zijn het die de Koran hebben neergezonden en voorwaar, Wij zijn er de bewaker van.»",
+    "sourceDisplay": "Koran 15:9"
+  },
+  {
+    "id": "quran_103",
+    "correctAnswerIndex": 0,
+    "question": "Welk argument voert de Koran aan over zijn vrijheid van tegenspraak?",
+    "answers": [
+      "Was hij van een ander dan Allah gekomen, dan zouden zij er veel tegenspraak in vinden",
+      "Dat hij kort is",
+      "Dat hij in het Arabisch is",
+      "Dat hij oud is"
+    ],
+    "explanation": "«Bedenken zij de Koran dan niet? Als hij van een ander dan Allah was geweest, dan zouden zij er veel tegenspraak in gevonden hebben.»",
+    "sourceDisplay": "Koran 4:82"
+  },
+  {
+    "id": "quran_104",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran dat er met een berg zou zijn gebeurd, als hij daarop was neergezonden?",
+    "answers": [
+      "Hij zou zich vernederd hebben en uiteengespleten uit vrees voor Allah",
+      "Hij zou geschitterd hebben",
+      "Hij zou verplaatst zijn",
+      "Hij zou groen geworden zijn"
+    ],
+    "explanation": "«Als Wij deze Koran op een berg hadden neergezonden, dan zou je die zich zien vernederen en uiteenspatten uit vrees voor Allah.»",
+    "sourceDisplay": "Koran 59:21"
+  },
+  {
+    "id": "quran_105",
+    "correctAnswerIndex": 0,
+    "question": "Hoe gebiedt de Koran dat hij gereciteerd wordt, in soera Al-Muzzammil?",
+    "answers": [
+      "Afgemeten en duidelijk (tartil)",
+      "Zo snel mogelijk",
+      "In stilte",
+      "Zingend"
+    ],
+    "explanation": "«En reciteer de Koran met afgemeten recitatie.»",
+    "sourceDisplay": "Koran 73:4"
+  },
+  {
+    "id": "quran_106",
+    "correctAnswerIndex": 0,
+    "question": "Wat moet men doen wanneer de Koran gereciteerd wordt, volgens soera Al-A'raf?",
+    "answers": [
+      "Luisteren en zwijgen",
+      "Hardop antwoorden",
+      "Weggaan",
+      "Schrijven"
+    ],
+    "explanation": "«En wanneer de Koran wordt gereciteerd, luister er dan naar en zwijg, opdat jullie barmhartigheid ontvangen.»",
+    "sourceDisplay": "Koran 7:204"
+  },
+  {
+    "id": "quran_107",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran te zeggen voordat men begint te lezen?",
+    "answers": [
+      "Bij Allah toevlucht zoeken tegen de verworpen satan",
+      "De verzen tellen",
+      "De wassing hardop uitspreken",
+      "Het laatste vers reciteren"
+    ],
+    "explanation": "«Wanneer jij de Koran leest, zoek dan bij Allah toevlucht tegen de verworpen satan.»",
+    "sourceDisplay": "Koran 16:98"
+  },
+  {
+    "id": "quran_108",
+    "correctAnswerIndex": 0,
+    "question": "Waarom werd het Boek neergezonden, volgens soera Sad?",
+    "answers": [
+      "Opdat over zijn verzen nagedacht wordt en de bezitters van verstand vermaand worden",
+      "Opdat het gekopieerd wordt",
+      "Opdat het geteld wordt",
+      "Opdat het verborgen wordt"
+    ],
+    "explanation": "«Dit is een gezegend Boek dat Wij aan jou hebben neergezonden, opdat zij over zijn verzen nadenken.»",
+    "sourceDisplay": "Koran 38:29"
+  },
+  {
+    "id": "quran_109",
+    "correctAnswerIndex": 0,
+    "question": "Welke uitdaging richt soera Al-Isra tot mensen en djinn samen?",
+    "answers": [
+      "Iets voort te brengen als deze Koran, zelfs elkaar helpend",
+      "De hemelen over te steken",
+      "De sterren te tellen",
+      "Een stad te bouwen"
+    ],
+    "explanation": "«Als de mensen en de djinn zich zouden verenigen om iets voort te brengen als deze Koran, dan zouden zij niet iets dergelijks kunnen voortbrengen, ook al zouden zij elkaar helpen.»",
+    "sourceDisplay": "Koran 17:88"
+  },
+  {
+    "id": "quran_110",
+    "correctAnswerIndex": 0,
+    "question": "Welke smeekbede leert de Koran aangaande kennis?",
+    "answers": [
+      "«Mijn Heer, vermeerder mij in kennis»",
+      "«Mijn Heer, geef mij rijkdom»",
+      "«Mijn Heer, verleng mijn leven»",
+      "«Mijn Heer, open de wegen voor mij»"
+    ],
+    "explanation": "«En zeg: mijn Heer, vermeerder mij in kennis.»",
+    "sourceDisplay": "Koran 20:114"
+  },
+  {
+    "id": "quran_111",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Az-Zumar het beste van de neergezonden verhalen?",
+    "answers": [
+      "Een Boek van gelijkende, herhaalde delen, waarvan de huid huivert",
+      "Een kort boek",
+      "Een wetboek",
+      "Een boek in dichtvorm"
+    ],
+    "explanation": "«Allah heeft het beste verhaal neergezonden: een consistent Boek waarin herhaling is. De huid van hen die hun Heer vrezen huivert ervan.»",
+    "sourceDisplay": "Koran 39:23"
+  },
+  {
+    "id": "quran_112",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee vergelijkt de Koran een goed woord, in soera Ibrahim?",
+    "answers": [
+      "Met een goede boom, met vaste wortel en takken in de hemel",
+      "Met een rivier",
+      "Met een berg",
+      "Met een ster"
+    ],
+    "explanation": "«Een goed woord is als een goede boom, waarvan de wortel stevig staat en de takken in de hemel reiken; hij geeft zijn vruchten in elk seizoen.»",
+    "sourceDisplay": "Koran 14:24-25"
+  },
+  {
+    "id": "quran_113",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee vergelijkt soera Ar-Ra'd waarheid en valsheid?",
+    "answers": [
+      "Met het schuim dat de stroom meevoert, en wat de mensen baat en blijft",
+      "Met twee bergen",
+      "Met twee steden",
+      "Met twee karavanen"
+    ],
+    "explanation": "«Wat het schuim betreft, dat verdwijnt als afval; maar wat de mensen baat blijft op de aarde.»",
+    "sourceDisplay": "Koran 13:17"
+  },
+  {
+    "id": "quran_114",
+    "correctAnswerIndex": 0,
+    "question": "Waardoor komen de harten tot rust, volgens soera Ar-Ra'd?",
+    "answers": [
+      "Door het gedenken van Allah",
+      "Door rijkdom",
+      "Door reizen",
+      "Door slaap"
+    ],
+    "explanation": "«Weet dat de harten tot rust komen door het gedenken van Allah.»",
+    "sourceDisplay": "Koran 13:28"
+  },
+  {
+    "id": "quran_115",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt soera Al-Kahf over de inkt die nodig is om de woorden van Allah te schrijven?",
+    "answers": [
+      "De zee zou opdrogen voordat de woorden van zijn Heer uitgeput zijn",
+      "Eén inktpot zou volstaan",
+      "Eén nacht zou volstaan",
+      "Zeven pennen zouden volstaan"
+    ],
+    "explanation": "«Als de zee inkt was voor de woorden van mijn Heer, dan zou de zee uitgeput raken voordat de woorden van mijn Heer uitgeput zijn.»",
+    "sourceDisplay": "Koran 18:109"
+  },
+  {
+    "id": "quran_116",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel zeeën zouden volgens soera Luqman de woorden van Allah nog steeds niet uitputten?",
+    "answers": [
+      "Zeven zeeën erbij, en nog steeds niet genoeg",
+      "Eén",
+      "Drie",
+      "Twaalf"
+    ],
+    "explanation": "«En als alle bomen op aarde pennen waren en de zee inkt, aangevuld met nog zeven zeeën, dan zouden de woorden van Allah niet uitgeput raken.»",
+    "sourceDisplay": "Koran 31:27"
+  },
+  {
+    "id": "quran_117",
+    "correctAnswerIndex": 0,
+    "question": "Welk bezwaar zou volgens de Koran zijn geopperd, als hij in een vreemde taal aan een Arabische gezant was geopenbaard?",
+    "answers": [
+      "«Waarom zijn zijn verzen niet uitvoerig uitgelegd?»",
+      "«Hij is te kort»",
+      "«Hij is te lang»",
+      "«Hij heeft geen titel»"
+    ],
+    "explanation": "«En als Wij er een Koran in een vreemde taal van hadden gemaakt, dan zouden zij zeggen: “Waarom zijn zijn verzen niet uitgelegd?”»",
+    "sourceDisplay": "Koran 41:44"
+  },
+  {
+    "id": "quran_118",
+    "correctAnswerIndex": 0,
+    "question": "Waarheen leidt de Koran, volgens soera Al-Isra?",
+    "answers": [
+      "Naar wat het meest juist is",
+      "Naar rijkdom",
+      "Naar macht",
+      "Naar rust"
+    ],
+    "explanation": "«Voorwaar, deze Koran leidt naar wat het meest juist is, en verkondigt de gelovigen die goede daden verrichten een grote beloning.»",
+    "sourceDisplay": "Koran 17:9"
+  },
+  {
+    "id": "quran_119",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Yunus wat van de Heer is neergedaald?",
+    "answers": [
+      "Een vermaning, een genezing voor wat in de borsten is, leiding en barmhartigheid",
+      "Een afrekening",
+      "Een koninklijk decreet",
+      "Een verdrag"
+    ],
+    "explanation": "«O mensen, er is een vermaning van jullie Heer tot jullie gekomen en een genezing voor wat in de borsten is, en een leiding en barmhartigheid voor de gelovigen.»",
+    "sourceDisplay": "Koran 10:57"
+  },
+  {
+    "id": "quran_120",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Al-Baqarah de rol van de Koran als criterium?",
+    "answers": [
+      "Leiding voor de mensen, duidelijke bewijzen, en het onderscheid",
+      "Een rekeningenboek",
+      "Een verhalenbundel",
+      "Een strafwetboek"
+    ],
+    "explanation": "«De maand Ramadan waarin de Koran werd neergezonden, als leiding voor de mensen en duidelijke bewijzen van de leiding en het onderscheid.»",
+    "sourceDisplay": "Koran 2:185"
+  },
+  {
+    "id": "quran_121",
+    "correctAnswerIndex": 0,
+    "question": "Waarbij zweert Allah aan het begin van soera Qaf?",
+    "answers": [
+      "Bij de glorierijke Koran",
+      "Bij de berg",
+      "Bij de wind",
+      "Bij de dageraad"
+    ],
+    "explanation": "«Qaf. Bij de eerbiedwaardige Koran.»",
+    "sourceDisplay": "Koran 50:1"
+  },
+  {
+    "id": "quran_122",
+    "correctAnswerIndex": 0,
+    "question": "Waarnaar verwijst «Al-Mursalat», de titel van soera 77?",
+    "answers": [
+      "Zij die uitgezonden worden, de een na de ander",
+      "De karavanen",
+      "De sterren",
+      "De rivieren"
+    ],
+    "explanation": "«Bij hen die uitgezonden worden in vlagen, de een na de ander.»",
+    "sourceDisplay": "Koran 77:1"
+  },
+  {
+    "id": "quran_123",
+    "correctAnswerIndex": 0,
+    "question": "Welk register noemt soera Al-Mutaffifin voor de rechtschapenen?",
+    "answers": [
+      "'Illiyyun",
+      "Sijjin",
+      "Al-Lawh",
+      "Az-Zabur"
+    ],
+    "explanation": "«Het register van de rechtschapenen is in 'Illiyyun… een beschreven boek, waarvan de nabije engelen getuigen.»",
+    "sourceDisplay": "Koran 83:18-21"
+  },
+  {
+    "id": "quran_124",
+    "correctAnswerIndex": 0,
+    "question": "Met welke gebeurtenis opent soera Al-Inshiqaq?",
+    "answers": [
+      "De hemel die splijt",
+      "De zee die overstroomt",
+      "De aarde die groen wordt",
+      "De zon die opkomt"
+    ],
+    "explanation": "«Wanneer de hemel splijt en naar haar Heer luistert, zoals het haar past.»",
+    "sourceDisplay": "Koran 84:1-2"
+  },
+  {
+    "id": "quran_125",
+    "correctAnswerIndex": 0,
+    "question": "Met welk teken opent soera At-Takwir?",
+    "answers": [
+      "De zon die opgerold wordt",
+      "De maan die splijt",
+      "De wind die opsteekt",
+      "De donder"
+    ],
+    "explanation": "«Wanneer de zon in duisternis wordt opgerold, en wanneer de sterren vallen en hun glans verliezen.»",
+    "sourceDisplay": "Koran 81:1"
+  },
+  {
+    "id": "quran_126",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt het laatste vers van soera Al-Baqarah over de last die een ziel wordt opgelegd?",
+    "answers": [
+      "Allah belast een ziel niet boven haar vermogen",
+      "Elke ziel draagt het dubbele",
+      "Niemand wordt beproefd",
+      "Alle lasten zijn gelijk"
+    ],
+    "explanation": "«Allah belast een ziel slechts naar haar vermogen.»",
+    "sourceDisplay": "Koran 2:286"
+  },
+  {
+    "id": "quran_127",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee vergelijkt de Koran het besteden op de weg van Allah?",
+    "answers": [
+      "Met een korrel die zeven aren voortbrengt, elk met honderd korrels",
+      "Met een steen",
+      "Met een put",
+      "Met een lamp"
+    ],
+    "explanation": "«Het voorbeeld van hen die hun bezit besteden op de weg van Allah is als een korrel die zeven aren voortbrengt; in elke aar honderd korrels.»",
+    "sourceDisplay": "Koran 2:261"
+  },
+  {
+    "id": "quran_128",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee wordt de aalmoes vergeleken die door verwijt en krenking teniet wordt gedaan?",
+    "answers": [
+      "Met een rots bedekt met aarde, die door een stortbui kaal wordt gespoeld",
+      "Met een vruchtboom",
+      "Met een bron",
+      "Met een huis"
+    ],
+    "explanation": "«Zijn voorbeeld is als dat van een gladde rots waarop aarde ligt en die door een stortbui wordt getroffen die haar kaal achterlaat.»",
+    "sourceDisplay": "Koran 2:264"
+  },
+  {
+    "id": "quran_129",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee vergelijkt de Koran de daden van de ongelovigen in soera An-Nur?",
+    "answers": [
+      "Met een luchtspiegeling op een vlakte, die de dorstige voor water houdt",
+      "Met een berg",
+      "Met regen",
+      "Met een tuin"
+    ],
+    "explanation": "«En zij die ongelovig zijn — hun daden zijn als een luchtspiegeling in een vlakte, die de dorstige voor water houdt, totdat hij er komt en niets vindt.»",
+    "sourceDisplay": "Koran 24:39"
+  },
+  {
+    "id": "quran_130",
+    "correctAnswerIndex": 0,
+    "question": "Welke vraag opent soera Al-'Ankabut, na de losse letters?",
+    "answers": [
+      "«Denken de mensen dat zij met rust gelaten worden om te zeggen “wij geloven” zonder beproefd te worden?»",
+      "«Waar zijn de hemelen?»",
+      "«Wie schiep de zee?»",
+      "«Wat doen jullie morgen?»"
+    ],
+    "explanation": "«Denken de mensen dat zij met rust gelaten worden om te zeggen “wij geloven”, en dat zij niet beproefd worden?»",
+    "sourceDisplay": "Koran 29:1-2"
+  },
+  {
+    "id": "quran_131",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Fatir de engelen in haar eerste vers?",
+    "answers": [
+      "Gezanten met vleugels, twee, drie of vier",
+      "Geschapen uit klei",
+      "Van onbekend aantal",
+      "Op mensen gelijkend"
+    ],
+    "explanation": "«Lof zij Allah, Schepper van de hemelen en de aarde, die de engelen tot gezanten maakte met vleugels, twee, drie of vier.»",
+    "sourceDisplay": "Koran 35:1"
+  },
+  {
+    "id": "quran_132",
+    "correctAnswerIndex": 0,
+    "question": "Welk teken noemt soera Ar-Rum aangaande echtgenoten?",
+    "answers": [
+      "Dat Hij tussen hen genegenheid en barmhartigheid heeft gelegd",
+      "Dat zij apart leven",
+      "Dat zij samenwerken",
+      "Dat zij reizen"
+    ],
+    "explanation": "«En tot Zijn tekenen behoort dat Hij voor jullie uit jullie eigen midden echtgenoten schiep opdat jullie rust bij hen vinden, en Hij legde tussen jullie genegenheid en barmhartigheid.»",
+    "sourceDisplay": "Koran 30:21"
+  },
+  {
+    "id": "quran_133",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee tekenen noemt soera Ar-Rum vlak na de schepping van de hemelen en de aarde?",
+    "answers": [
+      "De verscheidenheid van talen en kleuren",
+      "De dag en de nacht",
+      "De wind en de regen",
+      "De zee en de berg"
+    ],
+    "explanation": "«En tot Zijn tekenen behoort de schepping van de hemelen en de aarde en de verscheidenheid van jullie talen en jullie kleuren.»",
+    "sourceDisplay": "Koran 30:22"
+  },
+  {
+    "id": "quran_134",
+    "correctAnswerIndex": 0,
+    "question": "Waaruit heeft Allah volgens soera Al-Anbiya alles wat leeft gemaakt?",
+    "answers": [
+      "Uit water",
+      "Uit vuur",
+      "Uit steen",
+      "Uit lucht"
+    ],
+    "explanation": "«En Wij maakten uit water alles wat leeft. Zullen zij dan niet geloven?»",
+    "sourceDisplay": "Koran 21:30"
+  },
+  {
+    "id": "quran_135",
+    "correctAnswerIndex": 0,
+    "question": "Welk argument geeft de Koran tegen een veelheid aan goden, in soera Al-Anbiya?",
+    "answers": [
+      "Waren er goden naast Allah geweest, dan zouden hemel en aarde te gronde zijn gegaan",
+      "Zij zouden zich verbergen",
+      "Zij zouden zwijgen",
+      "Zij zouden verdwijnen"
+    ],
+    "explanation": "«Als er in de hemelen en op de aarde goden naast Allah waren geweest, dan zouden beide te gronde zijn gegaan.»",
+    "sourceDisplay": "Koran 21:22"
+  },
+  {
+    "id": "quran_136",
+    "correctAnswerIndex": 0,
+    "question": "Welke drie zaken gebiedt Allah volgens vers 16:90?",
+    "answers": [
+      "Rechtvaardigheid, voortreffelijkheid, en het geven aan verwanten",
+      "Vasten, gebed en bedevaart",
+      "Handel, reizen en schrijven",
+      "Zwijgen, geduld en afzondering"
+    ],
+    "explanation": "«Voorwaar, Allah gebiedt rechtvaardigheid, goed gedrag en het geven aan verwanten.»",
+    "sourceDisplay": "Koran 16:90"
+  },
+  {
+    "id": "quran_137",
+    "correctAnswerIndex": 0,
+    "question": "Waaruit komt volgens soera An-Nahl een drank van verschillende kleuren waarin genezing is voor de mensen?",
+    "answers": [
+      "Uit de buiken van de bijen",
+      "Uit de zee",
+      "Uit de palmbomen",
+      "Uit bergbronnen"
+    ],
+    "explanation": "«Uit hun buiken komt een drank van verschillende kleuren waarin genezing is voor de mensen.»",
+    "sourceDisplay": "Koran 16:69"
+  },
+  {
+    "id": "quran_138",
+    "correctAnswerIndex": 0,
+    "question": "Hoe opent soera Ar-Rahman?",
+    "answers": [
+      "«De Erbarmer heeft de Koran onderwezen»",
+      "«Bij de nacht»",
+      "«Lof zij Allah»",
+      "«Lees»"
+    ],
+    "explanation": "«De Erbarmer heeft de Koran onderwezen, de mens geschapen, en hem de duidelijke uitdrukking geleerd.»",
+    "sourceDisplay": "Koran 55:1-4"
+  },
+  {
+    "id": "quran_139",
+    "correctAnswerIndex": 0,
+    "question": "In hoeveel groepen verdeelt soera Al-Waqi'ah de mensen op de Laatste Dag?",
+    "answers": [
+      "Drie",
+      "Twee",
+      "Vier",
+      "Zeven"
+    ],
+    "explanation": "«En jullie worden in drie soorten verdeeld: de mensen van de rechterzijde, de mensen van de linkerzijde, en de voorgangers.»",
+    "sourceDisplay": "Koran 56:7-10"
+  },
+  {
+    "id": "quran_140",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee vergelijkt de Koran hen die de Thora dragen zonder ernaar te handelen?",
+    "answers": [
+      "Met een ezel die boeken draagt",
+      "Met een vogel",
+      "Met een berg",
+      "Met een schip"
+    ],
+    "explanation": "«Het voorbeeld van hen aan wie de Thora werd toevertrouwd en die haar vervolgens niet op zich namen, is als dat van een ezel die boekdelen draagt.»",
+    "sourceDisplay": "Koran 62:5"
+  },
+  {
+    "id": "quran_141",
+    "correctAnswerIndex": 0,
+    "question": "Welke vrouw houdt de Koran de gelovigen als voorbeeld voor, met haar verzoek om een huis bij Allah?",
+    "answers": [
+      "De vrouw van Farao",
+      "De koningin van Saba",
+      "De vrouw van Nuh",
+      "De vrouw van Lut"
+    ],
+    "explanation": "«En Allah geeft een voorbeeld voor hen die geloven: de vrouw van Farao, toen zij zei: “Mijn Heer, bouw voor mij bij U een huis in het Paradijs.”»",
+    "sourceDisplay": "Koran 66:11"
+  },
+  {
+    "id": "quran_142",
+    "correctAnswerIndex": 0,
+    "question": "Onder welke andere naam is soera Al-Ikhlas vaak bekend, naar haar onderwerp?",
+    "answers": [
+      "De soera van de eenheid (at-tawhid)",
+      "De soera van de reis",
+      "De soera van het licht",
+      "De soera van de buit"
+    ],
+    "explanation": "Al-Ikhlas, «zuivere toewijding», wordt ook de soera van tawhid genoemd, want zij beschrijft Allah als de Ene.",
+    "sourceDisplay": "Koran 112:1"
+  },
+  {
+    "id": "quran_143",
+    "correctAnswerIndex": 0,
+    "question": "Wat ontkent het derde vers van soera Al-Ikhlas?",
+    "answers": [
+      "Dat Hij verwekte of verwekt werd",
+      "Dat Hij machtig is",
+      "Dat Hij hoort",
+      "Dat Hij schept"
+    ],
+    "explanation": "«Hij verwekt niet en Hij is niet verwekt.»",
+    "sourceDisplay": "Koran 112:3"
+  },
+  {
+    "id": "quran_144",
+    "correctAnswerIndex": 0,
+    "question": "Waartegen zoekt soera An-Nas toevlucht?",
+    "answers": [
+      "De terugtrekkende influisteraar, van de djinn en de mensen",
+      "De storm",
+      "De ziekte",
+      "De armoede"
+    ],
+    "explanation": "«…tegen het kwaad van de terugtrekkende influisteraar, die in de borsten van de mensen influistert, van de djinn en de mensen.»",
+    "sourceDisplay": "Koran 114:4-6"
+  },
+  {
+    "id": "quran_145",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel afzonderlijke kwaden noemt soera Al-Falaq na «het kwaad van wat Hij geschapen heeft»?",
+    "answers": [
+      "Drie: de invallende nacht, zij die op knopen blazen, en de benijder",
+      "Eén",
+      "Vijf",
+      "Zeven"
+    ],
+    "explanation": "«…tegen het kwaad van de duisternis wanneer die invalt, tegen het kwaad van hen die op knopen blazen, en tegen het kwaad van een benijder wanneer hij benijdt.»",
+    "sourceDisplay": "Koran 113:2-5"
+  },
+  {
+    "id": "quran_146",
+    "correctAnswerIndex": 0,
+    "question": "Welk vers van Al-Fatihah verwoordt de kern van de aanbidding en van het vragen om hulp?",
+    "answers": [
+      "«U alleen aanbidden wij en U alleen vragen wij om hulp»",
+      "«Lof zij Allah»",
+      "«Leid ons»",
+      "«Heerser van de Dag des Oordeels»"
+    ],
+    "explanation": "«U alleen aanbidden wij en U alleen vragen wij om hulp.»",
+    "sourceDisplay": "Koran 1:5"
+  },
+  {
+    "id": "quran_147",
+    "correctAnswerIndex": 0,
+    "question": "Welk verzoek sluit soera Al-Fatihah af?",
+    "answers": [
+      "Geleid te worden op het rechte pad, het pad van hen die begunstigd zijn",
+      "Rijkdom",
+      "Overwinning",
+      "Een lang leven"
+    ],
+    "explanation": "«Leid ons op het rechte pad, het pad van hen aan wie U gunst hebt geschonken.»",
+    "sourceDisplay": "Koran 1:6-7"
+  },
+  {
+    "id": "quran_148",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee soorten verzen onderscheidt soera Al-'Imran?",
+    "answers": [
+      "Duidelijke verzen (muhkamat) en meerduidige verzen (mutashabihat)",
+      "De lange en de korte",
+      "De Mekkaanse en de Medinensische",
+      "De gereciteerde en de geschreven"
+    ],
+    "explanation": "«Hij is het die het Boek aan jou heeft neergezonden: daarin zijn eenduidige verzen — zij zijn de grondslag van het Boek — en andere die meerduidig zijn.»",
+    "sourceDisplay": "Koran 3:7"
+  },
+  {
+    "id": "quran_149",
+    "correctAnswerIndex": 0,
+    "question": "Welk beginsel stelt vers 2:106 over vervangen verzen?",
+    "answers": [
+      "Allah brengt een beter of gelijkwaardig vers",
+      "Zij worden zonder vervanging gewist",
+      "Zij worden vergeten",
+      "Zij worden door mensen herschreven"
+    ],
+    "explanation": "«Wij schaffen geen vers af of doen het vergeten of Wij brengen een beter of daaraan gelijk vers.»",
+    "sourceDisplay": "Koran 2:106"
+  },
+  {
+    "id": "quran_150",
+    "correctAnswerIndex": 0,
+    "question": "Waarover zal de Gezant ﷺ bij zijn Heer klagen, volgens soera Al-Furqan?",
+    "answers": [
+      "Dat zijn volk deze Koran in de steek heeft gelaten",
+      "Dat hij vermoeid is",
+      "Dat hij alleen is",
+      "Dat hij arm is"
+    ],
+    "explanation": "«En de Gezant zal zeggen: “Mijn Heer, voorwaar, mijn volk heeft deze Koran als iets verlatens beschouwd.”»",
+    "sourceDisplay": "Koran 25:30"
+  },
+  {
     "id": "faith_019",
     "correctAnswerIndex": 0,
     "question": "Welk Boek openbaarde Allah aan de profeet Musa?",
@@ -6084,6 +9594,1046 @@
     "sourceDisplay": "Koran 51:58"
   },
   {
+    "id": "faith_071",
+    "correctAnswerIndex": 0,
+    "question": "Wat betekent de naam van Allah «As-Salam»?",
+    "answers": [
+      "De Vrede, vrij van elk gebrek",
+      "De Schepper",
+      "De Voorziener",
+      "De Machtige"
+    ],
+    "explanation": "As-Salam behoort tot de namen die aan het einde van soera Al-Hashr worden opgesomd: Hij is de Vrede, vrij van elke onvolkomenheid.",
+    "sourceDisplay": "Koran 59:23"
+  },
+  {
+    "id": "faith_072",
+    "correctAnswerIndex": 0,
+    "question": "Welke eigenschappen plaatst vers 59:22 naast de naam van Allah, direct na «er is geen god dan Hij»?",
+    "answers": [
+      "Kenner van het onwaarneembare en het waarneembare, de Erbarmer",
+      "De Koning en de Krijger",
+      "De Rijke en de Vrijgevige",
+      "De Sterke en de Snelle"
+    ],
+    "explanation": "«Hij is Allah, buiten wie er geen god is, Kenner van het onwaarneembare en het waarneembare. Hij is de Erbarmer, de Meest Barmhartige.»",
+    "sourceDisplay": "Koran 59:22"
+  },
+  {
+    "id": "faith_073",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran te doen met de mooiste namen van Allah?",
+    "answers": [
+      "Hem daarmee aan te roepen",
+      "Ze alleen te tellen",
+      "Ze op deuren te schrijven",
+      "Erover te zwijgen"
+    ],
+    "explanation": "«En aan Allah behoren de mooiste namen, roep Hem daarmee dus aan.»",
+    "sourceDisplay": "Koran 7:180"
+  },
+  {
+    "id": "faith_074",
+    "correctAnswerIndex": 0,
+    "question": "Hoe stelt soera Ta-Ha de namen van Allah voor?",
+    "answers": [
+      "«Allah — er is geen god dan Hij. Aan Hem behoren de mooiste namen»",
+      "«Zijn namen zijn verborgen»",
+      "«Zijn namen zijn ontelbaar»",
+      "«Zijn namen zijn er negen»"
+    ],
+    "explanation": "«Allah — er is geen god dan Hij. Aan Hem behoren de mooiste namen.»",
+    "sourceDisplay": "Koran 20:8"
+  },
+  {
+    "id": "faith_075",
+    "correctAnswerIndex": 0,
+    "question": "Welke formulering gebruikt de Koran om elke gelijkenis met Allah uit te sluiten?",
+    "answers": [
+      "«Niets is aan Hem gelijk, en Hij is de Alhorende, de Alziende»",
+      "«Hij is de grootste der koningen»",
+      "«Hij is als licht»",
+      "«Niemand ziet Hem»"
+    ],
+    "explanation": "«Niets is aan Hem gelijk, en Hij is de Alhorende, de Alziende.»",
+    "sourceDisplay": "Koran 42:11"
+  },
+  {
+    "id": "faith_076",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt het Troonvers over sluimer en slaap?",
+    "answers": [
+      "Sluimer noch slaap overvalt Hem",
+      "Hij slaapt 's nachts",
+      "Hij rust op de zevende dag",
+      "Hij waakt om de dag"
+    ],
+    "explanation": "«Sluimer noch slaap overvalt Hem.»",
+    "sourceDisplay": "Koran 2:255"
+  },
+  {
+    "id": "faith_077",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over Allah's kennis van een vallend blad?",
+    "answers": [
+      "Er valt geen blad of Hij weet ervan",
+      "Hij verneemt het naderhand",
+      "De engelen lichten Hem in",
+      "Het wordt niet opgeschreven"
+    ],
+    "explanation": "«En bij Hem zijn de sleutels van het onwaarneembare… er valt geen blad of Hij weet ervan.»",
+    "sourceDisplay": "Koran 6:59"
+  },
+  {
+    "id": "faith_078",
+    "correctAnswerIndex": 0,
+    "question": "Dan wat is Allah dichter bij de mens, volgens soera Qaf?",
+    "answers": [
+      "Dan zijn halsslagader",
+      "Dan zijn schaduw",
+      "Dan zijn stem",
+      "Dan zijn huis"
+    ],
+    "explanation": "«En Wij hebben de mens geschapen en Wij weten wat zijn ziel hem influistert, en Wij zijn dichter bij hem dan zijn halsslagader.»",
+    "sourceDisplay": "Koran 50:16"
+  },
+  {
+    "id": "faith_079",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran de engelen die over het Vuur zijn aangesteld?",
+    "answers": [
+      "Zij gehoorzamen Allah en doen wat hun bevolen wordt",
+      "Sommigen van hen aarzelen",
+      "Zij slapen",
+      "Zij kiezen"
+    ],
+    "explanation": "«…engelen, streng en hard, die Allah niet ongehoorzaam zijn in wat Hij hun beveelt en die doen wat hun bevolen wordt.»",
+    "sourceDisplay": "Koran 66:6"
+  },
+  {
+    "id": "faith_080",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran de engelen ten opzichte van Allah's woord?",
+    "answers": [
+      "Zij gaan Hem niet vóór in het spreken en handelen op Zijn bevel",
+      "Zij betwisten Zijn bevelen",
+      "Zij beslissen zelf",
+      "Zij zwijgen altijd"
+    ],
+    "explanation": "«Nee, zij zijn geëerde dienaren. Zij gaan Hem niet vóór in het spreken, en zij handelen op Zijn bevel.»",
+    "sourceDisplay": "Koran 21:26-27"
+  },
+  {
+    "id": "faith_081",
+    "correctAnswerIndex": 0,
+    "question": "Welke engel noemt de Koran als degene die de openbaring op het hart van de Profeet ﷺ neerbracht?",
+    "answers": [
+      "Jibril (Gabriël)",
+      "Mika'il (Michaël)",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "«Zeg: wie een vijand is van Jibril — hij is het die haar met toestemming van Allah op jouw hart heeft neergebracht.»",
+    "sourceDisplay": "Koran 2:97"
+  },
+  {
+    "id": "faith_082",
+    "correctAnswerIndex": 0,
+    "question": "Welke andere engel wordt naast Jibril genoemd in soera Al-Baqarah?",
+    "answers": [
+      "Mikal (Michaël)",
+      "Israfil",
+      "Ridwan",
+      "Munkar"
+    ],
+    "explanation": "«Wie een vijand is van Allah en Zijn engelen en Zijn gezanten en Jibril en Mikal…»",
+    "sourceDisplay": "Koran 2:98"
+  },
+  {
+    "id": "faith_083",
+    "correctAnswerIndex": 0,
+    "question": "Welke geloofsobjecten somt vers 4:136 op?",
+    "answers": [
+      "Allah, Zijn Gezant, het neergezonden Boek, en de Boeken daarvóór",
+      "Alleen het Boek",
+      "Alleen de profeten",
+      "Alleen de engelen"
+    ],
+    "explanation": "«O jullie die geloven, gelooft in Allah en Zijn Gezant en het Boek dat Hij aan Zijn Gezant heeft neergezonden en de Schrift die Hij daarvóór heeft neergezonden.»",
+    "sourceDisplay": "Koran 4:136"
+  },
+  {
+    "id": "faith_084",
+    "correctAnswerIndex": 0,
+    "question": "Welk Boek noemt de Koran als aan Dawud gegeven?",
+    "answers": [
+      "De Zabur (de Psalmen)",
+      "De Thora",
+      "Het Evangelie",
+      "De Bladen van Ibrahim"
+    ],
+    "explanation": "«…en Wij gaven aan Dawud de Zabur.»",
+    "sourceDisplay": "Koran 17:55"
+  },
+  {
+    "id": "faith_085",
+    "correctAnswerIndex": 0,
+    "question": "Welke soera is genoemd naar de djinn, die de Koran hoorden en geloofden?",
+    "answers": [
+      "Al-Jinn",
+      "Al-Insan",
+      "An-Nas",
+      "Al-Furqan"
+    ],
+    "explanation": "«Zeg: aan mij is geopenbaard dat een groep djinn luisterde en zei: wij hebben een wonderbaarlijke recitatie gehoord.»",
+    "sourceDisplay": "Koran 72:1"
+  },
+  {
+    "id": "faith_086",
+    "correctAnswerIndex": 0,
+    "question": "Waarvoor werden djinn en mensen geschapen, volgens soera Adh-Dhariyat?",
+    "answers": [
+      "Opdat zij Hem aanbidden",
+      "Om de aarde te vullen",
+      "Om te bouwen",
+      "Om te twisten"
+    ],
+    "explanation": "«En Ik heb de djinn en de mensen slechts geschapen om Mij te aanbidden.»",
+    "sourceDisplay": "Koran 51:56"
+  },
+  {
+    "id": "faith_087",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over elke ziel en de dood?",
+    "answers": [
+      "Elke ziel zal de dood proeven",
+      "Sommige zielen sterven niet",
+      "De dood is een twijfel",
+      "De dood is een eindeloze slaap"
+    ],
+    "explanation": "«Elke ziel zal de dood proeven, en jullie zullen pas op de Dag der Opstanding jullie volle beloning ontvangen.»",
+    "sourceDisplay": "Koran 3:185"
+  },
+  {
+    "id": "faith_088",
+    "correctAnswerIndex": 0,
+    "question": "In welke toestand zullen de mensen volgens soera Az-Zalzalah tevoorschijn komen, om hun daden te zien?",
+    "answers": [
+      "In verspreide groepen",
+      "Allen samen in één rij",
+      "Slapend",
+      "Zwijgend en onzichtbaar"
+    ],
+    "explanation": "«Op die Dag zullen de mensen in verspreide groepen vertrekken om hun daden getoond te krijgen.»",
+    "sourceDisplay": "Koran 99:6"
+  },
+  {
+    "id": "faith_089",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Al-Kahf het register van daden op de Laatste Dag?",
+    "answers": [
+      "Het laat niets kleins of groots onvermeld",
+      "Het noteert alleen grote daden",
+      "Het wordt uitgewist",
+      "Het is door mensen geschreven"
+    ],
+    "explanation": "«Zij zullen zeggen: “Wee ons! Wat is dit voor boek dat niets kleins of groots overslaat zonder het op te tekenen?”»",
+    "sourceDisplay": "Koran 18:49"
+  },
+  {
+    "id": "faith_090",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over de ledematen op de Dag des Oordeels?",
+    "answers": [
+      "De handen zullen spreken en de voeten zullen getuigen",
+      "Zij zullen zwijgen",
+      "Zij zullen verborgen worden",
+      "Zij zullen veranderd worden"
+    ],
+    "explanation": "«Op die Dag verzegelen Wij hun monden, en hun handen zullen tot Ons spreken en hun voeten zullen getuigen over wat zij plachten te verdienen.»",
+    "sourceDisplay": "Koran 36:65"
+  },
+  {
+    "id": "faith_091",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran het gebed met betrekking tot zijn tijdstippen?",
+    "answers": [
+      "Een voorschrift op vastgestelde tijden",
+      "Vrij op elk uur",
+      "Eens per week",
+      "Alleen 's nachts"
+    ],
+    "explanation": "«Voorwaar, het gebed is de gelovigen op vastgestelde tijden voorgeschreven.»",
+    "sourceDisplay": "Koran 4:103"
+  },
+  {
+    "id": "faith_092",
+    "correctAnswerIndex": 0,
+    "question": "Waarvan weerhoudt het gebed, volgens soera Al-'Ankabut?",
+    "answers": [
+      "Van zedeloosheid en het verwerpelijke",
+      "Van honger",
+      "Van ziekte",
+      "Van reizen"
+    ],
+    "explanation": "«En onderhoud het gebed: voorwaar, het gebed weerhoudt van zedeloosheid en het verwerpelijke.»",
+    "sourceDisplay": "Koran 29:45"
+  },
+  {
+    "id": "faith_093",
+    "correctAnswerIndex": 0,
+    "question": "Welk gebed licht de Koran eruit als «het middelste gebed»?",
+    "answers": [
+      "Het wordt genoemd zonder te worden benoemd, in het gebod de gebeden te bewaken",
+      "Alleen het ochtendgebed",
+      "Alleen het avondgebed",
+      "Het vrijdaggebed"
+    ],
+    "explanation": "«Waak zorgvuldig over de gebeden en over het middelste gebed, en sta voor Allah in deemoedige gehoorzaamheid.»",
+    "sourceDisplay": "Koran 2:238"
+  },
+  {
+    "id": "faith_094",
+    "correctAnswerIndex": 0,
+    "question": "Om welke reden gebiedt de Koran het gebed, in soera Ta-Ha?",
+    "answers": [
+      "Voor het gedenken van Allah",
+      "Voor rust",
+      "Voor de samenkomst",
+      "Om de uren te tellen"
+    ],
+    "explanation": "«Voorwaar, Ik ben Allah. Er is geen god dan Ik, aanbid Mij dus en onderhoud het gebed om Mij te gedenken.»",
+    "sourceDisplay": "Koran 20:14"
+  },
+  {
+    "id": "faith_095",
+    "correctAnswerIndex": 0,
+    "question": "Welke hoedanigheid van het gebed opent de lijst van welslagende gelovigen, in Al-Mu'minun?",
+    "answers": [
+      "Deemoed (khushu') in het gebed",
+      "De lengte",
+      "De snelheid",
+      "Het aantal"
+    ],
+    "explanation": "«Voorzeker, de gelovigen zullen welslagen: zij die deemoedig zijn in hun gebed.»",
+    "sourceDisplay": "Koran 23:1-2"
+  },
+  {
+    "id": "faith_096",
+    "correctAnswerIndex": 0,
+    "question": "Welk gebed beschrijft soera Al-Isra als «bijgewoond» (mashhudah)?",
+    "answers": [
+      "De recitatie bij dageraad",
+      "Het avondgebed",
+      "Het middaggebed",
+      "Het vrijdaggebed"
+    ],
+    "explanation": "«Onderhoud het gebed vanaf het neigen van de zon tot de duisternis van de nacht, en de recitatie bij dageraad: voorwaar, de recitatie bij dageraad wordt bijgewoond.»",
+    "sourceDisplay": "Koran 17:78"
+  },
+  {
+    "id": "faith_097",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee zaken gebiedt de Koran als hulp te zoeken?",
+    "answers": [
+      "Geduld en gebed",
+      "Kracht en rijkdom",
+      "Reizen en rust",
+      "Zwijgen en afzondering"
+    ],
+    "explanation": "«O jullie die geloven, zoek hulp door geduld en gebed. Voorwaar, Allah is met de geduldigen.»",
+    "sourceDisplay": "Koran 2:153"
+  },
+  {
+    "id": "faith_098",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel rak'ah telt het verplichte Dhuhr-gebed?",
+    "answers": [
+      "Vier",
+      "Twee",
+      "Drie",
+      "Vijf"
+    ],
+    "explanation": "Dhuhr, 'Asr en 'Isha tellen elk vier verplichte rak'ah; de scholen zijn het hierover eens.",
+    "sourceDisplay": "Gangbare term"
+  },
+  {
+    "id": "faith_099",
+    "correctAnswerIndex": 0,
+    "question": "Welk is het laatste van de vijf verplichte dagelijkse gebeden?",
+    "answers": [
+      "Al-'Isha",
+      "Al-Fajr",
+      "Al-Maghrib",
+      "Al-'Asr"
+    ],
+    "explanation": "De volgorde is: Fajr, Dhuhr, 'Asr, Maghrib, 'Isha.",
+    "sourceDisplay": "Gangbare term"
+  },
+  {
+    "id": "faith_100",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de knielhouding in het gebed?",
+    "answers": [
+      "De sujud",
+      "De ruku'",
+      "De qiyam",
+      "De tashahhud"
+    ],
+    "explanation": "Qiyam is het staan, ruku' het buigen, sujud het neerknielen, en tashahhud het zitten van de getuigenis.",
+    "sourceDisplay": "Gangbare term"
+  },
+  {
+    "id": "faith_101",
+    "correctAnswerIndex": 0,
+    "question": "Wat voorziet de Koran voor de zieke of de reiziger tijdens Ramadan?",
+    "answers": [
+      "Een gelijk aantal dagen om in te halen",
+      "Helemaal niets",
+      "Een dubbele verplichting",
+      "Een eeuwigdurend vasten"
+    ],
+    "explanation": "«Wie van jullie ziek is of op reis, een gelijk aantal andere dagen dan.»",
+    "sourceDisplay": "Koran 2:184"
+  },
+  {
+    "id": "faith_102",
+    "correctAnswerIndex": 0,
+    "question": "Welk doel geeft de Koran aan het voorgeschreven vasten?",
+    "answers": [
+      "Godvrezendheid (taqwa) bereiken",
+      "Afvallen",
+      "Geld besparen",
+      "Rusten"
+    ],
+    "explanation": "«Het vasten is jullie voorgeschreven zoals het aan hen vóór jullie was voorgeschreven, opdat jullie godvrezend worden.»",
+    "sourceDisplay": "Koran 2:183"
+  },
+  {
+    "id": "faith_103",
+    "correctAnswerIndex": 0,
+    "question": "Wat antwoordt Allah, te midden van de verzen over het vasten, aan wie naar Zijn nabijheid vraagt?",
+    "answers": [
+      "«Ik ben nabij: Ik verhoor de roep van de roeper wanneer hij Mij aanroept»",
+      "«Wacht de nacht af»",
+      "«Vraag het de engelen»",
+      "«Zoek ver weg»"
+    ],
+    "explanation": "«En wanneer Mijn dienaren jou over Mij vragen: voorwaar, Ik ben nabij. Ik verhoor de smeekbede van de smekeling wanneer hij Mij aanroept.»",
+    "sourceDisplay": "Koran 2:186"
+  },
+  {
+    "id": "faith_104",
+    "correctAnswerIndex": 0,
+    "question": "Hoeveel categorieën van zakat-ontvangers somt de Koran op?",
+    "answers": [
+      "Acht",
+      "Drie",
+      "Vijf",
+      "Twaalf"
+    ],
+    "explanation": "«De zakat is slechts voor de armen, de behoeftigen, hen die haar innen, hen wier harten gewonnen moeten worden, voor het vrijkopen van gevangenen, voor de schuldenaars, op de weg van Allah, en voor de reiziger.»",
+    "sourceDisplay": "Koran 9:60"
+  },
+  {
+    "id": "faith_105",
+    "correctAnswerIndex": 0,
+    "question": "Welk effect schrijft de Koran toe aan de zakat die van het vermogen wordt genomen?",
+    "answers": [
+      "Zij reinigt en doet groeien",
+      "Zij verarmt",
+      "Zij is symbolisch",
+      "Zij vervangt het gebed"
+    ],
+    "explanation": "«Neem van hun bezittingen een aalmoes waarmee jij hen reinigt en hen doet groeien.»",
+    "sourceDisplay": "Koran 9:103"
+  },
+  {
+    "id": "faith_106",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee verplichtingen koppelt de Koran het vaakst samen?",
+    "answers": [
+      "Het gebed en de zakat",
+      "Vasten en reizen",
+      "Bedevaart en handel",
+      "Lezen en schrijven"
+    ],
+    "explanation": "«En onderhoud het gebed en geef de zakat; al het goede dat jullie voor jezelf vooruitzenden, zullen jullie bij Allah terugvinden.»",
+    "sourceDisplay": "Koran 2:110"
+  },
+  {
+    "id": "faith_107",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran dat Allah bereikt bij het offer?",
+    "answers": [
+      "Noch het vlees noch het bloed, maar de godvrezendheid van de gelovige",
+      "Alleen het vlees",
+      "Alleen het bloed",
+      "Het aantal dieren"
+    ],
+    "explanation": "«Hun vlees zal Allah niet bereiken, noch hun bloed, maar wat Hem bereikt is godvrezendheid van jullie kant.»",
+    "sourceDisplay": "Koran 22:37"
+  },
+  {
+    "id": "faith_108",
+    "correctAnswerIndex": 0,
+    "question": "Wat is de beste proviand voor de bedevaart, volgens de Koran?",
+    "answers": [
+      "Godvrezendheid (taqwa)",
+      "Goud",
+      "Voedsel",
+      "Rijdieren"
+    ],
+    "explanation": "«En neem proviand mee, maar voorwaar, de beste proviand is godvrezendheid.»",
+    "sourceDisplay": "Koran 2:197"
+  },
+  {
+    "id": "faith_109",
+    "correctAnswerIndex": 0,
+    "question": "Welke ritus noemt de Koran rond het Aloude Huis?",
+    "answers": [
+      "De omgang (tawaf)",
+      "Het rennen in de woestijn",
+      "Het beklimmen van een heuvel",
+      "Het vasten ter plaatse"
+    ],
+    "explanation": "«…en laat hen de tawaf rond het Aloude Huis verrichten.»",
+    "sourceDisplay": "Koran 22:29"
+  },
+  {
+    "id": "faith_110",
+    "correctAnswerIndex": 0,
+    "question": "Waar gebiedt de Koran Allah te gedenken, na het vertrek uit 'Arafat?",
+    "answers": [
+      "Bij al-Mash'ar al-Haram, in Muzdalifah",
+      "Op de berg Uhud",
+      "In Quba",
+      "In Ta'if"
+    ],
+    "explanation": "«Maar wanneer jullie van 'Arafat vertrekken, gedenk dan Allah bij al-Mash'ar al-Haram.»",
+    "sourceDisplay": "Koran 2:198"
+  },
+  {
+    "id": "faith_111",
+    "correctAnswerIndex": 0,
+    "question": "Welk soort berouw vraagt de Koran van de gelovigen?",
+    "answers": [
+      "Een oprecht berouw (tawbah nasuh)",
+      "Een schriftelijk berouw",
+      "Een openbaar berouw",
+      "Een jaarlijks berouw"
+    ],
+    "explanation": "«O jullie die geloven, keer tot Allah terug met oprecht berouw.»",
+    "sourceDisplay": "Koran 66:8"
+  },
+  {
+    "id": "faith_112",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt soera Ash-Shura over de aanvaarding van berouw?",
+    "answers": [
+      "Hij is het die het berouw van Zijn dienaren aanvaardt en de misstappen vergeeft",
+      "Berouw wordt niet aanvaard",
+      "Er is een tussenpersoon nodig",
+      "Men moet een jaar wachten"
+    ],
+    "explanation": "«En Hij is het die het berouw van Zijn dienaren aanvaardt en de misstappen vergeeft, en Hij weet wat jullie doen.»",
+    "sourceDisplay": "Koran 42:25"
+  },
+  {
+    "id": "faith_113",
+    "correctAnswerIndex": 0,
+    "question": "Wat doen zij die de Koran prijst nadat zij een fout hebben begaan?",
+    "answers": [
+      "Zij gedenken Allah en vragen om vergeving",
+      "Zij vluchten",
+      "Zij zwijgen",
+      "Zij geven anderen de schuld"
+    ],
+    "explanation": "«En zij die, wanneer zij een zedeloosheid begaan of zichzelf onrecht aandoen, Allah gedenken en om vergeving voor hun zonden vragen.»",
+    "sourceDisplay": "Koran 3:135"
+  },
+  {
+    "id": "faith_114",
+    "correctAnswerIndex": 0,
+    "question": "Hoe vaak gebiedt de Koran het gedenken van Allah, in soera Al-Ahzab?",
+    "answers": [
+      "Veelvuldig, 's ochtends en 's avonds",
+      "Eens per jaar",
+      "Eens per week",
+      "Alleen onderweg"
+    ],
+    "explanation": "«O jullie die geloven, gedenk Allah met veelvuldig gedenken, en prijs Hem 's ochtends en 's avonds.»",
+    "sourceDisplay": "Koran 33:41-42"
+  },
+  {
+    "id": "faith_115",
+    "correctAnswerIndex": 0,
+    "question": "Waarover denken «de bezitters van verstand» na, aan het einde van soera Al-'Imran?",
+    "answers": [
+      "Over de schepping van de hemelen en de aarde, in elke houding",
+      "Over de oogsten",
+      "Over de karavanen",
+      "Over de geslachtslijnen"
+    ],
+    "explanation": "«Zij die Allah gedenken staand, zittend en op hun zij liggend, en nadenken over de schepping van de hemelen en de aarde.»",
+    "sourceDisplay": "Koran 3:190-191"
+  },
+  {
+    "id": "faith_116",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran te doen zodra een besluit genomen is?",
+    "answers": [
+      "Zijn vertrouwen op Allah stellen",
+      "Op een teken wachten",
+      "Een waarzegger raadplegen",
+      "Opgeven"
+    ],
+    "explanation": "«En wanneer je een besluit hebt genomen, stel dan je vertrouwen op Allah. Voorwaar, Allah houdt van hen die op Hem vertrouwen.»",
+    "sourceDisplay": "Koran 3:159"
+  },
+  {
+    "id": "faith_117",
+    "correctAnswerIndex": 0,
+    "question": "Naar wie richt soera Ash-Sharh het verlangen, wanneer de taak volbracht is?",
+    "answers": [
+      "Naar zijn Heer",
+      "Naar rust",
+      "Naar de familie",
+      "Naar de mensen"
+    ],
+    "explanation": "«Wanneer je dan klaar bent, sta op, en richt je verlangen tot je Heer.»",
+    "sourceDisplay": "Koran 94:7-8"
+  },
+  {
+    "id": "faith_118",
+    "correctAnswerIndex": 0,
+    "question": "Waarmee vergelijkt soera Al-Hadid het leven van deze wereld?",
+    "answers": [
+      "Regen waarvan de groei behaagt, dan geel wordt en tot gruis vergaat",
+      "Een lange reis",
+      "Een berg",
+      "Een oceaan"
+    ],
+    "explanation": "«Weet dat het leven van deze wereld slechts vermaak is… als het voorbeeld van regen waarvan de plantengroei de landbouwers behaagt; dan verdort zij en zie je haar geel worden, waarna zij gruis wordt.»",
+    "sourceDisplay": "Koran 57:20"
+  },
+  {
+    "id": "faith_119",
+    "correctAnswerIndex": 0,
+    "question": "Wat verklaart de Koran beter dan rijkdom en kinderen, de tooi van deze wereld?",
+    "answers": [
+      "De blijvende goede daden",
+      "Goud",
+      "Roem",
+      "Land"
+    ],
+    "explanation": "«Rijkdom en kinderen zijn de tooi van het wereldse leven, maar de blijvende goede daden zijn bij jouw Heer beter als beloning.»",
+    "sourceDisplay": "Koran 18:46"
+  },
+  {
+    "id": "faith_120",
+    "correctAnswerIndex": 0,
+    "question": "Welke vraag stelt de Koran over het doel van de schepping van de mens?",
+    "answers": [
+      "«Dachten jullie dat Wij jullie zonder doel hebben geschapen?»",
+      "«Wie heeft jullie genoemd?»",
+      "«Waar gaan jullie heen?»",
+      "«Met hoevelen zijn jullie?»"
+    ],
+    "explanation": "«Dachten jullie dan dat Wij jullie zinloos hebben geschapen en dat jullie niet tot Ons zouden terugkeren?»",
+    "sourceDisplay": "Koran 23:115"
+  },
+  {
+    "id": "faith_121",
+    "correctAnswerIndex": 0,
+    "question": "Welke belofte doet de Koran aan wie Allah gedenkt?",
+    "answers": [
+      "«Gedenk Mij; Ik zal jullie gedenken»",
+      "«Je zult rijk zijn»",
+      "«Je zult lang leven»",
+      "«Je zult reizen»"
+    ],
+    "explanation": "«Gedenk Mij dus; Ik zal jullie gedenken. En wees Mij dankbaar en wees Mij niet ondankbaar.»",
+    "sourceDisplay": "Koran 2:152"
+  },
+  {
+    "id": "faith_122",
+    "correctAnswerIndex": 0,
+    "question": "Aan wie gebiedt de Koran geschillen voor te leggen?",
+    "answers": [
+      "Aan Allah en de Gezant ﷺ",
+      "Aan de ouderen",
+      "Aan de markt",
+      "Aan de dichters"
+    ],
+    "explanation": "«En als jullie over iets van mening verschillen, leg het dan voor aan Allah en de Gezant, als jullie in Allah en de Laatste Dag geloven.»",
+    "sourceDisplay": "Koran 4:59"
+  },
+  {
+    "id": "faith_123",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Al-Anfal de harten van de gelovigen bij het noemen van Allah?",
+    "answers": [
+      "Hun harten beven, en hun geloof neemt toe bij de recitatie",
+      "Zij verharden",
+      "Zij vallen in slaap",
+      "Zij vergeten"
+    ],
+    "explanation": "«De gelovigen zijn slechts zij van wie de harten sidderen wanneer Allah genoemd wordt, en wanneer Zijn verzen aan hen worden voorgedragen, neemt hun geloof toe.»",
+    "sourceDisplay": "Koran 8:2"
+  },
+  {
+    "id": "faith_124",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran volledig aan de Heer der werelden te wijden?",
+    "answers": [
+      "Het gebed, de riten, het leven en het sterven",
+      "De handel",
+      "De oogsten",
+      "De reizen"
+    ],
+    "explanation": "«Zeg: voorwaar, mijn gebed, mijn offerriten, mijn leven en mijn sterven zijn voor Allah, Heer der werelden.»",
+    "sourceDisplay": "Koran 6:162"
+  },
+  {
+    "id": "faith_125",
+    "correctAnswerIndex": 0,
+    "question": "Welke voorwaarde stelt soera Al-Bayyinah aan de geboden aanbidding?",
+    "answers": [
+      "Allah oprecht te aanbidden, Hem de godsdienst zuiver toe te wijden",
+      "In het openbaar te aanbidden",
+      "Schriftelijk te aanbidden",
+      "Alleen in groepen te aanbidden"
+    ],
+    "explanation": "«En hun werd slechts bevolen Allah te aanbidden, Hem zuiver in de godsdienst toegewijd, het gebed te onderhouden en de zakat te geven.»",
+    "sourceDisplay": "Koran 98:5"
+  },
+  {
+    "id": "faith_126",
+    "correctAnswerIndex": 0,
+    "question": "Wat beschrijft de Koran als stromend in de tuinen die de godvrezenden zijn beloofd?",
+    "answers": [
+      "Rivieren",
+      "Wegen",
+      "Bruggen",
+      "Putten"
+    ],
+    "explanation": "De Koran beschrijft de tuinen herhaaldelijk als «waar onderdoor de rivieren stromen».",
+    "sourceDisplay": "Koran 47:15"
+  },
+  {
+    "id": "faith_127",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over wat als beloning voor de gelovigen verborgen is?",
+    "answers": [
+      "Geen ziel weet welke verkoeling van de ogen voor hen is weggelegd",
+      "Alles wordt uitvoerig beschreven",
+      "Het zijn rijkdommen",
+      "Het zijn koninkrijken"
+    ],
+    "explanation": "«En geen ziel weet welke verkoeling van de ogen voor hen verborgen is als beloning voor wat zij plachten te doen.»",
+    "sourceDisplay": "Koran 32:17"
+  },
+  {
+    "id": "faith_128",
+    "correctAnswerIndex": 0,
+    "question": "Wat belooft de Koran aan hen die goed doen, naast de beste beloning?",
+    "answers": [
+      "Nog meer daarbij (ziyadah)",
+      "Uitstel",
+      "Een koninkrijk",
+      "Een boek"
+    ],
+    "explanation": "«Voor hen die goed hebben gedaan is de beste beloning en nog meer.»",
+    "sourceDisplay": "Koran 10:26"
+  },
+  {
+    "id": "faith_129",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran het onthaal van de godvrezenden aan de poort van het Paradijs?",
+    "answers": [
+      "«Vrede zij met jullie; jullie zijn rein geworden, treed dus binnen om er eeuwig te blijven»",
+      "In stilte",
+      "Na een lange beproeving",
+      "Een voor een zonder een woord"
+    ],
+    "explanation": "«De bewakers ervan zullen zeggen: “Vrede zij met jullie; jullie zijn goed geweest, treed dus binnen om er eeuwig te blijven.”»",
+    "sourceDisplay": "Koran 39:73"
+  },
+  {
+    "id": "faith_130",
+    "correctAnswerIndex": 0,
+    "question": "Waarheen gebiedt de Koran zich te haasten, in soera Al-'Imran?",
+    "answers": [
+      "Naar vergeving van de Heer en een Paradijs zo wijd als de hemelen en de aarde",
+      "Naar de markt",
+      "Naar de reis",
+      "Naar rijkdom"
+    ],
+    "explanation": "«En haast jullie naar vergeving van jullie Heer en naar een tuin zo wijd als de hemelen en de aarde, bereid voor de godvrezenden.»",
+    "sourceDisplay": "Koran 3:133"
+  },
+  {
+    "id": "faith_131",
+    "correctAnswerIndex": 0,
+    "question": "Welke verantwoordelijkheid legt de Koran de gelovige op tegenover zijn gezin?",
+    "answers": [
+      "Hen, en zichzelf, te beschermen tegen een Vuur",
+      "Hen rijk te maken",
+      "Hun talen te leren",
+      "Hen mee op reis te nemen"
+    ],
+    "explanation": "«O jullie die geloven, bescherm jezelf en jullie families tegen een Vuur waarvan de brandstof mensen en stenen zijn.»",
+    "sourceDisplay": "Koran 66:6"
+  },
+  {
+    "id": "faith_132",
+    "correctAnswerIndex": 0,
+    "question": "Hoe omschrijft vers 2:177 de ware vroomheid (al-birr)?",
+    "answers": [
+      "Geloof in Allah, de Laatste Dag, de engelen, het Boek en de profeten, en het geven van zijn bezit",
+      "Het gezicht naar het oosten of het westen wenden",
+      "Alleen vasten",
+      "Reizen"
+    ],
+    "explanation": "«Vroomheid is niet dat jullie je gezichten naar het oosten of het westen wenden, maar vroom is wie gelooft in Allah, de Laatste Dag, de engelen, het Boek en de profeten.»",
+    "sourceDisplay": "Koran 2:177"
+  },
+  {
+    "id": "faith_133",
+    "correctAnswerIndex": 0,
+    "question": "Wie zal de verrichte daden zien, volgens soera At-Tawbah?",
+    "answers": [
+      "Allah, Zijn Gezant ﷺ en de gelovigen",
+      "Niemand",
+      "Alleen de engelen",
+      "De koningen"
+    ],
+    "explanation": "«En zeg: werk, want Allah zal jullie daden zien, en Zijn Gezant en de gelovigen.»",
+    "sourceDisplay": "Koran 9:105"
+  },
+  {
+    "id": "faith_134",
+    "correctAnswerIndex": 0,
+    "question": "Met welke uitspraak eindigt soera Al-Ikhlas?",
+    "answers": [
+      "«En niemand is aan Hem gelijkwaardig»",
+      "«Hij is de grootste»",
+      "«Hij is nabij»",
+      "«Hij is de eerste»"
+    ],
+    "explanation": "«En niemand is aan Hem gelijkwaardig.»",
+    "sourceDisplay": "Koran 112:4"
+  },
+  {
+    "id": "faith_135",
+    "correctAnswerIndex": 0,
+    "question": "Welke vier namen brengt soera Al-Hadid in één vers samen?",
+    "answers": [
+      "De Eerste, de Laatste, de Zichtbare en de Verborgene",
+      "De Koning, de Heilige, de Vrede, de Getrouwe",
+      "De Schepper, de Voortbrenger, de Vormgever, de Wijze",
+      "De Levende, de Zelfbestaande, de Horende, de Ziende"
+    ],
+    "explanation": "«Hij is de Eerste en de Laatste, de Zichtbare en de Verborgene, en Hij is Alwetend over alle dingen.»",
+    "sourceDisplay": "Koran 57:3"
+  },
+  {
+    "id": "faith_136",
+    "correctAnswerIndex": 0,
+    "question": "Welke namen somt het einde van soera Al-Hashr op na «de Heerser»?",
+    "answers": [
+      "De Heilige, de Vrede, de Schenker van veiligheid, de Toezichthouder",
+      "De Schepper, de Vormgever",
+      "De Vergevende, de Barmhartige",
+      "De Horende, de Ziende"
+    ],
+    "explanation": "«Hij is Allah, de Heerser, de Heilige, de Vrede, de Schenker van veiligheid, de Toezichthouder, de Almachtige.»",
+    "sourceDisplay": "Koran 59:23"
+  },
+  {
+    "id": "faith_137",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de formule «Er is geen god dan Allah, Mohammed is Zijn Gezant»?",
+    "answers": [
+      "De shahadah (de geloofsgetuigenis)",
+      "De basmalah",
+      "De takbirah",
+      "De tasmiyah"
+    ],
+    "explanation": "De shahadah is het eerste woord van de islam en de eerste van haar zuilen.",
+    "sourceDisplay": "Gangbare term"
+  },
+  {
+    "id": "faith_138",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de formule «Allahu akbar»?",
+    "answers": [
+      "De takbir",
+      "De tahlil",
+      "De tasbih",
+      "De tahmid"
+    ],
+    "explanation": "Takbir is «Allahu akbar», tasbih is «subhan Allah», tahmid is «al-hamdu lillah», en tahlil is «la ilaha illa-llah».",
+    "sourceDisplay": "Gangbare term"
+  },
+  {
+    "id": "faith_139",
+    "correctAnswerIndex": 0,
+    "question": "Hoe heet de formule «In de naam van Allah, de Erbarmer, de Meest Barmhartige»?",
+    "answers": [
+      "De basmalah",
+      "De hamdalah",
+      "De hawqalah",
+      "De istirja'"
+    ],
+    "explanation": "De basmalah opent elke soera op één na; de hawqalah is «la hawla wa la quwwata illa billah».",
+    "sourceDisplay": "Gangbare term"
+  },
+  {
+    "id": "faith_140",
+    "correctAnswerIndex": 0,
+    "question": "Welke woorden leert de Koran te zeggen wanneer een ramp toeslaat?",
+    "answers": [
+      "«Voorwaar, wij behoren aan Allah, en tot Hem keren wij terug»",
+      "«Waarom ik?»",
+      "«Het gaat voorbij»",
+      "«Het is het lot van de mensen»"
+    ],
+    "explanation": "«Zij die, wanneer een ramp hen treft, zeggen: “Voorwaar, wij behoren aan Allah, en voorwaar, tot Hem keren wij terug.”»",
+    "sourceDisplay": "Koran 2:156"
+  },
+  {
+    "id": "faith_141",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran te zeggen bij het aankondigen van een handeling voor morgen?",
+    "answers": [
+      "«Als Allah het wil» (in sha' Allah)",
+      "«Het is beloofd»",
+      "«Zonder mankeren»",
+      "«Ik zweer het»"
+    ],
+    "explanation": "«En zeg nooit over iets: “Voorwaar, ik zal dat morgen doen”, behalve met de toevoeging: “Als Allah het wil.”»",
+    "sourceDisplay": "Koran 18:23-24"
+  },
+  {
+    "id": "faith_142",
+    "correctAnswerIndex": 0,
+    "question": "Welke kennis behoudt de Koran aan Allah alleen voor, aan het einde van soera Luqman?",
+    "answers": [
+      "Het Uur, de regen, wat in de baarmoeders is, wat men morgen zal verwerven, en waar men zal sterven",
+      "Het aantal sterren",
+      "De namen van koningen",
+      "Het tellen van de dagen"
+    ],
+    "explanation": "«Voorwaar, Allah heeft kennis van het Uur en Hij zendt de regen neer en weet wat in de baarmoeders is. En geen ziel weet wat zij morgen zal verwerven, en geen ziel weet in welk land zij zal sterven.»",
+    "sourceDisplay": "Koran 31:34"
+  },
+  {
+    "id": "faith_143",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over de termijn die voor elke gemeenschap is vastgesteld?",
+    "answers": [
+      "Wanneer hij komt, wordt hij geen uur uitgesteld of vervroegd",
+      "Hij kan veranderd worden",
+      "Hij is Allah onbekend",
+      "Hij hangt van koningen af"
+    ],
+    "explanation": "«En voor elke gemeenschap is er een termijn. Wanneer hun termijn komt, kunnen zij geen uur achterblijven, noch vooruitlopen.»",
+    "sourceDisplay": "Koran 7:34"
+  },
+  {
+    "id": "faith_144",
+    "correctAnswerIndex": 0,
+    "question": "Wat belooft de Koran aan wie goed doet, man of vrouw, terwijl hij gelooft?",
+    "answers": [
+      "Een goed leven, en een beloning naar het beste van hun daden",
+      "Rijkdom",
+      "Macht",
+      "Roem"
+    ],
+    "explanation": "«Wie rechtschapen handelt, man of vrouw, terwijl hij gelovig is — Wij zullen hem zeker een goed leven doen leiden.»",
+    "sourceDisplay": "Koran 16:97"
+  },
+  {
+    "id": "faith_145",
+    "correctAnswerIndex": 0,
+    "question": "Welk onderscheid maakt de Koran tussen «islam» en «geloof» in soera Al-Hujurat?",
+    "answers": [
+      "Zeggen «wij hebben ons overgegeven» is nog geen geloof dat de harten is binnengetreden",
+      "Het zijn dezelfde woorden",
+      "Geloof komt altijd eerst",
+      "Islam is alleen voor geleerden"
+    ],
+    "explanation": "«De bedoeïenen zeggen: “Wij geloven.” Zeg: “Jullie geloven niet; zeg liever: wij hebben ons overgegeven, want het geloof is nog niet jullie harten binnengetreden.”»",
+    "sourceDisplay": "Koran 49:14"
+  },
+  {
+    "id": "faith_146",
+    "correctAnswerIndex": 0,
+    "question": "Welke regel stelt soera Al-Ma'idah over één enkel leven?",
+    "answers": [
+      "Wie één mens doodt, is alsof hij de hele mensheid doodt; wie er één redt, alsof hij allen redt",
+      "Elk leven telt als één",
+      "Alleen verwanten tellen",
+      "Alleen aantallen tellen"
+    ],
+    "explanation": "«Wie een ziel doodt, anders dan voor een ziel of voor verderf op aarde, is alsof hij de hele mensheid heeft gedood; en wie er één redt, is alsof hij de hele mensheid heeft gered.»",
+    "sourceDisplay": "Koran 5:32"
+  },
+  {
+    "id": "faith_147",
+    "correctAnswerIndex": 0,
+    "question": "Met hoeveel vermenigvuldigt de Koran de beloning van een goede daad?",
+    "answers": [
+      "Tienvoudig",
+      "Tweevoudig",
+      "Honderdvoudig",
+      "Zij wordt niet vermenigvuldigd"
+    ],
+    "explanation": "«Wie met een goede daad komt, krijgt tienmaal het gelijke daarvan; en wie met een slechte daad komt, wordt slechts met het gelijke daarvan vergolden.»",
+    "sourceDisplay": "Koran 6:160"
+  },
+  {
+    "id": "faith_148",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft soera Fatir de verhouding van de mensen tot Allah?",
+    "answers": [
+      "Zij zijn de behoeftigen die Hem nodig hebben, terwijl Allah de Behoefteloze is, de Geprezene",
+      "Zij zijn Zijn deelgenoten",
+      "Zij zijn onafhankelijk",
+      "Zij zijn Zijn schuldeisers"
+    ],
+    "explanation": "«O mensen, jullie zijn het die Allah nodig hebben, terwijl Allah de Behoefteloze is, de Geprezene.»",
+    "sourceDisplay": "Koran 35:15"
+  },
+  {
+    "id": "faith_149",
+    "correctAnswerIndex": 0,
+    "question": "Welke vier eigenschappen redden van verlies, volgens soera Al-'Asr?",
+    "answers": [
+      "Geloof, goede daden, elkaar aansporen tot de waarheid en tot geduld",
+      "Rijkdom, kracht, schoonheid, sluwheid",
+      "Zwijgen, slapen, afzondering, vasten",
+      "Reizen, handel, schrijven, lezen"
+    ],
+    "explanation": "«Bij de tijd, de mens lijdt verlies, behalve zij die geloven en goede daden verrichten en elkaar aansporen tot de waarheid en elkaar aansporen tot geduld.»",
+    "sourceDisplay": "Koran 103:1-3"
+  },
+  {
+    "id": "faith_150",
+    "correctAnswerIndex": 0,
+    "question": "Waarin verklaren de gelovigen te geloven, in het voorlaatste vers van soera Al-Baqarah?",
+    "answers": [
+      "In Allah, Zijn engelen, Zijn boeken en Zijn gezanten",
+      "In één boek",
+      "In één engel",
+      "In hun voorvaderen"
+    ],
+    "explanation": "«De Gezant gelooft in wat aan hem van zijn Heer is neergezonden, en zo ook de gelovigen. Allen geloven in Allah en Zijn engelen en Zijn boeken en Zijn gezanten.»",
+    "sourceDisplay": "Koran 2:285"
+  },
+  {
     "id": "virtues_019",
     "correctAnswerIndex": 0,
     "question": "Waartoe leidt waarachtigheid (sidq) volgens een hadith in al-Bukhari?",
@@ -6498,5 +11048,655 @@
     ],
     "explanation": "«Twee woorden licht op de tong, zwaar op de weegschaal, geliefd bij de Meest Barmhartige: Glorie zij Allah en lof zij Hem; glorie zij Allah de Geweldige.»",
     "sourceDisplay": "Sahih al-Boechari, 6406"
+  },
+  {
+    "id": "virtues_051",
+    "correctAnswerIndex": 0,
+    "question": "Wat raadt Luqman zijn zoon aan over de stem?",
+    "answers": [
+      "Die te verlagen: de meest weerzinwekkende stem is het gebalk van de ezel",
+      "Zeer luid te spreken",
+      "Nooit te spreken",
+      "Al lopend te zingen"
+    ],
+    "explanation": "«En wees gematigd in je pas en verlaag je stem: voorwaar, de meest weerzinwekkende van de geluiden is de stem van ezels.»",
+    "sourceDisplay": "Koran 31:19"
+  },
+  {
+    "id": "virtues_052",
+    "correctAnswerIndex": 0,
+    "question": "Welke drie raadgevingen geeft Luqman zijn zoon voordat hij over geduld spreekt?",
+    "answers": [
+      "Onderhoud het gebed, gebied het goede, verbied het verwerpelijke",
+      "Reizen, handelen, schrijven",
+      "Weinig eten, weinig slapen, weinig spreken",
+      "Bouwen, planten, oogsten"
+    ],
+    "explanation": "«Mijn zoon, onderhoud het gebed, gebied het goede, verbied het verwerpelijke, en wees geduldig onder wat jou treft.»",
+    "sourceDisplay": "Koran 31:17"
+  },
+  {
+    "id": "virtues_053",
+    "correctAnswerIndex": 0,
+    "question": "Welke drie eigenschappen geeft de Koran de godvrezenden, in soera Al-'Imran?",
+    "answers": [
+      "Besteden in voorspoed en tegenspoed, de woede bedwingen, de mensen vergeven",
+      "Vasten, nachtgebed, zwijgen",
+      "Bouwen, planten, geven",
+      "Reizen, leren, onderwijzen"
+    ],
+    "explanation": "«Zij die besteden in voorspoed en in tegenspoed, en die de woede bedwingen en de mensen vergeven — en Allah houdt van hen die goed doen.»",
+    "sourceDisplay": "Koran 3:134"
+  },
+  {
+    "id": "virtues_054",
+    "correctAnswerIndex": 0,
+    "question": "Wat acht de Koran beter dan een aalmoes gevolgd door krenking?",
+    "answers": [
+      "Een vriendelijk woord en vergeving",
+      "Een grotere gift",
+      "Volledig zwijgen",
+      "Een eed"
+    ],
+    "explanation": "«Een vriendelijk woord en vergeving zijn beter dan een aalmoes gevolgd door krenking.»",
+    "sourceDisplay": "Koran 2:263"
+  },
+  {
+    "id": "virtues_055",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over in het geheim gegeven aalmoezen?",
+    "answers": [
+      "Zij zijn beter voor de gever",
+      "Zij tellen niet",
+      "Zij moeten aangekondigd worden",
+      "Zij zijn verboden"
+    ],
+    "explanation": "«Als jullie jullie aalmoezen openlijk geven, dan is dat goed; maar als jullie ze verbergen en aan de armen geven, dan is dat beter voor jullie.»",
+    "sourceDisplay": "Koran 2:271"
+  },
+  {
+    "id": "virtues_056",
+    "correctAnswerIndex": 0,
+    "question": "Wat verbiedt de Koran als aalmoes te geven?",
+    "answers": [
+      "Wat men zelf slechts met gesloten ogen zou aannemen",
+      "Wat nieuw is",
+      "Wat men liefheeft",
+      "Wat uit een erfenis komt"
+    ],
+    "explanation": "«En kies daaruit niet het slechte om te besteden, wat jullie zelf slechts met gesloten ogen zouden aannemen.»",
+    "sourceDisplay": "Koran 2:267"
+  },
+  {
+    "id": "virtues_057",
+    "correctAnswerIndex": 0,
+    "question": "Wanneer wordt de ware vroomheid bereikt, volgens soera Al-'Imran?",
+    "answers": [
+      "Door te besteden van wat men liefheeft",
+      "Door het overschot te besteden",
+      "Door in het openbaar te besteden",
+      "Door alles te houden"
+    ],
+    "explanation": "«Jullie zullen de vroomheid nooit bereiken totdat jullie besteden van wat jullie liefhebben.»",
+    "sourceDisplay": "Koran 3:92"
+  },
+  {
+    "id": "virtues_058",
+    "correctAnswerIndex": 0,
+    "question": "Welk beeld gebruikt de Koran voor evenwicht in het besteden?",
+    "answers": [
+      "De hand niet aan de nek geketend houden, noch haar geheel uitstrekken",
+      "De deur sluiten",
+      "Langzaam lopen",
+      "Tweemaal tellen"
+    ],
+    "explanation": "«En houd je hand niet aan je nek geketend, noch strek haar geheel uit, anders zit je berispt en berooid neer.»",
+    "sourceDisplay": "Koran 17:29"
+  },
+  {
+    "id": "virtues_059",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran het besteden van «de dienaren van de Erbarmer»?",
+    "answers": [
+      "Noch verkwistend noch gierig, maar daartussenin",
+      "Altijd mateloos geven",
+      "Altijd sparen",
+      "Nooit geven"
+    ],
+    "explanation": "«En zij die, wanneer zij besteden, niet verkwistend en niet gierig zijn, maar het midden daartussen houden.»",
+    "sourceDisplay": "Koran 25:67"
+  },
+  {
+    "id": "virtues_060",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran voordat men een huis binnengaat dat niet het zijne is?",
+    "answers": [
+      "Toestemming te vragen en de bewoners te groeten",
+      "Driemaal te kloppen en dan binnen te gaan",
+      "Rechtstreeks binnen te gaan",
+      "Van ver te roepen"
+    ],
+    "explanation": "«Treed geen huizen binnen die niet de jullie zijn totdat jullie toestemming hebben gevraagd en de bewoners hebben gegroet.»",
+    "sourceDisplay": "Koran 24:27"
+  },
+  {
+    "id": "virtues_061",
+    "correctAnswerIndex": 0,
+    "question": "Wat moet men doen als men gevraagd wordt terug te keren, volgens soera An-Nur?",
+    "answers": [
+      "Terugkeren: dat is reiner voor jullie",
+      "Aandringen",
+      "Bij de deur wachten",
+      "Toch binnengaan"
+    ],
+    "explanation": "«En als jullie gezegd wordt: “Keer terug”, keer dan terug; dat is reiner voor jullie.»",
+    "sourceDisplay": "Koran 24:28"
+  },
+  {
+    "id": "virtues_062",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran wanneer een onbetrouwbaar persoon nieuws brengt?",
+    "answers": [
+      "Het na te gaan, opdat men niemand uit onwetendheid schaadt",
+      "Het meteen te verspreiden",
+      "Het op te schrijven",
+      "Het altijd te negeren"
+    ],
+    "explanation": "«Als een verdorvene tot jullie met een bericht komt, onderzoek het dan, opdat jullie geen mensen uit onwetendheid schaden en er dan spijt van krijgen.»",
+    "sourceDisplay": "Koran 49:6"
+  },
+  {
+    "id": "virtues_063",
+    "correctAnswerIndex": 0,
+    "question": "Welk gedrag verbiedt soera Al-Hujurat, naast achterklap?",
+    "answers": [
+      "Spioneren en overmatig wantrouwen",
+      "Alleen reizen",
+      "Zacht spreken",
+      "Brieven schrijven"
+    ],
+    "explanation": "«O jullie die geloven, vermijd veel vermoedens; voorwaar, sommige vermoedens zijn zonde. En bespioneer elkaar niet en spreek geen kwaad over elkaar.»",
+    "sourceDisplay": "Koran 49:12"
+  },
+  {
+    "id": "virtues_064",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran wanneer twee groepen gelovigen strijden?",
+    "answers": [
+      "Hen met rechtvaardigheid te verzoenen",
+      "Partij te kiezen",
+      "Hen te negeren",
+      "Hen alleen met geweld te scheiden"
+    ],
+    "explanation": "«En als twee groepen van de gelovigen strijden, verzoen hen dan… en handel rechtvaardig. Voorwaar, Allah houdt van hen die rechtvaardig handelen.»",
+    "sourceDisplay": "Koran 49:9"
+  },
+  {
+    "id": "virtues_065",
+    "correctAnswerIndex": 0,
+    "question": "Wat verbiedt de Koran uitdrukkelijk, zelfs tegenover een volk dat men verafschuwt?",
+    "answers": [
+      "Haat de rechtvaardigheid laten verdringen",
+      "De handel",
+      "Het spreken",
+      "Het nabuurschap"
+    ],
+    "explanation": "«En laat de haat jegens een volk jullie er niet toe brengen onrechtvaardig te zijn. Wees rechtvaardig; dat is dichter bij de godvrezendheid.»",
+    "sourceDisplay": "Koran 5:8"
+  },
+  {
+    "id": "virtues_066",
+    "correctAnswerIndex": 0,
+    "question": "Tegen wie eist de Koran een rechtvaardige getuigenis, indien nodig?",
+    "answers": [
+      "Tegen zichzelf, zijn ouders en zijn verwanten",
+      "Alleen tegen vreemden",
+      "Alleen tegen de rijken",
+      "Alleen tegen de armen"
+    ],
+    "explanation": "«Wees standvastig in rechtvaardigheid, getuigen voor Allah, ook al is het tegen jullie zelf of tegen de ouders en de verwanten.»",
+    "sourceDisplay": "Koran 4:135"
+  },
+  {
+    "id": "virtues_067",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran terug te geven aan wie er recht op heeft?",
+    "answers": [
+      "De toevertrouwde goederen (amanat)",
+      "Brieven",
+      "Oogsten",
+      "Verhalen"
+    ],
+    "explanation": "«Voorwaar, Allah gebiedt jullie het toevertrouwde terug te geven aan wie er recht op heeft, en wanneer jullie tussen de mensen oordelen, met rechtvaardigheid te oordelen.»",
+    "sourceDisplay": "Koran 4:58"
+  },
+  {
+    "id": "virtues_068",
+    "correctAnswerIndex": 0,
+    "question": "Welke personen somt vers 4:36 op voor goede behandeling, na de ouders?",
+    "answers": [
+      "Verwanten, wezen, armen, de nabije en verre buur, de metgezel, de reiziger en de dienaar",
+      "Koningen en leiders",
+      "Kooplieden",
+      "Alleen geleerden"
+    ],
+    "explanation": "«Aanbid Allah en ken Hem geen deelgenoten toe, en doe goed aan de ouders, aan de verwanten, de wezen, de behoeftigen, de nabije buur, de verre buur, de metgezel aan je zijde, de reiziger, en hen die jullie rechterhanden bezitten.»",
+    "sourceDisplay": "Koran 4:36"
+  },
+  {
+    "id": "virtues_069",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran ten aanzien van een schuldenaar in moeilijkheden?",
+    "answers": [
+      "Hem uitstel te geven tot hij ruimte heeft",
+      "Hem te vervolgen",
+      "De schuld te verdubbelen",
+      "Hem te verdrijven"
+    ],
+    "explanation": "«En als iemand in moeilijkheden verkeert, laat er dan uitstel zijn tot een tijd van ruimte. Maar als jullie het als aalmoes schenken, is dat beter voor jullie.»",
+    "sourceDisplay": "Koran 2:280"
+  },
+  {
+    "id": "virtues_070",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt het langste vers van de Koran voor een schuld met een vastgestelde termijn?",
+    "answers": [
+      "Dat zij opgeschreven wordt",
+      "Dat zij geheim blijft",
+      "Dat zij vergeten wordt",
+      "Dat zij mondeling wordt doorgegeven"
+    ],
+    "explanation": "«O jullie die geloven, wanneer jullie een schuld aangaan voor een vastgestelde termijn, schrijf haar dan op.»",
+    "sourceDisplay": "Koran 2:282"
+  },
+  {
+    "id": "virtues_071",
+    "correctAnswerIndex": 0,
+    "question": "Wat verbiedt de Koran aangaande het bezit van anderen?",
+    "answers": [
+      "Het onrechtmatig verteren, of het gebruiken om rechters om te kopen",
+      "Het tellen",
+      "Het verkopen",
+      "Het bewaren"
+    ],
+    "explanation": "«En verteer elkaars bezit niet op onrechtmatige wijze, en breng het niet naar de rechters om zondig een deel van het bezit van de mensen te verteren.»",
+    "sourceDisplay": "Koran 2:188"
+  },
+  {
+    "id": "virtues_072",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran aangaande het bezit van wezen?",
+    "answers": [
+      "Het hun te geven, zonder het goede voor het slechte te verruilen",
+      "Het te verdelen",
+      "Het te verkopen",
+      "Het levenslang te houden"
+    ],
+    "explanation": "«En geef de wezen hun bezittingen en verruil het slechte niet voor het goede, en verteer hun bezittingen niet samen met de jullie.»",
+    "sourceDisplay": "Koran 4:2"
+  },
+  {
+    "id": "virtues_073",
+    "correctAnswerIndex": 0,
+    "question": "Hoe gebiedt de Koran te meten en te wegen?",
+    "answers": [
+      "Geef volle maat en weeg met een zuivere weegschaal",
+      "Afronden in eigen voordeel",
+      "Op het oog wegen",
+      "Tweemaal meten"
+    ],
+    "explanation": "«En geef volle maat wanneer jullie meten, en weeg met een zuivere weegschaal. Dat is het beste en de mooiste uitkomst.»",
+    "sourceDisplay": "Koran 17:35"
+  },
+  {
+    "id": "virtues_074",
+    "correctAnswerIndex": 0,
+    "question": "Wat verbiedt de Koran te volgen, bij gebrek aan kennis?",
+    "answers": [
+      "Dat waarover men geen kennis heeft: het gehoor, het gezicht en het hart zullen ondervraagd worden",
+      "De kortste weg",
+      "De karavanen",
+      "Het zwijgen"
+    ],
+    "explanation": "«En volg niet dat waarover jij geen kennis hebt. Voorwaar, het gehoor, het gezicht en het hart — over dat alles zal ondervraagd worden.»",
+    "sourceDisplay": "Koran 17:36"
+  },
+  {
+    "id": "virtues_075",
+    "correctAnswerIndex": 0,
+    "question": "Welk beeld geeft de Koran van hoogmoed in de tred?",
+    "answers": [
+      "Je kunt de aarde niet splijten, noch de bergen in hoogte bereiken",
+      "Je gaat sneller",
+      "Je vermoeit minder",
+      "Je verdient respect"
+    ],
+    "explanation": "«En loop niet verwaand op de aarde. Voorwaar, jij zult de aarde nooit splijten, en jij zult de bergen nooit in hoogte bereiken.»",
+    "sourceDisplay": "Koran 17:37"
+  },
+  {
+    "id": "virtues_076",
+    "correctAnswerIndex": 0,
+    "question": "Welke hoedanigheid van het spreken gebiedt de Koran, met de belofte dat de daden goedgemaakt worden?",
+    "answers": [
+      "Oprecht, waarachtig spreken (qawl sadid)",
+      "Kort spreken",
+      "Geleerd spreken",
+      "Schriftelijk spreken"
+    ],
+    "explanation": "«O jullie die geloven, vrees Allah en spreek juiste woorden. Hij zal jullie daden goedmaken en jullie zonden vergeven.»",
+    "sourceDisplay": "Koran 33:70-71"
+  },
+  {
+    "id": "virtues_077",
+    "correctAnswerIndex": 0,
+    "question": "Welk soort spreken werd zelfs tegenover een tiran geboden, in de Koran?",
+    "answers": [
+      "Zachte woorden",
+      "Dreigende woorden",
+      "Spottende woorden",
+      "Zwijgen"
+    ],
+    "explanation": "«En spreek tot hem met zachte woorden, opdat hij zich laat vermanen of Allah vreest.»",
+    "sourceDisplay": "Koran 20:44"
+  },
+  {
+    "id": "virtues_078",
+    "correctAnswerIndex": 0,
+    "question": "Over wie zegt de Koran dat zijn woord het beste is?",
+    "answers": [
+      "Wie tot Allah oproept, rechtschapen handelt en zegt: ik behoor tot de moslims",
+      "De dichter",
+      "De redenaar",
+      "De rechter"
+    ],
+    "explanation": "«En wie is beter in spreken dan wie tot Allah oproept en rechtschapen handelt en zegt: voorwaar, ik behoor tot de moslims?»",
+    "sourceDisplay": "Koran 41:33"
+  },
+  {
+    "id": "virtues_079",
+    "correctAnswerIndex": 0,
+    "question": "Waarvan wenden de welslagende gelovigen zich af, volgens Al-Mu'minun?",
+    "answers": [
+      "Van nutteloos gepraat (al-laghw)",
+      "Van het werk",
+      "Van het reizen",
+      "Van de maaltijden"
+    ],
+    "explanation": "«En zij die zich afwenden van nutteloos gepraat.»",
+    "sourceDisplay": "Koran 23:3"
+  },
+  {
+    "id": "virtues_080",
+    "correctAnswerIndex": 0,
+    "question": "Welke twee verplichtingen bewaken de welslagende gelovigen, volgens Al-Mu'minun?",
+    "answers": [
+      "Hun toevertrouwde goederen en hun beloften",
+      "Vasten en nachtgebed",
+      "Reizen en handel",
+      "Schrijven en lezen"
+    ],
+    "explanation": "«En zij die zorgvuldig zijn met wat hun is toevertrouwd en met hun beloften.»",
+    "sourceDisplay": "Koran 23:8"
+  },
+  {
+    "id": "virtues_081",
+    "correctAnswerIndex": 0,
+    "question": "Wat zegt de Koran over wie vergeeft en verzoent, hoewel hij kwaad met kwaad zou kunnen vergelden?",
+    "answers": [
+      "Zijn beloning rust bij Allah",
+      "Hij verliest zijn recht",
+      "Hij wordt berispt",
+      "Hij moet zwijgen"
+    ],
+    "explanation": "«En de vergelding voor een slechte daad is een slechte daad gelijk daaraan, maar wie vergeeft en verzoent — zijn beloning rust bij Allah.»",
+    "sourceDisplay": "Koran 42:40"
+  },
+  {
+    "id": "virtues_082",
+    "correctAnswerIndex": 0,
+    "question": "Welk argument geeft de Koran om iemand te vergeven die jou onrecht heeft aangedaan?",
+    "answers": [
+      "«Houden jullie er niet van dat Allah jullie vergeeft?»",
+      "«Je wordt in geld betaald»",
+      "«Het maakt je machtig»",
+      "«Het bespaart je een rechtszaak»"
+    ],
+    "explanation": "«Laat hen vergeven en door de vingers zien. Houden jullie er niet van dat Allah jullie vergeeft? En Allah is Vergevensgezind, Barmhartig.»",
+    "sourceDisplay": "Koran 24:22"
+  },
+  {
+    "id": "virtues_083",
+    "correctAnswerIndex": 0,
+    "question": "Welke drie aanwijzingen brengt vers 7:199 samen?",
+    "answers": [
+      "Neem wat vrijelijk gegeven wordt, gebied het goede, wend je af van de onwetenden",
+      "Strijden, vluchten, zwijgen",
+      "Eten, drinken, slapen",
+      "Tellen, schrijven, lezen"
+    ],
+    "explanation": "«Neem wat vrijelijk gegeven wordt, gebied het goede, en wend je af van de onwetenden.»",
+    "sourceDisplay": "Koran 7:199"
+  },
+  {
+    "id": "virtues_084",
+    "correctAnswerIndex": 0,
+    "question": "Welke houding beveelt de Koran aan bij kwetsende woorden en beproeving?",
+    "answers": [
+      "Geduld en godvrezendheid: dat behoort tot de zaken die vastberadenheid vergen",
+      "Onmiddellijk antwoord",
+      "Blijvende terugtrekking",
+      "Minachtend zwijgen"
+    ],
+    "explanation": "«En jullie zullen zeker veel beledigingen horen van hen die vóór jullie de Schrift kregen. Maar als jullie geduldig zijn en Allah vrezen, dan behoort dat tot de zaken die vastberadenheid vergen.»",
+    "sourceDisplay": "Koran 3:186"
+  },
+  {
+    "id": "virtues_085",
+    "correctAnswerIndex": 0,
+    "question": "Hoe beschrijft de Koran geduld en vergeving?",
+    "answers": [
+      "Zij behoren tot de zaken die vastberadenheid vergen",
+      "Zij zijn zwakte",
+      "Zij zijn vrijblijvend",
+      "Zij zijn alleen voor geleerden"
+    ],
+    "explanation": "«En wie geduldig is en vergeeft — voorwaar, dat behoort tot de zaken die vastberadenheid vergen.»",
+    "sourceDisplay": "Koran 42:43"
+  },
+  {
+    "id": "virtues_086",
+    "correctAnswerIndex": 0,
+    "question": "Voor wie is het gebed volgens de Koran niet zwaar?",
+    "answers": [
+      "Voor de deemoedigen (al-khashi'in)",
+      "Voor de rijken",
+      "Voor de geleerden",
+      "Voor de reizigers"
+    ],
+    "explanation": "«En zoek hulp door geduld en gebed; voorwaar, het is zwaar behalve voor de deemoedigen.»",
+    "sourceDisplay": "Koran 2:45"
+  },
+  {
+    "id": "virtues_087",
+    "correctAnswerIndex": 0,
+    "question": "Waaraan herinnert de Koran over wat men verafschuwt of liefheeft?",
+    "answers": [
+      "Je kunt iets verafschuwen dat goed voor je is, en iets liefhebben dat slecht voor je is",
+      "Wat je liefhebt is altijd goed",
+      "Wat je verafschuwt is altijd slecht",
+      "Je weet altijd wat goed is"
+    ],
+    "explanation": "«Misschien haten jullie iets terwijl het goed voor jullie is; en misschien houden jullie van iets terwijl het slecht voor jullie is. Allah weet, en jullie weten niet.»",
+    "sourceDisplay": "Koran 2:216"
+  },
+  {
+    "id": "virtues_088",
+    "correctAnswerIndex": 0,
+    "question": "Wat belooft de Koran aan wie Allah vreest, wat betreft uitkomst en voorziening?",
+    "answers": [
+      "Een uitweg, en voorziening vanwaar hij het niet verwacht",
+      "Onmiddellijke rijkdom",
+      "Een lange reis",
+      "Een openbaar ambt"
+    ],
+    "explanation": "«En wie Allah vreest, voor hem maakt Hij een uitweg, en Hij voorziet hem vanwaar hij het niet verwacht.»",
+    "sourceDisplay": "Koran 65:2-3"
+  },
+  {
+    "id": "virtues_089",
+    "correctAnswerIndex": 0,
+    "question": "Welke dankbaarheid gebiedt de Koran in één adem met dankbaarheid jegens Allah?",
+    "answers": [
+      "Dankbaarheid jegens de ouders",
+      "Jegens zijn meester",
+      "Jegens zijn buur",
+      "Jegens zijn koning"
+    ],
+    "explanation": "«Wees Mij dankbaar en jegens je ouders; tot Mij is de uiteindelijke terugkeer.»",
+    "sourceDisplay": "Koran 31:14"
+  },
+  {
+    "id": "virtues_090",
+    "correctAnswerIndex": 0,
+    "question": "Welke grens stelt de Koran aan de gehoorzaamheid aan de ouders?",
+    "answers": [
+      "Hen niet te gehoorzamen als zij gebieden anderen aan Allah toe te kennen",
+      "Hen nooit te gehoorzamen",
+      "Hen in alles te gehoorzamen",
+      "Hen alleen onderweg te gehoorzamen"
+    ],
+    "explanation": "«Maar als zij zich inspannen om jou aan Mij deelgenoten toe te kennen waarover jij geen kennis hebt, gehoorzaam hen dan niet; maar ga in deze wereld met hen om op passende wijze.»",
+    "sourceDisplay": "Koran 29:8"
+  },
+  {
+    "id": "virtues_091",
+    "correctAnswerIndex": 0,
+    "question": "Welke smeekbede leert de Koran voor de eigen ouders en het nageslacht?",
+    "answers": [
+      "Dankbaar te zijn voor de gunst, goed te doen, en dat het nageslacht rechtschapen wordt",
+      "Om rijkdom te vragen",
+      "Om een lange reis te vragen",
+      "Om een ambt te vragen"
+    ],
+    "explanation": "«Mijn Heer, stel mij in staat dankbaar te zijn voor Uw gunst die U aan mij en aan mijn ouders hebt geschonken, en rechtschapen te handelen; en maak mijn nageslacht rechtschapen voor mij.»",
+    "sourceDisplay": "Koran 46:15"
+  },
+  {
+    "id": "virtues_092",
+    "correctAnswerIndex": 0,
+    "question": "Wat vragen «de dienaren van de Erbarmer» aangaande hun families?",
+    "answers": [
+      "Dat zij een verkoeling van de ogen zijn, en dat zij een voorbeeld voor de godvrezenden zijn",
+      "Dat zij rijk zijn",
+      "Dat zij talrijk zijn",
+      "Dat zij reizen"
+    ],
+    "explanation": "«Onze Heer, schenk ons in onze echtgenoten en ons nageslacht een verkoeling van de ogen, en maak ons tot een voorbeeld voor de godvrezenden.»",
+    "sourceDisplay": "Koran 25:74"
+  },
+  {
+    "id": "virtues_093",
+    "correctAnswerIndex": 0,
+    "question": "Hoe gedragen «de dienaren van de Erbarmer» zich tegenover lichtzinnigheid?",
+    "answers": [
+      "Zij gaan er waardig aan voorbij",
+      "Zij blijven staan luisteren",
+      "Zij antwoorden scherp",
+      "Zij schrijven het op"
+    ],
+    "explanation": "«En zij die geen valse getuigenis afleggen, en wanneer zij langs nutteloos gepraat komen, gaan zij er waardig aan voorbij.»",
+    "sourceDisplay": "Koran 25:72"
+  },
+  {
+    "id": "virtues_094",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran in een bijeenkomst wanneer om plaats wordt gevraagd?",
+    "answers": [
+      "Maak plaats: Allah zal ruimte voor jullie maken",
+      "Blijf opeengepakt",
+      "Vertrek",
+      "Zwijg"
+    ],
+    "explanation": "«O jullie die geloven, wanneer jullie gezegd wordt: “Maak plaats in de bijeenkomsten”, maak dan plaats; Allah zal ruimte voor jullie maken.»",
+    "sourceDisplay": "Koran 58:11"
+  },
+  {
+    "id": "virtues_095",
+    "correctAnswerIndex": 0,
+    "question": "Bij wie gebiedt de Koran te zijn, in soera At-Tawbah?",
+    "answers": [
+      "Bij de waarachtigen",
+      "Bij de machtigen",
+      "Bij de rijken",
+      "Bij de reizigers"
+    ],
+    "explanation": "«O jullie die geloven, vrees Allah en wees met de waarachtigen.»",
+    "sourceDisplay": "Koran 9:119"
+  },
+  {
+    "id": "virtues_096",
+    "correctAnswerIndex": 0,
+    "question": "Met wie gebiedt de Koran de Profeet ﷺ geduldig gezelschap te houden, in Al-Kahf?",
+    "answers": [
+      "Zij die hun Heer 's ochtends en 's avonds aanroepen, Zijn aangezicht zoekend",
+      "De stamhoofden",
+      "De rijke kooplieden",
+      "De dichters"
+    ],
+    "explanation": "«En houd jezelf geduldig bij hen die hun Heer 's ochtends en 's avonds aanroepen, Zijn aangezicht zoekend; en laat jouw ogen niet aan hen voorbijgaan.»",
+    "sourceDisplay": "Koran 18:28"
+  },
+  {
+    "id": "virtues_097",
+    "correctAnswerIndex": 0,
+    "question": "Waarin gebiedt de Koran elkaar te helpen, en waarin verbiedt zij dat?",
+    "answers": [
+      "Help elkaar in vroomheid en godvrezendheid, niet in zonde en vijandschap",
+      "Help elkaar in alles",
+      "Help niemand",
+      "Help elkaar alleen binnen de familie"
+    ],
+    "explanation": "«En help elkaar in vroomheid en godvrezendheid, maar help elkaar niet in zonde en vijandschap.»",
+    "sourceDisplay": "Koran 5:2"
+  },
+  {
+    "id": "virtues_098",
+    "correctAnswerIndex": 0,
+    "question": "Wat gebiedt de Koran over een gesloten verbond en bekrachtigde eden?",
+    "answers": [
+      "Het verbond na te komen en eden na bekrachtiging niet te breken",
+      "Ze opnieuw te onderhandelen",
+      "Ze te vergeten",
+      "Ze te verbergen"
+    ],
+    "explanation": "«En kom het verbond met Allah na wanneer jullie het zijn aangegaan, en breek de eden niet na hun bekrachtiging.»",
+    "sourceDisplay": "Koran 16:91"
+  },
+  {
+    "id": "virtues_099",
+    "correctAnswerIndex": 0,
+    "question": "Wanneer is volgens een door al-Bukhari overgeleverde hadith het geloof van een man volledig?",
+    "answers": [
+      "Wanneer hij voor zijn broeder liefheeft wat hij voor zichzelf liefheeft",
+      "Wanneer hij het hele jaar vast",
+      "Wanneer hij al zijn bezit weggeeft",
+      "Wanneer hij naar Mekka reist"
+    ],
+    "explanation": "«Niemand van jullie gelooft werkelijk totdat hij voor zijn broeder liefheeft wat hij voor zichzelf liefheeft.»",
+    "sourceDisplay": "Sahih al-Boechari, 13"
+  },
+  {
+    "id": "virtues_100",
+    "correctAnswerIndex": 0,
+    "question": "In welke gevallen ziet de Koran goeds in een vertrouwelijk gesprek?",
+    "answers": [
+      "Aansporen tot een aalmoes, tot het goede, of tot verzoening tussen mensen",
+      "Zaken bespreken",
+      "Een reis plannen",
+      "Nieuws doorgeven"
+    ],
+    "explanation": "«Er is geen goeds in veel van hun vertrouwelijke gesprekken, behalve bij wie aanspoort tot een aalmoes of tot het goede of tot verzoening tussen de mensen.»",
+    "sourceDisplay": "Koran 4:114"
   }
 ]

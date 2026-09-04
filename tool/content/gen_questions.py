@@ -1805,22 +1805,23 @@ add("virtues_018", "virtues", "easy", "hadithBukhari", "Sahih al-Bukhari", "1", 
 # Extended bank — one module per volume, each exposing register(add, L).
 # The modules live next to this script so it can run from any cwd.
 # ---------------------------------------------------------------------
+import importlib as _importlib
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from bank_prophets_a import register as _register_prophets_a  # noqa: E402
-from bank_prophets_b import register as _register_prophets_b  # noqa: E402
-from bank_sira_a import register as _register_sira_a  # noqa: E402
-from bank_sira_b import register as _register_sira_b  # noqa: E402
-from bank_quran import register as _register_quran  # noqa: E402
-from bank_faith import register as _register_faith  # noqa: E402
-from bank_virtues import register as _register_virtues  # noqa: E402
 
-for _register in (
-    _register_prophets_a, _register_prophets_b,
-    _register_sira_a, _register_sira_b,
-    _register_quran, _register_faith, _register_virtues,
-):
-    _register(add, L)
+# The volumes, in the order their ids run. Adding a volume is adding a
+# name here and a bank_<name>.py next door — nothing else in the
+# pipeline knows how many there are.
+BANK_MODULES = [
+    "bank_prophets_a", "bank_prophets_b", "bank_prophets_c",
+    "bank_sira_a", "bank_sira_b", "bank_sira_c",
+    "bank_quran", "bank_quran_b",
+    "bank_faith", "bank_faith_b",
+    "bank_virtues", "bank_virtues_c",
+]
+
+for _name in BANK_MODULES:
+    _importlib.import_module(_name).register(add, L)
 
 
 # ---------------------------------------------------------------------
@@ -1847,11 +1848,55 @@ def validate():
             assert content["sourceDisplay"].strip(), q["id"]
             assert all(a.strip() for a in content["answers"]), q["id"]
         assert q["sourceReference"].strip(), q["id"]
+    check_near_duplicates()
     print("Total questions:", len(Q))
     print("By category:", counts)
     print("By difficulty:", diffs)
     print("Free questions:", free_count)
     return counts, diffs, free_count
+
+
+# The policy (CONTENT_SOURCE_POLICY.md §8) called semantic near-duplicate
+# detection a manual review step. It stopped being one the moment the
+# bank passed a size a person can hold in their head: writing question
+# #612 without noticing that #57 already asks the same thing about the
+# same verse is the easy mistake, and the player who meets both is the
+# one who notices.
+#
+# Two questions in the same category citing the same source are the only
+# pairs worth comparing — a shared verse is what makes two questions
+# candidates for testing the same fact — plus any two questions whose
+# English wording is identical, wherever they sit.
+_NEAR_DUPLICATE_RATIO = 0.72
+
+
+def check_near_duplicates():
+    from difflib import SequenceMatcher
+
+    offenders = []
+    by_source = {}
+    by_text = {}
+    for q in Q:
+        text = q["en"]["question"].strip().lower()
+        if text in by_text:
+            offenders.append(f'{by_text[text]} / {q["id"]}: identical wording')
+        else:
+            by_text[text] = q["id"]
+        if q["sourceReference"].startswith("well-established"):
+            continue
+        key = (q["category"], q["sourceWork"], q["sourceReference"])
+        for other in by_source.setdefault(key, []):
+            ratio = SequenceMatcher(None, other["en"]["question"].lower(), text).ratio()
+            if ratio >= _NEAR_DUPLICATE_RATIO:
+                offenders.append(
+                    f'{other["id"]} / {q["id"]}: {ratio:.2f} on {key[2]}'
+                )
+        by_source[key].append(q)
+
+    assert not offenders, (
+        "near-duplicate questions — reword or re-source them:\n  "
+        + "\n  ".join(offenders)
+    )
 
 # ---------------------------------------------------------------------
 # Write output
@@ -1968,10 +2013,17 @@ def source_display(lang, q):
 def load_translations(lang):
     here = os.path.dirname(os.path.abspath(__file__))
     merged = {}
-    for cat in CATEGORIES:
-        path = os.path.join(here, "i18n", lang, f"{cat}.py")
-        if not os.path.exists(path):
+    # Every file in the language's folder, not one per category: a
+    # category that outgrew a single file (prophets, sira) splits into
+    # volumes the same way the source bank does, and the loader should
+    # not have to be told each time.
+    folder = os.path.join(here, "i18n", lang)
+    if not os.path.isdir(folder):
+        return merged
+    for name in sorted(os.listdir(folder)):
+        if not name.endswith(".py") or name.startswith("__"):
             continue
+        path = os.path.join(folder, name)
         ns = {}
         with open(path, encoding="utf-8") as f:
             exec(compile(f.read(), path, "exec"), ns)

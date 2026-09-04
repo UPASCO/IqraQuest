@@ -1,7 +1,7 @@
 // "Pourquoi je vois que les 50 mêmes questions à chaque fois ?"
 //
 // Because the build is the free edition, and the free edition draws from
-// the 50 questions marked free — 450 of the bank's 500 are behind the
+// the 50 questions marked free — 850 of the bank's 900 are behind the
 // purchase. That is the bank working as designed, but it leaves a tester
 // unable to read the content they are shipping.
 //
@@ -75,7 +75,7 @@ Future<void> _pump(WidgetTester tester, Widget home) async {
 void main() {
   final fr = AppLocalizationsFr();
 
-  testWidgets('the switch widens the bank from the free 50 to all 500', (
+  testWidgets('the switch widens the bank from the free 50 to all 900', (
     tester,
   ) async {
     await _pump(tester, const TesterModeTile());
@@ -83,7 +83,7 @@ void main() {
     final count = find.byKey(const Key('tester-bank-count'));
     expect(
       tester.widget<Text>(count).data,
-      fr.testerBankPlayable(50, 500),
+      fr.testerBankPlayable(50, 900),
       reason: 'the free edition should report only the free questions',
     );
 
@@ -92,14 +92,14 @@ void main() {
 
     expect(
       tester.widget<Text>(count).data,
-      fr.testerBankPlayable(500, 500),
+      fr.testerBankPlayable(900, 900),
       reason: 'the whole bank should be in play once the switch is on',
     );
 
     // And back, so the free experience can be checked on the same device.
     await tester.tap(find.byKey(const Key('tester-mode-toggle')));
     await tester.pumpAndSettle();
-    expect(tester.widget<Text>(count).data, fr.testerBankPlayable(50, 500));
+    expect(tester.widget<Text>(count).data, fr.testerBankPlayable(50, 900));
   });
 
   testWidgets('the settings carry the switch only in a tester build', (
