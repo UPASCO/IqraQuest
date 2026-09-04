@@ -17,8 +17,8 @@ Customer Success Manager Selligent. Il remplace la v4 générée par ChatGPT, qu
 ## Structure du deck
 
 1. Titre · 2. Ordre du jour · 3. Vue d'ensemble (santé / activité)
-4. Intercalaire CDM · 5. SLA Gold · 6. Base de données · 7. Audience unique (Ucount) · 8. Navigation asynchrone (rapidité) · 9. Correctif SSO AdminTool et ConfigTool · 10. Roadmap CDM (frise fin 2026 → Q4 2027)
-11. Intercalaire Engage · 12. Selligent by Zeta · 13. Performance email · 14. SMS · 15. Connecteur RCS LinkMobility · 16. SSO Engage · 17. Pixel d'ouverture et CNIL · 18. Prochaines exigences CNIL · 19. Roadmap Engage (frise aujourd'hui → Q4 2027)
+4. Intercalaire CDM · 5. SLA Gold · 6. Audience unique (Ucount) · 7. Navigation asynchrone (rapidité) · 8. Correctif SSO AdminTool et ConfigTool · 9. Roadmap CDM (frise fin 2026 → Q4 2027)
+10. Intercalaire Engage · 11. Selligent by Zeta · 12. Base de données Engage (avec l'extension 100 GB à 6 900 €/an) · 13. Performance email · 14. SMS · 15. Connecteur RCS LinkMobility · 16. SSO Engage · 17. Pixel d'ouverture et CNIL · 18. Prochaines exigences CNIL · 19. Roadmap Engage (frise aujourd'hui → Q4 2027)
 20. Vos arbitrages (cinq questions au client) · 21. Plan d'actions · 22. Contacts
 
 ## À confirmer avant la séance
@@ -27,8 +27,6 @@ Customer Success Manager Selligent. Il remplace la v4 générée par ChatGPT, qu
   de support. Faire qualifier les 4 tickets « None » (4,35 h, dont le 550647) si le détail est demandé.
 - **Redevance base de données** : 6 900 €/an par tranche de 100 GB est affiché sur la slide. Montant à confirmer.
 - **Les deux correctifs en cours** : mettre à jour les pastilles « En cours de résolution » sur la navigation asynchrone (redescente du 10/09) et sur le correctif SSO AdminTool / ConfigTool dès que leur statut évolue.
-- **Base de données et Ucount** : les dashboards sources sont filtrés sur la SaaS « Viasante » ;
-  si ces métriques relèvent d'Engage plutôt que de CDM, déplacer les slides 6 et 7 dans la section Engage.
 - **Email** : le rapport est en mode « toutes interactions » (ouvertures bots incluses) ; re-tirer en « hors bots » si possible.
 - **SMS** : connaître la raison de la baisse depuis juin 2025 avant de la présenter.
 - **RCS** : confirmer que LinkMobility (API) et Infobip sont bien les deux options supportées.

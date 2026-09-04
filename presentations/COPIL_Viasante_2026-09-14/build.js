@@ -193,8 +193,8 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const s = pres.addSlide();
     header(s, { title: 'Ordre du jour', subtitle: 'Deux outils, deux séquences : votre CRM (CDM) puis votre plateforme marketing (Engage), et les actions à décider ensemble.' });
     const cols = [
-      { n: '01', title: 'CDM — votre CRM', icon: 'FiDatabase', items: ['Consommation du SLA Gold 2026–2027', 'Capacité de la base de données', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap CDM 2026–2027'] },
-      { n: '02', title: 'Engage — votre plateforme marketing', icon: 'FiSend', items: ['Selligent by Zeta : ce qui change pour vous', 'Performance email vs secteur', 'Volumes SMS', 'Connecteur RCS LinkMobility', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et exigences CNIL', 'Roadmap Engage 2026–2027'] },
+      { n: '01', title: 'CDM — votre CRM', icon: 'FiDatabase', items: ['Consommation du SLA Gold 2026–2027', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap CDM 2026–2027'] },
+      { n: '02', title: 'Engage — votre plateforme marketing', icon: 'FiSend', items: ['Selligent by Zeta : ce qui change pour vous', 'Taille de la base de données Engage', 'Performance email vs secteur', 'Volumes SMS', 'Connecteur RCS LinkMobility', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et exigences CNIL', 'Roadmap Engage 2026–2027'] },
       { n: '03', title: 'Synthèse', icon: 'FiFlag', items: ['Vos arbitrages : cinq questions ouvertes', 'Plan d’actions : qui fait quoi, pour quand', 'Date du prochain COPIL'] },
     ];
     const cw = (W - 2 * M - 0.6) / 3, y0 = 2.2, ch = 4.4;
@@ -216,7 +216,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const rows = [
       { caption: 'SANTÉ DU DISPOSITIF', tiles: [
         { label: 'SLA Gold 2026–2027', value: `7,9${NB}h / 50${NB}h`, sub: `16${NB}% du forfait consommé · 42,1${NB}h disponibles`, iconName: 'FiClock', status: 'SOUS CONTRÔLE', statusFill: C.greenL, statusColor: C.green },
-        { label: 'Base de données', value: `47 / 50${NB}GB`, sub: `94${NB}% de la capacité · +3${NB}GB en six mois · au 24/08`, iconName: 'FiDatabase', status: 'À ANTICIPER', statusFill: C.amberL, statusColor: C.amber },
+        { label: 'Base de données Engage', value: `47 / 50${NB}GB`, sub: `94${NB}% de la capacité · +3${NB}GB en six mois · au 24/08`, iconName: 'FiDatabase', status: 'À ANTICIPER', statusFill: C.amberL, statusColor: C.amber },
         { label: 'Audience unique (Ucount)', value: fr(824913), sub: `contacts en août 2026 · +20${NB}% sur un an`, iconName: 'FiUsers', status: 'PALIER EN VÉRIFICATION', statusFill: C.tealL, statusColor: C.teal },
       ] },
       { caption: 'ACTIVITÉ DU SEMESTRE (25 FÉVRIER → 23 AOÛT 2026)', tiles: [
@@ -244,7 +244,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     txt(s, topics.map((t, i) => ({ text: t, options: { breakLine: i < topics.length - 1, bullet: { indent: 12 }, paraSpaceAfter: 3 } })), { x: M, y: 4.55, w: 7.5, h: 1.9, fontSize: 13, color: 'E6F0F2' });
     return s;
   }
-  divider('01', 'CDM — votre CRM', 'Exploitation, capacité, correctifs et trajectoire produit', ['SLA Gold : consommation et règle de décompte', 'Capacité de la base de données', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap 2026–2027']);
+  divider('01', 'CDM — votre CRM', 'Exploitation, correctifs et trajectoire produit', ['SLA Gold : consommation et règle de décompte', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap 2026–2027']);
 
   // ===== 5. SLA =====
   {
@@ -288,29 +288,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const cx = bx + bw + 0.3, cw = W - M - cx;
     callout(s, cx, 2.15, cw, 2.85, 'Règle de décompte', ['Seules les demandes de service sont décomptées des 50 h de votre forfait.', 'Anomalies produit, questions d’usage et suivi sont pris en charge par Selligent, hors forfait.'], { iconName: 'FiInfo', fontSize: 10.5 });
     callout(s, cx, 5.15, cw, 1.65, 'Suivi', ['Point SLA mensuel dans votre reporting.', 'Alerte dès 60 % de consommation.'], { iconName: 'FiCheckCircle', iconBg: C.green, fill: C.greenL, titleColor: C.green, fontSize: 10.5 });
-  }
-
-  // ===== 6. Base de données =====
-  {
-    const s = pres.addSlide();
-    header(s, { section: 'CDM', title: 'Base de données : 47 GB sur 50, anticipons ensemble', subtitle: '+3 GB en six mois, par paliers, et un plateau à 47 GB depuis juin : 3 GB de marge, soit environ six mois si le rythme du premier semestre reprend.' });
-    // chart card
-    card(s, M, 2.15, 7.4, 4.65, { shadow: true, line: null });
-    txt(s, 'Taille de la base de données (GB, moyenne mensuelle) — mars à août 2026', { x: M + 0.25, y: 2.3, w: 6.9, h: 0.3, fontSize: 11, bold: true, color: C.muted });
-    s.addChart([
-      { type: pres.charts.BAR, data: [{ name: 'Taille (GB)', labels: DB.labels, values: DB.values }], options: { chartColors: [C.teal3], barGapWidthPct: 60 } },
-      { type: pres.charts.LINE, data: [{ name: 'Seuil 50 GB', labels: DB.labels, values: DB.labels.map(() => DB.limit) }], options: { chartColors: [C.orange], lineSize: 2, lineDataSymbol: 'none', lineDash: 'dash', showValue: false } },
-    ], {
-      x: M + 0.2, y: 2.65, w: 7.0, h: 3.7, valAxisMinVal: 0, valAxisMaxVal: 55, valAxisMajorUnit: 10,
-      showValue: true, dataLabelPosition: 'outEnd', dataLabelFontSize: 10, dataLabelColor: C.teal, dataLabelFormatCode: '0.0',
-      catAxisLabelColor: C.muted, valAxisLabelColor: C.muted, catAxisLabelFontSize: 10, valAxisLabelFontSize: 10,
-      valGridLine: { color: 'E6ECEF', size: 0.5 }, catGridLine: { style: 'none' }, showLegend: true, legendPos: 'b', legendFontSize: 10, legendColor: C.muted,
-    });
-    // right column
-    const rx = M + 7.7, rw = W - M - rx;
-    kpi(s, rx, 2.15, rw, 1.65, { label: 'Marge restante', value: `3${NB}GB (6${NB}%)`, sub: 'sur un seuil de 50 GB', iconName: 'FiHardDrive', valueSize: 24 });
-    kpi(s, rx, 3.95, rw, 1.65, { label: 'Redevance au-delà du seuil', value: `6 900${NB}€ / an`, sub: 'par tranche de 100 GB, selon pricelist', iconName: 'FiFileText', valueSize: 22 });
-    callout(s, rx, 5.75, rw, 1.05, 'Deux leviers', 'Purger et archiver les données obsolètes, ou étendre la capacité par palier de 100 GB.', { iconName: 'FiTool', fontSize: 10.5 });
   }
 
   // ===== 7. Ucount =====
@@ -401,7 +378,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
   }
 
   // ===== 10. Intercalaire Engage =====
-  divider('02', 'Engage — votre plateforme marketing', 'Continuité, performance, canaux, produit et conformité', ['Selligent by Zeta : ce qui change, ce qui ne change pas', 'Performance email vs secteur', 'Volumes SMS', 'Connecteur RCS LinkMobility', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et exigences CNIL', 'Roadmap Engage 2026–2027']);
+  divider('02', 'Engage — votre plateforme marketing', 'Continuité, capacité, performance, canaux et conformité', ['Selligent by Zeta : ce qui change, ce qui ne change pas', 'Taille de la base de données Engage', 'Performance email vs secteur', 'Volumes SMS', 'Connecteur RCS LinkMobility', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et exigences CNIL', 'Roadmap Engage 2026–2027']);
 
   // ===== Selligent by Zeta =====
   {
@@ -422,6 +399,33 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       hline(s, x + 0.22, y0 + 1.75, cw - 0.44);
       bullets(s, c.body, { x: x + 0.22, y: y0 + 1.9, w: cw - 0.44, h: ch - 2.05, fontSize: 11, gap: 6 });
     });
+  }
+
+  // ===== Base de données Engage =====
+  {
+    const s = pres.addSlide();
+    header(s, { section: 'ENGAGE', title: 'Base de données Engage : 47 GB sur 50, anticipons ensemble', subtitle: '+3 GB en six mois, par paliers, et un plateau à 47 GB depuis juin : 3 GB de marge, soit environ six mois si le rythme du premier semestre reprend.' });
+    // chart card
+    card(s, M, 2.15, 7.4, 4.65, { shadow: true, line: null });
+    txt(s, 'Taille de la base de données Engage (GB, moyenne mensuelle) — mars à août 2026', { x: M + 0.25, y: 2.3, w: 6.9, h: 0.3, fontSize: 11, bold: true, color: C.muted });
+    s.addChart([
+      { type: pres.charts.BAR, data: [{ name: 'Taille (GB)', labels: DB.labels, values: DB.values }], options: { chartColors: [C.teal3], barGapWidthPct: 60 } },
+      { type: pres.charts.LINE, data: [{ name: 'Seuil 50 GB', labels: DB.labels, values: DB.labels.map(() => DB.limit) }], options: { chartColors: [C.orange], lineSize: 2, lineDataSymbol: 'none', lineDash: 'dash', showValue: false } },
+    ], {
+      x: M + 0.2, y: 2.65, w: 7.0, h: 3.7, valAxisMinVal: 0, valAxisMaxVal: 55, valAxisMajorUnit: 10,
+      showValue: true, dataLabelPosition: 'outEnd', dataLabelFontSize: 10, dataLabelColor: C.teal, dataLabelFormatCode: '0.0',
+      catAxisLabelColor: C.muted, valAxisLabelColor: C.muted, catAxisLabelFontSize: 10, valAxisLabelFontSize: 10,
+      valGridLine: { color: 'E6ECEF', size: 0.5 }, catGridLine: { style: 'none' }, showLegend: true, legendPos: 'b', legendFontSize: 10, legendColor: C.muted,
+    });
+    // right column
+    const rx = M + 7.7, rw = W - M - rx;
+    kpi(s, rx, 2.15, rw, 1.55, { label: 'Marge restante', value: `3${NB}GB (6${NB}%)`, sub: 'sur un seuil de 50 GB', iconName: 'FiHardDrive', valueSize: 24 });
+    card(s, rx, 3.85, rw, 2.95, { fill: C.orangeL, line: null });
+    iconCircle(s, rx + 0.25, 4.05, 0.5, 'FiFileText', { bg: C.orange, fg: C.white });
+    txt(s, 'Extension de capacité', { x: rx + 0.9, y: 4.05, w: rw - 1.15, h: 0.5, fontSize: 12.5, bold: true, color: C.orange, valign: 'middle' });
+    txt(s, `+100${NB}GB`, { x: rx + 0.25, y: 4.7, w: rw - 0.5, h: 0.55, fontSize: 30, bold: true, color: C.teal, valign: 'middle' });
+    txt(s, `6 900${NB}€ / an`, { x: rx + 0.25, y: 5.3, w: rw - 0.5, h: 0.45, fontSize: 20, bold: true, color: C.teal, valign: 'middle' });
+    txt(s, 'Passage de 50 à 150 GB. Alternative : purger et archiver les données obsolètes.', { x: rx + 0.25, y: 5.85, w: rw - 0.5, h: 0.8, fontSize: 10.5, color: C.ink, valign: 'top' });
   }
 
   // ===== 11. Email performance =====
@@ -596,7 +600,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const s = pres.addSlide();
     header(s, { section: 'SYNTHÈSE', title: 'Vos arbitrages : cinq questions pour orienter la suite', subtitle: 'Vos réponses en séance alimentent directement le plan d’actions de la page suivante.' });
     const qs = [
-      { icon: 'FiDatabase', topic: 'Base de données', q: 'Nettoyage et archivage d’abord, ou extension de capacité avec la redevance associée ?' },
+      { icon: 'FiDatabase', topic: 'Base de données', q: 'Nettoyage et archivage d’abord, ou extension de 100 GB à 6 900 € par an ?' },
       { icon: 'FiUsers', topic: 'Licence', q: 'Quel volume de contacts prévoyez-vous en 2027, et votre palier de licence reste-t-il adapté ?' },
       { icon: 'FiMail', topic: 'Email', q: 'Quelles campagnes prioriser pour travailler le taux de clics ?' },
       { icon: 'FiSmartphone', topic: 'Mobile', q: 'Quelle ambition SMS et RCS en 2027 : le passe-plat LinkMobility suffit-il, ou faut-il une interface ?' },
@@ -621,8 +625,8 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const hdr = ['Sujet', 'Action proposée', 'Qui', 'Quand (proposition)'];
     const rows = [
       ['SLA Gold', 'Suivi mensuel de la consommation dans votre reporting ; alerte dès 60 %.', 'Selligent', 'Mensuel'],
-      ['Base de données', 'Analyse de la répartition de la base, puis choix entre nettoyage et extension.', 'Viasanté + Selligent', 'Octobre 2026'],
-      ['Redevance volume', 'Confirmation du montant de la redevance au-delà du seuil de 50 GB.', 'Selligent', 'Septembre 2026'],
+      ['Base de données Engage', 'Analyse de la répartition de la base, puis choix entre nettoyage et extension.', 'Viasanté + Selligent', 'Octobre 2026'],
+      ['Extension 100 GB', 'Confirmation de la redevance de 6 900 € / an au-delà du seuil de 50 GB.', 'Selligent', 'Septembre 2026'],
       ['Licence', 'Palier de licence à confirmer au regard du volume de contacts prévu en 2027.', 'Viasanté + Selligent', 'T4 2026'],
       ['Navigation asynchrone', 'Redescente du patch de performance, puis confirmation du résultat.', 'Selligent', 'Septembre 2026'],
       ['Correctif SSO admin', 'Mise en production du correctif AdminTool / ConfigTool et clôture du sujet.', 'Selligent', 'Septembre 2026'],
