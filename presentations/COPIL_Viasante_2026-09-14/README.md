@@ -9,8 +9,8 @@ Customer Success Manager Selligent. Il remplace la v4 générée par ChatGPT, qu
 
 | Fichier | Rôle |
 | --- | --- |
-| `COPIL_Selligent_Mutuelle_Viasante_14092026_v5.pptx` | Le deck à présenter (notes présentateur incluses, préfixées « NOTE INTERNE »). |
-| `COPIL_Selligent_Mutuelle_Viasante_14092026_v5.pdf` | Export PDF sans notes, pour envoi au client après la séance. |
+| `COPIL_Selligent_Mutuelle_Viasante_14092026_v5.pptx` | Le deck à présenter. Aucune note interne : les slides se suffisent à elles-mêmes. |
+| `COPIL_Selligent_Mutuelle_Viasante_14092026_v5.pdf` | Export PDF, pour envoi au client après la séance. |
 | `build.js` | Générateur pptxgenjs : toutes les données et tous les textes sont dans ce fichier. |
 | `logo_teal.png`, `logo_white.png` | Logo Selligent by Zeta utilisé dans le deck. |
 
@@ -18,8 +18,8 @@ Customer Success Manager Selligent. Il remplace la v4 générée par ChatGPT, qu
 
 1. Titre · 2. Ordre du jour · 3. Vue d'ensemble (santé / activité)
 4. Intercalaire CDM · 5. SLA Gold · 6. Base de données · 7. Audience unique (Ucount) · 8. Navigation asynchrone (rapidité) · 9. Correctif SSO AdminTool et ConfigTool · 10. Roadmap CDM (frise fin 2026 → Q4 2027)
-11. Intercalaire Engage · 12. Selligent by Zeta · 13. Performance email · 14. SMS et RCS · 15. SSO Engage · 16. Pixel d'ouverture et CNIL · 17. Prochaines exigences CNIL · 18. Roadmap Engage (frise aujourd'hui → Q4 2027)
-19. Vos arbitrages (cinq questions au client) · 20. Plan d'actions · 21. Contacts
+11. Intercalaire Engage · 12. Selligent by Zeta · 13. Performance email · 14. SMS · 15. Connecteur RCS LinkMobility · 16. SSO Engage · 17. Pixel d'ouverture et CNIL · 18. Prochaines exigences CNIL · 19. Roadmap Engage (frise aujourd'hui → Q4 2027)
+20. Vos arbitrages (cinq questions au client) · 21. Plan d'actions · 22. Contacts
 
 ## À confirmer avant la séance
 

@@ -186,7 +186,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       { text: 'Frederic Schneider', options: { bold: true, breakLine: true } },
       { text: 'Technical Project Manager — Selligent' },
     ], { x: M, y: 5.5, w: 6, h: 1.2, fontSize: 12.5, color: 'E6F0F2', valign: 'top', paraSpaceAfter: 2 });
-    s.addNotes('NOTE INTERNE — Ouverture : rappeler l’objectif du COPIL (état des lieux factuel de CDM et Engage, décisions à prendre ensemble, prochaines étapes). Durée cible : 45 min.');
   }
 
   // ===== 2. Ordre du jour =====
@@ -195,7 +194,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     header(s, { title: 'Ordre du jour', subtitle: 'Deux outils, deux séquences : votre CRM (CDM) puis votre plateforme marketing (Engage), et les actions à décider ensemble.' });
     const cols = [
       { n: '01', title: 'CDM — votre CRM', icon: 'FiDatabase', items: ['Consommation du SLA Gold 2026–2027', 'Capacité de la base de données', 'Audience unique et licence', 'Rapidité de l’application : navigation asynchrone', 'Correctif SSO AdminTool et ConfigTool', 'Roadmap CDM 2026–2027'] },
-      { n: '02', title: 'Engage — votre plateforme marketing', icon: 'FiSend', items: ['Selligent by Zeta : ce qui change pour vous', 'Performance email vs secteur', 'Volumes SMS et option RCS', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et recommandation CNIL', 'Roadmap Engage 2026–2027'] },
+      { n: '02', title: 'Engage — votre plateforme marketing', icon: 'FiSend', items: ['Selligent by Zeta : ce qui change pour vous', 'Performance email vs secteur', 'Volumes SMS', 'Connecteur RCS LinkMobility', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et exigences CNIL', 'Roadmap Engage 2026–2027'] },
       { n: '03', title: 'Synthèse', icon: 'FiFlag', items: ['Vos arbitrages : cinq questions ouvertes', 'Plan d’actions : qui fait quoi, pour quand', 'Date du prochain COPIL'] },
     ];
     const cw = (W - 2 * M - 0.6) / 3, y0 = 2.2, ch = 4.4;
@@ -208,7 +207,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       hline(s, x + 0.3, y0 + 1.7, cw - 0.6);
       bullets(s, c.items, { x: x + 0.3, y: y0 + 1.9, w: cw - 0.6, h: ch - 2.1, fontSize: 12.5, gap: 7 });
     });
-    s.addNotes('NOTE INTERNE — Annoncer la logique : d’abord le CRM (exploitation, capacité, sécurité, roadmap), puis Engage (performance, canaux, produit, conformité, roadmap), puis le plan d’actions. Demander s’il y a des sujets à ajouter avant de démarrer.');
   }
 
   // ===== 3. Vue d'ensemble =====
@@ -233,7 +231,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       txt(s, r.caption, { x: M, y: cy, w: 8, h: 0.25, fontSize: 9, bold: true, color: C.muted, charSpacing: 2, valign: 'middle' });
       r.tiles.forEach((t, i) => kpi(s, M + i * (tw + 0.3), cy + 0.3, tw, th, t));
     });
-    s.addNotes('NOTE INTERNE — Lecture rapide : exploitation saine (SLA, délivrabilité), deux points d’anticipation (capacité base, clics email), une vérification contractuelle (palier Ucount) et une question d’usage (SMS/RCS). Ne pas entrer dans le détail ici. Le taux d’ouverture inclut les interactions automatisées (bots) : préférer le taux de clics comme indicateur d’engagement.');
   }
 
   // ===== 4. Intercalaire CDM =====
@@ -291,7 +288,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const cx = bx + bw + 0.3, cw = W - M - cx;
     callout(s, cx, 2.15, cw, 2.85, 'Règle de décompte', ['Seules les demandes de service sont décomptées des 50 h de votre forfait.', 'Anomalies produit, questions d’usage et suivi sont pris en charge par Selligent, hors forfait.'], { iconName: 'FiInfo', fontSize: 10.5 });
     callout(s, cx, 5.15, cw, 1.65, 'Suivi', ['Point SLA mensuel dans votre reporting.', 'Alerte dès 60 % de consommation.'], { iconName: 'FiCheckCircle', iconBg: C.green, fill: C.greenL, titleColor: C.green, fontSize: 10.5 });
-    s.addNotes(`NOTE INTERNE — Chiffres du dashboard SLA Support Follow-up : SLA contractuel 50 h, Support Time 36,67 h, Case Time 7,92 h, % SLA Use 15,83 %. Reste 42,08 h. Non décompté : 36,67 − 7,92 = 28,75 h.\nDétail des tickets (extract xlsx mis à jour le 03/09/2026, activité du 01/07 au 02/09) : 14 tickets, 17,87 h de support sur cette fenêtre, dont 5,02 h de demandes de service. Répartition affichée sur la slide : 5 anomalies produit, 3 demandes de service, 2 questions, 4 tickets de suivi / non catégorisés.\nTickets les plus consommateurs : 550647 (4,17 h, non catégorisé, encore actif le 31/08), 550586 (demande de service, 3,75 h), 550263 (anomalie, 2,92 h), 551396 (question, 2,08 h), 551314 (anomalie, 1,67 h). Consultant support référent : Pierre Foucart.\nSi le client demande le détail du décompte : seules les heures qualifiées « Case » alimentent le % SLA Use.`);
   }
 
   // ===== 6. Base de données =====
@@ -315,7 +311,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     kpi(s, rx, 2.15, rw, 1.65, { label: 'Marge restante', value: `3${NB}GB (6${NB}%)`, sub: 'sur un seuil de 50 GB', iconName: 'FiHardDrive', valueSize: 24 });
     kpi(s, rx, 3.95, rw, 1.65, { label: 'Redevance au-delà du seuil', value: `6 900${NB}€ / an`, sub: 'par tranche de 100 GB, selon pricelist', iconName: 'FiFileText', valueSize: 22 });
     callout(s, rx, 5.75, rw, 1.05, 'Deux leviers', 'Purger et archiver les données obsolètes, ou étendre la capacité par palier de 100 GB.', { iconName: 'FiTool', fontSize: 10.5 });
-    s.addNotes('NOTE INTERNE — Source : dashboard Database Sizes (24/08/2026) — ≈ 43,9 GB jusqu’au 20/03, ≈ 44,9 GB à partir du 21/03, ≈ 46,0 GB à partir du 13/05, ≈ 46,9 GB depuis le 06/06 puis plateau. Seuil affiché 50 GB.\nREDEVANCE : 6 900 €/an par tranche de 100 GB selon la pricelist — À CONFIRMER avant la séance. Si la confirmation n’est pas obtenue, annoncer « redevance annuelle par tranche de 100 GB, montant à confirmer » plutôt que le chiffre.\nLa date de dépassement est une extrapolation du rythme du premier semestre : la présenter au conditionnel.');
   }
 
   // ===== 7. Ucount =====
@@ -334,7 +329,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     kpi(s, rx, 2.15, rw, 1.45, { label: 'Août 2026', value: fr(824913), sub: `+0,6${NB}% vs juillet (+${fr(4874)}) · +20,2${NB}% sur un an`, iconName: 'FiUsers', valueSize: 24 });
     kpi(s, rx, 3.75, rw, 1.45, { label: 'Depuis juin 2025', value: `+17,5${NB}%`, sub: `≈${NB}+8${NB}800 contacts par mois · en ralentissement`, iconName: 'FiTrendingUp', valueSize: 24 });
     callout(s, rx, 5.35, rw, 1.45, 'Question', 'Votre palier de licence est-il toujours adapté ? Quel volume de contacts prévoyez-vous en 2027 ?', { iconName: 'FiHelpCircle', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 11 });
-    s.addNotes('NOTE INTERNE — Source : Compliance Count (calcul du 16/08/2026, données au 24/08). Juin 2025 : 701 932 → août 2026 : 824 913 (+122 981, soit +17,5 % ; ≈ +8 800/mois). Juillet 2026 : 820 039 → août : +4 874 (+0,6 %). Août 2025 : 686 466 → août 2026 : +20,2 % sur un an. La croissance mensuelle ralentit (+4,9 k en août contre ≈ +15 k fin 2025).\nFormuler le sujet licence comme une vérification contractuelle du palier Ucount (licence Gold), jamais comme un incident. Aucune source ne donne le palier contracté : ne pas parler de dépassement. Si la position n’est pas connue le 14/09, s’en tenir à « retour formel d’ici fin septembre ».\nQuestion à poser au client : cette croissance correspond-elle à son plan (adhérents, prospects) ?');
   }
 
   // ===== 8a. Navigation asynchrone — rapidité de l'application =====
@@ -362,7 +356,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       hline(s, x + 0.25, 3.68, cw - 0.5);
       bullets(s, c.items, { x: x + 0.25, y: 3.8, w: cw - 0.5, h: 2.8, fontSize: 11, gap: 8 });
     });
-    s.addNotes('NOTE INTERNE — Sujet performance, distinct du correctif SSO traité sur la slide suivante. Patch de navigation asynchrone CDM : redescente prévue le 10/09/2026, statut « en cours de résolution ».\nÀ METTRE À JOUR AVANT LA SÉANCE avec Frederic Schneider / Ops : la redescente a-t-elle eu lieu le 10/09 ? Ajuster la pastille (« En cours de résolution » → « Déployé, en observation » ou « Reporté au … ») et la phrase de la carte de gauche. Préparer les deux variantes.\nSi le client demande un délai ferme : ne pas s’engager, dire que la redescente est planifiée et que le résultat lui sera confirmé.');
   }
 
   // ===== 8b. Correctif SSO AdminTool / ConfigTool =====
@@ -391,7 +384,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     txt(s, 'Statut', { x: M + 1.05, y: by, w: 1.2, h: 1.15, fontSize: 13, bold: true, color: C.teal, valign: 'middle' });
     txt(s, 'Correctif en cours de résolution. Nous vous confirmons la mise en production et son résultat dès la clôture du sujet.', { x: M + 2.3, y: by, w: W - 2 * M - 5.0, h: 1.15, fontSize: 12, color: C.ink, valign: 'middle' });
     pill(s, W - M - 2.6, by + 0.4, 2.3, 0.36, 'EN COURS DE RÉSOLUTION', { fill: C.amberL, color: C.amber, fontSize: 9.5 });
-    s.addNotes('NOTE INTERNE — Sujet sécurité / configuration, distinct du patch de performance traité sur la slide précédente. Correctif SSO sur les pages AdminTool et ConfigTool : solution communiquée le 31/08/2026, statut « en cours de résolution ».\nÀ METTRE À JOUR AVANT LA SÉANCE avec Frederic Schneider / Ops : le correctif est-il passé en production ? Ajuster la pastille et la phrase du bandeau si le statut a changé.\nNe jamais mêler ce sujet au nouveau SSO produit Engage (fenêtre cible T1 2027) ni aux sujets de licence : si le client fait le rapprochement, rappeler que ce sont deux systèmes différents.');
   }
 
   // ===== 9. Roadmap CDM =====
@@ -406,11 +398,10 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       { when: 'Q4 2027', icon: 'FiCpu', title: 'Intelligence artificielle', items: ['Suggestions d’actions et priorisation des tâches', 'Aide à la rédaction, auto-complétion, recherche intelligente'], last: true },
     ], { y: 2.95, cardH: 2.5 });
     txt(s, 'Quelles étapes sont prioritaires pour vos équipes ?', { x: M, y: 6.45, w: W - 2 * M, h: 0.35, fontSize: 12.5, bold: true, color: C.teal, align: 'center', valign: 'middle' });
-    s.addNotes('NOTE INTERNE — Source : deck « CDM Roadmap 2026–2027 » (5 axes : UX, centralisation / vue 360°, automatisation & IA, analytique avancée, collaboration & mobilité). Le séquencement trimestriel est la lecture Selligent proposée au client, pas un engagement de livraison : rester au conditionnel si le client cherche à le contractualiser.\nLa collaboration et la mobilité (partage temps réel, application mobile, chat et visio intégrés) sont rattachées aux étapes UX et automatisation. Mettre en avant la vue 360° et le dédoublonnage (lien direct avec le sujet volumétrie de la base) et l’automatisation des relances. Demander au client ses priorités.');
   }
 
   // ===== 10. Intercalaire Engage =====
-  divider('02', 'Engage — votre plateforme marketing', 'Continuité, performance, canaux, produit et conformité', ['Selligent by Zeta : ce qui change, ce qui ne change pas', 'Performance email vs secteur', 'Volumes SMS et option RCS', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et recommandation CNIL', 'Roadmap Engage 2026–2027']);
+  divider('02', 'Engage — votre plateforme marketing', 'Continuité, performance, canaux, produit et conformité', ['Selligent by Zeta : ce qui change, ce qui ne change pas', 'Performance email vs secteur', 'Volumes SMS', 'Connecteur RCS LinkMobility', 'Nouveau SSO Engage : trajectoire', 'Pixel d’ouverture et exigences CNIL', 'Roadmap Engage 2026–2027']);
 
   // ===== Selligent by Zeta =====
   {
@@ -431,7 +422,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       hline(s, x + 0.22, y0 + 1.75, cw - 0.44);
       bullets(s, c.body, { x: x + 0.22, y: y0 + 1.9, w: cw - 0.44, h: ch - 2.05, fontSize: 11, gap: 6 });
     });
-    s.addNotes('NOTE INTERNE — Source : session roadmap interne juin 2026 (réponses recommandées aux questions clients) : investissement continu (équipes produit / ingénierie principalement en Belgique, étendues par des équipes dédiées IA et Data) ; aucune stratégie de migration forcée, priorité à la valeur de l’investissement actuel ; pour les clients Selligent seuls, aucune obligation de passer à une nouvelle tarification au renouvellement ; pas de changement immédiat sur les modules existants ; stratégie produit fondée sur l’analyse du marché européen et les retours clients ; RGPD, vie privée et réglementation européenne restent une priorité. Questions probables : avenir de Selligent, décisions prises depuis les États-Unis, données hors UE, tarifs — répondre avec ces éléments, sans entrer dans la stratégie Zeta / ZMP.');
   }
 
   // ===== 11. Email performance =====
@@ -467,35 +457,51 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const rx = M + 6.9, rw = W - M - rx;
     callout(s, rx, cy, rw, 1.45, 'Ce que disent les chiffres', ['99,4 % délivrés et près d’un email sur deux ouvert : la chaîne technique délivre.', 'Le clic est en retrait : 1,9 % contre 3,1 % pour le secteur.'], { iconName: 'FiEye', fontSize: 10.5 });
     callout(s, rx, cy + 1.6, rw, chH - 1.6, 'Le levier 2027', ['Les contenus et les appels à l’action, pas l’infrastructure.', 'Ciblage plus fin et scénarios relationnels sur les campagnes à fort volume.', 'Objectif : rapprocher le taux de clics du niveau du secteur.'], { iconName: 'FiTarget', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 10.5 });
-    s.addNotes('NOTE INTERNE — Source : Deliverability Report – Client vs Industry (25/02/2026 → 23/08/2026, secteur « Professional Services », 48 installs, mode « All interactions »). DR 99,37 % (secteur 98,72 %), VR 46,67 % (27,25 %), CTO 4,08 % (11,20 %), CTR 1,91 % (3,05 %), Unsub 0,30 % (0,20 %). 1 545 190 emails délivrés.\nLe taux d’ouverture inclut les ouvertures automatiques (Apple MPP, bots) et gonfle mécaniquement la VR tout en écrasant le CTO : si possible, re-tirer le rapport en mode « Non bot interactions » avant la séance ; sinon, s’en tenir au message CTR (−1,1 pt vs secteur). Le secteur « Professional Services » n’est pas une mutuelle santé : présenter le panel comme une référence indicative.\nLe taux de désabonnement légèrement supérieur au secteur (0,30 % vs 0,20 %) relève du même sujet : pression marketing et pertinence des contenus. Volumes mensuels (dashboard Timeline Interactions, lecture graphique) : montée en charge de mars à juin (≈ 0,16 M → 0,47 M), juillet ≈ 0,40 M ; le CTO et le CTR reviennent vers le niveau du secteur en juillet–août.');
   }
 
   // ===== 12. SMS & RCS =====
   {
     const s = pres.addSlide();
-    header(s, { section: 'ENGAGE', title: 'SMS et RCS : quelle place pour le mobile en 2027 ?', subtitle: `Près de 0,5${NB}million de SMS délivrés depuis août 2023 · ≈${NB}20–26${NB}k par mois jusqu’en mai 2025, ≈${NB}2–3${NB}k par mois depuis juin 2025.` });
-    card(s, M, 2.15, 7.6, 4.65, { shadow: true, line: null });
-    txt(s, 'SMS délivrés par mois (milliers) — août 2023 à août 2026', { x: M + 0.25, y: 2.3, w: 7.1, h: 0.3, fontSize: 11, bold: true, color: C.muted });
+    header(s, { section: 'ENGAGE', title: 'SMS : un canal en retrait depuis juin 2025', subtitle: 'Quelle place voulez-vous donner au mobile en 2027 ? Le connecteur RCS ouvre une alternative, présentée sur la page suivante.' });
+    card(s, M, 2.15, 8.4, 4.65, { shadow: true, line: null });
+    txt(s, 'SMS délivrés par mois (milliers) — août 2023 à août 2026', { x: M + 0.25, y: 2.3, w: 7.9, h: 0.3, fontSize: 11, bold: true, color: C.muted });
     const labels = SMS.values.map((_, i) => { const m = (SMS.start[1] - 1 + i) % 12, y = SMS.start[0] + Math.floor((SMS.start[1] - 1 + i) / 12); return (m === 0 || m === 6) ? `${MOIS[m]} ${String(y).slice(2)}` : ''; });
     s.addChart(pres.charts.BAR, [{ name: 'SMS délivrés (k)', labels, values: SMS.values }], {
-      x: M + 0.2, y: 2.65, w: 7.2, h: 3.7, barDir: 'col', barGapWidthPct: 35, chartColors: [C.teal3],
+      x: M + 0.2, y: 2.65, w: 8.0, h: 3.9, barDir: 'col', barGapWidthPct: 35, chartColors: [C.teal3],
       valAxisMinVal: 0, valAxisMaxVal: 35, valAxisMajorUnit: 5, valAxisLabelFontSize: 9, catAxisLabelFontSize: 9, catAxisLabelColor: C.muted, valAxisLabelColor: C.muted,
       valGridLine: { color: 'E6ECEF', size: 0.5 }, catGridLine: { style: 'none' }, showLegend: false, showValue: false,
     });
-    const rx = M + 7.9, rw = W - M - rx;
-    txt(s, 'Le RCS : deux connecteurs, deux niveaux', { x: rx, y: 2.15, w: rw, h: 0.3, fontSize: 13, bold: true, color: C.teal, valign: 'middle' });
-    const oh = 1.5, o1 = 2.4, o2 = o1 + oh + 0.15;
-    card(s, rx, o1, rw, oh, { shadow: true, line: null });
-    iconCircle(s, rx + 0.2, o1 + 0.17, 0.42, 'FiZap', { bg: C.teal, fg: C.white });
-    txt(s, 'LinkMobility — prêt et en production', { x: rx + 0.75, y: o1 + 0.15, w: rw - 0.95, h: 0.45, fontSize: 12, bold: true, color: C.teal, valign: 'middle' });
-    bullets(s, ['Fonctionne désormais par API et non plus par dépôt SFTP', 'Pas d’interface dédiée, donc pas de prévisualisation', 'Un passe-plat simple, avec les mêmes limites qu’auparavant'], { x: rx + 0.25, y: o1 + 0.68, w: rw - 0.5, h: oh - 0.75, fontSize: 10.5, gap: 3 });
-    card(s, rx, o2, rw, oh, { shadow: true, line: null });
-    iconCircle(s, rx + 0.2, o2 + 0.17, 0.42, 'FiSmartphone', { bg: C.teal, fg: C.white });
-    txt(s, 'Infobip — connecteur complet', { x: rx + 0.75, y: o2 + 0.15, w: rw - 0.95, h: 0.45, fontSize: 12, bold: true, color: C.teal, valign: 'middle' });
-    bullets(s, ['Interface dédiée pour composer les messages', 'Prévisualisation avant envoi', 'Orchestration plus riche pour les équipes marketing'], { x: rx + 0.25, y: o2 + 0.68, w: rw - 0.5, h: oh - 0.75, fontSize: 10.5, gap: 3 });
-    const o3 = o2 + oh + 0.15;
-    callout(s, rx, o3, rw, 6.8 - o3, 'Votre choix', 'Un passe-plat simple et rapide, ou une expérience complète avec prévisualisation ?', { iconName: 'FiHelpCircle', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 10.5, inline: true, titleW: 1.05 });
-    s.addNotes('NOTE INTERNE — Source : dashboard SMS Deliveries (23/08/2026) : ≈ 0,50 M de SMS délivrés au total (août 2023 → août 2026) ; ≈ 20–26 k/mois de septembre 2023 à mai 2025 (pic ≈ 30 k en juillet 2024) ; ≈ 2–3 k/mois depuis juin 2025 ; août 2026 ≈ 6 k (mois partiel).\nRCS LinkMobility : le connecteur est prêt et en production (déjà live chez un autre client mutualiste), avec les mêmes limitations qu’auparavant. Le changement : il fonctionne désormais par API et non plus par dépôt SFTP. Pas d’interface dédiée, donc pas de prévisualisation — c’est un passe-plat simple.\nInfobip à l’inverse : connecteur avec interface, prévisualisation et orchestration plus riche.\nÀ FAIRE AVANT LE 14/09 : connaître la raison de la baisse des volumes depuis juin 2025 (changement de prestataire, arrêt d’un usage, budget) ; sinon poser la question au client. Relier le RCS à des cas d’usage mutuelle : rappels, relances d’adhésion, messages transactionnels.');
+    const rx = M + 8.7, rw = W - M - rx;
+    kpi(s, rx, 2.15, rw, 1.45, { label: 'Total délivré', value: `≈${NB}0,5${NB}M`, sub: 'd’août 2023 à août 2026', iconName: 'FiMessageSquare', valueSize: 26 });
+    kpi(s, rx, 3.75, rw, 1.45, { label: 'Jusqu’en mai 2025', value: `20–26${NB}k`, sub: 'SMS par mois, pic à 30 k en juillet 2024', iconName: 'FiTrendingUp', valueSize: 26 });
+    kpi(s, rx, 5.35, rw, 1.45, { label: 'Depuis juin 2025', value: `2–3${NB}k`, sub: 'SMS par mois, 6 k en août 2026', iconName: 'FiActivity', valueSize: 26 });
+  }
+
+  // ===== 12b. Connecteur RCS LinkMobility =====
+  {
+    const s = pres.addSlide();
+    header(s, { section: 'ENGAGE', title: 'Connecteur RCS LinkMobility : prêt, par API, sans interface', subtitle: 'Le connecteur est disponible et fonctionne désormais par API. Il n’a pas d’interface graphique : c’est un passe-plat simple et efficace.' });
+    // hero statut
+    card(s, M, 2.15, 3.9, 4.65, { fill: C.tealXL, line: null });
+    iconCircle(s, M + 1.45, 2.55, 1.0, 'FiSmartphone', { bg: C.teal, fg: C.white });
+    txt(s, 'LinkMobility', { x: M + 0.3, y: 3.75, w: 3.3, h: 0.5, fontSize: 19, bold: true, color: C.teal, align: 'center', valign: 'middle' });
+    pill(s, M + 1.1, 4.4, 1.7, 0.36, 'CONNECTEUR PRÊT', { fill: C.greenL, color: C.green, fontSize: 9.5 });
+    txt(s, 'Disponible pour vos campagnes RCS, avec les mêmes limites fonctionnelles qu’auparavant.', { x: M + 0.35, y: 5.0, w: 3.2, h: 1.0, fontSize: 11.5, color: C.ink, align: 'center', valign: 'top' });
+    // trois cartes
+    const cx = M + 4.2, cw = (W - M - cx - 0.5) / 3;
+    const cards = [
+      { icon: 'FiZap', title: 'Une intégration par API', items: ['Le connecteur fonctionne désormais par API.', 'Fin des dépôts de fichiers par SFTP.', 'Envois déclenchés directement depuis Engage.'] },
+      { icon: 'FiEye', title: 'Pas d’interface graphique', items: ['Aucune interface dédiée à la composition des messages.', 'Donc pas de prévisualisation avant envoi.', 'Le rendu se vérifie sur un terminal de test.'] },
+      { icon: 'FiSend', title: 'Un passe-plat simple', items: ['Mise en œuvre rapide, sans projet lourd.', 'Adapté aux envois RCS standardisés.', 'Une interface complète passerait par Infobip.'] },
+    ];
+    cards.forEach((c, i) => {
+      const x = cx + i * (cw + 0.25);
+      card(s, x, 2.15, cw, 4.65, { shadow: true, line: null });
+      iconCircle(s, x + 0.25, 2.4, 0.6, c.icon, { bg: i === 1 ? C.orange : C.teal, fg: C.white });
+      txt(s, c.title, { x: x + 0.25, y: 3.15, w: cw - 0.5, h: 0.7, fontSize: 14, bold: true, color: i === 1 ? C.orange : C.teal, valign: 'middle' });
+      hline(s, x + 0.25, 3.9, cw - 0.5);
+      bullets(s, c.items, { x: x + 0.25, y: 4.02, w: cw - 0.5, h: 2.6, fontSize: 11, gap: 8 });
+    });
   }
 
   // ===== 13. SSO Engage =====
@@ -520,7 +526,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const cy = 4.95, ch = 1.75, cw = (W - 2 * M - 0.3) / 2;
     callout(s, M, cy, cw, ch, 'Ce qui change pour vous', ['Une connexion unifiée et sécurisée à Engage.', 'Un accompagnement Selligent pour la bascule des utilisateurs.'], { iconName: 'FiCheckCircle', iconBg: C.green, fill: C.greenL, titleColor: C.green, fontSize: 10.5 });
     callout(s, M + cw + 0.3, cy, cw, ch, 'Ce qui ne change pas', ['Aucune bascule avant la fenêtre cible du 1er trimestre 2027.', 'Sujet distinct du correctif SSO en cours sur les pages d’administration CDM.'], { iconName: 'FiInfo', fontSize: 10.5 });
-    s.addNotes('NOTE INTERNE — Message à tenir : le nouveau SSO Engage est sur la trajectoire produit avec une fenêtre cible T1 2027 — aucune promesse de disponibilité antérieure, aucune autre date (les étapes intermédiaires ne sont pas sourcées). Ne pas confondre avec le sujet technique CDM (SSO / AdminTool / ConfigTool) traité le 31/08.\nPoint à clarifier avec Product avant la séance : la roadmap de juin 2026 liste un « Zeta login » (connexion unique à l’écosystème Zeta) comme disponible ; préciser si le besoin de Viasanté est ce login Zeta ou une fédération SSO avec leur annuaire d’entreprise (SAML), et si la fenêtre T1 2027 porte bien sur ce dernier. Le login Zeta est volontairement absent de la roadmap présentée pour éviter la contradiction.');
   }
 
   // ===== 14. Pixel d'ouverture =====
@@ -546,7 +551,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     callout(s, M, cy, cw, ch, 'Ce que Engage apporte', ['Collecte du consentement (composant de données ou procédure stockée).', 'Suivi d’ouverture conditionné au consentement, avec journal d’audit.', 'Activation sur simple demande, une fois le consentement collecté.'], { iconName: 'FiShield', fontSize: 10.5 });
     callout(s, M + cw + 0.25, cy, cw, ch, 'Où en êtes-vous ?', ['Consentement collecté pour les nouveaux contacts ?', 'Contacts existants informés, avec possibilité de refus ?', 'Suivi sous consentement activé dans Engage ?'], { iconName: 'FiHelpCircle', iconBg: C.teal2, fontSize: 10.5 });
     callout(s, M + 2 * (cw + 0.25), cy, cw, ch, 'Ce qui reste à faire', ['Validation formelle du DPO par typologie d’email.', 'Activation des seules catégories autorisées dans Engage.', 'Traitement des contacts existants restés hors consentement.'], { iconName: 'FiFlag', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 10.5 });
-    s.addNotes('NOTE INTERNE — Cadre vérifié : délibération CNIL n° 2026-042 du 12/03/2026, recommandation finale publiée le 14/04/2026 (cnil.fr/fr/recommandation-pixel-suivi-courriels). Les pixels invisibles relèvent du même régime que les cookies : consentement préalable pour la plupart des usages ; exemption pour la seule mesure individuelle de délivrabilité liée à un service demandé (ex. identifier les adresses inactives). Pour les adresses existantes, période transitoire de trois mois avec information claire et possibilité de refus, close le 14/07/2026.\nEngage « Consent-based open tracking » : livré = collecte du consentement (Data Component / stored procedures), tracking d’ouverture basé sur le consentement, journal d’audit basique ; à venir = support Data Importer, tracking basé sur exemption, historique d’audit étendu. Activation via ticket Connect après collecte du consentement ; revoir la stratégie pour les contacts existants.\nÀ FAIRE AVANT LE 14/09 : connaître le statut réel de Viasanté (tracking activé ? consentement collecté ? contacts existants informés avant le 14/07 ?) pour répondre aux trois questions de la slide, ou les poser en séance. Traiter le sujet en gouvernance / conformité : validation DPO formelle avant activation ou généralisation.');
   }
 
   // ===== Au-delà du pixel d'ouverture : les prochaines exigences CNIL =====
@@ -571,7 +575,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
     const cy = y0 + ch + 0.3, ch2 = 6.8 - cy, cw2 = (W - 2 * M - 0.3) / 2;
     callout(s, M, cy, cw2, ch2, 'Ce qu’Engage permet déjà', ['Conditionner ouverture et clic au consentement recueilli, par typologie d’email.', 'Journal d’audit du consentement, étendu à l’historique des changements.'], { iconName: 'FiShield', fontSize: 11 });
     callout(s, M + cw2 + 0.3, cy, cw2, ch2, 'Ce que nous vous recommandons', ['Étendre dès maintenant la mécanique de consentement au suivi des clics.', 'Cadrer la durée de conservation des données de suivi avec votre DPO.'], { iconName: 'FiFlag', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 11 });
-    s.addNotes('NOTE INTERNE — Sources : recommandation CNIL sur les pixels de suivi dans les courriers électroniques (délibération n° 2026-042 du 12/03/2026, publiée le 14/04/2026) — elle vise la mesure d’ouverture ET de clic à des fins marketing, avec consentement préalable ; la CNIL a annoncé des recommandations complémentaires sur le suivi des clics. Le consentement doit pouvoir être exprimé simplement et retiré aussi facilement qu’il a été donné. Exemption limitée à la mesure individuelle de délivrabilité liée à un service demandé.\nProgramme de contrôle CNIL 2026 : quatre axes prioritaires — cybersécurité (environ 50 % de l’activité répressive), recrutement et décisions automatisées, répertoire électoral unique, fédérations sportives. Fil conducteur : accountability, preuve documentée de la conformité. 6 167 violations de données notifiées en 2025 (+9,5 %).\nNe pas jouer les juristes : présenter ces points comme une veille Selligent utile au DPO de Viasanté, et renvoyer la qualification juridique à leur DPO.');
   }
 
   // ===== 15. Roadmap Engage =====
@@ -586,7 +589,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       { when: 'Q4 2027', icon: 'FiCpu', title: 'IA & Data', items: ['Interrogation des données en langage naturel', 'Analytique temps réel et recommandations'], last: true },
     ], { y: 2.95, cardH: 2.5 });
     txt(s, 'Trajectoire produit : les jalons peuvent être ajustés et ne constituent pas un engagement de livraison.', { x: M, y: 6.45, w: W - 2 * M, h: 0.35, fontSize: 11, color: C.muted, align: 'center', valign: 'middle' });
-    s.addNotes('NOTE INTERNE — Source : roadmap Selligent by Zeta (session interne juin 2026) — statuts vérifiés sur la slide « Where we’re heading » : Now = Real-time Signals, Connector Library (Zeta) ; Next = Automated Privacy Workflow, QuickStart Library, WhatsApp ($), Interactive Moments ($), Ask Your Data (Zeta), Real-time Analytics ; Later = Enriched Customer View (Zeta), Easy Content Blocks, Audience Composition, Performance Advisor (Zeta). Sans trimestre : ne pas dater les items. Ne relayer que les noms de fonctionnalités et leur bénéfice, jamais le contenu stratégie / pricing du deck interne.\nIA : outils MCP en lecture seule (Segment Helper disponible ; Ask Your Data à venir) — ne pas promettre l’interrogation en langage naturel comme disponible. Le « Zeta login » est volontairement absent de la colonne Disponible pour rester cohérent avec le message SSO (fenêtre cible T1 2027).\nToujours distinguer disponible / prévu / cible / sous réserve. L’IA arrive après les fondations : conformité, sécurité, données, connecteurs.');
   }
 
   // ===== 16. Vos arbitrages =====
@@ -597,7 +599,7 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       { icon: 'FiDatabase', topic: 'Base de données', q: 'Nettoyage et archivage d’abord, ou extension de capacité avec la redevance associée ?' },
       { icon: 'FiUsers', topic: 'Licence', q: 'Quel volume de contacts prévoyez-vous en 2027, et votre palier de licence reste-t-il adapté ?' },
       { icon: 'FiMail', topic: 'Email', q: 'Quelles campagnes prioriser pour travailler le taux de clics ?' },
-      { icon: 'FiSmartphone', topic: 'Mobile', q: 'Quelle ambition SMS et RCS en 2027 : passe-plat simple ou connecteur avec interface et prévisualisation ?' },
+      { icon: 'FiSmartphone', topic: 'Mobile', q: 'Quelle ambition SMS et RCS en 2027 : le passe-plat LinkMobility suffit-il, ou faut-il une interface ?' },
       { icon: 'FiShield', topic: 'Conformité', q: 'Étendons-nous le consentement au suivi des clics, et quelles typologies d’emails en priorité ?' },
     ];
     const y0 = 2.15, rh = 0.8, gap = 0.12;
@@ -610,7 +612,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       txt(s, it.topic, { x: M + 1.48, y, w: 1.9, h: rh, fontSize: 12.5, bold: true, color: C.teal, valign: 'middle' });
       txt(s, it.q, { x: M + 3.45, y, w: W - 2 * M - 3.7, h: rh, fontSize: 12.5, color: C.ink, valign: 'middle' });
     });
-    s.addNotes('NOTE INTERNE — Poser chaque question et noter la réponse ou l’arbitrage en séance (elles alimentent le tableau d’actions). Ne pas pousser de réponse : le client décide, Selligent propose.');
   }
 
   // ===== 17. Synthèse & prochaines étapes =====
@@ -635,7 +636,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       .concat(rows.map((r, i) => r.map((cell, j) => ({ text: cell, options: { fontSize: 10, fontFace: FONT, color: C.ink, bold: j === 0, fill: { color: i % 2 ? C.white : C.tealXL }, valign: 'middle', margin: [2, 6, 2, 6] } }))));
     s.addTable(tableRows, { x: M, y: 2.05, w: W - 2 * M, colW: widths, border: { type: 'solid', pt: 0.5, color: 'E1E8EB' }, rowH: 0.33 });
     callout(s, M, 6.1, W - 2 * M, 0.7, 'Prochain COPIL', 'Proposition : décembre 2026 — bilan des actions, point capacité base de données, préparation 2027.', { iconName: 'FiCalendar', iconBg: C.orange, fill: C.orangeL, titleColor: C.orange, fontSize: 11, inline: true, titleW: 1.5 });
-    s.addNotes('NOTE INTERNE — Les échéances sont des propositions Selligent (aucune n’est contractuelle) : les faire valider ou ajuster en séance ligne par ligne, noter les responsables nommément côté Viasanté. Sortie attendue : un relevé de décisions envoyé sous 48 h. Proposer une date précise pour le prochain COPIL (décembre 2026).');
   }
 
   // ===== 17. Merci =====
@@ -657,7 +657,6 @@ const MOIS = ['janv.', 'fév.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août',
       { text: 'Escalade : ', options: { bold: true } }, { text: 'Frederic Schneider pour la technique, Nadir Echaara pour la relation et le contrat.' },
     ], { x: M, y: 5.5, w: 7.8, h: 0.9, fontSize: 12, color: 'E6F0F2' });
     txt(s, 'Relevé de décisions transmis sous 48 heures.', { x: M, y: 6.55, w: 8, h: 0.35, fontSize: 12, italic: true, color: 'CFE3E7' });
-    s.addNotes('NOTE INTERNE — Clore sur les décisions prises et la date du prochain COPIL.');
   }
 
   await pres.writeFile({ fileName: OUT });
