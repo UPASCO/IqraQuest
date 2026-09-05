@@ -97,6 +97,21 @@ app déjà publiée sur l'App Store.
 
 ### b. Obtenir un `.p12`
 
+**Le plus simple, avec ou sans Mac : le script du dépôt.** Il fait tout
+ce qui ne demande pas de compte Apple — clé privée, demande de
+certificat, vérification que le certificat renvoyé correspond bien à la
+clé, assemblage du `.p12` et encodage base64 — et écrit tout dans
+`~/iqraquest-signing`, hors du dépôt :
+
+```bash
+./tool/ios_signing_cert.sh csr ton@email.com
+# téléverse le .csr sur le portail Apple, télécharge distribution.cer
+./tool/ios_signing_cert.sh p12 ~/Downloads/distribution.cer
+```
+
+Le second appel affiche les deux valeurs à coller en secrets. Les étapes
+manuelles ci-dessous restent valables si tu préfères les faire toi-même.
+
 **Si tu as un Mac et que le certificat est déjà dans ton trousseau :**
 
 1. Ouvre **Trousseaux d'accès** → catégorie **Mes certificats**.
