@@ -104,18 +104,11 @@ void main() {
     tester,
   ) async {
     await _pump(tester, '/mode-selection');
-    // Four humans is the longest form the screen ever shows. The
-    // stepper sits below the fold of the list, hence the drag.
-    await tester.dragUntilVisible(
-      find.byTooltip('+1'),
-      find.byType(ListView),
-      const Offset(0, -160),
-    );
+    // Four humans is the longest form the screen ever shows. The tile
+    // is on screen without a scroll: that is the whole point of the
+    // setup screen.
+    await tester.tap(find.byKey(const Key('players-4')));
     await _settle(tester);
-    for (var i = 0; i < 2; i++) {
-      await tester.tap(find.byTooltip('+1').last);
-      await _settle(tester);
-    }
     await tester.tap(find.byType(ElevatedButton));
     await _settle(tester);
     _expectOnScreen(

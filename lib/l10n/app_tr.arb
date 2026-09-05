@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "Tahtada 16 bonus kare seni bekliyor: +5, +10 ve nadir +20.",
   "ridersSubtitle": "Her binici seviyesini seçer; kart yalnızca mesafeyi belirler.",
   "ruleBonusTitle": "Bonus kareler",
-  "ruleBonusBody": "Masa onları tutarsa, her oyunda tahtaya on altı bonus kare dağıtılır, çeyrek başına dört. Tam üzerinde duran at hemen +5, +10 ya da +20 dörtnal daha ilerler — ve bu koşu onu tam başka bir bonus karesine indirirse o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır. Onlar olmadan bir kart tam olarak kendi dörtnalları kadar eder."
+  "ruleBonusBody": "Masa onları tutarsa, her oyunda tahtaya on altı bonus kare dağıtılır, çeyrek başına dört. Tam üzerinde duran at hemen +5, +10 ya da +20 dörtnal daha ilerler — ve bu koşu onu tam başka bir bonus karesine indirirse o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır. Onlar olmadan bir kart tam olarak kendi dörtnalları kadar eder.",
+  "newGameTitle": "Yeni oyun",
+  "setupWhoPlays": "Kim oynuyor?",
+  "soloTileCaption": "bilgisayara karşı",
+  "computerLevelLabel": "Bilgisayar seviyesi",
+  "setupRaceLength": "Oyun süresi",
+  "raceLengthShort": "Kısa oyun",
+  "raceLengthMedium": "Orta oyun",
+  "raceLengthFull": "Tam oyun",
+  "setupCourse": "Parkur"
 }

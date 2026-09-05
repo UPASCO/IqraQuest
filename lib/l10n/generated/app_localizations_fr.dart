@@ -1027,4 +1027,31 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Si la table les garde, seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s\'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s\'enchaînent. Chaque case ne sert qu\'une fois par tour et reste en jeu pour tous. Sans elles, une carte vaut exactement ses galops.';
+
+  @override
+  String get newGameTitle => 'Nouvelle partie';
+
+  @override
+  String get setupWhoPlays => 'Qui joue ?';
+
+  @override
+  String get soloTileCaption => 'contre l\'ordi';
+
+  @override
+  String get computerLevelLabel => 'Niveau de l\'ordi';
+
+  @override
+  String get setupRaceLength => 'Durée de la partie';
+
+  @override
+  String get raceLengthShort => 'Partie courte';
+
+  @override
+  String get raceLengthMedium => 'Partie moyenne';
+
+  @override
+  String get raceLengthFull => 'Partie complète';
+
+  @override
+  String get setupCourse => 'Parcours';
 }

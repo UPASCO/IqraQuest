@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 bonusvakjes wachten op het bord: +5, +10 en de zeldzame +20.",
   "ridersSubtitle": "Elke ruiter kiest zijn niveau; de kaart bepaalt alleen de afstand.",
   "ruleBonusTitle": "De bonusvakjes",
-  "ruleBonusBody": "Houdt de tafel ze, dan worden er elk spel zestien bonusvakjes op het bord verdeeld, vier per kwart. Een paard dat er precies op stopt, rijdt meteen +5, +10 of +20 galops door — en zet die rit het precies op een ander bonusvakje, dan gaat dat er ook af: bonussen schakelen door. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel. Zonder ze is een kaart precies zijn galops waard."
+  "ruleBonusBody": "Houdt de tafel ze, dan worden er elk spel zestien bonusvakjes op het bord verdeeld, vier per kwart. Een paard dat er precies op stopt, rijdt meteen +5, +10 of +20 galops door — en zet die rit het precies op een ander bonusvakje, dan gaat dat er ook af: bonussen schakelen door. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel. Zonder ze is een kaart precies zijn galops waard.",
+  "newGameTitle": "Nieuw spel",
+  "setupWhoPlays": "Wie speelt er?",
+  "soloTileCaption": "tegen de computer",
+  "computerLevelLabel": "Computerniveau",
+  "setupRaceLength": "Speelduur",
+  "raceLengthShort": "Kort spel",
+  "raceLengthMedium": "Gemiddeld spel",
+  "raceLengthFull": "Volledig spel",
+  "setupCourse": "Parcours"
 }

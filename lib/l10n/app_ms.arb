@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 petak bonus menanti di papan: +5, +10 dan +20 yang jarang.",
   "ridersSubtitle": "Setiap penunggang memilih tahapnya; kad hanya menentukan jarak.",
   "ruleBonusTitle": "Petak bonus",
-  "ruleBonusBody": "Jika meja mengekalkannya, enam belas petak bonus disebar di papan setiap permainan, empat setiap sukuan. Kuda yang berhenti tepat di atasnya terus melaju +5, +10 atau +20 derap — dan jika laju itu mendaratkannya tepat di petak bonus lain, petak itu turut menyala: bonus berangkai. Setiap petak membayar sekali setiap pusingan dan kekal dalam permainan untuk semua. Tanpanya, satu kad bernilai tepat derapnya."
+  "ruleBonusBody": "Jika meja mengekalkannya, enam belas petak bonus disebar di papan setiap permainan, empat setiap sukuan. Kuda yang berhenti tepat di atasnya terus melaju +5, +10 atau +20 derap — dan jika laju itu mendaratkannya tepat di petak bonus lain, petak itu turut menyala: bonus berangkai. Setiap petak membayar sekali setiap pusingan dan kekal dalam permainan untuk semua. Tanpanya, satu kad bernilai tepat derapnya.",
+  "newGameTitle": "Permainan baharu",
+  "setupWhoPlays": "Siapa yang bermain?",
+  "soloTileCaption": "lawan komputer",
+  "computerLevelLabel": "Tahap komputer",
+  "setupRaceLength": "Tempoh permainan",
+  "raceLengthShort": "Permainan pendek",
+  "raceLengthMedium": "Permainan sederhana",
+  "raceLengthFull": "Permainan penuh",
+  "setupCourse": "Laluan"
 }

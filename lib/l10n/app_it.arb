@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 caselle bonus ti aspettano sul tabellone: +5, +10 e la rara +20.",
   "ridersSubtitle": "Ogni cavaliere sceglie il suo livello; la carta decide solo la distanza.",
   "ruleBonusTitle": "Le caselle bonus",
-  "ruleBonusBody": "Se il tavolo le tiene, sedici caselle bonus sono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una riparte subito di +5, +10 o +20 galoppi — e se quella cavalcata lo posa esattamente su un'altra casella bonus, parte anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti. Senza di esse, una carta vale esattamente i suoi galoppi."
+  "ruleBonusBody": "Se il tavolo le tiene, sedici caselle bonus sono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una riparte subito di +5, +10 o +20 galoppi — e se quella cavalcata lo posa esattamente su un'altra casella bonus, parte anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti. Senza di esse, una carta vale esattamente i suoi galoppi.",
+  "newGameTitle": "Nuova partita",
+  "setupWhoPlays": "Chi gioca?",
+  "soloTileCaption": "contro il computer",
+  "computerLevelLabel": "Livello del computer",
+  "setupRaceLength": "Durata della partita",
+  "raceLengthShort": "Partita breve",
+  "raceLengthMedium": "Partita media",
+  "raceLengthFull": "Partita completa",
+  "setupCourse": "Percorso"
 }

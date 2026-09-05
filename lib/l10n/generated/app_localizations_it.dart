@@ -1028,4 +1028,31 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Se il tavolo le tiene, sedici caselle bonus sono distribuite sul tabellone a ogni partita, quattro per quarto. Un cavallo che si ferma esattamente su una riparte subito di +5, +10 o +20 galoppi — e se quella cavalcata lo posa esattamente su un\'altra casella bonus, parte anche quella: i bonus si concatenano. Ogni casella paga una volta per turno e resta in gioco per tutti. Senza di esse, una carta vale esattamente i suoi galoppi.';
+
+  @override
+  String get newGameTitle => 'Nuova partita';
+
+  @override
+  String get setupWhoPlays => 'Chi gioca?';
+
+  @override
+  String get soloTileCaption => 'contro il computer';
+
+  @override
+  String get computerLevelLabel => 'Livello del computer';
+
+  @override
+  String get setupRaceLength => 'Durata della partita';
+
+  @override
+  String get raceLengthShort => 'Partita breve';
+
+  @override
+  String get raceLengthMedium => 'Partita media';
+
+  @override
+  String get raceLengthFull => 'Partita completa';
+
+  @override
+  String get setupCourse => 'Percorso';
 }

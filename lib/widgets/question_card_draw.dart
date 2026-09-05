@@ -20,7 +20,13 @@ const Duration kCardRevealDuration = Duration(milliseconds: 1150);
 /// difficulty. So this is one target, not six — the fastest possible
 /// turn opening.
 class DrawDeck extends StatelessWidget {
-  const DrawDeck({super.key, required this.onDraw, this.horseHint, this.enabled = true});
+  const DrawDeck({
+    super.key,
+    required this.onDraw,
+    this.horseHint,
+    this.enabled = true,
+    this.vertical = false,
+  });
 
   final VoidCallback onDraw;
 
@@ -28,6 +34,11 @@ class DrawDeck extends StatelessWidget {
   final String? horseHint;
 
   final bool enabled;
+
+  /// Stacked — the cards over the words — for the narrow rail beside a
+  /// tablet's plate in landscape, where the row would leave the words
+  /// thirty points to wrap in.
+  final bool vertical;
 
   @override
   Widget build(BuildContext context) {
@@ -54,18 +65,18 @@ class DrawDeck extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
           onTap: enabled ? onDraw : null,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(18, 14, 18, 14),
-            child: Row(
-              children: [
-                const _DeckStack(),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            padding: vertical
+                ? const EdgeInsets.fromLTRB(12, 14, 12, 12)
+                : const EdgeInsets.fromLTRB(18, 14, 18, 14),
+            child: vertical
+                ? Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      const _DeckStack(),
+                      const SizedBox(height: 10),
                       Text(
                         l10n.drawCard,
+                        textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: colors.onScene,
                           fontWeight: FontWeight.w700,
@@ -75,16 +86,46 @@ class DrawDeck extends StatelessWidget {
                         const SizedBox(height: 2),
                         Text(
                           horseHint!,
+                          textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.labelSmall
                               ?.copyWith(color: colors.onSceneDim),
                         ),
                       ],
+                      const SizedBox(height: 8),
+                      Icon(Icons.touch_app, color: colors.goldAccent, size: 26),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      const _DeckStack(),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              l10n.drawCard,
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(
+                                    color: colors.onScene,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            if (horseHint != null) ...[
+                              const SizedBox(height: 2),
+                              Text(
+                                horseHint!,
+                                style: Theme.of(context).textTheme.labelSmall
+                                    ?.copyWith(color: colors.onSceneDim),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                      Icon(Icons.touch_app, color: colors.goldAccent, size: 26),
                     ],
                   ),
-                ),
-                Icon(Icons.touch_app, color: colors.goldAccent, size: 26),
-              ],
-            ),
           ),
         ),
       ),

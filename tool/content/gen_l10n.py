@@ -2286,6 +2286,55 @@ s("ruleBonusBody", "Rules step body: sixteen bonus squares, they chain, and they
   nl="Houdt de tafel ze, dan worden er elk spel zestien bonusvakjes op het bord verdeeld, vier per kwart. Een paard dat er precies op stopt, rijdt meteen +5, +10 of +20 galops door — en zet die rit het precies op een ander bonusvakje, dan gaat dat er ook af: bonussen schakelen door. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel. Zonder ze is een kaart precies zijn galops waard.")
 
 
+# ---- Race setup: one screen, nothing below the fold -----------------
+s("newGameTitle", "Title of the race setup screen",
+  fr="Nouvelle partie", en="New game", ar="لعبة جديدة", es="Nueva partida",
+  pt="Novo jogo", de="Neues Spiel", tr="Yeni oyun", id="Permainan baru",
+  ur="نیا کھیل", ms="Permainan baharu", it="Nuova partita", nl="Nieuw spel")
+
+s("setupWhoPlays", "Eyebrow over the four player-count tiles",
+  fr="Qui joue ?", en="Who is playing?", ar="من يلعب؟", es="¿Quién juega?",
+  pt="Quem joga?", de="Wer spielt?", tr="Kim oynuyor?", id="Siapa yang bermain?",
+  ur="کون کھیل رہا ہے؟", ms="Siapa yang bermain?", it="Chi gioca?", nl="Wie speelt er?")
+
+s("soloTileCaption", "Caption under the '1' player tile: one human against the computer",
+  fr="contre l'ordi", en="vs computer", ar="ضد الحاسوب", es="contra la máquina",
+  pt="contra o computador", de="gegen den Computer", tr="bilgisayara karşı",
+  id="lawan komputer", ur="کمپیوٹر کے خلاف", ms="lawan komputer",
+  it="contro il computer", nl="tegen de computer")
+
+s("computerLevelLabel", "Label before the computer's difficulty chips",
+  fr="Niveau de l'ordi", en="Computer level", ar="مستوى الحاسوب",
+  es="Nivel de la máquina", pt="Nível do computador", de="Computerstufe",
+  tr="Bilgisayar seviyesi", id="Tingkat komputer", ur="کمپیوٹر کی سطح",
+  ms="Tahap komputer", it="Livello del computer", nl="Computerniveau")
+
+s("setupRaceLength", "Eyebrow over the three race-length tiles",
+  fr="Durée de la partie", en="Race length", ar="مدة اللعبة",
+  es="Duración de la partida", pt="Duração do jogo", de="Spieldauer",
+  tr="Oyun süresi", id="Lama permainan", ur="کھیل کی مدت", ms="Tempoh permainan",
+  it="Durata della partita", nl="Speelduur")
+
+s("raceLengthShort", "Race-length tile: one horse home wins",
+  fr="Partie courte", en="Short game", ar="لعبة قصيرة", es="Partida corta",
+  pt="Jogo curto", de="Kurzes Spiel", tr="Kısa oyun", id="Permainan singkat",
+  ur="مختصر کھیل", ms="Permainan pendek", it="Partita breve", nl="Kort spel")
+
+s("raceLengthMedium", "Race-length tile: two horses home win",
+  fr="Partie moyenne", en="Medium game", ar="لعبة متوسطة", es="Partida media",
+  pt="Jogo médio", de="Mittleres Spiel", tr="Orta oyun", id="Permainan sedang",
+  ur="درمیانہ کھیل", ms="Permainan sederhana", it="Partita media", nl="Gemiddeld spel")
+
+s("raceLengthFull", "Race-length tile: all four horses home, the classic game",
+  fr="Partie complète", en="Full game", ar="لعبة كاملة", es="Partida completa",
+  pt="Jogo completo", de="Ganzes Spiel", tr="Tam oyun", id="Permainan penuh",
+  ur="مکمل کھیل", ms="Permainan penuh", it="Partita completa", nl="Volledig spel")
+
+s("setupCourse", "Eyebrow over the three circuit tiles",
+  fr="Parcours", en="Course", ar="المسار", es="Recorrido", pt="Percurso",
+  de="Strecke", tr="Parkur", id="Lintasan", ur="راستہ", ms="Laluan",
+  it="Percorso", nl="Parcours")
+
 # ---------------------------------------------------------------------
 def validate():
     for key, (desc, ph, texts) in K.items():

@@ -1025,4 +1025,31 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Se a mesa as mantiver, dezesseis casas de bónus são distribuídas no tabuleiro em cada jogo, quatro por quarto. Um cavalo que pare exatamente numa segue logo +5, +10 ou +20 galopes — e se essa cavalgada o deixar em cima de outra casa de bónus, essa também dispara: os bónus encadeiam-se. Cada casa paga uma vez por turno e fica em jogo para todos. Sem elas, uma carta vale exatamente os seus galopes.';
+
+  @override
+  String get newGameTitle => 'Novo jogo';
+
+  @override
+  String get setupWhoPlays => 'Quem joga?';
+
+  @override
+  String get soloTileCaption => 'contra o computador';
+
+  @override
+  String get computerLevelLabel => 'Nível do computador';
+
+  @override
+  String get setupRaceLength => 'Duração do jogo';
+
+  @override
+  String get raceLengthShort => 'Jogo curto';
+
+  @override
+  String get raceLengthMedium => 'Jogo médio';
+
+  @override
+  String get raceLengthFull => 'Jogo completo';
+
+  @override
+  String get setupCourse => 'Percurso';
 }

@@ -1018,4 +1018,31 @@ class AppLocalizationsMs extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Jika meja mengekalkannya, enam belas petak bonus disebar di papan setiap permainan, empat setiap sukuan. Kuda yang berhenti tepat di atasnya terus melaju +5, +10 atau +20 derap — dan jika laju itu mendaratkannya tepat di petak bonus lain, petak itu turut menyala: bonus berangkai. Setiap petak membayar sekali setiap pusingan dan kekal dalam permainan untuk semua. Tanpanya, satu kad bernilai tepat derapnya.';
+
+  @override
+  String get newGameTitle => 'Permainan baharu';
+
+  @override
+  String get setupWhoPlays => 'Siapa yang bermain?';
+
+  @override
+  String get soloTileCaption => 'lawan komputer';
+
+  @override
+  String get computerLevelLabel => 'Tahap komputer';
+
+  @override
+  String get setupRaceLength => 'Tempoh permainan';
+
+  @override
+  String get raceLengthShort => 'Permainan pendek';
+
+  @override
+  String get raceLengthMedium => 'Permainan sederhana';
+
+  @override
+  String get raceLengthFull => 'Permainan penuh';
+
+  @override
+  String get setupCourse => 'Laluan';
 }

@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 Bonusfelder warten auf dem Brett: +5, +10 und das seltene +20.",
   "ridersSubtitle": "Jeder Reiter wählt sein Niveau; die Karte bestimmt nur die Distanz.",
   "ruleBonusTitle": "Die Bonusfelder",
-  "ruleBonusBody": "Behält der Tisch sie, werden je Spiel sechzehn Bonusfelder aufs Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf hält, reitet sofort +5, +10 oder +20 Galopps weiter — und setzt dieser Ritt es genau auf ein weiteres Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel. Ohne sie zählt eine Karte genau ihre Galopps."
+  "ruleBonusBody": "Behält der Tisch sie, werden je Spiel sechzehn Bonusfelder aufs Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf hält, reitet sofort +5, +10 oder +20 Galopps weiter — und setzt dieser Ritt es genau auf ein weiteres Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel. Ohne sie zählt eine Karte genau ihre Galopps.",
+  "newGameTitle": "Neues Spiel",
+  "setupWhoPlays": "Wer spielt?",
+  "soloTileCaption": "gegen den Computer",
+  "computerLevelLabel": "Computerstufe",
+  "setupRaceLength": "Spieldauer",
+  "raceLengthShort": "Kurzes Spiel",
+  "raceLengthMedium": "Mittleres Spiel",
+  "raceLengthFull": "Ganzes Spiel",
+  "setupCourse": "Strecke"
 }

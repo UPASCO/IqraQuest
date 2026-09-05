@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 casillas bonus te esperan en el tablero: +5, +10 y la rara +20.",
   "ridersSubtitle": "Cada jinete elige su nivel; la carta solo marca la distancia.",
   "ruleBonusTitle": "Las casillas bonus",
-  "ruleBonusBody": "Si la mesa las conserva, dieciséis casillas de bonificación se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene exactamente en una sigue de inmediato +5, +10 o +20 galopes — y si esa cabalgada lo deja justo en otra casilla de bonificación, esa también se dispara: las bonificaciones se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos. Sin ellas, una carta vale exactamente sus galopes."
+  "ruleBonusBody": "Si la mesa las conserva, dieciséis casillas de bonificación se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene exactamente en una sigue de inmediato +5, +10 o +20 galopes — y si esa cabalgada lo deja justo en otra casilla de bonificación, esa también se dispara: las bonificaciones se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos. Sin ellas, una carta vale exactamente sus galopes.",
+  "newGameTitle": "Nueva partida",
+  "setupWhoPlays": "¿Quién juega?",
+  "soloTileCaption": "contra la máquina",
+  "computerLevelLabel": "Nivel de la máquina",
+  "setupRaceLength": "Duración de la partida",
+  "raceLengthShort": "Partida corta",
+  "raceLengthMedium": "Partida media",
+  "raceLengthFull": "Partida completa",
+  "setupCourse": "Recorrido"
 }

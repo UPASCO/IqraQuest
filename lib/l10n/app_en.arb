@@ -1371,5 +1371,41 @@
   "ruleBonusBody": "If the table keeps them, sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides straight on by +5, +10 or +20 gallops — and if that ride sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn and stays in play for everyone. Without them, a card is worth exactly its gallops.",
   "@ruleBonusBody": {
     "description": "Rules step body: sixteen bonus squares, they chain, and they are optional"
+  },
+  "newGameTitle": "New game",
+  "@newGameTitle": {
+    "description": "Title of the race setup screen"
+  },
+  "setupWhoPlays": "Who is playing?",
+  "@setupWhoPlays": {
+    "description": "Eyebrow over the four player-count tiles"
+  },
+  "soloTileCaption": "vs computer",
+  "@soloTileCaption": {
+    "description": "Caption under the '1' player tile: one human against the computer"
+  },
+  "computerLevelLabel": "Computer level",
+  "@computerLevelLabel": {
+    "description": "Label before the computer's difficulty chips"
+  },
+  "setupRaceLength": "Race length",
+  "@setupRaceLength": {
+    "description": "Eyebrow over the three race-length tiles"
+  },
+  "raceLengthShort": "Short game",
+  "@raceLengthShort": {
+    "description": "Race-length tile: one horse home wins"
+  },
+  "raceLengthMedium": "Medium game",
+  "@raceLengthMedium": {
+    "description": "Race-length tile: two horses home win"
+  },
+  "raceLengthFull": "Full game",
+  "@raceLengthFull": {
+    "description": "Race-length tile: all four horses home, the classic game"
+  },
+  "setupCourse": "Course",
+  "@setupCourse": {
+    "description": "Eyebrow over the three circuit tiles"
   }
 }

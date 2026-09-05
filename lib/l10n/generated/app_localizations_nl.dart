@@ -1021,4 +1021,31 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Houdt de tafel ze, dan worden er elk spel zestien bonusvakjes op het bord verdeeld, vier per kwart. Een paard dat er precies op stopt, rijdt meteen +5, +10 of +20 galops door — en zet die rit het precies op een ander bonusvakje, dan gaat dat er ook af: bonussen schakelen door. Elk vakje betaalt één keer per beurt en blijft voor iedereen in het spel. Zonder ze is een kaart precies zijn galops waard.';
+
+  @override
+  String get newGameTitle => 'Nieuw spel';
+
+  @override
+  String get setupWhoPlays => 'Wie speelt er?';
+
+  @override
+  String get soloTileCaption => 'tegen de computer';
+
+  @override
+  String get computerLevelLabel => 'Computerniveau';
+
+  @override
+  String get setupRaceLength => 'Speelduur';
+
+  @override
+  String get raceLengthShort => 'Kort spel';
+
+  @override
+  String get raceLengthMedium => 'Gemiddeld spel';
+
+  @override
+  String get raceLengthFull => 'Volledig spel';
+
+  @override
+  String get setupCourse => 'Parcours';
 }

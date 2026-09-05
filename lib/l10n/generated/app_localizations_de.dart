@@ -1025,4 +1025,31 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Behält der Tisch sie, werden je Spiel sechzehn Bonusfelder aufs Brett verteilt, vier pro Viertel. Ein Pferd, das genau darauf hält, reitet sofort +5, +10 oder +20 Galopps weiter — und setzt dieser Ritt es genau auf ein weiteres Bonusfeld, löst auch dieses aus: Boni verketten sich. Jedes Feld zahlt einmal pro Zug und bleibt für alle im Spiel. Ohne sie zählt eine Karte genau ihre Galopps.';
+
+  @override
+  String get newGameTitle => 'Neues Spiel';
+
+  @override
+  String get setupWhoPlays => 'Wer spielt?';
+
+  @override
+  String get soloTileCaption => 'gegen den Computer';
+
+  @override
+  String get computerLevelLabel => 'Computerstufe';
+
+  @override
+  String get setupRaceLength => 'Spieldauer';
+
+  @override
+  String get raceLengthShort => 'Kurzes Spiel';
+
+  @override
+  String get raceLengthMedium => 'Mittleres Spiel';
+
+  @override
+  String get raceLengthFull => 'Ganzes Spiel';
+
+  @override
+  String get setupCourse => 'Strecke';
 }

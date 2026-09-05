@@ -1773,6 +1773,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If the table keeps them, sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides straight on by +5, +10 or +20 gallops — and if that ride sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn and stays in play for everyone. Without them, a card is worth exactly its gallops.'**
   String get ruleBonusBody;
+
+  /// Title of the race setup screen
+  ///
+  /// In en, this message translates to:
+  /// **'New game'**
+  String get newGameTitle;
+
+  /// Eyebrow over the four player-count tiles
+  ///
+  /// In en, this message translates to:
+  /// **'Who is playing?'**
+  String get setupWhoPlays;
+
+  /// Caption under the '1' player tile: one human against the computer
+  ///
+  /// In en, this message translates to:
+  /// **'vs computer'**
+  String get soloTileCaption;
+
+  /// Label before the computer's difficulty chips
+  ///
+  /// In en, this message translates to:
+  /// **'Computer level'**
+  String get computerLevelLabel;
+
+  /// Eyebrow over the three race-length tiles
+  ///
+  /// In en, this message translates to:
+  /// **'Race length'**
+  String get setupRaceLength;
+
+  /// Race-length tile: one horse home wins
+  ///
+  /// In en, this message translates to:
+  /// **'Short game'**
+  String get raceLengthShort;
+
+  /// Race-length tile: two horses home win
+  ///
+  /// In en, this message translates to:
+  /// **'Medium game'**
+  String get raceLengthMedium;
+
+  /// Race-length tile: all four horses home, the classic game
+  ///
+  /// In en, this message translates to:
+  /// **'Full game'**
+  String get raceLengthFull;
+
+  /// Eyebrow over the three circuit tiles
+  ///
+  /// In en, this message translates to:
+  /// **'Course'**
+  String get setupCourse;
 }
 
 class _AppLocalizationsDelegate

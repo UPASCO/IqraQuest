@@ -669,28 +669,46 @@ void main() {
       final side = box.width < box.height ? box.width : box.height;
       final plateTop = box.top + (box.height - side) / 2;
       final plateBottom = plateTop + side;
+      final plateLeft = box.left + (box.width - side) / 2;
+      final plateRight = plateLeft + side;
+      // On its side the tablet keeps the HUD on a rail beside the plate,
+      // so the clearance to check is sideways, not downwards.
+      final beside = size.width > size.height;
 
       var hudBottom = 0.0;
+      var hudRight = 0.0;
       for (final key in ['turn-nameplate', 'hud-knowledge', 'hud-streak']) {
         final finder = find.byKey(Key(key));
         expect(finder, findsOneWidget, reason: '$key is missing');
-        final bottom = tester.getRect(finder).bottom;
-        if (bottom > hudBottom) hudBottom = bottom;
+        final rect = tester.getRect(finder);
+        if (rect.bottom > hudBottom) hudBottom = rect.bottom;
+        if (rect.right > hudRight) hudRight = rect.right;
       }
-      expect(
-        hudBottom,
-        lessThanOrEqualTo(plateTop),
-        reason:
-            'the HUD ends at $hudBottom and the plate starts at $plateTop '
-            'on ${size.width}x${size.height} at text scale $scale',
-      );
+      if (beside) {
+        expect(
+          hudRight,
+          lessThanOrEqualTo(plateLeft + 0.5),
+          reason:
+              'the HUD ends at $hudRight and the plate starts at $plateLeft '
+              'on ${size.width}x${size.height} at text scale $scale',
+        );
+      } else {
+        expect(
+          hudBottom,
+          lessThanOrEqualTo(plateTop),
+          reason:
+              'the HUD ends at $hudBottom and the plate starts at $plateTop '
+              'on ${size.width}x${size.height} at text scale $scale',
+        );
+      }
 
-      // And the deck below it, for the same reason.
+      // And the deck beyond it, for the same reason.
       final deck = find.byKey(const Key('draw-deck'));
       if (deck.evaluate().isNotEmpty) {
+        final rect = tester.getRect(deck);
         expect(
-          tester.getRect(deck).top,
-          greaterThanOrEqualTo(plateBottom),
+          beside ? rect.left : rect.top,
+          greaterThanOrEqualTo((beside ? plateRight : plateBottom) - 0.5),
           reason:
               'the deck sits on the plate on ${size.width}x${size.height} '
               'at text scale $scale',
@@ -719,11 +737,13 @@ void main() {
       reason: 'in portrait the plate should reach the full width',
     );
 
+    // On its side the HUD and the deck move to the rails, and the plate
+    // takes the full height: 1,012 points where the bands left it 644.
     await _pumpGame(tester, size: const Size(1366, 1024));
     box = tester.getRect(find.byKey(const Key('board-scene')));
     expect(
       box.width < box.height ? box.width : box.height,
-      greaterThanOrEqualTo(690),
+      greaterThanOrEqualTo(1000),
       reason: 'the guessed bands left the plate at 644 points here',
     );
   });

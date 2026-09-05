@@ -1036,4 +1036,31 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'إن أبقتها الطاولة، تُوزَّع ست عشرة مربعة مكافأة على الرقعة في كل لعبة، أربع في كل ربع. الحصان الذي يتوقف عليها بالضبط ينطلق فورًا بمقدار +5 أو +10 أو +20 ركضة — وإن أوقعه ذلك على مربعة مكافأة أخرى بالضبط انطلقت هي أيضًا: المكافآت تتسلسل. كل مربعة تدفع مرة واحدة في الدور وتبقى في اللعب للجميع. وبدونها تساوي البطاقة ركضاتها بالضبط.';
+
+  @override
+  String get newGameTitle => 'لعبة جديدة';
+
+  @override
+  String get setupWhoPlays => 'من يلعب؟';
+
+  @override
+  String get soloTileCaption => 'ضد الحاسوب';
+
+  @override
+  String get computerLevelLabel => 'مستوى الحاسوب';
+
+  @override
+  String get setupRaceLength => 'مدة اللعبة';
+
+  @override
+  String get raceLengthShort => 'لعبة قصيرة';
+
+  @override
+  String get raceLengthMedium => 'لعبة متوسطة';
+
+  @override
+  String get raceLengthFull => 'لعبة كاملة';
+
+  @override
+  String get setupCourse => 'المسار';
 }

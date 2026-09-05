@@ -1023,4 +1023,31 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'If the table keeps them, sixteen bonus squares are dealt onto the board each game, four per quarter. A horse that stops exactly on one rides straight on by +5, +10 or +20 gallops — and if that ride sets it down exactly on another bonus square, that one fires too: bonuses chain. Each square pays once per turn and stays in play for everyone. Without them, a card is worth exactly its gallops.';
+
+  @override
+  String get newGameTitle => 'New game';
+
+  @override
+  String get setupWhoPlays => 'Who is playing?';
+
+  @override
+  String get soloTileCaption => 'vs computer';
+
+  @override
+  String get computerLevelLabel => 'Computer level';
+
+  @override
+  String get setupRaceLength => 'Race length';
+
+  @override
+  String get raceLengthShort => 'Short game';
+
+  @override
+  String get raceLengthMedium => 'Medium game';
+
+  @override
+  String get raceLengthFull => 'Full game';
+
+  @override
+  String get setupCourse => 'Course';
 }

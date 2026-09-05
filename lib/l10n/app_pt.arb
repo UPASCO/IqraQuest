@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 casas bônus esperam no tabuleiro: +5, +10 e a rara +20.",
   "ridersSubtitle": "Cada cavaleiro escolhe seu nível; a carta só define a distância.",
   "ruleBonusTitle": "As casas bônus",
-  "ruleBonusBody": "Se a mesa as mantiver, dezesseis casas de bónus são distribuídas no tabuleiro em cada jogo, quatro por quarto. Um cavalo que pare exatamente numa segue logo +5, +10 ou +20 galopes — e se essa cavalgada o deixar em cima de outra casa de bónus, essa também dispara: os bónus encadeiam-se. Cada casa paga uma vez por turno e fica em jogo para todos. Sem elas, uma carta vale exatamente os seus galopes."
+  "ruleBonusBody": "Se a mesa as mantiver, dezesseis casas de bónus são distribuídas no tabuleiro em cada jogo, quatro por quarto. Um cavalo que pare exatamente numa segue logo +5, +10 ou +20 galopes — e se essa cavalgada o deixar em cima de outra casa de bónus, essa também dispara: os bónus encadeiam-se. Cada casa paga uma vez por turno e fica em jogo para todos. Sem elas, uma carta vale exatamente os seus galopes.",
+  "newGameTitle": "Novo jogo",
+  "setupWhoPlays": "Quem joga?",
+  "soloTileCaption": "contra o computador",
+  "computerLevelLabel": "Nível do computador",
+  "setupRaceLength": "Duração do jogo",
+  "raceLengthShort": "Jogo curto",
+  "raceLengthMedium": "Jogo médio",
+  "raceLengthFull": "Jogo completo",
+  "setupCourse": "Percurso"
 }

@@ -1026,4 +1026,31 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Si la mesa las conserva, dieciséis casillas de bonificación se reparten en el tablero cada partida, cuatro por cuarto. Un caballo que se detiene exactamente en una sigue de inmediato +5, +10 o +20 galopes — y si esa cabalgada lo deja justo en otra casilla de bonificación, esa también se dispara: las bonificaciones se encadenan. Cada casilla paga una vez por turno y sigue en juego para todos. Sin ellas, una carta vale exactamente sus galopes.';
+
+  @override
+  String get newGameTitle => 'Nueva partida';
+
+  @override
+  String get setupWhoPlays => '¿Quién juega?';
+
+  @override
+  String get soloTileCaption => 'contra la máquina';
+
+  @override
+  String get computerLevelLabel => 'Nivel de la máquina';
+
+  @override
+  String get setupRaceLength => 'Duración de la partida';
+
+  @override
+  String get raceLengthShort => 'Partida corta';
+
+  @override
+  String get raceLengthMedium => 'Partida media';
+
+  @override
+  String get raceLengthFull => 'Partida completa';
+
+  @override
+  String get setupCourse => 'Recorrido';
 }

@@ -275,5 +275,14 @@
   "bonusSquaresTeaser": "16 cases bonus sont cachées sur le plateau : +5, +10 et la rare +20.",
   "ridersSubtitle": "Chaque cavalier choisit son niveau ; la carte ne décide que la distance.",
   "ruleBonusTitle": "Les cases bonus",
-  "ruleBonusBody": "Si la table les garde, seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s'enchaînent. Chaque case ne sert qu'une fois par tour et reste en jeu pour tous. Sans elles, une carte vaut exactement ses galops."
+  "ruleBonusBody": "Si la table les garde, seize cases bonus sont réparties sur le plateau à chaque partie, quatre par quart. Un cheval qui s'arrête exactement dessus repart aussitôt de +5, +10 ou +20 galops — et si ce bond le pose pile sur une autre case bonus, elle part à son tour : les bonus s'enchaînent. Chaque case ne sert qu'une fois par tour et reste en jeu pour tous. Sans elles, une carte vaut exactement ses galops.",
+  "newGameTitle": "Nouvelle partie",
+  "setupWhoPlays": "Qui joue ?",
+  "soloTileCaption": "contre l'ordi",
+  "computerLevelLabel": "Niveau de l'ordi",
+  "setupRaceLength": "Durée de la partie",
+  "raceLengthShort": "Partie courte",
+  "raceLengthMedium": "Partie moyenne",
+  "raceLengthFull": "Partie complète",
+  "setupCourse": "Parcours"
 }

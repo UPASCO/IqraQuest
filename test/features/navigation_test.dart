@@ -146,7 +146,7 @@ void main() {
     await tester.tap(find.text(en.soloMode).first);
     await settle(tester);
     expect(
-      find.text(en.chooseCircuit),
+      find.text(en.newGameTitle),
       findsOneWidget,
       reason: 'mode selection opens',
     );

@@ -1009,4 +1009,31 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'Masa onları tutarsa, her oyunda tahtaya on altı bonus kare dağıtılır, çeyrek başına dört. Tam üzerinde duran at hemen +5, +10 ya da +20 dörtnal daha ilerler — ve bu koşu onu tam başka bir bonus karesine indirirse o da patlar: bonuslar zincirlenir. Her kare turda bir kez öder ve herkes için oyunda kalır. Onlar olmadan bir kart tam olarak kendi dörtnalları kadar eder.';
+
+  @override
+  String get newGameTitle => 'Yeni oyun';
+
+  @override
+  String get setupWhoPlays => 'Kim oynuyor?';
+
+  @override
+  String get soloTileCaption => 'bilgisayara karşı';
+
+  @override
+  String get computerLevelLabel => 'Bilgisayar seviyesi';
+
+  @override
+  String get setupRaceLength => 'Oyun süresi';
+
+  @override
+  String get raceLengthShort => 'Kısa oyun';
+
+  @override
+  String get raceLengthMedium => 'Orta oyun';
+
+  @override
+  String get raceLengthFull => 'Tam oyun';
+
+  @override
+  String get setupCourse => 'Parkur';
 }

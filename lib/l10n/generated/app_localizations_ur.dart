@@ -1018,4 +1018,31 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get ruleBonusBody =>
       'اگر میز انہیں رکھے تو ہر کھیل میں سولہ بونس خانے تختے پر تقسیم ہوتے ہیں، ہر چوتھائی میں چار۔ جو گھوڑا بالکل اس پر رکے وہ فوراً ‎+5، ‎+10 یا ‎+20 سرپٹ مزید چلتا ہے — اور اگر یہ چال اسے بالکل کسی دوسرے بونس خانے پر لے جائے تو وہ بھی چل پڑتا ہے: بونس سلسلہ بناتے ہیں۔ ہر خانہ فی باری ایک بار دیتا ہے اور سب کے لیے کھیل میں رہتا ہے۔ ان کے بغیر کارڈ بالکل اپنے سرپٹ کے برابر ہے۔';
+
+  @override
+  String get newGameTitle => 'نیا کھیل';
+
+  @override
+  String get setupWhoPlays => 'کون کھیل رہا ہے؟';
+
+  @override
+  String get soloTileCaption => 'کمپیوٹر کے خلاف';
+
+  @override
+  String get computerLevelLabel => 'کمپیوٹر کی سطح';
+
+  @override
+  String get setupRaceLength => 'کھیل کی مدت';
+
+  @override
+  String get raceLengthShort => 'مختصر کھیل';
+
+  @override
+  String get raceLengthMedium => 'درمیانہ کھیل';
+
+  @override
+  String get raceLengthFull => 'مکمل کھیل';
+
+  @override
+  String get setupCourse => 'راستہ';
 }
