@@ -828,7 +828,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'Mixed: each card draws its own level — easy, intermediate or expert.';
+      'Mixed: every card draws its own level, from first steps to expert.';
 
   @override
   String get raceRulesUpdatedTitle => 'The race rules have been improved';
@@ -1050,4 +1050,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get setupCourse => 'Course';
+
+  @override
+  String get courseCalm => 'Calm';
+
+  @override
+  String get courseLively => 'Lively';
+
+  @override
+  String get courseIntense => 'Intense';
+
+  @override
+  String get courseSquareOasis => 'Oasis: your horse is safe there';
+
+  @override
+  String get courseSquareKnowledge => 'Knowledge: +1 knowledge point';
+
+  @override
+  String get courseSquareChallenge =>
+      'Challenge: an extra question for +2 squares';
+
+  @override
+  String get courseSquareShortcut => 'Shortcut: a hard question to jump ahead';
+
+  @override
+  String get courseSquareWisdom => 'Wisdom: a fact to discover and keep';
+
+  @override
+  String get levelEasyHint => 'Easy: simple questions on what is learnt first.';
+
+  @override
+  String get levelIntermediateHint =>
+      'Intermediate: for those who already know the stories and the rules well.';
+
+  @override
+  String get levelExpertHint =>
+      'Expert: the most precise questions, verses and hadiths in hand.';
 }

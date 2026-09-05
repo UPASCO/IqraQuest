@@ -226,7 +226,7 @@
   "levelIntermediate": "Intermédiaire",
   "levelExpert": "Expert",
   "levelMixed": "Mixte",
-  "levelMixedHint": "Mixte : chaque carte tire son niveau — facile, intermédiaire ou expert.",
+  "levelMixedHint": "Mixte : chaque carte tire son niveau, des premiers pas à expert.",
   "raceRulesUpdatedTitle": "Les règles de course ont été améliorées",
   "raceRulesUpdatedBody": "Les règles ont changé : on pioche maintenant une carte, et sa valeur donne à la fois la distance et la difficulté. Ta progression, tes badges et tes achats sont conservés — seule la partie en cours ne peut pas reprendre avec les nouvelles règles.",
   "startNewRace": "Commencer une nouvelle course",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Partie courte",
   "raceLengthMedium": "Partie moyenne",
   "raceLengthFull": "Partie complète",
-  "setupCourse": "Parcours"
+  "setupCourse": "Parcours",
+  "courseCalm": "Tranquille",
+  "courseLively": "Animé",
+  "courseIntense": "Intense",
+  "courseSquareOasis": "Oasis : ton cheval y est à l'abri",
+  "courseSquareKnowledge": "Connaissance : +1 point de savoir",
+  "courseSquareChallenge": "Défi : une question en plus pour +2 cases",
+  "courseSquareShortcut": "Raccourci : une question difficile pour sauter en avant",
+  "courseSquareWisdom": "Sagesse : un fait à découvrir et à garder",
+  "levelEasyHint": "Facile : des questions simples sur ce qu'on apprend en premier.",
+  "levelIntermediateHint": "Intermédiaire : pour qui connaît déjà bien les histoires et les règles.",
+  "levelExpertHint": "Expert : les questions les plus précises, versets et hadiths à l'appui."
 }

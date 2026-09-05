@@ -1906,6 +1906,10 @@ class _TurnBanner extends StatelessWidget {
 // a gold arch line — native to the game, not a dialog on a gray sheet.
 // ---------------------------------------------------------------------
 
+/// The widest the question sheet gets: a comfortable reading width for
+/// a question and four answers, whatever the screen.
+const double _sheetMaxWidth = 680;
+
 class _QuestionOverlay extends StatelessWidget {
   const _QuestionOverlay({
     required this.question,
@@ -2002,7 +2006,10 @@ class _QuestionOverlay extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: SafeArea(
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: screen.height * 0.5),
+                  constraints: BoxConstraints(
+                    maxHeight: screen.height * 0.5,
+                    maxWidth: _sheetMaxWidth,
+                  ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
                     reverse: true,
@@ -2066,7 +2073,14 @@ class _QuestionOverlay extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: screen.height * 0.86),
+              // Capped in width as well as height: on a tablet on its side
+              // a sheet the full width of the screen makes every answer a
+              // thirteen-hundred-point bar, and the eye loses the four of
+              // them. A reading width, centred, is what a card is.
+              constraints: BoxConstraints(
+                maxHeight: screen.height * 0.86,
+                maxWidth: _sheetMaxWidth,
+              ),
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
                 reverse: true,

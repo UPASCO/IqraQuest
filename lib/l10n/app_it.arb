@@ -226,7 +226,7 @@
   "levelIntermediate": "Intermedio",
   "levelExpert": "Esperto",
   "levelMixed": "Misto",
-  "levelMixedHint": "Misto: ogni carta pesca il proprio livello — facile, intermedio o esperto.",
+  "levelMixedHint": "Misto: ogni carta pesca il suo livello, dai primi passi a esperto.",
   "raceRulesUpdatedTitle": "Le regole della corsa sono state migliorate",
   "raceRulesUpdatedBody": "Le regole sono cambiate: ora peschi una carta, e il suo valore dà insieme la distanza e la difficoltà. I tuoi progressi, i badge e gli acquisti restano — solo la partita in corso non può riprendere con le nuove regole.",
   "startNewRace": "Inizia una nuova corsa",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Partita breve",
   "raceLengthMedium": "Partita media",
   "raceLengthFull": "Partita completa",
-  "setupCourse": "Percorso"
+  "setupCourse": "Percorso",
+  "courseCalm": "Tranquillo",
+  "courseLively": "Vivace",
+  "courseIntense": "Intenso",
+  "courseSquareOasis": "Oasi: il tuo cavallo è al sicuro",
+  "courseSquareKnowledge": "Conoscenza: +1 punto sapere",
+  "courseSquareChallenge": "Sfida: una domanda in più per +2 caselle",
+  "courseSquareShortcut": "Scorciatoia: una domanda difficile per saltare avanti",
+  "courseSquareWisdom": "Saggezza: un fatto da scoprire e conservare",
+  "levelEasyHint": "Facile: domande semplici su ciò che si impara per primo.",
+  "levelIntermediateHint": "Intermedio: per chi conosce già bene storie e regole.",
+  "levelExpertHint": "Esperto: le domande più precise, con versetti e hadith."
 }

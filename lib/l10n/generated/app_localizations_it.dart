@@ -831,7 +831,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'Misto: ogni carta pesca il proprio livello — facile, intermedio o esperto.';
+      'Misto: ogni carta pesca il suo livello, dai primi passi a esperto.';
 
   @override
   String get raceRulesUpdatedTitle =>
@@ -1055,4 +1055,43 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get setupCourse => 'Percorso';
+
+  @override
+  String get courseCalm => 'Tranquillo';
+
+  @override
+  String get courseLively => 'Vivace';
+
+  @override
+  String get courseIntense => 'Intenso';
+
+  @override
+  String get courseSquareOasis => 'Oasi: il tuo cavallo è al sicuro';
+
+  @override
+  String get courseSquareKnowledge => 'Conoscenza: +1 punto sapere';
+
+  @override
+  String get courseSquareChallenge =>
+      'Sfida: una domanda in più per +2 caselle';
+
+  @override
+  String get courseSquareShortcut =>
+      'Scorciatoia: una domanda difficile per saltare avanti';
+
+  @override
+  String get courseSquareWisdom =>
+      'Saggezza: un fatto da scoprire e conservare';
+
+  @override
+  String get levelEasyHint =>
+      'Facile: domande semplici su ciò che si impara per primo.';
+
+  @override
+  String get levelIntermediateHint =>
+      'Intermedio: per chi conosce già bene storie e regole.';
+
+  @override
+  String get levelExpertHint =>
+      'Esperto: le domande più precise, con versetti e hadith.';
 }

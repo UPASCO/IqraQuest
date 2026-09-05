@@ -835,7 +835,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'متنوع: كل بطاقة تسحب مستواها — سهل أو متوسط أو خبير.';
+      'متنوع: كل بطاقة تسحب مستواها، من الخطوات الأولى إلى الخبير.';
 
   @override
   String get raceRulesUpdatedTitle => 'تم تحسين قواعد السباق';
@@ -1063,4 +1063,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get setupCourse => 'المسار';
+
+  @override
+  String get courseCalm => 'هادئ';
+
+  @override
+  String get courseLively => 'حيوي';
+
+  @override
+  String get courseIntense => 'مكثّف';
+
+  @override
+  String get courseSquareOasis => 'واحة: حصانك في أمان هناك';
+
+  @override
+  String get courseSquareKnowledge => 'معرفة: +1 نقطة معرفة';
+
+  @override
+  String get courseSquareChallenge => 'تحدٍ: سؤال إضافي مقابل +2 خانة';
+
+  @override
+  String get courseSquareShortcut => 'طريق مختصر: سؤال صعب للقفز إلى الأمام';
+
+  @override
+  String get courseSquareWisdom => 'حكمة: معلومة تكتشفها وتحتفظ بها';
+
+  @override
+  String get levelEasyHint => 'سهل: أسئلة بسيطة عمّا يُتعلَّم أولًا.';
+
+  @override
+  String get levelIntermediateHint => 'متوسط: لمن يعرف القصص والأحكام جيدًا.';
+
+  @override
+  String get levelExpertHint => 'خبير: أدقّ الأسئلة، بالآيات والأحاديث.';
 }

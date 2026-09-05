@@ -402,19 +402,19 @@ class _RiderPanel extends StatelessWidget {
                 ),
             ],
           ),
-          // The mixed level is the only one whose name does not say what
-          // it does, so it explains itself the moment it is chosen.
-          if (profile.isMixed) ...[
-            const SizedBox(height: 6),
-            Text(
-              l10n.levelMixedHint,
-              key: const Key('level-mixed-hint'),
-              style: textTheme.bodySmall?.copyWith(
-                color: OrnatePalette.ivoryDim,
-                height: 1.3,
-              ),
+          // Every level explains itself in one line the moment it is
+          // chosen: "Facile" and "Expert" mean different things at every
+          // table, and a child picking for themselves deserves to know
+          // what they just picked.
+          const SizedBox(height: 6),
+          Text(
+            _profileHint(profile, l10n),
+            key: Key('level-${profile.name}-hint'),
+            style: textTheme.bodySmall?.copyWith(
+              color: OrnatePalette.ivoryDim,
+              height: 1.3,
             ),
-          ],
+          ),
         ],
       ),
     );
@@ -426,6 +426,14 @@ class _RiderPanel extends StatelessWidget {
     PlayerProfile.intermediate => l10n.levelIntermediate,
     PlayerProfile.expert => l10n.levelExpert,
     PlayerProfile.mixed => l10n.levelMixed,
+  };
+
+  String _profileHint(PlayerProfile profile, AppLocalizations l10n) => switch (profile) {
+    PlayerProfile.beginner => l10n.levelBeginnerHint,
+    PlayerProfile.easy => l10n.levelEasyHint,
+    PlayerProfile.intermediate => l10n.levelIntermediateHint,
+    PlayerProfile.expert => l10n.levelExpertHint,
+    PlayerProfile.mixed => l10n.levelMixedHint,
   };
 }
 

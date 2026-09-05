@@ -1477,7 +1477,7 @@ abstract class AppLocalizations {
   /// One line under the level chips, explaining the mixed level
   ///
   /// In en, this message translates to:
-  /// **'Mixed: each card draws its own level — easy, intermediate or expert.'**
+  /// **'Mixed: every card draws its own level, from first steps to expert.'**
   String get levelMixedHint;
 
   /// Shown once when a pre-gait save is detected
@@ -1827,6 +1827,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Course'**
   String get setupCourse;
+
+  /// Course tile: the quietest board, oases and knowledge only
+  ///
+  /// In en, this message translates to:
+  /// **'Calm'**
+  String get courseCalm;
+
+  /// Course tile: adds challenge squares
+  ///
+  /// In en, this message translates to:
+  /// **'Lively'**
+  String get courseLively;
+
+  /// Course tile: the most eventful board, with shortcuts
+  ///
+  /// In en, this message translates to:
+  /// **'Intense'**
+  String get courseIntense;
+
+  /// Course note: what an Oasis square does, one short line
+  ///
+  /// In en, this message translates to:
+  /// **'Oasis: your horse is safe there'**
+  String get courseSquareOasis;
+
+  /// Course note: what a Knowledge square does, one short line
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledge: +1 knowledge point'**
+  String get courseSquareKnowledge;
+
+  /// Course note: what a Challenge square does, one short line
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge: an extra question for +2 squares'**
+  String get courseSquareChallenge;
+
+  /// Course note: what a Shortcut square does, one short line
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: a hard question to jump ahead'**
+  String get courseSquareShortcut;
+
+  /// Course note: what a Wisdom square does, one short line
+  ///
+  /// In en, this message translates to:
+  /// **'Wisdom: a fact to discover and keep'**
+  String get courseSquareWisdom;
+
+  /// One line under the level chips, explaining the easy level
+  ///
+  /// In en, this message translates to:
+  /// **'Easy: simple questions on what is learnt first.'**
+  String get levelEasyHint;
+
+  /// One line under the level chips, explaining the intermediate level
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate: for those who already know the stories and the rules well.'**
+  String get levelIntermediateHint;
+
+  /// One line under the level chips, explaining the expert level
+  ///
+  /// In en, this message translates to:
+  /// **'Expert: the most precise questions, verses and hadiths in hand.'**
+  String get levelExpertHint;
 }
 
 class _AppLocalizationsDelegate

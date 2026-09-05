@@ -226,7 +226,7 @@
   "levelIntermediate": "Sederhana",
   "levelExpert": "Pakar",
   "levelMixed": "Campuran",
-  "levelMixedHint": "Campuran: setiap kad menarik tahapnya sendiri — mudah, sederhana atau pakar.",
+  "levelMixedHint": "Campuran: setiap kad menarik tahapnya sendiri, dari langkah pertama hingga pakar.",
   "raceRulesUpdatedTitle": "Peraturan perlumbaan telah ditambah baik",
   "raceRulesUpdatedBody": "Peraturan telah berubah: anda kini mencabut kad, dan nilainya memberi jarak sekali gus tahap kesukaran. Kemajuan, lencana dan pembelian anda dikekalkan — hanya permainan yang sedang berjalan tidak dapat disambung dengan peraturan baharu.",
   "startNewRace": "Mulakan perlumbaan baharu",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Permainan pendek",
   "raceLengthMedium": "Permainan sederhana",
   "raceLengthFull": "Permainan penuh",
-  "setupCourse": "Laluan"
+  "setupCourse": "Laluan",
+  "courseCalm": "Tenang",
+  "courseLively": "Rancak",
+  "courseIntense": "Intens",
+  "courseSquareOasis": "Oasis: kuda anda selamat di situ",
+  "courseSquareKnowledge": "Pengetahuan: +1 mata ilmu",
+  "courseSquareChallenge": "Cabaran: satu soalan tambahan untuk +2 petak",
+  "courseSquareShortcut": "Jalan pintas: soalan sukar untuk melompat ke hadapan",
+  "courseSquareWisdom": "Hikmah: fakta untuk ditemui dan disimpan",
+  "levelEasyHint": "Mudah: soalan ringkas tentang perkara asas.",
+  "levelIntermediateHint": "Pertengahan: untuk yang sudah arif kisah dan hukum.",
+  "levelExpertHint": "Pakar: soalan paling terperinci, dengan ayat dan hadis."
 }

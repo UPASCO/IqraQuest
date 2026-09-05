@@ -816,7 +816,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'Karışık: her kart kendi seviyesini çeker — kolay, orta ya da uzman.';
+      'Karışık: her kart kendi seviyesini çeker, ilk adımlardan uzmana.';
 
   @override
   String get raceRulesUpdatedTitle => 'Yarış kuralları geliştirildi';
@@ -1036,4 +1036,39 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get setupCourse => 'Parkur';
+
+  @override
+  String get courseCalm => 'Sakin';
+
+  @override
+  String get courseLively => 'Hareketli';
+
+  @override
+  String get courseIntense => 'Yoğun';
+
+  @override
+  String get courseSquareOasis => 'Vaha: atın orada güvende';
+
+  @override
+  String get courseSquareKnowledge => 'Bilgi: +1 bilgi puanı';
+
+  @override
+  String get courseSquareChallenge => 'Meydan okuma: +2 kare için ek soru';
+
+  @override
+  String get courseSquareShortcut => 'Kestirme: öne atlamak için zor bir soru';
+
+  @override
+  String get courseSquareWisdom => 'Hikmet: keşfedip saklayacağın bir bilgi';
+
+  @override
+  String get levelEasyHint => 'Kolay: ilk öğrenilenler üzerine basit sorular.';
+
+  @override
+  String get levelIntermediateHint =>
+      'Orta: kıssaları ve kuralları iyi bilenler için.';
+
+  @override
+  String get levelExpertHint =>
+      'Uzman: en ayrıntılı sorular, ayet ve hadislerle.';
 }

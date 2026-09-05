@@ -72,7 +72,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
             // spare, the tiles grow and the whole block floats a third
             // of the way down rather than huddling under the app bar.
             final roomy = constraints.maxHeight > 900 && constraints.maxWidth >= 600;
-            final gap = compact ? 10.0 : (roomy ? 22.0 : 14.0);
+            final gap = compact ? 10.0 : (roomy ? 22.0 : 12.0);
             return FitOrScroll(
               padding: pagePadding(context, top: compact ? 8 : 12, bottom: 8),
               child: Column(
@@ -686,7 +686,7 @@ class _CircuitTiles extends StatelessWidget {
                 key: Key('circuit-${circuit.id.name}'),
                 circuit: circuit,
                 selected: selected == circuit.id,
-                artHeight: compact ? 48 : (roomy ? 104 : 60),
+                artHeight: compact ? 46 : (roomy ? 104 : 54),
                 onTap: () => onChanged(circuit.id),
                 l10n: l10n,
               ),
@@ -718,10 +718,15 @@ class _CircuitTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final name = _circuitName(circuit.id, l10n);
+    // The word a child reads first. The three courses differ in one
+    // thing — how much happens on the way — so that is what the tile
+    // says, in a word; the course's own name is the note's business.
+    final mood = _circuitMood(circuit.id, l10n);
+    final acting = _actingEffects(circuit);
     return Semantics(
       button: true,
       selected: selected,
-      label: name,
+      label: '$mood, $name',
       excludeSemantics: true,
       child: Material(
         color: selected
@@ -770,15 +775,30 @@ class _CircuitTile extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  name,
+                  mood,
                   textAlign: TextAlign.center,
-                  maxLines: 3,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: colors.textPrimary,
-                    fontWeight: FontWeight.w700,
-                    height: 1.15,
+                    fontWeight: FontWeight.w800,
                   ),
+                ),
+                const SizedBox(height: 5),
+                // One glyph per kind of square the course carries: two,
+                // three or four, so the ladder is visible before a word
+                // is read. What each does is written under the row.
+                // A Wrap, not a Row: five glyphs are wider than a phone's
+                // tile, and a second line is the honest answer, never a
+                // clipped one.
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 5,
+                  runSpacing: 3,
+                  children: [
+                    for (final effect in acting)
+                      Icon(_effectIcon(effect), size: 16, color: colors.primary),
+                  ],
                 ),
               ],
             ),
@@ -789,11 +809,12 @@ class _CircuitTile extends StatelessWidget {
   }
 }
 
-/// What the chosen course rides like, in one breath: its description and
-/// which squares it carries. Only the squares that actually do something
-/// this release are named or counted (BoardEffectService.isAvailableFor):
-/// Duel and Relais ride as plain squares until their flows ship, and a
-/// note promising them would be a note that lies.
+/// What the chosen course carries, square by square, in one short line
+/// each — the glyph on the tile, then what it does to a horse. Only the
+/// squares that actually act this release are listed
+/// (BoardEffectService.isAvailableFor): Duel, Relais and Sagesse ride as
+/// plain squares until their flows ship, and a note promising them
+/// would be a note that lies.
 class _CircuitNote extends StatelessWidget {
   const _CircuitNote({required this.circuit, required this.l10n});
 
@@ -804,19 +825,13 @@ class _CircuitNote extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final textTheme = Theme.of(context).textTheme;
-    final description = switch (circuit.id) {
-      CircuitId.oasisRoute => l10n.circuitOasisRouteDescription,
-      CircuitId.caravanTrail => l10n.circuitCaravanTrailDescription,
-      CircuitId.greatRide => l10n.circuitGreatRideDescription,
-    };
-    final effects = [
-      for (final effect in circuit.quadrantEffects.values.where(_effectActs).toSet())
-        '${_effectName(effect, l10n)} ×'
-            '${circuit.quadrantEffects.values.where((e) => e == effect).length * 4}',
-    ];
+    final line = textTheme.labelSmall?.copyWith(
+      color: colors.textPrimary,
+      height: 1.2,
+    );
     return Container(
       key: const Key('circuit-note'),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       decoration: BoxDecoration(
         color: colors.primary.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(12),
@@ -825,22 +840,36 @@ class _CircuitNote extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            description,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: textTheme.bodySmall?.copyWith(
-              color: colors.textPrimary,
-              height: 1.25,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '${l10n.circuitSpecialSquares(_actingSquares(circuit))} · '
-            '${effects.join(' · ')}',
+            '${_circuitName(circuit.id, l10n)} · '
+            '${l10n.circuitSpecialSquares(_actingSquares(circuit))}',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: textTheme.labelSmall?.copyWith(color: colors.textSecondary),
+            style: textTheme.labelSmall?.copyWith(
+              color: colors.textSecondary,
+              fontWeight: FontWeight.w700,
+            ),
           ),
+          for (final effect in _actingEffects(circuit)) ...[
+            const SizedBox(height: 3),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 1),
+                  child: Icon(_effectIcon(effect), size: 13, color: colors.primary),
+                ),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    _effectBlurb(effect, l10n),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: line,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );
@@ -928,24 +957,56 @@ String _circuitName(CircuitId id, AppLocalizations l10n) => switch (id) {
   CircuitId.greatRide => l10n.circuitGreatRide,
 };
 
+/// The one word a course is told by: how much happens on the way.
+String _circuitMood(CircuitId id, AppLocalizations l10n) => switch (id) {
+  CircuitId.oasisRoute => l10n.courseCalm,
+  CircuitId.caravanTrail => l10n.courseLively,
+  CircuitId.greatRide => l10n.courseIntense,
+};
+
 /// Whether this square does anything a player would notice, in this
 /// release. Duel and Relais are held back — the engine knows them, the
 /// board plays them as plain squares — so they are never advertised.
 bool _effectActs(CellEffect effect) => const BoardEffectService()
     .isAvailableFor(effect, playerCount: 4, horseCount: 4);
 
+/// The kinds of square a course carries that actually act, in the order
+/// they first appear around the quadrant, without repeats.
+List<CellEffect> _actingEffects(Circuit circuit) {
+  final seen = <CellEffect>[];
+  final offsets = circuit.quadrantEffects.keys.toList()..sort();
+  for (final offset in offsets) {
+    final effect = circuit.quadrantEffects[offset]!;
+    if (_effectActs(effect) && !seen.contains(effect)) seen.add(effect);
+  }
+  return seen;
+}
+
 /// How many squares of a circuit actually act, which is the number worth
 /// telling the player.
 int _actingSquares(Circuit circuit) =>
     circuit.quadrantEffects.values.where(_effectActs).length * 4;
 
-String _effectName(CellEffect effect, AppLocalizations l10n) => switch (effect) {
-  CellEffect.oasis => l10n.cellOasis,
-  CellEffect.knowledge => l10n.cellKnowledge,
-  CellEffect.challenge => l10n.cellChallenge,
-  CellEffect.shortcut => l10n.cellShortcut,
+IconData _effectIcon(CellEffect effect) => switch (effect) {
+  CellEffect.oasis => Icons.shield_outlined,
+  CellEffect.knowledge => Icons.auto_awesome,
+  CellEffect.challenge => Icons.bolt,
+  CellEffect.shortcut => Icons.fast_forward,
+  CellEffect.duel => Icons.sports_martial_arts,
+  CellEffect.wisdom => Icons.menu_book,
+  CellEffect.relay => Icons.swap_horiz,
+  CellEffect.plain => Icons.circle_outlined,
+};
+
+/// What a square does, in words a child understands; the bare name for
+/// the kinds that never act.
+String _effectBlurb(CellEffect effect, AppLocalizations l10n) => switch (effect) {
+  CellEffect.oasis => l10n.courseSquareOasis,
+  CellEffect.knowledge => l10n.courseSquareKnowledge,
+  CellEffect.challenge => l10n.courseSquareChallenge,
+  CellEffect.shortcut => l10n.courseSquareShortcut,
   CellEffect.duel => l10n.cellDuel,
-  CellEffect.wisdom => l10n.cellWisdom,
+  CellEffect.wisdom => l10n.courseSquareWisdom,
   CellEffect.relay => l10n.cellRelay,
   CellEffect.plain => '',
 };

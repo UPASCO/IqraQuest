@@ -226,7 +226,7 @@
   "levelIntermediate": "Intermediário",
   "levelExpert": "Especialista",
   "levelMixed": "Misto",
-  "levelMixedHint": "Misto: cada carta tira o seu nível — fácil, intermediário ou especialista.",
+  "levelMixedHint": "Misto: cada carta tira o seu nível, dos primeiros passos a especialista.",
   "raceRulesUpdatedTitle": "As regras da corrida foram melhoradas",
   "raceRulesUpdatedBody": "As regras mudaram: agora você puxa uma carta, e o valor dela dá ao mesmo tempo a distância e a dificuldade. Seu progresso, suas medalhas e suas compras são mantidos — só a partida em andamento não pode continuar com as novas regras.",
   "startNewRace": "Começar uma nova corrida",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Jogo curto",
   "raceLengthMedium": "Jogo médio",
   "raceLengthFull": "Jogo completo",
-  "setupCourse": "Percurso"
+  "setupCourse": "Percurso",
+  "courseCalm": "Tranquilo",
+  "courseLively": "Animado",
+  "courseIntense": "Intenso",
+  "courseSquareOasis": "Oásis: o teu cavalo está a salvo",
+  "courseSquareKnowledge": "Conhecimento: +1 ponto de saber",
+  "courseSquareChallenge": "Desafio: uma pergunta extra por +2 casas",
+  "courseSquareShortcut": "Atalho: uma pergunta difícil para saltar em frente",
+  "courseSquareWisdom": "Sabedoria: um facto para descobrir e guardar",
+  "levelEasyHint": "Fácil: perguntas simples sobre o que se aprende primeiro.",
+  "levelIntermediateHint": "Intermédio: para quem já conhece bem as histórias e as regras.",
+  "levelExpertHint": "Especialista: as perguntas mais precisas, com versículos e hadiths."
 }

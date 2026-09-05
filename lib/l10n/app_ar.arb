@@ -226,7 +226,7 @@
   "levelIntermediate": "متوسط",
   "levelExpert": "خبير",
   "levelMixed": "متنوع",
-  "levelMixedHint": "متنوع: كل بطاقة تسحب مستواها — سهل أو متوسط أو خبير.",
+  "levelMixedHint": "متنوع: كل بطاقة تسحب مستواها، من الخطوات الأولى إلى الخبير.",
   "raceRulesUpdatedTitle": "تم تحسين قواعد السباق",
   "raceRulesUpdatedBody": "تغيّرت القواعد: تسحب الآن بطاقة، وقيمتها تحدد المسافة والصعوبة معًا. تقدّمك وأوسمتك ومشترياتك محفوظة — الجولة الجارية وحدها لا يمكن استئنافها بالقواعد الجديدة.",
   "startNewRace": "ابدأ سباقًا جديدًا",
@@ -284,5 +284,16 @@
   "raceLengthShort": "لعبة قصيرة",
   "raceLengthMedium": "لعبة متوسطة",
   "raceLengthFull": "لعبة كاملة",
-  "setupCourse": "المسار"
+  "setupCourse": "المسار",
+  "courseCalm": "هادئ",
+  "courseLively": "حيوي",
+  "courseIntense": "مكثّف",
+  "courseSquareOasis": "واحة: حصانك في أمان هناك",
+  "courseSquareKnowledge": "معرفة: +1 نقطة معرفة",
+  "courseSquareChallenge": "تحدٍ: سؤال إضافي مقابل +2 خانة",
+  "courseSquareShortcut": "طريق مختصر: سؤال صعب للقفز إلى الأمام",
+  "courseSquareWisdom": "حكمة: معلومة تكتشفها وتحتفظ بها",
+  "levelEasyHint": "سهل: أسئلة بسيطة عمّا يُتعلَّم أولًا.",
+  "levelIntermediateHint": "متوسط: لمن يعرف القصص والأحكام جيدًا.",
+  "levelExpertHint": "خبير: أدقّ الأسئلة، بالآيات والأحاديث."
 }

@@ -1119,7 +1119,7 @@
   "@levelMixed": {
     "description": "Question level a rider plays at: all three levels mixed"
   },
-  "levelMixedHint": "Mixed: each card draws its own level — easy, intermediate or expert.",
+  "levelMixedHint": "Mixed: every card draws its own level, from first steps to expert.",
   "@levelMixedHint": {
     "description": "One line under the level chips, explaining the mixed level"
   },
@@ -1407,5 +1407,49 @@
   "setupCourse": "Course",
   "@setupCourse": {
     "description": "Eyebrow over the three circuit tiles"
+  },
+  "courseCalm": "Calm",
+  "@courseCalm": {
+    "description": "Course tile: the quietest board, oases and knowledge only"
+  },
+  "courseLively": "Lively",
+  "@courseLively": {
+    "description": "Course tile: adds challenge squares"
+  },
+  "courseIntense": "Intense",
+  "@courseIntense": {
+    "description": "Course tile: the most eventful board, with shortcuts"
+  },
+  "courseSquareOasis": "Oasis: your horse is safe there",
+  "@courseSquareOasis": {
+    "description": "Course note: what an Oasis square does, one short line"
+  },
+  "courseSquareKnowledge": "Knowledge: +1 knowledge point",
+  "@courseSquareKnowledge": {
+    "description": "Course note: what a Knowledge square does, one short line"
+  },
+  "courseSquareChallenge": "Challenge: an extra question for +2 squares",
+  "@courseSquareChallenge": {
+    "description": "Course note: what a Challenge square does, one short line"
+  },
+  "courseSquareShortcut": "Shortcut: a hard question to jump ahead",
+  "@courseSquareShortcut": {
+    "description": "Course note: what a Shortcut square does, one short line"
+  },
+  "courseSquareWisdom": "Wisdom: a fact to discover and keep",
+  "@courseSquareWisdom": {
+    "description": "Course note: what a Wisdom square does, one short line"
+  },
+  "levelEasyHint": "Easy: simple questions on what is learnt first.",
+  "@levelEasyHint": {
+    "description": "One line under the level chips, explaining the easy level"
+  },
+  "levelIntermediateHint": "Intermediate: for those who already know the stories and the rules well.",
+  "@levelIntermediateHint": {
+    "description": "One line under the level chips, explaining the intermediate level"
+  },
+  "levelExpertHint": "Expert: the most precise questions, verses and hadiths in hand.",
+  "@levelExpertHint": {
+    "description": "One line under the level chips, explaining the expert level"
   }
 }

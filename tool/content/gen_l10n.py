@@ -1778,18 +1778,18 @@ s("levelMixed", "Question level a rider plays at: all three levels mixed",
   nl="Gemengd")
 
 s("levelMixedHint", "One line under the level chips, explaining the mixed level",
-  fr="Mixte : chaque carte tire son niveau — facile, intermédiaire ou expert.",
-  en="Mixed: each card draws its own level — easy, intermediate or expert.",
-  ar="متنوع: كل بطاقة تسحب مستواها — سهل أو متوسط أو خبير.",
-  es="Mixto: cada carta saca su propio nivel: fácil, intermedio o experto.",
-  pt="Misto: cada carta tira o seu nível — fácil, intermediário ou especialista.",
-  de="Gemischt: Jede Karte zieht ihr eigenes Niveau – leicht, mittel oder Experte.",
-  tr="Karışık: her kart kendi seviyesini çeker — kolay, orta ya da uzman.",
-  id="Campuran: setiap kartu menarik tingkatnya sendiri — mudah, menengah, atau ahli.",
-  ur="مخلوط: ہر کارڈ اپنا درجہ نکالتا ہے — آسان، درمیانہ یا ماہر۔",
-  ms="Campuran: setiap kad menarik tahapnya sendiri — mudah, sederhana atau pakar.",
-  it="Misto: ogni carta pesca il proprio livello — facile, intermedio o esperto.",
-  nl="Gemengd: elke kaart trekt zijn eigen niveau — makkelijk, gemiddeld of expert.")
+  fr="Mixte : chaque carte tire son niveau, des premiers pas à expert.",
+  en="Mixed: every card draws its own level, from first steps to expert.",
+  ar="متنوع: كل بطاقة تسحب مستواها، من الخطوات الأولى إلى الخبير.",
+  es="Mixto: cada carta saca su nivel, de primeros pasos a experto.",
+  pt="Misto: cada carta tira o seu nível, dos primeiros passos a especialista.",
+  de="Gemischt: jede Karte zieht ihre Stufe, von den ersten Schritten bis Experte.",
+  tr="Karışık: her kart kendi seviyesini çeker, ilk adımlardan uzmana.",
+  id="Campuran: setiap kartu menarik tingkatnya sendiri, dari langkah pertama hingga ahli.",
+  ur="ملا جلا: ہر کارڈ اپنی سطح نکالتا ہے، پہلے قدم سے ماہر تک۔",
+  ms="Campuran: setiap kad menarik tahapnya sendiri, dari langkah pertama hingga pakar.",
+  it="Misto: ogni carta pesca il suo livello, dai primi passi a esperto.",
+  nl="Gemengd: elke kaart trekt zijn eigen niveau, van eerste stappen tot expert.")
 
 # ---- Save migration --------------------------------------------------------
 s("raceRulesUpdatedTitle", "Shown once when a pre-gait save is detected",
@@ -2334,6 +2334,116 @@ s("setupCourse", "Eyebrow over the three circuit tiles",
   fr="Parcours", en="Course", ar="المسار", es="Recorrido", pt="Percurso",
   de="Strecke", tr="Parkur", id="Lintasan", ur="راستہ", ms="Laluan",
   it="Percorso", nl="Parcours")
+
+# ---- Race setup: the course, said in words a child understands --------
+s("courseCalm", "Course tile: the quietest board, oases and knowledge only",
+  fr="Tranquille", en="Calm", ar="هادئ", es="Tranquilo", pt="Tranquilo",
+  de="Ruhig", tr="Sakin", id="Tenang", ur="پرسکون", ms="Tenang",
+  it="Tranquillo", nl="Rustig")
+
+s("courseLively", "Course tile: adds challenge squares",
+  fr="Animé", en="Lively", ar="حيوي", es="Animado", pt="Animado", de="Lebhaft",
+  tr="Hareketli", id="Seru", ur="چہل پہل", ms="Rancak", it="Vivace", nl="Levendig")
+
+s("courseIntense", "Course tile: the most eventful board, with shortcuts",
+  fr="Intense", en="Intense", ar="مكثّف", es="Intenso", pt="Intenso",
+  de="Intensiv", tr="Yoğun", id="Intens", ur="شدید", ms="Intens", it="Intenso",
+  nl="Intens")
+
+s("courseSquareOasis", "Course note: what an Oasis square does, one short line",
+  fr="Oasis : ton cheval y est à l'abri", en="Oasis: your horse is safe there",
+  ar="واحة: حصانك في أمان هناك", es="Oasis: tu caballo está a salvo",
+  pt="Oásis: o teu cavalo está a salvo", de="Oase: dein Pferd ist dort sicher",
+  tr="Vaha: atın orada güvende", id="Oasis: kudamu aman di sana",
+  ur="نخلستان: تمہارا گھوڑا وہاں محفوظ ہے", ms="Oasis: kuda anda selamat di situ",
+  it="Oasi: il tuo cavallo è al sicuro", nl="Oase: je paard is daar veilig")
+
+s("courseSquareKnowledge", "Course note: what a Knowledge square does, one short line",
+  fr="Connaissance : +1 point de savoir", en="Knowledge: +1 knowledge point",
+  ar="معرفة: +1 نقطة معرفة", es="Conocimiento: +1 punto de saber",
+  pt="Conhecimento: +1 ponto de saber", de="Wissen: +1 Wissenspunkt",
+  tr="Bilgi: +1 bilgi puanı", id="Pengetahuan: +1 poin ilmu",
+  ur="علم: +1 علم پوائنٹ", ms="Pengetahuan: +1 mata ilmu",
+  it="Conoscenza: +1 punto sapere", nl="Kennis: +1 kennispunt")
+
+s("courseSquareChallenge", "Course note: what a Challenge square does, one short line",
+  fr="Défi : une question en plus pour +2 cases",
+  en="Challenge: an extra question for +2 squares",
+  ar="تحدٍ: سؤال إضافي مقابل +2 خانة",
+  es="Desafío: una pregunta extra por +2 casillas",
+  pt="Desafio: uma pergunta extra por +2 casas",
+  de="Herausforderung: eine Extrafrage für +2 Felder",
+  tr="Meydan okuma: +2 kare için ek soru",
+  id="Tantangan: satu soal tambahan untuk +2 petak",
+  ur="چیلنج: +2 خانوں کے لیے ایک اضافی سوال",
+  ms="Cabaran: satu soalan tambahan untuk +2 petak",
+  it="Sfida: una domanda in più per +2 caselle",
+  nl="Uitdaging: een extra vraag voor +2 vakjes")
+
+s("courseSquareShortcut", "Course note: what a Shortcut square does, one short line",
+  fr="Raccourci : une question difficile pour sauter en avant",
+  en="Shortcut: a hard question to jump ahead",
+  ar="طريق مختصر: سؤال صعب للقفز إلى الأمام",
+  es="Atajo: una pregunta difícil para saltar adelante",
+  pt="Atalho: uma pergunta difícil para saltar em frente",
+  de="Abkürzung: eine schwere Frage, um vorzuspringen",
+  tr="Kestirme: öne atlamak için zor bir soru",
+  id="Jalan pintas: soal sulit untuk melompat ke depan",
+  ur="شارٹ کٹ: آگے چھلانگ لگانے کے لیے ایک مشکل سوال",
+  ms="Jalan pintas: soalan sukar untuk melompat ke hadapan",
+  it="Scorciatoia: una domanda difficile per saltare avanti",
+  nl="Kortere weg: een moeilijke vraag om vooruit te springen")
+
+s("courseSquareWisdom", "Course note: what a Wisdom square does, one short line",
+  fr="Sagesse : un fait à découvrir et à garder", en="Wisdom: a fact to discover and keep",
+  ar="حكمة: معلومة تكتشفها وتحتفظ بها", es="Sabiduría: un dato para descubrir y guardar",
+  pt="Sabedoria: um facto para descobrir e guardar", de="Weisheit: ein Fakt zum Entdecken und Behalten",
+  tr="Hikmet: keşfedip saklayacağın bir bilgi", id="Hikmah: fakta untuk ditemukan dan disimpan",
+  ur="حکمت: ایک حقیقت جسے دریافت کر کے سنبھال رکھو", ms="Hikmah: fakta untuk ditemui dan disimpan",
+  it="Saggezza: un fatto da scoprire e conservare", nl="Wijsheid: een feit om te ontdekken en te bewaren")
+
+# ---- Riders: every level explains itself in one line -----------------
+s("levelEasyHint", "One line under the level chips, explaining the easy level",
+  fr="Facile : des questions simples sur ce qu'on apprend en premier.",
+  en="Easy: simple questions on what is learnt first.",
+  ar="سهل: أسئلة بسيطة عمّا يُتعلَّم أولًا.",
+  es="Fácil: preguntas sencillas sobre lo que se aprende primero.",
+  pt="Fácil: perguntas simples sobre o que se aprende primeiro.",
+  de="Leicht: einfache Fragen zu dem, was man zuerst lernt.",
+  tr="Kolay: ilk öğrenilenler üzerine basit sorular.",
+  id="Mudah: pertanyaan sederhana tentang yang dipelajari pertama.",
+  ur="آسان: ابتدائی باتوں پر سادہ سوالات۔",
+  ms="Mudah: soalan ringkas tentang perkara asas.",
+  it="Facile: domande semplici su ciò che si impara per primo.",
+  nl="Makkelijk: eenvoudige vragen over wat je eerst leert.")
+
+s("levelIntermediateHint", "One line under the level chips, explaining the intermediate level",
+  fr="Intermédiaire : pour qui connaît déjà bien les histoires et les règles.",
+  en="Intermediate: for those who already know the stories and the rules well.",
+  ar="متوسط: لمن يعرف القصص والأحكام جيدًا.",
+  es="Intermedio: para quien ya conoce bien las historias y las reglas.",
+  pt="Intermédio: para quem já conhece bem as histórias e as regras.",
+  de="Mittel: für alle, die Geschichten und Regeln schon gut kennen.",
+  tr="Orta: kıssaları ve kuralları iyi bilenler için.",
+  id="Menengah: bagi yang sudah paham kisah dan aturannya.",
+  ur="درمیانہ: جو قصے اور احکام اچھی طرح جانتے ہیں۔",
+  ms="Pertengahan: untuk yang sudah arif kisah dan hukum.",
+  it="Intermedio: per chi conosce già bene storie e regole.",
+  nl="Gemiddeld: voor wie de verhalen en regels al goed kent.")
+
+s("levelExpertHint", "One line under the level chips, explaining the expert level",
+  fr="Expert : les questions les plus précises, versets et hadiths à l'appui.",
+  en="Expert: the most precise questions, verses and hadiths in hand.",
+  ar="خبير: أدقّ الأسئلة، بالآيات والأحاديث.",
+  es="Experto: las preguntas más precisas, con versículos y hadices.",
+  pt="Especialista: as perguntas mais precisas, com versículos e hadiths.",
+  de="Experte: die genauesten Fragen, mit Versen und Hadithen.",
+  tr="Uzman: en ayrıntılı sorular, ayet ve hadislerle.",
+  id="Ahli: pertanyaan paling rinci, dengan ayat dan hadis.",
+  ur="ماہر: سب سے باریک سوالات، آیات و احادیث کے ساتھ۔",
+  ms="Pakar: soalan paling terperinci, dengan ayat dan hadis.",
+  it="Esperto: le domande più precise, con versetti e hadith.",
+  nl="Expert: de preciezste vragen, met verzen en hadiths.")
 
 # ---------------------------------------------------------------------
 def validate():

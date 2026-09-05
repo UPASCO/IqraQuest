@@ -226,7 +226,7 @@
   "levelIntermediate": "Orta",
   "levelExpert": "Uzman",
   "levelMixed": "Karışık",
-  "levelMixedHint": "Karışık: her kart kendi seviyesini çeker — kolay, orta ya da uzman.",
+  "levelMixedHint": "Karışık: her kart kendi seviyesini çeker, ilk adımlardan uzmana.",
   "raceRulesUpdatedTitle": "Yarış kuralları geliştirildi",
   "raceRulesUpdatedBody": "Kurallar değişti: artık bir kart çekiyorsun ve kartın değeri hem mesafeyi hem zorluğu veriyor. İlerlemen, rozetlerin ve satın alımların korunuyor — yalnızca devam eden oyun yeni kurallarla sürdürülemiyor.",
   "startNewRace": "Yeni bir yarış başlat",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Kısa oyun",
   "raceLengthMedium": "Orta oyun",
   "raceLengthFull": "Tam oyun",
-  "setupCourse": "Parkur"
+  "setupCourse": "Parkur",
+  "courseCalm": "Sakin",
+  "courseLively": "Hareketli",
+  "courseIntense": "Yoğun",
+  "courseSquareOasis": "Vaha: atın orada güvende",
+  "courseSquareKnowledge": "Bilgi: +1 bilgi puanı",
+  "courseSquareChallenge": "Meydan okuma: +2 kare için ek soru",
+  "courseSquareShortcut": "Kestirme: öne atlamak için zor bir soru",
+  "courseSquareWisdom": "Hikmet: keşfedip saklayacağın bir bilgi",
+  "levelEasyHint": "Kolay: ilk öğrenilenler üzerine basit sorular.",
+  "levelIntermediateHint": "Orta: kıssaları ve kuralları iyi bilenler için.",
+  "levelExpertHint": "Uzman: en ayrıntılı sorular, ayet ve hadislerle."
 }

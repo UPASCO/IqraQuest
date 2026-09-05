@@ -822,7 +822,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'مخلوط: ہر کارڈ اپنا درجہ نکالتا ہے — آسان، درمیانہ یا ماہر۔';
+      'ملا جلا: ہر کارڈ اپنی سطح نکالتا ہے، پہلے قدم سے ماہر تک۔';
 
   @override
   String get raceRulesUpdatedTitle => 'دوڑ کے قواعد بہتر کر دیے گئے';
@@ -1045,4 +1045,41 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get setupCourse => 'راستہ';
+
+  @override
+  String get courseCalm => 'پرسکون';
+
+  @override
+  String get courseLively => 'چہل پہل';
+
+  @override
+  String get courseIntense => 'شدید';
+
+  @override
+  String get courseSquareOasis => 'نخلستان: تمہارا گھوڑا وہاں محفوظ ہے';
+
+  @override
+  String get courseSquareKnowledge => 'علم: +1 علم پوائنٹ';
+
+  @override
+  String get courseSquareChallenge => 'چیلنج: +2 خانوں کے لیے ایک اضافی سوال';
+
+  @override
+  String get courseSquareShortcut =>
+      'شارٹ کٹ: آگے چھلانگ لگانے کے لیے ایک مشکل سوال';
+
+  @override
+  String get courseSquareWisdom =>
+      'حکمت: ایک حقیقت جسے دریافت کر کے سنبھال رکھو';
+
+  @override
+  String get levelEasyHint => 'آسان: ابتدائی باتوں پر سادہ سوالات۔';
+
+  @override
+  String get levelIntermediateHint =>
+      'درمیانہ: جو قصے اور احکام اچھی طرح جانتے ہیں۔';
+
+  @override
+  String get levelExpertHint =>
+      'ماہر: سب سے باریک سوالات، آیات و احادیث کے ساتھ۔';
 }

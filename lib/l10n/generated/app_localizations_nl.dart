@@ -826,7 +826,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'Gemengd: elke kaart trekt zijn eigen niveau — makkelijk, gemiddeld of expert.';
+      'Gemengd: elke kaart trekt zijn eigen niveau, van eerste stappen tot expert.';
 
   @override
   String get raceRulesUpdatedTitle => 'De racerregels zijn verbeterd';
@@ -1048,4 +1048,43 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get setupCourse => 'Parcours';
+
+  @override
+  String get courseCalm => 'Rustig';
+
+  @override
+  String get courseLively => 'Levendig';
+
+  @override
+  String get courseIntense => 'Intens';
+
+  @override
+  String get courseSquareOasis => 'Oase: je paard is daar veilig';
+
+  @override
+  String get courseSquareKnowledge => 'Kennis: +1 kennispunt';
+
+  @override
+  String get courseSquareChallenge =>
+      'Uitdaging: een extra vraag voor +2 vakjes';
+
+  @override
+  String get courseSquareShortcut =>
+      'Kortere weg: een moeilijke vraag om vooruit te springen';
+
+  @override
+  String get courseSquareWisdom =>
+      'Wijsheid: een feit om te ontdekken en te bewaren';
+
+  @override
+  String get levelEasyHint =>
+      'Makkelijk: eenvoudige vragen over wat je eerst leert.';
+
+  @override
+  String get levelIntermediateHint =>
+      'Gemiddeld: voor wie de verhalen en regels al goed kent.';
+
+  @override
+  String get levelExpertHint =>
+      'Expert: de preciezste vragen, met verzen en hadiths.';
 }

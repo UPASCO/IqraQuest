@@ -226,7 +226,7 @@
   "levelIntermediate": "Menengah",
   "levelExpert": "Ahli",
   "levelMixed": "Campuran",
-  "levelMixedHint": "Campuran: setiap kartu menarik tingkatnya sendiri — mudah, menengah, atau ahli.",
+  "levelMixedHint": "Campuran: setiap kartu menarik tingkatnya sendiri, dari langkah pertama hingga ahli.",
   "raceRulesUpdatedTitle": "Aturan balapan telah ditingkatkan",
   "raceRulesUpdatedBody": "Aturannya berubah: sekarang kamu mengambil kartu, dan nilainya menentukan jarak sekaligus tingkat kesulitan. Progres, lencana, dan pembelianmu tetap tersimpan — hanya permainan yang sedang berjalan tidak bisa dilanjutkan dengan aturan baru.",
   "startNewRace": "Mulai balapan baru",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Permainan singkat",
   "raceLengthMedium": "Permainan sedang",
   "raceLengthFull": "Permainan penuh",
-  "setupCourse": "Lintasan"
+  "setupCourse": "Lintasan",
+  "courseCalm": "Tenang",
+  "courseLively": "Seru",
+  "courseIntense": "Intens",
+  "courseSquareOasis": "Oasis: kudamu aman di sana",
+  "courseSquareKnowledge": "Pengetahuan: +1 poin ilmu",
+  "courseSquareChallenge": "Tantangan: satu soal tambahan untuk +2 petak",
+  "courseSquareShortcut": "Jalan pintas: soal sulit untuk melompat ke depan",
+  "courseSquareWisdom": "Hikmah: fakta untuk ditemukan dan disimpan",
+  "levelEasyHint": "Mudah: pertanyaan sederhana tentang yang dipelajari pertama.",
+  "levelIntermediateHint": "Menengah: bagi yang sudah paham kisah dan aturannya.",
+  "levelExpertHint": "Ahli: pertanyaan paling rinci, dengan ayat dan hadis."
 }

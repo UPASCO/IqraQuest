@@ -226,7 +226,7 @@
   "levelIntermediate": "درمیانہ",
   "levelExpert": "ماہر",
   "levelMixed": "مخلوط",
-  "levelMixedHint": "مخلوط: ہر کارڈ اپنا درجہ نکالتا ہے — آسان، درمیانہ یا ماہر۔",
+  "levelMixedHint": "ملا جلا: ہر کارڈ اپنی سطح نکالتا ہے، پہلے قدم سے ماہر تک۔",
   "raceRulesUpdatedTitle": "دوڑ کے قواعد بہتر کر دیے گئے",
   "raceRulesUpdatedBody": "قواعد بدل گئے ہیں: اب آپ ایک کارڈ نکالتے ہیں، اور اس کی قیمت فاصلہ اور مشکل دونوں طے کرتی ہے۔ آپ کی پیش رفت، بیجز اور خریداری محفوظ ہیں — صرف جاری کھیل نئے قواعد کے ساتھ جاری نہیں رہ سکتا۔",
   "startNewRace": "نئی دوڑ شروع کریں",
@@ -284,5 +284,16 @@
   "raceLengthShort": "مختصر کھیل",
   "raceLengthMedium": "درمیانہ کھیل",
   "raceLengthFull": "مکمل کھیل",
-  "setupCourse": "راستہ"
+  "setupCourse": "راستہ",
+  "courseCalm": "پرسکون",
+  "courseLively": "چہل پہل",
+  "courseIntense": "شدید",
+  "courseSquareOasis": "نخلستان: تمہارا گھوڑا وہاں محفوظ ہے",
+  "courseSquareKnowledge": "علم: +1 علم پوائنٹ",
+  "courseSquareChallenge": "چیلنج: +2 خانوں کے لیے ایک اضافی سوال",
+  "courseSquareShortcut": "شارٹ کٹ: آگے چھلانگ لگانے کے لیے ایک مشکل سوال",
+  "courseSquareWisdom": "حکمت: ایک حقیقت جسے دریافت کر کے سنبھال رکھو",
+  "levelEasyHint": "آسان: ابتدائی باتوں پر سادہ سوالات۔",
+  "levelIntermediateHint": "درمیانہ: جو قصے اور احکام اچھی طرح جانتے ہیں۔",
+  "levelExpertHint": "ماہر: سب سے باریک سوالات، آیات و احادیث کے ساتھ۔"
 }

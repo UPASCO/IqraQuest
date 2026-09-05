@@ -226,7 +226,7 @@
   "levelIntermediate": "Gemiddeld",
   "levelExpert": "Expert",
   "levelMixed": "Gemengd",
-  "levelMixedHint": "Gemengd: elke kaart trekt zijn eigen niveau — makkelijk, gemiddeld of expert.",
+  "levelMixedHint": "Gemengd: elke kaart trekt zijn eigen niveau, van eerste stappen tot expert.",
   "raceRulesUpdatedTitle": "De racerregels zijn verbeterd",
   "raceRulesUpdatedBody": "De regels zijn veranderd: je trekt nu een kaart, en de waarde bepaalt zowel de afstand als de moeilijkheid. Je voortgang, badges en aankopen blijven behouden — alleen het lopende spel kan niet verder met de nieuwe regels.",
   "startNewRace": "Start een nieuwe race",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Kort spel",
   "raceLengthMedium": "Gemiddeld spel",
   "raceLengthFull": "Volledig spel",
-  "setupCourse": "Parcours"
+  "setupCourse": "Parcours",
+  "courseCalm": "Rustig",
+  "courseLively": "Levendig",
+  "courseIntense": "Intens",
+  "courseSquareOasis": "Oase: je paard is daar veilig",
+  "courseSquareKnowledge": "Kennis: +1 kennispunt",
+  "courseSquareChallenge": "Uitdaging: een extra vraag voor +2 vakjes",
+  "courseSquareShortcut": "Kortere weg: een moeilijke vraag om vooruit te springen",
+  "courseSquareWisdom": "Wijsheid: een feit om te ontdekken en te bewaren",
+  "levelEasyHint": "Makkelijk: eenvoudige vragen over wat je eerst leert.",
+  "levelIntermediateHint": "Gemiddeld: voor wie de verhalen en regels al goed kent.",
+  "levelExpertHint": "Expert: de preciezste vragen, met verzen en hadiths."
 }

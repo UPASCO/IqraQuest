@@ -824,7 +824,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get levelMixedHint =>
-      'Campuran: setiap kad menarik tahapnya sendiri — mudah, sederhana atau pakar.';
+      'Campuran: setiap kad menarik tahapnya sendiri, dari langkah pertama hingga pakar.';
 
   @override
   String get raceRulesUpdatedTitle =>
@@ -1045,4 +1045,41 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get setupCourse => 'Laluan';
+
+  @override
+  String get courseCalm => 'Tenang';
+
+  @override
+  String get courseLively => 'Rancak';
+
+  @override
+  String get courseIntense => 'Intens';
+
+  @override
+  String get courseSquareOasis => 'Oasis: kuda anda selamat di situ';
+
+  @override
+  String get courseSquareKnowledge => 'Pengetahuan: +1 mata ilmu';
+
+  @override
+  String get courseSquareChallenge =>
+      'Cabaran: satu soalan tambahan untuk +2 petak';
+
+  @override
+  String get courseSquareShortcut =>
+      'Jalan pintas: soalan sukar untuk melompat ke hadapan';
+
+  @override
+  String get courseSquareWisdom => 'Hikmah: fakta untuk ditemui dan disimpan';
+
+  @override
+  String get levelEasyHint => 'Mudah: soalan ringkas tentang perkara asas.';
+
+  @override
+  String get levelIntermediateHint =>
+      'Pertengahan: untuk yang sudah arif kisah dan hukum.';
+
+  @override
+  String get levelExpertHint =>
+      'Pakar: soalan paling terperinci, dengan ayat dan hadis.';
 }

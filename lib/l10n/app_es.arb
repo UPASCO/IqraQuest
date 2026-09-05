@@ -226,7 +226,7 @@
   "levelIntermediate": "Intermedio",
   "levelExpert": "Experto",
   "levelMixed": "Mixto",
-  "levelMixedHint": "Mixto: cada carta saca su propio nivel: fácil, intermedio o experto.",
+  "levelMixedHint": "Mixto: cada carta saca su nivel, de primeros pasos a experto.",
   "raceRulesUpdatedTitle": "Las reglas de la carrera han mejorado",
   "raceRulesUpdatedBody": "Las reglas han cambiado: ahora robas una carta y su valor da a la vez la distancia y la dificultad. Tu progreso, tus insignias y tus compras se conservan; solo la partida en curso no puede continuar con las nuevas reglas.",
   "startNewRace": "Empezar una nueva carrera",
@@ -284,5 +284,16 @@
   "raceLengthShort": "Partida corta",
   "raceLengthMedium": "Partida media",
   "raceLengthFull": "Partida completa",
-  "setupCourse": "Recorrido"
+  "setupCourse": "Recorrido",
+  "courseCalm": "Tranquilo",
+  "courseLively": "Animado",
+  "courseIntense": "Intenso",
+  "courseSquareOasis": "Oasis: tu caballo está a salvo",
+  "courseSquareKnowledge": "Conocimiento: +1 punto de saber",
+  "courseSquareChallenge": "Desafío: una pregunta extra por +2 casillas",
+  "courseSquareShortcut": "Atajo: una pregunta difícil para saltar adelante",
+  "courseSquareWisdom": "Sabiduría: un dato para descubrir y guardar",
+  "levelEasyHint": "Fácil: preguntas sencillas sobre lo que se aprende primero.",
+  "levelIntermediateHint": "Intermedio: para quien ya conoce bien las historias y las reglas.",
+  "levelExpertHint": "Experto: las preguntas más precisas, con versículos y hadices."
 }
