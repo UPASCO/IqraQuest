@@ -11698,5 +11698,2605 @@
     ],
     "explanation": "«Non c'è alcun bene nella maggior parte dei loro colloqui privati, eccetto in chi esorta all'elemosina, al bene o alla riconciliazione tra le persone.»",
     "sourceDisplay": "Corano 4:114"
+  },
+  {
+    "id": "prophets_251",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il Profeta dell'Islam?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Ibrahim",
+      "Musa",
+      "'Isa"
+    ],
+    "explanation": "Il Profeta dell'Islam è Muhammad ﷺ, figlio di 'Abdullah.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_252",
+    "correctAnswerIndex": 0,
+    "question": "Isma'il e Ishaq sono i figli di quale profeta?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Dawud"
+    ],
+    "explanation": "«Lode ad Allah che, nonostante la vecchiaia, mi ha donato Isma'il e Ishaq» (14:39).",
+    "sourceDisplay": "Corano 14:39"
+  },
+  {
+    "id": "prophets_253",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta Allah ha elevato a Sé?",
+    "answers": [
+      "'Isa",
+      "Yunus",
+      "Ayyub",
+      "Idris"
+    ],
+    "explanation": "«Allah lo ha elevato a Sé» (4:158).",
+    "sourceDisplay": "Corano 4:158"
+  },
+  {
+    "id": "prophets_254",
+    "correctAnswerIndex": 0,
+    "question": "Chi è la madre del profeta 'Isa?",
+    "answers": [
+      "Maryam",
+      "Asiya",
+      "Hajar",
+      "Sara"
+    ],
+    "explanation": "Maryam, alla quale è dedicata un'intera sura del Corano.",
+    "sourceDisplay": "Corano 19:16-21"
+  },
+  {
+    "id": "prophets_255",
+    "correctAnswerIndex": 0,
+    "question": "Chi è il primo essere umano creato da Allah?",
+    "answers": [
+      "Adam",
+      "Nuh",
+      "Ibrahim",
+      "Idris"
+    ],
+    "explanation": "Adam è il primo uomo, al quale Allah insegnò tutti i nomi.",
+    "sourceDisplay": "Corano 2:31"
+  },
+  {
+    "id": "prophets_256",
+    "correctAnswerIndex": 0,
+    "question": "Per quale profeta il fuoco divenne frescura e pace?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Yusuf",
+      "Sulayman"
+    ],
+    "explanation": "«O fuoco, sii frescura e pace per Ibrahim.»",
+    "sourceDisplay": "Corano 21:69"
+  },
+  {
+    "id": "prophets_257",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta portava un bastone che divenne un serpente?",
+    "answers": [
+      "Musa",
+      "Harun",
+      "Yahya",
+      "Zakariyya"
+    ],
+    "explanation": "Allah chiese a Musa: «Che cos'è quello nella tua mano destra?»",
+    "sourceDisplay": "Corano 20:17-18"
+  },
+  {
+    "id": "prophets_258",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta vide in sogno undici stelle prostrarsi?",
+    "answers": [
+      "Yusuf",
+      "Ya'qub",
+      "Ishaq",
+      "Dawud"
+    ],
+    "explanation": "«O padre mio, ho visto undici stelle, il sole e la luna.»",
+    "sourceDisplay": "Corano 12:4"
+  },
+  {
+    "id": "prophets_259",
+    "correctAnswerIndex": 0,
+    "question": "Quale uccello portò una notizia al profeta Sulayman?",
+    "answers": [
+      "L'upupa",
+      "Il corvo",
+      "Il falco",
+      "La colomba"
+    ],
+    "explanation": "L'upupa disse: «Ti porto da Saba' una notizia certa» (27:22).",
+    "sourceDisplay": "Corano 27:22"
+  },
+  {
+    "id": "prophets_260",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta è il modello della pazienza nella prova?",
+    "answers": [
+      "Ayyub",
+      "Yunus",
+      "Lut",
+      "Shu'ayb"
+    ],
+    "explanation": "Ayyub invocò il suo Signore e fu trovato paziente.",
+    "sourceDisplay": "Corano 38:41"
+  },
+  {
+    "id": "prophets_261",
+    "correctAnswerIndex": 0,
+    "question": "Da che cosa Allah creò Adam?",
+    "answers": [
+      "Dalla polvere",
+      "Dalla luce",
+      "Dal fuoco",
+      "Dal vento"
+    ],
+    "explanation": "«Lo creò dalla polvere, poi gli disse: Sii!» (3:59).",
+    "sourceDisplay": "Corano 3:59"
+  },
+  {
+    "id": "prophets_262",
+    "correctAnswerIndex": 0,
+    "question": "A quale profeta Allah parlò direttamente?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Yunus",
+      "Salih"
+    ],
+    "explanation": "«E Allah parlò a Musa direttamente.»",
+    "sourceDisplay": "Corano 4:164"
+  },
+  {
+    "id": "prophets_263",
+    "correctAnswerIndex": 0,
+    "question": "Quanti profeti vengono dopo Muhammad ﷺ?",
+    "answers": [
+      "Nessuno: è l'ultimo dei profeti",
+      "Uno",
+      "Tre",
+      "Sette"
+    ],
+    "explanation": "Muhammad ﷺ è il sigillo dei profeti: nessun profeta viene dopo di lui.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_264",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta è chiamato «l'amico intimo» (khalil) di Allah?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "'Isa",
+      "Nuh"
+    ],
+    "explanation": "Ibrahim è il padre dei profeti e l'amico intimo del Misericordioso.",
+    "sourceDisplay": "Corano 2:136"
+  },
+  {
+    "id": "prophets_265",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta guariva il cieco dalla nascita con il permesso di Allah?",
+    "answers": [
+      "'Isa",
+      "Yahya",
+      "Zakariyya",
+      "Ilyas"
+    ],
+    "explanation": "«E guarivi il cieco dalla nascita e il lebbroso con il Mio permesso.»",
+    "sourceDisplay": "Corano 5:110"
+  },
+  {
+    "id": "prophets_266",
+    "correctAnswerIndex": 0,
+    "question": "Per quale profeta le montagne ripetevano le lodi di Allah?",
+    "answers": [
+      "Dawud",
+      "Sulayman",
+      "Ayyub",
+      "Yunus"
+    ],
+    "explanation": "«O montagne, ripetete con lui le lodi di Allah.»",
+    "sourceDisplay": "Corano 34:10"
+  },
+  {
+    "id": "prophets_267",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta spiegò il sogno del re d'Egitto?",
+    "answers": [
+      "Yusuf",
+      "Harun",
+      "Ilyas",
+      "Shu'ayb"
+    ],
+    "explanation": "Yusuf spiegò il sogno delle sette vacche grasse e delle sette magre (12:46-49).",
+    "sourceDisplay": "Corano 12:46-49"
+  },
+  {
+    "id": "prophets_268",
+    "correctAnswerIndex": 0,
+    "question": "Chi è il padre del profeta Yusuf?",
+    "answers": [
+      "Ya'qub",
+      "Ishaq",
+      "Ibrahim",
+      "Lut"
+    ],
+    "explanation": "Yusuf è il figlio di Ya'qub, a sua volta figlio di Ishaq.",
+    "sourceDisplay": "Corano 12:8"
+  },
+  {
+    "id": "prophets_269",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa si aprì davanti a Musa e al suo popolo?",
+    "answers": [
+      "Il mare, aperto per salvarli dal Faraone",
+      "Un fiume d'Egitto",
+      "Un lago di Madyan",
+      "Un pozzo del deserto"
+    ],
+    "explanation": "«E quando aprimmo il mare per voi e vi salvammo.»",
+    "sourceDisplay": "Corano 2:50"
+  },
+  {
+    "id": "prophets_270",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa si dice dopo aver pronunciato il nome del Profeta ﷺ?",
+    "answers": [
+      "«Che la benedizione e la pace di Allah siano su di lui»",
+      "Niente di particolare",
+      "«Grazie»",
+      "«Arrivederci»"
+    ],
+    "explanation": "Si invocano su di lui la benedizione e la pace: salla-Llahu 'alayhi wa sallam.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_271",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta chiamò il suo popolo per moltissimo tempo prima del diluvio?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Salih",
+      "Shu'ayb"
+    ],
+    "explanation": "«Inviammo Nuh al suo popolo: ammonisci il tuo popolo.»",
+    "sourceDisplay": "Corano 71:1"
+  },
+  {
+    "id": "prophets_272",
+    "correctAnswerIndex": 0,
+    "question": "Sulayman è il figlio di quale profeta?",
+    "answers": [
+      "Dawud",
+      "Ya'qub",
+      "Ishaq",
+      "Yunus"
+    ],
+    "explanation": "«E a Dawud donammo Sulayman: che eccellente servo!» (38:30).",
+    "sourceDisplay": "Corano 38:30"
+  },
+  {
+    "id": "prophets_273",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta sconfisse Jalut (Golia)?",
+    "answers": [
+      "Dawud",
+      "Sulayman",
+      "Yusha'",
+      "Ilyas"
+    ],
+    "explanation": "«E Dawud uccise Jalut» (2:251).",
+    "sourceDisplay": "Corano 2:251"
+  },
+  {
+    "id": "prophets_274",
+    "correctAnswerIndex": 0,
+    "question": "In quanti profeti deve credere un musulmano?",
+    "answers": [
+      "In tutti, senza fare distinzioni",
+      "Solo nell'ultimo",
+      "Solo in tre",
+      "Solo in quelli nominati nel Corano"
+    ],
+    "explanation": "Il musulmano crede in tutti i profeti di Allah, senza fare differenze tra loro.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_275",
+    "correctAnswerIndex": 0,
+    "question": "Chi ha scelto Allah, secondo il Corano?",
+    "answers": [
+      "Adam, Nuh, la famiglia di Ibrahim e la famiglia di 'Imran",
+      "I re d'Egitto",
+      "Le tribù di Medina",
+      "Il popolo di Saba'"
+    ],
+    "explanation": "«Allah ha scelto Adam, Nuh, la famiglia di Ibrahim e la famiglia di 'Imran.»",
+    "sourceDisplay": "Corano 3:33"
+  },
+  {
+    "id": "prophets_276",
+    "correctAnswerIndex": 0,
+    "question": "In quale paese il profeta Yusuf divenne uomo di fiducia del re?",
+    "answers": [
+      "L'Egitto",
+      "Lo Sham",
+      "Lo Yemen",
+      "L'Iraq"
+    ],
+    "explanation": "Yusuf si stabilì in Egitto dopo aver interpretato il sogno del re.",
+    "sourceDisplay": "Corano 12:100"
+  },
+  {
+    "id": "prophets_277",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta fu portato di notte alla Moschea al-Aqsa?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Musa",
+      "'Isa",
+      "Ibrahim"
+    ],
+    "explanation": "«Gloria a Colui che fece viaggiare di notte il Suo servo.»",
+    "sourceDisplay": "Corano 17:1"
+  },
+  {
+    "id": "prophets_278",
+    "correctAnswerIndex": 0,
+    "question": "Quale libro fu dato al profeta Musa?",
+    "answers": [
+      "La Torah",
+      "Il Vangelo",
+      "I Salmi",
+      "I Fogli di Ibrahim"
+    ],
+    "explanation": "Allah diede a Musa il Libro e, dopo di lui, fece seguire altri messaggeri.",
+    "sourceDisplay": "Corano 2:87"
+  },
+  {
+    "id": "prophets_279",
+    "correctAnswerIndex": 0,
+    "question": "Quale libro fu dato al profeta 'Isa?",
+    "answers": [
+      "Il Vangelo",
+      "La Torah",
+      "I Salmi",
+      "Il Corano"
+    ],
+    "explanation": "«E gli demmo il Vangelo, in cui vi erano guida e luce.»",
+    "sourceDisplay": "Corano 5:46"
+  },
+  {
+    "id": "prophets_280",
+    "correctAnswerIndex": 0,
+    "question": "Quale libro fu dato al profeta Dawud?",
+    "answers": [
+      "I Salmi (Zabur)",
+      "La Torah",
+      "Il Vangelo",
+      "I Fogli di Musa"
+    ],
+    "explanation": "«E a Dawud demmo lo Zabur.»",
+    "sourceDisplay": "Corano 4:163"
+  },
+  {
+    "id": "prophets_281",
+    "correctAnswerIndex": 0,
+    "question": "Il figlio di quale profeta accettò di essere sacrificato per obbedienza ad Allah?",
+    "answers": [
+      "Il figlio di Ibrahim",
+      "Il figlio di Nuh",
+      "Il fratello di Musa",
+      "Il figlio di Ya'qub"
+    ],
+    "explanation": "«O padre mio, fa' ciò che ti è stato ordinato: mi troverai paziente.»",
+    "sourceDisplay": "Corano 37:102"
+  },
+  {
+    "id": "prophets_282",
+    "correctAnswerIndex": 0,
+    "question": "Dove mise la madre di Musa il suo bambino per salvarlo?",
+    "answers": [
+      "Nel fiume",
+      "In una grotta",
+      "Da una vicina",
+      "Nel deserto"
+    ],
+    "explanation": "«Gettalo nel fiume: Noi te lo restituiremo.»",
+    "sourceDisplay": "Corano 28:7"
+  },
+  {
+    "id": "prophets_283",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa disse Yunus nelle tenebre, parole che ogni musulmano ripete?",
+    "answers": [
+      "«Non c'è dio all'infuori di Te, gloria a Te, sono stato ingiusto»",
+      "«Dammi la ricchezza»",
+      "«Fammi re»",
+      "«Rendimi forte»"
+    ],
+    "explanation": "L'invocazione di Yunus nel ventre del pesce.",
+    "sourceDisplay": "Corano 21:87"
+  },
+  {
+    "id": "prophets_284",
+    "correctAnswerIndex": 0,
+    "question": "Chi è il padre del Profeta Muhammad ﷺ?",
+    "answers": [
+      "'Abdullah",
+      "Abu Talib",
+      "Al-'Abbas",
+      "Hamza"
+    ],
+    "explanation": "Egli è Muhammad ﷺ, figlio di 'Abdullah, figlio di 'Abd al-Muttalib.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_285",
+    "correctAnswerIndex": 0,
+    "question": "Chi è la madre del Profeta Muhammad ﷺ?",
+    "answers": [
+      "Amina",
+      "Khadija",
+      "'Aisha",
+      "Fatima"
+    ],
+    "explanation": "Amina bint Wahb è la madre del Profeta ﷺ.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_286",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa disse 'Isa quando era ancora nella culla?",
+    "answers": [
+      "«Io sono il servo di Allah»",
+      "«Io sono un re»",
+      "«Io sono un angelo»",
+      "Non disse nulla"
+    ],
+    "explanation": "«In verità io sono il servo di Allah: Egli mi ha dato la Scrittura.»",
+    "sourceDisplay": "Corano 19:30"
+  },
+  {
+    "id": "prophets_287",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta fu inviato al popolo di 'Ad?",
+    "answers": [
+      "Hud",
+      "Salih",
+      "Lut",
+      "Shu'ayb"
+    ],
+    "explanation": "«E agli 'Ad, il loro fratello Hud.»",
+    "sourceDisplay": "Corano 7:65"
+  },
+  {
+    "id": "prophets_288",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta fu inviato ai Thamud, con la cammella?",
+    "answers": [
+      "Salih",
+      "Hud",
+      "Yunus",
+      "Idris"
+    ],
+    "explanation": "«E ai Thamud, il loro fratello Salih: questa è la cammella di Allah.»",
+    "sourceDisplay": "Corano 7:73"
+  },
+  {
+    "id": "prophets_289",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta è il fratello di Musa, inviato insieme a lui?",
+    "answers": [
+      "Harun",
+      "Yusuf",
+      "Yahya",
+      "Ilyas"
+    ],
+    "explanation": "«E dammi un aiutante dalla mia famiglia: Harun, mio fratello.»",
+    "sourceDisplay": "Corano 20:29-30"
+  },
+  {
+    "id": "prophets_290",
+    "correctAnswerIndex": 0,
+    "question": "Quale titolo dà il Corano a Muhammad ﷺ riguardo ai profeti?",
+    "answers": [
+      "Il sigillo dei profeti",
+      "Il primo dei profeti",
+      "Il re dei profeti",
+      "Lo scriba dei profeti"
+    ],
+    "explanation": "«Muhammad è il Messaggero di Allah e il sigillo dei profeti.»",
+    "sourceDisplay": "Corano 33:40"
+  },
+  {
+    "id": "prophets_291",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa dicono gli angeli a Maryam nel Corano?",
+    "answers": [
+      "Che Allah l'ha scelta e purificata",
+      "Che sarà regina",
+      "Che viaggerà",
+      "Che insegnerà"
+    ],
+    "explanation": "«O Maryam, Allah ti ha scelta e purificata.»",
+    "sourceDisplay": "Corano 3:42"
+  },
+  {
+    "id": "prophets_292",
+    "correctAnswerIndex": 0,
+    "question": "Come invocò Ayyub il suo Signore nella prova?",
+    "answers": [
+      "«Il male mi ha colpito, e Tu sei il più misericordioso»",
+      "«Rendimi ricco»",
+      "«Punisci i miei nemici»",
+      "«Fammi re»"
+    ],
+    "explanation": "«Il male mi ha colpito, ma Tu sei il più misericordioso dei misericordiosi.»",
+    "sourceDisplay": "Corano 21:83"
+  },
+  {
+    "id": "prophets_293",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa insegnò Allah ad Adam?",
+    "answers": [
+      "Tutti i nomi",
+      "La scrittura",
+      "La navigazione",
+      "Il calcolo"
+    ],
+    "explanation": "«E insegnò ad Adam tutti i nomi.»",
+    "sourceDisplay": "Corano 2:31"
+  },
+  {
+    "id": "prophets_294",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta regnò su un regno che nessuno dopo di lui avrebbe avuto?",
+    "answers": [
+      "Sulayman",
+      "Dawud",
+      "Yusuf",
+      "Dhul-Qarnayn"
+    ],
+    "explanation": "«Donami un regno tale che nessuno dopo di me ne abbia uno simile.»",
+    "sourceDisplay": "Corano 38:35-36"
+  },
+  {
+    "id": "prophets_295",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta fu salvato con la sua famiglia, tranne sua moglie?",
+    "answers": [
+      "Lut",
+      "Nuh",
+      "Hud",
+      "Salih"
+    ],
+    "explanation": "«Parti con la tua famiglia durante la notte… tranne tua moglie.»",
+    "sourceDisplay": "Corano 11:81"
+  },
+  {
+    "id": "prophets_296",
+    "correctAnswerIndex": 0,
+    "question": "Contro che cosa Ibrahim mise in guardia il suo popolo?",
+    "answers": [
+      "Contro l'adorazione degli idoli",
+      "Contro il commercio",
+      "Contro i viaggi",
+      "Contro la scrittura"
+    ],
+    "explanation": "«Prendi degli idoli come divinità?»",
+    "sourceDisplay": "Corano 6:74"
+  },
+  {
+    "id": "prophets_297",
+    "correctAnswerIndex": 0,
+    "question": "Quale parola indica un inviato di Allah agli uomini?",
+    "answers": [
+      "Un messaggero (rasul)",
+      "Un califfo",
+      "Un compagno",
+      "Un sapiente"
+    ],
+    "explanation": "Un rasul è un inviato di Allah, incaricato di un messaggio per gli uomini.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_298",
+    "correctAnswerIndex": 0,
+    "question": "Come che cosa Allah ha inviato il Profeta ﷺ, secondo la sura Al-Ahzab?",
+    "answers": [
+      "Testimone, annunciatore e ammonitore",
+      "Re e giudice",
+      "Mercante",
+      "Poeta"
+    ],
+    "explanation": "«O Profeta, ti abbiamo inviato come testimone, annunciatore e ammonitore» (33:45).",
+    "sourceDisplay": "Corano 33:45"
+  },
+  {
+    "id": "prophets_299",
+    "correctAnswerIndex": 0,
+    "question": "Per quale scopo è stato inviato Muhammad ﷺ, secondo il Corano?",
+    "answers": [
+      "Come misericordia per i mondi",
+      "Per regnare",
+      "Per costruire",
+      "Per commerciare"
+    ],
+    "explanation": "«E non ti abbiamo inviato se non come misericordia per i mondi.»",
+    "sourceDisplay": "Corano 21:107"
+  },
+  {
+    "id": "prophets_300",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta il Corano chiama «un servo molto riconoscente»?",
+    "answers": [
+      "Nuh",
+      "Lut",
+      "Idris",
+      "Ilyas"
+    ],
+    "explanation": "«In verità era un servo riconoscente» (17:3), detto di Nuh.",
+    "sourceDisplay": "Corano 17:3"
+  },
+  {
+    "id": "prophets_301",
+    "correctAnswerIndex": 0,
+    "question": "Quale segno ricevette Zakariyya dopo l'annuncio di suo figlio?",
+    "answers": [
+      "Non parlare alla gente per tre giorni",
+      "Vedere una stella",
+      "Sentire il tuono",
+      "Camminare sull'acqua"
+    ],
+    "explanation": "«Il tuo segno sarà che non parlerai alla gente per tre giorni» (3:41).",
+    "sourceDisplay": "Corano 3:41"
+  },
+  {
+    "id": "prophets_302",
+    "correctAnswerIndex": 0,
+    "question": "In quale lingua fu inviato ogni messaggero?",
+    "answers": [
+      "Nella lingua del suo popolo",
+      "Solo in arabo",
+      "In ebraico",
+      "In una lingua del cielo"
+    ],
+    "explanation": "«Non abbiamo inviato alcun messaggero se non nella lingua del suo popolo.»",
+    "sourceDisplay": "Corano 14:4"
+  },
+  {
+    "id": "prophets_303",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura racconta la storia di un solo profeta dall'inizio alla fine?",
+    "answers": [
+      "La sura Yusuf",
+      "La sura Al-Baqara",
+      "La sura An-Nas",
+      "La sura Al-Fatiha"
+    ],
+    "explanation": "«Ti raccontiamo il più bello dei racconti»: la storia di Yusuf.",
+    "sourceDisplay": "Corano 12:1-3"
+  },
+  {
+    "id": "prophets_304",
+    "correctAnswerIndex": 0,
+    "question": "Come descrive il Corano Ibrahim nella sura Maryam?",
+    "answers": [
+      "Un uomo veritiero, un profeta",
+      "Un re",
+      "Uno scriba",
+      "Un mercante"
+    ],
+    "explanation": "«Era un uomo veritiero, un profeta.»",
+    "sourceDisplay": "Corano 19:41"
+  },
+  {
+    "id": "prophets_305",
+    "correctAnswerIndex": 0,
+    "question": "Quale regina venne a trovare il profeta Sulayman?",
+    "answers": [
+      "La regina di Saba'",
+      "La regina d'Egitto",
+      "La regina di Babilonia",
+      "La regina dello Yemen del nord"
+    ],
+    "explanation": "Ella si sottomise, insieme a Sulayman, ad Allah, Signore dei mondi.",
+    "sourceDisplay": "Corano 27:44"
+  },
+  {
+    "id": "prophets_306",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta chiese di vedere come Allah ridà la vita?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Yunus"
+    ],
+    "explanation": "«Signore, mostrami come ridai la vita ai morti.»",
+    "sourceDisplay": "Corano 2:260"
+  },
+  {
+    "id": "prophets_307",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta viaggiò per imparare da un servo sapiente?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Dawud",
+      "Sulayman"
+    ],
+    "explanation": "Musa camminò finché incontrò un servo di Allah al quale Egli aveva dato una scienza.",
+    "sourceDisplay": "Corano 18:60-65"
+  },
+  {
+    "id": "prophets_308",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa insegna la sura Al-Ikhlas su Allah?",
+    "answers": [
+      "Che Egli è Uno, e nessuno è uguale a Lui",
+      "Che ha dei soci",
+      "Che assomiglia alla Sua creazione",
+      "Che ha un figlio"
+    ],
+    "explanation": "«Di': Egli è Allah, Unico… e nessuno è uguale a Lui.»",
+    "sourceDisplay": "Corano 112:1-4"
+  },
+  {
+    "id": "prophets_309",
+    "correctAnswerIndex": 0,
+    "question": "Come chiamavano i Meccani il Profeta ﷺ prima della rivelazione?",
+    "answers": [
+      "Al-Amin, il degno di fiducia",
+      "Il viaggiatore",
+      "Il poeta",
+      "Il giudice"
+    ],
+    "explanation": "La sua rettitudine era così nota che lo chiamavano al-Amin.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "prophets_310",
+    "correctAnswerIndex": 0,
+    "question": "Chi presenta il Corano come il miglior esempio da seguire?",
+    "answers": [
+      "Il Messaggero di Allah ﷺ",
+      "I re",
+      "I poeti",
+      "I mercanti"
+    ],
+    "explanation": "«Avete nel Messaggero di Allah un eccellente modello.»",
+    "sourceDisplay": "Corano 33:21"
+  },
+  {
+    "id": "sira_251",
+    "correctAnswerIndex": 0,
+    "question": "In quale città nacque il Profeta ﷺ?",
+    "answers": [
+      "La Mecca",
+      "Medina",
+      "Gerusalemme",
+      "Ta'if"
+    ],
+    "explanation": "Il Profeta ﷺ nacque alla Mecca, nella tribù dei Quraysh.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_252",
+    "correctAnswerIndex": 0,
+    "question": "In quale città emigrò il Profeta ﷺ?",
+    "answers": [
+      "Medina",
+      "Ta'if",
+      "Il Cairo",
+      "Damasco"
+    ],
+    "explanation": "La Hijra andò dalla Mecca a Medina, allora chiamata Yathrib.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_253",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la partenza dalla Mecca verso Medina?",
+    "answers": [
+      "La Hijra",
+      "Il pellegrinaggio",
+      "La conquista",
+      "Il patto"
+    ],
+    "explanation": "La Hijra (l'Egira) segna l'inizio del calendario musulmano.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_254",
+    "correctAnswerIndex": 0,
+    "question": "Chi è la prima moglie del Profeta ﷺ?",
+    "answers": [
+      "Khadija",
+      "'Aisha",
+      "Hafsa",
+      "Sawda"
+    ],
+    "explanation": "Khadija bint Khuwaylid, la prima a credere in lui.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_255",
+    "correctAnswerIndex": 0,
+    "question": "In quale grotta si nascose il Profeta ﷺ durante la Hijra?",
+    "answers": [
+      "La grotta di Thawr",
+      "La grotta di Hira",
+      "La grotta di Uhud",
+      "La grotta di Quba'"
+    ],
+    "explanation": "Vi si nascose tre giorni con Abu Bakr prima di proseguire verso Medina.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_256",
+    "correctAnswerIndex": 0,
+    "question": "Qual è la prima parola rivelata al Profeta ﷺ?",
+    "answers": [
+      "«Leggi»",
+      "«Prega»",
+      "«Alzati»",
+      "«Ascolta»"
+    ],
+    "explanation": "«Leggi, nel nome del tuo Signore che ha creato.»",
+    "sourceDisplay": "Corano 96:1"
+  },
+  {
+    "id": "sira_257",
+    "correctAnswerIndex": 0,
+    "question": "Quale angelo portò la rivelazione al Profeta ﷺ?",
+    "answers": [
+      "Jibril",
+      "Mika'il",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "Jibril è l'angelo incaricato di far discendere la rivelazione.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_258",
+    "correctAnswerIndex": 0,
+    "question": "In quale città si trova la tomba del Profeta ﷺ?",
+    "answers": [
+      "Medina",
+      "La Mecca",
+      "Gerusalemme",
+      "Ta'if"
+    ],
+    "explanation": "La sua tomba è a Medina, accanto alla sua moschea.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_259",
+    "correctAnswerIndex": 0,
+    "question": "Da quale tribù proveniva il Profeta ﷺ?",
+    "answers": [
+      "Quraysh",
+      "Aws",
+      "Khazraj",
+      "Thaqif"
+    ],
+    "explanation": "Il Profeta ﷺ era dei Quraysh, la tribù della Mecca.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_260",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiamano i compagni del Profeta ﷺ?",
+    "answers": [
+      "I Sahaba",
+      "I Tabi'un",
+      "Solo gli Ansar",
+      "I Qurra'"
+    ],
+    "explanation": "I Sahaba sono coloro che videro il Profeta ﷺ credendo in lui.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_261",
+    "correctAnswerIndex": 0,
+    "question": "Chi accompagnò il Profeta ﷺ durante la Hijra?",
+    "answers": [
+      "Abu Bakr",
+      "'Umar",
+      "'Uthman",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakr fu il suo compagno nella grotta durante la Hijra.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_262",
+    "correctAnswerIndex": 0,
+    "question": "Chi era il muezzin del Profeta ﷺ?",
+    "answers": [
+      "Bilal",
+      "Anas",
+      "Zayd",
+      "Salman"
+    ],
+    "explanation": "Bilal ibn Rabah chiamava alla preghiera a Medina.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_263",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la prima battaglia dell'Islam?",
+    "answers": [
+      "Badr",
+      "Uhud",
+      "Khaybar",
+      "Hunayn"
+    ],
+    "explanation": "Badr è la prima grande battaglia, nel secondo anno dell'Egira.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_264",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiamano coloro che emigrarono dalla Mecca a Medina?",
+    "answers": [
+      "I Muhajirun",
+      "Gli Ansar",
+      "I Tabi'un",
+      "I compagni di Ta'if"
+    ],
+    "explanation": "I Muhajirun sono gli emigrati; gli Ansar sono coloro che li accolsero.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_265",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiamano gli abitanti di Medina che accolsero gli emigrati?",
+    "answers": [
+      "Gli Ansar",
+      "I Muhajirun",
+      "I Quraysh",
+      "I Tabi'un"
+    ],
+    "explanation": "Gli Ansar, «i soccorritori», sono gli Aws e i Khazraj di Medina.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_266",
+    "correctAnswerIndex": 0,
+    "question": "Qual è la prima cosa che il Profeta ﷺ costruì a Medina?",
+    "answers": [
+      "Una moschea",
+      "Un mercato",
+      "Un palazzo",
+      "Un muro di cinta"
+    ],
+    "explanation": "Costruì la sua moschea appena arrivato a Medina.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_267",
+    "correctAnswerIndex": 0,
+    "question": "Quale figlia del Profeta ﷺ sposò 'Ali?",
+    "answers": [
+      "Fatima",
+      "Ruqayya",
+      "Zaynab",
+      "Umm Kulthum"
+    ],
+    "explanation": "Fatima, figlia del Profeta ﷺ, sposò 'Ali ibn Abi Talib.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_268",
+    "correctAnswerIndex": 0,
+    "question": "Chi fu il primo califfo dopo il Profeta ﷺ?",
+    "answers": [
+      "Abu Bakr",
+      "'Umar",
+      "'Uthman",
+      "'Ali"
+    ],
+    "explanation": "Abu Bakr as-Siddiq fu il primo califfo.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_269",
+    "correctAnswerIndex": 0,
+    "question": "Qual era il nome antico di Medina?",
+    "answers": [
+      "Yathrib",
+      "Bakka",
+      "Ta'if",
+      "Khaybar"
+    ],
+    "explanation": "Yathrib prese il nome di Madinat an-Nabi, la città del Profeta ﷺ.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_270",
+    "correctAnswerIndex": 0,
+    "question": "Quanti anni aveva il Profeta ﷺ alla prima rivelazione?",
+    "answers": [
+      "Quarant'anni",
+      "Vent'anni",
+      "Sessant'anni",
+      "Trent'anni"
+    ],
+    "explanation": "La rivelazione gli giunse quando aveva quarant'anni.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_271",
+    "correctAnswerIndex": 0,
+    "question": "In quale città si trova la Ka'ba?",
+    "answers": [
+      "La Mecca",
+      "Medina",
+      "Gerusalemme",
+      "Damasco"
+    ],
+    "explanation": "La Ka'ba si trova al centro della Moschea Sacra, alla Mecca.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_272",
+    "correctAnswerIndex": 0,
+    "question": "In quale città si trova la Moschea al-Aqsa?",
+    "answers": [
+      "Gerusalemme",
+      "La Mecca",
+      "Medina",
+      "Il Cairo"
+    ],
+    "explanation": "La Moschea al-Aqsa si trova a Gerusalemme (al-Quds).",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_273",
+    "correctAnswerIndex": 0,
+    "question": "Quale zio del Profeta ﷺ lo protesse alla Mecca?",
+    "answers": [
+      "Abu Talib",
+      "Abu Lahab",
+      "Al-'Abbas",
+      "Abu Sufyan"
+    ],
+    "explanation": "Abu Talib, il padre di 'Ali, protesse suo nipote contro i Quraysh.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_274",
+    "correctAnswerIndex": 0,
+    "question": "Quale mestiere faceva Khadija, la prima moglie del Profeta ﷺ?",
+    "answers": [
+      "Commerciante",
+      "Medico",
+      "Poetessa",
+      "Tessitrice"
+    ],
+    "explanation": "Khadija era una commerciante rispettata della Mecca.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_275",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama l'ultimo pellegrinaggio del Profeta ﷺ?",
+    "answers": [
+      "Il Pellegrinaggio dell'Addio",
+      "Il primo pellegrinaggio",
+      "Il pellegrinaggio della conquista",
+      "Il piccolo pellegrinaggio"
+    ],
+    "explanation": "Il Pellegrinaggio dell'Addio avvenne nell'anno 10 dell'Egira.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_276",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il racconto della vita del Profeta ﷺ?",
+    "answers": [
+      "La Sira",
+      "La Sunna",
+      "Il Tafsir",
+      "Il Fiqh"
+    ],
+    "explanation": "La Sira è il racconto della sua vita; la Sunna è ciò che egli disse e fece.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_277",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama una parola riportata dal Profeta ﷺ?",
+    "answers": [
+      "Un hadith",
+      "Una sura",
+      "Un versetto",
+      "Un'invocazione"
+    ],
+    "explanation": "Un hadith è una parola, un atto o un'approvazione del Profeta ﷺ.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_278",
+    "correctAnswerIndex": 0,
+    "question": "Quali sono le due raccolte di hadith considerate più rigorose?",
+    "answers": [
+      "Sahih al-Bukhari e Sahih Muslim",
+      "Due raccolte di poesie",
+      "Due libri di storia",
+      "Due dizionari"
+    ],
+    "explanation": "Insieme vengono chiamate «i due Sahih».",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_279",
+    "correctAnswerIndex": 0,
+    "question": "Quale califfo fece copiare il Corano e lo inviò alle province?",
+    "answers": [
+      "'Uthman",
+      "Abu Bakr",
+      "'Umar",
+      "'Ali"
+    ],
+    "explanation": "'Uthman fece preparare copie ufficiali e le inviò alle città principali.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_280",
+    "correctAnswerIndex": 0,
+    "question": "Quanti califfi formano «i califfi ben guidati»?",
+    "answers": [
+      "Quattro",
+      "Due",
+      "Sette",
+      "Dodici"
+    ],
+    "explanation": "Abu Bakr, 'Umar, 'Uthman e 'Ali.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_281",
+    "correctAnswerIndex": 0,
+    "question": "Verso quale direzione pregano i musulmani?",
+    "answers": [
+      "Verso la Ka'ba, alla Mecca",
+      "Verso Gerusalemme",
+      "Verso est",
+      "Verso Medina"
+    ],
+    "explanation": "La qibla è la direzione della Ka'ba.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_282",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama questa direzione della preghiera?",
+    "answers": [
+      "La qibla",
+      "Il mihrab",
+      "Il minbar",
+      "Il minareto"
+    ],
+    "explanation": "La qibla è la direzione; il mihrab è la nicchia che la indica.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_283",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il luogo in cui i musulmani pregano insieme?",
+    "answers": [
+      "La moschea",
+      "La scuola",
+      "Il mercato",
+      "La biblioteca"
+    ],
+    "explanation": "Il masjid è il luogo della prostrazione, la moschea.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_284",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la chiamata alla preghiera?",
+    "answers": [
+      "L'adhan",
+      "Il takbir",
+      "Il tasbih",
+      "Il dhikr"
+    ],
+    "explanation": "L'adhan è la chiamata; chi la lancia è il muezzin.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_285",
+    "correctAnswerIndex": 0,
+    "question": "In quale giorno i musulmani si riuniscono per la grande preghiera?",
+    "answers": [
+      "Il venerdì",
+      "Il sabato",
+      "La domenica",
+      "Il lunedì"
+    ],
+    "explanation": "La preghiera del venerdì (al-jumu'a) riunisce la comunità ogni settimana.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_286",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la persona che guida la preghiera?",
+    "answers": [
+      "L'imam",
+      "Il muezzin",
+      "Il giudice",
+      "Lo hafiz"
+    ],
+    "explanation": "L'imam è colui dietro al quale la comunità si dispone per pregare.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_287",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama chi ha imparato a memoria tutto il Corano?",
+    "answers": [
+      "Uno hafiz",
+      "Un imam",
+      "Un muezzin",
+      "Un giudice"
+    ],
+    "explanation": "Lo hafiz è colui che custodisce nella memoria l'intero Corano.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_288",
+    "correctAnswerIndex": 0,
+    "question": "Quale compagno è conosciuto come il più grande narratore di hadith?",
+    "answers": [
+      "Abu Hurayra",
+      "Bilal",
+      "Salman",
+      "Anas"
+    ],
+    "explanation": "Abu Hurayra trascorse gli ultimi anni del Profeta ﷺ al suo fianco.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_289",
+    "correctAnswerIndex": 0,
+    "question": "Quale califfo è soprannominato as-Siddiq, «il veritiero»?",
+    "answers": [
+      "Abu Bakr",
+      "'Umar",
+      "'Uthman",
+      "'Ali"
+    ],
+    "explanation": "Abu Bakr as-Siddiq, il primo uomo libero a credere.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_290",
+    "correctAnswerIndex": 0,
+    "question": "Quale califfo è soprannominato al-Faruq?",
+    "answers": [
+      "'Umar ibn al-Khattab",
+      "Abu Bakr",
+      "'Uthman",
+      "'Ali"
+    ],
+    "explanation": "'Umar, che distingueva il vero dal falso, ricevette questo titolo.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_291",
+    "correctAnswerIndex": 0,
+    "question": "Quale califfo fece raccogliere il Corano in un unico volume?",
+    "answers": [
+      "Abu Bakr",
+      "Mu'awiya",
+      "Khalid",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakr ordinò di riunire in un'unica raccolta ciò che era stato messo per iscritto.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_292",
+    "correctAnswerIndex": 0,
+    "question": "Quale nonno allevò il Profeta ﷺ da bambino?",
+    "answers": [
+      "'Abd al-Muttalib",
+      "Abu Sufyan",
+      "Al-Walid",
+      "'Utba"
+    ],
+    "explanation": "Suo nonno 'Abd al-Muttalib si prese cura di lui dopo la sua nascita.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_293",
+    "correctAnswerIndex": 0,
+    "question": "Come ricorda il Corano l'infanzia del Profeta ﷺ?",
+    "answers": [
+      "Allah lo trovò orfano e gli diede rifugio",
+      "Era un re",
+      "Era ricco fin dall'infanzia",
+      "Viveva da solo nel deserto"
+    ],
+    "explanation": "«Non ti ha forse trovato orfano e ti ha dato rifugio?» (93:6).",
+    "sourceDisplay": "Corano 93:6"
+  },
+  {
+    "id": "sira_294",
+    "correctAnswerIndex": 0,
+    "question": "Quale battaglia seguì quella di Badr?",
+    "answers": [
+      "Uhud",
+      "Il Fossato",
+      "Hunayn",
+      "Tabuk"
+    ],
+    "explanation": "L'anno seguente ebbe luogo la battaglia di Uhud, vicino a Medina.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_295",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa scavarono i musulmani intorno a Medina per difenderla?",
+    "answers": [
+      "Un fossato (al-Khandaq)",
+      "Un pozzo",
+      "Un tunnel",
+      "Un canale"
+    ],
+    "explanation": "Scavarono un fossato, da cui il nome della battaglia del Fossato.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_296",
+    "correctAnswerIndex": 0,
+    "question": "Di chi era figlia 'Aisha, moglie del Profeta ﷺ?",
+    "answers": [
+      "Di Abu Bakr",
+      "Di 'Umar",
+      "Di 'Uthman",
+      "Di 'Ali"
+    ],
+    "explanation": "'Aisha era la figlia di Abu Bakr as-Siddiq.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_297",
+    "correctAnswerIndex": 0,
+    "question": "Come chiama il Corano le mogli del Profeta ﷺ?",
+    "answers": [
+      "Le madri dei credenti",
+      "Le serve",
+      "Le compagne di viaggio",
+      "Le emigrate"
+    ],
+    "explanation": "«E le sue mogli sono le loro madri» (33:6).",
+    "sourceDisplay": "Corano 33:6"
+  },
+  {
+    "id": "sira_298",
+    "correctAnswerIndex": 0,
+    "question": "Quale compagno era allo stesso tempo cugino e genero del Profeta ﷺ?",
+    "answers": [
+      "'Ali ibn Abi Talib",
+      "Bilal",
+      "Salman",
+      "Zayd"
+    ],
+    "explanation": "'Ali, cugino del Profeta ﷺ, sposò sua figlia Fatima.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_299",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la moschea del Profeta ﷺ a Medina?",
+    "answers": [
+      "Al-Masjid an-Nabawi",
+      "Al-Masjid al-Haram",
+      "Al-Aqsa",
+      "Quba'"
+    ],
+    "explanation": "La Moschea del Profeta, an-Nabawi, si trova a Medina.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "sira_300",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la cavalcatura del viaggio notturno del Profeta ﷺ?",
+    "answers": [
+      "Al-Buraq",
+      "Al-'Adba'",
+      "Ash-Shaqra'",
+      "Al-Qaswa'"
+    ],
+    "explanation": "La cavalcatura del viaggio notturno è chiamata al-Buraq.",
+    "sourceDisplay": "Sira, fatto accertato"
+  },
+  {
+    "id": "faith_151",
+    "correctAnswerIndex": 0,
+    "question": "Quanti sono i pilastri dell'Islam?",
+    "answers": [
+      "Cinque",
+      "Tre",
+      "Sei",
+      "Dieci"
+    ],
+    "explanation": "Cinque: la testimonianza di fede, la preghiera, la zakat, il digiuno e il pellegrinaggio.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_152",
+    "correctAnswerIndex": 0,
+    "question": "Qual è il primo pilastro dell'Islam?",
+    "answers": [
+      "La testimonianza di fede (la Shahada)",
+      "Il digiuno",
+      "Il pellegrinaggio",
+      "La zakat"
+    ],
+    "explanation": "Si entra nell'Islam testimoniando che non c'è dio all'infuori di Allah e che Muhammad ﷺ è il Suo messaggero.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_153",
+    "correctAnswerIndex": 0,
+    "question": "Quante preghiere obbligatorie compie un musulmano ogni giorno?",
+    "answers": [
+      "Cinque",
+      "Tre",
+      "Sette",
+      "Due"
+    ],
+    "explanation": "Cinque preghiere, distribuite dall'alba alla notte.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_154",
+    "correctAnswerIndex": 0,
+    "question": "In quale mese digiunano i musulmani?",
+    "answers": [
+      "Ramadan",
+      "Rajab",
+      "Sha'ban",
+      "Shawwal"
+    ],
+    "explanation": "«Il mese di Ramadan, nel quale è stato fatto scendere il Corano» (2:185).",
+    "sourceDisplay": "Corano 2:185"
+  },
+  {
+    "id": "faith_155",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama l'elemosina obbligatoria dell'Islam?",
+    "answers": [
+      "La zakat",
+      "Il du'a",
+      "Il dhikr",
+      "Il tawaf"
+    ],
+    "explanation": "La zakat è la parte dei propri beni che si dona ogni anno.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_156",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il grande pellegrinaggio alla Mecca?",
+    "answers": [
+      "Lo hajj",
+      "Il sa'y",
+      "Il dhikr",
+      "Il suhur"
+    ],
+    "explanation": "Lo hajj è il pellegrinaggio compiuto una volta nella vita da chi ne ha la possibilità.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_157",
+    "correctAnswerIndex": 0,
+    "question": "Quanti sono i pilastri della fede (arkan al-iman)?",
+    "answers": [
+      "Sei",
+      "Quattro",
+      "Cinque",
+      "Sette"
+    ],
+    "explanation": "Credere in Allah, nei Suoi angeli, nei Suoi libri, nei Suoi messaggeri, nell'Ultimo Giorno e nel destino.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_158",
+    "correctAnswerIndex": 0,
+    "question": "In quanti dèi crede un musulmano?",
+    "answers": [
+      "In uno solo",
+      "In due",
+      "In tre",
+      "In molti"
+    ],
+    "explanation": "«Di': Egli è Allah, Unico» (112:1).",
+    "sourceDisplay": "Corano 112:1"
+  },
+  {
+    "id": "faith_159",
+    "correctAnswerIndex": 0,
+    "question": "Come chiamano Dio i musulmani in arabo?",
+    "answers": [
+      "Allah",
+      "Malak",
+      "Rasul",
+      "Nabi"
+    ],
+    "explanation": "Allah è il nome del Creatore in arabo.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_160",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il libro sacro dei musulmani?",
+    "answers": [
+      "Il Corano",
+      "La Tawrat",
+      "L'Injil",
+      "Lo Zabur"
+    ],
+    "explanation": "Il Corano è il libro rivelato al Profeta Muhammad ﷺ.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_161",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la Casa di Allah costruita alla Mecca?",
+    "answers": [
+      "La Ka'ba",
+      "La Rawda",
+      "Il Maqam",
+      "Lo Hijr"
+    ],
+    "explanation": "«La prima Casa stabilita per gli uomini è quella di Bakka» (3:96).",
+    "sourceDisplay": "Corano 3:96"
+  },
+  {
+    "id": "faith_162",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa dice un musulmano prima di cominciare a mangiare?",
+    "answers": [
+      "Bismillah",
+      "Amin",
+      "Subhan Allah",
+      "Allahumma"
+    ],
+    "explanation": "Il Profeta ﷺ insegnò a un bambino: «Di' Bismillah e mangia con la mano destra.»",
+    "sourceDisplay": "Sahih al-Bukhari, 5376"
+  },
+  {
+    "id": "faith_163",
+    "correctAnswerIndex": 0,
+    "question": "Come si salutano i musulmani?",
+    "answers": [
+      "As-salamu 'alaykum",
+      "Al-hamdu lillah",
+      "Bismillah",
+      "Allahu akbar"
+    ],
+    "explanation": "«As-salamu 'alaykum» significa: la pace sia su di voi.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_164",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa si risponde ad «as-salamu 'alaykum»?",
+    "answers": [
+      "Wa 'alaykum as-salam",
+      "Bismillah",
+      "Amin",
+      "Subhan Allah"
+    ],
+    "explanation": "Si ricambia il saluto: «e su di voi la pace».",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_165",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la festa che segue il mese di Ramadan?",
+    "answers": [
+      "Eid al-Fitr",
+      "Eid al-Adha",
+      "Laylat al-Qadr",
+      "'Ashura"
+    ],
+    "explanation": "Eid al-Fitr, la festa della rottura del digiuno.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_166",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la festa del sacrificio?",
+    "answers": [
+      "Eid al-Adha",
+      "Eid al-Fitr",
+      "Il Mawlid",
+      "Laylat al-Qadr"
+    ],
+    "explanation": "Eid al-Adha cade durante i giorni del pellegrinaggio.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_167",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiamano le creature di Allah che Gli obbediscono sempre e non disobbediscono mai?",
+    "answers": [
+      "Gli angeli",
+      "I jinn",
+      "I profeti",
+      "I compagni"
+    ],
+    "explanation": "Gli angeli eseguono ciò che Allah ordina loro senza mai disobbedire.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_168",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il Paradiso in arabo?",
+    "answers": [
+      "Al-Janna",
+      "As-Salat",
+      "Ad-Du'a",
+      "Al-Adhan"
+    ],
+    "explanation": "Al-Janna, letteralmente «il giardino», è la dimora promessa ai credenti.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_169",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la purificazione con l'acqua che si fa prima di pregare?",
+    "answers": [
+      "L'abluzione (wudu)",
+      "Il tawaf",
+      "Il dhikr",
+      "Il sa'y"
+    ],
+    "explanation": "Il wudu è la purificazione che precede la preghiera.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_170",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama un'unità della preghiera?",
+    "answers": [
+      "Una rak'a",
+      "Una sura",
+      "Un adhan",
+      "Un tawaf"
+    ],
+    "explanation": "Una rak'a comprende la posizione in piedi, l'inchino e le prostrazioni.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_171",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura si recita in ogni unità della preghiera?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "An-Nas",
+      "Al-Kawthar"
+    ],
+    "explanation": "Al-Fatiha, la sura di apertura, viene recitata in ogni rak'a.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_172",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama ciò che è permesso nell'Islam?",
+    "answers": [
+      "Halal",
+      "Haram",
+      "Sunna",
+      "Fard"
+    ],
+    "explanation": "Halal indica ciò che è lecito.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_173",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama ciò che è proibito nell'Islam?",
+    "answers": [
+      "Haram",
+      "Halal",
+      "Mubah",
+      "Nafila"
+    ],
+    "explanation": "Haram indica ciò che è illecito.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_174",
+    "correctAnswerIndex": 0,
+    "question": "Quale carne proibisce il Corano?",
+    "answers": [
+      "La carne di maiale",
+      "La carne di agnello",
+      "La carne di manzo",
+      "La carne di pollo"
+    ],
+    "explanation": "«Vi ha proibito la carogna, il sangue e la carne di maiale» (2:173).",
+    "sourceDisplay": "Corano 2:173"
+  },
+  {
+    "id": "faith_175",
+    "correctAnswerIndex": 0,
+    "question": "Quale bevanda il Corano ordina di evitare?",
+    "answers": [
+      "Il vino e ogni sostanza inebriante",
+      "Il latte",
+      "Il miele",
+      "L'acqua piovana"
+    ],
+    "explanation": "«Il vino, il gioco d'azzardo… sono un'abominazione: evitateli» (5:90).",
+    "sourceDisplay": "Corano 5:90"
+  },
+  {
+    "id": "faith_176",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa dice chi starnutisce, come insegnò il Profeta ﷺ?",
+    "answers": [
+      "Al-hamdu lillah",
+      "Bismillah",
+      "Allahu akbar",
+      "Amin"
+    ],
+    "explanation": "«Quando uno di voi starnutisce, dica: al-hamdu lillah.»",
+    "sourceDisplay": "Sahih al-Bukhari, 6224"
+  },
+  {
+    "id": "faith_177",
+    "correctAnswerIndex": 0,
+    "question": "Come si dice «la preghiera» in arabo?",
+    "answers": [
+      "As-salat",
+      "As-sawm",
+      "Az-zakat",
+      "Al-hajj"
+    ],
+    "explanation": "As-salat è la preghiera rituale del musulmano.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_178",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il chiedere qualcosa ad Allah con le proprie parole?",
+    "answers": [
+      "Il du'a",
+      "Il tawaf",
+      "L'adhan",
+      "Il sa'y"
+    ],
+    "explanation": "Il du'a è l'invocazione, la richiesta rivolta ad Allah.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_179",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa «al-hamdu lillah»?",
+    "answers": [
+      "Lode ad Allah",
+      "Allah è il più grande",
+      "Nel nome di Allah",
+      "Gloria ad Allah"
+    ],
+    "explanation": "È il secondo versetto di Al-Fatiha: «Lode ad Allah, Signore dei mondi» (1:2).",
+    "sourceDisplay": "Corano 1:2"
+  },
+  {
+    "id": "faith_180",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa la parola «islam»?",
+    "answers": [
+      "Sottomissione ad Allah",
+      "Ricchezza",
+      "Viaggio",
+      "Sapere"
+    ],
+    "explanation": "Islam deriva da una radice che significa sottomettersi ed essere in pace.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_181",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa la parola «musulmano»?",
+    "answers": [
+      "Colui che si sottomette ad Allah",
+      "Colui che viaggia",
+      "Colui che insegna",
+      "Colui che costruisce"
+    ],
+    "explanation": "Il musulmano è colui che si sottomette ad Allah soltanto.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_182",
+    "correctAnswerIndex": 0,
+    "question": "Chi ha creato i cieli e la terra, secondo il Corano?",
+    "answers": [
+      "Allah",
+      "Gli angeli",
+      "I profeti",
+      "Il sole"
+    ],
+    "explanation": "«Lode ad Allah, che ha creato i cieli e la terra» (6:1).",
+    "sourceDisplay": "Corano 6:1"
+  },
+  {
+    "id": "faith_183",
+    "correctAnswerIndex": 0,
+    "question": "Quanti nomi di Allah menziona l'hadith?",
+    "answers": [
+      "Novantanove",
+      "Dieci",
+      "Cinquanta",
+      "Mille"
+    ],
+    "explanation": "«Allah ha novantanove nomi, cento meno uno.»",
+    "sourceDisplay": "Sahih al-Bukhari, 2736"
+  },
+  {
+    "id": "faith_184",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa fanno gli angeli chiamati «nobili scribi»?",
+    "answers": [
+      "Scrivono le nostre azioni",
+      "Portano la pioggia",
+      "Custodiscono la Ka'ba",
+      "Insegnano l'arabo"
+    ],
+    "explanation": "«Nobili scribi, che sanno ciò che fate» (82:11-12).",
+    "sourceDisplay": "Corano 82:11"
+  },
+  {
+    "id": "faith_185",
+    "correctAnswerIndex": 0,
+    "question": "Quale notte il Corano descrive come migliore di mille mesi?",
+    "answers": [
+      "Laylat al-Qadr",
+      "La notte del venerdì",
+      "La notte dell'Eid",
+      "La prima notte di Ramadan"
+    ],
+    "explanation": "«La Notte del Destino è migliore di mille mesi» (97:3).",
+    "sourceDisplay": "Corano 97:3"
+  },
+  {
+    "id": "faith_186",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il credere in un Dio unico?",
+    "answers": [
+      "Il tawhid",
+      "Il tawaf",
+      "Il tayammum",
+      "Il tarawih"
+    ],
+    "explanation": "Il tawhid è l'unicità di Allah, il cuore del messaggio di tutti i profeti.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_187",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama l'associare qualcuno ad Allah nell'adorazione?",
+    "answers": [
+      "Lo shirk",
+      "Il dhikr",
+      "Il du'a",
+      "Il sabr"
+    ],
+    "explanation": "Lo shirk è l'associazione: adorare qualcos'altro insieme ad Allah.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_188",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il giorno in cui tutti gli uomini saranno giudicati?",
+    "answers": [
+      "Il Giorno della Resurrezione",
+      "Il giorno dell'Eid",
+      "Il venerdì",
+      "Il primo giorno di Ramadan"
+    ],
+    "explanation": "Yawm al-Qiyama, il Giorno della Resurrezione, in cui ognuno vedrà le proprie azioni.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_189",
+    "correctAnswerIndex": 0,
+    "question": "Quanti mesi ha l'anno secondo il Corano?",
+    "answers": [
+      "Dodici",
+      "Dieci",
+      "Quattordici",
+      "Sei"
+    ],
+    "explanation": "«Il numero dei mesi presso Allah è dodici» (9:36).",
+    "sourceDisplay": "Corano 9:36"
+  },
+  {
+    "id": "faith_190",
+    "correctAnswerIndex": 0,
+    "question": "Quante prostrazioni si fanno in una sola rak'a?",
+    "answers": [
+      "Due",
+      "Una",
+      "Tre",
+      "Quattro"
+    ],
+    "explanation": "Ogni rak'a comprende due prostrazioni.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "quran_151",
+    "correctAnswerIndex": 0,
+    "question": "Quante sure contiene il Corano?",
+    "answers": [
+      "Centoquattordici",
+      "Sessanta",
+      "Duecento",
+      "Trenta"
+    ],
+    "explanation": "Il Corano contiene 114 sure, da Al-Fatiha ad An-Nas.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_152",
+    "correctAnswerIndex": 0,
+    "question": "Qual è la prima sura del Corano?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Baqara",
+      "An-Nas",
+      "Ya-Sin"
+    ],
+    "explanation": "Al-Fatiha, «l'Aprente», è la prima sura.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_153",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa la parola «Corano»?",
+    "answers": [
+      "La recitazione, la lettura",
+      "Il cammino",
+      "La luce",
+      "Il giardino"
+    ],
+    "explanation": "Qur'an deriva da una radice che significa leggere e recitare.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_154",
+    "correctAnswerIndex": 0,
+    "question": "In quanti anni circa è stato fatto scendere il Corano?",
+    "answers": [
+      "Circa ventitré anni",
+      "Una sola notte",
+      "Cento anni",
+      "Tre anni"
+    ],
+    "explanation": "La rivelazione è discesa nell'arco di circa ventitré anni.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_155",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama un versetto del Corano?",
+    "answers": [
+      "Un'aya",
+      "Una sura",
+      "Un juz'",
+      "Un hadith"
+    ],
+    "explanation": "Ogni frase numerata del Corano è un'aya, un «segno».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_156",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama un capitolo del Corano?",
+    "answers": [
+      "Una sura",
+      "Un'aya",
+      "Un juz'",
+      "Una khutba"
+    ],
+    "explanation": "Il Corano è diviso in sure, ognuna con il proprio nome.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_157",
+    "correctAnswerIndex": 0,
+    "question": "Qual è la sura più lunga del Corano?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Fatiha",
+      "Al-Kawthar",
+      "An-Nas"
+    ],
+    "explanation": "Al-Baqara è la sura più lunga del Corano.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_158",
+    "correctAnswerIndex": 0,
+    "question": "Qual è la sura più breve del Corano?",
+    "answers": [
+      "Al-Kawthar",
+      "Al-Baqara",
+      "Al 'Imran",
+      "An-Nisa'"
+    ],
+    "explanation": "Al-Kawthar ha soltanto tre versetti.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_159",
+    "correctAnswerIndex": 0,
+    "question": "Con quale frase iniziano quasi tutte le sure?",
+    "answers": [
+      "Nel nome di Allah, il Compassionevole, il Misericordioso",
+      "Lode ad Allah",
+      "Allah è il più grande",
+      "Non c'è dio all'infuori di Allah"
+    ],
+    "explanation": "La basmala apre 113 delle 114 sure.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_160",
+    "correctAnswerIndex": 0,
+    "question": "Di chi è la parola il Corano?",
+    "answers": [
+      "Di Allah",
+      "Del Profeta ﷺ",
+      "Dell'angelo Jibril",
+      "Dei compagni"
+    ],
+    "explanation": "Il Corano chiama se stesso «la parola di Allah» (kalam Allah) in 9:6.",
+    "sourceDisplay": "Corano 9:6"
+  },
+  {
+    "id": "quran_161",
+    "correctAnswerIndex": 0,
+    "question": "In quante parti (juz') è diviso il Corano?",
+    "answers": [
+      "Trenta",
+      "Dieci",
+      "Cinquanta",
+      "Cento"
+    ],
+    "explanation": "Il Corano è diviso in trenta juz', uno per ogni notte di Ramadan.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_162",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura porta il nome di una donna?",
+    "answers": [
+      "Maryam",
+      "Yusuf",
+      "Nuh",
+      "Muhammad"
+    ],
+    "explanation": "La sura 19 porta il nome di Maryam.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_163",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiamano le ultime due sure, con cui si chiede protezione?",
+    "answers": [
+      "Al-Mu'awwidhatan",
+      "Al-Mathani",
+      "Al-Mufassal",
+      "Al-Hawamim"
+    ],
+    "explanation": "Al-Falaq e An-Nas sono chiamate al-Mu'awwidhatan, «le due protettrici».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_164",
+    "correctAnswerIndex": 0,
+    "question": "Con quale parola inizia la sura Al-Fatiha, dopo la basmala?",
+    "answers": [
+      "Al-hamdu",
+      "Qul",
+      "Iqra'",
+      "Inna"
+    ],
+    "explanation": "«Al-hamdu lillahi rabbi l-'alamin» apre Al-Fatiha.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_165",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la spiegazione del significato del Corano?",
+    "answers": [
+      "Il tafsir",
+      "Il tajwid",
+      "Lo hifz",
+      "Il tawaf"
+    ],
+    "explanation": "Il tafsir è la scienza che spiega il significato dei versetti.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_166",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura non inizia con la basmala?",
+    "answers": [
+      "At-Tawba",
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "An-Nasr"
+    ],
+    "explanation": "At-Tawba è l'unica sura che non si apre con la basmala.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_167",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama chi recita il Corano ad alta voce?",
+    "answers": [
+      "Un qari'",
+      "Un muezzin",
+      "Un imam",
+      "Un khatib"
+    ],
+    "explanation": "Il qari' è il recitatore del Corano.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_168",
+    "correctAnswerIndex": 0,
+    "question": "In quale sura si trova il Versetto del Trono?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Kahf",
+      "Ya-Sin",
+      "Al-Mulk"
+    ],
+    "explanation": "Il Versetto del Trono è il versetto 255 della sura Al-Baqara.",
+    "sourceDisplay": "Corano 2:255"
+  },
+  {
+    "id": "quran_169",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa «An-Nur», titolo della sura 24?",
+    "answers": [
+      "La luce",
+      "La notte",
+      "Il vento",
+      "La montagna"
+    ],
+    "explanation": "An-Nur significa «la luce».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_170",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura porta il nome «Il Compassionevole»?",
+    "answers": [
+      "Ar-Rahman",
+      "Al-Mulk",
+      "Al-Fath",
+      "As-Saff"
+    ],
+    "explanation": "La sura 55 si chiama Ar-Rahman.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_171",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura porta il nome della caverna?",
+    "answers": [
+      "Al-Kahf",
+      "Al-Fil",
+      "An-Naml",
+      "Al-Baqara"
+    ],
+    "explanation": "Al-Kahf significa «la caverna».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_172",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa «An-Nisa'», titolo della sura 4?",
+    "answers": [
+      "Le donne",
+      "Gli uomini",
+      "I bambini",
+      "I viaggiatori"
+    ],
+    "explanation": "An-Nisa' significa «le donne».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_173",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa «Al-Ma'ida», titolo della sura 5?",
+    "answers": [
+      "La tavola imbandita",
+      "La montagna",
+      "Il ferro",
+      "L'alba"
+    ],
+    "explanation": "Al-Ma'ida significa «la tavola imbandita».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_174",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta dà il nome alla sura 71?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Yunus",
+      "Ibrahim"
+    ],
+    "explanation": "La sura 71 si chiama Nuh.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_175",
+    "correctAnswerIndex": 0,
+    "question": "Quanti versetti ha la sura Al-Fatiha?",
+    "answers": [
+      "Sette",
+      "Tre",
+      "Dieci",
+      "Venti"
+    ],
+    "explanation": "Al-Fatiha ha sette versetti.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_176",
+    "correctAnswerIndex": 0,
+    "question": "Dove dice il Corano di essere conservato?",
+    "answers": [
+      "In una Tavola custodita",
+      "In una grotta",
+      "In un forziere",
+      "Su una montagna"
+    ],
+    "explanation": "«È un Corano glorioso, su una Tavola custodita» (85:21-22).",
+    "sourceDisplay": "Corano 85:22"
+  },
+  {
+    "id": "quran_177",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura porta il nome della luna?",
+    "answers": [
+      "Al-Qamar",
+      "Ash-Shams",
+      "An-Najm",
+      "Al-Layl"
+    ],
+    "explanation": "Al-Qamar significa «la luna».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_178",
+    "correctAnswerIndex": 0,
+    "question": "Quale sura porta il nome del Giorno della Resurrezione?",
+    "answers": [
+      "Al-Qiyama",
+      "Al-Fath",
+      "Al-Hashr",
+      "As-Saff"
+    ],
+    "explanation": "La sura 75 si chiama Al-Qiyama.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_179",
+    "correctAnswerIndex": 0,
+    "question": "Quale profeta dà il nome alla sura 14?",
+    "answers": [
+      "Ibrahim",
+      "Muhammad ﷺ",
+      "Yusuf",
+      "Hud"
+    ],
+    "explanation": "La sura 14 si chiama Ibrahim.",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "quran_180",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa significa «Al-Hadid», titolo della sura 57?",
+    "answers": [
+      "Il ferro",
+      "L'oro",
+      "Il legno",
+      "La pietra"
+    ],
+    "explanation": "Al-Hadid significa «il ferro».",
+    "sourceDisplay": "Corano"
+  },
+  {
+    "id": "virtues_101",
+    "correctAnswerIndex": 0,
+    "question": "Come ci dice il Corano di parlare ai nostri genitori?",
+    "answers": [
+      "Con parole rispettose, senza dire nemmeno «uff»",
+      "Più forte di loro",
+      "Restando sempre in silenzio",
+      "Solo il venerdì"
+    ],
+    "explanation": "«Non dire loro “uff” e rivolgi loro parole rispettose» (17:23).",
+    "sourceDisplay": "Corano 17:23"
+  },
+  {
+    "id": "virtues_102",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama un dono fatto liberamente, per bontà?",
+    "answers": [
+      "Una sadaqa",
+      "Una zakat",
+      "Un tawaf",
+      "Un adhan"
+    ],
+    "explanation": "La sadaqa è l'elemosina volontaria, piccola o grande.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "virtues_103",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa consiglia il Profeta ﷺ, riguardo alla parola, a chi crede in Allah e nell'Ultimo Giorno?",
+    "answers": [
+      "Che dica il bene o taccia",
+      "Che parli molto",
+      "Che non parli mai",
+      "Che parli solo con la sua famiglia"
+    ],
+    "explanation": "«Chi crede in Allah e nell'Ultimo Giorno dica il bene o taccia.»",
+    "sourceDisplay": "Sahih al-Bukhari, 6018"
+  },
+  {
+    "id": "virtues_104",
+    "correctAnswerIndex": 0,
+    "question": "Come ci ha detto il Profeta ﷺ di comportarci con il nostro vicino?",
+    "answers": [
+      "Essere generosi con lui",
+      "Evitarlo",
+      "Non parlargli mai",
+      "Chiedergli di andarsene"
+    ],
+    "explanation": "«Chi crede in Allah e nell'Ultimo Giorno sia generoso con il suo vicino.»",
+    "sourceDisplay": "Sahih al-Bukhari, 6015"
+  },
+  {
+    "id": "virtues_105",
+    "correctAnswerIndex": 0,
+    "question": "Con chi è Allah, secondo il Corano?",
+    "answers": [
+      "Con i pazienti",
+      "Con i più ricchi",
+      "Con i più forti",
+      "Con i più veloci"
+    ],
+    "explanation": "«In verità Allah è con i pazienti» (2:153).",
+    "sourceDisplay": "Corano 2:153"
+  },
+  {
+    "id": "virtues_106",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa proibisce il Corano di fare all'orfano?",
+    "answers": [
+      "Maltrattarlo",
+      "Insegnargli a leggere",
+      "Invitarlo a mangiare",
+      "Giocare con lui"
+    ],
+    "explanation": "«Quanto all'orfano, non maltrattarlo» (93:9).",
+    "sourceDisplay": "Corano 93:9"
+  },
+  {
+    "id": "virtues_107",
+    "correctAnswerIndex": 0,
+    "question": "Quale tipo di parola il Corano ci dice di evitare?",
+    "answers": [
+      "La parola menzognera",
+      "La parola gentile",
+      "Le parole di ringraziamento",
+      "Le parole di saluto"
+    ],
+    "explanation": "«Ed evitate la parola menzognera» (22:30).",
+    "sourceDisplay": "Corano 22:30"
+  },
+  {
+    "id": "virtues_108",
+    "correctAnswerIndex": 0,
+    "question": "Insieme al parente stretto, a chi il Corano ci dice di dare ciò che gli spetta?",
+    "answers": [
+      "Al povero e al viandante",
+      "Al re e al giudice",
+      "Al mercante",
+      "Al poeta"
+    ],
+    "explanation": "«Da' al parente ciò che gli spetta, e così al povero e al viandante» (17:26).",
+    "sourceDisplay": "Corano 17:26"
+  },
+  {
+    "id": "virtues_109",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa promette Allah a chi Lo ringrazia?",
+    "answers": [
+      "Di dargli di più",
+      "Di farlo viaggiare",
+      "Di renderlo famoso",
+      "Di farlo re"
+    ],
+    "explanation": "«Se sarete riconoscenti, certamente vi darò di più» (14:7).",
+    "sourceDisplay": "Corano 14:7"
+  },
+  {
+    "id": "virtues_110",
+    "correctAnswerIndex": 0,
+    "question": "Come si dice «la pazienza» in arabo?",
+    "answers": [
+      "As-sabr",
+      "Ash-shukr",
+      "As-sidq",
+      "Al-haya'"
+    ],
+    "explanation": "As-sabr è la costanza nella difficoltà e nell'obbedienza.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_191",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il ricordare Allah, ripetendo le Sue lodi?",
+    "answers": [
+      "Il dhikr",
+      "Lo hajj",
+      "Il sa'y",
+      "Il tayammum"
+    ],
+    "explanation": "Il dhikr è il ricordo di Allah con la lingua e con il cuore.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_192",
+    "correctAnswerIndex": 0,
+    "question": "Qual è il primo mese dell'anno islamico?",
+    "answers": [
+      "Muharram",
+      "Ramadan",
+      "Shawwal",
+      "Rajab"
+    ],
+    "explanation": "L'anno dell'Egira si apre con il mese di Muharram.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_193",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama il tornare ad Allah dopo un peccato?",
+    "answers": [
+      "La tawba",
+      "Il tawaf",
+      "Il tajwid",
+      "Il tarawih"
+    ],
+    "explanation": "La tawba è il pentimento: rimpiangere, smettere e tornare ad Allah.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_194",
+    "correctAnswerIndex": 0,
+    "question": "Chi provvede al sostentamento di ogni creatura sulla terra?",
+    "answers": [
+      "Allah",
+      "I re",
+      "I mercanti",
+      "Gli angeli"
+    ],
+    "explanation": "«Non c'è creatura sulla terra il cui sostentamento non spetti ad Allah» (11:6).",
+    "sourceDisplay": "Corano 11:6"
+  },
+  {
+    "id": "faith_195",
+    "correctAnswerIndex": 0,
+    "question": "In quale città si compie il pellegrinaggio?",
+    "answers": [
+      "Alla Mecca",
+      "A Medina",
+      "A Gerusalemme",
+      "Al Cairo"
+    ],
+    "explanation": "Lo hajj si compie alla Mecca e nei suoi luoghi santi.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_196",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama chi compie il pellegrinaggio?",
+    "answers": [
+      "Un hajj (pellegrino)",
+      "Un imam",
+      "Un qari'",
+      "Un muezzin"
+    ],
+    "explanation": "Il pellegrino è chiamato hajj.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_197",
+    "correctAnswerIndex": 0,
+    "question": "Che cosa conosce Allah, secondo il Corano, anche se lo si nasconde?",
+    "answers": [
+      "Ciò che c'è nei cuori",
+      "Solo le azioni visibili",
+      "Solo le parole dette",
+      "Nulla di ciò che è nascosto"
+    ],
+    "explanation": "«Che nascondiate ciò che è nei vostri petti o lo mostriate, Allah lo sa» (3:29).",
+    "sourceDisplay": "Corano 3:29"
+  },
+  {
+    "id": "faith_198",
+    "correctAnswerIndex": 0,
+    "question": "A chi è stato prescritto il digiuno, secondo il Corano?",
+    "answers": [
+      "Ai credenti, come a coloro che li hanno preceduti",
+      "Solo ai viaggiatori",
+      "Solo ai sapienti",
+      "Solo ai bambini"
+    ],
+    "explanation": "«O voi che credete, vi è stato prescritto il digiuno come fu prescritto a coloro che vi hanno preceduto» (2:183).",
+    "sourceDisplay": "Corano 2:183"
+  },
+  {
+    "id": "faith_199",
+    "correctAnswerIndex": 0,
+    "question": "Come si chiama la grande preghiera comunitaria del venerdì?",
+    "answers": [
+      "Salat al-jumu'a",
+      "Salat al-'id",
+      "Salat al-witr",
+      "Salat ad-duha"
+    ],
+    "explanation": "Salat al-jumu'a riunisce i musulmani a mezzogiorno del venerdì.",
+    "sourceDisplay": "Terminologia consolidata"
+  },
+  {
+    "id": "faith_200",
+    "correctAnswerIndex": 0,
+    "question": "Come si dice «il digiuno» in arabo?",
+    "answers": [
+      "As-sawm",
+      "As-salat",
+      "Az-zakat",
+      "Al-adhan"
+    ],
+    "explanation": "As-sawm è il digiuno, quarto pilastro dell'Islam.",
+    "sourceDisplay": "Terminologia consolidata"
   }
 ]

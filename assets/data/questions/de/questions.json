@@ -11698,5 +11698,2605 @@
     ],
     "explanation": "«Es ist nichts Gutes in vielen ihrer vertraulichen Gespräche, außer bei dem, der zu Almosen, zu Gutem oder zur Aussöhnung zwischen den Menschen aufruft».",
     "sourceDisplay": "Koran 4:114"
+  },
+  {
+    "id": "prophets_251",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt der Prophet des Islam?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Ibrahim",
+      "Musa",
+      "Isa"
+    ],
+    "explanation": "Der Prophet des Islam ist Muhammad ﷺ, der Sohn Abdullahs.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_252",
+    "correctAnswerIndex": 0,
+    "question": "Isma'il und Ishaq sind die Söhne welches Propheten?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Dawud"
+    ],
+    "explanation": "„Lob sei Allah, der mir trotz meines hohen Alters Isma'il und Ishaq geschenkt hat“ (14:39).",
+    "sourceDisplay": "Koran 14:39"
+  },
+  {
+    "id": "prophets_253",
+    "correctAnswerIndex": 0,
+    "question": "Welchen Propheten erhob Allah zu Sich?",
+    "answers": [
+      "Isa",
+      "Yunus",
+      "Ayyub",
+      "Idris"
+    ],
+    "explanation": "„Vielmehr hat Allah ihn zu Sich erhoben“ (4:158).",
+    "sourceDisplay": "Koran 4:158"
+  },
+  {
+    "id": "prophets_254",
+    "correctAnswerIndex": 0,
+    "question": "Wer ist die Mutter des Propheten Isa?",
+    "answers": [
+      "Maryam",
+      "Asiya",
+      "Hajar",
+      "Sara"
+    ],
+    "explanation": "Maryam, der eine ganze Sure des Korans gewidmet ist.",
+    "sourceDisplay": "Koran 19:16-21"
+  },
+  {
+    "id": "prophets_255",
+    "correctAnswerIndex": 0,
+    "question": "Wer ist der erste Mensch, den Allah erschuf?",
+    "answers": [
+      "Adam",
+      "Nuh",
+      "Ibrahim",
+      "Idris"
+    ],
+    "explanation": "Adam ist der erste Mensch; Allah lehrte ihn alle Namen.",
+    "sourceDisplay": "Koran 2:31"
+  },
+  {
+    "id": "prophets_256",
+    "correctAnswerIndex": 0,
+    "question": "Für welchen Propheten wurde das Feuer zu Kühle und Frieden?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Yusuf",
+      "Sulaiman"
+    ],
+    "explanation": "„O Feuer, sei Kühle und Frieden für Ibrahim.“",
+    "sourceDisplay": "Koran 21:69"
+  },
+  {
+    "id": "prophets_257",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet trug einen Stab, der zu einer Schlange wurde?",
+    "answers": [
+      "Musa",
+      "Harun",
+      "Yahya",
+      "Zakariyya"
+    ],
+    "explanation": "Allah fragte Musa: „Und was ist das in deiner rechten Hand?“",
+    "sourceDisplay": "Koran 20:17-18"
+  },
+  {
+    "id": "prophets_258",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet träumte von elf Sternen, die sich niederwarfen?",
+    "answers": [
+      "Yusuf",
+      "Ya'qub",
+      "Ishaq",
+      "Dawud"
+    ],
+    "explanation": "„O mein Vater, ich sah elf Sterne, die Sonne und den Mond.“",
+    "sourceDisplay": "Koran 12:4"
+  },
+  {
+    "id": "prophets_259",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Vogel brachte dem Propheten Sulayman eine Nachricht?",
+    "answers": [
+      "Der Wiedehopf",
+      "Der Rabe",
+      "Der Falke",
+      "Die Taube"
+    ],
+    "explanation": "Der Wiedehopf sagte: „Ich bringe dir aus Saba eine sichere Nachricht“ (27:22).",
+    "sourceDisplay": "Koran 27:22"
+  },
+  {
+    "id": "prophets_260",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet ist das Vorbild der Geduld in der Prüfung?",
+    "answers": [
+      "Ayyub",
+      "Yunus",
+      "Lut",
+      "Shu'ayb"
+    ],
+    "explanation": "Ayyub rief seinen Herrn an und wurde als standhaft befunden.",
+    "sourceDisplay": "Koran 38:41"
+  },
+  {
+    "id": "prophets_261",
+    "correctAnswerIndex": 0,
+    "question": "Woraus erschuf Allah Adam?",
+    "answers": [
+      "Aus Erde",
+      "Aus Licht",
+      "Aus Feuer",
+      "Aus Wind"
+    ],
+    "explanation": "„Er erschuf ihn aus Erde, dann sagte Er zu ihm: Sei!“ (3:59).",
+    "sourceDisplay": "Koran 3:59"
+  },
+  {
+    "id": "prophets_262",
+    "correctAnswerIndex": 0,
+    "question": "Mit welchem Propheten sprach Allah direkt?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Yunus",
+      "Salih"
+    ],
+    "explanation": "„Und Allah sprach mit Musa in direkter Rede.“",
+    "sourceDisplay": "Koran 4:164"
+  },
+  {
+    "id": "prophets_263",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Propheten kommen nach Muhammad ﷺ?",
+    "answers": [
+      "Keiner: Er ist der letzte der Propheten",
+      "Einer",
+      "Drei",
+      "Sieben"
+    ],
+    "explanation": "Muhammad ﷺ ist das Siegel der Propheten: Nach ihm kommt kein Prophet mehr.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_264",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet wird der enge Freund (Khalil) Allahs genannt?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Isa",
+      "Nuh"
+    ],
+    "explanation": "Ibrahim ist der Vater der Propheten und der enge Freund des Allerbarmers.",
+    "sourceDisplay": "Koran 2:136"
+  },
+  {
+    "id": "prophets_265",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet heilte mit Allahs Erlaubnis den Blindgeborenen?",
+    "answers": [
+      "Isa",
+      "Yahya",
+      "Zakariyya",
+      "Ilyas"
+    ],
+    "explanation": "„Und du heiltest den Blindgeborenen und den Aussätzigen mit Meiner Erlaubnis.“",
+    "sourceDisplay": "Koran 5:110"
+  },
+  {
+    "id": "prophets_266",
+    "correctAnswerIndex": 0,
+    "question": "Mit welchem Propheten stimmten die Berge in das Lob Allahs ein?",
+    "answers": [
+      "Dawud",
+      "Sulaiman",
+      "Ayyub",
+      "Yunus"
+    ],
+    "explanation": "„O ihr Berge, preist Allah gemeinsam mit ihm.“",
+    "sourceDisplay": "Koran 34:10"
+  },
+  {
+    "id": "prophets_267",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet deutete den Traum des Königs von Ägypten?",
+    "answers": [
+      "Yusuf",
+      "Harun",
+      "Ilyas",
+      "Shu'ayb"
+    ],
+    "explanation": "Yusuf deutete die sieben fetten und die sieben mageren Kühe (12:46-49).",
+    "sourceDisplay": "Koran 12:46-49"
+  },
+  {
+    "id": "prophets_268",
+    "correctAnswerIndex": 0,
+    "question": "Wer ist der Vater des Propheten Yusuf?",
+    "answers": [
+      "Ya'qub",
+      "Ishaq",
+      "Ibrahim",
+      "Lut"
+    ],
+    "explanation": "Yusuf ist der Sohn Ya'qubs, der selbst der Sohn Ishaqs ist.",
+    "sourceDisplay": "Koran 12:8"
+  },
+  {
+    "id": "prophets_269",
+    "correctAnswerIndex": 0,
+    "question": "Was teilte sich vor Musa und seinem Volk?",
+    "answers": [
+      "Das Meer, das sich teilte, um sie vor dem Pharao zu retten",
+      "Ein Fluss Ägyptens",
+      "Ein See in Madyan",
+      "Ein Brunnen in der Wüste"
+    ],
+    "explanation": "„Und als Wir für euch das Meer teilten und euch retteten.“",
+    "sourceDisplay": "Koran 2:50"
+  },
+  {
+    "id": "prophets_270",
+    "correctAnswerIndex": 0,
+    "question": "Was sagt man, nachdem man den Namen des Propheten ﷺ genannt hat?",
+    "answers": [
+      "„Allahs Segen und Frieden seien auf ihm“",
+      "Nichts Besonderes",
+      "„Danke“",
+      "„Auf Wiedersehen“"
+    ],
+    "explanation": "Man erbittet Segen und Frieden für ihn: salla-Llahu alayhi wa sallam.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_271",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet rief sein Volk vor der Flut sehr lange Zeit?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Salih",
+      "Shu'ayb"
+    ],
+    "explanation": "„Wir sandten Nuh zu seinem Volk: Warne dein Volk.“",
+    "sourceDisplay": "Koran 71:1"
+  },
+  {
+    "id": "prophets_272",
+    "correctAnswerIndex": 0,
+    "question": "Sulayman ist der Sohn welches Propheten?",
+    "answers": [
+      "Dawud",
+      "Ya'qub",
+      "Ishaq",
+      "Yunus"
+    ],
+    "explanation": "„Und Dawud schenkten Wir Sulayman – welch trefflicher Diener!“ (38:30).",
+    "sourceDisplay": "Koran 38:30"
+  },
+  {
+    "id": "prophets_273",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet besiegte Jalut (Goliath)?",
+    "answers": [
+      "Dawud",
+      "Sulayman",
+      "Yusha'",
+      "Ilyas"
+    ],
+    "explanation": "„Und Dawud tötete Jalut“ (2:251).",
+    "sourceDisplay": "Koran 2:251"
+  },
+  {
+    "id": "prophets_274",
+    "correctAnswerIndex": 0,
+    "question": "An wie viele Propheten muss ein Muslim glauben?",
+    "answers": [
+      "An alle, ohne einen Unterschied zu machen",
+      "Nur an den letzten",
+      "Nur an drei",
+      "Nur an die im Koran genannten"
+    ],
+    "explanation": "Ein Muslim glaubt an alle Propheten Allahs und macht keinen Unterschied zwischen ihnen.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_275",
+    "correctAnswerIndex": 0,
+    "question": "Wen hat Allah laut Koran auserwählt?",
+    "answers": [
+      "Adam, Nuh, die Familie Ibrahims und die Familie Imrans",
+      "Die Könige Ägyptens",
+      "Die Stämme Medinas",
+      "Das Volk von Saba"
+    ],
+    "explanation": "„Allah erwählte Adam und Nuh und die Familie Ibrahims und die Familie Imrans.“",
+    "sourceDisplay": "Koran 3:33"
+  },
+  {
+    "id": "prophets_276",
+    "correctAnswerIndex": 0,
+    "question": "In welchem Land gewann der Prophet Yusuf das Vertrauen des Königs?",
+    "answers": [
+      "Ägypten",
+      "Syrien (Sham)",
+      "Jemen",
+      "Irak"
+    ],
+    "explanation": "Yusuf erhielt in Ägypten eine feste Stellung, nachdem er den Traum des Königs gedeutet hatte.",
+    "sourceDisplay": "Koran 12:100"
+  },
+  {
+    "id": "prophets_277",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet wurde bei Nacht zur Al-Aqsa-Moschee geführt?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Musa",
+      "Isa",
+      "Ibrahim"
+    ],
+    "explanation": "„Gepriesen sei Der, Der Seinen Diener bei Nacht reisen ließ.“",
+    "sourceDisplay": "Koran 17:1"
+  },
+  {
+    "id": "prophets_278",
+    "correctAnswerIndex": 0,
+    "question": "Welches Buch wurde dem Propheten Musa gegeben?",
+    "answers": [
+      "Die Tora",
+      "Das Evangelium",
+      "Die Psalmen",
+      "Die Blätter Ibrahims"
+    ],
+    "explanation": "Allah gab Musa das Buch und ließ ihm Gesandte folgen.",
+    "sourceDisplay": "Koran 2:87"
+  },
+  {
+    "id": "prophets_279",
+    "correctAnswerIndex": 0,
+    "question": "Welches Buch wurde dem Propheten Isa gegeben?",
+    "answers": [
+      "Das Evangelium",
+      "Die Tora",
+      "Die Psalmen",
+      "Der Koran"
+    ],
+    "explanation": "„Und Wir gaben ihm das Evangelium, in dem Rechtleitung und Licht sind.“",
+    "sourceDisplay": "Koran 5:46"
+  },
+  {
+    "id": "prophets_280",
+    "correctAnswerIndex": 0,
+    "question": "Welches Buch wurde dem Propheten Dawud gegeben?",
+    "answers": [
+      "Die Psalmen (Zabur)",
+      "Die Tora",
+      "Das Evangelium",
+      "Die Blätter Musas"
+    ],
+    "explanation": "„Und Wir gaben Dawud den Zabur.“",
+    "sourceDisplay": "Koran 4:163"
+  },
+  {
+    "id": "prophets_281",
+    "correctAnswerIndex": 0,
+    "question": "Der Sohn welches Propheten willigte aus Gehorsam gegenüber Allah ein, geopfert zu werden?",
+    "answers": [
+      "Der Sohn Ibrahims",
+      "Der Sohn Nuhs",
+      "Der Bruder Musas",
+      "Der Sohn Ya'qubs"
+    ],
+    "explanation": "„O mein Vater, tu, was dir befohlen wird: Du wirst mich geduldig finden.“",
+    "sourceDisplay": "Koran 37:102"
+  },
+  {
+    "id": "prophets_282",
+    "correctAnswerIndex": 0,
+    "question": "Wohin legte die Mutter Musas ihr Baby, um es zu retten?",
+    "answers": [
+      "In den Fluss",
+      "In eine Höhle",
+      "Zu einer Nachbarin",
+      "In die Wüste"
+    ],
+    "explanation": "„Wirf ihn in den Fluss: Wir werden ihn dir zurückbringen.“",
+    "sourceDisplay": "Koran 28:7"
+  },
+  {
+    "id": "prophets_283",
+    "correctAnswerIndex": 0,
+    "question": "Was sagte Yunus in der Dunkelheit, was jeder Muslim wiederholt?",
+    "answers": [
+      "„Es gibt keinen Gott außer Dir, gepriesen seist Du, ich war einer der Ungerechten“",
+      "„Gib mir Reichtum“",
+      "„Mach mich zum König“",
+      "„Mach mich stark“"
+    ],
+    "explanation": "Das Bittgebet von Yunus im Bauch des Fisches.",
+    "sourceDisplay": "Koran 21:87"
+  },
+  {
+    "id": "prophets_284",
+    "correctAnswerIndex": 0,
+    "question": "Wer ist der Vater des Propheten Muhammad ﷺ?",
+    "answers": [
+      "Abdullah",
+      "Abu Talib",
+      "Al-Abbas",
+      "Hamza"
+    ],
+    "explanation": "Er ist Muhammad ﷺ, Sohn Abdullahs, Sohn Abd al-Muttalibs.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_285",
+    "correctAnswerIndex": 0,
+    "question": "Wer ist die Mutter des Propheten Muhammad ﷺ?",
+    "answers": [
+      "Amina",
+      "Khadija",
+      "Aisha",
+      "Fatima"
+    ],
+    "explanation": "Amina bint Wahb ist die Mutter des Propheten ﷺ.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_286",
+    "correctAnswerIndex": 0,
+    "question": "Was sagte Isa, als er noch in der Wiege lag?",
+    "answers": [
+      "„Ich bin der Diener Allahs“",
+      "„Ich bin ein König“",
+      "„Ich bin ein Engel“",
+      "Er sagte nichts"
+    ],
+    "explanation": "„Wahrlich, ich bin der Diener Allahs: Er hat mir die Schrift gegeben.“",
+    "sourceDisplay": "Koran 19:30"
+  },
+  {
+    "id": "prophets_287",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet wurde zum Volk der Ad gesandt?",
+    "answers": [
+      "Hud",
+      "Salih",
+      "Lut",
+      "Shu'ayb"
+    ],
+    "explanation": "„Und zu den Ad ihren Bruder Hud.“",
+    "sourceDisplay": "Koran 7:65"
+  },
+  {
+    "id": "prophets_288",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet wurde mit der Kamelstute zu den Thamud gesandt?",
+    "answers": [
+      "Salih",
+      "Hud",
+      "Yunus",
+      "Idris"
+    ],
+    "explanation": "„Und zu den Thamud ihren Bruder Salih: Dies ist die Kamelstute Allahs.“",
+    "sourceDisplay": "Koran 7:73"
+  },
+  {
+    "id": "prophets_289",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet ist der Bruder Musas, der mit ihm gesandt wurde?",
+    "answers": [
+      "Harun",
+      "Yusuf",
+      "Yahya",
+      "Ilyas"
+    ],
+    "explanation": "„Und gib mir einen Helfer aus meiner Familie: Harun, meinen Bruder.“",
+    "sourceDisplay": "Koran 20:29-30"
+  },
+  {
+    "id": "prophets_290",
+    "correctAnswerIndex": 0,
+    "question": "Welchen Titel gibt der Koran Muhammad ﷺ in Bezug auf die Propheten?",
+    "answers": [
+      "Das Siegel der Propheten",
+      "Der erste der Propheten",
+      "Der König der Propheten",
+      "Der Schreiber der Propheten"
+    ],
+    "explanation": "„Muhammad ist der Gesandte Allahs und das Siegel der Propheten.“",
+    "sourceDisplay": "Koran 33:40"
+  },
+  {
+    "id": "prophets_291",
+    "correctAnswerIndex": 0,
+    "question": "Was sagen die Engel im Koran zu Maryam?",
+    "answers": [
+      "Dass Allah sie auserwählt und gereinigt hat",
+      "Dass sie Königin sein wird",
+      "Dass sie reisen wird",
+      "Dass sie lehren wird"
+    ],
+    "explanation": "„O Maryam, Allah hat dich auserwählt und dich gereinigt.“",
+    "sourceDisplay": "Koran 3:42"
+  },
+  {
+    "id": "prophets_292",
+    "correctAnswerIndex": 0,
+    "question": "Wie rief Ayyub seinen Herrn in seiner Prüfung an?",
+    "answers": [
+      "„Mich hat Unheil getroffen, und Du bist der Barmherzigste“",
+      "„Mach mich reich“",
+      "„Bestrafe meine Feinde“",
+      "„Mach mich zum König“"
+    ],
+    "explanation": "„Mich hat Unheil getroffen, und Du bist der Barmherzigste der Barmherzigen.“",
+    "sourceDisplay": "Koran 21:83"
+  },
+  {
+    "id": "prophets_293",
+    "correctAnswerIndex": 0,
+    "question": "Was lehrte Allah Adam?",
+    "answers": [
+      "Alle Namen",
+      "Das Schreiben",
+      "Die Seefahrt",
+      "Das Rechnen"
+    ],
+    "explanation": "„Und Er lehrte Adam alle Namen.“",
+    "sourceDisplay": "Koran 2:31"
+  },
+  {
+    "id": "prophets_294",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet herrschte über ein Königreich, das niemand nach ihm haben sollte?",
+    "answers": [
+      "Sulaiman",
+      "Dawud",
+      "Yusuf",
+      "Dhul-Qarnayn"
+    ],
+    "explanation": "„Schenke mir ein Königreich, wie es keinem nach mir zusteht.“",
+    "sourceDisplay": "Koran 38:35-36"
+  },
+  {
+    "id": "prophets_295",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet wurde mit seiner Familie gerettet, außer seiner Frau?",
+    "answers": [
+      "Lut",
+      "Nuh",
+      "Hud",
+      "Salih"
+    ],
+    "explanation": "„Zieh mit deiner Familie in einem Teil der Nacht fort… außer deiner Frau.“",
+    "sourceDisplay": "Koran 11:81"
+  },
+  {
+    "id": "prophets_296",
+    "correctAnswerIndex": 0,
+    "question": "Wovor warnte Ibrahim sein Volk?",
+    "answers": [
+      "Vor der Anbetung von Götzen",
+      "Vor dem Handel",
+      "Vor dem Reisen",
+      "Vor dem Schreiben"
+    ],
+    "explanation": "„Nehmt ihr Götzen zu Göttern?“",
+    "sourceDisplay": "Koran 6:74"
+  },
+  {
+    "id": "prophets_297",
+    "correctAnswerIndex": 0,
+    "question": "Welches Wort bezeichnet jemanden, den Allah zu den Menschen gesandt hat?",
+    "answers": [
+      "Ein Gesandter (Rasul)",
+      "Ein Kalif",
+      "Ein Gefährte",
+      "Ein Gelehrter"
+    ],
+    "explanation": "Ein Rasul ist ein von Allah Gesandter, dem eine Botschaft für die Menschen anvertraut wurde.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_298",
+    "correctAnswerIndex": 0,
+    "question": "Als was sandte Allah den Propheten ﷺ laut Sure Al-Ahzab?",
+    "answers": [
+      "Als Zeugen, Verkünder froher Botschaft und Warner",
+      "Als König und Richter",
+      "Als Händler",
+      "Als Dichter"
+    ],
+    "explanation": "„O Prophet, Wir haben dich als Zeugen, als Verkünder froher Botschaft und als Warner gesandt“ (33:45).",
+    "sourceDisplay": "Koran 33:45"
+  },
+  {
+    "id": "prophets_299",
+    "correctAnswerIndex": 0,
+    "question": "Warum wurde Muhammad ﷺ laut Koran gesandt?",
+    "answers": [
+      "Als Barmherzigkeit für die Welten",
+      "Um zu herrschen",
+      "Um zu bauen",
+      "Um Handel zu treiben"
+    ],
+    "explanation": "„Und Wir haben dich nur als Barmherzigkeit für die Welten gesandt.“",
+    "sourceDisplay": "Koran 21:107"
+  },
+  {
+    "id": "prophets_300",
+    "correctAnswerIndex": 0,
+    "question": "Welchen Propheten nennt der Koran „einen dankbaren Diener“?",
+    "answers": [
+      "Nuh",
+      "Lut",
+      "Idris",
+      "Ilyas"
+    ],
+    "explanation": "„Wahrlich, er war ein dankbarer Diener“ (17:3), gesagt über Nuh.",
+    "sourceDisplay": "Koran 17:3"
+  },
+  {
+    "id": "prophets_301",
+    "correctAnswerIndex": 0,
+    "question": "Welches Zeichen erhielt Zakariyya nach der Ankündigung seines Sohnes?",
+    "answers": [
+      "Drei Tage lang nicht mit den Menschen zu sprechen",
+      "Einen Stern zu sehen",
+      "Donner zu hören",
+      "Auf dem Wasser zu gehen"
+    ],
+    "explanation": "„Dein Zeichen ist, dass du drei Tage lang nicht mit den Menschen sprechen wirst“ (3:41).",
+    "sourceDisplay": "Koran 3:41"
+  },
+  {
+    "id": "prophets_302",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Sprache wurde jeder Gesandte gesandt?",
+    "answers": [
+      "In der Sprache seines eigenen Volkes",
+      "Nur auf Arabisch",
+      "Auf Hebräisch",
+      "In einer himmlischen Sprache"
+    ],
+    "explanation": "„Wir haben keinen Gesandten gesandt, außer in der Sprache seines Volkes.“",
+    "sourceDisplay": "Koran 14:4"
+  },
+  {
+    "id": "prophets_303",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure erzählt die Geschichte eines Propheten von Anfang bis Ende?",
+    "answers": [
+      "Die Sure Yusuf",
+      "Die Sure Al-Baqara",
+      "Die Sure An-Nas",
+      "Die Sure Al-Fatiha"
+    ],
+    "explanation": "„Wir erzählen dir die schönste der Geschichten“ – die Geschichte Yusufs.",
+    "sourceDisplay": "Koran 12:1-3"
+  },
+  {
+    "id": "prophets_304",
+    "correctAnswerIndex": 0,
+    "question": "Wie beschreibt der Koran Ibrahim in der Sure Maryam?",
+    "answers": [
+      "Als einen Mann der Wahrheit, einen Propheten",
+      "Als einen König",
+      "Als einen Schreiber",
+      "Als einen Händler"
+    ],
+    "explanation": "„Er war ein Mann der Wahrheit, ein Prophet.“",
+    "sourceDisplay": "Koran 19:41"
+  },
+  {
+    "id": "prophets_305",
+    "correctAnswerIndex": 0,
+    "question": "Welche Königin kam, um den Propheten Sulaiman zu sehen?",
+    "answers": [
+      "Die Königin von Saba",
+      "Die Königin von Ägypten",
+      "Die Königin von Babylon",
+      "Die Königin des nördlichen Jemen"
+    ],
+    "explanation": "Sie ergab sich gemeinsam mit Sulaiman Allah, dem Herrn der Welten.",
+    "sourceDisplay": "Koran 27:44"
+  },
+  {
+    "id": "prophets_306",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet bat darum zu sehen, wie Allah die Toten wieder lebendig macht?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Yunus"
+    ],
+    "explanation": "„Mein Herr, zeige mir, wie Du die Toten lebendig machst.“",
+    "sourceDisplay": "Koran 2:260"
+  },
+  {
+    "id": "prophets_307",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet reiste, um von einem wissenden Diener Allahs zu lernen?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Dawud",
+      "Sulaiman"
+    ],
+    "explanation": "Musa reiste, bis er einen Diener Allahs traf, dem Er Wissen gegeben hatte.",
+    "sourceDisplay": "Koran 18:60-65"
+  },
+  {
+    "id": "prophets_308",
+    "correctAnswerIndex": 0,
+    "question": "Was lehrt die Sure Al-Ikhlas über Allah?",
+    "answers": [
+      "Dass Er Einer ist und niemand Ihm gleicht",
+      "Dass Er Teilhaber hat",
+      "Dass Er Seiner Schöpfung ähnelt",
+      "Dass Er einen Sohn hat"
+    ],
+    "explanation": "„Sprich: Er ist Allah, Einer… und niemand ist Ihm gleich.“",
+    "sourceDisplay": "Koran 112:1-4"
+  },
+  {
+    "id": "prophets_309",
+    "correctAnswerIndex": 0,
+    "question": "Wie nannten die Mekkaner den Propheten ﷺ vor der Offenbarung?",
+    "answers": [
+      "Al-Amin, der Vertrauenswürdige",
+      "Der Reisende",
+      "Der Dichter",
+      "Der Richter"
+    ],
+    "explanation": "Seine Rechtschaffenheit war so bekannt, dass man ihn al-Amin nannte.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "prophets_310",
+    "correctAnswerIndex": 0,
+    "question": "Wen stellt der Koran als das beste Vorbild dar, dem man folgen soll?",
+    "answers": [
+      "Den Gesandten Allahs ﷺ",
+      "Die Könige",
+      "Die Dichter",
+      "Die Händler"
+    ],
+    "explanation": "„Ihr habt im Gesandten Allahs ein schönes Vorbild.“",
+    "sourceDisplay": "Koran 33:21"
+  },
+  {
+    "id": "sira_251",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Stadt wurde der Prophet ﷺ geboren?",
+    "answers": [
+      "Mekka",
+      "Medina",
+      "Jerusalem",
+      "Ta'if"
+    ],
+    "explanation": "Der Prophet ﷺ wurde in Mekka geboren, im Stamm der Quraysh.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_252",
+    "correctAnswerIndex": 0,
+    "question": "In welche Stadt wanderte der Prophet ﷺ aus?",
+    "answers": [
+      "Medina",
+      "Ta'if",
+      "Kairo",
+      "Damaskus"
+    ],
+    "explanation": "Die Hidschra führte von Mekka nach Medina, das damals Yathrib hieß.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_253",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die Auswanderung von Mekka nach Medina?",
+    "answers": [
+      "Die Hidschra",
+      "Die Pilgerfahrt",
+      "Die Eroberung",
+      "Der Vertrag"
+    ],
+    "explanation": "Die Hidschra markiert den Beginn des islamischen Kalenders.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_254",
+    "correctAnswerIndex": 0,
+    "question": "Wer ist die erste Frau des Propheten ﷺ?",
+    "answers": [
+      "Khadija",
+      "Aisha",
+      "Hafsa",
+      "Sawda"
+    ],
+    "explanation": "Khadija bint Khuwaylid, die als Erste an ihn glaubte.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_255",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Höhle versteckte sich der Prophet ﷺ während der Hidschra?",
+    "answers": [
+      "In der Höhle Thawr",
+      "In der Höhle Hira",
+      "In der Höhle Uhud",
+      "In der Höhle Quba"
+    ],
+    "explanation": "Er verbarg sich dort drei Tage lang mit Abu Bakr, bevor er weiter nach Medina zog.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_256",
+    "correctAnswerIndex": 0,
+    "question": "Wie lautet das erste Wort, das dem Propheten ﷺ offenbart wurde?",
+    "answers": [
+      "„Lies“",
+      "„Bete“",
+      "„Steh auf“",
+      "„Höre“"
+    ],
+    "explanation": "„Lies, im Namen deines Herrn, der erschuf.“",
+    "sourceDisplay": "Koran 96:1"
+  },
+  {
+    "id": "sira_257",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Engel brachte dem Propheten ﷺ die Offenbarung?",
+    "answers": [
+      "Jibril",
+      "Mika'il",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "Jibril ist der Engel, der damit beauftragt ist, die Offenbarung herabzubringen.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_258",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Stadt befindet sich das Grab des Propheten ﷺ?",
+    "answers": [
+      "Medina",
+      "Mekka",
+      "Jerusalem",
+      "Ta'if"
+    ],
+    "explanation": "Sein Grab befindet sich in Medina, neben seiner Moschee.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_259",
+    "correctAnswerIndex": 0,
+    "question": "Aus welchem Stamm stammte der Prophet ﷺ?",
+    "answers": [
+      "Quraysh",
+      "Aws",
+      "Khazraj",
+      "Thaqif"
+    ],
+    "explanation": "Der Prophet ﷺ gehörte zu den Quraysh, dem Stamm von Mekka.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_260",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man die Gefährten des Propheten ﷺ?",
+    "answers": [
+      "Die Sahaba",
+      "Die Tabi'un",
+      "Nur die Ansar",
+      "Die Qurra"
+    ],
+    "explanation": "Die Sahaba sind diejenigen, die den Propheten ﷺ gesehen haben und an ihn glaubten.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_261",
+    "correctAnswerIndex": 0,
+    "question": "Wer begleitete den Propheten ﷺ bei der Hidschra?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakr war während der Hidschra sein Gefährte in der Höhle.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_262",
+    "correctAnswerIndex": 0,
+    "question": "Wer war der Gebetsrufer des Propheten ﷺ?",
+    "answers": [
+      "Bilal",
+      "Anas",
+      "Zayd",
+      "Salman"
+    ],
+    "explanation": "Bilal ibn Rabah rief in Medina zum Gebet.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_263",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die erste Schlacht des Islam?",
+    "answers": [
+      "Badr",
+      "Uhud",
+      "Khaybar",
+      "Hunayn"
+    ],
+    "explanation": "Badr ist die erste große Schlacht, im zweiten Jahr der Hidschra.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_264",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man diejenigen, die von Mekka nach Medina auswanderten?",
+    "answers": [
+      "Die Muhajirun",
+      "Die Ansar",
+      "Die Tabi'un",
+      "Die Gefährten aus Ta'if"
+    ],
+    "explanation": "Die Muhajirun sind die Auswanderer; die Ansar sind diejenigen, die sie aufnahmen.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_265",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man die Bewohner Medinas, die die Auswanderer aufnahmen?",
+    "answers": [
+      "Die Ansar",
+      "Die Muhajirun",
+      "Die Quraysh",
+      "Die Tabi'un"
+    ],
+    "explanation": "Die Ansar, „die Helfer“, sind die Aws und die Khazraj von Medina.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_266",
+    "correctAnswerIndex": 0,
+    "question": "Was baute der Prophet ﷺ zuerst in Medina?",
+    "answers": [
+      "Eine Moschee",
+      "Einen Markt",
+      "Einen Palast",
+      "Eine Mauer"
+    ],
+    "explanation": "Er baute seine Moschee, sobald er in Medina ankam.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_267",
+    "correctAnswerIndex": 0,
+    "question": "Welche Tochter des Propheten ﷺ heiratete Ali?",
+    "answers": [
+      "Fatima",
+      "Ruqayya",
+      "Zaynab",
+      "Umm Kulthum"
+    ],
+    "explanation": "Fatima, die Tochter des Propheten ﷺ, heiratete Ali ibn Abi Talib.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_268",
+    "correctAnswerIndex": 0,
+    "question": "Wer war der erste Kalif nach dem Propheten ﷺ?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "Abu Bakr as-Siddiq war der erste Kalif.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_269",
+    "correctAnswerIndex": 0,
+    "question": "Wie hieß Medina früher?",
+    "answers": [
+      "Yathrib",
+      "Bakka",
+      "Ta'if",
+      "Khaybar"
+    ],
+    "explanation": "Yathrib erhielt den Namen Madinat an-Nabi, die Stadt des Propheten ﷺ.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_270",
+    "correctAnswerIndex": 0,
+    "question": "Wie alt war der Prophet ﷺ bei der ersten Offenbarung?",
+    "answers": [
+      "Vierzig Jahre",
+      "Zwanzig",
+      "Sechzig",
+      "Dreißig"
+    ],
+    "explanation": "Die Offenbarung kam zu ihm, als er vierzig Jahre alt war.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_271",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Stadt steht die Ka'ba?",
+    "answers": [
+      "Mekka",
+      "Medina",
+      "Jerusalem",
+      "Damaskus"
+    ],
+    "explanation": "Die Ka'ba steht in der Mitte der Heiligen Moschee in Mekka.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_272",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Stadt steht die Al-Aqsa-Moschee?",
+    "answers": [
+      "Jerusalem",
+      "Mekka",
+      "Medina",
+      "Kairo"
+    ],
+    "explanation": "Die Al-Aqsa-Moschee befindet sich in Jerusalem (al-Quds).",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_273",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Onkel des Propheten ﷺ beschützte ihn in Mekka?",
+    "answers": [
+      "Abu Talib",
+      "Abu Lahab",
+      "Al-Abbas",
+      "Abu Sufyan"
+    ],
+    "explanation": "Abu Talib, der Vater Alis, beschützte seinen Neffen gegen die Quraysh.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_274",
+    "correctAnswerIndex": 0,
+    "question": "Welchen Beruf hatte Khadija, die erste Frau des Propheten ﷺ?",
+    "answers": [
+      "Händlerin",
+      "Ärztin",
+      "Dichterin",
+      "Weberin"
+    ],
+    "explanation": "Khadija war eine angesehene Händlerin in Mekka.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_275",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die letzte Pilgerfahrt des Propheten ﷺ?",
+    "answers": [
+      "Die Abschiedspilgerfahrt",
+      "Die erste Pilgerfahrt",
+      "Die Pilgerfahrt der Eroberung",
+      "Die kleine Pilgerfahrt"
+    ],
+    "explanation": "Die Abschiedspilgerfahrt fand im Jahr 10 der Hidschra statt.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_276",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die Erzählung vom Leben des Propheten ﷺ?",
+    "answers": [
+      "Die Sira",
+      "Die Sunna",
+      "Der Tafsir",
+      "Das Fiqh"
+    ],
+    "explanation": "Die Sira ist die Erzählung seines Lebens; die Sunna ist das, was er sagte und tat.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_277",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man einen vom Propheten ﷺ überlieferten Ausspruch?",
+    "answers": [
+      "Einen Hadith",
+      "Eine Sure",
+      "Einen Vers",
+      "Ein Bittgebet"
+    ],
+    "explanation": "Ein Hadith ist ein Ausspruch, eine Handlung oder eine Billigung des Propheten ﷺ.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_278",
+    "correctAnswerIndex": 0,
+    "question": "Welche beiden Hadith-Sammlungen gelten als die zuverlässigsten?",
+    "answers": [
+      "Sahih al-Buchari und Sahih Muslim",
+      "Zwei Gedichtsammlungen",
+      "Zwei Geschichtsbücher",
+      "Zwei Wörterbücher"
+    ],
+    "explanation": "Zusammen nennt man sie „die beiden Sahih“.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_279",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Kalif ließ den Koran abschreiben und in die Provinzen schicken?",
+    "answers": [
+      "Uthman",
+      "Abu Bakr",
+      "Umar",
+      "Ali"
+    ],
+    "explanation": "Uthman ließ offizielle Abschriften anfertigen und in die wichtigsten Städte schicken.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_280",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Kalifen sind „die rechtgeleiteten Kalifen“?",
+    "answers": [
+      "Vier",
+      "Zwei",
+      "Sieben",
+      "Zwölf"
+    ],
+    "explanation": "Abu Bakr, Umar, Uthman und Ali.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_281",
+    "correctAnswerIndex": 0,
+    "question": "In welche Richtung beten die Muslime?",
+    "answers": [
+      "Zur Ka'ba in Mekka",
+      "Nach Jerusalem",
+      "Nach Osten",
+      "Nach Medina"
+    ],
+    "explanation": "Die Qibla ist die Richtung der Ka'ba.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_282",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt diese Gebetsrichtung?",
+    "answers": [
+      "Die Qibla",
+      "Der Mihrab",
+      "Der Minbar",
+      "Das Minarett"
+    ],
+    "explanation": "Die Qibla ist die Richtung; der Mihrab ist die Nische, die sie anzeigt.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_283",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt der Ort, an dem die Muslime gemeinsam beten?",
+    "answers": [
+      "Die Moschee",
+      "Die Schule",
+      "Der Markt",
+      "Die Bibliothek"
+    ],
+    "explanation": "Die Masjid ist der Ort der Niederwerfung, die Moschee.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_284",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt der Ruf zum Gebet?",
+    "answers": [
+      "Der Adhan",
+      "Der Takbir",
+      "Der Tasbih",
+      "Der Dhikr"
+    ],
+    "explanation": "Der Adhan ist der Gebetsruf; wer ihn ausruft, ist der Muezzin.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_285",
+    "correctAnswerIndex": 0,
+    "question": "An welchem Tag versammeln sich die Muslime zum großen Gebet?",
+    "answers": [
+      "Am Freitag",
+      "Am Samstag",
+      "Am Sonntag",
+      "Am Montag"
+    ],
+    "explanation": "Das Freitagsgebet (al-Jumu'a) versammelt die Gemeinschaft jede Woche.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_286",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man die Person, die das Gebet leitet?",
+    "answers": [
+      "Den Imam",
+      "Den Muezzin",
+      "Den Richter",
+      "Den Hafiz"
+    ],
+    "explanation": "Der Imam ist derjenige, hinter dem sich die Gemeinde zum Gebet aufstellt.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_287",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man jemanden, der den ganzen Koran auswendig gelernt hat?",
+    "answers": [
+      "Einen Hafiz",
+      "Einen Imam",
+      "Einen Muezzin",
+      "Einen Richter"
+    ],
+    "explanation": "Ein Hafiz ist jemand, der den ganzen Koran im Gedächtnis bewahrt.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_288",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Gefährte ist als der größte Überlieferer von Hadithen bekannt?",
+    "answers": [
+      "Abu Hurayra",
+      "Bilal",
+      "Salman",
+      "Anas"
+    ],
+    "explanation": "Abu Hurayra verbrachte die letzten Jahre des Propheten ﷺ an seiner Seite.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_289",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Kalif wird as-Siddiq, „der Wahrhaftige“, genannt?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "Abu Bakr as-Siddiq, der erste freie Mann, der glaubte.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_290",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Kalif wird al-Faruq genannt?",
+    "answers": [
+      "Umar ibn al-Khattab",
+      "Abu Bakr",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "Umar, der Wahrheit von Falschheit unterschied, erhielt diesen Titel.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_291",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Kalif ließ den Koran in einem einzigen Band zusammenstellen?",
+    "answers": [
+      "Abu Bakr",
+      "Mu'awiya",
+      "Khalid",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakr befahl, das Aufgeschriebene zusammenzutragen.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_292",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Großvater zog den Propheten ﷺ als Kind auf?",
+    "answers": [
+      "Abd al-Muttalib",
+      "Abu Sufyan",
+      "Al-Walid",
+      "Utba"
+    ],
+    "explanation": "Sein Großvater Abd al-Muttalib nahm sich nach seiner Geburt seiner an.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_293",
+    "correctAnswerIndex": 0,
+    "question": "Wie erinnert der Koran an die Kindheit des Propheten ﷺ?",
+    "answers": [
+      "Allah fand ihn als Waise und gab ihm Zuflucht",
+      "Er war ein König",
+      "Er war von Kindheit an reich",
+      "Er lebte allein in der Wüste"
+    ],
+    "explanation": "„Fand Er dich nicht als Waise und gab dir Zuflucht?“ (93:6).",
+    "sourceDisplay": "Koran 93:6"
+  },
+  {
+    "id": "sira_294",
+    "correctAnswerIndex": 0,
+    "question": "Welche Schlacht kam nach Badr?",
+    "answers": [
+      "Uhud",
+      "Die Grabenschlacht",
+      "Hunayn",
+      "Tabuk"
+    ],
+    "explanation": "Im folgenden Jahr kam die Schlacht von Uhud, nahe Medina.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_295",
+    "correctAnswerIndex": 0,
+    "question": "Was gruben die Muslime rund um Medina, um die Stadt zu verteidigen?",
+    "answers": [
+      "Einen Graben (al-Khandaq)",
+      "Einen Brunnen",
+      "Einen Tunnel",
+      "Einen Kanal"
+    ],
+    "explanation": "Sie hoben einen Graben aus, der der Grabenschlacht ihren Namen gab.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_296",
+    "correctAnswerIndex": 0,
+    "question": "Wessen Tochter war Aisha, die Frau des Propheten ﷺ?",
+    "answers": [
+      "Die Tochter Abu Bakrs",
+      "Die Tochter Umars",
+      "Die Tochter Uthmans",
+      "Die Tochter Alis"
+    ],
+    "explanation": "Aisha war die Tochter von Abu Bakr as-Siddiq.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_297",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt der Koran die Frauen des Propheten ﷺ?",
+    "answers": [
+      "Die Mütter der Gläubigen",
+      "Die Dienerinnen",
+      "Die Reisegefährtinnen",
+      "Die Auswanderinnen"
+    ],
+    "explanation": "„Und seine Frauen sind ihre Mütter“ (33:6).",
+    "sourceDisplay": "Koran 33:6"
+  },
+  {
+    "id": "sira_298",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Gefährte war zugleich Cousin und Schwiegersohn des Propheten ﷺ?",
+    "answers": [
+      "Ali ibn Abi Talib",
+      "Bilal",
+      "Salman",
+      "Zayd"
+    ],
+    "explanation": "Ali, der Cousin des Propheten ﷺ, heiratete dessen Tochter Fatima.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_299",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die Moschee des Propheten ﷺ in Medina?",
+    "answers": [
+      "Al-Masjid an-Nabawi",
+      "Al-Masjid al-Haram",
+      "Al-Aqsa",
+      "Quba"
+    ],
+    "explanation": "Die Prophetenmoschee, an-Nabawi, steht in Medina.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "sira_300",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das Reittier der Nachtreise des Propheten ﷺ?",
+    "answers": [
+      "Al-Buraq",
+      "Al-Adba",
+      "Asch-Schaqra",
+      "Al-Qaswa"
+    ],
+    "explanation": "Das Reittier der Nachtreise heißt al-Buraq.",
+    "sourceDisplay": "Sira, gesicherte Überlieferung"
+  },
+  {
+    "id": "faith_151",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Säulen hat der Islam?",
+    "answers": [
+      "Fünf",
+      "Drei",
+      "Sechs",
+      "Zehn"
+    ],
+    "explanation": "Fünf: das Glaubensbekenntnis, das Gebet, die Zakat, das Fasten und die Pilgerfahrt.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_152",
+    "correctAnswerIndex": 0,
+    "question": "Was ist die erste Säule des Islam?",
+    "answers": [
+      "Das Glaubensbekenntnis (Shahada)",
+      "Das Fasten",
+      "Die Pilgerfahrt",
+      "Die Zakat"
+    ],
+    "explanation": "Man tritt in den Islam ein, indem man bezeugt, dass es keinen Gott außer Allah gibt und Muhammad ﷺ Sein Gesandter ist.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_153",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Pflichtgebete verrichtet ein Muslim jeden Tag?",
+    "answers": [
+      "Fünf",
+      "Drei",
+      "Sieben",
+      "Zwei"
+    ],
+    "explanation": "Fünf Gebete, verteilt von der Morgendämmerung bis zur Nacht.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_154",
+    "correctAnswerIndex": 0,
+    "question": "In welchem Monat fasten die Muslime?",
+    "answers": [
+      "Ramadan",
+      "Rajab",
+      "Sha'ban",
+      "Shawwal"
+    ],
+    "explanation": "„Der Monat Ramadan, in dem der Koran herabgesandt wurde“ (2:185).",
+    "sourceDisplay": "Koran 2:185"
+  },
+  {
+    "id": "faith_155",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die Pflichtabgabe im Islam?",
+    "answers": [
+      "Zakat",
+      "Du'a",
+      "Dhikr",
+      "Tawaf"
+    ],
+    "explanation": "Die Zakat ist der Anteil des Vermögens, der jedes Jahr abgegeben wird.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_156",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die große Pilgerfahrt nach Mekka?",
+    "answers": [
+      "Der Hadsch",
+      "Der Sa'y",
+      "Der Dhikr",
+      "Der Suhur"
+    ],
+    "explanation": "Der Hadsch ist die Pilgerfahrt, die jeder, der dazu in der Lage ist, einmal im Leben unternimmt.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_157",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Glaubensartikel (Arkan al-Iman) gibt es?",
+    "answers": [
+      "Sechs",
+      "Vier",
+      "Fünf",
+      "Sieben"
+    ],
+    "explanation": "Der Glaube an Allah, Seine Engel, Seine Bücher, Seine Gesandten, den Jüngsten Tag und die Vorherbestimmung.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_158",
+    "correctAnswerIndex": 0,
+    "question": "An wie viele Götter glaubt ein Muslim?",
+    "answers": [
+      "An einen einzigen",
+      "An zwei",
+      "An drei",
+      "An viele"
+    ],
+    "explanation": "„Sprich: Er ist Allah, der Eine“ (112:1).",
+    "sourceDisplay": "Koran 112:1"
+  },
+  {
+    "id": "faith_159",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennen die Muslime Gott auf Arabisch?",
+    "answers": [
+      "Allah",
+      "Malak",
+      "Rasul",
+      "Nabi"
+    ],
+    "explanation": "Allah ist der Name des Schöpfers auf Arabisch.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_160",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das heilige Buch der Muslime?",
+    "answers": [
+      "Der Koran",
+      "Die Tawrat",
+      "Das Injil",
+      "Der Zabur"
+    ],
+    "explanation": "Der Koran ist das Buch, das dem Propheten Muhammad ﷺ offenbart wurde.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_161",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das Haus Allahs, das in Mekka gebaut wurde?",
+    "answers": [
+      "Die Ka'ba",
+      "Die Rawda",
+      "Der Maqam",
+      "Der Hijr"
+    ],
+    "explanation": "„Das erste Haus, das für die Menschen errichtet wurde, ist das in Bakka“ (3:96).",
+    "sourceDisplay": "Koran 3:96"
+  },
+  {
+    "id": "faith_162",
+    "correctAnswerIndex": 0,
+    "question": "Was sagt ein Muslim, bevor er zu essen beginnt?",
+    "answers": [
+      "Bismillah",
+      "Amin",
+      "Subhan Allah",
+      "Allahumma"
+    ],
+    "explanation": "Der Prophet ﷺ lehrte einen Jungen: „Sag Bismillah und iss mit der rechten Hand.“",
+    "sourceDisplay": "Sahih al-Buchari, 5376"
+  },
+  {
+    "id": "faith_163",
+    "correctAnswerIndex": 0,
+    "question": "Wie begrüßen sich die Muslime?",
+    "answers": [
+      "As-salamu alaykum",
+      "Al-hamdu lillah",
+      "Bismillah",
+      "Allahu akbar"
+    ],
+    "explanation": "„As-salamu alaykum“ bedeutet: Friede sei mit euch.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_164",
+    "correctAnswerIndex": 0,
+    "question": "Was antwortet man auf „as-salamu alaykum“?",
+    "answers": [
+      "Wa alaykum as-salam",
+      "Bismillah",
+      "Amin",
+      "Subhan Allah"
+    ],
+    "explanation": "Man erwidert den Gruß: „und mit euch sei Friede“.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_165",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das Fest direkt nach dem Monat Ramadan?",
+    "answers": [
+      "Eid al-Fitr",
+      "Eid al-Adha",
+      "Laylat al-Qadr",
+      "Ashura"
+    ],
+    "explanation": "Eid al-Fitr, das Fest des Fastenbrechens.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_166",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das Opferfest?",
+    "answers": [
+      "Eid al-Adha",
+      "Eid al-Fitr",
+      "Der Mawlid",
+      "Laylat al-Qadr"
+    ],
+    "explanation": "Eid al-Adha fällt in die Tage der Pilgerfahrt.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_167",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißen die Geschöpfe Allahs, die Ihm immer gehorchen und sich nie widersetzen?",
+    "answers": [
+      "Die Engel",
+      "Die Dschinn",
+      "Die Propheten",
+      "Die Gefährten"
+    ],
+    "explanation": "Die Engel führen aus, was Allah befiehlt, und widersetzen sich Ihm nie.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_168",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das Paradies auf Arabisch?",
+    "answers": [
+      "Al-Janna",
+      "As-Salat",
+      "Ad-Du'a",
+      "Al-Adhan"
+    ],
+    "explanation": "Al-Janna, wörtlich „der Garten“, ist die Heimstatt, die den Gläubigen versprochen ist.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_169",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die Waschung mit Wasser, die man vor dem Gebet vornimmt?",
+    "answers": [
+      "Die Gebetswaschung (Wudu)",
+      "Der Tawaf",
+      "Der Dhikr",
+      "Der Sa'y"
+    ],
+    "explanation": "Der Wudu ist die Reinigung, die dem Gebet vorausgeht.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_170",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt eine Einheit des Gebets?",
+    "answers": [
+      "Eine Rak'a",
+      "Eine Sure",
+      "Ein Adhan",
+      "Ein Tawaf"
+    ],
+    "explanation": "Eine Rak'a umfasst das Stehen, die Verbeugung und die Niederwerfungen.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_171",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure wird in jeder Gebetseinheit rezitiert?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "An-Nas",
+      "Al-Kawthar"
+    ],
+    "explanation": "Al-Fatiha, die eröffnende Sure, wird in jeder Rak'a rezitiert.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_172",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man das, was im Islam erlaubt ist?",
+    "answers": [
+      "Halal",
+      "Haram",
+      "Sunna",
+      "Fard"
+    ],
+    "explanation": "Halal bedeutet das, was erlaubt ist.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_173",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man das, was im Islam verboten ist?",
+    "answers": [
+      "Haram",
+      "Halal",
+      "Mubah",
+      "Nafila"
+    ],
+    "explanation": "Haram bedeutet das, was verboten ist.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_174",
+    "correctAnswerIndex": 0,
+    "question": "Welches Fleisch verbietet der Koran?",
+    "answers": [
+      "Schweinefleisch",
+      "Lammfleisch",
+      "Rindfleisch",
+      "Hühnerfleisch"
+    ],
+    "explanation": "„Verboten hat Er euch Verendetes, Blut und Schweinefleisch“ (2:173).",
+    "sourceDisplay": "Koran 2:173"
+  },
+  {
+    "id": "faith_175",
+    "correctAnswerIndex": 0,
+    "question": "Welches Getränk sollen wir laut Koran meiden?",
+    "answers": [
+      "Wein und jedes berauschende Getränk",
+      "Milch",
+      "Honig",
+      "Regenwasser"
+    ],
+    "explanation": "„Wein, Glücksspiel… sind ein Gräuel, so meidet sie“ (5:90).",
+    "sourceDisplay": "Koran 5:90"
+  },
+  {
+    "id": "faith_176",
+    "correctAnswerIndex": 0,
+    "question": "Was sagt jemand, der niest, wie der Prophet ﷺ es gelehrt hat?",
+    "answers": [
+      "Al-hamdu lillah",
+      "Bismillah",
+      "Allahu akbar",
+      "Amin"
+    ],
+    "explanation": "„Wenn einer von euch niest, soll er sagen: al-hamdu lillah.“",
+    "sourceDisplay": "Sahih al-Buchari, 6224"
+  },
+  {
+    "id": "faith_177",
+    "correctAnswerIndex": 0,
+    "question": "Wie sagt man „das Gebet“ auf Arabisch?",
+    "answers": [
+      "As-Salat",
+      "As-Sawm",
+      "Az-Zakat",
+      "Al-Hadsch"
+    ],
+    "explanation": "As-Salat ist das rituelle Gebet des Muslims.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_178",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man es, wenn man Allah mit eigenen Worten um etwas bittet?",
+    "answers": [
+      "Du'a",
+      "Tawaf",
+      "Adhan",
+      "Sa'y"
+    ],
+    "explanation": "Du'a ist das Bittgebet, das Anrufen Allahs.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_179",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet „al-hamdu lillah“?",
+    "answers": [
+      "Lob sei Allah",
+      "Allah ist der Größte",
+      "Im Namen Allahs",
+      "Gepriesen sei Allah"
+    ],
+    "explanation": "Es ist der zweite Vers von Al-Fatiha: „Lob sei Allah, dem Herrn der Welten“ (1:2).",
+    "sourceDisplay": "Koran 1:2"
+  },
+  {
+    "id": "faith_180",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet das Wort „Islam“?",
+    "answers": [
+      "Hingabe an Allah",
+      "Reichtum",
+      "Reise",
+      "Wissen"
+    ],
+    "explanation": "Islam kommt von einer Wurzel, die „sich hingeben“ und „in Frieden sein“ bedeutet.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_181",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet das Wort „Muslim“?",
+    "answers": [
+      "Jemand, der sich Allah hingibt",
+      "Jemand, der reist",
+      "Jemand, der lehrt",
+      "Jemand, der baut"
+    ],
+    "explanation": "Ein Muslim ist jemand, der sich Allah allein hingibt.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_182",
+    "correctAnswerIndex": 0,
+    "question": "Wer hat laut Koran die Himmel und die Erde erschaffen?",
+    "answers": [
+      "Allah",
+      "Die Engel",
+      "Die Propheten",
+      "Die Sonne"
+    ],
+    "explanation": "„Lob sei Allah, Der die Himmel und die Erde erschaffen hat“ (6:1).",
+    "sourceDisplay": "Koran 6:1"
+  },
+  {
+    "id": "faith_183",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Namen Allahs nennt der Hadith?",
+    "answers": [
+      "Neunundneunzig",
+      "Zehn",
+      "Fünfzig",
+      "Tausend"
+    ],
+    "explanation": "„Allah hat neunundneunzig Namen, hundert weniger einen.“",
+    "sourceDisplay": "Sahih al-Buchari, 2736"
+  },
+  {
+    "id": "faith_184",
+    "correctAnswerIndex": 0,
+    "question": "Was tun die Engel, die „edle Schreiber“ genannt werden?",
+    "answers": [
+      "Sie schreiben unsere Taten auf",
+      "Sie tragen den Regen",
+      "Sie bewachen die Ka'ba",
+      "Sie lehren Arabisch"
+    ],
+    "explanation": "„Edle Schreiber, die wissen, was ihr tut“ (82:11-12).",
+    "sourceDisplay": "Koran 82:11"
+  },
+  {
+    "id": "faith_185",
+    "correctAnswerIndex": 0,
+    "question": "Welche Nacht beschreibt der Koran als besser als tausend Monate?",
+    "answers": [
+      "Laylat al-Qadr",
+      "Die Nacht auf Freitag",
+      "Die Nacht des Eid",
+      "Die erste Nacht des Ramadan"
+    ],
+    "explanation": "„Die Nacht der Bestimmung ist besser als tausend Monate“ (97:3).",
+    "sourceDisplay": "Koran 97:3"
+  },
+  {
+    "id": "faith_186",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt der Glaube an einen einzigen Gott?",
+    "answers": [
+      "Tawhid",
+      "Tawaf",
+      "Tayammum",
+      "Tarawih"
+    ],
+    "explanation": "Tawhid ist die Einheit Allahs, das Herzstück der Botschaft jedes Propheten.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_187",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man es, wenn man Allah in der Anbetung jemanden beigesellt?",
+    "answers": [
+      "Shirk",
+      "Dhikr",
+      "Du'a",
+      "Sabr"
+    ],
+    "explanation": "Shirk ist die Beigesellung: etwas neben Allah anzubeten.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_188",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt der Tag, an dem alle gerichtet werden?",
+    "answers": [
+      "Der Tag der Auferstehung",
+      "Der Tag des Eid",
+      "Der Freitag",
+      "Der erste Tag des Ramadan"
+    ],
+    "explanation": "Yawm al-Qiyama, der Tag der Auferstehung, an dem jeder seine Taten sehen wird.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_189",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Monate hat das Jahr laut Koran?",
+    "answers": [
+      "Zwölf",
+      "Zehn",
+      "Vierzehn",
+      "Sechs"
+    ],
+    "explanation": "„Die Zahl der Monate bei Allah ist zwölf“ (9:36).",
+    "sourceDisplay": "Koran 9:36"
+  },
+  {
+    "id": "faith_190",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Niederwerfungen gibt es in einer einzigen Rak'a?",
+    "answers": [
+      "Zwei",
+      "Eine",
+      "Drei",
+      "Vier"
+    ],
+    "explanation": "Jede Rak'a enthält zwei Niederwerfungen.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "quran_151",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Suren enthält der Koran?",
+    "answers": [
+      "Hundertvierzehn",
+      "Sechzig",
+      "Zweihundert",
+      "Dreißig"
+    ],
+    "explanation": "Der Koran hat 114 Suren, von Al-Fatiha bis An-Nas.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_152",
+    "correctAnswerIndex": 0,
+    "question": "Welche ist die erste Sure des Korans?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Baqara",
+      "An-Nas",
+      "Ya-Sin"
+    ],
+    "explanation": "Al-Fatiha, „die Eröffnende“, ist die erste Sure.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_153",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet das Wort „Koran“?",
+    "answers": [
+      "Die Rezitation, die Lesung",
+      "Der Weg",
+      "Das Licht",
+      "Der Garten"
+    ],
+    "explanation": "Koran kommt von einer Wurzel, die „lesen“ und „rezitieren“ bedeutet.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_154",
+    "correctAnswerIndex": 0,
+    "question": "Über wie viele Jahre wurde der Koran ungefähr herabgesandt?",
+    "answers": [
+      "Etwa dreiundzwanzig Jahre",
+      "In einer einzigen Nacht",
+      "Hundert Jahre",
+      "Drei Jahre"
+    ],
+    "explanation": "Die Offenbarung kam über etwa dreiundzwanzig Jahre herab.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_155",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man einen Vers des Korans?",
+    "answers": [
+      "Eine Aya",
+      "Eine Sure",
+      "Einen Juz'",
+      "Einen Hadith"
+    ],
+    "explanation": "Jeder nummerierte Satz des Korans ist eine Aya, ein „Zeichen“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_156",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man ein Kapitel des Korans?",
+    "answers": [
+      "Eine Sure",
+      "Eine Aya",
+      "Einen Juz'",
+      "Eine Khutba"
+    ],
+    "explanation": "Der Koran ist in Suren unterteilt, jede mit ihrem eigenen Namen.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_157",
+    "correctAnswerIndex": 0,
+    "question": "Welche ist die längste Sure des Korans?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Fatiha",
+      "Al-Kawthar",
+      "An-Nas"
+    ],
+    "explanation": "Al-Baqara ist die längste Sure des Korans.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_158",
+    "correctAnswerIndex": 0,
+    "question": "Welche ist die kürzeste Sure des Korans?",
+    "answers": [
+      "Al-Kawthar",
+      "Al-Baqara",
+      "Al Imran",
+      "An-Nisa"
+    ],
+    "explanation": "Al-Kawthar hat nur drei Verse.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_159",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Satz eröffnet fast jede Sure?",
+    "answers": [
+      "Im Namen Allahs, des Allerbarmers, des Barmherzigen",
+      "Lob sei Allah",
+      "Allah ist der Größte",
+      "Es gibt keinen Gott außer Allah"
+    ],
+    "explanation": "Die Basmala eröffnet 113 der 114 Suren.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_160",
+    "correctAnswerIndex": 0,
+    "question": "Wessen Rede ist der Koran?",
+    "answers": [
+      "Die Rede Allahs",
+      "Die Rede des Propheten ﷺ",
+      "Die Rede des Engels Jibril",
+      "Die Rede der Gefährten"
+    ],
+    "explanation": "Der Koran nennt sich selbst „die Rede Allahs“ (Kalam Allah) in 9:6.",
+    "sourceDisplay": "Koran 9:6"
+  },
+  {
+    "id": "quran_161",
+    "correctAnswerIndex": 0,
+    "question": "In wie viele Teile (Juz') ist der Koran eingeteilt?",
+    "answers": [
+      "Dreißig",
+      "Zehn",
+      "Fünfzig",
+      "Hundert"
+    ],
+    "explanation": "Der Koran ist in dreißig Juz' eingeteilt, einen für jede Nacht des Ramadan.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_162",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure trägt den Namen einer Frau?",
+    "answers": [
+      "Maryam",
+      "Yusuf",
+      "Nuh",
+      "Muhammad"
+    ],
+    "explanation": "Sure 19 trägt den Namen Maryams.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_163",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißen die beiden letzten Suren, mit denen man Schutz sucht?",
+    "answers": [
+      "Al-Mu'awwidhatan",
+      "Al-Mathani",
+      "Al-Mufassal",
+      "Al-Hawamim"
+    ],
+    "explanation": "Al-Falaq und An-Nas heißen al-Mu'awwidhatan, „die beiden Schutzsuren“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_164",
+    "correctAnswerIndex": 0,
+    "question": "Welches Wort eröffnet die Sure Al-Fatiha nach der Basmala?",
+    "answers": [
+      "Al-hamdu",
+      "Qul",
+      "Iqra'",
+      "Inna"
+    ],
+    "explanation": "„Al-hamdu lillahi rabbi l-alamin“ eröffnet Al-Fatiha.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_165",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt die Erklärung der Bedeutung des Korans?",
+    "answers": [
+      "Tafsir",
+      "Tajwid",
+      "Hifz",
+      "Tawaf"
+    ],
+    "explanation": "Der Tafsir ist die Wissenschaft, die die Bedeutung der Verse erklärt.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_166",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure beginnt nicht mit der Basmala?",
+    "answers": [
+      "At-Tawba",
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "An-Nasr"
+    ],
+    "explanation": "At-Tawba ist die einzige Sure, die nicht mit der Basmala beginnt.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_167",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man jemanden, der den Koran laut rezitiert?",
+    "answers": [
+      "Einen Qari'",
+      "Einen Muezzin",
+      "Einen Imam",
+      "Einen Khatib"
+    ],
+    "explanation": "Der Qari' ist der Rezitator des Korans.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_168",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Sure steht der Thronvers?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Kahf",
+      "Ya-Sin",
+      "Al-Mulk"
+    ],
+    "explanation": "Der Thronvers ist Vers 255 der Sure Al-Baqara.",
+    "sourceDisplay": "Koran 2:255"
+  },
+  {
+    "id": "quran_169",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet „An-Nur“, der Titel der 24. Sure?",
+    "answers": [
+      "Das Licht",
+      "Die Nacht",
+      "Der Wind",
+      "Der Berg"
+    ],
+    "explanation": "An-Nur bedeutet „das Licht“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_170",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure heißt „Der Allerbarmer“?",
+    "answers": [
+      "Ar-Rahman",
+      "Al-Mulk",
+      "Al-Fath",
+      "As-Saff"
+    ],
+    "explanation": "Sure 55 heißt Ar-Rahman.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_171",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure ist nach der Höhle benannt?",
+    "answers": [
+      "Al-Kahf",
+      "Al-Fil",
+      "An-Naml",
+      "Al-Baqara"
+    ],
+    "explanation": "Al-Kahf bedeutet „die Höhle“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_172",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet „An-Nisa“, der Titel der 4. Sure?",
+    "answers": [
+      "Die Frauen",
+      "Die Männer",
+      "Die Kinder",
+      "Die Reisenden"
+    ],
+    "explanation": "An-Nisa bedeutet „die Frauen“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_173",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet „Al-Ma'ida“, der Titel der 5. Sure?",
+    "answers": [
+      "Der gedeckte Tisch",
+      "Der Berg",
+      "Das Eisen",
+      "Die Morgendämmerung"
+    ],
+    "explanation": "Al-Ma'ida bedeutet „der gedeckte Tisch“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_174",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet gibt der 71. Sure ihren Namen?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Yunus",
+      "Ibrahim"
+    ],
+    "explanation": "Sure 71 heißt Nuh.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_175",
+    "correctAnswerIndex": 0,
+    "question": "Wie viele Verse hat die Sure Al-Fatiha?",
+    "answers": [
+      "Sieben",
+      "Drei",
+      "Zehn",
+      "Zwanzig"
+    ],
+    "explanation": "Al-Fatiha hat sieben Verse.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_176",
+    "correctAnswerIndex": 0,
+    "question": "Wo ist der Koran laut seiner eigenen Aussage bewahrt?",
+    "answers": [
+      "Auf einer wohlverwahrten Tafel",
+      "In einer Höhle",
+      "In einer Truhe",
+      "Auf einem Berg"
+    ],
+    "explanation": "„Es ist ein ruhmvoller Koran, auf einer wohlverwahrten Tafel“ (85:21-22).",
+    "sourceDisplay": "Koran 85:22"
+  },
+  {
+    "id": "quran_177",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure ist nach dem Mond benannt?",
+    "answers": [
+      "Al-Qamar",
+      "Ash-Shams",
+      "An-Najm",
+      "Al-Layl"
+    ],
+    "explanation": "Al-Qamar bedeutet „der Mond“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_178",
+    "correctAnswerIndex": 0,
+    "question": "Welche Sure ist nach dem Tag der Auferstehung benannt?",
+    "answers": [
+      "Al-Qiyama",
+      "Al-Fath",
+      "Al-Hashr",
+      "As-Saff"
+    ],
+    "explanation": "Sure 75 heißt Al-Qiyama.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_179",
+    "correctAnswerIndex": 0,
+    "question": "Welcher Prophet gibt der 14. Sure ihren Namen?",
+    "answers": [
+      "Ibrahim",
+      "Muhammad ﷺ",
+      "Yusuf",
+      "Hud"
+    ],
+    "explanation": "Sure 14 heißt Ibrahim.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "quran_180",
+    "correctAnswerIndex": 0,
+    "question": "Was bedeutet „Al-Hadid“, der Titel der 57. Sure?",
+    "answers": [
+      "Das Eisen",
+      "Das Gold",
+      "Das Holz",
+      "Der Stein"
+    ],
+    "explanation": "Al-Hadid bedeutet „das Eisen“.",
+    "sourceDisplay": "Koran"
+  },
+  {
+    "id": "virtues_101",
+    "correctAnswerIndex": 0,
+    "question": "Wie sollen wir laut Koran mit unseren Eltern sprechen?",
+    "answers": [
+      "Mit respektvollen Worten, ohne auch nur „Uff“ zu sagen",
+      "Lauter als sie",
+      "Indem wir immer schweigen",
+      "Nur freitags"
+    ],
+    "explanation": "„Sag nicht Uff zu ihnen, und sprich zu ihnen ehrerbietige Worte“ (17:23).",
+    "sourceDisplay": "Koran 17:23"
+  },
+  {
+    "id": "virtues_102",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man eine Gabe, die man freiwillig aus Güte gibt?",
+    "answers": [
+      "Sadaqa",
+      "Zakat",
+      "Tawaf",
+      "Adhan"
+    ],
+    "explanation": "Sadaqa ist die freiwillige Spende, ob klein oder groß.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "virtues_103",
+    "correctAnswerIndex": 0,
+    "question": "Was rät der Prophet ﷺ beim Sprechen dem, der an Allah und den Jüngsten Tag glaubt?",
+    "answers": [
+      "Er soll Gutes sagen oder schweigen",
+      "Er soll viel reden",
+      "Er soll nie sprechen",
+      "Er soll nur mit seiner Familie sprechen"
+    ],
+    "explanation": "„Wer an Allah und den Jüngsten Tag glaubt, soll Gutes sagen oder schweigen.“",
+    "sourceDisplay": "Sahih al-Buchari, 6018"
+  },
+  {
+    "id": "virtues_104",
+    "correctAnswerIndex": 0,
+    "question": "Wie sollen wir laut dem Propheten ﷺ unseren Nachbarn behandeln?",
+    "answers": [
+      "Großzügig zu ihm sein",
+      "Ihn meiden",
+      "Nie mit ihm sprechen",
+      "Ihn bitten wegzuziehen"
+    ],
+    "explanation": "„Wer an Allah und den Jüngsten Tag glaubt, soll großzügig zu seinem Nachbarn sein.“",
+    "sourceDisplay": "Sahih al-Buchari, 6015"
+  },
+  {
+    "id": "virtues_105",
+    "correctAnswerIndex": 0,
+    "question": "Mit wem ist Allah laut Koran?",
+    "answers": [
+      "Mit den Geduldigen",
+      "Mit den Reichsten",
+      "Mit den Stärksten",
+      "Mit den Schnellsten"
+    ],
+    "explanation": "„Wahrlich, Allah ist mit den Geduldigen“ (2:153).",
+    "sourceDisplay": "Koran 2:153"
+  },
+  {
+    "id": "virtues_106",
+    "correctAnswerIndex": 0,
+    "question": "Was verbietet der Koran im Umgang mit der Waise?",
+    "answers": [
+      "Sie hart zu behandeln",
+      "Ihr das Lesen beizubringen",
+      "Sie zum Essen einzuladen",
+      "Mit ihr zu spielen"
+    ],
+    "explanation": "„Was nun die Waise angeht, so unterdrücke sie nicht“ (93:9).",
+    "sourceDisplay": "Koran 93:9"
+  },
+  {
+    "id": "virtues_107",
+    "correctAnswerIndex": 0,
+    "question": "Welche Art von Rede sollen wir laut Koran meiden?",
+    "answers": [
+      "Falsche Rede",
+      "Sanfte Rede",
+      "Worte des Dankes",
+      "Worte des Grußes"
+    ],
+    "explanation": "„Und meidet die falsche Rede“ (22:30).",
+    "sourceDisplay": "Koran 22:30"
+  },
+  {
+    "id": "virtues_108",
+    "correctAnswerIndex": 0,
+    "question": "Wem sollen wir laut Koran neben dem nahen Verwandten sein Recht geben?",
+    "answers": [
+      "Dem Armen und dem Reisenden",
+      "Dem König und dem Richter",
+      "Dem Händler",
+      "Dem Dichter"
+    ],
+    "explanation": "„Gib dem Verwandten sein Recht, und dem Armen und dem Reisenden“ (17:26).",
+    "sourceDisplay": "Koran 17:26"
+  },
+  {
+    "id": "virtues_109",
+    "correctAnswerIndex": 0,
+    "question": "Was verspricht Allah dem, der Ihm dankt?",
+    "answers": [
+      "Ihm noch mehr zu geben",
+      "Ihn reisen zu lassen",
+      "Ihn berühmt zu machen",
+      "Ihn zum König zu machen"
+    ],
+    "explanation": "„Wenn ihr dankbar seid, werde Ich euch gewiss noch mehr geben“ (14:7).",
+    "sourceDisplay": "Koran 14:7"
+  },
+  {
+    "id": "virtues_110",
+    "correctAnswerIndex": 0,
+    "question": "Wie sagt man „Geduld“ auf Arabisch?",
+    "answers": [
+      "As-Sabr",
+      "Ash-Shukr",
+      "As-Sidq",
+      "Al-Haya'"
+    ],
+    "explanation": "As-Sabr ist die Standhaftigkeit in der Not und im Gehorsam.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_191",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man das Gedenken an Allah, bei dem man Sein Lob wiederholt?",
+    "answers": [
+      "Dhikr",
+      "Hadsch",
+      "Sa'y",
+      "Tayammum"
+    ],
+    "explanation": "Dhikr ist das Gedenken an Allah mit der Zunge und dem Herzen.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_192",
+    "correctAnswerIndex": 0,
+    "question": "Welcher ist der erste Monat des islamischen Jahres?",
+    "answers": [
+      "Muharram",
+      "Ramadan",
+      "Shawwal",
+      "Rajab"
+    ],
+    "explanation": "Das Hidschra-Jahr beginnt mit dem Monat Muharram.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_193",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man die Rückkehr zu Allah nach einer Sünde?",
+    "answers": [
+      "Tawba",
+      "Tawaf",
+      "Tajwid",
+      "Tarawih"
+    ],
+    "explanation": "Tawba ist die Reue: bereuen, aufhören und zu Allah zurückkehren.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_194",
+    "correctAnswerIndex": 0,
+    "question": "Wer versorgt jedes Geschöpf auf der Erde?",
+    "answers": [
+      "Allah",
+      "Die Könige",
+      "Die Händler",
+      "Die Engel"
+    ],
+    "explanation": "„Es gibt kein Geschöpf auf der Erde, dessen Versorgung nicht Allah obliegt“ (11:6).",
+    "sourceDisplay": "Koran 11:6"
+  },
+  {
+    "id": "faith_195",
+    "correctAnswerIndex": 0,
+    "question": "In welcher Stadt wird die Pilgerfahrt vollzogen?",
+    "answers": [
+      "In Mekka",
+      "In Medina",
+      "In Jerusalem",
+      "In Kairo"
+    ],
+    "explanation": "Der Hadsch findet in Mekka und an seinen heiligen Stätten statt.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_196",
+    "correctAnswerIndex": 0,
+    "question": "Wie nennt man jemanden, der die Pilgerfahrt vollzieht?",
+    "answers": [
+      "Einen Hadschi (Pilger)",
+      "Einen Imam",
+      "Einen Qari'",
+      "Einen Muezzin"
+    ],
+    "explanation": "Der Pilger wird Hadschi genannt.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_197",
+    "correctAnswerIndex": 0,
+    "question": "Was weiß Allah laut Koran, selbst wenn es verborgen ist?",
+    "answers": [
+      "Was in den Herzen ist",
+      "Nur die sichtbaren Taten",
+      "Nur die gesprochenen Worte",
+      "Nichts Verborgenes"
+    ],
+    "explanation": "„Ob ihr verbergt, was in eurer Brust ist, oder es offenlegt, Allah weiß es“ (3:29).",
+    "sourceDisplay": "Koran 3:29"
+  },
+  {
+    "id": "faith_198",
+    "correctAnswerIndex": 0,
+    "question": "Wem wurde laut Koran das Fasten vorgeschrieben?",
+    "answers": [
+      "Den Gläubigen, wie denen vor ihnen",
+      "Nur den Reisenden",
+      "Nur den Gelehrten",
+      "Nur den Kindern"
+    ],
+    "explanation": "„O die ihr glaubt, das Fasten ist euch vorgeschrieben, so wie es denen vor euch vorgeschrieben war“ (2:183).",
+    "sourceDisplay": "Koran 2:183"
+  },
+  {
+    "id": "faith_199",
+    "correctAnswerIndex": 0,
+    "question": "Wie heißt das große Gemeinschaftsgebet am Freitag?",
+    "answers": [
+      "Salat al-Jumu'a",
+      "Salat al-Eid",
+      "Salat al-Witr",
+      "Salat ad-Duha"
+    ],
+    "explanation": "Salat al-Jumu'a versammelt die Muslime am Freitag zur Mittagszeit.",
+    "sourceDisplay": "Gängiger Begriff"
+  },
+  {
+    "id": "faith_200",
+    "correctAnswerIndex": 0,
+    "question": "Wie sagt man „das Fasten“ auf Arabisch?",
+    "answers": [
+      "As-Sawm",
+      "As-Salat",
+      "Az-Zakat",
+      "Al-Adhan"
+    ],
+    "explanation": "As-Sawm ist das Fasten, die vierte Säule des Islam.",
+    "sourceDisplay": "Gängiger Begriff"
   }
 ]

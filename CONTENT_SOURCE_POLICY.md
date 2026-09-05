@@ -192,20 +192,20 @@ files directly, or the registry and the shipped content will drift apart.
 
 ## 10. Honest scope of the v1 bank
 
-The bank ships **900 canonical questions**, each written and reviewed one
+The bank ships **1,100 canonical questions**, each written and reviewed one
 by one against every rule above, in **all 12 UI languages** (French,
 English and Arabic as the source texts; Spanish, Portuguese, German,
 Turkish, Indonesian, Urdu, Malay, Italian and Dutch translated entry by
 entry from them, with the answer order, level, explanation and source
-reference preserved and checked by the generator) — 10,800 localized
+reference preserved and checked by the generator) — 13,200 localized
 records in total.
 
 The distribution is exact and gated by `tool/pre_release_check.dart`:
-**300 easy / 300 medium / 300 hard**, and by category **prophets 250,
-sīra 250, Qur'an 150, faith 150, virtues 100**. Fifty questions are free
-(17 easy / 17 medium / 16 hard); the other 850 are behind the Premium
-unlock. The bank draws on **686 unique `(sourceWork, sourceReference)`
-pairs**.
+**200 first-steps / 300 easy / 300 medium / 300 hard**, and by category
+**prophets 310, sīra 300, Qur'an 180, faith 200, virtues 110**. Fifty
+questions are free (13 first-steps / 13 easy / 12 medium / 12 hard); the
+other 1,050 are behind the Premium unlock. The bank draws on **786 unique
+`(sourceWork, sourceReference)` pairs**.
 
 The sourcing discipline was not relaxed to get there: rule §1 above ("at
 the slightest doubt, reject the question") was applied to every entry,

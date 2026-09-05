@@ -13,7 +13,7 @@ ads.
 > See **Content scope** and **What is genuinely done vs. what remains**
 > below — this is a real, working, tested app, built to the full
 > architecture and design system the product brief calls for, and now
-> carrying its full content bank: 900 rigorously-sourced questions in all
+> carrying its full content bank: 1,100 rigorously-sourced questions in all
 > 12 UI languages. Nothing here is a mockup: every screen, every rule,
 > every test described below runs.
 
@@ -279,23 +279,24 @@ in-progress game save; `flutter_secure_storage` specifically for the
 Premium entitlement flag. A corrupted save is discarded, never crashes
 the app (`GameSaveService.load()`).
 
-## Content scope — the 900-question bank
+## Content scope — the 1,100-question bank
 
 The product brief specifies canonical questions × 12 languages, sourced
 under a strict "Qur'an or Ṣaḥīḥ al-Bukhārī/Ṣaḥīḥ Muslim only,
 non-controversial, reject on any doubt" policy
 (`CONTENT_SOURCE_POLICY.md`).
 
-**The bank now ships 900 canonical questions in all 12 UI languages**
-(10,800 localized records), each written and reviewed one by one against
+**The bank now ships 1,100 canonical questions in all 12 UI languages**
+(13,200 localized records), each written and reviewed one by one against
 every rule in that policy:
 
-- **By difficulty:** 300 easy / 300 medium / 300 hard.
-- **By category:** prophets 250, sīra 250, Qur'an 150, faith 150,
-  virtues 100.
-- **Free/Premium:** 50 free (17 easy / 17 medium / 16 hard, spread across
-  every category), 850 behind the Premium unlock.
-- **Traceability:** 686 unique `(sourceWork, sourceReference)` pairs,
+- **By difficulty:** 200 first-steps / 300 easy / 300 medium / 300 hard.
+- **By category:** prophets 310, sīra 300, Qur'an 180, faith 200,
+  virtues 110.
+- **Free/Premium:** 50 free (13 first-steps / 13 easy / 12 medium /
+  12 hard, spread across every category), 1,050 behind the Premium
+  unlock.
+- **Traceability:** 786 unique `(sourceWork, sourceReference)` pairs,
   listed in `content_quality/source_registry.json` with the question ids
   citing each, plus one CSV row per question in
   `content_quality/question_sources.csv`.

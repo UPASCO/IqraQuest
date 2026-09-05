@@ -699,6 +699,35 @@ void main() {
     }
   });
 
+  testWidgets('on a tablet the plate takes all the room it can', (
+    tester,
+  ) async {
+    // The other side of the band: keeping the HUD off the plate used to
+    // cost a guessed 220 points above and 160 below, whatever the HUD
+    // actually measured — and on a 4:3 tablet that threw away the width
+    // the square could have had. The bands are the measured heights now,
+    // so in portrait the plate reaches the full width, and in landscape
+    // it keeps far more of the height than the constants left it.
+    tester.view.padding = const FakeViewPadding(top: 24);
+    addTearDown(tester.view.resetPadding);
+
+    await _pumpGame(tester, size: const Size(834, 1194));
+    var box = tester.getRect(find.byKey(const Key('board-scene')));
+    expect(
+      box.width < box.height ? box.width : box.height,
+      greaterThanOrEqualTo(833),
+      reason: 'in portrait the plate should reach the full width',
+    );
+
+    await _pumpGame(tester, size: const Size(1366, 1024));
+    box = tester.getRect(find.byKey(const Key('board-scene')));
+    expect(
+      box.width < box.height ? box.width : box.height,
+      greaterThanOrEqualTo(690),
+      reason: 'the guessed bands left the plate at 644 points here',
+    );
+  });
+
   testWidgets('the board menu holds the rules, the switches and the way out', (
     tester,
   ) async {

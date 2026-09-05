@@ -11698,5 +11698,2605 @@
     ],
     "explanation": "«Não há bem em muitas das suas conversas secretas, salvo em quem ordena uma esmola, algo bom ou a reconciliação entre as pessoas».",
     "sourceDisplay": "Alcorão 4:114"
+  },
+  {
+    "id": "prophets_251",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o Profeta do islão?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Ibrahim",
+      "Musa",
+      "Isa"
+    ],
+    "explanation": "O Profeta do islão é Muhammad ﷺ, filho de Abdullah.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_252",
+    "correctAnswerIndex": 0,
+    "question": "Isma'il e Ishaq são filhos de que profeta?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Dawud"
+    ],
+    "explanation": "«Louvado seja Allah que, apesar da velhice, me concedeu Isma'il e Ishaq» (14:39).",
+    "sourceDisplay": "Alcorão 14:39"
+  },
+  {
+    "id": "prophets_253",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta Allah elevou até Si?",
+    "answers": [
+      "Isa",
+      "Yunus",
+      "Ayyub",
+      "Idris"
+    ],
+    "explanation": "«Allah elevou-o até Si» (4:158).",
+    "sourceDisplay": "Alcorão 4:158"
+  },
+  {
+    "id": "prophets_254",
+    "correctAnswerIndex": 0,
+    "question": "Quem é a mãe do profeta Isa?",
+    "answers": [
+      "Maryam",
+      "Asiya",
+      "Hajar",
+      "Sara"
+    ],
+    "explanation": "Maryam, a quem é dedicada uma surata inteira do Alcorão.",
+    "sourceDisplay": "Alcorão 19:16-21"
+  },
+  {
+    "id": "prophets_255",
+    "correctAnswerIndex": 0,
+    "question": "Quem foi o primeiro ser humano criado por Allah?",
+    "answers": [
+      "Adam",
+      "Nuh",
+      "Ibrahim",
+      "Idris"
+    ],
+    "explanation": "Adam é o primeiro homem, a quem Allah ensinou todos os nomes.",
+    "sourceDisplay": "Alcorão 2:31"
+  },
+  {
+    "id": "prophets_256",
+    "correctAnswerIndex": 0,
+    "question": "Para que profeta o fogo se tornou frescura e paz?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Yusuf",
+      "Sulayman"
+    ],
+    "explanation": "«Ó fogo, sê frescura e paz para Ibrahim.»",
+    "sourceDisplay": "Alcorão 21:69"
+  },
+  {
+    "id": "prophets_257",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta tinha um cajado que se transformou em serpente?",
+    "answers": [
+      "Musa",
+      "Harun",
+      "Yahya",
+      "Zakariyya"
+    ],
+    "explanation": "Allah perguntou a Musa: «O que é isso na tua mão direita?»",
+    "sourceDisplay": "Alcorão 20:17-18"
+  },
+  {
+    "id": "prophets_258",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta viu em sonho onze estrelas a prostrarem-se?",
+    "answers": [
+      "Yusuf",
+      "Ya'qub",
+      "Ishaq",
+      "Dawud"
+    ],
+    "explanation": "«Ó meu pai, vi onze estrelas, o sol e a lua.»",
+    "sourceDisplay": "Alcorão 12:4"
+  },
+  {
+    "id": "prophets_259",
+    "correctAnswerIndex": 0,
+    "question": "Que pássaro trouxe notícias ao profeta Sulayman?",
+    "answers": [
+      "A poupa",
+      "O corvo",
+      "O falcão",
+      "A pomba"
+    ],
+    "explanation": "A poupa disse: «Trago-te de Saba' uma notícia certa» (27:22).",
+    "sourceDisplay": "Alcorão 27:22"
+  },
+  {
+    "id": "prophets_260",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta é o modelo da paciência na provação?",
+    "answers": [
+      "Ayyub",
+      "Yunus",
+      "Lut",
+      "Shu'ayb"
+    ],
+    "explanation": "Ayyub invocou o seu Senhor e foi encontrado perseverante.",
+    "sourceDisplay": "Alcorão 38:41"
+  },
+  {
+    "id": "prophets_261",
+    "correctAnswerIndex": 0,
+    "question": "De que criou Allah Adam?",
+    "answers": [
+      "De pó",
+      "De luz",
+      "De fogo",
+      "De vento"
+    ],
+    "explanation": "«Criou-o de pó e depois disse-lhe: Sê!» (3:59).",
+    "sourceDisplay": "Alcorão 3:59"
+  },
+  {
+    "id": "prophets_262",
+    "correctAnswerIndex": 0,
+    "question": "A que profeta Allah falou diretamente?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Yunus",
+      "Salih"
+    ],
+    "explanation": "«E Allah falou a Musa diretamente.»",
+    "sourceDisplay": "Alcorão 4:164"
+  },
+  {
+    "id": "prophets_263",
+    "correctAnswerIndex": 0,
+    "question": "Quantos profetas vêm depois de Muhammad ﷺ?",
+    "answers": [
+      "Nenhum: ele é o último dos profetas",
+      "Um",
+      "Três",
+      "Sete"
+    ],
+    "explanation": "Muhammad ﷺ é o selo dos profetas: nenhum profeta vem depois dele.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_264",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta é chamado o amigo íntimo (khalil) de Allah?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Isa",
+      "Nuh"
+    ],
+    "explanation": "Ibrahim é o pai dos profetas e o amigo íntimo do Misericordioso.",
+    "sourceDisplay": "Alcorão 2:136"
+  },
+  {
+    "id": "prophets_265",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta curava o cego de nascença com a permissão de Allah?",
+    "answers": [
+      "Isa",
+      "Yahya",
+      "Zakariyya",
+      "Ilyas"
+    ],
+    "explanation": "«E curavas o cego de nascença e o leproso com a Minha permissão.»",
+    "sourceDisplay": "Alcorão 5:110"
+  },
+  {
+    "id": "prophets_266",
+    "correctAnswerIndex": 0,
+    "question": "Para que profeta as montanhas repetiam os louvores de Allah?",
+    "answers": [
+      "Dawud",
+      "Sulayman",
+      "Ayyub",
+      "Yunus"
+    ],
+    "explanation": "«Ó montanhas, repeti com ele os louvores de Allah.»",
+    "sourceDisplay": "Alcorão 34:10"
+  },
+  {
+    "id": "prophets_267",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta explicou o sonho do rei do Egito?",
+    "answers": [
+      "Yusuf",
+      "Harun",
+      "Ilyas",
+      "Shu'ayb"
+    ],
+    "explanation": "Yusuf explicou as sete vacas gordas e as sete magras (12:46-49).",
+    "sourceDisplay": "Alcorão 12:46-49"
+  },
+  {
+    "id": "prophets_268",
+    "correctAnswerIndex": 0,
+    "question": "Quem é o pai do profeta Yusuf?",
+    "answers": [
+      "Ya'qub",
+      "Ishaq",
+      "Ibrahim",
+      "Lut"
+    ],
+    "explanation": "Yusuf é filho de Ya'qub, que por sua vez é filho de Ishaq.",
+    "sourceDisplay": "Alcorão 12:8"
+  },
+  {
+    "id": "prophets_269",
+    "correctAnswerIndex": 0,
+    "question": "O que se abriu diante de Musa e do seu povo?",
+    "answers": [
+      "O mar, aberto para os salvar do Faraó",
+      "Um rio do Egito",
+      "Um lago de Madyan",
+      "Um poço do deserto"
+    ],
+    "explanation": "«E quando abrimos o mar para vós e vos salvámos.»",
+    "sourceDisplay": "Alcorão 2:50"
+  },
+  {
+    "id": "prophets_270",
+    "correctAnswerIndex": 0,
+    "question": "O que se diz depois de pronunciar o nome do Profeta ﷺ?",
+    "answers": [
+      "«Que a bênção e a paz de Allah estejam sobre ele»",
+      "Nada em especial",
+      "«Obrigado»",
+      "«Adeus»"
+    ],
+    "explanation": "Invoca-se sobre ele a bênção e a paz: salla-Llahu 'alayhi wa sallam.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_271",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta chamou o seu povo durante muito tempo antes do dilúvio?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Salih",
+      "Shu'ayb"
+    ],
+    "explanation": "«Enviámos Nuh ao seu povo: adverte o teu povo.»",
+    "sourceDisplay": "Alcorão 71:1"
+  },
+  {
+    "id": "prophets_272",
+    "correctAnswerIndex": 0,
+    "question": "Sulayman é filho de que profeta?",
+    "answers": [
+      "Dawud",
+      "Ya'qub",
+      "Ishaq",
+      "Yunus"
+    ],
+    "explanation": "«E a Dawud demos Sulayman: que excelente servo!» (38:30).",
+    "sourceDisplay": "Alcorão 38:30"
+  },
+  {
+    "id": "prophets_273",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta venceu Jalut (Golias)?",
+    "answers": [
+      "Dawud",
+      "Sulayman",
+      "Yusha'",
+      "Ilyas"
+    ],
+    "explanation": "«E Dawud matou Jalut» (2:251).",
+    "sourceDisplay": "Alcorão 2:251"
+  },
+  {
+    "id": "prophets_274",
+    "correctAnswerIndex": 0,
+    "question": "Em quantos profetas deve o muçulmano acreditar?",
+    "answers": [
+      "Em todos, sem distinguir nenhum",
+      "Só no último",
+      "Só em três",
+      "Só nos que o Alcorão nomeia"
+    ],
+    "explanation": "O muçulmano acredita em todos os profetas de Allah, sem fazer distinção entre eles.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_275",
+    "correctAnswerIndex": 0,
+    "question": "Quem escolheu Allah, segundo o Alcorão?",
+    "answers": [
+      "Adam, Nuh, a família de Ibrahim e a família de 'Imran",
+      "Os reis do Egito",
+      "As tribos de Medina",
+      "O povo de Saba'"
+    ],
+    "explanation": "«Allah escolheu Adam, Nuh, a família de Ibrahim e a família de 'Imran.»",
+    "sourceDisplay": "Alcorão 3:33"
+  },
+  {
+    "id": "prophets_276",
+    "correctAnswerIndex": 0,
+    "question": "Em que terra se tornou o profeta Yusuf homem de confiança do rei?",
+    "answers": [
+      "No Egito",
+      "No Sham",
+      "No Iémen",
+      "No Iraque"
+    ],
+    "explanation": "Yusuf foi estabelecido no Egito depois de interpretar o sonho do rei.",
+    "sourceDisplay": "Alcorão 12:100"
+  },
+  {
+    "id": "prophets_277",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta foi levado de noite à Mesquita Al-Aqsa?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Musa",
+      "Isa",
+      "Ibrahim"
+    ],
+    "explanation": "«Glorificado seja Aquele que fez o Seu servo viajar de noite.»",
+    "sourceDisplay": "Alcorão 17:1"
+  },
+  {
+    "id": "prophets_278",
+    "correctAnswerIndex": 0,
+    "question": "Que livro foi dado ao profeta Musa?",
+    "answers": [
+      "A Torá",
+      "O Evangelho",
+      "Os Salmos",
+      "As Folhas de Ibrahim"
+    ],
+    "explanation": "Allah deu a Musa o Livro e fez com que outros mensageiros o seguissem.",
+    "sourceDisplay": "Alcorão 2:87"
+  },
+  {
+    "id": "prophets_279",
+    "correctAnswerIndex": 0,
+    "question": "Que livro foi dado ao profeta Isa?",
+    "answers": [
+      "O Evangelho",
+      "A Torá",
+      "Os Salmos",
+      "O Alcorão"
+    ],
+    "explanation": "«E demos-lhe o Evangelho, no qual há guia e luz.»",
+    "sourceDisplay": "Alcorão 5:46"
+  },
+  {
+    "id": "prophets_280",
+    "correctAnswerIndex": 0,
+    "question": "Que livro foi dado ao profeta Dawud?",
+    "answers": [
+      "Os Salmos (Zabur)",
+      "A Torá",
+      "O Evangelho",
+      "As Folhas de Musa"
+    ],
+    "explanation": "«E demos a Dawud o Zabur.»",
+    "sourceDisplay": "Alcorão 4:163"
+  },
+  {
+    "id": "prophets_281",
+    "correctAnswerIndex": 0,
+    "question": "O filho de que profeta aceitou ser sacrificado por obediência a Allah?",
+    "answers": [
+      "O filho de Ibrahim",
+      "O filho de Nuh",
+      "O irmão de Musa",
+      "O filho de Ya'qub"
+    ],
+    "explanation": "«Ó meu pai, faz o que te é ordenado: encontrar-me-ás paciente.»",
+    "sourceDisplay": "Alcorão 37:102"
+  },
+  {
+    "id": "prophets_282",
+    "correctAnswerIndex": 0,
+    "question": "Onde colocou a mãe de Musa o seu bebé para o salvar?",
+    "answers": [
+      "No rio",
+      "Numa caverna",
+      "Em casa de uma vizinha",
+      "No deserto"
+    ],
+    "explanation": "«Lança-o ao rio: Nós to devolveremos.»",
+    "sourceDisplay": "Alcorão 28:7"
+  },
+  {
+    "id": "prophets_283",
+    "correctAnswerIndex": 0,
+    "question": "O que disse Yunus nas trevas, que todo o muçulmano repete?",
+    "answers": [
+      "«Não há deus senão Tu, glória a Ti, fui injusto»",
+      "«Dá-me riquezas»",
+      "«Faz-me rei»",
+      "«Torna-me forte»"
+    ],
+    "explanation": "A súplica de Yunus dentro do peixe.",
+    "sourceDisplay": "Alcorão 21:87"
+  },
+  {
+    "id": "prophets_284",
+    "correctAnswerIndex": 0,
+    "question": "Quem é o pai do Profeta Muhammad ﷺ?",
+    "answers": [
+      "Abdullah",
+      "Abu Talib",
+      "Al-Abbas",
+      "Hamza"
+    ],
+    "explanation": "Ele é Muhammad ﷺ, filho de Abdullah, filho de Abd al-Muttalib.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_285",
+    "correctAnswerIndex": 0,
+    "question": "Quem é a mãe do Profeta Muhammad ﷺ?",
+    "answers": [
+      "Amina",
+      "Khadija",
+      "Aisha",
+      "Fátima"
+    ],
+    "explanation": "Amina bint Wahb é a mãe do Profeta ﷺ.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_286",
+    "correctAnswerIndex": 0,
+    "question": "O que disse Isa quando ainda estava no berço?",
+    "answers": [
+      "«Sou o servo de Allah»",
+      "«Sou um rei»",
+      "«Sou um anjo»",
+      "Não disse nada"
+    ],
+    "explanation": "«Na verdade, sou o servo de Allah: Ele deu-me a Escritura.»",
+    "sourceDisplay": "Alcorão 19:30"
+  },
+  {
+    "id": "prophets_287",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta foi enviado ao povo de 'Ad?",
+    "answers": [
+      "Hud",
+      "Salih",
+      "Lut",
+      "Shu'ayb"
+    ],
+    "explanation": "«E aos 'Ad, o seu irmão Hud.»",
+    "sourceDisplay": "Alcorão 7:65"
+  },
+  {
+    "id": "prophets_288",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta foi enviado aos Thamud, com a camela?",
+    "answers": [
+      "Salih",
+      "Hud",
+      "Yunus",
+      "Idris"
+    ],
+    "explanation": "«E aos Thamud, o seu irmão Salih: esta é a camela de Allah.»",
+    "sourceDisplay": "Alcorão 7:73"
+  },
+  {
+    "id": "prophets_289",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta é o irmão de Musa, enviado com ele?",
+    "answers": [
+      "Harun",
+      "Yusuf",
+      "Yahya",
+      "Ilyas"
+    ],
+    "explanation": "«E dá-me um ajudante da minha família: Harun, o meu irmão.»",
+    "sourceDisplay": "Alcorão 20:29-30"
+  },
+  {
+    "id": "prophets_290",
+    "correctAnswerIndex": 0,
+    "question": "Que título dá o Alcorão a Muhammad ﷺ em relação aos profetas?",
+    "answers": [
+      "O selo dos profetas",
+      "O primeiro dos profetas",
+      "O rei dos profetas",
+      "O escriba dos profetas"
+    ],
+    "explanation": "«Muhammad é o Mensageiro de Allah e o selo dos profetas.»",
+    "sourceDisplay": "Alcorão 33:40"
+  },
+  {
+    "id": "prophets_291",
+    "correctAnswerIndex": 0,
+    "question": "O que dizem os anjos a Maryam no Alcorão?",
+    "answers": [
+      "Que Allah a escolheu e purificou",
+      "Que ela será rainha",
+      "Que ela vai viajar",
+      "Que ela vai ensinar"
+    ],
+    "explanation": "«Ó Maryam, Allah escolheu-te e purificou-te.»",
+    "sourceDisplay": "Alcorão 3:42"
+  },
+  {
+    "id": "prophets_292",
+    "correctAnswerIndex": 0,
+    "question": "Como invocou Ayyub o seu Senhor na provação?",
+    "answers": [
+      "«O mal tocou-me, e Tu és o mais misericordioso»",
+      "«Torna-me rico»",
+      "«Castiga os meus inimigos»",
+      "«Faz-me rei»"
+    ],
+    "explanation": "«O mal tocou-me, e Tu és o mais misericordioso dos misericordiosos.»",
+    "sourceDisplay": "Alcorão 21:83"
+  },
+  {
+    "id": "prophets_293",
+    "correctAnswerIndex": 0,
+    "question": "O que ensinou Allah a Adam?",
+    "answers": [
+      "Todos os nomes",
+      "A escrita",
+      "A navegação",
+      "O cálculo"
+    ],
+    "explanation": "«E ensinou a Adam todos os nomes.»",
+    "sourceDisplay": "Alcorão 2:31"
+  },
+  {
+    "id": "prophets_294",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta governou um reino que ninguém depois dele teria?",
+    "answers": [
+      "Sulayman",
+      "Dawud",
+      "Yusuf",
+      "Dhul-Qarnayn"
+    ],
+    "explanation": "«Concede-me um reino que ninguém depois de mim possa ter.»",
+    "sourceDisplay": "Alcorão 38:35-36"
+  },
+  {
+    "id": "prophets_295",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta foi salvo com a sua família, exceto a sua mulher?",
+    "answers": [
+      "Lut",
+      "Nuh",
+      "Hud",
+      "Salih"
+    ],
+    "explanation": "«Parte com a tua família durante a noite… exceto a tua mulher.»",
+    "sourceDisplay": "Alcorão 11:81"
+  },
+  {
+    "id": "prophets_296",
+    "correctAnswerIndex": 0,
+    "question": "Contra o que advertiu Ibrahim o seu povo?",
+    "answers": [
+      "Contra a adoração dos ídolos",
+      "Contra o comércio",
+      "Contra as viagens",
+      "Contra a escrita"
+    ],
+    "explanation": "«Tomas ídolos por divindades?»",
+    "sourceDisplay": "Alcorão 6:74"
+  },
+  {
+    "id": "prophets_297",
+    "correctAnswerIndex": 0,
+    "question": "Que palavra designa um enviado de Allah aos homens?",
+    "answers": [
+      "Um mensageiro (rasul)",
+      "Um califa",
+      "Um companheiro",
+      "Um sábio"
+    ],
+    "explanation": "Um rasul é um enviado de Allah, encarregado de uma mensagem para a humanidade.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_298",
+    "correctAnswerIndex": 0,
+    "question": "Como que enviou Allah o Profeta ﷺ, segundo a surata Al-Ahzab?",
+    "answers": [
+      "Como testemunha, anunciador de boas novas e admoestador",
+      "Como rei e juiz",
+      "Como comerciante",
+      "Como poeta"
+    ],
+    "explanation": "«Ó Profeta, enviámos-te como testemunha, anunciador de boas novas e admoestador» (33:45).",
+    "sourceDisplay": "Alcorão 33:45"
+  },
+  {
+    "id": "prophets_299",
+    "correctAnswerIndex": 0,
+    "question": "Para que foi enviado Muhammad ﷺ, segundo o Alcorão?",
+    "answers": [
+      "Como misericórdia para os mundos",
+      "Para reinar",
+      "Para construir",
+      "Para comerciar"
+    ],
+    "explanation": "«E não te enviámos senão como misericórdia para os mundos.»",
+    "sourceDisplay": "Alcorão 21:107"
+  },
+  {
+    "id": "prophets_300",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta é chamado no Alcorão «um servo muito agradecido»?",
+    "answers": [
+      "Nuh",
+      "Lut",
+      "Idris",
+      "Ilyas"
+    ],
+    "explanation": "«Na verdade, ele era um servo agradecido» (17:3), dito de Nuh.",
+    "sourceDisplay": "Alcorão 17:3"
+  },
+  {
+    "id": "prophets_301",
+    "correctAnswerIndex": 0,
+    "question": "Que sinal recebeu Zakariyya depois do anúncio do seu filho?",
+    "answers": [
+      "Não falar às pessoas durante três dias",
+      "Ver uma estrela",
+      "Ouvir o trovão",
+      "Andar sobre a água"
+    ],
+    "explanation": "«O teu sinal será não falares às pessoas durante três dias» (3:41).",
+    "sourceDisplay": "Alcorão 3:41"
+  },
+  {
+    "id": "prophets_302",
+    "correctAnswerIndex": 0,
+    "question": "Em que língua foi enviado cada mensageiro?",
+    "answers": [
+      "Na língua do seu próprio povo",
+      "Só em árabe",
+      "Em hebraico",
+      "Numa língua do céu"
+    ],
+    "explanation": "«Não enviámos mensageiro algum senão na língua do seu povo.»",
+    "sourceDisplay": "Alcorão 14:4"
+  },
+  {
+    "id": "prophets_303",
+    "correctAnswerIndex": 0,
+    "question": "Que surata conta a história de um só profeta do princípio ao fim?",
+    "answers": [
+      "A surata Yusuf",
+      "A surata Al-Baqara",
+      "A surata An-Nas",
+      "A surata Al-Fatiha"
+    ],
+    "explanation": "«Contamos-te a melhor das histórias»: a história de Yusuf.",
+    "sourceDisplay": "Alcorão 12:1-3"
+  },
+  {
+    "id": "prophets_304",
+    "correctAnswerIndex": 0,
+    "question": "Como descreve o Alcorão Ibrahim na surata Maryam?",
+    "answers": [
+      "Um homem verídico, um profeta",
+      "Um rei",
+      "Um escriba",
+      "Um comerciante"
+    ],
+    "explanation": "«Ele era um homem verídico, um profeta.»",
+    "sourceDisplay": "Alcorão 19:41"
+  },
+  {
+    "id": "prophets_305",
+    "correctAnswerIndex": 0,
+    "question": "Que rainha veio ver o profeta Sulayman?",
+    "answers": [
+      "A rainha de Saba'",
+      "A rainha do Egito",
+      "A rainha da Babilónia",
+      "A rainha do norte do Iémen"
+    ],
+    "explanation": "Ela submeteu-se, com Sulayman, a Allah, Senhor dos mundos.",
+    "sourceDisplay": "Alcorão 27:44"
+  },
+  {
+    "id": "prophets_306",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta pediu para ver como Allah devolve a vida?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Yunus"
+    ],
+    "explanation": "«Senhor, mostra-me como dás vida aos mortos.»",
+    "sourceDisplay": "Alcorão 2:260"
+  },
+  {
+    "id": "prophets_307",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta viajou para aprender com um servo sábio?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Dawud",
+      "Sulayman"
+    ],
+    "explanation": "Musa caminhou até encontrar um servo de Allah a quem Ele tinha dado conhecimento.",
+    "sourceDisplay": "Alcorão 18:60-65"
+  },
+  {
+    "id": "prophets_308",
+    "correctAnswerIndex": 0,
+    "question": "O que ensina a surata Al-Ikhlas sobre Allah?",
+    "answers": [
+      "Que Ele é Único, e ninguém é igual a Ele",
+      "Que Ele tem associados",
+      "Que Ele se parece com a Sua criação",
+      "Que Ele tem um filho"
+    ],
+    "explanation": "«Diz: Ele é Allah, Único… e não há ninguém comparável a Ele.»",
+    "sourceDisplay": "Alcorão 112:1-4"
+  },
+  {
+    "id": "prophets_309",
+    "correctAnswerIndex": 0,
+    "question": "Como chamavam os habitantes de Meca ao Profeta ﷺ antes da revelação?",
+    "answers": [
+      "Al-Amin, o digno de confiança",
+      "O viajante",
+      "O poeta",
+      "O juiz"
+    ],
+    "explanation": "A sua retidão era tão conhecida que lhe chamavam al-Amin.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "prophets_310",
+    "correctAnswerIndex": 0,
+    "question": "Quem apresenta o Alcorão como o melhor exemplo a seguir?",
+    "answers": [
+      "O Mensageiro de Allah ﷺ",
+      "Os reis",
+      "Os poetas",
+      "Os comerciantes"
+    ],
+    "explanation": "«Tendes no Mensageiro de Allah um excelente modelo.»",
+    "sourceDisplay": "Alcorão 33:21"
+  },
+  {
+    "id": "sira_251",
+    "correctAnswerIndex": 0,
+    "question": "Em que cidade nasceu o Profeta ﷺ?",
+    "answers": [
+      "Meca",
+      "Medina",
+      "Jerusalém",
+      "Ta'if"
+    ],
+    "explanation": "O Profeta ﷺ nasceu em Meca, na tribo de Quraysh.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_252",
+    "correctAnswerIndex": 0,
+    "question": "Para que cidade emigrou o Profeta ﷺ?",
+    "answers": [
+      "Medina",
+      "Ta'if",
+      "Cairo",
+      "Damasco"
+    ],
+    "explanation": "A Hégira foi de Meca para Medina, então chamada Yathrib.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_253",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a partida de Meca para Medina?",
+    "answers": [
+      "A Hégira",
+      "A peregrinação",
+      "A conquista",
+      "O pacto"
+    ],
+    "explanation": "A Hégira marca o início do calendário muçulmano.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_254",
+    "correctAnswerIndex": 0,
+    "question": "Quem é a primeira esposa do Profeta ﷺ?",
+    "answers": [
+      "Khadija",
+      "Aisha",
+      "Hafsa",
+      "Sawda"
+    ],
+    "explanation": "Khadija bint Khuwaylid, a primeira a acreditar nele.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_255",
+    "correctAnswerIndex": 0,
+    "question": "Em que caverna se escondeu o Profeta ﷺ durante a Hégira?",
+    "answers": [
+      "A caverna de Thawr",
+      "A caverna de Hira",
+      "A caverna de Uhud",
+      "A caverna de Quba'"
+    ],
+    "explanation": "Escondeu-se ali três dias com Abu Bakr antes de seguir para Medina.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_256",
+    "correctAnswerIndex": 0,
+    "question": "Qual é a primeira palavra revelada ao Profeta ﷺ?",
+    "answers": [
+      "«Lê»",
+      "«Reza»",
+      "«Levanta-te»",
+      "«Escuta»"
+    ],
+    "explanation": "«Lê, em nome do teu Senhor que criou.»",
+    "sourceDisplay": "Alcorão 96:1"
+  },
+  {
+    "id": "sira_257",
+    "correctAnswerIndex": 0,
+    "question": "Que anjo trouxe a revelação ao Profeta ﷺ?",
+    "answers": [
+      "Jibril",
+      "Mika'il",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "Jibril é o anjo encarregado de fazer descer a revelação.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_258",
+    "correctAnswerIndex": 0,
+    "question": "Em que cidade está o túmulo do Profeta ﷺ?",
+    "answers": [
+      "Medina",
+      "Meca",
+      "Jerusalém",
+      "Ta'if"
+    ],
+    "explanation": "O seu túmulo está em Medina, junto à sua mesquita.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_259",
+    "correctAnswerIndex": 0,
+    "question": "De que tribo era o Profeta ﷺ?",
+    "answers": [
+      "Quraysh",
+      "Aws",
+      "Khazraj",
+      "Thaqif"
+    ],
+    "explanation": "O Profeta ﷺ era de Quraysh, a tribo de Meca.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_260",
+    "correctAnswerIndex": 0,
+    "question": "Como se chamam os companheiros do Profeta ﷺ?",
+    "answers": [
+      "Os Sahaba",
+      "Os Tabi'un",
+      "Só os Ansar",
+      "Os Qurra'"
+    ],
+    "explanation": "Os Sahaba são aqueles que viram o Profeta ﷺ acreditando nele.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_261",
+    "correctAnswerIndex": 0,
+    "question": "Quem acompanhou o Profeta ﷺ na Hégira?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakr foi o seu companheiro na caverna durante a Hégira.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_262",
+    "correctAnswerIndex": 0,
+    "question": "Quem era o muezim do Profeta ﷺ?",
+    "answers": [
+      "Bilal",
+      "Anas",
+      "Zayd",
+      "Salman"
+    ],
+    "explanation": "Bilal ibn Rabah fazia a chamada para a oração em Medina.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_263",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a primeira batalha do islão?",
+    "answers": [
+      "Badr",
+      "Uhud",
+      "Khaybar",
+      "Hunayn"
+    ],
+    "explanation": "Badr é a primeira grande batalha, no segundo ano da Hégira.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_264",
+    "correctAnswerIndex": 0,
+    "question": "Como se chamam os que emigraram de Meca para Medina?",
+    "answers": [
+      "Os Muhajirun",
+      "Os Ansar",
+      "Os Tabi'un",
+      "Os companheiros de Ta'if"
+    ],
+    "explanation": "Os Muhajirun são os emigrantes; os Ansar são os que os acolheram.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_265",
+    "correctAnswerIndex": 0,
+    "question": "Como se chamam os habitantes de Medina que acolheram os emigrantes?",
+    "answers": [
+      "Os Ansar",
+      "Os Muhajirun",
+      "Os Quraysh",
+      "Os Tabi'un"
+    ],
+    "explanation": "Os Ansar, «os auxiliares», são os Aws e os Khazraj de Medina.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_266",
+    "correctAnswerIndex": 0,
+    "question": "O que construiu o Profeta ﷺ primeiro em Medina?",
+    "answers": [
+      "Uma mesquita",
+      "Um mercado",
+      "Um palácio",
+      "Uma muralha"
+    ],
+    "explanation": "Construiu a sua mesquita assim que chegou a Medina.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_267",
+    "correctAnswerIndex": 0,
+    "question": "Que filha do Profeta ﷺ casou com Ali?",
+    "answers": [
+      "Fátima",
+      "Ruqayya",
+      "Zaynab",
+      "Umm Kulthum"
+    ],
+    "explanation": "Fátima, filha do Profeta ﷺ, casou com Ali ibn Abi Talib.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_268",
+    "correctAnswerIndex": 0,
+    "question": "Quem foi o primeiro califa depois do Profeta ﷺ?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "Abu Bakr as-Siddiq foi o primeiro califa.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_269",
+    "correctAnswerIndex": 0,
+    "question": "Como se chamava Medina antes?",
+    "answers": [
+      "Yathrib",
+      "Bakka",
+      "Ta'if",
+      "Khaybar"
+    ],
+    "explanation": "Yathrib tomou o nome de Madinat an-Nabi, a cidade do Profeta ﷺ.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_270",
+    "correctAnswerIndex": 0,
+    "question": "Que idade tinha o Profeta ﷺ na primeira revelação?",
+    "answers": [
+      "Quarenta anos",
+      "Vinte anos",
+      "Sessenta anos",
+      "Trinta anos"
+    ],
+    "explanation": "A revelação chegou-lhe quando tinha quarenta anos.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_271",
+    "correctAnswerIndex": 0,
+    "question": "Em que cidade está a Ka'ba?",
+    "answers": [
+      "Meca",
+      "Medina",
+      "Jerusalém",
+      "Damasco"
+    ],
+    "explanation": "A Ka'ba fica no centro da Mesquita Sagrada, em Meca.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_272",
+    "correctAnswerIndex": 0,
+    "question": "Em que cidade está a Mesquita Al-Aqsa?",
+    "answers": [
+      "Jerusalém",
+      "Meca",
+      "Medina",
+      "Cairo"
+    ],
+    "explanation": "A Mesquita Al-Aqsa fica em Jerusalém (al-Quds).",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_273",
+    "correctAnswerIndex": 0,
+    "question": "Que tio do Profeta ﷺ o protegeu em Meca?",
+    "answers": [
+      "Abu Talib",
+      "Abu Lahab",
+      "Al-Abbas",
+      "Abu Sufyan"
+    ],
+    "explanation": "Abu Talib, pai de Ali, protegeu o seu sobrinho contra Quraysh.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_274",
+    "correctAnswerIndex": 0,
+    "question": "Qual era a profissão de Khadija, a primeira esposa do Profeta ﷺ?",
+    "answers": [
+      "Comerciante",
+      "Médica",
+      "Poetisa",
+      "Tecedeira"
+    ],
+    "explanation": "Khadija era uma comerciante respeitada de Meca.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_275",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a última peregrinação do Profeta ﷺ?",
+    "answers": [
+      "A Peregrinação de Despedida",
+      "A primeira peregrinação",
+      "A peregrinação da conquista",
+      "A peregrinação menor"
+    ],
+    "explanation": "A Peregrinação de Despedida realizou-se no ano 10 da Hégira.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_276",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o relato da vida do Profeta ﷺ?",
+    "answers": [
+      "A Sira",
+      "A Sunna",
+      "O Tafsir",
+      "O Fiqh"
+    ],
+    "explanation": "A Sira é o relato da sua vida; a Sunna é o que ele disse e fez.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_277",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama uma palavra transmitida do Profeta ﷺ?",
+    "answers": [
+      "Um hadith",
+      "Uma surata",
+      "Um versículo",
+      "Uma súplica"
+    ],
+    "explanation": "Um hadith é uma palavra, um ato ou uma aprovação do Profeta ﷺ.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_278",
+    "correctAnswerIndex": 0,
+    "question": "Quais são as duas coleções de hadiths consideradas as mais rigorosas?",
+    "answers": [
+      "Sahih al-Bukhari e Sahih Muslim",
+      "Duas coleções de poesia",
+      "Dois livros de história",
+      "Dois dicionários"
+    ],
+    "explanation": "Juntas, chamam-se «os dois Sahih».",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_279",
+    "correctAnswerIndex": 0,
+    "question": "Que califa mandou copiar o Alcorão e enviá-lo às províncias?",
+    "answers": [
+      "Uthman",
+      "Abu Bakr",
+      "Umar",
+      "Ali"
+    ],
+    "explanation": "Uthman mandou fazer cópias oficiais e enviou-as às principais cidades.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_280",
+    "correctAnswerIndex": 0,
+    "question": "Quantos califas formam «os califas bem guiados»?",
+    "answers": [
+      "Quatro",
+      "Dois",
+      "Sete",
+      "Doze"
+    ],
+    "explanation": "Abu Bakr, Umar, Uthman e Ali.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_281",
+    "correctAnswerIndex": 0,
+    "question": "Para que direção rezam os muçulmanos?",
+    "answers": [
+      "Para a Ka'ba, em Meca",
+      "Para Jerusalém",
+      "Para o leste",
+      "Para Medina"
+    ],
+    "explanation": "A qibla é a direção da Ka'ba.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_282",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama essa direção da oração?",
+    "answers": [
+      "A qibla",
+      "O mihrab",
+      "O minbar",
+      "O minarete"
+    ],
+    "explanation": "A qibla é a direção; o mihrab é o nicho que a indica.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_283",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o lugar onde os muçulmanos rezam juntos?",
+    "answers": [
+      "A mesquita",
+      "A escola",
+      "O mercado",
+      "A biblioteca"
+    ],
+    "explanation": "O masjid é o lugar da prostração, a mesquita.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_284",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a chamada para a oração?",
+    "answers": [
+      "O adhan",
+      "O takbir",
+      "O tasbih",
+      "O dhikr"
+    ],
+    "explanation": "O adhan é a chamada; quem a faz é o muezim.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_285",
+    "correctAnswerIndex": 0,
+    "question": "Em que dia se reúnem os muçulmanos para a grande oração?",
+    "answers": [
+      "Sexta-feira",
+      "Sábado",
+      "Domingo",
+      "Segunda-feira"
+    ],
+    "explanation": "A oração de sexta-feira (al-jumu'a) reúne a comunidade todas as semanas.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_286",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a pessoa que dirige a oração?",
+    "answers": [
+      "O imã",
+      "O muezim",
+      "O juiz",
+      "O hafiz"
+    ],
+    "explanation": "O imã é aquele atrás de quem a comunidade se alinha para rezar.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_287",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama quem memorizou todo o Alcorão?",
+    "answers": [
+      "Um hafiz",
+      "Um imã",
+      "Um muezim",
+      "Um juiz"
+    ],
+    "explanation": "Um hafiz é aquele que guarda todo o Alcorão na memória.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_288",
+    "correctAnswerIndex": 0,
+    "question": "Que companheiro é conhecido como o maior transmissor de hadiths?",
+    "answers": [
+      "Abu Hurayra",
+      "Bilal",
+      "Salman",
+      "Anas"
+    ],
+    "explanation": "Abu Hurayra passou os últimos anos do Profeta ﷺ ao seu lado.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_289",
+    "correctAnswerIndex": 0,
+    "question": "Que califa é chamado as-Siddiq, «o verídico»?",
+    "answers": [
+      "Abu Bakr",
+      "Umar",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "Abu Bakr as-Siddiq, o primeiro homem livre a acreditar.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_290",
+    "correctAnswerIndex": 0,
+    "question": "Que califa é chamado al-Faruq?",
+    "answers": [
+      "Umar ibn al-Khattab",
+      "Abu Bakr",
+      "Uthman",
+      "Ali"
+    ],
+    "explanation": "Umar, que distinguia a verdade da falsidade, recebeu esse título.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_291",
+    "correctAnswerIndex": 0,
+    "question": "Que califa mandou reunir o Alcorão num único volume?",
+    "answers": [
+      "Abu Bakr",
+      "Mu'awiya",
+      "Khalid",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakr ordenou que se reunisse num só volume o que estava escrito.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_292",
+    "correctAnswerIndex": 0,
+    "question": "Que avô criou o Profeta ﷺ em criança?",
+    "answers": [
+      "Abd al-Muttalib",
+      "Abu Sufyan",
+      "Al-Walid",
+      "Utba"
+    ],
+    "explanation": "O seu avô Abd al-Muttalib tomou conta dele depois do seu nascimento.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_293",
+    "correctAnswerIndex": 0,
+    "question": "Como recorda o Alcorão a infância do Profeta ﷺ?",
+    "answers": [
+      "Allah encontrou-o órfão e deu-lhe abrigo",
+      "Ele era rei",
+      "Ele era rico desde criança",
+      "Ele vivia sozinho no deserto"
+    ],
+    "explanation": "«Não te encontrou Ele órfão e te deu abrigo?» (93:6).",
+    "sourceDisplay": "Alcorão 93:6"
+  },
+  {
+    "id": "sira_294",
+    "correctAnswerIndex": 0,
+    "question": "Que batalha veio depois de Badr?",
+    "answers": [
+      "Uhud",
+      "A Trincheira",
+      "Hunayn",
+      "Tabuk"
+    ],
+    "explanation": "No ano seguinte deu-se a batalha de Uhud, perto de Medina.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_295",
+    "correctAnswerIndex": 0,
+    "question": "O que cavaram os muçulmanos à volta de Medina para a defender?",
+    "answers": [
+      "Uma trincheira (al-Khandaq)",
+      "Um poço",
+      "Um túnel",
+      "Um canal"
+    ],
+    "explanation": "Cavaram uma trincheira, que deu o nome à batalha da Trincheira.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_296",
+    "correctAnswerIndex": 0,
+    "question": "De quem era filha Aisha, esposa do Profeta ﷺ?",
+    "answers": [
+      "De Abu Bakr",
+      "De Umar",
+      "De Uthman",
+      "De Ali"
+    ],
+    "explanation": "Aisha era filha de Abu Bakr as-Siddiq.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_297",
+    "correctAnswerIndex": 0,
+    "question": "Como chama o Alcorão às esposas do Profeta ﷺ?",
+    "answers": [
+      "As mães dos crentes",
+      "As servas",
+      "As companheiras de viagem",
+      "As emigrantes"
+    ],
+    "explanation": "«E as suas esposas são as mães deles» (33:6).",
+    "sourceDisplay": "Alcorão 33:6"
+  },
+  {
+    "id": "sira_298",
+    "correctAnswerIndex": 0,
+    "question": "Que companheiro era ao mesmo tempo primo e genro do Profeta ﷺ?",
+    "answers": [
+      "Ali ibn Abi Talib",
+      "Bilal",
+      "Salman",
+      "Zayd"
+    ],
+    "explanation": "Ali, primo do Profeta ﷺ, casou com a sua filha Fátima.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_299",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a mesquita do Profeta ﷺ em Medina?",
+    "answers": [
+      "Al-Masjid an-Nabawi",
+      "Al-Masjid al-Haram",
+      "Al-Aqsa",
+      "Quba'"
+    ],
+    "explanation": "A Mesquita do Profeta, an-Nabawi, fica em Medina.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "sira_300",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a montada da viagem noturna do Profeta ﷺ?",
+    "answers": [
+      "Al-Buraq",
+      "Al-'Adba'",
+      "Ash-Shaqra'",
+      "Al-Qaswa'"
+    ],
+    "explanation": "A montada da viagem noturna chama-se al-Buraq.",
+    "sourceDisplay": "Sira, facto estabelecido"
+  },
+  {
+    "id": "faith_151",
+    "correctAnswerIndex": 0,
+    "question": "Quantos pilares tem o islão?",
+    "answers": [
+      "Cinco",
+      "Três",
+      "Seis",
+      "Dez"
+    ],
+    "explanation": "Cinco: o testemunho de fé, a oração, o zakat, o jejum e a peregrinação.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_152",
+    "correctAnswerIndex": 0,
+    "question": "Qual é o primeiro pilar do islão?",
+    "answers": [
+      "O testemunho de fé (shahada)",
+      "O jejum",
+      "A peregrinação",
+      "O zakat"
+    ],
+    "explanation": "Entra-se no islão testemunhando que não há deus senão Allah e que Muhammad ﷺ é o Seu mensageiro.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_153",
+    "correctAnswerIndex": 0,
+    "question": "Quantas orações obrigatórias faz o muçulmano por dia?",
+    "answers": [
+      "Cinco",
+      "Três",
+      "Sete",
+      "Duas"
+    ],
+    "explanation": "Cinco orações, distribuídas desde a madrugada até à noite.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_154",
+    "correctAnswerIndex": 0,
+    "question": "Em que mês jejuam os muçulmanos?",
+    "answers": [
+      "Ramadão",
+      "Rajab",
+      "Sha'ban",
+      "Shawwal"
+    ],
+    "explanation": "«O mês do Ramadão, no qual foi revelado o Alcorão» (2:185).",
+    "sourceDisplay": "Alcorão 2:185"
+  },
+  {
+    "id": "faith_155",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a esmola obrigatória do islão?",
+    "answers": [
+      "O zakat",
+      "O du'a",
+      "O dhikr",
+      "O tawaf"
+    ],
+    "explanation": "O zakat é a parte dos bens que se dá todos os anos.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_156",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a grande peregrinação a Meca?",
+    "answers": [
+      "O hajj",
+      "O sa'y",
+      "O dhikr",
+      "O suhur"
+    ],
+    "explanation": "O hajj é a peregrinação feita uma vez na vida por quem puder.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_157",
+    "correctAnswerIndex": 0,
+    "question": "Quantos artigos de fé (arkan al-iman) existem?",
+    "answers": [
+      "Seis",
+      "Quatro",
+      "Cinco",
+      "Sete"
+    ],
+    "explanation": "Acreditar em Allah, nos Seus anjos, nos Seus livros, nos Seus mensageiros, no Último Dia e no destino.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_158",
+    "correctAnswerIndex": 0,
+    "question": "Em quantos deuses acredita o muçulmano?",
+    "answers": [
+      "Num só",
+      "Em dois",
+      "Em três",
+      "Em muitos"
+    ],
+    "explanation": "«Diz: Ele é Allah, Único» (112:1).",
+    "sourceDisplay": "Alcorão 112:1"
+  },
+  {
+    "id": "faith_159",
+    "correctAnswerIndex": 0,
+    "question": "Como chamam os muçulmanos a Deus em árabe?",
+    "answers": [
+      "Allah",
+      "Malak",
+      "Rasul",
+      "Nabi"
+    ],
+    "explanation": "Allah é o nome do Criador em árabe.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_160",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o livro sagrado dos muçulmanos?",
+    "answers": [
+      "O Alcorão",
+      "A Tawrat",
+      "O Injil",
+      "O Zabur"
+    ],
+    "explanation": "O Alcorão é o livro revelado ao Profeta Muhammad ﷺ.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_161",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a Casa de Allah construída em Meca?",
+    "answers": [
+      "A Ka'ba",
+      "A Rawda",
+      "O Maqam",
+      "O Hijr"
+    ],
+    "explanation": "«A primeira Casa estabelecida para a humanidade é a que está em Bakka» (3:96).",
+    "sourceDisplay": "Alcorão 3:96"
+  },
+  {
+    "id": "faith_162",
+    "correctAnswerIndex": 0,
+    "question": "O que diz o muçulmano antes de começar a comer?",
+    "answers": [
+      "Bismillah",
+      "Amin",
+      "Subhan Allah",
+      "Allahumma"
+    ],
+    "explanation": "O Profeta ﷺ ensinou a um menino: «Diz Bismillah e come com a mão direita.»",
+    "sourceDisplay": "Sahih al-Bukhari, 5376"
+  },
+  {
+    "id": "faith_163",
+    "correctAnswerIndex": 0,
+    "question": "Como se cumprimentam os muçulmanos?",
+    "answers": [
+      "As-salamu alaykum",
+      "Al-hamdu lillah",
+      "Bismillah",
+      "Allahu akbar"
+    ],
+    "explanation": "«As-salamu alaykum» significa: a paz esteja convosco.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_164",
+    "correctAnswerIndex": 0,
+    "question": "O que se responde a «as-salamu alaykum»?",
+    "answers": [
+      "Wa alaykum as-salam",
+      "Bismillah",
+      "Amin",
+      "Subhan Allah"
+    ],
+    "explanation": "Devolve-se a saudação: «e convosco a paz».",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_165",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a festa que vem logo depois do mês do Ramadão?",
+    "answers": [
+      "Eid al-Fitr",
+      "Eid al-Adha",
+      "Laylat al-Qadr",
+      "Ashura"
+    ],
+    "explanation": "O Eid al-Fitr, a festa da quebra do jejum.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_166",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a festa do sacrifício?",
+    "answers": [
+      "Eid al-Adha",
+      "Eid al-Fitr",
+      "O Mawlid",
+      "Laylat al-Qadr"
+    ],
+    "explanation": "O Eid al-Adha acontece durante os dias da peregrinação.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_167",
+    "correctAnswerIndex": 0,
+    "question": "Como se chamam as criaturas de Allah que Lhe obedecem sempre e nunca desobedecem?",
+    "answers": [
+      "Os anjos",
+      "Os génios",
+      "Os profetas",
+      "Os companheiros"
+    ],
+    "explanation": "Os anjos cumprem o que Allah ordena e nunca desobedecem.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_168",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o Paraíso em árabe?",
+    "answers": [
+      "Al-Janna",
+      "As-Salat",
+      "Ad-Du'a",
+      "Al-Adhan"
+    ],
+    "explanation": "Al-Janna, literalmente «o jardim», é a morada prometida aos crentes.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_169",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a lavagem com água que se faz antes de rezar?",
+    "answers": [
+      "A ablução (wudu)",
+      "O tawaf",
+      "O dhikr",
+      "O sa'y"
+    ],
+    "explanation": "O wudu é a purificação que precede a oração.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_170",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama uma unidade da oração?",
+    "answers": [
+      "Uma rak'a",
+      "Uma surata",
+      "Um adhan",
+      "Um tawaf"
+    ],
+    "explanation": "Uma rak'a inclui a posição de pé, a inclinação e as prostrações.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_171",
+    "correctAnswerIndex": 0,
+    "question": "Que surata se recita em cada unidade da oração?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "An-Nas",
+      "Al-Kawthar"
+    ],
+    "explanation": "Al-Fatiha, a surata de abertura, é recitada em cada rak'a.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_172",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o que é permitido no islão?",
+    "answers": [
+      "Halal",
+      "Haram",
+      "Sunna",
+      "Fard"
+    ],
+    "explanation": "Halal significa o que é lícito.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_173",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o que é proibido no islão?",
+    "answers": [
+      "Haram",
+      "Halal",
+      "Mubah",
+      "Nafila"
+    ],
+    "explanation": "Haram significa o que é ilícito.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_174",
+    "correctAnswerIndex": 0,
+    "question": "Que carne proíbe o Alcorão?",
+    "answers": [
+      "A carne de porco",
+      "A carne de carneiro",
+      "A carne de vaca",
+      "A carne de frango"
+    ],
+    "explanation": "«Ele proibiu-vos a carne de animal morto, o sangue e a carne de porco» (2:173).",
+    "sourceDisplay": "Alcorão 2:173"
+  },
+  {
+    "id": "faith_175",
+    "correctAnswerIndex": 0,
+    "question": "Que bebida manda o Alcorão evitar?",
+    "answers": [
+      "O vinho e tudo o que embriaga",
+      "O leite",
+      "O mel",
+      "A água da chuva"
+    ],
+    "explanation": "«O vinho, o jogo de azar… são uma abominação: evitai-os» (5:90).",
+    "sourceDisplay": "Alcorão 5:90"
+  },
+  {
+    "id": "faith_176",
+    "correctAnswerIndex": 0,
+    "question": "O que diz quem espirra, como ensinou o Profeta ﷺ?",
+    "answers": [
+      "Al-hamdu lillah",
+      "Bismillah",
+      "Allahu akbar",
+      "Amin"
+    ],
+    "explanation": "«Quando um de vós espirrar, que diga: al-hamdu lillah.»",
+    "sourceDisplay": "Sahih al-Bukhari, 6224"
+  },
+  {
+    "id": "faith_177",
+    "correctAnswerIndex": 0,
+    "question": "Como se diz «a oração» em árabe?",
+    "answers": [
+      "As-salat",
+      "As-sawm",
+      "Az-zakat",
+      "Al-hajj"
+    ],
+    "explanation": "As-salat é a oração ritual do muçulmano.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_178",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama pedir algo a Allah com as próprias palavras?",
+    "answers": [
+      "O du'a",
+      "O tawaf",
+      "O adhan",
+      "O sa'y"
+    ],
+    "explanation": "O du'a é a súplica, o apelo dirigido a Allah.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_179",
+    "correctAnswerIndex": 0,
+    "question": "O que significa «al-hamdu lillah»?",
+    "answers": [
+      "Louvado seja Allah",
+      "Allah é o maior",
+      "Em nome de Allah",
+      "Glória a Allah"
+    ],
+    "explanation": "É o segundo versículo de Al-Fatiha: «Louvado seja Allah, Senhor dos mundos» (1:2).",
+    "sourceDisplay": "Alcorão 1:2"
+  },
+  {
+    "id": "faith_180",
+    "correctAnswerIndex": 0,
+    "question": "O que significa a palavra «islão»?",
+    "answers": [
+      "Submissão a Allah",
+      "Riqueza",
+      "Viagem",
+      "Conhecimento"
+    ],
+    "explanation": "Islão vem de uma raiz que significa submeter-se e estar em paz.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_181",
+    "correctAnswerIndex": 0,
+    "question": "O que significa a palavra «muçulmano»?",
+    "answers": [
+      "Aquele que se submete a Allah",
+      "Aquele que viaja",
+      "Aquele que ensina",
+      "Aquele que constrói"
+    ],
+    "explanation": "O muçulmano é aquele que se submete apenas a Allah.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_182",
+    "correctAnswerIndex": 0,
+    "question": "Quem criou os céus e a terra, segundo o Alcorão?",
+    "answers": [
+      "Allah",
+      "Os anjos",
+      "Os profetas",
+      "O sol"
+    ],
+    "explanation": "«Louvado seja Allah, que criou os céus e a terra» (6:1).",
+    "sourceDisplay": "Alcorão 6:1"
+  },
+  {
+    "id": "faith_183",
+    "correctAnswerIndex": 0,
+    "question": "Quantos nomes de Allah menciona o hadith?",
+    "answers": [
+      "Noventa e nove",
+      "Dez",
+      "Cinquenta",
+      "Mil"
+    ],
+    "explanation": "«Allah tem noventa e nove nomes, cem menos um.»",
+    "sourceDisplay": "Sahih al-Bukhari, 2736"
+  },
+  {
+    "id": "faith_184",
+    "correctAnswerIndex": 0,
+    "question": "O que fazem os anjos chamados «nobres escribas»?",
+    "answers": [
+      "Escrevem as nossas ações",
+      "Trazem a chuva",
+      "Guardam a Ka'ba",
+      "Ensinam árabe"
+    ],
+    "explanation": "«Nobres escribas, que sabem o que fazeis» (82:11-12).",
+    "sourceDisplay": "Alcorão 82:11"
+  },
+  {
+    "id": "faith_185",
+    "correctAnswerIndex": 0,
+    "question": "Que noite descreve o Alcorão como melhor do que mil meses?",
+    "answers": [
+      "Laylat al-Qadr",
+      "A noite de sexta-feira",
+      "A noite do Eid",
+      "A primeira noite do Ramadão"
+    ],
+    "explanation": "«A Noite do Decreto é melhor do que mil meses» (97:3).",
+    "sourceDisplay": "Alcorão 97:3"
+  },
+  {
+    "id": "faith_186",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama acreditar num único Deus?",
+    "answers": [
+      "Tawhid",
+      "Tawaf",
+      "Tayammum",
+      "Tarawih"
+    ],
+    "explanation": "O tawhid é a unicidade de Allah, o coração da mensagem de todos os profetas.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_187",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama associar alguém a Allah na adoração?",
+    "answers": [
+      "Shirk",
+      "Dhikr",
+      "Du'a",
+      "Sabr"
+    ],
+    "explanation": "O shirk é a associação: adorar outra coisa juntamente com Allah.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_188",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama o dia em que todos serão julgados?",
+    "answers": [
+      "O Dia da Ressurreição",
+      "O dia do Eid",
+      "A sexta-feira",
+      "O primeiro dia do Ramadão"
+    ],
+    "explanation": "Yawm al-Qiyama, o Dia da Ressurreição, em que cada um verá as suas ações.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_189",
+    "correctAnswerIndex": 0,
+    "question": "Quantos meses tem o ano, segundo o Alcorão?",
+    "answers": [
+      "Doze",
+      "Dez",
+      "Catorze",
+      "Seis"
+    ],
+    "explanation": "«O número de meses junto de Allah é doze» (9:36).",
+    "sourceDisplay": "Alcorão 9:36"
+  },
+  {
+    "id": "faith_190",
+    "correctAnswerIndex": 0,
+    "question": "Quantas prostrações há numa só rak'a?",
+    "answers": [
+      "Duas",
+      "Uma",
+      "Três",
+      "Quatro"
+    ],
+    "explanation": "Cada rak'a inclui duas prostrações.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "quran_151",
+    "correctAnswerIndex": 0,
+    "question": "Quantas suratas tem o Alcorão?",
+    "answers": [
+      "Cento e catorze",
+      "Sessenta",
+      "Duzentas",
+      "Trinta"
+    ],
+    "explanation": "O Alcorão tem 114 suratas, de Al-Fatiha a An-Nas.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_152",
+    "correctAnswerIndex": 0,
+    "question": "Qual é a primeira surata do Alcorão?",
+    "answers": [
+      "Al-Fatiha",
+      "Al-Baqara",
+      "An-Nas",
+      "Ya-Sin"
+    ],
+    "explanation": "Al-Fatiha, «a abertura», é a primeira surata.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_153",
+    "correctAnswerIndex": 0,
+    "question": "O que significa a palavra «Alcorão»?",
+    "answers": [
+      "A recitação, a leitura",
+      "O caminho",
+      "A luz",
+      "O jardim"
+    ],
+    "explanation": "Qur'an vem de uma raiz que significa ler e recitar.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_154",
+    "correctAnswerIndex": 0,
+    "question": "Ao longo de quantos anos, aproximadamente, foi revelado o Alcorão?",
+    "answers": [
+      "Cerca de vinte e três anos",
+      "Uma única noite",
+      "Cem anos",
+      "Três anos"
+    ],
+    "explanation": "A revelação desceu ao longo de cerca de vinte e três anos.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_155",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama um versículo do Alcorão?",
+    "answers": [
+      "Uma ayah",
+      "Uma surata",
+      "Um juz'",
+      "Um hadith"
+    ],
+    "explanation": "Cada frase numerada do Alcorão é uma ayah, um «sinal».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_156",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama um capítulo do Alcorão?",
+    "answers": [
+      "Uma surata",
+      "Uma ayah",
+      "Um juz'",
+      "Uma khutba"
+    ],
+    "explanation": "O Alcorão divide-se em suratas, cada uma com o seu próprio nome.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_157",
+    "correctAnswerIndex": 0,
+    "question": "Qual é a surata mais longa do Alcorão?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Fatiha",
+      "Al-Kawthar",
+      "An-Nas"
+    ],
+    "explanation": "Al-Baqara é a surata mais longa do Alcorão.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_158",
+    "correctAnswerIndex": 0,
+    "question": "Qual é a surata mais curta do Alcorão?",
+    "answers": [
+      "Al-Kawthar",
+      "Al-Baqara",
+      "Al 'Imran",
+      "An-Nisa'"
+    ],
+    "explanation": "Al-Kawthar tem apenas três versículos.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_159",
+    "correctAnswerIndex": 0,
+    "question": "Com que frase começam quase todas as suratas?",
+    "answers": [
+      "Em nome de Allah, o Clemente, o Misericordioso",
+      "Louvado seja Allah",
+      "Allah é o maior",
+      "Não há deus senão Allah"
+    ],
+    "explanation": "A basmala abre 113 das 114 suratas.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_160",
+    "correctAnswerIndex": 0,
+    "question": "O Alcorão é a palavra de quem?",
+    "answers": [
+      "De Allah",
+      "Do Profeta ﷺ",
+      "Do anjo Jibril",
+      "Dos companheiros"
+    ],
+    "explanation": "O Alcorão chama-se a si mesmo «a palavra de Allah» (kalam Allah) em 9:6.",
+    "sourceDisplay": "Alcorão 9:6"
+  },
+  {
+    "id": "quran_161",
+    "correctAnswerIndex": 0,
+    "question": "Em quantas partes (juz') se divide o Alcorão?",
+    "answers": [
+      "Trinta",
+      "Dez",
+      "Cinquenta",
+      "Cem"
+    ],
+    "explanation": "O Alcorão divide-se em trinta juz', um para cada noite do Ramadão.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_162",
+    "correctAnswerIndex": 0,
+    "question": "Que surata tem o nome de uma mulher?",
+    "answers": [
+      "Maryam",
+      "Yusuf",
+      "Nuh",
+      "Muhammad"
+    ],
+    "explanation": "A surata 19 tem o nome de Maryam.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_163",
+    "correctAnswerIndex": 0,
+    "question": "Como se chamam as duas últimas suratas, usadas para pedir proteção?",
+    "answers": [
+      "Al-Mu'awwidhatan",
+      "Al-Mathani",
+      "Al-Mufassal",
+      "Al-Hawamim"
+    ],
+    "explanation": "Al-Falaq e An-Nas chamam-se al-Mu'awwidhatan, «as duas de proteção».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_164",
+    "correctAnswerIndex": 0,
+    "question": "Com que palavra começa a surata Al-Fatiha, depois da basmala?",
+    "answers": [
+      "Al-hamdu",
+      "Qul",
+      "Iqra'",
+      "Inna"
+    ],
+    "explanation": "«Al-hamdu lillahi rabbi l-'alamin» abre Al-Fatiha.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_165",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a explicação do sentido do Alcorão?",
+    "answers": [
+      "O tafsir",
+      "O tajwid",
+      "O hifz",
+      "O tawaf"
+    ],
+    "explanation": "O tafsir é a ciência que explica o sentido dos versículos.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_166",
+    "correctAnswerIndex": 0,
+    "question": "Que surata não começa com a basmala?",
+    "answers": [
+      "At-Tawba",
+      "Al-Fatiha",
+      "Al-Ikhlas",
+      "An-Nasr"
+    ],
+    "explanation": "At-Tawba é a única surata que não começa com a basmala.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_167",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama quem recita o Alcorão em voz alta?",
+    "answers": [
+      "Um qari'",
+      "Um muezim",
+      "Um imã",
+      "Um khatib"
+    ],
+    "explanation": "O qari' é o recitador do Alcorão.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_168",
+    "correctAnswerIndex": 0,
+    "question": "Em que surata se encontra o Versículo do Trono?",
+    "answers": [
+      "Al-Baqara",
+      "Al-Kahf",
+      "Ya-Sin",
+      "Al-Mulk"
+    ],
+    "explanation": "O Versículo do Trono é o versículo 255 da surata Al-Baqara.",
+    "sourceDisplay": "Alcorão 2:255"
+  },
+  {
+    "id": "quran_169",
+    "correctAnswerIndex": 0,
+    "question": "O que significa «An-Nur», título da surata 24?",
+    "answers": [
+      "A luz",
+      "A noite",
+      "O vento",
+      "A montanha"
+    ],
+    "explanation": "An-Nur significa «a luz».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_170",
+    "correctAnswerIndex": 0,
+    "question": "Que surata tem o nome «O Misericordioso»?",
+    "answers": [
+      "Ar-Rahman",
+      "Al-Mulk",
+      "Al-Fath",
+      "As-Saff"
+    ],
+    "explanation": "A surata 55 chama-se Ar-Rahman.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_171",
+    "correctAnswerIndex": 0,
+    "question": "Que surata tem o nome da caverna?",
+    "answers": [
+      "Al-Kahf",
+      "Al-Fil",
+      "An-Naml",
+      "Al-Baqara"
+    ],
+    "explanation": "Al-Kahf significa «a caverna».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_172",
+    "correctAnswerIndex": 0,
+    "question": "O que significa «An-Nisa'», título da surata 4?",
+    "answers": [
+      "As mulheres",
+      "Os homens",
+      "As crianças",
+      "Os viajantes"
+    ],
+    "explanation": "An-Nisa' significa «as mulheres».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_173",
+    "correctAnswerIndex": 0,
+    "question": "O que significa «Al-Ma'ida», título da surata 5?",
+    "answers": [
+      "A mesa servida",
+      "A montanha",
+      "O ferro",
+      "A aurora"
+    ],
+    "explanation": "Al-Ma'ida significa «a mesa servida».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_174",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta dá o nome à surata 71?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Yunus",
+      "Ibrahim"
+    ],
+    "explanation": "A surata 71 chama-se Nuh.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_175",
+    "correctAnswerIndex": 0,
+    "question": "Quantos versículos tem a surata Al-Fatiha?",
+    "answers": [
+      "Sete",
+      "Três",
+      "Dez",
+      "Vinte"
+    ],
+    "explanation": "Al-Fatiha tem sete versículos.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_176",
+    "correctAnswerIndex": 0,
+    "question": "Onde diz o Alcorão que está preservado?",
+    "answers": [
+      "Numa Tábua Guardada",
+      "Numa caverna",
+      "Num cofre",
+      "Numa montanha"
+    ],
+    "explanation": "«É um Alcorão glorioso, numa Tábua Guardada» (85:21-22).",
+    "sourceDisplay": "Alcorão 85:22"
+  },
+  {
+    "id": "quran_177",
+    "correctAnswerIndex": 0,
+    "question": "Que surata tem o nome da lua?",
+    "answers": [
+      "Al-Qamar",
+      "Ash-Shams",
+      "An-Najm",
+      "Al-Layl"
+    ],
+    "explanation": "Al-Qamar significa «a lua».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_178",
+    "correctAnswerIndex": 0,
+    "question": "Que surata tem o nome do Dia da Ressurreição?",
+    "answers": [
+      "Al-Qiyama",
+      "Al-Fath",
+      "Al-Hashr",
+      "As-Saff"
+    ],
+    "explanation": "A surata 75 chama-se Al-Qiyama.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_179",
+    "correctAnswerIndex": 0,
+    "question": "Que profeta dá o nome à surata 14?",
+    "answers": [
+      "Ibrahim",
+      "Muhammad ﷺ",
+      "Yusuf",
+      "Hud"
+    ],
+    "explanation": "A surata 14 chama-se Ibrahim.",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "quran_180",
+    "correctAnswerIndex": 0,
+    "question": "O que significa «Al-Hadid», título da surata 57?",
+    "answers": [
+      "O ferro",
+      "O ouro",
+      "A madeira",
+      "A pedra"
+    ],
+    "explanation": "Al-Hadid significa «o ferro».",
+    "sourceDisplay": "Alcorão"
+  },
+  {
+    "id": "virtues_101",
+    "correctAnswerIndex": 0,
+    "question": "Como manda o Alcorão falar aos pais?",
+    "answers": [
+      "Com palavras respeitosas, sem sequer dizer «uf»",
+      "Mais alto do que eles",
+      "Ficando sempre calado",
+      "Só à sexta-feira"
+    ],
+    "explanation": "«Não lhes digas “uf” e fala-lhes com palavras nobres» (17:23).",
+    "sourceDisplay": "Alcorão 17:23"
+  },
+  {
+    "id": "virtues_102",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama uma oferta feita livremente, por bondade?",
+    "answers": [
+      "Sadaqa",
+      "Zakat",
+      "Tawaf",
+      "Adhan"
+    ],
+    "explanation": "A sadaqa é a caridade voluntária, pequena ou grande.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "virtues_103",
+    "correctAnswerIndex": 0,
+    "question": "O que aconselha o Profeta ﷺ, sobre a fala, a quem acredita em Allah e no Último Dia?",
+    "answers": [
+      "Que diga o bem ou que se cale",
+      "Que fale muito",
+      "Que nunca fale",
+      "Que fale só com a sua família"
+    ],
+    "explanation": "«Quem crê em Allah e no Último Dia, que diga o bem ou que se cale.»",
+    "sourceDisplay": "Sahih al-Bukhari, 6018"
+  },
+  {
+    "id": "virtues_104",
+    "correctAnswerIndex": 0,
+    "question": "Como pediu o Profeta ﷺ que tratássemos o nosso vizinho?",
+    "answers": [
+      "Ser generoso com ele",
+      "Evitá-lo",
+      "Nunca lhe falar",
+      "Pedir-lhe que se vá embora"
+    ],
+    "explanation": "«Quem crê em Allah e no Último Dia, que seja generoso com o seu vizinho.»",
+    "sourceDisplay": "Sahih al-Bukhari, 6015"
+  },
+  {
+    "id": "virtues_105",
+    "correctAnswerIndex": 0,
+    "question": "Com quem está Allah, segundo o Alcorão?",
+    "answers": [
+      "Com os pacientes",
+      "Com os mais ricos",
+      "Com os mais fortes",
+      "Com os mais rápidos"
+    ],
+    "explanation": "«Na verdade, Allah está com os pacientes» (2:153).",
+    "sourceDisplay": "Alcorão 2:153"
+  },
+  {
+    "id": "virtues_106",
+    "correctAnswerIndex": 0,
+    "question": "O que proíbe o Alcorão fazer ao órfão?",
+    "answers": [
+      "Maltratá-lo",
+      "Ensiná-lo a ler",
+      "Convidá-lo para comer",
+      "Brincar com ele"
+    ],
+    "explanation": "«Quanto ao órfão, não o maltrates» (93:9).",
+    "sourceDisplay": "Alcorão 93:9"
+  },
+  {
+    "id": "virtues_107",
+    "correctAnswerIndex": 0,
+    "question": "Que tipo de palavras manda o Alcorão evitar?",
+    "answers": [
+      "As palavras falsas",
+      "As palavras suaves",
+      "As palavras de agradecimento",
+      "As palavras de saudação"
+    ],
+    "explanation": "«E evitai as palavras falsas» (22:30).",
+    "sourceDisplay": "Alcorão 22:30"
+  },
+  {
+    "id": "virtues_108",
+    "correctAnswerIndex": 0,
+    "question": "Além do parente próximo, a quem manda o Alcorão dar o que lhe é devido?",
+    "answers": [
+      "Ao pobre e ao viajante",
+      "Ao rei e ao juiz",
+      "Ao comerciante",
+      "Ao poeta"
+    ],
+    "explanation": "«Dá ao parente próximo o que lhe é devido, e também ao pobre e ao viajante» (17:26).",
+    "sourceDisplay": "Alcorão 17:26"
+  },
+  {
+    "id": "virtues_109",
+    "correctAnswerIndex": 0,
+    "question": "O que promete Allah a quem Lhe agradece?",
+    "answers": [
+      "Dar-lhe mais",
+      "Fazê-lo viajar",
+      "Torná-lo famoso",
+      "Fazê-lo rei"
+    ],
+    "explanation": "«Se fordes agradecidos, dar-vos-ei certamente mais» (14:7).",
+    "sourceDisplay": "Alcorão 14:7"
+  },
+  {
+    "id": "virtues_110",
+    "correctAnswerIndex": 0,
+    "question": "Como se diz «a paciência» em árabe?",
+    "answers": [
+      "As-sabr",
+      "Ash-shukr",
+      "As-sidq",
+      "Al-haya'"
+    ],
+    "explanation": "As-sabr é a perseverança na dificuldade e na obediência.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_191",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama lembrar Allah, repetindo os Seus louvores?",
+    "answers": [
+      "Dhikr",
+      "Hajj",
+      "Sa'y",
+      "Tayammum"
+    ],
+    "explanation": "O dhikr é a lembrança de Allah com a língua e com o coração.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_192",
+    "correctAnswerIndex": 0,
+    "question": "Qual é o primeiro mês do ano islâmico?",
+    "answers": [
+      "Muharram",
+      "Ramadão",
+      "Shawwal",
+      "Rajab"
+    ],
+    "explanation": "O ano da Hégira começa com o mês de Muharram.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_193",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama voltar para Allah depois de um pecado?",
+    "answers": [
+      "Tawba",
+      "Tawaf",
+      "Tajwid",
+      "Tarawih"
+    ],
+    "explanation": "A tawba é o arrependimento: lamentar, parar e voltar para Allah.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_194",
+    "correctAnswerIndex": 0,
+    "question": "Quem dá o sustento a todas as criaturas da terra?",
+    "answers": [
+      "Allah",
+      "Os reis",
+      "Os comerciantes",
+      "Os anjos"
+    ],
+    "explanation": "«Não há criatura na terra cujo sustento não caiba a Allah» (11:6).",
+    "sourceDisplay": "Alcorão 11:6"
+  },
+  {
+    "id": "faith_195",
+    "correctAnswerIndex": 0,
+    "question": "Em que cidade se faz a peregrinação?",
+    "answers": [
+      "Em Meca",
+      "Em Medina",
+      "Em Jerusalém",
+      "No Cairo"
+    ],
+    "explanation": "O hajj realiza-se em Meca e nos seus lugares sagrados.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_196",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama quem faz a peregrinação?",
+    "answers": [
+      "Um hajj (peregrino)",
+      "Um imã",
+      "Um qari'",
+      "Um muezim"
+    ],
+    "explanation": "O peregrino chama-se hajj.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_197",
+    "correctAnswerIndex": 0,
+    "question": "O que sabe Allah, segundo o Alcorão, mesmo que esteja escondido?",
+    "answers": [
+      "O que está nos corações",
+      "Só as ações visíveis",
+      "Só as palavras ditas",
+      "Nada do que está escondido"
+    ],
+    "explanation": "«Quer escondais o que está nos vossos peitos, quer o reveleis, Allah sabe-o» (3:29).",
+    "sourceDisplay": "Alcorão 3:29"
+  },
+  {
+    "id": "faith_198",
+    "correctAnswerIndex": 0,
+    "question": "A quem foi prescrito o jejum, segundo o Alcorão?",
+    "answers": [
+      "Aos crentes, como aos que vieram antes deles",
+      "Só aos viajantes",
+      "Só aos sábios",
+      "Só às crianças"
+    ],
+    "explanation": "«Ó vós que credes, o jejum foi-vos prescrito como o foi aos que vieram antes de vós» (2:183).",
+    "sourceDisplay": "Alcorão 2:183"
+  },
+  {
+    "id": "faith_199",
+    "correctAnswerIndex": 0,
+    "question": "Como se chama a grande oração de sexta-feira em comunidade?",
+    "answers": [
+      "Salat al-jumu'a",
+      "Salat al-'id",
+      "Salat al-witr",
+      "Salat ad-duha"
+    ],
+    "explanation": "A salat al-jumu'a reúne os muçulmanos ao meio-dia de sexta-feira.",
+    "sourceDisplay": "Terminologia estabelecida"
+  },
+  {
+    "id": "faith_200",
+    "correctAnswerIndex": 0,
+    "question": "Como se diz «o jejum» em árabe?",
+    "answers": [
+      "As-sawm",
+      "As-salat",
+      "Az-zakat",
+      "Al-adhan"
+    ],
+    "explanation": "As-sawm é o jejum, o quarto pilar do islão.",
+    "sourceDisplay": "Terminologia estabelecida"
   }
 ]

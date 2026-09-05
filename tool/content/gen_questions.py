@@ -1818,6 +1818,7 @@ BANK_MODULES = [
     "bank_quran", "bank_quran_b",
     "bank_faith", "bank_faith_b",
     "bank_virtues", "bank_virtues_c",
+    "bank_beginner",
 ]
 
 for _name in BANK_MODULES:

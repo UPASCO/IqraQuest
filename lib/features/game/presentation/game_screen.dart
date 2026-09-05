@@ -1,9 +1,10 @@
-import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -92,6 +93,27 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   /// whether one is under the finger — for the banner's hint.
   int? _placementSelected;
   bool _dragging = false;
+
+  /// The air left between the plate and the overlay above or below it.
+  static const double _bandGap = 6;
+
+  /// The measured heights of the HUD and of the bottom overlay, null
+  /// until the first frame has laid them out. The bottom one only ever
+  /// grows: the deck, the placement banner and the turn pill take turns
+  /// there, and a plate that resized between phases would be worse than
+  /// a plate that keeps room for the tallest of them.
+  double? _hudBand;
+  double? _deckBand;
+
+  void _setHudBand(double height) {
+    if (!mounted || _hudBand == height) return;
+    setState(() => _hudBand = height);
+  }
+
+  void _setDeckBand(double height) {
+    if (!mounted || (_deckBand != null && height <= _deckBand!)) return;
+    setState(() => _deckBand = height);
+  }
 
   /// "X takes the lead", briefly.
   String? _leadToast;
@@ -206,6 +228,48 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final leader = ref.read(gameEngineProvider).leader(state);
     final pendingBonus = state.pendingBonus;
 
+    // The bottom overlay — the deck, the placement banner or the turn
+    // pill, depending on the phase. It is built here rather than inline
+    // so the board can measure it and keep exactly that much room free
+    // instead of guessing a constant band.
+    final Widget bottomOverlay;
+    if (state.turnPhase == TurnPhase.selectingGait && player.isHuman) {
+      bottomOverlay = SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
+          child: DrawDeck(
+            key: const Key('draw-deck'),
+            onDraw: _onDrawCard,
+            horseHint: state.isBonusTurn ? l10n.bonusTurnHint : null,
+          ),
+        ),
+      );
+    } else if (state.turnPhase == TurnPhase.choosingHorse && player.isHuman) {
+      bottomOverlay = SafeArea(
+        child: _PlacementBanner(
+          value: state.drawnCard?.steps ?? 0,
+          title: l10n.squaresWon(state.drawnCard?.steps ?? 0),
+          hint: _placementSelected == null
+              ? l10n.touchHorseHint
+              : l10n.dragHorseToDestination,
+          extra: state.extraTurn ? l10n.celebrateSixBody : null,
+        ),
+      );
+    } else {
+      bottomOverlay = SafeArea(
+        child: GestureDetector(
+          // A card that could move nothing passes by itself; a tap on
+          // the banner passes it sooner.
+          onTap: state.turnPhase == TurnPhase.noMove && player.isHuman
+              ? () =>
+                    ref.read(gameControllerProvider.notifier)
+                        .continueAfterFeedback()
+              : null,
+          child: _TurnBanner(session: session, l10n: l10n),
+        ),
+      );
+    }
+
     return PopScope(
       // System back mid-game behaves exactly like the in-game back
       // button: home, with the autosave keeping the journey resumable.
@@ -228,16 +292,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             // Reserving a band at each end keeps the square plate clear
             // of the HUD above it and the deck below it.
             Positioned.fill(
-              // A floor in points as well as a fraction: the HUD's height
-              // comes from its type, not from the screen's, so on a
-              // short landscape tablet a percentage alone leaves it a
-              // pixel too little — and at a large text size, far less.
-              top: reserveBands
-                  ? math.max(220.0, boardSize.height * 0.16)
-                  : 0,
-              bottom: reserveBands
-                  ? math.max(160.0, boardSize.height * 0.13)
-                  : 0,
+              // The bands are the measured heights of the two overlays
+              // plus a hair of air, never a guessed constant: a constant
+              // has to assume the worst case, and on a tablet that cost
+              // the plate the width it could have had. Until the first
+              // frame has measured them the old floors stand in, so the
+              // board never opens overlapping the HUD.
+              top: reserveBands ? (_hudBand ?? 220.0) + _bandGap : 0,
+              bottom: reserveBands ? (_deckBand ?? 160.0) + _bandGap : 0,
               child: InteractiveViewer(
                 key: const Key('board-zoom'),
                 minScale: 1,
@@ -294,234 +356,209 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             // word for what it counts — a bare "4/5" beside a flame told
             // nobody anything — and the whole stack is centred under a
             // button bar with the same weight on both sides.
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              // The band the board keeps clear at this end is as tall as
+              // the HUD actually is, measured rather than guessed: a
+              // constant cost a tablet's plate a hundred points of width.
+              child: _MeasuredHeight(
+                onHeight: _setHudBand,
+                child: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        _GlassIconButton(
-                          key: const Key('board-back'),
-                          icon: Icons.arrow_back,
-                          label: MaterialLocalizations.of(
-                            context,
-                          ).backButtonTooltip,
-                          onTap: () => context.go('/home'),
-                        ),
-                        const SizedBox(width: 6),
-                        // Silence, within reach of the thumb that is
-                        // already on the board: a table that starts a
-                        // race in a quiet room should not have to leave
-                        // the game to find the setting.
-                        _GlassIconButton(
-                          key: const Key('mute-toggle'),
-                          icon: soundOn ? Icons.volume_up : Icons.volume_off,
-                          label: soundOn ? l10n.muteSound : l10n.unmuteSound,
-                          onTap: () => ref
-                              .read(settingsControllerProvider.notifier)
-                              .setSoundEnabled(!soundOn),
-                        ),
-                        const SizedBox(width: 8),
-                        // Whose turn it is, and it must be unmissable:
-                        // around a table nobody should have to ask. The
-                        // plate wears the rider's own colour, says so in
-                        // words, and breathes while the game is waiting
-                        // on them.
-                        Expanded(
-                          child: Center(
-                            child: _TurnNameplate(
-                              key: const Key('turn-nameplate'),
-                              name: player.name,
-                              color: player.team.color(colors),
-                              // No eyebrow on an opponent's turn: the
-                              // banner over the board already narrates
-                              // what they are doing.
-                              label: player.isHuman ? l10n.yourTurn : null,
-                              waiting:
-                                  player.isHuman &&
-                                  state.turnPhase == TurnPhase.selectingGait,
+                        Row(
+                          children: [
+                            _GlassIconButton(
+                              key: const Key('board-back'),
+                              icon: Icons.arrow_back,
+                              label: MaterialLocalizations.of(
+                                context,
+                              ).backButtonTooltip,
+                              onTap: () => context.go('/home'),
                             ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        _GlassIconButton(
-                          key: const Key('rules-shortcut'),
-                          icon: Icons.help_outline,
-                          label: l10n.rulesTitle,
-                          onTap: () => context.push('/tutorial'),
-                        ),
-                        const SizedBox(width: 6),
-                        _GlassIconButton(
-                          key: const Key('board-menu'),
-                          icon: Icons.menu,
-                          label: l10n.boardMenuOpen,
-                          onTap: () => _openBoardMenu(context, ref, l10n),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    // The standing of the race. One heading over the row
-                    // says what all four numbers count, which is cheaper
-                    // than repeating the word in every pill — and the
-                    // painted stables are scenery, so this is the only
-                    // place the score is actually readable.
-                    _HudGroup(
-                      heading: l10n.hudArrivedHeading,
-                      children: [
-                        for (var i = 0; i < state.players.length; i++)
-                          _HudPill(
-                            highlight: i == state.currentPlayerIndex,
-                            child: Semantics(
-                              label: state.players[i].id == leader.id
-                                  ? '${state.players[i].name}, '
-                                        '${l10n.hudArrivedHeading} '
-                                        '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
-                                        '/${state.players[i].horses.length}, '
-                                        '${l10n.leaderLabel}'
-                                  : '${state.players[i].name}, '
-                                        '${l10n.hudArrivedHeading} '
-                                        '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
-                                        '/${state.players[i].horses.length}',
-                              child: ExcludeSemantics(
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 5,
-                                      backgroundColor: state.players[i].team
-                                          .color(colors),
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
-                                      '/${state.players[i].horses.length}',
-                                      style: _hudText(context),
-                                    ),
-                                    if (state.players[i].id == leader.id &&
-                                        state.players.length > 1) ...[
-                                      const SizedBox(width: 4),
-                                      const Icon(
-                                        Icons.star_rounded,
-                                        key: Key('leader-star'),
-                                        size: 14,
-                                        color: Color(0xFFFFE08A),
-                                      ),
-                                    ],
-                                  ],
+                            const SizedBox(width: 6),
+                            // Silence, within reach of the thumb that is
+                            // already on the board: a table that starts a
+                            // race in a quiet room should not have to leave
+                            // the game to find the setting.
+                            _GlassIconButton(
+                              key: const Key('mute-toggle'),
+                              icon: soundOn ? Icons.volume_up : Icons.volume_off,
+                              label: soundOn ? l10n.muteSound : l10n.unmuteSound,
+                              onTap: () => ref
+                                  .read(settingsControllerProvider.notifier)
+                                  .setSoundEnabled(!soundOn),
+                            ),
+                            const SizedBox(width: 8),
+                            // Whose turn it is, and it must be unmissable:
+                            // around a table nobody should have to ask. The
+                            // plate wears the rider's own colour, says so in
+                            // words, and breathes while the game is waiting
+                            // on them.
+                            Expanded(
+                              child: Center(
+                                child: _TurnNameplate(
+                                  key: const Key('turn-nameplate'),
+                                  name: player.name,
+                                  color: player.team.color(colors),
+                                  // No eyebrow on an opponent's turn: the
+                                  // banner over the board already narrates
+                                  // what they are doing.
+                                  label: player.isHuman ? l10n.yourTurn : null,
+                                  waiting:
+                                      player.isHuman &&
+                                      state.turnPhase == TurnPhase.selectingGait,
                                 ),
                               ),
                             ),
-                          ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    // What this rider has earned, and — in the free
-                    // edition — how far into its fifty cards the table is.
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 8,
-                      runSpacing: 6,
-                      children: [
-                        _HudStat(
-                          key: const Key('hud-knowledge'),
-                          icon: Icons.auto_awesome,
-                          iconColor: const Color(0xFFEBC06A),
-                          value: '${player.rewards.knowledgePoints}',
-                          word: l10n.hudKnowledgeShort,
-                          semantics:
-                              '${l10n.knowledgePointsLabel} : '
-                              '${player.rewards.knowledgePoints}',
-                        ),
-                        _HudStat(
-                          key: const Key('hud-streak'),
-                          icon: Icons.local_fire_department,
-                          iconColor: player.streak.current > 0
-                              ? const Color(0xFFF0A24B)
-                              : Colors.white38,
-                          value:
-                              '${player.streak.current}/${player.streak.nextThreshold}',
-                          word: l10n.hudStreakShort,
-                          highlight: player.streak.current >= 3,
-                          semantics:
-                              '${l10n.knowledgeStreak} : '
-                              '${player.streak.current} / ${player.streak.nextThreshold}',
-                        ),
-                        if (state.maxDraws != null)
-                          _HudStat(
-                            key: const Key('hud-cards'),
-                            icon: Icons.style,
-                            iconColor: const Color(0xFFEBC06A),
-                            value: '${state.drawCount}/${state.maxDraws}',
-                            word: l10n.hudCardsShort,
-                            semantics: l10n.drawsCounter(
-                              state.drawCount,
-                              state.maxDraws!,
+                            const SizedBox(width: 8),
+                            _GlassIconButton(
+                              key: const Key('rules-shortcut'),
+                              icon: Icons.help_outline,
+                              label: l10n.rulesTitle,
+                              onTap: () => context.push('/tutorial'),
                             ),
+                            const SizedBox(width: 6),
+                            _GlassIconButton(
+                              key: const Key('board-menu'),
+                              icon: Icons.menu,
+                              label: l10n.boardMenuOpen,
+                              onTap: () => _openBoardMenu(context, ref, l10n),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        // The standing of the race. One heading over the row
+                        // says what all four numbers count, which is cheaper
+                        // than repeating the word in every pill — and the
+                        // painted stables are scenery, so this is the only
+                        // place the score is actually readable.
+                        _HudGroup(
+                          heading: l10n.hudArrivedHeading,
+                          children: [
+                            for (var i = 0; i < state.players.length; i++)
+                              _HudPill(
+                                highlight: i == state.currentPlayerIndex,
+                                child: Semantics(
+                                  label: state.players[i].id == leader.id
+                                      ? '${state.players[i].name}, '
+                                            '${l10n.hudArrivedHeading} '
+                                            '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                            '/${state.players[i].horses.length}, '
+                                            '${l10n.leaderLabel}'
+                                      : '${state.players[i].name}, '
+                                            '${l10n.hudArrivedHeading} '
+                                            '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                            '/${state.players[i].horses.length}',
+                                  child: ExcludeSemantics(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 5,
+                                          backgroundColor: state.players[i].team
+                                              .color(colors),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        Text(
+                                          '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                                          '/${state.players[i].horses.length}',
+                                          style: _hudText(context),
+                                        ),
+                                        if (state.players[i].id == leader.id &&
+                                            state.players.length > 1) ...[
+                                          const SizedBox(width: 4),
+                                          const Icon(
+                                            Icons.star_rounded,
+                                            key: Key('leader-star'),
+                                            size: 14,
+                                            color: Color(0xFFFFE08A),
+                                          ),
+                                        ],
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        // What this rider has earned, and — in the free
+                        // edition — how far into its fifty cards the table is.
+                        Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: 8,
+                          runSpacing: 6,
+                          children: [
+                            _HudStat(
+                              key: const Key('hud-knowledge'),
+                              icon: Icons.auto_awesome,
+                              iconColor: const Color(0xFFEBC06A),
+                              value: '${player.rewards.knowledgePoints}',
+                              word: l10n.hudKnowledgeShort,
+                              semantics:
+                                  '${l10n.knowledgePointsLabel} : '
+                                  '${player.rewards.knowledgePoints}',
+                            ),
+                            _HudStat(
+                              key: const Key('hud-streak'),
+                              icon: Icons.local_fire_department,
+                              iconColor: player.streak.current > 0
+                                  ? const Color(0xFFF0A24B)
+                                  : Colors.white38,
+                              value:
+                                  '${player.streak.current}/${player.streak.nextThreshold}',
+                              word: l10n.hudStreakShort,
+                              highlight: player.streak.current >= 3,
+                              semantics:
+                                  '${l10n.knowledgeStreak} : '
+                                  '${player.streak.current} / ${player.streak.nextThreshold}',
+                            ),
+                            if (state.maxDraws != null)
+                              _HudStat(
+                                key: const Key('hud-cards'),
+                                icon: Icons.style,
+                                iconColor: const Color(0xFFEBC06A),
+                                value: '${state.drawCount}/${state.maxDraws}',
+                                word: l10n.hudCardsShort,
+                                semantics: l10n.drawsCounter(
+                                  state.drawCount,
+                                  state.maxDraws!,
+                                ),
+                              ),
+                          ],
+                        ),
+                        if (_leadToast != null) ...[
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Flexible(child: _LeadToast(text: _leadToast!)),
+                            ],
                           ),
+                        ],
                       ],
                     ),
-                    if (_leadToast != null) ...[
-                      const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(child: _LeadToast(text: _leadToast!)),
-                        ],
-                      ),
-                    ],
-                  ],
+                  ),
                 ),
               ),
             ),
 
             // ---- Bottom: the deck, the placement banner or the turn pill ----
-            if (state.turnPhase == TurnPhase.selectingGait && player.isHuman)
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
-                    child: DrawDeck(
-                      key: const Key('draw-deck'),
-                      onDraw: _onDrawCard,
-                      horseHint: state.isBonusTurn ? l10n.bonusTurnHint : null,
-                    ),
-                  ),
-                ),
-              )
-            else if (state.turnPhase == TurnPhase.choosingHorse &&
-                player.isHuman)
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SafeArea(
-                  child: _PlacementBanner(
-                    value: state.drawnCard?.steps ?? 0,
-                    title: l10n.squaresWon(state.drawnCard?.steps ?? 0),
-                    hint: _placementSelected == null
-                        ? l10n.touchHorseHint
-                        : l10n.dragHorseToDestination,
-                    extra: state.extraTurn ? l10n.celebrateSixBody : null,
-                  ),
-                ),
-              )
-            else
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SafeArea(
-                  child: GestureDetector(
-                    // A card that could move nothing passes by itself; a
-                    // tap on the banner passes it sooner.
-                    onTap: state.turnPhase == TurnPhase.noMove && player.isHuman
-                        ? () => ref
-                              .read(gameControllerProvider.notifier)
-                              .continueAfterFeedback()
-                        : null,
-                    child: _TurnBanner(session: session, l10n: l10n),
-                  ),
-                ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: _MeasuredHeight(
+                onHeight: _setDeckBand,
+                child: bottomOverlay,
               ),
+            ),
 
             if (_revealing)
               Positioned.fill(
@@ -2337,5 +2374,39 @@ class _CellOfferSheet extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+/// Reports its child's laid-out height, so a layout can reserve exactly
+/// as much room as the child actually takes. The callback fires after
+/// the frame, never during layout, and only when the height changes.
+class _MeasuredHeight extends SingleChildRenderObjectWidget {
+  const _MeasuredHeight({required this.onHeight, required Widget super.child});
+
+  final ValueChanged<double> onHeight;
+
+  @override
+  _RenderMeasuredHeight createRenderObject(BuildContext context) =>
+      _RenderMeasuredHeight(onHeight);
+
+  @override
+  void updateRenderObject(BuildContext context, _RenderMeasuredHeight box) {
+    box.onHeight = onHeight;
+  }
+}
+
+class _RenderMeasuredHeight extends RenderProxyBox {
+  _RenderMeasuredHeight(this.onHeight);
+
+  ValueChanged<double> onHeight;
+  double? _reported;
+
+  @override
+  void performLayout() {
+    super.performLayout();
+    final height = size.height;
+    if (_reported == height) return;
+    _reported = height;
+    SchedulerBinding.instance.addPostFrameCallback((_) => onHeight(height));
   }
 }

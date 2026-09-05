@@ -11698,5 +11698,2605 @@
     ],
     "explanation": "«Tidak ada kebaikan dalam banyak pembicaraan rahasia mereka, kecuali pembicaraan orang yang menyuruh bersedekah, atau berbuat kebaikan, atau mendamaikan di antara manusia».",
     "sourceDisplay": "Al-Qur'an 4:114"
+  },
+  {
+    "id": "prophets_251",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah nama Nabi umat Islam?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Ibrahim",
+      "Musa",
+      "Isa"
+    ],
+    "explanation": "Nabi umat Islam adalah Muhammad ﷺ, putra Abdullah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_252",
+    "correctAnswerIndex": 0,
+    "question": "Isma'il dan Ishaq adalah putra nabi siapakah?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Dawud"
+    ],
+    "explanation": "«Segala puji bagi Allah yang telah menganugerahkan kepadaku di hari tuaku Isma'il dan Ishaq» (14:39).",
+    "sourceDisplay": "Al-Qur'an 14:39"
+  },
+  {
+    "id": "prophets_253",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang diangkat Allah kepada-Nya?",
+    "answers": [
+      "Isa",
+      "Yunus",
+      "Ayyub",
+      "Idris"
+    ],
+    "explanation": "«Tetapi Allah telah mengangkatnya kepada-Nya» (4:158).",
+    "sourceDisplay": "Al-Qur'an 4:158"
+  },
+  {
+    "id": "prophets_254",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah ibu Nabi Isa?",
+    "answers": [
+      "Maryam",
+      "Asiyah",
+      "Hajar",
+      "Sara"
+    ],
+    "explanation": "Maryam, yang namanya menjadi nama satu surah penuh dalam Al-Qur'an.",
+    "sourceDisplay": "Al-Qur'an 19:16-21"
+  },
+  {
+    "id": "prophets_255",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah manusia pertama yang diciptakan Allah?",
+    "answers": [
+      "Adam",
+      "Nuh",
+      "Ibrahim",
+      "Idris"
+    ],
+    "explanation": "Adam adalah manusia pertama, yang diajari Allah semua nama.",
+    "sourceDisplay": "Al-Qur'an 2:31"
+  },
+  {
+    "id": "prophets_256",
+    "correctAnswerIndex": 0,
+    "question": "Bagi nabi siapakah api menjadi dingin dan selamat?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Yusuf",
+      "Sulaiman"
+    ],
+    "explanation": "«Wahai api, jadilah dingin dan selamat bagi Ibrahim.»",
+    "sourceDisplay": "Al-Qur'an 21:69"
+  },
+  {
+    "id": "prophets_257",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang membawa tongkat yang berubah menjadi ular?",
+    "answers": [
+      "Musa",
+      "Harun",
+      "Yahya",
+      "Zakariyya"
+    ],
+    "explanation": "Allah bertanya kepada Musa: «Apakah yang ada di tangan kananmu itu?»",
+    "sourceDisplay": "Al-Qur'an 20:17-18"
+  },
+  {
+    "id": "prophets_258",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang bermimpi melihat sebelas bintang bersujud?",
+    "answers": [
+      "Yusuf",
+      "Ya'qub",
+      "Ishaq",
+      "Dawud"
+    ],
+    "explanation": "«Wahai ayahku, aku melihat sebelas bintang, matahari dan bulan.»",
+    "sourceDisplay": "Al-Qur'an 12:4"
+  },
+  {
+    "id": "prophets_259",
+    "correctAnswerIndex": 0,
+    "question": "Burung apakah yang membawa kabar kepada Nabi Sulaiman?",
+    "answers": [
+      "Burung hud-hud",
+      "Burung gagak",
+      "Burung elang",
+      "Burung merpati"
+    ],
+    "explanation": "Hud-hud berkata: «Aku datang kepadamu dari negeri Saba dengan membawa kabar yang meyakinkan» (27:22).",
+    "sourceDisplay": "Al-Qur'an 27:22"
+  },
+  {
+    "id": "prophets_260",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang menjadi teladan kesabaran dalam ujian?",
+    "answers": [
+      "Ayyub",
+      "Yunus",
+      "Lut",
+      "Syu'aib"
+    ],
+    "explanation": "Ayyub berdoa kepada Tuhannya dan terbukti sangat sabar.",
+    "sourceDisplay": "Al-Qur'an 38:41"
+  },
+  {
+    "id": "prophets_261",
+    "correctAnswerIndex": 0,
+    "question": "Dari apakah Allah menciptakan Adam?",
+    "answers": [
+      "Dari tanah",
+      "Dari cahaya",
+      "Dari api",
+      "Dari angin"
+    ],
+    "explanation": "«Dia menciptakannya dari tanah, kemudian berfirman kepadanya: Jadilah!» (3:59).",
+    "sourceDisplay": "Al-Qur'an 3:59"
+  },
+  {
+    "id": "prophets_262",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang diajak bicara langsung oleh Allah?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Yunus",
+      "Salih"
+    ],
+    "explanation": "«Dan Allah telah berbicara kepada Musa secara langsung.»",
+    "sourceDisplay": "Al-Qur'an 4:164"
+  },
+  {
+    "id": "prophets_263",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah nabi yang datang setelah Muhammad ﷺ?",
+    "answers": [
+      "Tidak ada: dia adalah nabi terakhir",
+      "Satu",
+      "Tiga",
+      "Tujuh"
+    ],
+    "explanation": "Muhammad ﷺ adalah penutup para nabi: tidak ada nabi lagi setelahnya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_264",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang disebut kekasih (khalil) Allah?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Isa",
+      "Nuh"
+    ],
+    "explanation": "Ibrahim adalah bapak para nabi dan kekasih Yang Maha Pengasih.",
+    "sourceDisplay": "Al-Qur'an 2:136"
+  },
+  {
+    "id": "prophets_265",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang menyembuhkan orang buta sejak lahir dengan izin Allah?",
+    "answers": [
+      "Isa",
+      "Yahya",
+      "Zakariyya",
+      "Ilyas"
+    ],
+    "explanation": "«Dan engkau menyembuhkan orang yang buta sejak lahir dan orang yang berpenyakit kusta dengan izin-Ku.»",
+    "sourceDisplay": "Al-Qur'an 5:110"
+  },
+  {
+    "id": "prophets_266",
+    "correctAnswerIndex": 0,
+    "question": "Bagi nabi siapakah gunung-gunung ikut bertasbih memuji Allah?",
+    "answers": [
+      "Dawud",
+      "Sulaiman",
+      "Ayyub",
+      "Yunus"
+    ],
+    "explanation": "«Wahai gunung-gunung, bertasbihlah berulang-ulang bersama dia.»",
+    "sourceDisplay": "Al-Qur'an 34:10"
+  },
+  {
+    "id": "prophets_267",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang menjelaskan mimpi raja Mesir?",
+    "answers": [
+      "Yusuf",
+      "Harun",
+      "Ilyas",
+      "Syu'aib"
+    ],
+    "explanation": "Yusuf menjelaskan mimpi tujuh sapi gemuk dan tujuh sapi kurus (12:46-49).",
+    "sourceDisplay": "Al-Qur'an 12:46-49"
+  },
+  {
+    "id": "prophets_268",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah ayah Nabi Yusuf?",
+    "answers": [
+      "Ya'qub",
+      "Ishaq",
+      "Ibrahim",
+      "Lut"
+    ],
+    "explanation": "Yusuf adalah putra Ya'qub, dan Ya'qub adalah putra Ishaq.",
+    "sourceDisplay": "Al-Qur'an 12:8"
+  },
+  {
+    "id": "prophets_269",
+    "correctAnswerIndex": 0,
+    "question": "Apakah yang terbelah di hadapan Musa dan kaumnya?",
+    "answers": [
+      "Laut, yang terbelah untuk menyelamatkan mereka dari Fir'aun",
+      "Sebuah sungai di Mesir",
+      "Sebuah danau di Madyan",
+      "Sebuah sumur di gurun"
+    ],
+    "explanation": "«Dan ketika Kami membelah laut untukmu, lalu Kami selamatkan kamu.»",
+    "sourceDisplay": "Al-Qur'an 2:50"
+  },
+  {
+    "id": "prophets_270",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diucapkan setelah menyebut nama Nabi ﷺ?",
+    "answers": [
+      "«Semoga Allah melimpahkan selawat dan salam kepadanya»",
+      "Tidak ada yang khusus",
+      "«Terima kasih»",
+      "«Selamat tinggal»"
+    ],
+    "explanation": "Kita bersalawat dan mengucapkan salam kepadanya: shallallahu 'alaihi wa sallam.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_271",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang berdakwah kepada kaumnya sangat lama sebelum banjir besar?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Salih",
+      "Syu'aib"
+    ],
+    "explanation": "«Kami mengutus Nuh kepada kaumnya: berilah peringatan kepada kaummu.»",
+    "sourceDisplay": "Al-Qur'an 71:1"
+  },
+  {
+    "id": "prophets_272",
+    "correctAnswerIndex": 0,
+    "question": "Sulaiman adalah putra nabi siapakah?",
+    "answers": [
+      "Dawud",
+      "Ya'qub",
+      "Ishaq",
+      "Yunus"
+    ],
+    "explanation": "«Dan Kami karuniakan kepada Dawud, Sulaiman — sebaik-baik hamba!» (38:30).",
+    "sourceDisplay": "Al-Qur'an 38:30"
+  },
+  {
+    "id": "prophets_273",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang mengalahkan Jalut (Goliat)?",
+    "answers": [
+      "Dawud",
+      "Sulaiman",
+      "Yusya'",
+      "Ilyas"
+    ],
+    "explanation": "«Dan Dawud membunuh Jalut» (2:251).",
+    "sourceDisplay": "Al-Qur'an 2:251"
+  },
+  {
+    "id": "prophets_274",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah nabi yang wajib diimani seorang Muslim?",
+    "answers": [
+      "Semuanya, tanpa membeda-bedakan",
+      "Hanya nabi terakhir",
+      "Hanya tiga",
+      "Hanya yang disebut dalam Al-Qur'an"
+    ],
+    "explanation": "Seorang Muslim beriman kepada semua nabi Allah, tanpa membeda-bedakan seorang pun di antara mereka.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_275",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah yang dipilih Allah, menurut Al-Qur'an?",
+    "answers": [
+      "Adam, Nuh, keluarga Ibrahim dan keluarga 'Imran",
+      "Raja-raja Mesir",
+      "Suku-suku Madinah",
+      "Penduduk Saba"
+    ],
+    "explanation": "«Allah telah memilih Adam, Nuh, keluarga Ibrahim dan keluarga 'Imran.»",
+    "sourceDisplay": "Al-Qur'an 3:33"
+  },
+  {
+    "id": "prophets_276",
+    "correctAnswerIndex": 0,
+    "question": "Di negeri manakah Nabi Yusuf menjadi orang kepercayaan raja?",
+    "answers": [
+      "Mesir",
+      "Syam",
+      "Yaman",
+      "Irak"
+    ],
+    "explanation": "Yusuf mendapat kedudukan di Mesir setelah menafsirkan mimpi raja.",
+    "sourceDisplay": "Al-Qur'an 12:100"
+  },
+  {
+    "id": "prophets_277",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang diperjalankan pada malam hari ke Masjidil Aqsa?",
+    "answers": [
+      "Muhammad ﷺ",
+      "Musa",
+      "Isa",
+      "Ibrahim"
+    ],
+    "explanation": "«Mahasuci Allah yang telah memperjalankan hamba-Nya pada malam hari.»",
+    "sourceDisplay": "Al-Qur'an 17:1"
+  },
+  {
+    "id": "prophets_278",
+    "correctAnswerIndex": 0,
+    "question": "Kitab apakah yang diberikan kepada Nabi Musa?",
+    "answers": [
+      "Taurat",
+      "Injil",
+      "Zabur",
+      "Suhuf Ibrahim"
+    ],
+    "explanation": "Allah memberi Musa Kitab dan mengutus rasul-rasul setelahnya.",
+    "sourceDisplay": "Al-Qur'an 2:87"
+  },
+  {
+    "id": "prophets_279",
+    "correctAnswerIndex": 0,
+    "question": "Kitab apakah yang diberikan kepada Nabi Isa?",
+    "answers": [
+      "Injil",
+      "Taurat",
+      "Zabur",
+      "Al-Qur'an"
+    ],
+    "explanation": "«Dan Kami memberinya Injil, di dalamnya ada petunjuk dan cahaya.»",
+    "sourceDisplay": "Al-Qur'an 5:46"
+  },
+  {
+    "id": "prophets_280",
+    "correctAnswerIndex": 0,
+    "question": "Kitab apakah yang diberikan kepada Nabi Dawud?",
+    "answers": [
+      "Zabur",
+      "Taurat",
+      "Injil",
+      "Suhuf Musa"
+    ],
+    "explanation": "«Dan Kami berikan Zabur kepada Dawud.»",
+    "sourceDisplay": "Al-Qur'an 4:163"
+  },
+  {
+    "id": "prophets_281",
+    "correctAnswerIndex": 0,
+    "question": "Putra nabi siapakah yang rela dikurbankan demi taat kepada Allah?",
+    "answers": [
+      "Putra Ibrahim",
+      "Putra Nuh",
+      "Saudara Musa",
+      "Putra Ya'qub"
+    ],
+    "explanation": "«Wahai ayahku, lakukanlah apa yang diperintahkan kepadamu: engkau akan mendapatiku termasuk orang yang sabar.»",
+    "sourceDisplay": "Al-Qur'an 37:102"
+  },
+  {
+    "id": "prophets_282",
+    "correctAnswerIndex": 0,
+    "question": "Di manakah ibu Musa meletakkan bayinya agar selamat?",
+    "answers": [
+      "Di sungai",
+      "Di dalam gua",
+      "Di rumah tetangga",
+      "Di gurun"
+    ],
+    "explanation": "«Hanyutkanlah dia ke sungai: Kami akan mengembalikannya kepadamu.»",
+    "sourceDisplay": "Al-Qur'an 28:7"
+  },
+  {
+    "id": "prophets_283",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diucapkan Yunus dalam kegelapan, yang diulang setiap Muslim?",
+    "answers": [
+      "«Tidak ada tuhan selain Engkau, Mahasuci Engkau, sungguh aku termasuk orang yang zalim»",
+      "«Berilah aku kekayaan»",
+      "«Jadikanlah aku raja»",
+      "«Jadikanlah aku kuat»"
+    ],
+    "explanation": "Inilah doa Yunus di dalam perut ikan.",
+    "sourceDisplay": "Al-Qur'an 21:87"
+  },
+  {
+    "id": "prophets_284",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah ayah Nabi Muhammad ﷺ?",
+    "answers": [
+      "Abdullah",
+      "Abu Thalib",
+      "Al-Abbas",
+      "Hamzah"
+    ],
+    "explanation": "Beliau adalah Muhammad ﷺ, putra Abdullah, putra Abdul Muthalib.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_285",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah ibu Nabi Muhammad ﷺ?",
+    "answers": [
+      "Aminah",
+      "Khadijah",
+      "Aisyah",
+      "Fathimah"
+    ],
+    "explanation": "Aminah binti Wahb adalah ibu Nabi ﷺ.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_286",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang dikatakan Isa saat masih dalam buaian?",
+    "answers": [
+      "«Aku adalah hamba Allah»",
+      "«Aku adalah raja»",
+      "«Aku adalah malaikat»",
+      "Ia tidak berkata apa-apa"
+    ],
+    "explanation": "«Sesungguhnya aku hamba Allah: Dia memberiku Kitab.»",
+    "sourceDisplay": "Al-Qur'an 19:30"
+  },
+  {
+    "id": "prophets_287",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang diutus kepada kaum 'Ad?",
+    "answers": [
+      "Hud",
+      "Salih",
+      "Lut",
+      "Syu'aib"
+    ],
+    "explanation": "«Dan kepada kaum 'Ad, saudara mereka Hud.»",
+    "sourceDisplay": "Al-Qur'an 7:65"
+  },
+  {
+    "id": "prophets_288",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang diutus kepada kaum Tsamud, dengan unta betina?",
+    "answers": [
+      "Salih",
+      "Hud",
+      "Yunus",
+      "Idris"
+    ],
+    "explanation": "«Dan kepada kaum Tsamud, saudara mereka Salih: inilah unta betina Allah.»",
+    "sourceDisplay": "Al-Qur'an 7:73"
+  },
+  {
+    "id": "prophets_289",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang menjadi saudara Musa dan diutus bersamanya?",
+    "answers": [
+      "Harun",
+      "Yusuf",
+      "Yahya",
+      "Ilyas"
+    ],
+    "explanation": "«Dan jadikanlah untukku seorang pembantu dari keluargaku: Harun, saudaraku.»",
+    "sourceDisplay": "Al-Qur'an 20:29-30"
+  },
+  {
+    "id": "prophets_290",
+    "correctAnswerIndex": 0,
+    "question": "Gelar apakah yang diberikan Al-Qur'an kepada Muhammad ﷺ di antara para nabi?",
+    "answers": [
+      "Penutup para nabi",
+      "Nabi yang pertama",
+      "Raja para nabi",
+      "Juru tulis para nabi"
+    ],
+    "explanation": "«Muhammad adalah utusan Allah dan penutup para nabi.»",
+    "sourceDisplay": "Al-Qur'an 33:40"
+  },
+  {
+    "id": "prophets_291",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang dikatakan para malaikat kepada Maryam dalam Al-Qur'an?",
+    "answers": [
+      "Bahwa Allah telah memilih dan menyucikannya",
+      "Bahwa ia akan menjadi ratu",
+      "Bahwa ia akan bepergian",
+      "Bahwa ia akan mengajar"
+    ],
+    "explanation": "«Wahai Maryam, sesungguhnya Allah telah memilihmu dan menyucikanmu.»",
+    "sourceDisplay": "Al-Qur'an 3:42"
+  },
+  {
+    "id": "prophets_292",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana Ayyub berdoa kepada Tuhannya dalam ujiannya?",
+    "answers": [
+      "«Aku telah ditimpa penyakit, dan Engkau Maha Penyayang»",
+      "«Jadikanlah aku kaya»",
+      "«Hukumlah musuh-musuhku»",
+      "«Jadikanlah aku raja»"
+    ],
+    "explanation": "«Aku telah ditimpa penyakit, dan Engkaulah Yang Maha Penyayang di antara semua penyayang.»",
+    "sourceDisplay": "Al-Qur'an 21:83"
+  },
+  {
+    "id": "prophets_293",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diajarkan Allah kepada Adam?",
+    "answers": [
+      "Semua nama",
+      "Menulis",
+      "Berlayar",
+      "Berhitung"
+    ],
+    "explanation": "«Dan Dia mengajarkan kepada Adam nama-nama semuanya.»",
+    "sourceDisplay": "Al-Qur'an 2:31"
+  },
+  {
+    "id": "prophets_294",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang memerintah kerajaan yang tidak akan dimiliki siapa pun setelahnya?",
+    "answers": [
+      "Sulaiman",
+      "Dawud",
+      "Yusuf",
+      "Dzulqarnain"
+    ],
+    "explanation": "«Anugerahkanlah kepadaku kerajaan yang tidak dimiliki oleh siapa pun setelahku.»",
+    "sourceDisplay": "Al-Qur'an 38:35-36"
+  },
+  {
+    "id": "prophets_295",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang diselamatkan bersama keluarganya, kecuali istrinya?",
+    "answers": [
+      "Lut",
+      "Nuh",
+      "Hud",
+      "Salih"
+    ],
+    "explanation": "«Pergilah bersama keluargamu pada akhir malam… kecuali istrimu.»",
+    "sourceDisplay": "Al-Qur'an 11:81"
+  },
+  {
+    "id": "prophets_296",
+    "correctAnswerIndex": 0,
+    "question": "Dari apakah Ibrahim memperingatkan kaumnya?",
+    "answers": [
+      "Menyembah berhala",
+      "Berdagang",
+      "Bepergian",
+      "Menulis"
+    ],
+    "explanation": "«Pantaskah engkau menjadikan berhala-berhala itu sebagai tuhan?»",
+    "sourceDisplay": "Al-Qur'an 6:74"
+  },
+  {
+    "id": "prophets_297",
+    "correctAnswerIndex": 0,
+    "question": "Kata apakah yang berarti orang yang diutus Allah kepada manusia?",
+    "answers": [
+      "Seorang utusan (rasul)",
+      "Seorang khalifah",
+      "Seorang sahabat",
+      "Seorang ulama"
+    ],
+    "explanation": "Rasul adalah orang yang diutus Allah, yang dipercaya membawa pesan bagi manusia.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_298",
+    "correctAnswerIndex": 0,
+    "question": "Sebagai apakah Allah mengutus Nabi ﷺ, menurut surah Al-Ahzab?",
+    "answers": [
+      "Saksi, pembawa kabar gembira dan pemberi peringatan",
+      "Raja dan hakim",
+      "Pedagang",
+      "Penyair"
+    ],
+    "explanation": "«Wahai Nabi, sesungguhnya Kami mengutusmu sebagai saksi, pembawa kabar gembira dan pemberi peringatan» (33:45).",
+    "sourceDisplay": "Al-Qur'an 33:45"
+  },
+  {
+    "id": "prophets_299",
+    "correctAnswerIndex": 0,
+    "question": "Mengapa Muhammad ﷺ diutus, menurut Al-Qur'an?",
+    "answers": [
+      "Sebagai rahmat bagi seluruh alam",
+      "Untuk memerintah",
+      "Untuk membangun",
+      "Untuk berdagang"
+    ],
+    "explanation": "«Dan Kami tidak mengutusmu melainkan sebagai rahmat bagi seluruh alam.»",
+    "sourceDisplay": "Al-Qur'an 21:107"
+  },
+  {
+    "id": "prophets_300",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang disebut Al-Qur'an «hamba yang banyak bersyukur»?",
+    "answers": [
+      "Nuh",
+      "Lut",
+      "Idris",
+      "Ilyas"
+    ],
+    "explanation": "«Sesungguhnya dia adalah hamba yang banyak bersyukur» (17:3), dikatakan tentang Nuh.",
+    "sourceDisplay": "Al-Qur'an 17:3"
+  },
+  {
+    "id": "prophets_301",
+    "correctAnswerIndex": 0,
+    "question": "Tanda apakah yang diberikan kepada Zakariyya setelah kabar gembira tentang putranya?",
+    "answers": [
+      "Tidak berbicara kepada manusia selama tiga hari",
+      "Melihat sebuah bintang",
+      "Mendengar guntur",
+      "Berjalan di atas air"
+    ],
+    "explanation": "«Tandamu adalah engkau tidak berbicara kepada manusia selama tiga hari» (3:41).",
+    "sourceDisplay": "Al-Qur'an 3:41"
+  },
+  {
+    "id": "prophets_302",
+    "correctAnswerIndex": 0,
+    "question": "Dengan bahasa apakah setiap rasul diutus?",
+    "answers": [
+      "Dengan bahasa kaumnya sendiri",
+      "Hanya dengan bahasa Arab",
+      "Dengan bahasa Ibrani",
+      "Dengan bahasa langit"
+    ],
+    "explanation": "«Kami tidak mengutus seorang rasul pun melainkan dengan bahasa kaumnya.»",
+    "sourceDisplay": "Al-Qur'an 14:4"
+  },
+  {
+    "id": "prophets_303",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang menceritakan kisah seorang nabi dari awal sampai akhir?",
+    "answers": [
+      "Surah Yusuf",
+      "Surah Al-Baqarah",
+      "Surah An-Nas",
+      "Surah Al-Fatihah"
+    ],
+    "explanation": "«Kami menceritakan kepadamu kisah yang paling baik» — kisah Yusuf.",
+    "sourceDisplay": "Al-Qur'an 12:1-3"
+  },
+  {
+    "id": "prophets_304",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana Al-Qur'an menggambarkan Ibrahim dalam surah Maryam?",
+    "answers": [
+      "Seorang yang sangat benar, seorang nabi",
+      "Seorang raja",
+      "Seorang juru tulis",
+      "Seorang pedagang"
+    ],
+    "explanation": "«Sesungguhnya dia adalah seorang yang sangat benar, seorang nabi.»",
+    "sourceDisplay": "Al-Qur'an 19:41"
+  },
+  {
+    "id": "prophets_305",
+    "correctAnswerIndex": 0,
+    "question": "Ratu manakah yang datang menemui Nabi Sulaiman?",
+    "answers": [
+      "Ratu Saba",
+      "Ratu Mesir",
+      "Ratu Babilonia",
+      "Ratu Yaman utara"
+    ],
+    "explanation": "Ia berserah diri bersama Sulaiman kepada Allah, Tuhan seluruh alam.",
+    "sourceDisplay": "Al-Qur'an 27:44"
+  },
+  {
+    "id": "prophets_306",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang meminta diperlihatkan bagaimana Allah menghidupkan kembali?",
+    "answers": [
+      "Ibrahim",
+      "Musa",
+      "Nuh",
+      "Yunus"
+    ],
+    "explanation": "«Ya Tuhanku, perlihatkanlah kepadaku bagaimana Engkau menghidupkan orang mati.»",
+    "sourceDisplay": "Al-Qur'an 2:260"
+  },
+  {
+    "id": "prophets_307",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang melakukan perjalanan untuk belajar dari seorang hamba yang berilmu?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Dawud",
+      "Sulaiman"
+    ],
+    "explanation": "Musa berjalan hingga bertemu seorang hamba Allah yang telah diberi-Nya ilmu.",
+    "sourceDisplay": "Al-Qur'an 18:60-65"
+  },
+  {
+    "id": "prophets_308",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diajarkan surah Al-Ikhlas tentang Allah?",
+    "answers": [
+      "Bahwa Dia Maha Esa, dan tidak ada yang setara dengan-Nya",
+      "Bahwa Dia memiliki sekutu",
+      "Bahwa Dia menyerupai makhluk-Nya",
+      "Bahwa Dia memiliki anak"
+    ],
+    "explanation": "«Katakanlah: Dialah Allah, Yang Maha Esa… dan tidak ada sesuatu pun yang setara dengan-Nya.»",
+    "sourceDisplay": "Al-Qur'an 112:1-4"
+  },
+  {
+    "id": "prophets_309",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan penduduk Makkah untuk Nabi ﷺ sebelum wahyu turun?",
+    "answers": [
+      "Al-Amin, yang terpercaya",
+      "Sang musafir",
+      "Sang penyair",
+      "Sang hakim"
+    ],
+    "explanation": "Kejujurannya begitu terkenal sehingga ia dijuluki Al-Amin.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "prophets_310",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah yang disebut Al-Qur'an sebagai teladan terbaik untuk diikuti?",
+    "answers": [
+      "Rasulullah ﷺ",
+      "Para raja",
+      "Para penyair",
+      "Para pedagang"
+    ],
+    "explanation": "«Sungguh, telah ada pada diri Rasulullah itu suri teladan yang baik bagimu.»",
+    "sourceDisplay": "Al-Qur'an 33:21"
+  },
+  {
+    "id": "sira_251",
+    "correctAnswerIndex": 0,
+    "question": "Di kota manakah Nabi ﷺ dilahirkan?",
+    "answers": [
+      "Makkah",
+      "Madinah",
+      "Yerusalem",
+      "Ta'if"
+    ],
+    "explanation": "Nabi ﷺ lahir di Makkah, dari suku Quraisy.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_252",
+    "correctAnswerIndex": 0,
+    "question": "Ke kota manakah Nabi ﷺ berhijrah?",
+    "answers": [
+      "Madinah",
+      "Ta'if",
+      "Kairo",
+      "Damaskus"
+    ],
+    "explanation": "Hijrah berlangsung dari Makkah ke Madinah, yang saat itu bernama Yatsrib.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_253",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama perpindahan dari Makkah ke Madinah?",
+    "answers": [
+      "Hijrah",
+      "Haji",
+      "Pembebasan",
+      "Perjanjian"
+    ],
+    "explanation": "Hijrah menandai awal kalender Islam.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_254",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah istri pertama Nabi ﷺ?",
+    "answers": [
+      "Khadijah",
+      "Aisyah",
+      "Hafshah",
+      "Saudah"
+    ],
+    "explanation": "Khadijah binti Khuwailid, orang pertama yang beriman kepadanya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_255",
+    "correctAnswerIndex": 0,
+    "question": "Di gua manakah Nabi ﷺ bersembunyi saat hijrah?",
+    "answers": [
+      "Gua Tsur",
+      "Gua Hira",
+      "Gua Uhud",
+      "Gua Quba"
+    ],
+    "explanation": "Beliau bersembunyi di sana selama tiga hari bersama Abu Bakar sebelum melanjutkan perjalanan ke Madinah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_256",
+    "correctAnswerIndex": 0,
+    "question": "Apa kata pertama yang diwahyukan kepada Nabi ﷺ?",
+    "answers": [
+      "«Bacalah»",
+      "«Salatlah»",
+      "«Bangunlah»",
+      "«Dengarlah»"
+    ],
+    "explanation": "«Bacalah dengan nama Tuhanmu yang menciptakan.»",
+    "sourceDisplay": "Al-Qur'an 96:1"
+  },
+  {
+    "id": "sira_257",
+    "correctAnswerIndex": 0,
+    "question": "Malaikat siapakah yang membawa wahyu kepada Nabi ﷺ?",
+    "answers": [
+      "Jibril",
+      "Mikail",
+      "Israfil",
+      "Malik"
+    ],
+    "explanation": "Jibril adalah malaikat yang ditugaskan menurunkan wahyu.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_258",
+    "correctAnswerIndex": 0,
+    "question": "Di kota manakah makam Nabi ﷺ berada?",
+    "answers": [
+      "Madinah",
+      "Makkah",
+      "Yerusalem",
+      "Ta'if"
+    ],
+    "explanation": "Makam beliau berada di Madinah, di samping masjidnya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_259",
+    "correctAnswerIndex": 0,
+    "question": "Dari suku manakah Nabi ﷺ berasal?",
+    "answers": [
+      "Quraisy",
+      "Aus",
+      "Khazraj",
+      "Tsaqif"
+    ],
+    "explanation": "Nabi ﷺ berasal dari suku Quraisy, suku penduduk Makkah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_260",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk para pengikut yang mendampingi Nabi ﷺ?",
+    "answers": [
+      "Para Sahabat",
+      "Para Tabi'in",
+      "Hanya kaum Anshar",
+      "Para Qurra"
+    ],
+    "explanation": "Para Sahabat adalah orang-orang yang melihat Nabi ﷺ dalam keadaan beriman kepadanya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_261",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah yang menemani Nabi ﷺ saat hijrah?",
+    "answers": [
+      "Abu Bakar",
+      "Umar",
+      "Utsman",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakar adalah teman beliau di dalam gua saat hijrah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_262",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah muazin Nabi ﷺ?",
+    "answers": [
+      "Bilal",
+      "Anas",
+      "Zaid",
+      "Salman"
+    ],
+    "explanation": "Bilal bin Rabah mengumandangkan azan di Madinah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_263",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama perang pertama dalam Islam?",
+    "answers": [
+      "Badar",
+      "Uhud",
+      "Khaibar",
+      "Hunain"
+    ],
+    "explanation": "Badar adalah perang besar pertama, pada tahun kedua Hijrah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_264",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan bagi orang-orang yang berhijrah dari Makkah ke Madinah?",
+    "answers": [
+      "Kaum Muhajirin",
+      "Kaum Anshar",
+      "Para Tabi'in",
+      "Para sahabat Ta'if"
+    ],
+    "explanation": "Kaum Muhajirin adalah orang-orang yang berhijrah; kaum Anshar adalah orang-orang yang menyambut mereka.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_265",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan bagi penduduk Madinah yang menyambut kaum yang berhijrah?",
+    "answers": [
+      "Kaum Anshar",
+      "Kaum Muhajirin",
+      "Quraisy",
+      "Para Tabi'in"
+    ],
+    "explanation": "Kaum Anshar, «para penolong», adalah suku Aus dan Khazraj dari Madinah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_266",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang pertama kali dibangun Nabi ﷺ di Madinah?",
+    "answers": [
+      "Masjid",
+      "Pasar",
+      "Istana",
+      "Tembok"
+    ],
+    "explanation": "Beliau membangun masjidnya segera setelah tiba di Madinah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_267",
+    "correctAnswerIndex": 0,
+    "question": "Putri Nabi ﷺ yang manakah yang menikah dengan Ali?",
+    "answers": [
+      "Fathimah",
+      "Ruqayyah",
+      "Zainab",
+      "Ummu Kultsum"
+    ],
+    "explanation": "Fathimah, putri Nabi ﷺ, menikah dengan Ali bin Abi Thalib.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_268",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah khalifah pertama setelah Nabi ﷺ?",
+    "answers": [
+      "Abu Bakar",
+      "Umar",
+      "Utsman",
+      "Ali"
+    ],
+    "explanation": "Abu Bakar Ash-Shiddiq adalah khalifah pertama.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_269",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama Madinah sebelumnya?",
+    "answers": [
+      "Yatsrib",
+      "Bakkah",
+      "Ta'if",
+      "Khaibar"
+    ],
+    "explanation": "Yatsrib kemudian bernama Madinatun Nabi, kota Nabi ﷺ.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_270",
+    "correctAnswerIndex": 0,
+    "question": "Berapa usia Nabi ﷺ saat menerima wahyu pertama?",
+    "answers": [
+      "Empat puluh tahun",
+      "Dua puluh tahun",
+      "Enam puluh tahun",
+      "Tiga puluh tahun"
+    ],
+    "explanation": "Wahyu datang kepada beliau saat berusia empat puluh tahun.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_271",
+    "correctAnswerIndex": 0,
+    "question": "Di kota manakah Ka'bah berada?",
+    "answers": [
+      "Makkah",
+      "Madinah",
+      "Yerusalem",
+      "Damaskus"
+    ],
+    "explanation": "Ka'bah berdiri di tengah Masjidil Haram, di Makkah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_272",
+    "correctAnswerIndex": 0,
+    "question": "Di kota manakah Masjidil Aqsa berada?",
+    "answers": [
+      "Yerusalem",
+      "Makkah",
+      "Madinah",
+      "Kairo"
+    ],
+    "explanation": "Masjidil Aqsa berada di Yerusalem (Al-Quds).",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_273",
+    "correctAnswerIndex": 0,
+    "question": "Paman Nabi ﷺ yang manakah yang melindunginya di Makkah?",
+    "answers": [
+      "Abu Thalib",
+      "Abu Lahab",
+      "Al-Abbas",
+      "Abu Sufyan"
+    ],
+    "explanation": "Abu Thalib, ayah Ali, melindungi keponakannya dari kaum Quraisy.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_274",
+    "correctAnswerIndex": 0,
+    "question": "Apa pekerjaan Khadijah, istri pertama Nabi ﷺ?",
+    "answers": [
+      "Pedagang",
+      "Tabib",
+      "Penyair",
+      "Penenun"
+    ],
+    "explanation": "Khadijah adalah seorang pedagang yang dihormati di Makkah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_275",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama haji terakhir Nabi ﷺ?",
+    "answers": [
+      "Haji Wada' (Haji Perpisahan)",
+      "Haji pertama",
+      "Haji pembebasan",
+      "Haji kecil"
+    ],
+    "explanation": "Haji Wada' berlangsung pada tahun 10 Hijrah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_276",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk kisah hidup Nabi ﷺ?",
+    "answers": [
+      "Sirah",
+      "Sunnah",
+      "Tafsir",
+      "Fikih"
+    ],
+    "explanation": "Sirah adalah kisah hidup beliau; Sunnah adalah apa yang beliau ucapkan dan lakukan.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_277",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk ucapan yang diriwayatkan dari Nabi ﷺ?",
+    "answers": [
+      "Hadis",
+      "Surah",
+      "Ayat",
+      "Doa"
+    ],
+    "explanation": "Hadis adalah ucapan, perbuatan, atau persetujuan Nabi ﷺ.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_278",
+    "correctAnswerIndex": 0,
+    "question": "Dua kitab hadis manakah yang dianggap paling sahih?",
+    "answers": [
+      "Sahih al-Bukhari dan Sahih Muslim",
+      "Dua kumpulan puisi",
+      "Dua buku sejarah",
+      "Dua kamus"
+    ],
+    "explanation": "Keduanya bersama-sama disebut «Ash-Shahihain», dua kitab sahih.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_279",
+    "correctAnswerIndex": 0,
+    "question": "Khalifah manakah yang menyalin Al-Qur'an dan mengirimkannya ke berbagai wilayah?",
+    "answers": [
+      "Utsman",
+      "Abu Bakar",
+      "Umar",
+      "Ali"
+    ],
+    "explanation": "Utsman memerintahkan pembuatan salinan resmi dan mengirimkannya ke kota-kota utama.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_280",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah «Khulafaur Rasyidin», khalifah yang mendapat petunjuk?",
+    "answers": [
+      "Empat",
+      "Dua",
+      "Tujuh",
+      "Dua belas"
+    ],
+    "explanation": "Abu Bakar, Umar, Utsman dan Ali.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_281",
+    "correctAnswerIndex": 0,
+    "question": "Ke arah manakah umat Islam salat?",
+    "answers": [
+      "Ke arah Ka'bah, di Makkah",
+      "Ke arah Yerusalem",
+      "Ke arah timur",
+      "Ke arah Madinah"
+    ],
+    "explanation": "Kiblat adalah arah menuju Ka'bah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_282",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk arah salat itu?",
+    "answers": [
+      "Kiblat",
+      "Mihrab",
+      "Mimbar",
+      "Menara"
+    ],
+    "explanation": "Kiblat adalah arahnya; mihrab adalah ceruk yang menandainya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_283",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk tempat umat Islam salat berjamaah?",
+    "answers": [
+      "Masjid",
+      "Sekolah",
+      "Pasar",
+      "Perpustakaan"
+    ],
+    "explanation": "Masjid adalah tempat bersujud, rumah ibadah umat Islam.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_284",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk panggilan salat?",
+    "answers": [
+      "Azan",
+      "Takbir",
+      "Tasbih",
+      "Zikir"
+    ],
+    "explanation": "Azan adalah panggilan salat; orang yang mengumandangkannya disebut muazin.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_285",
+    "correctAnswerIndex": 0,
+    "question": "Pada hari apakah umat Islam berkumpul untuk salat besar?",
+    "answers": [
+      "Jumat",
+      "Sabtu",
+      "Minggu",
+      "Senin"
+    ],
+    "explanation": "Salat Jumat mengumpulkan umat setiap pekan.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_286",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk orang yang memimpin salat?",
+    "answers": [
+      "Imam",
+      "Muazin",
+      "Hakim",
+      "Hafiz"
+    ],
+    "explanation": "Imam adalah orang yang jamaah berbaris di belakangnya untuk salat.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_287",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk orang yang telah menghafal seluruh Al-Qur'an?",
+    "answers": [
+      "Hafiz",
+      "Imam",
+      "Muazin",
+      "Hakim"
+    ],
+    "explanation": "Hafiz adalah orang yang menjaga seluruh Al-Qur'an dalam hafalannya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_288",
+    "correctAnswerIndex": 0,
+    "question": "Sahabat manakah yang dikenal sebagai perawi hadis terbanyak?",
+    "answers": [
+      "Abu Hurairah",
+      "Bilal",
+      "Salman",
+      "Anas"
+    ],
+    "explanation": "Abu Hurairah menghabiskan tahun-tahun terakhir hidup Nabi ﷺ di sisi beliau.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_289",
+    "correctAnswerIndex": 0,
+    "question": "Khalifah manakah yang dijuluki Ash-Shiddiq, «yang membenarkan»?",
+    "answers": [
+      "Abu Bakar",
+      "Umar",
+      "Utsman",
+      "Ali"
+    ],
+    "explanation": "Abu Bakar Ash-Shiddiq, laki-laki merdeka pertama yang beriman.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_290",
+    "correctAnswerIndex": 0,
+    "question": "Khalifah manakah yang dijuluki Al-Faruq?",
+    "answers": [
+      "Umar bin Khattab",
+      "Abu Bakar",
+      "Utsman",
+      "Ali"
+    ],
+    "explanation": "Umar, yang memisahkan antara yang benar dan yang batil, diberi julukan itu.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_291",
+    "correctAnswerIndex": 0,
+    "question": "Khalifah manakah yang mengumpulkan Al-Qur'an dalam satu mushaf?",
+    "answers": [
+      "Abu Bakar",
+      "Muawiyah",
+      "Khalid",
+      "Bilal"
+    ],
+    "explanation": "Abu Bakar memerintahkan agar apa yang telah ditulis dikumpulkan menjadi satu.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_292",
+    "correctAnswerIndex": 0,
+    "question": "Kakek manakah yang mengasuh Nabi ﷺ saat kecil?",
+    "answers": [
+      "Abdul Muthalib",
+      "Abu Sufyan",
+      "Al-Walid",
+      "Utbah"
+    ],
+    "explanation": "Kakeknya, Abdul Muthalib, mengasuhnya setelah kelahirannya.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_293",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana Al-Qur'an mengingatkan masa kecil Nabi ﷺ?",
+    "answers": [
+      "Allah mendapatinya sebagai anak yatim lalu melindunginya",
+      "Ia adalah seorang raja",
+      "Ia kaya sejak kecil",
+      "Ia hidup sendirian di gurun"
+    ],
+    "explanation": "«Bukankah Dia mendapatimu sebagai seorang yatim, lalu Dia melindungimu?» (93:6).",
+    "sourceDisplay": "Al-Qur'an 93:6"
+  },
+  {
+    "id": "sira_294",
+    "correctAnswerIndex": 0,
+    "question": "Perang manakah yang terjadi setelah Badar?",
+    "answers": [
+      "Uhud",
+      "Khandaq",
+      "Hunain",
+      "Tabuk"
+    ],
+    "explanation": "Pada tahun berikutnya terjadi Perang Uhud, di dekat Madinah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_295",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang digali kaum Muslimin di sekeliling Madinah untuk mempertahankannya?",
+    "answers": [
+      "Parit (Al-Khandaq)",
+      "Sumur",
+      "Terowongan",
+      "Kanal"
+    ],
+    "explanation": "Mereka menggali parit, yang menjadi nama Perang Khandaq (Perang Parit).",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_296",
+    "correctAnswerIndex": 0,
+    "question": "Aisyah, istri Nabi ﷺ, adalah putri siapakah?",
+    "answers": [
+      "Abu Bakar",
+      "Umar",
+      "Utsman",
+      "Ali"
+    ],
+    "explanation": "Aisyah adalah putri Abu Bakar Ash-Shiddiq.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_297",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan Al-Qur'an untuk istri-istri Nabi ﷺ?",
+    "answers": [
+      "Ibu orang-orang beriman",
+      "Para pelayan",
+      "Para teman perjalanan",
+      "Para wanita yang berhijrah"
+    ],
+    "explanation": "«Dan istri-istrinya adalah ibu-ibu mereka» (33:6).",
+    "sourceDisplay": "Al-Qur'an 33:6"
+  },
+  {
+    "id": "sira_298",
+    "correctAnswerIndex": 0,
+    "question": "Sahabat manakah yang menjadi sepupu sekaligus menantu Nabi ﷺ?",
+    "answers": [
+      "Ali bin Abi Thalib",
+      "Bilal",
+      "Salman",
+      "Zaid"
+    ],
+    "explanation": "Ali, sepupu Nabi ﷺ, menikah dengan putrinya, Fathimah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_299",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama masjid Nabi ﷺ di Madinah?",
+    "answers": [
+      "Masjid Nabawi",
+      "Masjidil Haram",
+      "Masjidil Aqsa",
+      "Masjid Quba"
+    ],
+    "explanation": "Masjid Nabi ﷺ, Masjid Nabawi, berdiri di Madinah.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "sira_300",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama tunggangan Nabi ﷺ dalam perjalanan malam (Isra)?",
+    "answers": [
+      "Al-Buraq",
+      "Al-'Adba'",
+      "Asy-Syaqra'",
+      "Al-Qaswa'"
+    ],
+    "explanation": "Tunggangan dalam perjalanan malam itu bernama Al-Buraq.",
+    "sourceDisplay": "Sirah, fakta yang mapan"
+  },
+  {
+    "id": "faith_151",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah rukun Islam?",
+    "answers": [
+      "Lima",
+      "Tiga",
+      "Enam",
+      "Sepuluh"
+    ],
+    "explanation": "Lima: syahadat, salat, zakat, puasa dan haji.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_152",
+    "correctAnswerIndex": 0,
+    "question": "Apa rukun Islam yang pertama?",
+    "answers": [
+      "Syahadat (kesaksian iman)",
+      "Puasa",
+      "Haji",
+      "Zakat"
+    ],
+    "explanation": "Seseorang masuk Islam dengan bersaksi bahwa tidak ada tuhan selain Allah dan Muhammad ﷺ adalah utusan-Nya.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_153",
+    "correctAnswerIndex": 0,
+    "question": "Berapa kali salat wajib yang dikerjakan seorang Muslim setiap hari?",
+    "answers": [
+      "Lima",
+      "Tiga",
+      "Tujuh",
+      "Dua"
+    ],
+    "explanation": "Lima salat, tersebar dari fajar hingga malam.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_154",
+    "correctAnswerIndex": 0,
+    "question": "Pada bulan apakah umat Islam berpuasa?",
+    "answers": [
+      "Ramadan",
+      "Rajab",
+      "Sya'ban",
+      "Syawal"
+    ],
+    "explanation": "«Bulan Ramadan, bulan yang di dalamnya diturunkan Al-Qur'an» (2:185).",
+    "sourceDisplay": "Al-Qur'an 2:185"
+  },
+  {
+    "id": "faith_155",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama sedekah wajib dalam Islam?",
+    "answers": [
+      "Zakat",
+      "Doa",
+      "Zikir",
+      "Tawaf"
+    ],
+    "explanation": "Zakat adalah bagian dari harta yang diberikan setiap tahun.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_156",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama ibadah besar ke Makkah?",
+    "answers": [
+      "Haji",
+      "Sa'i",
+      "Zikir",
+      "Sahur"
+    ],
+    "explanation": "Haji adalah ibadah yang dilakukan sekali seumur hidup oleh orang yang mampu.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_157",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah rukun iman (arkanul iman)?",
+    "answers": [
+      "Enam",
+      "Empat",
+      "Lima",
+      "Tujuh"
+    ],
+    "explanation": "Iman kepada Allah, para malaikat-Nya, kitab-kitab-Nya, para rasul-Nya, hari Akhir dan takdir.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_158",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah tuhan yang diimani seorang Muslim?",
+    "answers": [
+      "Hanya satu",
+      "Dua",
+      "Tiga",
+      "Banyak"
+    ],
+    "explanation": "«Katakanlah: Dialah Allah, Yang Maha Esa» (112:1).",
+    "sourceDisplay": "Al-Qur'an 112:1"
+  },
+  {
+    "id": "faith_159",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan umat Islam untuk Tuhan dalam bahasa Arab?",
+    "answers": [
+      "Allah",
+      "Malak",
+      "Rasul",
+      "Nabi"
+    ],
+    "explanation": "Allah adalah nama Sang Pencipta dalam bahasa Arab.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_160",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama kitab suci umat Islam?",
+    "answers": [
+      "Al-Qur'an",
+      "Taurat",
+      "Injil",
+      "Zabur"
+    ],
+    "explanation": "Al-Qur'an adalah kitab yang diturunkan kepada Nabi Muhammad ﷺ.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_161",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama Rumah Allah yang dibangun di Makkah?",
+    "answers": [
+      "Ka'bah",
+      "Raudah",
+      "Maqam",
+      "Hijr"
+    ],
+    "explanation": "«Sesungguhnya rumah (ibadah) pertama yang dibangun untuk manusia ialah yang di Bakkah» (3:96).",
+    "sourceDisplay": "Al-Qur'an 3:96"
+  },
+  {
+    "id": "faith_162",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diucapkan seorang Muslim sebelum mulai makan?",
+    "answers": [
+      "Bismillah",
+      "Amin",
+      "Subhanallah",
+      "Allahumma"
+    ],
+    "explanation": "Nabi ﷺ mengajari seorang anak: «Ucapkanlah Bismillah, dan makanlah dengan tangan kananmu.»",
+    "sourceDisplay": "Shahih al-Bukhari, 5376"
+  },
+  {
+    "id": "faith_163",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana umat Islam saling memberi salam?",
+    "answers": [
+      "Assalamu'alaikum",
+      "Alhamdulillah",
+      "Bismillah",
+      "Allahu akbar"
+    ],
+    "explanation": "«Assalamu'alaikum» berarti: semoga keselamatan tercurah kepadamu.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_164",
+    "correctAnswerIndex": 0,
+    "question": "Apa jawaban untuk «assalamu'alaikum»?",
+    "answers": [
+      "Wa'alaikumussalam",
+      "Bismillah",
+      "Amin",
+      "Subhanallah"
+    ],
+    "explanation": "Salam dibalas: «dan semoga keselamatan tercurah kepadamu juga».",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_165",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama hari raya tepat setelah bulan Ramadan?",
+    "answers": [
+      "Idulfitri",
+      "Iduladha",
+      "Lailatul Qadar",
+      "Asyura"
+    ],
+    "explanation": "Idulfitri, hari raya berbuka setelah puasa.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_166",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama hari raya kurban?",
+    "answers": [
+      "Iduladha",
+      "Idulfitri",
+      "Maulid",
+      "Lailatul Qadar"
+    ],
+    "explanation": "Iduladha jatuh pada hari-hari ibadah haji.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_167",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan makhluk Allah yang selalu taat kepada-Nya dan tidak pernah membangkang?",
+    "answers": [
+      "Para malaikat",
+      "Para jin",
+      "Para nabi",
+      "Para sahabat"
+    ],
+    "explanation": "Para malaikat melaksanakan apa yang diperintahkan Allah dan tidak pernah membangkang.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_168",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan surga dalam bahasa Arab?",
+    "answers": [
+      "Al-Jannah",
+      "As-Salat",
+      "Ad-Du'a",
+      "Al-Adzan"
+    ],
+    "explanation": "Al-Jannah, yang secara harfiah berarti «taman», adalah tempat tinggal yang dijanjikan bagi orang-orang beriman.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_169",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama bersuci dengan air yang dilakukan sebelum salat?",
+    "answers": [
+      "Wudu",
+      "Tawaf",
+      "Zikir",
+      "Sa'i"
+    ],
+    "explanation": "Wudu adalah bersuci yang dilakukan sebelum salat.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_170",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk satu satuan gerakan dalam salat?",
+    "answers": [
+      "Rakaat",
+      "Surah",
+      "Azan",
+      "Tawaf"
+    ],
+    "explanation": "Satu rakaat mencakup berdiri, rukuk dan sujud.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_171",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang dibaca pada setiap rakaat salat?",
+    "answers": [
+      "Al-Fatihah",
+      "Al-Ikhlas",
+      "An-Nas",
+      "Al-Kautsar"
+    ],
+    "explanation": "Al-Fatihah, surah pembuka, dibaca pada setiap rakaat.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_172",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk sesuatu yang dibolehkan dalam Islam?",
+    "answers": [
+      "Halal",
+      "Haram",
+      "Sunah",
+      "Fardu"
+    ],
+    "explanation": "Halal berarti sesuatu yang dibolehkan.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_173",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk sesuatu yang dilarang dalam Islam?",
+    "answers": [
+      "Haram",
+      "Halal",
+      "Mubah",
+      "Nafilah"
+    ],
+    "explanation": "Haram berarti sesuatu yang dilarang.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_174",
+    "correctAnswerIndex": 0,
+    "question": "Daging apakah yang diharamkan Al-Qur'an?",
+    "answers": [
+      "Daging babi",
+      "Daging kambing",
+      "Daging sapi",
+      "Daging ayam"
+    ],
+    "explanation": "«Dia telah mengharamkan bagimu bangkai, darah dan daging babi» (2:173).",
+    "sourceDisplay": "Al-Qur'an 2:173"
+  },
+  {
+    "id": "faith_175",
+    "correctAnswerIndex": 0,
+    "question": "Minuman apakah yang diperintahkan Al-Qur'an untuk dijauhi?",
+    "answers": [
+      "Khamar dan segala yang memabukkan",
+      "Susu",
+      "Madu",
+      "Air hujan"
+    ],
+    "explanation": "«Khamar, judi… adalah perbuatan keji, maka jauhilah» (5:90).",
+    "sourceDisplay": "Al-Qur'an 5:90"
+  },
+  {
+    "id": "faith_176",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diucapkan orang yang bersin, sebagaimana diajarkan Nabi ﷺ?",
+    "answers": [
+      "Alhamdulillah",
+      "Bismillah",
+      "Allahu akbar",
+      "Amin"
+    ],
+    "explanation": "«Apabila salah seorang di antara kalian bersin, hendaklah ia mengucapkan: alhamdulillah.»",
+    "sourceDisplay": "Shahih al-Bukhari, 6224"
+  },
+  {
+    "id": "faith_177",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana menyebut «salat» dalam bahasa Arab?",
+    "answers": [
+      "Ash-Shalat",
+      "Ash-Shaum",
+      "Az-Zakat",
+      "Al-Hajj"
+    ],
+    "explanation": "Ash-Shalat adalah ibadah salat seorang Muslim.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_178",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk memohon sesuatu kepada Allah dengan kata-kata sendiri?",
+    "answers": [
+      "Doa",
+      "Tawaf",
+      "Azan",
+      "Sa'i"
+    ],
+    "explanation": "Doa adalah permohonan, memanggil dan memohon kepada Allah.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_179",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti «alhamdulillah»?",
+    "answers": [
+      "Segala puji bagi Allah",
+      "Allah Mahabesar",
+      "Dengan nama Allah",
+      "Mahasuci Allah"
+    ],
+    "explanation": "Ini adalah ayat kedua surah Al-Fatihah: «Segala puji bagi Allah, Tuhan seluruh alam» (1:2).",
+    "sourceDisplay": "Al-Qur'an 1:2"
+  },
+  {
+    "id": "faith_180",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti kata «islam»?",
+    "answers": [
+      "Berserah diri kepada Allah",
+      "Kekayaan",
+      "Perjalanan",
+      "Ilmu"
+    ],
+    "explanation": "Islam berasal dari akar kata yang berarti berserah diri dan berada dalam kedamaian.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_181",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti kata «muslim»?",
+    "answers": [
+      "Orang yang berserah diri kepada Allah",
+      "Orang yang bepergian",
+      "Orang yang mengajar",
+      "Orang yang membangun"
+    ],
+    "explanation": "Muslim adalah orang yang berserah diri hanya kepada Allah.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_182",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah yang menciptakan langit dan bumi, menurut Al-Qur'an?",
+    "answers": [
+      "Allah",
+      "Para malaikat",
+      "Para nabi",
+      "Matahari"
+    ],
+    "explanation": "«Segala puji bagi Allah yang telah menciptakan langit dan bumi» (6:1).",
+    "sourceDisplay": "Al-Qur'an 6:1"
+  },
+  {
+    "id": "faith_183",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah nama Allah yang disebutkan dalam hadis?",
+    "answers": [
+      "Sembilan puluh sembilan",
+      "Sepuluh",
+      "Lima puluh",
+      "Seribu"
+    ],
+    "explanation": "«Allah memiliki sembilan puluh sembilan nama, seratus kurang satu.»",
+    "sourceDisplay": "Shahih al-Bukhari, 2736"
+  },
+  {
+    "id": "faith_184",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang dilakukan para malaikat yang disebut «para pencatat yang mulia»?",
+    "answers": [
+      "Mereka mencatat amal perbuatan kita",
+      "Mereka membawa hujan",
+      "Mereka menjaga Ka'bah",
+      "Mereka mengajarkan bahasa Arab"
+    ],
+    "explanation": "«Para pencatat yang mulia, yang mengetahui apa yang kamu kerjakan» (82:11-12).",
+    "sourceDisplay": "Al-Qur'an 82:11"
+  },
+  {
+    "id": "faith_185",
+    "correctAnswerIndex": 0,
+    "question": "Malam apakah yang digambarkan Al-Qur'an lebih baik daripada seribu bulan?",
+    "answers": [
+      "Lailatul Qadar",
+      "Malam Jumat",
+      "Malam hari raya",
+      "Malam pertama Ramadan"
+    ],
+    "explanation": "«Malam kemuliaan itu lebih baik daripada seribu bulan» (97:3).",
+    "sourceDisplay": "Al-Qur'an 97:3"
+  },
+  {
+    "id": "faith_186",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk keyakinan bahwa Tuhan hanya satu?",
+    "answers": [
+      "Tauhid",
+      "Tawaf",
+      "Tayamum",
+      "Tarawih"
+    ],
+    "explanation": "Tauhid adalah keesaan Allah, inti dari pesan setiap nabi.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_187",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk menyekutukan Allah dalam ibadah?",
+    "answers": [
+      "Syirik",
+      "Zikir",
+      "Doa",
+      "Sabar"
+    ],
+    "explanation": "Syirik adalah menyekutukan: menyembah sesuatu di samping Allah.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_188",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk hari ketika setiap orang akan diadili?",
+    "answers": [
+      "Hari Kiamat",
+      "Hari raya",
+      "Hari Jumat",
+      "Hari pertama Ramadan"
+    ],
+    "explanation": "Yaumul Qiyamah, hari Kiamat, hari ketika setiap orang akan melihat amal perbuatannya.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_189",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah bulan dalam setahun menurut Al-Qur'an?",
+    "answers": [
+      "Dua belas",
+      "Sepuluh",
+      "Empat belas",
+      "Enam"
+    ],
+    "explanation": "«Sesungguhnya jumlah bulan di sisi Allah ialah dua belas bulan» (9:36).",
+    "sourceDisplay": "Al-Qur'an 9:36"
+  },
+  {
+    "id": "faith_190",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah sujud dalam satu rakaat?",
+    "answers": [
+      "Dua",
+      "Satu",
+      "Tiga",
+      "Empat"
+    ],
+    "explanation": "Setiap rakaat mencakup dua kali sujud.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "quran_151",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah surah dalam Al-Qur'an?",
+    "answers": [
+      "Seratus empat belas",
+      "Enam puluh",
+      "Dua ratus",
+      "Tiga puluh"
+    ],
+    "explanation": "Al-Qur'an memiliki 114 surah, dari Al-Fatihah hingga An-Nas.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_152",
+    "correctAnswerIndex": 0,
+    "question": "Apa surah pertama dalam Al-Qur'an?",
+    "answers": [
+      "Al-Fatihah",
+      "Al-Baqarah",
+      "An-Nas",
+      "Yasin"
+    ],
+    "explanation": "Al-Fatihah, «pembukaan», adalah surah pertama.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_153",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti kata «Qur'an»?",
+    "answers": [
+      "Bacaan",
+      "Jalan",
+      "Cahaya",
+      "Taman"
+    ],
+    "explanation": "Qur'an berasal dari akar kata yang berarti membaca dan melafalkan.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_154",
+    "correctAnswerIndex": 0,
+    "question": "Kira-kira berapa lama Al-Qur'an diturunkan?",
+    "answers": [
+      "Sekitar dua puluh tiga tahun",
+      "Satu malam",
+      "Seratus tahun",
+      "Tiga tahun"
+    ],
+    "explanation": "Wahyu turun selama kurang lebih dua puluh tiga tahun.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_155",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk satu kalimat dalam Al-Qur'an?",
+    "answers": [
+      "Ayat",
+      "Surah",
+      "Juz",
+      "Hadis"
+    ],
+    "explanation": "Setiap kalimat bernomor dalam Al-Qur'an disebut ayat, yang berarti «tanda».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_156",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk satu bab dalam Al-Qur'an?",
+    "answers": [
+      "Surah",
+      "Ayat",
+      "Juz",
+      "Khutbah"
+    ],
+    "explanation": "Al-Qur'an dibagi menjadi surah-surah, masing-masing dengan namanya sendiri.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_157",
+    "correctAnswerIndex": 0,
+    "question": "Apa surah terpanjang dalam Al-Qur'an?",
+    "answers": [
+      "Al-Baqarah",
+      "Al-Fatihah",
+      "Al-Kautsar",
+      "An-Nas"
+    ],
+    "explanation": "Al-Baqarah adalah surah terpanjang dalam Al-Qur'an.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_158",
+    "correctAnswerIndex": 0,
+    "question": "Apa surah terpendek dalam Al-Qur'an?",
+    "answers": [
+      "Al-Kautsar",
+      "Al-Baqarah",
+      "Ali 'Imran",
+      "An-Nisa'"
+    ],
+    "explanation": "Al-Kautsar hanya memiliki tiga ayat.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_159",
+    "correctAnswerIndex": 0,
+    "question": "Kalimat apakah yang membuka hampir setiap surah?",
+    "answers": [
+      "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang",
+      "Segala puji bagi Allah",
+      "Allah Mahabesar",
+      "Tidak ada tuhan selain Allah"
+    ],
+    "explanation": "Basmalah membuka 113 dari 114 surah.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_160",
+    "correctAnswerIndex": 0,
+    "question": "Firman siapakah Al-Qur'an itu?",
+    "answers": [
+      "Firman Allah",
+      "Ucapan Nabi ﷺ",
+      "Ucapan malaikat Jibril",
+      "Ucapan para sahabat"
+    ],
+    "explanation": "Al-Qur'an menyebut dirinya «firman Allah» (kalamullah) dalam ayat 9:6.",
+    "sourceDisplay": "Al-Qur'an 9:6"
+  },
+  {
+    "id": "quran_161",
+    "correctAnswerIndex": 0,
+    "question": "Menjadi berapa bagian (juz) Al-Qur'an dibagi?",
+    "answers": [
+      "Tiga puluh",
+      "Sepuluh",
+      "Lima puluh",
+      "Seratus"
+    ],
+    "explanation": "Al-Qur'an dibagi menjadi tiga puluh juz, satu untuk setiap malam Ramadan.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_162",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang memakai nama seorang wanita?",
+    "answers": [
+      "Maryam",
+      "Yusuf",
+      "Nuh",
+      "Muhammad"
+    ],
+    "explanation": "Surah ke-19 memakai nama Maryam.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_163",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk dua surah terakhir yang dibaca untuk memohon perlindungan?",
+    "answers": [
+      "Al-Mu'awwidzatain",
+      "Al-Matsani",
+      "Al-Mufashshal",
+      "Al-Hawamim"
+    ],
+    "explanation": "Al-Falaq dan An-Nas disebut Al-Mu'awwidzatain, «dua surah perlindungan».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_164",
+    "correctAnswerIndex": 0,
+    "question": "Kata apakah yang membuka surah Al-Fatihah, setelah basmalah?",
+    "answers": [
+      "Alhamdu",
+      "Qul",
+      "Iqra'",
+      "Inna"
+    ],
+    "explanation": "«Alhamdu lillahi rabbil 'alamin» membuka surah Al-Fatihah.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_165",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk penjelasan makna Al-Qur'an?",
+    "answers": [
+      "Tafsir",
+      "Tajwid",
+      "Hifz",
+      "Tawaf"
+    ],
+    "explanation": "Tafsir adalah ilmu yang menjelaskan makna ayat-ayat.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_166",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang tidak diawali dengan basmalah?",
+    "answers": [
+      "At-Taubah",
+      "Al-Fatihah",
+      "Al-Ikhlas",
+      "An-Nashr"
+    ],
+    "explanation": "At-Taubah adalah satu-satunya surah yang tidak dibuka dengan basmalah.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_167",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk orang yang membaca Al-Qur'an dengan suara nyaring?",
+    "answers": [
+      "Qari",
+      "Muazin",
+      "Imam",
+      "Khatib"
+    ],
+    "explanation": "Qari adalah pembaca Al-Qur'an.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_168",
+    "correctAnswerIndex": 0,
+    "question": "Dalam surah manakah Ayat Kursi terdapat?",
+    "answers": [
+      "Al-Baqarah",
+      "Al-Kahfi",
+      "Yasin",
+      "Al-Mulk"
+    ],
+    "explanation": "Ayat Kursi adalah ayat ke-255 surah Al-Baqarah.",
+    "sourceDisplay": "Al-Qur'an 2:255"
+  },
+  {
+    "id": "quran_169",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti «An-Nur», nama surah ke-24?",
+    "answers": [
+      "Cahaya",
+      "Malam",
+      "Angin",
+      "Gunung"
+    ],
+    "explanation": "An-Nur berarti «cahaya».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_170",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang bernama «Yang Maha Pengasih»?",
+    "answers": [
+      "Ar-Rahman",
+      "Al-Mulk",
+      "Al-Fath",
+      "Ash-Shaff"
+    ],
+    "explanation": "Surah ke-55 bernama Ar-Rahman.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_171",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang dinamai menurut gua?",
+    "answers": [
+      "Al-Kahfi",
+      "Al-Fil",
+      "An-Naml",
+      "Al-Baqarah"
+    ],
+    "explanation": "Al-Kahfi berarti «gua».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_172",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti «An-Nisa'», nama surah ke-4?",
+    "answers": [
+      "Wanita",
+      "Laki-laki",
+      "Anak-anak",
+      "Para musafir"
+    ],
+    "explanation": "An-Nisa' berarti «wanita».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_173",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti «Al-Ma'idah», nama surah ke-5?",
+    "answers": [
+      "Hidangan",
+      "Gunung",
+      "Besi",
+      "Fajar"
+    ],
+    "explanation": "Al-Ma'idah berarti «hidangan».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_174",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang namanya menjadi nama surah ke-71?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Yunus",
+      "Ibrahim"
+    ],
+    "explanation": "Surah ke-71 bernama Nuh.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_175",
+    "correctAnswerIndex": 0,
+    "question": "Berapa jumlah ayat surah Al-Fatihah?",
+    "answers": [
+      "Tujuh",
+      "Tiga",
+      "Sepuluh",
+      "Dua puluh"
+    ],
+    "explanation": "Al-Fatihah memiliki tujuh ayat.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_176",
+    "correctAnswerIndex": 0,
+    "question": "Di manakah Al-Qur'an menyatakan dirinya terpelihara?",
+    "answers": [
+      "Di Lauh Mahfuz",
+      "Di dalam gua",
+      "Di dalam peti",
+      "Di atas gunung"
+    ],
+    "explanation": "«Bahkan yang didustakan mereka itu ialah Al-Qur'an yang mulia, yang tersimpan dalam Lauh Mahfuz» (85:21-22).",
+    "sourceDisplay": "Al-Qur'an 85:22"
+  },
+  {
+    "id": "quran_177",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang dinamai menurut bulan?",
+    "answers": [
+      "Al-Qamar",
+      "Asy-Syams",
+      "An-Najm",
+      "Al-Lail"
+    ],
+    "explanation": "Al-Qamar berarti «bulan».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_178",
+    "correctAnswerIndex": 0,
+    "question": "Surah manakah yang dinamai menurut hari Kiamat?",
+    "answers": [
+      "Al-Qiyamah",
+      "Al-Fath",
+      "Al-Hasyr",
+      "Ash-Shaff"
+    ],
+    "explanation": "Surah ke-75 bernama Al-Qiyamah.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_179",
+    "correctAnswerIndex": 0,
+    "question": "Nabi siapakah yang namanya menjadi nama surah ke-14?",
+    "answers": [
+      "Ibrahim",
+      "Muhammad ﷺ",
+      "Yusuf",
+      "Hud"
+    ],
+    "explanation": "Surah ke-14 bernama Ibrahim.",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "quran_180",
+    "correctAnswerIndex": 0,
+    "question": "Apa arti «Al-Hadid», nama surah ke-57?",
+    "answers": [
+      "Besi",
+      "Emas",
+      "Kayu",
+      "Batu"
+    ],
+    "explanation": "Al-Hadid berarti «besi».",
+    "sourceDisplay": "Al-Qur'an"
+  },
+  {
+    "id": "virtues_101",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana Al-Qur'an mengajarkan kita berbicara kepada orang tua?",
+    "answers": [
+      "Dengan perkataan yang mulia, bahkan tidak mengucapkan «ah»",
+      "Lebih keras daripada mereka",
+      "Dengan selalu diam",
+      "Hanya pada hari Jumat"
+    ],
+    "explanation": "«Janganlah engkau mengatakan kepada keduanya perkataan «ah», dan ucapkanlah kepada keduanya perkataan yang baik» (17:23).",
+    "sourceDisplay": "Al-Qur'an 17:23"
+  },
+  {
+    "id": "virtues_102",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk pemberian sukarela yang diberikan karena kebaikan hati?",
+    "answers": [
+      "Sedekah",
+      "Zakat",
+      "Tawaf",
+      "Azan"
+    ],
+    "explanation": "Sedekah adalah pemberian sukarela, kecil maupun besar.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "virtues_103",
+    "correctAnswerIndex": 0,
+    "question": "Apa nasihat Nabi ﷺ tentang ucapan, bagi siapa yang beriman kepada Allah dan hari Akhir?",
+    "answers": [
+      "Hendaklah ia berkata baik atau diam",
+      "Hendaklah ia banyak bicara",
+      "Hendaklah ia tidak pernah bicara",
+      "Hendaklah ia berbicara hanya kepada keluarganya"
+    ],
+    "explanation": "«Barang siapa beriman kepada Allah dan hari Akhir, hendaklah ia berkata baik atau diam.»",
+    "sourceDisplay": "Shahih al-Bukhari, 6018"
+  },
+  {
+    "id": "virtues_104",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana Nabi ﷺ mengajarkan kita memperlakukan tetangga?",
+    "answers": [
+      "Berbuat baik kepadanya",
+      "Menjauhinya",
+      "Tidak pernah berbicara dengannya",
+      "Memintanya pergi"
+    ],
+    "explanation": "«Barang siapa beriman kepada Allah dan hari Akhir, hendaklah ia memuliakan tetangganya.»",
+    "sourceDisplay": "Shahih al-Bukhari, 6015"
+  },
+  {
+    "id": "virtues_105",
+    "correctAnswerIndex": 0,
+    "question": "Allah bersama siapakah, menurut Al-Qur'an?",
+    "answers": [
+      "Bersama orang-orang yang sabar",
+      "Bersama orang-orang terkaya",
+      "Bersama orang-orang terkuat",
+      "Bersama orang-orang tercepat"
+    ],
+    "explanation": "«Sesungguhnya Allah bersama orang-orang yang sabar» (2:153).",
+    "sourceDisplay": "Al-Qur'an 2:153"
+  },
+  {
+    "id": "virtues_106",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang dilarang Al-Qur'an untuk dilakukan terhadap anak yatim?",
+    "answers": [
+      "Berlaku sewenang-wenang kepadanya",
+      "Mengajarinya membaca",
+      "Mengajaknya makan",
+      "Bermain dengannya"
+    ],
+    "explanation": "«Maka terhadap anak yatim, janganlah engkau berlaku sewenang-wenang» (93:9).",
+    "sourceDisplay": "Al-Qur'an 93:9"
+  },
+  {
+    "id": "virtues_107",
+    "correctAnswerIndex": 0,
+    "question": "Ucapan seperti apakah yang diperintahkan Al-Qur'an untuk dijauhi?",
+    "answers": [
+      "Perkataan dusta",
+      "Perkataan lembut",
+      "Ucapan terima kasih",
+      "Ucapan salam"
+    ],
+    "explanation": "«Dan jauhilah perkataan dusta» (22:30).",
+    "sourceDisplay": "Al-Qur'an 22:30"
+  },
+  {
+    "id": "virtues_108",
+    "correctAnswerIndex": 0,
+    "question": "Selain kerabat dekat, kepada siapakah Al-Qur'an memerintahkan kita memberikan haknya?",
+    "answers": [
+      "Orang miskin dan orang dalam perjalanan",
+      "Raja dan hakim",
+      "Pedagang",
+      "Penyair"
+    ],
+    "explanation": "«Dan berikanlah haknya kepada kerabat dekat, juga kepada orang miskin dan orang yang dalam perjalanan» (17:26).",
+    "sourceDisplay": "Al-Qur'an 17:26"
+  },
+  {
+    "id": "virtues_109",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang dijanjikan Allah bagi orang yang bersyukur kepada-Nya?",
+    "answers": [
+      "Menambahkan nikmat baginya",
+      "Membuatnya bepergian",
+      "Membuatnya terkenal",
+      "Menjadikannya raja"
+    ],
+    "explanation": "«Jika kamu bersyukur, niscaya Aku akan menambah nikmat kepadamu» (14:7).",
+    "sourceDisplay": "Al-Qur'an 14:7"
+  },
+  {
+    "id": "virtues_110",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana menyebut «kesabaran» dalam bahasa Arab?",
+    "answers": [
+      "Ash-Shabr",
+      "Asy-Syukr",
+      "Ash-Shidq",
+      "Al-Haya'"
+    ],
+    "explanation": "Ash-Shabr adalah keteguhan dalam kesulitan dan dalam ketaatan.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_191",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk mengingat Allah dengan mengulang pujian kepada-Nya?",
+    "answers": [
+      "Zikir",
+      "Haji",
+      "Sa'i",
+      "Tayamum"
+    ],
+    "explanation": "Zikir adalah mengingat Allah dengan lisan dan hati.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_192",
+    "correctAnswerIndex": 0,
+    "question": "Apa bulan pertama dalam tahun Islam?",
+    "answers": [
+      "Muharram",
+      "Ramadan",
+      "Syawal",
+      "Rajab"
+    ],
+    "explanation": "Tahun Hijriah dibuka dengan bulan Muharram.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_193",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk kembali kepada Allah setelah berbuat dosa?",
+    "answers": [
+      "Tobat",
+      "Tawaf",
+      "Tajwid",
+      "Tarawih"
+    ],
+    "explanation": "Tobat adalah penyesalan: menyesal, berhenti, dan kembali kepada Allah.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_194",
+    "correctAnswerIndex": 0,
+    "question": "Siapakah yang memberi rezeki kepada setiap makhluk di bumi?",
+    "answers": [
+      "Allah",
+      "Para raja",
+      "Para pedagang",
+      "Para malaikat"
+    ],
+    "explanation": "«Tidak ada satu pun makhluk bergerak di bumi melainkan dijamin Allah rezekinya» (11:6).",
+    "sourceDisplay": "Al-Qur'an 11:6"
+  },
+  {
+    "id": "faith_195",
+    "correctAnswerIndex": 0,
+    "question": "Di kota manakah ibadah haji dilaksanakan?",
+    "answers": [
+      "Di Makkah",
+      "Di Madinah",
+      "Di Yerusalem",
+      "Di Kairo"
+    ],
+    "explanation": "Haji dilaksanakan di Makkah dan tempat-tempat sucinya.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_196",
+    "correctAnswerIndex": 0,
+    "question": "Apa sebutan untuk orang yang sedang menunaikan ibadah haji?",
+    "answers": [
+      "Jamaah haji (hajji)",
+      "Imam",
+      "Qari",
+      "Muazin"
+    ],
+    "explanation": "Orang yang menunaikan haji disebut hajji.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_197",
+    "correctAnswerIndex": 0,
+    "question": "Apa yang diketahui Allah, menurut Al-Qur'an, meskipun tersembunyi?",
+    "answers": [
+      "Apa yang ada di dalam hati",
+      "Hanya perbuatan yang terlihat",
+      "Hanya kata-kata yang diucapkan",
+      "Tidak ada yang tersembunyi"
+    ],
+    "explanation": "«Jika kamu sembunyikan apa yang ada dalam hatimu atau kamu tampakkan, Allah mengetahuinya» (3:29).",
+    "sourceDisplay": "Al-Qur'an 3:29"
+  },
+  {
+    "id": "faith_198",
+    "correctAnswerIndex": 0,
+    "question": "Kepada siapakah puasa diwajibkan, menurut Al-Qur'an?",
+    "answers": [
+      "Kepada orang-orang beriman, sebagaimana kepada orang-orang sebelum mereka",
+      "Hanya kepada para musafir",
+      "Hanya kepada para ulama",
+      "Hanya kepada anak-anak"
+    ],
+    "explanation": "«Wahai orang-orang yang beriman, diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu» (2:183).",
+    "sourceDisplay": "Al-Qur'an 2:183"
+  },
+  {
+    "id": "faith_199",
+    "correctAnswerIndex": 0,
+    "question": "Apa nama salat berjamaah besar pada hari Jumat?",
+    "answers": [
+      "Salat Jumat",
+      "Salat Id",
+      "Salat Witir",
+      "Salat Duha"
+    ],
+    "explanation": "Salat Jumat mengumpulkan kaum Muslimin pada tengah hari Jumat.",
+    "sourceDisplay": "Istilah yang mapan"
+  },
+  {
+    "id": "faith_200",
+    "correctAnswerIndex": 0,
+    "question": "Bagaimana menyebut «puasa» dalam bahasa Arab?",
+    "answers": [
+      "Ash-Shaum",
+      "Ash-Shalat",
+      "Az-Zakat",
+      "Al-Adzan"
+    ],
+    "explanation": "Ash-Shaum adalah puasa, rukun Islam yang keempat.",
+    "sourceDisplay": "Istilah yang mapan"
   }
 ]

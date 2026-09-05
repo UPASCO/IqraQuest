@@ -11698,5 +11698,2605 @@
     ],
     "explanation": "«Onların fısıldaşmalarının çoğunda hayır yoktur; ancak sadakayı, iyiliği veya insanların arasını düzeltmeyi emreden hariç».",
     "sourceDisplay": "Kur'an 4:114"
+  },
+  {
+    "id": "prophets_251",
+    "correctAnswerIndex": 0,
+    "question": "İslam Peygamberi'nin adı nedir?",
+    "answers": [
+      "Muhammed ﷺ",
+      "İbrahim",
+      "Musa",
+      "İsa"
+    ],
+    "explanation": "İslam'ın Peygamberi, Abdullah'ın oğlu Muhammed ﷺ'dir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_252",
+    "correctAnswerIndex": 0,
+    "question": "İsmail ve İshak hangi peygamberin oğullarıdır?",
+    "answers": [
+      "İbrahim",
+      "Musa",
+      "Nuh",
+      "Davud"
+    ],
+    "explanation": "«İhtiyarlığıma rağmen bana İsmail'i ve İshak'ı bağışlayan Allah'a hamdolsun» (14:39).",
+    "sourceDisplay": "Kur'an 14:39"
+  },
+  {
+    "id": "prophets_253",
+    "correctAnswerIndex": 0,
+    "question": "Allah hangi peygamberi kendi katına yükseltti?",
+    "answers": [
+      "İsa",
+      "Yunus",
+      "Eyyub",
+      "İdris"
+    ],
+    "explanation": "«Bilakis Allah onu kendi katına yükseltti» (4:158).",
+    "sourceDisplay": "Kur'an 4:158"
+  },
+  {
+    "id": "prophets_254",
+    "correctAnswerIndex": 0,
+    "question": "İsa peygamberin annesi kimdir?",
+    "answers": [
+      "Meryem",
+      "Asiye",
+      "Hacer",
+      "Sare"
+    ],
+    "explanation": "Meryem; Kur'an'da ona koca bir sure ayrılmıştır.",
+    "sourceDisplay": "Kur'an 19:16-21"
+  },
+  {
+    "id": "prophets_255",
+    "correctAnswerIndex": 0,
+    "question": "Allah'ın yarattığı ilk insan kimdir?",
+    "answers": [
+      "Âdem",
+      "Nuh",
+      "İbrahim",
+      "İdris"
+    ],
+    "explanation": "Âdem, Allah'ın kendisine bütün isimleri öğrettiği ilk insandır.",
+    "sourceDisplay": "Kur'an 2:31"
+  },
+  {
+    "id": "prophets_256",
+    "correctAnswerIndex": 0,
+    "question": "Ateş hangi peygamber için serinlik ve esenlik oldu?",
+    "answers": [
+      "İbrahim",
+      "Musa",
+      "Yusuf",
+      "Süleyman"
+    ],
+    "explanation": "«Ey ateş, İbrahim'e karşı serin ve esenlik ol.»",
+    "sourceDisplay": "Kur'an 21:69"
+  },
+  {
+    "id": "prophets_257",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamberin asası yılana dönüştü?",
+    "answers": [
+      "Musa",
+      "Harun",
+      "Yahya",
+      "Zekeriya"
+    ],
+    "explanation": "Allah Musa'ya sordu: «Sağ elindeki nedir?»",
+    "sourceDisplay": "Kur'an 20:17-18"
+  },
+  {
+    "id": "prophets_258",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber rüyasında on bir yıldızın secde ettiğini gördü?",
+    "answers": [
+      "Yusuf",
+      "Yakub",
+      "İshak",
+      "Davud"
+    ],
+    "explanation": "«Babacığım, ben rüyamda on bir yıldız, güneşi ve ayı gördüm.»",
+    "sourceDisplay": "Kur'an 12:4"
+  },
+  {
+    "id": "prophets_259",
+    "correctAnswerIndex": 0,
+    "question": "Süleyman peygambere hangi kuş haber getirdi?",
+    "answers": [
+      "Hüdhüd",
+      "Karga",
+      "Şahin",
+      "Güvercin"
+    ],
+    "explanation": "Hüdhüd dedi ki: «Sana Sebe'den kesin bir haber getirdim» (27:22).",
+    "sourceDisplay": "Kur'an 27:22"
+  },
+  {
+    "id": "prophets_260",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber imtihanda sabrın örneğidir?",
+    "answers": [
+      "Eyyub",
+      "Yunus",
+      "Lut",
+      "Şuayb"
+    ],
+    "explanation": "Eyyub Rabbine yalvardı ve sabırlı bulundu.",
+    "sourceDisplay": "Kur'an 38:41"
+  },
+  {
+    "id": "prophets_261",
+    "correctAnswerIndex": 0,
+    "question": "Allah Âdem'i neyden yarattı?",
+    "answers": [
+      "Topraktan",
+      "Nurdan",
+      "Ateşten",
+      "Rüzgârdan"
+    ],
+    "explanation": "«Onu topraktan yarattı, sonra ona: Ol! dedi» (3:59).",
+    "sourceDisplay": "Kur'an 3:59"
+  },
+  {
+    "id": "prophets_262",
+    "correctAnswerIndex": 0,
+    "question": "Allah hangi peygamberle doğrudan konuştu?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Yunus",
+      "Salih"
+    ],
+    "explanation": "«Ve Allah Musa ile gerçekten konuştu.»",
+    "sourceDisplay": "Kur'an 4:164"
+  },
+  {
+    "id": "prophets_263",
+    "correctAnswerIndex": 0,
+    "question": "Muhammed ﷺ'den sonra kaç peygamber gelir?",
+    "answers": [
+      "Hiç: o peygamberlerin sonuncusudur",
+      "Bir",
+      "Üç",
+      "Yedi"
+    ],
+    "explanation": "Muhammed ﷺ peygamberlerin mührüdür: ondan sonra peygamber gelmez.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_264",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygambere Allah'ın yakın dostu (halil) denir?",
+    "answers": [
+      "İbrahim",
+      "Musa",
+      "İsa",
+      "Nuh"
+    ],
+    "explanation": "İbrahim, peygamberlerin babası ve Rahman'ın yakın dostudur.",
+    "sourceDisplay": "Kur'an 2:136"
+  },
+  {
+    "id": "prophets_265",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber Allah'ın izniyle doğuştan körü iyileştirirdi?",
+    "answers": [
+      "İsa",
+      "Yahya",
+      "Zekeriya",
+      "İlyas"
+    ],
+    "explanation": "«Benim iznimle doğuştan körü ve alacalıyı iyileştiriyordun.»",
+    "sourceDisplay": "Kur'an 5:110"
+  },
+  {
+    "id": "prophets_266",
+    "correctAnswerIndex": 0,
+    "question": "Dağlar hangi peygamberle birlikte Allah'ı tesbih ediyordu?",
+    "answers": [
+      "Davud",
+      "Süleyman",
+      "Eyyub",
+      "Yunus"
+    ],
+    "explanation": "«Ey dağlar, onunla birlikte Allah'ı tesbih edin.»",
+    "sourceDisplay": "Kur'an 34:10"
+  },
+  {
+    "id": "prophets_267",
+    "correctAnswerIndex": 0,
+    "question": "Mısır hükümdarının rüyasını hangi peygamber açıkladı?",
+    "answers": [
+      "Yusuf",
+      "Harun",
+      "İlyas",
+      "Şuayb"
+    ],
+    "explanation": "Yusuf yedi semiz ve yedi zayıf ineğin anlamını açıkladı (12:46-49).",
+    "sourceDisplay": "Kur'an 12:46-49"
+  },
+  {
+    "id": "prophets_268",
+    "correctAnswerIndex": 0,
+    "question": "Yusuf peygamberin babası kimdir?",
+    "answers": [
+      "Yakub",
+      "İshak",
+      "İbrahim",
+      "Lut"
+    ],
+    "explanation": "Yusuf, İshak'ın oğlu olan Yakub'un oğludur.",
+    "sourceDisplay": "Kur'an 12:8"
+  },
+  {
+    "id": "prophets_269",
+    "correctAnswerIndex": 0,
+    "question": "Musa ve kavminin önünde ne yarıldı?",
+    "answers": [
+      "Onları Firavun'dan kurtarmak için deniz",
+      "Mısır'ın bir nehri",
+      "Medyen'de bir göl",
+      "Bir çöl kuyusu"
+    ],
+    "explanation": "«Hani sizin için denizi yarmış ve sizi kurtarmıştık.»",
+    "sourceDisplay": "Kur'an 2:50"
+  },
+  {
+    "id": "prophets_270",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in adı anıldığında ne söylenir?",
+    "answers": [
+      "«Allah'ın salât ve selamı onun üzerine olsun»",
+      "Özel bir şey söylenmez",
+      "«Teşekkür ederim»",
+      "«Hoşça kal»"
+    ],
+    "explanation": "Ona salât ve selam getirilir: sallallahu aleyhi ve sellem.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_271",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber tufandan önce kavmini çok uzun süre davet etti?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Salih",
+      "Şuayb"
+    ],
+    "explanation": "«Nuh'u kavmine gönderdik: kavmini uyar.»",
+    "sourceDisplay": "Kur'an 71:1"
+  },
+  {
+    "id": "prophets_272",
+    "correctAnswerIndex": 0,
+    "question": "Süleyman hangi peygamberin oğludur?",
+    "answers": [
+      "Davud",
+      "Yakub",
+      "İshak",
+      "Yunus"
+    ],
+    "explanation": "«Davud'a Süleyman'ı bağışladık; ne güzel bir kul!» (38:30).",
+    "sourceDisplay": "Kur'an 38:30"
+  },
+  {
+    "id": "prophets_273",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber Câlût'u (Golyat) yendi?",
+    "answers": [
+      "Davud",
+      "Süleyman",
+      "Yuşa",
+      "İlyas"
+    ],
+    "explanation": "«Davud Câlût'u öldürdü» (2:251).",
+    "sourceDisplay": "Kur'an 2:251"
+  },
+  {
+    "id": "prophets_274",
+    "correctAnswerIndex": 0,
+    "question": "Bir Müslüman kaç peygambere inanmalıdır?",
+    "answers": [
+      "Hepsine, aralarında ayrım yapmadan",
+      "Yalnızca sonuncusuna",
+      "Yalnızca üçüne",
+      "Yalnızca Kur'an'da adı geçenlere"
+    ],
+    "explanation": "Müslüman, Allah'ın bütün peygamberlerine aralarında ayrım yapmadan inanır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_275",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre Allah kimleri seçti?",
+    "answers": [
+      "Âdem'i, Nuh'u, İbrahim ailesini ve İmran ailesini",
+      "Mısır krallarını",
+      "Medine kabilelerini",
+      "Sebe halkını"
+    ],
+    "explanation": "«Allah Âdem'i, Nuh'u, İbrahim ailesini ve İmran ailesini seçti.»",
+    "sourceDisplay": "Kur'an 3:33"
+  },
+  {
+    "id": "prophets_276",
+    "correctAnswerIndex": 0,
+    "question": "Yusuf peygamber hangi ülkede hükümdarın güvendiği kişi oldu?",
+    "answers": [
+      "Mısır",
+      "Şam",
+      "Yemen",
+      "Irak"
+    ],
+    "explanation": "Yusuf, hükümdarın rüyasını yorumladıktan sonra Mısır'da yüksek bir konuma getirildi.",
+    "sourceDisplay": "Kur'an 12:100"
+  },
+  {
+    "id": "prophets_277",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber bir gece Mescid-i Aksa'ya götürüldü?",
+    "answers": [
+      "Muhammed ﷺ",
+      "Musa",
+      "İsa",
+      "İbrahim"
+    ],
+    "explanation": "«Kulunu bir gece yürüten Allah her türlü noksandan uzaktır.»",
+    "sourceDisplay": "Kur'an 17:1"
+  },
+  {
+    "id": "prophets_278",
+    "correctAnswerIndex": 0,
+    "question": "Musa peygambere hangi kitap verildi?",
+    "answers": [
+      "Tevrat",
+      "İncil",
+      "Zebur",
+      "İbrahim'in sahifeleri"
+    ],
+    "explanation": "Allah Musa'ya Kitab'ı verdi ve ardından elçiler gönderdi.",
+    "sourceDisplay": "Kur'an 2:87"
+  },
+  {
+    "id": "prophets_279",
+    "correctAnswerIndex": 0,
+    "question": "İsa peygambere hangi kitap verildi?",
+    "answers": [
+      "İncil",
+      "Tevrat",
+      "Zebur",
+      "Kur'an"
+    ],
+    "explanation": "«Ona içinde hidayet ve nur bulunan İncil'i verdik.»",
+    "sourceDisplay": "Kur'an 5:46"
+  },
+  {
+    "id": "prophets_280",
+    "correctAnswerIndex": 0,
+    "question": "Davud peygambere hangi kitap verildi?",
+    "answers": [
+      "Zebur",
+      "Tevrat",
+      "İncil",
+      "Musa'nın sahifeleri"
+    ],
+    "explanation": "«Davud'a da Zebur'u verdik.»",
+    "sourceDisplay": "Kur'an 4:163"
+  },
+  {
+    "id": "prophets_281",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamberin oğlu Allah'a itaat ederek kurban edilmeyi kabul etti?",
+    "answers": [
+      "İbrahim'in oğlu",
+      "Nuh'un oğlu",
+      "Musa'nın kardeşi",
+      "Yakub'un oğlu"
+    ],
+    "explanation": "«Babacığım, sana emredileni yap: beni sabredenlerden bulacaksın.»",
+    "sourceDisplay": "Kur'an 37:102"
+  },
+  {
+    "id": "prophets_282",
+    "correctAnswerIndex": 0,
+    "question": "Musa'nın annesi onu kurtarmak için bebeğini nereye bıraktı?",
+    "answers": [
+      "Nehre",
+      "Bir mağaraya",
+      "Bir komşuya",
+      "Çöle"
+    ],
+    "explanation": "«Onu nehre bırak: biz onu sana geri döndüreceğiz.»",
+    "sourceDisplay": "Kur'an 28:7"
+  },
+  {
+    "id": "prophets_283",
+    "correctAnswerIndex": 0,
+    "question": "Yunus karanlıklar içinde ne dedi? Her Müslüman bu sözü tekrar eder.",
+    "answers": [
+      "«Senden başka ilah yoktur, seni tesbih ederim, ben zalimlerden oldum»",
+      "«Bana zenginlik ver»",
+      "«Beni kral yap»",
+      "«Beni güçlü kıl»"
+    ],
+    "explanation": "Yunus'un balığın karnındaki duası.",
+    "sourceDisplay": "Kur'an 21:87"
+  },
+  {
+    "id": "prophets_284",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber Muhammed ﷺ'in babası kimdir?",
+    "answers": [
+      "Abdullah",
+      "Ebu Talib",
+      "Abbas",
+      "Hamza"
+    ],
+    "explanation": "O, Abdülmuttalib'in oğlu Abdullah'ın oğlu Muhammed ﷺ'dir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_285",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber Muhammed ﷺ'in annesi kimdir?",
+    "answers": [
+      "Âmine",
+      "Hatice",
+      "Aişe",
+      "Fatıma"
+    ],
+    "explanation": "Âmine bint Vehb, Peygamber ﷺ'in annesidir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_286",
+    "correctAnswerIndex": 0,
+    "question": "İsa henüz beşikteyken ne dedi?",
+    "answers": [
+      "«Ben Allah'ın kuluyum»",
+      "«Ben bir kralım»",
+      "«Ben bir meleğim»",
+      "Hiçbir şey demedi"
+    ],
+    "explanation": "«Şüphesiz ben Allah'ın kuluyum: O bana Kitab'ı verdi.»",
+    "sourceDisplay": "Kur'an 19:30"
+  },
+  {
+    "id": "prophets_287",
+    "correctAnswerIndex": 0,
+    "question": "Âd kavmine hangi peygamber gönderildi?",
+    "answers": [
+      "Hud",
+      "Salih",
+      "Lut",
+      "Şuayb"
+    ],
+    "explanation": "«Âd kavmine de kardeşleri Hud'u gönderdik.»",
+    "sourceDisplay": "Kur'an 7:65"
+  },
+  {
+    "id": "prophets_288",
+    "correctAnswerIndex": 0,
+    "question": "Semud kavmine dişi deveyle hangi peygamber gönderildi?",
+    "answers": [
+      "Salih",
+      "Hud",
+      "Yunus",
+      "İdris"
+    ],
+    "explanation": "«Semud'a da kardeşleri Salih'i gönderdik: işte bu, Allah'ın dişi devesidir.»",
+    "sourceDisplay": "Kur'an 7:73"
+  },
+  {
+    "id": "prophets_289",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber Musa'nın kardeşidir ve onunla birlikte gönderildi?",
+    "answers": [
+      "Harun",
+      "Yusuf",
+      "Yahya",
+      "İlyas"
+    ],
+    "explanation": "«Bana ailemden bir yardımcı ver: kardeşim Harun'u.»",
+    "sourceDisplay": "Kur'an 20:29-30"
+  },
+  {
+    "id": "prophets_290",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an, peygamberler arasında Muhammed ﷺ'e hangi unvanı verir?",
+    "answers": [
+      "Peygamberlerin mührü (sonuncusu)",
+      "Peygamberlerin ilki",
+      "Peygamberlerin kralı",
+      "Peygamberlerin kâtibi"
+    ],
+    "explanation": "«Muhammed Allah'ın Resulü ve peygamberlerin sonuncusudur.»",
+    "sourceDisplay": "Kur'an 33:40"
+  },
+  {
+    "id": "prophets_291",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'da melekler Meryem'e ne der?",
+    "answers": [
+      "Allah'ın onu seçip tertemiz kıldığını",
+      "Kraliçe olacağını",
+      "Yolculuğa çıkacağını",
+      "Öğretmen olacağını"
+    ],
+    "explanation": "«Ey Meryem, Allah seni seçti ve tertemiz kıldı.»",
+    "sourceDisplay": "Kur'an 3:42"
+  },
+  {
+    "id": "prophets_292",
+    "correctAnswerIndex": 0,
+    "question": "Eyyub imtihanında Rabbine nasıl yalvardı?",
+    "answers": [
+      "«Bana zarar dokundu, sen merhametlilerin en merhametlisisin»",
+      "«Beni zengin et»",
+      "«Düşmanlarımı cezalandır»",
+      "«Beni kral yap»"
+    ],
+    "explanation": "«Bana zarar dokundu; sen merhametlilerin en merhametlisisin.»",
+    "sourceDisplay": "Kur'an 21:83"
+  },
+  {
+    "id": "prophets_293",
+    "correctAnswerIndex": 0,
+    "question": "Allah Âdem'e ne öğretti?",
+    "answers": [
+      "Bütün isimleri",
+      "Yazıyı",
+      "Denizciliği",
+      "Hesabı"
+    ],
+    "explanation": "«Ve Âdem'e bütün isimleri öğretti.»",
+    "sourceDisplay": "Kur'an 2:31"
+  },
+  {
+    "id": "prophets_294",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber, kendisinden sonra kimseye nasip olmayacak bir hükümdarlığa sahipti?",
+    "answers": [
+      "Süleyman",
+      "Davud",
+      "Yusuf",
+      "Zülkarneyn"
+    ],
+    "explanation": "«Bana, benden sonra kimseye nasip olmayacak bir hükümdarlık bağışla.»",
+    "sourceDisplay": "Kur'an 38:35-36"
+  },
+  {
+    "id": "prophets_295",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber, karısı hariç ailesiyle birlikte kurtarıldı?",
+    "answers": [
+      "Lut",
+      "Nuh",
+      "Hud",
+      "Salih"
+    ],
+    "explanation": "«Gecenin bir bölümünde ailenle yola çık… karın hariç.»",
+    "sourceDisplay": "Kur'an 11:81"
+  },
+  {
+    "id": "prophets_296",
+    "correctAnswerIndex": 0,
+    "question": "İbrahim kavmini neye karşı uyardı?",
+    "answers": [
+      "Putlara tapmaya karşı",
+      "Ticarete karşı",
+      "Yolculuğa karşı",
+      "Yazıya karşı"
+    ],
+    "explanation": "«Putları ilah mı ediniyorsun?»",
+    "sourceDisplay": "Kur'an 6:74"
+  },
+  {
+    "id": "prophets_297",
+    "correctAnswerIndex": 0,
+    "question": "Allah'ın insanlara gönderdiği elçiyi hangi kelime ifade eder?",
+    "answers": [
+      "Resul (elçi)",
+      "Halife",
+      "Sahabi",
+      "Âlim"
+    ],
+    "explanation": "Resul, Allah'ın gönderdiği ve insanlara bir mesaj iletmekle görevli elçidir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_298",
+    "correctAnswerIndex": 0,
+    "question": "Ahzab suresine göre Allah Peygamber ﷺ'i ne olarak gönderdi?",
+    "answers": [
+      "Şahit, müjdeci ve uyarıcı olarak",
+      "Kral ve hâkim olarak",
+      "Tüccar olarak",
+      "Şair olarak"
+    ],
+    "explanation": "«Ey Peygamber, biz seni şahit, müjdeci ve uyarıcı olarak gönderdik» (33:45).",
+    "sourceDisplay": "Kur'an 33:45"
+  },
+  {
+    "id": "prophets_299",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre Muhammed ﷺ niçin gönderildi?",
+    "answers": [
+      "Âlemlere rahmet olarak",
+      "Hükmetmek için",
+      "İnşa etmek için",
+      "Ticaret yapmak için"
+    ],
+    "explanation": "«Biz seni ancak âlemlere rahmet olarak gönderdik.»",
+    "sourceDisplay": "Kur'an 21:107"
+  },
+  {
+    "id": "prophets_300",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an hangi peygambere «çok şükreden bir kul» der?",
+    "answers": [
+      "Nuh",
+      "Lut",
+      "İdris",
+      "İlyas"
+    ],
+    "explanation": "«Şüphesiz o, çok şükreden bir kuldu» (17:3): Nuh hakkında söylenir.",
+    "sourceDisplay": "Kur'an 17:3"
+  },
+  {
+    "id": "prophets_301",
+    "correctAnswerIndex": 0,
+    "question": "Oğlu müjdelendikten sonra Zekeriya'ya hangi işaret verildi?",
+    "answers": [
+      "Üç gün insanlarla konuşmaması",
+      "Bir yıldız görmesi",
+      "Gök gürültüsü duyması",
+      "Su üstünde yürümesi"
+    ],
+    "explanation": "«Senin işaretin, üç gün insanlarla konuşmamandır» (3:41).",
+    "sourceDisplay": "Kur'an 3:41"
+  },
+  {
+    "id": "prophets_302",
+    "correctAnswerIndex": 0,
+    "question": "Her elçi hangi dille gönderildi?",
+    "answers": [
+      "Kendi kavminin diliyle",
+      "Yalnızca Arapça",
+      "İbranice",
+      "Gökten bir dille"
+    ],
+    "explanation": "«Biz her elçiyi ancak kendi kavminin diliyle gönderdik.»",
+    "sourceDisplay": "Kur'an 14:4"
+  },
+  {
+    "id": "prophets_303",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure bir peygamberin kıssasını baştan sona anlatır?",
+    "answers": [
+      "Yusuf suresi",
+      "Bakara suresi",
+      "Nas suresi",
+      "Fatiha suresi"
+    ],
+    "explanation": "«Biz sana kıssaların en güzelini anlatıyoruz»: Yusuf'un kıssası.",
+    "sourceDisplay": "Kur'an 12:1-3"
+  },
+  {
+    "id": "prophets_304",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an, Meryem suresinde İbrahim'i nasıl niteler?",
+    "answers": [
+      "Dosdoğru bir kişi, bir peygamber",
+      "Bir kral",
+      "Bir kâtip",
+      "Bir tüccar"
+    ],
+    "explanation": "«O, dosdoğru bir kişi ve bir peygamberdi.»",
+    "sourceDisplay": "Kur'an 19:41"
+  },
+  {
+    "id": "prophets_305",
+    "correctAnswerIndex": 0,
+    "question": "Hangi kraliçe Süleyman peygamberi görmeye geldi?",
+    "answers": [
+      "Sebe melikesi",
+      "Mısır kraliçesi",
+      "Babil kraliçesi",
+      "Kuzey Yemen kraliçesi"
+    ],
+    "explanation": "O, Süleyman ile birlikte âlemlerin Rabbi Allah'a teslim oldu.",
+    "sourceDisplay": "Kur'an 27:44"
+  },
+  {
+    "id": "prophets_306",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber Allah'ın ölüleri nasıl dirilttiğini görmek istedi?",
+    "answers": [
+      "İbrahim",
+      "Musa",
+      "Nuh",
+      "Yunus"
+    ],
+    "explanation": "«Rabbim, ölüleri nasıl dirilttiğini bana göster.»",
+    "sourceDisplay": "Kur'an 2:260"
+  },
+  {
+    "id": "prophets_307",
+    "correctAnswerIndex": 0,
+    "question": "Hangi peygamber ilim sahibi bir kuldan öğrenmek için yolculuk yaptı?",
+    "answers": [
+      "Musa",
+      "Yusuf",
+      "Davud",
+      "Süleyman"
+    ],
+    "explanation": "Musa, Allah'ın kendisine ilim verdiği bir kuluyla karşılaşıncaya kadar yol aldı.",
+    "sourceDisplay": "Kur'an 18:60-65"
+  },
+  {
+    "id": "prophets_308",
+    "correctAnswerIndex": 0,
+    "question": "İhlas suresi Allah hakkında ne öğretir?",
+    "answers": [
+      "O'nun Bir olduğunu ve hiçbir şeyin O'na denk olmadığını",
+      "Ortakları olduğunu",
+      "Yarattıklarına benzediğini",
+      "Bir oğlu olduğunu"
+    ],
+    "explanation": "«De ki: O Allah birdir… ve hiçbir şey O'na denk değildir.»",
+    "sourceDisplay": "Kur'an 112:1-4"
+  },
+  {
+    "id": "prophets_309",
+    "correctAnswerIndex": 0,
+    "question": "Mekkeliler vahiyden önce Peygamber ﷺ'e ne derdi?",
+    "answers": [
+      "El-Emin, güvenilir",
+      "Yolcu",
+      "Şair",
+      "Hâkim"
+    ],
+    "explanation": "Dürüstlüğü o kadar iyi biliniyordu ki ona el-Emin deniyordu.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "prophets_310",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an, izlenecek en güzel örnek olarak kimi sunar?",
+    "answers": [
+      "Allah'ın Resulü ﷺ'i",
+      "Kralları",
+      "Şairleri",
+      "Tüccarları"
+    ],
+    "explanation": "«Andolsun ki Allah'ın Resulünde sizin için güzel bir örnek vardır.»",
+    "sourceDisplay": "Kur'an 33:21"
+  },
+  {
+    "id": "sira_251",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ hangi şehirde doğdu?",
+    "answers": [
+      "Mekke",
+      "Medine",
+      "Kudüs",
+      "Taif"
+    ],
+    "explanation": "Peygamber ﷺ Mekke'de, Kureyş kabilesinde doğdu.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_252",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ hangi şehre hicret etti?",
+    "answers": [
+      "Medine",
+      "Taif",
+      "Kahire",
+      "Şam"
+    ],
+    "explanation": "Hicret Mekke'den, o zamanki adı Yesrib olan Medine'ye yapıldı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_253",
+    "correctAnswerIndex": 0,
+    "question": "Mekke'den Medine'ye göçe ne denir?",
+    "answers": [
+      "Hicret",
+      "Hac",
+      "Fetih",
+      "Antlaşma"
+    ],
+    "explanation": "Hicret, İslam takviminin başlangıcıdır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_254",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in ilk eşi kimdir?",
+    "answers": [
+      "Hatice",
+      "Aişe",
+      "Hafsa",
+      "Sevde"
+    ],
+    "explanation": "Hatice bint Huveylid, ona ilk inanan kişidir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_255",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ hicret sırasında hangi mağarada saklandı?",
+    "answers": [
+      "Sevr mağarası",
+      "Hira mağarası",
+      "Uhud mağarası",
+      "Kuba mağarası"
+    ],
+    "explanation": "Medine'ye yola çıkmadan önce orada Ebu Bekir ile üç gün saklandı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_256",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'e indirilen ilk kelime nedir?",
+    "answers": [
+      "«Oku»",
+      "«Namaz kıl»",
+      "«Kalk»",
+      "«Dinle»"
+    ],
+    "explanation": "«Yaratan Rabbinin adıyla oku.»",
+    "sourceDisplay": "Kur'an 96:1"
+  },
+  {
+    "id": "sira_257",
+    "correctAnswerIndex": 0,
+    "question": "Vahyi Peygamber ﷺ'e hangi melek getirdi?",
+    "answers": [
+      "Cebrail",
+      "Mikail",
+      "İsrafil",
+      "Malik"
+    ],
+    "explanation": "Cebrail, vahyi indirmekle görevli melektir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_258",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in kabri hangi şehirdedir?",
+    "answers": [
+      "Medine",
+      "Mekke",
+      "Kudüs",
+      "Taif"
+    ],
+    "explanation": "Kabri Medine'de, mescidinin yanındadır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_259",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ hangi kabiledendir?",
+    "answers": [
+      "Kureyş",
+      "Evs",
+      "Hazrec",
+      "Sakif"
+    ],
+    "explanation": "Peygamber ﷺ, Mekke'nin kabilesi Kureyş'tendir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_260",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in arkadaşlarına ne denir?",
+    "answers": [
+      "Sahabe",
+      "Tâbiîn",
+      "Yalnızca Ensar",
+      "Kurrâ"
+    ],
+    "explanation": "Sahabe, Peygamber ﷺ'i ona inanmış olarak görenlerdir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_261",
+    "correctAnswerIndex": 0,
+    "question": "Hicrette Peygamber ﷺ'e kim eşlik etti?",
+    "answers": [
+      "Ebu Bekir",
+      "Ömer",
+      "Osman",
+      "Bilal"
+    ],
+    "explanation": "Ebu Bekir, hicret sırasında mağarada onun arkadaşıydı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_262",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in müezzini kimdi?",
+    "answers": [
+      "Bilal",
+      "Enes",
+      "Zeyd",
+      "Selman"
+    ],
+    "explanation": "Bilal bin Rebah Medine'de ezan okurdu.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_263",
+    "correctAnswerIndex": 0,
+    "question": "İslam'ın ilk savaşına ne denir?",
+    "answers": [
+      "Bedir",
+      "Uhud",
+      "Hayber",
+      "Huneyn"
+    ],
+    "explanation": "Bedir, hicretin ikinci yılında yapılan ilk büyük savaştır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_264",
+    "correctAnswerIndex": 0,
+    "question": "Mekke'den Medine'ye hicret edenlere ne denir?",
+    "answers": [
+      "Muhacirler",
+      "Ensar",
+      "Tâbiîn",
+      "Taifli sahabiler"
+    ],
+    "explanation": "Muhacirler göç edenlerdir; Ensar ise onları karşılayanlardır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_265",
+    "correctAnswerIndex": 0,
+    "question": "Muhacirleri karşılayan Medinelilere ne denir?",
+    "answers": [
+      "Ensar",
+      "Muhacirler",
+      "Kureyş",
+      "Tâbiîn"
+    ],
+    "explanation": "Ensar, «yardımcılar», Medine'nin Evs ve Hazrec kabileleridir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_266",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ Medine'de ilk olarak ne inşa etti?",
+    "answers": [
+      "Bir mescit",
+      "Bir pazar",
+      "Bir saray",
+      "Bir sur"
+    ],
+    "explanation": "Medine'ye varır varmaz mescidini inşa etti.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_267",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in hangi kızı Ali ile evlendi?",
+    "answers": [
+      "Fatıma",
+      "Rukiye",
+      "Zeynep",
+      "Ümmü Gülsüm"
+    ],
+    "explanation": "Peygamber ﷺ'in kızı Fatıma, Ali bin Ebu Talib ile evlendi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_268",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'den sonraki ilk halife kimdir?",
+    "answers": [
+      "Ebu Bekir",
+      "Ömer",
+      "Osman",
+      "Ali"
+    ],
+    "explanation": "Ebu Bekir es-Sıddık ilk halifeydi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_269",
+    "correctAnswerIndex": 0,
+    "question": "Medine'nin eski adı neydi?",
+    "answers": [
+      "Yesrib",
+      "Bekke",
+      "Taif",
+      "Hayber"
+    ],
+    "explanation": "Yesrib, Medinetü'n-Nebi, yani Peygamber ﷺ'in şehri adını aldı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_270",
+    "correctAnswerIndex": 0,
+    "question": "İlk vahiy geldiğinde Peygamber ﷺ kaç yaşındaydı?",
+    "answers": [
+      "Kırk yaşında",
+      "Yirmi",
+      "Altmış",
+      "Otuz"
+    ],
+    "explanation": "Vahiy ona kırk yaşındayken geldi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_271",
+    "correctAnswerIndex": 0,
+    "question": "Kâbe hangi şehirdedir?",
+    "answers": [
+      "Mekke",
+      "Medine",
+      "Kudüs",
+      "Şam"
+    ],
+    "explanation": "Kâbe, Mekke'de Mescid-i Haram'ın ortasında yer alır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_272",
+    "correctAnswerIndex": 0,
+    "question": "Mescid-i Aksa hangi şehirdedir?",
+    "answers": [
+      "Kudüs",
+      "Mekke",
+      "Medine",
+      "Kahire"
+    ],
+    "explanation": "Mescid-i Aksa Kudüs'tedir (el-Kuds).",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_273",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in hangi amcası onu Mekke'de korudu?",
+    "answers": [
+      "Ebu Talib",
+      "Ebu Leheb",
+      "Abbas",
+      "Ebu Süfyan"
+    ],
+    "explanation": "Ali'nin babası Ebu Talib, yeğenini Kureyş'e karşı korudu.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_274",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in ilk eşi Hatice'nin mesleği neydi?",
+    "answers": [
+      "Tüccar",
+      "Hekim",
+      "Şair",
+      "Dokumacı"
+    ],
+    "explanation": "Hatice, Mekke'nin saygın bir tüccarıydı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_275",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in son haccına ne denir?",
+    "answers": [
+      "Veda Haccı",
+      "İlk hac",
+      "Fetih haccı",
+      "Küçük hac (umre)"
+    ],
+    "explanation": "Veda Haccı hicretin 10. yılında yapıldı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_276",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in hayatının anlatımına ne denir?",
+    "answers": [
+      "Siyer",
+      "Sünnet",
+      "Tefsir",
+      "Fıkıh"
+    ],
+    "explanation": "Siyer onun hayatının anlatımıdır; Sünnet ise söyledikleri ve yaptıklarıdır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_277",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'den rivayet edilen bir söze ne denir?",
+    "answers": [
+      "Hadis",
+      "Sure",
+      "Ayet",
+      "Dua"
+    ],
+    "explanation": "Hadis, Peygamber ﷺ'in sözü, fiili veya onayıdır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_278",
+    "correctAnswerIndex": 0,
+    "question": "En titiz sayılan iki hadis kitabı hangileridir?",
+    "answers": [
+      "Sahih-i Buhari ve Sahih-i Müslim",
+      "İki şiir kitabı",
+      "İki tarih kitabı",
+      "İki sözlük"
+    ],
+    "explanation": "İkisine birlikte «Sahihayn» (iki Sahih) denir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_279",
+    "correctAnswerIndex": 0,
+    "question": "Hangi halife Kur'an'ı çoğaltıp eyaletlere gönderdi?",
+    "answers": [
+      "Osman",
+      "Ebu Bekir",
+      "Ömer",
+      "Ali"
+    ],
+    "explanation": "Osman resmî nüshalar hazırlatıp büyük şehirlere gönderdi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_280",
+    "correctAnswerIndex": 0,
+    "question": "«Râşid halifeler» (doğru yolda giden halifeler) kaç kişidir?",
+    "answers": [
+      "Dört",
+      "İki",
+      "Yedi",
+      "On iki"
+    ],
+    "explanation": "Ebu Bekir, Ömer, Osman ve Ali.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_281",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanlar hangi yöne dönerek namaz kılar?",
+    "answers": [
+      "Mekke'deki Kâbe'ye doğru",
+      "Kudüs'e doğru",
+      "Doğuya doğru",
+      "Medine'ye doğru"
+    ],
+    "explanation": "Kıble, Kâbe'nin yönüdür.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_282",
+    "correctAnswerIndex": 0,
+    "question": "Bu namaz yönüne ne denir?",
+    "answers": [
+      "Kıble",
+      "Mihrap",
+      "Minber",
+      "Minare"
+    ],
+    "explanation": "Kıble yöndür; mihrap ise onu gösteren oyuktur.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_283",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanların birlikte namaz kıldığı yere ne denir?",
+    "answers": [
+      "Mescit (cami)",
+      "Okul",
+      "Pazar",
+      "Kütüphane"
+    ],
+    "explanation": "Mescit, secde edilen yer, yani camidir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_284",
+    "correctAnswerIndex": 0,
+    "question": "Namaza çağrıya ne denir?",
+    "answers": [
+      "Ezan",
+      "Tekbir",
+      "Tesbih",
+      "Zikir"
+    ],
+    "explanation": "Ezan çağrıdır; onu okuyana müezzin denir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_285",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanlar büyük namaz için hangi gün toplanır?",
+    "answers": [
+      "Cuma",
+      "Cumartesi",
+      "Pazar",
+      "Pazartesi"
+    ],
+    "explanation": "Cuma namazı (el-cumua) her hafta cemaati bir araya getirir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_286",
+    "correctAnswerIndex": 0,
+    "question": "Namazı kıldıran kişiye ne denir?",
+    "answers": [
+      "İmam",
+      "Müezzin",
+      "Kadı",
+      "Hafız"
+    ],
+    "explanation": "İmam, cemaatin arkasında saf tutup namaz kıldığı kişidir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_287",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın tamamını ezberleyen kişiye ne denir?",
+    "answers": [
+      "Hafız",
+      "İmam",
+      "Müezzin",
+      "Kadı"
+    ],
+    "explanation": "Hafız, Kur'an'ın tamamını ezberinde tutan kişidir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_288",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sahabi en çok hadis rivayet eden kişi olarak bilinir?",
+    "answers": [
+      "Ebu Hureyre",
+      "Bilal",
+      "Selman",
+      "Enes"
+    ],
+    "explanation": "Ebu Hureyre, Peygamber ﷺ'in son yıllarını onun yanında geçirdi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_289",
+    "correctAnswerIndex": 0,
+    "question": "Hangi halifeye es-Sıddık, «doğrulayan» denir?",
+    "answers": [
+      "Ebu Bekir",
+      "Ömer",
+      "Osman",
+      "Ali"
+    ],
+    "explanation": "Ebu Bekir es-Sıddık, iman eden ilk hür erkektir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_290",
+    "correctAnswerIndex": 0,
+    "question": "Hangi halifeye el-Faruk denir?",
+    "answers": [
+      "Ömer bin Hattab",
+      "Ebu Bekir",
+      "Osman",
+      "Ali"
+    ],
+    "explanation": "Hakkı batıldan ayıran Ömer'e bu unvan verildi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_291",
+    "correctAnswerIndex": 0,
+    "question": "Hangi halife Kur'an'ı tek bir mushafta toplattı?",
+    "answers": [
+      "Ebu Bekir",
+      "Muaviye",
+      "Halid",
+      "Bilal"
+    ],
+    "explanation": "Ebu Bekir, yazılı olanların bir araya toplanmasını emretti.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_292",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'i çocukken hangi dedesi büyüttü?",
+    "answers": [
+      "Abdülmuttalib",
+      "Ebu Süfyan",
+      "Velid",
+      "Utbe"
+    ],
+    "explanation": "Dedesi Abdülmuttalib, doğumundan sonra onu himayesine aldı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_293",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an, Peygamber ﷺ'in çocukluğunu nasıl hatırlatır?",
+    "answers": [
+      "Allah onu yetim bulup barındırdı",
+      "O bir kraldı",
+      "Çocukluğundan beri zengindi",
+      "Çölde tek başına yaşadı"
+    ],
+    "explanation": "«O seni yetim bulup barındırmadı mı?» (93:6).",
+    "sourceDisplay": "Kur'an 93:6"
+  },
+  {
+    "id": "sira_294",
+    "correctAnswerIndex": 0,
+    "question": "Bedir'den sonra hangi savaş geldi?",
+    "answers": [
+      "Uhud",
+      "Hendek",
+      "Huneyn",
+      "Tebük"
+    ],
+    "explanation": "Ertesi yıl Medine yakınında Uhud Savaşı yapıldı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_295",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanlar Medine'yi savunmak için çevresine ne kazdı?",
+    "answers": [
+      "Bir hendek (el-Handek)",
+      "Bir kuyu",
+      "Bir tünel",
+      "Bir kanal"
+    ],
+    "explanation": "Bir hendek kazdılar; Hendek Savaşı adını buradan alır.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_296",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in eşi Aişe kimin kızıydı?",
+    "answers": [
+      "Ebu Bekir'in",
+      "Ömer'in",
+      "Osman'ın",
+      "Ali'nin"
+    ],
+    "explanation": "Aişe, Ebu Bekir es-Sıddık'ın kızıydı.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_297",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an, Peygamber ﷺ'in eşlerini nasıl adlandırır?",
+    "answers": [
+      "Müminlerin anneleri",
+      "Hizmetçiler",
+      "Yol arkadaşları",
+      "Muhacir kadınlar"
+    ],
+    "explanation": "«Onun eşleri de müminlerin anneleridir» (33:6).",
+    "sourceDisplay": "Kur'an 33:6"
+  },
+  {
+    "id": "sira_298",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sahabi Peygamber ﷺ'in hem amcasının oğlu hem damadıydı?",
+    "answers": [
+      "Ali bin Ebu Talib",
+      "Bilal",
+      "Selman",
+      "Zeyd"
+    ],
+    "explanation": "Peygamber ﷺ'in amcasının oğlu Ali, onun kızı Fatıma ile evlendi.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_299",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in Medine'deki mescidine ne denir?",
+    "answers": [
+      "Mescid-i Nebevi",
+      "Mescid-i Haram",
+      "Mescid-i Aksa",
+      "Kuba"
+    ],
+    "explanation": "Peygamber Mescidi, Mescid-i Nebevi, Medine'dedir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "sira_300",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in gece yolculuğundaki bineğine ne denir?",
+    "answers": [
+      "Burak",
+      "Adbâ",
+      "Şakrâ",
+      "Kasvâ"
+    ],
+    "explanation": "Gece yolculuğunun bineğine Burak denir.",
+    "sourceDisplay": "Siyer, yerleşik bilgi"
+  },
+  {
+    "id": "faith_151",
+    "correctAnswerIndex": 0,
+    "question": "İslam'ın kaç şartı vardır?",
+    "answers": [
+      "Beş",
+      "Üç",
+      "Altı",
+      "On"
+    ],
+    "explanation": "Beş: kelime-i şehadet, namaz, zekât, oruç ve hac.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_152",
+    "correctAnswerIndex": 0,
+    "question": "İslam'ın ilk şartı nedir?",
+    "answers": [
+      "Kelime-i şehadet",
+      "Oruç",
+      "Hac",
+      "Zekât"
+    ],
+    "explanation": "İslam'a, Allah'tan başka ilah olmadığına ve Muhammed ﷺ'in O'nun elçisi olduğuna şahitlik ederek girilir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_153",
+    "correctAnswerIndex": 0,
+    "question": "Bir Müslüman günde kaç farz namaz kılar?",
+    "answers": [
+      "Beş",
+      "Üç",
+      "Yedi",
+      "İki"
+    ],
+    "explanation": "Sabahtan geceye yayılmış beş vakit namaz.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_154",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanlar hangi ayda oruç tutar?",
+    "answers": [
+      "Ramazan",
+      "Recep",
+      "Şaban",
+      "Şevval"
+    ],
+    "explanation": "«Ramazan ayı, Kur'an'ın indirildiği aydır» (2:185).",
+    "sourceDisplay": "Kur'an 2:185"
+  },
+  {
+    "id": "faith_155",
+    "correctAnswerIndex": 0,
+    "question": "İslam'ın farz olan sadakasına ne denir?",
+    "answers": [
+      "Zekât",
+      "Dua",
+      "Zikir",
+      "Tavaf"
+    ],
+    "explanation": "Zekât, malın her yıl verilen payıdır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_156",
+    "correctAnswerIndex": 0,
+    "question": "Mekke'ye yapılan büyük ziyarete ne denir?",
+    "answers": [
+      "Hac",
+      "Sa'y",
+      "Zikir",
+      "Sahur"
+    ],
+    "explanation": "Hac, gücü yetenlerin ömürde bir kez yaptığı ziyarettir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_157",
+    "correctAnswerIndex": 0,
+    "question": "İmanın kaç esası (erkân-ı iman) vardır?",
+    "answers": [
+      "Altı",
+      "Dört",
+      "Beş",
+      "Yedi"
+    ],
+    "explanation": "Allah'a, meleklerine, kitaplarına, peygamberlerine, ahiret gününe ve kadere inanmak.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_158",
+    "correctAnswerIndex": 0,
+    "question": "Bir Müslüman kaç ilaha inanır?",
+    "answers": [
+      "Yalnızca bir",
+      "İki",
+      "Üç",
+      "Birçok"
+    ],
+    "explanation": "«De ki: O Allah birdir» (112:1).",
+    "sourceDisplay": "Kur'an 112:1"
+  },
+  {
+    "id": "faith_159",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanlar Arapçada Tanrı'ya ne der?",
+    "answers": [
+      "Allah",
+      "Melek",
+      "Resul",
+      "Nebi"
+    ],
+    "explanation": "Allah, Yaratıcı'nın Arapçadaki adıdır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_160",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanların kutsal kitabına ne denir?",
+    "answers": [
+      "Kur'an",
+      "Tevrat",
+      "İncil",
+      "Zebur"
+    ],
+    "explanation": "Kur'an, Peygamber Muhammed ﷺ'e indirilen kitaptır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_161",
+    "correctAnswerIndex": 0,
+    "question": "Mekke'de inşa edilen Allah'ın Evi'ne ne denir?",
+    "answers": [
+      "Kâbe",
+      "Ravza",
+      "Makam",
+      "Hicr"
+    ],
+    "explanation": "«İnsanlar için kurulan ilk ev, Bekke'dekidir» (3:96).",
+    "sourceDisplay": "Kur'an 3:96"
+  },
+  {
+    "id": "faith_162",
+    "correctAnswerIndex": 0,
+    "question": "Bir Müslüman yemeğe başlamadan önce ne der?",
+    "answers": [
+      "Bismillah",
+      "Âmin",
+      "Sübhanallah",
+      "Allahümme"
+    ],
+    "explanation": "Peygamber ﷺ bir çocuğa öğretti: «Bismillah de ve sağ elinle ye.»",
+    "sourceDisplay": "Sahih-i Buhari, 5376"
+  },
+  {
+    "id": "faith_163",
+    "correctAnswerIndex": 0,
+    "question": "Müslümanlar birbirlerini nasıl selamlar?",
+    "answers": [
+      "Es-selâmü aleyküm",
+      "Elhamdülillah",
+      "Bismillah",
+      "Allahu ekber"
+    ],
+    "explanation": "«Es-selâmü aleyküm» şu demektir: selam üzerinize olsun.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_164",
+    "correctAnswerIndex": 0,
+    "question": "«Es-selâmü aleyküm»e ne cevap verilir?",
+    "answers": [
+      "Ve aleykümü's-selâm",
+      "Bismillah",
+      "Âmin",
+      "Sübhanallah"
+    ],
+    "explanation": "Selam iade edilir: «selam sizin de üzerinize olsun».",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_165",
+    "correctAnswerIndex": 0,
+    "question": "Ramazan ayının hemen ardından gelen bayrama ne denir?",
+    "answers": [
+      "Ramazan Bayramı (İd-i Fıtr)",
+      "Kurban Bayramı (İd-i Adha)",
+      "Kadir Gecesi",
+      "Aşure"
+    ],
+    "explanation": "Ramazan Bayramı, orucun bitişinin bayramıdır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_166",
+    "correctAnswerIndex": 0,
+    "question": "Kurban kesilen bayrama ne denir?",
+    "answers": [
+      "Kurban Bayramı (İd-i Adha)",
+      "Ramazan Bayramı (İd-i Fıtr)",
+      "Mevlid",
+      "Kadir Gecesi"
+    ],
+    "explanation": "Kurban Bayramı hac günlerinde kutlanır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_167",
+    "correctAnswerIndex": 0,
+    "question": "Allah'a her zaman itaat eden ve asla isyan etmeyen yaratıklara ne denir?",
+    "answers": [
+      "Melekler",
+      "Cinler",
+      "Peygamberler",
+      "Sahabiler"
+    ],
+    "explanation": "Melekler, Allah'ın emrettiğini yerine getirir ve asla isyan etmezler.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_168",
+    "correctAnswerIndex": 0,
+    "question": "Arapçada cennete ne denir?",
+    "answers": [
+      "El-Cenne",
+      "Es-Salât",
+      "Ed-Dua",
+      "El-Ezan"
+    ],
+    "explanation": "Kelime anlamı «bahçe» olan el-Cenne, müminlere vadedilen yurttur.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_169",
+    "correctAnswerIndex": 0,
+    "question": "Namazdan önce suyla yapılan temizliğe ne denir?",
+    "answers": [
+      "Abdest (vudû)",
+      "Tavaf",
+      "Zikir",
+      "Sa'y"
+    ],
+    "explanation": "Abdest, namazdan önce yapılan temizliktir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_170",
+    "correctAnswerIndex": 0,
+    "question": "Namazın bir birimine ne denir?",
+    "answers": [
+      "Rekât",
+      "Sure",
+      "Ezan",
+      "Tavaf"
+    ],
+    "explanation": "Bir rekât, kıyamı (ayakta durmayı), rükûyu ve secdeleri içerir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_171",
+    "correctAnswerIndex": 0,
+    "question": "Namazın her rekâtında hangi sure okunur?",
+    "answers": [
+      "Fatiha",
+      "İhlas",
+      "Nas",
+      "Kevser"
+    ],
+    "explanation": "Açılış suresi Fatiha her rekâtta okunur.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_172",
+    "correctAnswerIndex": 0,
+    "question": "İslam'da izin verilen şeye ne denir?",
+    "answers": [
+      "Helal",
+      "Haram",
+      "Sünnet",
+      "Farz"
+    ],
+    "explanation": "Helal, meşru olan demektir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_173",
+    "correctAnswerIndex": 0,
+    "question": "İslam'da yasak olan şeye ne denir?",
+    "answers": [
+      "Haram",
+      "Helal",
+      "Mübah",
+      "Nafile"
+    ],
+    "explanation": "Haram, yasak olan demektir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_174",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an hangi eti yasaklar?",
+    "answers": [
+      "Domuz eti",
+      "Kuzu eti",
+      "Sığır eti",
+      "Tavuk eti"
+    ],
+    "explanation": "«O size ölü hayvanı, kanı ve domuz etini haram kıldı» (2:173).",
+    "sourceDisplay": "Kur'an 2:173"
+  },
+  {
+    "id": "faith_175",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an hangi içecekten uzak durmayı emreder?",
+    "answers": [
+      "Şarap ve her türlü sarhoş edici",
+      "Süt",
+      "Bal",
+      "Yağmur suyu"
+    ],
+    "explanation": "«Şarap, kumar… birer pisliktir; onlardan uzak durun» (5:90).",
+    "sourceDisplay": "Kur'an 5:90"
+  },
+  {
+    "id": "faith_176",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ'in öğrettiğine göre hapşıran kişi ne der?",
+    "answers": [
+      "Elhamdülillah",
+      "Bismillah",
+      "Allahu ekber",
+      "Âmin"
+    ],
+    "explanation": "«Biriniz hapşırdığında elhamdülillah desin.»",
+    "sourceDisplay": "Sahih-i Buhari, 6224"
+  },
+  {
+    "id": "faith_177",
+    "correctAnswerIndex": 0,
+    "question": "Arapçada «namaz» nasıl söylenir?",
+    "answers": [
+      "Es-salât",
+      "Es-savm",
+      "Ez-zekât",
+      "El-hac"
+    ],
+    "explanation": "Es-salât, Müslümanın kıldığı namazdır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_178",
+    "correctAnswerIndex": 0,
+    "question": "Allah'tan kendi sözlerinle bir şey istemeye ne denir?",
+    "answers": [
+      "Dua",
+      "Tavaf",
+      "Ezan",
+      "Sa'y"
+    ],
+    "explanation": "Dua, Allah'a yalvarmak, O'na seslenmektir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_179",
+    "correctAnswerIndex": 0,
+    "question": "«Elhamdülillah» ne demektir?",
+    "answers": [
+      "Hamd Allah'a mahsustur",
+      "Allah en büyüktür",
+      "Allah'ın adıyla",
+      "Allah her türlü noksandan uzaktır"
+    ],
+    "explanation": "Fatiha'nın ikinci ayetidir: «Hamd, âlemlerin Rabbi Allah'a mahsustur» (1:2).",
+    "sourceDisplay": "Kur'an 1:2"
+  },
+  {
+    "id": "faith_180",
+    "correctAnswerIndex": 0,
+    "question": "«İslam» kelimesi ne demektir?",
+    "answers": [
+      "Allah'a teslim olmak",
+      "Zenginlik",
+      "Yolculuk",
+      "Bilgi"
+    ],
+    "explanation": "İslam, teslim olmak ve barış içinde olmak anlamına gelen bir kökten gelir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_181",
+    "correctAnswerIndex": 0,
+    "question": "«Müslüman» kelimesi ne demektir?",
+    "answers": [
+      "Allah'a teslim olan",
+      "Yolculuk eden",
+      "Öğreten",
+      "İnşa eden"
+    ],
+    "explanation": "Müslüman, yalnızca Allah'a teslim olan kişidir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_182",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre gökleri ve yeri kim yarattı?",
+    "answers": [
+      "Allah",
+      "Melekler",
+      "Peygamberler",
+      "Güneş"
+    ],
+    "explanation": "«Hamd, gökleri ve yeri yaratan Allah'a mahsustur» (6:1).",
+    "sourceDisplay": "Kur'an 6:1"
+  },
+  {
+    "id": "faith_183",
+    "correctAnswerIndex": 0,
+    "question": "Hadis Allah'ın kaç ismini anar?",
+    "answers": [
+      "Doksan dokuz",
+      "On",
+      "Elli",
+      "Bin"
+    ],
+    "explanation": "«Allah'ın doksan dokuz ismi vardır, yüzden bir eksik.»",
+    "sourceDisplay": "Sahih-i Buhari, 2736"
+  },
+  {
+    "id": "faith_184",
+    "correctAnswerIndex": 0,
+    "question": "«Değerli yazıcılar» denilen melekler ne yapar?",
+    "answers": [
+      "Amellerimizi yazarlar",
+      "Yağmuru taşırlar",
+      "Kâbe'yi korurlar",
+      "Arapça öğretirler"
+    ],
+    "explanation": "«Değerli yazıcılar, yaptıklarınızı bilirler» (82:11-12).",
+    "sourceDisplay": "Kur'an 82:11"
+  },
+  {
+    "id": "faith_185",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an hangi geceyi bin aydan hayırlı diye niteler?",
+    "answers": [
+      "Kadir Gecesi",
+      "Cuma gecesi",
+      "Bayram gecesi",
+      "Ramazan'ın ilk gecesi"
+    ],
+    "explanation": "«Kadir Gecesi bin aydan hayırlıdır» (97:3).",
+    "sourceDisplay": "Kur'an 97:3"
+  },
+  {
+    "id": "faith_186",
+    "correctAnswerIndex": 0,
+    "question": "Tek bir Allah'a inanmaya ne denir?",
+    "answers": [
+      "Tevhid",
+      "Tavaf",
+      "Teyemmüm",
+      "Teravih"
+    ],
+    "explanation": "Tevhid, Allah'ın birliğidir; bütün peygamberlerin mesajının özüdür.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_187",
+    "correctAnswerIndex": 0,
+    "question": "İbadette Allah'a ortak koşmaya ne denir?",
+    "answers": [
+      "Şirk",
+      "Zikir",
+      "Dua",
+      "Sabır"
+    ],
+    "explanation": "Şirk ortak koşmaktır: Allah'ın yanında başka bir şeye tapmak.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_188",
+    "correctAnswerIndex": 0,
+    "question": "Herkesin hesaba çekileceği güne ne denir?",
+    "answers": [
+      "Kıyamet Günü",
+      "Bayram günü",
+      "Cuma",
+      "Ramazan'ın ilk günü"
+    ],
+    "explanation": "Yevmü'l-Kıyame, Kıyamet Günü: herkesin amellerini göreceği gün.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_189",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre yılda kaç ay vardır?",
+    "answers": [
+      "On iki",
+      "On",
+      "On dört",
+      "Altı"
+    ],
+    "explanation": "«Allah katında ayların sayısı on ikidir» (9:36).",
+    "sourceDisplay": "Kur'an 9:36"
+  },
+  {
+    "id": "faith_190",
+    "correctAnswerIndex": 0,
+    "question": "Bir rekâtta kaç secde vardır?",
+    "answers": [
+      "İki",
+      "Bir",
+      "Üç",
+      "Dört"
+    ],
+    "explanation": "Her rekâtta iki secde vardır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "quran_151",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an kaç sureden oluşur?",
+    "answers": [
+      "Yüz on dört",
+      "Altmış",
+      "İki yüz",
+      "Otuz"
+    ],
+    "explanation": "Kur'an, Fatiha'dan Nas'a kadar 114 sureden oluşur.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_152",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın ilk suresi hangisidir?",
+    "answers": [
+      "Fatiha",
+      "Bakara",
+      "Nas",
+      "Yasin"
+    ],
+    "explanation": "Fatiha, «açılış», ilk suredir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_153",
+    "correctAnswerIndex": 0,
+    "question": "«Kur'an» kelimesi ne demektir?",
+    "answers": [
+      "Okuma, tilavet",
+      "Yol",
+      "Nur",
+      "Bahçe"
+    ],
+    "explanation": "Kur'an, okumak ve tilavet etmek anlamına gelen bir kökten gelir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_154",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an yaklaşık kaç yılda indirildi?",
+    "answers": [
+      "Yaklaşık yirmi üç yılda",
+      "Tek bir gecede",
+      "Yüz yılda",
+      "Üç yılda"
+    ],
+    "explanation": "Vahiy yaklaşık yirmi üç yıla yayıldı.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_155",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın numaralanmış her cümlesine ne denir?",
+    "answers": [
+      "Ayet",
+      "Sure",
+      "Cüz",
+      "Hadis"
+    ],
+    "explanation": "Kur'an'ın numaralanmış her cümlesi bir ayettir, yani bir «işaret».",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_156",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın bir bölümüne ne denir?",
+    "answers": [
+      "Sure",
+      "Ayet",
+      "Cüz",
+      "Hutbe"
+    ],
+    "explanation": "Kur'an, her birinin kendi adı olan surelere ayrılır.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_157",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın en uzun suresi hangisidir?",
+    "answers": [
+      "Bakara",
+      "Fatiha",
+      "Kevser",
+      "Nas"
+    ],
+    "explanation": "Bakara, Kur'an'ın en uzun suresidir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_158",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın en kısa suresi hangisidir?",
+    "answers": [
+      "Kevser",
+      "Bakara",
+      "Âl-i İmran",
+      "Nisa"
+    ],
+    "explanation": "Kevser yalnızca üç ayettir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_159",
+    "correctAnswerIndex": 0,
+    "question": "Hemen hemen her sure hangi cümleyle başlar?",
+    "answers": [
+      "Rahman ve Rahim olan Allah'ın adıyla",
+      "Hamd Allah'a mahsustur",
+      "Allah en büyüktür",
+      "Allah'tan başka ilah yoktur"
+    ],
+    "explanation": "Besmele, 114 surenin 113'ünü açar.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_160",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an kimin sözüdür?",
+    "answers": [
+      "Allah'ın",
+      "Peygamber ﷺ'in",
+      "Melek Cebrail'in",
+      "Sahabilerin"
+    ],
+    "explanation": "Kur'an, 9:6'da kendisini «Allah'ın kelamı» (kelâmullah) diye adlandırır.",
+    "sourceDisplay": "Kur'an 9:6"
+  },
+  {
+    "id": "quran_161",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an kaç bölüme (cüze) ayrılır?",
+    "answers": [
+      "Otuz",
+      "On",
+      "Elli",
+      "Yüz"
+    ],
+    "explanation": "Kur'an, Ramazan'ın her gecesi için bir tane olmak üzere otuz cüze ayrılır.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_162",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure bir kadının adını taşır?",
+    "answers": [
+      "Meryem",
+      "Yusuf",
+      "Nuh",
+      "Muhammed"
+    ],
+    "explanation": "19. sure Meryem'in adını taşır.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_163",
+    "correctAnswerIndex": 0,
+    "question": "Sığınmak için okunan son iki sureye ne denir?",
+    "answers": [
+      "Muavvizeteyn",
+      "Mesânî",
+      "Mufassal",
+      "Havâmîm"
+    ],
+    "explanation": "Felak ve Nas'a Muavvizeteyn, «iki koruyucu» denir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_164",
+    "correctAnswerIndex": 0,
+    "question": "Fatiha suresi besmeleden sonra hangi kelimeyle başlar?",
+    "answers": [
+      "El-hamdü",
+      "Kul",
+      "İkra",
+      "İnnâ"
+    ],
+    "explanation": "«El-hamdü lillâhi rabbi'l-âlemîn» Fatiha'yı açar.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_165",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ın anlamının açıklanmasına ne denir?",
+    "answers": [
+      "Tefsir",
+      "Tecvid",
+      "Hıfz",
+      "Tavaf"
+    ],
+    "explanation": "Tefsir, ayetlerin anlamını açıklayan ilimdir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_166",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure besmeleyle başlamaz?",
+    "answers": [
+      "Tevbe",
+      "Fatiha",
+      "İhlas",
+      "Nasr"
+    ],
+    "explanation": "Tevbe, besmeleyle başlamayan tek suredir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_167",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'ı sesli okuyan kişiye ne denir?",
+    "answers": [
+      "Kâri",
+      "Müezzin",
+      "İmam",
+      "Hatip"
+    ],
+    "explanation": "Kâri, Kur'an okuyucusudur.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_168",
+    "correctAnswerIndex": 0,
+    "question": "Âyetü'l-Kürsî hangi surededir?",
+    "answers": [
+      "Bakara",
+      "Kehf",
+      "Yasin",
+      "Mülk"
+    ],
+    "explanation": "Âyetü'l-Kürsî, Bakara suresinin 255. ayetidir.",
+    "sourceDisplay": "Kur'an 2:255"
+  },
+  {
+    "id": "quran_169",
+    "correctAnswerIndex": 0,
+    "question": "24. surenin adı «Nur» ne demektir?",
+    "answers": [
+      "Işık",
+      "Gece",
+      "Rüzgâr",
+      "Dağ"
+    ],
+    "explanation": "Nur, «ışık» demektir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_170",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure «Rahmeti bol olan» adını taşır?",
+    "answers": [
+      "Rahman",
+      "Mülk",
+      "Fetih",
+      "Saff"
+    ],
+    "explanation": "55. sureye Rahman denir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_171",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure mağaranın adını taşır?",
+    "answers": [
+      "Kehf",
+      "Fil",
+      "Neml",
+      "Bakara"
+    ],
+    "explanation": "Kehf, «mağara» demektir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_172",
+    "correctAnswerIndex": 0,
+    "question": "4. surenin adı «Nisa» ne demektir?",
+    "answers": [
+      "Kadınlar",
+      "Erkekler",
+      "Çocuklar",
+      "Yolcular"
+    ],
+    "explanation": "Nisa, «kadınlar» demektir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_173",
+    "correctAnswerIndex": 0,
+    "question": "5. surenin adı «Maide» ne demektir?",
+    "answers": [
+      "Sofra",
+      "Dağ",
+      "Demir",
+      "Şafak"
+    ],
+    "explanation": "Maide, «sofra» demektir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_174",
+    "correctAnswerIndex": 0,
+    "question": "71. sure hangi peygamberin adını taşır?",
+    "answers": [
+      "Nuh",
+      "Hud",
+      "Yunus",
+      "İbrahim"
+    ],
+    "explanation": "71. sureye Nuh denir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_175",
+    "correctAnswerIndex": 0,
+    "question": "Fatiha suresi kaç ayettir?",
+    "answers": [
+      "Yedi",
+      "Üç",
+      "On",
+      "Yirmi"
+    ],
+    "explanation": "Fatiha yedi ayettir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_176",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an nerede korunduğunu söyler?",
+    "answers": [
+      "Levh-i Mahfuz'da (korunmuş bir levhada)",
+      "Bir mağarada",
+      "Bir sandıkta",
+      "Bir dağda"
+    ],
+    "explanation": "«O, Levh-i Mahfuz'da bulunan şerefli bir Kur'an'dır» (85:21-22).",
+    "sourceDisplay": "Kur'an 85:22"
+  },
+  {
+    "id": "quran_177",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure ayın adını taşır?",
+    "answers": [
+      "Kamer",
+      "Şems",
+      "Necm",
+      "Leyl"
+    ],
+    "explanation": "Kamer, «ay» demektir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_178",
+    "correctAnswerIndex": 0,
+    "question": "Hangi sure Kıyamet Günü'nün adını taşır?",
+    "answers": [
+      "Kıyame",
+      "Fetih",
+      "Haşr",
+      "Saff"
+    ],
+    "explanation": "75. sureye Kıyame denir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_179",
+    "correctAnswerIndex": 0,
+    "question": "14. sure hangi peygamberin adını taşır?",
+    "answers": [
+      "İbrahim",
+      "Muhammed ﷺ",
+      "Yusuf",
+      "Hud"
+    ],
+    "explanation": "14. sureye İbrahim denir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "quran_180",
+    "correctAnswerIndex": 0,
+    "question": "57. surenin adı «Hadid» ne demektir?",
+    "answers": [
+      "Demir",
+      "Altın",
+      "Tahta",
+      "Taş"
+    ],
+    "explanation": "Hadid, «demir» demektir.",
+    "sourceDisplay": "Kur'an"
+  },
+  {
+    "id": "virtues_101",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an anne babamızla nasıl konuşmamızı söyler?",
+    "answers": [
+      "Saygılı sözlerle, «öf» bile demeden",
+      "Onlardan daha yüksek sesle",
+      "Hep susarak",
+      "Yalnızca cuma günleri"
+    ],
+    "explanation": "«Onlara öf bile deme ve onlara güzel söz söyle» (17:23).",
+    "sourceDisplay": "Kur'an 17:23"
+  },
+  {
+    "id": "virtues_102",
+    "correctAnswerIndex": 0,
+    "question": "Gönülden, iyilik olsun diye verilen bağışa ne denir?",
+    "answers": [
+      "Sadaka",
+      "Zekât",
+      "Tavaf",
+      "Ezan"
+    ],
+    "explanation": "Sadaka, küçük veya büyük gönüllü bağıştır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "virtues_103",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ, Allah'a ve ahiret gününe inanan kişiye konuşma konusunda ne öğütler?",
+    "answers": [
+      "Ya hayır söylesin ya sussun",
+      "Çok konuşsun",
+      "Hiç konuşmasın",
+      "Yalnızca ailesiyle konuşsun"
+    ],
+    "explanation": "«Allah'a ve ahiret gününe inanan ya hayır söylesin ya sussun.»",
+    "sourceDisplay": "Sahih-i Buhari, 6018"
+  },
+  {
+    "id": "virtues_104",
+    "correctAnswerIndex": 0,
+    "question": "Peygamber ﷺ komşumuza nasıl davranmamızı söyledi?",
+    "answers": [
+      "Ona ikramda bulunmayı",
+      "Ondan kaçınmayı",
+      "Onunla hiç konuşmamayı",
+      "Ondan gitmesini istemeyi"
+    ],
+    "explanation": "«Allah'a ve ahiret gününe inanan komşusuna ikram etsin.»",
+    "sourceDisplay": "Sahih-i Buhari, 6015"
+  },
+  {
+    "id": "virtues_105",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre Allah kimlerle beraberdir?",
+    "answers": [
+      "Sabredenlerle",
+      "En zenginlerle",
+      "En güçlülerle",
+      "En hızlılarla"
+    ],
+    "explanation": "«Şüphesiz Allah sabredenlerle beraberdir» (2:153).",
+    "sourceDisplay": "Kur'an 2:153"
+  },
+  {
+    "id": "virtues_106",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an yetime ne yapmayı yasaklar?",
+    "answers": [
+      "Onu hor görmeyi",
+      "Ona okumayı öğretmeyi",
+      "Onu yemeğe davet etmeyi",
+      "Onunla oynamayı"
+    ],
+    "explanation": "«Yetime gelince, onu hor görme» (93:9).",
+    "sourceDisplay": "Kur'an 93:9"
+  },
+  {
+    "id": "virtues_107",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an hangi sözden kaçınmamızı söyler?",
+    "answers": [
+      "Yalan sözden",
+      "Yumuşak sözden",
+      "Teşekkür sözünden",
+      "Selam sözünden"
+    ],
+    "explanation": "«Yalan sözden kaçının» (22:30).",
+    "sourceDisplay": "Kur'an 22:30"
+  },
+  {
+    "id": "virtues_108",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an, yakın akrabayla birlikte kimlere hakkını vermemizi söyler?",
+    "answers": [
+      "Yoksula ve yolcuya",
+      "Krala ve hâkime",
+      "Tüccara",
+      "Şaire"
+    ],
+    "explanation": "«Akrabaya, yoksula ve yolcuya hakkını ver» (17:26).",
+    "sourceDisplay": "Kur'an 17:26"
+  },
+  {
+    "id": "virtues_109",
+    "correctAnswerIndex": 0,
+    "question": "Allah kendisine şükredene ne vadeder?",
+    "answers": [
+      "Ona daha fazlasını vermeyi",
+      "Onu yolculuğa çıkarmayı",
+      "Onu ünlü yapmayı",
+      "Onu kral yapmayı"
+    ],
+    "explanation": "«Eğer şükrederseniz size elbette daha fazlasını veririm» (14:7).",
+    "sourceDisplay": "Kur'an 14:7"
+  },
+  {
+    "id": "virtues_110",
+    "correctAnswerIndex": 0,
+    "question": "Arapçada «sabır» nasıl söylenir?",
+    "answers": [
+      "Es-sabr",
+      "Eş-şükr",
+      "Es-sıdk",
+      "El-hayâ"
+    ],
+    "explanation": "Es-sabr, zorlukta ve itaatte direnç göstermektir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_191",
+    "correctAnswerIndex": 0,
+    "question": "Allah'ı anmaya, O'nun övgüsünü tekrarlamaya ne denir?",
+    "answers": [
+      "Zikir",
+      "Hac",
+      "Sa'y",
+      "Teyemmüm"
+    ],
+    "explanation": "Zikir, Allah'ı dille ve kalple anmaktır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_192",
+    "correctAnswerIndex": 0,
+    "question": "Hicri yılın ilk ayı hangisidir?",
+    "answers": [
+      "Muharrem",
+      "Ramazan",
+      "Şevval",
+      "Recep"
+    ],
+    "explanation": "Hicri yıl Muharrem ayıyla başlar.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_193",
+    "correctAnswerIndex": 0,
+    "question": "Bir günahtan sonra Allah'a dönmeye ne denir?",
+    "answers": [
+      "Tövbe",
+      "Tavaf",
+      "Tecvid",
+      "Teravih"
+    ],
+    "explanation": "Tövbe pişmanlıktır: pişman olmak, vazgeçmek ve Allah'a dönmek.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_194",
+    "correctAnswerIndex": 0,
+    "question": "Yeryüzündeki her canlının rızkını kim verir?",
+    "answers": [
+      "Allah",
+      "Krallar",
+      "Tüccarlar",
+      "Melekler"
+    ],
+    "explanation": "«Yeryüzünde hiçbir canlı yoktur ki rızkı Allah'a ait olmasın» (11:6).",
+    "sourceDisplay": "Kur'an 11:6"
+  },
+  {
+    "id": "faith_195",
+    "correctAnswerIndex": 0,
+    "question": "Hac hangi şehirde yapılır?",
+    "answers": [
+      "Mekke'de",
+      "Medine'de",
+      "Kudüs'te",
+      "Kahire'de"
+    ],
+    "explanation": "Hac, Mekke'de ve kutsal mekânlarında yapılır.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_196",
+    "correctAnswerIndex": 0,
+    "question": "Hac yapan kişiye ne denir?",
+    "answers": [
+      "Hacı",
+      "İmam",
+      "Kâri",
+      "Müezzin"
+    ],
+    "explanation": "Hac yapana hacı denir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_197",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre Allah, gizlense bile neyi bilir?",
+    "answers": [
+      "Kalplerde olanı",
+      "Yalnızca görünen amelleri",
+      "Yalnızca söylenen sözleri",
+      "Gizli hiçbir şeyi"
+    ],
+    "explanation": "«Göğüslerinizdekini gizleseniz de açığa vursanız da Allah onu bilir» (3:29).",
+    "sourceDisplay": "Kur'an 3:29"
+  },
+  {
+    "id": "faith_198",
+    "correctAnswerIndex": 0,
+    "question": "Kur'an'a göre oruç kimlere farz kılındı?",
+    "answers": [
+      "Öncekilere olduğu gibi müminlere",
+      "Yalnızca yolculara",
+      "Yalnızca âlimlere",
+      "Yalnızca çocuklara"
+    ],
+    "explanation": "«Ey iman edenler, sizden öncekilere farz kılındığı gibi oruç size de farz kılındı» (2:183).",
+    "sourceDisplay": "Kur'an 2:183"
+  },
+  {
+    "id": "faith_199",
+    "correctAnswerIndex": 0,
+    "question": "Cuma günü cemaatle kılınan büyük namaza ne denir?",
+    "answers": [
+      "Cuma namazı (salâtü'l-cumua)",
+      "Bayram namazı",
+      "Vitir namazı",
+      "Kuşluk (duha) namazı"
+    ],
+    "explanation": "Cuma namazı, Müslümanları cuma günü öğle vakti bir araya getirir.",
+    "sourceDisplay": "Yerleşik terim"
+  },
+  {
+    "id": "faith_200",
+    "correctAnswerIndex": 0,
+    "question": "Arapçada «oruç» nasıl söylenir?",
+    "answers": [
+      "Es-savm",
+      "Es-salât",
+      "Ez-zekât",
+      "El-ezan"
+    ],
+    "explanation": "Es-savm oruçtur, İslam'ın dördüncü şartıdır.",
+    "sourceDisplay": "Yerleşik terim"
   }
 ]
