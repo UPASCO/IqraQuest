@@ -574,6 +574,62 @@ class _CrossBoardSceneState extends State<CrossBoardScene>
                 child: const IgnorePointer(child: _DustPuff()),
               ),
 
+            // The stable slots this format does not race. The plate
+            // always paints four; a quick race fills one. Drawn as a
+            // greyed, untouchable silhouette so an empty slot reads as
+            // "not in this race" rather than as a horse gone missing.
+            for (var pi = 0; pi < state.players.length; pi++)
+              for (
+                var hi = state.players[pi].horses.length;
+                hi < GameVariantX.stableSlots;
+                hi++
+              )
+                Positioned(
+                  key: ValueKey('locked-slot-$pi-$hi'),
+                  left:
+                      toScreen(
+                        CrossBoardScene.anchorFor(
+                          const HomePosition(),
+                          pi,
+                          hi,
+                        ),
+                      ).dx -
+                      pieceSize / 2,
+                  top:
+                      toScreen(
+                        CrossBoardScene.anchorFor(
+                          const HomePosition(),
+                          pi,
+                          hi,
+                        ),
+                      ).dy -
+                      pieceSize,
+                  width: pieceSize,
+                  height: pieceSize,
+                  child: IgnorePointer(
+                    child: Opacity(
+                      opacity: 0.22,
+                      child: ColorFiltered(
+                        colorFilter: const ColorFilter.matrix(<double>[
+                          0.2126, 0.7152, 0.0722, 0, 0, //
+                          0.2126, 0.7152, 0.0722, 0, 0, //
+                          0.2126, 0.7152, 0.0722, 0, 0, //
+                          0, 0, 0, 1, 0, //
+                        ]),
+                        child: Image.asset(
+                          'assets/board/horses/horse_'
+                          '${state.players[pi].team.name}.webp',
+                          fit: BoxFit.contain,
+                          alignment: Alignment.bottomCenter,
+                          filterQuality: FilterQuality.medium,
+                          excludeFromSemantics: true,
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
             for (final piece in pieces)
               _Piece(
                 key: ValueKey('${state.players[piece.p].id}:${piece.h}'),

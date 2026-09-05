@@ -914,10 +914,14 @@ void main() {
       },
     );
 
-    test('four horses in every stable; the classic game is won when all four arrive', () {
-      for (final v in GameVariant.values) {
-        expect(v.horsesPerPlayer, 4, reason: v.name);
-      }
+    test('a stable holds only the horses its format races', () {
+      // The plate always paints four slots; the format decides how many
+      // are filled. The rest are drawn greyed and cannot be played.
+      expect(GameVariant.quick.horsesPerPlayer, 1);
+      expect(GameVariant.duo.horsesPerPlayer, 2);
+      expect(GameVariant.classic.horsesPerPlayer, 4);
+      expect(GameVariant.family.horsesPerPlayer, 4);
+      expect(GameVariantX.stableSlots, 4);
       expect(GameVariant.classic.horsesToWin, 4);
       expect(GameVariant.family.horsesToWin, 4);
       var state = buildGame();
@@ -934,7 +938,11 @@ void main() {
     test('a quick race is won by the first horse home', () {
       expect(GameVariant.quick.horsesToWin, 1);
       var state = buildGame(variant: GameVariant.quick);
-      expect(state.players[0].horses.length, 4);
+      expect(
+        state.players[0].horses.length,
+        1,
+        reason: 'a one-horse race races one horse, not four',
+      );
       state = withHorse(state, at: const FinishedPosition(), awaitingJourneyQuestion: true);
       expect(engine.hasWon(state, state.players[0]), isFalse,
           reason: 'the journey question is still owed');
@@ -1012,9 +1020,10 @@ void main() {
       state = withHorse(state, horse: 1, at: const FinishedPosition());
       expect(engine.hasWon(state, state.players[0]), isTrue);
       expect(engine.endTurn(state).winnerId, 'p0');
-      // And the other two never had to leave the stable.
-      expect(state.players[0].horses[2].isHome, isTrue);
-      expect(state.players[0].horses[3].isHome, isTrue);
+      // And the other two are not on the table at all: the two slots
+      // left over are painted greyed, not stocked with horses that
+      // could be brought out.
+      expect(state.players[0].horses.length, 2);
     });
 
     test('the three offered formats ask for one, two and four horses', () {

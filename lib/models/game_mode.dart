@@ -27,11 +27,22 @@ enum GameVariant {
 }
 
 extension GameVariantX on GameVariant {
-  /// Four in every stable, whatever the format: the board has four
-  /// slots and the rules of the original game assume them.
-  int get horsesPerPlayer => 4;
+  /// How many horses a player actually races with. The board always
+  /// paints four stable slots, but a shorter format fills only the ones
+  /// it races: a quick race is one horse, not four with a win declared
+  /// on the first one home. The slots left over are drawn as greyed
+  /// silhouettes, so it reads as "not in this race" and not as a stable
+  /// that has lost its horses.
+  int get horsesPerPlayer => horsesToWin;
 
-  /// How many of a player's horses must arrive for the win.
+  /// The four slots the plate paints in every stable, whatever the
+  /// format — the shape of the original board.
+  static const int stableSlots = 4;
+
+  /// How many of a player's horses must arrive for the win. With
+  /// [horsesPerPlayer] horses on the table, every format now asks for
+  /// all of them; the two stay separate because a resumed save may hold
+  /// a stable set to a different size.
   int get horsesToWin => switch (this) {
     GameVariant.quick => 1,
     GameVariant.duo => 2,
