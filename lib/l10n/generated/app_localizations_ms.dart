@@ -804,6 +804,13 @@ class AppLocalizationsMs extends AppLocalizations {
   String get playerProfile => 'Tahap soalan';
 
   @override
+  String get levelBeginner => 'Langkah pertama';
+
+  @override
+  String get levelBeginnerHint =>
+      'Langkah pertama: asas yang paling awal, yang sudah diketahui semua orang.';
+
+  @override
   String get levelEasy => 'Mudah';
 
   @override

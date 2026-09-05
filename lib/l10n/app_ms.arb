@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "Perisai melindungi kuda itu.",
   "outcomeShelteredByOasis": "Oasis melindungi kuda itu: tiada siapa pulang ke kandang.",
   "playerProfile": "Tahap soalan",
+  "levelBeginner": "Langkah pertama",
+  "levelBeginnerHint": "Langkah pertama: asas yang paling awal, yang sudah diketahui semua orang.",
   "levelEasy": "Mudah",
   "levelIntermediate": "Sederhana",
   "levelExpert": "Pakar",

@@ -110,20 +110,29 @@ class QuestionRepository {
   /// Preferred tier first, then the closest neighbours.
   List<QuestionDifficulty> _tierFallbackOrder(QuestionDifficulty difficulty) =>
       switch (difficulty) {
+        QuestionDifficulty.beginner => const [
+          QuestionDifficulty.beginner,
+          QuestionDifficulty.easy,
+          QuestionDifficulty.medium,
+          QuestionDifficulty.hard,
+        ],
         QuestionDifficulty.easy => const [
           QuestionDifficulty.easy,
+          QuestionDifficulty.beginner,
           QuestionDifficulty.medium,
           QuestionDifficulty.hard,
         ],
         QuestionDifficulty.medium => const [
           QuestionDifficulty.medium,
           QuestionDifficulty.easy,
+          QuestionDifficulty.beginner,
           QuestionDifficulty.hard,
         ],
         QuestionDifficulty.hard => const [
           QuestionDifficulty.hard,
           QuestionDifficulty.medium,
           QuestionDifficulty.easy,
+          QuestionDifficulty.beginner,
         ],
       };
 

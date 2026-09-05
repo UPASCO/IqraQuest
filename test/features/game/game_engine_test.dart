@@ -1330,8 +1330,9 @@ void main() {
   group('Playing together across ages', () {
     const service = MovementChoiceService();
 
-    test('four levels, chosen up front, and the card never changes them', () {
+    test('five levels, chosen up front, and the card never changes them', () {
       expect(PlayerProfile.values, [
+        PlayerProfile.beginner,
         PlayerProfile.easy,
         PlayerProfile.intermediate,
         PlayerProfile.expert,

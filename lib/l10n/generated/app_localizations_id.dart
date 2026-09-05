@@ -804,6 +804,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get playerProfile => 'Tingkat pertanyaan';
 
   @override
+  String get levelBeginner => 'Langkah pertama';
+
+  @override
+  String get levelBeginnerHint =>
+      'Langkah pertama: dasar-dasar paling awal, yang sudah diketahui semua orang.';
+
+  @override
   String get levelEasy => 'Mudah';
 
   @override

@@ -802,6 +802,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get playerProfile => 'سوالات کا درجہ';
 
   @override
+  String get levelBeginner => 'پہلے قدم';
+
+  @override
+  String get levelBeginnerHint =>
+      'پہلے قدم: بالکل ابتدائی باتیں، جو ہر کوئی پہلے سے جانتا ہے۔';
+
+  @override
   String get levelEasy => 'آسان';
 
   @override

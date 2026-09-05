@@ -28,6 +28,7 @@ Question q(String id, QuestionDifficulty difficulty) => Question(
 /// expert ones. The die must NOT inherit that skew, and a rider must
 /// only ever be asked at their own level.
 List<Question> lopsidedPool() => [
+  for (var i = 0; i < 4; i++) q('b_$i', QuestionDifficulty.beginner),
   for (var i = 0; i < 5; i++) q('e_$i', QuestionDifficulty.easy),
   for (var i = 0; i < 57; i++) q('m_$i', QuestionDifficulty.medium),
   for (var i = 0; i < 3; i++) q('h_$i', QuestionDifficulty.hard),

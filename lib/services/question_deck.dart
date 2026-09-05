@@ -229,20 +229,29 @@ class QuestionDeck {
   /// Preferred level first, then the closest neighbours.
   static List<QuestionDifficulty> _fallbackOrder(QuestionDifficulty level) =>
       switch (level) {
+        QuestionDifficulty.beginner => const [
+          QuestionDifficulty.beginner,
+          QuestionDifficulty.easy,
+          QuestionDifficulty.medium,
+          QuestionDifficulty.hard,
+        ],
         QuestionDifficulty.easy => const [
           QuestionDifficulty.easy,
+          QuestionDifficulty.beginner,
           QuestionDifficulty.medium,
           QuestionDifficulty.hard,
         ],
         QuestionDifficulty.medium => const [
           QuestionDifficulty.medium,
           QuestionDifficulty.easy,
+          QuestionDifficulty.beginner,
           QuestionDifficulty.hard,
         ],
         QuestionDifficulty.hard => const [
           QuestionDifficulty.hard,
           QuestionDifficulty.medium,
           QuestionDifficulty.easy,
+          QuestionDifficulty.beginner,
         ],
       };
 }

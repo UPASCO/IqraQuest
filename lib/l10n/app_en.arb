@@ -1095,6 +1095,14 @@
   "@playerProfile": {
     "description": "Label over the per-rider question level picker"
   },
+  "levelBeginner": "First steps",
+  "@levelBeginner": {
+    "description": "Question level a rider plays at: the very first level, below easy. Named for a first walk rather than for a lack of knowledge, so an adult new to the religion is not labelled a novice in front of the table"
+  },
+  "levelBeginnerHint": "First steps: the very first basics, the ones everyone already knows.",
+  "@levelBeginnerHint": {
+    "description": "One line under the level chips, explaining the first-steps level"
+  },
   "levelEasy": "Easy",
   "@levelEasy": {
     "description": "Question level a rider plays at, chosen before the game"

@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "Le bouclier a protégé le cheval.",
   "outcomeShelteredByOasis": "L'Oasis abrite ce cheval : personne ne rentre à l'écurie.",
   "playerProfile": "Niveau des questions",
+  "levelBeginner": "Premiers pas",
+  "levelBeginnerHint": "Premiers pas : les toutes premières bases, que chacun connaît déjà.",
   "levelEasy": "Facile",
   "levelIntermediate": "Intermédiaire",
   "levelExpert": "Expert",

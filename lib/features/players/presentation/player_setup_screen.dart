@@ -421,6 +421,7 @@ class _RiderPanel extends StatelessWidget {
   }
 
   String _profileLabel(PlayerProfile profile, AppLocalizations l10n) => switch (profile) {
+    PlayerProfile.beginner => l10n.levelBeginner,
     PlayerProfile.easy => l10n.levelEasy,
     PlayerProfile.intermediate => l10n.levelIntermediate,
     PlayerProfile.expert => l10n.levelExpert,

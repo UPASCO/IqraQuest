@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "Lo scudo ha protetto il cavallo.",
   "outcomeShelteredByOasis": "L'Oasi protegge quel cavallo: nessuno torna alla stalla.",
   "playerProfile": "Livello delle domande",
+  "levelBeginner": "Primi passi",
+  "levelBeginnerHint": "Primi passi: le primissime basi, quelle che tutti già conoscono.",
   "levelEasy": "Facile",
   "levelIntermediate": "Intermedio",
   "levelExpert": "Esperto",

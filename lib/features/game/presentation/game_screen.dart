@@ -868,9 +868,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       // The pips are the rider's level — the same on every card they
       // draw — never something the card decided.
       _revealPips = switch (card.difficulty) {
-        QuestionDifficulty.easy => 1,
-        QuestionDifficulty.medium => 2,
-        QuestionDifficulty.hard => 3,
+        QuestionDifficulty.beginner => 1,
+        QuestionDifficulty.easy => 2,
+        QuestionDifficulty.medium => 3,
+        QuestionDifficulty.hard => 4,
       };
     });
 

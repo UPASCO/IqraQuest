@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "ڈھال نے گھوڑے کو بچا لیا۔",
   "outcomeShelteredByOasis": "نخلستان اُس گھوڑے کو پناہ دیتا ہے: کوئی اصطبل واپس نہیں جاتا۔",
   "playerProfile": "سوالات کا درجہ",
+  "levelBeginner": "پہلے قدم",
+  "levelBeginnerHint": "پہلے قدم: بالکل ابتدائی باتیں، جو ہر کوئی پہلے سے جانتا ہے۔",
   "levelEasy": "آسان",
   "levelIntermediate": "درمیانہ",
   "levelExpert": "ماہر",

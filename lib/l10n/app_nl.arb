@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "Het schild beschermde het paard.",
   "outcomeShelteredByOasis": "De Oase beschermt dat paard: niemand gaat naar huis.",
   "playerProfile": "Vragenniveau",
+  "levelBeginner": "Eerste stappen",
+  "levelBeginnerHint": "Eerste stappen: de allereerste basis, die iedereen al kent.",
   "levelEasy": "Makkelijk",
   "levelIntermediate": "Gemiddeld",
   "levelExpert": "Expert",

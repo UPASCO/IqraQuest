@@ -569,12 +569,13 @@ class _DifficultyDots extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final filled = switch (difficulty) {
-      QuestionDifficulty.easy => 1,
-      QuestionDifficulty.medium => 2,
-      QuestionDifficulty.hard => 3,
+      QuestionDifficulty.beginner => 1,
+      QuestionDifficulty.easy => 2,
+      QuestionDifficulty.medium => 3,
+      QuestionDifficulty.hard => 4,
     };
     return Row(
-      children: List.generate(3, (i) {
+      children: List.generate(4, (i) {
         return Padding(
           padding: const EdgeInsets.only(right: 3),
           child: Container(

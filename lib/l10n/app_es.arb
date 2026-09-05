@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "El escudo protegió al caballo.",
   "outcomeShelteredByOasis": "El Oasis protege a ese caballo: nadie vuelve al establo.",
   "playerProfile": "Nivel de las preguntas",
+  "levelBeginner": "Primeros pasos",
+  "levelBeginnerHint": "Primeros pasos: lo más básico, lo que todo el mundo ya sabe.",
   "levelEasy": "Fácil",
   "levelIntermediate": "Intermedio",
   "levelExpert": "Experto",

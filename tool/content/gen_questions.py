@@ -1832,7 +1832,7 @@ def validate():
     ids = [q["id"] for q in Q]
     assert len(ids) == len(set(ids)), "duplicate question id"
     counts = {"prophets": 0, "sira": 0, "quran": 0, "faith": 0, "virtues": 0}
-    diffs = {"easy": 0, "medium": 0, "hard": 0}
+    diffs = {"beginner": 0, "easy": 0, "medium": 0, "hard": 0}
     free_count = 0
     for q in Q:
         counts[q["category"]] += 1
@@ -1917,7 +1917,12 @@ def check_near_duplicates():
 # one pile per value and draws a value uniformly, so the odds match a
 # fair die whatever the bank happens to hold.
 
-_VALUE_BASE = {"easy": 1, "medium": 3, "hard": 5}
+# Four levels over six faces: the beginner and easy levels take one face
+# each, medium and hard two, so the scale stays monotonic. Note this is
+# inert at runtime — QuestionDeck draws a card's value uniformly and
+# independently of its question, so the field is kept for the record and
+# for anyone reading the master file, not for the odds.
+_VALUE_SPAN = {"beginner": (1, 1), "easy": (2, 2), "medium": (3, 4), "hard": (5, 6)}
 
 
 def assign_card_values(questions):
@@ -1928,9 +1933,14 @@ def assign_card_values(questions):
     values = {}
     for difficulty, group in by_difficulty.items():
         group.sort(key=lambda q: q["id"])
+        low, high = _VALUE_SPAN[difficulty]
+        if low == high:
+            for q in group:
+                values[q["id"]] = low
+            continue
         half = (len(group) + 1) // 2  # the lower tier takes the odd one
         for i, q in enumerate(group):
-            values[q["id"]] = _VALUE_BASE[difficulty] + (0 if i < half else 1)
+            values[q["id"]] = low if i < half else high
     return values
 
 
@@ -1948,10 +1958,10 @@ def select_free_ids(questions, values, size=50):
         by_level.setdefault(q["difficulty"], []).append(q["id"])
     for ids in by_level.values():
         ids.sort()
-    levels = ["easy", "medium", "hard"]
+    levels = ["beginner", "easy", "medium", "hard"]
     free, i = [], 0
-    while len(free) < size and i < size * 3:
-        level, rank = levels[i % 3], i // 3
+    while len(free) < size and i < size * len(levels):
+        level, rank = levels[i % len(levels)], i // len(levels)
         pool = by_level.get(level, [])
         if rank < len(pool):
             free.append(pool[rank])
@@ -2120,10 +2130,10 @@ def write_output():
                     "source_reference", "verification_status", "consensus_status"])
         w.writerows(csv_rows)
 
-    per_level = {d: sum(1 for m in master if m["difficulty"] == d) for d in ("easy", "medium", "hard")}
+    per_level = {d: sum(1 for m in master if m["difficulty"] == d) for d in ("beginner", "easy", "medium", "hard")}
     free_per_level = {
         d: sum(1 for m in master if m["difficulty"] == d and m["isFree"])
-        for d in ("easy", "medium", "hard")
+        for d in ("beginner", "easy", "medium", "hard")
     }
     print("Questions per level:", per_level)
     print("Free questions per level:", free_per_level)

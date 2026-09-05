@@ -28,6 +28,7 @@ class MovementChoiceService {
   /// "one above", so it stays mixed and keeps its full range.
   QuestionDifficulty? bonusDifficultyFor(PlayerProfile profile) =>
       switch (profile.difficulty) {
+        QuestionDifficulty.beginner => QuestionDifficulty.easy,
         QuestionDifficulty.easy => QuestionDifficulty.medium,
         QuestionDifficulty.medium ||
         QuestionDifficulty.hard => QuestionDifficulty.hard,

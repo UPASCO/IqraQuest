@@ -1438,6 +1438,18 @@ abstract class AppLocalizations {
   /// **'Question level'**
   String get playerProfile;
 
+  /// Question level a rider plays at: the very first level, below easy. Named for a first walk rather than for a lack of knowledge, so an adult new to the religion is not labelled a novice in front of the table
+  ///
+  /// In en, this message translates to:
+  /// **'First steps'**
+  String get levelBeginner;
+
+  /// One line under the level chips, explaining the first-steps level
+  ///
+  /// In en, this message translates to:
+  /// **'First steps: the very first basics, the ones everyone already knows.'**
+  String get levelBeginnerHint;
+
   /// Question level a rider plays at, chosen before the game
   ///
   /// In en, this message translates to:

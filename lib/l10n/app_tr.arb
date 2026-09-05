@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "Kalkan atı korudu.",
   "outcomeShelteredByOasis": "Vaha o atı koruyor: kimse ahıra dönmüyor.",
   "playerProfile": "Soru seviyesi",
+  "levelBeginner": "İlk adımlar",
+  "levelBeginnerHint": "İlk adımlar: herkesin zaten bildiği en temel bilgiler.",
   "levelEasy": "Kolay",
   "levelIntermediate": "Orta",
   "levelExpert": "Uzman",

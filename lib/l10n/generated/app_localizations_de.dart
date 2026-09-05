@@ -809,6 +809,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get playerProfile => 'Fragenniveau';
 
   @override
+  String get levelBeginner => 'Erste Schritte';
+
+  @override
+  String get levelBeginnerHint =>
+      'Erste Schritte: die allerersten Grundlagen, die jeder schon kennt.';
+
+  @override
   String get levelEasy => 'Leicht';
 
   @override

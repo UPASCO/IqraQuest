@@ -103,9 +103,17 @@ void main() {
       finishTurn(controller);
     }
 
+    // Every level the free tier actually stocks. The enum also declares
+    // `beginner`, but a tier the deck holds no cards for is not one the
+    // mixed rider can be asked — asserting on the enum would fail this
+    // test for a reason that has nothing to do with mixing.
     expect(
       mixedLevels,
-      containsAll(QuestionDifficulty.values),
+      containsAll([
+        QuestionDifficulty.easy,
+        QuestionDifficulty.medium,
+        QuestionDifficulty.hard,
+      ]),
       reason: 'the mixed rider only ever saw $mixedLevels',
     );
     // Every answer above was correct, so the rider banked at least the

@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "حمى الدرع الحصان.",
   "outcomeShelteredByOasis": "الواحة تحمي هذا الحصان: لا أحد يعود إلى الإسطبل.",
   "playerProfile": "مستوى الأسئلة",
+  "levelBeginner": "الخطوات الأولى",
+  "levelBeginnerHint": "الخطوات الأولى: أبسط الأساسيات التي يعرفها الجميع.",
   "levelEasy": "سهل",
   "levelIntermediate": "متوسط",
   "levelExpert": "خبير",

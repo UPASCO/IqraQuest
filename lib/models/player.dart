@@ -20,12 +20,13 @@ enum AiDifficulty { easy, medium, hard }
 ///
 /// The names are written into every save file. Older saves carried
 /// four levels; [Player.fromJson] folds them onto these.
-enum PlayerProfile { easy, intermediate, expert, mixed }
+enum PlayerProfile { beginner, easy, intermediate, expert, mixed }
 
 extension PlayerProfileX on PlayerProfile {
   /// The level every question of this rider is drawn at, or null on the
   /// [PlayerProfile.mixed] level, where each card draws its own.
   QuestionDifficulty? get difficulty => switch (this) {
+    PlayerProfile.beginner => QuestionDifficulty.beginner,
     PlayerProfile.easy => QuestionDifficulty.easy,
     PlayerProfile.intermediate => QuestionDifficulty.medium,
     PlayerProfile.expert => QuestionDifficulty.hard,
@@ -50,11 +51,13 @@ extension PlayerProfileX on PlayerProfile {
 
   /// The easy level is the children's level: larger answers on the card,
   /// the verdict and the right answer as the lesson (spec §14).
-  bool get isChildMode => this == PlayerProfile.easy;
+  bool get isChildMode =>
+      this == PlayerProfile.easy || this == PlayerProfile.beginner;
 
   /// Reads a level by name, folding the four levels of older saves
   /// (child, discovery, intermediate, advanced) onto today's levels.
   static PlayerProfile parse(String? name) => switch (name) {
+    'beginner' => PlayerProfile.beginner,
     'easy' || 'child' || 'discovery' => PlayerProfile.easy,
     'expert' || 'advanced' => PlayerProfile.expert,
     'mixed' => PlayerProfile.mixed,

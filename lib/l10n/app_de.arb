@@ -220,6 +220,8 @@
   "outcomeShieldBlocked": "Das Schild hat das Pferd geschützt.",
   "outcomeShelteredByOasis": "Die Oase schützt dieses Pferd: Niemand muss zurück in den Stall.",
   "playerProfile": "Fragenniveau",
+  "levelBeginner": "Erste Schritte",
+  "levelBeginnerHint": "Erste Schritte: die allerersten Grundlagen, die jeder schon kennt.",
   "levelEasy": "Leicht",
   "levelIntermediate": "Mittel",
   "levelExpert": "Experte",

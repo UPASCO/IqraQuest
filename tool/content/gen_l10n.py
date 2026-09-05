@@ -1739,6 +1739,26 @@ s("playerProfile", "Label over the per-rider question level picker",
   tr="Soru seviyesi", id="Tingkat pertanyaan", ur="سوالات کا درجہ",
   ms="Tahap soalan", it="Livello delle domande", nl="Vragenniveau")
 
+s("levelBeginner", "Question level a rider plays at: the very first level, below easy. Named for a first walk rather than for a lack of knowledge, so an adult new to the religion is not labelled a novice in front of the table",
+  fr="Premiers pas", en="First steps", ar="الخطوات الأولى",
+  es="Primeros pasos", pt="Primeiros passos", de="Erste Schritte",
+  tr="İlk adımlar", id="Langkah pertama", ur="پہلے قدم",
+  ms="Langkah pertama", it="Primi passi", nl="Eerste stappen")
+
+s("levelBeginnerHint", "One line under the level chips, explaining the first-steps level",
+  fr="Premiers pas : les toutes premières bases, que chacun connaît déjà.",
+  en="First steps: the very first basics, the ones everyone already knows.",
+  ar="الخطوات الأولى: أبسط الأساسيات التي يعرفها الجميع.",
+  es="Primeros pasos: lo más básico, lo que todo el mundo ya sabe.",
+  pt="Primeiros passos: o básico dos básicos, o que toda a gente já sabe.",
+  de="Erste Schritte: die allerersten Grundlagen, die jeder schon kennt.",
+  tr="İlk adımlar: herkesin zaten bildiği en temel bilgiler.",
+  id="Langkah pertama: dasar-dasar paling awal, yang sudah diketahui semua orang.",
+  ur="پہلے قدم: بالکل ابتدائی باتیں، جو ہر کوئی پہلے سے جانتا ہے۔",
+  ms="Langkah pertama: asas yang paling awal, yang sudah diketahui semua orang.",
+  it="Primi passi: le primissime basi, quelle che tutti già conoscono.",
+  nl="Eerste stappen: de allereerste basis, die iedereen al kent.")
+
 s("levelEasy", "Question level a rider plays at, chosen before the game",
   fr="Facile", en="Easy", ar="سهل", es="Fácil", pt="Fácil", de="Leicht",
   tr="Kolay", id="Mudah", ur="آسان", ms="Mudah", it="Facile", nl="Makkelijk")

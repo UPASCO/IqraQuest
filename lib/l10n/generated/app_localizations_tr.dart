@@ -796,6 +796,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get playerProfile => 'Soru seviyesi';
 
   @override
+  String get levelBeginner => 'İlk adımlar';
+
+  @override
+  String get levelBeginnerHint =>
+      'İlk adımlar: herkesin zaten bildiği en temel bilgiler.';
+
+  @override
   String get levelEasy => 'Kolay';
 
   @override
