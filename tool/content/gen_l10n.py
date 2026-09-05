@@ -1718,6 +1718,20 @@ s("outcomeShieldBlocked", "Feedback when a shield absorbs an overtake",
   ur="ڈھال نے گھوڑے کو بچا لیا۔", ms="Perisai melindungi kuda itu.",
   it="Lo scudo ha protetto il cavallo.", nl="Het schild beschermde het paard.")
 
+s("outcomeShelteredByOasis", "Feedback when the horse lands on an opponent standing on an Oasis: the safe square shelters them, nobody goes home",
+  fr="L'Oasis abrite ce cheval : personne ne rentre à l'écurie.",
+  en="The Oasis shelters that horse: nobody goes home.",
+  ar="الواحة تحمي هذا الحصان: لا أحد يعود إلى الإسطبل.",
+  es="El Oasis protege a ese caballo: nadie vuelve al establo.",
+  pt="O Oásis abriga aquele cavalo: ninguém volta para o estábulo.",
+  de="Die Oase schützt dieses Pferd: Niemand muss zurück in den Stall.",
+  tr="Vaha o atı koruyor: kimse ahıra dönmüyor.",
+  id="Oasis melindungi kuda itu: tidak ada yang pulang ke kandang.",
+  ur="نخلستان اُس گھوڑے کو پناہ دیتا ہے: کوئی اصطبل واپس نہیں جاتا۔",
+  ms="Oasis melindungi kuda itu: tiada siapa pulang ke kandang.",
+  it="L'Oasi protegge quel cavallo: nessuno torna alla stalla.",
+  nl="De Oase beschermt dat paard: niemand gaat naar huis.")
+
 # ---- Player profiles -------------------------------------------------------
 s("playerProfile", "Label over the per-rider question level picker",
   fr="Niveau des questions", en="Question level", ar="مستوى الأسئلة",
@@ -2140,6 +2154,20 @@ s("cardWasWorth", "Feedback sheet line after a wrong answer: what the card would
   ms="{count, plural, other{Kad ini bernilai {count} lompatan.}}",
   it="{count, plural, one{Questa carta valeva {count} galoppo.} other{Questa carta valeva {count} galoppi.}}",
   nl="{count, plural, one{Deze kaart was {count} galop waard.} other{Deze kaart was {count} galopsprongen waard.}}")
+
+s("bonusMissedNote", "One line under the verdict when an optional bonus question (Defi, Raccourci) is answered wrong: the horse does not move",
+  fr="Bonus manqué : ton cheval reste où il est.",
+  en="Bonus missed: your horse stays where it is.",
+  ar="فاتتك المكافأة: يبقى حصانك في مكانه.",
+  es="Bonus fallado: tu caballo se queda donde está.",
+  pt="Bónus falhado: o teu cavalo fica onde está.",
+  de="Bonus verpasst: Dein Pferd bleibt, wo es steht.",
+  tr="Bonus kaçtı: atın olduğu yerde kalıyor.",
+  id="Bonus terlewat: kudamu tetap di tempatnya.",
+  ur="بونس رہ گیا: تمہارا گھوڑا اپنی جگہ پر ہی رہتا ہے۔",
+  ms="Bonus terlepas: kudamu kekal di tempatnya.",
+  it="Bonus mancato: il tuo cavallo resta dov'è.",
+  nl="Bonus gemist: je paard blijft waar het staat.")
 
 s("answerToReveal", "Face of the drawn card while its value is still hidden",
   fr="Répondez pour découvrir sa valeur", en="Answer to reveal its value",

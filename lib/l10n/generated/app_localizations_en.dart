@@ -801,6 +801,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get outcomeShieldBlocked => 'The shield protected the horse.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'The Oasis shelters that horse: nobody goes home.';
+
+  @override
   String get playerProfile => 'Question level';
 
   @override
@@ -963,6 +967,9 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'Bonus missed: your horse stays where it is.';
 
   @override
   String get answerToReveal => 'Answer to reveal its value';

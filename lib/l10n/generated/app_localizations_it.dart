@@ -804,6 +804,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get outcomeShieldBlocked => 'Lo scudo ha protetto il cavallo.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'L\'Oasi protegge quel cavallo: nessuno torna alla stalla.';
+
+  @override
   String get playerProfile => 'Livello delle domande';
 
   @override
@@ -968,6 +972,9 @@ class AppLocalizationsIt extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'Bonus mancato: il tuo cavallo resta dov\'è.';
 
   @override
   String get answerToReveal => 'Rispondi per scoprire il suo valore';

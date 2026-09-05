@@ -808,6 +808,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get outcomeShieldBlocked => 'حمى الدرع الحصان.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'الواحة تحمي هذا الحصان: لا أحد يعود إلى الإسطبل.';
+
+  @override
   String get playerProfile => 'مستوى الأسئلة';
 
   @override
@@ -976,6 +980,9 @@ class AppLocalizationsAr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'فاتتك المكافأة: يبقى حصانك في مكانه.';
 
   @override
   String get answerToReveal => 'أجب لتكشف قيمتها';

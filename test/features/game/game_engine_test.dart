@@ -374,7 +374,7 @@ void main() {
       expect(state.lastMoveOutcome, MoveOutcome.captured);
     });
 
-    test('an Oasis square protects the horse standing on it', () {
+    test('an Oasis square protects the horse standing on it, and says so', () {
       var state = buildGame();
       state = withHorse(state, at: const TrackPosition(10));
       state = withHorse(state, player: 1, at: const TrackPosition(11));
@@ -382,7 +382,77 @@ void main() {
       expect(Circuit.oasisRoute.isSafe(11), isTrue);
       state = play(engine, state, steps: 1, correct: true, questionId: 'q1');
       expect(state.players[1].horses[0].position, const TrackPosition(11));
+      // Not `moved`: two horses share the square and the table has to be
+      // told why nobody went home, or the shelter reads as a capture
+      // that silently failed.
+      expect(state.lastMoveOutcome, MoveOutcome.shelteredByOasis);
+    });
+
+    test('an ordinary landing on an empty square is still just a move', () {
+      var state = buildGame();
+      state = withHorse(state, at: const TrackPosition(10));
+      expect(Circuit.oasisRoute.isSafe(11), isTrue);
+      state = play(engine, state, steps: 1, correct: true, questionId: 'q1');
+      // The same Oasis, with nobody on it: nothing to shelter.
       expect(state.lastMoveOutcome, MoveOutcome.moved);
+    });
+
+    test('a capture made on a bonus ride still pays its twenty', () {
+      var state = buildGame();
+      state = withHorse(state, at: const TrackPosition(0));
+      state = withHorse(state, player: 1, at: const TrackPosition(1));
+      state = engine.drawCard(state, const MovementChoice(1));
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      state = engine.openPlacement(state);
+      state = engine.placeHorse(state, 0);
+      expect(state.lastMoveOutcome, MoveOutcome.captured);
+      expect(state.pendingBonus?.value, kCaptureBonus);
+
+      // A second opponent horse exactly twenty squares along, on a
+      // square that does not shelter it: riding the first capture's
+      // twenty lands on it and must pay a second twenty.
+      state = withHorse(
+        state,
+        player: 1,
+        horse: 1,
+        at: const TrackPosition(21),
+      );
+      expect(Circuit.oasisRoute.isSafe(21), isFalse);
+      final ridden = engine.applyPendingBonus(state);
+      expect(ridden.players[1].horses[1].position, const HomePosition());
+      expect(ridden.lastMoveOutcome, MoveOutcome.captured);
+      expect(ridden.pendingBonus?.value, kCaptureBonus);
+      expect(ridden.pendingBonus?.fromCapture, isTrue);
+    });
+
+    test('a bonus ride onto a sheltered horse says the Oasis held', () {
+      var state = buildGame();
+      state = withHorse(state, at: const TrackPosition(0));
+      state = withHorse(state, player: 1, at: const TrackPosition(1));
+      state = engine.drawCard(state, const MovementChoice(1));
+      state = engine.applyAnswer(state, correct: true, questionId: 'q1');
+      state = engine.openPlacement(state);
+      state = engine.placeHorse(state, 0);
+      // The twenty it just earned would land on square 21; park an
+      // opponent on the Oasis at 24 and ride a shorter, plain bonus.
+      expect(Circuit.oasisRoute.isSafe(24), isTrue);
+      state = withHorse(
+        state,
+        player: 1,
+        horse: 1,
+        at: const TrackPosition(24),
+      );
+      state = state.copyWith(
+        pendingBonus: PendingBonus(
+          horseIndex: 0,
+          trackIndex: 1,
+          value: 23,
+          fromCapture: true,
+        ),
+      );
+      final ridden = engine.applyPendingBonus(state);
+      expect(ridden.players[1].horses[1].position, const TrackPosition(24));
+      expect(ridden.lastMoveOutcome, MoveOutcome.shelteredByOasis);
     });
 
     test('a knowledge shield absorbs one capture and is then spent', () {
@@ -619,6 +689,15 @@ void main() {
       );
       expect(lost.players[0].horses[0].position, const TrackPosition(6));
       expect(lost.lastMoveOutcome, MoveOutcome.bonusMissed);
+
+      // Both verdicts stop on the feedback phase, exactly as the turn's
+      // own question and the journey question do. A missed bonus used to
+      // go straight back to the board with no word that it had been
+      // missed and no correction to read.
+      expect(won.turnPhase, TurnPhase.showingFeedback);
+      expect(won.lastAnswerCorrect, isTrue);
+      expect(lost.turnPhase, TurnPhase.showingFeedback);
+      expect(lost.lastAnswerCorrect, isFalse);
     });
 
     test('a failed Raccourci leaves the horse exactly where it stood', () {
@@ -633,6 +712,9 @@ void main() {
         horseIndex: 0,
       );
       expect(missed.players[0].horses[0].position, const TrackPosition(6));
+      expect(missed.turnPhase, TurnPhase.showingFeedback);
+      expect(missed.lastAnswerCorrect, isFalse);
+      expect(missed.lastMoveOutcome, MoveOutcome.bonusMissed);
     });
 
     test('a Relais hands the earned squares to another of your own horses', () {

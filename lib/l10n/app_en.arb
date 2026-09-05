@@ -1087,6 +1087,10 @@
   "@outcomeShieldBlocked": {
     "description": "Feedback when a shield absorbs an overtake"
   },
+  "outcomeShelteredByOasis": "The Oasis shelters that horse: nobody goes home.",
+  "@outcomeShelteredByOasis": {
+    "description": "Feedback when the horse lands on an opponent standing on an Oasis: the safe square shelters them, nobody goes home"
+  },
   "playerProfile": "Question level",
   "@playerProfile": {
     "description": "Label over the per-rider question level picker"
@@ -1283,6 +1287,10 @@
         "type": "int"
       }
     }
+  },
+  "bonusMissedNote": "Bonus missed: your horse stays where it is.",
+  "@bonusMissedNote": {
+    "description": "One line under the verdict when an optional bonus question (Defi, Raccourci) is answered wrong: the horse does not move"
   },
   "answerToReveal": "Answer to reveal its value",
   "@answerToReveal": {

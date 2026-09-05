@@ -795,6 +795,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get outcomeShieldBlocked => 'ڈھال نے گھوڑے کو بچا لیا۔';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'نخلستان اُس گھوڑے کو پناہ دیتا ہے: کوئی اصطبل واپس نہیں جاتا۔';
+
+  @override
   String get playerProfile => 'سوالات کا درجہ';
 
   @override
@@ -957,6 +961,10 @@ class AppLocalizationsUr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote =>
+      'بونس رہ گیا: تمہارا گھوڑا اپنی جگہ پر ہی رہتا ہے۔';
 
   @override
   String get answerToReveal => 'اس کی قیمت جاننے کے لیے جواب دیں';

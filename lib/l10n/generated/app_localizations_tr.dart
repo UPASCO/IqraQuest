@@ -789,6 +789,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get outcomeShieldBlocked => 'Kalkan atı korudu.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'Vaha o atı koruyor: kimse ahıra dönmüyor.';
+
+  @override
   String get playerProfile => 'Soru seviyesi';
 
   @override
@@ -949,6 +953,9 @@ class AppLocalizationsTr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'Bonus kaçtı: atın olduğu yerde kalıyor.';
 
   @override
   String get answerToReveal => 'Değerini görmek için cevapla';

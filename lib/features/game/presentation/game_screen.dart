@@ -547,7 +547,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 question: question,
                 isJourney:
                     state.turnPhase == TurnPhase.answeringJourneyQuestion,
-                isCellBonus: state.turnPhase == TurnPhase.resolvingCell,
+                isCellBonus:
+                    state.turnPhase == TurnPhase.resolvingCell ||
+                    state.lastMoveOutcome == MoveOutcome.bonusMissed ||
+                    state.lastMoveOutcome == MoveOutcome.bonusEarned,
                 // The stake stays in view while the question is read:
                 // only the turn's own card carries one.
                 stake:
@@ -569,12 +572,18 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     : null,
                 compact: _compactFeedback && state.lastAnswerCorrect != null,
                 largeText: player.profile.isChildMode,
-                note:
-                    state.lastAnswerCorrect == false &&
-                        state.turnPhase == TurnPhase.showingFeedback &&
-                        session.journeyHorseIndex == null &&
-                        state.drawnCard != null &&
-                        state.movedHorseIndex == null
+                // One line under a wrong verdict, saying what it cost.
+                // A missed bonus says so in its own words: its horse is
+                // already on the board and keeps its square, so "the
+                // card was worth N" would be the wrong sentence.
+                note: state.turnPhase != TurnPhase.showingFeedback
+                    ? null
+                    : state.lastMoveOutcome == MoveOutcome.bonusMissed
+                    ? l10n.bonusMissedNote
+                    : state.lastAnswerCorrect == false &&
+                          session.journeyHorseIndex == null &&
+                          state.drawnCard != null &&
+                          state.movedHorseIndex == null
                     ? l10n.cardWasWorth(state.drawnCard!.steps)
                     : null,
                 pointsEarned:
@@ -1664,6 +1673,7 @@ class _TurnBanner extends StatelessWidget {
           MoveOutcome.stayed || MoveOutcome.bonusMissed => l10n.outcomeStayed,
           MoveOutcome.captured => l10n.outcomeCaptured,
           MoveOutcome.blockedByShield => l10n.outcomeShieldBlocked,
+          MoveOutcome.shelteredByOasis => l10n.outcomeShelteredByOasis,
           MoveOutcome.reachedFinish => l10n.journeyQuestionIntro,
           // The card was seen; now the reason, in one line — and the
           // exact count first, because "my horse is three from Mecca,
@@ -1700,7 +1710,8 @@ class _TurnBanner extends StatelessWidget {
           MoveOutcome.noLegalMove => l10n.opponentNoMove(player.name),
           MoveOutcome.stayed ||
           MoveOutcome.bonusMissed ||
-          MoveOutcome.blockedByShield => l10n.opponentStayed(player.name),
+          MoveOutcome.blockedByShield ||
+          MoveOutcome.shelteredByOasis => l10n.opponentStayed(player.name),
           null =>
             state.isBonusTurn
                 ? l10n.opponentReplays(player.name)

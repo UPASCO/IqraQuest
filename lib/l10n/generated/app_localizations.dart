@@ -1426,6 +1426,12 @@ abstract class AppLocalizations {
   /// **'The shield protected the horse.'**
   String get outcomeShieldBlocked;
 
+  /// Feedback when the horse lands on an opponent standing on an Oasis: the safe square shelters them, nobody goes home
+  ///
+  /// In en, this message translates to:
+  /// **'The Oasis shelters that horse: nobody goes home.'**
+  String get outcomeShelteredByOasis;
+
   /// Label over the per-rider question level picker
   ///
   /// In en, this message translates to:
@@ -1683,6 +1689,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count, plural, one{This card was worth {count} gallop.} other{This card was worth {count} gallops.}}'**
   String cardWasWorth(int count);
+
+  /// One line under the verdict when an optional bonus question (Defi, Raccourci) is answered wrong: the horse does not move
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus missed: your horse stays where it is.'**
+  String get bonusMissedNote;
 
   /// Face of the drawn card while its value is still hidden
   ///

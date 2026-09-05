@@ -546,6 +546,16 @@ class GameEngine {
       destination,
       fromStable: move.exitsStable,
     );
+    if (capture == null &&
+        destination is TrackPosition &&
+        !move.exitsStable &&
+        state.circuit.isSafe(destination.index) &&
+        _opponentAt(state, player.id, destination) != null) {
+      // An Oasis shelters whoever stands on it. Both horses share the
+      // square; without a word for it the turn reads as a capture that
+      // silently failed.
+      outcome = MoveOutcome.shelteredByOasis;
+    }
     if (capture != null) {
       final (opponentIndex, opponentHorseIndex) = capture;
       final opponent = players[opponentIndex];
@@ -626,8 +636,9 @@ class GameEngine {
     );
     if (!correct) {
       return next.copyWith(
+        lastAnswerCorrect: false,
         lastMoveOutcome: MoveOutcome.bonusMissed,
-        turnPhase: TurnPhase.turnComplete,
+        turnPhase: TurnPhase.showingFeedback,
       );
     }
     next = _advanceCurrentHorse(
@@ -636,8 +647,9 @@ class GameEngine {
       horseIndex: state.pendingCellHorseIndex,
     );
     return next.copyWith(
+      lastAnswerCorrect: true,
       lastMoveOutcome: MoveOutcome.bonusEarned,
-      turnPhase: TurnPhase.turnComplete,
+      turnPhase: TurnPhase.showingFeedback,
     );
   }
 
@@ -656,8 +668,9 @@ class GameEngine {
     );
     if (!correct) {
       return next.copyWith(
+        lastAnswerCorrect: false,
         lastMoveOutcome: MoveOutcome.bonusMissed,
-        turnPhase: TurnPhase.turnComplete,
+        turnPhase: TurnPhase.showingFeedback,
       );
     }
     next = _advanceCurrentHorse(
@@ -666,8 +679,9 @@ class GameEngine {
       horseIndex: horseIndex,
     );
     return next.copyWith(
+      lastAnswerCorrect: true,
       lastMoveOutcome: MoveOutcome.bonusEarned,
-      turnPhase: TurnPhase.turnComplete,
+      turnPhase: TurnPhase.showingFeedback,
     );
   }
 
@@ -997,7 +1011,12 @@ class GameEngine {
     var next = state.copyWith(players: players, updatedAt: DateTime.now());
 
     // Bonus movement obeys the same board rules as a normal move:
-    // landing on an unprotected opponent captures it.
+    // landing on an unprotected opponent captures it. The twenty a
+    // capture pays is added by the caller — [applyPendingBonus] asks
+    // [_bonusEarnedBy] what the landing earned and chains it — so it is
+    // deliberately not set here: a bonus set on this state would be
+    // overwritten there, and on the Defi and Raccourci paths, which
+    // return straight to the player, it would sit unridden.
     final capture = _captureAt(next, player.id, landing);
     if (capture != null) {
       final (oi, ohi) = capture;
@@ -1005,6 +1024,8 @@ class GameEngine {
       final oh = [...opponent.horses];
       if (oh[ohi].hasShield) {
         oh[ohi] = oh[ohi].copyWith(hasShield: false);
+        // Said out loud here too: the shield absorbed the bonus ride.
+        next = next.copyWith(lastMoveOutcome: MoveOutcome.blockedByShield);
       } else {
         oh[ohi] = oh[ohi].copyWith(
           position: const HomePosition(),
@@ -1014,6 +1035,10 @@ class GameEngine {
       }
       players[oi] = opponent.copyWith(horses: oh);
       next = next.copyWith(players: players, updatedAt: DateTime.now());
+    } else if (landing is TrackPosition &&
+        state.circuit.isSafe(landing.index) &&
+        _opponentAt(next, player.id, landing) != null) {
+      next = next.copyWith(lastMoveOutcome: MoveOutcome.shelteredByOasis);
     }
     return next;
   }
@@ -1102,6 +1127,18 @@ class GameEngine {
   }) {
     if (destination is! TrackPosition) return null;
     if (!fromStable && state.circuit.isSafe(destination.index)) return null;
+    return _opponentAt(state, movingPlayerId, destination);
+  }
+
+  /// The opponent's horse standing on [destination], sheltered or not.
+  /// [_captureAt] is this plus the Oasis rule, kept apart so a move that
+  /// lands on a sheltered horse can say so rather than read as an
+  /// ordinary move onto an empty square.
+  (int, int)? _opponentAt(
+    GameState state,
+    String movingPlayerId,
+    PawnPosition destination,
+  ) {
     for (var p = 0; p < state.players.length; p++) {
       final other = state.players[p];
       if (other.id == movingPlayerId) continue;

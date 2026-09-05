@@ -799,6 +799,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get outcomeShieldBlocked => 'Het schild beschermde het paard.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'De Oase beschermt dat paard: niemand gaat naar huis.';
+
+  @override
   String get playerProfile => 'Vragenniveau';
 
   @override
@@ -961,6 +965,9 @@ class AppLocalizationsNl extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'Bonus gemist: je paard blijft waar het staat.';
 
   @override
   String get answerToReveal => 'Antwoord om de waarde te onthullen';

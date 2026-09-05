@@ -804,6 +804,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get outcomeShieldBlocked => 'Le bouclier a protégé le cheval.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'L\'Oasis abrite ce cheval : personne ne rentre à l\'écurie.';
+
+  @override
   String get playerProfile => 'Niveau des questions';
 
   @override
@@ -967,6 +971,9 @@ class AppLocalizationsFr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'Bonus manqué : ton cheval reste où il est.';
 
   @override
   String get answerToReveal => 'Répondez pour découvrir sa valeur';

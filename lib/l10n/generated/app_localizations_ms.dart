@@ -797,6 +797,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String get outcomeShieldBlocked => 'Perisai melindungi kuda itu.';
 
   @override
+  String get outcomeShelteredByOasis =>
+      'Oasis melindungi kuda itu: tiada siapa pulang ke kandang.';
+
+  @override
   String get playerProfile => 'Tahap soalan';
 
   @override
@@ -958,6 +962,9 @@ class AppLocalizationsMs extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get bonusMissedNote => 'Bonus terlepas: kudamu kekal di tempatnya.';
 
   @override
   String get answerToReveal => 'Jawab untuk mendedahkan nilainya';

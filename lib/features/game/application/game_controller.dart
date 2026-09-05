@@ -878,12 +878,25 @@ class GameController extends StateNotifier<GameSession?> {
       _ => engine.declineCellOffer(s.gameState),
     };
 
-    state = s.copyWith(gameState: next, currentQuestion: null);
+    // The question stays on the table with its verdict, exactly as the
+    // turn's own question and the journey question do: a missed bonus
+    // used to drop the player straight back on the board with no word
+    // that they had got it wrong, and no correction to read. The engine
+    // has already applied the outcome — the horse has jumped or stayed,
+    // behind the sheet — and [continueAfterFeedback] concludes the turn
+    // once the player has read it.
+    state = s.copyWith(gameState: next);
     _persist();
-    // The board shows the outcome (the horse jumps, or stays); the turn
-    // itself must keep moving — a bonus jump can even reach the finish
-    // and owe its journey question right now.
-    _concludeTurn();
+    if (next.currentPlayer.isAi) {
+      // Nobody is going to tap for the opponent: its verdict stays on
+      // the table for a beat, then the turn moves on by itself.
+      _after(_aiBeat(900), () {
+        if (state?.gameState.turnPhase == TurnPhase.showingFeedback &&
+            (state?.gameState.currentPlayer.isAi ?? false)) {
+          continueAfterFeedback();
+        }
+      });
+    }
   }
 
   /// A Relais square: hand the squares just earned to another horse.
@@ -1113,7 +1126,8 @@ class GameController extends StateNotifier<GameSession?> {
               ? question.correctAnswerIndex
               : (question.correctAnswerIndex + 1) % question.answers.length,
         );
-        // answerCellQuestion already moved the turn along.
+        // answerCellQuestion shows the verdict and moves the turn
+        // along after its own beat.
         return;
       }
     }

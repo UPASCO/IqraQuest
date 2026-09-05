@@ -14,6 +14,12 @@ enum MoveOutcome {
   /// absorbed it and nobody went home.
   blockedByShield,
 
+  /// Landed on an opponent standing on an Oasis: the square shelters
+  /// them, so the two horses share it and nobody goes home. The rule is
+  /// the classic safe square, and it has to be *said* — two horses on
+  /// one square with no word about it reads as a capture that failed.
+  shelteredByOasis,
+
   /// Reached the end of the course; the journey question is now owed.
   reachedFinish,
 
