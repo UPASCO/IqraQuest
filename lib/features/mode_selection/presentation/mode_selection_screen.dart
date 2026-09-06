@@ -62,28 +62,17 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            // The floor phone leaves about 430 points between the app
-            // bar and the button; the comfortable layout wants 530.
-            // Rather than scroll there, every gap and tile tightens a
-            // notch and the course note steps aside — the choices
-            // themselves never shrink below a thumb.
-            // What the comfortable layout actually needs, measured:
-            // about 620 points in family, and about 890 in solo, which
-            // carries two more rows — how many computer riders, and how
-            // well they play. No phone has 890, so solo is dense on
-            // every phone and comfortable from a tablet up. Guessing
-            // this threshold instead of measuring it is what put the
-            // bonus switch under the Continue button: at 712 points a
-            // common phone counted as roomy and the screen scrolled by
-            // 173.
             // Measured, not guessed: laid out comfortably this screen
             // needs about 740 points in family and 890 in solo, which
             // carries the computer's two rows. No phone has either, so
             // every phone gets the dense layout and a tablet gets the
-            // roomy one. Guessing this (560, then a single 740) is what
-            // put the bonus switch under the Continue button: at 712
-            // points a common phone counted as roomy and the screen
-            // scrolled by 173.
+            // roomy one — and in the dense one every gap and tile
+            // tightens a notch and the course note steps aside, while
+            // the choices themselves never shrink below a thumb.
+            //
+            // Guessing this threshold is what put the bonus switch
+            // under the Continue button: at 560 a common phone counted
+            // as roomy and the screen scrolled by 173 points in solo.
             final compact = constraints.maxHeight < (_isSolo ? 890.0 : 740.0);
             // And the other way on a tablet: with twice the height to
             // spare, the tiles grow and the whole block floats a third
