@@ -1047,7 +1047,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get soloTileCaption => 'ضد الحاسوب';
 
   @override
-  String get computerLevelLabel => 'مستوى الحاسوب';
+  String get computerStrengthLabel => 'قوّة الحاسوب';
+
+  @override
+  String get setupComputer => 'الحاسوب';
+
+  @override
+  String get questionLevelNote =>
+      'يُختار مستوى الأسئلة في الشاشة التالية، لكلّ لاعب.';
 
   @override
   String get setupRaceLength => 'مدة اللعبة';

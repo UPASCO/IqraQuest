@@ -1792,11 +1792,23 @@ abstract class AppLocalizations {
   /// **'vs computer'**
   String get soloTileCaption;
 
-  /// Label before the computer's difficulty chips
+  /// Label before the computer's difficulty chips. Deliberately NOT the word 'level': the question level is a different choice, on the next screen, and a tester who read this row as the question difficulty stopped looking there
   ///
   /// In en, this message translates to:
-  /// **'Computer level'**
-  String get computerLevelLabel;
+  /// **'Computer strength'**
+  String get computerStrengthLabel;
+
+  /// Eyebrow over the computer's two chip rows on the setup screen
+  ///
+  /// In en, this message translates to:
+  /// **'The computer'**
+  String get setupComputer;
+
+  /// One line on the setup screen pointing at the per-rider question level, which is chosen on the next screen
+  ///
+  /// In en, this message translates to:
+  /// **'The question level is chosen next, for each player.'**
+  String get questionLevelNote;
 
   /// Eyebrow over the three race-length tiles
   ///

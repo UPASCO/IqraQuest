@@ -2303,11 +2303,30 @@ s("soloTileCaption", "Caption under the '1' player tile: one human against the c
   id="lawan komputer", ur="کمپیوٹر کے خلاف", ms="lawan komputer",
   it="contro il computer", nl="tegen de computer")
 
-s("computerLevelLabel", "Label before the computer's difficulty chips",
-  fr="Niveau de l'ordi", en="Computer level", ar="مستوى الحاسوب",
-  es="Nivel de la máquina", pt="Nível do computador", de="Computerstufe",
-  tr="Bilgisayar seviyesi", id="Tingkat komputer", ur="کمپیوٹر کی سطح",
-  ms="Tahap komputer", it="Livello del computer", nl="Computerniveau")
+s("computerStrengthLabel", "Label before the computer's difficulty chips. Deliberately NOT the word 'level': the question level is a different choice, on the next screen, and a tester who read this row as the question difficulty stopped looking there",
+  fr="Force de l'ordi", en="Computer strength", ar="قوّة الحاسوب",
+  es="Fuerza de la máquina", pt="Força do computador", de="Spielstärke des Computers",
+  tr="Bilgisayarın gücü", id="Kekuatan komputer", ur="کمپیوٹر کی طاقت",
+  ms="Kekuatan komputer", it="Forza del computer", nl="Sterkte van de computer")
+
+s("setupComputer", "Eyebrow over the computer's two chip rows on the setup screen",
+  fr="L'ordinateur", en="The computer", ar="الحاسوب", es="La máquina",
+  pt="O computador", de="Der Computer", tr="Bilgisayar", id="Komputer",
+  ur="کمپیوٹر", ms="Komputer", it="Il computer", nl="De computer")
+
+s("questionLevelNote", "One line on the setup screen pointing at the per-rider question level, which is chosen on the next screen",
+  fr="Le niveau des questions se choisit juste après, pour chaque joueur.",
+  en="The question level is chosen next, for each player.",
+  ar="يُختار مستوى الأسئلة في الشاشة التالية، لكلّ لاعب.",
+  es="El nivel de las preguntas se elige después, para cada jugador.",
+  pt="O nível das perguntas escolhe-se a seguir, para cada jogador.",
+  de="Die Fragenstufe wird gleich danach für jeden Spieler gewählt.",
+  tr="Soru seviyesi hemen sonra, her oyuncu için seçilir.",
+  id="Tingkat pertanyaan dipilih setelah ini, untuk setiap pemain.",
+  ur="سوالات کی سطح اگلی اسکرین پر ہر کھلاڑی کے لیے چنی جاتی ہے۔",
+  ms="Tahap soalan dipilih selepas ini, untuk setiap pemain.",
+  it="Il livello delle domande si sceglie subito dopo, per ogni giocatore.",
+  nl="Het vraagniveau kies je hierna, voor elke speler.")
 
 s("setupRaceLength", "Eyebrow over the three race-length tiles",
   fr="Durée de la partie", en="Race length", ar="مدة اللعبة",

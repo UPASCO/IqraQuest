@@ -19,6 +19,7 @@ import 'package:iqraquest/features/game/application/game_controller.dart';
 import 'package:iqraquest/features/game/domain/game_engine.dart';
 import 'package:iqraquest/l10n/generated/app_localizations_en.dart';
 import 'package:iqraquest/models/models.dart';
+import 'package:iqraquest/widgets/fit_or_scroll.dart';
 import 'package:iqraquest/services/entitlement_service.dart';
 import 'package:iqraquest/services/game_save_service.dart';
 import 'package:iqraquest/services/legacy_game_migration_service.dart';
@@ -38,12 +39,18 @@ Future<void> _settle(WidgetTester tester, [int frames = 8]) async {
   }
 }
 
-Future<void> _pumpSetup(WidgetTester tester) async {
+Future<void> _pumpSetup(
+  WidgetTester tester, {
+  Size? size,
+  String? languageCode,
+}) async {
   SharedPreferences.setMockInitialValues({});
   final storage = await tester.runAsync(LocalStorageService.create);
-  // A tall viewport: the setup screen is a lazy ListView, and a section
-  // below the fold is not built at all, so it could not be found.
-  tester.view.physicalSize = const Size(420, 1800);
+  // A tall viewport by default, so a section is never merely off-screen
+  // when a test looks for it. Tests that measure the layout ITSELF must
+  // pass a real phone size — measuring against 1800 points of height
+  // proves nothing about a phone.
+  tester.view.physicalSize = size ?? const Size(420, 1800);
   tester.view.devicePixelRatio = 1.0;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
@@ -59,7 +66,9 @@ Future<void> _pumpSetup(WidgetTester tester) async {
         ),
         questionRepositoryProvider.overrideWithValue(QuestionRepository()),
         purchaseServiceProvider.overrideWith((ref) => PurchaseService()),
-        initialSettingsProvider.overrideWithValue(const AppSettings()),
+        initialSettingsProvider.overrideWithValue(
+          AppSettings(languageCode: languageCode),
+        ),
         initialPremiumProvider.overrideWithValue(true),
         appRouterProvider.overrideWithValue(
           buildAppRouter(initialLocation: '/mode-selection'),
@@ -209,4 +218,63 @@ void main() {
     };
     expect(GameState.fromJson(json).bonusesEnabled, isTrue);
   });
+
+  // "Aucun écran de configuration ne doit être scrollé" — the whole
+  // point of this screen. FitOrScroll keeps a scroll view as the
+  // accessibility fallback, so nothing is ever cut off at a huge text
+  // size; what has to hold is that on an ordinary phone there is
+  // nothing to scroll and the last control is not under the button.
+  //
+  // Solo is the case that matters: it carries two rows family does not,
+  // and it was scrolling by 67 points (113 on the busiest course) with
+  // the bonus switch behind the Continue button.
+  const common = Size(390, 844);
+  const large = Size(430, 932);
+  const android = Size(360, 780);
+  for (final (name, size, players, circuit, lang) in [
+    ('the common phone, family', common, 3, 'oasisRoute', 'fr'),
+    ('the common phone, family, busiest course', common, 4, 'greatRide', 'fr'),
+    ('the common phone, solo', common, 1, 'oasisRoute', 'fr'),
+    ('the common phone, solo, busiest course', common, 1, 'greatRide', 'fr'),
+    ('the large phone, solo, busiest course', large, 1, 'greatRide', 'fr'),
+    ('an android phone, solo, busiest course', android, 1, 'greatRide', 'fr'),
+    // German is where labels run longest; the busiest course in solo is
+    // the tallest this screen ever gets.
+    ('a german phone, solo, busiest course', common, 1, 'greatRide', 'de'),
+  ]) {
+    testWidgets('setup fits without scrolling on $name', (tester) async {
+      await _pumpSetup(tester, size: size, languageCode: lang);
+      await tester.tap(find.byKey(Key('players-$players')));
+      await _settle(tester);
+      await tester.tap(find.byKey(Key('circuit-$circuit')));
+      await _settle(tester);
+
+      // Through the state, not the widget: a SingleChildScrollView with
+      // no controller of its own leaves Scrollable.controller null, and
+      // reading the extent off that quietly measures nothing.
+      final scrollable = find.descendant(
+        of: find.byType(FitOrScroll),
+        matching: find.byType(Scrollable),
+      );
+      expect(scrollable, findsOneWidget);
+      final extent =
+          tester.state<ScrollableState>(scrollable).position.maxScrollExtent;
+      expect(
+        extent,
+        0,
+        reason: 'the setup screen scrolls by $extent points on $name',
+      );
+
+      // And the belt to that brace: the last control is wholly above
+      // the button, not merely reachable by scrolling to it.
+      final bonus = tester.getRect(find.byKey(const Key('bonus-switch')));
+      final button = tester.getRect(find.byType(ElevatedButton));
+      expect(
+        bonus.bottom,
+        lessThanOrEqualTo(button.top),
+        reason: 'the bonus switch ends at ${bonus.bottom} and the button '
+            'starts at ${button.top} on $name',
+      );
+    });
+  }
 }

@@ -1029,7 +1029,14 @@ class AppLocalizationsUr extends AppLocalizations {
   String get soloTileCaption => 'کمپیوٹر کے خلاف';
 
   @override
-  String get computerLevelLabel => 'کمپیوٹر کی سطح';
+  String get computerStrengthLabel => 'کمپیوٹر کی طاقت';
+
+  @override
+  String get setupComputer => 'کمپیوٹر';
+
+  @override
+  String get questionLevelNote =>
+      'سوالات کی سطح اگلی اسکرین پر ہر کھلاڑی کے لیے چنی جاتی ہے۔';
 
   @override
   String get setupRaceLength => 'کھیل کی مدت';

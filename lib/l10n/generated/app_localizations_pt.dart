@@ -1036,7 +1036,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get soloTileCaption => 'contra o computador';
 
   @override
-  String get computerLevelLabel => 'Nível do computador';
+  String get computerStrengthLabel => 'Força do computador';
+
+  @override
+  String get setupComputer => 'O computador';
+
+  @override
+  String get questionLevelNote =>
+      'O nível das perguntas escolhe-se a seguir, para cada jogador.';
 
   @override
   String get setupRaceLength => 'Duração do jogo';

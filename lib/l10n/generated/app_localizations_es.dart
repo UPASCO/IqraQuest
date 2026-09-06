@@ -1037,7 +1037,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get soloTileCaption => 'contra la máquina';
 
   @override
-  String get computerLevelLabel => 'Nivel de la máquina';
+  String get computerStrengthLabel => 'Fuerza de la máquina';
+
+  @override
+  String get setupComputer => 'La máquina';
+
+  @override
+  String get questionLevelNote =>
+      'El nivel de las preguntas se elige después, para cada jugador.';
 
   @override
   String get setupRaceLength => 'Duración de la partida';

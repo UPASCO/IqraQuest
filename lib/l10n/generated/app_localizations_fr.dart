@@ -1038,7 +1038,14 @@ class AppLocalizationsFr extends AppLocalizations {
   String get soloTileCaption => 'contre l\'ordi';
 
   @override
-  String get computerLevelLabel => 'Niveau de l\'ordi';
+  String get computerStrengthLabel => 'Force de l\'ordi';
+
+  @override
+  String get setupComputer => 'L\'ordinateur';
+
+  @override
+  String get questionLevelNote =>
+      'Le niveau des questions se choisit juste après, pour chaque joueur.';
 
   @override
   String get setupRaceLength => 'Durée de la partie';

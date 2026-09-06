@@ -1020,7 +1020,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get soloTileCaption => 'bilgisayara karşı';
 
   @override
-  String get computerLevelLabel => 'Bilgisayar seviyesi';
+  String get computerStrengthLabel => 'Bilgisayarın gücü';
+
+  @override
+  String get setupComputer => 'Bilgisayar';
+
+  @override
+  String get questionLevelNote =>
+      'Soru seviyesi hemen sonra, her oyuncu için seçilir.';
 
   @override
   String get setupRaceLength => 'Oyun süresi';

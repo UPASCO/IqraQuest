@@ -1384,9 +1384,17 @@
   "@soloTileCaption": {
     "description": "Caption under the '1' player tile: one human against the computer"
   },
-  "computerLevelLabel": "Computer level",
-  "@computerLevelLabel": {
-    "description": "Label before the computer's difficulty chips"
+  "computerStrengthLabel": "Computer strength",
+  "@computerStrengthLabel": {
+    "description": "Label before the computer's difficulty chips. Deliberately NOT the word 'level': the question level is a different choice, on the next screen, and a tester who read this row as the question difficulty stopped looking there"
+  },
+  "setupComputer": "The computer",
+  "@setupComputer": {
+    "description": "Eyebrow over the computer's two chip rows on the setup screen"
+  },
+  "questionLevelNote": "The question level is chosen next, for each player.",
+  "@questionLevelNote": {
+    "description": "One line on the setup screen pointing at the per-rider question level, which is chosen on the next screen"
   },
   "setupRaceLength": "Race length",
   "@setupRaceLength": {

@@ -67,31 +67,51 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
             // Rather than scroll there, every gap and tile tightens a
             // notch and the course note steps aside — the choices
             // themselves never shrink below a thumb.
-            final compact = constraints.maxHeight < 560;
+            // What the comfortable layout actually needs, measured:
+            // about 620 points in family, and about 890 in solo, which
+            // carries two more rows — how many computer riders, and how
+            // well they play. No phone has 890, so solo is dense on
+            // every phone and comfortable from a tablet up. Guessing
+            // this threshold instead of measuring it is what put the
+            // bonus switch under the Continue button: at 712 points a
+            // common phone counted as roomy and the screen scrolled by
+            // 173.
+            // Measured, not guessed: laid out comfortably this screen
+            // needs about 740 points in family and 890 in solo, which
+            // carries the computer's two rows. No phone has either, so
+            // every phone gets the dense layout and a tablet gets the
+            // roomy one. Guessing this (560, then a single 740) is what
+            // put the bonus switch under the Continue button: at 712
+            // points a common phone counted as roomy and the screen
+            // scrolled by 173.
+            final compact = constraints.maxHeight < (_isSolo ? 890.0 : 740.0);
             // And the other way on a tablet: with twice the height to
             // spare, the tiles grow and the whole block floats a third
             // of the way down rather than huddling under the app bar.
             final roomy = constraints.maxHeight > 900 && constraints.maxWidth >= 600;
-            final gap = compact ? 10.0 : (roomy ? 22.0 : 12.0);
+            final gap = compact ? 8.0 : (roomy ? 22.0 : 12.0);
             return FitOrScroll(
               padding: pagePadding(context, top: compact ? 8 : 12, bottom: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   if (roomy) const Spacer(),
-                  _Eyebrow(l10n.setupWhoPlays),
+                  _Eyebrow(l10n.setupWhoPlays, trailing: l10n.questionLevelNote),
                   _PlayerTiles(
                     selected: _players,
                     onChanged: (n) => setState(() => _players = n),
+                    compact: compact,
                     l10n: l10n,
                   ),
                   if (_isSolo) ...[
                     SizedBox(height: gap),
+                    if (compact) _Eyebrow(l10n.setupComputer),
                     _SoloOptions(
                       aiCount: _aiCount,
                       onAiCount: (n) => setState(() => _aiCount = n),
                       difficulty: _difficulty,
                       onDifficulty: (d) => setState(() => _difficulty = d),
+                      compact: compact,
                       l10n: l10n,
                     ),
                   ],
@@ -113,10 +133,19 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                     roomy: roomy,
                     l10n: l10n,
                   ),
+                  // The note explains the chosen course square by
+                  // square, and it is the tallest block on the screen.
+                  // A phone spends its height on the choices instead:
+                  // the tile already says how eventful the course is in
+                  // a word and carries one glyph per kind of square, and
+                  // the rules screen — the ? on the board — has a step
+                  // for each of them. On a tablet there is room for all
+                  // of it at once.
                   if (!compact) ...[
                     const SizedBox(height: 8),
                     _CircuitNote(
                       circuit: Circuit.all.firstWhere((c) => c.id == _circuit),
+                      dense: false,
                       l10n: l10n,
                     ),
                   ],
@@ -172,22 +201,54 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
 /// A section's name, small and set apart, so the eye reads the tiles
 /// under it as one question.
 class _Eyebrow extends StatelessWidget {
-  const _Eyebrow(this.text);
+  const _Eyebrow(this.text, {this.trailing});
 
   final String text;
 
+  /// A note that belongs to this section but must not cost it a line of
+  /// its own — it rides on the eyebrow's row. "Where do I set the
+  /// difficulty?" is the question this screen kept failing to answer,
+  /// and the answer is one screen away, not on this one.
+  final String? trailing;
+
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
+    final label = Text(
+      text.toUpperCase(),
+      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+        color: colors.textSecondary,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 1.2,
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
-      child: Text(
-        text.toUpperCase(),
-        style: Theme.of(context).textTheme.labelMedium?.copyWith(
-          color: context.colors.textSecondary,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 1.2,
-        ),
-      ),
+      child: trailing == null
+          ? label
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                // Both sides give way: on the floor phone at the large
+                // text size the eyebrow alone is nearly the full width,
+                // and a rigid label overflowed the row by a pixel.
+                Flexible(child: label),
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Text(
+                    trailing!,
+                    key: const Key('question-level-note'),
+                    textAlign: TextAlign.end,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: colors.textSecondary,
+                      height: 1.15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
     );
   }
 }
@@ -199,11 +260,13 @@ class _PlayerTiles extends StatelessWidget {
   const _PlayerTiles({
     required this.selected,
     required this.onChanged,
+    required this.compact,
     required this.l10n,
   });
 
   final int selected;
   final ValueChanged<int> onChanged;
+  final bool compact;
   final AppLocalizations l10n;
 
   @override
@@ -214,7 +277,10 @@ class _PlayerTiles extends StatelessWidget {
           if (n > 1) const SizedBox(width: 10),
           Expanded(
             child: AspectRatio(
-              aspectRatio: 1,
+              // A shade wider than tall when the room is tight: the
+              // number is sized by the tile, so it stays the biggest
+              // thing on the screen either way.
+              aspectRatio: compact ? 1.18 : 1,
               child: _NumberTile(
                 key: Key('players-$n'),
                 number: n,
@@ -353,6 +419,7 @@ class _SoloOptions extends StatelessWidget {
     required this.onAiCount,
     required this.difficulty,
     required this.onDifficulty,
+    required this.compact,
     required this.l10n,
   });
 
@@ -360,6 +427,7 @@ class _SoloOptions extends StatelessWidget {
   final ValueChanged<int> onAiCount;
   final AiDifficulty difficulty;
   final ValueChanged<AiDifficulty> onDifficulty;
+  final bool compact;
   final AppLocalizations l10n;
 
   @override
@@ -370,7 +438,7 @@ class _SoloOptions extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         _ChipGroup(
-          label: l10n.aiOpponentsLabel,
+          label: compact ? null : l10n.aiOpponentsLabel,
           chips: [
             for (var n = 1; n <= 3; n++)
               _Chip(
@@ -379,12 +447,13 @@ class _SoloOptions extends StatelessWidget {
                 semanticsLabel: '$n ${l10n.aiOpponentsLabel}',
                 selected: aiCount == n,
                 minWidth: 44,
+                compact: compact,
                 onTap: () => onAiCount(n),
               ),
           ],
         ),
         _ChipGroup(
-          label: l10n.computerLevelLabel,
+          label: compact ? null : l10n.computerStrengthLabel,
           chips: [
             for (final d in AiDifficulty.values)
               _Chip(
@@ -395,6 +464,7 @@ class _SoloOptions extends StatelessWidget {
                   AiDifficulty.hard => l10n.difficultyHard,
                 },
                 selected: difficulty == d,
+                compact: compact,
                 onTap: () => onDifficulty(d),
               ),
           ],
@@ -409,7 +479,11 @@ class _SoloOptions extends StatelessWidget {
 class _ChipGroup extends StatelessWidget {
   const _ChipGroup({required this.label, required this.chips});
 
-  final String label;
+  /// Null when the section's eyebrow already names what these chips are:
+  /// two labelled rows cost a phone a line each, and the chips say what
+  /// they are (a count, a strength) once the eyebrow has introduced
+  /// them. The screen reader still hears the full label on every chip.
+  final String? label;
   final List<Widget> chips;
 
   @override
@@ -417,18 +491,20 @@ class _ChipGroup extends StatelessWidget {
     // The chips are one item of the outer wrap, so they move to the next
     // line together: a label followed by two chips and a third one
     // stranded underneath read as a broken row.
+    final row = Wrap(spacing: 6, runSpacing: 6, children: chips);
+    if (label == null) return row;
     return Wrap(
       spacing: 10,
       runSpacing: 6,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Text(
-          label,
+          label!,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
             color: context.colors.textSecondary,
           ),
         ),
-        Wrap(spacing: 6, runSpacing: 6, children: chips),
+        row,
       ],
     );
   }
@@ -443,6 +519,7 @@ class _Chip extends StatelessWidget {
     required this.onTap,
     this.semanticsLabel,
     this.minWidth = 0,
+    this.compact = false,
   });
 
   final String label;
@@ -450,6 +527,9 @@ class _Chip extends StatelessWidget {
   final VoidCallback onTap;
   final String? semanticsLabel;
   final double minWidth;
+
+  /// Still a comfortable target, six points shorter.
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -471,9 +551,15 @@ class _Chip extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           child: ConstrainedBox(
-            constraints: BoxConstraints(minWidth: minWidth, minHeight: 36),
+            constraints: BoxConstraints(
+              minWidth: minWidth,
+              minHeight: compact ? 32 : 36,
+            ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+              padding: EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: compact ? 5 : 7,
+              ),
               child: Center(
                 widthFactor: 1,
                 child: Text(
@@ -526,7 +612,7 @@ class _LengthTiles extends StatelessWidget {
             Expanded(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: compact ? 92 : (roomy ? 136 : 104),
+                  minHeight: compact ? 86 : (roomy ? 136 : 104),
                 ),
                 child: _LengthTile(
                   key: ValueKey('format-${variant.name}'),
@@ -816,9 +902,17 @@ class _CircuitTile extends StatelessWidget {
 /// plain squares until their flows ship, and a note promising them
 /// would be a note that lies.
 class _CircuitNote extends StatelessWidget {
-  const _CircuitNote({required this.circuit, required this.l10n});
+  const _CircuitNote({
+    required this.circuit,
+    required this.dense,
+    required this.l10n,
+  });
 
   final Circuit circuit;
+
+  /// Name the squares instead of explaining them, for the layouts that
+  /// cannot afford five lines.
+  final bool dense;
   final AppLocalizations l10n;
 
   @override
@@ -831,7 +925,7 @@ class _CircuitNote extends StatelessWidget {
     );
     return Container(
       key: const Key('circuit-note'),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: dense ? 5 : 7),
       decoration: BoxDecoration(
         color: colors.primary.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(12),
@@ -849,27 +943,49 @@ class _CircuitNote extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          for (final effect in _actingEffects(circuit)) ...[
+          if (dense) ...[
             const SizedBox(height: 3),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Wrap(
+              spacing: 10,
+              runSpacing: 2,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 1),
-                  child: Icon(_effectIcon(effect), size: 13, color: colors.primary),
-                ),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    _effectBlurb(effect, l10n),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: line,
+                for (final effect in _actingEffects(circuit))
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(_effectIcon(effect), size: 13, color: colors.primary),
+                      const SizedBox(width: 4),
+                      Text(_effectName(effect, l10n), style: line),
+                    ],
                   ),
-                ),
               ],
             ),
-          ],
+          ] else
+            for (final effect in _actingEffects(circuit)) ...[
+              const SizedBox(height: 3),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 1),
+                    child: Icon(
+                      _effectIcon(effect),
+                      size: 13,
+                      color: colors.primary,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      _effectBlurb(effect, l10n),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: line,
+                    ),
+                  ),
+                ],
+              ),
+            ],
         ],
       ),
     );
@@ -996,6 +1112,18 @@ IconData _effectIcon(CellEffect effect) => switch (effect) {
   CellEffect.wisdom => Icons.menu_book,
   CellEffect.relay => Icons.swap_horiz,
   CellEffect.plain => Icons.circle_outlined,
+};
+
+/// The square's name on its own, for the dense note.
+String _effectName(CellEffect effect, AppLocalizations l10n) => switch (effect) {
+  CellEffect.oasis => l10n.cellOasis,
+  CellEffect.knowledge => l10n.cellKnowledge,
+  CellEffect.challenge => l10n.cellChallenge,
+  CellEffect.shortcut => l10n.cellShortcut,
+  CellEffect.duel => l10n.cellDuel,
+  CellEffect.wisdom => l10n.cellWisdom,
+  CellEffect.relay => l10n.cellRelay,
+  CellEffect.plain => '',
 };
 
 /// What a square does, in words a child understands; the bare name for

@@ -1039,7 +1039,14 @@ class AppLocalizationsIt extends AppLocalizations {
   String get soloTileCaption => 'contro il computer';
 
   @override
-  String get computerLevelLabel => 'Livello del computer';
+  String get computerStrengthLabel => 'Forza del computer';
+
+  @override
+  String get setupComputer => 'Il computer';
+
+  @override
+  String get questionLevelNote =>
+      'Il livello delle domande si sceglie subito dopo, per ogni giocatore.';
 
   @override
   String get setupRaceLength => 'Durata della partita';

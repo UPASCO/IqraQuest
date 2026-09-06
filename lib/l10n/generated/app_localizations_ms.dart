@@ -1029,7 +1029,14 @@ class AppLocalizationsMs extends AppLocalizations {
   String get soloTileCaption => 'lawan komputer';
 
   @override
-  String get computerLevelLabel => 'Tahap komputer';
+  String get computerStrengthLabel => 'Kekuatan komputer';
+
+  @override
+  String get setupComputer => 'Komputer';
+
+  @override
+  String get questionLevelNote =>
+      'Tahap soalan dipilih selepas ini, untuk setiap pemain.';
 
   @override
   String get setupRaceLength => 'Tempoh permainan';

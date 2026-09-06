@@ -1032,7 +1032,14 @@ class AppLocalizationsNl extends AppLocalizations {
   String get soloTileCaption => 'tegen de computer';
 
   @override
-  String get computerLevelLabel => 'Computerniveau';
+  String get computerStrengthLabel => 'Sterkte van de computer';
+
+  @override
+  String get setupComputer => 'De computer';
+
+  @override
+  String get questionLevelNote =>
+      'Het vraagniveau kies je hierna, voor elke speler.';
 
   @override
   String get setupRaceLength => 'Speelduur';
