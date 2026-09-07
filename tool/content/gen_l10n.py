@@ -664,19 +664,19 @@ s("premiumTitle", "Premium sheet title",
 # below by premiumQuestionsIncluded, read from the bank itself. A
 # hardcoded number goes stale and reads as a false claim to App Review
 # (App Store guideline 2.3.1) the moment the bank differs from it.
-s("premiumUnlockAll", "Premium sheet value proposition",
-  fr="Débloque toute la banque de questions et toutes les difficultés",
-  en="Unlock the full question bank and every difficulty",
-  ar="افتح بنك الأسئلة كاملاً وكل مستويات الصعوبة",
-  es="Desbloquea todo el banco de preguntas y todas las dificultades",
-  pt="Desbloqueie todo o banco de perguntas e todas as dificuldades",
-  de="Schalte die gesamte Fragensammlung und jeden Schwierigkeitsgrad frei",
-  tr="Tüm soru bankasının ve her zorluk seviyesinin kilidini açın",
-  id="Buka seluruh bank pertanyaan dan semua tingkat kesulitan",
-  ur="سوالات کا مکمل ذخیرہ اور ہر مشکل درجہ کھولیں",
-  ms="Buka kunci seluruh bank soalan dan semua tahap kesukaran",
-  it="Sblocca l'intero archivio di domande e ogni livello di difficoltà",
-  nl="Ontgrendel de volledige vragenbank en elke moeilijkheidsgraad")
+s("premiumUnlockAll", "Premium sheet value proposition: what the one purchase opens",
+  fr="Débloque toutes les cartes, tous les parcours, les sauvegardes et le niveau mixte",
+  en="Unlock every card, every course, the saves and the mixed level",
+  ar="افتح كل البطاقات وكل المسارات والحفظ والمستوى المتنوع",
+  es="Desbloquea todas las cartas, todos los recorridos, las partidas guardadas y el nivel mixto",
+  pt="Desbloqueia todas as cartas, todos os percursos, as partidas guardadas e o nível misto",
+  de="Schalte alle Karten, alle Strecken, die Spielstände und die gemischte Stufe frei",
+  tr="Tüm kartların, tüm parkurların, kayıtların ve karışık seviyenin kilidini aç",
+  id="Buka semua kartu, semua lintasan, simpanan, dan level campuran",
+  ur="تمام کارڈ، تمام راستے، محفوظ کھیل اور مخلوط سطح کھولیں",
+  ms="Buka semua kad, semua laluan, simpanan dan tahap campuran",
+  it="Sblocca tutte le carte, tutti i percorsi, i salvataggi e il livello misto",
+  nl="Ontgrendel alle kaarten, alle parcoursen, de opgeslagen spellen en het gemengde niveau")
 
 s("premiumOneTime", "Premium sheet: pricing model note",
   fr="Paiement unique — aucun abonnement", en="One-time payment — no subscription",
@@ -2654,6 +2654,104 @@ s("defaultSaveName", "Fallback name for a save when the riders have no name",
   fr="Ma partie", en="My game", ar="لعبتي", es="Mi partida", pt="Meu jogo",
   de="Mein Spiel", tr="Oyunum", id="Permainanku", ur="میرا کھیل",
   ms="Permainan saya", it="La mia partita", nl="Mijn spel")
+
+
+# ---- Premium: what is locked on a free device, and where it is sold ----
+s("premiumOnly", "Label on a locked tile, chip or row: this needs Premium",
+  fr="Réservé à Premium", en="Premium only", ar="حصري لبريميوم", es="Solo Premium",
+  pt="Só Premium", de="Nur Premium", tr="Yalnızca Premium", id="Khusus Premium",
+  ur="صرف پریمیم", ms="Premium sahaja", it="Solo Premium", nl="Alleen Premium")
+
+s("premiumBenefitCourses", "Premium benefit row: the two courses beyond the calm one",
+  ph={"lively": "String", "intense": "String"},
+  fr="Les parcours {lively} et {intense}, avec toutes leurs cases spéciales",
+  en="The {lively} and {intense} courses, with all their special squares",
+  ar="مسارا {lively} و{intense} بكل مربعاتهما الخاصة",
+  es="Los recorridos {lively} e {intense}, con todas sus casillas especiales",
+  pt="Os percursos {lively} e {intense}, com todas as suas casas especiais",
+  de="Die Strecken {lively} und {intense} mit allen Sonderfeldern",
+  tr="{lively} ve {intense} parkurları, tüm özel kareleriyle",
+  id="Lintasan {lively} dan {intense}, dengan semua petak khususnya",
+  ur="{lively} اور {intense} راستے، اپنے تمام خاص خانوں کے ساتھ",
+  ms="Laluan {lively} dan {intense}, dengan semua petak istimewanya",
+  it="I percorsi {lively} e {intense}, con tutte le loro caselle speciali",
+  nl="De parcoursen {lively} en {intense}, met al hun speciale vakjes")
+
+s("premiumBenefitSaves", "Premium benefit row: named saves",
+  fr="Sauvegarder plusieurs parties sous un nom et les reprendre",
+  en="Keep several games under a name and resume them",
+  ar="حفظ عدة ألعاب باسم واستئنافها",
+  es="Guardar varias partidas con un nombre y retomarlas",
+  pt="Guardar várias partidas com um nome e retomá-las",
+  de="Mehrere Spiele unter einem Namen behalten und fortsetzen",
+  tr="Birden çok oyunu adla saklayıp sürdürmek",
+  id="Menyimpan beberapa permainan dengan nama dan melanjutkannya",
+  ur="کئی کھیل نام سے محفوظ کریں اور دوبارہ شروع کریں",
+  ms="Simpan beberapa permainan dengan nama dan sambung semula",
+  it="Salvare più partite con un nome e riprenderle",
+  nl="Meerdere spellen onder een naam bewaren en hervatten")
+
+s("premiumBenefitMixed", "Premium benefit row: the mixed question level",
+  ph={"mixed": "String"},
+  fr="Le niveau {mixed} : chaque carte tire son propre niveau",
+  en="The {mixed} level: every card draws its own level",
+  ar="مستوى {mixed}: كل بطاقة تسحب مستواها",
+  es="El nivel {mixed}: cada carta saca su propio nivel",
+  pt="O nível {mixed}: cada carta tira o seu próprio nível",
+  de="Die Stufe {mixed}: jede Karte zieht ihre eigene Stufe",
+  tr="{mixed} seviyesi: her kart kendi seviyesini çeker",
+  id="Level {mixed}: setiap kartu menarik levelnya sendiri",
+  ur="{mixed} سطح: ہر کارڈ اپنی سطح خود نکالتا ہے",
+  ms="Tahap {mixed}: setiap kad menarik tahapnya sendiri",
+  it="Il livello {mixed}: ogni carta pesca il proprio livello",
+  nl="Het niveau {mixed}: elke kaart trekt zijn eigen niveau")
+
+s("premiumBannerTitle", "Home banner and settings row: go to the Premium screen",
+  fr="Passer en Premium", en="Go Premium", ar="الترقية إلى بريميوم", es="Pasar a Premium",
+  pt="Passar a Premium", de="Premium freischalten", tr="Premium'a geç",
+  id="Beralih ke Premium", ur="پریمیم حاصل کریں", ms="Naik taraf ke Premium",
+  it="Passa a Premium", nl="Word Premium")
+
+s("premiumBannerBody", "Home banner and settings row: what Premium opens, in one line",
+  fr="Toutes les cartes, tous les parcours, les sauvegardes",
+  en="Every card, every course, the saves",
+  ar="كل البطاقات، كل المسارات، الحفظ",
+  es="Todas las cartas, todos los recorridos, las partidas guardadas",
+  pt="Todas as cartas, todos os percursos, as partidas guardadas",
+  de="Alle Karten, alle Strecken, die Spielstände",
+  tr="Tüm kartlar, tüm parkurlar, kayıtlar",
+  id="Semua kartu, semua lintasan, simpanan",
+  ur="تمام کارڈ، تمام راستے، محفوظ کھیل",
+  ms="Semua kad, semua laluan, simpanan",
+  it="Tutte le carte, tutti i percorsi, i salvataggi",
+  nl="Alle kaarten, alle parcoursen, de opgeslagen spellen")
+
+s("premiumActive", "Settings row when Premium is on",
+  fr="Premium actif : tout est débloqué", en="Premium active: everything is unlocked",
+  ar="بريميوم مفعّل: كل شيء مفتوح", es="Premium activo: todo desbloqueado",
+  pt="Premium ativo: tudo desbloqueado", de="Premium aktiv: alles freigeschaltet",
+  tr="Premium etkin: her şey açık", id="Premium aktif: semua terbuka",
+  ur="پریمیم فعال: سب کچھ کھلا ہے", ms="Premium aktif: semuanya terbuka",
+  it="Premium attivo: tutto sbloccato", nl="Premium actief: alles is ontgrendeld")
+
+s("laterAction", "Dismiss button of the free-limit popup",
+  fr="Plus tard", en="Later", ar="لاحقًا", es="Más tarde", pt="Mais tarde", de="Später",
+  tr="Sonra", id="Nanti", ur="بعد میں", ms="Kemudian", it="Più tardi", nl="Later")
+
+s("freeLimitPopupBody", "Popup on the results screen when the free edition's draw limit stopped the race",
+  ph={"count": "int"},
+  fr="Tu as joué les {count} cartes de la version gratuite. Avec Premium, la course continue jusqu'à La Mecque, avec toutes les cartes, tous les parcours et les sauvegardes.",
+  en="You have played the {count} cards of the free edition. With Premium the race goes on to Mecca, with every card, every course and the saves.",
+  ar="لقد لعبت {count} بطاقة من النسخة المجانية. مع بريميوم يستمر السباق حتى مكة، بكل البطاقات وكل المسارات والحفظ.",
+  es="Has jugado las {count} cartas de la versión gratuita. Con Premium la carrera sigue hasta La Meca, con todas las cartas, todos los recorridos y las partidas guardadas.",
+  pt="Jogaste as {count} cartas da versão gratuita. Com Premium a corrida continua até Meca, com todas as cartas, todos os percursos e as partidas guardadas.",
+  de="Du hast die {count} Karten der Gratis-Version gespielt. Mit Premium geht das Rennen bis Mekka weiter, mit allen Karten, allen Strecken und den Spielständen.",
+  tr="Ücretsiz sürümün {count} kartını oynadın. Premium ile yarış Mekke'ye kadar sürer; tüm kartlar, tüm parkurlar ve kayıtlarla.",
+  id="Kamu telah memainkan {count} kartu versi gratis. Dengan Premium balapan berlanjut sampai Makkah, dengan semua kartu, semua lintasan, dan simpanan.",
+  ur="آپ نے مفت ورژن کے {count} کارڈ کھیل لیے۔ پریمیم کے ساتھ ریس مکہ تک جاری رہتی ہے، تمام کارڈ، تمام راستوں اور محفوظ کھیلوں کے ساتھ۔",
+  ms="Anda telah bermain {count} kad versi percuma. Dengan Premium, perlumbaan berterusan hingga ke Makkah, dengan semua kad, semua laluan dan simpanan.",
+  it="Hai giocato le {count} carte della versione gratuita. Con Premium la corsa continua fino alla Mecca, con tutte le carte, tutti i percorsi e i salvataggi.",
+  nl="Je hebt de {count} kaarten van de gratis versie gespeeld. Met Premium gaat de race door tot Mekka, met alle kaarten, alle parcoursen en de opgeslagen spellen.")
 
 # ---------------------------------------------------------------------
 def validate():

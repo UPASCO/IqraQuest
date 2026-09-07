@@ -2074,7 +2074,12 @@ HEDGES = {
            "probablement", "peut-être", "on raconte", "controvers", "il semblerait"],
     "en": ["some scholars", "it is said", "scholars differ", "probably", "perhaps",
            "allegedly", "controvers", "it seems", "some say"],
-    "ar": ["قيل إن", "بعض العلماء", "اختلف العلماء", "ربما", "يُقال", "على الأرجح", "خلاف"],
+    # Phrases, never bare words: "خلاف" alone matched inside the Qur'an's
+    # own wording (4:82, "لوجدوا فيه اختلافًا كثيرًا") and inside
+    # "الخلافة", and a checker that forbids quoting a verse is a checker
+    # that is wrong.
+    "ar": ["قيل إن", "بعض العلماء", "اختلف العلماء", "ربما", "يُقال",
+           "على الأرجح", "خلاف بين", "فيه خلاف", "محل خلاف"],
 }
 
 
