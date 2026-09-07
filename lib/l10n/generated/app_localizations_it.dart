@@ -1036,17 +1036,28 @@ class AppLocalizationsIt extends AppLocalizations {
   String get setupWhoPlays => 'Chi gioca?';
 
   @override
-  String get soloTileCaption => 'contro il computer';
+  String get computerStrengthLabel => 'Forza degli avversari';
 
   @override
-  String get computerStrengthLabel => 'Forza del computer';
+  String get strengthLabelShort => 'Forza';
 
   @override
-  String get setupComputer => 'Il computer';
+  String get autoRidersNote => 'Cavalieri automatici';
+
+  @override
+  String autoRidersCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count cavalieri',
+      one: '$count cavaliere',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get questionLevelNote =>
-      'Il livello delle domande si sceglie subito dopo, per ogni giocatore.';
+      'Livello domande: al passo successivo, per giocatore.';
 
   @override
   String get setupRaceLength => 'Durata della partita';

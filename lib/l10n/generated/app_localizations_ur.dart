@@ -1026,17 +1026,28 @@ class AppLocalizationsUr extends AppLocalizations {
   String get setupWhoPlays => 'کون کھیل رہا ہے؟';
 
   @override
-  String get soloTileCaption => 'کمپیوٹر کے خلاف';
+  String get computerStrengthLabel => 'حریفوں کی طاقت';
 
   @override
-  String get computerStrengthLabel => 'کمپیوٹر کی طاقت';
+  String get strengthLabelShort => 'طاقت';
 
   @override
-  String get setupComputer => 'کمپیوٹر';
+  String get autoRidersNote => 'خودکار سوار';
+
+  @override
+  String autoRidersCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count سوار',
+      one: '$count سوار',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get questionLevelNote =>
-      'سوالات کی سطح اگلی اسکرین پر ہر کھلاڑی کے لیے چنی جاتی ہے۔';
+      'سوالات کی سطح: اگلے مرحلے میں، ہر کھلاڑی کے لیے۔';
 
   @override
   String get setupRaceLength => 'کھیل کی مدت';

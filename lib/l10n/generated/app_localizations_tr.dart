@@ -1017,17 +1017,27 @@ class AppLocalizationsTr extends AppLocalizations {
   String get setupWhoPlays => 'Kim oynuyor?';
 
   @override
-  String get soloTileCaption => 'bilgisayara karşı';
+  String get computerStrengthLabel => 'Rakiplerin gücü';
 
   @override
-  String get computerStrengthLabel => 'Bilgisayarın gücü';
+  String get strengthLabelShort => 'Güç';
 
   @override
-  String get setupComputer => 'Bilgisayar';
+  String get autoRidersNote => 'Otomatik biniciler';
+
+  @override
+  String autoRidersCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count binici',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get questionLevelNote =>
-      'Soru seviyesi hemen sonra, her oyuncu için seçilir.';
+      'Soru seviyesi: sonraki adımda, oyuncu başına.';
 
   @override
   String get setupRaceLength => 'Oyun süresi';

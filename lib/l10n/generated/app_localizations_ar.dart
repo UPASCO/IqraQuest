@@ -1044,17 +1044,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get setupWhoPlays => 'من يلعب؟';
 
   @override
-  String get soloTileCaption => 'ضد الحاسوب';
+  String get computerStrengthLabel => 'قوّة الخصوم';
 
   @override
-  String get computerStrengthLabel => 'قوّة الحاسوب';
+  String get strengthLabelShort => 'القوّة';
 
   @override
-  String get setupComputer => 'الحاسوب';
+  String get autoRidersNote => 'فرسان آليون';
+
+  @override
+  String autoRidersCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count فرسان',
+      two: 'فارسان',
+      one: 'فارس واحد',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get questionLevelNote =>
-      'يُختار مستوى الأسئلة في الشاشة التالية، لكلّ لاعب.';
+      'مستوى الأسئلة: في الخطوة التالية، لكلّ لاعب.';
 
   @override
   String get setupRaceLength => 'مدة اللعبة';

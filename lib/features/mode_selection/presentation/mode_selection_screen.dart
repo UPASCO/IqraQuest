@@ -140,7 +140,11 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
                   ),
                   if (_isSolo) ...[
                     SizedBox(height: gap),
-                    if (compact) _Eyebrow(l10n.setupComputer),
+                    // Named for what they are — the other riders in the
+                    // race, played by the app — not for the machine. A
+                    // bare "1 2 3" under "the computer" read as its
+                    // level, or as nothing at all.
+                    _Eyebrow(l10n.aiOpponentsLabel, trailing: l10n.autoRidersNote),
                     _SoloOptions(
                       aiCount: _aiCount,
                       onAiCount: (n) => setState(() => _aiCount = n),
@@ -350,7 +354,7 @@ class _PlayerTiles extends StatelessWidget {
               child: _NumberTile(
                 key: Key('players-$n'),
                 number: n,
-                caption: n == 1 ? l10n.soloTileCaption : l10n.playersLabel,
+                caption: n == 1 ? l10n.soloMode : l10n.playersLabel,
                 selected: selected == n,
                 onTap: () => onChanged(n),
               ),
@@ -476,9 +480,11 @@ class _FilledTile extends StatelessWidget {
   }
 }
 
-/// What the solo game still has to decide: how many computer riders, and
-/// how well they play. Two labelled chip rows that sit side by side on a
-/// tablet and one under the other on a phone.
+/// What the solo game still has to decide: how many automatic riders
+/// line up against the player, and how well they play. Two rows of
+/// three, each chip a third of the width, so the row never folds — a
+/// phone cannot afford a fourth line here — and the label of the second
+/// row rides inline with its chips.
 class _SoloOptions extends StatelessWidget {
   const _SoloOptions({
     required this.aiCount,
@@ -498,79 +504,65 @@ class _SoloOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 18,
-      runSpacing: 8,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        _ChipGroup(
-          label: compact ? null : l10n.aiOpponentsLabel,
-          chips: [
-            for (var n = 1; n <= 3; n++)
-              _Chip(
-                key: Key('opponents-$n'),
-                label: '$n',
-                semanticsLabel: '$n ${l10n.aiOpponentsLabel}',
-                selected: aiCount == n,
-                minWidth: 44,
-                compact: compact,
-                onTap: () => onAiCount(n),
-              ),
-          ],
-        ),
-        _ChipGroup(
-          label: compact ? null : l10n.computerStrengthLabel,
-          chips: [
-            for (final d in AiDifficulty.values)
-              _Chip(
-                key: Key('ai-${d.name}'),
-                label: switch (d) {
-                  AiDifficulty.easy => l10n.difficultyEasy,
-                  AiDifficulty.medium => l10n.difficultyMedium,
-                  AiDifficulty.hard => l10n.difficultyHard,
-                },
-                selected: difficulty == d,
-                compact: compact,
-                onTap: () => onDifficulty(d),
-              ),
-          ],
-        ),
-      ],
+    final labelStyle = Theme.of(context).textTheme.labelLarge?.copyWith(
+      color: context.colors.textSecondary,
     );
-  }
-}
-
-/// A label and its chips. A Wrap, not a Row: at the large text size on
-/// the narrow phone the label and the chips fold rather than overflow.
-class _ChipGroup extends StatelessWidget {
-  const _ChipGroup({required this.label, required this.chips});
-
-  /// Null when the section's eyebrow already names what these chips are:
-  /// two labelled rows cost a phone a line each, and the chips say what
-  /// they are (a count, a strength) once the eyebrow has introduced
-  /// them. The screen reader still hears the full label on every chip.
-  final String? label;
-  final List<Widget> chips;
-
-  @override
-  Widget build(BuildContext context) {
-    // The chips are one item of the outer wrap, so they move to the next
-    // line together: a label followed by two chips and a third one
-    // stranded underneath read as a broken row.
-    final row = Wrap(spacing: 6, runSpacing: 6, children: chips);
-    if (label == null) return row;
-    return Wrap(
-      spacing: 10,
-      runSpacing: 6,
-      crossAxisAlignment: WrapCrossAlignment.center,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          label!,
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            color: context.colors.textSecondary,
-          ),
+        Row(
+          children: [
+            for (var n = 1; n <= 3; n++) ...[
+              if (n > 1) const SizedBox(width: 6),
+              Expanded(
+                child: _Chip(
+                  key: Key('opponents-$n'),
+                  icon: Icons.smart_toy_outlined,
+                  label: l10n.autoRidersCount(n),
+                  semanticsLabel:
+                      '${l10n.autoRidersCount(n)}, ${l10n.autoRidersNote}',
+                  selected: aiCount == n,
+                  compact: compact,
+                  onTap: () => onAiCount(n),
+                ),
+              ),
+            ],
+          ],
         ),
-        row,
+        const SizedBox(height: 6),
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 8),
+              child: Text(
+                compact ? l10n.strengthLabelShort : l10n.computerStrengthLabel,
+                style: labelStyle,
+              ),
+            ),
+            for (final d in AiDifficulty.values) ...[
+              if (d != AiDifficulty.values.first) const SizedBox(width: 6),
+              Expanded(
+                child: _Chip(
+                  key: Key('ai-${d.name}'),
+                  label: switch (d) {
+                    AiDifficulty.easy => l10n.difficultyEasy,
+                    AiDifficulty.medium => l10n.difficultyMedium,
+                    AiDifficulty.hard => l10n.difficultyHard,
+                  },
+                  semanticsLabel:
+                      '${l10n.computerStrengthLabel}: ${switch (d) {
+                    AiDifficulty.easy => l10n.difficultyEasy,
+                    AiDifficulty.medium => l10n.difficultyMedium,
+                    AiDifficulty.hard => l10n.difficultyHard,
+                  }}',
+                  selected: difficulty == d,
+                  compact: compact,
+                  onTap: () => onDifficulty(d),
+                ),
+              ),
+            ],
+          ],
+        ),
       ],
     );
   }
@@ -584,7 +576,7 @@ class _Chip extends StatelessWidget {
     required this.selected,
     required this.onTap,
     this.semanticsLabel,
-    this.minWidth = 0,
+    this.icon,
     this.compact = false,
   });
 
@@ -592,7 +584,9 @@ class _Chip extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
   final String? semanticsLabel;
-  final double minWidth;
+
+  /// A glyph before the word — the robot on the automatic riders.
+  final IconData? icon;
 
   /// Still a comfortable target, six points shorter.
   final bool compact;
@@ -617,22 +611,38 @@ class _Chip extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: minWidth,
-              minHeight: compact ? 32 : 36,
-            ),
+            constraints: BoxConstraints(minHeight: compact ? 32 : 36),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 14,
+                horizontal: icon == null ? 14 : 10,
                 vertical: compact ? 5 : 7,
               ),
               child: Center(
                 widthFactor: 1,
-                child: Text(
-                  label,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: selected ? Colors.white : colors.textPrimary,
-                    fontWeight: FontWeight.w700,
+                // Scaled down rather than folded: a chip a third of a
+                // narrow phone wide must still say "3 cavaliers" whole.
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (icon != null) ...[
+                        Icon(
+                          icon,
+                          size: 18,
+                          color: selected ? Colors.white : colors.primary,
+                        ),
+                        const SizedBox(width: 5),
+                      ],
+                      Text(
+                        label,
+                        maxLines: 1,
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: selected ? Colors.white : colors.textPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

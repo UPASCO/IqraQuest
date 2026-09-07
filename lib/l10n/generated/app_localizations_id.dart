@@ -1025,17 +1025,27 @@ class AppLocalizationsId extends AppLocalizations {
   String get setupWhoPlays => 'Siapa yang bermain?';
 
   @override
-  String get soloTileCaption => 'lawan komputer';
+  String get computerStrengthLabel => 'Kekuatan lawan';
 
   @override
-  String get computerStrengthLabel => 'Kekuatan komputer';
+  String get strengthLabelShort => 'Kekuatan';
 
   @override
-  String get setupComputer => 'Komputer';
+  String get autoRidersNote => 'Penunggang otomatis';
+
+  @override
+  String autoRidersCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count penunggang',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get questionLevelNote =>
-      'Tingkat pertanyaan dipilih setelah ini, untuk setiap pemain.';
+      'Level soal: di langkah berikutnya, per pemain.';
 
   @override
   String get setupRaceLength => 'Lama permainan';

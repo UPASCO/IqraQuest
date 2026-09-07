@@ -1380,21 +1380,30 @@
   "@setupWhoPlays": {
     "description": "Eyebrow over the four player-count tiles"
   },
-  "soloTileCaption": "vs computer",
-  "@soloTileCaption": {
-    "description": "Caption under the '1' player tile: one human against the computer"
-  },
-  "computerStrengthLabel": "Computer strength",
+  "computerStrengthLabel": "Opponents' strength",
   "@computerStrengthLabel": {
-    "description": "Label before the computer's difficulty chips. Deliberately NOT the word 'level': the question level is a different choice, on the next screen, and a tester who read this row as the question difficulty stopped looking there"
+    "description": "Label before the automatic riders' strength chips, in the roomy layout. Deliberately NOT the word 'level': the question level is a different choice, on the next screen"
   },
-  "setupComputer": "The computer",
-  "@setupComputer": {
-    "description": "Eyebrow over the computer's two chip rows on the setup screen"
+  "strengthLabelShort": "Strength",
+  "@strengthLabelShort": {
+    "description": "The same label in one word, inline before the chips on a phone"
   },
-  "questionLevelNote": "The question level is chosen next, for each player.",
+  "autoRidersNote": "Automatic riders",
+  "@autoRidersNote": {
+    "description": "Note beside the 'Opponents' eyebrow: these riders are played by the app"
+  },
+  "autoRidersCount": "{count, plural, one{{count} rider} other{{count} riders}}",
+  "@autoRidersCount": {
+    "description": "Chip: how many automatic riders the solo player races against",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "questionLevelNote": "Question level: next step, per player.",
   "@questionLevelNote": {
-    "description": "One line on the setup screen pointing at the per-rider question level, which is chosen on the next screen"
+    "description": "Short note beside the 'Who is playing?' eyebrow: the per-rider question level is chosen on the next screen. Kept short: it shares its row with the eyebrow"
   },
   "setupRaceLength": "Race length",
   "@setupRaceLength": {

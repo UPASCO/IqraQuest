@@ -1786,28 +1786,34 @@ abstract class AppLocalizations {
   /// **'Who is playing?'**
   String get setupWhoPlays;
 
-  /// Caption under the '1' player tile: one human against the computer
+  /// Label before the automatic riders' strength chips, in the roomy layout. Deliberately NOT the word 'level': the question level is a different choice, on the next screen
   ///
   /// In en, this message translates to:
-  /// **'vs computer'**
-  String get soloTileCaption;
-
-  /// Label before the computer's difficulty chips. Deliberately NOT the word 'level': the question level is a different choice, on the next screen, and a tester who read this row as the question difficulty stopped looking there
-  ///
-  /// In en, this message translates to:
-  /// **'Computer strength'**
+  /// **'Opponents\' strength'**
   String get computerStrengthLabel;
 
-  /// Eyebrow over the computer's two chip rows on the setup screen
+  /// The same label in one word, inline before the chips on a phone
   ///
   /// In en, this message translates to:
-  /// **'The computer'**
-  String get setupComputer;
+  /// **'Strength'**
+  String get strengthLabelShort;
 
-  /// One line on the setup screen pointing at the per-rider question level, which is chosen on the next screen
+  /// Note beside the 'Opponents' eyebrow: these riders are played by the app
   ///
   /// In en, this message translates to:
-  /// **'The question level is chosen next, for each player.'**
+  /// **'Automatic riders'**
+  String get autoRidersNote;
+
+  /// Chip: how many automatic riders the solo player races against
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} rider} other{{count} riders}}'**
+  String autoRidersCount(num count);
+
+  /// Short note beside the 'Who is playing?' eyebrow: the per-rider question level is chosen on the next screen. Kept short: it shares its row with the eyebrow
+  ///
+  /// In en, this message translates to:
+  /// **'Question level: next step, per player.'**
   String get questionLevelNote;
 
   /// Eyebrow over the three race-length tiles

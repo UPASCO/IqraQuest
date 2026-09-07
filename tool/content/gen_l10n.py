@@ -2297,36 +2297,52 @@ s("setupWhoPlays", "Eyebrow over the four player-count tiles",
   pt="Quem joga?", de="Wer spielt?", tr="Kim oynuyor?", id="Siapa yang bermain?",
   ur="کون کھیل رہا ہے؟", ms="Siapa yang bermain?", it="Chi gioca?", nl="Wie speelt er?")
 
-s("soloTileCaption", "Caption under the '1' player tile: one human against the computer",
-  fr="contre l'ordi", en="vs computer", ar="ضد الحاسوب", es="contra la máquina",
-  pt="contra o computador", de="gegen den Computer", tr="bilgisayara karşı",
-  id="lawan komputer", ur="کمپیوٹر کے خلاف", ms="lawan komputer",
-  it="contro il computer", nl="tegen de computer")
 
-s("computerStrengthLabel", "Label before the computer's difficulty chips. Deliberately NOT the word 'level': the question level is a different choice, on the next screen, and a tester who read this row as the question difficulty stopped looking there",
-  fr="Force de l'ordi", en="Computer strength", ar="قوّة الحاسوب",
-  es="Fuerza de la máquina", pt="Força do computador", de="Spielstärke des Computers",
-  tr="Bilgisayarın gücü", id="Kekuatan komputer", ur="کمپیوٹر کی طاقت",
-  ms="Kekuatan komputer", it="Forza del computer", nl="Sterkte van de computer")
+s("computerStrengthLabel", "Label before the automatic riders' strength chips, in the roomy layout. Deliberately NOT the word 'level': the question level is a different choice, on the next screen",
+  fr="Force des adversaires", en="Opponents' strength", ar="قوّة الخصوم",
+  es="Fuerza de los rivales", pt="Força dos adversários", de="Stärke der Gegner",
+  tr="Rakiplerin gücü", id="Kekuatan lawan", ur="حریفوں کی طاقت",
+  ms="Kekuatan lawan", it="Forza degli avversari", nl="Sterkte van de tegenstanders")
 
-s("setupComputer", "Eyebrow over the computer's two chip rows on the setup screen",
-  fr="L'ordinateur", en="The computer", ar="الحاسوب", es="La máquina",
-  pt="O computador", de="Der Computer", tr="Bilgisayar", id="Komputer",
-  ur="کمپیوٹر", ms="Komputer", it="Il computer", nl="De computer")
+s("strengthLabelShort", "The same label in one word, inline before the chips on a phone",
+  fr="Force", en="Strength", ar="القوّة", es="Fuerza", pt="Força", de="Stärke",
+  tr="Güç", id="Kekuatan", ur="طاقت", ms="Kekuatan", it="Forza", nl="Sterkte")
 
-s("questionLevelNote", "One line on the setup screen pointing at the per-rider question level, which is chosen on the next screen",
-  fr="Le niveau des questions se choisit juste après, pour chaque joueur.",
-  en="The question level is chosen next, for each player.",
-  ar="يُختار مستوى الأسئلة في الشاشة التالية، لكلّ لاعب.",
-  es="El nivel de las preguntas se elige después, para cada jugador.",
-  pt="O nível das perguntas escolhe-se a seguir, para cada jogador.",
-  de="Die Fragenstufe wird gleich danach für jeden Spieler gewählt.",
-  tr="Soru seviyesi hemen sonra, her oyuncu için seçilir.",
-  id="Tingkat pertanyaan dipilih setelah ini, untuk setiap pemain.",
-  ur="سوالات کی سطح اگلی اسکرین پر ہر کھلاڑی کے لیے چنی جاتی ہے۔",
-  ms="Tahap soalan dipilih selepas ini, untuk setiap pemain.",
-  it="Il livello delle domande si sceglie subito dopo, per ogni giocatore.",
-  nl="Het vraagniveau kies je hierna, voor elke speler.")
+s("autoRidersNote", "Note beside the 'Opponents' eyebrow: these riders are played by the app",
+  fr="Cavaliers automatiques", en="Automatic riders", ar="فرسان آليون",
+  es="Jinetes automáticos", pt="Cavaleiros automáticos", de="Automatische Reiter",
+  tr="Otomatik biniciler", id="Penunggang otomatis", ur="خودکار سوار",
+  ms="Penunggang automatik", it="Cavalieri automatici", nl="Automatische ruiters")
+
+s("autoRidersCount", "Chip: how many automatic riders the solo player races against",
+  ph={"count": "num"},
+  fr="{count, plural, one{{count} cavalier} other{{count} cavaliers}}",
+  en="{count, plural, one{{count} rider} other{{count} riders}}",
+  ar="{count, plural, one{فارس واحد} two{فارسان} other{{count} فرسان}}",
+  es="{count, plural, one{{count} jinete} other{{count} jinetes}}",
+  pt="{count, plural, one{{count} cavaleiro} other{{count} cavaleiros}}",
+  de="{count, plural, one{{count} Reiter} other{{count} Reiter}}",
+  tr="{count, plural, other{{count} binici}}",
+  id="{count, plural, other{{count} penunggang}}",
+  ur="{count, plural, one{{count} سوار} other{{count} سوار}}",
+  ms="{count, plural, other{{count} penunggang}}",
+  it="{count, plural, one{{count} cavaliere} other{{count} cavalieri}}",
+  nl="{count, plural, one{{count} ruiter} other{{count} ruiters}}")
+
+
+s("questionLevelNote", "Short note beside the 'Who is playing?' eyebrow: the per-rider question level is chosen on the next screen. Kept short: it shares its row with the eyebrow",
+  fr="Niveau des questions : étape suivante, par joueur.",
+  en="Question level: next step, per player.",
+  ar="مستوى الأسئلة: في الخطوة التالية، لكلّ لاعب.",
+  es="Nivel de preguntas: en el paso siguiente, por jugador.",
+  pt="Nível das perguntas: no passo seguinte, por jogador.",
+  de="Fragenstufe: im nächsten Schritt, pro Spieler.",
+  tr="Soru seviyesi: sonraki adımda, oyuncu başına.",
+  id="Level soal: di langkah berikutnya, per pemain.",
+  ur="سوالات کی سطح: اگلے مرحلے میں، ہر کھلاڑی کے لیے۔",
+  ms="Tahap soalan: di langkah seterusnya, bagi setiap pemain.",
+  it="Livello domande: al passo successivo, per giocatore.",
+  nl="Vraagniveau: in de volgende stap, per speler.")
 
 s("setupRaceLength", "Eyebrow over the three race-length tiles",
   fr="Durée de la partie", en="Race length", ar="مدة اللعبة",

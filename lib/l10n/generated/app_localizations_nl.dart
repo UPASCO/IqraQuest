@@ -1029,17 +1029,28 @@ class AppLocalizationsNl extends AppLocalizations {
   String get setupWhoPlays => 'Wie speelt er?';
 
   @override
-  String get soloTileCaption => 'tegen de computer';
+  String get computerStrengthLabel => 'Sterkte van de tegenstanders';
 
   @override
-  String get computerStrengthLabel => 'Sterkte van de computer';
+  String get strengthLabelShort => 'Sterkte';
 
   @override
-  String get setupComputer => 'De computer';
+  String get autoRidersNote => 'Automatische ruiters';
+
+  @override
+  String autoRidersCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ruiters',
+      one: '$count ruiter',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get questionLevelNote =>
-      'Het vraagniveau kies je hierna, voor elke speler.';
+      'Vraagniveau: in de volgende stap, per speler.';
 
   @override
   String get setupRaceLength => 'Speelduur';
