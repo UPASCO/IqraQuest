@@ -2167,17 +2167,22 @@ def extra_language_content(lang):
     if missing:
         print(f"{lang}: {len(tr)}/{len(Q)} translated, {len(missing)} missing (first: {missing[:3]}) — not written")
         return None
+    # A language is all or nothing: complete details, or none at all —
+    # and then the sheet shows the explanation and its source, which is
+    # a clean fallback. Half a language is the one state that must never
+    # ship, because "Learn more" would pay off at random.
     details = load_details(lang)
-    en_expl = load_translations(lang)
-    problems = check_details(lang, details, lambda q: tr[q["id"]][2])
-    if problems:
-        head = "\n  ".join(problems[:12])
-        msg = f"{lang}: {len(problems)} detail problem(s):\n  {head}"
-        if DETAILS_OPTIONAL:
-            print(msg)
-        else:
-            raise AssertionError(msg)
-    del en_expl
+    if not details:
+        print(f"{lang}: no details yet — the sheet falls back to the explanation")
+    else:
+        problems = check_details(lang, details, lambda q: tr[q["id"]][2])
+        if problems:
+            head = "\n  ".join(problems[:12])
+            msg = f"{lang}: {len(problems)} detail problem(s):\n  {head}"
+            if DETAILS_OPTIONAL:
+                print(msg)
+            else:
+                raise AssertionError(msg)
     out = []
     for q in Q:
         question, answers, explanation = tr[q["id"]]

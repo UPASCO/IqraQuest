@@ -58,7 +58,7 @@ class Question {
   /// that quote the source, set it in context and say what is taken
   /// from it — beyond the one-line [explanation]. Empty for a language
   /// whose details are not written yet; the sheet then shows nothing
-  /// extra rather than a placeholder.
+  /// extra rather than an empty section.
   final String detail;
 
   final SourceType sourceType;

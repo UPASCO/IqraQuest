@@ -76,6 +76,9 @@ store/                apple/, google/ submission metadata
 tool/
   pre_release_check.dart   the spec's release gate (see below)
   content/gen_questions.py the question bank's single source of truth
+  content/details/         the "learn more" paragraph of every question,
+                            one folder per language (BRIEF.md is the
+                            standard; check_details.py checks one file)
 test/
   features/game/           GameEngine unit tests
   content/                 question bank integrity tests

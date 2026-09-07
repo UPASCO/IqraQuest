@@ -241,6 +241,13 @@ questions are free (13 first-steps / 13 easy / 12 medium / 12 hard); the
 other 1,050 are behind the Premium unlock. The bank draws on **786 unique
 `(sourceWork, sourceReference)` pairs**.
 
+Every question also carries the "learn more" detail of §11 in the three
+languages the bank is authored in — **3,300 paragraphs**, each checked
+by the generator for its citation, its length and the absence of any
+hedging. The other nine languages carry no detail yet, and the sheet
+there shows the explanation and its source alone: a language is
+complete or absent, never half.
+
 The sourcing discipline was not relaxed to get there: rule §1 above ("at
 the slightest doubt, reject the question") was applied to every entry,
 and the translations are of the *wording* only — the facts, references
