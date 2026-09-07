@@ -190,6 +190,40 @@ can see them together) and then:
 Re-run it after any content edit — never hand-edit the generated JSON/CSV
 files directly, or the registry and the shipped content will drift apart.
 
+## 11. The "learn more" detail
+
+Every question carries, in every language, a **detail** — the paragraph
+behind the "Learn more" button. The card's one-line explanation and the
+source are already read at the feedback beat; the detail exists to add
+what they could not, and it is held to the same rules as the question
+it belongs to:
+
+1. **It quotes the cited source itself** — the verse with its number,
+   the hadith with its number (and its narrator only when certain) — and
+   the generator checks that the reference number appears in the text.
+2. **Its context comes from the same source or the Qur'an only**: the
+   story around the verse, what precedes or follows, who is speaking.
+   No second reference the question does not cite, no date or figure
+   that differs between biographies, no place or person the source
+   leaves unnamed.
+3. **It states nothing contested.** No positions of schools of law, no
+   matters scholars differ on, no commentator's reading presented as
+   fact. Hedging wordings ("some scholars", "it is said", "probably",
+   "scholars differ") are rejected by the generator, because a sentence
+   that needs one is a sentence the policy does not admit.
+4. **It goes beyond the explanation** — three to five sentences, 45 to
+   90 words in English — and ends with what a Muslim takes from it,
+   without turning it into a ruling.
+
+The details live in `tool/content/details/<lang>/*.py` (`D = {id:
+text}`), written in English against `tool/content/details/BRIEF.md`,
+then translated entry by entry into the other eleven languages.
+`check_details` in the generator (and `tool/content/check_details.py`
+for one file) rejects a detail that is missing, too short or too long,
+that does not cite its reference, that repeats the explanation or that
+hedges; `tool/pre_release_check.dart` refuses a release in which any
+language lacks a detail on any question.
+
 ## 10. Honest scope of the v1 bank
 
 The bank ships **1,100 canonical questions**, each written and reviewed one

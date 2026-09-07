@@ -1850,6 +1850,7 @@ def validate():
             assert all(a.strip() for a in content["answers"]), q["id"]
         assert q["sourceReference"].strip(), q["id"]
     check_near_duplicates()
+    validate_details()
     print("Total questions:", len(Q))
     print("By category:", counts)
     print("By difficulty:", diffs)
@@ -2042,6 +2043,117 @@ def load_translations(lang):
     return merged
 
 
+# ---------------------------------------------------------------------
+# The "learn more" detail — one paragraph per question and language
+# ---------------------------------------------------------------------
+#
+# The feedback beat shows a one-line explanation; the details sheet
+# behind "Learn more" used to show the same line again, so it added
+# nothing. Every question now carries a detail: three to five sentences
+# that quote the cited source, set it in its context and say what a
+# Muslim takes from it — and nothing the cited source (or the Qur'an)
+# does not state itself. CONTENT_SOURCE_POLICY.md §11.
+#
+# The details live in tool/content/details/<lang>/*.py as `D = {id:
+# text}`, one folder per language, so that they can be written and
+# translated in batches without touching the bank modules.
+
+# Set while the details are still being written, so the generator can
+# run for the rest of the bank; the release gate is strict regardless.
+DETAILS_OPTIONAL = os.environ.get("IQ_DETAILS_OPTIONAL") == "1"
+
+DETAIL_MIN_CHARS = {"ar": 160, "ur": 160}
+DETAIL_MIN_DEFAULT = 220
+DETAIL_MAX_CHARS = 900
+
+# Wordings that mark a claim as contested or hearsay. A detail that
+# needs one of these is a detail that should not be written: the policy
+# admits only what the cited source states plainly.
+HEDGES = {
+    "fr": ["selon certains", "on dit que", "certains savants", "les savants divergent",
+           "probablement", "peut-être", "on raconte", "controvers", "il semblerait"],
+    "en": ["some scholars", "it is said", "scholars differ", "probably", "perhaps",
+           "allegedly", "controvers", "it seems", "some say"],
+    "ar": ["قيل إن", "بعض العلماء", "اختلف العلماء", "ربما", "يُقال", "على الأرجح", "خلاف"],
+}
+
+
+def load_details(lang):
+    here = os.path.dirname(os.path.abspath(__file__))
+    merged = {}
+    folder = os.path.join(here, "details", lang)
+    if not os.path.isdir(folder):
+        return merged
+    for name in sorted(os.listdir(folder)):
+        if not name.endswith(".py") or name.startswith("__"):
+            continue
+        path = os.path.join(folder, name)
+        ns = {}
+        with open(path, encoding="utf-8") as f:
+            exec(compile(f.read(), path, "exec"), ns)
+        for key in ns["D"]:
+            assert key not in merged, f"{lang}: detail for {key} written twice ({name})"
+        merged.update(ns["D"])
+    return merged
+
+
+def _reference_tokens(q):
+    """The numbers a detail must cite for its anchoring to be checkable:
+    the first verse reference of a Qur'anic source, or the hadith
+    number. A descriptive reference ("well-established …") has none."""
+    ref = q["sourceReference"].strip()
+    if q["sourceType"] == "quran" and ref[:1].isdigit():
+        first = ref.split(";")[0].strip()
+        return [first.split("-")[0].strip()]
+    if q["sourceType"] in ("hadithBukhari", "hadithMuslim"):
+        digits = "".join(ch if ch.isdigit() else " " for ch in ref).split()
+        return digits[:1]
+    return []
+
+
+def check_details(lang, details, explanation_of):
+    """Every question has a detail of a sensible length that cites its
+    source, goes beyond the explanation and hedges nothing. Returns the
+    list of problems rather than failing on the first: a batch is fixed
+    as a batch."""
+    problems = []
+    lo = DETAIL_MIN_CHARS.get(lang, DETAIL_MIN_DEFAULT)
+    for q in Q:
+        text = details.get(q["id"])
+        if text is None:
+            problems.append(f'{q["id"]}: missing')
+            continue
+        text = text.strip()
+        if len(text) < lo:
+            problems.append(f'{q["id"]}: too short ({len(text)} chars)')
+        if len(text) > DETAIL_MAX_CHARS:
+            problems.append(f'{q["id"]}: too long ({len(text)} chars)')
+        expl = explanation_of(q).strip()
+        if expl and expl in text and len(text) < len(expl) + 120:
+            problems.append(f'{q["id"]}: repeats the explanation')
+        for token in _reference_tokens(q):
+            if token not in text:
+                problems.append(f'{q["id"]}: does not cite {token}')
+        low = text.lower()
+        for hedge in HEDGES.get(lang, []):
+            if hedge in low:
+                problems.append(f'{q["id"]}: hedge "{hedge}"')
+    return problems
+
+
+def validate_details():
+    for lang in ("fr", "en", "ar"):
+        details = load_details(lang)
+        problems = check_details(lang, details, lambda q: q[lang]["explanation"])
+        if problems:
+            head = "\n  ".join(problems[:12])
+            msg = f"{lang}: {len(problems)} detail problem(s):\n  {head}"
+            if DETAILS_OPTIONAL:
+                print(msg)
+            else:
+                raise AssertionError(msg)
+
+
 def extra_language_content(lang):
     """The per-language file for one extra language, or None (with a
     note) while its translation is still incomplete."""
@@ -2050,6 +2162,17 @@ def extra_language_content(lang):
     if missing:
         print(f"{lang}: {len(tr)}/{len(Q)} translated, {len(missing)} missing (first: {missing[:3]}) — not written")
         return None
+    details = load_details(lang)
+    en_expl = load_translations(lang)
+    problems = check_details(lang, details, lambda q: tr[q["id"]][2])
+    if problems:
+        head = "\n  ".join(problems[:12])
+        msg = f"{lang}: {len(problems)} detail problem(s):\n  {head}"
+        if DETAILS_OPTIONAL:
+            print(msg)
+        else:
+            raise AssertionError(msg)
+    del en_expl
     out = []
     for q in Q:
         question, answers, explanation = tr[q["id"]]
@@ -2058,6 +2181,7 @@ def extra_language_content(lang):
         out.append(dict(
             id=q["id"], correctAnswerIndex=q["en"]["correctAnswerIndex"],
             question=question, answers=list(answers), explanation=explanation,
+            detail=details.get(q["id"], "").strip(),
             sourceDisplay=source_display(lang, q),
         ))
     return out
@@ -2076,6 +2200,7 @@ def write_output():
 
     card_values = assign_card_values(Q)
     free_ids = select_free_ids(Q, card_values)
+    details = {lang: load_details(lang) for lang in ("fr", "en", "ar")}
 
     for q in Q:
         master.append(dict(
@@ -2092,6 +2217,7 @@ def write_output():
                 "question": q[lang]["question"],
                 "answers": q[lang]["answers"],
                 "explanation": q[lang]["explanation"],
+                "detail": details[lang].get(q["id"], "").strip(),
                 "sourceDisplay": q[lang]["sourceDisplay"],
             })
             per_lang[lang].append(content)

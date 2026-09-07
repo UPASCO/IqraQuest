@@ -574,6 +574,12 @@ abstract class AppLocalizations {
   /// **'Explanation'**
   String get explanationLabel;
 
+  /// Details sheet section header: the longer lesson behind the card, beyond the one-line explanation
+  ///
+  /// In en, this message translates to:
+  /// **'In detail'**
+  String get detailLabel;
+
   /// Question card section header
   ///
   /// In en, this message translates to:

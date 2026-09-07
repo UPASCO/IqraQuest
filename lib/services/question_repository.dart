@@ -50,6 +50,7 @@ class QuestionRepository {
           'answers': c['answers'],
           'correctAnswerIndex': c['correctAnswerIndex'],
           'explanation': c['explanation'],
+          'detail': c['detail'] ?? '',
           'sourceDisplay': c['sourceDisplay'],
         }),
       );

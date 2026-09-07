@@ -270,6 +270,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get explanationLabel => 'Explanation';
 
   @override
+  String get detailLabel => 'In detail';
+
+  @override
   String get sourceLabel => 'Source';
 
   @override

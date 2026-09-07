@@ -265,6 +265,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get explanationLabel => 'Açıklama';
 
   @override
+  String get detailLabel => 'Ayrıntılı';
+
+  @override
   String get sourceLabel => 'Kaynak';
 
   @override

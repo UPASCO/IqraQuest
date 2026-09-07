@@ -25,6 +25,12 @@ final question = Question(
   correctAnswerIndex: 0,
   explanation:
       'Le Prophète ﷺ a dit : « L\'islam est bâti sur cinq piliers. »',
+  detail:
+      'Le hadith est rapporté par Ibn \'Umar dans Sahih al-Bukhari 8 : '
+      '« L\'islam est bâti sur cinq : l\'attestation qu\'il n\'y a de dieu '
+      'qu\'Allah et que Muhammad est le Messager d\'Allah, l\'accomplissement '
+      'de la prière, le versement de la zakât, le pèlerinage et le jeûne '
+      'de Ramadan. »',
   sourceType: SourceType.hadithBukhari,
   sourceWork: 'Sahih al-Bukhari',
   sourceReference: '8',
@@ -91,6 +97,12 @@ void main() {
           of: sheet,
           matching: find.text(question.sourceDisplay),
         ),
+        findsOneWidget,
+      );
+      // The sheet's own contribution: the lesson beyond the one-liner.
+      expect(find.text(fr.detailLabel.toUpperCase()), findsOneWidget);
+      expect(
+        find.descendant(of: sheet, matching: find.byKey(const Key('question-detail'))),
         findsOneWidget,
       );
 

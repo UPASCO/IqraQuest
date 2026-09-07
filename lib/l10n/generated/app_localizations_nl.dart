@@ -269,6 +269,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get explanationLabel => 'Uitleg';
 
   @override
+  String get detailLabel => 'In detail';
+
+  @override
   String get sourceLabel => 'Bron';
 
   @override

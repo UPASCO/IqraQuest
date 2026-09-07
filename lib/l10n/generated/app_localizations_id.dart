@@ -269,6 +269,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get explanationLabel => 'Penjelasan';
 
   @override
+  String get detailLabel => 'Lebih rinci';
+
+  @override
   String get sourceLabel => 'Sumber';
 
   @override

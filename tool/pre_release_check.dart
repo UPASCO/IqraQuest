@@ -137,6 +137,19 @@ void main() {
         content.length == targetQuestionCount,
         detail: 'found ${content.length}',
       );
+      // The details sheet earns its tap only if every card has a
+      // lesson behind it, in this language, that says more than the
+      // one-line explanation.
+      final minDetail = (lang == 'ar' || lang == 'ur') ? 160 : 220;
+      final thin = content
+          .where((q) => ((q['detail'] as String?) ?? '').trim().length < minDetail)
+          .map((q) => q['id'])
+          .toList();
+      check(
+        '$lang: every question has a "learn more" detail',
+        thin.isEmpty,
+        detail: '${thin.length} missing or thin (first: ${thin.take(3).join(', ')})',
+      );
     }
     final totalLinguisticContent = targetLanguages
         .map((lang) => File('${root.path}/assets/data/questions/$lang/questions.json'))

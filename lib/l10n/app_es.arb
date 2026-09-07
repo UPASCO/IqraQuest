@@ -76,6 +76,7 @@
   "theQuestionLabel": "La pregunta",
   "theAnswerLabel": "La respuesta correcta",
   "explanationLabel": "Explicación",
+  "detailLabel": "En detalle",
   "sourceLabel": "Fuente",
   "nextPlayer": "Siguiente jugador",
   "rolledSix": "¡Un seis! Otro turno — nueva pregunta.",

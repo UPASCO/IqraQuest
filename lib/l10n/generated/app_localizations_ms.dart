@@ -269,6 +269,9 @@ class AppLocalizationsMs extends AppLocalizations {
   String get explanationLabel => 'Penjelasan';
 
   @override
+  String get detailLabel => 'Lebih lanjut';
+
+  @override
   String get sourceLabel => 'Sumber';
 
   @override

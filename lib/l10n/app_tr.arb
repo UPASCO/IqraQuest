@@ -76,6 +76,7 @@
   "theQuestionLabel": "Soru",
   "theAnswerLabel": "Doğru cevap",
   "explanationLabel": "Açıklama",
+  "detailLabel": "Ayrıntılı",
   "sourceLabel": "Kaynak",
   "nextPlayer": "Sonraki Oyuncu",
   "rolledSix": "Altı geldi! Yeni tur — yeni soru.",

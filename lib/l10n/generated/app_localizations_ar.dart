@@ -271,6 +271,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get explanationLabel => 'التوضيح';
 
   @override
+  String get detailLabel => 'بالتفصيل';
+
+  @override
   String get sourceLabel => 'المصدر';
 
   @override

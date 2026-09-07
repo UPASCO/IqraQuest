@@ -273,6 +273,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get explanationLabel => 'Spiegazione';
 
   @override
+  String get detailLabel => 'Nel dettaglio';
+
+  @override
   String get sourceLabel => 'Fonte';
 
   @override

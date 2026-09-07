@@ -332,6 +332,10 @@
   "@explanationLabel": {
     "description": "Question card section header"
   },
+  "detailLabel": "In detail",
+  "@detailLabel": {
+    "description": "Details sheet section header: the longer lesson behind the card, beyond the one-line explanation"
+  },
   "sourceLabel": "Source",
   "@sourceLabel": {
     "description": "Question card section header"

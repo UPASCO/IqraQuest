@@ -197,6 +197,23 @@ class QuestionDetailsSheet extends StatelessWidget {
                         ),
                         const SizedBox(height: 18),
 
+                        // What the sheet is for: the explanation was
+                        // already read on the card, so the sheet earns
+                        // its tap here — the source quoted, its context,
+                        // and what is taken from it.
+                        if (question.detail.trim().isNotEmpty) ...[
+                          label(l10n.detailLabel),
+                          Text(
+                            question.detail,
+                            key: const Key('question-detail'),
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: _ink,
+                              height: 1.5,
+                            ),
+                          ),
+                          const SizedBox(height: 18),
+                        ],
+
                         label(l10n.sourceLabel),
                         Container(
                           padding: const EdgeInsets.symmetric(

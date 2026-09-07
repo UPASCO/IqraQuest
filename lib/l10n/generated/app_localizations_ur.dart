@@ -270,6 +270,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get explanationLabel => 'وضاحت';
 
   @override
+  String get detailLabel => 'تفصیل سے';
+
+  @override
   String get sourceLabel => 'ماخذ';
 
   @override

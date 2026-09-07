@@ -24,6 +24,7 @@ class Question {
     required this.answers,
     required this.correctAnswerIndex,
     required this.explanation,
+    this.detail = '',
     required this.sourceType,
     required this.sourceWork,
     required this.sourceReference,
@@ -52,6 +53,13 @@ class Question {
   final List<String> answers;
   final int correctAnswerIndex;
   final String explanation;
+
+  /// The lesson behind the card, for the details sheet: a few sentences
+  /// that quote the source, set it in context and say what is taken
+  /// from it — beyond the one-line [explanation]. Empty for a language
+  /// whose details are not written yet; the sheet then shows nothing
+  /// extra rather than a placeholder.
+  final String detail;
 
   final SourceType sourceType;
   final String sourceWork;
@@ -88,6 +96,7 @@ class Question {
       answers: [for (final i in order) answers[i]],
       correctAnswerIndex: order.indexOf(correctAnswerIndex),
       explanation: explanation,
+      detail: detail,
       sourceType: sourceType,
       sourceWork: sourceWork,
       sourceReference: sourceReference,
@@ -109,6 +118,7 @@ class Question {
       answers: List<String>.from(json['answers'] as List),
       correctAnswerIndex: json['correctAnswerIndex'] as int,
       explanation: json['explanation'] as String,
+      detail: json['detail'] as String? ?? '',
       sourceType: SourceType.values.byName(json['sourceType'] as String),
       sourceWork: json['sourceWork'] as String,
       sourceReference: json['sourceReference'] as String,
@@ -131,6 +141,7 @@ class Question {
     'answers': answers,
     'correctAnswerIndex': correctAnswerIndex,
     'explanation': explanation,
+    'detail': detail,
     'sourceType': sourceType.name,
     'sourceWork': sourceWork,
     'sourceReference': sourceReference,

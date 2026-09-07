@@ -566,6 +566,11 @@ s("explanationLabel", "Question card section header",
   pt="Explicação", de="Erklärung", tr="Açıklama", id="Penjelasan", ur="وضاحت",
   ms="Penjelasan", it="Spiegazione", nl="Uitleg")
 
+s("detailLabel", "Details sheet section header: the longer lesson behind the card, beyond the one-line explanation",
+  fr="En détail", en="In detail", ar="بالتفصيل", es="En detalle", pt="Em detalhe",
+  de="Im Detail", tr="Ayrıntılı", id="Lebih rinci", ur="تفصیل سے", ms="Lebih lanjut",
+  it="Nel dettaglio", nl="In detail")
+
 s("sourceLabel", "Question card section header",
   fr="Source", en="Source", ar="المصدر", es="Fuente", pt="Fonte", de="Quelle",
   tr="Kaynak", id="Sumber", ur="ماخذ", ms="Sumber", it="Fonte", nl="Bron")
