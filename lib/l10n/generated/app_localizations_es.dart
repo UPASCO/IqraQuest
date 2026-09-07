@@ -1099,4 +1099,69 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Experto: las preguntas más precisas, con versículos y hadices.';
+
+  @override
+  String get saveGame => 'Guardar partida';
+
+  @override
+  String get saveGameHint => 'Ponle un nombre para encontrarla después';
+
+  @override
+  String get saveGameNameLabel => 'Nombre de la partida';
+
+  @override
+  String get saveAction => 'Guardar';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Partida guardada: $name';
+  }
+
+  @override
+  String get loadGame => 'Cargar una partida';
+
+  @override
+  String get loadGameAction => 'Cargar';
+
+  @override
+  String get noSavedGames => 'Todavía no hay partidas guardadas.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Durante una partida, abre el menú ≡ del tablero y elige «Guardar partida».';
+
+  @override
+  String get deleteSave => 'Eliminar esta partida guardada';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return '¿Eliminar «$name»? Esta partida guardada se perderá.';
+  }
+
+  @override
+  String get deleteAction => 'Eliminar';
+
+  @override
+  String get loadGameFailed => 'No se puede abrir esta partida guardada.';
+
+  @override
+  String get gameInProgressTitle => 'Hay una partida en curso';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Se reemplazará. ¿Quieres guardarla antes con un nombre?';
+
+  @override
+  String get replaceWithoutSaving => 'Reemplazar sin guardar';
+
+  @override
+  String get keepUnderName => 'Guardar con un nombre…';
+
+  @override
+  String savesFull(num count) {
+    return 'Ya tienes $count partidas guardadas: elimina una o reutiliza un nombre existente.';
+  }
+
+  @override
+  String get defaultSaveName => 'Mi partida';
 }

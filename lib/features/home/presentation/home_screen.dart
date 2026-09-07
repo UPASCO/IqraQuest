@@ -185,12 +185,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   // ---- The shelf: everything else, deliberately quiet ----
                   Row(
                     children: [
+                      // Lit, because it is the default: the golden button
+                      // above leads here too when no game is waiting, and
+                      // the shelf says so rather than showing four equal
+                      // doors to a child who has to guess which one.
                       _ShelfItem(
+                        key: const Key('shelf-solo'),
                         icon: Icons.person,
                         label: l10n.soloMode,
+                        highlighted: true,
                         onTap: () => context.push('/mode-selection', extra: 'solo'),
                       ),
                       _ShelfItem(
+                        key: const Key('shelf-family'),
                         icon: Icons.groups,
                         label: l10n.familyMode,
                         onTap: () => context.push('/mode-selection', extra: 'family'),
@@ -238,8 +245,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final pool = await ref.read(questionPoolProvider.future);
     final controller = ref.read(gameControllerProvider.notifier);
     controller.configure(pool: pool, isPremium: ref.read(premiumControllerProvider));
+    // go, not push: the board replaces the hub exactly as it does at the
+    // end of the setup flow, so every way onto the board leaves the same
+    // stack behind it and every way off it is the same "home".
     if (controller.loadSaved() && mounted) {
-      context.push('/game');
+      context.go('/game');
     }
   }
 }
@@ -451,14 +461,28 @@ class _RoundGlassButton extends StatelessWidget {
 }
 
 class _ShelfItem extends StatelessWidget {
-  const _ShelfItem({required this.icon, required this.label, required this.onTap});
+  const _ShelfItem({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.highlighted = false,
+  });
 
   final IconData icon;
   final String label;
   final VoidCallback onTap;
 
+  /// The default door: rimmed and lettered in the plate's gold, the way
+  /// a chosen tile is filled on the setup screen.
+  final bool highlighted;
+
+  /// The gold the highlighted tile is rimmed with; the test reads it.
+  static const Color highlightRim = Color(0xFFE3B354);
+
   @override
   Widget build(BuildContext context) {
+    final ink = highlighted ? const Color(0xFFF6D98E) : const Color(0xFFF6EFE0);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -467,16 +491,21 @@ class _ShelfItem extends StatelessWidget {
         // pale type on it disappears completely over the light half —
         // that is what made "Défi du jour" unreadable on device.
         child: Material(
-          color: const Color(0xE60B2A20),
-          borderRadius: BorderRadius.circular(16),
-          child: InkWell(
+          color: highlighted ? const Color(0xF2163D31) : const Color(0xE60B2A20),
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
+            side: highlighted
+                ? const BorderSide(color: highlightRim, width: 1.6)
+                : BorderSide.none,
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
             onTap: onTap,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
               child: Column(
                 children: [
-                  Icon(icon, size: 20, color: const Color(0xFFF6EFE0)),
+                  Icon(icon, size: 20, color: ink),
                   const SizedBox(height: 4),
                   // Scaled down rather than ellipsised: "Défi du jour"
                   // and its 11 translations must all stay readable.
@@ -485,7 +514,8 @@ class _ShelfItem extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       fontSize: 11,
                       height: 1.1,
-                      color: const Color(0xFFF6EFE0),
+                      fontWeight: highlighted ? FontWeight.w800 : null,
+                      color: ink,
                     ),
                   ),
                 ],

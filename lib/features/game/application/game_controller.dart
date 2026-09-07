@@ -252,11 +252,28 @@ class GameController extends StateNotifier<GameSession?> {
     return true;
   }
 
+  /// Rejoins the game the autosave holds — the one the home screen
+  /// offers to continue. False when there is nothing to rejoin.
   bool loadSaved() {
-    var saved = saveService.load();
-    if (saved == null || saved.turnPhase == TurnPhase.gameOver) return false;
+    final saved = saveService.load();
+    if (saved == null) return false;
+    return resumeFrom(
+      saved,
+      schema: saveService.savedSchemaVersion() ?? GameState.schemaVersion,
+    );
+  }
+
+  /// Takes over a stored game — the autosave, or one the table kept
+  /// under a name — and rejoins it at the nearest playable point. From
+  /// here on it is the current game: the autosave follows it.
+  ///
+  /// [schema] is the save format the state was written with; a save
+  /// from an earlier turn order is rejoined at the deck rather than at a
+  /// phase that meant something else then.
+  bool resumeFrom(GameState stored, {int schema = GameState.schemaVersion}) {
+    var saved = stored;
+    if (saved.turnPhase == TurnPhase.gameOver) return false;
     _cancelTimers();
-    final schema = saveService.savedSchemaVersion() ?? GameState.schemaVersion;
 
     // A save from the previous turn order (card → horse → question) at
     // a mid-turn phase means something else there than it does now: the

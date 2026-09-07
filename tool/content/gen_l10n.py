@@ -2464,6 +2464,176 @@ s("levelExpertHint", "One line under the level chips, explaining the expert leve
   it="Esperto: le domande più precise, con versetti e hadith.",
   nl="Expert: de preciezste vragen, met verzen en hadiths.")
 
+
+# ---- Named saves: keep a game under a name, load it from the setup screen ----
+s("saveGame", "Board menu: keep the current game under a name",
+  fr="Sauvegarder la partie", en="Save game", ar="حفظ اللعبة",
+  es="Guardar partida", pt="Salvar jogo", de="Spiel speichern",
+  tr="Oyunu Kaydet", id="Simpan Permainan", ur="کھیل محفوظ کریں",
+  ms="Simpan Permainan", it="Salva partita", nl="Spel opslaan")
+
+s("saveGameHint", "Board menu: why a game gets a name",
+  fr="Donne-lui un nom pour la retrouver plus tard",
+  en="Give it a name to find it again later",
+  ar="أعطها اسمًا لتجدها لاحقًا",
+  es="Ponle un nombre para encontrarla después",
+  pt="Dê um nome para encontrá-lo depois",
+  de="Gib ihm einen Namen, um es später wiederzufinden",
+  tr="Daha sonra bulmak için bir ad ver",
+  id="Beri nama agar mudah ditemukan nanti",
+  ur="بعد میں ڈھونڈنے کے لیے اسے ایک نام دیں",
+  ms="Beri nama supaya mudah dicari nanti",
+  it="Dalle un nome per ritrovarla dopo",
+  nl="Geef het een naam om het later terug te vinden")
+
+s("saveGameNameLabel", "Label of the text field in the save dialog",
+  fr="Nom de la partie", en="Game name", ar="اسم اللعبة",
+  es="Nombre de la partida", pt="Nome do jogo", de="Name des Spiels",
+  tr="Oyun adı", id="Nama permainan", ur="کھیل کا نام",
+  ms="Nama permainan", it="Nome della partita", nl="Naam van het spel")
+
+s("saveAction", "Confirm button of the save dialog",
+  fr="Sauvegarder", en="Save", ar="حفظ", es="Guardar", pt="Salvar",
+  de="Speichern", tr="Kaydet", id="Simpan", ur="محفوظ کریں", ms="Simpan",
+  it="Salva", nl="Opslaan")
+
+s("gameSavedAs", "Toast after a game was kept under a name",
+  ph={"name": "String"},
+  fr="Partie sauvegardée : {name}", en="Game saved: {name}",
+  ar="تم حفظ اللعبة: {name}", es="Partida guardada: {name}",
+  pt="Jogo salvo: {name}", de="Spiel gespeichert: {name}",
+  tr="Oyun kaydedildi: {name}", id="Permainan disimpan: {name}",
+  ur="کھیل محفوظ ہو گیا: {name}", ms="Permainan disimpan: {name}",
+  it="Partita salvata: {name}", nl="Spel opgeslagen: {name}")
+
+s("loadGame", "Title of the sheet listing the saved games",
+  fr="Charger une partie", en="Load a game", ar="تحميل لعبة",
+  es="Cargar una partida", pt="Carregar um jogo", de="Spiel laden",
+  tr="Oyun Yükle", id="Muat Permainan", ur="کھیل لوڈ کریں",
+  ms="Muat Permainan", it="Carica una partita", nl="Spel laden")
+
+s("loadGameAction", "Short app-bar button on the setup screen that opens the saved games",
+  fr="Charger", en="Load", ar="تحميل", es="Cargar", pt="Carregar",
+  de="Laden", tr="Yükle", id="Muat", ur="لوڈ کریں", ms="Muat",
+  it="Carica", nl="Laden")
+
+s("noSavedGames", "Empty state of the saved-games sheet",
+  fr="Aucune partie sauvegardée pour l'instant.", en="No saved games yet.",
+  ar="لا توجد ألعاب محفوظة بعد.", es="Todavía no hay partidas guardadas.",
+  pt="Ainda não há jogos salvos.", de="Noch keine gespeicherten Spiele.",
+  tr="Henüz kayıtlı oyun yok.", id="Belum ada permainan tersimpan.",
+  ur="ابھی تک کوئی محفوظ کھیل نہیں۔", ms="Belum ada permainan disimpan.",
+  it="Nessuna partita salvata per ora.", nl="Nog geen opgeslagen spellen.")
+
+s("noSavedGamesHint", "Empty state: where the save command lives",
+  fr="Pendant une partie, ouvre le menu ≡ du plateau et choisis « Sauvegarder la partie ».",
+  en="During a game, open the board's ≡ menu and choose “Save game”.",
+  ar="أثناء اللعب، افتح قائمة ≡ في اللوحة واختر «حفظ اللعبة».",
+  es="Durante una partida, abre el menú ≡ del tablero y elige «Guardar partida».",
+  pt="Durante um jogo, abra o menu ≡ do tabuleiro e escolha “Salvar jogo”.",
+  de="Öffne während eines Spiels das ≡-Menü des Bretts und wähle „Spiel speichern“.",
+  tr="Oyun sırasında tahtanın ≡ menüsünü açıp «Oyunu Kaydet»i seç.",
+  id="Saat bermain, buka menu ≡ papan lalu pilih “Simpan Permainan”.",
+  ur="کھیل کے دوران بورڈ کا ≡ مینو کھولیں اور «کھیل محفوظ کریں» چنیں۔",
+  ms="Semasa bermain, buka menu ≡ papan dan pilih “Simpan Permainan”.",
+  it="Durante una partita, apri il menu ≡ del tabellone e scegli «Salva partita».",
+  nl="Open tijdens een spel het ≡-menu van het bord en kies ‘Spel opslaan’.")
+
+s("deleteSave", "Tooltip of the delete button on a saved game",
+  fr="Supprimer cette sauvegarde", en="Delete this save", ar="حذف هذا الحفظ",
+  es="Eliminar esta partida guardada", pt="Excluir este jogo salvo",
+  de="Diesen Spielstand löschen", tr="Bu kaydı sil", id="Hapus simpanan ini",
+  ur="یہ محفوظ کھیل حذف کریں", ms="Padam simpanan ini",
+  it="Elimina questo salvataggio", nl="Dit opgeslagen spel verwijderen")
+
+s("deleteSaveConfirm", "Confirmation before deleting a saved game",
+  ph={"name": "String"},
+  fr="Supprimer « {name} » ? Cette partie sauvegardée sera perdue.",
+  en="Delete “{name}”? This saved game will be lost.",
+  ar="حذف «{name}»؟ ستفقد هذه اللعبة المحفوظة.",
+  es="¿Eliminar «{name}»? Esta partida guardada se perderá.",
+  pt="Excluir “{name}”? Este jogo salvo será perdido.",
+  de="„{name}“ löschen? Dieser Spielstand geht verloren.",
+  tr="«{name}» silinsin mi? Bu kayıtlı oyun kaybolacak.",
+  id="Hapus “{name}”? Permainan tersimpan ini akan hilang.",
+  ur="«{name}» حذف کریں؟ یہ محفوظ کھیل ضائع ہو جائے گا۔",
+  ms="Padam “{name}”? Permainan tersimpan ini akan hilang.",
+  it="Eliminare «{name}»? Questa partita salvata andrà persa.",
+  nl="‘{name}’ verwijderen? Dit opgeslagen spel gaat verloren.")
+
+s("deleteAction", "Confirm button of the delete dialog",
+  fr="Supprimer", en="Delete", ar="حذف", es="Eliminar", pt="Excluir",
+  de="Löschen", tr="Sil", id="Hapus", ur="حذف کریں", ms="Padam",
+  it="Elimina", nl="Verwijderen")
+
+s("loadGameFailed", "Toast when a saved game cannot be opened",
+  fr="Cette sauvegarde ne peut pas être ouverte.", en="This save cannot be opened.",
+  ar="تعذّر فتح هذا الحفظ.", es="No se puede abrir esta partida guardada.",
+  pt="Não foi possível abrir este jogo salvo.",
+  de="Dieser Spielstand kann nicht geöffnet werden.", tr="Bu kayıt açılamıyor.",
+  id="Simpanan ini tidak dapat dibuka.", ur="یہ محفوظ کھیل نہیں کھل سکتا۔",
+  ms="Simpanan ini tidak dapat dibuka.",
+  it="Questo salvataggio non può essere aperto.",
+  nl="Dit opgeslagen spel kan niet worden geopend.")
+
+s("gameInProgressTitle", "Dialog title: starting or loading would replace the game in progress",
+  fr="Une partie est en cours", en="A game is in progress", ar="هناك لعبة جارية",
+  es="Hay una partida en curso", pt="Há um jogo em andamento",
+  de="Ein Spiel läuft noch", tr="Devam eden bir oyun var",
+  id="Ada permainan yang sedang berjalan", ur="ایک کھیل جاری ہے",
+  ms="Ada permainan sedang berjalan", it="C'è una partita in corso",
+  nl="Er is een spel bezig")
+
+s("gameInProgressReplaceBody", "Dialog body: offer to keep the game in progress under a name first",
+  fr="Elle sera remplacée. Veux-tu d'abord la garder sous un nom ?",
+  en="It will be replaced. Keep it under a name first?",
+  ar="سيتم استبدالها. هل تريد حفظها باسم أولًا؟",
+  es="Se reemplazará. ¿Quieres guardarla antes con un nombre?",
+  pt="Ele será substituído. Quer guardá-lo antes com um nome?",
+  de="Es wird ersetzt. Vorher unter einem Namen behalten?",
+  tr="Bu oyun değiştirilecek. Önce bir adla saklamak ister misin?",
+  id="Permainan itu akan diganti. Simpan dulu dengan sebuah nama?",
+  ur="وہ بدل دیا جائے گا۔ پہلے اسے ایک نام سے محفوظ کریں؟",
+  ms="Permainan itu akan diganti. Simpan dahulu dengan satu nama?",
+  it="Sarà sostituita. Vuoi prima conservarla con un nome?",
+  nl="Het wordt vervangen. Eerst onder een naam bewaren?")
+
+s("replaceWithoutSaving", "Dialog button: go on and lose the game in progress",
+  fr="Remplacer sans garder", en="Replace without keeping",
+  ar="استبدال دون حفظ", es="Reemplazar sin guardar", pt="Substituir sem guardar",
+  de="Ersetzen ohne zu behalten", tr="Saklamadan değiştir",
+  id="Ganti tanpa menyimpan", ur="محفوظ کیے بغیر بدلیں",
+  ms="Ganti tanpa menyimpan", it="Sostituisci senza conservare",
+  nl="Vervangen zonder te bewaren")
+
+s("keepUnderName", "Dialog button: open the save dialog for the game in progress",
+  fr="Garder sous un nom…", en="Keep under a name…", ar="حفظ باسم…",
+  es="Guardar con un nombre…", pt="Guardar com um nome…",
+  de="Unter einem Namen behalten…", tr="Bir adla sakla…",
+  id="Simpan dengan nama…", ur="ایک نام سے محفوظ کریں…",
+  ms="Simpan dengan nama…", it="Conserva con un nome…",
+  nl="Onder een naam bewaren…")
+
+s("savesFull", "The shelf of named saves is full",
+  ph={"count": "num"},
+  fr="Tu as déjà {count} parties sauvegardées : supprime-en une ou réutilise un nom existant.",
+  en="You already have {count} saved games: delete one or reuse an existing name.",
+  ar="لديك {count} لعبة محفوظة بالفعل: احذف واحدة أو أعد استخدام اسم موجود.",
+  es="Ya tienes {count} partidas guardadas: elimina una o reutiliza un nombre existente.",
+  pt="Você já tem {count} jogos salvos: exclua um ou reutilize um nome existente.",
+  de="Du hast schon {count} gespeicherte Spiele: lösche eines oder verwende einen vorhandenen Namen.",
+  tr="Zaten {count} kayıtlı oyunun var: birini sil ya da mevcut bir adı kullan.",
+  id="Kamu sudah punya {count} permainan tersimpan: hapus satu atau pakai nama yang sudah ada.",
+  ur="آپ کے پاس پہلے ہی {count} محفوظ کھیل ہیں: ایک حذف کریں یا موجودہ نام دوبارہ استعمال کریں۔",
+  ms="Anda sudah ada {count} permainan tersimpan: padam satu atau guna semula nama sedia ada.",
+  it="Hai già {count} partite salvate: eliminane una o riutilizza un nome esistente.",
+  nl="Je hebt al {count} opgeslagen spellen: verwijder er een of gebruik een bestaande naam.")
+
+s("defaultSaveName", "Fallback name for a save when the riders have no name",
+  fr="Ma partie", en="My game", ar="لعبتي", es="Mi partida", pt="Meu jogo",
+  de="Mein Spiel", tr="Oyunum", id="Permainanku", ur="میرا کھیل",
+  ms="Permainan saya", it="La mia partita", nl="Mijn spel")
+
 # ---------------------------------------------------------------------
 def validate():
     for key, (desc, ph, texts) in K.items():

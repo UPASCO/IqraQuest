@@ -1078,4 +1078,69 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Uzman: en ayrıntılı sorular, ayet ve hadislerle.';
+
+  @override
+  String get saveGame => 'Oyunu Kaydet';
+
+  @override
+  String get saveGameHint => 'Daha sonra bulmak için bir ad ver';
+
+  @override
+  String get saveGameNameLabel => 'Oyun adı';
+
+  @override
+  String get saveAction => 'Kaydet';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Oyun kaydedildi: $name';
+  }
+
+  @override
+  String get loadGame => 'Oyun Yükle';
+
+  @override
+  String get loadGameAction => 'Yükle';
+
+  @override
+  String get noSavedGames => 'Henüz kayıtlı oyun yok.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Oyun sırasında tahtanın ≡ menüsünü açıp «Oyunu Kaydet»i seç.';
+
+  @override
+  String get deleteSave => 'Bu kaydı sil';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return '«$name» silinsin mi? Bu kayıtlı oyun kaybolacak.';
+  }
+
+  @override
+  String get deleteAction => 'Sil';
+
+  @override
+  String get loadGameFailed => 'Bu kayıt açılamıyor.';
+
+  @override
+  String get gameInProgressTitle => 'Devam eden bir oyun var';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Bu oyun değiştirilecek. Önce bir adla saklamak ister misin?';
+
+  @override
+  String get replaceWithoutSaving => 'Saklamadan değiştir';
+
+  @override
+  String get keepUnderName => 'Bir adla sakla…';
+
+  @override
+  String savesFull(num count) {
+    return 'Zaten $count kayıtlı oyunun var: birini sil ya da mevcut bir adı kullan.';
+  }
+
+  @override
+  String get defaultSaveName => 'Oyunum';
 }

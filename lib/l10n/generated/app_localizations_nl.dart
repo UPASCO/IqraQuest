@@ -1094,4 +1094,69 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Expert: de preciezste vragen, met verzen en hadiths.';
+
+  @override
+  String get saveGame => 'Spel opslaan';
+
+  @override
+  String get saveGameHint => 'Geef het een naam om het later terug te vinden';
+
+  @override
+  String get saveGameNameLabel => 'Naam van het spel';
+
+  @override
+  String get saveAction => 'Opslaan';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Spel opgeslagen: $name';
+  }
+
+  @override
+  String get loadGame => 'Spel laden';
+
+  @override
+  String get loadGameAction => 'Laden';
+
+  @override
+  String get noSavedGames => 'Nog geen opgeslagen spellen.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Open tijdens een spel het ≡-menu van het bord en kies ‘Spel opslaan’.';
+
+  @override
+  String get deleteSave => 'Dit opgeslagen spel verwijderen';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return '‘$name’ verwijderen? Dit opgeslagen spel gaat verloren.';
+  }
+
+  @override
+  String get deleteAction => 'Verwijderen';
+
+  @override
+  String get loadGameFailed => 'Dit opgeslagen spel kan niet worden geopend.';
+
+  @override
+  String get gameInProgressTitle => 'Er is een spel bezig';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Het wordt vervangen. Eerst onder een naam bewaren?';
+
+  @override
+  String get replaceWithoutSaving => 'Vervangen zonder te bewaren';
+
+  @override
+  String get keepUnderName => 'Onder een naam bewaren…';
+
+  @override
+  String savesFull(num count) {
+    return 'Je hebt al $count opgeslagen spellen: verwijder er een of gebruik een bestaande naam.';
+  }
+
+  @override
+  String get defaultSaveName => 'Mijn spel';
 }

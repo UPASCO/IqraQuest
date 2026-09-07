@@ -1905,6 +1905,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Expert: the most precise questions, verses and hadiths in hand.'**
   String get levelExpertHint;
+
+  /// Board menu: keep the current game under a name
+  ///
+  /// In en, this message translates to:
+  /// **'Save game'**
+  String get saveGame;
+
+  /// Board menu: why a game gets a name
+  ///
+  /// In en, this message translates to:
+  /// **'Give it a name to find it again later'**
+  String get saveGameHint;
+
+  /// Label of the text field in the save dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Game name'**
+  String get saveGameNameLabel;
+
+  /// Confirm button of the save dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveAction;
+
+  /// Toast after a game was kept under a name
+  ///
+  /// In en, this message translates to:
+  /// **'Game saved: {name}'**
+  String gameSavedAs(String name);
+
+  /// Title of the sheet listing the saved games
+  ///
+  /// In en, this message translates to:
+  /// **'Load a game'**
+  String get loadGame;
+
+  /// Short app-bar button on the setup screen that opens the saved games
+  ///
+  /// In en, this message translates to:
+  /// **'Load'**
+  String get loadGameAction;
+
+  /// Empty state of the saved-games sheet
+  ///
+  /// In en, this message translates to:
+  /// **'No saved games yet.'**
+  String get noSavedGames;
+
+  /// Empty state: where the save command lives
+  ///
+  /// In en, this message translates to:
+  /// **'During a game, open the board\'s ≡ menu and choose “Save game”.'**
+  String get noSavedGamesHint;
+
+  /// Tooltip of the delete button on a saved game
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this save'**
+  String get deleteSave;
+
+  /// Confirmation before deleting a saved game
+  ///
+  /// In en, this message translates to:
+  /// **'Delete “{name}”? This saved game will be lost.'**
+  String deleteSaveConfirm(String name);
+
+  /// Confirm button of the delete dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteAction;
+
+  /// Toast when a saved game cannot be opened
+  ///
+  /// In en, this message translates to:
+  /// **'This save cannot be opened.'**
+  String get loadGameFailed;
+
+  /// Dialog title: starting or loading would replace the game in progress
+  ///
+  /// In en, this message translates to:
+  /// **'A game is in progress'**
+  String get gameInProgressTitle;
+
+  /// Dialog body: offer to keep the game in progress under a name first
+  ///
+  /// In en, this message translates to:
+  /// **'It will be replaced. Keep it under a name first?'**
+  String get gameInProgressReplaceBody;
+
+  /// Dialog button: go on and lose the game in progress
+  ///
+  /// In en, this message translates to:
+  /// **'Replace without keeping'**
+  String get replaceWithoutSaving;
+
+  /// Dialog button: open the save dialog for the game in progress
+  ///
+  /// In en, this message translates to:
+  /// **'Keep under a name…'**
+  String get keepUnderName;
+
+  /// The shelf of named saves is full
+  ///
+  /// In en, this message translates to:
+  /// **'You already have {count} saved games: delete one or reuse an existing name.'**
+  String savesFull(num count);
+
+  /// Fallback name for a save when the riders have no name
+  ///
+  /// In en, this message translates to:
+  /// **'My game'**
+  String get defaultSaveName;
 }
 
 class _AppLocalizationsDelegate

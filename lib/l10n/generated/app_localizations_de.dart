@@ -1098,4 +1098,69 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Experte: die genauesten Fragen, mit Versen und Hadithen.';
+
+  @override
+  String get saveGame => 'Spiel speichern';
+
+  @override
+  String get saveGameHint => 'Gib ihm einen Namen, um es später wiederzufinden';
+
+  @override
+  String get saveGameNameLabel => 'Name des Spiels';
+
+  @override
+  String get saveAction => 'Speichern';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Spiel gespeichert: $name';
+  }
+
+  @override
+  String get loadGame => 'Spiel laden';
+
+  @override
+  String get loadGameAction => 'Laden';
+
+  @override
+  String get noSavedGames => 'Noch keine gespeicherten Spiele.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Öffne während eines Spiels das ≡-Menü des Bretts und wähle „Spiel speichern“.';
+
+  @override
+  String get deleteSave => 'Diesen Spielstand löschen';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return '„$name“ löschen? Dieser Spielstand geht verloren.';
+  }
+
+  @override
+  String get deleteAction => 'Löschen';
+
+  @override
+  String get loadGameFailed => 'Dieser Spielstand kann nicht geöffnet werden.';
+
+  @override
+  String get gameInProgressTitle => 'Ein Spiel läuft noch';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Es wird ersetzt. Vorher unter einem Namen behalten?';
+
+  @override
+  String get replaceWithoutSaving => 'Ersetzen ohne zu behalten';
+
+  @override
+  String get keepUnderName => 'Unter einem Namen behalten…';
+
+  @override
+  String savesFull(num count) {
+    return 'Du hast schon $count gespeicherte Spiele: lösche eines oder verwende einen vorhandenen Namen.';
+  }
+
+  @override
+  String get defaultSaveName => 'Mein Spiel';
 }

@@ -14,6 +14,7 @@ import '../../../widgets/button_label.dart';
 import '../../../widgets/knight_sprite.dart';
 import '../../../widgets/ornate_frame.dart';
 import '../../game/application/game_controller.dart';
+import '../../saves/presentation/save_game_dialogs.dart';
 import 'player_setup_args.dart';
 
 const _teams = kBoardSeats;
@@ -109,7 +110,13 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                   padding: const EdgeInsets.fromLTRB(12, 8, 12, 4),
                   child: Row(
                     children: [
-                      _GlassBackButton(onTap: () => context.pop()),
+                      // Back to the setup screen with its choices intact —
+                      // and home when there is nothing under this screen,
+                      // rather than an assertion on an empty stack.
+                      _GlassBackButton(
+                        onTap: () =>
+                            context.canPop() ? context.pop() : context.go('/home'),
+                      ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Column(
@@ -218,6 +225,10 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   };
 
   Future<void> _start() async {
+    // A race in progress is not thrown away in silence: the table is
+    // asked, and may keep it under a name first.
+    if (!await confirmReplaceGameInProgress(context, ref)) return;
+    if (!mounted) return;
     setState(() => _starting = true);
     final args = widget.args;
     final horseCount = args.variant.horsesPerPlayer;

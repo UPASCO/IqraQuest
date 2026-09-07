@@ -46,7 +46,8 @@ lib/
   models/          Question, Player, HorseState, PawnPosition (sealed),
                     MovementChoice, GaitCycle, KnowledgeStreak, Circuit,
                     RewardInventory, GameState, enums
-  services/        QuestionRepository, GameSaveService, ProgressService,
+  services/        QuestionRepository, GameSaveService (+ NamedGameSaveService),
+                    ProgressService,
                     PurchaseService, EntitlementService, SettingsService,
                     DailyChallengeService, LocalStorageService
   theme/           design tokens (colors, type, spacing, radius) + AppTeam
@@ -57,6 +58,9 @@ lib/
   features/
     onboarding/ home/ mode_selection/ players/ settings/
     purchases/ daily_challenge/ progress/ tutorial/   (presentation only)
+    saves/           the shelf of games kept under a name: the save
+                      dialog (board menu), the load sheet (setup screen),
+                      the guard before a game in progress is replaced
     game/
       domain/        GameEngine, HorseAi — pure Dart, no Flutter
                       imports, no randomness, fully unit-testable

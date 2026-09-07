@@ -1098,4 +1098,69 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Especialista: as perguntas mais precisas, com versículos e hadiths.';
+
+  @override
+  String get saveGame => 'Salvar jogo';
+
+  @override
+  String get saveGameHint => 'Dê um nome para encontrá-lo depois';
+
+  @override
+  String get saveGameNameLabel => 'Nome do jogo';
+
+  @override
+  String get saveAction => 'Salvar';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Jogo salvo: $name';
+  }
+
+  @override
+  String get loadGame => 'Carregar um jogo';
+
+  @override
+  String get loadGameAction => 'Carregar';
+
+  @override
+  String get noSavedGames => 'Ainda não há jogos salvos.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Durante um jogo, abra o menu ≡ do tabuleiro e escolha “Salvar jogo”.';
+
+  @override
+  String get deleteSave => 'Excluir este jogo salvo';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return 'Excluir “$name”? Este jogo salvo será perdido.';
+  }
+
+  @override
+  String get deleteAction => 'Excluir';
+
+  @override
+  String get loadGameFailed => 'Não foi possível abrir este jogo salvo.';
+
+  @override
+  String get gameInProgressTitle => 'Há um jogo em andamento';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Ele será substituído. Quer guardá-lo antes com um nome?';
+
+  @override
+  String get replaceWithoutSaving => 'Substituir sem guardar';
+
+  @override
+  String get keepUnderName => 'Guardar com um nome…';
+
+  @override
+  String savesFull(num count) {
+    return 'Você já tem $count jogos salvos: exclua um ou reutilize um nome existente.';
+  }
+
+  @override
+  String get defaultSaveName => 'Meu jogo';
 }

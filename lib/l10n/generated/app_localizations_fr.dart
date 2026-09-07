@@ -1099,4 +1099,69 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Expert : les questions les plus précises, versets et hadiths à l\'appui.';
+
+  @override
+  String get saveGame => 'Sauvegarder la partie';
+
+  @override
+  String get saveGameHint => 'Donne-lui un nom pour la retrouver plus tard';
+
+  @override
+  String get saveGameNameLabel => 'Nom de la partie';
+
+  @override
+  String get saveAction => 'Sauvegarder';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Partie sauvegardée : $name';
+  }
+
+  @override
+  String get loadGame => 'Charger une partie';
+
+  @override
+  String get loadGameAction => 'Charger';
+
+  @override
+  String get noSavedGames => 'Aucune partie sauvegardée pour l\'instant.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Pendant une partie, ouvre le menu ≡ du plateau et choisis « Sauvegarder la partie ».';
+
+  @override
+  String get deleteSave => 'Supprimer cette sauvegarde';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return 'Supprimer « $name » ? Cette partie sauvegardée sera perdue.';
+  }
+
+  @override
+  String get deleteAction => 'Supprimer';
+
+  @override
+  String get loadGameFailed => 'Cette sauvegarde ne peut pas être ouverte.';
+
+  @override
+  String get gameInProgressTitle => 'Une partie est en cours';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Elle sera remplacée. Veux-tu d\'abord la garder sous un nom ?';
+
+  @override
+  String get replaceWithoutSaving => 'Remplacer sans garder';
+
+  @override
+  String get keepUnderName => 'Garder sous un nom…';
+
+  @override
+  String savesFull(num count) {
+    return 'Tu as déjà $count parties sauvegardées : supprime-en une ou réutilise un nom existant.';
+  }
+
+  @override
+  String get defaultSaveName => 'Ma partie';
 }

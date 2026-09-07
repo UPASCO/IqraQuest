@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/circuit.dart';
 import '../../../models/game_mode.dart';
@@ -11,7 +13,9 @@ import '../../../widgets/button_label.dart';
 import '../../../widgets/content_width.dart';
 import '../../../widgets/fit_or_scroll.dart';
 import '../../../widgets/illustration.dart';
+import '../../game/application/game_controller.dart';
 import '../../players/presentation/player_setup_args.dart';
+import '../../saves/presentation/save_game_dialogs.dart';
 
 /// The race is set up on one screen, and nothing on it is below the
 /// fold: who plays, how long the race is, which course it rides, and
@@ -25,8 +29,12 @@ import '../../players/presentation/player_setup_args.dart';
 /// game was the one they had to scroll to.
 ///
 /// The choices are made once here and carried to the riders' screen in
-/// [PlayerSetupArgs]; the tiles never talk to the game directly.
-class ModeSelectionScreen extends StatefulWidget {
+/// [PlayerSetupArgs]; the tiles never talk to the game directly. The one
+/// exception is "Load", in the app bar: a game kept under a name is
+/// itself a way to play, chosen at the same moment a new one would be
+/// set up — and it costs the screen no height, which a phone has none
+/// of to spare.
+class ModeSelectionScreen extends ConsumerStatefulWidget {
   const ModeSelectionScreen({super.key, required this.mode});
 
   /// Which home button brought the player here — 'solo' or 'family'. It
@@ -35,10 +43,11 @@ class ModeSelectionScreen extends StatefulWidget {
   final String mode;
 
   @override
-  State<ModeSelectionScreen> createState() => _ModeSelectionScreenState();
+  ConsumerState<ModeSelectionScreen> createState() =>
+      _ModeSelectionScreenState();
 }
 
-class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
+class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
   /// Humans at the table, 1 to 4. One human is the solo game: the other
   /// riders are the computer's.
   late int _players = widget.mode == 'solo' ? 1 : 2;
@@ -57,8 +66,45 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    // "Load" is worded when the bar has room for a word beside the title
+    // — and an icon alone on a narrow phone at a large text size, where
+    // the word would push the title into an ellipsis.
+    final media = MediaQuery.of(context);
+    final wordedLoad = media.size.width / media.textScaler.scale(1) >= 360;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.newGameTitle)),
+      appBar: AppBar(
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(l10n.newGameTitle),
+        ),
+        // A cold entry (a redirect, state restoration) has nothing under
+        // this screen: without this the app bar would show no way out.
+        leading: context.canPop()
+            ? null
+            : IconButton(
+                key: const Key('setup-home'),
+                icon: const Icon(Icons.home_outlined),
+                tooltip: l10n.backToHome,
+                onPressed: () => context.go('/home'),
+              ),
+        actions: [
+          if (wordedLoad)
+            TextButton.icon(
+              key: const Key('load-game'),
+              onPressed: _loadGame,
+              icon: const Icon(Icons.folder_open_outlined, size: 20),
+              label: ButtonLabel(l10n.loadGameAction),
+            )
+          else
+            IconButton(
+              key: const Key('load-game'),
+              onPressed: _loadGame,
+              tooltip: l10n.loadGame,
+              icon: const Icon(Icons.folder_open_outlined),
+            ),
+          const SizedBox(width: 4),
+        ],
+      ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -169,6 +215,37 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
         ),
       ),
     );
+  }
+
+  /// A saved game takes the board the way a new one does: the deck is
+  /// built, the game rejoined at its nearest playable point, and the
+  /// board replaces this flow. A game in progress is asked about first.
+  Future<void> _loadGame() async {
+    final chosen = await showLoadGameSheet(context, ref);
+    if (chosen == null || !mounted) return;
+    if (!await confirmReplaceGameInProgress(context, ref)) return;
+    if (!mounted) return;
+
+    final l10n = AppLocalizations.of(context);
+    final shelf = ref.read(gameSaveServiceProvider).named;
+    final state = shelf.load(chosen.id);
+    final pool = await ref.read(questionPoolProvider.future);
+    if (!mounted) return;
+    final controller = ref.read(gameControllerProvider.notifier);
+    controller.configure(
+      pool: pool,
+      isPremium: ref.read(premiumControllerProvider),
+    );
+    final ok =
+        state != null &&
+        controller.resumeFrom(state, schema: chosen.schemaVersion);
+    if (!ok) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.loadGameFailed)),
+      );
+      return;
+    }
+    context.go('/game');
   }
 
   void _continue() {

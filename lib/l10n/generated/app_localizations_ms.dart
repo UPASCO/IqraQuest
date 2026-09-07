@@ -1089,4 +1089,69 @@ class AppLocalizationsMs extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Pakar: soalan paling terperinci, dengan ayat dan hadis.';
+
+  @override
+  String get saveGame => 'Simpan Permainan';
+
+  @override
+  String get saveGameHint => 'Beri nama supaya mudah dicari nanti';
+
+  @override
+  String get saveGameNameLabel => 'Nama permainan';
+
+  @override
+  String get saveAction => 'Simpan';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Permainan disimpan: $name';
+  }
+
+  @override
+  String get loadGame => 'Muat Permainan';
+
+  @override
+  String get loadGameAction => 'Muat';
+
+  @override
+  String get noSavedGames => 'Belum ada permainan disimpan.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Semasa bermain, buka menu ≡ papan dan pilih “Simpan Permainan”.';
+
+  @override
+  String get deleteSave => 'Padam simpanan ini';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return 'Padam “$name”? Permainan tersimpan ini akan hilang.';
+  }
+
+  @override
+  String get deleteAction => 'Padam';
+
+  @override
+  String get loadGameFailed => 'Simpanan ini tidak dapat dibuka.';
+
+  @override
+  String get gameInProgressTitle => 'Ada permainan sedang berjalan';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Permainan itu akan diganti. Simpan dahulu dengan satu nama?';
+
+  @override
+  String get replaceWithoutSaving => 'Ganti tanpa menyimpan';
+
+  @override
+  String get keepUnderName => 'Simpan dengan nama…';
+
+  @override
+  String savesFull(num count) {
+    return 'Anda sudah ada $count permainan tersimpan: padam satu atau guna semula nama sedia ada.';
+  }
+
+  @override
+  String get defaultSaveName => 'Permainan saya';
 }

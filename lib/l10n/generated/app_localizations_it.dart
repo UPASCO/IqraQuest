@@ -1101,4 +1101,69 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Esperto: le domande più precise, con versetti e hadith.';
+
+  @override
+  String get saveGame => 'Salva partita';
+
+  @override
+  String get saveGameHint => 'Dalle un nome per ritrovarla dopo';
+
+  @override
+  String get saveGameNameLabel => 'Nome della partita';
+
+  @override
+  String get saveAction => 'Salva';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Partita salvata: $name';
+  }
+
+  @override
+  String get loadGame => 'Carica una partita';
+
+  @override
+  String get loadGameAction => 'Carica';
+
+  @override
+  String get noSavedGames => 'Nessuna partita salvata per ora.';
+
+  @override
+  String get noSavedGamesHint =>
+      'Durante una partita, apri il menu ≡ del tabellone e scegli «Salva partita».';
+
+  @override
+  String get deleteSave => 'Elimina questo salvataggio';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return 'Eliminare «$name»? Questa partita salvata andrà persa.';
+  }
+
+  @override
+  String get deleteAction => 'Elimina';
+
+  @override
+  String get loadGameFailed => 'Questo salvataggio non può essere aperto.';
+
+  @override
+  String get gameInProgressTitle => 'C\'è una partita in corso';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'Sarà sostituita. Vuoi prima conservarla con un nome?';
+
+  @override
+  String get replaceWithoutSaving => 'Sostituisci senza conservare';
+
+  @override
+  String get keepUnderName => 'Conserva con un nome…';
+
+  @override
+  String savesFull(num count) {
+    return 'Hai già $count partite salvate: eliminane una o riutilizza un nome esistente.';
+  }
+
+  @override
+  String get defaultSaveName => 'La mia partita';
 }

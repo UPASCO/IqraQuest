@@ -1103,4 +1103,69 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get levelExpertHint => 'خبير: أدقّ الأسئلة، بالآيات والأحاديث.';
+
+  @override
+  String get saveGame => 'حفظ اللعبة';
+
+  @override
+  String get saveGameHint => 'أعطها اسمًا لتجدها لاحقًا';
+
+  @override
+  String get saveGameNameLabel => 'اسم اللعبة';
+
+  @override
+  String get saveAction => 'حفظ';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'تم حفظ اللعبة: $name';
+  }
+
+  @override
+  String get loadGame => 'تحميل لعبة';
+
+  @override
+  String get loadGameAction => 'تحميل';
+
+  @override
+  String get noSavedGames => 'لا توجد ألعاب محفوظة بعد.';
+
+  @override
+  String get noSavedGamesHint =>
+      'أثناء اللعب، افتح قائمة ≡ في اللوحة واختر «حفظ اللعبة».';
+
+  @override
+  String get deleteSave => 'حذف هذا الحفظ';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return 'حذف «$name»؟ ستفقد هذه اللعبة المحفوظة.';
+  }
+
+  @override
+  String get deleteAction => 'حذف';
+
+  @override
+  String get loadGameFailed => 'تعذّر فتح هذا الحفظ.';
+
+  @override
+  String get gameInProgressTitle => 'هناك لعبة جارية';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'سيتم استبدالها. هل تريد حفظها باسم أولًا؟';
+
+  @override
+  String get replaceWithoutSaving => 'استبدال دون حفظ';
+
+  @override
+  String get keepUnderName => 'حفظ باسم…';
+
+  @override
+  String savesFull(num count) {
+    return 'لديك $count لعبة محفوظة بالفعل: احذف واحدة أو أعد استخدام اسم موجود.';
+  }
+
+  @override
+  String get defaultSaveName => 'لعبتي';
 }

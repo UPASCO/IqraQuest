@@ -1089,4 +1089,69 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'ماہر: سب سے باریک سوالات، آیات و احادیث کے ساتھ۔';
+
+  @override
+  String get saveGame => 'کھیل محفوظ کریں';
+
+  @override
+  String get saveGameHint => 'بعد میں ڈھونڈنے کے لیے اسے ایک نام دیں';
+
+  @override
+  String get saveGameNameLabel => 'کھیل کا نام';
+
+  @override
+  String get saveAction => 'محفوظ کریں';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'کھیل محفوظ ہو گیا: $name';
+  }
+
+  @override
+  String get loadGame => 'کھیل لوڈ کریں';
+
+  @override
+  String get loadGameAction => 'لوڈ کریں';
+
+  @override
+  String get noSavedGames => 'ابھی تک کوئی محفوظ کھیل نہیں۔';
+
+  @override
+  String get noSavedGamesHint =>
+      'کھیل کے دوران بورڈ کا ≡ مینو کھولیں اور «کھیل محفوظ کریں» چنیں۔';
+
+  @override
+  String get deleteSave => 'یہ محفوظ کھیل حذف کریں';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return '«$name» حذف کریں؟ یہ محفوظ کھیل ضائع ہو جائے گا۔';
+  }
+
+  @override
+  String get deleteAction => 'حذف کریں';
+
+  @override
+  String get loadGameFailed => 'یہ محفوظ کھیل نہیں کھل سکتا۔';
+
+  @override
+  String get gameInProgressTitle => 'ایک کھیل جاری ہے';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'وہ بدل دیا جائے گا۔ پہلے اسے ایک نام سے محفوظ کریں؟';
+
+  @override
+  String get replaceWithoutSaving => 'محفوظ کیے بغیر بدلیں';
+
+  @override
+  String get keepUnderName => 'ایک نام سے محفوظ کریں…';
+
+  @override
+  String savesFull(num count) {
+    return 'آپ کے پاس پہلے ہی $count محفوظ کھیل ہیں: ایک حذف کریں یا موجودہ نام دوبارہ استعمال کریں۔';
+  }
+
+  @override
+  String get defaultSaveName => 'میرا کھیل';
 }

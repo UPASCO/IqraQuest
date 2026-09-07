@@ -27,6 +27,7 @@ import '../../../widgets/earned_steps_medallion.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
 import '../../../widgets/question_card_draw.dart';
+import '../../saves/presentation/save_game_dialogs.dart';
 import '../application/game_controller.dart';
 import '../domain/game_engine.dart';
 import '../../../widgets/button_label.dart';
@@ -1225,12 +1226,15 @@ class _HudPill extends StatelessWidget {
 /// It is a sheet rather than a screen because the board must stay
 /// visible behind it: nothing here is a decision about the race.
 Future<void> _openBoardMenu(
-  BuildContext context,
+  BuildContext screenContext,
   WidgetRef ref,
   AppLocalizations l10n,
 ) {
+  // Everything that happens AFTER the sheet is closed — a route, a
+  // dialog, a toast — is done from the board's own context: the sheet's
+  // is on its way out by then.
   return showModalBottomSheet<void>(
-    context: context,
+    context: screenContext,
     isScrollControlled: true,
     showDragHandle: true,
     builder: (sheetContext) => SafeArea(
@@ -1258,7 +1262,7 @@ Future<void> _openBoardMenu(
                   title: Text(l10n.rulesTitle),
                   onTap: () {
                     Navigator.of(sheetContext).pop();
-                    context.push('/tutorial');
+                    screenContext.push('/tutorial');
                   },
                 ),
                 const Divider(height: 1),
@@ -1292,6 +1296,26 @@ Future<void> _openBoardMenu(
                   title: Text(l10n.reduceMotion),
                 ),
                 const Divider(height: 1),
+                ListTile(
+                  key: const Key('menu-save'),
+                  leading: const Icon(Icons.bookmark_add_outlined),
+                  title: Text(l10n.saveGame),
+                  subtitle: Text(l10n.saveGameHint),
+                  onTap: () async {
+                    final session = ref.read(gameControllerProvider);
+                    if (session == null) return;
+                    Navigator.of(sheetContext).pop();
+                    final saved = await saveGameWithName(
+                      screenContext,
+                      ref,
+                      session.gameState,
+                    );
+                    if (saved == null || !screenContext.mounted) return;
+                    ScaffoldMessenger.of(screenContext).showSnackBar(
+                      SnackBar(content: Text(l10n.gameSavedAs(saved.name))),
+                    );
+                  },
+                ),
                 ListTile(
                   key: const Key('menu-restart'),
                   leading: const Icon(Icons.refresh),
@@ -1336,7 +1360,7 @@ Future<void> _openBoardMenu(
                   subtitle: Text(l10n.backToHomeHint),
                   onTap: () {
                     Navigator.of(sheetContext).pop();
-                    context.go('/home');
+                    screenContext.go('/home');
                   },
                 ),
                 const SizedBox(height: 8),

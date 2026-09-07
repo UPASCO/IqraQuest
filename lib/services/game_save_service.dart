@@ -1,5 +1,6 @@
 import '../models/game_state.dart';
 import 'local_storage_service.dart';
+import 'named_game_save_service.dart';
 
 /// Persists the in-progress game so it survives closing the app,
 /// backgrounding, or a device reboot (spec §80–§83).
@@ -8,6 +9,11 @@ class GameSaveService {
 
   static const _key = 'iqraquest.save.currentGame.v1';
   final LocalStorageService _storage;
+
+  /// The games kept under a name, beside this one autosave slot: the
+  /// autosave follows whatever is being played, a named save stays until
+  /// the table deletes it.
+  late final NamedGameSaveService named = NamedGameSaveService(_storage);
 
   Future<void> save(GameState state) => _storage.setJson(_key, state.toJson());
 

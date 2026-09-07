@@ -1093,4 +1093,69 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get levelExpertHint =>
       'Expert: the most precise questions, verses and hadiths in hand.';
+
+  @override
+  String get saveGame => 'Save game';
+
+  @override
+  String get saveGameHint => 'Give it a name to find it again later';
+
+  @override
+  String get saveGameNameLabel => 'Game name';
+
+  @override
+  String get saveAction => 'Save';
+
+  @override
+  String gameSavedAs(String name) {
+    return 'Game saved: $name';
+  }
+
+  @override
+  String get loadGame => 'Load a game';
+
+  @override
+  String get loadGameAction => 'Load';
+
+  @override
+  String get noSavedGames => 'No saved games yet.';
+
+  @override
+  String get noSavedGamesHint =>
+      'During a game, open the board\'s ≡ menu and choose “Save game”.';
+
+  @override
+  String get deleteSave => 'Delete this save';
+
+  @override
+  String deleteSaveConfirm(String name) {
+    return 'Delete “$name”? This saved game will be lost.';
+  }
+
+  @override
+  String get deleteAction => 'Delete';
+
+  @override
+  String get loadGameFailed => 'This save cannot be opened.';
+
+  @override
+  String get gameInProgressTitle => 'A game is in progress';
+
+  @override
+  String get gameInProgressReplaceBody =>
+      'It will be replaced. Keep it under a name first?';
+
+  @override
+  String get replaceWithoutSaving => 'Replace without keeping';
+
+  @override
+  String get keepUnderName => 'Keep under a name…';
+
+  @override
+  String savesFull(num count) {
+    return 'You already have $count saved games: delete one or reuse an existing name.';
+  }
+
+  @override
+  String get defaultSaveName => 'My game';
 }
