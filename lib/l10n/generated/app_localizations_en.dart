@@ -314,7 +314,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Unlock the full question bank and every difficulty';
+      'Unlock every card, every course, the saves and the mixed level';
 
   @override
   String get premiumOneTime => 'One-time payment — no subscription';
@@ -1171,4 +1171,38 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'My game';
+
+  @override
+  String get premiumOnly => 'Premium only';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return 'The $lively and $intense courses, with all their special squares';
+  }
+
+  @override
+  String get premiumBenefitSaves =>
+      'Keep several games under a name and resume them';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return 'The $mixed level: every card draws its own level';
+  }
+
+  @override
+  String get premiumBannerTitle => 'Go Premium';
+
+  @override
+  String get premiumBannerBody => 'Every card, every course, the saves';
+
+  @override
+  String get premiumActive => 'Premium active: everything is unlocked';
+
+  @override
+  String get laterAction => 'Later';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'You have played the $count cards of the free edition. With Premium the race goes on to Mecca, with every card, every course and the saves.';
+  }
 }

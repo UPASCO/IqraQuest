@@ -180,6 +180,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                   // ---- The journey card: where I am + the dominant CTA ----
                   _JourneyCard(l10n: l10n, save: save, onContinue: _continueJourney),
+                  // What the unlock buys, said where the family decides
+                  // what to play — not only behind a small icon in the
+                  // corner. Gone the moment it is bought.
+                  if (!isPremium) ...[
+                    const SizedBox(height: 10),
+                    _PremiumBanner(l10n: l10n, onTap: () => context.push('/premium')),
+                  ],
                   const SizedBox(height: 12),
 
                   // ---- The shelf: everything else, deliberately quiet ----
@@ -392,6 +399,70 @@ class _JourneyCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// One gold line under the journey card: the name of the unlock, what
+/// it opens, and a chevron. The same words as the settings row and
+/// the Premium screen, so the offer reads the same everywhere.
+class _PremiumBanner extends StatelessWidget {
+  const _PremiumBanner({required this.l10n, required this.onTap});
+
+  final AppLocalizations l10n;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return Semantics(
+      button: true,
+      label: '${l10n.premiumBannerTitle}. ${l10n.premiumBannerBody}',
+      excludeSemantics: true,
+      child: Material(
+        key: const Key('premium-banner'),
+        color: const Color(0xF2163D31),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: Color(0xFFE3B354), width: 1.4),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(14, 9, 10, 9),
+            child: Row(
+              children: [
+                const Icon(Icons.workspace_premium, color: Color(0xFFF3D68A), size: 24),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.premiumBannerTitle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: text.titleSmall?.copyWith(
+                          color: const Color(0xFFF6D98E),
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        l10n.premiumBannerBody,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: text.bodySmall?.copyWith(color: const Color(0xCCE9DFC8)),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right, color: Color(0xFFF3D68A)),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

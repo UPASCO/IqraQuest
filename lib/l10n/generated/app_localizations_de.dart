@@ -315,7 +315,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Schalte die gesamte Fragensammlung und jeden Schwierigkeitsgrad frei';
+      'Schalte alle Karten, alle Strecken, die Spielstände und die gemischte Stufe frei';
 
   @override
   String get premiumOneTime => 'Einmalzahlung — kein Abonnement';
@@ -1177,4 +1177,38 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'Mein Spiel';
+
+  @override
+  String get premiumOnly => 'Nur Premium';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return 'Die Strecken $lively und $intense mit allen Sonderfeldern';
+  }
+
+  @override
+  String get premiumBenefitSaves =>
+      'Mehrere Spiele unter einem Namen behalten und fortsetzen';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return 'Die Stufe $mixed: jede Karte zieht ihre eigene Stufe';
+  }
+
+  @override
+  String get premiumBannerTitle => 'Premium freischalten';
+
+  @override
+  String get premiumBannerBody => 'Alle Karten, alle Strecken, die Spielstände';
+
+  @override
+  String get premiumActive => 'Premium aktiv: alles freigeschaltet';
+
+  @override
+  String get laterAction => 'Später';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'Du hast die $count Karten der Gratis-Version gespielt. Mit Premium geht das Rennen bis Mekka weiter, mit allen Karten, allen Strecken und den Spielständen.';
+  }
 }

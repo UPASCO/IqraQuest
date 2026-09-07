@@ -658,10 +658,10 @@ abstract class AppLocalizations {
   /// **'IqraQuest Premium'**
   String get premiumTitle;
 
-  /// Premium sheet value proposition
+  /// Premium sheet value proposition: what the one purchase opens
   ///
   /// In en, this message translates to:
-  /// **'Unlock the full question bank and every difficulty'**
+  /// **'Unlock every card, every course, the saves and the mixed level'**
   String get premiumUnlockAll;
 
   /// Premium sheet: pricing model note
@@ -2031,6 +2031,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'My game'**
   String get defaultSaveName;
+
+  /// Label on a locked tile, chip or row: this needs Premium
+  ///
+  /// In en, this message translates to:
+  /// **'Premium only'**
+  String get premiumOnly;
+
+  /// Premium benefit row: the two courses beyond the calm one
+  ///
+  /// In en, this message translates to:
+  /// **'The {lively} and {intense} courses, with all their special squares'**
+  String premiumBenefitCourses(String lively, String intense);
+
+  /// Premium benefit row: named saves
+  ///
+  /// In en, this message translates to:
+  /// **'Keep several games under a name and resume them'**
+  String get premiumBenefitSaves;
+
+  /// Premium benefit row: the mixed question level
+  ///
+  /// In en, this message translates to:
+  /// **'The {mixed} level: every card draws its own level'**
+  String premiumBenefitMixed(String mixed);
+
+  /// Home banner and settings row: go to the Premium screen
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium'**
+  String get premiumBannerTitle;
+
+  /// Home banner and settings row: what Premium opens, in one line
+  ///
+  /// In en, this message translates to:
+  /// **'Every card, every course, the saves'**
+  String get premiumBannerBody;
+
+  /// Settings row when Premium is on
+  ///
+  /// In en, this message translates to:
+  /// **'Premium active: everything is unlocked'**
+  String get premiumActive;
+
+  /// Dismiss button of the free-limit popup
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get laterAction;
+
+  /// Popup on the results screen when the free edition's draw limit stopped the race
+  ///
+  /// In en, this message translates to:
+  /// **'You have played the {count} cards of the free edition. With Premium the race goes on to Mecca, with every card, every course and the saves.'**
+  String freeLimitPopupBody(int count);
 }
 
 class _AppLocalizationsDelegate

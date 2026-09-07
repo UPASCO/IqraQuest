@@ -388,9 +388,9 @@
   "@premiumTitle": {
     "description": "Premium sheet title"
   },
-  "premiumUnlockAll": "Unlock the full question bank and every difficulty",
+  "premiumUnlockAll": "Unlock every card, every course, the saves and the mixed level",
   "@premiumUnlockAll": {
-    "description": "Premium sheet value proposition"
+    "description": "Premium sheet value proposition: what the one purchase opens"
   },
   "premiumOneTime": "One-time payment — no subscription",
   "@premiumOneTime": {
@@ -1563,5 +1563,59 @@
   "defaultSaveName": "My game",
   "@defaultSaveName": {
     "description": "Fallback name for a save when the riders have no name"
+  },
+  "premiumOnly": "Premium only",
+  "@premiumOnly": {
+    "description": "Label on a locked tile, chip or row: this needs Premium"
+  },
+  "premiumBenefitCourses": "The {lively} and {intense} courses, with all their special squares",
+  "@premiumBenefitCourses": {
+    "description": "Premium benefit row: the two courses beyond the calm one",
+    "placeholders": {
+      "lively": {
+        "type": "String"
+      },
+      "intense": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumBenefitSaves": "Keep several games under a name and resume them",
+  "@premiumBenefitSaves": {
+    "description": "Premium benefit row: named saves"
+  },
+  "premiumBenefitMixed": "The {mixed} level: every card draws its own level",
+  "@premiumBenefitMixed": {
+    "description": "Premium benefit row: the mixed question level",
+    "placeholders": {
+      "mixed": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumBannerTitle": "Go Premium",
+  "@premiumBannerTitle": {
+    "description": "Home banner and settings row: go to the Premium screen"
+  },
+  "premiumBannerBody": "Every card, every course, the saves",
+  "@premiumBannerBody": {
+    "description": "Home banner and settings row: what Premium opens, in one line"
+  },
+  "premiumActive": "Premium active: everything is unlocked",
+  "@premiumActive": {
+    "description": "Settings row when Premium is on"
+  },
+  "laterAction": "Later",
+  "@laterAction": {
+    "description": "Dismiss button of the free-limit popup"
+  },
+  "freeLimitPopupBody": "You have played the {count} cards of the free edition. With Premium the race goes on to Mecca, with every card, every course and the saves.",
+  "@freeLimitPopupBody": {
+    "description": "Popup on the results screen when the free edition's draw limit stopped the race",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   }
 }

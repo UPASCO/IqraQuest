@@ -117,6 +117,21 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                   text: l10n.premiumBenefitUnlimited(GameState.freeDrawLimit),
                 ),
                 _BenefitRow(
+                  icon: Icons.landscape_rounded,
+                  text: l10n.premiumBenefitCourses(
+                    l10n.courseLively,
+                    l10n.courseIntense,
+                  ),
+                ),
+                _BenefitRow(
+                  icon: Icons.bookmark_add_rounded,
+                  text: l10n.premiumBenefitSaves,
+                ),
+                _BenefitRow(
+                  icon: Icons.shuffle_rounded,
+                  text: l10n.premiumBenefitMixed(l10n.levelMixed),
+                ),
+                _BenefitRow(
                   icon: Icons.family_restroom_rounded,
                   text: l10n.premiumBenefitFamily,
                 ),

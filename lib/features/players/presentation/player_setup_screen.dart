@@ -13,6 +13,7 @@ import '../../../widgets/board/board_environment.dart';
 import '../../../widgets/button_label.dart';
 import '../../../widgets/knight_sprite.dart';
 import '../../../widgets/ornate_frame.dart';
+import '../../../widgets/premium_lock.dart';
 import '../../game/application/game_controller.dart';
 import '../../saves/presentation/save_game_dialogs.dart';
 import 'player_setup_args.dart';
@@ -153,6 +154,8 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                             controller: _controllers[i],
                             profile: _profiles[i],
                             onProfile: (p) => setState(() => _profiles[i] = p),
+                            mixedLocked: !ref.watch(premiumControllerProvider),
+                            onLockedTap: () => openPremium(context),
                             l10n: l10n,
                           ),
                         ),
@@ -314,6 +317,8 @@ class _RiderPanel extends StatelessWidget {
     required this.controller,
     required this.profile,
     required this.onProfile,
+    required this.mixedLocked,
+    required this.onLockedTap,
     required this.l10n,
   });
 
@@ -321,6 +326,11 @@ class _RiderPanel extends StatelessWidget {
   final TextEditingController controller;
   final PlayerProfile profile;
   final ValueChanged<PlayerProfile> onProfile;
+
+  /// The mixed level is Premium: shown greyed with the lock on a free
+  /// device, and its tap opens the paywall.
+  final bool mixedLocked;
+  final VoidCallback onLockedTap;
   final AppLocalizations l10n;
 
   @override
@@ -407,9 +417,14 @@ class _RiderPanel extends StatelessWidget {
             children: [
               for (final p in PlayerProfile.values)
                 _LevelChip(
+                  key: Key('level-${p.name}'),
                   label: _profileLabel(p, l10n),
                   selected: profile == p,
-                  onTap: () => onProfile(p),
+                  locked: mixedLocked && p == PlayerProfile.mixed,
+                  lockedLabel: l10n.premiumOnly,
+                  onTap: mixedLocked && p == PlayerProfile.mixed
+                      ? onLockedTap
+                      : () => onProfile(p),
                 ),
             ],
           ),
@@ -450,18 +465,30 @@ class _RiderPanel extends StatelessWidget {
 
 /// A level, as a gold chip: filled when chosen, outlined otherwise.
 class _LevelChip extends StatelessWidget {
-  const _LevelChip({required this.label, required this.selected, required this.onTap});
+  const _LevelChip({
+    super.key,
+    required this.label,
+    required this.selected,
+    required this.onTap,
+    this.locked = false,
+    this.lockedLabel,
+  });
 
   final String label;
   final bool selected;
   final VoidCallback onTap;
+  final bool locked;
+  final String? lockedLabel;
 
   @override
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
       selected: selected,
-      child: Material(
+      label: locked && lockedLabel != null ? '$label, $lockedLabel' : null,
+      child: Opacity(
+        opacity: locked ? 0.6 : 1,
+        child: Material(
         color: selected ? const Color(0xFFE9C25E) : Colors.white.withValues(alpha: 0.06),
         shape: StadiumBorder(
           side: BorderSide(
@@ -474,15 +501,33 @@ class _LevelChip extends StatelessWidget {
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-            child: Text(
-              label,
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: selected ? const Color(0xFF3A2A08) : OrnatePalette.ivory,
-                fontWeight: FontWeight.w700,
+            // Scaled down rather than clipped: the longest level name at
+            // the accessibility text size is wider than a chip on the
+            // floor phone, and the lock badge takes another twenty
+            // points from it.
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (locked) ...[
+                    const LockBadge(size: 15),
+                    const SizedBox(width: 6),
+                  ],
+                  Text(
+                    label,
+                    maxLines: 1,
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: selected ? const Color(0xFF3A2A08) : OrnatePalette.ivory,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
+      ),
       ),
     );
   }

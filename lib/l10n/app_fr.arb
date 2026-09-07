@@ -90,7 +90,7 @@
   "questionsAnswered": "Questions répondues",
   "streak": "Série de jours",
   "premiumTitle": "IqraQuest Premium",
-  "premiumUnlockAll": "Débloque toute la banque de questions et toutes les difficultés",
+  "premiumUnlockAll": "Débloque toutes les cartes, tous les parcours, les sauvegardes et le niveau mixte",
   "premiumOneTime": "Paiement unique — aucun abonnement",
   "restorePurchases": "Restaurer mes achats",
   "purchaseSuccess": "Merci ! Premium est activé.",
@@ -318,5 +318,14 @@
   "replaceWithoutSaving": "Remplacer sans garder",
   "keepUnderName": "Garder sous un nom…",
   "savesFull": "Tu as déjà {count} parties sauvegardées : supprime-en une ou réutilise un nom existant.",
-  "defaultSaveName": "Ma partie"
+  "defaultSaveName": "Ma partie",
+  "premiumOnly": "Réservé à Premium",
+  "premiumBenefitCourses": "Les parcours {lively} et {intense}, avec toutes leurs cases spéciales",
+  "premiumBenefitSaves": "Sauvegarder plusieurs parties sous un nom et les reprendre",
+  "premiumBenefitMixed": "Le niveau {mixed} : chaque carte tire son propre niveau",
+  "premiumBannerTitle": "Passer en Premium",
+  "premiumBannerBody": "Toutes les cartes, tous les parcours, les sauvegardes",
+  "premiumActive": "Premium actif : tout est débloqué",
+  "laterAction": "Plus tard",
+  "freeLimitPopupBody": "Tu as joué les {count} cartes de la version gratuite. Avec Premium, la course continue jusqu'à La Mecque, avec toutes les cartes, tous les parcours et les sauvegardes."
 }

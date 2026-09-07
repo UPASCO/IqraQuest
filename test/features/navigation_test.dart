@@ -30,6 +30,10 @@ Future<GoRouter> pumpApp(
   WidgetTester tester,
   LocalStorageService storage, {
   String initialLocation = '/home',
+  // Premium by default: the named saves, two of the three courses and
+  // the mixed level are Premium, and most of these walks go through
+  // them. The free edition has its own test below.
+  bool premium = true,
 }) async {
   // A phone, so the board menu fits its sheet and a tap reaches every row.
   tester.view.physicalSize = const Size(420, 900);
@@ -42,7 +46,7 @@ Future<GoRouter> pumpApp(
     ProviderScope(
       overrides: [
         settingsServiceProvider.overrideWithValue(SettingsService(storage)),
-        entitlementServiceProvider.overrideWithValue(EntitlementService()),
+        entitlementServiceProvider.overrideWithValue(_MemoryEntitlements()),
         progressServiceProvider.overrideWithValue(ProgressService(storage)),
         gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
         legacyGameMigrationServiceProvider.overrideWithValue(
@@ -54,7 +58,7 @@ Future<GoRouter> pumpApp(
         // whichever test happens to be running.
         purchaseServiceProvider.overrideWith((ref) => PurchaseService()),
         initialSettingsProvider.overrideWithValue(const AppSettings()),
-        initialPremiumProvider.overrideWithValue(false),
+        initialPremiumProvider.overrideWithValue(premium),
         appRouterProvider.overrideWithValue(router),
       ],
       child: const IqraQuestApp(),
@@ -71,6 +75,23 @@ Future<void> settle(WidgetTester tester, [int frames = 10]) async {
   for (var i = 0; i < frames; i++) {
     await tester.pump(const Duration(milliseconds: 100));
   }
+}
+
+/// The entitlement in memory. The real one writes to secure storage,
+/// whose channel answers nothing under a widget test: a grant fired
+/// there never lands, and "the tester switch opens everything" could
+/// never be walked. Everything else about the flow is the real thing.
+class _MemoryEntitlements implements EntitlementService {
+  bool _premium = false;
+
+  @override
+  Future<bool> isPremium() async => _premium;
+
+  @override
+  Future<void> grantPremium() async => _premium = true;
+
+  @override
+  Future<void> revokePremium() async => _premium = false;
 }
 
 /// The phone's own back: the gesture or the button the app never draws.
@@ -114,9 +135,14 @@ List<Player> riders([List<String> names = const ['Amina', 'Yusuf']]) => [
 /// without the screens: the exits are what these tests are about.
 Future<void> putGameOnBoard(WidgetTester tester, GoRouter router) async {
   final container = containerOf(tester);
-  final pool = await tester.runAsync(
-    () => container.read(questionPoolProvider.future),
-  );
+  // A screen visited earlier may have started an asset load inside the
+  // test's fake-async zone — the Premium screen counts the bank — and
+  // such a load never completes: it is cached as a pending future that
+  // would hang the real load below for ever. Dropping the cache and
+  // reading the bank directly keeps this helper independent of whatever
+  // the walk went through before it.
+  rootBundle.clear();
+  final pool = await tester.runAsync(() => QuestionRepository().loadAll('en'));
   final controller = container.read(gameControllerProvider.notifier);
   controller.configure(pool: pool!, isPremium: false);
   controller.startNewGame(
@@ -763,4 +789,141 @@ void main() {
     expect(shelf.list(), isEmpty);
     expect(find.text(en.loadGame), findsOneWidget, reason: 'the sheet stays');
   });
+
+  // ---- Premium: locked on a free device, sold from every locked place --
+
+  final premiumScreen = find.text(en.premiumTitle);
+
+  testWidgets(
+    'free edition: the courses, the mixed level, the saves and Load are '
+    'locked and every one of them opens the Premium screen',
+    (tester) async {
+      final storage = await LocalStorageService.create();
+      final router = await pumpApp(tester, storage, premium: false);
+
+      // The banner under the journey card.
+      expect(find.byKey(const Key('premium-banner')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('premium-banner')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget);
+      await tester.pageBack();
+      await settle(tester);
+
+      // The two eventful courses.
+      await tester.tap(find.byKey(const Key('shelf-solo')));
+      await settle(tester);
+      await tester.tap(find.byKey(const Key('circuit-caravanTrail')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget, reason: 'a locked course sells');
+      await tester.pageBack();
+      await settle(tester);
+      await tester.tap(find.byKey(const Key('circuit-greatRide')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget);
+      await tester.pageBack();
+      await settle(tester);
+
+      // Load.
+      await tester.tap(find.byKey(const Key('load-game')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget, reason: 'Load sells');
+      expect(find.byKey(const Key('no-saved-games')), findsNothing);
+      await tester.pageBack();
+      await settle(tester);
+
+      // The mixed level on the riders' screen.
+      await tester.tap(find.byType(ElevatedButton));
+      await settle(tester);
+      await tester.tap(find.byKey(const Key('level-mixed')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget, reason: 'the mixed level sells');
+      await tester.pageBack();
+      await settle(tester);
+      expect(
+        find.byKey(const Key('level-mixed-hint')),
+        findsNothing,
+        reason: 'the level was not chosen',
+      );
+
+      // The save button on the board, and the menu's entry.
+      await putGameOnBoard(tester, router);
+      await tester.tap(find.byKey(const Key('board-save')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget, reason: 'the HUD save sells');
+      await tester.pageBack();
+      await settle(tester);
+      expect(board, findsOneWidget);
+      await tester.tap(find.byKey(const Key('board-menu')));
+      await settle(tester);
+      await tester.ensureVisible(find.byKey(const Key('menu-save')));
+      await tester.tap(find.byKey(const Key('menu-save')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget, reason: 'the menu save sells');
+      expect(GameSaveService(storage).named.list(), isEmpty);
+
+      // And the settings row.
+      router.go('/settings');
+      await settle(tester);
+      expect(find.byKey(const Key('settings-premium')), findsOneWidget);
+      expect(find.text(en.premiumBannerTitle), findsOneWidget);
+    },
+  );
+
+  testWidgets('the tester unlock opens everything at once', (tester) async {
+    final storage = await LocalStorageService.create();
+    await pumpApp(tester, storage, premium: false);
+    final semantics = tester.ensureSemantics();
+
+    // Exactly what the tester switch does: grant the entitlement while
+    // the app is running, and every locked thing must open at once.
+    await containerOf(tester).read(premiumControllerProvider.notifier).grant();
+    await settle(tester);
+    expect(find.byKey(const Key('premium-banner')), findsNothing);
+
+    await tester.tap(find.byKey(const Key('shelf-solo')));
+    await settle(tester);
+    await tester.tap(find.byKey(const Key('circuit-caravanTrail')));
+    await settle(tester);
+    expect(premiumScreen, findsNothing);
+    expect(
+      tester.getSemantics(find.byKey(const Key('circuit-caravanTrail'))),
+      isSemantics(isSelected: true),
+    );
+    await tester.tap(find.byKey(const Key('load-game')));
+    await settle(tester);
+    expect(find.byKey(const Key('no-saved-games')), findsOneWidget);
+    semantics.dispose();
+  });
+
+  testWidgets(
+    'a free race stopped by the draw limit: the popup offers Premium once',
+    (tester) async {
+      final storage = await LocalStorageService.create();
+      final router = await pumpApp(tester, storage, premium: false);
+      await putGameOnBoard(tester, router);
+      final controller = containerOf(tester).read(gameControllerProvider.notifier);
+      final over = controller.state!.gameState.copyWith(
+        turnPhase: TurnPhase.gameOver,
+        endedByDrawLimit: true,
+        drawCount: GameState.freeDrawLimit,
+      );
+      // ignore: invalid_use_of_protected_member
+      controller.state = GameSession(gameState: over);
+
+      router.go('/results');
+      await settle(tester);
+      expect(find.byKey(const Key('free-limit-popup')), findsOneWidget);
+      expect(
+        find.text(en.freeLimitPopupBody(GameState.freeDrawLimit)),
+        findsOneWidget,
+      );
+      await tester.tap(find.byKey(const Key('free-limit-unlock')));
+      await settle(tester);
+      expect(premiumScreen, findsOneWidget);
+      await tester.pageBack();
+      await settle(tester);
+      expect(find.byKey(const Key('free-limit-popup')), findsNothing);
+      expect(find.byKey(const Key('race-again')), findsOneWidget);
+    },
+  );
 }

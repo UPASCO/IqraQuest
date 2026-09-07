@@ -90,7 +90,7 @@
   "questionsAnswered": "الأسئلة المجاب عنها",
   "streak": "سلسلة الأيام",
   "premiumTitle": "إكرا كويست بريميوم",
-  "premiumUnlockAll": "افتح بنك الأسئلة كاملاً وكل مستويات الصعوبة",
+  "premiumUnlockAll": "افتح كل البطاقات وكل المسارات والحفظ والمستوى المتنوع",
   "premiumOneTime": "دفعة واحدة — بدون اشتراك",
   "restorePurchases": "استعادة المشتريات",
   "purchaseSuccess": "شكرًا لك! تم تفعيل بريميوم.",
@@ -318,5 +318,14 @@
   "replaceWithoutSaving": "استبدال دون حفظ",
   "keepUnderName": "حفظ باسم…",
   "savesFull": "لديك {count} لعبة محفوظة بالفعل: احذف واحدة أو أعد استخدام اسم موجود.",
-  "defaultSaveName": "لعبتي"
+  "defaultSaveName": "لعبتي",
+  "premiumOnly": "حصري لبريميوم",
+  "premiumBenefitCourses": "مسارا {lively} و{intense} بكل مربعاتهما الخاصة",
+  "premiumBenefitSaves": "حفظ عدة ألعاب باسم واستئنافها",
+  "premiumBenefitMixed": "مستوى {mixed}: كل بطاقة تسحب مستواها",
+  "premiumBannerTitle": "الترقية إلى بريميوم",
+  "premiumBannerBody": "كل البطاقات، كل المسارات، الحفظ",
+  "premiumActive": "بريميوم مفعّل: كل شيء مفتوح",
+  "laterAction": "لاحقًا",
+  "freeLimitPopupBody": "لقد لعبت {count} بطاقة من النسخة المجانية. مع بريميوم يستمر السباق حتى مكة، بكل البطاقات وكل المسارات والحفظ."
 }

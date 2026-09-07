@@ -8,6 +8,7 @@ import '../../../services/named_game_save_service.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/button_label.dart';
 import '../../../widgets/illustration.dart';
+import '../../../widgets/premium_lock.dart';
 
 /// The three conversations the shelf of named saves has with the table:
 /// keeping a game under a name (from the board's menu), choosing one to
@@ -425,6 +426,7 @@ Future<bool> confirmReplaceGameInProgress(
   if (saveService.named.holds(current)) return true;
 
   final l10n = AppLocalizations.of(context);
+  final isPremium = ref.read(premiumControllerProvider);
   final choice = await showDialog<_ReplaceChoice>(
     context: context,
     builder: (dialogContext) => AlertDialog(
@@ -440,10 +442,15 @@ Future<bool> confirmReplaceGameInProgress(
           onPressed: () => Navigator.of(dialogContext).pop(_ReplaceChoice.replace),
           child: ButtonLabel(l10n.replaceWithoutSaving),
         ),
-        FilledButton(
+        // Keeping a game under a name is Premium: on a free device the
+        // button carries the lock and leads to the paywall.
+        FilledButton.icon(
           key: const Key('keep-game'),
-          onPressed: () => Navigator.of(dialogContext).pop(_ReplaceChoice.keep),
-          child: ButtonLabel(l10n.keepUnderName),
+          onPressed: () => Navigator.of(dialogContext).pop(
+            isPremium ? _ReplaceChoice.keep : _ReplaceChoice.upgrade,
+          ),
+          icon: isPremium ? const SizedBox.shrink() : const LockBadge(size: 16),
+          label: ButtonLabel(l10n.keepUnderName),
         ),
       ],
     ),
@@ -453,6 +460,9 @@ Future<bool> confirmReplaceGameInProgress(
       return false;
     case _ReplaceChoice.replace:
       return true;
+    case _ReplaceChoice.upgrade:
+      if (context.mounted) openPremium(context);
+      return false;
     case _ReplaceChoice.keep:
       if (!context.mounted) return false;
       final saved = await saveGameWithName(context, ref, current);
@@ -465,4 +475,4 @@ Future<bool> confirmReplaceGameInProgress(
   }
 }
 
-enum _ReplaceChoice { replace, keep }
+enum _ReplaceChoice { replace, keep, upgrade }

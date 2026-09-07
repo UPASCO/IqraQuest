@@ -314,7 +314,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumTitle => 'إكرا كويست بريميوم';
 
   @override
-  String get premiumUnlockAll => 'افتح بنك الأسئلة كاملاً وكل مستويات الصعوبة';
+  String get premiumUnlockAll =>
+      'افتح كل البطاقات وكل المسارات والحفظ والمستوى المتنوع';
 
   @override
   String get premiumOneTime => 'دفعة واحدة — بدون اشتراك';
@@ -1183,4 +1184,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'لعبتي';
+
+  @override
+  String get premiumOnly => 'حصري لبريميوم';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return 'مسارا $lively و$intense بكل مربعاتهما الخاصة';
+  }
+
+  @override
+  String get premiumBenefitSaves => 'حفظ عدة ألعاب باسم واستئنافها';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return 'مستوى $mixed: كل بطاقة تسحب مستواها';
+  }
+
+  @override
+  String get premiumBannerTitle => 'الترقية إلى بريميوم';
+
+  @override
+  String get premiumBannerBody => 'كل البطاقات، كل المسارات، الحفظ';
+
+  @override
+  String get premiumActive => 'بريميوم مفعّل: كل شيء مفتوح';
+
+  @override
+  String get laterAction => 'لاحقًا';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'لقد لعبت $count بطاقة من النسخة المجانية. مع بريميوم يستمر السباق حتى مكة، بكل البطاقات وكل المسارات والحفظ.';
+  }
 }

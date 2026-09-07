@@ -48,6 +48,13 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       final state = ref.read(gameControllerProvider)?.gameState;
+      // A free race that the draw limit stopped: say so in the
+      // player's face, once, with the way to the unlock — the results
+      // board says it too, but a title is read and a popup is answered.
+      if ((state?.endedByDrawLimit ?? false) &&
+          !ref.read(premiumControllerProvider)) {
+        _offerPremium();
+      }
       final winner = _winnerOf(state);
       if (winner == null) return;
       final sound = ref.read(soundServiceProvider);
@@ -60,6 +67,32 @@ class _ResultsScreenState extends ConsumerState<ResultsScreen> {
         HapticFeedback.heavyImpact();
       }
     });
+  }
+
+  Future<void> _offerPremium() async {
+    final l10n = AppLocalizations.of(context);
+    final go = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        key: const Key('free-limit-popup'),
+        icon: const Icon(Icons.workspace_premium, color: Color(0xFFE3B354), size: 36),
+        title: Text(l10n.freeLimitTitle),
+        content: Text(l10n.freeLimitPopupBody(GameState.freeDrawLimit)),
+        actions: [
+          TextButton(
+            key: const Key('free-limit-later'),
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(l10n.laterAction),
+          ),
+          FilledButton(
+            key: const Key('free-limit-unlock'),
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: ButtonLabel(l10n.freeLimitCta),
+          ),
+        ],
+      ),
+    );
+    if (go == true && mounted) context.push('/premium');
   }
 
   static Player? _winnerOf(GameState? state) {

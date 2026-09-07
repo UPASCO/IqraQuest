@@ -313,7 +313,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Buka seluruh bank pertanyaan dan semua tingkat kesulitan';
+      'Buka semua kartu, semua lintasan, simpanan, dan level campuran';
 
   @override
   String get premiumOneTime => 'Pembayaran sekali — tanpa langganan';
@@ -1167,4 +1167,38 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'Permainanku';
+
+  @override
+  String get premiumOnly => 'Khusus Premium';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return 'Lintasan $lively dan $intense, dengan semua petak khususnya';
+  }
+
+  @override
+  String get premiumBenefitSaves =>
+      'Menyimpan beberapa permainan dengan nama dan melanjutkannya';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return 'Level $mixed: setiap kartu menarik levelnya sendiri';
+  }
+
+  @override
+  String get premiumBannerTitle => 'Beralih ke Premium';
+
+  @override
+  String get premiumBannerBody => 'Semua kartu, semua lintasan, simpanan';
+
+  @override
+  String get premiumActive => 'Premium aktif: semua terbuka';
+
+  @override
+  String get laterAction => 'Nanti';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'Kamu telah memainkan $count kartu versi gratis. Dengan Premium balapan berlanjut sampai Makkah, dengan semua kartu, semua lintasan, dan simpanan.';
+  }
 }

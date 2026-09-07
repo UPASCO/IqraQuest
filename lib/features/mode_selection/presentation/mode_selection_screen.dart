@@ -13,6 +13,7 @@ import '../../../widgets/button_label.dart';
 import '../../../widgets/content_width.dart';
 import '../../../widgets/fit_or_scroll.dart';
 import '../../../widgets/illustration.dart';
+import '../../../widgets/premium_lock.dart';
 import '../../game/application/game_controller.dart';
 import '../../players/presentation/player_setup_args.dart';
 import '../../saves/presentation/save_game_dialogs.dart';
@@ -63,9 +64,21 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
 
   bool get _isSolo => _players == 1;
 
+  /// The calm course is free; the two eventful ones are Premium. Shown
+  /// locked, not hidden: a table sees what the unlock buys where it
+  /// would use it.
+  static bool _courseLocked(CircuitId id, bool isPremium) =>
+      !isPremium && id != CircuitId.oasisRoute;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final isPremium = ref.watch(premiumControllerProvider);
+    // A locked course is never the chosen one — the tester switch can
+    // turn Premium off after the tile was tapped.
+    final circuit = _courseLocked(_circuit, isPremium)
+        ? CircuitId.oasisRoute
+        : _circuit;
     // "Load" is worded when the bar has room for a word beside the title
     // — and an icon alone on a narrow phone at a large text size, where
     // the word would push the title into an ellipsis.
@@ -92,15 +105,20 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
             TextButton.icon(
               key: const Key('load-game'),
               onPressed: _loadGame,
-              icon: const Icon(Icons.folder_open_outlined, size: 20),
+              icon: Icon(
+                isPremium ? Icons.folder_open_outlined : Icons.lock_outline,
+                size: 20,
+              ),
               label: ButtonLabel(l10n.loadGameAction),
             )
           else
             IconButton(
               key: const Key('load-game'),
               onPressed: _loadGame,
-              tooltip: l10n.loadGame,
-              icon: const Icon(Icons.folder_open_outlined),
+              tooltip: isPremium ? l10n.loadGame : l10n.premiumOnly,
+              icon: Icon(
+                isPremium ? Icons.folder_open_outlined : Icons.lock_outline,
+              ),
             ),
           const SizedBox(width: 4),
         ],
@@ -166,8 +184,10 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
                   SizedBox(height: gap),
                   _Eyebrow(l10n.setupCourse),
                   _CircuitTiles(
-                    selected: _circuit,
+                    selected: circuit,
                     onChanged: (id) => setState(() => _circuit = id),
+                    isLocked: (id) => _courseLocked(id, isPremium),
+                    onLockedTap: () => openPremium(context),
                     compact: compact,
                     roomy: roomy,
                     l10n: l10n,
@@ -183,7 +203,7 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
                   if (!compact) ...[
                     const SizedBox(height: 8),
                     _CircuitNote(
-                      circuit: Circuit.all.firstWhere((c) => c.id == _circuit),
+                      circuit: Circuit.all.firstWhere((c) => c.id == circuit),
                       dense: false,
                       l10n: l10n,
                     ),
@@ -225,6 +245,12 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
   /// built, the game rejoined at its nearest playable point, and the
   /// board replaces this flow. A game in progress is asked about first.
   Future<void> _loadGame() async {
+    // Named saves are Premium: the locked button opens the paywall, so
+    // the way to the feature and the way to buy it are the same tap.
+    if (!ref.read(premiumControllerProvider)) {
+      openPremium(context);
+      return;
+    }
     final chosen = await showLoadGameSheet(context, ref);
     if (chosen == null || !mounted) return;
     if (!await confirmReplaceGameInProgress(context, ref)) return;
@@ -253,12 +279,15 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen> {
   }
 
   void _continue() {
+    final isPremium = ref.read(premiumControllerProvider);
     context.push(
       '/player-setup',
       extra: PlayerSetupArgs(
         mode: _isSolo ? GameMode.solo : GameMode.family,
         variant: _variant,
-        circuitId: _circuit,
+        circuitId: _courseLocked(_circuit, isPremium)
+            ? CircuitId.oasisRoute
+            : _circuit,
         aiOpponentCount: _aiCount,
         aiDifficulty: _difficulty,
         humanPlayerCount: _players,
@@ -821,6 +850,8 @@ class _CircuitTiles extends StatelessWidget {
   const _CircuitTiles({
     required this.selected,
     required this.onChanged,
+    required this.isLocked,
+    required this.onLockedTap,
     required this.compact,
     required this.roomy,
     required this.l10n,
@@ -828,6 +859,11 @@ class _CircuitTiles extends StatelessWidget {
 
   final CircuitId selected;
   final ValueChanged<CircuitId> onChanged;
+
+  /// Whether a course is Premium on this device; a locked tile opens
+  /// the paywall instead of choosing.
+  final bool Function(CircuitId) isLocked;
+  final VoidCallback onLockedTap;
   final bool compact;
   final bool roomy;
   final AppLocalizations l10n;
@@ -848,8 +884,11 @@ class _CircuitTiles extends StatelessWidget {
                 key: Key('circuit-${circuit.id.name}'),
                 circuit: circuit,
                 selected: selected == circuit.id,
+                locked: isLocked(circuit.id),
                 artHeight: compact ? 46 : (roomy ? 104 : 54),
-                onTap: () => onChanged(circuit.id),
+                onTap: isLocked(circuit.id)
+                    ? onLockedTap
+                    : () => onChanged(circuit.id),
                 l10n: l10n,
               ),
             ),
@@ -865,6 +904,7 @@ class _CircuitTile extends StatelessWidget {
     super.key,
     required this.circuit,
     required this.selected,
+    required this.locked,
     required this.artHeight,
     required this.onTap,
     required this.l10n,
@@ -872,6 +912,10 @@ class _CircuitTile extends StatelessWidget {
 
   final Circuit circuit;
   final bool selected;
+
+  /// Premium on a free device: greyed, with the gold lock where the
+  /// check would be, and a tap that opens the paywall.
+  final bool locked;
   final double artHeight;
   final VoidCallback onTap;
   final AppLocalizations l10n;
@@ -888,9 +932,13 @@ class _CircuitTile extends StatelessWidget {
     return Semantics(
       button: true,
       selected: selected,
-      label: '$mood, $name',
+      label: locked ? '$mood, $name, ${l10n.premiumOnly}' : '$mood, $name',
       excludeSemantics: true,
-      child: Material(
+      child: LockedOverlay(
+        locked: locked,
+        badgeSize: 22,
+        inset: 8,
+        child: Material(
         color: selected
             ? colors.primary.withValues(alpha: 0.12)
             : colors.surfaceElevated,
@@ -965,6 +1013,7 @@ class _CircuitTile extends StatelessWidget {
               ],
             ),
           ),
+        ),
         ),
       ),
     );

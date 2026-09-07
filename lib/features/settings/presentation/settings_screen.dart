@@ -42,6 +42,9 @@ class SettingsScreen extends ConsumerWidget {
           // measure without moving the scroll gesture off the edge.
           padding: pagePadding(context),
           children: [
+            // The unlock, first: a parent looking for it looks here.
+            _PremiumRow(isPremium: ref.watch(premiumControllerProvider)),
+            const Divider(),
             // The picker sits under its label rather than beside it: as
             // `trailing` it shared one row's height with the title and
             // overflowed a 320 px screen at accessibility text sizes.
@@ -200,6 +203,30 @@ class AboutIqraQuestDialog extends StatelessWidget {
           child: Text(MaterialLocalizations.of(context).okButtonLabel),
         ),
       ],
+    );
+  }
+}
+
+/// The way to Premium from the settings — and, once bought, the plain
+/// statement that everything is open, so nobody looks for a switch.
+class _PremiumRow extends StatelessWidget {
+  const _PremiumRow({required this.isPremium});
+
+  final bool isPremium;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return ListTile(
+      key: const Key('settings-premium'),
+      leading: const Icon(Icons.workspace_premium, color: Color(0xFFE3B354)),
+      title: Text(
+        isPremium ? l10n.premiumActive : l10n.premiumBannerTitle,
+        style: const TextStyle(fontWeight: FontWeight.w700),
+      ),
+      subtitle: isPremium ? null : Text(l10n.premiumBannerBody),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => context.push('/premium'),
     );
   }
 }

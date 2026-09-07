@@ -90,7 +90,7 @@
   "questionsAnswered": "Beantwortete Fragen",
   "streak": "Tagesserie",
   "premiumTitle": "IqraQuest Premium",
-  "premiumUnlockAll": "Schalte die gesamte Fragensammlung und jeden Schwierigkeitsgrad frei",
+  "premiumUnlockAll": "Schalte alle Karten, alle Strecken, die Spielstände und die gemischte Stufe frei",
   "premiumOneTime": "Einmalzahlung — kein Abonnement",
   "restorePurchases": "Käufe wiederherstellen",
   "purchaseSuccess": "Danke! Premium ist jetzt aktiv.",
@@ -318,5 +318,14 @@
   "replaceWithoutSaving": "Ersetzen ohne zu behalten",
   "keepUnderName": "Unter einem Namen behalten…",
   "savesFull": "Du hast schon {count} gespeicherte Spiele: lösche eines oder verwende einen vorhandenen Namen.",
-  "defaultSaveName": "Mein Spiel"
+  "defaultSaveName": "Mein Spiel",
+  "premiumOnly": "Nur Premium",
+  "premiumBenefitCourses": "Die Strecken {lively} und {intense} mit allen Sonderfeldern",
+  "premiumBenefitSaves": "Mehrere Spiele unter einem Namen behalten und fortsetzen",
+  "premiumBenefitMixed": "Die Stufe {mixed}: jede Karte zieht ihre eigene Stufe",
+  "premiumBannerTitle": "Premium freischalten",
+  "premiumBannerBody": "Alle Karten, alle Strecken, die Spielstände",
+  "premiumActive": "Premium aktiv: alles freigeschaltet",
+  "laterAction": "Später",
+  "freeLimitPopupBody": "Du hast die {count} Karten der Gratis-Version gespielt. Mit Premium geht das Rennen bis Mekka weiter, mit allen Karten, allen Strecken und den Spielständen."
 }

@@ -90,7 +90,7 @@
   "questionsAnswered": "جواب دیے گئے سوالات",
   "streak": "دنوں کا تسلسل",
   "premiumTitle": "اقرا کویسٹ پریمیم",
-  "premiumUnlockAll": "سوالات کا مکمل ذخیرہ اور ہر مشکل درجہ کھولیں",
+  "premiumUnlockAll": "تمام کارڈ، تمام راستے، محفوظ کھیل اور مخلوط سطح کھولیں",
   "premiumOneTime": "یک وقتی ادائیگی — کوئی سبسکرپشن نہیں",
   "restorePurchases": "خریداری بحال کریں",
   "purchaseSuccess": "شکریہ! پریمیم اب فعال ہے۔",
@@ -318,5 +318,14 @@
   "replaceWithoutSaving": "محفوظ کیے بغیر بدلیں",
   "keepUnderName": "ایک نام سے محفوظ کریں…",
   "savesFull": "آپ کے پاس پہلے ہی {count} محفوظ کھیل ہیں: ایک حذف کریں یا موجودہ نام دوبارہ استعمال کریں۔",
-  "defaultSaveName": "میرا کھیل"
+  "defaultSaveName": "میرا کھیل",
+  "premiumOnly": "صرف پریمیم",
+  "premiumBenefitCourses": "{lively} اور {intense} راستے، اپنے تمام خاص خانوں کے ساتھ",
+  "premiumBenefitSaves": "کئی کھیل نام سے محفوظ کریں اور دوبارہ شروع کریں",
+  "premiumBenefitMixed": "{mixed} سطح: ہر کارڈ اپنی سطح خود نکالتا ہے",
+  "premiumBannerTitle": "پریمیم حاصل کریں",
+  "premiumBannerBody": "تمام کارڈ، تمام راستے، محفوظ کھیل",
+  "premiumActive": "پریمیم فعال: سب کچھ کھلا ہے",
+  "laterAction": "بعد میں",
+  "freeLimitPopupBody": "آپ نے مفت ورژن کے {count} کارڈ کھیل لیے۔ پریمیم کے ساتھ ریس مکہ تک جاری رہتی ہے، تمام کارڈ، تمام راستوں اور محفوظ کھیلوں کے ساتھ۔"
 }

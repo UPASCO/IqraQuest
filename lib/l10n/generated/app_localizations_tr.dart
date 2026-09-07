@@ -309,7 +309,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Tüm soru bankasının ve her zorluk seviyesinin kilidini açın';
+      'Tüm kartların, tüm parkurların, kayıtların ve karışık seviyenin kilidini aç';
 
   @override
   String get premiumOneTime => 'Tek seferlik ödeme — abonelik yok';
@@ -1156,4 +1156,37 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'Oyunum';
+
+  @override
+  String get premiumOnly => 'Yalnızca Premium';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return '$lively ve $intense parkurları, tüm özel kareleriyle';
+  }
+
+  @override
+  String get premiumBenefitSaves => 'Birden çok oyunu adla saklayıp sürdürmek';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return '$mixed seviyesi: her kart kendi seviyesini çeker';
+  }
+
+  @override
+  String get premiumBannerTitle => 'Premium\'a geç';
+
+  @override
+  String get premiumBannerBody => 'Tüm kartlar, tüm parkurlar, kayıtlar';
+
+  @override
+  String get premiumActive => 'Premium etkin: her şey açık';
+
+  @override
+  String get laterAction => 'Sonra';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'Ücretsiz sürümün $count kartını oynadın. Premium ile yarış Mekke\'ye kadar sürer; tüm kartlar, tüm parkurlar ve kayıtlarla.';
+  }
 }

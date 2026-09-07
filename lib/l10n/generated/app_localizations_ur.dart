@@ -313,7 +313,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get premiumTitle => 'اقرا کویسٹ پریمیم';
 
   @override
-  String get premiumUnlockAll => 'سوالات کا مکمل ذخیرہ اور ہر مشکل درجہ کھولیں';
+  String get premiumUnlockAll =>
+      'تمام کارڈ، تمام راستے، محفوظ کھیل اور مخلوط سطح کھولیں';
 
   @override
   String get premiumOneTime => 'یک وقتی ادائیگی — کوئی سبسکرپشن نہیں';
@@ -1168,4 +1169,38 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'میرا کھیل';
+
+  @override
+  String get premiumOnly => 'صرف پریمیم';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return '$lively اور $intense راستے، اپنے تمام خاص خانوں کے ساتھ';
+  }
+
+  @override
+  String get premiumBenefitSaves =>
+      'کئی کھیل نام سے محفوظ کریں اور دوبارہ شروع کریں';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return '$mixed سطح: ہر کارڈ اپنی سطح خود نکالتا ہے';
+  }
+
+  @override
+  String get premiumBannerTitle => 'پریمیم حاصل کریں';
+
+  @override
+  String get premiumBannerBody => 'تمام کارڈ، تمام راستے، محفوظ کھیل';
+
+  @override
+  String get premiumActive => 'پریمیم فعال: سب کچھ کھلا ہے';
+
+  @override
+  String get laterAction => 'بعد میں';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'آپ نے مفت ورژن کے $count کارڈ کھیل لیے۔ پریمیم کے ساتھ ریس مکہ تک جاری رہتی ہے، تمام کارڈ، تمام راستوں اور محفوظ کھیلوں کے ساتھ۔';
+  }
 }

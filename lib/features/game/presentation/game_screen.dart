@@ -13,6 +13,7 @@ import '../../../app/providers.dart'
     show
         gameEngineProvider,
         hapticServiceProvider,
+        premiumControllerProvider,
         settingsControllerProvider,
         soundServiceProvider;
 import '../../../l10n/generated/app_localizations.dart';
@@ -27,6 +28,7 @@ import '../../../widgets/earned_steps_medallion.dart';
 import '../../../widgets/illustration.dart';
 import '../../../widgets/question_card.dart';
 import '../../../widgets/question_card_draw.dart';
+import '../../../widgets/premium_lock.dart';
 import '../../saves/presentation/save_game_dialogs.dart';
 import '../application/game_controller.dart';
 import '../domain/game_engine.dart';
@@ -332,6 +334,17 @@ class _GameScreenState extends ConsumerState<GameScreen> {
         label: l10n.boardMenuOpen,
         onTap: () => _openBoardMenu(context, ref, l10n),
       );
+    // Its own button, beside the menu: a save buried in a menu is a
+    // save nobody finds. Premium — the lock says so on a free device,
+    // and the tap then opens the paywall.
+    final isPremium = ref.watch(premiumControllerProvider);
+    final saveButton = _GlassIconButton(
+        key: const Key('board-save'),
+        icon: Icons.bookmark_add_outlined,
+        label: isPremium ? l10n.saveGame : '${l10n.saveGame}, ${l10n.premiumOnly}',
+        locked: !isPremium,
+        onTap: () => isPremium ? _saveGame(l10n) : openPremium(context),
+      );
     final nameplate = _TurnNameplate(
         key: const Key('turn-nameplate'),
         name: player.name,
@@ -566,9 +579,21 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               const SizedBox(width: 6),
                               muteButton,
                               const SizedBox(width: 8),
-                              Expanded(child: Center(child: nameplate)),
+                              // Five buttons leave a narrow phone
+                              // little room: the nameplate shrinks
+                              // rather than pushing anything off.
+                              Expanded(
+                                child: Center(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: nameplate,
+                                  ),
+                                ),
+                              ),
                               const SizedBox(width: 8),
                               rulesButton,
+                              const SizedBox(width: 6),
+                              saveButton,
                               const SizedBox(width: 6),
                               menuButton,
                             ],
@@ -612,6 +637,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             rulesButton,
+                            const SizedBox(width: 6),
+                            saveButton,
                             const SizedBox(width: 6),
                             menuButton,
                           ],
@@ -1103,6 +1130,17 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     return false;
   }
 
+  /// Keeps the game under a name, from the HUD button.
+  Future<void> _saveGame(AppLocalizations l10n) async {
+    final session = ref.read(gameControllerProvider);
+    if (session == null) return;
+    final saved = await saveGameWithName(context, ref, session.gameState);
+    if (saved == null || !mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l10n.gameSavedAs(saved.name))),
+    );
+  }
+
   @override
   void dispose() {
     _revealTimer?.cancel();
@@ -1300,11 +1338,22 @@ Future<void> _openBoardMenu(
                   key: const Key('menu-save'),
                   leading: const Icon(Icons.bookmark_add_outlined),
                   title: Text(l10n.saveGame),
-                  subtitle: Text(l10n.saveGameHint),
+                  subtitle: Text(
+                    ref.watch(premiumControllerProvider)
+                        ? l10n.saveGameHint
+                        : l10n.premiumOnly,
+                  ),
+                  trailing: ref.watch(premiumControllerProvider)
+                      ? null
+                      : const LockBadge(size: 18),
                   onTap: () async {
                     final session = ref.read(gameControllerProvider);
                     if (session == null) return;
                     Navigator.of(sheetContext).pop();
+                    if (!ref.read(premiumControllerProvider)) {
+                      openPremium(screenContext);
+                      return;
+                    }
                     final saved = await saveGameWithName(
                       screenContext,
                       ref,
@@ -1616,6 +1665,7 @@ class _GlassIconButton extends StatelessWidget {
     required this.icon,
     required this.onTap,
     required this.label,
+    this.locked = false,
   });
 
   final IconData icon;
@@ -1625,26 +1675,49 @@ class _GlassIconButton extends StatelessWidget {
   /// glyph: two of these sit side by side on the board.
   final String label;
 
+  /// A Premium action on a free device: the glyph dimmed and the gold
+  /// lock on its corner; the tap still works, and opens the paywall.
+  final bool locked;
+
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      label: label,
-      child: Material(
-        color: const Color(0xB3122E22),
-        shape: CircleBorder(
-          side: BorderSide(color: Colors.white.withValues(alpha: 0.14)),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onTap,
-          child: SizedBox(
-            width: 38,
-            height: 38,
-            child: Icon(icon, size: 19, color: const Color(0xFFF4ECDC)),
+    final button = Material(
+      color: const Color(0xB3122E22),
+      shape: CircleBorder(
+        side: BorderSide(color: Colors.white.withValues(alpha: 0.14)),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: SizedBox(
+          width: 38,
+          height: 38,
+          child: Icon(
+            icon,
+            size: 19,
+            color: locked
+                ? const Color(0x99F4ECDC)
+                : const Color(0xFFF4ECDC),
           ),
         ),
       ),
+    );
+    return Semantics(
+      button: true,
+      label: label,
+      child: locked
+          ? Stack(
+              clipBehavior: Clip.none,
+              children: [
+                button,
+                const PositionedDirectional(
+                  end: -3,
+                  bottom: -3,
+                  child: LockBadge(size: 16),
+                ),
+              ],
+            )
+          : button,
     );
   }
 }

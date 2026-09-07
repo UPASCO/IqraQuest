@@ -90,7 +90,7 @@
   "questionsAnswered": "Cevaplanan Sorular",
   "streak": "Gün Serisi",
   "premiumTitle": "IqraQuest Premium",
-  "premiumUnlockAll": "Tüm soru bankasının ve her zorluk seviyesinin kilidini açın",
+  "premiumUnlockAll": "Tüm kartların, tüm parkurların, kayıtların ve karışık seviyenin kilidini aç",
   "premiumOneTime": "Tek seferlik ödeme — abonelik yok",
   "restorePurchases": "Satın Alımları Geri Yükle",
   "purchaseSuccess": "Teşekkürler! Premium artık aktif.",
@@ -318,5 +318,14 @@
   "replaceWithoutSaving": "Saklamadan değiştir",
   "keepUnderName": "Bir adla sakla…",
   "savesFull": "Zaten {count} kayıtlı oyunun var: birini sil ya da mevcut bir adı kullan.",
-  "defaultSaveName": "Oyunum"
+  "defaultSaveName": "Oyunum",
+  "premiumOnly": "Yalnızca Premium",
+  "premiumBenefitCourses": "{lively} ve {intense} parkurları, tüm özel kareleriyle",
+  "premiumBenefitSaves": "Birden çok oyunu adla saklayıp sürdürmek",
+  "premiumBenefitMixed": "{mixed} seviyesi: her kart kendi seviyesini çeker",
+  "premiumBannerTitle": "Premium'a geç",
+  "premiumBannerBody": "Tüm kartlar, tüm parkurlar, kayıtlar",
+  "premiumActive": "Premium etkin: her şey açık",
+  "laterAction": "Sonra",
+  "freeLimitPopupBody": "Ücretsiz sürümün {count} kartını oynadın. Premium ile yarış Mekke'ye kadar sürer; tüm kartlar, tüm parkurlar ve kayıtlarla."
 }

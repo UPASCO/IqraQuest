@@ -313,7 +313,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Ontgrendel de volledige vragenbank en elke moeilijkheidsgraad';
+      'Ontgrendel alle kaarten, alle parcoursen, de opgeslagen spellen en het gemengde niveau';
 
   @override
   String get premiumOneTime => 'Eenmalige betaling — geen abonnement';
@@ -1173,4 +1173,39 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'Mijn spel';
+
+  @override
+  String get premiumOnly => 'Alleen Premium';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return 'De parcoursen $lively en $intense, met al hun speciale vakjes';
+  }
+
+  @override
+  String get premiumBenefitSaves =>
+      'Meerdere spellen onder een naam bewaren en hervatten';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return 'Het niveau $mixed: elke kaart trekt zijn eigen niveau';
+  }
+
+  @override
+  String get premiumBannerTitle => 'Word Premium';
+
+  @override
+  String get premiumBannerBody =>
+      'Alle kaarten, alle parcoursen, de opgeslagen spellen';
+
+  @override
+  String get premiumActive => 'Premium actief: alles is ontgrendeld';
+
+  @override
+  String get laterAction => 'Later';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'Je hebt de $count kaarten van de gratis versie gespeeld. Met Premium gaat de race door tot Mekka, met alle kaarten, alle parcoursen en de opgeslagen spellen.';
+  }
 }

@@ -317,7 +317,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get premiumUnlockAll =>
-      'Sblocca l\'intero archivio di domande e ogni livello di difficoltà';
+      'Sblocca tutte le carte, tutti i percorsi, i salvataggi e il livello misto';
 
   @override
   String get premiumOneTime => 'Pagamento unico — nessun abbonamento';
@@ -1180,4 +1180,39 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get defaultSaveName => 'La mia partita';
+
+  @override
+  String get premiumOnly => 'Solo Premium';
+
+  @override
+  String premiumBenefitCourses(String lively, String intense) {
+    return 'I percorsi $lively e $intense, con tutte le loro caselle speciali';
+  }
+
+  @override
+  String get premiumBenefitSaves =>
+      'Salvare più partite con un nome e riprenderle';
+
+  @override
+  String premiumBenefitMixed(String mixed) {
+    return 'Il livello $mixed: ogni carta pesca il proprio livello';
+  }
+
+  @override
+  String get premiumBannerTitle => 'Passa a Premium';
+
+  @override
+  String get premiumBannerBody =>
+      'Tutte le carte, tutti i percorsi, i salvataggi';
+
+  @override
+  String get premiumActive => 'Premium attivo: tutto sbloccato';
+
+  @override
+  String get laterAction => 'Più tardi';
+
+  @override
+  String freeLimitPopupBody(int count) {
+    return 'Hai giocato le $count carte della versione gratuita. Con Premium la corsa continua fino alla Mecca, con tutte le carte, tutti i percorsi e i salvataggi.';
+  }
 }

@@ -90,7 +90,7 @@
   "questionsAnswered": "Beantwoorde vragen",
   "streak": "Dagreeks",
   "premiumTitle": "IqraQuest Premium",
-  "premiumUnlockAll": "Ontgrendel de volledige vragenbank en elke moeilijkheidsgraad",
+  "premiumUnlockAll": "Ontgrendel alle kaarten, alle parcoursen, de opgeslagen spellen en het gemengde niveau",
   "premiumOneTime": "Eenmalige betaling — geen abonnement",
   "restorePurchases": "Aankopen herstellen",
   "purchaseSuccess": "Bedankt! Premium is nu actief.",
@@ -318,5 +318,14 @@
   "replaceWithoutSaving": "Vervangen zonder te bewaren",
   "keepUnderName": "Onder een naam bewaren…",
   "savesFull": "Je hebt al {count} opgeslagen spellen: verwijder er een of gebruik een bestaande naam.",
-  "defaultSaveName": "Mijn spel"
+  "defaultSaveName": "Mijn spel",
+  "premiumOnly": "Alleen Premium",
+  "premiumBenefitCourses": "De parcoursen {lively} en {intense}, met al hun speciale vakjes",
+  "premiumBenefitSaves": "Meerdere spellen onder een naam bewaren en hervatten",
+  "premiumBenefitMixed": "Het niveau {mixed}: elke kaart trekt zijn eigen niveau",
+  "premiumBannerTitle": "Word Premium",
+  "premiumBannerBody": "Alle kaarten, alle parcoursen, de opgeslagen spellen",
+  "premiumActive": "Premium actief: alles is ontgrendeld",
+  "laterAction": "Later",
+  "freeLimitPopupBody": "Je hebt de {count} kaarten van de gratis versie gespeeld. Met Premium gaat de race door tot Mekka, met alle kaarten, alle parcoursen en de opgeslagen spellen."
 }
