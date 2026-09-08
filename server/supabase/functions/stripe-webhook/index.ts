@@ -29,8 +29,9 @@
 // donné explicitement.
 //
 // Puis, côté Stripe, un webhook vers l'URL de la fonction, abonné à
-// `checkout.session.completed`, `customer.subscription.updated` et
-// `customer.subscription.deleted`.
+// `checkout.session.completed`, `checkout.session.async_payment_succeeded`,
+// `checkout.session.async_payment_failed`, `customer.subscription.updated`
+// et `customer.subscription.deleted`.
 //
 // `--no-verify-jwt` est indispensable : c'est Stripe qui appelle, et il
 // ne porte pas de JWT Supabase. La signature ci-dessous est ce qui
@@ -211,9 +212,14 @@ Deno.serve(async (request) => {
 
   try {
     switch (event?.type) {
-      case "checkout.session.completed": {
+      case "checkout.session.completed":
+      case "checkout.session.async_payment_succeeded": {
         const email = object?.customer_details?.email ?? object?.customer_email;
         if (!email) break;
+        // Un virement SEPA se termine des jours plus tard, et peut
+        // échouer. Tant qu'il n'est pas payé, il n'y a pas de licence :
+        // `checkout.session.async_payment_succeeded` repassera ici.
+        if (object?.payment_status === "unpaid") break;
         const rights = entitlementOf(object?.metadata);
         // Le nom de l'établissement, dans l'ordre où on a une chance de
         // le trouver : un champ personnalisé du lien de paiement (« Nom
@@ -224,12 +230,12 @@ Deno.serve(async (request) => {
         );
         const schoolName = custom?.text?.value ?? object?.customer_details?.name ??
           null;
-        // Un abonnement porte sa propre échéance ; un paiement unique
-        // vaut un an — arrondi à la fin août quand l'anniversaire
-        // tomberait en plein été.
-        const expires = object?.expires_at
-          ? new Date(object.expires_at * 1000)
-          : schoolYearEnd(new Date());
+        // Piège : `expires_at` sur une session de paiement, c'est la
+        // date d'expiration du LIEN (environ 24 h), pas une durée de
+        // licence. La lire ici donnait à chaque école une licence d'un
+        // jour. L'échéance d'un paiement unique se calcule ; celle d'un
+        // abonnement arrive avec ses propres événements.
+        const expires = schoolYearEnd(new Date());
         await upsertLicence({
           email,
           plan: rights.plan,
@@ -244,8 +250,18 @@ Deno.serve(async (request) => {
 
       case "customer.subscription.updated":
       case "customer.subscription.created": {
-        const period = Number(object?.current_period_end ?? 0);
-        if (!period) break;
+        // `current_period_end` a quitté l'objet Subscription dans les
+        // versions récentes de l'API : il vit désormais sur la ligne
+        // d'abonnement. On accepte les deux, sinon un renouvellement
+        // ne prolongerait rien, en silence.
+        const period = Number(
+          object?.current_period_end ??
+            object?.items?.data?.[0]?.current_period_end ?? 0,
+        );
+        if (!period) {
+          console.error("abonnement sans échéance lisible", object?.id);
+          break;
+        }
         const renewed = new Date(period * 1000).toISOString();
         // La ligne existe déjà (le paiement l'a écrite) : on la
         // retrouve par l'abonnement, pas par une adresse que
@@ -267,6 +283,16 @@ Deno.serve(async (request) => {
             stripe_subscription_id: object?.id ?? null,
           });
         }
+        break;
+      }
+
+      case "checkout.session.async_payment_failed": {
+        // Rien à défaire — la licence n'a jamais été écrite — mais il
+        // faut pouvoir le retrouver quand l'école appelle.
+        console.error(
+          "paiement différé échoué",
+          object?.customer_details?.email ?? object?.id,
+        );
         break;
       }
 

@@ -11,6 +11,7 @@ import '../../../widgets/content_width.dart';
 import '../../../widgets/fit_or_scroll.dart';
 import '../application/classroom_controller.dart';
 import '../data/classroom_gateway.dart';
+import 'classroom_countdown.dart';
 
 /// The pupil's whole share of a class session: a code, a first name,
 /// then four answers at a time.
@@ -385,6 +386,10 @@ class _Playing extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 12),
+                if (room.remaining() != null) ...[
+                  ClassroomCountdown(room: room, fontSize: 15),
+                  const SizedBox(width: 12),
+                ],
                 Text(
                   l10n.classroomQuestionOf(
                     room.currentIndex + 1,
@@ -429,12 +434,19 @@ class _Playing extends StatelessWidget {
             if (revealed) ...[
               const SizedBox(height: 6),
               _Note(
-                icon: session.wasCorrect == true
-                    ? Icons.check_circle
-                    : Icons.school_outlined,
-                title: session.wasCorrect == true
-                    ? l10n.correctAnswer
-                    : l10n.incorrectAnswer,
+                icon: switch (session.wasCorrect) {
+                  true => Icons.check_circle,
+                  false => Icons.school_outlined,
+                  // Personne n'a tapé : ni juste, ni faux. Dire « faux »
+                  // à un enfant qui n'a pas eu le temps de répondre est
+                  // une petite injustice, et elle se voit.
+                  null => Icons.menu_book_outlined,
+                },
+                title: switch (session.wasCorrect) {
+                  true => l10n.correctAnswer,
+                  false => l10n.incorrectAnswer,
+                  null => l10n.classroomAnswerMissed,
+                },
                 body: question.explanation,
               ),
             ],

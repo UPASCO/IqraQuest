@@ -1671,6 +1671,10 @@
   "@classroomAnswerSentHint": {
     "description": "Pupil screen: what happens next"
   },
+  "classroomAnswerMissed": "You did not answer in time",
+  "@classroomAnswerMissed": {
+    "description": "Pupil screen: the card was revealed and this pupil never answered"
+  },
   "classroomSessionOver": "The session is over",
   "@classroomSessionOver": {
     "description": "Pupil screen: the teacher closed the session"

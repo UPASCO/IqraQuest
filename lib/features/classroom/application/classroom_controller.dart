@@ -270,28 +270,7 @@ class ClassroomController extends StateNotifier<PupilSession> {
             stableSeed([room.sessionId, state.seat?.token, room.currentIndex]),
           ),
         );
-      return (
-        card: Question(
-          id: q.id,
-          category: q.category,
-          difficulty: q.difficulty,
-          value: q.value,
-          ageLevel: q.ageLevel,
-          question: q.question,
-          answers: [for (final i in order) q.answers[i]],
-          correctAnswerIndex: order.indexOf(q.correctAnswerIndex),
-          explanation: q.explanation,
-          detail: q.detail,
-          sourceType: q.sourceType,
-          sourceWork: q.sourceWork,
-          sourceReference: q.sourceReference,
-          sourceDisplay: q.sourceDisplay,
-          sourceVerificationStatus: q.sourceVerificationStatus,
-          consensusStatus: q.consensusStatus,
-          isFree: q.isFree,
-        ),
-        order: order,
-      );
+      return (card: q.withAnswerOrder(order), order: order);
     }
     return null;
   }

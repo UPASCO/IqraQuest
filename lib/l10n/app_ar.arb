@@ -338,6 +338,7 @@
   "classroomQuestionOf": "السؤال {current} من {total}",
   "classroomAnswerSent": "أُرسلت الإجابة",
   "classroomAnswerSentHint": "انظر إلى اللوحة: ستظهر الإجابة.",
+  "classroomAnswerMissed": "لم تُجب في الوقت",
   "classroomSessionOver": "انتهت الحصة",
   "classroomYourScore": "{count, plural, zero{لم تُقدّم حصانك أيّ مربع} one{قدّمت حصانك مربعًا واحدًا} two{قدّمت حصانك مربعين} other{قدّمت حصانك {count} مربعات}}",
   "classroomLeave": "مغادرة الصف",

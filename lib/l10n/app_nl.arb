@@ -338,6 +338,7 @@
   "classroomQuestionOf": "Vraag {current} van {total}",
   "classroomAnswerSent": "Antwoord verstuurd",
   "classroomAnswerSentHint": "Kijk naar het bord: het antwoord komt eraan.",
+  "classroomAnswerMissed": "Je hebt niet op tijd geantwoord",
   "classroomSessionOver": "De sessie is voorbij",
   "classroomYourScore": "{count, plural, one{Je liet je paard één vakje opschuiven} other{Je liet je paard {count} vakjes opschuiven}}",
   "classroomLeave": "De klas verlaten",

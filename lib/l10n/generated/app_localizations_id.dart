@@ -1238,6 +1238,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get classroomAnswerSentHint => 'Lihat ke papan: jawabannya menyusul.';
 
   @override
+  String get classroomAnswerMissed => 'Kamu belum sempat menjawab';
+
+  @override
   String get classroomSessionOver => 'Sesi telah selesai';
 
   @override

@@ -91,17 +91,49 @@ fi
 
 # 4. Les fonctions de l'enseignant sont hors de portée -----------------
 # my_licence, open_session, advance_session et close_session sont
-# réservées aux comptes connectés. Avec la clé anonyme, la réponse doit
-# être un refus — jamais une licence.
+# réservées aux comptes connectés. Avec la clé publique, la réponse doit
+# être un refus de DROIT — jamais une licence.
+#
+# Piège évité ici : appeler ces fonctions sans leurs arguments renvoie
+# PGRST202 (« fonction introuvable »), qui ressemble à un refus et n'en
+# est pas un. Chacune est donc appelée avec la bonne signature, et seul
+# un vrai refus de permission compte.
+call_teacher_fn() {
+  case "$1" in
+    my_licence) rpc my_licence '{}' ;;
+    open_session) rpc open_session '{"p_lesson_id":"probe","p_question_ids":["probe_001"]}' ;;
+    advance_session) rpc advance_session '{"p_session_id":"00000000-0000-0000-0000-000000000000","p_action":"ask"}' ;;
+    close_session) rpc close_session '{"p_session_id":"00000000-0000-0000-0000-000000000000"}' ;;
+  esac
+}
+
 for fn in my_licence open_session advance_session close_session; do
-  body="$(rpc "$fn" '{}')"
-  if grep -qi 'permission denied\|not find\|does not exist\|PGRST' <<<"$body"; then
+  body="$(call_teacher_fn "$fn")"
+  if grep -qi 'permission denied\|PGRST301\|JWT\|not authorized' <<<"$body"; then
     ok "la fonction $fn est refusée à la clé publique"
+  elif grep -qi 'PGRST202\|could not find' <<<"$body"; then
+    ko "$fn : signature introuvable — la migration n'est pas passée"
+    note "$(head -c 200 <<<"$body")"
   else
     ko "la fonction $fn a répondu à la clé publique"
     note "$(head -c 200 <<<"$body")"
   fi
 done
+
+# 4bis. Les tables refusent aussi l'écriture ---------------------------
+# Le rôle public ne doit pas pouvoir insérer une séance : c'est ce qui
+# contournerait le plafond de salles et l'échéance des licences.
+body="$(curl -sS --max-time 20 -X POST \
+  -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"code":"PROBE1","lesson_id":"probe","question_ids":["probe_001"]}' \
+  "$URL/rest/v1/sessions")"
+if grep -qi 'permission denied\|violates row-level\|not authorized\|PGRST' <<<"$body"; then
+  ok "écrire directement dans sessions est refusé"
+else
+  ko "une séance a pu être écrite sans passer par open_session"
+  note "$(head -c 200 <<<"$body")"
+fi
 
 # 5. Le ménage est planifié -------------------------------------------
 # Rien de tout cela ne se voit de l'extérieur : à vérifier dans le SQL

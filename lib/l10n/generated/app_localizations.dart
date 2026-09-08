@@ -2146,6 +2146,12 @@ abstract class AppLocalizations {
   /// **'Look at the board: the answer is coming.'**
   String get classroomAnswerSentHint;
 
+  /// Pupil screen: the card was revealed and this pupil never answered
+  ///
+  /// In en, this message translates to:
+  /// **'You did not answer in time'**
+  String get classroomAnswerMissed;
+
   /// Pupil screen: the teacher closed the session
   ///
   /// In en, this message translates to:

@@ -131,6 +131,34 @@ class Question {
     );
   }
 
+  /// The same card with its answers in [order], and the index of the
+  /// right one moved with them.
+  ///
+  /// The bank keeps the correct answer first; every screen that shows a
+  /// card to a classroom has to break that, or the class learns to read
+  /// the first line. Written here once because it was written three
+  /// times — on the pupil's phone, on the projected board, and about to
+  /// be a fourth time.
+  Question withAnswerOrder(List<int> order) => Question(
+    id: id,
+    category: category,
+    difficulty: difficulty,
+    value: value,
+    ageLevel: ageLevel,
+    question: question,
+    answers: [for (final i in order) answers[i]],
+    correctAnswerIndex: order.indexOf(correctAnswerIndex),
+    explanation: explanation,
+    detail: detail,
+    sourceType: sourceType,
+    sourceWork: sourceWork,
+    sourceReference: sourceReference,
+    sourceDisplay: sourceDisplay,
+    sourceVerificationStatus: sourceVerificationStatus,
+    consensusStatus: consensusStatus,
+    isFree: isFree,
+  );
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'category': category.name,

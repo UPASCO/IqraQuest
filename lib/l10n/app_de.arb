@@ -338,6 +338,7 @@
   "classroomQuestionOf": "Frage {current} von {total}",
   "classroomAnswerSent": "Antwort gesendet",
   "classroomAnswerSentHint": "Schau an die Tafel: die Antwort kommt.",
+  "classroomAnswerMissed": "Du hast nicht rechtzeitig geantwortet",
   "classroomSessionOver": "Die Sitzung ist vorbei",
   "classroomYourScore": "{count, plural, one{Du hast dein Pferd ein Feld vorgebracht} other{Du hast dein Pferd {count} Felder vorgebracht}}",
   "classroomLeave": "Klasse verlassen",

@@ -1226,6 +1226,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get classroomAnswerSentHint => 'Tahtaya bak: cevap geliyor.';
 
   @override
+  String get classroomAnswerMissed => 'Zamanında cevaplamadın';
+
+  @override
   String get classroomSessionOver => 'Oturum bitti';
 
   @override

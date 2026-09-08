@@ -1249,6 +1249,9 @@ class AppLocalizationsDe extends AppLocalizations {
       'Schau an die Tafel: die Antwort kommt.';
 
   @override
+  String get classroomAnswerMissed => 'Du hast nicht rechtzeitig geantwortet';
+
+  @override
   String get classroomSessionOver => 'Die Sitzung ist vorbei';
 
   @override

@@ -2845,6 +2845,14 @@ s("classroomAnswerSentHint", "Pupil screen: what happens next",
   it="Guarda la lavagna: la risposta arriva.",
   nl="Kijk naar het bord: het antwoord komt eraan.")
 
+s("classroomAnswerMissed", "Pupil screen: the card was revealed and this pupil never answered",
+  fr="Tu n\u2019as pas r\u00e9pondu \u00e0 temps", en="You did not answer in time",
+  ar="لم تُجب في الوقت", es="No respondiste a tiempo",
+  pt="N\u00e3o respondeste a tempo", de="Du hast nicht rechtzeitig geantwortet",
+  tr="Zaman\u0131nda cevaplamad\u0131n", id="Kamu belum sempat menjawab",
+  ur="تم وقت پر جواب نہیں دے سکے", ms="Anda tidak sempat menjawab",
+  it="Non hai risposto in tempo", nl="Je hebt niet op tijd geantwoord")
+
 s("classroomSessionOver", "Pupil screen: the teacher closed the session",
   fr="La séance est terminée", en="The session is over", ar="انتهت الحصة",
   es="La sesión ha terminado", pt="A sessão terminou", de="Die Sitzung ist vorbei",

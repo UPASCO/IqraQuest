@@ -49,13 +49,16 @@ class SupabaseTeacherGateway implements TeacherGateway {
     if (!_looksLikeEmail(clean)) {
       throw const TeacherException(TeacherError.invalidEmail);
     }
+    // Le retour se déclare dans l'URL, pas dans le corps : GoTrue lit
+    // `?redirect_to=`. Passé en `options.email_redirect_to`, il était
+    // ignoré, et le lien ramenait sur la Site URL — donc sur une console
+    // qui ne voyait jamais ses jetons.
+    final path = redirectTo == null || redirectTo!.isEmpty
+        ? '/auth/v1/otp'
+        : '/auth/v1/otp?redirect_to=${Uri.encodeComponent(redirectTo!)}';
     final response = await _post(
-      '/auth/v1/otp',
-      body: {
-        'email': clean,
-        'create_user': true,
-        if (redirectTo != null) 'options': {'email_redirect_to': redirectTo},
-      },
+      path,
+      body: {'email': clean, 'create_user': true},
     );
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw const TeacherException(TeacherError.unreachable);

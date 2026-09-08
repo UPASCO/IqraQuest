@@ -1251,6 +1251,9 @@ class AppLocalizationsPt extends AppLocalizations {
       'Olha para o quadro: a resposta vem já.';
 
   @override
+  String get classroomAnswerMissed => 'Não respondeste a tempo';
+
+  @override
   String get classroomSessionOver => 'A sessão terminou';
 
   @override

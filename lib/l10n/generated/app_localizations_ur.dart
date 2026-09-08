@@ -1240,6 +1240,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classroomAnswerSentHint => 'بورڈ کی طرف دیکھیں: جواب آ رہا ہے۔';
 
   @override
+  String get classroomAnswerMissed => 'تم وقت پر جواب نہیں دے سکے';
+
+  @override
   String get classroomSessionOver => 'سیشن ختم ہو گیا';
 
   @override

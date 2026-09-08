@@ -133,25 +133,7 @@ class ClassroomBoardController extends StateNotifier<BoardView> {
       if (q.id != id) continue;
       final order = [0, 1, 2, 3]
         ..shuffle(Random(stableSeed([room.sessionId, room.currentIndex])));
-      return Question(
-        id: q.id,
-        category: q.category,
-        difficulty: q.difficulty,
-        value: q.value,
-        ageLevel: q.ageLevel,
-        question: q.question,
-        answers: [for (final i in order) q.answers[i]],
-        correctAnswerIndex: order.indexOf(q.correctAnswerIndex),
-        explanation: q.explanation,
-        detail: q.detail,
-        sourceType: q.sourceType,
-        sourceWork: q.sourceWork,
-        sourceReference: q.sourceReference,
-        sourceDisplay: q.sourceDisplay,
-        sourceVerificationStatus: q.sourceVerificationStatus,
-        consensusStatus: q.consensusStatus,
-        isFree: q.isFree,
-      );
+      return q.withAnswerOrder(order);
     }
     return null;
   }

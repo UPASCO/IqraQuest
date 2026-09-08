@@ -1246,6 +1246,9 @@ class AppLocalizationsNl extends AppLocalizations {
       'Kijk naar het bord: het antwoord komt eraan.';
 
   @override
+  String get classroomAnswerMissed => 'Je hebt niet op tijd geantwoord';
+
+  @override
   String get classroomSessionOver => 'De sessie is voorbij';
 
   @override

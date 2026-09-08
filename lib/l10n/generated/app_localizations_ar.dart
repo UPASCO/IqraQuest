@@ -1254,6 +1254,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get classroomAnswerSentHint => 'انظر إلى اللوحة: ستظهر الإجابة.';
 
   @override
+  String get classroomAnswerMissed => 'لم تُجب في الوقت';
+
+  @override
   String get classroomSessionOver => 'انتهت الحصة';
 
   @override

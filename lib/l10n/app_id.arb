@@ -338,6 +338,7 @@
   "classroomQuestionOf": "Pertanyaan {current} dari {total}",
   "classroomAnswerSent": "Jawaban terkirim",
   "classroomAnswerSentHint": "Lihat ke papan: jawabannya menyusul.",
+  "classroomAnswerMissed": "Kamu belum sempat menjawab",
   "classroomSessionOver": "Sesi telah selesai",
   "classroomYourScore": "{count, plural, other{Kamu memajukan kudamu {count} kotak}}",
   "classroomLeave": "Keluar dari kelas",

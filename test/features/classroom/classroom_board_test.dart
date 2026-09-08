@@ -401,6 +401,55 @@ void main() {
     expect(find.text(en.classroomPointsCount(0)), findsOneWidget);
   });
 
+  testWidgets('the countdown appears only when the teacher set one', (
+    tester,
+  ) async {
+    final harness = await pumpBoard(tester);
+    harness.room.ask(harness.code);
+    await settle(tester);
+
+    expect(
+      find.byKey(const Key('classroom-countdown')),
+      findsNothing,
+      reason: 'no timer by default: the teacher reveals by hand',
+    );
+  });
+
+  testWidgets('a timed question shows the seconds left, on the wall', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1280, 800);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    final room = FakeClassroomGateway(random: Random(21));
+    final repository = QuestionRepository();
+    final bank = await tester.runAsync(() => repository.loadAll('en'));
+    final code = room.openSession(
+      lessonId: 'p',
+      questionIds: [bank!.first.id],
+      boardLanguage: 'en',
+      secondsPerQuestion: 30,
+    );
+
+    await tester.pumpWidget(
+      await boardApp(
+        location: '/classroom/board/$code',
+        room: room,
+        tester: tester,
+      ),
+    );
+    await settle(tester, 12);
+    room.ask(code);
+    await settle(tester);
+
+    expect(find.byKey(const Key('classroom-countdown')), findsOneWidget);
+    // The card is still the biggest thing on the wall; the timer is not
+    // allowed to take the room over.
+    expect(find.text(bank.first.question), findsOneWidget);
+  });
+
   testWidgets('a small classroom screen still fits the card', (tester) async {
     final harness = await pumpBoard(tester);
     // Not every school has a wide projector; some cast to a 4:3 screen

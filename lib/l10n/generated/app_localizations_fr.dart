@@ -1252,6 +1252,9 @@ class AppLocalizationsFr extends AppLocalizations {
       'Regarde le tableau : la réponse arrive.';
 
   @override
+  String get classroomAnswerMissed => 'Tu n’as pas répondu à temps';
+
+  @override
   String get classroomSessionOver => 'La séance est terminée';
 
   @override

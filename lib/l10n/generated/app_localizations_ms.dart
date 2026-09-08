@@ -1238,6 +1238,9 @@ class AppLocalizationsMs extends AppLocalizations {
   String get classroomAnswerSentHint => 'Lihat papan: jawapannya akan muncul.';
 
   @override
+  String get classroomAnswerMissed => 'Anda tidak sempat menjawab';
+
+  @override
   String get classroomSessionOver => 'Sesi telah tamat';
 
   @override

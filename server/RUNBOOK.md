@@ -37,6 +37,7 @@ précédente.
    - `server/supabase/migrations/0003_retention.sql`
    - `server/supabase/migrations/0004_licence_domain.sql`
    - `server/supabase/migrations/0005_school_name.sql`
+   - `server/supabase/migrations/0006_review_fixes.sql`
 
 Vérification : dans **Table Editor**, cinq tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`), toutes avec RLS
@@ -219,8 +220,12 @@ sans abonnement ni webhook.
    de bord autrement que par cette commande, tapée sur votre machine.
 
 4. **Webhook Stripe** vers l'URL de la fonction, abonné à
-   `checkout.session.completed`, `customer.subscription.updated` et
-   `customer.subscription.deleted`.
+   `checkout.session.completed`,
+   `checkout.session.async_payment_succeeded`,
+   `checkout.session.async_payment_failed`,
+   `customer.subscription.updated` et `customer.subscription.deleted`.
+   Les deux `async_*` couvrent le virement SEPA, qui aboutit — ou
+   échoue — plusieurs jours après la commande.
 5. Poser le lien de paiement dans le secret `STRIPE_CHECKOUT_URL` et
    relancer le workflow web.
 

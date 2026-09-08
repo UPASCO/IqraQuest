@@ -1250,6 +1250,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get classroomAnswerSentHint => 'Mira la pizarra: la respuesta llega.';
 
   @override
+  String get classroomAnswerMissed => 'No respondiste a tiempo';
+
+  @override
   String get classroomSessionOver => 'La sesión ha terminado';
 
   @override

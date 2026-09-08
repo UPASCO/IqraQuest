@@ -1253,6 +1253,9 @@ class AppLocalizationsIt extends AppLocalizations {
       'Guarda la lavagna: la risposta arriva.';
 
   @override
+  String get classroomAnswerMissed => 'Non hai risposto in tempo';
+
+  @override
   String get classroomSessionOver => 'La sessione è finita';
 
   @override

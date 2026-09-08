@@ -12,6 +12,7 @@ import '../application/classroom_board_controller.dart';
 import '../data/classroom_gateway.dart';
 import '../domain/classroom_state.dart';
 import '../domain/lesson.dart';
+import 'classroom_countdown.dart';
 import 'lesson_labels.dart';
 
 /// The board the class watches, on the projector or the classroom TV.
@@ -456,17 +457,28 @@ class _Card extends StatelessWidget {
           ),
           SizedBox(height: 20 * scale),
           if (!revealed)
-            Text(
-              l10n.classroomAnsweredCount(
-                room.answeredCurrent,
-                room.participants.length,
-              ),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 26 * scale,
-                fontWeight: FontWeight.w700,
-                color: colors.textSecondary,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  l10n.classroomAnsweredCount(
+                    room.answeredCurrent,
+                    room.participants.length,
+                  ),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 26 * scale,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textSecondary,
+                  ),
+                ),
+                // Rien quand l'enseignant révèle à la main, ce qui est
+                // le réglage par défaut.
+                if (room.remaining() != null) ...[
+                  SizedBox(width: 22 * scale),
+                  ClassroomCountdown(room: room, fontSize: 26 * scale),
+                ],
+              ],
             )
           else
             Container(

@@ -338,6 +338,7 @@
   "classroomQuestionOf": "Domanda {current} di {total}",
   "classroomAnswerSent": "Risposta inviata",
   "classroomAnswerSentHint": "Guarda la lavagna: la risposta arriva.",
+  "classroomAnswerMissed": "Non hai risposto in tempo",
   "classroomSessionOver": "La sessione è finita",
   "classroomYourScore": "{count, plural, one{Hai fatto avanzare il tuo cavallo di una casella} other{Hai fatto avanzare il tuo cavallo di {count} caselle}}",
   "classroomLeave": "Esci dalla classe",

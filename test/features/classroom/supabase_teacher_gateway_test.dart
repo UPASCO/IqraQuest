@@ -24,7 +24,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   test('the sign-in link goes to the address, and nowhere else', () async {
-    final calls = <({String path, Map<String, dynamic> body})>[];
+    final calls = <({Uri url, Map<String, dynamic> body})>[];
     final gateway = SupabaseTeacherGateway(
       url: _url,
       anonKey: _anon,
@@ -32,7 +32,7 @@ void main() {
       redirectTo: 'https://iqraquest.example/teacher-callback.html',
       client: MockClient((request) async {
         calls.add((
-          path: request.url.path,
+          url: request.url,
           body: jsonDecode(request.body) as Map<String, dynamic>,
         ));
         return http.Response('{}', 200);
@@ -41,13 +41,34 @@ void main() {
 
     await gateway.sendMagicLink('  ecole@example.org ');
 
-    expect(calls.single.path, '/auth/v1/otp');
+    expect(calls.single.url.path, '/auth/v1/otp');
     expect(calls.single.body['email'], 'ecole@example.org');
     expect(calls.single.body['create_user'], true);
+    // The return address travels as a query parameter: GoTrue reads
+    // `redirect_to` there and ignores anything put in the body, which is
+    // exactly how the link used to come back to the wrong page.
     expect(
-      (calls.single.body['options'] as Map)['email_redirect_to'],
+      calls.single.url.queryParameters['redirect_to'],
       'https://iqraquest.example/teacher-callback.html',
     );
+  });
+
+  test('with no callback configured, the link carries no redirect', () async {
+    Uri? seen;
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient((request) async {
+        seen = request.url;
+        return http.Response('{}', 200);
+      }),
+    );
+
+    await gateway.sendMagicLink('ecole@example.org');
+
+    expect(seen!.queryParameters, isEmpty);
+    expect(seen!.path, '/auth/v1/otp');
   });
 
   test('an address that is not one never reaches the server', () async {

@@ -338,6 +338,7 @@
   "classroomQuestionOf": "Soru {current} / {total}",
   "classroomAnswerSent": "Cevap gönderildi",
   "classroomAnswerSentHint": "Tahtaya bak: cevap geliyor.",
+  "classroomAnswerMissed": "Zamanında cevaplamadın",
   "classroomSessionOver": "Oturum bitti",
   "classroomYourScore": "{count, plural, other{Atını {count} kare ilerlettin}}",
   "classroomLeave": "Sınıftan ayrıl",

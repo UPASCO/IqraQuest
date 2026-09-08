@@ -1243,6 +1243,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Look at the board: the answer is coming.';
 
   @override
+  String get classroomAnswerMissed => 'You did not answer in time';
+
+  @override
   String get classroomSessionOver => 'The session is over';
 
   @override

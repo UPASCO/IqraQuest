@@ -338,6 +338,7 @@
   "classroomQuestionOf": "Pregunta {current} de {total}",
   "classroomAnswerSent": "Respuesta enviada",
   "classroomAnswerSentHint": "Mira la pizarra: la respuesta llega.",
+  "classroomAnswerMissed": "No respondiste a tiempo",
   "classroomSessionOver": "La sesión ha terminado",
   "classroomYourScore": "{count, plural, one{Has hecho avanzar tu caballo una casilla} other{Has hecho avanzar tu caballo {count} casillas}}",
   "classroomLeave": "Salir de la clase",

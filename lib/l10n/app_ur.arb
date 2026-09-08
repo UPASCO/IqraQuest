@@ -338,6 +338,7 @@
   "classroomQuestionOf": "سوال {current} از {total}",
   "classroomAnswerSent": "جواب بھیج دیا گیا",
   "classroomAnswerSentHint": "بورڈ کی طرف دیکھیں: جواب آ رہا ہے۔",
+  "classroomAnswerMissed": "تم وقت پر جواب نہیں دے سکے",
   "classroomSessionOver": "سیشن ختم ہو گیا",
   "classroomYourScore": "{count, plural, one{آپ نے اپنے گھوڑے کو ایک خانہ آگے بڑھایا} other{آپ نے اپنے گھوڑے کو {count} خانے آگے بڑھایا}}",
   "classroomLeave": "کلاس چھوڑیں",
