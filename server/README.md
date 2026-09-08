@@ -117,7 +117,7 @@ ici, et l'app ne touche jamais une carte.
 
 `.github/workflows/web-classroom.yml` construit l'application pour le web
 et la publie sur GitHub Pages à chaque poussée sur `main`, à l'adresse
-**https://ecole.iqraquest.org**.
+**https://school.iqraquest.org**.
 
 C'est un sous-domaine du site vitrine (`UPASCO/iqraquest-website`, qui
 sert l'apex depuis son propre site Pages). Les deux sont indépendants :
@@ -131,13 +131,13 @@ Trois réglages, une fois :
 
    | sous-domaine | type  | cible               |
    |--------------|-------|---------------------|
-   | `ecole`      | CNAME | `upasco.github.io.` |
+   | `school`     | CNAME | `upasco.github.io.` |
 
    Ne rien changer aux quatre `A` de l'apex ni aux MX : ce sont le site
    vitrine et la messagerie.
 
 2. **GitHub Pages** sur `UPASCO/IqraQuest` — Settings → Pages, source
-   « GitHub Actions », domaine personnalisé `ecole.iqraquest.org`, puis
+   « GitHub Actions », domaine personnalisé `school.iqraquest.org`, puis
    cocher « Enforce HTTPS » une fois le certificat émis (quelques
    minutes). Le fichier `web/CNAME` du dépôt porte déjà ce domaine :
    Flutter le recopie dans le build, et Pages le lit là.
@@ -149,14 +149,14 @@ Trois réglages, une fois :
 | `SUPABASE_URL`         | l'adresse du projet                              |
 | `SUPABASE_ANON_KEY`    | la clé publique (elle n'atteint que les fonctions)|
 | `STRIPE_CHECKOUT_URL`  | le lien de paiement Stripe                        |
-| `TEACHER_CALLBACK_URL` | `https://ecole.iqraquest.org/teacher-callback.html` |
+| `TEACHER_CALLBACK_URL` | `https://school.iqraquest.org/teacher-callback.html` |
 
 La clé `service_role` n'en fait pas partie et n'en fera jamais partie.
 
 Une fois publié :
 
-- la console est à `https://ecole.iqraquest.org/#/teacher` ;
-- le tableau à `https://ecole.iqraquest.org/#/classroom/board/<CODE>`.
+- la console est à `https://school.iqraquest.org/#/teacher` ;
+- le tableau à `https://school.iqraquest.org/#/classroom/board/<CODE>`.
 
 Sans les deux valeurs Supabase, le site se construit quand même : il
 montre une salle vide et le dit franchement.
@@ -238,7 +238,7 @@ qui permet de fermer la séance sur « à revoir ensemble » sans désigner
 un enfant devant sa classe.
 
 Le vestibule affiche le code **et** un QR code qui porte
-`https://ecole.iqraquest.org/#/classroom?code=<CODE>` : les grands
+`https://school.iqraquest.org/#/classroom?code=<CODE>` : les grands
 scannent, les autres tapent les six caractères, qui restent au mur toute
 la séance. Comme l'application se compile aussi pour le web, un
 Chromebook ou une tablette d'école rejoint sans rien installer.
@@ -257,6 +257,68 @@ l'extension existe. Si le palier choisi ne l'a pas, appeler
 planifiée, ou depuis n'importe quel ordonnanceur ayant la clé
 `service_role`. Ce n'est pas une commodité : c'est ce qui garantit que
 les prénoms ne restent pas.
+
+## Une région, un monde
+
+Une séance est une île. Elle a un code, soixante élèves au plus, dix
+questions, vingt minutes — puis elle est effacée. Rien dans ce schéma ne
+joint deux séances, et il n'existe aucune donnée globale à répliquer.
+Cela décide de presque tout ce qui suit.
+
+**La latence n'est pas un problème, parce que le rythme est humain.** Un
+appareil interroge la salle toutes les deux secondes ; l'enseignant, lui,
+décide quand la carte s'ouvre et quand la réponse se montre. Trois cents
+millisecondes de traversée entre Jakarta et Francfort ne se voient pas
+dans ce rythme-là.
+
+**Une seule règle protège cette propriété, et il faut la garder :
+personne ne gagne parce qu'il a répondu plus vite.** Une case par bonne
+réponse, sans prime à la vitesse. Cette règle a été choisie pour des
+raisons pédagogiques — un enfant lent n'est pas un enfant qui a tort —
+et elle a un effet secondaire précieux : elle rend le jeu équitable
+quelle que soit la distance au serveur. Le jour où quelqu'un proposera
+un bonus au premier qui répond, ce sera aussi la fin de l'équité entre
+un élève de Lyon et un élève de Kuala Lumpur.
+
+**La résidence des données ne pèse presque rien, parce qu'on ne garde
+presque rien.** Un prénom et des compteurs par question, deux jours au
+plus, sans compte, sans adresse, sans identifiant d'appareil. Le RGPD
+étant le régime le plus strict, héberger en Europe convient partout ;
+les régimes scolaires américains (FERPA, COPPA) portent sur ce qui est
+collecté et divulgué, pas sur le lieu. Le choix de région est donc un
+choix de confort, pas de conformité.
+
+**Grandir se fait par ajout, pas par réécriture.** Le palier gratuit
+tient environ six classes simultanées, 25 $ par mois une quinzaine. Trois
+leviers, dans cet ordre :
+
+1. espacer le sondage, ou passer les élèves au temps réel de Supabase
+   (websocket) — c'est le sondage qui coûte, pas les écritures ;
+2. monter de palier ;
+3. ouvrir un second projet dans une autre région et y rejouer les deux
+   migrations. Comme les séances sont des îles, rien n'a besoin d'être
+   répliqué : chaque salle vit entièrement dans son projet.
+
+Le troisième levier a une seule vraie contrainte, qu'il vaut mieux
+connaître d'avance : un code de séance n'est unique qu'à l'intérieur
+d'un projet. Le QR code règle le cas courant, puisqu'il porte l'adresse
+complète de la console qui a ouvert la salle ; c'est la saisie manuelle
+du code qui devra alors dire dans quelle région chercher.
+
+**Pourquoi Supabase, et quand en changer.** Postgres avec RLS donne la
+garantie d'anonymat par construction plutôt que par discipline : le rôle
+anonyme n'a aucune politique, donc il ne lit rien, et la promesse tient
+même si une requête est écrite de travers un jour. Les alternatives
+sérieuses sont Cloudflare Durable Objects (une salle est littéralement
+un objet, placé près de sa classe : techniquement le meilleur ajustement
+à ce problème, au prix d'un serveur à écrire et à maintenir) et Firebase
+(mondial et poussé en temps réel, mais la démonstration d'anonymat y
+demande plus de travail que quatre fonctions et une suppression).
+
+Le jour où l'un d'eux devient nécessaire, l'application n'en saura rien :
+elle ne parle qu'à `ClassroomGateway`, une interface qui a déjà deux
+implémentations (le serveur et une salle en mémoire). En ajouter une
+troisième ne touche à aucun écran.
 
 ## Ce que ça coûte
 

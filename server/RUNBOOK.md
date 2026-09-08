@@ -15,8 +15,10 @@ précédente.
 
 ## 1. Le projet Supabase — 15 minutes
 
-1. <https://supabase.com> → **New project**. Région **Europe** (les
-   élèves sont européens ; les données ne quittent pas l'UE).
+1. <https://supabase.com> → **New project**. Région : **celle des
+   premières écoles qui paient** — l'Europe aujourd'hui. Ce choix est de
+   confort, pas de droit : voir « Une région, un monde » dans
+   [README.md](README.md#une-région-un-monde).
 2. Noter les deux valeurs dans **Settings → API** :
    - **Project URL** → `https://xxxx.supabase.co`
    - **anon public** → `eyJ...` (clé publique : elle ne peut appeler que
@@ -39,8 +41,8 @@ Dans **Authentication → URL Configuration** :
 
 | champ | valeur |
 |---|---|
-| Site URL | `https://ecole.iqraquest.org` |
-| Redirect URLs | `https://ecole.iqraquest.org/teacher-callback.html` |
+| Site URL | `https://school.iqraquest.org` |
+| Redirect URLs | `https://school.iqraquest.org/teacher-callback.html` |
 
 Sans cette seconde ligne, le lien de connexion arrive mais refuse de
 revenir sur la console.
@@ -58,7 +60,7 @@ Un seul enregistrement à ajouter, dans la zone `iqraquest.org` :
 
 | sous-domaine | type | cible |
 |---|---|---|
-| `ecole` | CNAME | `upasco.github.io.` |
+| `school` | CNAME | `upasco.github.io.` |
 
 **Ne touchez à rien d'autre.** Les quatre `A` de l'apex servent le site
 vitrine, les `MX` servent `support@iqraquest.org`. Les casser est la
@@ -69,7 +71,7 @@ seule erreur vraiment coûteuse de cette page.
 **Settings → Pages** :
 
 - Source : **GitHub Actions**
-- Custom domain : `ecole.iqraquest.org`
+- Custom domain : `school.iqraquest.org`
 - Cocher **Enforce HTTPS** dès que le certificat est émis (quelques
   minutes après le DNS)
 
@@ -84,12 +86,12 @@ recopie dans la build et Pages le lit là.
 |---|---|---|
 | `SUPABASE_URL` | l'URL de l'étape 1 | le web **et** les builds iOS/Android |
 | `SUPABASE_ANON_KEY` | la clé anon de l'étape 1 | idem |
-| `TEACHER_CALLBACK_URL` | `https://ecole.iqraquest.org/teacher-callback.html` | la console |
+| `TEACHER_CALLBACK_URL` | `https://school.iqraquest.org/teacher-callback.html` | la console |
 | `STRIPE_CHECKOUT_URL` | le lien de paiement (étape 6 ; laisser vide pour l'instant) | la console |
 
 Puis **Actions → Web — classroom console & board → Run workflow**.
 
-Au bout de quelques minutes : `https://ecole.iqraquest.org/#/teacher`
+Au bout de quelques minutes : `https://school.iqraquest.org/#/teacher`
 répond.
 
 > Les deux premiers secrets servent aussi aux builds mobiles. Une build
@@ -111,7 +113,7 @@ values ('votre.adresse@example.org', 'essai', 1, now() + interval '90 days');
 
 Ensuite, dans l'ordre :
 
-1. Ouvrir `https://ecole.iqraquest.org/#/teacher`, entrer **cette même
+1. Ouvrir `https://school.iqraquest.org/#/teacher`, entrer **cette même
    adresse**, demander le lien.
 2. Ouvrir le lien reçu **sur le même appareil**. La console affiche
    « Licence valable jusqu'au… » : la ligne vient d'être rattachée au
@@ -123,7 +125,7 @@ Ensuite, dans l'ordre :
    grand et un QR code.
 5. Sur un téléphone : ouvrir IqraQuest → **Classe**, taper le code et un
    prénom. (Ou scanner le QR : le code est alors déjà rempli. Ou, sans
-   installer l'app, ouvrir `https://ecole.iqraquest.org/#/classroom`.)
+   installer l'app, ouvrir `https://school.iqraquest.org/#/classroom`.)
 6. Le prénom apparaît sur le tableau. Depuis la console : **Question
    suivante** → la carte s'affiche partout ; répondre sur le téléphone →
    le compteur du tableau passe à 1 ; **Montrer la réponse** → la bonne
@@ -185,7 +187,7 @@ le déploiement part tout seul.
 | Le lien arrive mais la console reste déconnectée | `Redirect URLs` ne contient pas `teacher-callback.html` (étape 2) |
 | « Aucune licence » alors que Stripe a été payé | métadonnées posées sur le produit et non sur le lien (étape 7) |
 | Le tableau reste sur « code inconnu » | la séance a été fermée, ou le code appartient à un autre projet Supabase |
-| `ecole.iqraquest.org` renvoie un 404 GitHub | domaine personnalisé non renseigné dans Pages (étape 4) |
+| `school.iqraquest.org` renvoie un 404 GitHub | domaine personnalisé non renseigné dans Pages (étape 4) |
 
 ## Ce que ce montage coûte
 

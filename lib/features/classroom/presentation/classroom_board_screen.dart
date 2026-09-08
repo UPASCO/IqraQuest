@@ -240,7 +240,7 @@ String classroomJoinUrl(String code) {
   final base = Uri.base;
   final origin = base.scheme == 'http' || base.scheme == 'https'
       ? base.origin
-      : 'https://ecole.iqraquest.org';
+      : 'https://school.iqraquest.org';
   return '$origin/#/classroom?code=$code';
 }
 
