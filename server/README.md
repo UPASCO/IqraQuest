@@ -85,6 +85,21 @@ vérifications-là comptent plus que les autres.
   `close_session`, la séance n'existe plus, et le rapport ne contient
   aucun prénom si la case n'était pas cochée.
 
+## Le tableau projeté
+
+`board_state(code)` est tout ce que le mur consomme : la phase, l'index
+de la carte ouverte, les prénoms du vestibule, les cases par équipe, et
+deux compteurs par question — combien de réponses reçues, combien de
+bonnes. Des nombres, jamais un prénom en face d'une réponse : c'est ce
+qui permet de fermer la séance sur « à revoir ensemble » sans désigner
+un enfant devant sa classe.
+
+L'écran vit dans l'application elle-même, à l'adresse
+`/classroom/board/<CODE>` — en web pour un vidéoprojecteur, ou sur la
+tablette de l'enseignant renvoyée vers la télévision de la salle. Il ne
+sait rien faire d'autre que lire : ni rejoindre, ni répondre, ni
+avancer. Le rythme reste à la console de l'enseignant.
+
 ## Si pg_cron n'est pas disponible
 
 La migration 0002 planifie le ménage quotidien avec `pg_cron` quand

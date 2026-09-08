@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/classroom/presentation/classroom_board_screen.dart';
 import '../features/classroom/presentation/classroom_screen.dart';
 import '../features/daily_challenge/presentation/daily_challenge_screen.dart';
 import '../features/game/presentation/game_screen.dart';
@@ -39,6 +40,16 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
     GoRoute(path: '/progress', builder: (c, s) => const ProgressScreen()),
     GoRoute(path: '/tutorial', builder: (c, s) => const TutorialScreen()),
     GoRoute(path: '/classroom', builder: (c, s) => const ClassroomScreen()),
+    // The projector's own page: opened by the teacher's console with the
+    // session code, and read by a room full of children who never touch
+    // it. `/classroom/board/G4KEPW` on the web build, cast to the TV on
+    // a phone or a tablet.
+    GoRoute(
+      path: '/classroom/board/:code',
+      builder: (c, s) => ClassroomBoardScreen(
+        code: (s.pathParameters['code'] ?? '').toUpperCase(),
+      ),
+    ),
   ],
 );
 

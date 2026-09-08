@@ -48,6 +48,8 @@ class ClassroomState {
     required this.participants,
     required this.squaresByTeam,
     required this.answeredCurrent,
+    this.answersByQuestion = const {},
+    this.correctByQuestion = const {},
     this.askedAt,
     this.secondsPerQuestion = 0,
   });
@@ -80,6 +82,14 @@ class ClassroomState {
   /// How many pupils have answered the open question. Never who, never
   /// what.
   final int answeredCurrent;
+
+  /// How many answers each question of the lesson received, by index.
+  /// Counts only: this is what lets the board close on the cards the
+  /// class found hard, without ever naming a child.
+  final Map<int, int> answersByQuestion;
+
+  /// How many of those answers were right, by index.
+  final Map<int, int> correctByQuestion;
 
   final DateTime? askedAt;
 
@@ -115,6 +125,30 @@ class ClassroomState {
   int headCountOf(int team) =>
       participants.where((p) => p.team == team).length;
 
+  /// The share of right answers on one card, or null if nobody answered
+  /// it — a card the class never reached says nothing about the class.
+  double? successOf(int questionIndex) {
+    final answers = answersByQuestion[questionIndex] ?? 0;
+    if (answers == 0) return null;
+    return (correctByQuestion[questionIndex] ?? 0) / answers;
+  }
+
+  /// The cards worth going over again, hardest first: the ones the class
+  /// got wrong most often. Ties keep lesson order, so the list on the
+  /// wall does not reshuffle itself while the teacher reads it.
+  List<int> hardestQuestions({int take = 3}) {
+    final answered = [
+      for (var i = 0; i < questionIds.length; i++)
+        if ((answersByQuestion[i] ?? 0) > 0) i,
+    ];
+    answered.sort((a, b) {
+      final byScore = successOf(a)!.compareTo(successOf(b)!);
+      return byScore != 0 ? byScore : a.compareTo(b);
+    });
+    // A card everyone answered right is not a card to go over.
+    return [for (final i in answered) if (successOf(i)! < 1) i].take(take).toList();
+  }
+
   /// What is left of the timer, or null when there is none.
   ///
   /// Counted from the server's own stamp against the device's clock, so
@@ -129,15 +163,19 @@ class ClassroomState {
     return left.isNegative ? Duration.zero : left;
   }
 
-  factory ClassroomState.fromJson(Map<String, dynamic> json) {
-    final squares = <int, int>{};
-    final raw = json['squaresByTeam'];
+  static Map<int, int> _intMap(Object? raw) {
+    final out = <int, int>{};
     if (raw is Map) {
       raw.forEach((key, value) {
-        final team = int.tryParse('$key');
-        if (team != null) squares[team] = (value as num).toInt();
+        final k = int.tryParse('$key');
+        if (k != null) out[k] = (value as num).toInt();
       });
     }
+    return out;
+  }
+
+  factory ClassroomState.fromJson(Map<String, dynamic> json) {
+    final squares = _intMap(json['squaresByTeam']);
     return ClassroomState(
       sessionId: json['sessionId'] as String,
       code: json['code'] as String,
@@ -155,6 +193,8 @@ class ClassroomState {
       ],
       squaresByTeam: squares,
       answeredCurrent: (json['answeredCurrent'] as num?)?.toInt() ?? 0,
+      answersByQuestion: _intMap(json['answersByQuestion']),
+      correctByQuestion: _intMap(json['correctByQuestion']),
       askedAt: switch (json['askedAt']) {
         final String s => DateTime.tryParse(s)?.toLocal(),
         _ => null,
@@ -177,6 +217,12 @@ class ClassroomState {
       for (final entry in squaresByTeam.entries) '${entry.key}': entry.value,
     },
     'answeredCurrent': answeredCurrent,
+    'answersByQuestion': {
+      for (final entry in answersByQuestion.entries) '${entry.key}': entry.value,
+    },
+    'correctByQuestion': {
+      for (final entry in correctByQuestion.entries) '${entry.key}': entry.value,
+    },
     'askedAt': askedAt?.toUtc().toIso8601String(),
     'secondsPerQuestion': secondsPerQuestion,
   };
@@ -187,6 +233,8 @@ class ClassroomState {
     List<ClassroomParticipant>? participants,
     Map<int, int>? squaresByTeam,
     int? answeredCurrent,
+    Map<int, int>? answersByQuestion,
+    Map<int, int>? correctByQuestion,
     Object? askedAt = _unset,
   }) => ClassroomState(
     sessionId: sessionId,
@@ -200,6 +248,8 @@ class ClassroomState {
     participants: participants ?? this.participants,
     squaresByTeam: squaresByTeam ?? this.squaresByTeam,
     answeredCurrent: answeredCurrent ?? this.answeredCurrent,
+    answersByQuestion: answersByQuestion ?? this.answersByQuestion,
+    correctByQuestion: correctByQuestion ?? this.correctByQuestion,
     askedAt: identical(askedAt, _unset) ? this.askedAt : askedAt as DateTime?,
     secondsPerQuestion: secondsPerQuestion,
   );

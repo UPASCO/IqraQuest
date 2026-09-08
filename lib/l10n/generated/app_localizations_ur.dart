@@ -1272,6 +1272,42 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classroomReconnecting => 'دوبارہ رابطہ…';
 
   @override
+  String get classroomBoardCode => 'کلاس کا کوڈ';
+
+  @override
+  String get classroomBoardHowToJoin =>
+      'اقرا کویسٹ کھولیں، «کلاس» منتخب کریں اور یہ کوڈ درج کریں۔';
+
+  @override
+  String classroomAnsweredCount(num answered, num total) {
+    return '$answered / $total نے جواب دیا';
+  }
+
+  @override
+  String classroomPupilCount(num count) {
+    return '$count طلبہ';
+  }
+
+  @override
+  String classroomSquaresCount(num count) {
+    return '$count خانے';
+  }
+
+  @override
+  String get classroomPodium => 'پوڈیم';
+
+  @override
+  String get classroomToReview => 'مل کر دہرانے کے قابل';
+
+  @override
+  String get classroomBoardWaitingFirst => 'پہلا سوال آ رہا ہے';
+
+  @override
+  String classroomSuccessRate(num percent) {
+    return '$percent% درست جوابات';
+  }
+
+  @override
   String lessonTitle(String theme, String level, num number) {
     return '$theme · $level $number';
   }

@@ -298,6 +298,18 @@ class _Session {
       answeredCurrent: answers.values
           .where((a) => a.questionIndex == currentIndex)
           .length,
+      answersByQuestion: {
+        for (var i = 0; i < questionIds.length; i++)
+          if (answers.values.any((a) => a.questionIndex == i))
+            i: answers.values.where((a) => a.questionIndex == i).length,
+      },
+      correctByQuestion: {
+        for (var i = 0; i < questionIds.length; i++)
+          if (answers.values.any((a) => a.questionIndex == i))
+            i: answers.values
+                .where((a) => a.questionIndex == i && a.correct)
+                .length,
+      },
       askedAt: askedAt,
       secondsPerQuestion: secondsPerQuestion,
     );

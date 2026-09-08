@@ -2923,6 +2923,80 @@ s("classroomReconnecting", "Pupil screen: the wifi dropped, the seat is being re
   tr="Yeniden bağlanılıyor…", id="Menyambung kembali…", ur="دوبارہ رابطہ…",
   ms="Menyambung semula…", it="Riconnessione…", nl="Opnieuw verbinden…")
 
+# ---- The projected board (classroom) ----------------------------------
+s("classroomBoardCode", "Projected board: label above the six-character code",
+  fr="Code de la classe", en="Class code", ar="رمز الحصة",
+  es="Código de la clase", pt="Código da turma", de="Klassencode",
+  tr="Sınıf kodu", id="Kode kelas", ur="کلاس کا کوڈ", ms="Kod kelas",
+  it="Codice della classe", nl="Klascode")
+
+s("classroomBoardHowToJoin", "Projected board: how a pupil joins, read off the wall",
+  fr="Ouvrez IqraQuest, choisissez « Classe » et entrez ce code.",
+  en="Open IqraQuest, choose “Class” and enter this code.",
+  ar="افتح إكرا كويست، واختر «الحصة»، وأدخل هذا الرمز.",
+  es="Abre IqraQuest, elige «Clase» e introduce este código.",
+  pt="Abra o IqraQuest, escolha «Turma» e introduza este código.",
+  de="Öffne IqraQuest, wähle „Klasse“ und gib diesen Code ein.",
+  tr="IqraQuest\'i açın, «Sınıf» seçin ve bu kodu girin.",
+  id="Buka IqraQuest, pilih «Kelas», lalu masukkan kode ini.",
+  ur="اقرا کویسٹ کھولیں، «کلاس» منتخب کریں اور یہ کوڈ درج کریں۔",
+  ms="Buka IqraQuest, pilih «Kelas» dan masukkan kod ini.",
+  it="Apri IqraQuest, scegli «Classe» e inserisci questo codice.",
+  nl="Open IqraQuest, kies «Klas» en voer deze code in.")
+
+s("classroomAnsweredCount", "Projected board: how many pupils have answered the open card",
+  ph={"answered": "num", "total": "num"},
+  fr="{answered} / {total} ont répondu", en="{answered} / {total} have answered",
+  ar="أجاب {answered} من {total}", es="{answered} / {total} han respondido",
+  pt="{answered} / {total} responderam", de="{answered} / {total} haben geantwortet",
+  tr="{answered} / {total} yanıtladı", id="{answered} / {total} sudah menjawab",
+  ur="{answered} / {total} نے جواب دیا", ms="{answered} / {total} telah menjawab",
+  it="{answered} / {total} hanno risposto", nl="{answered} / {total} hebben geantwoord")
+
+s("classroomPupilCount", "How many pupils are in the room",
+  ph={"count": "num"},
+  fr="{count} élèves", en="{count} pupils", ar="{count} تلميذًا",
+  es="{count} alumnos", pt="{count} alunos", de="{count} Schüler",
+  tr="{count} öğrenci", id="{count} murid", ur="{count} طلبہ",
+  ms="{count} murid", it="{count} alunni", nl="{count} leerlingen")
+
+s("classroomSquaresCount", "How many squares a team has advanced",
+  ph={"count": "num"},
+  fr="{count} cases", en="{count} squares", ar="{count} خانة",
+  es="{count} casillas", pt="{count} casas", de="{count} Felder",
+  tr="{count} kare", id="{count} petak", ur="{count} خانے",
+  ms="{count} petak", it="{count} caselle", nl="{count} vakjes")
+
+s("classroomPodium", "Projected board: the closing standings",
+  fr="Podium", en="Podium", ar="منصة التتويج", es="Podio", pt="Pódio",
+  de="Podium", tr="Podyum", id="Podium", ur="پوڈیم", ms="Podium",
+  it="Podio", nl="Podium")
+
+s("classroomToReview", "Projected board: the cards the class missed most",
+  fr="À revoir ensemble", en="Worth going over again",
+  ar="يستحق المراجعة معًا", es="Para repasar juntos", pt="Para rever juntos",
+  de="Noch einmal gemeinsam ansehen", tr="Birlikte tekrar edelim",
+  id="Perlu diulang bersama", ur="مل کر دہرانے کے قابل",
+  ms="Perlu diulang bersama", it="Da rivedere insieme",
+  nl="Samen nog eens bekijken")
+
+s("classroomBoardWaitingFirst", "Projected board: the lobby, once the class is in",
+  fr="La première question arrive", en="The first question is coming",
+  ar="السؤال الأول في الطريق", es="La primera pregunta está por llegar",
+  pt="A primeira pergunta está a chegar", de="Die erste Frage kommt gleich",
+  tr="İlk soru geliyor", id="Pertanyaan pertama segera datang",
+  ur="پہلا سوال آ رہا ہے", ms="Soalan pertama akan bermula",
+  it="La prima domanda sta arrivando", nl="De eerste vraag komt eraan")
+
+s("classroomSuccessRate", "Projected board: share of the class that got a card right",
+  ph={"percent": "num"},
+  fr="{percent} % de bonnes réponses", en="{percent}% answered correctly",
+  ar="{percent}٪ من الإجابات صحيحة", es="{percent} % de aciertos",
+  pt="{percent}% de respostas certas", de="{percent} % richtig",
+  tr="%{percent} doğru", id="{percent}% menjawab benar",
+  ur="{percent}% درست جوابات", ms="{percent}% jawapan betul",
+  it="{percent}% di risposte esatte", nl="{percent}% goed beantwoord")
+
 # ---- Lessons (classroom) ----------------------------------------------
 s("lessonTitle", "Name of a classroom lesson: theme, level and its number",
   ph={"theme": "String", "level": "String", "number": "num"},

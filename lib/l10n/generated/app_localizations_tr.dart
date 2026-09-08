@@ -1258,6 +1258,42 @@ class AppLocalizationsTr extends AppLocalizations {
   String get classroomReconnecting => 'Yeniden bağlanılıyor…';
 
   @override
+  String get classroomBoardCode => 'Sınıf kodu';
+
+  @override
+  String get classroomBoardHowToJoin =>
+      'IqraQuest\'i açın, «Sınıf» seçin ve bu kodu girin.';
+
+  @override
+  String classroomAnsweredCount(num answered, num total) {
+    return '$answered / $total yanıtladı';
+  }
+
+  @override
+  String classroomPupilCount(num count) {
+    return '$count öğrenci';
+  }
+
+  @override
+  String classroomSquaresCount(num count) {
+    return '$count kare';
+  }
+
+  @override
+  String get classroomPodium => 'Podyum';
+
+  @override
+  String get classroomToReview => 'Birlikte tekrar edelim';
+
+  @override
+  String get classroomBoardWaitingFirst => 'İlk soru geliyor';
+
+  @override
+  String classroomSuccessRate(num percent) {
+    return '%$percent doğru';
+  }
+
+  @override
   String lessonTitle(String theme, String level, num number) {
     return '$theme · $level $number';
   }

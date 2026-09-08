@@ -1276,6 +1276,42 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classroomReconnecting => 'Reconnecting…';
 
   @override
+  String get classroomBoardCode => 'Class code';
+
+  @override
+  String get classroomBoardHowToJoin =>
+      'Open IqraQuest, choose “Class” and enter this code.';
+
+  @override
+  String classroomAnsweredCount(num answered, num total) {
+    return '$answered / $total have answered';
+  }
+
+  @override
+  String classroomPupilCount(num count) {
+    return '$count pupils';
+  }
+
+  @override
+  String classroomSquaresCount(num count) {
+    return '$count squares';
+  }
+
+  @override
+  String get classroomPodium => 'Podium';
+
+  @override
+  String get classroomToReview => 'Worth going over again';
+
+  @override
+  String get classroomBoardWaitingFirst => 'The first question is coming';
+
+  @override
+  String classroomSuccessRate(num percent) {
+    return '$percent% answered correctly';
+  }
+
+  @override
   String lessonTitle(String theme, String level, num number) {
     return '$theme · $level $number';
   }

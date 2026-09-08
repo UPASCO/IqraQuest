@@ -283,6 +283,46 @@ void main() {
     );
   });
 
+  test('the room counts each card, so the board can close on the hard ones', () async {
+    final room = _room();
+    final code = room.openSession(
+      lessonId: 'piliers',
+      questionIds: _lesson,
+      teamCount: 2,
+    );
+    final a = await room.join(code: code, nickname: 'Amina');
+    final b = await room.join(code: code, nickname: 'Yusuf');
+
+    // First card: one right, one wrong. Second: both right.
+    room.ask(code);
+    await room.answer(code: code, token: a.token, questionIndex: 0, choice: 0);
+    await room.answer(code: code, token: b.token, questionIndex: 0, choice: 2);
+    room.reveal(code);
+    room.ask(code);
+    await room.answer(code: code, token: a.token, questionIndex: 1, choice: 0);
+    await room.answer(code: code, token: b.token, questionIndex: 1, choice: 0);
+
+    final state = await room.boardState(code);
+    expect(state.answersByQuestion[0], 2);
+    expect(state.correctByQuestion[0], 1);
+    expect(state.successOf(0), 0.5);
+    expect(state.successOf(1), 1);
+    expect(
+      state.successOf(2),
+      isNull,
+      reason: 'a card the class never reached says nothing about the class',
+    );
+    expect(
+      state.hardestQuestions(),
+      [0],
+      reason: 'the half-missed card, and not the one everyone got right',
+    );
+    // Counts only: nothing here ties a child to an answer.
+    final json = state.toJson().toString();
+    expect(json.contains('Amina'), isTrue, reason: 'the lobby names, no more');
+    expect(RegExp(r'Amina[^}]*correct').hasMatch(json), isFalse);
+  });
+
   test('closing a session forgets everyone in it', () async {
     final room = _room();
     final code = room.openSession(lessonId: 'piliers', questionIds: _lesson);

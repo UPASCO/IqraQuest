@@ -389,7 +389,28 @@ begin
     'answeredCurrent', (
       select count(*) from public.answers a
       where a.session_id = s.id and a.question_index = s.current_index
-    )
+    ),
+    -- De quoi fermer la séance sur les cartes que la classe a manquées,
+    -- sans jamais nommer personne : deux compteurs par question, l'un
+    -- des réponses reçues, l'autre des bonnes.
+    'answersByQuestion', coalesce((
+      select jsonb_object_agg(q.question_index::text, q.n)
+      from (
+        select a.question_index, count(*) as n
+        from public.answers a
+        where a.session_id = s.id
+        group by a.question_index
+      ) q
+    ), '{}'::jsonb),
+    'correctByQuestion', coalesce((
+      select jsonb_object_agg(q.question_index::text, q.n)
+      from (
+        select a.question_index, count(*) filter (where a.correct) as n
+        from public.answers a
+        where a.session_id = s.id
+        group by a.question_index
+      ) q
+    ), '{}'::jsonb)
   );
 end;
 $$;

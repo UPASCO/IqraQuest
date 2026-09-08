@@ -1708,6 +1708,65 @@
   "@classroomReconnecting": {
     "description": "Pupil screen: the wifi dropped, the seat is being recovered"
   },
+  "classroomBoardCode": "Class code",
+  "@classroomBoardCode": {
+    "description": "Projected board: label above the six-character code"
+  },
+  "classroomBoardHowToJoin": "Open IqraQuest, choose “Class” and enter this code.",
+  "@classroomBoardHowToJoin": {
+    "description": "Projected board: how a pupil joins, read off the wall"
+  },
+  "classroomAnsweredCount": "{answered} / {total} have answered",
+  "@classroomAnsweredCount": {
+    "description": "Projected board: how many pupils have answered the open card",
+    "placeholders": {
+      "answered": {
+        "type": "num"
+      },
+      "total": {
+        "type": "num"
+      }
+    }
+  },
+  "classroomPupilCount": "{count} pupils",
+  "@classroomPupilCount": {
+    "description": "How many pupils are in the room",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "classroomSquaresCount": "{count} squares",
+  "@classroomSquaresCount": {
+    "description": "How many squares a team has advanced",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "classroomPodium": "Podium",
+  "@classroomPodium": {
+    "description": "Projected board: the closing standings"
+  },
+  "classroomToReview": "Worth going over again",
+  "@classroomToReview": {
+    "description": "Projected board: the cards the class missed most"
+  },
+  "classroomBoardWaitingFirst": "The first question is coming",
+  "@classroomBoardWaitingFirst": {
+    "description": "Projected board: the lobby, once the class is in"
+  },
+  "classroomSuccessRate": "{percent}% answered correctly",
+  "@classroomSuccessRate": {
+    "description": "Projected board: share of the class that got a card right",
+    "placeholders": {
+      "percent": {
+        "type": "num"
+      }
+    }
+  },
   "lessonTitle": "{theme} · {level} {number}",
   "@lessonTitle": {
     "description": "Name of a classroom lesson: theme, level and its number",

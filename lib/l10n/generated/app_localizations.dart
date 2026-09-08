@@ -2194,6 +2194,60 @@ abstract class AppLocalizations {
   /// **'Reconnecting…'**
   String get classroomReconnecting;
 
+  /// Projected board: label above the six-character code
+  ///
+  /// In en, this message translates to:
+  /// **'Class code'**
+  String get classroomBoardCode;
+
+  /// Projected board: how a pupil joins, read off the wall
+  ///
+  /// In en, this message translates to:
+  /// **'Open IqraQuest, choose “Class” and enter this code.'**
+  String get classroomBoardHowToJoin;
+
+  /// Projected board: how many pupils have answered the open card
+  ///
+  /// In en, this message translates to:
+  /// **'{answered} / {total} have answered'**
+  String classroomAnsweredCount(num answered, num total);
+
+  /// How many pupils are in the room
+  ///
+  /// In en, this message translates to:
+  /// **'{count} pupils'**
+  String classroomPupilCount(num count);
+
+  /// How many squares a team has advanced
+  ///
+  /// In en, this message translates to:
+  /// **'{count} squares'**
+  String classroomSquaresCount(num count);
+
+  /// Projected board: the closing standings
+  ///
+  /// In en, this message translates to:
+  /// **'Podium'**
+  String get classroomPodium;
+
+  /// Projected board: the cards the class missed most
+  ///
+  /// In en, this message translates to:
+  /// **'Worth going over again'**
+  String get classroomToReview;
+
+  /// Projected board: the lobby, once the class is in
+  ///
+  /// In en, this message translates to:
+  /// **'The first question is coming'**
+  String get classroomBoardWaitingFirst;
+
+  /// Projected board: share of the class that got a card right
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% answered correctly'**
+  String classroomSuccessRate(num percent);
+
   /// Name of a classroom lesson: theme, level and its number
   ///
   /// In en, this message translates to:

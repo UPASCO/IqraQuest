@@ -1270,6 +1270,42 @@ class AppLocalizationsMs extends AppLocalizations {
   String get classroomReconnecting => 'Menyambung semula…';
 
   @override
+  String get classroomBoardCode => 'Kod kelas';
+
+  @override
+  String get classroomBoardHowToJoin =>
+      'Buka IqraQuest, pilih «Kelas» dan masukkan kod ini.';
+
+  @override
+  String classroomAnsweredCount(num answered, num total) {
+    return '$answered / $total telah menjawab';
+  }
+
+  @override
+  String classroomPupilCount(num count) {
+    return '$count murid';
+  }
+
+  @override
+  String classroomSquaresCount(num count) {
+    return '$count petak';
+  }
+
+  @override
+  String get classroomPodium => 'Podium';
+
+  @override
+  String get classroomToReview => 'Perlu diulang bersama';
+
+  @override
+  String get classroomBoardWaitingFirst => 'Soalan pertama akan bermula';
+
+  @override
+  String classroomSuccessRate(num percent) {
+    return '$percent% jawapan betul';
+  }
+
+  @override
   String lessonTitle(String theme, String level, num number) {
     return '$theme · $level $number';
   }

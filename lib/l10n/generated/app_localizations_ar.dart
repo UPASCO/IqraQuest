@@ -1288,6 +1288,42 @@ class AppLocalizationsAr extends AppLocalizations {
   String get classroomReconnecting => 'جارٍ إعادة الاتصال…';
 
   @override
+  String get classroomBoardCode => 'رمز الحصة';
+
+  @override
+  String get classroomBoardHowToJoin =>
+      'افتح إكرا كويست، واختر «الحصة»، وأدخل هذا الرمز.';
+
+  @override
+  String classroomAnsweredCount(num answered, num total) {
+    return 'أجاب $answered من $total';
+  }
+
+  @override
+  String classroomPupilCount(num count) {
+    return '$count تلميذًا';
+  }
+
+  @override
+  String classroomSquaresCount(num count) {
+    return '$count خانة';
+  }
+
+  @override
+  String get classroomPodium => 'منصة التتويج';
+
+  @override
+  String get classroomToReview => 'يستحق المراجعة معًا';
+
+  @override
+  String get classroomBoardWaitingFirst => 'السؤال الأول في الطريق';
+
+  @override
+  String classroomSuccessRate(num percent) {
+    return '$percent٪ من الإجابات صحيحة';
+  }
+
+  @override
   String lessonTitle(String theme, String level, num number) {
     return '$theme · $level $number';
   }
