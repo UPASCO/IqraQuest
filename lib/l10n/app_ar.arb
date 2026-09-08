@@ -353,6 +353,7 @@
   "teacherLinkSent": "أُرسل الرابط إلى {email}. افتحه من هذا الجهاز.",
   "teacherInvalidEmail": "هذا لا يبدو بريدًا إلكترونيًا.",
   "teacherNoLicence": "لا توجد رخصة مرتبطة بهذا البريد.",
+  "teacherNoLicenceHint": "الرخصة مرتبطة بالبريد الذي دُفع منه. إن تمّ الشراء ببريد آخر، فسجّل الخروج وأدخل ذلك البريد.",
   "teacherGetLicence": "الحصول على رخصة",
   "teacherLicencePaidElsewhere": "يتم الدفع على صفحة Stripe الآمنة، ثم عُد إلى هنا.",
   "teacherRefresh": "تحديث",

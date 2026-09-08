@@ -1294,6 +1294,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String get teacherNoLicence => 'Tiada lesen dikaitkan dengan alamat ini.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'Lesen terikat pada alamat yang membayar. Jika pembelian dibuat dengan alamat lain, log keluar dan gunakan alamat itu.';
+
+  @override
   String get teacherGetLicence => 'Dapatkan lesen';
 
   @override

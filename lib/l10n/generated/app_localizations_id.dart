@@ -1295,6 +1295,10 @@ class AppLocalizationsId extends AppLocalizations {
       'Tidak ada lisensi yang terhubung ke alamat ini.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'Lisensi mengikuti alamat yang membayar. Jika pembelian memakai alamat lain, keluar lalu gunakan alamat itu.';
+
+  @override
   String get teacherGetLicence => 'Dapatkan lisensi';
 
   @override

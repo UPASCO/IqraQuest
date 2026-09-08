@@ -353,6 +353,7 @@
   "teacherLinkSent": "Lien envoyé à {email}. Ouvrez-le depuis cet appareil.",
   "teacherInvalidEmail": "Cette adresse ne ressemble pas à une adresse e-mail.",
   "teacherNoLicence": "Aucune licence n'est rattachée à cette adresse.",
+  "teacherNoLicenceHint": "La licence est rattachée à l’adresse qui a payé. Si l’achat a été fait avec une autre adresse, déconnectez-vous et entrez celle-là.",
   "teacherGetLicence": "Obtenir une licence",
   "teacherLicencePaidElsewhere": "Le paiement se fait sur la page sécurisée de Stripe, puis revenez ici.",
   "teacherRefresh": "Actualiser",

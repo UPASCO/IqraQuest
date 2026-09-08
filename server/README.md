@@ -276,6 +276,52 @@ planifiée, ou depuis n'importe quel ordonnanceur ayant la clé
 `service_role`. Ce n'est pas une commodité : c'est ce qui garantit que
 les prénoms ne restent pas.
 
+## Comment l'abonnement d'une école est reconnu
+
+Sans compte à créer, la question devient légitime : qui dit que cette
+école a payé ? **L'adresse e-mail est le fil**, et il tient en cinq
+étapes.
+
+1. **L'école paie** sur la page de Stripe, avec une adresse — celle de
+   la direction, du secrétariat, de l'enseignant. Aucun compte n'existe
+   encore, et rien n'est demandé de plus.
+2. **Stripe prévient la fonction Edge**, qui écrit une ligne dans
+   `licences` : l'adresse, le plan, le nombre de salles simultanées, la
+   date d'échéance. `owner_id` est **nul** : l'abonnement existe,
+   rattaché à une adresse, sans que personne se soit connecté.
+3. **L'enseignant ouvre la console** et entre cette adresse. Il reçoit
+   un lien ; le clic crée son compte Supabase — un identifiant et une
+   adresse, sans mot de passe. C'est tout ce que ce compte contient.
+4. **`my_licence()` fait la soudure**, à la première connexion : ne
+   trouvant aucune licence rattachée au compte, elle lit l'adresse du
+   compte connecté et réclame la ligne portant la même adresse
+   (`owner_id is null`). L'abonnement et le compte ne font plus qu'un.
+5. **Ensuite, tout passe par là.** `open_session` appelle `my_licence()`
+   avant d'ouvrir quoi que ce soit : pas de licence → `no_licence` ;
+   échue → `licence_expired` ; déjà autant de salles ouvertes que payées
+   → `too_many_sessions`.
+
+Ce sens de lecture — payer d'abord, se connecter ensuite — n'est pas un
+détail d'implémentation. La page de paiement appartient à Stripe : on ne
+peut pas y créer de compte chez nous. Faire de l'adresse le point de
+jonction évite donc d'imposer une inscription avant l'achat, et évite
+surtout à un acheteur de devoir se souvenir de ce qu'il aurait tapé.
+
+**La panne à connaître** : payer avec une adresse et se connecter avec
+une autre. La console affiche alors « aucune licence » et le dit
+explicitement — c'est le premier message de cet écran. Le remède, si
+l'école a réellement changé d'adresse, tient en une ligne dans le SQL
+Editor :
+
+```sql
+update public.licences
+   set email = 'la.nouvelle@ecole.fr', owner_id = null
+ where email = 'lancienne@ecole.fr';
+```
+
+Remettre `owner_id` à nul est la partie qui compte : c'est ce qui permet
+au prochain compte connecté de réclamer la licence.
+
 ## Une région, un monde
 
 Une séance est une île. Elle a un code, soixante élèves au plus, dix

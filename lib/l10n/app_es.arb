@@ -353,6 +353,7 @@
   "teacherLinkSent": "Enlace enviado a {email}. Ábrelo en este dispositivo.",
   "teacherInvalidEmail": "Esto no parece una dirección de correo.",
   "teacherNoLicence": "No hay ninguna licencia asociada a esta dirección.",
+  "teacherNoLicenceHint": "La licencia va ligada a la dirección que pagó. Si la compra se hizo con otra dirección, cierra sesión y usa esa.",
   "teacherGetLicence": "Obtener una licencia",
   "teacherLicencePaidElsewhere": "El pago se realiza en la página segura de Stripe; después, vuelve aquí.",
   "teacherRefresh": "Actualizar",

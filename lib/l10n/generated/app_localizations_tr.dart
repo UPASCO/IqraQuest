@@ -1282,6 +1282,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get teacherNoLicence => 'Bu adrese bağlı bir lisans yok.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'Lisans, ödemeyi yapan adrese bağlıdır. Alım başka bir adresle yapıldıysa çıkış yapın ve onu girin.';
+
+  @override
   String get teacherGetLicence => 'Lisans al';
 
   @override

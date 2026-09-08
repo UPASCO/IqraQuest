@@ -1312,6 +1312,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get teacherNoLicence => 'لا توجد رخصة مرتبطة بهذا البريد.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'الرخصة مرتبطة بالبريد الذي دُفع منه. إن تمّ الشراء ببريد آخر، فسجّل الخروج وأدخل ذلك البريد.';
+
+  @override
   String get teacherGetLicence => 'الحصول على رخصة';
 
   @override

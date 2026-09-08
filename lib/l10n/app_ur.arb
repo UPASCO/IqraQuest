@@ -353,6 +353,7 @@
   "teacherLinkSent": "لنک {email} پر بھیج دیا گیا۔ اسے اسی آلے پر کھولیں۔",
   "teacherInvalidEmail": "یہ ای میل ایڈریس نہیں لگتا۔",
   "teacherNoLicence": "اس ای میل سے کوئی لائسنس منسلک نہیں۔",
+  "teacherNoLicenceHint": "لائسنس اُسی ای میل سے جڑا ہے جس سے ادائیگی ہوئی۔ اگر خریداری کسی اور ای میل سے ہوئی تو سائن آؤٹ کر کے وہی استعمال کریں۔",
   "teacherGetLicence": "لائسنس حاصل کریں",
   "teacherLicencePaidElsewhere": "ادائیگی Stripe کے محفوظ صفحے پر ہوتی ہے؛ پھر یہاں واپس آئیں۔",
   "teacherRefresh": "دوبارہ جانچیں",

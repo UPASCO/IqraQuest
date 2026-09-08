@@ -177,6 +177,12 @@ void main() {
     expect(find.byKey(const Key('teacher-no-licence')), findsOneWidget);
     expect(find.text(en.teacherNoLicence), findsOneWidget);
     expect(find.text('ecole@example.org'), findsOneWidget);
+    expect(
+      find.text(en.teacherNoLicenceHint),
+      findsOneWidget,
+      reason: 'paying with one address and signing in with another is the '
+          'commonest way to land here',
+    );
     expect(find.byKey(const Key('teacher-refresh')), findsOneWidget);
   });
 

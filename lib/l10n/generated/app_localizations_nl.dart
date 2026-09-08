@@ -1303,6 +1303,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get teacherNoLicence => 'Er is geen licentie aan dit adres gekoppeld.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'De licentie hangt aan het adres waarmee is betaald. Is er met een ander adres gekocht, meld je dan af en gebruik dat adres.';
+
+  @override
   String get teacherGetLicence => 'Licentie aanschaffen';
 
   @override

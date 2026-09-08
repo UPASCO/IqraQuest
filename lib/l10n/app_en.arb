@@ -1741,6 +1741,10 @@
   "@teacherNoLicence": {
     "description": "Console: signed in, but nothing was bought on this address"
   },
+  "teacherNoLicenceHint": "The licence follows the address that paid. If the purchase was made with another address, sign out and use that one.",
+  "@teacherNoLicenceHint": {
+    "description": "Console: the licence follows the address that paid"
+  },
   "teacherGetLicence": "Get a licence",
   "@teacherGetLicence": {
     "description": "Console: go and buy a licence"

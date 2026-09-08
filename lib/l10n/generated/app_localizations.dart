@@ -2236,6 +2236,12 @@ abstract class AppLocalizations {
   /// **'No licence is attached to this address.'**
   String get teacherNoLicence;
 
+  /// Console: the licence follows the address that paid
+  ///
+  /// In en, this message translates to:
+  /// **'The licence follows the address that paid. If the purchase was made with another address, sign out and use that one.'**
+  String get teacherNoLicenceHint;
+
   /// Console: go and buy a licence
   ///
   /// In en, this message translates to:

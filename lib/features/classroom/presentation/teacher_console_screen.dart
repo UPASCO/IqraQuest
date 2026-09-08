@@ -283,6 +283,16 @@ class _NoLicence extends ConsumerWidget {
         const SizedBox(height: 12),
         Text(l10n.teacherNoLicence, style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 8),
+        // The commonest way to be stuck here is to have paid with one
+        // address and signed in with another — so the screen says that
+        // before it offers to sell anything.
+        Text(
+          l10n.teacherNoLicenceHint,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+        ),
+        const SizedBox(height: 8),
         Text(
           l10n.teacherLicencePaidElsewhere,
           style: Theme.of(

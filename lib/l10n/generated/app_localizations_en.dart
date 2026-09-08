@@ -1300,6 +1300,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get teacherNoLicence => 'No licence is attached to this address.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'The licence follows the address that paid. If the purchase was made with another address, sign out and use that one.';
+
+  @override
   String get teacherGetLicence => 'Get a licence';
 
   @override

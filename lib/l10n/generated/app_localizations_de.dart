@@ -1308,6 +1308,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Mit dieser Adresse ist keine Lizenz verknüpft.';
 
   @override
+  String get teacherNoLicenceHint =>
+      'Die Lizenz hängt an der Adresse, mit der bezahlt wurde. Wurde mit einer anderen gekauft, melde dich ab und nimm jene.';
+
+  @override
   String get teacherGetLicence => 'Lizenz holen';
 
   @override

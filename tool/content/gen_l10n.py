@@ -2999,6 +2999,20 @@ s("teacherNoLicence", "Console: signed in, but nothing was bought on this addres
   it="Nessuna licenza è associata a questo indirizzo.",
   nl="Er is geen licentie aan dit adres gekoppeld.")
 
+s("teacherNoLicenceHint", "Console: the licence follows the address that paid",
+  fr="La licence est rattach\u00e9e \u00e0 l\u2019adresse qui a pay\u00e9. Si l\u2019achat a \u00e9t\u00e9 fait avec une autre adresse, d\u00e9connectez-vous et entrez celle-l\u00e0.",
+  en="The licence follows the address that paid. If the purchase was made with another address, sign out and use that one.",
+  ar="الرخصة مرتبطة بالبريد الذي دُفع منه. إن تمّ الشراء ببريد آخر، فسجّل الخروج وأدخل ذلك البريد.",
+  es="La licencia va ligada a la direcci\u00f3n que pag\u00f3. Si la compra se hizo con otra direcci\u00f3n, cierra sesi\u00f3n y usa esa.",
+  pt="A licen\u00e7a est\u00e1 ligada ao endere\u00e7o que pagou. Se a compra foi feita com outro endere\u00e7o, termine a sess\u00e3o e use esse.",
+  de="Die Lizenz h\u00e4ngt an der Adresse, mit der bezahlt wurde. Wurde mit einer anderen gekauft, melde dich ab und nimm jene.",
+  tr="Lisans, \u00f6demeyi yapan adrese ba\u011fl\u0131d\u0131r. Al\u0131m ba\u015fka bir adresle yap\u0131ld\u0131ysa \u00e7\u0131k\u0131\u015f yap\u0131n ve onu girin.",
+  id="Lisensi mengikuti alamat yang membayar. Jika pembelian memakai alamat lain, keluar lalu gunakan alamat itu.",
+  ur="لائسنس اُسی ای میل سے جڑا ہے جس سے ادائیگی ہوئی۔ اگر خریداری کسی اور ای میل سے ہوئی تو سائن آؤٹ کر کے وہی استعمال کریں۔",
+  ms="Lesen terikat pada alamat yang membayar. Jika pembelian dibuat dengan alamat lain, log keluar dan gunakan alamat itu.",
+  it="La licenza \u00e8 legata all\u2019indirizzo che ha pagato. Se l\u2019acquisto \u00e8 stato fatto con un altro indirizzo, esci e usa quello.",
+  nl="De licentie hangt aan het adres waarmee is betaald. Is er met een ander adres gekocht, meld je dan af en gebruik dat adres.")
+
 s("teacherGetLicence", "Console: go and buy a licence",
   fr="Obtenir une licence", en="Get a licence", ar="الحصول على رخصة",
   es="Obtener una licencia", pt="Obter uma licença", de="Lizenz holen",

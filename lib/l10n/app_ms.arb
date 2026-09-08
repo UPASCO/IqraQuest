@@ -353,6 +353,7 @@
   "teacherLinkSent": "Pautan dihantar ke {email}. Buka pada peranti ini.",
   "teacherInvalidEmail": "Ini tidak kelihatan seperti alamat e-mel.",
   "teacherNoLicence": "Tiada lesen dikaitkan dengan alamat ini.",
+  "teacherNoLicenceHint": "Lesen terikat pada alamat yang membayar. Jika pembelian dibuat dengan alamat lain, log keluar dan gunakan alamat itu.",
   "teacherGetLicence": "Dapatkan lesen",
   "teacherLicencePaidElsewhere": "Pembayaran dibuat di halaman selamat Stripe; kemudian kembali ke sini.",
   "teacherRefresh": "Semak semula",

@@ -1296,6 +1296,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get teacherNoLicence => 'اس ای میل سے کوئی لائسنس منسلک نہیں۔';
 
   @override
+  String get teacherNoLicenceHint =>
+      'لائسنس اُسی ای میل سے جڑا ہے جس سے ادائیگی ہوئی۔ اگر خریداری کسی اور ای میل سے ہوئی تو سائن آؤٹ کر کے وہی استعمال کریں۔';
+
+  @override
   String get teacherGetLicence => 'لائسنس حاصل کریں';
 
   @override
