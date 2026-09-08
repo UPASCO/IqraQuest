@@ -1280,4 +1280,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get classroomReconnecting => 'Verbinde neu…';
+
+  @override
+  String lessonTitle(String theme, String level, num number) {
+    return '$theme · $level $number';
+  }
+
+  @override
+  String lessonCardCount(num count) {
+    return '$count Karten';
+  }
+
+  @override
+  String get lesson => 'Lektion';
 }

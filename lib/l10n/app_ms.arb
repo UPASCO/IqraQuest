@@ -345,5 +345,8 @@
   "classroomSessionFull": "Sesi ini sudah penuh.",
   "classroomTooLate": "Terlambat: masa sudah tamat.",
   "classroomUnreachable": "Kelas tidak dapat dihubungi. Semak sambungan.",
-  "classroomReconnecting": "Menyambung semula…"
+  "classroomReconnecting": "Menyambung semula…",
+  "lessonTitle": "{theme} · {level} {number}",
+  "lessonCardCount": "{count} kad",
+  "lesson": "Pelajaran"
 }

@@ -345,5 +345,8 @@
   "classroomSessionFull": "یہ سیشن بھر چکا ہے۔",
   "classroomTooLate": "بہت دیر ہو گئی: وقت ختم ہو چکا تھا۔",
   "classroomUnreachable": "کلاس تک رسائی نہیں۔ رابطہ جانچیں۔",
-  "classroomReconnecting": "دوبارہ رابطہ…"
+  "classroomReconnecting": "دوبارہ رابطہ…",
+  "lessonTitle": "{theme} · {level} {number}",
+  "lessonCardCount": "{count} کارڈ",
+  "lesson": "سبق"
 }

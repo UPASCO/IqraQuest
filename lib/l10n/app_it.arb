@@ -345,5 +345,8 @@
   "classroomSessionFull": "Questa sessione è al completo.",
   "classroomTooLate": "Troppo tardi: il tempo era finito.",
   "classroomUnreachable": "La classe non è raggiungibile. Controlla la connessione.",
-  "classroomReconnecting": "Riconnessione…"
+  "classroomReconnecting": "Riconnessione…",
+  "lessonTitle": "{theme} · {level} {number}",
+  "lessonCardCount": "{count} carte",
+  "lesson": "Lezione"
 }

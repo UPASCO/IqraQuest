@@ -10,6 +10,7 @@
 // per-question discipline.
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' show max, min;
 
 const targetQuestionCount = 1100;
 const targetFreeCount = 50;
@@ -168,6 +169,38 @@ void main() {
       'total linguistic content == ${targetQuestionCount * targetLanguages.length}',
       totalLinguisticContent == targetQuestionCount * targetLanguages.length,
       detail: 'found $totalLinguisticContent',
+    );
+  }
+
+  section('Classroom lessons');
+  final lessonsFile = File('${root.path}/assets/data/lessons/lessons.json');
+  if (!lessonsFile.existsSync()) {
+    check('lessons.json exists', false);
+  } else {
+    final manifest = jsonDecode(lessonsFile.readAsStringSync()) as Map<String, dynamic>;
+    final lessons = (manifest['lessons'] as List).cast<Map<String, dynamic>>();
+    check('lessons.json exists', true);
+    check('the bank is cut into lessons', lessons.isNotEmpty,
+        detail: '${lessons.length} lessons');
+    final sizes = lessons.map((l) => (l['questionIds'] as List).length).toList();
+    check(
+      'every lesson fits a class period (8 to 11 cards)',
+      sizes.every((n) => n >= 8 && n <= 11),
+      detail: 'from ${sizes.reduce(min)} to ${sizes.reduce(max)}',
+    );
+    final cards = <String>[];
+    for (final lesson in lessons) {
+      cards.addAll((lesson['questionIds'] as List).cast<String>());
+    }
+    check('no card sits in two lessons', cards.toSet().length == cards.length);
+    check(
+      'every card of the bank is in a lesson',
+      cards.toSet().length == targetQuestionCount,
+      detail: '${cards.toSet().length} of $targetQuestionCount',
+    );
+    check(
+      'lesson ids are unique',
+      lessons.map((l) => l['id']).toSet().length == lessons.length,
     );
   }
 

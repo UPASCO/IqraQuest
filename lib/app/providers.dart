@@ -13,6 +13,7 @@ import '../services/purchase_service.dart';
 import '../services/question_repository.dart';
 import '../services/settings_service.dart';
 import '../services/sound_service.dart';
+import '../services/lesson_catalog.dart';
 import '../services/share_service.dart';
 
 /// Service instances are constructed once in `main()` (they need an
@@ -144,6 +145,15 @@ final effectiveLanguageProvider = Provider<String>((ref) {
     return 'en';
   }
 });
+
+/// The classroom lessons, read from the shipped manifest. Kept alive
+/// rather than auto-disposed: a teacher scrolling the list of lessons
+/// must not wait on the asset again between two taps.
+final lessonCatalogProvider = Provider<LessonCatalog>((ref) => LessonCatalog());
+
+final lessonsProvider = FutureProvider(
+  (ref) => ref.watch(lessonCatalogProvider).load(),
+);
 
 final questionPoolProvider = FutureProvider.autoDispose((ref) async {
   final lang = ref.watch(effectiveLanguageProvider);

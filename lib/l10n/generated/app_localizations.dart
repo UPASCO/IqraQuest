@@ -2193,6 +2193,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reconnecting…'**
   String get classroomReconnecting;
+
+  /// Name of a classroom lesson: theme, level and its number
+  ///
+  /// In en, this message translates to:
+  /// **'{theme} · {level} {number}'**
+  String lessonTitle(String theme, String level, num number);
+
+  /// How many cards a lesson holds
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards'**
+  String lessonCardCount(num count);
+
+  /// The word for one classroom lesson
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson'**
+  String get lesson;
 }
 
 class _AppLocalizationsDelegate

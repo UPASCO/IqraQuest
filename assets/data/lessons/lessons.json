@@ -1,0 +1,1977 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "id": "lesson_prophets_beginner_01",
+      "category": "prophets",
+      "difficulty": "beginner",
+      "index": 1,
+      "questionIds": [
+        "prophets_251",
+        "prophets_252",
+        "prophets_253",
+        "prophets_254",
+        "prophets_255",
+        "prophets_256",
+        "prophets_257",
+        "prophets_258",
+        "prophets_259",
+        "prophets_260"
+      ]
+    },
+    {
+      "id": "lesson_prophets_beginner_02",
+      "category": "prophets",
+      "difficulty": "beginner",
+      "index": 2,
+      "questionIds": [
+        "prophets_261",
+        "prophets_262",
+        "prophets_263",
+        "prophets_264",
+        "prophets_265",
+        "prophets_266",
+        "prophets_267",
+        "prophets_268",
+        "prophets_269",
+        "prophets_270"
+      ]
+    },
+    {
+      "id": "lesson_prophets_beginner_03",
+      "category": "prophets",
+      "difficulty": "beginner",
+      "index": 3,
+      "questionIds": [
+        "prophets_271",
+        "prophets_272",
+        "prophets_273",
+        "prophets_274",
+        "prophets_275",
+        "prophets_276",
+        "prophets_277",
+        "prophets_278",
+        "prophets_279",
+        "prophets_280"
+      ]
+    },
+    {
+      "id": "lesson_prophets_beginner_04",
+      "category": "prophets",
+      "difficulty": "beginner",
+      "index": 4,
+      "questionIds": [
+        "prophets_281",
+        "prophets_282",
+        "prophets_283",
+        "prophets_284",
+        "prophets_285",
+        "prophets_286",
+        "prophets_287",
+        "prophets_288",
+        "prophets_289",
+        "prophets_290"
+      ]
+    },
+    {
+      "id": "lesson_prophets_beginner_05",
+      "category": "prophets",
+      "difficulty": "beginner",
+      "index": 5,
+      "questionIds": [
+        "prophets_291",
+        "prophets_292",
+        "prophets_293",
+        "prophets_294",
+        "prophets_295",
+        "prophets_296",
+        "prophets_297",
+        "prophets_298",
+        "prophets_299",
+        "prophets_300"
+      ]
+    },
+    {
+      "id": "lesson_prophets_beginner_06",
+      "category": "prophets",
+      "difficulty": "beginner",
+      "index": 6,
+      "questionIds": [
+        "prophets_301",
+        "prophets_302",
+        "prophets_303",
+        "prophets_304",
+        "prophets_305",
+        "prophets_306",
+        "prophets_307",
+        "prophets_308",
+        "prophets_309",
+        "prophets_310"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_01",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 1,
+      "questionIds": [
+        "prophets_001",
+        "prophets_002",
+        "prophets_003",
+        "prophets_006",
+        "prophets_008",
+        "prophets_009",
+        "prophets_011",
+        "prophets_013",
+        "prophets_014",
+        "prophets_015",
+        "prophets_017"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_02",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 2,
+      "questionIds": [
+        "prophets_019",
+        "prophets_020",
+        "prophets_021",
+        "prophets_023",
+        "prophets_031",
+        "prophets_033",
+        "prophets_034",
+        "prophets_041",
+        "prophets_051",
+        "prophets_069"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_03",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 3,
+      "questionIds": [
+        "prophets_078",
+        "prophets_093",
+        "prophets_097",
+        "prophets_098",
+        "prophets_112",
+        "prophets_113",
+        "prophets_115",
+        "prophets_124",
+        "prophets_125",
+        "prophets_126"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_04",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 4,
+      "questionIds": [
+        "prophets_140",
+        "prophets_141",
+        "prophets_142",
+        "prophets_143",
+        "prophets_144",
+        "prophets_145",
+        "prophets_146",
+        "prophets_148",
+        "prophets_149",
+        "prophets_150"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_05",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 5,
+      "questionIds": [
+        "prophets_151",
+        "prophets_157",
+        "prophets_158",
+        "prophets_161",
+        "prophets_164",
+        "prophets_171",
+        "prophets_174",
+        "prophets_176",
+        "prophets_182",
+        "prophets_185"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_06",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 6,
+      "questionIds": [
+        "prophets_192",
+        "prophets_197",
+        "prophets_201",
+        "prophets_204",
+        "prophets_208",
+        "prophets_211",
+        "prophets_214",
+        "prophets_218",
+        "prophets_220",
+        "prophets_223"
+      ]
+    },
+    {
+      "id": "lesson_prophets_easy_07",
+      "category": "prophets",
+      "difficulty": "easy",
+      "index": 7,
+      "questionIds": [
+        "prophets_226",
+        "prophets_227",
+        "prophets_231",
+        "prophets_234",
+        "prophets_237",
+        "prophets_238",
+        "prophets_241",
+        "prophets_243",
+        "prophets_246",
+        "prophets_248"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_01",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 1,
+      "questionIds": [
+        "prophets_004",
+        "prophets_007",
+        "prophets_012",
+        "prophets_022",
+        "prophets_024",
+        "prophets_028",
+        "prophets_035",
+        "prophets_037",
+        "prophets_038",
+        "prophets_040",
+        "prophets_043"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_02",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 2,
+      "questionIds": [
+        "prophets_044",
+        "prophets_046",
+        "prophets_050",
+        "prophets_052",
+        "prophets_053",
+        "prophets_056",
+        "prophets_057",
+        "prophets_059",
+        "prophets_060",
+        "prophets_061",
+        "prophets_062"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_03",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 3,
+      "questionIds": [
+        "prophets_064",
+        "prophets_065",
+        "prophets_068",
+        "prophets_070",
+        "prophets_071",
+        "prophets_073",
+        "prophets_075",
+        "prophets_076",
+        "prophets_077",
+        "prophets_079",
+        "prophets_085"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_04",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 4,
+      "questionIds": [
+        "prophets_088",
+        "prophets_090",
+        "prophets_091",
+        "prophets_092",
+        "prophets_095",
+        "prophets_096",
+        "prophets_104",
+        "prophets_107",
+        "prophets_109",
+        "prophets_110",
+        "prophets_111"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_05",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 5,
+      "questionIds": [
+        "prophets_116",
+        "prophets_117",
+        "prophets_119",
+        "prophets_127",
+        "prophets_128",
+        "prophets_130",
+        "prophets_135",
+        "prophets_136",
+        "prophets_138",
+        "prophets_147"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_06",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 6,
+      "questionIds": [
+        "prophets_152",
+        "prophets_155",
+        "prophets_159",
+        "prophets_160",
+        "prophets_163",
+        "prophets_166",
+        "prophets_168",
+        "prophets_172",
+        "prophets_175",
+        "prophets_178"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_07",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 7,
+      "questionIds": [
+        "prophets_180",
+        "prophets_183",
+        "prophets_187",
+        "prophets_191",
+        "prophets_193",
+        "prophets_196",
+        "prophets_199",
+        "prophets_203",
+        "prophets_205",
+        "prophets_209"
+      ]
+    },
+    {
+      "id": "lesson_prophets_medium_08",
+      "category": "prophets",
+      "difficulty": "medium",
+      "index": 8,
+      "questionIds": [
+        "prophets_212",
+        "prophets_215",
+        "prophets_217",
+        "prophets_221",
+        "prophets_224",
+        "prophets_229",
+        "prophets_232",
+        "prophets_240",
+        "prophets_244",
+        "prophets_249"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_01",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 1,
+      "questionIds": [
+        "prophets_005",
+        "prophets_010",
+        "prophets_016",
+        "prophets_018",
+        "prophets_025",
+        "prophets_026",
+        "prophets_027",
+        "prophets_029",
+        "prophets_030",
+        "prophets_032",
+        "prophets_036"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_02",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 2,
+      "questionIds": [
+        "prophets_039",
+        "prophets_042",
+        "prophets_045",
+        "prophets_047",
+        "prophets_048",
+        "prophets_049",
+        "prophets_054",
+        "prophets_055",
+        "prophets_058",
+        "prophets_063",
+        "prophets_066"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_03",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 3,
+      "questionIds": [
+        "prophets_067",
+        "prophets_072",
+        "prophets_074",
+        "prophets_080",
+        "prophets_081",
+        "prophets_082",
+        "prophets_083",
+        "prophets_084",
+        "prophets_086",
+        "prophets_087",
+        "prophets_089"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_04",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 4,
+      "questionIds": [
+        "prophets_094",
+        "prophets_099",
+        "prophets_100",
+        "prophets_101",
+        "prophets_102",
+        "prophets_103",
+        "prophets_105",
+        "prophets_106",
+        "prophets_108",
+        "prophets_114",
+        "prophets_118"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_05",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 5,
+      "questionIds": [
+        "prophets_120",
+        "prophets_121",
+        "prophets_122",
+        "prophets_123",
+        "prophets_129",
+        "prophets_131",
+        "prophets_132",
+        "prophets_133",
+        "prophets_134",
+        "prophets_137",
+        "prophets_139"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_06",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 6,
+      "questionIds": [
+        "prophets_153",
+        "prophets_154",
+        "prophets_156",
+        "prophets_162",
+        "prophets_165",
+        "prophets_167",
+        "prophets_169",
+        "prophets_170",
+        "prophets_173",
+        "prophets_177"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_07",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 7,
+      "questionIds": [
+        "prophets_179",
+        "prophets_181",
+        "prophets_184",
+        "prophets_186",
+        "prophets_188",
+        "prophets_189",
+        "prophets_190",
+        "prophets_194",
+        "prophets_195",
+        "prophets_198"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_08",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 8,
+      "questionIds": [
+        "prophets_200",
+        "prophets_202",
+        "prophets_206",
+        "prophets_207",
+        "prophets_210",
+        "prophets_213",
+        "prophets_216",
+        "prophets_219",
+        "prophets_222",
+        "prophets_225"
+      ]
+    },
+    {
+      "id": "lesson_prophets_hard_09",
+      "category": "prophets",
+      "difficulty": "hard",
+      "index": 9,
+      "questionIds": [
+        "prophets_228",
+        "prophets_230",
+        "prophets_233",
+        "prophets_235",
+        "prophets_236",
+        "prophets_239",
+        "prophets_242",
+        "prophets_245",
+        "prophets_247",
+        "prophets_250"
+      ]
+    },
+    {
+      "id": "lesson_sira_beginner_01",
+      "category": "sira",
+      "difficulty": "beginner",
+      "index": 1,
+      "questionIds": [
+        "sira_251",
+        "sira_252",
+        "sira_253",
+        "sira_254",
+        "sira_255",
+        "sira_256",
+        "sira_257",
+        "sira_258",
+        "sira_259",
+        "sira_260"
+      ]
+    },
+    {
+      "id": "lesson_sira_beginner_02",
+      "category": "sira",
+      "difficulty": "beginner",
+      "index": 2,
+      "questionIds": [
+        "sira_261",
+        "sira_262",
+        "sira_263",
+        "sira_264",
+        "sira_265",
+        "sira_266",
+        "sira_267",
+        "sira_268",
+        "sira_269",
+        "sira_270"
+      ]
+    },
+    {
+      "id": "lesson_sira_beginner_03",
+      "category": "sira",
+      "difficulty": "beginner",
+      "index": 3,
+      "questionIds": [
+        "sira_271",
+        "sira_272",
+        "sira_273",
+        "sira_274",
+        "sira_275",
+        "sira_276",
+        "sira_277",
+        "sira_278",
+        "sira_279",
+        "sira_280"
+      ]
+    },
+    {
+      "id": "lesson_sira_beginner_04",
+      "category": "sira",
+      "difficulty": "beginner",
+      "index": 4,
+      "questionIds": [
+        "sira_281",
+        "sira_282",
+        "sira_283",
+        "sira_284",
+        "sira_285",
+        "sira_286",
+        "sira_287",
+        "sira_288",
+        "sira_289",
+        "sira_290"
+      ]
+    },
+    {
+      "id": "lesson_sira_beginner_05",
+      "category": "sira",
+      "difficulty": "beginner",
+      "index": 5,
+      "questionIds": [
+        "sira_291",
+        "sira_292",
+        "sira_293",
+        "sira_294",
+        "sira_295",
+        "sira_296",
+        "sira_297",
+        "sira_298",
+        "sira_299",
+        "sira_300"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_01",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 1,
+      "questionIds": [
+        "sira_001",
+        "sira_003",
+        "sira_004",
+        "sira_005",
+        "sira_006",
+        "sira_007",
+        "sira_009",
+        "sira_012",
+        "sira_013",
+        "sira_015",
+        "sira_017"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_02",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 2,
+      "questionIds": [
+        "sira_018",
+        "sira_019",
+        "sira_021",
+        "sira_022",
+        "sira_023",
+        "sira_027",
+        "sira_028",
+        "sira_031",
+        "sira_035",
+        "sira_036",
+        "sira_037"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_03",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 3,
+      "questionIds": [
+        "sira_041",
+        "sira_050",
+        "sira_058",
+        "sira_066",
+        "sira_077",
+        "sira_082",
+        "sira_084",
+        "sira_087",
+        "sira_088",
+        "sira_097",
+        "sira_099"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_04",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 4,
+      "questionIds": [
+        "sira_101",
+        "sira_106",
+        "sira_119",
+        "sira_126",
+        "sira_132",
+        "sira_136",
+        "sira_140",
+        "sira_142",
+        "sira_144",
+        "sira_149",
+        "sira_150"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_05",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 5,
+      "questionIds": [
+        "sira_151",
+        "sira_154",
+        "sira_158",
+        "sira_160",
+        "sira_163",
+        "sira_167",
+        "sira_173",
+        "sira_176",
+        "sira_179",
+        "sira_183"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_06",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 6,
+      "questionIds": [
+        "sira_186",
+        "sira_191",
+        "sira_194",
+        "sira_198",
+        "sira_201",
+        "sira_205",
+        "sira_208",
+        "sira_211",
+        "sira_214",
+        "sira_218"
+      ]
+    },
+    {
+      "id": "lesson_sira_easy_07",
+      "category": "sira",
+      "difficulty": "easy",
+      "index": 7,
+      "questionIds": [
+        "sira_221",
+        "sira_224",
+        "sira_226",
+        "sira_230",
+        "sira_234",
+        "sira_237",
+        "sira_241",
+        "sira_244",
+        "sira_246",
+        "sira_248"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_01",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 1,
+      "questionIds": [
+        "sira_002",
+        "sira_010",
+        "sira_011",
+        "sira_014",
+        "sira_020",
+        "sira_030",
+        "sira_032",
+        "sira_033",
+        "sira_034",
+        "sira_038",
+        "sira_040"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_02",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 2,
+      "questionIds": [
+        "sira_042",
+        "sira_044",
+        "sira_045",
+        "sira_047",
+        "sira_048",
+        "sira_049",
+        "sira_052",
+        "sira_054",
+        "sira_055",
+        "sira_059",
+        "sira_060"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_03",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 3,
+      "questionIds": [
+        "sira_065",
+        "sira_067",
+        "sira_068",
+        "sira_069",
+        "sira_070",
+        "sira_073",
+        "sira_075",
+        "sira_076",
+        "sira_081",
+        "sira_083",
+        "sira_085"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_04",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 4,
+      "questionIds": [
+        "sira_089",
+        "sira_090",
+        "sira_091",
+        "sira_093",
+        "sira_095",
+        "sira_102",
+        "sira_104",
+        "sira_105",
+        "sira_107",
+        "sira_109",
+        "sira_110"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_05",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 5,
+      "questionIds": [
+        "sira_111",
+        "sira_117",
+        "sira_122",
+        "sira_125",
+        "sira_127",
+        "sira_129",
+        "sira_130",
+        "sira_133",
+        "sira_134",
+        "sira_139",
+        "sira_141"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_06",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 6,
+      "questionIds": [
+        "sira_143",
+        "sira_146",
+        "sira_147",
+        "sira_152",
+        "sira_155",
+        "sira_157",
+        "sira_159",
+        "sira_162",
+        "sira_165",
+        "sira_169",
+        "sira_171"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_07",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 7,
+      "questionIds": [
+        "sira_174",
+        "sira_178",
+        "sira_181",
+        "sira_184",
+        "sira_188",
+        "sira_190",
+        "sira_193",
+        "sira_196",
+        "sira_200",
+        "sira_203",
+        "sira_206"
+      ]
+    },
+    {
+      "id": "lesson_sira_medium_08",
+      "category": "sira",
+      "difficulty": "medium",
+      "index": 8,
+      "questionIds": [
+        "sira_210",
+        "sira_213",
+        "sira_216",
+        "sira_219",
+        "sira_223",
+        "sira_227",
+        "sira_229",
+        "sira_232",
+        "sira_235",
+        "sira_239",
+        "sira_250"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_01",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 1,
+      "questionIds": [
+        "sira_008",
+        "sira_016",
+        "sira_024",
+        "sira_025",
+        "sira_026",
+        "sira_029",
+        "sira_039",
+        "sira_043",
+        "sira_046",
+        "sira_051",
+        "sira_053"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_02",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 2,
+      "questionIds": [
+        "sira_056",
+        "sira_057",
+        "sira_061",
+        "sira_062",
+        "sira_063",
+        "sira_064",
+        "sira_071",
+        "sira_072",
+        "sira_074",
+        "sira_078",
+        "sira_079"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_03",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 3,
+      "questionIds": [
+        "sira_080",
+        "sira_086",
+        "sira_092",
+        "sira_094",
+        "sira_096",
+        "sira_098",
+        "sira_100",
+        "sira_103",
+        "sira_108",
+        "sira_112",
+        "sira_113"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_04",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 4,
+      "questionIds": [
+        "sira_114",
+        "sira_115",
+        "sira_116",
+        "sira_118",
+        "sira_120",
+        "sira_121",
+        "sira_123",
+        "sira_124",
+        "sira_128",
+        "sira_131",
+        "sira_135"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_05",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 5,
+      "questionIds": [
+        "sira_137",
+        "sira_138",
+        "sira_145",
+        "sira_148",
+        "sira_153",
+        "sira_156",
+        "sira_161",
+        "sira_164",
+        "sira_166",
+        "sira_168",
+        "sira_170"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_06",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 6,
+      "questionIds": [
+        "sira_172",
+        "sira_175",
+        "sira_177",
+        "sira_180",
+        "sira_182",
+        "sira_185",
+        "sira_187",
+        "sira_189",
+        "sira_192",
+        "sira_195",
+        "sira_197"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_07",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 7,
+      "questionIds": [
+        "sira_199",
+        "sira_202",
+        "sira_204",
+        "sira_207",
+        "sira_209",
+        "sira_212",
+        "sira_215",
+        "sira_217",
+        "sira_220",
+        "sira_222",
+        "sira_225"
+      ]
+    },
+    {
+      "id": "lesson_sira_hard_08",
+      "category": "sira",
+      "difficulty": "hard",
+      "index": 8,
+      "questionIds": [
+        "sira_228",
+        "sira_231",
+        "sira_233",
+        "sira_236",
+        "sira_238",
+        "sira_240",
+        "sira_242",
+        "sira_243",
+        "sira_245",
+        "sira_247",
+        "sira_249"
+      ]
+    },
+    {
+      "id": "lesson_quran_beginner_01",
+      "category": "quran",
+      "difficulty": "beginner",
+      "index": 1,
+      "questionIds": [
+        "quran_151",
+        "quran_152",
+        "quran_153",
+        "quran_154",
+        "quran_155",
+        "quran_156",
+        "quran_157",
+        "quran_158",
+        "quran_159",
+        "quran_160"
+      ]
+    },
+    {
+      "id": "lesson_quran_beginner_02",
+      "category": "quran",
+      "difficulty": "beginner",
+      "index": 2,
+      "questionIds": [
+        "quran_161",
+        "quran_162",
+        "quran_163",
+        "quran_164",
+        "quran_165",
+        "quran_166",
+        "quran_167",
+        "quran_168",
+        "quran_169",
+        "quran_170"
+      ]
+    },
+    {
+      "id": "lesson_quran_beginner_03",
+      "category": "quran",
+      "difficulty": "beginner",
+      "index": 3,
+      "questionIds": [
+        "quran_171",
+        "quran_172",
+        "quran_173",
+        "quran_174",
+        "quran_175",
+        "quran_176",
+        "quran_177",
+        "quran_178",
+        "quran_179",
+        "quran_180"
+      ]
+    },
+    {
+      "id": "lesson_quran_easy_01",
+      "category": "quran",
+      "difficulty": "easy",
+      "index": 1,
+      "questionIds": [
+        "quran_001",
+        "quran_002",
+        "quran_003",
+        "quran_005",
+        "quran_007",
+        "quran_008",
+        "quran_009",
+        "quran_010",
+        "quran_011",
+        "quran_014"
+      ]
+    },
+    {
+      "id": "lesson_quran_easy_02",
+      "category": "quran",
+      "difficulty": "easy",
+      "index": 2,
+      "questionIds": [
+        "quran_015",
+        "quran_017",
+        "quran_018",
+        "quran_020",
+        "quran_022",
+        "quran_025",
+        "quran_026",
+        "quran_027",
+        "quran_029",
+        "quran_033"
+      ]
+    },
+    {
+      "id": "lesson_quran_easy_03",
+      "category": "quran",
+      "difficulty": "easy",
+      "index": 3,
+      "questionIds": [
+        "quran_036",
+        "quran_038",
+        "quran_039",
+        "quran_041",
+        "quran_049",
+        "quran_055",
+        "quran_058",
+        "quran_060",
+        "quran_063"
+      ]
+    },
+    {
+      "id": "lesson_quran_easy_04",
+      "category": "quran",
+      "difficulty": "easy",
+      "index": 4,
+      "questionIds": [
+        "quran_066",
+        "quran_070",
+        "quran_072",
+        "quran_075",
+        "quran_077",
+        "quran_078",
+        "quran_079",
+        "quran_081",
+        "quran_084"
+      ]
+    },
+    {
+      "id": "lesson_quran_easy_05",
+      "category": "quran",
+      "difficulty": "easy",
+      "index": 5,
+      "questionIds": [
+        "quran_087",
+        "quran_090",
+        "quran_094",
+        "quran_098",
+        "quran_101",
+        "quran_105",
+        "quran_110",
+        "quran_114",
+        "quran_118"
+      ]
+    },
+    {
+      "id": "lesson_quran_easy_06",
+      "category": "quran",
+      "difficulty": "easy",
+      "index": 6,
+      "questionIds": [
+        "quran_121",
+        "quran_126",
+        "quran_130",
+        "quran_134",
+        "quran_138",
+        "quran_142",
+        "quran_143",
+        "quran_144",
+        "quran_146"
+      ]
+    },
+    {
+      "id": "lesson_quran_medium_01",
+      "category": "quran",
+      "difficulty": "medium",
+      "index": 1,
+      "questionIds": [
+        "quran_004",
+        "quran_016",
+        "quran_023",
+        "quran_024",
+        "quran_028",
+        "quran_030",
+        "quran_031",
+        "quran_034",
+        "quran_035",
+        "quran_037"
+      ]
+    },
+    {
+      "id": "lesson_quran_medium_02",
+      "category": "quran",
+      "difficulty": "medium",
+      "index": 2,
+      "questionIds": [
+        "quran_040",
+        "quran_043",
+        "quran_045",
+        "quran_047",
+        "quran_048",
+        "quran_051",
+        "quran_052",
+        "quran_056",
+        "quran_059",
+        "quran_061"
+      ]
+    },
+    {
+      "id": "lesson_quran_medium_03",
+      "category": "quran",
+      "difficulty": "medium",
+      "index": 3,
+      "questionIds": [
+        "quran_062",
+        "quran_068",
+        "quran_069",
+        "quran_071",
+        "quran_073",
+        "quran_074",
+        "quran_076",
+        "quran_082",
+        "quran_085"
+      ]
+    },
+    {
+      "id": "lesson_quran_medium_04",
+      "category": "quran",
+      "difficulty": "medium",
+      "index": 4,
+      "questionIds": [
+        "quran_088",
+        "quran_092",
+        "quran_095",
+        "quran_097",
+        "quran_100",
+        "quran_103",
+        "quran_106",
+        "quran_108",
+        "quran_112"
+      ]
+    },
+    {
+      "id": "lesson_quran_medium_05",
+      "category": "quran",
+      "difficulty": "medium",
+      "index": 5,
+      "questionIds": [
+        "quran_116",
+        "quran_119",
+        "quran_122",
+        "quran_125",
+        "quran_128",
+        "quran_132",
+        "quran_136",
+        "quran_140",
+        "quran_148"
+      ]
+    },
+    {
+      "id": "lesson_quran_hard_01",
+      "category": "quran",
+      "difficulty": "hard",
+      "index": 1,
+      "questionIds": [
+        "quran_006",
+        "quran_012",
+        "quran_013",
+        "quran_019",
+        "quran_021",
+        "quran_032",
+        "quran_042",
+        "quran_044",
+        "quran_046",
+        "quran_050"
+      ]
+    },
+    {
+      "id": "lesson_quran_hard_02",
+      "category": "quran",
+      "difficulty": "hard",
+      "index": 2,
+      "questionIds": [
+        "quran_053",
+        "quran_054",
+        "quran_057",
+        "quran_064",
+        "quran_065",
+        "quran_067",
+        "quran_080",
+        "quran_083",
+        "quran_086",
+        "quran_089"
+      ]
+    },
+    {
+      "id": "lesson_quran_hard_03",
+      "category": "quran",
+      "difficulty": "hard",
+      "index": 3,
+      "questionIds": [
+        "quran_091",
+        "quran_093",
+        "quran_096",
+        "quran_099",
+        "quran_102",
+        "quran_104",
+        "quran_107",
+        "quran_109",
+        "quran_111"
+      ]
+    },
+    {
+      "id": "lesson_quran_hard_04",
+      "category": "quran",
+      "difficulty": "hard",
+      "index": 4,
+      "questionIds": [
+        "quran_113",
+        "quran_115",
+        "quran_117",
+        "quran_120",
+        "quran_123",
+        "quran_124",
+        "quran_127",
+        "quran_129",
+        "quran_131"
+      ]
+    },
+    {
+      "id": "lesson_quran_hard_05",
+      "category": "quran",
+      "difficulty": "hard",
+      "index": 5,
+      "questionIds": [
+        "quran_133",
+        "quran_135",
+        "quran_137",
+        "quran_139",
+        "quran_141",
+        "quran_145",
+        "quran_147",
+        "quran_149",
+        "quran_150"
+      ]
+    },
+    {
+      "id": "lesson_faith_beginner_01",
+      "category": "faith",
+      "difficulty": "beginner",
+      "index": 1,
+      "questionIds": [
+        "faith_151",
+        "faith_152",
+        "faith_153",
+        "faith_154",
+        "faith_155",
+        "faith_156",
+        "faith_157",
+        "faith_158",
+        "faith_159",
+        "faith_160"
+      ]
+    },
+    {
+      "id": "lesson_faith_beginner_02",
+      "category": "faith",
+      "difficulty": "beginner",
+      "index": 2,
+      "questionIds": [
+        "faith_161",
+        "faith_162",
+        "faith_163",
+        "faith_164",
+        "faith_165",
+        "faith_166",
+        "faith_167",
+        "faith_168",
+        "faith_169",
+        "faith_170"
+      ]
+    },
+    {
+      "id": "lesson_faith_beginner_03",
+      "category": "faith",
+      "difficulty": "beginner",
+      "index": 3,
+      "questionIds": [
+        "faith_171",
+        "faith_172",
+        "faith_173",
+        "faith_174",
+        "faith_175",
+        "faith_176",
+        "faith_177",
+        "faith_178",
+        "faith_179",
+        "faith_180"
+      ]
+    },
+    {
+      "id": "lesson_faith_beginner_04",
+      "category": "faith",
+      "difficulty": "beginner",
+      "index": 4,
+      "questionIds": [
+        "faith_181",
+        "faith_182",
+        "faith_183",
+        "faith_184",
+        "faith_185",
+        "faith_186",
+        "faith_187",
+        "faith_188",
+        "faith_189",
+        "faith_190"
+      ]
+    },
+    {
+      "id": "lesson_faith_beginner_05",
+      "category": "faith",
+      "difficulty": "beginner",
+      "index": 5,
+      "questionIds": [
+        "faith_191",
+        "faith_192",
+        "faith_193",
+        "faith_194",
+        "faith_195",
+        "faith_196",
+        "faith_197",
+        "faith_198",
+        "faith_199",
+        "faith_200"
+      ]
+    },
+    {
+      "id": "lesson_faith_easy_01",
+      "category": "faith",
+      "difficulty": "easy",
+      "index": 1,
+      "questionIds": [
+        "faith_001",
+        "faith_002",
+        "faith_003",
+        "faith_004",
+        "faith_005",
+        "faith_006",
+        "faith_007",
+        "faith_009",
+        "faith_011",
+        "faith_012",
+        "faith_014"
+      ]
+    },
+    {
+      "id": "lesson_faith_easy_02",
+      "category": "faith",
+      "difficulty": "easy",
+      "index": 2,
+      "questionIds": [
+        "faith_017",
+        "faith_018",
+        "faith_019",
+        "faith_020",
+        "faith_021",
+        "faith_027",
+        "faith_028",
+        "faith_033",
+        "faith_036",
+        "faith_039"
+      ]
+    },
+    {
+      "id": "lesson_faith_easy_03",
+      "category": "faith",
+      "difficulty": "easy",
+      "index": 3,
+      "questionIds": [
+        "faith_040",
+        "faith_041",
+        "faith_042",
+        "faith_044",
+        "faith_047",
+        "faith_050",
+        "faith_051",
+        "faith_052",
+        "faith_053",
+        "faith_055"
+      ]
+    },
+    {
+      "id": "lesson_faith_easy_04",
+      "category": "faith",
+      "difficulty": "easy",
+      "index": 4,
+      "questionIds": [
+        "faith_057",
+        "faith_064",
+        "faith_065",
+        "faith_066",
+        "faith_067",
+        "faith_071",
+        "faith_076",
+        "faith_079",
+        "faith_083",
+        "faith_087"
+      ]
+    },
+    {
+      "id": "lesson_faith_easy_05",
+      "category": "faith",
+      "difficulty": "easy",
+      "index": 5,
+      "questionIds": [
+        "faith_091",
+        "faith_094",
+        "faith_097",
+        "faith_099",
+        "faith_101",
+        "faith_106",
+        "faith_109",
+        "faith_111",
+        "faith_114",
+        "faith_117"
+      ]
+    },
+    {
+      "id": "lesson_faith_easy_06",
+      "category": "faith",
+      "difficulty": "easy",
+      "index": 6,
+      "questionIds": [
+        "faith_121",
+        "faith_124",
+        "faith_126",
+        "faith_130",
+        "faith_134",
+        "faith_137",
+        "faith_141",
+        "faith_145",
+        "faith_147",
+        "faith_149"
+      ]
+    },
+    {
+      "id": "lesson_faith_medium_01",
+      "category": "faith",
+      "difficulty": "medium",
+      "index": 1,
+      "questionIds": [
+        "faith_010",
+        "faith_013",
+        "faith_015",
+        "faith_025",
+        "faith_026",
+        "faith_030",
+        "faith_031",
+        "faith_032",
+        "faith_035",
+        "faith_037"
+      ]
+    },
+    {
+      "id": "lesson_faith_medium_02",
+      "category": "faith",
+      "difficulty": "medium",
+      "index": 2,
+      "questionIds": [
+        "faith_038",
+        "faith_043",
+        "faith_045",
+        "faith_048",
+        "faith_049",
+        "faith_054",
+        "faith_059",
+        "faith_060",
+        "faith_062",
+        "faith_063"
+      ]
+    },
+    {
+      "id": "lesson_faith_medium_03",
+      "category": "faith",
+      "difficulty": "medium",
+      "index": 3,
+      "questionIds": [
+        "faith_069",
+        "faith_070",
+        "faith_072",
+        "faith_074",
+        "faith_077",
+        "faith_080",
+        "faith_082",
+        "faith_085",
+        "faith_088"
+      ]
+    },
+    {
+      "id": "lesson_faith_medium_04",
+      "category": "faith",
+      "difficulty": "medium",
+      "index": 4,
+      "questionIds": [
+        "faith_090",
+        "faith_092",
+        "faith_095",
+        "faith_098",
+        "faith_102",
+        "faith_104",
+        "faith_107",
+        "faith_110",
+        "faith_113"
+      ]
+    },
+    {
+      "id": "lesson_faith_medium_05",
+      "category": "faith",
+      "difficulty": "medium",
+      "index": 5,
+      "questionIds": [
+        "faith_116",
+        "faith_119",
+        "faith_122",
+        "faith_128",
+        "faith_132",
+        "faith_136",
+        "faith_138",
+        "faith_140",
+        "faith_143"
+      ]
+    },
+    {
+      "id": "lesson_faith_hard_01",
+      "category": "faith",
+      "difficulty": "hard",
+      "index": 1,
+      "questionIds": [
+        "faith_008",
+        "faith_016",
+        "faith_022",
+        "faith_023",
+        "faith_024",
+        "faith_029",
+        "faith_034",
+        "faith_046",
+        "faith_056",
+        "faith_058",
+        "faith_061"
+      ]
+    },
+    {
+      "id": "lesson_faith_hard_02",
+      "category": "faith",
+      "difficulty": "hard",
+      "index": 2,
+      "questionIds": [
+        "faith_068",
+        "faith_073",
+        "faith_075",
+        "faith_078",
+        "faith_081",
+        "faith_084",
+        "faith_086",
+        "faith_089",
+        "faith_093",
+        "faith_096",
+        "faith_100"
+      ]
+    },
+    {
+      "id": "lesson_faith_hard_03",
+      "category": "faith",
+      "difficulty": "hard",
+      "index": 3,
+      "questionIds": [
+        "faith_103",
+        "faith_105",
+        "faith_108",
+        "faith_112",
+        "faith_115",
+        "faith_118",
+        "faith_120",
+        "faith_123",
+        "faith_125",
+        "faith_127"
+      ]
+    },
+    {
+      "id": "lesson_faith_hard_04",
+      "category": "faith",
+      "difficulty": "hard",
+      "index": 4,
+      "questionIds": [
+        "faith_129",
+        "faith_131",
+        "faith_133",
+        "faith_135",
+        "faith_139",
+        "faith_142",
+        "faith_144",
+        "faith_146",
+        "faith_148",
+        "faith_150"
+      ]
+    },
+    {
+      "id": "lesson_virtues_beginner_01",
+      "category": "virtues",
+      "difficulty": "beginner",
+      "index": 1,
+      "questionIds": [
+        "virtues_101",
+        "virtues_102",
+        "virtues_103",
+        "virtues_104",
+        "virtues_105",
+        "virtues_106",
+        "virtues_107",
+        "virtues_108",
+        "virtues_109",
+        "virtues_110"
+      ]
+    },
+    {
+      "id": "lesson_virtues_easy_01",
+      "category": "virtues",
+      "difficulty": "easy",
+      "index": 1,
+      "questionIds": [
+        "virtues_001",
+        "virtues_003",
+        "virtues_004",
+        "virtues_006",
+        "virtues_008",
+        "virtues_010",
+        "virtues_012",
+        "virtues_015",
+        "virtues_016",
+        "virtues_018"
+      ]
+    },
+    {
+      "id": "lesson_virtues_easy_02",
+      "category": "virtues",
+      "difficulty": "easy",
+      "index": 2,
+      "questionIds": [
+        "virtues_019",
+        "virtues_021",
+        "virtues_022",
+        "virtues_023",
+        "virtues_024",
+        "virtues_025",
+        "virtues_030",
+        "virtues_032",
+        "virtues_033",
+        "virtues_037"
+      ]
+    },
+    {
+      "id": "lesson_virtues_easy_03",
+      "category": "virtues",
+      "difficulty": "easy",
+      "index": 3,
+      "questionIds": [
+        "virtues_039",
+        "virtues_040",
+        "virtues_048",
+        "virtues_051",
+        "virtues_054",
+        "virtues_057",
+        "virtues_060",
+        "virtues_064",
+        "virtues_067"
+      ]
+    },
+    {
+      "id": "lesson_virtues_easy_04",
+      "category": "virtues",
+      "difficulty": "easy",
+      "index": 4,
+      "questionIds": [
+        "virtues_071",
+        "virtues_074",
+        "virtues_077",
+        "virtues_079",
+        "virtues_083",
+        "virtues_087",
+        "virtues_091",
+        "virtues_094",
+        "virtues_096"
+      ]
+    },
+    {
+      "id": "lesson_virtues_medium_01",
+      "category": "virtues",
+      "difficulty": "medium",
+      "index": 1,
+      "questionIds": [
+        "virtues_002",
+        "virtues_005",
+        "virtues_007",
+        "virtues_009",
+        "virtues_013",
+        "virtues_017",
+        "virtues_020",
+        "virtues_026",
+        "virtues_027"
+      ]
+    },
+    {
+      "id": "lesson_virtues_medium_02",
+      "category": "virtues",
+      "difficulty": "medium",
+      "index": 2,
+      "questionIds": [
+        "virtues_029",
+        "virtues_031",
+        "virtues_035",
+        "virtues_038",
+        "virtues_042",
+        "virtues_044",
+        "virtues_045",
+        "virtues_046",
+        "virtues_047"
+      ]
+    },
+    {
+      "id": "lesson_virtues_medium_03",
+      "category": "virtues",
+      "difficulty": "medium",
+      "index": 3,
+      "questionIds": [
+        "virtues_049",
+        "virtues_052",
+        "virtues_055",
+        "virtues_058",
+        "virtues_061",
+        "virtues_063",
+        "virtues_066",
+        "virtues_069"
+      ]
+    },
+    {
+      "id": "lesson_virtues_medium_04",
+      "category": "virtues",
+      "difficulty": "medium",
+      "index": 4,
+      "questionIds": [
+        "virtues_072",
+        "virtues_075",
+        "virtues_080",
+        "virtues_082",
+        "virtues_089",
+        "virtues_092",
+        "virtues_097",
+        "virtues_100"
+      ]
+    },
+    {
+      "id": "lesson_virtues_hard_01",
+      "category": "virtues",
+      "difficulty": "hard",
+      "index": 1,
+      "questionIds": [
+        "virtues_011",
+        "virtues_014",
+        "virtues_028",
+        "virtues_034",
+        "virtues_036",
+        "virtues_041",
+        "virtues_043",
+        "virtues_050",
+        "virtues_053",
+        "virtues_056"
+      ]
+    },
+    {
+      "id": "lesson_virtues_hard_02",
+      "category": "virtues",
+      "difficulty": "hard",
+      "index": 2,
+      "questionIds": [
+        "virtues_059",
+        "virtues_062",
+        "virtues_065",
+        "virtues_068",
+        "virtues_070",
+        "virtues_073",
+        "virtues_076",
+        "virtues_078",
+        "virtues_081"
+      ]
+    },
+    {
+      "id": "lesson_virtues_hard_03",
+      "category": "virtues",
+      "difficulty": "hard",
+      "index": 3,
+      "questionIds": [
+        "virtues_084",
+        "virtues_085",
+        "virtues_086",
+        "virtues_088",
+        "virtues_090",
+        "virtues_093",
+        "virtues_095",
+        "virtues_098",
+        "virtues_099"
+      ]
+    }
+  ]
+}

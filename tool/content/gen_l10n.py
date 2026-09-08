@@ -2923,6 +2923,28 @@ s("classroomReconnecting", "Pupil screen: the wifi dropped, the seat is being re
   tr="Yeniden bağlanılıyor…", id="Menyambung kembali…", ur="دوبارہ رابطہ…",
   ms="Menyambung semula…", it="Riconnessione…", nl="Opnieuw verbinden…")
 
+# ---- Lessons (classroom) ----------------------------------------------
+s("lessonTitle", "Name of a classroom lesson: theme, level and its number",
+  ph={"theme": "String", "level": "String", "number": "num"},
+  fr="{theme} · {level} {number}", en="{theme} · {level} {number}",
+  ar="{theme} · {level} {number}", es="{theme} · {level} {number}",
+  pt="{theme} · {level} {number}", de="{theme} · {level} {number}",
+  tr="{theme} · {level} {number}", id="{theme} · {level} {number}",
+  ur="{theme} · {level} {number}", ms="{theme} · {level} {number}",
+  it="{theme} · {level} {number}", nl="{theme} · {level} {number}")
+
+s("lessonCardCount", "How many cards a lesson holds",
+  ph={"count": "num"},
+  fr="{count} cartes", en="{count} cards", ar="{count} بطاقة",
+  es="{count} cartas", pt="{count} cartas", de="{count} Karten",
+  tr="{count} kart", id="{count} kartu", ur="{count} کارڈ",
+  ms="{count} kad", it="{count} carte", nl="{count} kaarten")
+
+s("lesson", "The word for one classroom lesson",
+  fr="Leçon", en="Lesson", ar="درس", es="Lección", pt="Lição", de="Lektion",
+  tr="Ders", id="Pelajaran", ur="سبق", ms="Pelajaran", it="Lezione",
+  nl="Les")
+
 # ---------------------------------------------------------------------
 def validate():
     for key, (desc, ph, texts) in K.items():

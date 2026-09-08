@@ -1274,4 +1274,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classroomReconnecting => 'Reconnecting…';
+
+  @override
+  String lessonTitle(String theme, String level, num number) {
+    return '$theme · $level $number';
+  }
+
+  @override
+  String lessonCardCount(num count) {
+    return '$count cards';
+  }
+
+  @override
+  String get lesson => 'Lesson';
 }

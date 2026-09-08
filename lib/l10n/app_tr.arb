@@ -345,5 +345,8 @@
   "classroomSessionFull": "Bu oturum dolu.",
   "classroomTooLate": "Çok geç: süre doldu.",
   "classroomUnreachable": "Sınıfa ulaşılamıyor. Bağlantıyı kontrol et.",
-  "classroomReconnecting": "Yeniden bağlanılıyor…"
+  "classroomReconnecting": "Yeniden bağlanılıyor…",
+  "lessonTitle": "{theme} · {level} {number}",
+  "lessonCardCount": "{count} kart",
+  "lesson": "Ders"
 }

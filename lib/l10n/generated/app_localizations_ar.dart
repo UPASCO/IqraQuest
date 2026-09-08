@@ -1286,4 +1286,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get classroomReconnecting => 'جارٍ إعادة الاتصال…';
+
+  @override
+  String lessonTitle(String theme, String level, num number) {
+    return '$theme · $level $number';
+  }
+
+  @override
+  String lessonCardCount(num count) {
+    return '$count بطاقة';
+  }
+
+  @override
+  String get lesson => 'درس';
 }

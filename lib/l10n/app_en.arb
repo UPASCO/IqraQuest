@@ -1707,5 +1707,33 @@
   "classroomReconnecting": "Reconnecting…",
   "@classroomReconnecting": {
     "description": "Pupil screen: the wifi dropped, the seat is being recovered"
+  },
+  "lessonTitle": "{theme} · {level} {number}",
+  "@lessonTitle": {
+    "description": "Name of a classroom lesson: theme, level and its number",
+    "placeholders": {
+      "theme": {
+        "type": "String"
+      },
+      "level": {
+        "type": "String"
+      },
+      "number": {
+        "type": "num"
+      }
+    }
+  },
+  "lessonCardCount": "{count} cards",
+  "@lessonCardCount": {
+    "description": "How many cards a lesson holds",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "lesson": "Lesson",
+  "@lesson": {
+    "description": "The word for one classroom lesson"
   }
 }
