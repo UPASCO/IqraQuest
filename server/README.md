@@ -1,0 +1,101 @@
+# Le serveur du mode Classe
+
+Tout ce qu'IqraQuest fait sur un téléphone se passe hors ligne. Ce
+dossier est la seule exception : il fait tourner le **mode Classe**, où
+un enseignant projette une partie au tableau et où ses élèves répondent
+depuis leur appareil.
+
+Rien d'autre ne dépend de ce serveur. L'app entière — les 1 100
+questions, les parties de famille, les sauvegardes, le défi de l'ordi —
+continue de fonctionner sans réseau, sans compte et sans que ce projet
+existe.
+
+## Ce qui est stocké, et ce qui ne l'est pas
+
+**Un élève n'a pas de compte.** Il entre un code de séance et un prénom.
+Le serveur garde ce prénom, son équipe et ses réponses le temps de la
+séance, plus un jeton aléatoire qui lui permet de revenir s'il perd le
+wifi — un jeton propre à cette séance, qui ne le relie à rien d'autre.
+Pas d'adresse e-mail, pas d'identifiant d'appareil, pas de trace après.
+
+**À la fermeture, la séance est effacée**, avec les prénoms et les
+réponses. Ce que l'enseignant garde est un rapport agrégé : « question 4,
+9 réussites sur 24 ». Il ne nomme personne, sauf si l'enseignant a coché
+« garder les scores par élève » à l'ouverture — ce n'est pas le défaut,
+et c'est écrit à l'écran.
+
+Une séance qu'on a oublié de fermer part d'elle-même au bout de deux
+jours (`purge_old_sessions`).
+
+**La seule identité du système est celle de l'enseignant** : l'adresse
+e-mail qui a payé, sur laquelle arrive un lien de connexion. Pas de mot
+de passe, pas de profil, pas de nom.
+
+## L'installation, une fois
+
+1. **Créer le projet.** Sur [supabase.com](https://supabase.com), un
+   nouveau projet en **région Europe** (Francfort ou Paris) — les données
+   d'élèves européens restent en Europe.
+
+2. **Poser le schéma.** Dans l'éditeur SQL du projet, coller
+   `supabase/migrations/0001_classroom.sql` puis
+   `supabase/migrations/0002_classroom_teacher.sql`, dans cet ordre.
+   Avec la CLI Supabase : `supabase db push` depuis ce dossier.
+
+3. **Activer le lien magique.** Authentication → Providers → Email, avec
+   « Confirm email » activé et les mots de passe désactivés : l'enseignant
+   se connecte par un lien reçu sur l'adresse qui a payé, jamais par un
+   mot de passe qu'il oubliera.
+
+4. **Relever les deux clés.** Settings → API :
+   - l'URL du projet,
+   - la clé publique `anon`.
+
+   Ces deux valeurs-là peuvent vivre dans l'app : elles n'ouvrent rien.
+   Toutes les tables refusent le rôle anonyme, qui ne peut appeler que
+   `join_session`, `submit_answer` et `board_state`.
+
+   La clé `service_role`, elle, ouvre tout : elle ne sort jamais du
+   tableau de bord Stripe/Supabase et n'entre jamais dans le dépôt.
+
+5. **Les passer à la compilation** — jamais dans un fichier versionné :
+
+   ```
+   flutter run \
+     --dart-define=SUPABASE_URL=https://xxxx.supabase.co \
+     --dart-define=SUPABASE_ANON_KEY=eyJhbGciOi...
+   ```
+
+   En CI, ce sont deux secrets GitHub de plus.
+
+## Vérifier que ça tient
+
+Le mode Classe est la première porte ouverte sur l'extérieur ; ces
+vérifications-là comptent plus que les autres.
+
+- **Le rôle anonyme ne lit rien.** Avec la clé `anon`, un
+  `select * from participants` doit renvoyer zéro ligne, pas une erreur —
+  c'est RLS qui fait son travail. De même pour `sessions`, `answers`,
+  `licences` et `reports`.
+- **Un code inconnu ne dit rien d'utile.** `board_state('AAAAAA')` renvoie
+  `unknown_code`, jamais un indice sur l'existence d'autres séances.
+- **Une réponse arrivée trop tard est refusée** (`not_open`, `too_late`),
+  et deux envois de la même réponse n'en comptent qu'une.
+- **Fermer une séance efface bien ses participants** : après
+  `close_session`, la séance n'existe plus, et le rapport ne contient
+  aucun prénom si la case n'était pas cochée.
+
+## Si pg_cron n'est pas disponible
+
+La migration 0002 planifie le ménage quotidien avec `pg_cron` quand
+l'extension existe. Si le palier choisi ne l'a pas, appeler
+`purge_old_sessions(2)` une fois par jour depuis une fonction Edge
+planifiée, ou depuis n'importe quel ordonnanceur ayant la clé
+`service_role`. Ce n'est pas une commodité : c'est ce qui garantit que
+les prénoms ne restent pas.
+
+## Ce que ça coûte
+
+Le palier gratuit tient environ six classes simultanées (200 connexions
+en temps réel, une par appareil). À 25 $ par mois, une quinzaine. Les
+écritures sont négligeables : une trentaine de lignes par question posée.
