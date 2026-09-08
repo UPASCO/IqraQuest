@@ -226,13 +226,46 @@ void main() {
     stripeMentions.isEmpty,
     detail: stripeMentions.join('; '),
   );
+  // Any credential that reaches this repository is a credential to
+  // rotate, not to explain away — so the gate looks for the shapes of
+  // the real ones rather than for the words around them. `service_role`
+  // as a word is legitimate (the SQL revokes rights from that role);
+  // what must never appear is a key that carries its value.
+  final secretShapes = <String, RegExp>{
+    'a Stripe key': RegExp(r'\b(sk_live|sk_test|pk_live|rk_live)_[A-Za-z0-9]{8,}'),
+    'a Supabase secret key': RegExp(r'\bsb_secret_[A-Za-z0-9_\-]{10,}'),
+    'a JWT (anon or service_role)':
+        RegExp(r'\beyJ[A-Za-z0-9_\-]{15,}\.[A-Za-z0-9_\-]{15,}\.[A-Za-z0-9_\-]{10,}'),
+    'a Postgres connection string with a password':
+        RegExp(r'postgres(ql)?://[^\s:@]+:[^\s@]+@'),
+  };
+  final leaked = <String>[];
+  for (final directory in ['lib', 'server', 'web', 'tool', '.github']) {
+    final dir = Directory('${root.path}/$directory');
+    if (!dir.existsSync()) continue;
+    for (final entity in dir.listSync(recursive: true)) {
+      if (entity is! File) continue;
+      // Text only: a compiled artefact carries no credential a reviewer
+      // could act on, and decoding one as UTF-8 throws.
+      if (!RegExp(r'\.(dart|sql|ya?ml|json|md|sh|ts|js|html|txt|arb|py)$')
+          .hasMatch(entity.path)) {
+        continue;
+      }
+      // This file names the shapes it hunts for; it would otherwise
+      // report itself.
+      if (entity.path.endsWith('pre_release_check.dart')) continue;
+      final text = entity.readAsStringSync();
+      for (final shape in secretShapes.entries) {
+        if (shape.value.hasMatch(text)) {
+          leaked.add('${entity.path}: ${shape.key}');
+        }
+      }
+    }
+  }
   check(
-    'no Stripe key or price is committed',
-    !Directory('${root.path}/lib')
-        .listSync(recursive: true)
-        .whereType<File>()
-        .where((f) => f.path.endsWith('.dart'))
-        .any((f) => RegExp(r'sk_live|sk_test|pk_live').hasMatch(f.readAsStringSync())),
+    'no credential of any kind is committed',
+    leaked.isEmpty,
+    detail: leaked.join('; '),
   );
 
   section('No placeholders in shipped code/content');
