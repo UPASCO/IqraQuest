@@ -20,7 +20,13 @@
 //
 //   supabase functions deploy stripe-webhook --no-verify-jwt
 //   supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
-//   supabase secrets set SUPABASE_SERVICE_ROLE_KEY=...
+//   supabase secrets set IQRAQUEST_SERVICE_KEY=sb_secret_...
+//
+// Le nom `IQRAQUEST_SERVICE_KEY` n'est pas une coquetterie : le préfixe
+// `SUPABASE_` est réservé par la CLI, qui refuse d'y poser un secret.
+// La plateforme injecte de son côté un `SUPABASE_SERVICE_ROLE_KEY`
+// hérité ; la fonction accepte les deux, en préférant celui qu'on lui a
+// donné explicitement.
 //
 // Puis, côté Stripe, un webhook vers l'URL de la fonction, abonné à
 // `checkout.session.completed`, `customer.subscription.updated` et
@@ -32,7 +38,8 @@
 
 const WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET") ?? "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
-const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+const SERVICE_ROLE = Deno.env.get("IQRAQUEST_SERVICE_KEY") ??
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 
 // Cinq minutes : au-delà, un appel rejoué n'est plus un appel en retard.
 const TOLERANCE_SECONDS = 300;
@@ -162,6 +169,17 @@ async function upsertLicence(row: Record<string, unknown>) {
 Deno.serve(async (request) => {
   if (request.method !== "POST") {
     return new Response("method not allowed", { status: 405 });
+  }
+
+  // Mal configurée, cette fonction encaisserait les webhooks sans jamais
+  // écrire une licence — et l'école aurait payé pour rien. Mieux vaut
+  // que Stripe voie une erreur et réessaie.
+  if (!WEBHOOK_SECRET || !SERVICE_ROLE || !SUPABASE_URL) {
+    console.error(
+      "configuration incomplète : STRIPE_WEBHOOK_SECRET et " +
+        "IQRAQUEST_SERVICE_KEY doivent être posés (supabase secrets set)",
+    );
+    return new Response("not configured", { status: 500 });
   }
 
   const payload = await request.text();

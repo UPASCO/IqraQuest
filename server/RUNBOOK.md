@@ -180,8 +180,13 @@ sans abonnement ni webhook.
    ```bash
    supabase functions deploy stripe-webhook --no-verify-jwt
    supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
-   supabase secrets set SUPABASE_SERVICE_ROLE_KEY=...
+   supabase secrets set IQRAQUEST_SERVICE_KEY=sb_secret_...
    ```
+
+   Le préfixe `SUPABASE_` est réservé par la CLI : un secret ainsi
+   nommé est refusé. D'où `IQRAQUEST_SERVICE_KEY`, qui reçoit la clé
+   **secrète** (`sb_secret_…`) — celle qui ne quitte jamais le tableau
+   de bord autrement que par cette commande, tapée sur votre machine.
 
 4. **Webhook Stripe** vers l'URL de la fonction, abonné à
    `checkout.session.completed`, `customer.subscription.updated` et
