@@ -1203,4 +1203,71 @@ class AppLocalizationsUr extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'آپ نے مفت ورژن کے $count کارڈ کھیل لیے۔ پریمیم کے ساتھ ریس مکہ تک جاری رہتی ہے، تمام کارڈ، تمام راستوں اور محفوظ کھیلوں کے ساتھ۔';
   }
+
+  @override
+  String get classroomJoin => 'کلاس میں شامل ہوں';
+
+  @override
+  String get classroomCodeLabel => 'سیشن کا کوڈ';
+
+  @override
+  String get classroomNicknameLabel => 'آپ کا پہلا نام';
+
+  @override
+  String get classroomPrivacyNote =>
+      'کوئی اکاؤنٹ نہیں۔ سیشن ختم ہوتے ہی آپ کا نام اور جواب مٹ جاتے ہیں۔';
+
+  @override
+  String get classroomWaiting => 'کلاس شروع ہونے والی ہے';
+
+  @override
+  String get classroomWaitingHint => 'پہلا سوال آپ کے استاد کھولتے ہیں۔';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return '$colour ٹیم';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'سوال $current از $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'جواب بھیج دیا گیا';
+
+  @override
+  String get classroomAnswerSentHint => 'بورڈ کی طرف دیکھیں: جواب آ رہا ہے۔';
+
+  @override
+  String get classroomSessionOver => 'سیشن ختم ہو گیا';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'آپ نے اپنے گھوڑے کو $count خانے آگے بڑھایا',
+      one: 'آپ نے اپنے گھوڑے کو ایک خانہ آگے بڑھایا',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'کلاس چھوڑیں';
+
+  @override
+  String get classroomUnknownCode => 'اس کوڈ کا کوئی کھلا سیشن نہیں ہے۔';
+
+  @override
+  String get classroomSessionFull => 'یہ سیشن بھر چکا ہے۔';
+
+  @override
+  String get classroomTooLate => 'بہت دیر ہو گئی: وقت ختم ہو چکا تھا۔';
+
+  @override
+  String get classroomUnreachable => 'کلاس تک رسائی نہیں۔ رابطہ جانچیں۔';
+
+  @override
+  String get classroomReconnecting => 'دوبارہ رابطہ…';
 }

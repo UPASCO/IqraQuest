@@ -1213,4 +1213,75 @@ class AppLocalizationsFr extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'Tu as joué les $count cartes de la version gratuite. Avec Premium, la course continue jusqu\'à La Mecque, avec toutes les cartes, tous les parcours et les sauvegardes.';
   }
+
+  @override
+  String get classroomJoin => 'Rejoindre une classe';
+
+  @override
+  String get classroomCodeLabel => 'Code de la séance';
+
+  @override
+  String get classroomNicknameLabel => 'Ton prénom';
+
+  @override
+  String get classroomPrivacyNote =>
+      'Aucun compte. Ton prénom et tes réponses s\'effacent à la fin de la séance.';
+
+  @override
+  String get classroomWaiting => 'La classe va commencer';
+
+  @override
+  String get classroomWaitingHint =>
+      'Ton enseignant lance la première question.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'Équipe $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Question $current sur $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Réponse envoyée';
+
+  @override
+  String get classroomAnswerSentHint =>
+      'Regarde le tableau : la réponse arrive.';
+
+  @override
+  String get classroomSessionOver => 'La séance est terminée';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Tu as fait avancer ton cheval de $count cases',
+      one: 'Tu as fait avancer ton cheval d\'une case',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'Quitter la classe';
+
+  @override
+  String get classroomUnknownCode =>
+      'Ce code ne correspond à aucune séance ouverte.';
+
+  @override
+  String get classroomSessionFull => 'Cette séance est complète.';
+
+  @override
+  String get classroomTooLate => 'Trop tard : le temps était écoulé.';
+
+  @override
+  String get classroomUnreachable =>
+      'La classe est injoignable. Vérifie la connexion.';
+
+  @override
+  String get classroomReconnecting => 'Reconnexion…';
 }

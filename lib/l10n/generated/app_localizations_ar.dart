@@ -1217,4 +1217,73 @@ class AppLocalizationsAr extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'لقد لعبت $count بطاقة من النسخة المجانية. مع بريميوم يستمر السباق حتى مكة، بكل البطاقات وكل المسارات والحفظ.';
   }
+
+  @override
+  String get classroomJoin => 'انضم إلى الصف';
+
+  @override
+  String get classroomCodeLabel => 'رمز الحصة';
+
+  @override
+  String get classroomNicknameLabel => 'اسمك الأول';
+
+  @override
+  String get classroomPrivacyNote =>
+      'بلا حساب. يُمحى اسمك وإجاباتك عند انتهاء الحصة.';
+
+  @override
+  String get classroomWaiting => 'ستبدأ الحصة الآن';
+
+  @override
+  String get classroomWaitingHint => 'معلّمك هو من يفتح السؤال الأول.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'فريق $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'السؤال $current من $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'أُرسلت الإجابة';
+
+  @override
+  String get classroomAnswerSentHint => 'انظر إلى اللوحة: ستظهر الإجابة.';
+
+  @override
+  String get classroomSessionOver => 'انتهت الحصة';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'قدّمت حصانك $count مربعات',
+      two: 'قدّمت حصانك مربعين',
+      one: 'قدّمت حصانك مربعًا واحدًا',
+      zero: 'لم تُقدّم حصانك أيّ مربع',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'مغادرة الصف';
+
+  @override
+  String get classroomUnknownCode => 'لا توجد حصة مفتوحة بهذا الرمز.';
+
+  @override
+  String get classroomSessionFull => 'هذه الحصة مكتملة.';
+
+  @override
+  String get classroomTooLate => 'فات الأوان: انتهى الوقت.';
+
+  @override
+  String get classroomUnreachable => 'تعذّر الوصول إلى الصف. تحقّق من الاتصال.';
+
+  @override
+  String get classroomReconnecting => 'جارٍ إعادة الاتصال…';
 }

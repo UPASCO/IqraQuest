@@ -215,6 +215,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         onTap: () => context.push('/daily-challenge'),
                       ),
                       _ShelfItem(
+                        key: const Key('shelf-classroom'),
+                        icon: Icons.co_present_outlined,
+                        label: l10n.classroomJoin,
+                        onTap: () => context.push('/classroom'),
+                      ),
+                      _ShelfItem(
                         icon: Icons.bar_chart,
                         label: l10n.progress,
                         onTap: () => context.push('/progress'),

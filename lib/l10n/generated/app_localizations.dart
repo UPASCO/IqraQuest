@@ -2085,6 +2085,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You have played the {count} cards of the free edition. With Premium the race goes on to Mecca, with every card, every course and the saves.'**
   String freeLimitPopupBody(int count);
+
+  /// Home shelf and screen title: join the class session the teacher opened
+  ///
+  /// In en, this message translates to:
+  /// **'Join a class'**
+  String get classroomJoin;
+
+  /// Text field: the six-character code the teacher wrote on the board
+  ///
+  /// In en, this message translates to:
+  /// **'Session code'**
+  String get classroomCodeLabel;
+
+  /// Text field: the pupil's first name, the only thing they give
+  ///
+  /// In en, this message translates to:
+  /// **'Your first name'**
+  String get classroomNicknameLabel;
+
+  /// Under the join form: what is kept, and for how long
+  ///
+  /// In en, this message translates to:
+  /// **'No account. Your first name and your answers are erased when the session ends.'**
+  String get classroomPrivacyNote;
+
+  /// Pupil screen: joined, waiting for the teacher to open the first question
+  ///
+  /// In en, this message translates to:
+  /// **'The class is about to start'**
+  String get classroomWaiting;
+
+  /// Pupil screen: who decides when it starts
+  ///
+  /// In en, this message translates to:
+  /// **'Your teacher opens the first question.'**
+  String get classroomWaitingHint;
+
+  /// Which team the pupil rides for, named by its horse colour
+  ///
+  /// In en, this message translates to:
+  /// **'Team {colour}'**
+  String classroomTeamOf(String colour);
+
+  /// Pupil and board: where the class is in the lesson
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String classroomQuestionOf(num current, num total);
+
+  /// Pupil screen: the answer is in, wait for the class
+  ///
+  /// In en, this message translates to:
+  /// **'Answer sent'**
+  String get classroomAnswerSent;
+
+  /// Pupil screen: what happens next
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the board: the answer is coming.'**
+  String get classroomAnswerSentHint;
+
+  /// Pupil screen: the teacher closed the session
+  ///
+  /// In en, this message translates to:
+  /// **'The session is over'**
+  String get classroomSessionOver;
+
+  /// Pupil screen at the end: how many squares this pupil brought their team
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{You moved your horse one square} other{You moved your horse {count} squares}}'**
+  String classroomYourScore(num count);
+
+  /// Pupil screen: leave the class
+  ///
+  /// In en, this message translates to:
+  /// **'Leave the class'**
+  String get classroomLeave;
+
+  /// Error: no open session under that code
+  ///
+  /// In en, this message translates to:
+  /// **'No open session has that code.'**
+  String get classroomUnknownCode;
+
+  /// Error: the room is full
+  ///
+  /// In en, this message translates to:
+  /// **'This session is full.'**
+  String get classroomSessionFull;
+
+  /// Error: the timer ran out before the answer arrived
+  ///
+  /// In en, this message translates to:
+  /// **'Too late: time was up.'**
+  String get classroomTooLate;
+
+  /// Error: the class cannot be reached from here
+  ///
+  /// In en, this message translates to:
+  /// **'The class cannot be reached. Check the connection.'**
+  String get classroomUnreachable;
+
+  /// Pupil screen: the wifi dropped, the seat is being recovered
+  ///
+  /// In en, this message translates to:
+  /// **'Reconnecting…'**
+  String get classroomReconnecting;
 }
 
 class _AppLocalizationsDelegate

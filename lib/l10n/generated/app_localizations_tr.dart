@@ -1189,4 +1189,71 @@ class AppLocalizationsTr extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'Ücretsiz sürümün $count kartını oynadın. Premium ile yarış Mekke\'ye kadar sürer; tüm kartlar, tüm parkurlar ve kayıtlarla.';
   }
+
+  @override
+  String get classroomJoin => 'Sınıfa katıl';
+
+  @override
+  String get classroomCodeLabel => 'Oturum kodu';
+
+  @override
+  String get classroomNicknameLabel => 'Adın';
+
+  @override
+  String get classroomPrivacyNote =>
+      'Hesap yok. Adın ve cevapların oturum bitince silinir.';
+
+  @override
+  String get classroomWaiting => 'Ders birazdan başlıyor';
+
+  @override
+  String get classroomWaitingHint => 'İlk soruyu öğretmenin açar.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return '$colour takımı';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Soru $current / $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Cevap gönderildi';
+
+  @override
+  String get classroomAnswerSentHint => 'Tahtaya bak: cevap geliyor.';
+
+  @override
+  String get classroomSessionOver => 'Oturum bitti';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Atını $count kare ilerlettin',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'Sınıftan ayrıl';
+
+  @override
+  String get classroomUnknownCode => 'Bu koda ait açık bir oturum yok.';
+
+  @override
+  String get classroomSessionFull => 'Bu oturum dolu.';
+
+  @override
+  String get classroomTooLate => 'Çok geç: süre doldu.';
+
+  @override
+  String get classroomUnreachable =>
+      'Sınıfa ulaşılamıyor. Bağlantıyı kontrol et.';
+
+  @override
+  String get classroomReconnecting => 'Yeniden bağlanılıyor…';
 }

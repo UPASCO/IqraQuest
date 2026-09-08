@@ -2753,6 +2753,176 @@ s("freeLimitPopupBody", "Popup on the results screen when the free edition's dra
   it="Hai giocato le {count} carte della versione gratuita. Con Premium la corsa continua fino alla Mecca, con tutte le carte, tutti i percorsi e i salvataggi.",
   nl="Je hebt de {count} kaarten van de gratis versie gespeeld. Met Premium gaat de race door tot Mekka, met alle kaarten, alle parcoursen en de opgeslagen spellen.")
 
+
+# ---- Classroom mode: the pupil's side (free, no account) -------------
+s("classroomJoin", "Home shelf and screen title: join the class session the teacher opened",
+  fr="Rejoindre une classe", en="Join a class", ar="انضم إلى الصف",
+  es="Unirse a una clase", pt="Entrar numa turma", de="Einer Klasse beitreten",
+  tr="Sınıfa katıl", id="Gabung ke kelas", ur="کلاس میں شامل ہوں",
+  ms="Sertai kelas", it="Unisciti a una classe", nl="Deelnemen aan een klas")
+
+s("classroomCodeLabel", "Text field: the six-character code the teacher wrote on the board",
+  fr="Code de la séance", en="Session code", ar="رمز الحصة",
+  es="Código de la sesión", pt="Código da sessão", de="Sitzungscode",
+  tr="Oturum kodu", id="Kode sesi", ur="سیشن کا کوڈ",
+  ms="Kod sesi", it="Codice della sessione", nl="Sessiecode")
+
+s("classroomNicknameLabel", "Text field: the pupil's first name, the only thing they give",
+  fr="Ton prénom", en="Your first name", ar="اسمك الأول",
+  es="Tu nombre", pt="Teu primeiro nome", de="Dein Vorname",
+  tr="Adın", id="Nama depanmu", ur="آپ کا پہلا نام",
+  ms="Nama pertama anda", it="Il tuo nome", nl="Je voornaam")
+
+s("classroomPrivacyNote", "Under the join form: what is kept, and for how long",
+  fr="Aucun compte. Ton prénom et tes réponses s'effacent à la fin de la séance.",
+  en="No account. Your first name and your answers are erased when the session ends.",
+  ar="بلا حساب. يُمحى اسمك وإجاباتك عند انتهاء الحصة.",
+  es="Sin cuenta. Tu nombre y tus respuestas se borran al terminar la sesión.",
+  pt="Sem conta. O teu nome e as tuas respostas apagam-se no fim da sessão.",
+  de="Kein Konto. Dein Vorname und deine Antworten werden am Ende der Sitzung gelöscht.",
+  tr="Hesap yok. Adın ve cevapların oturum bitince silinir.",
+  id="Tanpa akun. Namamu dan jawabanmu terhapus saat sesi berakhir.",
+  ur="کوئی اکاؤنٹ نہیں۔ سیشن ختم ہوتے ہی آپ کا نام اور جواب مٹ جاتے ہیں۔",
+  ms="Tiada akaun. Nama dan jawapan anda dipadam apabila sesi tamat.",
+  it="Nessun account. Il tuo nome e le tue risposte si cancellano a fine sessione.",
+  nl="Geen account. Je voornaam en je antwoorden worden gewist als de sessie eindigt.")
+
+s("classroomWaiting", "Pupil screen: joined, waiting for the teacher to open the first question",
+  fr="La classe va commencer", en="The class is about to start",
+  ar="ستبدأ الحصة الآن", es="La clase va a empezar", pt="A aula vai começar",
+  de="Der Unterricht beginnt gleich", tr="Ders birazdan başlıyor",
+  id="Kelas akan dimulai", ur="کلاس شروع ہونے والی ہے",
+  ms="Kelas akan bermula", it="La lezione sta per iniziare",
+  nl="De les begint zo")
+
+s("classroomWaitingHint", "Pupil screen: who decides when it starts",
+  fr="Ton enseignant lance la première question.",
+  en="Your teacher opens the first question.",
+  ar="معلّمك هو من يفتح السؤال الأول.",
+  es="Tu profesor abre la primera pregunta.",
+  pt="O teu professor abre a primeira pergunta.",
+  de="Deine Lehrkraft öffnet die erste Frage.",
+  tr="İlk soruyu öğretmenin açar.",
+  id="Gurumu yang membuka pertanyaan pertama.",
+  ur="پہلا سوال آپ کے استاد کھولتے ہیں۔",
+  ms="Guru anda membuka soalan pertama.",
+  it="Il tuo insegnante apre la prima domanda.",
+  nl="Je leraar opent de eerste vraag.")
+
+s("classroomTeamOf", "Which team the pupil rides for, named by its horse colour",
+  ph={"colour": "String"},
+  fr="Équipe {colour}", en="Team {colour}", ar="فريق {colour}",
+  es="Equipo {colour}", pt="Equipa {colour}", de="Team {colour}",
+  tr="{colour} takımı", id="Tim {colour}", ur="{colour} ٹیم",
+  ms="Pasukan {colour}", it="Squadra {colour}", nl="Team {colour}")
+
+s("classroomQuestionOf", "Pupil and board: where the class is in the lesson",
+  ph={"current": "num", "total": "num"},
+  fr="Question {current} sur {total}", en="Question {current} of {total}",
+  ar="السؤال {current} من {total}", es="Pregunta {current} de {total}",
+  pt="Pergunta {current} de {total}", de="Frage {current} von {total}",
+  tr="Soru {current} / {total}", id="Pertanyaan {current} dari {total}",
+  ur="سوال {current} از {total}", ms="Soalan {current} daripada {total}",
+  it="Domanda {current} di {total}", nl="Vraag {current} van {total}")
+
+s("classroomAnswerSent", "Pupil screen: the answer is in, wait for the class",
+  fr="Réponse envoyée", en="Answer sent", ar="أُرسلت الإجابة",
+  es="Respuesta enviada", pt="Resposta enviada", de="Antwort gesendet",
+  tr="Cevap gönderildi", id="Jawaban terkirim", ur="جواب بھیج دیا گیا",
+  ms="Jawapan dihantar", it="Risposta inviata", nl="Antwoord verstuurd")
+
+s("classroomAnswerSentHint", "Pupil screen: what happens next",
+  fr="Regarde le tableau : la réponse arrive.",
+  en="Look at the board: the answer is coming.",
+  ar="انظر إلى اللوحة: ستظهر الإجابة.",
+  es="Mira la pizarra: la respuesta llega.",
+  pt="Olha para o quadro: a resposta vem já.",
+  de="Schau an die Tafel: die Antwort kommt.",
+  tr="Tahtaya bak: cevap geliyor.",
+  id="Lihat ke papan: jawabannya menyusul.",
+  ur="بورڈ کی طرف دیکھیں: جواب آ رہا ہے۔",
+  ms="Lihat papan: jawapannya akan muncul.",
+  it="Guarda la lavagna: la risposta arriva.",
+  nl="Kijk naar het bord: het antwoord komt eraan.")
+
+s("classroomSessionOver", "Pupil screen: the teacher closed the session",
+  fr="La séance est terminée", en="The session is over", ar="انتهت الحصة",
+  es="La sesión ha terminado", pt="A sessão terminou", de="Die Sitzung ist vorbei",
+  tr="Oturum bitti", id="Sesi telah selesai", ur="سیشن ختم ہو گیا",
+  ms="Sesi telah tamat", it="La sessione è finita", nl="De sessie is voorbij")
+
+s("classroomYourScore", "Pupil screen at the end: how many squares this pupil brought their team",
+  ph={"count": "num"},
+  fr="{count, plural, one{Tu as fait avancer ton cheval d'une case} other{Tu as fait avancer ton cheval de {count} cases}}",
+  en="{count, plural, one{You moved your horse one square} other{You moved your horse {count} squares}}",
+  ar="{count, plural, zero{لم تُقدّم حصانك أيّ مربع} one{قدّمت حصانك مربعًا واحدًا} two{قدّمت حصانك مربعين} other{قدّمت حصانك {count} مربعات}}",
+  es="{count, plural, one{Has hecho avanzar tu caballo una casilla} other{Has hecho avanzar tu caballo {count} casillas}}",
+  pt="{count, plural, one{Fizeste o teu cavalo avançar uma casa} other{Fizeste o teu cavalo avançar {count} casas}}",
+  de="{count, plural, one{Du hast dein Pferd ein Feld vorgebracht} other{Du hast dein Pferd {count} Felder vorgebracht}}",
+  tr="{count, plural, other{Atını {count} kare ilerlettin}}",
+  id="{count, plural, other{Kamu memajukan kudamu {count} kotak}}",
+  ur="{count, plural, one{آپ نے اپنے گھوڑے کو ایک خانہ آگے بڑھایا} other{آپ نے اپنے گھوڑے کو {count} خانے آگے بڑھایا}}",
+  ms="{count, plural, other{Anda memajukan kuda anda {count} petak}}",
+  it="{count, plural, one{Hai fatto avanzare il tuo cavallo di una casella} other{Hai fatto avanzare il tuo cavallo di {count} caselle}}",
+  nl="{count, plural, one{Je liet je paard één vakje opschuiven} other{Je liet je paard {count} vakjes opschuiven}}")
+
+s("classroomLeave", "Pupil screen: leave the class",
+  fr="Quitter la classe", en="Leave the class", ar="مغادرة الصف",
+  es="Salir de la clase", pt="Sair da turma", de="Klasse verlassen",
+  tr="Sınıftan ayrıl", id="Keluar dari kelas", ur="کلاس چھوڑیں",
+  ms="Tinggalkan kelas", it="Esci dalla classe", nl="De klas verlaten")
+
+s("classroomUnknownCode", "Error: no open session under that code",
+  fr="Ce code ne correspond à aucune séance ouverte.",
+  en="No open session has that code.",
+  ar="لا توجد حصة مفتوحة بهذا الرمز.",
+  es="Ningún sesión abierta tiene ese código.",
+  pt="Nenhuma sessão aberta tem esse código.",
+  de="Kein offener Kurs hat diesen Code.",
+  tr="Bu koda ait açık bir oturum yok.",
+  id="Tidak ada sesi terbuka dengan kode itu.",
+  ur="اس کوڈ کا کوئی کھلا سیشن نہیں ہے۔",
+  ms="Tiada sesi terbuka dengan kod itu.",
+  it="Nessuna sessione aperta ha questo codice.",
+  nl="Geen open sessie met die code.")
+
+s("classroomSessionFull", "Error: the room is full",
+  fr="Cette séance est complète.", en="This session is full.",
+  ar="هذه الحصة مكتملة.", es="Esta sesión está completa.",
+  pt="Esta sessão está cheia.", de="Diese Sitzung ist voll.",
+  tr="Bu oturum dolu.", id="Sesi ini sudah penuh.",
+  ur="یہ سیشن بھر چکا ہے۔", ms="Sesi ini sudah penuh.",
+  it="Questa sessione è al completo.", nl="Deze sessie zit vol.")
+
+s("classroomTooLate", "Error: the timer ran out before the answer arrived",
+  fr="Trop tard : le temps était écoulé.", en="Too late: time was up.",
+  ar="فات الأوان: انتهى الوقت.", es="Demasiado tarde: se acabó el tiempo.",
+  pt="Tarde demais: o tempo acabou.", de="Zu spät: die Zeit war um.",
+  tr="Çok geç: süre doldu.", id="Terlambat: waktunya habis.",
+  ur="بہت دیر ہو گئی: وقت ختم ہو چکا تھا۔",
+  ms="Terlambat: masa sudah tamat.", it="Troppo tardi: il tempo era finito.",
+  nl="Te laat: de tijd was om.")
+
+s("classroomUnreachable", "Error: the class cannot be reached from here",
+  fr="La classe est injoignable. Vérifie la connexion.",
+  en="The class cannot be reached. Check the connection.",
+  ar="تعذّر الوصول إلى الصف. تحقّق من الاتصال.",
+  es="No se puede contactar con la clase. Comprueba la conexión.",
+  pt="Não é possível contactar a turma. Verifica a ligação.",
+  de="Die Klasse ist nicht erreichbar. Prüfe die Verbindung.",
+  tr="Sınıfa ulaşılamıyor. Bağlantıyı kontrol et.",
+  id="Kelas tidak dapat dihubungi. Periksa koneksi.",
+  ur="کلاس تک رسائی نہیں۔ رابطہ جانچیں۔",
+  ms="Kelas tidak dapat dihubungi. Semak sambungan.",
+  it="La classe non è raggiungibile. Controlla la connessione.",
+  nl="De klas is niet bereikbaar. Controleer de verbinding.")
+
+s("classroomReconnecting", "Pupil screen: the wifi dropped, the seat is being recovered",
+  fr="Reconnexion…", en="Reconnecting…", ar="جارٍ إعادة الاتصال…",
+  es="Reconectando…", pt="A reconectar…", de="Verbinde neu…",
+  tr="Yeniden bağlanılıyor…", id="Menyambung kembali…", ur="دوبارہ رابطہ…",
+  ms="Menyambung semula…", it="Riconnessione…", nl="Opnieuw verbinden…")
+
 # ---------------------------------------------------------------------
 def validate():
     for key, (desc, ph, texts) in K.items():

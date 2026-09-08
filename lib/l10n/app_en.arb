@@ -1617,5 +1617,95 @@
         "type": "int"
       }
     }
+  },
+  "classroomJoin": "Join a class",
+  "@classroomJoin": {
+    "description": "Home shelf and screen title: join the class session the teacher opened"
+  },
+  "classroomCodeLabel": "Session code",
+  "@classroomCodeLabel": {
+    "description": "Text field: the six-character code the teacher wrote on the board"
+  },
+  "classroomNicknameLabel": "Your first name",
+  "@classroomNicknameLabel": {
+    "description": "Text field: the pupil's first name, the only thing they give"
+  },
+  "classroomPrivacyNote": "No account. Your first name and your answers are erased when the session ends.",
+  "@classroomPrivacyNote": {
+    "description": "Under the join form: what is kept, and for how long"
+  },
+  "classroomWaiting": "The class is about to start",
+  "@classroomWaiting": {
+    "description": "Pupil screen: joined, waiting for the teacher to open the first question"
+  },
+  "classroomWaitingHint": "Your teacher opens the first question.",
+  "@classroomWaitingHint": {
+    "description": "Pupil screen: who decides when it starts"
+  },
+  "classroomTeamOf": "Team {colour}",
+  "@classroomTeamOf": {
+    "description": "Which team the pupil rides for, named by its horse colour",
+    "placeholders": {
+      "colour": {
+        "type": "String"
+      }
+    }
+  },
+  "classroomQuestionOf": "Question {current} of {total}",
+  "@classroomQuestionOf": {
+    "description": "Pupil and board: where the class is in the lesson",
+    "placeholders": {
+      "current": {
+        "type": "num"
+      },
+      "total": {
+        "type": "num"
+      }
+    }
+  },
+  "classroomAnswerSent": "Answer sent",
+  "@classroomAnswerSent": {
+    "description": "Pupil screen: the answer is in, wait for the class"
+  },
+  "classroomAnswerSentHint": "Look at the board: the answer is coming.",
+  "@classroomAnswerSentHint": {
+    "description": "Pupil screen: what happens next"
+  },
+  "classroomSessionOver": "The session is over",
+  "@classroomSessionOver": {
+    "description": "Pupil screen: the teacher closed the session"
+  },
+  "classroomYourScore": "{count, plural, one{You moved your horse one square} other{You moved your horse {count} squares}}",
+  "@classroomYourScore": {
+    "description": "Pupil screen at the end: how many squares this pupil brought their team",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "classroomLeave": "Leave the class",
+  "@classroomLeave": {
+    "description": "Pupil screen: leave the class"
+  },
+  "classroomUnknownCode": "No open session has that code.",
+  "@classroomUnknownCode": {
+    "description": "Error: no open session under that code"
+  },
+  "classroomSessionFull": "This session is full.",
+  "@classroomSessionFull": {
+    "description": "Error: the room is full"
+  },
+  "classroomTooLate": "Too late: time was up.",
+  "@classroomTooLate": {
+    "description": "Error: the timer ran out before the answer arrived"
+  },
+  "classroomUnreachable": "The class cannot be reached. Check the connection.",
+  "@classroomUnreachable": {
+    "description": "Error: the class cannot be reached from here"
+  },
+  "classroomReconnecting": "Reconnecting…",
+  "@classroomReconnecting": {
+    "description": "Pupil screen: the wifi dropped, the seat is being recovered"
   }
 }

@@ -1201,4 +1201,71 @@ class AppLocalizationsId extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'Kamu telah memainkan $count kartu versi gratis. Dengan Premium balapan berlanjut sampai Makkah, dengan semua kartu, semua lintasan, dan simpanan.';
   }
+
+  @override
+  String get classroomJoin => 'Gabung ke kelas';
+
+  @override
+  String get classroomCodeLabel => 'Kode sesi';
+
+  @override
+  String get classroomNicknameLabel => 'Nama depanmu';
+
+  @override
+  String get classroomPrivacyNote =>
+      'Tanpa akun. Namamu dan jawabanmu terhapus saat sesi berakhir.';
+
+  @override
+  String get classroomWaiting => 'Kelas akan dimulai';
+
+  @override
+  String get classroomWaitingHint => 'Gurumu yang membuka pertanyaan pertama.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'Tim $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Pertanyaan $current dari $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Jawaban terkirim';
+
+  @override
+  String get classroomAnswerSentHint => 'Lihat ke papan: jawabannya menyusul.';
+
+  @override
+  String get classroomSessionOver => 'Sesi telah selesai';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Kamu memajukan kudamu $count kotak',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'Keluar dari kelas';
+
+  @override
+  String get classroomUnknownCode => 'Tidak ada sesi terbuka dengan kode itu.';
+
+  @override
+  String get classroomSessionFull => 'Sesi ini sudah penuh.';
+
+  @override
+  String get classroomTooLate => 'Terlambat: waktunya habis.';
+
+  @override
+  String get classroomUnreachable =>
+      'Kelas tidak dapat dihubungi. Periksa koneksi.';
+
+  @override
+  String get classroomReconnecting => 'Menyambung kembali…';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/classroom/presentation/classroom_screen.dart';
 import '../features/daily_challenge/presentation/daily_challenge_screen.dart';
 import '../features/game/presentation/game_screen.dart';
 import '../features/home/presentation/home_screen.dart';
@@ -37,6 +38,7 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
     GoRoute(path: '/daily-challenge', builder: (c, s) => const DailyChallengeScreen()),
     GoRoute(path: '/progress', builder: (c, s) => const ProgressScreen()),
     GoRoute(path: '/tutorial', builder: (c, s) => const TutorialScreen()),
+    GoRoute(path: '/classroom', builder: (c, s) => const ClassroomScreen()),
   ],
 );
 

@@ -1212,4 +1212,74 @@ class AppLocalizationsPt extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'Jogaste as $count cartas da versão gratuita. Com Premium a corrida continua até Meca, com todas as cartas, todos os percursos e as partidas guardadas.';
   }
+
+  @override
+  String get classroomJoin => 'Entrar numa turma';
+
+  @override
+  String get classroomCodeLabel => 'Código da sessão';
+
+  @override
+  String get classroomNicknameLabel => 'Teu primeiro nome';
+
+  @override
+  String get classroomPrivacyNote =>
+      'Sem conta. O teu nome e as tuas respostas apagam-se no fim da sessão.';
+
+  @override
+  String get classroomWaiting => 'A aula vai começar';
+
+  @override
+  String get classroomWaitingHint =>
+      'O teu professor abre a primeira pergunta.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'Equipa $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Pergunta $current de $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Resposta enviada';
+
+  @override
+  String get classroomAnswerSentHint =>
+      'Olha para o quadro: a resposta vem já.';
+
+  @override
+  String get classroomSessionOver => 'A sessão terminou';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Fizeste o teu cavalo avançar $count casas',
+      one: 'Fizeste o teu cavalo avançar uma casa',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'Sair da turma';
+
+  @override
+  String get classroomUnknownCode => 'Nenhuma sessão aberta tem esse código.';
+
+  @override
+  String get classroomSessionFull => 'Esta sessão está cheia.';
+
+  @override
+  String get classroomTooLate => 'Tarde demais: o tempo acabou.';
+
+  @override
+  String get classroomUnreachable =>
+      'Não é possível contactar a turma. Verifica a ligação.';
+
+  @override
+  String get classroomReconnecting => 'A reconectar…';
 }

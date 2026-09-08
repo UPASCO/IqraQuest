@@ -1208,4 +1208,73 @@ class AppLocalizationsNl extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'Je hebt de $count kaarten van de gratis versie gespeeld. Met Premium gaat de race door tot Mekka, met alle kaarten, alle parcoursen en de opgeslagen spellen.';
   }
+
+  @override
+  String get classroomJoin => 'Deelnemen aan een klas';
+
+  @override
+  String get classroomCodeLabel => 'Sessiecode';
+
+  @override
+  String get classroomNicknameLabel => 'Je voornaam';
+
+  @override
+  String get classroomPrivacyNote =>
+      'Geen account. Je voornaam en je antwoorden worden gewist als de sessie eindigt.';
+
+  @override
+  String get classroomWaiting => 'De les begint zo';
+
+  @override
+  String get classroomWaitingHint => 'Je leraar opent de eerste vraag.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'Team $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Vraag $current van $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Antwoord verstuurd';
+
+  @override
+  String get classroomAnswerSentHint =>
+      'Kijk naar het bord: het antwoord komt eraan.';
+
+  @override
+  String get classroomSessionOver => 'De sessie is voorbij';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Je liet je paard $count vakjes opschuiven',
+      one: 'Je liet je paard één vakje opschuiven',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'De klas verlaten';
+
+  @override
+  String get classroomUnknownCode => 'Geen open sessie met die code.';
+
+  @override
+  String get classroomSessionFull => 'Deze sessie zit vol.';
+
+  @override
+  String get classroomTooLate => 'Te laat: de tijd was om.';
+
+  @override
+  String get classroomUnreachable =>
+      'De klas is niet bereikbaar. Controleer de verbinding.';
+
+  @override
+  String get classroomReconnecting => 'Opnieuw verbinden…';
 }

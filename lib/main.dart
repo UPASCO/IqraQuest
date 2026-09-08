@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
 import 'app/providers.dart';
+import 'features/classroom/application/classroom_controller.dart';
+import 'features/classroom/data/fake_classroom_gateway.dart';
 import 'app/router.dart';
 import 'services/entitlement_service.dart';
 import 'services/game_save_service.dart';
@@ -67,6 +69,12 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       overrides: [
+        localStorageProvider.overrideWithValue(storage),
+        // Until a Supabase project is configured (server/README.md), the
+        // classroom talks to an empty room in memory: the screen opens
+        // and says honestly that no class can be reached, rather than
+        // hiding a feature that is coming.
+        classroomGatewayProvider.overrideWithValue(FakeClassroomGateway()),
         settingsServiceProvider.overrideWithValue(settingsService),
         entitlementServiceProvider.overrideWithValue(entitlementService),
         progressServiceProvider.overrideWithValue(progressService),

@@ -1211,4 +1211,73 @@ class AppLocalizationsDe extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'Du hast die $count Karten der Gratis-Version gespielt. Mit Premium geht das Rennen bis Mekka weiter, mit allen Karten, allen Strecken und den Spielständen.';
   }
+
+  @override
+  String get classroomJoin => 'Einer Klasse beitreten';
+
+  @override
+  String get classroomCodeLabel => 'Sitzungscode';
+
+  @override
+  String get classroomNicknameLabel => 'Dein Vorname';
+
+  @override
+  String get classroomPrivacyNote =>
+      'Kein Konto. Dein Vorname und deine Antworten werden am Ende der Sitzung gelöscht.';
+
+  @override
+  String get classroomWaiting => 'Der Unterricht beginnt gleich';
+
+  @override
+  String get classroomWaitingHint => 'Deine Lehrkraft öffnet die erste Frage.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'Team $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Frage $current von $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Antwort gesendet';
+
+  @override
+  String get classroomAnswerSentHint =>
+      'Schau an die Tafel: die Antwort kommt.';
+
+  @override
+  String get classroomSessionOver => 'Die Sitzung ist vorbei';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Du hast dein Pferd $count Felder vorgebracht',
+      one: 'Du hast dein Pferd ein Feld vorgebracht',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'Klasse verlassen';
+
+  @override
+  String get classroomUnknownCode => 'Kein offener Kurs hat diesen Code.';
+
+  @override
+  String get classroomSessionFull => 'Diese Sitzung ist voll.';
+
+  @override
+  String get classroomTooLate => 'Zu spät: die Zeit war um.';
+
+  @override
+  String get classroomUnreachable =>
+      'Die Klasse ist nicht erreichbar. Prüfe die Verbindung.';
+
+  @override
+  String get classroomReconnecting => 'Verbinde neu…';
 }

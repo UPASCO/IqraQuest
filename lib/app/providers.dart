@@ -7,6 +7,7 @@ import '../services/entitlement_service.dart';
 import '../services/haptic_service.dart';
 import '../services/game_save_service.dart';
 import '../services/legacy_game_migration_service.dart';
+import '../services/local_storage_service.dart';
 import '../services/progress_service.dart';
 import '../services/purchase_service.dart';
 import '../services/question_repository.dart';
@@ -18,6 +19,9 @@ import '../services/share_service.dart';
 /// `await`) and injected here via `ProviderScope(overrides: ...)`. Every
 /// provider below throws until it is overridden at app start —
 /// see `lib/main.dart`.
+final localStorageProvider = Provider<LocalStorageService>(
+  (ref) => throw UnimplementedError('Override in main()'),
+);
 final settingsServiceProvider = Provider<SettingsService>(
   (ref) => throw UnimplementedError('Override in main()'),
 );

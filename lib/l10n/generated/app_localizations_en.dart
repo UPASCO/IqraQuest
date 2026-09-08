@@ -1205,4 +1205,73 @@ class AppLocalizationsEn extends AppLocalizations {
   String freeLimitPopupBody(int count) {
     return 'You have played the $count cards of the free edition. With Premium the race goes on to Mecca, with every card, every course and the saves.';
   }
+
+  @override
+  String get classroomJoin => 'Join a class';
+
+  @override
+  String get classroomCodeLabel => 'Session code';
+
+  @override
+  String get classroomNicknameLabel => 'Your first name';
+
+  @override
+  String get classroomPrivacyNote =>
+      'No account. Your first name and your answers are erased when the session ends.';
+
+  @override
+  String get classroomWaiting => 'The class is about to start';
+
+  @override
+  String get classroomWaitingHint => 'Your teacher opens the first question.';
+
+  @override
+  String classroomTeamOf(String colour) {
+    return 'Team $colour';
+  }
+
+  @override
+  String classroomQuestionOf(num current, num total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get classroomAnswerSent => 'Answer sent';
+
+  @override
+  String get classroomAnswerSentHint =>
+      'Look at the board: the answer is coming.';
+
+  @override
+  String get classroomSessionOver => 'The session is over';
+
+  @override
+  String classroomYourScore(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You moved your horse $count squares',
+      one: 'You moved your horse one square',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classroomLeave => 'Leave the class';
+
+  @override
+  String get classroomUnknownCode => 'No open session has that code.';
+
+  @override
+  String get classroomSessionFull => 'This session is full.';
+
+  @override
+  String get classroomTooLate => 'Too late: time was up.';
+
+  @override
+  String get classroomUnreachable =>
+      'The class cannot be reached. Check the connection.';
+
+  @override
+  String get classroomReconnecting => 'Reconnecting…';
 }
