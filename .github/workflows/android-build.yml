@@ -70,9 +70,14 @@ jobs:
       # at all, so the comparison is false and the PR gate keeps building
       # the store configuration, exactly as before.
       - name: Build the Android release APK
+        #
+        # The two Supabase values are what let a pupil reach a real
+        # classroom; without them the Classe screen opens and says so.
         run: |
           flutter build apk --release \
-            --dart-define=IQRAQUEST_TESTER=${{ inputs.tester_unlock == true }}
+            --dart-define=IQRAQUEST_TESTER=${{ inputs.tester_unlock == true }} \
+            --dart-define=SUPABASE_URL="${{ secrets.SUPABASE_URL }}" \
+            --dart-define=SUPABASE_ANON_KEY="${{ secrets.SUPABASE_ANON_KEY }}"
 
       - name: Upload the APK
         uses: actions/upload-artifact@v4

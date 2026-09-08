@@ -10,6 +10,10 @@ questions, les parties de famille, les sauvegardes, le défi de l'ordi —
 continue de fonctionner sans réseau, sans compte et sans que ce projet
 existe.
 
+> **Pour mettre tout ça en route, dans l'ordre : [RUNBOOK.md](RUNBOOK.md).**
+> Ce fichier-ci explique comment le mode Classe est construit ; le
+> runbook dit quoi faire, étape par étape, jusqu'à la première séance.
+
 ## Ce qui est stocké, et ce qui ne l'est pas
 
 **Un élève n'a pas de compte.** Il entre un code de séance et un prénom.

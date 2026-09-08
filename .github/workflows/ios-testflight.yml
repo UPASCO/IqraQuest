@@ -115,10 +115,18 @@ jobs:
         # It is a dart-define rather than a runtime setting on purpose: the
         # App Store binary is built without it and therefore cannot be
         # talked into handing out the Premium bank.
+        #
+        # SUPABASE_URL / SUPABASE_ANON_KEY are what let a pupil reach a
+        # real classroom. Without them the app still opens the Classe
+        # screen and says honestly that no class can be reached — which
+        # is what a build made before the project exists should do, and
+        # exactly the bug this line prevents once it does.
         run: |
           flutter build ios --release --no-codesign \
             --build-number=${{ github.run_number }} \
-            --dart-define=IQRAQUEST_TESTER=${{ inputs.tester_unlock }}
+            --dart-define=IQRAQUEST_TESTER=${{ inputs.tester_unlock }} \
+            --dart-define=SUPABASE_URL="${{ secrets.SUPABASE_URL }}" \
+            --dart-define=SUPABASE_ANON_KEY="${{ secrets.SUPABASE_ANON_KEY }}"
 
       - uses: ruby/setup-ruby@v1
         with:
