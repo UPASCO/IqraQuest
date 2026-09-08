@@ -13,6 +13,10 @@ existe.
 > **Pour mettre tout ça en route, dans l'ordre : [RUNBOOK.md](RUNBOOK.md).**
 > Ce fichier-ci explique comment le mode Classe est construit ; le
 > runbook dit quoi faire, étape par étape, jusqu'à la première séance.
+>
+> **Pour ce qu'un délégué à la protection des données demandera :
+> [RGPD.md](RGPD.md)** — ce qui est enregistré, combien de temps, où, et
+> ce qui reste à signer avant la première école.
 
 ## Ce qui est stocké, et ce qui ne l'est pas
 
@@ -249,11 +253,25 @@ tablette de l'enseignant renvoyée vers la télévision de la salle. Il ne
 sait rien faire d'autre que lire : ni rejoindre, ni répondre, ni
 avancer. Le rythme reste à la console de l'enseignant.
 
+## Les durées de conservation
+
+| donnée | durée | tenue par |
+|---|---|---|
+| Séance, participants, réponses | 2 jours au plus, et effacée à la fermeture | `purge_old_sessions` (0001) |
+| Prénoms dans un rapport (mode individuel) | 90 jours | `strip_old_report_names` (0003) |
+| Rapport lui-même (compteurs par question) | 24 mois | `purge_old_reports` (0003) |
+
+La deuxième ligne est celle qui manquait : un rapport gardait les prénoms
+sans limite dès que l'enseignant avait choisi le classement individuel.
+Une promesse d'anonymat qui tient « sauf si on coche une case, et alors
+pour toujours » n'est pas une promesse.
+
 ## Si pg_cron n'est pas disponible
 
 La migration 0002 planifie le ménage quotidien avec `pg_cron` quand
 l'extension existe. Si le palier choisi ne l'a pas, appeler
-`purge_old_sessions(2)` une fois par jour depuis une fonction Edge
+`purge_old_sessions(2)`, `strip_old_report_names(90)` et
+`purge_old_reports(24)` une fois par jour depuis une fonction Edge
 planifiée, ou depuis n'importe quel ordonnanceur ayant la clé
 `service_role`. Ce n'est pas une commodité : c'est ce qui garantit que
 les prénoms ne restent pas.
@@ -280,13 +298,23 @@ quelle que soit la distance au serveur. Le jour où quelqu'un proposera
 un bonus au premier qui répond, ce sera aussi la fin de l'équité entre
 un élève de Lyon et un élève de Kuala Lumpur.
 
-**La résidence des données ne pèse presque rien, parce qu'on ne garde
-presque rien.** Un prénom et des compteurs par question, deux jours au
-plus, sans compte, sans adresse, sans identifiant d'appareil. Le RGPD
-étant le régime le plus strict, héberger en Europe convient partout ;
-les régimes scolaires américains (FERPA, COPPA) portent sur ce qui est
-collecté et divulgué, pas sur le lieu. Le choix de région est donc un
-choix de confort, pas de conformité.
+**La résidence des données, elle, se décide autrement — et la réponse
+est : tout en Europe.** Non pour la latence, mais pour n'avoir jamais à
+défendre un transfert. Le RGPD étant le régime le plus exigeant, une base
+européenne convient partout : les régimes scolaires américains (FERPA,
+COPPA) portent sur ce qui est collecté et consenti, pas sur le lieu, et
+les lois du Golfe autorisent les transferts vers un pays offrant une
+protection adéquate. Une école américaine ou saoudienne joue donc sans
+obstacle sur un serveur européen. Le raisonnement complet, et ce qu'il
+faut signer, sont dans [RGPD.md](RGPD.md).
+
+Une seule chose ne se règle pas par la région : Supabase Inc. est une
+société américaine. Le DPA et les clauses contractuelles types couvrent
+ce point pour un établissement ordinaire ; pour un établissement public
+qui exclut tout prestataire de droit américain, la même base se
+réinstalle chez un hébergeur européen — les trois migrations sont du
+PostgreSQL standard, sans extension propriétaire, et l'application n'en
+saurait rien.
 
 **Grandir se fait par ajout, pas par réécriture.** Le palier gratuit
 tient environ six classes simultanées, 25 $ par mois une quinzaine. Trois

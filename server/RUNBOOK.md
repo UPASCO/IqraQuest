@@ -15,10 +15,9 @@ précédente.
 
 ## 1. Le projet Supabase — 15 minutes
 
-1. <https://supabase.com> → **New project**. Région : **celle des
-   premières écoles qui paient** — l'Europe aujourd'hui. Ce choix est de
-   confort, pas de droit : voir « Une région, un monde » dans
-   [README.md](README.md#une-région-un-monde).
+1. <https://supabase.com> → **New project**. Région : **Europe (UE)**,
+   et pour toutes les écoles du monde. C'est une décision de protection
+   des données, pas de latence : voir [RGPD.md](RGPD.md).
 2. Noter les deux valeurs dans **Settings → API** :
    - **Project URL** → `https://xxxx.supabase.co`
    - **anon public** → `eyJ...` (clé publique : elle ne peut appeler que
@@ -29,6 +28,7 @@ précédente.
 4. **SQL Editor** → coller et exécuter, dans cet ordre :
    - `server/supabase/migrations/0001_classroom.sql`
    - `server/supabase/migrations/0002_classroom_teacher.sql`
+   - `server/supabase/migrations/0003_retention.sql`
 
 Vérification : dans **Table Editor**, cinq tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`), toutes avec RLS
