@@ -188,6 +188,17 @@ sans abonnement ni webhook.
    | `iqraquest_plan` | `classe` ou `ecole` |
    | `iqraquest_rooms` | nombre de salles simultanées (1 à 100) |
 
+   Pour l'offre École à 89 € : `iqraquest_plan = ecole`,
+   `iqraquest_rooms = 3`. **Sans ces métadonnées, la licence retombe sur
+   la plus modeste** (une salle) : c'est volontaire — un lien mal
+   configuré doit donner moins, jamais plus.
+
+   L'échéance d'un paiement unique est d'un an, repoussée au 31 août
+   quand elle tomberait entre juin et août : une licence ne doit pas
+   mourir pendant les vacances, quand personne ne renouvelle. Deux mois
+   offerts au maximum, et une date de renouvellement qui tombe à la
+   rentrée.
+
    Ajouter aussi, sur le lien de paiement, un **champ personnalisé**
    nommé `etablissement` (« Nom de l'établissement ») : la fonction le
    reprend comme nom de l'école, et la console affiche ce nom plutôt

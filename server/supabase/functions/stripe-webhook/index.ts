@@ -145,6 +145,24 @@ async function patchLicenceBySubscription(
   return Array.isArray(rows) && rows.length > 0;
 }
 
+/// Un an, mais qui ne meurt pas au mauvais moment.
+///
+/// Une licence achetée en juin expire en juin : en pleine fin d'année,
+/// quand l'école prépare la rentrée et que personne ne renouvelle. On
+/// repousse donc l'échéance au 31 août lorsqu'elle tomberait entre juin
+/// et août — deux mois offerts au maximum, et une date de renouvellement
+/// qui coïncide avec la rentrée plutôt qu'avec les vacances.
+export function schoolYearEnd(boughtAt: Date): Date {
+  const anniversary = new Date(boughtAt);
+  anniversary.setUTCFullYear(anniversary.getUTCFullYear() + 1);
+
+  const month = anniversary.getUTCMonth(); // 0 = janvier
+  if (month >= 5 && month <= 7) {
+    return new Date(Date.UTC(anniversary.getUTCFullYear(), 7, 31, 23, 59, 59));
+  }
+  return anniversary;
+}
+
 async function upsertLicence(row: Record<string, unknown>) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/licences?on_conflict=email`,
@@ -207,10 +225,11 @@ Deno.serve(async (request) => {
         const schoolName = custom?.text?.value ?? object?.customer_details?.name ??
           null;
         // Un abonnement porte sa propre échéance ; un paiement unique
-        // vaut l'année scolaire, renouvelée à chaque achat.
+        // vaut un an — arrondi à la fin août quand l'anniversaire
+        // tomberait en plein été.
         const expires = object?.expires_at
           ? new Date(object.expires_at * 1000)
-          : new Date(Date.now() + 365 * 24 * 3600 * 1000);
+          : schoolYearEnd(new Date());
         await upsertLicence({
           email,
           plan: rights.plan,
