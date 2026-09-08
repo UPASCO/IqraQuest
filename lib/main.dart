@@ -10,7 +10,11 @@ import 'features/classroom/application/classroom_controller.dart';
 import 'features/classroom/data/classroom_config.dart';
 import 'features/classroom/data/classroom_gateway.dart';
 import 'features/classroom/data/fake_classroom_gateway.dart';
+import 'features/classroom/data/fake_teacher_gateway.dart';
 import 'features/classroom/data/supabase_classroom_gateway.dart';
+import 'features/classroom/data/supabase_teacher_gateway.dart';
+import 'features/classroom/data/teacher_gateway.dart';
+import 'features/classroom/application/teacher_console_controller.dart';
 import 'app/router.dart';
 import 'services/entitlement_service.dart';
 import 'services/game_save_service.dart';
@@ -35,6 +39,39 @@ ClassroomGateway _classroomGateway() => ClassroomConfig.isConfigured
         anonKey: ClassroomConfig.anonKey,
       )
     : FakeClassroomGateway();
+
+/// The teacher's console, on the same line as the room.
+///
+/// With no Supabase project compiled in it drives the very room the
+/// pupils' fake talks to, and hands out a day's trial licence — so a
+/// build with no server can still be walked from end to end. With one,
+/// it is the real console and this branch is never taken.
+TeacherGateway _teacherGateway(
+  ClassroomGateway classroom,
+  LocalStorageService storage,
+) {
+  if (ClassroomConfig.isConfigured) {
+    return SupabaseTeacherGateway(
+      url: ClassroomConfig.url,
+      anonKey: ClassroomConfig.anonKey,
+      storage: storage,
+      redirectTo: ClassroomConfig.consoleCallbackUrl.isEmpty
+          ? null
+          : ClassroomConfig.consoleCallbackUrl,
+    );
+  }
+  return FakeTeacherGateway(
+    room: classroom as FakeClassroomGateway,
+    signInOnSend: true,
+    licence: Licence(
+      id: 'demo',
+      email: 'demo@iqraquest',
+      plan: 'essai',
+      concurrentSessions: 1,
+      expiresAt: DateTime.now().add(const Duration(days: 1)),
+    ),
+  );
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -82,11 +119,16 @@ Future<void> main() async {
   final settings = settingsService.load();
   final hasOnboarded = storage.getBool(_onboardingCompleteKey) ?? false;
 
+  final classroomGateway = _classroomGateway();
+
   runApp(
     ProviderScope(
       overrides: [
         localStorageProvider.overrideWithValue(storage),
-        classroomGatewayProvider.overrideWithValue(_classroomGateway()),
+        classroomGatewayProvider.overrideWithValue(classroomGateway),
+        teacherGatewayProvider.overrideWithValue(
+          _teacherGateway(classroomGateway, storage),
+        ),
         settingsServiceProvider.overrideWithValue(settingsService),
         entitlementServiceProvider.overrideWithValue(entitlementService),
         progressServiceProvider.overrideWithValue(progressService),

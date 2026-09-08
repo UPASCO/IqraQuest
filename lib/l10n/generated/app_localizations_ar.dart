@@ -1288,6 +1288,95 @@ class AppLocalizationsAr extends AppLocalizations {
   String get classroomReconnecting => 'جارٍ إعادة الاتصال…';
 
   @override
+  String get teacherConsole => 'لوحة المعلّم';
+
+  @override
+  String get teacherSignInHint =>
+      'أدخل البريد الذي دُفعت به الرخصة: سيصلك رابط الدخول. بلا كلمة مرور.';
+
+  @override
+  String get teacherEmailLabel => 'البريد الإلكتروني';
+
+  @override
+  String get teacherSendLink => 'أرسل لي الرابط';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'أُرسل الرابط إلى $email. افتحه من هذا الجهاز.';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'هذا لا يبدو بريدًا إلكترونيًا.';
+
+  @override
+  String get teacherNoLicence => 'لا توجد رخصة مرتبطة بهذا البريد.';
+
+  @override
+  String get teacherGetLicence => 'الحصول على رخصة';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'يتم الدفع على صفحة Stripe الآمنة، ثم عُد إلى هنا.';
+
+  @override
+  String get teacherRefresh => 'تحديث';
+
+  @override
+  String get teacherSignOut => 'تسجيل الخروج';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'الرخصة صالحة حتى $date';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'انتهت الرخصة';
+
+  @override
+  String get levelLabel => 'المستوى';
+
+  @override
+  String get teacherChooseLesson => 'اختر الدرس';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count فرق';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'لغة التابلوه';
+
+  @override
+  String get teacherOpenSession => 'افتح الحصة';
+
+  @override
+  String get teacherOpenBoard => 'افتح التابلوه';
+
+  @override
+  String get teacherNextQuestion => 'السؤال التالي';
+
+  @override
+  String get teacherRevealAnswer => 'أظهر الإجابة';
+
+  @override
+  String get teacherEndSession => 'إنهاء الحصة';
+
+  @override
+  String get teacherEndSessionHint =>
+      'تُغلق الحصة وتُمحى أسماء التلاميذ. ويبقى الملخّص لكل سؤال.';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'هذه الرخصة تشغّل $limit قاعة في آنٍ واحد.';
+  }
+
+  @override
+  String get teacherUnreachable => 'الخادم لا يستجيب. أعد المحاولة بعد قليل.';
+
+  @override
+  String get teacherSessionRunning => 'حصة جارية';
+
+  @override
   String get classroomBoardCode => 'رمز الحصة';
 
   @override

@@ -22,4 +22,21 @@ class ClassroomConfig {
   static const String anonKey = String.fromEnvironment('SUPABASE_ANON_KEY');
 
   static bool get isConfigured => url.isNotEmpty && anonKey.isNotEmpty;
+
+  /// Where the teacher's sign-in link comes back to — the console's own
+  /// address, ending in `teacher-callback.html`. Compiled in because
+  /// only the deployment knows where it is hosted.
+  static const String consoleCallbackUrl = String.fromEnvironment(
+    'TEACHER_CALLBACK_URL',
+  );
+
+  /// The Stripe payment page for a classroom licence.
+  ///
+  /// A Stripe payment link, so the price lives in Stripe and never in
+  /// this repository — and so nothing in the app ever handles a card.
+  /// The console shows the button only when this is compiled in, and
+  /// only on the web: nothing on iOS ever links to it.
+  static const String stripeCheckoutUrl = String.fromEnvironment(
+    'STRIPE_CHECKOUT_URL',
+  );
 }

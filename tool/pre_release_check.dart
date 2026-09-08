@@ -204,6 +204,37 @@ void main() {
     );
   }
 
+  section('Classroom: the store build never links to a payment page');
+  final routerText = File('${root.path}/lib/app/router.dart').readAsStringSync();
+  check(
+    "the teacher console's route is behind kIsWeb",
+    RegExp(r"if \(kIsWeb\)[\s\S]{0,120}'/teacher'").hasMatch(routerText),
+    detail: 'Apple 3.1.1: nothing in a store build may link to a purchase '
+        'made outside the store',
+  );
+  final stripeMentions = <String>[];
+  for (final entity in Directory('${root.path}/lib').listSync(recursive: true)) {
+    if (entity is! File || !entity.path.endsWith('.dart')) continue;
+    final text = entity.readAsStringSync();
+    if (!text.contains('stripeCheckoutUrl')) continue;
+    final isConfig = entity.path.endsWith('classroom_config.dart');
+    final isConsole = entity.path.endsWith('teacher_console_screen.dart');
+    if (!isConfig && !isConsole) stripeMentions.add(entity.path);
+  }
+  check(
+    'the Stripe link is read by the web console alone',
+    stripeMentions.isEmpty,
+    detail: stripeMentions.join('; '),
+  );
+  check(
+    'no Stripe key or price is committed',
+    !Directory('${root.path}/lib')
+        .listSync(recursive: true)
+        .whereType<File>()
+        .where((f) => f.path.endsWith('.dart'))
+        .any((f) => RegExp(r'sk_live|sk_test|pk_live').hasMatch(f.readAsStringSync())),
+  );
+
   section('No placeholders in shipped code/content');
   final libDir = Directory('${root.path}/lib');
   var placeholderHits = <String>[];

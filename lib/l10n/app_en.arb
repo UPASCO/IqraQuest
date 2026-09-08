@@ -1708,6 +1708,130 @@
   "@classroomReconnecting": {
     "description": "Pupil screen: the wifi dropped, the seat is being recovered"
   },
+  "teacherConsole": "Teacher console",
+  "@teacherConsole": {
+    "description": "Title of the teacher's web console"
+  },
+  "teacherSignInHint": "Enter the address that paid for the licence: a sign-in link will be waiting there. No password.",
+  "@teacherSignInHint": {
+    "description": "Console: how a teacher gets in — no password anywhere"
+  },
+  "teacherEmailLabel": "Email address",
+  "@teacherEmailLabel": {
+    "description": "Console: the email field"
+  },
+  "teacherSendLink": "Send me the link",
+  "@teacherSendLink": {
+    "description": "Console: the button that sends the sign-in link"
+  },
+  "teacherLinkSent": "Link sent to {email}. Open it on this device.",
+  "@teacherLinkSent": {
+    "description": "Console: the link was sent",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "teacherInvalidEmail": "That does not look like an email address.",
+  "@teacherInvalidEmail": {
+    "description": "Console: the address is not an address"
+  },
+  "teacherNoLicence": "No licence is attached to this address.",
+  "@teacherNoLicence": {
+    "description": "Console: signed in, but nothing was bought on this address"
+  },
+  "teacherGetLicence": "Get a licence",
+  "@teacherGetLicence": {
+    "description": "Console: go and buy a licence"
+  },
+  "teacherLicencePaidElsewhere": "Payment happens on Stripe's secure page; come back here afterwards.",
+  "@teacherLicencePaidElsewhere": {
+    "description": "Console: where the payment happens"
+  },
+  "teacherRefresh": "Check again",
+  "@teacherRefresh": {
+    "description": "Console: check again whether the licence has arrived"
+  },
+  "teacherSignOut": "Sign out",
+  "@teacherSignOut": {
+    "description": "Console: sign out"
+  },
+  "teacherLicenceUntil": "Licence valid until {date}",
+  "@teacherLicenceUntil": {
+    "description": "Console: how long the licence runs",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "teacherLicenceExpired": "Licence expired",
+  "@teacherLicenceExpired": {
+    "description": "Console: the licence ran out"
+  },
+  "levelLabel": "Level",
+  "@levelLabel": {
+    "description": "The word for the level a lesson or a game is played at"
+  },
+  "teacherChooseLesson": "Choose the lesson",
+  "@teacherChooseLesson": {
+    "description": "Console: pick the lesson to run"
+  },
+  "teacherTeams": "{count} teams",
+  "@teacherTeams": {
+    "description": "Console: how many teams the class is split into",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherBoardLanguage": "Board language",
+  "@teacherBoardLanguage": {
+    "description": "Console: the language of the projected board"
+  },
+  "teacherOpenSession": "Open the session",
+  "@teacherOpenSession": {
+    "description": "Console: open the room and get a code"
+  },
+  "teacherOpenBoard": "Open the board",
+  "@teacherOpenBoard": {
+    "description": "Console: open the projected board in another window"
+  },
+  "teacherNextQuestion": "Next question",
+  "@teacherNextQuestion": {
+    "description": "Console: put the next card on the table"
+  },
+  "teacherRevealAnswer": "Show the answer",
+  "@teacherRevealAnswer": {
+    "description": "Console: show the class the answer"
+  },
+  "teacherEndSession": "End the session",
+  "@teacherEndSession": {
+    "description": "Console: close the room for good"
+  },
+  "teacherEndSessionHint": "The session closes and the pupils' names are erased. The per-question summary is kept.",
+  "@teacherEndSessionHint": {
+    "description": "Console: what ending a session does to the children's names"
+  },
+  "teacherTooManySessions": "This licence runs {limit} room(s) at a time.",
+  "@teacherTooManySessions": {
+    "description": "Console: the licence already runs its rooms",
+    "placeholders": {
+      "limit": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherUnreachable": "The server is not answering. Try again in a moment.",
+  "@teacherUnreachable": {
+    "description": "Console: the server is not answering"
+  },
+  "teacherSessionRunning": "Session running",
+  "@teacherSessionRunning": {
+    "description": "Console: the room is open, with its code"
+  },
   "classroomBoardCode": "Class code",
   "@classroomBoardCode": {
     "description": "Projected board: label above the six-character code"

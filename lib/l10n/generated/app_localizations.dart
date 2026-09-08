@@ -2194,6 +2194,162 @@ abstract class AppLocalizations {
   /// **'Reconnecting…'**
   String get classroomReconnecting;
 
+  /// Title of the teacher's web console
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher console'**
+  String get teacherConsole;
+
+  /// Console: how a teacher gets in — no password anywhere
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the address that paid for the licence: a sign-in link will be waiting there. No password.'**
+  String get teacherSignInHint;
+
+  /// Console: the email field
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get teacherEmailLabel;
+
+  /// Console: the button that sends the sign-in link
+  ///
+  /// In en, this message translates to:
+  /// **'Send me the link'**
+  String get teacherSendLink;
+
+  /// Console: the link was sent
+  ///
+  /// In en, this message translates to:
+  /// **'Link sent to {email}. Open it on this device.'**
+  String teacherLinkSent(String email);
+
+  /// Console: the address is not an address
+  ///
+  /// In en, this message translates to:
+  /// **'That does not look like an email address.'**
+  String get teacherInvalidEmail;
+
+  /// Console: signed in, but nothing was bought on this address
+  ///
+  /// In en, this message translates to:
+  /// **'No licence is attached to this address.'**
+  String get teacherNoLicence;
+
+  /// Console: go and buy a licence
+  ///
+  /// In en, this message translates to:
+  /// **'Get a licence'**
+  String get teacherGetLicence;
+
+  /// Console: where the payment happens
+  ///
+  /// In en, this message translates to:
+  /// **'Payment happens on Stripe\'s secure page; come back here afterwards.'**
+  String get teacherLicencePaidElsewhere;
+
+  /// Console: check again whether the licence has arrived
+  ///
+  /// In en, this message translates to:
+  /// **'Check again'**
+  String get teacherRefresh;
+
+  /// Console: sign out
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get teacherSignOut;
+
+  /// Console: how long the licence runs
+  ///
+  /// In en, this message translates to:
+  /// **'Licence valid until {date}'**
+  String teacherLicenceUntil(String date);
+
+  /// Console: the licence ran out
+  ///
+  /// In en, this message translates to:
+  /// **'Licence expired'**
+  String get teacherLicenceExpired;
+
+  /// The word for the level a lesson or a game is played at
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get levelLabel;
+
+  /// Console: pick the lesson to run
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the lesson'**
+  String get teacherChooseLesson;
+
+  /// Console: how many teams the class is split into
+  ///
+  /// In en, this message translates to:
+  /// **'{count} teams'**
+  String teacherTeams(num count);
+
+  /// Console: the language of the projected board
+  ///
+  /// In en, this message translates to:
+  /// **'Board language'**
+  String get teacherBoardLanguage;
+
+  /// Console: open the room and get a code
+  ///
+  /// In en, this message translates to:
+  /// **'Open the session'**
+  String get teacherOpenSession;
+
+  /// Console: open the projected board in another window
+  ///
+  /// In en, this message translates to:
+  /// **'Open the board'**
+  String get teacherOpenBoard;
+
+  /// Console: put the next card on the table
+  ///
+  /// In en, this message translates to:
+  /// **'Next question'**
+  String get teacherNextQuestion;
+
+  /// Console: show the class the answer
+  ///
+  /// In en, this message translates to:
+  /// **'Show the answer'**
+  String get teacherRevealAnswer;
+
+  /// Console: close the room for good
+  ///
+  /// In en, this message translates to:
+  /// **'End the session'**
+  String get teacherEndSession;
+
+  /// Console: what ending a session does to the children's names
+  ///
+  /// In en, this message translates to:
+  /// **'The session closes and the pupils\' names are erased. The per-question summary is kept.'**
+  String get teacherEndSessionHint;
+
+  /// Console: the licence already runs its rooms
+  ///
+  /// In en, this message translates to:
+  /// **'This licence runs {limit} room(s) at a time.'**
+  String teacherTooManySessions(num limit);
+
+  /// Console: the server is not answering
+  ///
+  /// In en, this message translates to:
+  /// **'The server is not answering. Try again in a moment.'**
+  String get teacherUnreachable;
+
+  /// Console: the room is open, with its code
+  ///
+  /// In en, this message translates to:
+  /// **'Session running'**
+  String get teacherSessionRunning;
+
   /// Projected board: label above the six-character code
   ///
   /// In en, this message translates to:

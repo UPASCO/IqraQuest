@@ -85,6 +85,61 @@ vérifications-là comptent plus que les autres.
   `close_session`, la séance n'existe plus, et le rapport ne contient
   aucun prénom si la case n'était pas cochée.
 
+## La console de l'enseignant
+
+Une page web, et rien d'autre : `/#/teacher` sur le site. La console
+n'existe pas dans l'application du magasin — une licence s'achète là, et
+rien sur un téléphone ne renvoie vers une page de paiement.
+
+La connexion est un lien envoyé à l'adresse qui a payé. Il n'y a aucun
+mot de passe dans ce système, et rien d'autre qu'une adresse n'identifie
+un enseignant. Le lien revient sur `teacher-callback.html`, une page
+statique de trois lignes qui passe les jetons à la console à l'intérieur
+du fragment d'URL — donc sans qu'aucun serveur, le nôtre compris, ne les
+voie jamais. La console les efface de la barre d'adresse aussitôt lus.
+
+Trois paramètres à la compilation, jamais dans le dépôt :
+
+    flutter build web \
+      --dart-define=SUPABASE_URL=https://xxxx.supabase.co \
+      --dart-define=SUPABASE_ANON_KEY=eyJ... \
+      --dart-define=TEACHER_CALLBACK_URL=https://<site>/teacher-callback.html \
+      --dart-define=STRIPE_CHECKOUT_URL=https://buy.stripe.com/xxxx
+
+Le dernier est un lien de paiement Stripe : le prix vit chez Stripe, pas
+ici, et l'app ne touche jamais une carte.
+
+## Stripe, et la licence qu'il écrit
+
+`server/supabase/functions/stripe-webhook/index.ts` reçoit le webhook et
+inscrit la licence sur l'adresse qui a payé — avant même que l'acheteur
+ne se soit connecté une première fois. À la première connexion,
+`my_licence()` rattache la ligne au compte. C'est ce raccord qui évite de
+demander un compte au moment de l'achat.
+
+    supabase functions deploy stripe-webhook --no-verify-jwt
+    supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
+    supabase secrets set SUPABASE_SERVICE_ROLE_KEY=...
+
+`--no-verify-jwt` est nécessaire — c'est Stripe qui appelle, sans jeton
+Supabase — et c'est la signature `Stripe-Signature`, vérifiée avant toute
+lecture du corps, qui tient lieu de contrôle. Sans elle, cette URL
+distribuerait des licences.
+
+Côté Stripe, poser sur le produit deux métadonnées :
+
+| clé               | valeur                              |
+|-------------------|-------------------------------------|
+| `iqraquest_plan`  | `classe` ou `ecole`                 |
+| `iqraquest_rooms` | nombre de salles simultanées (1-100)|
+
+Sans elles, la licence retombe sur la plus modeste : une salle.
+
+**La clé `service_role` ne sort jamais du tableau de bord Supabase et des
+secrets de la fonction.** Elle ne va ni dans le dépôt, ni dans l'app, ni
+dans un `--dart-define` : c'est la seule clé capable d'écrire dans
+`licences`, et la seule qui contourne RLS.
+
 ## Le tableau projeté
 
 `board_state(code)` est tout ce que le mur consomme : la phase, l'index

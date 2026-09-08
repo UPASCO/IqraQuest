@@ -1270,6 +1270,97 @@ class AppLocalizationsId extends AppLocalizations {
   String get classroomReconnecting => 'Menyambung kembali…';
 
   @override
+  String get teacherConsole => 'Konsol guru';
+
+  @override
+  String get teacherSignInHint =>
+      'Masukkan alamat yang membayar lisensi: tautan masuk menunggu di sana. Tanpa kata sandi.';
+
+  @override
+  String get teacherEmailLabel => 'Alamat email';
+
+  @override
+  String get teacherSendLink => 'Kirimkan tautannya';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'Tautan dikirim ke $email. Buka di perangkat ini.';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'Ini sepertinya bukan alamat email.';
+
+  @override
+  String get teacherNoLicence =>
+      'Tidak ada lisensi yang terhubung ke alamat ini.';
+
+  @override
+  String get teacherGetLicence => 'Dapatkan lisensi';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'Pembayaran dilakukan di halaman aman Stripe; setelah itu kembali ke sini.';
+
+  @override
+  String get teacherRefresh => 'Periksa lagi';
+
+  @override
+  String get teacherSignOut => 'Keluar';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'Lisensi berlaku sampai $date';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'Lisensi kedaluwarsa';
+
+  @override
+  String get levelLabel => 'Tingkat';
+
+  @override
+  String get teacherChooseLesson => 'Pilih pelajaran';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count tim';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'Bahasa papan';
+
+  @override
+  String get teacherOpenSession => 'Buka sesi';
+
+  @override
+  String get teacherOpenBoard => 'Buka papan';
+
+  @override
+  String get teacherNextQuestion => 'Pertanyaan berikutnya';
+
+  @override
+  String get teacherRevealAnswer => 'Tampilkan jawaban';
+
+  @override
+  String get teacherEndSession => 'Akhiri sesi';
+
+  @override
+  String get teacherEndSessionHint =>
+      'Sesi ditutup dan nama murid dihapus. Ringkasan per pertanyaan tetap disimpan.';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'Lisensi ini menjalankan $limit ruang sekaligus.';
+  }
+
+  @override
+  String get teacherUnreachable =>
+      'Server tidak menjawab. Coba lagi sebentar lagi.';
+
+  @override
+  String get teacherSessionRunning => 'Sesi berlangsung';
+
+  @override
   String get classroomBoardCode => 'Kode kelas';
 
   @override

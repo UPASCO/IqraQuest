@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/classroom/presentation/classroom_board_screen.dart';
+import '../features/classroom/presentation/teacher_console_screen.dart';
 import '../features/classroom/presentation/classroom_screen.dart';
 import '../features/daily_challenge/presentation/daily_challenge_screen.dart';
 import '../features/game/presentation/game_screen.dart';
@@ -44,6 +46,11 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
     // session code, and read by a room full of children who never touch
     // it. `/classroom/board/G4KEPW` on the web build, cast to the TV on
     // a phone or a tablet.
+    // The teacher's console is a web page and nothing else: a licence is
+    // bought there, and nothing in a store build ever links to a payment
+    // page. On a phone this route simply does not exist.
+    if (kIsWeb)
+      GoRoute(path: '/teacher', builder: (c, s) => const TeacherConsoleScreen()),
     GoRoute(
       path: '/classroom/board/:code',
       builder: (c, s) => ClassroomBoardScreen(

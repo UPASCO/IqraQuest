@@ -1279,6 +1279,96 @@ class AppLocalizationsNl extends AppLocalizations {
   String get classroomReconnecting => 'Opnieuw verbinden…';
 
   @override
+  String get teacherConsole => 'Docentenconsole';
+
+  @override
+  String get teacherSignInHint =>
+      'Voer het adres in waarmee de licentie is betaald: daar wacht een aanmeldlink. Geen wachtwoord.';
+
+  @override
+  String get teacherEmailLabel => 'E-mailadres';
+
+  @override
+  String get teacherSendLink => 'Stuur mij de link';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'Link verzonden naar $email. Open hem op dit apparaat.';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'Dat lijkt geen e-mailadres.';
+
+  @override
+  String get teacherNoLicence => 'Er is geen licentie aan dit adres gekoppeld.';
+
+  @override
+  String get teacherGetLicence => 'Licentie aanschaffen';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'De betaling verloopt via de beveiligde pagina van Stripe; kom daarna hier terug.';
+
+  @override
+  String get teacherRefresh => 'Opnieuw controleren';
+
+  @override
+  String get teacherSignOut => 'Afmelden';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'Licentie geldig tot $date';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'Licentie verlopen';
+
+  @override
+  String get levelLabel => 'Niveau';
+
+  @override
+  String get teacherChooseLesson => 'Kies de les';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count teams';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'Taal van het bord';
+
+  @override
+  String get teacherOpenSession => 'Sessie openen';
+
+  @override
+  String get teacherOpenBoard => 'Bord openen';
+
+  @override
+  String get teacherNextQuestion => 'Volgende vraag';
+
+  @override
+  String get teacherRevealAnswer => 'Toon het antwoord';
+
+  @override
+  String get teacherEndSession => 'Sessie beëindigen';
+
+  @override
+  String get teacherEndSessionHint =>
+      'De sessie sluit en de namen van de leerlingen worden gewist. De samenvatting per vraag blijft bewaard.';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'Deze licentie draait $limit lokaal/lokalen tegelijk.';
+  }
+
+  @override
+  String get teacherUnreachable =>
+      'De server antwoordt niet. Probeer het zo meteen opnieuw.';
+
+  @override
+  String get teacherSessionRunning => 'Sessie loopt';
+
+  @override
   String get classroomBoardCode => 'Klascode';
 
   @override

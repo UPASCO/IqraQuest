@@ -1276,6 +1276,96 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classroomReconnecting => 'Reconnecting…';
 
   @override
+  String get teacherConsole => 'Teacher console';
+
+  @override
+  String get teacherSignInHint =>
+      'Enter the address that paid for the licence: a sign-in link will be waiting there. No password.';
+
+  @override
+  String get teacherEmailLabel => 'Email address';
+
+  @override
+  String get teacherSendLink => 'Send me the link';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'Link sent to $email. Open it on this device.';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'That does not look like an email address.';
+
+  @override
+  String get teacherNoLicence => 'No licence is attached to this address.';
+
+  @override
+  String get teacherGetLicence => 'Get a licence';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'Payment happens on Stripe\'s secure page; come back here afterwards.';
+
+  @override
+  String get teacherRefresh => 'Check again';
+
+  @override
+  String get teacherSignOut => 'Sign out';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'Licence valid until $date';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'Licence expired';
+
+  @override
+  String get levelLabel => 'Level';
+
+  @override
+  String get teacherChooseLesson => 'Choose the lesson';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count teams';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'Board language';
+
+  @override
+  String get teacherOpenSession => 'Open the session';
+
+  @override
+  String get teacherOpenBoard => 'Open the board';
+
+  @override
+  String get teacherNextQuestion => 'Next question';
+
+  @override
+  String get teacherRevealAnswer => 'Show the answer';
+
+  @override
+  String get teacherEndSession => 'End the session';
+
+  @override
+  String get teacherEndSessionHint =>
+      'The session closes and the pupils\' names are erased. The per-question summary is kept.';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'This licence runs $limit room(s) at a time.';
+  }
+
+  @override
+  String get teacherUnreachable =>
+      'The server is not answering. Try again in a moment.';
+
+  @override
+  String get teacherSessionRunning => 'Session running';
+
+  @override
   String get classroomBoardCode => 'Class code';
 
   @override

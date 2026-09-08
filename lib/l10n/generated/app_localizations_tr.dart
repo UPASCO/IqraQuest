@@ -1258,6 +1258,96 @@ class AppLocalizationsTr extends AppLocalizations {
   String get classroomReconnecting => 'Yeniden bağlanılıyor…';
 
   @override
+  String get teacherConsole => 'Öğretmen konsolu';
+
+  @override
+  String get teacherSignInHint =>
+      'Lisansı ödeyen adresi girin: giriş bağlantısı orada sizi bekliyor. Parola yok.';
+
+  @override
+  String get teacherEmailLabel => 'E-posta adresi';
+
+  @override
+  String get teacherSendLink => 'Bağlantıyı gönder';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'Bağlantı $email adresine gönderildi. Bu cihazdan açın.';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'Bu bir e-posta adresine benzemiyor.';
+
+  @override
+  String get teacherNoLicence => 'Bu adrese bağlı bir lisans yok.';
+
+  @override
+  String get teacherGetLicence => 'Lisans al';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'Ödeme Stripe\'ın güvenli sayfasında yapılır; sonra buraya dönün.';
+
+  @override
+  String get teacherRefresh => 'Yeniden denetle';
+
+  @override
+  String get teacherSignOut => 'Çıkış yap';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'Lisans $date tarihine kadar geçerli';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'Lisans süresi doldu';
+
+  @override
+  String get levelLabel => 'Seviye';
+
+  @override
+  String get teacherChooseLesson => 'Dersi seçin';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count takım';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'Tahta dili';
+
+  @override
+  String get teacherOpenSession => 'Oturumu aç';
+
+  @override
+  String get teacherOpenBoard => 'Tahtayı aç';
+
+  @override
+  String get teacherNextQuestion => 'Sonraki soru';
+
+  @override
+  String get teacherRevealAnswer => 'Cevabı göster';
+
+  @override
+  String get teacherEndSession => 'Oturumu bitir';
+
+  @override
+  String get teacherEndSessionHint =>
+      'Oturum kapanır ve öğrencilerin adları silinir. Soru başına özet saklanır.';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'Bu lisans aynı anda $limit sınıf çalıştırır.';
+  }
+
+  @override
+  String get teacherUnreachable =>
+      'Sunucu yanıt vermiyor. Birazdan yeniden deneyin.';
+
+  @override
+  String get teacherSessionRunning => 'Oturum sürüyor';
+
+  @override
   String get classroomBoardCode => 'Sınıf kodu';
 
   @override

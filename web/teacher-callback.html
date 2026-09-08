@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>IqraQuest — connexion</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #10201a;
+      color: #e8e2d4;
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+      text-align: center;
+      padding: 24px;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Where the sign-in link lands.
+
+    Supabase returns the tokens in the URL fragment, which never leaves
+    the browser — no server sees it, ours included. This page hands them
+    to the console and gets out of the way. They stay inside the fragment
+    the whole time, and the console wipes them from the address bar as
+    soon as it has read them.
+  -->
+  <p>Connexion à la console…</p>
+  <noscript>Activez JavaScript pour terminer la connexion.</noscript>
+  <script>
+    (function () {
+      var fragment = window.location.hash.replace(/^#/, '');
+      var params = new URLSearchParams(fragment);
+      var access = params.get('access_token');
+      var refresh = params.get('refresh_token');
+      var base = window.location.pathname.replace(/teacher-callback\.html$/, '');
+      if (access && refresh) {
+        window.location.replace(
+          base + '#/teacher?access_token=' + encodeURIComponent(access) +
+          '&refresh_token=' + encodeURIComponent(refresh)
+        );
+      } else {
+        window.location.replace(base + '#/teacher');
+      }
+    })();
+  </script>
+</body>
+</html>

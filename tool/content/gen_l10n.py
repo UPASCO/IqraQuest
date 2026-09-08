@@ -2923,6 +2923,230 @@ s("classroomReconnecting", "Pupil screen: the wifi dropped, the seat is being re
   tr="Yeniden bağlanılıyor…", id="Menyambung kembali…", ur="دوبارہ رابطہ…",
   ms="Menyambung semula…", it="Riconnessione…", nl="Opnieuw verbinden…")
 
+# ---- The teacher's console (web only) ---------------------------------
+s("teacherConsole", "Title of the teacher's web console",
+  fr="Console enseignant", en="Teacher console", ar="لوحة المعلّم",
+  es="Consola del docente", pt="Consola do professor", de="Lehrerkonsole",
+  tr="Öğretmen konsolu", id="Konsol guru", ur="اساتذہ کنسول",
+  ms="Konsol guru", it="Console dell\'insegnante", nl="Docentenconsole")
+
+s("teacherSignInHint", "Console: how a teacher gets in — no password anywhere",
+  fr="Entrez l\'adresse qui a payé la licence : un lien de connexion vous y attend. Aucun mot de passe.",
+  en="Enter the address that paid for the licence: a sign-in link will be waiting there. No password.",
+  ar="أدخل البريد الذي دُفعت به الرخصة: سيصلك رابط الدخول. بلا كلمة مرور.",
+  es="Introduce la dirección que pagó la licencia: allí te espera un enlace de acceso. Sin contraseña.",
+  pt="Introduza o endereço que pagou a licença: um link de acesso espera por si. Sem palavra-passe.",
+  de="Gib die Adresse ein, mit der die Lizenz bezahlt wurde: dort wartet ein Anmeldelink. Kein Passwort.",
+  tr="Lisansı ödeyen adresi girin: giriş bağlantısı orada sizi bekliyor. Parola yok.",
+  id="Masukkan alamat yang membayar lisensi: tautan masuk menunggu di sana. Tanpa kata sandi.",
+  ur="وہ ای میل درج کریں جس سے لائسنس خریدا گیا: داخلے کا لنک وہیں پہنچے گا۔ کوئی پاس ورڈ نہیں۔",
+  ms="Masukkan alamat yang membayar lesen: pautan log masuk menanti di sana. Tiada kata laluan.",
+  it="Inserisci l\'indirizzo che ha pagato la licenza: lì ti aspetta un link di accesso. Nessuna password.",
+  nl="Voer het adres in waarmee de licentie is betaald: daar wacht een aanmeldlink. Geen wachtwoord.")
+
+s("teacherEmailLabel", "Console: the email field",
+  fr="Adresse e-mail", en="Email address", ar="البريد الإلكتروني",
+  es="Correo electrónico", pt="Endereço de e-mail", de="E-Mail-Adresse",
+  tr="E-posta adresi", id="Alamat email", ur="ای میل ایڈریس",
+  ms="Alamat e-mel", it="Indirizzo e-mail", nl="E-mailadres")
+
+s("teacherSendLink", "Console: the button that sends the sign-in link",
+  fr="Recevoir le lien", en="Send me the link", ar="أرسل لي الرابط",
+  es="Enviarme el enlace", pt="Enviar-me o link", de="Link zusenden",
+  tr="Bağlantıyı gönder", id="Kirimkan tautannya", ur="لنک بھیجیں",
+  ms="Hantar pautan", it="Inviami il link", nl="Stuur mij de link")
+
+s("teacherLinkSent", "Console: the link was sent",
+  ph={"email": "String"},
+  fr="Lien envoyé à {email}. Ouvrez-le depuis cet appareil.",
+  en="Link sent to {email}. Open it on this device.",
+  ar="أُرسل الرابط إلى {email}. افتحه من هذا الجهاز.",
+  es="Enlace enviado a {email}. Ábrelo en este dispositivo.",
+  pt="Link enviado para {email}. Abra-o neste dispositivo.",
+  de="Link an {email} gesendet. Öffne ihn auf diesem Gerät.",
+  tr="Bağlantı {email} adresine gönderildi. Bu cihazdan açın.",
+  id="Tautan dikirim ke {email}. Buka di perangkat ini.",
+  ur="لنک {email} پر بھیج دیا گیا۔ اسے اسی آلے پر کھولیں۔",
+  ms="Pautan dihantar ke {email}. Buka pada peranti ini.",
+  it="Link inviato a {email}. Aprilo su questo dispositivo.",
+  nl="Link verzonden naar {email}. Open hem op dit apparaat.")
+
+s("teacherInvalidEmail", "Console: the address is not an address",
+  fr="Cette adresse ne ressemble pas à une adresse e-mail.",
+  en="That does not look like an email address.",
+  ar="هذا لا يبدو بريدًا إلكترونيًا.",
+  es="Esto no parece una dirección de correo.",
+  pt="Isto não parece um endereço de e-mail.",
+  de="Das sieht nicht nach einer E-Mail-Adresse aus.",
+  tr="Bu bir e-posta adresine benzemiyor.",
+  id="Ini sepertinya bukan alamat email.",
+  ur="یہ ای میل ایڈریس نہیں لگتا۔",
+  ms="Ini tidak kelihatan seperti alamat e-mel.",
+  it="Non sembra un indirizzo e-mail.",
+  nl="Dat lijkt geen e-mailadres.")
+
+s("teacherNoLicence", "Console: signed in, but nothing was bought on this address",
+  fr="Aucune licence n\'est rattachée à cette adresse.",
+  en="No licence is attached to this address.",
+  ar="لا توجد رخصة مرتبطة بهذا البريد.",
+  es="No hay ninguna licencia asociada a esta dirección.",
+  pt="Não há nenhuma licença associada a este endereço.",
+  de="Mit dieser Adresse ist keine Lizenz verknüpft.",
+  tr="Bu adrese bağlı bir lisans yok.",
+  id="Tidak ada lisensi yang terhubung ke alamat ini.",
+  ur="اس ای میل سے کوئی لائسنس منسلک نہیں۔",
+  ms="Tiada lesen dikaitkan dengan alamat ini.",
+  it="Nessuna licenza è associata a questo indirizzo.",
+  nl="Er is geen licentie aan dit adres gekoppeld.")
+
+s("teacherGetLicence", "Console: go and buy a licence",
+  fr="Obtenir une licence", en="Get a licence", ar="الحصول على رخصة",
+  es="Obtener una licencia", pt="Obter uma licença", de="Lizenz holen",
+  tr="Lisans al", id="Dapatkan lisensi", ur="لائسنس حاصل کریں",
+  ms="Dapatkan lesen", it="Ottieni una licenza", nl="Licentie aanschaffen")
+
+s("teacherLicencePaidElsewhere", "Console: where the payment happens",
+  fr="Le paiement se fait sur la page sécurisée de Stripe, puis revenez ici.",
+  en="Payment happens on Stripe\'s secure page; come back here afterwards.",
+  ar="يتم الدفع على صفحة Stripe الآمنة، ثم عُد إلى هنا.",
+  es="El pago se realiza en la página segura de Stripe; después, vuelve aquí.",
+  pt="O pagamento é feito na página segura da Stripe; depois, volte aqui.",
+  de="Die Zahlung läuft über die sichere Stripe-Seite; komm danach hierher zurück.",
+  tr="Ödeme Stripe\'ın güvenli sayfasında yapılır; sonra buraya dönün.",
+  id="Pembayaran dilakukan di halaman aman Stripe; setelah itu kembali ke sini.",
+  ur="ادائیگی Stripe کے محفوظ صفحے پر ہوتی ہے؛ پھر یہاں واپس آئیں۔",
+  ms="Pembayaran dibuat di halaman selamat Stripe; kemudian kembali ke sini.",
+  it="Il pagamento avviene sulla pagina sicura di Stripe; poi torna qui.",
+  nl="De betaling verloopt via de beveiligde pagina van Stripe; kom daarna hier terug.")
+
+s("teacherRefresh", "Console: check again whether the licence has arrived",
+  fr="Actualiser", en="Check again", ar="تحديث", es="Actualizar",
+  pt="Atualizar", de="Erneut prüfen", tr="Yeniden denetle",
+  id="Periksa lagi", ur="دوبارہ جانچیں", ms="Semak semula",
+  it="Controlla di nuovo", nl="Opnieuw controleren")
+
+s("teacherSignOut", "Console: sign out",
+  fr="Se déconnecter", en="Sign out", ar="تسجيل الخروج", es="Cerrar sesión",
+  pt="Terminar sessão", de="Abmelden", tr="Çıkış yap", id="Keluar",
+  ur="سائن آؤٹ", ms="Log keluar", it="Esci", nl="Afmelden")
+
+s("teacherLicenceUntil", "Console: how long the licence runs",
+  ph={"date": "String"},
+  fr="Licence valable jusqu\'au {date}", en="Licence valid until {date}",
+  ar="الرخصة صالحة حتى {date}", es="Licencia válida hasta el {date}",
+  pt="Licença válida até {date}", de="Lizenz gültig bis {date}",
+  tr="Lisans {date} tarihine kadar geçerli", id="Lisensi berlaku sampai {date}",
+  ur="لائسنس {date} تک کارآمد", ms="Lesen sah sehingga {date}",
+  it="Licenza valida fino al {date}", nl="Licentie geldig tot {date}")
+
+s("teacherLicenceExpired", "Console: the licence ran out",
+  fr="Licence expirée", en="Licence expired", ar="انتهت الرخصة",
+  es="Licencia caducada", pt="Licença expirada", de="Lizenz abgelaufen",
+  tr="Lisans süresi doldu", id="Lisensi kedaluwarsa", ur="لائسنس ختم ہو گیا",
+  ms="Lesen tamat tempoh", it="Licenza scaduta", nl="Licentie verlopen")
+
+s("levelLabel", "The word for the level a lesson or a game is played at",
+  fr="Niveau", en="Level", ar="المستوى", es="Nivel", pt="Nível", de="Stufe",
+  tr="Seviye", id="Tingkat", ur="سطح", ms="Tahap", it="Livello", nl="Niveau")
+
+s("teacherChooseLesson", "Console: pick the lesson to run",
+  fr="Choisir la leçon", en="Choose the lesson", ar="اختر الدرس",
+  es="Elegir la lección", pt="Escolher a lição", de="Lektion wählen",
+  tr="Dersi seçin", id="Pilih pelajaran", ur="سبق منتخب کریں",
+  ms="Pilih pelajaran", it="Scegli la lezione", nl="Kies de les")
+
+s("teacherTeams", "Console: how many teams the class is split into",
+  ph={"count": "num"},
+  fr="{count} équipes", en="{count} teams", ar="{count} فرق",
+  es="{count} equipos", pt="{count} equipas", de="{count} Teams",
+  tr="{count} takım", id="{count} tim", ur="{count} ٹیمیں",
+  ms="{count} pasukan", it="{count} squadre", nl="{count} teams")
+
+s("teacherBoardLanguage", "Console: the language of the projected board",
+  fr="Langue du tableau", en="Board language", ar="لغة التابلوه",
+  es="Idioma del tablero", pt="Idioma do quadro", de="Sprache der Tafel",
+  tr="Tahta dili", id="Bahasa papan", ur="بورڈ کی زبان",
+  ms="Bahasa papan", it="Lingua della lavagna", nl="Taal van het bord")
+
+s("teacherOpenSession", "Console: open the room and get a code",
+  fr="Ouvrir la séance", en="Open the session", ar="افتح الحصة",
+  es="Abrir la sesión", pt="Abrir a sessão", de="Sitzung öffnen",
+  tr="Oturumu aç", id="Buka sesi", ur="سیشن شروع کریں",
+  ms="Buka sesi", it="Apri la sessione", nl="Sessie openen")
+
+s("teacherOpenBoard", "Console: open the projected board in another window",
+  fr="Ouvrir le tableau", en="Open the board", ar="افتح التابلوه",
+  es="Abrir el tablero", pt="Abrir o quadro", de="Tafel öffnen",
+  tr="Tahtayı aç", id="Buka papan", ur="بورڈ کھولیں", ms="Buka papan",
+  it="Apri la lavagna", nl="Bord openen")
+
+s("teacherNextQuestion", "Console: put the next card on the table",
+  fr="Question suivante", en="Next question", ar="السؤال التالي",
+  es="Siguiente pregunta", pt="Pergunta seguinte", de="Nächste Frage",
+  tr="Sonraki soru", id="Pertanyaan berikutnya", ur="اگلا سوال",
+  ms="Soalan seterusnya", it="Domanda successiva", nl="Volgende vraag")
+
+s("teacherRevealAnswer", "Console: show the class the answer",
+  fr="Montrer la réponse", en="Show the answer", ar="أظهر الإجابة",
+  es="Mostrar la respuesta", pt="Mostrar a resposta", de="Antwort zeigen",
+  tr="Cevabı göster", id="Tampilkan jawaban", ur="جواب دکھائیں",
+  ms="Tunjukkan jawapan", it="Mostra la risposta", nl="Toon het antwoord")
+
+s("teacherEndSession", "Console: close the room for good",
+  fr="Terminer la séance", en="End the session", ar="إنهاء الحصة",
+  es="Terminar la sesión", pt="Terminar a sessão", de="Sitzung beenden",
+  tr="Oturumu bitir", id="Akhiri sesi", ur="سیشن ختم کریں",
+  ms="Tamatkan sesi", it="Termina la sessione", nl="Sessie beëindigen")
+
+s("teacherEndSessionHint", "Console: what ending a session does to the children's names",
+  fr="La séance se ferme et les prénoms des élèves sont effacés. Le bilan par question est conservé.",
+  en="The session closes and the pupils\' names are erased. The per-question summary is kept.",
+  ar="تُغلق الحصة وتُمحى أسماء التلاميذ. ويبقى الملخّص لكل سؤال.",
+  es="La sesión se cierra y los nombres de los alumnos se borran. Se conserva el resumen por pregunta.",
+  pt="A sessão fecha e os nomes dos alunos são apagados. O resumo por pergunta é mantido.",
+  de="Die Sitzung wird geschlossen und die Namen der Schüler werden gelöscht. Die Auswertung je Frage bleibt.",
+  tr="Oturum kapanır ve öğrencilerin adları silinir. Soru başına özet saklanır.",
+  id="Sesi ditutup dan nama murid dihapus. Ringkasan per pertanyaan tetap disimpan.",
+  ur="سیشن بند ہو جائے گا اور طلبہ کے نام مٹا دیے جائیں گے۔ ہر سوال کا خلاصہ محفوظ رہے گا۔",
+  ms="Sesi ditutup dan nama murid dipadam. Ringkasan setiap soalan disimpan.",
+  it="La sessione si chiude e i nomi degli alunni vengono cancellati. Resta il riepilogo per domanda.",
+  nl="De sessie sluit en de namen van de leerlingen worden gewist. De samenvatting per vraag blijft bewaard.")
+
+s("teacherTooManySessions", "Console: the licence already runs its rooms",
+  ph={"limit": "num"},
+  fr="Cette licence fait tourner {limit} salle(s) à la fois.",
+  en="This licence runs {limit} room(s) at a time.",
+  ar="هذه الرخصة تشغّل {limit} قاعة في آنٍ واحد.",
+  es="Esta licencia permite {limit} sala(s) a la vez.",
+  pt="Esta licença permite {limit} sala(s) ao mesmo tempo.",
+  de="Diese Lizenz betreibt {limit} Raum/Räume gleichzeitig.",
+  tr="Bu lisans aynı anda {limit} sınıf çalıştırır.",
+  id="Lisensi ini menjalankan {limit} ruang sekaligus.",
+  ur="یہ لائسنس بیک وقت {limit} کمرے چلاتا ہے۔",
+  ms="Lesen ini menjalankan {limit} bilik serentak.",
+  it="Questa licenza gestisce {limit} aula/aule alla volta.",
+  nl="Deze licentie draait {limit} lokaal/lokalen tegelijk.")
+
+s("teacherUnreachable", "Console: the server is not answering",
+  fr="Le serveur ne répond pas. Réessayez dans un instant.",
+  en="The server is not answering. Try again in a moment.",
+  ar="الخادم لا يستجيب. أعد المحاولة بعد قليل.",
+  es="El servidor no responde. Inténtalo de nuevo en un momento.",
+  pt="O servidor não responde. Tente novamente daqui a pouco.",
+  de="Der Server antwortet nicht. Versuche es gleich noch einmal.",
+  tr="Sunucu yanıt vermiyor. Birazdan yeniden deneyin.",
+  id="Server tidak menjawab. Coba lagi sebentar lagi.",
+  ur="سرور جواب نہیں دے رہا۔ تھوڑی دیر بعد کوشش کریں۔",
+  ms="Pelayan tidak menjawab. Cuba lagi sebentar lagi.",
+  it="Il server non risponde. Riprova tra poco.",
+  nl="De server antwoordt niet. Probeer het zo meteen opnieuw.")
+
+s("teacherSessionRunning", "Console: the room is open, with its code",
+  fr="Séance en cours", en="Session running", ar="حصة جارية",
+  es="Sesión en curso", pt="Sessão a decorrer", de="Sitzung läuft",
+  tr="Oturum sürüyor", id="Sesi berlangsung", ur="سیشن جاری ہے",
+  ms="Sesi sedang berjalan", it="Sessione in corso", nl="Sessie loopt")
+
 # ---- The projected board (classroom) ----------------------------------
 s("classroomBoardCode", "Projected board: label above the six-character code",
   fr="Code de la classe", en="Class code", ar="رمز الحصة",

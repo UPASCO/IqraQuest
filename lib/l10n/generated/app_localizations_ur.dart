@@ -1272,6 +1272,96 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classroomReconnecting => 'دوبارہ رابطہ…';
 
   @override
+  String get teacherConsole => 'اساتذہ کنسول';
+
+  @override
+  String get teacherSignInHint =>
+      'وہ ای میل درج کریں جس سے لائسنس خریدا گیا: داخلے کا لنک وہیں پہنچے گا۔ کوئی پاس ورڈ نہیں۔';
+
+  @override
+  String get teacherEmailLabel => 'ای میل ایڈریس';
+
+  @override
+  String get teacherSendLink => 'لنک بھیجیں';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'لنک $email پر بھیج دیا گیا۔ اسے اسی آلے پر کھولیں۔';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'یہ ای میل ایڈریس نہیں لگتا۔';
+
+  @override
+  String get teacherNoLicence => 'اس ای میل سے کوئی لائسنس منسلک نہیں۔';
+
+  @override
+  String get teacherGetLicence => 'لائسنس حاصل کریں';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'ادائیگی Stripe کے محفوظ صفحے پر ہوتی ہے؛ پھر یہاں واپس آئیں۔';
+
+  @override
+  String get teacherRefresh => 'دوبارہ جانچیں';
+
+  @override
+  String get teacherSignOut => 'سائن آؤٹ';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'لائسنس $date تک کارآمد';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'لائسنس ختم ہو گیا';
+
+  @override
+  String get levelLabel => 'سطح';
+
+  @override
+  String get teacherChooseLesson => 'سبق منتخب کریں';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count ٹیمیں';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'بورڈ کی زبان';
+
+  @override
+  String get teacherOpenSession => 'سیشن شروع کریں';
+
+  @override
+  String get teacherOpenBoard => 'بورڈ کھولیں';
+
+  @override
+  String get teacherNextQuestion => 'اگلا سوال';
+
+  @override
+  String get teacherRevealAnswer => 'جواب دکھائیں';
+
+  @override
+  String get teacherEndSession => 'سیشن ختم کریں';
+
+  @override
+  String get teacherEndSessionHint =>
+      'سیشن بند ہو جائے گا اور طلبہ کے نام مٹا دیے جائیں گے۔ ہر سوال کا خلاصہ محفوظ رہے گا۔';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'یہ لائسنس بیک وقت $limit کمرے چلاتا ہے۔';
+  }
+
+  @override
+  String get teacherUnreachable =>
+      'سرور جواب نہیں دے رہا۔ تھوڑی دیر بعد کوشش کریں۔';
+
+  @override
+  String get teacherSessionRunning => 'سیشن جاری ہے';
+
+  @override
   String get classroomBoardCode => 'کلاس کا کوڈ';
 
   @override

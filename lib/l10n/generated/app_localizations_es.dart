@@ -1283,6 +1283,97 @@ class AppLocalizationsEs extends AppLocalizations {
   String get classroomReconnecting => 'Reconectando…';
 
   @override
+  String get teacherConsole => 'Consola del docente';
+
+  @override
+  String get teacherSignInHint =>
+      'Introduce la dirección que pagó la licencia: allí te espera un enlace de acceso. Sin contraseña.';
+
+  @override
+  String get teacherEmailLabel => 'Correo electrónico';
+
+  @override
+  String get teacherSendLink => 'Enviarme el enlace';
+
+  @override
+  String teacherLinkSent(String email) {
+    return 'Enlace enviado a $email. Ábrelo en este dispositivo.';
+  }
+
+  @override
+  String get teacherInvalidEmail => 'Esto no parece una dirección de correo.';
+
+  @override
+  String get teacherNoLicence =>
+      'No hay ninguna licencia asociada a esta dirección.';
+
+  @override
+  String get teacherGetLicence => 'Obtener una licencia';
+
+  @override
+  String get teacherLicencePaidElsewhere =>
+      'El pago se realiza en la página segura de Stripe; después, vuelve aquí.';
+
+  @override
+  String get teacherRefresh => 'Actualizar';
+
+  @override
+  String get teacherSignOut => 'Cerrar sesión';
+
+  @override
+  String teacherLicenceUntil(String date) {
+    return 'Licencia válida hasta el $date';
+  }
+
+  @override
+  String get teacherLicenceExpired => 'Licencia caducada';
+
+  @override
+  String get levelLabel => 'Nivel';
+
+  @override
+  String get teacherChooseLesson => 'Elegir la lección';
+
+  @override
+  String teacherTeams(num count) {
+    return '$count equipos';
+  }
+
+  @override
+  String get teacherBoardLanguage => 'Idioma del tablero';
+
+  @override
+  String get teacherOpenSession => 'Abrir la sesión';
+
+  @override
+  String get teacherOpenBoard => 'Abrir el tablero';
+
+  @override
+  String get teacherNextQuestion => 'Siguiente pregunta';
+
+  @override
+  String get teacherRevealAnswer => 'Mostrar la respuesta';
+
+  @override
+  String get teacherEndSession => 'Terminar la sesión';
+
+  @override
+  String get teacherEndSessionHint =>
+      'La sesión se cierra y los nombres de los alumnos se borran. Se conserva el resumen por pregunta.';
+
+  @override
+  String teacherTooManySessions(num limit) {
+    return 'Esta licencia permite $limit sala(s) a la vez.';
+  }
+
+  @override
+  String get teacherUnreachable =>
+      'El servidor no responde. Inténtalo de nuevo en un momento.';
+
+  @override
+  String get teacherSessionRunning => 'Sesión en curso';
+
+  @override
   String get classroomBoardCode => 'Código de la clase';
 
   @override
