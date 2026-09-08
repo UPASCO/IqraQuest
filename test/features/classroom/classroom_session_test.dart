@@ -8,6 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:iqraquest/features/classroom/data/classroom_gateway.dart';
 import 'package:iqraquest/features/classroom/data/fake_classroom_gateway.dart';
 import 'package:iqraquest/features/classroom/domain/classroom_state.dart';
+import 'package:iqraquest/features/classroom/domain/shuffle_seed.dart';
 
 const _lesson = ['faith_001', 'faith_002', 'faith_003'];
 
@@ -420,6 +421,34 @@ void main() {
       state.copyWith(phase: ClassroomPhase.revealing).remaining(now: asked),
       isNull,
     );
+  });
+
+  test('the answers land in the same order after a restart, never a new one', () {
+    // The wall and the phone both draw their order from this seed. It
+    // has to be the same seed in a fresh process, or a page refresh
+    // would move the answers under a class mid-question.
+    final again = stableSeed(['s_1', 'tok', 2]);
+    expect(stableSeed(['s_1', 'tok', 2]), again);
+    expect(stableSeed(['s_1', 'tok', 3]), isNot(again));
+    expect(stableSeed(['s_2', 'tok', 2]), isNot(again));
+    expect(
+      stableSeed(['s_1', 'tok', 2]),
+      474034994,
+      reason: 'a value written down: if this changes, so does every '
+          'board mid-lesson',
+    );
+  });
+
+  test('the right answer does not always sit first on the wall', () {
+    // The bank keeps the correct answer at index 0. If the shuffle were
+    // weak, a class would learn to read the first line instead of the
+    // question.
+    final firsts = <int>{};
+    for (var index = 0; index < 40; index++) {
+      final order = [0, 1, 2, 3]..shuffle(Random(stableSeed(['s_1', index])));
+      firsts.add(order.indexOf(0));
+    }
+    expect(firsts.length, 4, reason: 'the right answer visits every slot');
   });
 
   test('the state survives the round trip the server sends it through', () {

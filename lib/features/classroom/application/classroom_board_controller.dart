@@ -9,6 +9,7 @@ import '../../../models/models.dart';
 import '../../../services/question_repository.dart';
 import '../data/classroom_gateway.dart';
 import '../domain/classroom_state.dart';
+import '../domain/shuffle_seed.dart';
 import 'classroom_controller.dart';
 
 /// What the projector is showing.
@@ -131,7 +132,7 @@ class ClassroomBoardController extends StateNotifier<BoardView> {
     for (final q in state.bank) {
       if (q.id != id) continue;
       final order = [0, 1, 2, 3]
-        ..shuffle(Random(Object.hash(room.sessionId, room.currentIndex)));
+        ..shuffle(Random(stableSeed([room.sessionId, room.currentIndex])));
       return Question(
         id: q.id,
         category: q.category,

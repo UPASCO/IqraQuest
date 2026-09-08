@@ -192,14 +192,14 @@ void main() {
     expect(find.text(card.explanation), findsNothing);
   });
 
-  testWidgets('the answers are not in the order the bank keeps them', (
+  testWidgets('the answers keep their place while the card is on the wall', (
     tester,
   ) async {
     final harness = await pumpBoard(tester);
     harness.room.ask(harness.code);
     await settle(tester);
 
-    final shown = [
+    List<String> shown() => [
       for (var i = 0; i < 4; i++)
         tester
             .widget<Text>(
@@ -212,15 +212,24 @@ void main() {
             )
             .data!,
     ];
-    final card = harness.bank.first;
-    expect(shown.toSet(), card.answers.toSet());
-    expect(
-      shown.first,
-      isNot(card.answers[card.correctAnswerIndex]),
-      reason:
-          'the bank keeps the right answer first; the wall must not repeat '
-          'that, or the class learns to read the first line',
+
+    final first = shown();
+    expect(first.toSet(), harness.bank.first.answers.toSet());
+
+    // Somebody answers, the board redraws — the answers must not move
+    // while a class is reading them.
+    final seat = await harness.room.join(
+      code: harness.code,
+      nickname: 'Amina',
     );
+    await harness.room.answer(
+      code: harness.code,
+      token: seat.token,
+      questionIndex: 0,
+      choice: 1,
+    );
+    await settle(tester);
+    expect(shown(), first);
   });
 
   testWidgets('the reveal shows the answer, the why and the source', (

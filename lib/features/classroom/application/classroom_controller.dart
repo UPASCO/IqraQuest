@@ -9,6 +9,7 @@ import '../../../models/models.dart';
 import '../../../services/local_storage_service.dart';
 import '../data/classroom_gateway.dart';
 import '../domain/classroom_state.dart';
+import '../domain/shuffle_seed.dart';
 
 /// What the pupil's device is doing right now.
 enum PupilStage {
@@ -266,7 +267,7 @@ class ClassroomController extends StateNotifier<PupilSession> {
       final order = [0, 1, 2, 3]
         ..shuffle(
           Random(
-            Object.hash(room.sessionId, state.seat?.token, room.currentIndex),
+            stableSeed([room.sessionId, state.seat?.token, room.currentIndex]),
           ),
         );
       return (
