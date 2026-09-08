@@ -45,6 +45,7 @@ class Licence {
     required this.plan,
     required this.concurrentSessions,
     required this.expiresAt,
+    this.schoolName,
   });
 
   factory Licence.fromJson(Map<String, dynamic> json) => Licence(
@@ -55,6 +56,7 @@ class Licence {
     expiresAt:
         DateTime.tryParse('${json['expires_at']}')?.toLocal() ??
         DateTime.now(),
+    schoolName: (json['school_name'] as String?)?.trim(),
   );
 
   final String id;
@@ -64,6 +66,10 @@ class Licence {
   final String plan;
   final int concurrentSessions;
   final DateTime expiresAt;
+
+  /// The school as it calls itself. Absent on a licence bought by a
+  /// single teacher for their own class.
+  final String? schoolName;
 
   bool get isValid => expiresAt.isAfter(DateTime.now());
 }

@@ -400,6 +400,12 @@ class _Setup extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        if (console.licence?.schoolName != null)
+          Text(
+            console.licence!.schoolName!,
+            key: const Key('teacher-school'),
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         if (console.licence != null)
           Text(
             l10n.teacherLicenceUntil(

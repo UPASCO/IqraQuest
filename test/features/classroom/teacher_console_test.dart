@@ -48,13 +48,15 @@ Future<void> settle(WidgetTester tester, [int frames = 8]) async {
   }
 }
 
-Licence licence({int concurrent = 1, Duration? life}) => Licence(
-  id: 'l1',
-  email: 'ecole@example.org',
-  plan: 'classe',
-  concurrentSessions: concurrent,
-  expiresAt: DateTime.now().add(life ?? const Duration(days: 30)),
-);
+Licence licence({int concurrent = 1, Duration? life, String? school}) =>
+    Licence(
+      id: 'l1',
+      email: 'ecole@example.org',
+      plan: 'classe',
+      concurrentSessions: concurrent,
+      expiresAt: DateTime.now().add(life ?? const Duration(days: 30)),
+      schoolName: school,
+    );
 
 /// The console on a laptop, with an in-memory school behind it.
 Future<({FakeTeacherGateway console, FakeClassroomGateway room})> pumpConsole(
@@ -209,6 +211,36 @@ void main() {
     );
 
     expect(find.byKey(const Key('teacher-no-licence')), findsOneWidget);
+  });
+
+  testWidgets('the console greets the school, not an email address', (
+    tester,
+  ) async {
+    await pumpConsole(
+      tester,
+      signedInAs: 'direction@ecole-annour.fr',
+      granted: licence(school: 'École An-Nour'),
+    );
+
+    expect(find.byKey(const Key('teacher-school')), findsOneWidget);
+    expect(find.text('École An-Nour'), findsOneWidget);
+  });
+
+  testWidgets('a licence with no school name shows no empty heading', (
+    tester,
+  ) async {
+    await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      granted: licence(),
+    );
+
+    expect(
+      find.byKey(const Key('teacher-school')),
+      findsNothing,
+      reason: 'a teacher buying for their own class named no school',
+    );
+    expect(find.byKey(const Key('teacher-open')), findsOneWidget);
   });
 
   testWidgets('opening a lesson gives a code and the pace controls', (

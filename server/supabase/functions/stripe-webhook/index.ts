@@ -197,6 +197,15 @@ Deno.serve(async (request) => {
         const email = object?.customer_details?.email ?? object?.customer_email;
         if (!email) break;
         const rights = entitlementOf(object?.metadata);
+        // Le nom de l'établissement, dans l'ordre où on a une chance de
+        // le trouver : un champ personnalisé du lien de paiement (« Nom
+        // de l'établissement »), puis le nom porté par le paiement.
+        const custom = (object?.custom_fields ?? []).find(
+          (f: { key?: string }) =>
+            f?.key === "etablissement" || f?.key === "school",
+        );
+        const schoolName = custom?.text?.value ?? object?.customer_details?.name ??
+          null;
         // Un abonnement porte sa propre échéance ; un paiement unique
         // vaut l'année scolaire, renouvelée à chaque achat.
         const expires = object?.expires_at
@@ -209,6 +218,7 @@ Deno.serve(async (request) => {
           expires_at: expires.toISOString(),
           stripe_customer_id: object?.customer ?? null,
           stripe_subscription_id: object?.subscription ?? null,
+          ...(schoolName ? { school_name: schoolName } : {}),
         });
         break;
       }

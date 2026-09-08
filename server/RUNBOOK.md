@@ -36,6 +36,7 @@ précédente.
    - `server/supabase/migrations/0002_classroom_teacher.sql`
    - `server/supabase/migrations/0003_retention.sql`
    - `server/supabase/migrations/0004_licence_domain.sql`
+   - `server/supabase/migrations/0005_school_name.sql`
 
 Vérification : dans **Table Editor**, cinq tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`), toutes avec RLS
@@ -139,9 +140,10 @@ toute adresse de ce domaine ouvrira des séances sur cette licence, et sur
 son plafond de salles.
 
 ```sql
-insert into public.licences (email, domain, plan, concurrent_sessions, expires_at)
-values ('direction@ecole-annour.fr', 'ecole-annour.fr', 'ecole', 5,
-        now() + interval '1 year');
+insert into public.licences
+  (email, domain, school_name, plan, concurrent_sessions, expires_at)
+values ('direction@ecole-annour.fr', 'ecole-annour.fr', 'École An-Nour',
+        'ecole', 5, now() + interval '1 year');
 ```
 
 Ensuite, dans l'ordre :
@@ -185,6 +187,12 @@ sans abonnement ni webhook.
    |---|---|
    | `iqraquest_plan` | `classe` ou `ecole` |
    | `iqraquest_rooms` | nombre de salles simultanées (1 à 100) |
+
+   Ajouter aussi, sur le lien de paiement, un **champ personnalisé**
+   nommé `etablissement` (« Nom de l'établissement ») : la fonction le
+   reprend comme nom de l'école, et la console affiche ce nom plutôt
+   qu'une adresse e-mail. À défaut, le nom porté par le paiement fait
+   l'affaire.
 
 3. **La fonction webhook** :
 
