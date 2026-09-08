@@ -350,7 +350,11 @@ void main() {
 
     expect(find.byKey(const Key('teacher-open')), findsOneWidget);
     expect(harness.console.codeOf, isEmpty);
-    await expectLater(harness.room.boardState(code), throwsA(anything));
+    // The room still answers — the class sees the lesson end — but it
+    // holds nobody any more.
+    final closed = await harness.room.boardState(code);
+    expect(closed.phase, ClassroomPhase.over);
+    expect(closed.participants, isEmpty);
   });
 
   testWidgets('the individual mode drops the team count, which means nothing there', (
@@ -476,6 +480,8 @@ void main() {
 
     expect(controller.state.stage, ConsoleStage.ready);
     expect(controller.state.code, isNull);
-    await expectLater(room.boardState(code), throwsA(anything));
+    final closed = await room.boardState(code);
+    expect(closed.phase, ClassroomPhase.over);
+    expect(closed.participants, isEmpty);
   });
 }

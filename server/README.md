@@ -428,6 +428,32 @@ elle ne parle qu'à `ClassroomGateway`, une interface qui a déjà deux
 implémentations (le serveur et une salle en mémoire). En ajouter une
 troisième ne touche à aucun écran.
 
+## Ce que les tests prouvent, et ce qu'ils ne prouvent pas
+
+Quatre-vingt-dix tests couvrent le mode Classe, et il faut savoir
+exactement ce qu'ils regardent : **la salle en mémoire**
+(`FakeClassroomGateway`), pas le SQL. Les deux implémentent le même
+contrat, et rien d'automatique ne les tient synchronisées — c'est une
+relecture humaine qui le fait, fichier contre fichier.
+
+Autrement dit : « 606 tests au vert » ne dit rien de la correction du
+serveur. Le SQL n'a jamais été exécuté par la CI, faute de base ; la
+première exécution est celle du SQL Editor, chez vous.
+
+Trois conséquences pratiques :
+
+1. **Jouer les migrations est un test**, pas une formalité : une erreur
+   de syntaxe ou une signature ratée s'y voit immédiatement.
+2. **`smoke-test.sh` est le seul contrôle qui interroge le vrai
+   serveur.** Il est écrit pour échouer bruyamment, y compris quand une
+   migration n'est pas passée — le distinguer d'un refus de droits est
+   précisément ce qu'il fait.
+3. **Quand une règle change d'un côté, elle change des deux.** La
+   fermeture d'une séance, par exemple : le serveur garde la séance en
+   phase `over` et supprime les participants ; la salle en mémoire fait
+   exactement la même chose, et un test le vérifie. Si l'un des deux
+   dérive, c'est la classe qui l'apprend.
+
 ## Ce que ça coûte
 
 Le palier gratuit tient environ six classes simultanées (200 connexions

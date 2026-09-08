@@ -79,10 +79,18 @@ class FakeClassroomGateway implements ClassroomGateway {
   }
 
   /// Ends the session and forgets everyone in it, as the server does.
+  ///
+  /// The room stays, marked over, so the pupils' screens show the end of
+  /// the lesson instead of "no class reachable"; it is the participants
+  /// and their answers that go immediately, because they are the part
+  /// that held names. `purge_old_sessions` removes the rest within two
+  /// days — which has no equivalent here, and needs none.
   void close(String code) {
-    final s = _sessions.remove(code);
+    final s = _sessions[_normalize(code)];
     if (s == null) return;
     s.phase = ClassroomPhase.over;
+    s.participants.clear();
+    s.answers.clear();
     _publish(s);
   }
 

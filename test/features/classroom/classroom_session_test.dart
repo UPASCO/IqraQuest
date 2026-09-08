@@ -375,7 +375,7 @@ void main() {
     expect(RegExp(r'Amina[^}]*correct').hasMatch(json), isFalse);
   });
 
-  test('closing a session forgets everyone in it', () async {
+  test('closing a session forgets everyone, and still says it is over', () async {
     final room = _room();
     final code = room.openSession(lessonId: 'piliers', questionIds: _lesson);
     final seat = await room.join(code: code, nickname: 'Amina');
@@ -384,13 +384,22 @@ void main() {
 
     room.close(code);
 
+    // The room answers, so thirty phones end the lesson on their score
+    // rather than on "no class reachable" — but there is nobody left in
+    // it, which is the half that held names.
+    final state = await room.boardState(code);
+    expect(state.phase, ClassroomPhase.over);
+    expect(state.participants, isEmpty);
+    expect(state.squaresOf(seat.team), 0, reason: 'the answers went too');
+
+    // And nobody joins a lesson that is finished.
     await expectLater(
-      room.boardState(code),
+      room.join(code: code, nickname: 'Yusuf'),
       throwsA(
         isA<ClassroomException>().having(
           (e) => e.error,
           'error',
-          ClassroomError.unknownCode,
+          ClassroomError.sessionOver,
         ),
       ),
     );
