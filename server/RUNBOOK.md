@@ -20,8 +20,14 @@ précédente.
    des données, pas de latence : voir [RGPD.md](RGPD.md).
 2. Noter les deux valeurs dans **Settings → API** :
    - **Project URL** → `https://xxxx.supabase.co`
-   - **anon public** → `eyJ...` (clé publique : elle ne peut appeler que
-     les fonctions de séance, toutes les tables la refusent)
+   - **la clé publique** → `sb_publishable_...` (ou `eyJ...` sur les
+     projets plus anciens). Publique par conception : elle est embarquée
+     dans l'application, ne peut appeler que les fonctions de séance, et
+     toutes les tables la refusent. C'est elle qui va dans
+     `SUPABASE_ANON_KEY`.
+   - Ne jamais confondre avec la clé **secrète** (`sb_secret_...` ou
+     `service_role`) : celle-là contourne RLS et ne quitte pas le
+     tableau de bord.
 3. **La clé `service_role` reste dans le tableau de bord.** Elle ne va ni
    dans le dépôt, ni dans l'app, ni dans un secret de build. Une seule
    chose la reçoit : la fonction Stripe (étape 6).
@@ -33,7 +39,23 @@ précédente.
 Vérification : dans **Table Editor**, cinq tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`), toutes avec RLS
 activé et **aucune politique** — c'est normal, et c'est la protection :
-la clé anonyme ne lit rien, tout passe par les fonctions.
+la clé publique ne lit rien, tout passe par les fonctions.
+
+Puis, depuis votre machine, la vérification qui compte vraiment — celle
+qui regarde le socle de l'extérieur, avec la clé publique, comme le
+ferait n'importe qui :
+
+```bash
+SUPABASE_URL=https://xxxx.supabase.co \
+SUPABASE_ANON_KEY=sb_publishable_... \
+bash server/smoke-test.sh
+```
+
+Il vérifie que les cinq tables ne rendent rien, qu'un code inconnu ne
+raconte rien, et que les quatre fonctions de l'enseignant sont hors de
+portée. Un échec sur les deux premiers points signifierait que des
+données d'élèves sont lisibles : ne pas ouvrir de classe avant de
+l'avoir corrigé.
 
 ## 2. L'authentification de l'enseignant — 10 minutes
 
