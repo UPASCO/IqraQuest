@@ -147,7 +147,10 @@ Supabase — et c'est la signature `Stripe-Signature`, vérifiée avant toute
 lecture du corps, qui tient lieu de contrôle. Sans elle, cette URL
 distribuerait des licences.
 
-Côté Stripe, poser sur le produit deux métadonnées :
+Côté Stripe : un produit, puis un **lien de paiement** (Payment Link)
+portant ces deux métadonnées — sur le lien, pas sur le produit, car ce
+sont celles du lien que Stripe recopie sur la session de paiement, donc
+les seules que le webhook reçoit :
 
 | clé               | valeur                              |
 |-------------------|-------------------------------------|
@@ -155,6 +158,19 @@ Côté Stripe, poser sur le produit deux métadonnées :
 | `iqraquest_rooms` | nombre de salles simultanées (1-100)|
 
 Sans elles, la licence retombe sur la plus modeste : une salle.
+
+Un compte Stripe déjà utilisé pour une autre application convient : il
+faut seulement un produit et un lien de paiement **nouveaux** pour la
+licence Classe (les métadonnées ci-dessus lui sont propres), et un
+webhook pointant vers cette fonction. Un même compte peut servir
+plusieurs applications ; c'est le lien payé qui dit ce qui est acheté.
+
+Pour un abonnement, le renouvellement ne porte pas l'adresse de
+l'acheteur : la fonction retrouve la licence par l'identifiant
+d'abonnement inscrit au moment du paiement, et repousse simplement son
+échéance. Une résiliation arrête la licence à la date du jour sans
+effacer la ligne — l'école qui revient l'an prochain retrouve ses
+rapports.
 
 **La clé `service_role` ne sort jamais du tableau de bord Supabase et des
 secrets de la fonction.** Elle ne va ni dans le dépôt, ni dans l'app, ni

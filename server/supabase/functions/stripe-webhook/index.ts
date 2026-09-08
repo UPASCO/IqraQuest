@@ -90,8 +90,10 @@ function constantTimeEquals(a: string, b: string): boolean {
 
 /// Ce que l'offre achetée donne droit à faire.
 ///
-/// Les métadonnées sont posées sur le produit dans Stripe — c'est là que
-/// vivent les prix et les paliers, jamais dans ce dépôt. Sans
+/// Les métadonnées sont posées sur le LIEN DE PAIEMENT dans Stripe :
+/// ce sont celles-là que Stripe recopie sur la session de paiement, donc
+/// les seules que cet événement porte. (Les métadonnées du produit, non.)
+/// Les prix, eux, vivent chez Stripe et jamais dans ce dépôt. Sans
 /// métadonnée, on retombe sur la licence la plus modeste : une salle.
 function entitlementOf(metadata: Record<string, string> | undefined) {
   const plan = metadata?.iqraquest_plan ?? "classe";
@@ -102,6 +104,38 @@ function entitlementOf(metadata: Record<string, string> | undefined) {
       ? Math.min(100, Math.max(1, Math.trunc(rooms)))
       : 1,
   };
+}
+
+/// Prolonge (ou arrête) la licence d'un abonnement déjà connu.
+///
+/// Les événements d'abonnement ne portent pas l'adresse de l'acheteur :
+/// on retrouve donc la ligne par l'identifiant d'abonnement, inscrit au
+/// moment du paiement. C'est ce qui fait qu'un renouvellement prolonge
+/// vraiment la licence au lieu de la laisser expirer en silence.
+async function patchLicenceBySubscription(
+  subscriptionId: string,
+  fields: Record<string, unknown>,
+): Promise<boolean> {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/licences?stripe_subscription_id=eq.${
+      encodeURIComponent(subscriptionId)
+    }`,
+    {
+      method: "PATCH",
+      headers: {
+        "apikey": SERVICE_ROLE,
+        "Authorization": `Bearer ${SERVICE_ROLE}`,
+        "Content-Type": "application/json",
+        "Prefer": "return=representation",
+      },
+      body: JSON.stringify(fields),
+    },
+  );
+  if (!response.ok) {
+    throw new Error(`licence patch failed: ${response.status}`);
+  }
+  const rows = await response.json();
+  return Array.isArray(rows) && rows.length > 0;
 }
 
 async function upsertLicence(row: Record<string, unknown>) {
@@ -163,32 +197,37 @@ Deno.serve(async (request) => {
 
       case "customer.subscription.updated":
       case "customer.subscription.created": {
-        const email = object?.metadata?.iqraquest_email;
-        if (!email) break;
-        const rights = entitlementOf(object?.metadata);
-        await upsertLicence({
-          email,
-          plan: rights.plan,
-          concurrent_sessions: rights.concurrent_sessions,
-          expires_at: new Date(
-            (object?.current_period_end ?? 0) * 1000,
-          ).toISOString(),
-          stripe_customer_id: object?.customer ?? null,
-          stripe_subscription_id: object?.id ?? null,
+        const period = Number(object?.current_period_end ?? 0);
+        if (!period) break;
+        const renewed = new Date(period * 1000).toISOString();
+        // La ligne existe déjà (le paiement l'a écrite) : on la
+        // retrouve par l'abonnement, pas par une adresse que
+        // l'événement ne porte pas.
+        const patched = await patchLicenceBySubscription(String(object?.id), {
+          expires_at: renewed,
         });
+        // Filet pour une licence posée à la main dans Stripe, avec
+        // l'adresse en métadonnée.
+        const email = object?.metadata?.iqraquest_email;
+        if (!patched && email) {
+          const rights = entitlementOf(object?.metadata);
+          await upsertLicence({
+            email,
+            plan: rights.plan,
+            concurrent_sessions: rights.concurrent_sessions,
+            expires_at: renewed,
+            stripe_customer_id: object?.customer ?? null,
+            stripe_subscription_id: object?.id ?? null,
+          });
+        }
         break;
       }
 
       case "customer.subscription.deleted": {
-        const email = object?.metadata?.iqraquest_email;
-        if (!email) break;
-        // On ne supprime pas la licence : on l'arrête. L'école qui
+        // On ne supprime pas la licence : on l'arrête là. L'école qui
         // revient l'année suivante retrouve la même ligne, et ses
         // rapports avec.
-        await upsertLicence({
-          email,
-          plan: "classe",
-          concurrent_sessions: 1,
+        await patchLicenceBySubscription(String(object?.id), {
           expires_at: new Date().toISOString(),
         });
         break;
