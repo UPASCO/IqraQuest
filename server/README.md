@@ -109,6 +109,27 @@ Trois paramètres à la compilation, jamais dans le dépôt :
 Le dernier est un lien de paiement Stripe : le prix vit chez Stripe, pas
 ici, et l'app ne touche jamais une carte.
 
+## Publier la console et le tableau
+
+`.github/workflows/web-classroom.yml` construit l'application pour le web
+et la publie sur GitHub Pages à chaque poussée sur `main`. Les quatre
+valeurs de déploiement sont des secrets du dépôt — aucune n'est dans le
+code :
+
+| secret                 | à quoi il sert                                   |
+|------------------------|--------------------------------------------------|
+| `SUPABASE_URL`         | l'adresse du projet                              |
+| `SUPABASE_ANON_KEY`    | la clé publique (elle n'atteint que les fonctions)|
+| `STRIPE_CHECKOUT_URL`  | le lien de paiement Stripe                        |
+| `TEACHER_CALLBACK_URL` | `https://<site>/teacher-callback.html`           |
+
+La clé `service_role` n'en fait pas partie et n'en fera jamais partie.
+
+Une fois publié : la console est à `https://<site>/#/teacher`, le tableau
+à `https://<site>/#/classroom/board/<CODE>`. Sans les deux premières
+valeurs, le site se construit quand même : il montre une salle vide et le
+dit franchement.
+
 ## Stripe, et la licence qu'il écrit
 
 `server/supabase/functions/stripe-webhook/index.ts` reçoit le webhook et

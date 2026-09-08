@@ -1,0 +1,97 @@
+name: Web — classroom console & board
+
+# The two halves of the classroom that live on the web: the teacher's
+# console, where a licence is bought and a lesson is run, and the board a
+# class watches on the projector. Both are the same Flutter app, built
+# for the web and published to GitHub Pages.
+#
+# The four values below are the deployment's own, and none of them is in
+# the repository:
+#
+#   SUPABASE_URL          the project's address
+#   SUPABASE_ANON_KEY     the public key — it can call the session
+#                         functions and nothing else (every table refuses
+#                         it), so it is safe in a page
+#   STRIPE_CHECKOUT_URL   the Stripe payment link; the price lives there
+#   TEACHER_CALLBACK_URL  where the sign-in link comes back to; defaults
+#                         to this Pages site
+#
+# The service_role key is NOT one of them and never will be: it lives in
+# the Edge Function's secrets, and nothing that reaches a browser may
+# carry it. See server/README.md.
+#
+# Without the two Supabase values the build still succeeds — it produces
+# a demo that says honestly that no class can be reached.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "lib/**"
+      - "web/**"
+      - "assets/data/**"
+      - "pubspec.yaml"
+      - ".github/workflows/web-classroom.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a run already under way is left to finish
+# rather than cancelled mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Regenerate localizations
+        run: flutter gen-l10n
+
+      - name: Static analysis
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Release gate
+        run: dart run tool/pre_release_check.dart
+
+      # --base-href matters on Pages: the site is served from
+      # /<repo>/, not from the root, and every asset path is resolved
+      # against it.
+      - name: Build the web app
+        run: |
+          flutter build web --release \
+            --base-href "/${GITHUB_REPOSITORY#*/}/" \
+            --dart-define=SUPABASE_URL="${{ secrets.SUPABASE_URL }}" \
+            --dart-define=SUPABASE_ANON_KEY="${{ secrets.SUPABASE_ANON_KEY }}" \
+            --dart-define=STRIPE_CHECKOUT_URL="${{ secrets.STRIPE_CHECKOUT_URL }}" \
+            --dart-define=TEACHER_CALLBACK_URL="${{ secrets.TEACHER_CALLBACK_URL }}"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
