@@ -35,6 +35,7 @@ précédente.
    - `server/supabase/migrations/0001_classroom.sql`
    - `server/supabase/migrations/0002_classroom_teacher.sql`
    - `server/supabase/migrations/0003_retention.sql`
+   - `server/supabase/migrations/0004_licence_domain.sql`
 
 Vérification : dans **Table Editor**, cinq tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`), toutes avec RLS
@@ -131,6 +132,16 @@ Dans le **SQL Editor** :
 ```sql
 insert into public.licences (email, plan, concurrent_sessions, expires_at)
 values ('votre.adresse@example.org', 'essai', 1, now() + interval '90 days');
+```
+
+Pour une école entière plutôt qu'un enseignant seul, ajouter le domaine :
+toute adresse de ce domaine ouvrira des séances sur cette licence, et sur
+son plafond de salles.
+
+```sql
+insert into public.licences (email, domain, plan, concurrent_sessions, expires_at)
+values ('direction@ecole-annour.fr', 'ecole-annour.fr', 'ecole', 5,
+        now() + interval '1 year');
 ```
 
 Ensuite, dans l'ordre :

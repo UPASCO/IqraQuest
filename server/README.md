@@ -322,6 +322,40 @@ update public.licences
 Remettre `owner_id` à nul est la partie qui compte : c'est ce qui permet
 au prochain compte connecté de réclamer la licence.
 
+## Ce qui empêche une licence de se promener
+
+La question vient toujours, et elle est légitime : sans compte à créer,
+qu'est-ce qui empêche deux écoles de se transmettre une adresse ?
+
+**Ce qui est vendu n'est pas un accès, c'est un nombre de salles
+simultanées.** `open_session` compte les séances ouvertes de la licence
+avant d'en ouvrir une de plus, et refuse au-delà
+(`too_many_sessions`). Deux écoles qui partagent une licence à une salle
+ne peuvent pas faire cours en même temps — et le samedi matin, elles
+veulent toutes les deux faire cours en même temps. Le partage ne devient
+pas interdit : il devient inutile.
+
+**Une licence peut porter un domaine** (migration 0004) plutôt qu'une
+seule adresse. Dix enseignants d'une même école se connectent alors
+chacun avec son adresse professionnelle, sur la même licence et le même
+plafond. C'est meilleur pour eux — plus de boîte commune dont on se
+passe le mot de passe — et plus étanche pour nous : une adresse
+extérieure au domaine n'entre pas.
+
+Ce qui reste possible, et qu'il faut assumer plutôt que prétendre
+l'empêcher : deux écoles aux horaires disjoints peuvent se partager une
+petite licence. C'est visible — `reports` garde une ligne par séance
+avec sa licence, et une licence à une salle qui tient quarante séances
+par semaine se remarque — mais ce n'est pas bloqué, et le prix d'une
+licence de classe ne justifie pas d'en faire une police.
+
+Ce qui n'est **pas** un moyen de contrôle, et ne doit pas le devenir :
+compter les élèves. Le mode Classe ne sait pas combien d'enfants
+existent, seulement combien de prénoms sont dans la salle à cet instant,
+et ces prénoms disparaissent le soir même. Une tarification au nombre
+d'élèves demanderait de les compter durablement — c'est-à-dire de défaire
+tout ce que [RGPD.md](RGPD.md) promet.
+
 ## Une région, un monde
 
 Une séance est une île. Elle a un code, soixante élèves au plus, dix

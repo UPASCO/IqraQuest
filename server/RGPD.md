@@ -38,6 +38,7 @@ Rien d'autre que ceci n'existe dans la base.
 | Classement nominatif, **si l'enseignant l'a demandé** | `reports.per_pupil` | calculé à la fermeture | prénoms retirés à **90 jours**, ligne effacée à 24 mois |
 | Adresse e-mail de l'enseignant | `licences.email` | l'acheteur | durée de la licence |
 | Identifiants Stripe de la licence | `licences.stripe_*` | Stripe | idem |
+| Domaine de l'établissement, si licence d'école | `licences.domain` | l'acheteur | durée de la licence |
 
 **Ce qui n'existe nulle part** : compte élève, mot de passe élève,
 adresse e-mail d'élève, nom de famille, classe, date de naissance,
