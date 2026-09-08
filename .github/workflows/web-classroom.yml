@@ -3,7 +3,14 @@ name: Web — classroom console & board
 # The two halves of the classroom that live on the web: the teacher's
 # console, where a licence is bought and a lesson is run, and the board a
 # class watches on the projector. Both are the same Flutter app, built
-# for the web and published to GitHub Pages.
+# for the web and published to GitHub Pages at
+# https://ecole.iqraquest.org.
+#
+# That address is a subdomain of the marketing site (UPASCO/iqraquest-website,
+# which serves the apex from its own Pages site). The two are independent:
+# a deploy here cannot touch iqraquest.org, and neither goes anywhere near
+# the domain's mail records. `web/CNAME` is what claims the subdomain —
+# Flutter copies it into the build, and Pages reads it there.
 #
 # The four values below are the deployment's own, and none of them is in
 # the repository:
@@ -13,8 +20,8 @@ name: Web — classroom console & board
 #                         functions and nothing else (every table refuses
 #                         it), so it is safe in a page
 #   STRIPE_CHECKOUT_URL   the Stripe payment link; the price lives there
-#   TEACHER_CALLBACK_URL  where the sign-in link comes back to; defaults
-#                         to this Pages site
+#   TEACHER_CALLBACK_URL  where the sign-in link comes back to:
+#                         https://ecole.iqraquest.org/teacher-callback.html
 #
 # The service_role key is NOT one of them and never will be: it lives in
 # the Edge Function's secrets, and nothing that reaches a browser may
@@ -70,13 +77,12 @@ jobs:
       - name: Release gate
         run: dart run tool/pre_release_check.dart
 
-      # --base-href matters on Pages: the site is served from
-      # /<repo>/, not from the root, and every asset path is resolved
-      # against it.
+      # Served from the root of its own subdomain, so the default
+      # base href is right. (It would have to be /<repo>/ on a
+      # github.io address — changing the domain means changing this.)
       - name: Build the web app
         run: |
           flutter build web --release \
-            --base-href "/${GITHUB_REPOSITORY#*/}/" \
             --dart-define=SUPABASE_URL="${{ secrets.SUPABASE_URL }}" \
             --dart-define=SUPABASE_ANON_KEY="${{ secrets.SUPABASE_ANON_KEY }}" \
             --dart-define=STRIPE_CHECKOUT_URL="${{ secrets.STRIPE_CHECKOUT_URL }}" \

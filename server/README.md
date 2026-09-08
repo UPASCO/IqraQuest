@@ -112,23 +112,50 @@ ici, et l'app ne touche jamais une carte.
 ## Publier la console et le tableau
 
 `.github/workflows/web-classroom.yml` construit l'application pour le web
-et la publie sur GitHub Pages à chaque poussée sur `main`. Les quatre
-valeurs de déploiement sont des secrets du dépôt — aucune n'est dans le
-code :
+et la publie sur GitHub Pages à chaque poussée sur `main`, à l'adresse
+**https://ecole.iqraquest.org**.
+
+C'est un sous-domaine du site vitrine (`UPASCO/iqraquest-website`, qui
+sert l'apex depuis son propre site Pages). Les deux sont indépendants :
+publier ici ne peut pas toucher `iqraquest.org`, et ni l'un ni l'autre
+n'approche les enregistrements de messagerie du domaine.
+
+Trois réglages, une fois :
+
+1. **OVHcloud** — ajouter un seul enregistrement, sans toucher aux
+   autres :
+
+   | sous-domaine | type  | cible               |
+   |--------------|-------|---------------------|
+   | `ecole`      | CNAME | `upasco.github.io.` |
+
+   Ne rien changer aux quatre `A` de l'apex ni aux MX : ce sont le site
+   vitrine et la messagerie.
+
+2. **GitHub Pages** sur `UPASCO/IqraQuest` — Settings → Pages, source
+   « GitHub Actions », domaine personnalisé `ecole.iqraquest.org`, puis
+   cocher « Enforce HTTPS » une fois le certificat émis (quelques
+   minutes). Le fichier `web/CNAME` du dépôt porte déjà ce domaine :
+   Flutter le recopie dans le build, et Pages le lit là.
+
+3. **Les secrets** ci-dessous. Aucun n'est dans le code :
 
 | secret                 | à quoi il sert                                   |
 |------------------------|--------------------------------------------------|
 | `SUPABASE_URL`         | l'adresse du projet                              |
 | `SUPABASE_ANON_KEY`    | la clé publique (elle n'atteint que les fonctions)|
 | `STRIPE_CHECKOUT_URL`  | le lien de paiement Stripe                        |
-| `TEACHER_CALLBACK_URL` | `https://<site>/teacher-callback.html`           |
+| `TEACHER_CALLBACK_URL` | `https://ecole.iqraquest.org/teacher-callback.html` |
 
 La clé `service_role` n'en fait pas partie et n'en fera jamais partie.
 
-Une fois publié : la console est à `https://<site>/#/teacher`, le tableau
-à `https://<site>/#/classroom/board/<CODE>`. Sans les deux premières
-valeurs, le site se construit quand même : il montre une salle vide et le
-dit franchement.
+Une fois publié :
+
+- la console est à `https://ecole.iqraquest.org/#/teacher` ;
+- le tableau à `https://ecole.iqraquest.org/#/classroom/board/<CODE>`.
+
+Sans les deux valeurs Supabase, le site se construit quand même : il
+montre une salle vide et le dit franchement.
 
 ## Stripe, et la licence qu'il écrit
 
