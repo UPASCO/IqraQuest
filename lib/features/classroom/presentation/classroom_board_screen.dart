@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
@@ -97,7 +98,10 @@ class ClassroomBoardScreen extends ConsumerWidget {
                   ),
                   if (room.phase != ClassroomPhase.over) ...[
                     SizedBox(height: 18 * scale),
-                    _Track(room: room, l10n: l10n, scale: scale),
+                    if (room.scoring == ClassroomScoring.individual)
+                      _Ranking(room: room, l10n: l10n, scale: scale)
+                    else
+                      _Track(room: room, l10n: l10n, scale: scale),
                   ],
                 ],
               ),
@@ -228,6 +232,64 @@ class _CodeChip extends StatelessWidget {
   }
 }
 
+/// Where a pupil's device lands when the QR is scanned: the join form,
+/// with the code already filled in. Anything that is not a real web
+/// origin (a phone casting to the class TV, a test) falls back to the
+/// published address, so the code on screen is never a dead link.
+String classroomJoinUrl(String code) {
+  final base = Uri.base;
+  final origin = base.scheme == 'http' || base.scheme == 'https'
+      ? base.origin
+      : 'https://ecole.iqraquest.org';
+  return '$origin/#/classroom?code=$code';
+}
+
+/// The same room, as a square a phone camera understands.
+class _JoinQr extends StatelessWidget {
+  const _JoinQr({required this.code, required this.l10n, required this.scale});
+
+  final String code;
+  final AppLocalizations l10n;
+  final double scale;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final side = 190.0 * scale;
+    return Column(
+      key: const Key('board-qr'),
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12 * scale),
+          decoration: BoxDecoration(
+            // The quiet zone has to be light whatever the room's theme:
+            // a camera reads contrast, not intentions.
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16 * scale),
+            border: Border.all(color: colors.goldAccent, width: 2 * scale),
+          ),
+          child: QrImageView(
+            data: classroomJoinUrl(code),
+            version: QrVersions.auto,
+            size: side,
+            gapless: true,
+            backgroundColor: Colors.white,
+            // Error correction high: a projector is dusty, a screen has
+            // glare, and a child scans from four metres away.
+            errorCorrectionLevel: QrErrorCorrectLevel.H,
+          ),
+        ),
+        SizedBox(height: 8 * scale),
+        Text(
+          l10n.classroomScanToJoin,
+          style: TextStyle(fontSize: 18 * scale, color: colors.textSecondary),
+        ),
+      ],
+    );
+  }
+}
+
 /// Before the first card: the code, big enough to read from the door,
 /// and the names as they arrive — the first thing a class does is look
 /// for their own.
@@ -245,7 +307,18 @@ class _Lobby extends StatelessWidget {
       key: const Key('board-lobby'),
       child: Column(
         children: [
-          _CodeChip(code: room.code, l10n: l10n, scale: scale, large: true),
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 28 * scale,
+            runSpacing: 20 * scale,
+            children: [
+              _CodeChip(code: room.code, l10n: l10n, scale: scale, large: true),
+              // Scanned by whoever has a camera, typed by everyone else:
+              // the six characters never leave the wall.
+              _JoinQr(code: room.code, l10n: l10n, scale: scale),
+            ],
+          ),
           SizedBox(height: 16 * scale),
           Text(
             l10n.classroomBoardHowToJoin,
@@ -619,6 +692,99 @@ class _Lane extends StatelessWidget {
   }
 }
 
+/// Every pupil, ranked, when the teacher asked for it. Kept to a single
+/// band at the foot of the wall so the question above it stays the
+/// biggest thing in the room: a lesson is not a scoreboard with a
+/// question attached.
+class _Ranking extends StatelessWidget {
+  const _Ranking({required this.room, required this.l10n, required this.scale});
+
+  final ClassroomState room;
+  final AppLocalizations l10n;
+  final double scale;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    if (room.pupilScores.isEmpty) return const SizedBox.shrink();
+
+    return Column(
+      key: const Key('board-ranking'),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.classroomRanking,
+          style: TextStyle(
+            fontSize: 20 * scale,
+            letterSpacing: 1.4,
+            color: colors.textSecondary,
+          ),
+        ),
+        SizedBox(height: 8 * scale),
+        SizedBox(
+          height: 62 * scale,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: room.pupilScores.length,
+            separatorBuilder: (_, _) => SizedBox(width: 10 * scale),
+            itemBuilder: (context, index) {
+              final pupil = room.pupilScores[index];
+              final colour = kBoardSeats[pupil.team % kBoardSeats.length]
+                  .color(colors);
+              return Container(
+                key: Key('board-rank-$index'),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16 * scale,
+                  vertical: 10 * scale,
+                ),
+                decoration: BoxDecoration(
+                  color: colour.withValues(alpha: index == 0 ? 0.22 : 0.10),
+                  borderRadius: BorderRadius.circular(14 * scale),
+                  border: Border.all(
+                    color: colour,
+                    width: index == 0 ? 2.4 * scale : 1.2 * scale,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      '${index + 1}.',
+                      style: TextStyle(
+                        fontSize: 20 * scale,
+                        fontWeight: FontWeight.w900,
+                        color: colors.textSecondary,
+                      ),
+                    ),
+                    SizedBox(width: 10 * scale),
+                    Text(
+                      pupil.nickname,
+                      style: TextStyle(
+                        fontSize: 24 * scale,
+                        fontWeight: FontWeight.w800,
+                        color: colour,
+                      ),
+                    ),
+                    SizedBox(width: 12 * scale),
+                    Text(
+                      l10n.classroomPointsCount(pupil.correct),
+                      style: TextStyle(
+                        fontSize: 22 * scale,
+                        fontWeight: FontWeight.w700,
+                        color: colors.textPrimary,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 /// The end of the lesson: who rode furthest, and — the part that makes
 /// this worth a teacher's time — the cards the class got wrong most
 /// often, named so they can be gone over on the spot.
@@ -664,6 +830,10 @@ class _Over extends StatelessWidget {
             ),
           ),
           SizedBox(height: 18 * scale),
+          if (room.scoring == ClassroomScoring.individual)
+            _Ranking(room: room, l10n: l10n, scale: scale),
+          if (room.scoring == ClassroomScoring.individual)
+            SizedBox(height: 18 * scale),
           for (final (rank, team) in room.standings.indexed)
             Padding(
               padding: EdgeInsets.only(bottom: 10 * scale),

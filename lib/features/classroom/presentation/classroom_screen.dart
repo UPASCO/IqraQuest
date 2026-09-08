@@ -20,7 +20,11 @@ import '../data/classroom_gateway.dart';
 /// same card as the projector, in their own language, with the answers
 /// in an order of their own so the neighbour's screen is no help.
 class ClassroomScreen extends ConsumerStatefulWidget {
-  const ClassroomScreen({super.key});
+  const ClassroomScreen({super.key, this.initialCode});
+
+  /// The code carried by a scanned QR, already filled in so a child only
+  /// has their own first name left to type.
+  final String? initialCode;
 
   @override
   ConsumerState<ClassroomScreen> createState() => _ClassroomScreenState();
@@ -33,6 +37,8 @@ class _ClassroomScreenState extends ConsumerState<ClassroomScreen> {
   @override
   void initState() {
     super.initState();
+    final scanned = widget.initialCode?.trim().toUpperCase();
+    if (scanned != null && scanned.isNotEmpty) _code.text = scanned;
     // A pupil whose phone died mid-lesson comes straight back to the
     // room rather than to a form they would have to ask about.
     WidgetsBinding.instance.addPostFrameCallback((_) {

@@ -260,6 +260,57 @@ void main() {
     );
   });
 
+  test('the team mode puts no name against a score', () async {
+    final room = _room();
+    final code = room.openSession(lessonId: 'piliers', questionIds: _lesson);
+    final seat = await room.join(code: code, nickname: 'Amina');
+    room.ask(code);
+    await room.answer(code: code, token: seat.token, questionIndex: 0, choice: 0);
+
+    final state = await room.boardState(code);
+    expect(state.scoring, ClassroomScoring.teams);
+    expect(
+      state.pupilScores,
+      isEmpty,
+      reason: 'a wall that ranks children was not asked for',
+    );
+  });
+
+  test('the individual mode ranks every pupil, best first', () async {
+    final room = _room();
+    final code = room.openSession(
+      lessonId: 'piliers',
+      questionIds: _lesson,
+      teamCount: 2,
+      scoring: ClassroomScoring.individual,
+    );
+    final a = await room.join(code: code, nickname: 'Amina');
+    final b = await room.join(code: code, nickname: 'Yusuf');
+
+    room.ask(code);
+    await room.answer(code: code, token: a.token, questionIndex: 0, choice: 0);
+    await room.answer(code: code, token: b.token, questionIndex: 0, choice: 2);
+    room.reveal(code);
+    room.ask(code);
+    await room.answer(code: code, token: b.token, questionIndex: 1, choice: 0);
+    await room.answer(code: code, token: a.token, questionIndex: 1, choice: 0);
+
+    final state = await room.boardState(code);
+    expect(state.scoring, ClassroomScoring.individual);
+    expect(
+      [for (final p in state.pupilScores) '${p.nickname}:${p.correct}'],
+      ['Amina:2', 'Yusuf:1'],
+    );
+    // The teams keep their squares too: a class can be ranked and still
+    // see the horses move.
+    expect(state.squaresOf(a.team), 2);
+    expect(
+      ClassroomState.fromJson(state.toJson()).pupilScores.first.nickname,
+      'Amina',
+      reason: 'the ranking survives the trip through the server',
+    );
+  });
+
   test('the board counts how many answered, never who or what', () async {
     final room = _room();
     final code = room.openSession(

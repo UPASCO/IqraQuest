@@ -1322,6 +1322,61 @@ class AppLocalizationsId extends AppLocalizations {
   String get teacherChooseLesson => 'Pilih pelajaran';
 
   @override
+  String get teacherScoringMode => 'Cara poin dihitung';
+
+  @override
+  String get teacherScoringTeams => 'Per tim';
+
+  @override
+  String get teacherScoringIndividual => 'Peringkat individu';
+
+  @override
+  String get teacherScoringIndividualHint =>
+      'Setiap nama tampil berperingkat di papan. Peringkat menampilkan yang pertama, tetapi juga yang terakhir, di depan seluruh kelas.';
+
+  @override
+  String get teacherTimer => 'Pengatur waktu';
+
+  @override
+  String get teacherTimerNone => 'Tidak ada — saya buka sendiri';
+
+  @override
+  String teacherTimerSeconds(num seconds) {
+    return '$seconds detik';
+  }
+
+  @override
+  String get teacherLength => 'Panjang';
+
+  @override
+  String teacherLengthAll(num count) {
+    return 'Seluruh pelajaran ($count kartu)';
+  }
+
+  @override
+  String teacherLengthShort(num count) {
+    return '$count kartu pertama';
+  }
+
+  @override
+  String get teacherShuffle => 'Acak urutan kartu';
+
+  @override
+  String get teacherShuffleHint =>
+      'Kelas yang mengulang pelajaran yang sama tidak lagi menjawab dari ingatan.';
+
+  @override
+  String get classroomScanToJoin => 'Pindai, atau masukkan kode';
+
+  @override
+  String get classroomRanking => 'Peringkat';
+
+  @override
+  String classroomPointsCount(num count) {
+    return '$count poin';
+  }
+
+  @override
   String teacherTeams(num count) {
     return '$count tim';
   }

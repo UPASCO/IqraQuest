@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../../services/local_storage_service.dart';
+import '../domain/classroom_state.dart';
 import 'teacher_gateway.dart';
 
 /// The teacher's console, over the wire.
@@ -127,6 +128,7 @@ class SupabaseTeacherGateway implements TeacherGateway {
     String boardLanguage = 'fr',
     int secondsPerQuestion = 0,
     bool keepIndividualScores = false,
+    ClassroomScoring scoring = ClassroomScoring.teams,
   }) async {
     final json = await _rpc('open_session', {
       'p_lesson_id': lessonId,
@@ -135,6 +137,7 @@ class SupabaseTeacherGateway implements TeacherGateway {
       'p_board_language': boardLanguage,
       'p_seconds_per_question': secondsPerQuestion,
       'p_keep_individual_scores': keepIndividualScores,
+      'p_scoring_mode': scoring.name,
     });
     return (
       sessionId: json!['sessionId'] as String,

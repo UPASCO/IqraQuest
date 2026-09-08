@@ -1778,6 +1778,86 @@
   "@teacherChooseLesson": {
     "description": "Console: pick the lesson to run"
   },
+  "teacherScoringMode": "How points are counted",
+  "@teacherScoringMode": {
+    "description": "Console: how the room keeps score"
+  },
+  "teacherScoringTeams": "By teams",
+  "@teacherScoringTeams": {
+    "description": "Console: the team mode"
+  },
+  "teacherScoringIndividual": "Individual ranking",
+  "@teacherScoringIndividual": {
+    "description": "Console: the individual ranking mode"
+  },
+  "teacherScoringIndividualHint": "Every first name is ranked on the board. A ranking shows the first, but also the last, in front of the whole class.",
+  "@teacherScoringIndividualHint": {
+    "description": "Console: what the individual mode puts on the wall"
+  },
+  "teacherTimer": "Timer",
+  "@teacherTimer": {
+    "description": "Console: seconds allowed per question"
+  },
+  "teacherTimerNone": "None — I reveal by hand",
+  "@teacherTimerNone": {
+    "description": "Console: no timer, the teacher reveals by hand"
+  },
+  "teacherTimerSeconds": "{seconds} seconds",
+  "@teacherTimerSeconds": {
+    "description": "Console: a timer of so many seconds",
+    "placeholders": {
+      "seconds": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherLength": "Length",
+  "@teacherLength": {
+    "description": "Console: how many cards of the lesson to play"
+  },
+  "teacherLengthAll": "Whole lesson ({count} cards)",
+  "@teacherLengthAll": {
+    "description": "Console: play the whole lesson",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherLengthShort": "First {count} cards",
+  "@teacherLengthShort": {
+    "description": "Console: play only the first few cards",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherShuffle": "Shuffle the card order",
+  "@teacherShuffle": {
+    "description": "Console: draw the lesson's cards in a fresh order"
+  },
+  "teacherShuffleHint": "A class replaying the same lesson no longer answers from memory.",
+  "@teacherShuffleHint": {
+    "description": "Console: why shuffling matters on a second run"
+  },
+  "classroomScanToJoin": "Scan it, or type the code",
+  "@classroomScanToJoin": {
+    "description": "Projected board: what the QR code is for"
+  },
+  "classroomRanking": "Ranking",
+  "@classroomRanking": {
+    "description": "Projected board: the individual ranking"
+  },
+  "classroomPointsCount": "{count} pts",
+  "@classroomPointsCount": {
+    "description": "Projected board: a pupil's right answers",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
   "teacherTeams": "{count} teams",
   "@teacherTeams": {
     "description": "Console: how many teams the class is split into",

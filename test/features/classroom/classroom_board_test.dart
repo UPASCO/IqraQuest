@@ -11,6 +11,8 @@ import 'package:iqraquest/app/providers.dart';
 import 'package:iqraquest/app/router.dart';
 import 'package:iqraquest/features/classroom/application/classroom_controller.dart';
 import 'package:iqraquest/features/classroom/data/fake_classroom_gateway.dart';
+import 'package:iqraquest/features/classroom/domain/classroom_state.dart';
+import 'package:iqraquest/features/classroom/presentation/classroom_board_screen.dart';
 import 'package:iqraquest/l10n/generated/app_localizations_en.dart';
 import 'package:iqraquest/models/models.dart';
 import 'package:iqraquest/services/entitlement_service.dart';
@@ -86,6 +88,7 @@ pumpBoard(
   WidgetTester tester, {
   int questions = 3,
   int teamCount = 2,
+  ClassroomScoring scoring = ClassroomScoring.teams,
 }) async {
   tester.view.physicalSize = const Size(1280, 800);
   tester.view.devicePixelRatio = 1.0;
@@ -101,6 +104,7 @@ pumpBoard(
     questionIds: [for (final c in cards) c.id],
     teamCount: teamCount,
     boardLanguage: 'en',
+    scoring: scoring,
   );
 
   await tester.pumpWidget(
@@ -331,6 +335,70 @@ void main() {
     expect(find.byKey(const Key('board-review-1')), findsNothing);
     expect(find.text(harness.bank.first.question), findsOneWidget);
     expect(find.text(en.classroomSuccessRate(50)), findsOneWidget);
+  });
+
+  testWidgets('the lobby carries a QR beside the code, for whoever can scan', (
+    tester,
+  ) async {
+    final harness = await pumpBoard(tester);
+
+    expect(find.byKey(const Key('board-qr')), findsOneWidget);
+    expect(find.text(en.classroomScanToJoin), findsOneWidget);
+    expect(
+      find.text(harness.code),
+      findsOneWidget,
+      reason: 'the six characters stay on the wall for those without a camera',
+    );
+    expect(
+      classroomJoinUrl(harness.code),
+      endsWith('/#/classroom?code=${harness.code}'),
+      reason: 'scanning lands on the join form with the code filled in',
+    );
+  });
+
+  testWidgets('the team mode shows lanes and no name against a score', (
+    tester,
+  ) async {
+    final harness = await pumpBoard(tester, teamCount: 2);
+    final seat = await harness.room.join(code: harness.code, nickname: 'Amina');
+    harness.room.ask(harness.code);
+    await harness.room.answer(
+      code: harness.code,
+      token: seat.token,
+      questionIndex: 0,
+      choice: 0,
+    );
+    await settle(tester);
+
+    expect(find.byKey(const Key('board-lane-0')), findsOneWidget);
+    expect(find.byKey(const Key('board-ranking')), findsNothing);
+    expect(find.text('Amina'), findsNothing);
+  });
+
+  testWidgets('the individual mode ranks the pupils on the wall', (
+    tester,
+  ) async {
+    final harness = await pumpBoard(
+      tester,
+      teamCount: 2,
+      scoring: ClassroomScoring.individual,
+    );
+    final a = await harness.room.join(code: harness.code, nickname: 'Amina');
+    await harness.room.join(code: harness.code, nickname: 'Yusuf');
+    harness.room.ask(harness.code);
+    await harness.room.answer(
+      code: harness.code,
+      token: a.token,
+      questionIndex: 0,
+      choice: 0,
+    );
+    await settle(tester);
+
+    expect(find.byKey(const Key('board-ranking')), findsOneWidget);
+    expect(find.byKey(const Key('board-lane-0')), findsNothing);
+    expect(find.text('Amina'), findsOneWidget);
+    expect(find.text(en.classroomPointsCount(1)), findsOneWidget);
+    expect(find.text(en.classroomPointsCount(0)), findsOneWidget);
   });
 
   testWidgets('a small classroom screen still fits the card', (tester) async {

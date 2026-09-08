@@ -9,6 +9,42 @@ import 'package:flutter/foundation.dart';
 /// are a reason to wait, not a reason to lose.
 enum ClassroomPhase { lobby, asking, revealing, over }
 
+/// How the room keeps score.
+///
+/// [teams] is the default and the one a large class wants: two to four
+/// horses, and every child's right answer pushes one of them. [individual]
+/// gives each pupil their own line on the wall — the teacher asks for it
+/// deliberately, because a ranking that shows the first also shows the
+/// last, in front of everyone.
+enum ClassroomScoring { teams, individual }
+
+/// One pupil's live score, sent only in [ClassroomScoring.individual].
+@immutable
+class ClassroomPupilScore {
+  const ClassroomPupilScore({
+    required this.nickname,
+    required this.team,
+    required this.correct,
+  });
+
+  final String nickname;
+  final int team;
+  final int correct;
+
+  factory ClassroomPupilScore.fromJson(Map<String, dynamic> json) =>
+      ClassroomPupilScore(
+        nickname: json['nickname'] as String,
+        team: (json['team'] as num?)?.toInt() ?? 0,
+        correct: (json['correct'] as num?)?.toInt() ?? 0,
+      );
+
+  Map<String, dynamic> toJson() => {
+    'nickname': nickname,
+    'team': team,
+    'correct': correct,
+  };
+}
+
 /// One pupil, as the room sees them: a first name and a team. That is
 /// the whole of it — there is no account behind this, and nothing here
 /// outlives the session.
@@ -48,6 +84,8 @@ class ClassroomState {
     required this.participants,
     required this.squaresByTeam,
     required this.answeredCurrent,
+    this.scoring = ClassroomScoring.teams,
+    this.pupilScores = const [],
     this.answersByQuestion = const {},
     this.correctByQuestion = const {},
     this.askedAt,
@@ -82,6 +120,15 @@ class ClassroomState {
   /// How many pupils have answered the open question. Never who, never
   /// what.
   final int answeredCurrent;
+
+  /// How the room keeps score, chosen by the teacher when the session
+  /// was opened.
+  final ClassroomScoring scoring;
+
+  /// Every pupil's running score, best first. Empty unless the teacher
+  /// asked for [ClassroomScoring.individual] — in the team mode the wall
+  /// carries no name against a score at all.
+  final List<ClassroomPupilScore> pupilScores;
 
   /// How many answers each question of the lesson received, by index.
   /// Counts only: this is what lets the board close on the cards the
@@ -193,6 +240,14 @@ class ClassroomState {
       ],
       squaresByTeam: squares,
       answeredCurrent: (json['answeredCurrent'] as num?)?.toInt() ?? 0,
+      scoring: switch (json['scoring']) {
+        'individual' => ClassroomScoring.individual,
+        _ => ClassroomScoring.teams,
+      },
+      pupilScores: [
+        for (final p in json['pupilScores'] as List? ?? const [])
+          ClassroomPupilScore.fromJson(p as Map<String, dynamic>),
+      ],
       answersByQuestion: _intMap(json['answersByQuestion']),
       correctByQuestion: _intMap(json['correctByQuestion']),
       askedAt: switch (json['askedAt']) {
@@ -217,6 +272,8 @@ class ClassroomState {
       for (final entry in squaresByTeam.entries) '${entry.key}': entry.value,
     },
     'answeredCurrent': answeredCurrent,
+    'scoring': scoring.name,
+    'pupilScores': [for (final p in pupilScores) p.toJson()],
     'answersByQuestion': {
       for (final entry in answersByQuestion.entries) '${entry.key}': entry.value,
     },
@@ -233,6 +290,8 @@ class ClassroomState {
     List<ClassroomParticipant>? participants,
     Map<int, int>? squaresByTeam,
     int? answeredCurrent,
+    ClassroomScoring? scoring,
+    List<ClassroomPupilScore>? pupilScores,
     Map<int, int>? answersByQuestion,
     Map<int, int>? correctByQuestion,
     Object? askedAt = _unset,
@@ -248,6 +307,8 @@ class ClassroomState {
     participants: participants ?? this.participants,
     squaresByTeam: squaresByTeam ?? this.squaresByTeam,
     answeredCurrent: answeredCurrent ?? this.answeredCurrent,
+    scoring: scoring ?? this.scoring,
+    pupilScores: pupilScores ?? this.pupilScores,
     answersByQuestion: answersByQuestion ?? this.answersByQuestion,
     correctByQuestion: correctByQuestion ?? this.correctByQuestion,
     askedAt: identical(askedAt, _unset) ? this.askedAt : askedAt as DateTime?,

@@ -315,6 +315,87 @@ void main() {
     await expectLater(harness.room.boardState(code), throwsA(anything));
   });
 
+  testWidgets('the individual mode drops the team count, which means nothing there', (
+    tester,
+  ) async {
+    await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      granted: licence(),
+    );
+
+    expect(find.byKey(const Key('teacher-teams')), findsOneWidget);
+    expect(find.byKey(const Key('teacher-timer')), findsOneWidget);
+    expect(find.byKey(const Key('teacher-length')), findsOneWidget);
+    expect(find.byKey(const Key('teacher-shuffle')), findsOneWidget);
+
+    await tester.tap(find.byKey(const Key('teacher-scoring')));
+    await settle(tester);
+    await tester.tap(find.text(en.teacherScoringIndividual).last);
+    await settle(tester);
+
+    expect(find.byKey(const Key('teacher-teams')), findsNothing);
+    expect(
+      find.text(en.teacherScoringIndividualHint),
+      findsOneWidget,
+      reason: 'a teacher is told what a ranking puts on the wall',
+    );
+  });
+
+  test('a half-period runs the first cards, in a fresh order', () async {
+    final room = FakeClassroomGateway(random: Random(12));
+    final console = FakeTeacherGateway(
+      room: room,
+      signedInAs: 'ecole@example.org',
+      licence: licence(),
+    );
+    final controller = TeacherConsoleController(console);
+    await controller.start();
+    final lesson = (await LessonCatalog().load()).first;
+
+    await controller.openSession(
+      lesson: lesson,
+      cardCount: 5,
+      shuffle: true,
+      secondsPerQuestion: 30,
+      scoring: ClassroomScoring.individual,
+      random: Random(1),
+    );
+
+    final state = await room.boardState(controller.state.code!);
+    expect(state.questionIds, hasLength(5));
+    expect(state.secondsPerQuestion, 30);
+    expect(state.scoring, ClassroomScoring.individual);
+    expect(
+      state.questionIds.toSet().difference(lesson.questionIds.toSet()),
+      isEmpty,
+      reason: 'the cards are the lesson\'s own, only fewer and reordered',
+    );
+    expect(
+      state.questionIds,
+      isNot(lesson.questionIds.take(5).toList()),
+      reason: 'shuffled, so a class replaying does not answer from memory',
+    );
+  });
+
+  test('the whole lesson runs when no length is chosen', () async {
+    final room = FakeClassroomGateway(random: Random(13));
+    final console = FakeTeacherGateway(
+      room: room,
+      signedInAs: 'ecole@example.org',
+      licence: licence(),
+    );
+    final controller = TeacherConsoleController(console);
+    await controller.start();
+    final lesson = (await LessonCatalog().load()).first;
+
+    await controller.openSession(lesson: lesson);
+
+    final state = await room.boardState(controller.state.code!);
+    expect(state.questionIds, lesson.questionIds);
+    expect(state.scoring, ClassroomScoring.teams);
+  });
+
   test('a licence for one room does not open a second', () async {
     final room = FakeClassroomGateway(random: Random(4));
     final console = FakeTeacherGateway(

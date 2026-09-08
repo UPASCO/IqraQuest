@@ -3055,6 +3055,133 @@ s("teacherChooseLesson", "Console: pick the lesson to run",
   tr="Dersi seçin", id="Pilih pelajaran", ur="سبق منتخب کریں",
   ms="Pilih pelajaran", it="Scegli la lezione", nl="Kies de les")
 
+s("teacherScoringMode", "Console: how the room keeps score",
+  fr="Comptage des points", en="How points are counted",
+  ar="طريقة احتساب النقاط", es="C\u00f3mo se cuentan los puntos",
+  pt="Como os pontos s\u00e3o contados", de="Wie gez\u00e4hlt wird",
+  tr="Puanlar nas\u0131l say\u0131l\u0131r", id="Cara poin dihitung",
+  ur="پوائنٹس کیسے گنے جائیں", ms="Cara mata dikira",
+  it="Come si contano i punti", nl="Hoe punten tellen")
+
+s("teacherScoringTeams", "Console: the team mode",
+  fr="Par \u00e9quipes", en="By teams", ar="بالفرق", es="Por equipos",
+  pt="Por equipas", de="Nach Teams", tr="Tak\u0131m halinde",
+  id="Per tim", ur="ٹیموں کے حساب سے", ms="Mengikut pasukan",
+  it="A squadre", nl="Per team")
+
+s("teacherScoringIndividual", "Console: the individual ranking mode",
+  fr="Classement individuel", en="Individual ranking",
+  ar="ترتيب فردي", es="Clasificaci\u00f3n individual",
+  pt="Classifica\u00e7\u00e3o individual", de="Einzelwertung",
+  tr="Bireysel s\u0131ralama", id="Peringkat individu",
+  ur="انفرادی درجہ بندی", ms="Kedudukan individu",
+  it="Classifica individuale", nl="Individueel klassement")
+
+s("teacherScoringIndividualHint", "Console: what the individual mode puts on the wall",
+  fr="Chaque pr\u00e9nom appara\u00eet class\u00e9 au tableau. Un classement montre le premier, mais aussi le dernier, devant toute la classe.",
+  en="Every first name is ranked on the board. A ranking shows the first, but also the last, in front of the whole class.",
+  ar="يظهر كل اسم مرتّبًا على التابلوه. الترتيب يُظهر الأول، ويُظهر الأخير أيضًا، أمام الصف كله.",
+  es="Cada nombre aparece clasificado en el tablero. Una clasificaci\u00f3n muestra al primero, pero tambi\u00e9n al \u00faltimo, delante de toda la clase.",
+  pt="Cada nome aparece classificado no quadro. Uma classifica\u00e7\u00e3o mostra o primeiro, mas tamb\u00e9m o \u00faltimo, diante de toda a turma.",
+  de="Jeder Vorname erscheint in der Rangliste an der Tafel. Eine Rangliste zeigt den Ersten \u2014 und auch den Letzten, vor der ganzen Klasse.",
+  tr="Her ad tahtada s\u0131ralan\u0131r. Bir s\u0131ralama birinciyi g\u00f6sterir, ama sonuncuyu da, t\u00fcm s\u0131n\u0131f\u0131n \u00f6n\u00fcnde.",
+  id="Setiap nama tampil berperingkat di papan. Peringkat menampilkan yang pertama, tetapi juga yang terakhir, di depan seluruh kelas.",
+  ur="ہر نام بورڈ پر درجہ بندی کے ساتھ آتا ہے۔ درجہ بندی پہلے کو دکھاتی ہے، اور آخری کو بھی، پوری کلاس کے سامنے۔",
+  ms="Setiap nama disenaraikan mengikut kedudukan pada papan. Kedudukan menunjukkan yang pertama, tetapi juga yang terakhir, di depan seluruh kelas.",
+  it="Ogni nome compare in classifica sulla lavagna. Una classifica mostra il primo, ma anche l\u2019ultimo, davanti a tutta la classe.",
+  nl="Elke voornaam komt geklasseerd op het bord. Een klassement toont de eerste, maar ook de laatste, voor de hele klas.")
+
+s("teacherTimer", "Console: seconds allowed per question",
+  fr="Chronom\u00e8tre", en="Timer", ar="المؤقّت", es="Cron\u00f3metro",
+  pt="Cron\u00f3metro", de="Zeitnehmer", tr="Kronometre", id="Pengatur waktu",
+  ur="ٹائمر", ms="Pemasa", it="Cronometro", nl="Timer")
+
+s("teacherTimerNone", "Console: no timer, the teacher reveals by hand",
+  fr="Aucun \u2014 je r\u00e9v\u00e8le \u00e0 la main",
+  en="None \u2014 I reveal by hand",
+  ar="بلا مؤقّت \u2014 أكشف الإجابة بنفسي",
+  es="Ninguno: revelo a mano",
+  pt="Nenhum \u2014 revelo \u00e0 m\u00e3o",
+  de="Keiner \u2014 ich decke selbst auf",
+  tr="Yok \u2014 cevab\u0131 ben a\u00e7ar\u0131m",
+  id="Tidak ada \u2014 saya buka sendiri",
+  ur="کوئی نہیں \u2014 میں خود جواب دکھاؤں گا",
+  ms="Tiada \u2014 saya dedahkan sendiri",
+  it="Nessuno \u2014 rivelo io",
+  nl="Geen \u2014 ik onthul zelf")
+
+s("teacherTimerSeconds", "Console: a timer of so many seconds",
+  ph={"seconds": "num"},
+  fr="{seconds} secondes", en="{seconds} seconds", ar="{seconds} ثانية",
+  es="{seconds} segundos", pt="{seconds} segundos", de="{seconds} Sekunden",
+  tr="{seconds} saniye", id="{seconds} detik", ur="{seconds} سیکنڈ",
+  ms="{seconds} saat", it="{seconds} secondi", nl="{seconds} seconden")
+
+s("teacherLength", "Console: how many cards of the lesson to play",
+  fr="Longueur", en="Length", ar="طول الحصة", es="Duraci\u00f3n",
+  pt="Dura\u00e7\u00e3o", de="L\u00e4nge", tr="Uzunluk", id="Panjang",
+  ur="طوالت", ms="Panjang", it="Durata", nl="Lengte")
+
+s("teacherLengthAll", "Console: play the whole lesson",
+  ph={"count": "num"},
+  fr="Le\u00e7on enti\u00e8re ({count} cartes)", en="Whole lesson ({count} cards)",
+  ar="الدرس كاملًا ({count} بطاقة)", es="Lecci\u00f3n completa ({count} cartas)",
+  pt="Li\u00e7\u00e3o completa ({count} cartas)", de="Ganze Lektion ({count} Karten)",
+  tr="T\u00fcm ders ({count} kart)", id="Seluruh pelajaran ({count} kartu)",
+  ur="پورا سبق ({count} کارڈ)", ms="Seluruh pelajaran ({count} kad)",
+  it="Lezione intera ({count} carte)", nl="Hele les ({count} kaarten)")
+
+s("teacherLengthShort", "Console: play only the first few cards",
+  ph={"count": "num"},
+  fr="Les {count} premi\u00e8res cartes", en="First {count} cards",
+  ar="أول {count} بطاقات", es="Las primeras {count} cartas",
+  pt="As primeiras {count} cartas", de="Die ersten {count} Karten",
+  tr="\u0130lk {count} kart", id="{count} kartu pertama",
+  ur="پہلے {count} کارڈ", ms="{count} kad pertama",
+  it="Le prime {count} carte", nl="De eerste {count} kaarten")
+
+s("teacherShuffle", "Console: draw the lesson's cards in a fresh order",
+  fr="M\u00e9langer l\u2019ordre des cartes", en="Shuffle the card order",
+  ar="خلط ترتيب البطاقات", es="Mezclar el orden de las cartas",
+  pt="Baralhar a ordem das cartas", de="Kartenreihenfolge mischen",
+  tr="Kart s\u0131ras\u0131n\u0131 kar\u0131\u015ft\u0131r", id="Acak urutan kartu",
+  ur="کارڈوں کی ترتیب بدلیں", ms="Kocok susunan kad",
+  it="Mescola l\u2019ordine delle carte", nl="Kaartvolgorde schudden")
+
+s("teacherShuffleHint", "Console: why shuffling matters on a second run",
+  fr="Une classe qui rejoue la m\u00eame le\u00e7on ne r\u00e9pond plus de m\u00e9moire.",
+  en="A class replaying the same lesson no longer answers from memory.",
+  ar="الصف الذي يعيد الدرس نفسه لن يجيب من الذاكرة.",
+  es="Una clase que repite la misma lecci\u00f3n ya no responde de memoria.",
+  pt="Uma turma que repete a mesma li\u00e7\u00e3o deixa de responder de mem\u00f3ria.",
+  de="Eine Klasse, die dieselbe Lektion wiederholt, antwortet nicht mehr auswendig.",
+  tr="Ayn\u0131 dersi tekrar oynayan bir s\u0131n\u0131f art\u0131k ezberden cevaplamaz.",
+  id="Kelas yang mengulang pelajaran yang sama tidak lagi menjawab dari ingatan.",
+  ur="وہی سبق دوبارہ کھیلنے والی کلاس اب یاد سے جواب نہیں دے گی۔",
+  ms="Kelas yang mengulang pelajaran yang sama tidak lagi menjawab daripada ingatan.",
+  it="Una classe che rigioca la stessa lezione non risponde pi\u00f9 a memoria.",
+  nl="Een klas die dezelfde les opnieuw speelt, antwoordt niet meer uit het hoofd.")
+
+s("classroomScanToJoin", "Projected board: what the QR code is for",
+  fr="Scannez, ou entrez le code", en="Scan it, or type the code",
+  ar="امسح الرمز، أو أدخل الكود", es="Esc\u00e1nealo o escribe el c\u00f3digo",
+  pt="Digitalize ou introduza o c\u00f3digo", de="Scannen \u2014 oder Code eingeben",
+  tr="Taray\u0131n ya da kodu girin", id="Pindai, atau masukkan kode",
+  ur="اسکین کریں، یا کوڈ درج کریں", ms="Imbas, atau taip kod",
+  it="Inquadra il codice, o digitalo", nl="Scan het, of typ de code")
+
+s("classroomRanking", "Projected board: the individual ranking",
+  fr="Classement", en="Ranking", ar="الترتيب", es="Clasificaci\u00f3n",
+  pt="Classifica\u00e7\u00e3o", de="Rangliste", tr="S\u0131ralama",
+  id="Peringkat", ur="درجہ بندی", ms="Kedudukan", it="Classifica",
+  nl="Klassement")
+
+s("classroomPointsCount", "Projected board: a pupil's right answers",
+  ph={"count": "num"},
+  fr="{count} pts", en="{count} pts", ar="{count} نقطة", es="{count} pts",
+  pt="{count} pts", de="{count} Pkt", tr="{count} puan", id="{count} poin",
+  ur="{count} پوائنٹ", ms="{count} mata", it="{count} pt", nl="{count} ptn")
+
 s("teacherTeams", "Console: how many teams the class is split into",
   ph={"count": "num"},
   fr="{count} équipes", en="{count} teams", ar="{count} فرق",

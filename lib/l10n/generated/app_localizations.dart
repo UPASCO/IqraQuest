@@ -2284,6 +2284,96 @@ abstract class AppLocalizations {
   /// **'Choose the lesson'**
   String get teacherChooseLesson;
 
+  /// Console: how the room keeps score
+  ///
+  /// In en, this message translates to:
+  /// **'How points are counted'**
+  String get teacherScoringMode;
+
+  /// Console: the team mode
+  ///
+  /// In en, this message translates to:
+  /// **'By teams'**
+  String get teacherScoringTeams;
+
+  /// Console: the individual ranking mode
+  ///
+  /// In en, this message translates to:
+  /// **'Individual ranking'**
+  String get teacherScoringIndividual;
+
+  /// Console: what the individual mode puts on the wall
+  ///
+  /// In en, this message translates to:
+  /// **'Every first name is ranked on the board. A ranking shows the first, but also the last, in front of the whole class.'**
+  String get teacherScoringIndividualHint;
+
+  /// Console: seconds allowed per question
+  ///
+  /// In en, this message translates to:
+  /// **'Timer'**
+  String get teacherTimer;
+
+  /// Console: no timer, the teacher reveals by hand
+  ///
+  /// In en, this message translates to:
+  /// **'None — I reveal by hand'**
+  String get teacherTimerNone;
+
+  /// Console: a timer of so many seconds
+  ///
+  /// In en, this message translates to:
+  /// **'{seconds} seconds'**
+  String teacherTimerSeconds(num seconds);
+
+  /// Console: how many cards of the lesson to play
+  ///
+  /// In en, this message translates to:
+  /// **'Length'**
+  String get teacherLength;
+
+  /// Console: play the whole lesson
+  ///
+  /// In en, this message translates to:
+  /// **'Whole lesson ({count} cards)'**
+  String teacherLengthAll(num count);
+
+  /// Console: play only the first few cards
+  ///
+  /// In en, this message translates to:
+  /// **'First {count} cards'**
+  String teacherLengthShort(num count);
+
+  /// Console: draw the lesson's cards in a fresh order
+  ///
+  /// In en, this message translates to:
+  /// **'Shuffle the card order'**
+  String get teacherShuffle;
+
+  /// Console: why shuffling matters on a second run
+  ///
+  /// In en, this message translates to:
+  /// **'A class replaying the same lesson no longer answers from memory.'**
+  String get teacherShuffleHint;
+
+  /// Projected board: what the QR code is for
+  ///
+  /// In en, this message translates to:
+  /// **'Scan it, or type the code'**
+  String get classroomScanToJoin;
+
+  /// Projected board: the individual ranking
+  ///
+  /// In en, this message translates to:
+  /// **'Ranking'**
+  String get classroomRanking;
+
+  /// Projected board: a pupil's right answers
+  ///
+  /// In en, this message translates to:
+  /// **'{count} pts'**
+  String classroomPointsCount(num count);
+
   /// Console: how many teams the class is split into
   ///
   /// In en, this message translates to:

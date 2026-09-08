@@ -204,6 +204,26 @@ secrets de la fonction.** Elle ne va ni dans le dépôt, ni dans l'app, ni
 dans un `--dart-define` : c'est la seule clé capable d'écrire dans
 `licences`, et la seule qui contourne RLS.
 
+## Ce que l'enseignant règle avant d'ouvrir
+
+| réglage | valeurs | ce que ça change |
+|---|---|---|
+| Leçon | thème + niveau | les cartes de la séance |
+| Comptage | **par équipes** (défaut) ou **individuel** | équipes : 2 à 4 chevaux, la bonne réponse de chaque enfant pousse le sien. Individuel : chaque prénom est classé au tableau |
+| Chronomètre | aucun (défaut), 20 à 90 s | zéro = l'enseignant révèle à la main ; une classe n'est pas un tournoi |
+| Longueur | leçon entière, 5 ou 8 cartes | une demi-heure ou dix minutes de fin de cours |
+| Mélanger | oui / non | une classe qui rejoue la même leçon ne répond plus de mémoire |
+| Équipes | 2 à 4 | en mode équipes seulement |
+| Langue du tableau | 12 langues | celle du mur ; chaque élève garde la sienne sur son appareil |
+
+Longueur et mélange sont décidés par la console : le serveur ne reçoit
+qu'une liste d'identifiants de cartes, dans l'ordre voulu.
+
+Le mode individuel est le seul cas où un prénom voyage avec un score.
+`board_state` ne renvoie `pupilScores` que si `scoring_mode = 'individual'` ;
+en mode équipes, ce tableau est vide côté serveur, pas seulement masqué
+côté écran.
+
 ## Le tableau projeté
 
 `board_state(code)` est tout ce que le mur consomme : la phase, l'index
@@ -212,6 +232,12 @@ deux compteurs par question — combien de réponses reçues, combien de
 bonnes. Des nombres, jamais un prénom en face d'une réponse : c'est ce
 qui permet de fermer la séance sur « à revoir ensemble » sans désigner
 un enfant devant sa classe.
+
+Le vestibule affiche le code **et** un QR code qui porte
+`https://ecole.iqraquest.org/#/classroom?code=<CODE>` : les grands
+scannent, les autres tapent les six caractères, qui restent au mur toute
+la séance. Comme l'application se compile aussi pour le web, un
+Chromebook ou une tablette d'école rejoint sans rien installer.
 
 L'écran vit dans l'application elle-même, à l'adresse
 `/classroom/board/<CODE>` — en web pour un vidéoprojecteur, ou sur la

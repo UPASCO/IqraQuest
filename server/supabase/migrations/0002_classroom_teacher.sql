@@ -62,7 +62,8 @@ create or replace function public.open_session(
   p_team_count int default 3,
   p_board_language text default 'fr',
   p_seconds_per_question int default 0,
-  p_keep_individual_scores bool default false
+  p_keep_individual_scores bool default false,
+  p_scoring_mode text default 'teams'
 )
 returns jsonb
 language plpgsql
@@ -101,11 +102,12 @@ begin
 
   insert into public.sessions (
     code, licence_id, lesson_id, board_language, team_count,
-    question_ids, seconds_per_question, keep_individual_scores
+    question_ids, seconds_per_question, keep_individual_scores, scoring_mode
   ) values (
     public.new_session_code(), l.id, p_lesson_id, p_board_language,
     greatest(2, least(4, p_team_count)), p_question_ids,
-    greatest(0, least(180, p_seconds_per_question)), p_keep_individual_scores
+    greatest(0, least(180, p_seconds_per_question)), p_keep_individual_scores,
+    case when p_scoring_mode = 'individual' then 'individual' else 'teams' end
   ) returning * into s;
 
   return jsonb_build_object('sessionId', s.id, 'code', s.code);
@@ -255,12 +257,12 @@ end;
 $$;
 
 grant execute on function public.my_licence() to authenticated;
-grant execute on function public.open_session(text, text[], int, text, int, bool) to authenticated;
+grant execute on function public.open_session(text, text[], int, text, int, bool, text) to authenticated;
 grant execute on function public.advance_session(uuid, text) to authenticated;
 grant execute on function public.close_session(uuid) to authenticated;
 
 revoke all on function public.my_licence() from anon;
-revoke all on function public.open_session(text, text[], int, text, int, bool) from anon;
+revoke all on function public.open_session(text, text[], int, text, int, bool, text) from anon;
 revoke all on function public.advance_session(uuid, text) from anon;
 revoke all on function public.close_session(uuid) from anon;
 

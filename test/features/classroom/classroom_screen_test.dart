@@ -122,6 +122,71 @@ void main() {
     );
   });
 
+  testWidgets('a scanned QR fills the code in, leaving only the first name', (
+    tester,
+  ) async {
+    SharedPreferences.setMockInitialValues({});
+    final storage = await LocalStorageService.create();
+    final room = FakeClassroomGateway(random: Random(11));
+    final bank = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final code = room.openSession(
+      lessonId: 'piliers',
+      questionIds: [bank!.first.id],
+    );
+
+    tester.view.physicalSize = const Size(420, 900);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          localStorageProvider.overrideWithValue(storage),
+          settingsServiceProvider.overrideWithValue(SettingsService(storage)),
+          entitlementServiceProvider.overrideWithValue(_MemoryEntitlements()),
+          progressServiceProvider.overrideWithValue(ProgressService(storage)),
+          gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
+          legacyGameMigrationServiceProvider.overrideWithValue(
+            LegacyGameMigrationService(storage),
+          ),
+          questionRepositoryProvider.overrideWithValue(QuestionRepository()),
+          questionPoolProvider.overrideWith((ref) => bank),
+          purchaseServiceProvider.overrideWith((ref) => PurchaseService()),
+          classroomGatewayProvider.overrideWithValue(room),
+          initialSettingsProvider.overrideWithValue(const AppSettings()),
+          initialPremiumProvider.overrideWithValue(false),
+          appRouterProvider.overrideWithValue(
+            buildAppRouter(
+              initialLocation: '/classroom?code=${code.toLowerCase()}',
+            ),
+          ),
+        ],
+        child: const IqraQuestApp(),
+      ),
+    );
+    await settle(tester);
+
+    expect(
+      tester
+          .widget<TextField>(find.byKey(const Key('classroom-code')))
+          .controller
+          ?.text,
+      code,
+      reason: 'read off the QR, in the shape the room writes codes',
+    );
+
+    // Only the first name is left to type, and the room takes it.
+    await tester.enterText(
+      find.byKey(const Key('classroom-nickname')),
+      'Amina',
+    );
+    await settle(tester);
+    await tester.tap(find.byKey(const Key('classroom-join')));
+    await settle(tester);
+    expect(find.byKey(const Key('classroom-waiting')), findsOneWidget);
+  });
+
   testWidgets('a wrong code is said plainly, and the form stays', (
     tester,
   ) async {

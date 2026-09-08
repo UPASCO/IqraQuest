@@ -1323,6 +1323,61 @@ class AppLocalizationsUr extends AppLocalizations {
   String get teacherChooseLesson => 'سبق منتخب کریں';
 
   @override
+  String get teacherScoringMode => 'پوائنٹس کیسے گنے جائیں';
+
+  @override
+  String get teacherScoringTeams => 'ٹیموں کے حساب سے';
+
+  @override
+  String get teacherScoringIndividual => 'انفرادی درجہ بندی';
+
+  @override
+  String get teacherScoringIndividualHint =>
+      'ہر نام بورڈ پر درجہ بندی کے ساتھ آتا ہے۔ درجہ بندی پہلے کو دکھاتی ہے، اور آخری کو بھی، پوری کلاس کے سامنے۔';
+
+  @override
+  String get teacherTimer => 'ٹائمر';
+
+  @override
+  String get teacherTimerNone => 'کوئی نہیں — میں خود جواب دکھاؤں گا';
+
+  @override
+  String teacherTimerSeconds(num seconds) {
+    return '$seconds سیکنڈ';
+  }
+
+  @override
+  String get teacherLength => 'طوالت';
+
+  @override
+  String teacherLengthAll(num count) {
+    return 'پورا سبق ($count کارڈ)';
+  }
+
+  @override
+  String teacherLengthShort(num count) {
+    return 'پہلے $count کارڈ';
+  }
+
+  @override
+  String get teacherShuffle => 'کارڈوں کی ترتیب بدلیں';
+
+  @override
+  String get teacherShuffleHint =>
+      'وہی سبق دوبارہ کھیلنے والی کلاس اب یاد سے جواب نہیں دے گی۔';
+
+  @override
+  String get classroomScanToJoin => 'اسکین کریں، یا کوڈ درج کریں';
+
+  @override
+  String get classroomRanking => 'درجہ بندی';
+
+  @override
+  String classroomPointsCount(num count) {
+    return '$count پوائنٹ';
+  }
+
+  @override
   String teacherTeams(num count) {
     return '$count ٹیمیں';
   }

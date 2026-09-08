@@ -41,7 +41,13 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
     GoRoute(path: '/daily-challenge', builder: (c, s) => const DailyChallengeScreen()),
     GoRoute(path: '/progress', builder: (c, s) => const ProgressScreen()),
     GoRoute(path: '/tutorial', builder: (c, s) => const TutorialScreen()),
-    GoRoute(path: '/classroom', builder: (c, s) => const ClassroomScreen()),
+    // `?code=G4KEPW` is what a scanned QR carries: the join form opens
+    // with the code already in place.
+    GoRoute(
+      path: '/classroom',
+      builder: (c, s) =>
+          ClassroomScreen(initialCode: s.uri.queryParameters['code']),
+    ),
     // The projector's own page: opened by the teacher's console with the
     // session code, and read by a room full of children who never touch
     // it. `/classroom/board/G4KEPW` on the web build, cast to the TV on

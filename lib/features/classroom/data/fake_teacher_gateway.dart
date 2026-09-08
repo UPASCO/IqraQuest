@@ -1,3 +1,4 @@
+import '../domain/classroom_state.dart';
 import 'teacher_gateway.dart';
 import 'fake_classroom_gateway.dart';
 
@@ -76,6 +77,7 @@ class FakeTeacherGateway implements TeacherGateway {
     String boardLanguage = 'fr',
     int secondsPerQuestion = 0,
     bool keepIndividualScores = false,
+    ClassroomScoring scoring = ClassroomScoring.teams,
   }) async {
     if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
     final licence = _licence;
@@ -99,6 +101,7 @@ class FakeTeacherGateway implements TeacherGateway {
       teamCount: teamCount,
       boardLanguage: boardLanguage,
       secondsPerQuestion: secondsPerQuestion,
+      scoring: scoring,
     );
     final sessionId = 's_${codeOf.length}_$code';
     codeOf[sessionId] = code;

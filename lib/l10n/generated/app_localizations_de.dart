@@ -1335,6 +1335,61 @@ class AppLocalizationsDe extends AppLocalizations {
   String get teacherChooseLesson => 'Lektion wählen';
 
   @override
+  String get teacherScoringMode => 'Wie gezählt wird';
+
+  @override
+  String get teacherScoringTeams => 'Nach Teams';
+
+  @override
+  String get teacherScoringIndividual => 'Einzelwertung';
+
+  @override
+  String get teacherScoringIndividualHint =>
+      'Jeder Vorname erscheint in der Rangliste an der Tafel. Eine Rangliste zeigt den Ersten — und auch den Letzten, vor der ganzen Klasse.';
+
+  @override
+  String get teacherTimer => 'Zeitnehmer';
+
+  @override
+  String get teacherTimerNone => 'Keiner — ich decke selbst auf';
+
+  @override
+  String teacherTimerSeconds(num seconds) {
+    return '$seconds Sekunden';
+  }
+
+  @override
+  String get teacherLength => 'Länge';
+
+  @override
+  String teacherLengthAll(num count) {
+    return 'Ganze Lektion ($count Karten)';
+  }
+
+  @override
+  String teacherLengthShort(num count) {
+    return 'Die ersten $count Karten';
+  }
+
+  @override
+  String get teacherShuffle => 'Kartenreihenfolge mischen';
+
+  @override
+  String get teacherShuffleHint =>
+      'Eine Klasse, die dieselbe Lektion wiederholt, antwortet nicht mehr auswendig.';
+
+  @override
+  String get classroomScanToJoin => 'Scannen — oder Code eingeben';
+
+  @override
+  String get classroomRanking => 'Rangliste';
+
+  @override
+  String classroomPointsCount(num count) {
+    return '$count Pkt';
+  }
+
+  @override
   String teacherTeams(num count) {
     return '$count Teams';
   }

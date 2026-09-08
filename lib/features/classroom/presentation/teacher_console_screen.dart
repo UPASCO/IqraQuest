@@ -48,6 +48,10 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
   QuestionDifficulty _difficulty = QuestionDifficulty.beginner;
   Lesson? _lesson;
   int _teamCount = 3;
+  ClassroomScoring _scoring = ClassroomScoring.teams;
+  int _secondsPerQuestion = 0;
+  int? _cardCount;
+  bool _shuffle = false;
 
   /// The board follows the console's own language until a teacher says
   /// otherwise — a French classroom projects in French without touching
@@ -130,6 +134,10 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                 difficulty: _difficulty,
                 lesson: _lesson,
                 teamCount: _teamCount,
+                scoring: _scoring,
+                secondsPerQuestion: _secondsPerQuestion,
+                cardCount: _cardCount,
+                shuffle: _shuffle,
                 boardLanguage: _boardLanguage ?? ref.watch(effectiveLanguageProvider),
                 onCategory: (v) => setState(() {
                   _category = v;
@@ -141,6 +149,10 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                 }),
                 onLesson: (v) => setState(() => _lesson = v),
                 onTeamCount: (v) => setState(() => _teamCount = v),
+                onScoring: (v) => setState(() => _scoring = v),
+                onSeconds: (v) => setState(() => _secondsPerQuestion = v),
+                onCardCount: (v) => setState(() => _cardCount = v),
+                onShuffle: (v) => setState(() => _shuffle = v),
                 onBoardLanguage: (v) => setState(() => _boardLanguage = v),
                 // The lesson comes back from the picker: the list shows
                 // its first entry until a teacher touches it, and that
@@ -150,6 +162,10 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                     .openSession(
                       lesson: lesson,
                       teamCount: _teamCount,
+                      scoring: _scoring,
+                      secondsPerQuestion: _secondsPerQuestion,
+                      cardCount: _cardCount,
+                      shuffle: _shuffle,
                       boardLanguage:
                           _boardLanguage ??
                           ref.read(effectiveLanguageProvider),
@@ -306,11 +322,19 @@ class _Setup extends ConsumerWidget {
     required this.difficulty,
     required this.lesson,
     required this.teamCount,
+    required this.scoring,
+    required this.secondsPerQuestion,
+    required this.cardCount,
+    required this.shuffle,
     required this.boardLanguage,
     required this.onCategory,
     required this.onDifficulty,
     required this.onLesson,
     required this.onTeamCount,
+    required this.onScoring,
+    required this.onSeconds,
+    required this.onCardCount,
+    required this.onShuffle,
     required this.onBoardLanguage,
     required this.onOpen,
   });
@@ -321,11 +345,19 @@ class _Setup extends ConsumerWidget {
   final QuestionDifficulty difficulty;
   final Lesson? lesson;
   final int teamCount;
+  final ClassroomScoring scoring;
+  final int secondsPerQuestion;
+  final int? cardCount;
+  final bool shuffle;
   final String boardLanguage;
   final ValueChanged<QuestionCategory> onCategory;
   final ValueChanged<QuestionDifficulty> onDifficulty;
   final ValueChanged<Lesson> onLesson;
   final ValueChanged<int> onTeamCount;
+  final ValueChanged<ClassroomScoring> onScoring;
+  final ValueChanged<int> onSeconds;
+  final ValueChanged<int?> onCardCount;
+  final ValueChanged<bool> onShuffle;
   final ValueChanged<String> onBoardLanguage;
   final ValueChanged<Lesson> onOpen;
 
@@ -431,6 +463,92 @@ class _Setup extends ConsumerWidget {
           },
         ),
         const SizedBox(height: 18),
+        DropdownButtonFormField<ClassroomScoring>(
+          key: const Key('teacher-scoring'),
+          isExpanded: true,
+          initialValue: scoring,
+          decoration: InputDecoration(
+            labelText: l10n.teacherScoringMode,
+            border: const OutlineInputBorder(),
+            helperMaxLines: 3,
+            helperText: scoring == ClassroomScoring.individual
+                ? l10n.teacherScoringIndividualHint
+                : null,
+          ),
+          items: [
+            DropdownMenuItem(
+              value: ClassroomScoring.teams,
+              child: Text(l10n.teacherScoringTeams),
+            ),
+            DropdownMenuItem(
+              value: ClassroomScoring.individual,
+              child: Text(l10n.teacherScoringIndividual),
+            ),
+          ],
+          onChanged: (v) => v == null ? null : onScoring(v),
+        ),
+        const SizedBox(height: 12),
+        DropdownButtonFormField<int>(
+          key: const Key('teacher-timer'),
+          isExpanded: true,
+          initialValue: secondsPerQuestion,
+          decoration: InputDecoration(
+            labelText: l10n.teacherTimer,
+            border: const OutlineInputBorder(),
+          ),
+          items: [
+            DropdownMenuItem(value: 0, child: Text(l10n.teacherTimerNone)),
+            for (final seconds in [20, 30, 45, 60, 90])
+              DropdownMenuItem(
+                value: seconds,
+                child: Text(l10n.teacherTimerSeconds(seconds)),
+              ),
+          ],
+          onChanged: (v) => v == null ? null : onSeconds(v),
+        ),
+        const SizedBox(height: 12),
+        DropdownButtonFormField<int>(
+          key: const Key('teacher-length'),
+          isExpanded: true,
+          initialValue: cardCount ?? 0,
+          decoration: InputDecoration(
+            labelText: l10n.teacherLength,
+            border: const OutlineInputBorder(),
+          ),
+          items: [
+            DropdownMenuItem(
+              value: 0,
+              child: Text(
+                l10n.teacherLengthAll(selected?.questionCount ?? 0),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            for (final n in [5, 8])
+              if ((selected?.questionCount ?? 0) > n)
+                DropdownMenuItem(
+                  value: n,
+                  child: Text(l10n.teacherLengthShort(n)),
+                ),
+          ],
+          onChanged: (v) => onCardCount(v == null || v == 0 ? null : v),
+        ),
+        const SizedBox(height: 4),
+        SwitchListTile.adaptive(
+          key: const Key('teacher-shuffle'),
+          contentPadding: EdgeInsets.zero,
+          value: shuffle,
+          onChanged: onShuffle,
+          title: Text(l10n.teacherShuffle),
+          subtitle: Text(
+            l10n.teacherShuffleHint,
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
+          ),
+        ),
+        if (scoring == ClassroomScoring.teams) ...[
+        const SizedBox(height: 12),
         DropdownButtonFormField<int>(
           key: const Key('teacher-teams'),
           isExpanded: true,
@@ -445,6 +563,7 @@ class _Setup extends ConsumerWidget {
           ],
           onChanged: (v) => v == null ? null : onTeamCount(v),
         ),
+        ],
         const SizedBox(height: 12),
         DropdownButtonFormField<String>(
           key: const Key('teacher-board-language'),

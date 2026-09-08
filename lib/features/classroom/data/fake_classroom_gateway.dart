@@ -32,6 +32,7 @@ class FakeClassroomGateway implements ClassroomGateway {
     int teamCount = 3,
     String boardLanguage = 'fr',
     int secondsPerQuestion = 0,
+    ClassroomScoring scoring = ClassroomScoring.teams,
   }) {
     final code = _newCode();
     _sessions[code] = _Session(
@@ -42,6 +43,7 @@ class FakeClassroomGateway implements ClassroomGateway {
       teamCount: teamCount.clamp(2, 4),
       boardLanguage: boardLanguage,
       secondsPerQuestion: secondsPerQuestion.clamp(0, 180),
+      scoring: scoring,
     );
     return code;
   }
@@ -259,6 +261,7 @@ class _Session {
     required this.teamCount,
     required this.boardLanguage,
     required this.secondsPerQuestion,
+    required this.scoring,
   });
 
   final String id;
@@ -268,6 +271,7 @@ class _Session {
   final int teamCount;
   final String boardLanguage;
   final int secondsPerQuestion;
+  final ClassroomScoring scoring;
 
   ClassroomPhase phase = ClassroomPhase.lobby;
   int currentIndex = 0;
@@ -312,7 +316,38 @@ class _Session {
       },
       askedAt: askedAt,
       secondsPerQuestion: secondsPerQuestion,
+      scoring: scoring,
+      // Named scores travel only when the teacher asked for them: in
+      // the team mode the wall carries no name against a score at all.
+      pupilScores: scoring == ClassroomScoring.individual
+          ? _pupilScores()
+          : const [],
     );
+  }
+
+  /// Every pupil's running score, best first, ties in joining order so
+  /// the wall does not reshuffle between two identical frames.
+  List<ClassroomPupilScore> _pupilScores() {
+    final scores = <ClassroomPupilScore>[];
+    for (final entry in participants.entries) {
+      scores.add(
+        ClassroomPupilScore(
+          nickname: entry.value.nickname,
+          team: entry.value.team,
+          correct: answers.values
+              .where((a) => a.token == entry.key && a.correct)
+              .length,
+        ),
+      );
+    }
+    final order = [for (final p in participants.values) p.nickname];
+    scores.sort((a, b) {
+      final byScore = b.correct.compareTo(a.correct);
+      return byScore != 0
+          ? byScore
+          : order.indexOf(a.nickname).compareTo(order.indexOf(b.nickname));
+    });
+    return scores;
   }
 }
 

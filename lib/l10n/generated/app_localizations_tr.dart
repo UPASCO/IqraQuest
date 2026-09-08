@@ -1309,6 +1309,61 @@ class AppLocalizationsTr extends AppLocalizations {
   String get teacherChooseLesson => 'Dersi seçin';
 
   @override
+  String get teacherScoringMode => 'Puanlar nasıl sayılır';
+
+  @override
+  String get teacherScoringTeams => 'Takım halinde';
+
+  @override
+  String get teacherScoringIndividual => 'Bireysel sıralama';
+
+  @override
+  String get teacherScoringIndividualHint =>
+      'Her ad tahtada sıralanır. Bir sıralama birinciyi gösterir, ama sonuncuyu da, tüm sınıfın önünde.';
+
+  @override
+  String get teacherTimer => 'Kronometre';
+
+  @override
+  String get teacherTimerNone => 'Yok — cevabı ben açarım';
+
+  @override
+  String teacherTimerSeconds(num seconds) {
+    return '$seconds saniye';
+  }
+
+  @override
+  String get teacherLength => 'Uzunluk';
+
+  @override
+  String teacherLengthAll(num count) {
+    return 'Tüm ders ($count kart)';
+  }
+
+  @override
+  String teacherLengthShort(num count) {
+    return 'İlk $count kart';
+  }
+
+  @override
+  String get teacherShuffle => 'Kart sırasını karıştır';
+
+  @override
+  String get teacherShuffleHint =>
+      'Aynı dersi tekrar oynayan bir sınıf artık ezberden cevaplamaz.';
+
+  @override
+  String get classroomScanToJoin => 'Tarayın ya da kodu girin';
+
+  @override
+  String get classroomRanking => 'Sıralama';
+
+  @override
+  String classroomPointsCount(num count) {
+    return '$count puan';
+  }
+
+  @override
   String teacherTeams(num count) {
     return '$count takım';
   }

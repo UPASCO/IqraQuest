@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import '../domain/classroom_state.dart';
+
 /// What can stop a teacher, said in terms they can act on.
 enum TeacherError {
   /// The magic link has expired, or this browser was never signed in.
@@ -103,6 +105,7 @@ abstract class TeacherGateway {
     String boardLanguage,
     int secondsPerQuestion,
     bool keepIndividualScores,
+    ClassroomScoring scoring,
   });
 
   Future<void> advance(String sessionId, TeacherAction action);

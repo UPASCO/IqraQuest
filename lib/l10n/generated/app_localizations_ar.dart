@@ -1339,6 +1339,61 @@ class AppLocalizationsAr extends AppLocalizations {
   String get teacherChooseLesson => 'اختر الدرس';
 
   @override
+  String get teacherScoringMode => 'طريقة احتساب النقاط';
+
+  @override
+  String get teacherScoringTeams => 'بالفرق';
+
+  @override
+  String get teacherScoringIndividual => 'ترتيب فردي';
+
+  @override
+  String get teacherScoringIndividualHint =>
+      'يظهر كل اسم مرتّبًا على التابلوه. الترتيب يُظهر الأول، ويُظهر الأخير أيضًا، أمام الصف كله.';
+
+  @override
+  String get teacherTimer => 'المؤقّت';
+
+  @override
+  String get teacherTimerNone => 'بلا مؤقّت — أكشف الإجابة بنفسي';
+
+  @override
+  String teacherTimerSeconds(num seconds) {
+    return '$seconds ثانية';
+  }
+
+  @override
+  String get teacherLength => 'طول الحصة';
+
+  @override
+  String teacherLengthAll(num count) {
+    return 'الدرس كاملًا ($count بطاقة)';
+  }
+
+  @override
+  String teacherLengthShort(num count) {
+    return 'أول $count بطاقات';
+  }
+
+  @override
+  String get teacherShuffle => 'خلط ترتيب البطاقات';
+
+  @override
+  String get teacherShuffleHint =>
+      'الصف الذي يعيد الدرس نفسه لن يجيب من الذاكرة.';
+
+  @override
+  String get classroomScanToJoin => 'امسح الرمز، أو أدخل الكود';
+
+  @override
+  String get classroomRanking => 'الترتيب';
+
+  @override
+  String classroomPointsCount(num count) {
+    return '$count نقطة';
+  }
+
+  @override
   String teacherTeams(num count) {
     return '$count فرق';
   }

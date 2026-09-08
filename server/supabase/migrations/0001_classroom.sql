@@ -80,6 +80,13 @@ create table public.sessions (
   seconds_per_question int not null default 0 check (seconds_per_question between 0 and 180),
   -- Faux par défaut : le rapport ne garde alors que des agrégats.
   keep_individual_scores bool not null default false,
+  -- Comment la salle compte les points. 'teams' : deux à quatre chevaux,
+  -- et la bonne réponse de chaque enfant en pousse un. 'individual' :
+  -- chaque élève a sa ligne au tableau — l'enseignant le demande
+  -- expressément, car un classement qui montre le premier montre aussi
+  -- le dernier, devant tout le monde.
+  scoring_mode text not null default 'teams'
+    check (scoring_mode in ('teams', 'individual')),
   opened_at timestamptz not null default now(),
   closed_at timestamptz
 );
@@ -399,6 +406,25 @@ begin
       select count(*) from public.answers a
       where a.session_id = s.id and a.question_index = s.current_index
     ),
+    'scoring', s.scoring_mode,
+    -- Les prénoms ne portent un score que si l'enseignant a choisi le
+    -- mode individuel. En mode équipes, ce tableau est vide : le mur ne
+    -- montre alors aucun nom en face d'un score.
+    'pupilScores', case when s.scoring_mode = 'individual' then coalesce((
+      select jsonb_agg(jsonb_build_object(
+               'nickname', x.nickname,
+               'team', x.team,
+               'correct', x.correct
+             ) order by x.correct desc, x.joined_at)
+      from (
+        select pp.nickname, pp.team, pp.joined_at,
+               count(a.*) filter (where a.correct) as correct
+        from public.participants pp
+        left join public.answers a on a.participant_id = pp.id
+        where pp.session_id = s.id
+        group by pp.id, pp.nickname, pp.team, pp.joined_at
+      ) x
+    ), '[]'::jsonb) else '[]'::jsonb end,
     -- De quoi fermer la séance sur les cartes que la classe a manquées,
     -- sans jamais nommer personne : deux compteurs par question, l'un
     -- des réponses reçues, l'autre des bonnes.

@@ -1330,6 +1330,61 @@ class AppLocalizationsNl extends AppLocalizations {
   String get teacherChooseLesson => 'Kies de les';
 
   @override
+  String get teacherScoringMode => 'Hoe punten tellen';
+
+  @override
+  String get teacherScoringTeams => 'Per team';
+
+  @override
+  String get teacherScoringIndividual => 'Individueel klassement';
+
+  @override
+  String get teacherScoringIndividualHint =>
+      'Elke voornaam komt geklasseerd op het bord. Een klassement toont de eerste, maar ook de laatste, voor de hele klas.';
+
+  @override
+  String get teacherTimer => 'Timer';
+
+  @override
+  String get teacherTimerNone => 'Geen — ik onthul zelf';
+
+  @override
+  String teacherTimerSeconds(num seconds) {
+    return '$seconds seconden';
+  }
+
+  @override
+  String get teacherLength => 'Lengte';
+
+  @override
+  String teacherLengthAll(num count) {
+    return 'Hele les ($count kaarten)';
+  }
+
+  @override
+  String teacherLengthShort(num count) {
+    return 'De eerste $count kaarten';
+  }
+
+  @override
+  String get teacherShuffle => 'Kaartvolgorde schudden';
+
+  @override
+  String get teacherShuffleHint =>
+      'Een klas die dezelfde les opnieuw speelt, antwoordt niet meer uit het hoofd.';
+
+  @override
+  String get classroomScanToJoin => 'Scan het, of typ de code';
+
+  @override
+  String get classroomRanking => 'Klassement';
+
+  @override
+  String classroomPointsCount(num count) {
+    return '$count ptn';
+  }
+
+  @override
   String teacherTeams(num count) {
     return '$count teams';
   }

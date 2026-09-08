@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/teacher_gateway.dart';
+import '../domain/classroom_state.dart';
 import '../domain/lesson.dart';
 
 /// Where the console is in a teacher's afternoon.
@@ -161,22 +163,39 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
     }
   }
 
+  /// Opens the room for one lesson.
+  ///
+  /// [cardCount] cuts the lesson short for a half-period; [shuffle]
+  /// draws the cards in a fresh order, so the same class playing the
+  /// same lesson next week does not answer from memory of the order.
+  /// Both are decided here rather than on the server: the room only
+  /// ever receives a list of card ids.
   Future<void> openSession({
     required Lesson lesson,
     int teamCount = 3,
     String boardLanguage = 'fr',
     int secondsPerQuestion = 0,
     bool keepIndividualScores = false,
+    ClassroomScoring scoring = ClassroomScoring.teams,
+    int? cardCount,
+    bool shuffle = false,
+    Random? random,
   }) async {
     state = state.copyWith(busy: true, error: null);
     try {
+      final cards = [...lesson.questionIds];
+      if (shuffle) cards.shuffle(random ?? Random());
+      final chosen = cardCount == null || cardCount >= cards.length
+          ? cards
+          : cards.take(cardCount).toList();
       final opened = await gateway.openSession(
         lessonId: lesson.id,
-        questionIds: lesson.questionIds,
+        questionIds: chosen,
         teamCount: teamCount,
         boardLanguage: boardLanguage,
         secondsPerQuestion: secondsPerQuestion,
         keepIndividualScores: keepIndividualScores,
+        scoring: scoring,
       );
       state = state.copyWith(
         stage: ConsoleStage.running,
