@@ -7,7 +7,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app/app.dart';
 import 'app/providers.dart';
 import 'features/classroom/application/classroom_controller.dart';
+import 'features/classroom/data/classroom_config.dart';
+import 'features/classroom/data/classroom_gateway.dart';
 import 'features/classroom/data/fake_classroom_gateway.dart';
+import 'features/classroom/data/supabase_classroom_gateway.dart';
 import 'app/router.dart';
 import 'services/entitlement_service.dart';
 import 'services/game_save_service.dart';
@@ -19,6 +22,19 @@ import 'services/question_repository.dart';
 import 'services/settings_service.dart';
 
 const _onboardingCompleteKey = 'iqraquest.onboarding.complete';
+
+/// The classroom's line to the outside.
+///
+/// With a Supabase project compiled in (`--dart-define=SUPABASE_URL=...`,
+/// see server/README.md) this is the real room. Without one it is an
+/// empty room in memory: the screen still opens and says honestly that
+/// no class can be reached, rather than hiding a feature that is coming.
+ClassroomGateway _classroomGateway() => ClassroomConfig.isConfigured
+    ? SupabaseClassroomGateway(
+        url: ClassroomConfig.url,
+        anonKey: ClassroomConfig.anonKey,
+      )
+    : FakeClassroomGateway();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,11 +86,7 @@ Future<void> main() async {
     ProviderScope(
       overrides: [
         localStorageProvider.overrideWithValue(storage),
-        // Until a Supabase project is configured (server/README.md), the
-        // classroom talks to an empty room in memory: the screen opens
-        // and says honestly that no class can be reached, rather than
-        // hiding a feature that is coming.
-        classroomGatewayProvider.overrideWithValue(FakeClassroomGateway()),
+        classroomGatewayProvider.overrideWithValue(_classroomGateway()),
         settingsServiceProvider.overrideWithValue(settingsService),
         entitlementServiceProvider.overrideWithValue(entitlementService),
         progressServiceProvider.overrideWithValue(progressService),

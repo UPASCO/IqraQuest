@@ -334,6 +334,15 @@ begin
     values (s.id, p.id, p_question_index, p_choice, is_correct)
     on conflict do nothing;
 
+  -- C'est la première réponse qui compte, pas la dernière : un renvoi
+  -- sur un réseau qui traîne ne doit pas laisser un élève changer d'avis,
+  -- ni s'entendre dire « juste » quand la salle a enregistré « faux ».
+  select a.correct into is_correct
+    from public.answers a
+    where a.session_id = s.id
+      and a.participant_id = p.id
+      and a.question_index = p_question_index;
+
   return jsonb_build_object('recorded', true, 'correct', is_correct);
 end;
 $$;
