@@ -243,7 +243,7 @@ double _pieceSize(WidgetTester tester) {
 
 /// Picks horse [horse] of [playerId] up and sets it down so that the
 /// horse (drawn above the fingertip) lands on [target].
-Future<void> _dragHorseTo(
+Future<String> _dragHorseTo(
   WidgetTester tester,
   String playerId,
   int horse,
@@ -252,6 +252,7 @@ Future<void> _dragHorseTo(
   final piece = find.byKey(ValueKey('$playerId:$horse'));
   expect(piece, findsOneWidget);
   final from = tester.getCenter(piece);
+  final pieceRect = tester.getRect(piece);
   final fingerTarget = target + Offset(0, _pieceSize(tester) * 0.95);
   final gesture = await tester.startGesture(from);
   // A drag only begins once the finger has travelled 8 px (a tap must
@@ -270,6 +271,12 @@ Future<void> _dragHorseTo(
   }
   await gesture.up();
   await tester.pump();
+  // Rendu lisible seulement quand quelque chose a échoué : la géométrie
+  // exacte du geste, pour que la prochaine intermittence se lise sur la
+  // trace au lieu d'être rejouée soixante fois.
+  return 'from $from (rect $pieceRect), lift $lift, '
+      'fingerTarget $fingerTarget, target $target, '
+      'pieceSize ${_pieceSize(tester)}';
 }
 
 void main() {
@@ -374,7 +381,7 @@ void main() {
         final move = container
             .read(gameControllerProvider.notifier)
             .moveFor(0)!;
-        await _dragHorseTo(
+        final gesture = await _dragHorseTo(
           tester,
           pid,
           0,
@@ -384,7 +391,7 @@ void main() {
         expect(
           placed.players[team].horses[0].position,
           move.destination,
-          reason: 'turn $turn: the drop did not ride from $before',
+          reason: 'turn $turn: the drop did not ride from $before — $gesture',
         );
         // Validated by the drop alone: no confirmation control appears.
         expect(find.byKey(const Key('placement-banner')), findsNothing);
@@ -456,7 +463,7 @@ void main() {
           final team = after.currentPlayerIndex;
           final pid = after.currentPlayer.id;
           final move = legal.first;
-          await _dragHorseTo(
+          final gesture = await _dragHorseTo(
             tester,
             pid,
             move.horseIndex,
@@ -474,7 +481,8 @@ void main() {
                 'turn $turn: the horse did not come out — card $card, '
                 'wanted ${move.destination.toJson()}, '
                 'legal ${legal.map((m) => '${m.horseIndex}->${m.destination.toJson()}').toList()}, '
-                'horses ${container.read(gameControllerProvider)!.gameState.players[team].horses.map((h) => h.position.toJson()).toList()}',
+                'horses ${container.read(gameControllerProvider)!.gameState.players[team].horses.map((h) => h.position.toJson()).toList()} — '
+                '$gesture',
           );
           await _pastRide(tester, container);
         }
