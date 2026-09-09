@@ -1857,7 +1857,7 @@
   "@classroomRanking": {
     "description": "Projected board: the individual ranking"
   },
-  "classroomPointsCount": "{count} pts",
+  "classroomPointsCount": "{count, plural, one{{count} pt} other{{count} pts}}",
   "@classroomPointsCount": {
     "description": "Projected board: a pupil's right answers",
     "placeholders": {
@@ -1865,6 +1865,10 @@
         "type": "num"
       }
     }
+  },
+  "teacherTeamsLabel": "Teams",
+  "@teacherTeamsLabel": {
+    "description": "Console: the field that sets how many teams"
   },
   "teacherTeams": "{count} teams",
   "@teacherTeams": {
@@ -1940,7 +1944,7 @@
       }
     }
   },
-  "classroomPupilCount": "{count} pupils",
+  "classroomPupilCount": "{count, plural, one{{count} pupil} other{{count} pupils}}",
   "@classroomPupilCount": {
     "description": "How many pupils are in the room",
     "placeholders": {
@@ -1949,7 +1953,7 @@
       }
     }
   },
-  "classroomSquaresCount": "{count} squares",
+  "classroomSquaresCount": "{count, plural, one{{count} square} other{{count} squares}}",
   "@classroomSquaresCount": {
     "description": "How many squares a team has advanced",
     "placeholders": {

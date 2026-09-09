@@ -2383,8 +2383,14 @@ abstract class AppLocalizations {
   /// Projected board: a pupil's right answers
   ///
   /// In en, this message translates to:
-  /// **'{count} pts'**
+  /// **'{count, plural, one{{count} pt} other{{count} pts}}'**
   String classroomPointsCount(num count);
+
+  /// Console: the field that sets how many teams
+  ///
+  /// In en, this message translates to:
+  /// **'Teams'**
+  String get teacherTeamsLabel;
 
   /// Console: how many teams the class is split into
   ///
@@ -2473,13 +2479,13 @@ abstract class AppLocalizations {
   /// How many pupils are in the room
   ///
   /// In en, this message translates to:
-  /// **'{count} pupils'**
+  /// **'{count, plural, one{{count} pupil} other{{count} pupils}}'**
   String classroomPupilCount(num count);
 
   /// How many squares a team has advanced
   ///
   /// In en, this message translates to:
-  /// **'{count} squares'**
+  /// **'{count, plural, one{{count} square} other{{count} squares}}'**
   String classroomSquaresCount(num count);
 
   /// Projected board: the closing standings

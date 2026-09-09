@@ -3200,9 +3200,23 @@ s("classroomRanking", "Projected board: the individual ranking",
 
 s("classroomPointsCount", "Projected board: a pupil's right answers",
   ph={"count": "num"},
-  fr="{count} pts", en="{count} pts", ar="{count} نقطة", es="{count} pts",
-  pt="{count} pts", de="{count} Pkt", tr="{count} puan", id="{count} poin",
-  ur="{count} پوائنٹ", ms="{count} mata", it="{count} pt", nl="{count} ptn")
+  fr="{count, plural, one{{count} pt} other{{count} pts}}",
+  en="{count, plural, one{{count} pt} other{{count} pts}}",
+  ar="{count, plural, zero{لا نقاط} one{نقطة واحدة} two{نقطتان} few{{count} نقاط} many{{count} نقطة} other{{count} نقطة}}",
+  es="{count, plural, one{{count} pt} other{{count} pts}}",
+  pt="{count, plural, one{{count} pt} other{{count} pts}}",
+  de="{count, plural, other{{count} Pkt}}",
+  tr="{count, plural, other{{count} puan}}",
+  id="{count, plural, other{{count} poin}}",
+  ur="{count, plural, one{{count} پوائنٹ} other{{count} پوائنٹس}}",
+  ms="{count, plural, other{{count} mata}}",
+  it="{count, plural, one{{count} pt} other{{count} pt}}",
+  nl="{count, plural, one{{count} ptn} other{{count} ptn}}")
+
+s("teacherTeamsLabel", "Console: the field that sets how many teams",
+  fr="Équipes", en="Teams", ar="الفرق", es="Equipos", pt="Equipas",
+  de="Teams", tr="Takımlar", id="Tim", ur="ٹیمیں", ms="Pasukan",
+  it="Squadre", nl="Teams")
 
 s("teacherTeams", "Console: how many teams the class is split into",
   ph={"count": "num"},
@@ -3328,17 +3342,33 @@ s("classroomAnsweredCount", "Projected board: how many pupils have answered the 
 
 s("classroomPupilCount", "How many pupils are in the room",
   ph={"count": "num"},
-  fr="{count} élèves", en="{count} pupils", ar="{count} تلميذًا",
-  es="{count} alumnos", pt="{count} alunos", de="{count} Schüler",
-  tr="{count} öğrenci", id="{count} murid", ur="{count} طلبہ",
-  ms="{count} murid", it="{count} alunni", nl="{count} leerlingen")
+  fr="{count, plural, one{{count} élève} other{{count} élèves}}",
+  en="{count, plural, one{{count} pupil} other{{count} pupils}}",
+  ar="{count, plural, zero{لا تلاميذ} one{تلميذ واحد} two{تلميذان} few{{count} تلاميذ} many{{count} تلميذًا} other{{count} تلميذ}}",
+  es="{count, plural, one{{count} alumno} other{{count} alumnos}}",
+  pt="{count, plural, one{{count} aluno} other{{count} alunos}}",
+  de="{count, plural, one{{count} Schüler} other{{count} Schüler}}",
+  tr="{count, plural, other{{count} öğrenci}}",
+  id="{count, plural, other{{count} murid}}",
+  ur="{count, plural, one{{count} طالب علم} other{{count} طلبہ}}",
+  ms="{count, plural, other{{count} murid}}",
+  it="{count, plural, one{{count} alunno} other{{count} alunni}}",
+  nl="{count, plural, one{{count} leerling} other{{count} leerlingen}}")
 
 s("classroomSquaresCount", "How many squares a team has advanced",
   ph={"count": "num"},
-  fr="{count} cases", en="{count} squares", ar="{count} خانة",
-  es="{count} casillas", pt="{count} casas", de="{count} Felder",
-  tr="{count} kare", id="{count} petak", ur="{count} خانے",
-  ms="{count} petak", it="{count} caselle", nl="{count} vakjes")
+  fr="{count, plural, one{{count} case} other{{count} cases}}",
+  en="{count, plural, one{{count} square} other{{count} squares}}",
+  ar="{count, plural, zero{لا خانات} one{خانة واحدة} two{خانتان} few{{count} خانات} many{{count} خانة} other{{count} خانة}}",
+  es="{count, plural, one{{count} casilla} other{{count} casillas}}",
+  pt="{count, plural, one{{count} casa} other{{count} casas}}",
+  de="{count, plural, one{{count} Feld} other{{count} Felder}}",
+  tr="{count, plural, other{{count} kare}}",
+  id="{count, plural, other{{count} petak}}",
+  ur="{count, plural, one{{count} خانہ} other{{count} خانے}}",
+  ms="{count, plural, other{{count} petak}}",
+  it="{count, plural, one{{count} casella} other{{count} caselle}}",
+  nl="{count, plural, one{{count} vakje} other{{count} vakjes}}")
 
 s("classroomPodium", "Projected board: the closing standings",
   fr="Podium", en="Podium", ar="منصة التتويج", es="Podio", pt="Pódio",

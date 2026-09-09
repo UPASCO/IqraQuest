@@ -77,7 +77,16 @@ class _ClassroomScreenState extends ConsumerState<ClassroomScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(l10n.classroomJoin),
+          // « Rejoindre une classe » n'est vrai qu'avant d'entrer, et
+          // ce titre est trop long pour la barre d'un téléphone : il
+          // s'y coupait en « Rejoindre une cla… ». Une fois dans la
+          // salle, le titre devient le code — court, et c'est le seul
+          // renseignement qu'on redemande à un enfant.
+          title: Text(
+            session.stage == PupilStage.out
+                ? l10n.classroomJoin
+                : (session.state?.code ?? l10n.classroomJoin),
+          ),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () =>
@@ -418,6 +427,7 @@ class _Playing extends StatelessWidget {
                 // The right answer appears only when the teacher shows
                 // it — never a second before the rest of the class.
                 right: revealed && i == question.correctAnswerIndex,
+                revealed: revealed,
                 dimmed: answered && session.chosenIndex != i,
                 onTap: answered ? null : () => onAnswer(i),
               ),
@@ -552,6 +562,7 @@ class _AnswerTile extends StatelessWidget {
     required this.text,
     required this.chosen,
     required this.right,
+    required this.revealed,
     required this.dimmed,
     required this.onTap,
   });
@@ -559,23 +570,36 @@ class _AnswerTile extends StatelessWidget {
   final String text;
   final bool chosen;
   final bool right;
+  final bool revealed;
   final bool dimmed;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    // Au moment de la correction, la couleur doit dire la vérité. Un choix
+    // faux mis en avant en vert — la couleur d'accord de l'application —
+    // félicitait l'enfant pour son erreur, et laissait la bonne réponse en
+    // retrait derrière sa coche. Le vert n'appartient donc qu'à la bonne
+    // réponse ; un choix faux, une fois révélé, se signale en rouge.
+    const rightGreen = Color(0xFF1F7A4D);
+    final wrongChoice = chosen && revealed && !right;
     final border = right
-        ? const Color(0xFF1F7A4D)
-        : (chosen ? colors.primary : colors.divider);
+        ? rightGreen
+        : (wrongChoice
+              ? colors.error
+              : (chosen ? colors.primary : colors.divider));
     return Opacity(
-      opacity: dimmed ? 0.5 : 1,
+      // La bonne réponse ne s'efface jamais : c'est elle qu'on est venu voir.
+      opacity: dimmed && !right ? 0.5 : 1,
       child: Material(
         color: right
-            ? const Color(0xFF1F7A4D).withValues(alpha: 0.12)
-            : (chosen
-                  ? colors.primary.withValues(alpha: 0.12)
-                  : colors.surfaceElevated),
+            ? rightGreen.withValues(alpha: 0.12)
+            : (wrongChoice
+                  ? colors.error.withValues(alpha: 0.10)
+                  : (chosen
+                        ? colors.primary.withValues(alpha: 0.12)
+                        : colors.surfaceElevated)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: border, width: chosen || right ? 2 : 1),
@@ -599,7 +623,9 @@ class _AnswerTile extends StatelessWidget {
                     ),
                   ),
                   if (right)
-                    const Icon(Icons.check_circle, color: Color(0xFF1F7A4D)),
+                    const Icon(Icons.check_circle, color: rightGreen)
+                  else if (wrongChoice)
+                    Icon(Icons.cancel_outlined, color: colors.error),
                 ],
               ),
             ),

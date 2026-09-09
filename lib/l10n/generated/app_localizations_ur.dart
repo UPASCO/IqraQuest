@@ -1381,8 +1381,17 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String classroomPointsCount(num count) {
-    return '$count پوائنٹ';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count پوائنٹس',
+      one: '$count پوائنٹ',
+    );
+    return '$_temp0';
   }
+
+  @override
+  String get teacherTeamsLabel => 'ٹیمیں';
 
   @override
   String teacherTeams(num count) {
@@ -1437,12 +1446,24 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String classroomPupilCount(num count) {
-    return '$count طلبہ';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count طلبہ',
+      one: '$count طالب علم',
+    );
+    return '$_temp0';
   }
 
   @override
   String classroomSquaresCount(num count) {
-    return '$count خانے';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count خانے',
+      one: '$count خانہ',
+    );
+    return '$_temp0';
   }
 
   @override

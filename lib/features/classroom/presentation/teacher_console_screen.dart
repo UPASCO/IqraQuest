@@ -570,7 +570,7 @@ class _Setup extends ConsumerWidget {
           isExpanded: true,
           initialValue: teamCount,
           decoration: InputDecoration(
-            labelText: l10n.teacherTeams(teamCount),
+            labelText: l10n.teacherTeamsLabel,
             border: const OutlineInputBorder(),
           ),
           items: [
