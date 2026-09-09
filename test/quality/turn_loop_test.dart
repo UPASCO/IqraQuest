@@ -32,6 +32,7 @@ import 'package:iqraquest/services/settings_service.dart';
 import 'package:iqraquest/theme/app_team.dart';
 import 'package:iqraquest/widgets/board/cross_board_scene.dart';
 import 'package:iqraquest/widgets/celebration_overlay.dart';
+import 'package:iqraquest/widgets/question_card.dart';
 import 'package:iqraquest/widgets/question_card_draw.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -78,6 +79,24 @@ Future<void> _pastReveal(WidgetTester tester) async {
 }
 
 /// Past the verdict beat and through the feedback sheet.
+/// Tap an answer, and only ever the answer.
+///
+/// `find.text(answer)` is not enough: a rider is called Bilal, and so is
+/// the answer to the card about the first muezzin. When that card comes
+/// up, `.first` matches the name pill in the HUD — which sits under the
+/// dim the question sheet lays over the world, so the tap silently
+/// misses, the turn never advances, and the loop looks wedged several
+/// turns later. Scoping to the question card removes the coincidence.
+Future<void> _tapAnswer(WidgetTester tester, String answer) async {
+  final tile = find.descendant(
+    of: find.byType(QuestionCard),
+    matching: find.text(answer),
+  );
+  expect(tile, findsWidgets, reason: 'the answer "$answer" is not on the card');
+  await tester.ensureVisible(tile.first);
+  await tester.tap(tile.first);
+}
+
 Future<void> _pastFeedback(WidgetTester tester) async {
   await _settle(tester);
   await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
@@ -271,8 +290,7 @@ void main() {
       if (phase == TurnPhase.answeringJourneyQuestion) {
         final journey = container.read(gameControllerProvider)!.currentQuestion!;
         final answer = journey.answers[journey.correctAnswerIndex];
-        await tester.ensureVisible(find.text(answer).first);
-        await tester.tap(find.text(answer).first);
+        await _tapAnswer(tester, answer);
         await _pastFeedback(tester);
         await _pastRide(tester, container);
         continue;
@@ -321,12 +339,28 @@ void main() {
       final answer = correct
           ? question!.answers[question.correctAnswerIndex]
           : question!.answers[(question.correctAnswerIndex + 1) % 4];
-      await tester.ensureVisible(find.text(answer).first);
-      await tester.tap(find.text(answer).first);
+      await _tapAnswer(tester, answer);
       await _pastFeedback(tester);
 
       final after = container.read(gameControllerProvider)!.gameState;
       if (correct) {
+        // A won card is not always a playable one: the exact count to
+        // Mecca refuses a card too big, a stable opens only on a six,
+        // and a rider's own horse blocks the square. The engine then
+        // hands back `noMove` and passes the turn by itself — that is
+        // the loop working, not wedging, and the assertion below used
+        // to call it a failure about one run in ten.
+        if (after.turnPhase == TurnPhase.noMove) {
+          expect(
+            container.read(gameControllerProvider.notifier).legalMoves,
+            isEmpty,
+            reason: 'turn $turn: the turn was passed though a move existed',
+          );
+          await tester.pump(kNoMoveBeat + const Duration(milliseconds: 80));
+          await _settle(tester);
+          expect(tester.takeException(), isNull, reason: 'turn $turn threw');
+          continue;
+        }
         // The squares are won and the board waits for the hand: the
         // banner says so, the medallion says how many, and nothing has
         // moved yet.
@@ -376,8 +410,7 @@ void main() {
         if (phase == TurnPhase.answeringJourneyQuestion) {
           final journey = container.read(gameControllerProvider)!.currentQuestion!;
           final answer = journey.answers[journey.correctAnswerIndex];
-          await tester.ensureVisible(find.text(answer).first);
-          await tester.tap(find.text(answer).first);
+          await _tapAnswer(tester, answer);
           await _pastFeedback(tester);
           await _pastRide(tester, container);
           continue;
@@ -392,11 +425,9 @@ void main() {
         final session = container.read(gameControllerProvider)!;
         final card = session.gameState.drawnCard;
         final question = session.currentQuestion!;
-        await tester.ensureVisible(
-          find.text(question.answers[question.correctAnswerIndex]).first,
-        );
-        await tester.tap(
-          find.text(question.answers[question.correctAnswerIndex]).first,
+        await _tapAnswer(
+          tester,
+          question.answers[question.correctAnswerIndex],
         );
         await _pastFeedback(tester);
 
@@ -439,7 +470,11 @@ void main() {
                 .horses[move.horseIndex]
                 .position,
             move.destination,
-            reason: 'turn $turn: the horse did not come out',
+            reason:
+                'turn $turn: the horse did not come out — card $card, '
+                'wanted ${move.destination.toJson()}, '
+                'legal ${legal.map((m) => '${m.horseIndex}->${m.destination.toJson()}').toList()}, '
+                'horses ${container.read(gameControllerProvider)!.gameState.players[team].horses.map((h) => h.position.toJson()).toList()}',
           );
           await _pastRide(tester, container);
         }

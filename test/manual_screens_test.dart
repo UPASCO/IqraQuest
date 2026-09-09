@@ -13,6 +13,7 @@ import 'package:flutter/services.dart' show FontLoader;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:iqraquest/widgets/question_card.dart';
 import 'package:iqraquest/widgets/celebration_overlay.dart';
 import 'package:iqraquest/widgets/question_card_draw.dart';
 import 'package:iqraquest/app/app.dart';
@@ -144,6 +145,22 @@ Future<void> _drawCard(WidgetTester tester) async {
     await tester.tap(find.byKey(const Key('move-option-0')));
     await _settle(tester);
   }
+}
+
+/// Tap an answer on the card, never a name that merely looks like one.
+///
+/// A rider can be called Bilal, and twenty cards in the bank answer
+/// « Bilal » too. `find.text(...).first` then matches the name pill in
+/// the HUD, which sits under the dim the question sheet lays over the
+/// world: the tap misses in silence and the screenshot catches a screen
+/// that never moved on.
+Future<void> _tapAnswer(WidgetTester tester, String answer) async {
+  final tile = find.descendant(
+    of: find.byType(QuestionCard),
+    matching: find.text(answer),
+  );
+  await tester.ensureVisible(tile.first);
+  await tester.tap(tile.first);
 }
 
 void main() {
@@ -303,7 +320,7 @@ void main() {
     await _drawCard(tester);
     final q = container.read(gameControllerProvider)!.currentQuestion;
     if (q != null) {
-      await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
+      await _tapAnswer(tester, q.answers[q.correctAnswerIndex]);
       await _settle(tester);
       await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
       await _settle(tester);
@@ -384,7 +401,7 @@ void main() {
     await _capture(tester, 'screen_gate_preview');
     final q = container.read(gameControllerProvider)!.currentQuestion;
     if (q != null) {
-      await tester.tap(find.text(q.answers[q.correctAnswerIndex]).first);
+      await _tapAnswer(tester, q.answers[q.correctAnswerIndex]);
       await _settle(tester);
       await tester.pump(kAnswerBeatDuration + const Duration(milliseconds: 60));
       await _settle(tester);
@@ -468,9 +485,7 @@ void main() {
 
     final question = container.read(gameControllerProvider)!.currentQuestion;
     if (question != null) {
-      await tester.tap(
-        find.text(question.answers[question.correctAnswerIndex]).first,
-      );
+      await _tapAnswer(tester, question.answers[question.correctAnswerIndex]);
       await _settle(tester);
       await _capture(tester, 'screen_game_feedback');
 
