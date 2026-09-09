@@ -114,7 +114,13 @@ recopie dans la build et Pages le lit là.
 | `TEACHER_CALLBACK_URL` | `https://school.iqraquest.org/teacher-callback.html` | la console |
 | `STRIPE_CHECKOUT_URL` | le lien de paiement (étape 6 ; laisser vide pour l'instant) | la console |
 
-Puis **Actions → Web — classroom console & board → Run workflow**.
+Puis **Actions → Web — classroom console & board → Run workflow**, en
+choisissant la branche par défaut. (Toute poussée sur cette branche le
+relance ensuite toute seule.)
+
+> Vérifier que l'exécution apparaît bien dans l'onglet Actions. Un
+> workflow qui n'a jamais tourné ne publie rien, et Pages reste vide sans
+> le dire : c'est exactement ce qui s'est produit la première fois.
 
 Au bout de quelques minutes : `https://school.iqraquest.org/#/teacher`
 répond.
