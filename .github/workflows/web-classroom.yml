@@ -41,6 +41,13 @@ on:
       - "web/**"
       - "assets/data/**"
       - "pubspec.yaml"
+      # Ce workflow ne construit pas seulement : il fait passer la suite
+      # de tests et la barrière de pré-livraison avant de publier. Une
+      # correction qui ne touche que ces deux-là doit donc le relancer,
+      # sinon un rouge connu reste rouge jusqu'à la prochaine
+      # modification de `lib/`.
+      - "test/**"
+      - "tool/**"
       - ".github/workflows/web-classroom.yml"
 
 permissions:
