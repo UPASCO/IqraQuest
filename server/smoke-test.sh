@@ -59,7 +59,7 @@ echo
 # réponse attendue est une liste vide, pas une erreur. C'est la
 # différence entre « il n'y a rien » et « je n'ai pas le droit », et
 # c'est la seconde qui est vraie ici.
-for table in participants sessions answers licences reports; do
+for table in participants sessions answers licences reports plans; do
   body="$(get "$table?select=*&limit=1")"
   if [[ "$body" == "[]" ]]; then
     ok "la table $table ne rend rien à la clé publique"
@@ -101,13 +101,15 @@ fi
 call_teacher_fn() {
   case "$1" in
     my_licence) rpc my_licence '{}' ;;
+    my_account) rpc my_account '{}' ;;
+    my_reports) rpc my_reports '{"p_limit":1}' ;;
     open_session) rpc open_session '{"p_lesson_id":"probe","p_question_ids":["probe_001"]}' ;;
     advance_session) rpc advance_session '{"p_session_id":"00000000-0000-0000-0000-000000000000","p_action":"ask"}' ;;
     close_session) rpc close_session '{"p_session_id":"00000000-0000-0000-0000-000000000000"}' ;;
   esac
 }
 
-for fn in my_licence open_session advance_session close_session; do
+for fn in my_licence my_account my_reports open_session advance_session close_session; do
   body="$(call_teacher_fn "$fn")"
   if grep -qi 'permission denied\|PGRST301\|JWT\|not authorized' <<<"$body"; then
     ok "la fonction $fn est refusée à la clé publique"
@@ -135,12 +137,48 @@ else
   note "$(head -c 200 <<<"$body")"
 fi
 
+# 4ter. Un mot de passe faux ne raconte rien --------------------------
+# La console se connecte par adresse et mot de passe. GoTrue doit
+# refuser une adresse inconnue exactement comme un mot de passe faux :
+# deux réponses différentes diraient à un curieux quelles écoles sont
+# clientes.
+body="$(curl -sS --max-time 20 -X POST \
+  -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"email":"personne-ici@example.org","password":"x"}' \
+  "$URL/auth/v1/token?grant_type=password")"
+if grep -qi 'invalid_grant\|invalid login\|invalid_credentials' <<<"$body"; then
+  ok "une adresse inconnue est refusée sans rien révéler"
+elif grep -q 'access_token' <<<"$body"; then
+  ko "une adresse inventée a obtenu un jeton"
+else
+  ko "le refus de connexion n'a pas la forme attendue"
+  note "$(head -c 200 <<<"$body")"
+fi
+
+# 4quater. Les paliers existent ---------------------------------------
+# `plans` est lu par la fonction Stripe avec la clé secrète, jamais par
+# un navigateur. Ce qu'on vérifie ici, c'est que la migration 0007 est
+# passée : sans elle, `my_account` n'existe pas et un paiement n'écrit
+# aucune licence.
+body="$(rpc my_account '{}')"
+if grep -qi 'PGRST202\|could not find' <<<"$body"; then
+  ko "my_account est introuvable — la migration 0007 n'est pas passée"
+  note "$(head -c 200 <<<"$body")"
+else
+  ok "la migration 0007 est passée (my_account existe)"
+fi
+
 # 5. Le ménage est planifié -------------------------------------------
 # Rien de tout cela ne se voit de l'extérieur : à vérifier dans le SQL
 # Editor, une fois.
 echo
 echo "À vérifier une fois dans le SQL Editor (rien de ceci ne se voit d'ici) :"
 cat <<'SQL'
+
+  -- Les paliers de l'offre, et ce que chacun ouvre.
+  select id, rooms, duration, school_year, sellable from public.plans
+   order by rooms, id;
 
   -- Les trois nettoyages sont-ils planifiés ?
   select jobname, schedule from cron.job where jobname like 'iqraquest-%';
