@@ -1414,8 +1414,23 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String teacherAccountRooms(num used, num total) {
-    return '$total میں سے $used کمرے کھلے';
+    String _temp0 = intl.Intl.pluralLogic(
+      used,
+      locale: localeName,
+      other: '$total میں سے $used کمرے کھلے',
+      one: '$total میں سے $used کمرہ کھلا',
+    );
+    return '$_temp0';
   }
+
+  @override
+  String teacherAccountEndedOn(String date) {
+    return '$date کو ختم ہوا';
+  }
+
+  @override
+  String get teacherRenewByEmail =>
+      'تجدید کے لیے ہمیں لکھیں: ہم اسی دن آپ کی جگہ دوبارہ کھول دیتے ہیں۔';
 
   @override
   String teacherAccountDaysLeft(num count) {

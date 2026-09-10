@@ -2431,8 +2431,20 @@ abstract class AppLocalizations {
   /// Console: how many rooms the plan opens, and how many run now
   ///
   /// In en, this message translates to:
-  /// **'{used} of {total} rooms open'**
+  /// **'{used, plural, one{{used} of {total} rooms open} other{{used} of {total} rooms open}}'**
   String teacherAccountRooms(num used, num total);
+
+  /// Console: the date a finished subscription ran out
+  ///
+  /// In en, this message translates to:
+  /// **'Ended on {date}'**
+  String teacherAccountEndedOn(String date);
+
+  /// Console: how to renew when there is no payment link
+  ///
+  /// In en, this message translates to:
+  /// **'Write to us to renew: we reopen your account the same day.'**
+  String get teacherRenewByEmail;
 
   /// Console: days remaining on the subscription
   ///

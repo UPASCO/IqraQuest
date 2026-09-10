@@ -438,7 +438,18 @@ class _AccountCard extends StatelessWidget {
             ),
             const SizedBox(height: 2),
             Text(
-              l10n.teacherAccountDaysLeft(account.daysLeft),
+              // Un abonnement fini ne compte pas « encore zéro jour » :
+              // il dit la date à laquelle il s'est arrêté. Le décompte
+              // n'a de sens que sur ce qui court encore.
+              account.locked
+                  ? l10n.teacherAccountEndedOn(
+                      account.expiresAt == null
+                          ? ''
+                          : MaterialLocalizations.of(
+                              context,
+                            ).formatFullDate(account.expiresAt!),
+                    )
+                  : l10n.teacherAccountDaysLeft(account.daysLeft),
               key: const Key('teacher-account-days'),
               style: text.bodyMedium?.copyWith(
                 color: account.endingSoon ? colors.goldAccent : colors.textSecondary,
@@ -502,6 +513,18 @@ class _Expired extends ConsumerWidget {
               webOnlyWindowName: '_blank',
             ),
             child: ButtonLabel(l10n.teacherRenew),
+          )
+        else
+          // Tant qu'il n'y a pas de lien de paiement, une école dont
+          // l'abonnement est fini n'avait que « Actualiser » — une
+          // impasse. Elle a maintenant quelqu'un à qui écrire.
+          Text(
+            key: const Key('teacher-renew-by-email'),
+            l10n.teacherRenewByEmail,
+            textAlign: TextAlign.center,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
           ),
         const SizedBox(height: 10),
         OutlinedButton(

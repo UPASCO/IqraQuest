@@ -404,4 +404,116 @@ void main() {
     await settle(tester);
     await capture(tester, 'classe-10-console-en-seance');
   });
+
+  testWidgets('11 — la connexion, et l\'abonnement fini', (tester) async {
+    tester.view.physicalSize = const Size(900, 1150);
+    tester.view.devicePixelRatio = 1.0;
+    SharedPreferences.setMockInitialValues({});
+    rootBundle.clear();
+    final storage = await LocalStorageService.create();
+    final room = FakeClassroomGateway(random: Random(31));
+
+    Future<void> pump(FakeTeacherGateway console) async {
+      final repository = QuestionRepository();
+      final bank = await tester.runAsync(() => repository.loadAll('fr'));
+      await tester.pumpWidget(
+        RepaintBoundary(
+          child: ProviderScope(
+            overrides: [
+              localStorageProvider.overrideWithValue(storage),
+              settingsServiceProvider.overrideWithValue(SettingsService(storage)),
+              entitlementServiceProvider.overrideWithValue(_MemoryEntitlements()),
+              progressServiceProvider.overrideWithValue(ProgressService(storage)),
+              gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
+              legacyGameMigrationServiceProvider.overrideWithValue(
+                LegacyGameMigrationService(storage),
+              ),
+              questionRepositoryProvider.overrideWithValue(repository),
+              questionPoolProvider.overrideWith((ref) => bank!),
+              purchaseServiceProvider.overrideWith((ref) => PurchaseService()),
+              classroomGatewayProvider.overrideWithValue(room),
+              teacherGatewayProvider.overrideWithValue(console),
+              initialSettingsProvider.overrideWithValue(
+                const AppSettings(languageCode: 'fr'),
+              ),
+              initialPremiumProvider.overrideWithValue(false),
+              appRouterProvider.overrideWithValue(
+                GoRouter(
+                  initialLocation: '/teacher',
+                  routes: [
+                    GoRoute(
+                      path: '/teacher',
+                      builder: (c, s) => const TeacherConsoleScreen(fragment: ''),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            child: const IqraQuestApp(),
+          ),
+        ),
+      );
+      await settle(tester, 14);
+    }
+
+    // Personne n'est entré : l'adresse, le mot de passe, et le chemin de
+    // secours en dessous.
+    await pump(FakeTeacherGateway(room: room));
+    await tester.enterText(
+      find.byKey(const Key('teacher-email')),
+      'direction@ecole-annour.fr',
+    );
+    await tester.enterText(
+      find.byKey(const Key('teacher-password')),
+      'un-mot-de-passe',
+    );
+    await settle(tester);
+    await capture(tester, 'classe-11-connexion');
+
+    // L'abonnement est fini : l'école garde son espace et son historique,
+    // et ne peut plus ouvrir de séance.
+    await tester.pumpWidget(const SizedBox.shrink());
+    final code = room.openSession(
+      lessonId: 'lesson_prophets_beginner_01',
+      questionIds: const ['q1', 'q2', 'q3'],
+      scoring: ClassroomScoring.individual,
+    );
+    final seats = [
+      for (final n in ['Amina', 'Yusuf', 'Sara'])
+        await room.join(code: code, nickname: n),
+    ];
+    for (var q = 0; q < 3; q++) {
+      room.ask(code);
+      for (var i = 0; i < seats.length; i++) {
+        await room.answer(
+          code: code,
+          token: seats[i].token,
+          questionIndex: q,
+          choice: i <= q ? 0 : 2,
+        );
+      }
+      room.reveal(code);
+    }
+    room.close(code);
+
+    await pump(
+      FakeTeacherGateway(
+        room: room,
+        signedInAs: 'direction@ecole-annour.fr',
+        licence: Licence(
+          id: 'l1',
+          email: 'direction@ecole-annour.fr',
+          plan: 'École — 3 salles',
+          concurrentSessions: 3,
+          expiresAt: DateTime(2026, 8, 31),
+          schoolName: 'École An-Nour',
+        ),
+      ),
+    );
+    await capture(tester, 'classe-12-abonnement-fini');
+
+    await tester.tap(find.byKey(const Key('teacher-history-open')));
+    await settle(tester);
+    await capture(tester, 'classe-13-historique-et-notes');
+  });
 }

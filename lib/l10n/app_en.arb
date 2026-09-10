@@ -1894,7 +1894,7 @@
   "@teacherAccount": {
     "description": "Console: the heading of the subscription card"
   },
-  "teacherAccountRooms": "{used} of {total} rooms open",
+  "teacherAccountRooms": "{used, plural, one{{used} of {total} rooms open} other{{used} of {total} rooms open}}",
   "@teacherAccountRooms": {
     "description": "Console: how many rooms the plan opens, and how many run now",
     "placeholders": {
@@ -1905,6 +1905,19 @@
         "type": "num"
       }
     }
+  },
+  "teacherAccountEndedOn": "Ended on {date}",
+  "@teacherAccountEndedOn": {
+    "description": "Console: the date a finished subscription ran out",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "teacherRenewByEmail": "Write to us to renew: we reopen your account the same day.",
+  "@teacherRenewByEmail": {
+    "description": "Console: how to renew when there is no payment link"
   },
   "teacherAccountDaysLeft": "{count, plural, one{{count} day left} other{{count} days left}}",
   "@teacherAccountDaysLeft": {
