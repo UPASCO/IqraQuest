@@ -174,15 +174,21 @@ set search_path = public
 as $$
 declare
   l public.licences;
-  rows jsonb;
+  -- `rows` est un mot-clé de PL/pgSQL (ROWS d'une déclaration de
+  -- fonction) : une variable de ce nom se lit mal et se compile parfois
+  -- moins bien encore.
+  out_rows jsonb;
 begin
   l := public.my_licence();
   if l.id is null then
     return jsonb_build_object('error', 'no_licence');
   end if;
 
-  select coalesce(jsonb_agg(r order by r.played_at desc), '[]'::jsonb)
-    into rows
+  -- `r` est une colonne jsonb, pas un enregistrement : trier sur
+  -- `r.played_at` demanderait un champ d'un type composite qui n'en est
+  -- pas un. C'est la date de la sous-requête qui ordonne.
+  select coalesce(jsonb_agg(t.r order by t.played_at desc), '[]'::jsonb)
+    into out_rows
     from (
       select jsonb_build_object(
         'id', id,
@@ -199,7 +205,7 @@ begin
       limit greatest(1, least(200, p_limit))
     ) t;
 
-  return jsonb_build_object('reports', rows);
+  return jsonb_build_object('reports', out_rows);
 end;
 $$;
 
