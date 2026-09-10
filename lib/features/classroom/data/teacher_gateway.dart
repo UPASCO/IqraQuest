@@ -21,6 +21,11 @@ enum TeacherError {
   notNow,
   invalidEmail,
 
+  /// L'adresse ou le mot de passe ne correspond à rien. Un seul cas pour
+  /// les deux : dire « cette adresse existe, mais pas ce mot de passe »
+  /// renseigne quiconque cherche à savoir quelles écoles sont clientes.
+  badCredentials,
+
   /// Le service d'e-mail a refusé d'en envoyer un de plus pour l'instant.
   /// Distinct de [unreachable] : le serveur répond très bien, c'est
   /// l'envoi qui est plafonné — et un enseignant qui lit « le serveur ne
@@ -282,8 +287,19 @@ enum TeacherAction { ask, reveal, close }
 /// can do none of this, and the console is the only thing that holds a
 /// signed-in identity anywhere in IqraQuest.
 abstract class TeacherGateway {
-  /// Sends the sign-in link. There is no password anywhere in this
-  /// system — the address that paid is the address that gets in.
+  /// La porte de tous les jours : une adresse, un mot de passe.
+  ///
+  /// Aucun e-mail n'intervient — c'est le point. Un enseignant devant sa
+  /// classe ne doit dépendre ni d'une boîte de réception, ni d'un
+  /// service d'envoi, ni du filtre anti-spam de son établissement.
+  Future<void> signInWithPassword({
+    required String email,
+    required String password,
+  });
+
+  /// Le lien de connexion, qui reste la porte de secours : c'est par lui
+  /// qu'on retrouve un mot de passe oublié. Il demande, lui, un service
+  /// d'e-mail qui fonctionne.
   Future<void> sendMagicLink(String email);
 
   /// Picks up a session: the tokens a magic link just dropped in the

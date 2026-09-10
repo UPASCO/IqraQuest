@@ -159,6 +159,9 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                 onSend: () => ref
                     .read(teacherConsoleProvider.notifier)
                     .sendLink(_email.text),
+                onSignIn: (password) => ref
+                    .read(teacherConsoleProvider.notifier)
+                    .signIn(_email.text, password),
               ),
               ConsoleStage.noLicence => _NoLicence(console: console, l10n: l10n),
               ConsoleStage.expired => _Expired(console: console, l10n: l10n),
@@ -222,6 +225,7 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
         TeacherError.tooManySessions => l10n.teacherTooManySessions(limit ?? 1),
         TeacherError.notSignedIn => l10n.teacherSignInHint,
         TeacherError.tooManyLinks => l10n.teacherTooManyLinks,
+        TeacherError.badCredentials => l10n.teacherBadCredentials,
         _ => l10n.teacherUnreachable,
       };
 }
@@ -234,18 +238,43 @@ class _SignIn extends StatefulWidget {
     required this.console,
     required this.l10n,
     required this.onSend,
+    required this.onSignIn,
   });
 
   final TextEditingController controller;
   final ConsoleState console;
   final AppLocalizations l10n;
+
+  /// Envoyer le lien : la porte de secours, quand le mot de passe est
+  /// perdu.
   final VoidCallback onSend;
+
+  /// La porte de tous les jours.
+  final ValueChanged<String> onSignIn;
 
   @override
   State<_SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<_SignIn> {
+  final _password = TextEditingController();
+
+  /// Le lien de connexion n'est proposé qu'à qui le demande. Deux portes
+  /// côte à côte laissent choisir la mauvaise : une école qui a un mot
+  /// de passe n'a aucune raison d'attendre un courrier.
+  bool _forgot = false;
+
+  @override
+  void dispose() {
+    _password.dispose();
+    super.dispose();
+  }
+
+  bool get _canSubmit =>
+      !widget.console.busy &&
+      widget.controller.text.trim().isNotEmpty &&
+      (_forgot || _password.text.isNotEmpty);
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -255,7 +284,9 @@ class _SignInState extends State<_SignIn> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          widget.l10n.teacherSignInHint,
+          _forgot
+              ? widget.l10n.teacherSignInHint
+              : widget.l10n.teacherSignInPasswordHint,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(height: 20),
@@ -270,15 +301,41 @@ class _SignInState extends State<_SignIn> {
             border: const OutlineInputBorder(),
           ),
         ),
+        if (!_forgot) ...[
+          const SizedBox(height: 12),
+          TextField(
+            key: const Key('teacher-password'),
+            controller: _password,
+            obscureText: true,
+            autofillHints: const [AutofillHints.password],
+            onChanged: (_) => setState(() {}),
+            onSubmitted: (_) {
+              if (_canSubmit) widget.onSignIn(_password.text);
+            },
+            decoration: InputDecoration(
+              labelText: widget.l10n.teacherPasswordLabel,
+              border: const OutlineInputBorder(),
+            ),
+          ),
+        ],
         const SizedBox(height: 16),
         ElevatedButton(
           key: const Key('teacher-send'),
-          onPressed:
-              widget.console.busy || widget.controller.text.trim().isEmpty
+          onPressed: !_canSubmit
               ? null
-              : widget.onSend,
-          child: ButtonLabel(widget.l10n.teacherSendLink),
+              : (_forgot ? widget.onSend : () => widget.onSignIn(_password.text)),
+          child: ButtonLabel(
+            _forgot ? widget.l10n.teacherSendLink : widget.l10n.teacherSignIn,
+          ),
         ),
+        if (!_forgot && !sent) ...[
+          const SizedBox(height: 6),
+          TextButton(
+            key: const Key('teacher-forgot'),
+            onPressed: () => setState(() => _forgot = true),
+            child: ButtonLabel(widget.l10n.teacherForgotPassword),
+          ),
+        ],
         if (sent) ...[
           const SizedBox(height: 18),
           Text(

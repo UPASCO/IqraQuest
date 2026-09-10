@@ -91,6 +91,45 @@ class SupabaseTeacherGateway implements TeacherGateway {
     return _refresh();
   }
 
+  @override
+  Future<void> signInWithPassword({
+    required String email,
+    required String password,
+  }) async {
+    final clean = email.trim();
+    if (!_looksLikeEmail(clean)) {
+      throw const TeacherException(TeacherError.invalidEmail);
+    }
+    final response = await _post(
+      '/auth/v1/token?grant_type=password',
+      body: {'email': clean, 'password': password},
+    );
+    // 400 comme 401 : GoTrue répond `invalid_grant` sur une adresse
+    // inconnue comme sur un mot de passe faux, et c'est bien ainsi — les
+    // distinguer dirait à un curieux quelles écoles sont clientes.
+    if (response.statusCode == 400 || response.statusCode == 401) {
+      throw const TeacherException(TeacherError.badCredentials);
+    }
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    final access = json['access_token'] as String?;
+    final refresh = json['refresh_token'] as String?;
+    if (access == null || refresh == null) {
+      // Une réponse 200 sans jetons n'est pas une connexion : c'est ce
+      // que renvoie un compte dont l'adresse n'est pas confirmée.
+      throw const TeacherException(TeacherError.badCredentials);
+    }
+    await _remember(
+      TeacherLinkSession(
+        accessToken: access,
+        refreshToken: refresh,
+        email: (json['user'] as Map?)?['email'] as String? ?? clean,
+      ),
+    );
+  }
+
   Future<bool> _refresh() async {
     final response = await _post(
       '/auth/v1/token?grant_type=refresh_token',

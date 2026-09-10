@@ -1866,6 +1866,26 @@
       }
     }
   },
+  "teacherPasswordLabel": "Password",
+  "@teacherPasswordLabel": {
+    "description": "Console: the password field"
+  },
+  "teacherSignIn": "Sign in",
+  "@teacherSignIn": {
+    "description": "Console: the button that signs a teacher in"
+  },
+  "teacherSignInPasswordHint": "Enter your school's address and your password.",
+  "@teacherSignInPasswordHint": {
+    "description": "Console: what to type to get in"
+  },
+  "teacherBadCredentials": "Wrong address or password.",
+  "@teacherBadCredentials": {
+    "description": "Console: the address or the password is wrong"
+  },
+  "teacherForgotPassword": "Forgotten your password?",
+  "@teacherForgotPassword": {
+    "description": "Console: the way back in when the password is lost"
+  },
   "teacherAccount": "Your subscription",
   "@teacherAccount": {
     "description": "Console: the heading of the subscription card"

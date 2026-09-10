@@ -71,6 +71,82 @@ void main() {
     expect(seen!.path, '/auth/v1/otp');
   });
 
+  test('la connexion par mot de passe garde les jetons rendus', () async {
+    Uri? seen;
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient((request) async {
+        seen = request.url;
+        return http.Response(
+          '{"access_token":"a1","refresh_token":"r1",'
+          '"user":{"email":"ecole@example.org"}}',
+          200,
+        );
+      }),
+    );
+
+    await gateway.signInWithPassword(
+      email: '  Ecole@example.org ',
+      password: 'secret',
+    );
+
+    expect(seen!.path, '/auth/v1/token');
+    expect(seen!.queryParameters['grant_type'], 'password');
+    expect(gateway.isSignedIn, isTrue);
+    expect(gateway.email, 'ecole@example.org');
+  });
+
+  test('un refus de GoTrue ne dit pas lequel des deux est faux', () async {
+    // 400 sur une adresse inconnue comme sur un mot de passe faux : c'est
+    // GoTrue qui répond ainsi, et c'est ce qu'il faut — les distinguer
+    // dirait à un curieux quelles écoles sont clientes.
+    for (final code in [400, 401]) {
+      final gateway = SupabaseTeacherGateway(
+        url: _url,
+        anonKey: _anon,
+        storage: await freshStorage(),
+        client: MockClient(
+          (_) async => http.Response('{"error":"invalid_grant"}', code),
+        ),
+      );
+
+      await expectLater(
+        gateway.signInWithPassword(
+          email: 'ecole@example.org',
+          password: 'x',
+        ),
+        throwsA(
+          isA<TeacherException>().having(
+            (e) => e.error,
+            'error',
+            TeacherError.badCredentials,
+          ),
+        ),
+        reason: 'HTTP $code',
+      );
+    }
+  });
+
+  test('un 200 sans jetons n\'est pas une connexion', () async {
+    // C'est ce que rend un compte dont l'adresse n'est pas confirmée :
+    // le traiter comme une réussite laisserait la console croire qu'un
+    // enseignant est entré, et échouer partout ensuite.
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient((_) async => http.Response('{}', 200)),
+    );
+
+    await expectLater(
+      gateway.signInWithPassword(email: 'ecole@example.org', password: 'x'),
+      throwsA(isA<TeacherException>()),
+    );
+    expect(gateway.isSignedIn, isFalse);
+  });
+
   test('a plafond d\'envoi atteint se dit, au lieu d\'accuser le serveur', () async {
     // Le service d'e-mail de Supabase plafonne les envois par heure. Un
     // enseignant à qui on répond « le serveur ne répond pas » va chercher

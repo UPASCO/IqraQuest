@@ -1389,6 +1389,22 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'Kata sandi';
+
+  @override
+  String get teacherSignIn => 'Masuk';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'Masukkan alamat sekolah Anda dan kata sandi Anda.';
+
+  @override
+  String get teacherBadCredentials => 'Alamat atau kata sandi salah.';
+
+  @override
+  String get teacherForgotPassword => 'Lupa kata sandi?';
+
+  @override
   String get teacherAccount => 'Langganan Anda';
 
   @override

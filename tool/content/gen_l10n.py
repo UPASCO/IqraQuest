@@ -3213,6 +3213,54 @@ s("classroomPointsCount", "Projected board: a pupil's right answers",
   it="{count, plural, one{{count} pt} other{{count} pt}}",
   nl="{count, plural, one{{count} ptn} other{{count} ptn}}")
 
+s("teacherPasswordLabel", "Console: the password field",
+  fr="Mot de passe", en="Password", ar="كلمة المرور",
+  es="Contraseña", pt="Palavra-passe", de="Passwort", tr="Parola",
+  id="Kata sandi", ur="پاس ورڈ", ms="Kata laluan", it="Password",
+  nl="Wachtwoord")
+
+s("teacherSignIn", "Console: the button that signs a teacher in",
+  fr="Se connecter", en="Sign in", ar="تسجيل الدخول",
+  es="Iniciar sesión", pt="Entrar", de="Anmelden", tr="Giriş yap",
+  id="Masuk", ur="سائن ان کریں", ms="Log masuk", it="Accedi",
+  nl="Inloggen")
+
+s("teacherSignInPasswordHint", "Console: what to type to get in",
+  fr="Entrez l'adresse de votre établissement et votre mot de passe.",
+  en="Enter your school's address and your password.",
+  ar="أدخل عنوان مؤسستك وكلمة المرور.",
+  es="Introduce la dirección de tu centro y tu contraseña.",
+  pt="Introduza o endereço da sua escola e a sua palavra-passe.",
+  de="Gib die Adresse deiner Schule und dein Passwort ein.",
+  tr="Okulunuzun adresini ve parolanızı girin.",
+  id="Masukkan alamat sekolah Anda dan kata sandi Anda.",
+  ur="اپنے ادارے کا پتہ اور پاس ورڈ درج کریں۔",
+  ms="Masukkan alamat sekolah anda dan kata laluan anda.",
+  it="Inserisci l'indirizzo del tuo istituto e la tua password.",
+  nl="Voer het adres van je school en je wachtwoord in.")
+
+s("teacherBadCredentials", "Console: the address or the password is wrong",
+  fr="Adresse ou mot de passe incorrect.",
+  en="Wrong address or password.",
+  ar="العنوان أو كلمة المرور غير صحيحة.",
+  es="Dirección o contraseña incorrecta.",
+  pt="Endereço ou palavra-passe incorretos.",
+  de="Adresse oder Passwort falsch.",
+  tr="Adres veya parola hatalı.",
+  id="Alamat atau kata sandi salah.",
+  ur="پتہ یا پاس ورڈ غلط ہے۔",
+  ms="Alamat atau kata laluan salah.",
+  it="Indirizzo o password non corretti.",
+  nl="Onjuist adres of wachtwoord.")
+
+s("teacherForgotPassword", "Console: the way back in when the password is lost",
+  fr="Mot de passe oublié ?", en="Forgotten your password?",
+  ar="هل نسيت كلمة المرور؟", es="¿Olvidaste tu contraseña?",
+  pt="Esqueceu-se da palavra-passe?", de="Passwort vergessen?",
+  tr="Parolanızı mı unuttunuz?", id="Lupa kata sandi?",
+  ur="پاس ورڈ بھول گئے؟", ms="Lupa kata laluan?",
+  it="Password dimenticata?", nl="Wachtwoord vergeten?")
+
 s("teacherAccount", "Console: the heading of the subscription card",
   fr="Votre abonnement", en="Your subscription", ar="اشتراكك",
   es="Tu suscripción", pt="A sua subscrição", de="Dein Abonnement",

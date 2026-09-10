@@ -131,19 +131,92 @@ void main() {
     rootBundle.clear();
   });
 
-  testWidgets('a teacher signs in with an address and no password', (
+  testWidgets('la porte de tous les jours : une adresse et un mot de passe', (
     tester,
   ) async {
-    final harness = await pumpConsole(tester);
+    final harness = await pumpConsole(tester, granted: licence());
+    harness.console.passwords['ecole@example.org'] = 'bon-mot-de-passe';
 
-    expect(find.text(en.teacherSignInHint), findsOneWidget);
+    expect(find.text(en.teacherSignInPasswordHint), findsOneWidget);
     expect(
       tester
           .widget<ElevatedButton>(find.byKey(const Key('teacher-send')))
           .onPressed,
       isNull,
-      reason: 'nothing to send to yet',
+      reason: 'ni adresse ni mot de passe : rien à envoyer',
     );
+
+    await tester.enterText(
+      find.byKey(const Key('teacher-email')),
+      'ecole@example.org',
+    );
+    await tester.enterText(
+      find.byKey(const Key('teacher-password')),
+      'bon-mot-de-passe',
+    );
+    await settle(tester);
+    await tester.tap(find.byKey(const Key('teacher-send')));
+    await settle(tester);
+
+    // Entré, sans qu'aucun courrier n'ait été envoyé : c'est tout
+    // l'intérêt — un enseignant devant sa classe ne dépend pas d'une
+    // boîte de réception.
+    expect(harness.console.linksSent, isEmpty);
+    expect(find.byKey(const Key('teacher-open')), findsOneWidget);
+  });
+
+  testWidgets('un mot de passe faux ne dit pas si l\'adresse existe', (
+    tester,
+  ) async {
+    final harness = await pumpConsole(tester);
+    harness.console.passwords['ecole@example.org'] = 'bon-mot-de-passe';
+
+    await tester.enterText(
+      find.byKey(const Key('teacher-email')),
+      'ecole@example.org',
+    );
+    await tester.enterText(
+      find.byKey(const Key('teacher-password')),
+      'faux',
+    );
+    await settle(tester);
+    await tester.tap(find.byKey(const Key('teacher-send')));
+    await settle(tester);
+
+    expect(find.text(en.teacherBadCredentials), findsOneWidget);
+    expect(find.byKey(const Key('teacher-open')), findsNothing);
+  });
+
+  testWidgets('une adresse inconnue reçoit exactement le même refus', (
+    tester,
+  ) async {
+    // Deux messages différents diraient à un curieux quelles écoles sont
+    // clientes. Un seul, donc, pour les deux cas.
+    await pumpConsole(tester);
+
+    await tester.enterText(
+      find.byKey(const Key('teacher-email')),
+      'personne@example.org',
+    );
+    await tester.enterText(find.byKey(const Key('teacher-password')), 'x');
+    await settle(tester);
+    await tester.tap(find.byKey(const Key('teacher-send')));
+    await settle(tester);
+
+    expect(find.text(en.teacherBadCredentials), findsOneWidget);
+  });
+
+  testWidgets('le lien de connexion reste la porte de secours', (
+    tester,
+  ) async {
+    final harness = await pumpConsole(tester);
+
+    // Il n'est pas proposé à côté du mot de passe : deux portes côte à
+    // côte laissent choisir la mauvaise.
+    expect(find.byKey(const Key('teacher-password')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('teacher-forgot')));
+    await settle(tester);
+    expect(find.byKey(const Key('teacher-password')), findsNothing);
 
     await tester.enterText(
       find.byKey(const Key('teacher-email')),
@@ -156,9 +229,7 @@ void main() {
     expect(harness.console.linksSent, ['ecole@example.org']);
     expect(find.byKey(const Key('teacher-link-sent')), findsOneWidget);
     // Le lien est parti, personne n'est encore entré : la barre ne
-    // propose pas de sortir. C'est le tout premier écran qu'une école
-    // voit, et « Se déconnecter » au-dessus d'un champ d'adresse s'y
-    // affichait.
+    // propose pas de sortir.
     expect(find.byKey(const Key('teacher-signout')), findsNothing);
   });
 
@@ -167,6 +238,8 @@ void main() {
   ) async {
     final harness = await pumpConsole(tester);
 
+    await tester.tap(find.byKey(const Key('teacher-forgot')));
+    await settle(tester);
     await tester.enterText(find.byKey(const Key('teacher-email')), 'not-a-mail');
     await settle(tester);
     await tester.tap(find.byKey(const Key('teacher-send')));

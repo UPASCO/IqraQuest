@@ -1404,6 +1404,22 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'Palavra-passe';
+
+  @override
+  String get teacherSignIn => 'Entrar';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'Introduza o endereço da sua escola e a sua palavra-passe.';
+
+  @override
+  String get teacherBadCredentials => 'Endereço ou palavra-passe incorretos.';
+
+  @override
+  String get teacherForgotPassword => 'Esqueceu-se da palavra-passe?';
+
+  @override
   String get teacherAccount => 'A sua subscrição';
 
   @override

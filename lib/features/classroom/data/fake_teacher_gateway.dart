@@ -60,6 +60,25 @@ class FakeTeacherGateway implements TeacherGateway {
     if (signInOnSend) completeSignIn(clean);
   }
 
+  /// Les mots de passe que cette salle connaît, par adresse. Vide par
+  /// défaut : un test qui veut la connexion par mot de passe le dit.
+  final Map<String, String> passwords = {};
+
+  @override
+  Future<void> signInWithPassword({
+    required String email,
+    required String password,
+  }) async {
+    final clean = email.trim();
+    if (!RegExp(r'^[^@\s]+@[^@\s.]+\.[^@\s]+$').hasMatch(clean)) {
+      throw const TeacherException(TeacherError.invalidEmail);
+    }
+    if (passwords[clean.toLowerCase()] != password) {
+      throw const TeacherException(TeacherError.badCredentials);
+    }
+    completeSignIn(clean);
+  }
+
   @override
   Future<bool> restore({String? fragment}) async => isSignedIn;
 

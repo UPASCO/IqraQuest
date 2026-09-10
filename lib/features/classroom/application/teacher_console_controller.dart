@@ -143,6 +143,21 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
     }
   }
 
+  /// La connexion de tous les jours : une adresse, un mot de passe, et
+  /// rien qui dépende d'une boîte de réception.
+  Future<void> signIn(String email, String password) async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      await gateway.signInWithPassword(email: email, password: password);
+      state = state.copyWith(email: gateway.email ?? email.trim());
+      await refreshLicence();
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
   Future<void> sendLink(String email) async {
     state = state.copyWith(busy: true, error: null);
     try {

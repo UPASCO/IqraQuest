@@ -1391,6 +1391,22 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'پاس ورڈ';
+
+  @override
+  String get teacherSignIn => 'سائن ان کریں';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'اپنے ادارے کا پتہ اور پاس ورڈ درج کریں۔';
+
+  @override
+  String get teacherBadCredentials => 'پتہ یا پاس ورڈ غلط ہے۔';
+
+  @override
+  String get teacherForgotPassword => 'پاس ورڈ بھول گئے؟';
+
+  @override
   String get teacherAccount => 'آپ کی رکنیت';
 
   @override

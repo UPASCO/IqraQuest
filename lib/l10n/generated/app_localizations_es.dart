@@ -1403,6 +1403,22 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'Contraseña';
+
+  @override
+  String get teacherSignIn => 'Iniciar sesión';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'Introduce la dirección de tu centro y tu contraseña.';
+
+  @override
+  String get teacherBadCredentials => 'Dirección o contraseña incorrecta.';
+
+  @override
+  String get teacherForgotPassword => '¿Olvidaste tu contraseña?';
+
+  @override
   String get teacherAccount => 'Tu suscripción';
 
   @override

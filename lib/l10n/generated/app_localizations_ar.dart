@@ -1411,6 +1411,21 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'كلمة المرور';
+
+  @override
+  String get teacherSignIn => 'تسجيل الدخول';
+
+  @override
+  String get teacherSignInPasswordHint => 'أدخل عنوان مؤسستك وكلمة المرور.';
+
+  @override
+  String get teacherBadCredentials => 'العنوان أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get teacherForgotPassword => 'هل نسيت كلمة المرور؟';
+
+  @override
   String get teacherAccount => 'اشتراكك';
 
   @override

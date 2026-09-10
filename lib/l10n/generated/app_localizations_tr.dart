@@ -1376,6 +1376,22 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'Parola';
+
+  @override
+  String get teacherSignIn => 'Giriş yap';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'Okulunuzun adresini ve parolanızı girin.';
+
+  @override
+  String get teacherBadCredentials => 'Adres veya parola hatalı.';
+
+  @override
+  String get teacherForgotPassword => 'Parolanızı mı unuttunuz?';
+
+  @override
   String get teacherAccount => 'Aboneliğiniz';
 
   @override

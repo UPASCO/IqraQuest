@@ -1398,6 +1398,22 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'Wachtwoord';
+
+  @override
+  String get teacherSignIn => 'Inloggen';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'Voer het adres van je school en je wachtwoord in.';
+
+  @override
+  String get teacherBadCredentials => 'Onjuist adres of wachtwoord.';
+
+  @override
+  String get teacherForgotPassword => 'Wachtwoord vergeten?';
+
+  @override
   String get teacherAccount => 'Je abonnement';
 
   @override

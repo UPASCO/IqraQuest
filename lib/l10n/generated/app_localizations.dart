@@ -2386,6 +2386,36 @@ abstract class AppLocalizations {
   /// **'{count, plural, one{{count} pt} other{{count} pts}}'**
   String classroomPointsCount(num count);
 
+  /// Console: the password field
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get teacherPasswordLabel;
+
+  /// Console: the button that signs a teacher in
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get teacherSignIn;
+
+  /// Console: what to type to get in
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your school\'s address and your password.'**
+  String get teacherSignInPasswordHint;
+
+  /// Console: the address or the password is wrong
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong address or password.'**
+  String get teacherBadCredentials;
+
+  /// Console: the way back in when the password is lost
+  ///
+  /// In en, this message translates to:
+  /// **'Forgotten your password?'**
+  String get teacherForgotPassword;
+
   /// Console: the heading of the subscription card
   ///
   /// In en, this message translates to:

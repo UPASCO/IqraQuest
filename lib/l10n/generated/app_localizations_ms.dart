@@ -1388,6 +1388,22 @@ class AppLocalizationsMs extends AppLocalizations {
   }
 
   @override
+  String get teacherPasswordLabel => 'Kata laluan';
+
+  @override
+  String get teacherSignIn => 'Log masuk';
+
+  @override
+  String get teacherSignInPasswordHint =>
+      'Masukkan alamat sekolah anda dan kata laluan anda.';
+
+  @override
+  String get teacherBadCredentials => 'Alamat atau kata laluan salah.';
+
+  @override
+  String get teacherForgotPassword => 'Lupa kata laluan?';
+
+  @override
   String get teacherAccount => 'Langganan anda';
 
   @override

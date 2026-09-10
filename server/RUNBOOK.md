@@ -80,6 +80,36 @@ Dès qu'il y a plus d'un enseignant, configurer un SMTP dans
 la plus probable le jour où ça compte, et elle est silencieuse : le lien
 n'arrive jamais.
 
+### Créer le compte d'une école — 2 minutes, sans e-mail
+
+La console se connecte avec **une adresse et un mot de passe**. C'est la
+porte de tous les jours, et elle ne dépend d'aucun courrier : un
+enseignant devant sa classe n'attend pas sa boîte de réception.
+
+Le compte se crée depuis le tableau de bord, **Authentication → Users →
+Add user** :
+
+| champ | valeur |
+|---|---|
+| Email | l'adresse qui porte la licence |
+| Password | celui que vous transmettez à l'école |
+| Auto Confirm User | **coché** |
+
+« Auto Confirm User » compte : sans lui, l'adresse reste non confirmée,
+et `my_licence()` refuse de rattacher la licence — c'est la protection
+qui empêche quelqu'un de s'inscrire en `nimporte.qui@ecole-annour.fr`
+pour hériter de l'abonnement d'une école (migration 0006).
+
+Créer les comptes à la main est le bon fonctionnement tant qu'il y a
+quelques écoles : chacune reçoit ses identifiants avec sa facture, et
+personne ne peut réclamer une licence qu'il n'a pas payée. L'inscription
+libre demandera, elle, une confirmation par e-mail — donc un SMTP — et
+n'a d'intérêt qu'à partir du moment où les écoles arrivent seules.
+
+**Le mot de passe oublié** passe, lui, par le lien de connexion : la
+console le propose sous « Mot de passe oublié ? », et c'est le seul
+endroit où un e-mail reste nécessaire.
+
 ### Le lien ne part pas : où regarder, dans l'ordre
 
 La console dit « Lien envoyé » dès que Supabase a répondu 2xx — donc
@@ -323,7 +353,8 @@ le déploiement part tout seul.
 | symptôme | cause la plus probable |
 |---|---|
 | L'app dit « aucune classe joignable » | build faite sans les deux `--dart-define` (étape 5) |
-| Le lien de connexion n'arrive jamais | quota d'e-mails Supabase atteint → configurer un SMTP (étape 2) |
+| Le lien de connexion n'arrive jamais | quota d'e-mails Supabase atteint → configurer un SMTP (étape 2). La connexion par mot de passe, elle, n'en dépend pas |
+| « Adresse ou mot de passe incorrect » sur un compte qui existe | « Auto Confirm User » n'était pas coché à la création : le compte existe mais son adresse n'est pas confirmée |
 | Le lien arrive mais la console reste déconnectée | `Redirect URLs` ne contient pas `teacher-callback.html` (étape 2) |
 | « Aucune licence » alors que Stripe a été payé | métadonnée posée sur le produit et non sur le lien, ou palier inconnu (étape 7) |
 | Une école a moins de salles qu'elle n'en a payées | `iqraquest_plan` ne correspond à aucune ligne de `plans` : corriger le lien, puis rejouer l'événement depuis Stripe |
