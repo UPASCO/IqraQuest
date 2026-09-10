@@ -1389,6 +1389,9 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get teacherBackToSite => 'iqraquest.org';
+
+  @override
   String get teacherPasswordLabel => 'Kata sandi';
 
   @override

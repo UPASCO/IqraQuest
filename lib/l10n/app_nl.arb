@@ -378,6 +378,7 @@
   "classroomScanToJoin": "Scan het, of typ de code",
   "classroomRanking": "Klassement",
   "classroomPointsCount": "{count, plural, one{{count} ptn} other{{count} ptn}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "Wachtwoord",
   "teacherSignIn": "Inloggen",
   "teacherSignInPasswordHint": "Voer het adres van je school en je wachtwoord in.",

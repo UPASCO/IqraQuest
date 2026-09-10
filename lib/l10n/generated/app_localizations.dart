@@ -2386,6 +2386,12 @@ abstract class AppLocalizations {
   /// **'{count, plural, one{{count} pt} other{{count} pts}}'**
   String classroomPointsCount(num count);
 
+  /// Console: the way back to iqraquest.org
+  ///
+  /// In en, this message translates to:
+  /// **'iqraquest.org'**
+  String get teacherBackToSite;
+
   /// Console: the password field
   ///
   /// In en, this message translates to:

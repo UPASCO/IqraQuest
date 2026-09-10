@@ -1403,6 +1403,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get teacherBackToSite => 'iqraquest.org';
+
+  @override
   String get teacherPasswordLabel => 'Contraseña';
 
   @override

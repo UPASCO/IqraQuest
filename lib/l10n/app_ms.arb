@@ -378,6 +378,7 @@
   "classroomScanToJoin": "Imbas, atau taip kod",
   "classroomRanking": "Kedudukan",
   "classroomPointsCount": "{count, plural, other{{count} mata}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "Kata laluan",
   "teacherSignIn": "Log masuk",
   "teacherSignInPasswordHint": "Masukkan alamat sekolah anda dan kata laluan anda.",

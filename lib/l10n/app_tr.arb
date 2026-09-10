@@ -378,6 +378,7 @@
   "classroomScanToJoin": "Tarayın ya da kodu girin",
   "classroomRanking": "Sıralama",
   "classroomPointsCount": "{count, plural, other{{count} puan}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "Parola",
   "teacherSignIn": "Giriş yap",
   "teacherSignInPasswordHint": "Okulunuzun adresini ve parolanızı girin.",

@@ -3213,6 +3213,12 @@ s("classroomPointsCount", "Projected board: a pupil's right answers",
   it="{count, plural, one{{count} pt} other{{count} pt}}",
   nl="{count, plural, one{{count} ptn} other{{count} ptn}}")
 
+s("teacherBackToSite", "Console: the way back to iqraquest.org",
+  fr="iqraquest.org", en="iqraquest.org", ar="iqraquest.org",
+  es="iqraquest.org", pt="iqraquest.org", de="iqraquest.org",
+  tr="iqraquest.org", id="iqraquest.org", ur="iqraquest.org",
+  ms="iqraquest.org", it="iqraquest.org", nl="iqraquest.org")
+
 s("teacherPasswordLabel", "Console: the password field",
   fr="Mot de passe", en="Password", ar="كلمة المرور",
   es="Contraseña", pt="Palavra-passe", de="Passwort", tr="Parola",

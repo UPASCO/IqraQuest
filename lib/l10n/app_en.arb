@@ -1866,6 +1866,10 @@
       }
     }
   },
+  "teacherBackToSite": "iqraquest.org",
+  "@teacherBackToSite": {
+    "description": "Console: the way back to iqraquest.org"
+  },
   "teacherPasswordLabel": "Password",
   "@teacherPasswordLabel": {
     "description": "Console: the password field"

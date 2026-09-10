@@ -378,6 +378,7 @@
   "classroomScanToJoin": "امسح الرمز، أو أدخل الكود",
   "classroomRanking": "الترتيب",
   "classroomPointsCount": "{count, plural, zero{لا نقاط} one{نقطة واحدة} two{نقطتان} few{{count} نقاط} many{{count} نقطة} other{{count} نقطة}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "كلمة المرور",
   "teacherSignIn": "تسجيل الدخول",
   "teacherSignInPasswordHint": "أدخل عنوان مؤسستك وكلمة المرور.",

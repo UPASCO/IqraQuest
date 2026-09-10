@@ -378,6 +378,7 @@
   "classroomScanToJoin": "اسکین کریں، یا کوڈ درج کریں",
   "classroomRanking": "درجہ بندی",
   "classroomPointsCount": "{count, plural, one{{count} پوائنٹ} other{{count} پوائنٹس}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "پاس ورڈ",
   "teacherSignIn": "سائن ان کریں",
   "teacherSignInPasswordHint": "اپنے ادارے کا پتہ اور پاس ورڈ درج کریں۔",

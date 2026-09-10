@@ -1407,6 +1407,9 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get teacherBackToSite => 'iqraquest.org';
+
+  @override
   String get teacherPasswordLabel => 'Mot de passe';
 
   @override

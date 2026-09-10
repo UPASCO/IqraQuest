@@ -378,6 +378,7 @@
   "classroomScanToJoin": "Scannez, ou entrez le code",
   "classroomRanking": "Classement",
   "classroomPointsCount": "{count, plural, one{{count} pt} other{{count} pts}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "Mot de passe",
   "teacherSignIn": "Se connecter",
   "teacherSignInPasswordHint": "Entrez l'adresse de votre établissement et votre mot de passe.",

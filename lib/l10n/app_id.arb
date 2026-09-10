@@ -378,6 +378,7 @@
   "classroomScanToJoin": "Pindai, atau masukkan kode",
   "classroomRanking": "Peringkat",
   "classroomPointsCount": "{count, plural, other{{count} poin}}",
+  "teacherBackToSite": "iqraquest.org",
   "teacherPasswordLabel": "Kata sandi",
   "teacherSignIn": "Masuk",
   "teacherSignInPasswordHint": "Masukkan alamat sekolah Anda dan kata sandi Anda.",

@@ -99,7 +99,23 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.teacherConsole),
+        // La console vit sur son propre sous-domaine, mais elle
+        // appartient au même service : le nom de marque et le chemin du
+        // retour sont dans la barre, pour qu'une école venue de
+        // iqraquest.org ne croie pas avoir changé de maison.
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(l10n.teacherConsole),
+            Text(
+              l10n.teacherBackToSite,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: context.colors.goldAccent,
+                letterSpacing: 0.4,
+              ),
+            ),
+          ],
+        ),
         leading: _history
             ? IconButton(
                 key: const Key('teacher-history-back'),
