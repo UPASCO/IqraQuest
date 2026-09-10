@@ -3,6 +3,7 @@ import 'dart:math';
 
 import '../domain/classroom_state.dart';
 import 'classroom_gateway.dart';
+import 'teacher_gateway.dart';
 
 /// A whole classroom in memory, playing the same rules as the server.
 ///
@@ -88,10 +89,61 @@ class FakeClassroomGateway implements ClassroomGateway {
   void close(String code) {
     final s = _sessions[_normalize(code)];
     if (s == null) return;
+    // L'ordre compte, et c'est celui du SQL (`close_session`) : le
+    // rapport s'écrit d'abord, à partir de ce qui est encore là, puis les
+    // élèves partent. L'inverse rendrait un bilan vide.
+    reports.insert(0, _reportOf(s));
     s.phase = ClassroomPhase.over;
     s.participants.clear();
     s.answers.clear();
     _publish(s);
+  }
+
+  /// Les bilans laissés par les séances fermées, la plus récente
+  /// d'abord — ce que `reports` garde côté serveur.
+  final List<SessionReport> reports = [];
+
+  SessionReport _reportOf(_Session s) {
+    final perQuestion = [
+      for (var i = 0; i < s.questionIds.length; i++)
+        ReportQuestion(
+          index: i,
+          questionId: s.questionIds[i],
+          correct: s.answers.values
+              .where((a) => a.questionIndex == i && a.correct)
+              .length,
+          answered: s.answers.values.where((a) => a.questionIndex == i).length,
+        ),
+    ];
+    // Le SQL ne garde les prénoms que si l'enseignant a demandé le
+    // classement individuel. La même règle ici, sinon le fake
+    // promettrait un oubli que le serveur ne tient pas — ou l'inverse.
+    //
+    // Les participants sont rangés par jeton, et `_Participant.id` est
+    // autre chose : c'est le jeton — la clé — que porte une réponse.
+    // Comparer à l'`id` donnerait zéro bonne réponse à tout le monde,
+    // sans rien signaler.
+    final perPupil = s.scoring != ClassroomScoring.individual
+        ? null
+        : ([
+            for (final entry in s.participants.entries)
+              ReportPupil(
+                nickname: entry.value.nickname,
+                team: entry.value.team,
+                correct: s.answers.values
+                    .where((a) => a.token == entry.key && a.correct)
+                    .length,
+              ),
+          ]..sort((a, b) => b.correct.compareTo(a.correct)));
+    return SessionReport(
+      id: s.id,
+      code: s.code,
+      lessonId: s.lessonId,
+      playedAt: _now(),
+      pupils: s.participants.length,
+      perQuestion: perQuestion,
+      perPupil: perPupil,
+    );
   }
 
   /// How many pupils answered a given question correctly — the teacher's

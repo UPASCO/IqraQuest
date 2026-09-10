@@ -1403,6 +1403,67 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'Tu suscripción';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$used de $total salas abiertas';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Quedan $count días',
+      one: 'Queda $count día',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'Tu suscripción termina pronto.';
+
+  @override
+  String get teacherAccountRenews => 'Se renueva automáticamente.';
+
+  @override
+  String get teacherExpired => 'Tu suscripción ha terminado';
+
+  @override
+  String get teacherExpiredHint =>
+      'Ya no se puede abrir ninguna sesión. Tu historial sigue ahí y renovar lo reabre todo de inmediato.';
+
+  @override
+  String get teacherRenew => 'Renovar la suscripción';
+
+  @override
+  String get teacherHistory => 'Sesiones anteriores';
+
+  @override
+  String get teacherHistoryOpen => 'Ver el historial';
+
+  @override
+  String get teacherHistoryEmpty => 'Aún no hay ninguna sesión terminada.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent % de aciertos';
+  }
+
+  @override
+  String get teacherHistoryNamesGone =>
+      'Los nombres de esta sesión se borraron (90 días).';
+
+  @override
+  String get teacherMarksTitle => 'Notas para pasar';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return 'Sobre 20, con las $cards cartas de la sesión.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'Equipos';
 
   @override

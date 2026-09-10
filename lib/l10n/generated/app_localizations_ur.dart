@@ -1391,6 +1391,66 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'آپ کی رکنیت';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$total میں سے $used کمرے کھلے';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count دن باقی',
+      one: '$count دن باقی',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'آپ کی رکنیت جلد ختم ہو رہی ہے۔';
+
+  @override
+  String get teacherAccountRenews => 'یہ خودکار طور پر تجدید ہوتی ہے۔';
+
+  @override
+  String get teacherExpired => 'آپ کی رکنیت ختم ہو چکی ہے';
+
+  @override
+  String get teacherExpiredHint =>
+      'اب کوئی نشست نہیں کھولی جا سکتی۔ آپ کی تاریخ محفوظ ہے، اور تجدید سب کچھ فوراً دوبارہ کھول دیتی ہے۔';
+
+  @override
+  String get teacherRenew => 'رکنیت کی تجدید کریں';
+
+  @override
+  String get teacherHistory => 'گزشتہ نشستیں';
+
+  @override
+  String get teacherHistoryOpen => 'تاریخ دیکھیں';
+
+  @override
+  String get teacherHistoryEmpty => 'ابھی تک کوئی مکمل نشست نہیں۔';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent% درست';
+  }
+
+  @override
+  String get teacherHistoryNamesGone => 'اس نشست کے نام مٹا دیے گئے (۹۰ دن)۔';
+
+  @override
+  String get teacherMarksTitle => 'نقل کرنے کے لیے نمبر';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return '۲۰ میں سے، نشست کے $cards کارڈوں پر۔';
+  }
+
+  @override
   String get teacherTeamsLabel => 'ٹیمیں';
 
   @override

@@ -70,6 +70,43 @@ class FakeTeacherGateway implements TeacherGateway {
   }
 
   @override
+  Future<Account> account() async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    final l = _licence;
+    if (l == null) {
+      return const Account(
+        state: AccountState.noLicence,
+        email: '',
+        planLabel: '',
+        rooms: 0,
+        roomsInUse: 0,
+        expiresAt: null,
+        daysLeft: 0,
+        subscribed: false,
+      );
+    }
+    final left = l.expiresAt.difference(DateTime.now());
+    return Account(
+      state: l.isValid ? AccountState.active : AccountState.expired,
+      email: l.email,
+      planLabel: l.plan,
+      rooms: l.concurrentSessions,
+      roomsInUse: codeOf.length,
+      expiresAt: l.expiresAt,
+      daysLeft: left.isNegative ? 0 : (left.inSeconds / 86400).ceil(),
+      subscribed: false,
+      schoolName: l.schoolName,
+    );
+  }
+
+  @override
+  Future<List<SessionReport>> reports({int limit = 50}) async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    if (_licence == null) throw const TeacherException(TeacherError.noLicence);
+    return room.reports.take(limit).toList();
+  }
+
+  @override
   Future<({String sessionId, String code})> openSession({
     required String lessonId,
     required List<String> questionIds,

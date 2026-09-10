@@ -1866,6 +1866,89 @@
       }
     }
   },
+  "teacherAccount": "Your subscription",
+  "@teacherAccount": {
+    "description": "Console: the heading of the subscription card"
+  },
+  "teacherAccountRooms": "{used} of {total} rooms open",
+  "@teacherAccountRooms": {
+    "description": "Console: how many rooms the plan opens, and how many run now",
+    "placeholders": {
+      "used": {
+        "type": "num"
+      },
+      "total": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherAccountDaysLeft": "{count, plural, one{{count} day left} other{{count} days left}}",
+  "@teacherAccountDaysLeft": {
+    "description": "Console: days remaining on the subscription",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherAccountEndingSoon": "Your subscription ends soon.",
+  "@teacherAccountEndingSoon": {
+    "description": "Console: the subscription is close to its end"
+  },
+  "teacherAccountRenews": "It renews automatically.",
+  "@teacherAccountRenews": {
+    "description": "Console: the subscription renews by itself"
+  },
+  "teacherExpired": "Your subscription has ended",
+  "@teacherExpired": {
+    "description": "Console: the subscription is over, nothing opens"
+  },
+  "teacherExpiredHint": "No session can be opened any more. Your history is still there, and renewing reopens everything at once.",
+  "@teacherExpiredHint": {
+    "description": "Console: what is and is not lost when the subscription ends"
+  },
+  "teacherRenew": "Renew the subscription",
+  "@teacherRenew": {
+    "description": "Console: the button that renews the subscription"
+  },
+  "teacherHistory": "Past sessions",
+  "@teacherHistory": {
+    "description": "Console: the heading of the past sessions"
+  },
+  "teacherHistoryOpen": "See the history",
+  "@teacherHistoryOpen": {
+    "description": "Console: the button that loads the past sessions"
+  },
+  "teacherHistoryEmpty": "No finished session yet.",
+  "@teacherHistoryEmpty": {
+    "description": "Console: no session has been played yet"
+  },
+  "teacherHistorySuccess": "{percent}% correct",
+  "@teacherHistorySuccess": {
+    "description": "Console: how much of a past session the class got right",
+    "placeholders": {
+      "percent": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherHistoryNamesGone": "The names from this session were erased (90 days).",
+  "@teacherHistoryNamesGone": {
+    "description": "Console: the pupils' names have been erased by the retention rule"
+  },
+  "teacherMarksTitle": "Marks to copy across",
+  "@teacherMarksTitle": {
+    "description": "Console: the sheet of marks a teacher copies into the register"
+  },
+  "teacherMarksHint": "Out of 20, over the {cards} cards of the session.",
+  "@teacherMarksHint": {
+    "description": "Console: how the mark out of twenty is worked out",
+    "placeholders": {
+      "cards": {
+        "type": "num"
+      }
+    }
+  },
   "teacherTeamsLabel": "Teams",
   "@teacherTeamsLabel": {
     "description": "Console: the field that sets how many teams"

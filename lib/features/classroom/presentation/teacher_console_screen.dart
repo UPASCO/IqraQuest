@@ -53,6 +53,12 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
   int? _cardCount;
   bool _shuffle = false;
 
+  /// L'historique occupe l'écran entier plutôt qu'un bloc sous le
+  /// bouton : glissé dans la page de préparation, il repoussait
+  /// « Ouvrir la séance » hors de vue — et le bouton que l'on vient
+  /// chercher doit rester visible sans faire défiler.
+  bool _history = false;
+
   /// The board follows the console's own language until a teacher says
   /// otherwise — a French classroom projects in French without touching
   /// anything, and the pupils' phones stay in each pupil's language.
@@ -94,12 +100,33 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.teacherConsole),
+        leading: _history
+            ? IconButton(
+                key: const Key('teacher-history-back'),
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => setState(() => _history = false),
+              )
+            : null,
         actions: [
+          if (!_history &&
+              (console.stage == ConsoleStage.ready ||
+                  console.stage == ConsoleStage.expired))
+            TextButton(
+              key: const Key('teacher-history-open'),
+              onPressed: () {
+                setState(() => _history = true);
+                if (console.reports == null) {
+                  ref.read(teacherConsoleProvider.notifier).loadReports();
+                }
+              },
+              child: ButtonLabel(l10n.teacherHistory),
+            ),
           // Rien à quitter tant que personne n'est entré. `linkSent`
           // affiche encore le champ d'adresse : proposer « Se
           // déconnecter » au-dessus d'un formulaire de connexion est la
           // première chose qu'une école voit, et ça n'a aucun sens.
-          if (console.stage != ConsoleStage.signedOut &&
+          if (!_history &&
+              console.stage != ConsoleStage.signedOut &&
               console.stage != ConsoleStage.linkSent &&
               console.stage != ConsoleStage.loading)
             TextButton(
@@ -115,7 +142,9 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
           padding: pagePadding(context, top: 16, bottom: 20),
           child: ContentWidth(
             maxWidth: 720,
-            child: switch (console.stage) {
+            child: _history
+                ? _History(console: console, l10n: l10n)
+                : switch (console.stage) {
               ConsoleStage.loading => const Center(
                 child: Padding(
                   padding: EdgeInsets.all(40),
@@ -132,6 +161,7 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                     .sendLink(_email.text),
               ),
               ConsoleStage.noLicence => _NoLicence(console: console, l10n: l10n),
+              ConsoleStage.expired => _Expired(console: console, l10n: l10n),
               ConsoleStage.ready => _Setup(
                 console: console,
                 l10n: l10n,
@@ -177,7 +207,7 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                     ),
               ),
               ConsoleStage.running => _Running(console: console, l10n: l10n),
-            },
+                  },
           ),
         ),
       ),
@@ -277,6 +307,293 @@ class _SignInState extends State<_SignIn> {
 
 /// Signed in, nothing bought. The payment happens on Stripe's own page —
 /// the app never sees a card, and this repository never sees a price.
+/// L'abonnement, tel qu'une école le lit : ce qu'elle a, ce qui tourne,
+/// et combien de temps il reste.
+///
+/// Volontairement une carte et pas un écran : un enseignant vient ici
+/// pour ouvrir une séance, pas pour consulter sa facturation. Elle ne
+/// prend de la place que lorsqu'elle a quelque chose à dire — la fin qui
+/// approche.
+class _AccountCard extends StatelessWidget {
+  const _AccountCard({
+    required this.account,
+    required this.l10n,
+    this.showSchoolName = false,
+  });
+
+  final Account account;
+  final AppLocalizations l10n;
+
+  /// L'école se nomme-t-elle ici ? Non lorsque le titre de la page le
+  /// fait déjà : la carte se glisse alors sous ce titre, et répéter le
+  /// nom à deux centimètres d'intervalle ne renseigne personne.
+  final bool showSchoolName;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final text = Theme.of(context).textTheme;
+    return DecoratedBox(
+      key: const Key('teacher-account'),
+      decoration: BoxDecoration(
+        color: colors.surfaceElevated,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: account.endingSoon ? colors.goldAccent : colors.divider,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              showSchoolName && account.schoolName?.isNotEmpty == true
+                  ? account.schoolName!
+                  : l10n.teacherAccount,
+              style: text.titleMedium,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              account.planLabel,
+              style: text.bodyMedium?.copyWith(color: colors.textSecondary),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              l10n.teacherAccountRooms(account.roomsInUse, account.rooms),
+              style: text.bodyMedium,
+            ),
+            const SizedBox(height: 2),
+            Text(
+              l10n.teacherAccountDaysLeft(account.daysLeft),
+              key: const Key('teacher-account-days'),
+              style: text.bodyMedium?.copyWith(
+                color: account.endingSoon ? colors.goldAccent : colors.textSecondary,
+                fontWeight: account.endingSoon ? FontWeight.w700 : null,
+              ),
+            ),
+            if (account.endingSoon) ...[
+              const SizedBox(height: 6),
+              Text(
+                account.subscribed
+                    ? l10n.teacherAccountRenews
+                    : l10n.teacherAccountEndingSoon,
+                style: text.bodySmall?.copyWith(color: colors.textSecondary),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// L'abonnement est fini.
+///
+/// Ce n'est pas l'écran « aucune licence » : l'école a payé, elle a un
+/// historique, et ce qu'elle attend ici est un bouton pour repartir —
+/// pas une découverte de l'offre. Le verrou lui-même n'est pas ici : le
+/// serveur refuse d'ouvrir une séance expirée. Cet écran l'explique.
+class _Expired extends ConsumerWidget {
+  const _Expired({required this.console, required this.l10n});
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors = context.colors;
+    final account = console.account;
+    return Column(
+      key: const Key('teacher-expired'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (account != null) ...[
+          _AccountCard(account: account, l10n: l10n, showSchoolName: true),
+          const SizedBox(height: 18),
+        ],
+        Text(l10n.teacherExpired, style: Theme.of(context).textTheme.titleMedium),
+        const SizedBox(height: 8),
+        Text(
+          l10n.teacherExpiredHint,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+        ),
+        const SizedBox(height: 20),
+        if (ClassroomConfig.stripeCheckoutUrl.isNotEmpty)
+          ElevatedButton(
+            key: const Key('teacher-renew'),
+            onPressed: () => launchUrl(
+              Uri.parse(ClassroomConfig.stripeCheckoutUrl),
+              webOnlyWindowName: '_blank',
+            ),
+            child: ButtonLabel(l10n.teacherRenew),
+          ),
+        const SizedBox(height: 10),
+        OutlinedButton(
+          key: const Key('teacher-refresh-expired'),
+          onPressed: console.busy
+              ? null
+              : () => ref.read(teacherConsoleProvider.notifier).refreshLicence(),
+          child: ButtonLabel(l10n.teacherRefresh),
+        ),
+      ],
+    );
+  }
+}
+
+/// Les séances passées, et les notes qu'on en tire.
+///
+/// Rien n'est chargé tant qu'on ne le demande pas : la console s'ouvre
+/// pour lancer une séance, et aller chercher un an de bilans pour
+/// afficher un bouton serait payer une attente que personne n'a
+/// demandée.
+class _History extends ConsumerWidget {
+  const _History({required this.console, required this.l10n});
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors = context.colors;
+    final reports = console.reports;
+    return Column(
+      key: const Key('teacher-history'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(l10n.teacherHistory, style: Theme.of(context).textTheme.titleMedium),
+        const SizedBox(height: 10),
+        if (reports == null)
+          const Center(
+            key: Key('teacher-history-loading'),
+            child: Padding(
+              padding: EdgeInsets.all(30),
+              child: CircularProgressIndicator(),
+            ),
+          )
+        else if (reports.isEmpty)
+          Text(
+            l10n.teacherHistoryEmpty,
+            key: const Key('teacher-history-empty'),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
+          )
+        else
+          for (final report in reports) ...[
+            _ReportTile(report: report, l10n: l10n),
+            const SizedBox(height: 8),
+          ],
+      ],
+    );
+  }
+}
+
+class _ReportTile extends ConsumerWidget {
+  const _ReportTile({required this.report, required this.l10n});
+
+  final SessionReport report;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors = context.colors;
+    final text = Theme.of(context).textTheme;
+    final success = report.success;
+    // Une leçon peut avoir disparu du catalogue depuis : la banque se
+    // recoupe, les identifiants bougent. Un bilan d'il y a six mois doit
+    // rester lisible — à défaut de titre, son code de séance.
+    final lesson = ref
+        .watch(lessonsProvider)
+        .valueOrNull
+        ?.where((l) => l.id == report.lessonId)
+        .firstOrNull;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: colors.surfaceElevated,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: colors.divider),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              lesson == null ? report.code : lessonTitle(l10n, lesson),
+              style: text.titleSmall,
+            ),
+            const SizedBox(height: 2),
+            Text(
+              '${_shortDate(report.playedAt)} · '
+              '${l10n.classroomPupilCount(report.pupils)}',
+              style: text.bodySmall?.copyWith(color: colors.textSecondary),
+            ),
+            if (success != null) ...[
+              const SizedBox(height: 6),
+              Text(
+                l10n.teacherHistorySuccess((success * 100).round()),
+                style: text.bodyMedium,
+              ),
+            ],
+            // Les notes, seulement quand la séance comptait par élève et
+            // que les prénoms n'ont pas encore été effacés.
+            if (report.perPupil case final pupils?) ...[
+              const SizedBox(height: 10),
+              Text(l10n.teacherMarksTitle, style: text.titleSmall),
+              Text(
+                l10n.teacherMarksHint(report.perQuestion.length),
+                style: text.bodySmall?.copyWith(color: colors.textSecondary),
+              ),
+              const SizedBox(height: 6),
+              for (final pupil in pupils)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(child: Text(pupil.nickname, style: text.bodyMedium)),
+                      Text(
+                        _mark(pupil, report.perQuestion.length),
+                        style: text.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontFeatures: const [FontFeature.tabularFigures()],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ] else if (report.pupils > 0) ...[
+              const SizedBox(height: 6),
+              Text(
+                l10n.teacherHistoryNamesGone,
+                style: text.bodySmall?.copyWith(color: colors.textSecondary),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// « 14 / 20 », ou « 13,5 / 20 » — la demi-note s'écrit comme on
+  /// l'écrit à la main, pas « 13.5 ».
+  static String _mark(ReportPupil pupil, int cards) {
+    final mark = pupil.mark(cards: cards);
+    if (mark == null) return '—';
+    final body = mark == mark.roundToDouble()
+        ? '${mark.round()}'
+        : mark.toStringAsFixed(1).replaceAll('.', ',');
+    return '$body / 20';
+  }
+
+  static String _shortDate(DateTime at) =>
+      '${at.day.toString().padLeft(2, '0')}/'
+      '${at.month.toString().padLeft(2, '0')}/${at.year}';
+}
+
 class _NoLicence extends ConsumerWidget {
   const _NoLicence({required this.console, required this.l10n});
 
@@ -423,16 +740,34 @@ class _Setup extends ConsumerWidget {
             key: const Key('teacher-school'),
             style: Theme.of(context).textTheme.titleLarge,
           ),
+        // L'échéance tient sur la ligne qui existe déjà, et n'ajoute rien
+        // à la hauteur de la page. Une carte d'abonnement glissée ici
+        // repoussait « Ouvrir la séance » hors de l'écran : un
+        // avertissement qui cache le bouton qu'on est venu chercher est
+        // un mauvais échange. Quand la fin approche, cette ligne change
+        // de ton et compte les jours ; l'espace client complet est à un
+        // geste, dans l'historique.
         if (console.licence != null)
           Text(
-            l10n.teacherLicenceUntil(
-              MaterialLocalizations.of(
-                context,
-              ).formatFullDate(console.licence!.expiresAt),
+            switch (console.account) {
+              final a? when a.endingSoon => l10n.teacherAccountDaysLeft(
+                a.daysLeft,
+              ),
+              _ => l10n.teacherLicenceUntil(
+                MaterialLocalizations.of(
+                  context,
+                ).formatFullDate(console.licence!.expiresAt),
+              ),
+            },
+            key: const Key('teacher-licence-line'),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: console.account?.endingSoon ?? false
+                  ? colors.goldAccent
+                  : colors.textSecondary,
+              fontWeight: (console.account?.endingSoon ?? false)
+                  ? FontWeight.w700
+                  : null,
             ),
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
           ),
         const SizedBox(height: 18),
         Text(

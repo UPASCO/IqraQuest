@@ -1407,6 +1407,67 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'Il tuo abbonamento';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$used di $total sale aperte';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ancora $count giorni',
+      one: 'Ancora $count giorno',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'Il tuo abbonamento sta per finire.';
+
+  @override
+  String get teacherAccountRenews => 'Si rinnova automaticamente.';
+
+  @override
+  String get teacherExpired => 'Il tuo abbonamento è terminato';
+
+  @override
+  String get teacherExpiredHint =>
+      'Non è più possibile aprire sessioni. Il tuo storico resta, e il rinnovo riapre tutto subito.';
+
+  @override
+  String get teacherRenew => 'Rinnova l\'abbonamento';
+
+  @override
+  String get teacherHistory => 'Sessioni passate';
+
+  @override
+  String get teacherHistoryOpen => 'Vedi lo storico';
+
+  @override
+  String get teacherHistoryEmpty => 'Nessuna sessione conclusa per ora.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent % di risposte esatte';
+  }
+
+  @override
+  String get teacherHistoryNamesGone =>
+      'I nomi di questa sessione sono stati cancellati (90 giorni).';
+
+  @override
+  String get teacherMarksTitle => 'Voti da riportare';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return 'Su 20, sulle $cards carte della sessione.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'Squadre';
 
   @override

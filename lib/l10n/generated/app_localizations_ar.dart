@@ -1411,6 +1411,70 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'اشتراكك';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$used من $total قاعة مفتوحة';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count يوم متبقٍ',
+      many: '$count يومًا متبقيًا',
+      few: '$count أيام متبقية',
+      two: 'يومان متبقيان',
+      one: 'يوم واحد متبقٍ',
+      zero: 'لم يتبق شيء',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'اشتراكك ينتهي قريبًا.';
+
+  @override
+  String get teacherAccountRenews => 'يتجدد تلقائيًا.';
+
+  @override
+  String get teacherExpired => 'انتهى اشتراكك';
+
+  @override
+  String get teacherExpiredHint =>
+      'لم يعد بالإمكان فتح أي حصة. سجلك ما زال موجودًا، والتجديد يعيد فتح كل شيء فورًا.';
+
+  @override
+  String get teacherRenew => 'تجديد الاشتراك';
+
+  @override
+  String get teacherHistory => 'الحصص السابقة';
+
+  @override
+  String get teacherHistoryOpen => 'عرض السجل';
+
+  @override
+  String get teacherHistoryEmpty => 'لا توجد حصة منتهية بعد.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent% إجابات صحيحة';
+  }
+
+  @override
+  String get teacherHistoryNamesGone => 'حُذفت أسماء هذه الحصة (٩٠ يومًا).';
+
+  @override
+  String get teacherMarksTitle => 'العلامات للنقل';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return 'من ٢٠، على $cards بطاقة في الحصة.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'الفرق';
 
   @override

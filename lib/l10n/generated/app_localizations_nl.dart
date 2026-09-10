@@ -1398,6 +1398,67 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'Je abonnement';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$used van $total zalen open';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Nog $count dagen',
+      one: 'Nog $count dag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'Je abonnement loopt binnenkort af.';
+
+  @override
+  String get teacherAccountRenews => 'Het wordt automatisch verlengd.';
+
+  @override
+  String get teacherExpired => 'Je abonnement is afgelopen';
+
+  @override
+  String get teacherExpiredHint =>
+      'Er kan geen sessie meer worden geopend. Je geschiedenis blijft bestaan en verlengen opent alles meteen weer.';
+
+  @override
+  String get teacherRenew => 'Abonnement verlengen';
+
+  @override
+  String get teacherHistory => 'Eerdere sessies';
+
+  @override
+  String get teacherHistoryOpen => 'Bekijk de geschiedenis';
+
+  @override
+  String get teacherHistoryEmpty => 'Nog geen afgeronde sessie.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent % goed';
+  }
+
+  @override
+  String get teacherHistoryNamesGone =>
+      'De namen van deze sessie zijn gewist (90 dagen).';
+
+  @override
+  String get teacherMarksTitle => 'Cijfers om over te nemen';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return 'Op 20, over de $cards kaarten van de sessie.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'Teams';
 
   @override

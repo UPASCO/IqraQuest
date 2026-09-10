@@ -130,6 +130,22 @@ class SupabaseTeacherGateway implements TeacherGateway {
   }
 
   @override
+  Future<Account> account() async {
+    final json = await _rpc('my_account', const {});
+    return Account.fromJson(json ?? const {'state': 'no_licence'});
+  }
+
+  @override
+  Future<List<SessionReport>> reports({int limit = 50}) async {
+    final json = await _rpc('my_reports', {'p_limit': limit});
+    final rows = json?['reports'] as List? ?? const [];
+    return [
+      for (final row in rows)
+        SessionReport.fromJson(Map<String, dynamic>.from(row as Map)),
+    ];
+  }
+
+  @override
   Future<({String sessionId, String code})> openSession({
     required String lessonId,
     required List<String> questionIds,

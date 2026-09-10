@@ -1376,6 +1376,65 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'Aboneliğiniz';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$total salondan $used tanesi açık';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün kaldı',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'Aboneliğiniz yakında bitiyor.';
+
+  @override
+  String get teacherAccountRenews => 'Otomatik olarak yenilenir.';
+
+  @override
+  String get teacherExpired => 'Aboneliğiniz sona erdi';
+
+  @override
+  String get teacherExpiredHint =>
+      'Artık oturum açılamıyor. Geçmişiniz duruyor ve yenileme her şeyi anında yeniden açar.';
+
+  @override
+  String get teacherRenew => 'Aboneliği yenile';
+
+  @override
+  String get teacherHistory => 'Geçmiş oturumlar';
+
+  @override
+  String get teacherHistoryOpen => 'Geçmişi gör';
+
+  @override
+  String get teacherHistoryEmpty => 'Henüz tamamlanmış oturum yok.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '%$percent doğru';
+  }
+
+  @override
+  String get teacherHistoryNamesGone => 'Bu oturumun adları silindi (90 gün).';
+
+  @override
+  String get teacherMarksTitle => 'Deftere geçirilecek notlar';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return '20 üzerinden, oturumun $cards kartı üzerinden.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'Takımlar';
 
   @override

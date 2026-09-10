@@ -215,7 +215,119 @@ void main() {
       granted: licence(life: const Duration(days: -1)),
     );
 
-    expect(find.byKey(const Key('teacher-no-licence')), findsOneWidget);
+    // Une échéance passée n'est pas « aucune licence ». Une école qui a
+    // payé l'an dernier lit un renouvellement, pas une découverte de
+    // l'offre — et rien ne permet d'ouvrir une salle.
+    expect(find.byKey(const Key('teacher-expired')), findsOneWidget);
+    expect(find.byKey(const Key('teacher-no-licence')), findsNothing);
+    expect(find.byKey(const Key('teacher-open')), findsNothing);
+    expect(find.text(en.teacherExpired), findsOneWidget);
+  });
+
+  testWidgets('the end of a subscription is counted down, not hidden', (
+    tester,
+  ) async {
+    await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      granted: licence(life: const Duration(days: 9)),
+    );
+
+    // Sur la ligne qui portait déjà l'échéance, et nulle part ailleurs :
+    // une carte ajoutée ici repousserait « Ouvrir la séance » hors de
+    // l'écran, ce qui est arrivé et ne doit plus arriver.
+    expect(find.text(en.teacherAccountDaysLeft(9)), findsOneWidget);
+    expect(find.byKey(const Key('teacher-open')), findsOneWidget);
+  });
+
+  testWidgets('a subscription with months left says a date, not a countdown', (
+    tester,
+  ) async {
+    await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      granted: licence(life: const Duration(days: 200)),
+    );
+
+    expect(find.byKey(const Key('teacher-licence-line')), findsOneWidget);
+    expect(find.text(en.teacherAccountDaysLeft(200)), findsNothing);
+  });
+
+  testWidgets('the history hands back the marks a teacher copies out', (
+    tester,
+  ) async {
+    final harness = await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      granted: licence(),
+    );
+
+    // Une séance jouée pour de vrai : deux élèves, deux cartes, et des
+    // réponses inégales — c'est ce qui rend les notes différentes.
+    final code = harness.room.openSession(
+      lessonId: 'lesson_prophets_beginner_01',
+      questionIds: const ['q1', 'q2'],
+      scoring: ClassroomScoring.individual,
+    );
+    final amina = await harness.room.join(code: code, nickname: 'Amina');
+    final yusuf = await harness.room.join(code: code, nickname: 'Yusuf');
+    harness.room.ask(code);
+    await harness.room.answer(
+      code: code,
+      token: amina.token,
+      questionIndex: 0,
+      choice: 0,
+    );
+    await harness.room.answer(
+      code: code,
+      token: yusuf.token,
+      questionIndex: 0,
+      choice: 2,
+    );
+    harness.room.reveal(code);
+    harness.room.ask(code);
+    await harness.room.answer(
+      code: code,
+      token: amina.token,
+      questionIndex: 1,
+      choice: 0,
+    );
+    harness.room.close(code);
+
+    await tester.tap(find.byKey(const Key('teacher-history-open')));
+    await settle(tester);
+
+    expect(find.byKey(const Key('teacher-history')), findsOneWidget);
+    // Deux bonnes réponses sur deux cartes : 20 sur 20. Une sur deux :
+    // 10. Le dénominateur est le nombre de cartes, pas le nombre de
+    // réponses envoyées — un élève absent d'une carte ne doit pas être
+    // noté comme s'il ne l'avait jamais eue.
+    expect(find.text('20 / 20'), findsOneWidget);
+    expect(find.text('0 / 20'), findsOneWidget);
+  });
+
+  testWidgets('a session counted by teams keeps no name in its history', (
+    tester,
+  ) async {
+    final harness = await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      granted: licence(),
+    );
+
+    final code = harness.room.openSession(
+      lessonId: 'lesson_prophets_beginner_01',
+      questionIds: const ['q1'],
+    );
+    await harness.room.join(code: code, nickname: 'Amina');
+    harness.room.ask(code);
+    harness.room.close(code);
+
+    await tester.tap(find.byKey(const Key('teacher-history-open')));
+    await settle(tester);
+
+    expect(find.text('Amina'), findsNothing);
+    expect(find.text(en.teacherHistoryNamesGone), findsOneWidget);
   });
 
   testWidgets('the console greets the school, not an email address', (

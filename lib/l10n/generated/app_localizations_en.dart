@@ -1395,6 +1395,67 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'Your subscription';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$used of $total rooms open';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days left',
+      one: '$count day left',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon => 'Your subscription ends soon.';
+
+  @override
+  String get teacherAccountRenews => 'It renews automatically.';
+
+  @override
+  String get teacherExpired => 'Your subscription has ended';
+
+  @override
+  String get teacherExpiredHint =>
+      'No session can be opened any more. Your history is still there, and renewing reopens everything at once.';
+
+  @override
+  String get teacherRenew => 'Renew the subscription';
+
+  @override
+  String get teacherHistory => 'Past sessions';
+
+  @override
+  String get teacherHistoryOpen => 'See the history';
+
+  @override
+  String get teacherHistoryEmpty => 'No finished session yet.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent% correct';
+  }
+
+  @override
+  String get teacherHistoryNamesGone =>
+      'The names from this session were erased (90 days).';
+
+  @override
+  String get teacherMarksTitle => 'Marks to copy across';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return 'Out of 20, over the $cards cards of the session.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'Teams';
 
   @override

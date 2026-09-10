@@ -98,20 +98,82 @@ function constantTimeEquals(a: string, b: string): boolean {
 
 /// Ce que l'offre achetée donne droit à faire.
 ///
-/// Les métadonnées sont posées sur le LIEN DE PAIEMENT dans Stripe :
-/// ce sont celles-là que Stripe recopie sur la session de paiement, donc
-/// les seules que cet événement porte. (Les métadonnées du produit, non.)
-/// Les prix, eux, vivent chez Stripe et jamais dans ce dépôt. Sans
-/// métadonnée, on retombe sur la licence la plus modeste : une salle.
-function entitlementOf(metadata: Record<string, string> | undefined) {
-  const plan = metadata?.iqraquest_plan ?? "classe";
-  const rooms = Number(metadata?.iqraquest_rooms ?? "1");
+/// Une seule métadonnée compte, posée sur le LIEN DE PAIEMENT dans
+/// Stripe : `iqraquest_plan`, le nom du palier. (Les métadonnées du
+/// produit ne voyagent pas jusqu'ici — seules celles du lien sont
+/// recopiées sur la session de paiement.)
+///
+/// Ce que ce palier ouvre — combien de salles, pour combien de temps —
+/// se lit dans la table `plans`, jamais dans la métadonnée. C'est
+/// délibéré : `iqraquest_rooms` était un champ de saisie libre dans un
+/// tableau de bord, et une faute de frappe y donnait cent salles pour
+/// le prix de trois, sans que rien ne le signale. Les prix, eux, restent
+/// chez Stripe et ne sont écrits nulle part dans ce dépôt.
+///
+/// Un palier inconnu ne devine rien : la licence n'est pas écrite et
+/// l'événement est journalisé. Ouvrir trois salles « au cas où » parce
+/// qu'une métadonnée était mal saisie serait offrir ce que personne n'a
+/// acheté.
+export interface Plan {
+  id: string;
+  rooms: number;
+  duration_days: number;
+  school_year: boolean;
+}
+
+async function planOf(
+  metadata: Record<string, string> | undefined,
+): Promise<Plan | null> {
+  const wanted = metadata?.iqraquest_plan;
+  if (!wanted) return null;
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/plans?id=eq.${encodeURIComponent(wanted)}` +
+      `&select=id,rooms,duration,school_year`,
+    {
+      headers: {
+        "apikey": SERVICE_ROLE,
+        "Authorization": `Bearer ${SERVICE_ROLE}`,
+      },
+    },
+  );
+  if (!response.ok) {
+    throw new Error(`plan lookup failed: ${response.status}`);
+  }
+  const rows = await response.json();
+  const row = Array.isArray(rows) ? rows[0] : null;
+  if (!row) return null;
   return {
-    plan: ["essai", "classe", "ecole"].includes(plan) ? plan : "classe",
-    concurrent_sessions: Number.isFinite(rooms)
-      ? Math.min(100, Math.max(1, Math.trunc(rooms)))
-      : 1,
+    id: String(row.id),
+    rooms: Number(row.rooms),
+    duration_days: intervalToDays(String(row.duration)),
+    school_year: Boolean(row.school_year),
   };
+}
+
+/// PostgREST rend un `interval` en texte (« 1 year », « 90 days »,
+/// « 1 day », ou la forme ISO « P1Y »). On n'a besoin que d'un nombre de
+/// jours, et seulement pour les paliers courts : les paliers annuels
+/// passent par [schoolYearEnd], qui ignore cette valeur.
+export function intervalToDays(raw: string): number {
+  const iso = /^P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)D)?/.exec(raw);
+  if (iso && (iso[1] || iso[2] || iso[3])) {
+    return Number(iso[1] ?? 0) * 365 + Number(iso[2] ?? 0) * 30 +
+      Number(iso[3] ?? 0);
+  }
+  let days = 0;
+  for (const [, n, unit] of raw.matchAll(/(\d+)\s*(year|mon|day)/g)) {
+    const count = Number(n);
+    days += unit === "year" ? count * 365 : unit === "mon" ? count * 30 : count;
+  }
+  return days;
+}
+
+/// L'échéance qu'ouvre un palier, à partir d'aujourd'hui.
+export function expiryFor(plan: Plan, boughtAt: Date): Date {
+  if (plan.school_year) return schoolYearEnd(boughtAt);
+  const end = new Date(boughtAt);
+  end.setUTCDate(end.getUTCDate() + plan.duration_days);
+  return end;
 }
 
 /// Prolonge (ou arrête) la licence d'un abonnement déjà connu.
@@ -220,7 +282,21 @@ Deno.serve(async (request) => {
         // échouer. Tant qu'il n'est pas payé, il n'y a pas de licence :
         // `checkout.session.async_payment_succeeded` repassera ici.
         if (object?.payment_status === "unpaid") break;
-        const rights = entitlementOf(object?.metadata);
+        const plan = await planOf(object?.metadata);
+        if (!plan) {
+          // Sans palier reconnu on n'invente rien : une licence donnée
+          // au jugé ouvrirait des salles que personne n'a payées, ou en
+          // refuserait à qui a payé. L'événement est journalisé avec de
+          // quoi le retrouver et rejouer depuis Stripe une fois la
+          // métadonnée corrigée sur le lien de paiement.
+          console.error(
+            "paiement sans palier reconnu",
+            object?.id,
+            object?.metadata?.iqraquest_plan ?? "(aucune métadonnée)",
+            email,
+          );
+          break;
+        }
         // Le nom de l'établissement, dans l'ordre où on a une chance de
         // le trouver : un champ personnalisé du lien de paiement (« Nom
         // de l'établissement »), puis le nom porté par le paiement.
@@ -235,11 +311,16 @@ Deno.serve(async (request) => {
         // licence. La lire ici donnait à chaque école une licence d'un
         // jour. L'échéance d'un paiement unique se calcule ; celle d'un
         // abonnement arrive avec ses propres événements.
-        const expires = schoolYearEnd(new Date());
+        //
+        // La durée vient du palier : un an calé sur l'année scolaire
+        // pour un abonnement, vingt-quatre heures pour le palier de
+        // test — celui qui sert à voir de ses yeux, le lendemain, ce
+        // que devient une école dont l'abonnement est fini.
+        const expires = expiryFor(plan, new Date());
         await upsertLicence({
           email,
-          plan: rights.plan,
-          concurrent_sessions: rights.concurrent_sessions,
+          plan: plan.id,
+          concurrent_sessions: plan.rooms,
           expires_at: expires.toISOString(),
           stripe_customer_id: object?.customer ?? null,
           stripe_subscription_id: object?.subscription ?? null,
@@ -273,11 +354,20 @@ Deno.serve(async (request) => {
         // l'adresse en métadonnée.
         const email = object?.metadata?.iqraquest_email;
         if (!patched && email) {
-          const rights = entitlementOf(object?.metadata);
+          const plan = await planOf(object?.metadata);
+          if (!plan) {
+            console.error(
+              "abonnement sans palier reconnu",
+              object?.id,
+              object?.metadata?.iqraquest_plan ?? "(aucune métadonnée)",
+              email,
+            );
+            break;
+          }
           await upsertLicence({
             email,
-            plan: rights.plan,
-            concurrent_sessions: rights.concurrent_sessions,
+            plan: plan.id,
+            concurrent_sessions: plan.rooms,
             expires_at: renewed,
             stripe_customer_id: object?.customer ?? null,
             stripe_subscription_id: object?.id ?? null,

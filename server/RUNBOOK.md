@@ -38,10 +38,11 @@ précédente.
    - `server/supabase/migrations/0004_licence_domain.sql`
    - `server/supabase/migrations/0005_school_name.sql`
    - `server/supabase/migrations/0006_review_fixes.sql`
+   - `server/supabase/migrations/0007_plans_and_account.sql`
 
-Vérification : dans **Table Editor**, cinq tables existent (`licences`,
-`sessions`, `participants`, `answers`, `reports`), toutes avec RLS
-activé et **aucune politique** — c'est normal, et c'est la protection :
+Vérification : dans **Table Editor**, six tables existent (`licences`,
+`sessions`, `participants`, `answers`, `reports`, `plans`), toutes avec
+RLS activé et **aucune politique** — c'est normal, et c'est la protection :
 la clé publique ne lit rien, tout passe par les fonctions.
 
 Puis, depuis votre machine, la vérification qui compte vraiment — celle
@@ -211,27 +212,69 @@ bancaire). Il faut seulement de quoi vendre une licence de classe, ce
 qui n'existe pas encore : le lien IqraTime est un don à montant libre,
 sans abonnement ni webhook.
 
-1. **Produit** : « Licence Classe IqraQuest », prix annuel.
-2. **Lien de paiement** (Payment Link) sur ce produit, avec **deux
-   métadonnées posées sur le lien** — ce sont celles du lien que Stripe
-   recopie sur la session de paiement, donc les seules que la fonction
-   reçoit :
+1. **Trois produits, un par palier**, en abonnement annuel :
+
+   | produit | prix | salles | `iqraquest_plan` |
+   |---|---|---|---|
+   | IqraQuest École — 3 salles | 89 €/an | 3 | `ecole3` |
+   | IqraQuest École — 5 salles | 99 €/an | 5 | `ecole5` |
+   | IqraQuest École — 10 salles | 149 €/an | 10 | `ecole10` |
+
+   Les prix se fixent **dans Stripe et nulle part ailleurs** : ils ne
+   sont écrits dans aucun fichier de ce dépôt, et changer un tarif ne
+   demande aucune livraison.
+
+2. **Un lien de paiement** (Payment Link) par produit, portant **une
+   seule métadonnée, posée sur le lien** — ce sont celles du lien que
+   Stripe recopie sur la session de paiement, donc les seules que la
+   fonction reçoit :
 
    | clé | valeur |
    |---|---|
-   | `iqraquest_plan` | `classe` ou `ecole` |
-   | `iqraquest_rooms` | nombre de salles simultanées (1 à 100) |
+   | `iqraquest_plan` | `ecole3`, `ecole5`, `ecole10` ou `test1j` |
 
-   Pour l'offre École à 89 € : `iqraquest_plan = ecole`,
-   `iqraquest_rooms = 3`. **Sans ces métadonnées, la licence retombe sur
-   la plus modeste** (une salle) : c'est volontaire — un lien mal
-   configuré doit donner moins, jamais plus.
+   **Le nombre de salles ne se transmet plus.** Il se lit dans la table
+   `plans` (migration 0007), à partir du seul nom du palier. C'est
+   délibéré : `iqraquest_rooms` était un champ de saisie libre, et une
+   faute de frappe y donnait dix salles pour le prix de trois sans que
+   rien ne le signale.
 
-   L'échéance d'un paiement unique est d'un an, repoussée au 31 août
-   quand elle tomberait entre juin et août : une licence ne doit pas
-   mourir pendant les vacances, quand personne ne renouvelle. Deux mois
-   offerts au maximum, et une date de renouvellement qui tombe à la
-   rentrée.
+   **Un palier non reconnu n'écrit aucune licence** — l'événement est
+   journalisé, et se rejoue depuis Stripe une fois la métadonnée
+   corrigée. Ouvrir « une salle par défaut » donnerait à une école qui a
+   payé 149 € un accès qu'elle n'a pas acheté, silencieusement.
+
+   L'échéance vient elle aussi du palier : un an pour les trois offres,
+   repoussé au 31 août quand il tomberait entre juin et août — une
+   licence ne doit pas mourir pendant les vacances, quand personne ne
+   renouvelle. Deux mois offerts au maximum, et une date de
+   renouvellement qui tombe à la rentrée.
+
+   ### Le palier d'observation : 1 €, un jour
+
+   Un quatrième lien, qui ne s'affiche nulle part et ne se donne à
+   personne : **1 € en paiement unique, métadonnée `iqraquest_plan =
+   test1j`**. La licence qu'il ouvre dure vingt-quatre heures.
+
+   Il existe pour une seule raison : voir de ses yeux, le lendemain, ce
+   que devient une école dont l'abonnement est fini — la console qui
+   s'ouvre encore, l'historique toujours là, les séances qui ne
+   s'ouvrent plus, et le bouton de renouvellement. Attendre un an pour
+   savoir si ce chemin fonctionne n'est pas une option.
+
+   Le mode d'emploi tient en trois lignes :
+
+   1. Payer 1 € avec le lien `test1j`, depuis une adresse à soi.
+   2. Le jour même : la console dit « Encore 1 jour » en doré, et une
+      séance s'ouvre normalement.
+   3. Le lendemain : la console affiche « Votre abonnement est terminé »,
+      « Ouvrir la séance » a disparu, l'historique de la veille est
+      toujours consultable, et « Renouveler l'abonnement » mène au
+      paiement.
+
+   Si l'étape 3 montre autre chose — surtout « aucune licence », qui
+   voudrait dire que l'école a l'air de n'avoir jamais rien acheté —
+   c'est un défaut, pas une subtilité de configuration.
 
    Ajouter aussi, sur le lien de paiement, un **champ personnalisé**
    nommé `etablissement` (« Nom de l'établissement ») : la fonction le
@@ -263,7 +306,9 @@ sans abonnement ni webhook.
    relancer le workflow web.
 
 Test : payer une fois en **mode test** de Stripe, puis vérifier qu'une
-ligne est apparue dans `licences` avec le bon `concurrent_sessions`.
+ligne est apparue dans `licences` avec le bon `plan` et le
+`concurrent_sessions` que la table `plans` associe à ce palier — 3, 5 ou
+10, jamais une valeur venue de Stripe.
 
 ## 8. Le site vitrine
 
@@ -280,7 +325,9 @@ le déploiement part tout seul.
 | L'app dit « aucune classe joignable » | build faite sans les deux `--dart-define` (étape 5) |
 | Le lien de connexion n'arrive jamais | quota d'e-mails Supabase atteint → configurer un SMTP (étape 2) |
 | Le lien arrive mais la console reste déconnectée | `Redirect URLs` ne contient pas `teacher-callback.html` (étape 2) |
-| « Aucune licence » alors que Stripe a été payé | métadonnées posées sur le produit et non sur le lien (étape 7) |
+| « Aucune licence » alors que Stripe a été payé | métadonnée posée sur le produit et non sur le lien, ou palier inconnu (étape 7) |
+| Une école a moins de salles qu'elle n'en a payées | `iqraquest_plan` ne correspond à aucune ligne de `plans` : corriger le lien, puis rejouer l'événement depuis Stripe |
+| « Votre abonnement est terminé » alors qu'il court | l'horloge du serveur fait foi, pas celle du navigateur : vérifier `expires_at` dans `licences` |
 | Le tableau reste sur « code inconnu » | la séance a été fermée, ou le code appartient à un autre projet Supabase |
 | `school.iqraquest.org` renvoie un 404 GitHub | domaine personnalisé non renseigné dans Pages (étape 4) |
 

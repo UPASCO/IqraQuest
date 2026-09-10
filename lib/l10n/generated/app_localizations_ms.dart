@@ -1388,6 +1388,67 @@ class AppLocalizationsMs extends AppLocalizations {
   }
 
   @override
+  String get teacherAccount => 'Langganan anda';
+
+  @override
+  String teacherAccountRooms(num used, num total) {
+    return '$used daripada $total bilik dibuka';
+  }
+
+  @override
+  String teacherAccountDaysLeft(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Tinggal $count hari',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherAccountEndingSoon =>
+      'Langganan anda akan tamat tidak lama lagi.';
+
+  @override
+  String get teacherAccountRenews => 'Ia diperbaharui secara automatik.';
+
+  @override
+  String get teacherExpired => 'Langganan anda telah tamat';
+
+  @override
+  String get teacherExpiredHint =>
+      'Tiada sesi boleh dibuka lagi. Sejarah anda masih ada, dan pembaharuan membuka semula semuanya serta-merta.';
+
+  @override
+  String get teacherRenew => 'Perbaharui langganan';
+
+  @override
+  String get teacherHistory => 'Sesi lepas';
+
+  @override
+  String get teacherHistoryOpen => 'Lihat sejarah';
+
+  @override
+  String get teacherHistoryEmpty => 'Belum ada sesi yang selesai.';
+
+  @override
+  String teacherHistorySuccess(num percent) {
+    return '$percent% betul';
+  }
+
+  @override
+  String get teacherHistoryNamesGone =>
+      'Nama daripada sesi ini telah dipadam (90 hari).';
+
+  @override
+  String get teacherMarksTitle => 'Markah untuk disalin';
+
+  @override
+  String teacherMarksHint(num cards) {
+    return 'Daripada 20, atas $cards kad sesi ini.';
+  }
+
+  @override
   String get teacherTeamsLabel => 'Pasukan';
 
   @override

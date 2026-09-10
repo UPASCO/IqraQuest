@@ -22,6 +22,12 @@ enum ConsoleStage {
   /// Signed in, but nothing was bought on this address.
   noLicence,
 
+  /// L'abonnement est fini. Distinct de [noLicence], et il faut que ça
+  /// le reste : une école qui a payé l'an dernier n'a pas à lire
+  /// « aucune licence » comme si elle n'avait jamais rien acheté. Elle
+  /// voit son espace, son historique, et de quoi renouveler.
+  expired,
+
   /// Signed in with a licence: pick a lesson and open a room.
   ready,
 
@@ -35,6 +41,8 @@ class ConsoleState {
     this.stage = ConsoleStage.loading,
     this.email,
     this.licence,
+    this.account,
+    this.reports,
     this.sessionId,
     this.code,
     this.error,
@@ -45,6 +53,15 @@ class ConsoleState {
   final ConsoleStage stage;
   final String? email;
   final Licence? licence;
+
+  /// L'abonnement tel que le serveur le voit. Null tant qu'on ne l'a pas
+  /// demandé.
+  final Account? account;
+
+  /// Les séances passées. Null tant que l'enseignant n'a pas ouvert
+  /// l'historique — on ne va pas chercher un an de bilans pour afficher
+  /// un bouton.
+  final List<SessionReport>? reports;
 
   /// The open room, once there is one.
   final String? sessionId;
@@ -62,6 +79,8 @@ class ConsoleState {
     ConsoleStage? stage,
     Object? email = _unset,
     Object? licence = _unset,
+    Object? account = _unset,
+    Object? reports = _unset,
     Object? sessionId = _unset,
     Object? code = _unset,
     Object? error = _unset,
@@ -71,6 +90,10 @@ class ConsoleState {
     stage: stage ?? this.stage,
     email: identical(email, _unset) ? this.email : email as String?,
     licence: identical(licence, _unset) ? this.licence : licence as Licence?,
+    account: identical(account, _unset) ? this.account : account as Account?,
+    reports: identical(reports, _unset)
+        ? this.reports
+        : reports as List<SessionReport>?,
     sessionId: identical(sessionId, _unset)
         ? this.sessionId
         : sessionId as String?,
@@ -136,17 +159,38 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
     }
   }
 
+  /// Va chercher les séances passées, une fois, à la demande.
+  Future<void> loadReports() async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      final reports = await gateway.reports(limit: 50);
+      state = state.copyWith(reports: reports, busy: false);
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
   /// Asks again what this address is entitled to — the button a teacher
   /// presses on coming back from the payment page.
   Future<void> refreshLicence() async {
     state = state.copyWith(busy: true, error: null);
     try {
       final licence = await gateway.licence();
+      final account = await gateway.account();
+      // Trois issues, pas deux. « Rien acheté » et « abonnement fini »
+      // se ressemblaient dans le code et ne se ressemblent pas du tout
+      // pour l'école : l'une doit lire une offre, l'autre un
+      // renouvellement — et garder son historique sous les yeux.
       state = state.copyWith(
-        stage: licence == null || !licence.isValid
-            ? ConsoleStage.noLicence
-            : ConsoleStage.ready,
+        stage: switch (account.state) {
+          AccountState.active => ConsoleStage.ready,
+          AccountState.expired => ConsoleStage.expired,
+          AccountState.noLicence => ConsoleStage.noLicence,
+        },
         licence: licence,
+        account: account,
         email: gateway.email ?? state.email,
         busy: false,
       );

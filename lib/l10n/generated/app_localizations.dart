@@ -2386,6 +2386,96 @@ abstract class AppLocalizations {
   /// **'{count, plural, one{{count} pt} other{{count} pts}}'**
   String classroomPointsCount(num count);
 
+  /// Console: the heading of the subscription card
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription'**
+  String get teacherAccount;
+
+  /// Console: how many rooms the plan opens, and how many run now
+  ///
+  /// In en, this message translates to:
+  /// **'{used} of {total} rooms open'**
+  String teacherAccountRooms(num used, num total);
+
+  /// Console: days remaining on the subscription
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} day left} other{{count} days left}}'**
+  String teacherAccountDaysLeft(num count);
+
+  /// Console: the subscription is close to its end
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription ends soon.'**
+  String get teacherAccountEndingSoon;
+
+  /// Console: the subscription renews by itself
+  ///
+  /// In en, this message translates to:
+  /// **'It renews automatically.'**
+  String get teacherAccountRenews;
+
+  /// Console: the subscription is over, nothing opens
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription has ended'**
+  String get teacherExpired;
+
+  /// Console: what is and is not lost when the subscription ends
+  ///
+  /// In en, this message translates to:
+  /// **'No session can be opened any more. Your history is still there, and renewing reopens everything at once.'**
+  String get teacherExpiredHint;
+
+  /// Console: the button that renews the subscription
+  ///
+  /// In en, this message translates to:
+  /// **'Renew the subscription'**
+  String get teacherRenew;
+
+  /// Console: the heading of the past sessions
+  ///
+  /// In en, this message translates to:
+  /// **'Past sessions'**
+  String get teacherHistory;
+
+  /// Console: the button that loads the past sessions
+  ///
+  /// In en, this message translates to:
+  /// **'See the history'**
+  String get teacherHistoryOpen;
+
+  /// Console: no session has been played yet
+  ///
+  /// In en, this message translates to:
+  /// **'No finished session yet.'**
+  String get teacherHistoryEmpty;
+
+  /// Console: how much of a past session the class got right
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% correct'**
+  String teacherHistorySuccess(num percent);
+
+  /// Console: the pupils' names have been erased by the retention rule
+  ///
+  /// In en, this message translates to:
+  /// **'The names from this session were erased (90 days).'**
+  String get teacherHistoryNamesGone;
+
+  /// Console: the sheet of marks a teacher copies into the register
+  ///
+  /// In en, this message translates to:
+  /// **'Marks to copy across'**
+  String get teacherMarksTitle;
+
+  /// Console: how the mark out of twenty is worked out
+  ///
+  /// In en, this message translates to:
+  /// **'Out of 20, over the {cards} cards of the session.'**
+  String teacherMarksHint(num cards);
+
   /// Console: the field that sets how many teams
   ///
   /// In en, this message translates to:
