@@ -1,6 +1,8 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, visibleForTesting;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import 'build_flags.dart';
 
 import '../features/classroom/presentation/classroom_board_screen.dart';
 import '../features/classroom/presentation/teacher_console_screen.dart';
@@ -18,9 +20,33 @@ import '../features/results/presentation/results_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 import '../features/tutorial/presentation/tutorial_screen.dart';
 
+/// Les seules routes qu'un binaire d'école sert.
+///
+/// Tout le reste — le jeu, la boutique, la progression — appartient à
+/// l'application des familles, pas au sous-domaine des écoles.
+const Set<String> _schoolRoutes = {
+  '/teacher',
+  '/classroom',
+  '/classroom/board',
+};
+
+bool _allowedInSchoolBuild(String location) {
+  final path = Uri.parse(location).path;
+  return _schoolRoutes.any((r) => path == r || path.startsWith('$r/'));
+}
+
 GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
   initialLocation: initialLocation,
+  // Sur le binaire d'école, une adresse tapée à la main ne sort pas de
+  // la classe : `#/home`, `#/premium`, `#/game` ramènent à la console.
+  // Sans cela, l'adresse donnée aux écoles servait aussi le jeu
+  // familial et son écran d'achat.
+  redirect: (context, state) {
+    if (!kSchoolBuild) return null;
+    return _allowedInSchoolBuild(state.uri.toString()) ? null : '/teacher';
+  },
   routes: [
+    if (!kSchoolBuild) ...[
     GoRoute(path: '/onboarding', builder: (c, s) => const OnboardingScreen()),
     GoRoute(path: '/home', builder: (c, s) => const HomeScreen()),
     GoRoute(
@@ -41,6 +67,7 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
     GoRoute(path: '/daily-challenge', builder: (c, s) => const DailyChallengeScreen()),
     GoRoute(path: '/progress', builder: (c, s) => const ProgressScreen()),
     GoRoute(path: '/tutorial', builder: (c, s) => const TutorialScreen()),
+    ],
     // `?code=G4KEPW` is what a scanned QR carries: the join form opens
     // with the code already in place.
     GoRoute(
@@ -69,3 +96,9 @@ GoRouter buildAppRouter({required String initialLocation}) => GoRouter(
 final appRouterProvider = Provider<GoRouter>(
   (ref) => throw UnimplementedError('Override in main()'),
 );
+
+/// Où mène une adresse tapée à la main sur le sous-domaine des écoles.
+/// `null` veut dire « elle a le droit d'être là ».
+@visibleForTesting
+String? schoolRedirectForTest(String location) =>
+    _allowedInSchoolBuild(location) ? null : '/teacher';

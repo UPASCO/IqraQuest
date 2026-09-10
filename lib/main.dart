@@ -15,6 +15,7 @@ import 'features/classroom/data/supabase_classroom_gateway.dart';
 import 'features/classroom/data/supabase_teacher_gateway.dart';
 import 'features/classroom/data/teacher_gateway.dart';
 import 'features/classroom/application/teacher_console_controller.dart';
+import 'app/build_flags.dart';
 import 'app/router.dart';
 import 'services/entitlement_service.dart';
 import 'services/game_save_service.dart';
@@ -139,7 +140,14 @@ Future<void> main() async {
         initialSettingsProvider.overrideWithValue(settings),
         initialPremiumProvider.overrideWithValue(isPremium),
         appRouterProvider.overrideWithValue(
-          buildAppRouter(initialLocation: hasOnboarded ? '/home' : '/onboarding'),
+          buildAppRouter(
+            // Le binaire d'école ouvre sur la console : `/home` n'y
+            // existe pas, et démarrer sur une route absente laisserait
+            // une page blanche à la première école qui vient.
+            initialLocation: kSchoolBuild
+                ? '/teacher'
+                : (hasOnboarded ? '/home' : '/onboarding'),
+          ),
         ),
       ],
       child: const IqraQuestApp(),

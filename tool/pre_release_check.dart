@@ -212,6 +212,28 @@ void main() {
     detail: 'Apple 3.1.1: nothing in a store build may link to a purchase '
         'made outside the store',
   );
+  check(
+    'the school build serves only the classroom',
+    routerText.contains('if (!kSchoolBuild) ...['),
+    detail: 'school.iqraquest.org is the schools\' address: without this '
+        'guard it also served #/home, #/premium and the whole family game',
+  );
+  check(
+    'a typed address on the school build lands on the console',
+    routerText.contains('_allowedInSchoolBuild') &&
+        RegExp(r"kSchoolBuild[\s\S]{0,200}'/teacher'").hasMatch(routerText),
+    detail: 'the guard above hides the routes; this redirect catches what '
+        'someone types by hand',
+  );
+  final webWorkflow = File(
+    '${root.path}/.github/workflows/web-classroom.yml',
+  ).readAsStringSync();
+  check(
+    'the web deploy compiles the school build',
+    webWorkflow.contains('--dart-define=IQRAQUEST_SCHOOL=true'),
+    detail: 'without the flag the deploy is an ordinary build, and the '
+        'schools\' subdomain serves the family game again',
+  );
   final stripeMentions = <String>[];
   for (final entity in Directory('${root.path}/lib').listSync(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
