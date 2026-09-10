@@ -342,9 +342,29 @@ ligne est apparue dans `licences` avec le bon `plan` et le
 
 ## 8. Le site vitrine
 
-La page « Écoles » attend sur la branche `claude/schools-page` du dépôt
-`UPASCO/iqraquest-website`. Elle se publie en la fusionnant dans `main` :
-le déploiement part tout seul.
+Deux pages parlent des écoles sur `iqraquest.org`, et elles sont
+publiées :
+
+- **`/schools`** — comment se déroule une séance, ce que l'école garde,
+  les trois formules (3 salles / 89 €, 5 / 99 €, 10 / 149 €) et la FAQ.
+- **`/account`** — « Mon espace » : ce qu'on trouve derrière la porte, et
+  le bouton qui ouvre la console. La page porte l'en-tête et le pied du
+  site, pour qu'une école ne découvre pas la console par un lien nu vers
+  un autre domaine.
+
+Deux variables de dépôt gouvernent ces pages, dans
+*Settings → Secrets and variables → Actions → Variables* du dépôt
+`UPASCO/iqraquest-website` :
+
+| variable | effet | valeur aujourd'hui |
+|---|---|---|
+| `NEXT_PUBLIC_CLASSROOM_AVAILABLE` | la console est joignable | non posée = vraie |
+| `NEXT_PUBLIC_CLASSROOM_CHECKOUT` | on peut payer en ligne | non posée = fausse |
+
+La première n'est à poser (`false`) que pour refermer l'accès si le
+service tombe. La seconde passe à `true` le jour où les trois liens de
+paiement existent : d'ici là, une école qui veut acheter lit qu'on lui
+répond par courrier, ce qui est vrai.
 
 ---
 
