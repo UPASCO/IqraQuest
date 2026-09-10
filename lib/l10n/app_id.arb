@@ -388,6 +388,8 @@
   "teacherEndSession": "Akhiri sesi",
   "teacherEndSessionHint": "Sesi ditutup dan nama murid dihapus. Ringkasan per pertanyaan tetap disimpan.",
   "teacherTooManySessions": "Lisensi ini menjalankan {limit} ruang sekaligus.",
+  "teacherLinkSpamHint": "Tiba dalam satu menit. Jika tidak ada, periksa folder spam.",
+  "teacherTooManyLinks": "Terlalu banyak tautan diminta. Tunggu satu jam, atau periksa pengiriman email server.",
   "teacherUnreachable": "Server tidak menjawab. Coba lagi sebentar lagi.",
   "teacherSessionRunning": "Sesi berlangsung",
   "classroomBoardCode": "Kode kelas",

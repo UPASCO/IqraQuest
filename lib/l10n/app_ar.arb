@@ -388,6 +388,8 @@
   "teacherEndSession": "إنهاء الحصة",
   "teacherEndSessionHint": "تُغلق الحصة وتُمحى أسماء التلاميذ. ويبقى الملخّص لكل سؤال.",
   "teacherTooManySessions": "هذه الرخصة تشغّل {limit} قاعة في آنٍ واحد.",
+  "teacherLinkSpamHint": "يصل خلال دقيقة. إن لم تجده، فابحث في البريد غير المرغوب فيه.",
+  "teacherTooManyLinks": "طُلبت روابط كثيرة. انتظر ساعة، أو تحقق من إرسال البريد في الخادم.",
   "teacherUnreachable": "الخادم لا يستجيب. أعد المحاولة بعد قليل.",
   "teacherSessionRunning": "حصة جارية",
   "classroomBoardCode": "رمز الحصة",

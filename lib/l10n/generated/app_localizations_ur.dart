@@ -1426,6 +1426,14 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
+  String get teacherLinkSpamHint =>
+      'ایک منٹ میں آ جاتا ہے۔ نہ ملے تو اسپیم فولڈر دیکھیں۔';
+
+  @override
+  String get teacherTooManyLinks =>
+      'بہت زیادہ لنکس مانگے گئے۔ ایک گھنٹہ انتظار کریں، یا سرور کی ای میل ترسیل جانچیں۔';
+
+  @override
   String get teacherUnreachable =>
       'سرور جواب نہیں دے رہا۔ تھوڑی دیر بعد کوشش کریں۔';
 

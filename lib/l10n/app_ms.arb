@@ -388,6 +388,8 @@
   "teacherEndSession": "Tamatkan sesi",
   "teacherEndSessionHint": "Sesi ditutup dan nama murid dipadam. Ringkasan setiap soalan disimpan.",
   "teacherTooManySessions": "Lesen ini menjalankan {limit} bilik serentak.",
+  "teacherLinkSpamHint": "Tiba dalam satu minit. Jika tiada, semak folder spam.",
+  "teacherTooManyLinks": "Terlalu banyak pautan diminta. Tunggu sejam, atau semak penghantaran e-mel pelayan.",
   "teacherUnreachable": "Pelayan tidak menjawab. Cuba lagi sebentar lagi.",
   "teacherSessionRunning": "Sesi sedang berjalan",
   "classroomBoardCode": "Kod kelas",

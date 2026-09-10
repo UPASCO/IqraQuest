@@ -388,6 +388,8 @@
   "teacherEndSession": "Termina la sessione",
   "teacherEndSessionHint": "La sessione si chiude e i nomi degli alunni vengono cancellati. Resta il riepilogo per domanda.",
   "teacherTooManySessions": "Questa licenza gestisce {limit} aula/aule alla volta.",
+  "teacherLinkSpamHint": "Arriva entro un minuto. Se non c'è, guarda nella posta indesiderata.",
+  "teacherTooManyLinks": "Troppi link richiesti. Aspetta un'ora o controlla l'invio di e-mail del server.",
   "teacherUnreachable": "Il server non risponde. Riprova tra poco.",
   "teacherSessionRunning": "Sessione in corso",
   "classroomBoardCode": "Codice della classe",

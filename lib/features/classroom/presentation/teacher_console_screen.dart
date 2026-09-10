@@ -191,6 +191,7 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
         TeacherError.licenceExpired => l10n.teacherLicenceExpired,
         TeacherError.tooManySessions => l10n.teacherTooManySessions(limit ?? 1),
         TeacherError.notSignedIn => l10n.teacherSignInHint,
+        TeacherError.tooManyLinks => l10n.teacherTooManyLinks,
         _ => l10n.teacherUnreachable,
       };
 }
@@ -256,6 +257,17 @@ class _SignInState extends State<_SignIn> {
             style: Theme.of(
               context,
             ).textTheme.bodyMedium?.copyWith(color: colors.success),
+          ),
+          const SizedBox(height: 6),
+          // Un lien de connexion signé par un expéditeur que personne ne
+          // connaît finit très souvent dans les indésirables. Le dire
+          // ici évite une école qui conclut que le service ne marche pas.
+          Text(
+            key: const Key('teacher-link-spam-hint'),
+            widget.l10n.teacherLinkSpamHint,
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
           ),
         ],
       ],

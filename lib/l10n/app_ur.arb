@@ -388,6 +388,8 @@
   "teacherEndSession": "سیشن ختم کریں",
   "teacherEndSessionHint": "سیشن بند ہو جائے گا اور طلبہ کے نام مٹا دیے جائیں گے۔ ہر سوال کا خلاصہ محفوظ رہے گا۔",
   "teacherTooManySessions": "یہ لائسنس بیک وقت {limit} کمرے چلاتا ہے۔",
+  "teacherLinkSpamHint": "ایک منٹ میں آ جاتا ہے۔ نہ ملے تو اسپیم فولڈر دیکھیں۔",
+  "teacherTooManyLinks": "بہت زیادہ لنکس مانگے گئے۔ ایک گھنٹہ انتظار کریں، یا سرور کی ای میل ترسیل جانچیں۔",
   "teacherUnreachable": "سرور جواب نہیں دے رہا۔ تھوڑی دیر بعد کوشش کریں۔",
   "teacherSessionRunning": "سیشن جاری ہے",
   "classroomBoardCode": "کلاس کا کوڈ",

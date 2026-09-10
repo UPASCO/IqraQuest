@@ -60,6 +60,12 @@ class SupabaseTeacherGateway implements TeacherGateway {
       path,
       body: {'email': clean, 'create_user': true},
     );
+    // 429 est le plafond d'envoi du service d'e-mail, pas une panne : le
+    // dire autrement enverrait chercher un serveur en carafe alors que
+    // c'est le quota qui est atteint.
+    if (response.statusCode == 429) {
+      throw const TeacherException(TeacherError.tooManyLinks);
+    }
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw const TeacherException(TeacherError.unreachable);
     }

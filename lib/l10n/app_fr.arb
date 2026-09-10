@@ -388,6 +388,8 @@
   "teacherEndSession": "Terminer la séance",
   "teacherEndSessionHint": "La séance se ferme et les prénoms des élèves sont effacés. Le bilan par question est conservé.",
   "teacherTooManySessions": "Cette licence fait tourner {limit} salle(s) à la fois.",
+  "teacherLinkSpamHint": "Il arrive en une minute. S'il n'est pas là, regardez dans les indésirables.",
+  "teacherTooManyLinks": "Trop de liens demandés. Attendez une heure, ou vérifiez l'envoi d'e-mails du serveur.",
   "teacherUnreachable": "Le serveur ne répond pas. Réessayez dans un instant.",
   "teacherSessionRunning": "Séance en cours",
   "classroomBoardCode": "Code de la classe",

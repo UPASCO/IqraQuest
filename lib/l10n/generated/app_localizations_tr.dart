@@ -1411,6 +1411,14 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get teacherLinkSpamHint =>
+      'Bir dakika içinde gelir. Gelmediyse gereksiz klasörüne bakın.';
+
+  @override
+  String get teacherTooManyLinks =>
+      'Çok fazla bağlantı istendi. Bir saat bekleyin veya sunucunun e-posta gönderimini kontrol edin.';
+
+  @override
   String get teacherUnreachable =>
       'Sunucu yanıt vermiyor. Birazdan yeniden deneyin.';
 

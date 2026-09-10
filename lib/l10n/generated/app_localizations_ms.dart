@@ -1423,6 +1423,14 @@ class AppLocalizationsMs extends AppLocalizations {
   }
 
   @override
+  String get teacherLinkSpamHint =>
+      'Tiba dalam satu minit. Jika tiada, semak folder spam.';
+
+  @override
+  String get teacherTooManyLinks =>
+      'Terlalu banyak pautan diminta. Tunggu sejam, atau semak penghantaran e-mel pelayan.';
+
+  @override
   String get teacherUnreachable =>
       'Pelayan tidak menjawab. Cuba lagi sebentar lagi.';
 

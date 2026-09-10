@@ -79,6 +79,33 @@ Dès qu'il y a plus d'un enseignant, configurer un SMTP dans
 la plus probable le jour où ça compte, et elle est silencieuse : le lien
 n'arrive jamais.
 
+### Le lien ne part pas : où regarder, dans l'ordre
+
+La console dit « Lien envoyé » dès que Supabase a répondu 2xx — donc
+qu'il a **accepté** la demande. Entre cette acceptation et une boîte de
+réception, quatre choses peuvent manquer.
+
+1. **Les indésirables.** L'expéditeur par défaut est
+   `noreply@mail.app.supabase.io`, inconnu de tous les filtres. Chez
+   Gmail, regarder aussi l'onglet *Promotions*.
+2. **Les journaux d'authentification** — *Authentication → Logs* dans le
+   tableau de bord. C'est la seule réponse qui ne se devine pas : soit
+   l'envoi y figure, et le problème est côté boîte de réception, soit il
+   porte une erreur SMTP, et c'est l'étape 4 ci-dessous.
+3. **Le destinataire.** Le service intégré n'écrit qu'aux adresses
+   membres de l'organisation du projet. Une adresse d'école qui n'est pas
+   dans l'équipe ne recevra jamais rien tant qu'un SMTP n'est pas posé —
+   sans la moindre erreur affichée.
+4. **Le plafond horaire.** Quelques envois par heure, pas davantage. La
+   console dit maintenant « Trop de liens demandés » plutôt que « le
+   serveur ne répond pas » : c'est un refus du service d'e-mail, pas une
+   panne.
+
+Les points 3 et 4 ont la même réponse, et c'est la seule qui tienne pour
+de vraies écoles : un SMTP à soi dans **Authentication → Emails**. Un
+compte gratuit chez Resend ou Brevo suffit largement au volume d'un lien
+de connexion par enseignant et par trimestre.
+
 ## 3. Le DNS chez OVHcloud — 5 minutes, plus la propagation
 
 Un seul enregistrement à ajouter, dans la zone `iqraquest.org` :

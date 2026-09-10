@@ -388,6 +388,8 @@
   "teacherEndSession": "Sitzung beenden",
   "teacherEndSessionHint": "Die Sitzung wird geschlossen und die Namen der Schüler werden gelöscht. Die Auswertung je Frage bleibt.",
   "teacherTooManySessions": "Diese Lizenz betreibt {limit} Raum/Räume gleichzeitig.",
+  "teacherLinkSpamHint": "Er kommt binnen einer Minute an. Falls nicht, schau im Spam-Ordner nach.",
+  "teacherTooManyLinks": "Zu viele Links angefordert. Warte eine Stunde oder prüfe den E-Mail-Versand des Servers.",
   "teacherUnreachable": "Der Server antwortet nicht. Versuche es gleich noch einmal.",
   "teacherSessionRunning": "Sitzung läuft",
   "classroomBoardCode": "Klassencode",

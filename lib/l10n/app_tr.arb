@@ -388,6 +388,8 @@
   "teacherEndSession": "Oturumu bitir",
   "teacherEndSessionHint": "Oturum kapanır ve öğrencilerin adları silinir. Soru başına özet saklanır.",
   "teacherTooManySessions": "Bu lisans aynı anda {limit} sınıf çalıştırır.",
+  "teacherLinkSpamHint": "Bir dakika içinde gelir. Gelmediyse gereksiz klasörüne bakın.",
+  "teacherTooManyLinks": "Çok fazla bağlantı istendi. Bir saat bekleyin veya sunucunun e-posta gönderimini kontrol edin.",
   "teacherUnreachable": "Sunucu yanıt vermiyor. Birazdan yeniden deneyin.",
   "teacherSessionRunning": "Oturum sürüyor",
   "classroomBoardCode": "Sınıf kodu",

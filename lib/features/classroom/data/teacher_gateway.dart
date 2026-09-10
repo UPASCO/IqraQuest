@@ -20,6 +20,12 @@ enum TeacherError {
   /// revealing an answer nobody was asked, for instance.
   notNow,
   invalidEmail,
+
+  /// Le service d'e-mail a refusé d'en envoyer un de plus pour l'instant.
+  /// Distinct de [unreachable] : le serveur répond très bien, c'est
+  /// l'envoi qui est plafonné — et un enseignant qui lit « le serveur ne
+  /// répond pas » cherche au mauvais endroit.
+  tooManyLinks,
   unreachable,
 }
 

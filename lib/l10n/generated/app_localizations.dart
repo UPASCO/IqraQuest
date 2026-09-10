@@ -2446,6 +2446,18 @@ abstract class AppLocalizations {
   /// **'This licence runs {limit} room(s) at a time.'**
   String teacherTooManySessions(num limit);
 
+  /// Console: where to look if the link is not in the inbox
+  ///
+  /// In en, this message translates to:
+  /// **'It arrives within a minute. If it is not there, look in your spam folder.'**
+  String get teacherLinkSpamHint;
+
+  /// Console: the mail service refused another link for now
+  ///
+  /// In en, this message translates to:
+  /// **'Too many links requested. Wait an hour, or check the server\'s email sending.'**
+  String get teacherTooManyLinks;
+
   /// Console: the server is not answering
   ///
   /// In en, this message translates to:

@@ -1424,6 +1424,14 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get teacherLinkSpamHint =>
+      'Tiba dalam satu menit. Jika tidak ada, periksa folder spam.';
+
+  @override
+  String get teacherTooManyLinks =>
+      'Terlalu banyak tautan diminta. Tunggu satu jam, atau periksa pengiriman email server.';
+
+  @override
   String get teacherUnreachable =>
       'Server tidak menjawab. Coba lagi sebentar lagi.';
 

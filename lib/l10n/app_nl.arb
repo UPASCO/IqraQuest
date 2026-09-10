@@ -388,6 +388,8 @@
   "teacherEndSession": "Sessie beëindigen",
   "teacherEndSessionHint": "De sessie sluit en de namen van de leerlingen worden gewist. De samenvatting per vraag blijft bewaard.",
   "teacherTooManySessions": "Deze licentie draait {limit} lokaal/lokalen tegelijk.",
+  "teacherLinkSpamHint": "Hij komt binnen een minuut aan. Zo niet, kijk in je spammap.",
+  "teacherTooManyLinks": "Te veel links aangevraagd. Wacht een uur of controleer de e-mailverzending van de server.",
   "teacherUnreachable": "De server antwoordt niet. Probeer het zo meteen opnieuw.",
   "teacherSessionRunning": "Sessie loopt",
   "classroomBoardCode": "Klascode",

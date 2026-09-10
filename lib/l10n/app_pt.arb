@@ -388,6 +388,8 @@
   "teacherEndSession": "Terminar a sessão",
   "teacherEndSessionHint": "A sessão fecha e os nomes dos alunos são apagados. O resumo por pergunta é mantido.",
   "teacherTooManySessions": "Esta licença permite {limit} sala(s) ao mesmo tempo.",
+  "teacherLinkSpamHint": "Chega num minuto. Se não estiver lá, veja na pasta de spam.",
+  "teacherTooManyLinks": "Demasiados links pedidos. Espere uma hora ou verifique o envio de e-mail do servidor.",
   "teacherUnreachable": "O servidor não responde. Tente novamente daqui a pouco.",
   "teacherSessionRunning": "Sessão a decorrer",
   "classroomBoardCode": "Código da turma",

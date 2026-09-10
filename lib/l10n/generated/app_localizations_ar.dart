@@ -1446,6 +1446,14 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get teacherLinkSpamHint =>
+      'يصل خلال دقيقة. إن لم تجده، فابحث في البريد غير المرغوب فيه.';
+
+  @override
+  String get teacherTooManyLinks =>
+      'طُلبت روابط كثيرة. انتظر ساعة، أو تحقق من إرسال البريد في الخادم.';
+
+  @override
   String get teacherUnreachable => 'الخادم لا يستجيب. أعد المحاولة بعد قليل.';
 
   @override

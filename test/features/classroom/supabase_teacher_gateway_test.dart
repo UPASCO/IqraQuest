@@ -71,6 +71,31 @@ void main() {
     expect(seen!.path, '/auth/v1/otp');
   });
 
+  test('a plafond d\'envoi atteint se dit, au lieu d\'accuser le serveur', () async {
+    // Le service d'e-mail de Supabase plafonne les envois par heure. Un
+    // enseignant à qui on répond « le serveur ne répond pas » va chercher
+    // une panne là où il n'y en a pas.
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient(
+        (_) async => http.Response('{"message":"email rate limit"}', 429),
+      ),
+    );
+
+    await expectLater(
+      gateway.sendMagicLink('ecole@example.org'),
+      throwsA(
+        isA<TeacherException>().having(
+          (e) => e.error,
+          'error',
+          TeacherError.tooManyLinks,
+        ),
+      ),
+    );
+  });
+
   test('an address that is not one never reaches the server', () async {
     var called = false;
     final gateway = SupabaseTeacherGateway(

@@ -1433,6 +1433,14 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get teacherLinkSpamHint =>
+      'Hij komt binnen een minuut aan. Zo niet, kijk in je spammap.';
+
+  @override
+  String get teacherTooManyLinks =>
+      'Te veel links aangevraagd. Wacht een uur of controleer de e-mailverzending van de server.';
+
+  @override
   String get teacherUnreachable =>
       'De server antwoordt niet. Probeer het zo meteen opnieuw.';
 
