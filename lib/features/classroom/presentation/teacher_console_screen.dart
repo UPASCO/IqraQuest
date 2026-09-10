@@ -95,7 +95,12 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
       appBar: AppBar(
         title: Text(l10n.teacherConsole),
         actions: [
+          // Rien à quitter tant que personne n'est entré. `linkSent`
+          // affiche encore le champ d'adresse : proposer « Se
+          // déconnecter » au-dessus d'un formulaire de connexion est la
+          // première chose qu'une école voit, et ça n'a aucun sens.
           if (console.stage != ConsoleStage.signedOut &&
+              console.stage != ConsoleStage.linkSent &&
               console.stage != ConsoleStage.loading)
             TextButton(
               key: const Key('teacher-signout'),

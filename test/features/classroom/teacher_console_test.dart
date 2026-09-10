@@ -155,6 +155,11 @@ void main() {
 
     expect(harness.console.linksSent, ['ecole@example.org']);
     expect(find.byKey(const Key('teacher-link-sent')), findsOneWidget);
+    // Le lien est parti, personne n'est encore entré : la barre ne
+    // propose pas de sortir. C'est le tout premier écran qu'une école
+    // voit, et « Se déconnecter » au-dessus d'un champ d'adresse s'y
+    // affichait.
+    expect(find.byKey(const Key('teacher-signout')), findsNothing);
   });
 
   testWidgets('an address that is not one is refused before anything is sent', (
