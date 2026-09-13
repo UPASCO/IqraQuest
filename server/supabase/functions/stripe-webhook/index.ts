@@ -30,8 +30,13 @@
 //
 // Puis, côté Stripe, un webhook vers l'URL de la fonction, abonné à
 // `checkout.session.completed`, `checkout.session.async_payment_succeeded`,
-// `checkout.session.async_payment_failed`, `customer.subscription.updated`
-// et `customer.subscription.deleted`.
+// `checkout.session.async_payment_failed`, `customer.subscription.created`,
+// `customer.subscription.updated`, `customer.subscription.deleted`,
+// `invoice.paid` et `invoice.payment_failed`.
+//
+// Chaque événement ne s'applique qu'une fois : son identifiant est
+// inscrit dans `stripe_events` avant tout, et un doublon — Stripe
+// réessaie, et rejoue parfois — repart avec un 200 sans rien toucher.
 //
 // `--no-verify-jwt` est indispensable : c'est Stripe qui appelle, et il
 // ne porte pas de JWT Supabase. La signature ci-dessous est ce qui
@@ -247,6 +252,43 @@ async function upsertLicence(row: Record<string, unknown>) {
   }
 }
 
+/// Inscrit l'événement ; rend faux s'il avait déjà été traité. Postgres
+/// tranche par la clé primaire, ce qui vaut même pour deux livraisons
+/// simultanées du même événement.
+async function claimEvent(id: string, type: string): Promise<boolean> {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/stripe_events`, {
+    method: "POST",
+    headers: {
+      "apikey": SERVICE_ROLE,
+      "Authorization": `Bearer ${SERVICE_ROLE}`,
+      "Content-Type": "application/json",
+      "Prefer": "return=minimal",
+    },
+    body: JSON.stringify({ stripe_event_id: id, event_type: type }),
+  });
+  if (response.status === 409) return false;
+  if (!response.ok) throw new Error(`event claim failed: ${response.status}`);
+  return true;
+}
+
+/// Ce qu'un abonnement Stripe dit de lui, ramené aux colonnes de la
+/// licence. `current_period_*` a quitté l'objet Subscription dans les
+/// versions récentes de l'API : il vit sur la ligne d'abonnement, et on
+/// accepte les deux formes.
+function subscriptionFields(sub: Record<string, unknown>) {
+  // deno-lint-ignore no-explicit-any
+  const item = (sub as any)?.items?.data?.[0];
+  const end = Number((sub as any)?.current_period_end ?? item?.current_period_end ?? 0);
+  const start = Number((sub as any)?.current_period_start ?? item?.current_period_start ?? 0);
+  return {
+    status: String((sub as any)?.status ?? "active"),
+    cancel_at_period_end: Boolean((sub as any)?.cancel_at_period_end),
+    stripe_price_id: item?.price?.id ?? null,
+    ...(start ? { current_period_start: new Date(start * 1000).toISOString() } : {}),
+    ...(end ? { expires_at: new Date(end * 1000).toISOString() } : {}),
+  };
+}
+
 Deno.serve(async (request) => {
   if (request.method !== "POST") {
     return new Response("method not allowed", { status: 405 });
@@ -273,6 +315,13 @@ Deno.serve(async (request) => {
   const object = event?.data?.object ?? {};
 
   try {
+    if (event?.id && !await claimEvent(String(event.id), String(event?.type ?? ""))) {
+      console.log("événement déjà traité", event.id, event?.type);
+      return new Response(JSON.stringify({ received: true, duplicate: true }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     switch (event?.type) {
       case "checkout.session.completed":
       case "checkout.session.async_payment_succeeded": {
@@ -322,10 +371,17 @@ Deno.serve(async (request) => {
           plan: plan.id,
           concurrent_sessions: plan.rooms,
           expires_at: expires.toISOString(),
+          status: "active",
+          cancel_at_period_end: false,
+          current_period_start: new Date().toISOString(),
           stripe_customer_id: object?.customer ?? null,
           stripe_subscription_id: object?.subscription ?? null,
+          // La caisse a été ouverte par un compte : la licence lui est
+          // rattachée tout de suite, sans attendre la prochaine connexion.
+          ...(object?.client_reference_id ? { owner_id: object.client_reference_id } : {}),
           ...(schoolName ? { school_name: schoolName } : {}),
         });
+        console.log("licence activée", { email, plan: plan.id, subscription: object?.subscription });
         break;
       }
 
@@ -346,10 +402,14 @@ Deno.serve(async (request) => {
         const renewed = new Date(period * 1000).toISOString();
         // La ligne existe déjà (le paiement l'a écrite) : on la
         // retrouve par l'abonnement, pas par une adresse que
-        // l'événement ne porte pas.
+        // l'événement ne porte pas. Statut, période et renouvellement
+        // annulé voyagent avec : c'est ce que la console affiche, et ce
+        // qui décide si la prochaine séance s'ouvre.
         const patched = await patchLicenceBySubscription(String(object?.id), {
+          ...subscriptionFields(object),
           expires_at: renewed,
         });
+        console.log("abonnement mis à jour", { subscription: object?.id, status: object?.status, cancelAtPeriodEnd: object?.cancel_at_period_end });
         // Filet pour une licence posée à la main dans Stripe, avec
         // l'adresse en métadonnée.
         const email = object?.metadata?.iqraquest_email;
@@ -391,8 +451,36 @@ Deno.serve(async (request) => {
         // revient l'année suivante retrouve la même ligne, et ses
         // rapports avec.
         await patchLicenceBySubscription(String(object?.id), {
+          status: "canceled",
+          cancel_at_period_end: false,
           expires_at: new Date().toISOString(),
         });
+        console.log("abonnement terminé", { subscription: object?.id });
+        break;
+      }
+
+      case "invoice.payment_failed": {
+        // Le renouvellement a échoué : la licence passe en défaut. Une
+        // séance ouverte finit ; la suivante attend la régularisation.
+        // L'échéance n'est pas touchée — Stripe réessaie, et
+        // `subscription.updated` dira la suite.
+        const subscription = object?.subscription ?? object?.parent?.subscription_details?.subscription;
+        if (subscription) {
+          await patchLicenceBySubscription(String(subscription), { status: "past_due" });
+          console.log("paiement échoué", { subscription });
+        }
+        break;
+      }
+
+      case "invoice.paid": {
+        // Un renouvellement encaissé remet la licence en `active` ; la
+        // nouvelle échéance arrive par `subscription.updated`, qui
+        // porte la période.
+        const subscription = object?.subscription ?? object?.parent?.subscription_details?.subscription;
+        if (subscription) {
+          await patchLicenceBySubscription(String(subscription), { status: "active" });
+          console.log("facture payée", { subscription });
+        }
         break;
       }
     }
