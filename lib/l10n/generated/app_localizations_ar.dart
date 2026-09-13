@@ -1483,6 +1483,25 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'الصف يلعب. وأنت تقود.';
+
+  @override
+  String get teacherPitchBody =>
+      'سؤال على السبورة، كل تلميذ يجيب من جهازه، والخيول تتقدم مع كل إجابة صحيحة.';
+
+  @override
+  String get teacherPitchFree => 'خمس حصص مجانية، دون بطاقة مصرفية';
+
+  @override
+  String get teacherPitchDevices => 'جهازان في حصة في الوقت نفسه';
+
+  @override
+  String get teacherPitchMarks => 'درجات من 20 جاهزة للدفتر';
+
+  @override
+  String get teacherSubscriptionTitle => 'الاشتراك';
+
+  @override
   String get teacherManageDevices => 'إدارة أجهزتي';
 
   @override

@@ -1455,6 +1455,25 @@ class AppLocalizationsMs extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'Kelas bermain. Anda memimpin.';
+
+  @override
+  String get teacherPitchBody =>
+      'Satu soalan di papan, setiap murid menjawab dari peranti sendiri, dan kuda-kuda mara pada setiap jawapan betul.';
+
+  @override
+  String get teacherPitchFree => 'Lima permainan percuma, tanpa kad';
+
+  @override
+  String get teacherPitchDevices => 'Dua peranti bersesi serentak';
+
+  @override
+  String get teacherPitchMarks => 'Markah daripada 20, sedia untuk buku rekod';
+
+  @override
+  String get teacherSubscriptionTitle => 'Langganan';
+
+  @override
   String get teacherManageDevices => 'Urus peranti saya';
 
   @override

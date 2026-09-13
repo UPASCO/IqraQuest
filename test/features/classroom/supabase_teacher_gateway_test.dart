@@ -147,6 +147,31 @@ void main() {
     expect(gateway.isSignedIn, isFalse);
   });
 
+  test('une adresse déjà inscrite se dit, au lieu de faire attendre un courrier', () async {
+    // GoTrue ne refuse pas une seconde inscription : il rend un
+    // utilisateur factice sans identité, et n'envoie rien. Sans ce
+    // test, l'école lirait « Confirmez votre adresse » et attendrait un
+    // courrier qui ne partira jamais.
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient(
+        (_) async => http.Response(
+          jsonEncode({'id': 'u1', 'email': 'ecole@example.org', 'identities': []}),
+          200,
+        ),
+      ),
+    );
+
+    await expectLater(
+      gateway.signUp(email: 'ecole@example.org', password: 'un-mot-de-passe'),
+      throwsA(
+        isA<TeacherException>().having((e) => e.error, 'error', TeacherError.emailTaken),
+      ),
+    );
+  });
+
   test('a plafond d\'envoi atteint se dit, au lieu d\'accuser le serveur', () async {
     // Le service d'e-mail de Supabase plafonne les envois par heure. Un
     // enseignant à qui on répond « le serveur ne répond pas » va chercher

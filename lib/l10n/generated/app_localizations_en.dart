@@ -1463,6 +1463,25 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'The class plays. You lead.';
+
+  @override
+  String get teacherPitchBody =>
+      'One question on the board, every pupil answers from their own device, and the horses move on every right answer.';
+
+  @override
+  String get teacherPitchFree => 'Five games free, no card needed';
+
+  @override
+  String get teacherPitchDevices => 'Two devices in session at once';
+
+  @override
+  String get teacherPitchMarks => 'Marks out of 20, ready for the register';
+
+  @override
+  String get teacherSubscriptionTitle => 'Subscription';
+
+  @override
   String get teacherManageDevices => 'Manage my devices';
 
   @override

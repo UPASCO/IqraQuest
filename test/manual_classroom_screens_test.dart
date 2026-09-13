@@ -148,6 +148,18 @@ Future<void> loadAppFonts() async {
           ..addFont(Future.value(ByteData.sublistView(bytes))))
         .load();
   }
+  // Les icônes Material : sans leur police, chaque icône est un carré.
+  // Le fichier vit dans le cache du SDK ; s'il n'y est pas, les captures
+  // se font sans, et rien d'autre ne change.
+  final root = Platform.environment['FLUTTER_ROOT'];
+  final icons = File(
+    '${root ?? '/home/user/flutter'}/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf',
+  );
+  if (icons.existsSync()) {
+    await (FontLoader('MaterialIcons')
+          ..addFont(Future.value(ByteData.sublistView(icons.readAsBytesSync()))))
+        .load();
+  }
 }
 
 void main() {
@@ -406,7 +418,9 @@ void main() {
   });
 
   testWidgets('11 — la connexion, et l\'abonnement fini', (tester) async {
-    tester.view.physicalSize = const Size(900, 1150);
+    // Un écran d'ordinateur : c'est là que la console vit, et ce que
+    // ces captures doivent montrer, c'est que tout tient sans défiler.
+    tester.view.physicalSize = const Size(1280, 800);
     tester.view.devicePixelRatio = 1.0;
     SharedPreferences.setMockInitialValues({});
     rootBundle.clear();
@@ -469,6 +483,48 @@ void main() {
     );
     await settle(tester);
     await capture(tester, 'classe-11-connexion');
+
+    // Le formulaire d'inscription, puis l'attente de confirmation.
+    await tester.tap(find.byKey(const Key('teacher-toggle-signup')));
+    await settle(tester);
+    await capture(tester, 'classe-11b-inscription');
+    await tester.tap(find.byKey(const Key('teacher-send')));
+    await settle(tester);
+    await capture(tester, 'classe-11c-confirmation');
+
+    // Les cinq parties sont utilisées : l'offre, et rien d'autre à faire
+    // défiler.
+    await tester.pumpWidget(const SizedBox.shrink());
+    await pump(
+      FakeTeacherGateway(
+        room: room,
+        signedInAs: 'direction@ecole-annour.fr',
+        licence: Licence(
+          id: 'l0',
+          email: 'direction@ecole-annour.fr',
+          plan: 'decouverte',
+          concurrentSessions: 2,
+          expiresAt: DateTime(2126),
+          freeGames: 5,
+          freeGamesUsed: 5,
+          schoolName: 'École An-Nour',
+        ),
+      ),
+    );
+    await capture(tester, 'classe-11d-cinq-parties');
+
+    // Mon compte : abonnement, appareils, mot de passe, sortie — sur un
+    // seul écran.
+    await tester.tap(find.byKey(const Key('teacher-account-open')));
+    await settle(tester);
+    await capture(tester, 'classe-11e-mon-compte');
+
+    // Le même accueil sur un téléphone.
+    await tester.pumpWidget(const SizedBox.shrink());
+    tester.view.physicalSize = const Size(420, 900);
+    await pump(FakeTeacherGateway(room: room));
+    await capture(tester, 'classe-11f-connexion-telephone');
+    tester.view.physicalSize = const Size(1280, 800);
 
     // L'abonnement est fini : l'école garde son espace et son historique,
     // et ne peut plus ouvrir de séance.

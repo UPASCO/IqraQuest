@@ -2488,6 +2488,42 @@ abstract class AppLocalizations {
   /// **'Active devices: {used} / {total}'**
   String teacherDevicesActive(num used, num total);
 
+  /// Console welcome panel: headline
+  ///
+  /// In en, this message translates to:
+  /// **'The class plays. You lead.'**
+  String get teacherPitchTitle;
+
+  /// Console welcome panel: one sentence on how a session goes
+  ///
+  /// In en, this message translates to:
+  /// **'One question on the board, every pupil answers from their own device, and the horses move on every right answer.'**
+  String get teacherPitchBody;
+
+  /// Console welcome panel: first value point
+  ///
+  /// In en, this message translates to:
+  /// **'Five games free, no card needed'**
+  String get teacherPitchFree;
+
+  /// Console welcome panel: second value point
+  ///
+  /// In en, this message translates to:
+  /// **'Two devices in session at once'**
+  String get teacherPitchDevices;
+
+  /// Console welcome panel: third value point
+  ///
+  /// In en, this message translates to:
+  /// **'Marks out of 20, ready for the register'**
+  String get teacherPitchMarks;
+
+  /// Console account view: heading of the subscription panel
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get teacherSubscriptionTitle;
+
   /// Console: open the list of playing devices
   ///
   /// In en, this message translates to:

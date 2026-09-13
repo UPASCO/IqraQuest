@@ -1455,6 +1455,25 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'Kelas bermain. Anda memimpin.';
+
+  @override
+  String get teacherPitchBody =>
+      'Satu pertanyaan di papan, setiap murid menjawab dari perangkatnya, dan kuda-kuda maju di setiap jawaban benar.';
+
+  @override
+  String get teacherPitchFree => 'Lima permainan gratis, tanpa kartu';
+
+  @override
+  String get teacherPitchDevices => 'Dua perangkat bersesi sekaligus';
+
+  @override
+  String get teacherPitchMarks => 'Nilai dari 20, siap untuk buku catatan';
+
+  @override
+  String get teacherSubscriptionTitle => 'Langganan';
+
+  @override
   String get teacherManageDevices => 'Kelola perangkat saya';
 
   @override

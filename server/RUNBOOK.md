@@ -508,7 +508,7 @@ ce qui est vrai.
 | Le lien de connexion n'arrive jamais | quota d'e-mails Supabase atteint → configurer un SMTP (étape 2). La connexion par mot de passe, elle, n'en dépend pas |
 | « Adresse ou mot de passe incorrect » sur un compte qui existe | « Auto Confirm User » n'était pas coché à la création : le compte existe mais son adresse n'est pas confirmée |
 | Le lien arrive mais la console reste déconnectée | `Redirect URLs` ne contient pas `teacher-callback.html` (étape 2) |
-| « Confirmez votre adresse » mais rien n'arrive | courrier intégré bridé aux membres de l'organisation → SMTP (étape 2) ; en attendant, confirmer le compte à la main dans Authentication → Users |
+| « Confirmez votre adresse » mais rien n'arrive | (a) l'adresse avait déjà un compte — Supabase ne renvoie alors rien, et la console dit désormais « Cette adresse a déjà un compte » ; (b) courrier intégré bridé aux membres de l'organisation et à quelques envois par heure → SMTP (étape 2). En attendant, confirmer ou créer le compte à la main dans Authentication → Users |
 | Payé, mais la console reste sur « Offre découverte » | le webhook n'a pas atteint la fonction : Stripe → Webhooks → l'endpoint → Events (secret du mauvais mode = 400) ; rejouer l'événement |
 | « S'abonner » dit que le paiement est indisponible | fonction `create-school-checkout` non déployée, ou un secret `STRIPE_*` manquant, ou prix live sous 50 € (étape 7) |
 | « Deux appareils sont déjà en séance » alors qu'un seul joue | un onglet fermé sans terminer la séance garde sa place cinq minutes ; Mon espace → Appareils → Libérer |

@@ -3381,6 +3381,57 @@ s("teacherDevicesActive", "Console: active game devices out of the licence's lim
   ur="فعال آلات: {used} / {total}", ms="Peranti aktif: {used} / {total}",
   it="Dispositivi attivi: {used} / {total}", nl="Actieve apparaten: {used} / {total}")
 
+s("teacherPitchTitle", "Console welcome panel: headline",
+  fr="La classe joue. Vous menez.", en="The class plays. You lead.",
+  ar="الصف يلعب. وأنت تقود.", es="La clase juega. Tú diriges.",
+  pt="A turma joga. Você conduz.", de="Die Klasse spielt. Sie führen.",
+  tr="Sınıf oynar. Siz yönetirsiniz.", id="Kelas bermain. Anda memimpin.",
+  ur="کلاس کھیلتی ہے۔ آپ رہنمائی کرتے ہیں۔", ms="Kelas bermain. Anda memimpin.",
+  it="La classe gioca. Tu conduci.", nl="De klas speelt. U leidt.")
+
+s("teacherPitchBody", "Console welcome panel: one sentence on how a session goes",
+  fr="Une question au tableau, chaque élève répond depuis son appareil, et les chevaux avancent à chaque bonne réponse.",
+  en="One question on the board, every pupil answers from their own device, and the horses move on every right answer.",
+  ar="سؤال على السبورة، كل تلميذ يجيب من جهازه، والخيول تتقدم مع كل إجابة صحيحة.",
+  es="Una pregunta en la pizarra, cada alumno responde desde su dispositivo y los caballos avanzan con cada acierto.",
+  pt="Uma pergunta no quadro, cada aluno responde do seu aparelho, e os cavalos avançam a cada resposta certa.",
+  de="Eine Frage an der Tafel, jedes Kind antwortet vom eigenen Gerät, und die Pferde ziehen bei jeder richtigen Antwort weiter.",
+  tr="Tahtada bir soru, her öğrenci kendi cihazından yanıtlar ve her doğru yanıtta atlar ilerler.",
+  id="Satu pertanyaan di papan, setiap murid menjawab dari perangkatnya, dan kuda-kuda maju di setiap jawaban benar.",
+  ur="بورڈ پر ایک سوال، ہر طالب علم اپنے آلے سے جواب دیتا ہے، اور ہر درست جواب پر گھوڑے آگے بڑھتے ہیں۔",
+  ms="Satu soalan di papan, setiap murid menjawab dari peranti sendiri, dan kuda-kuda mara pada setiap jawapan betul.",
+  it="Una domanda alla lavagna, ogni alunno risponde dal proprio dispositivo e i cavalli avanzano a ogni risposta esatta.",
+  nl="Eén vraag op het bord, elke leerling antwoordt op het eigen apparaat, en de paarden gaan vooruit bij elk goed antwoord.")
+
+s("teacherPitchFree", "Console welcome panel: first value point",
+  fr="Cinq parties offertes, sans carte bancaire", en="Five games free, no card needed",
+  ar="خمس حصص مجانية، دون بطاقة مصرفية", es="Cinco partidas gratis, sin tarjeta",
+  pt="Cinco partidas grátis, sem cartão", de="Fünf Spiele gratis, ohne Karte",
+  tr="Beş oyun ücretsiz, kart gerekmez", id="Lima permainan gratis, tanpa kartu",
+  ur="پانچ کھیل مفت، بغیر کارڈ", ms="Lima permainan percuma, tanpa kad",
+  it="Cinque partite gratis, senza carta", nl="Vijf spellen gratis, zonder kaart")
+
+s("teacherPitchDevices", "Console welcome panel: second value point",
+  fr="Deux appareils en séance en même temps", en="Two devices in session at once",
+  ar="جهازان في حصة في الوقت نفسه", es="Dos dispositivos en sesión a la vez",
+  pt="Dois aparelhos em sessão ao mesmo tempo", de="Zwei Geräte gleichzeitig in einer Sitzung",
+  tr="Aynı anda iki cihazla oturum", id="Dua perangkat bersesi sekaligus",
+  ur="ایک وقت میں دو آلات پر نشست", ms="Dua peranti bersesi serentak",
+  it="Due dispositivi in sessione insieme", nl="Twee apparaten tegelijk in sessie")
+
+s("teacherPitchMarks", "Console welcome panel: third value point",
+  fr="Les notes sur 20, prêtes pour le cahier", en="Marks out of 20, ready for the register",
+  ar="درجات من 20 جاهزة للدفتر", es="Notas sobre 20, listas para el cuaderno",
+  pt="Notas em 20, prontas para o caderno", de="Noten von 20, fertig fürs Notenbuch",
+  tr="20 üzerinden notlar, deftere hazır", id="Nilai dari 20, siap untuk buku catatan",
+  ur="20 میں سے نمبر، رجسٹر کے لیے تیار", ms="Markah daripada 20, sedia untuk buku rekod",
+  it="Voti in ventesimi, pronti per il registro", nl="Cijfers op 20, klaar voor het rapport")
+
+s("teacherSubscriptionTitle", "Console account view: heading of the subscription panel",
+  fr="Abonnement", en="Subscription", ar="الاشتراك", es="Suscripción",
+  pt="Subscrição", de="Abonnement", tr="Abonelik", id="Langganan",
+  ur="رکنیت", ms="Langganan", it="Abbonamento", nl="Abonnement")
+
 s("teacherManageDevices", "Console: open the list of playing devices",
   fr="Gérer mes appareils", en="Manage my devices", ar="إدارة أجهزتي",
   es="Gestionar mis dispositivos", pt="Gerir os meus dispositivos",

@@ -244,6 +244,14 @@ class SupabaseTeacherGateway implements TeacherGateway {
       throw const TeacherException(TeacherError.unreachable);
     }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
+    // Une adresse déjà inscrite ne fait pas d'erreur chez GoTrue : il
+    // rend un utilisateur factice, sans identité, et n'envoie aucun
+    // courrier. Afficher « Confirmez votre adresse » à quelqu'un qui
+    // n'aura jamais rien, c'est lui faire surveiller une boîte vide.
+    final identities = json['identities'];
+    if (identities is List && identities.isEmpty) {
+      throw const TeacherException(TeacherError.emailTaken);
+    }
     // Avec la confirmation par e-mail activée, GoTrue rend l'utilisateur
     // sans session : on attend le clic. Sans elle, une session arrive
     // tout de suite et l'enseignant est déjà entré.

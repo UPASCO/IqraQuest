@@ -65,6 +65,10 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
   /// séance » hors de l'écran.
   bool _account = false;
 
+  /// Le site vitrine envoie « Créer un compte » ici avec `?signup=1` :
+  /// le formulaire s'ouvre alors directement sur l'inscription.
+  bool get _wantsSignUp => Uri.base.queryParameters['signup'] == '1';
+
   /// The board follows the console's own language until a teacher says
   /// otherwise — a French classroom projects in French without touching
   /// anything, and the pupils' phones stay in each pupil's language.
@@ -106,167 +110,169 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
       ref.read(teacherConsoleProvider.notifier).clearError();
     });
 
-    return Scaffold(
-      appBar: AppBar(
-        // La console vit sur son propre sous-domaine, mais elle
-        // appartient au même service : le nom de marque et le chemin du
-        // retour sont dans la barre, pour qu'une école venue de
-        // iqraquest.org ne croie pas avoir changé de maison.
-        title: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(l10n.teacherConsole),
-            Text(
-              l10n.teacherBackToSite,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: context.colors.goldAccent,
-                letterSpacing: 0.4,
-              ),
-            ),
-          ],
-        ),
-        leading: _history || _account
-            ? IconButton(
-                key: const Key('teacher-history-back'),
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => setState(() {
-                  _history = false;
-                  _account = false;
-                }),
-              )
-            : null,
-        actions: [
-          if (!_history &&
-              !_account &&
-              (console.stage == ConsoleStage.ready ||
-                  console.stage == ConsoleStage.quotaExhausted ||
-                  console.stage == ConsoleStage.expired)) ...[
-            TextButton(
-              key: const Key('teacher-account-open'),
-              onPressed: () {
-                setState(() => _account = true);
-                ref.read(teacherConsoleProvider.notifier).loadSessions();
-              },
-              child: ButtonLabel(l10n.teacherAccountSection),
-            ),
-            TextButton(
-              key: const Key('teacher-history-open'),
-              onPressed: () {
-                setState(() => _history = true);
-                if (console.reports == null) {
-                  ref.read(teacherConsoleProvider.notifier).loadReports();
-                }
-              },
-              child: ButtonLabel(l10n.teacherHistory),
-            ),
-          ],
-          // Rien à quitter tant que personne n'est entré. `linkSent`
-          // affiche encore le champ d'adresse : proposer « Se
-          // déconnecter » au-dessus d'un formulaire de connexion est la
-          // première chose qu'une école voit, et ça n'a aucun sens.
-          if (!_history &&
-              !_account &&
-              console.stage != ConsoleStage.signedOut &&
-              console.stage != ConsoleStage.linkSent &&
-              console.stage != ConsoleStage.awaitingConfirmation &&
-              console.stage != ConsoleStage.loading)
-            TextButton(
-              key: const Key('teacher-signout'),
-              onPressed: () =>
-                  ref.read(teacherConsoleProvider.notifier).signOut(),
-              child: ButtonLabel(l10n.teacherSignOut),
-            ),
-        ],
-      ),
-      body: SafeArea(
-        child: FitOrScroll(
-          padding: pagePadding(context, top: 16, bottom: 20),
-          child: ContentWidth(
-            maxWidth: 720,
-            child: _history
-                ? _History(console: console, l10n: l10n)
-                : _account
-                ? _AccountView(console: console, l10n: l10n)
-                : switch (console.stage) {
-              ConsoleStage.loading => const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(40),
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-              ConsoleStage.signedOut ||
-              ConsoleStage.linkSent => _SignIn(
-                controller: _email,
-                console: console,
-                l10n: l10n,
-                onSend: () => ref
-                    .read(teacherConsoleProvider.notifier)
-                    .sendLink(_email.text),
-                onSignIn: (password) => ref
-                    .read(teacherConsoleProvider.notifier)
-                    .signIn(_email.text, password),
-                onSignUp: (password) => ref
-                    .read(teacherConsoleProvider.notifier)
-                    .signUp(_email.text, password),
-              ),
-              ConsoleStage.awaitingConfirmation => _AwaitingConfirmation(
-                console: console,
-                l10n: l10n,
-                onBack: () => ref.read(teacherConsoleProvider.notifier).signOut(),
-              ),
-              ConsoleStage.noLicence => _NoLicence(console: console, l10n: l10n),
-              ConsoleStage.quotaExhausted => _QuotaExhausted(
-                console: console,
-                l10n: l10n,
-              ),
-              ConsoleStage.expired => _Expired(console: console, l10n: l10n),
-              ConsoleStage.ready => _Setup(
-                console: console,
-                l10n: l10n,
-                category: _category,
-                difficulty: _difficulty,
-                lesson: _lesson,
-                teamCount: _teamCount,
-                scoring: _scoring,
-                secondsPerQuestion: _secondsPerQuestion,
-                cardCount: _cardCount,
-                shuffle: _shuffle,
-                boardLanguage: _boardLanguage ?? ref.watch(effectiveLanguageProvider),
-                onCategory: (v) => setState(() {
-                  _category = v;
-                  _lesson = null;
-                }),
-                onDifficulty: (v) => setState(() {
-                  _difficulty = v;
-                  _lesson = null;
-                }),
-                onLesson: (v) => setState(() => _lesson = v),
-                onTeamCount: (v) => setState(() => _teamCount = v),
-                onScoring: (v) => setState(() => _scoring = v),
-                onSeconds: (v) => setState(() => _secondsPerQuestion = v),
-                onCardCount: (v) => setState(() => _cardCount = v),
-                onShuffle: (v) => setState(() => _shuffle = v),
-                onBoardLanguage: (v) => setState(() => _boardLanguage = v),
-                // The lesson comes back from the picker: the list shows
-                // its first entry until a teacher touches it, and that
-                // one is what opening runs.
-                onOpen: (lesson) => ref
-                    .read(teacherConsoleProvider.notifier)
-                    .openSession(
-                      lesson: lesson,
-                      teamCount: _teamCount,
-                      scoring: _scoring,
-                      secondsPerQuestion: _secondsPerQuestion,
-                      cardCount: _cardCount,
-                      shuffle: _shuffle,
-                      boardLanguage:
-                          _boardLanguage ??
-                          ref.read(effectiveLanguageProvider),
-                    ),
-              ),
-              ConsoleStage.running => _Running(console: console, l10n: l10n),
-                  },
+    final colors = context.colors;
+    final stage = console.stage;
+    final showNav =
+        !_history &&
+        !_account &&
+        (stage == ConsoleStage.ready ||
+            stage == ConsoleStage.quotaExhausted ||
+            stage == ConsoleStage.expired ||
+            stage == ConsoleStage.noLicence);
+    // Rien à quitter tant que personne n'est entré. `linkSent` affiche
+    // encore le champ d'adresse : proposer « Se déconnecter » au-dessus
+    // d'un formulaire de connexion n'a aucun sens.
+    final showSignOut =
+        !_history &&
+        !_account &&
+        stage != ConsoleStage.signedOut &&
+        stage != ConsoleStage.linkSent &&
+        stage != ConsoleStage.awaitingConfirmation &&
+        stage != ConsoleStage.loading;
+
+    Widget page(Widget child, {double maxWidth = 720}) => FitOrScroll(
+      padding: pagePadding(context, top: 16, bottom: 20),
+      child: ContentWidth(maxWidth: maxWidth, child: child),
+    );
+
+    final Widget body;
+    if (_history) {
+      body = page(_History(console: console, l10n: l10n));
+    } else if (_account) {
+      body = page(_AccountView(console: console, l10n: l10n), maxWidth: 960);
+    } else {
+      body = switch (stage) {
+        ConsoleStage.loading => const Center(
+          child: Padding(
+            padding: EdgeInsets.all(40),
+            child: CircularProgressIndicator(),
           ),
+        ),
+        ConsoleStage.signedOut || ConsoleStage.linkSent => _Welcome(
+          l10n: l10n,
+          panel: _SignIn(
+            controller: _email,
+            console: console,
+            l10n: l10n,
+            initialSignUp: _wantsSignUp,
+            onSend: () =>
+                ref.read(teacherConsoleProvider.notifier).sendLink(_email.text),
+            onSignIn: (password) => ref
+                .read(teacherConsoleProvider.notifier)
+                .signIn(_email.text, password),
+            onSignUp: (password) => ref
+                .read(teacherConsoleProvider.notifier)
+                .signUp(_email.text, password),
+          ),
+        ),
+        ConsoleStage.awaitingConfirmation => _Welcome(
+          l10n: l10n,
+          panel: _AwaitingConfirmation(
+            console: console,
+            l10n: l10n,
+            onBack: () => ref.read(teacherConsoleProvider.notifier).signOut(),
+          ),
+        ),
+        ConsoleStage.noLicence => _Welcome(
+          l10n: l10n,
+          panel: _NoLicence(console: console, l10n: l10n),
+        ),
+        ConsoleStage.quotaExhausted => _Welcome(
+          l10n: l10n,
+          panel: _QuotaExhausted(console: console, l10n: l10n),
+        ),
+        ConsoleStage.expired => _Welcome(
+          l10n: l10n,
+          panel: _Expired(console: console, l10n: l10n),
+        ),
+        ConsoleStage.ready => page(
+          _Setup(
+            console: console,
+            l10n: l10n,
+            category: _category,
+            difficulty: _difficulty,
+            lesson: _lesson,
+            teamCount: _teamCount,
+            scoring: _scoring,
+            secondsPerQuestion: _secondsPerQuestion,
+            cardCount: _cardCount,
+            shuffle: _shuffle,
+            boardLanguage:
+                _boardLanguage ?? ref.watch(effectiveLanguageProvider),
+            onCategory: (v) => setState(() {
+              _category = v;
+              _lesson = null;
+            }),
+            onDifficulty: (v) => setState(() {
+              _difficulty = v;
+              _lesson = null;
+            }),
+            onLesson: (v) => setState(() => _lesson = v),
+            onTeamCount: (v) => setState(() => _teamCount = v),
+            onScoring: (v) => setState(() => _scoring = v),
+            onSeconds: (v) => setState(() => _secondsPerQuestion = v),
+            onCardCount: (v) => setState(() => _cardCount = v),
+            onShuffle: (v) => setState(() => _shuffle = v),
+            onBoardLanguage: (v) => setState(() => _boardLanguage = v),
+            // The lesson comes back from the picker: the list shows
+            // its first entry until a teacher touches it, and that
+            // one is what opening runs.
+            onOpen: (lesson) => ref
+                .read(teacherConsoleProvider.notifier)
+                .openSession(
+                  lesson: lesson,
+                  teamCount: _teamCount,
+                  scoring: _scoring,
+                  secondsPerQuestion: _secondsPerQuestion,
+                  cardCount: _cardCount,
+                  shuffle: _shuffle,
+                  boardLanguage:
+                      _boardLanguage ?? ref.read(effectiveLanguageProvider),
+                ),
+          ),
+        ),
+        ConsoleStage.running => page(_Running(console: console, l10n: l10n)),
+      };
+    }
+
+    return Scaffold(
+      backgroundColor: colors.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _TopBar(
+              l10n: l10n,
+              title: _history
+                  ? l10n.teacherHistory
+                  : _account
+                  ? l10n.teacherAccountSection
+                  : null,
+              onBack: _history || _account
+                  ? () => setState(() {
+                      _history = false;
+                      _account = false;
+                    })
+                  : null,
+              onAccount: showNav
+                  ? () {
+                      setState(() => _account = true);
+                      ref.read(teacherConsoleProvider.notifier).loadSessions();
+                    }
+                  : null,
+              onHistory: showNav
+                  ? () {
+                      setState(() => _history = true);
+                      if (console.reports == null) {
+                        ref.read(teacherConsoleProvider.notifier).loadReports();
+                      }
+                    }
+                  : null,
+              onSignOut: showSignOut
+                  ? () => ref.read(teacherConsoleProvider.notifier).signOut()
+                  : null,
+            ),
+            Expanded(child: body),
+          ],
         ),
       ),
     );
@@ -298,11 +304,15 @@ class _SignIn extends StatefulWidget {
     required this.onSend,
     required this.onSignIn,
     required this.onSignUp,
+    this.initialSignUp = false,
   });
 
   final TextEditingController controller;
   final ConsoleState console;
   final AppLocalizations l10n;
+
+  /// Ouvrir directement sur l'inscription (venu du site vitrine).
+  final bool initialSignUp;
 
   /// Envoyer le lien : la porte de secours, quand le mot de passe est
   /// perdu.
@@ -331,6 +341,12 @@ class _SignInState extends State<_SignIn> {
   bool _signUp = false;
 
   @override
+  void initState() {
+    super.initState();
+    _signUp = widget.initialSignUp;
+  }
+
+  @override
   void dispose() {
     _password.dispose();
     super.dispose();
@@ -346,18 +362,30 @@ class _SignInState extends State<_SignIn> {
     final colors = context.colors;
     final sent = widget.console.stage == ConsoleStage.linkSent;
 
+    final text = Theme.of(context).textTheme;
+
     return Column(
+      key: const Key('teacher-sign-in'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Text(
+          _forgot
+              ? widget.l10n.teacherForgotPassword
+              : _signUp
+              ? widget.l10n.teacherCreateAccount
+              : widget.l10n.teacherSignIn,
+          style: text.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
+        ),
+        const SizedBox(height: 6),
         Text(
           _forgot
               ? widget.l10n.teacherSignInHint
               : _signUp
               ? widget.l10n.teacherSignUpHint
               : widget.l10n.teacherSignInPasswordHint,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: text.bodyMedium?.copyWith(color: colors.textSecondary),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 18),
         TextField(
           key: const Key('teacher-email'),
           controller: widget.controller,
@@ -389,6 +417,9 @@ class _SignInState extends State<_SignIn> {
         const SizedBox(height: 16),
         ElevatedButton(
           key: const Key('teacher-send'),
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size.fromHeight(52),
+          ),
           onPressed: !_canSubmit
               ? null
               : _forgot
@@ -405,21 +436,37 @@ class _SignInState extends State<_SignIn> {
           ),
         ),
         if (!_forgot && !sent) ...[
-          const SizedBox(height: 6),
-          if (!_signUp)
-            TextButton(
-              key: const Key('teacher-forgot'),
-              onPressed: () => setState(() => _forgot = true),
-              child: ButtonLabel(widget.l10n.teacherForgotPassword),
-            ),
+          const SizedBox(height: 8),
+          // Les deux autres portes sur une ligne : elles restent sous
+          // le bouton, jamais sous le pli.
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              if (!_signUp)
+                TextButton(
+                  key: const Key('teacher-forgot'),
+                  onPressed: () => setState(() => _forgot = true),
+                  child: ButtonLabel(widget.l10n.teacherForgotPassword),
+                ),
+              TextButton(
+                key: const Key('teacher-toggle-signup'),
+                onPressed: () => setState(() => _signUp = !_signUp),
+                child: ButtonLabel(
+                  _signUp
+                      ? widget.l10n.teacherHaveAccount
+                      : widget.l10n.teacherCreateAccount,
+                ),
+              ),
+            ],
+          ),
+        ],
+        if (_forgot) ...[
+          const SizedBox(height: 8),
           TextButton(
-            key: const Key('teacher-toggle-signup'),
-            onPressed: () => setState(() => _signUp = !_signUp),
-            child: ButtonLabel(
-              _signUp
-                  ? widget.l10n.teacherHaveAccount
-                  : widget.l10n.teacherCreateAccount,
-            ),
+            key: const Key('teacher-forgot-back'),
+            onPressed: () => setState(() => _forgot = false),
+            child: ButtonLabel(widget.l10n.teacherHaveAccount),
           ),
         ],
         if (sent) ...[
@@ -427,9 +474,8 @@ class _SignInState extends State<_SignIn> {
           Text(
             key: const Key('teacher-link-sent'),
             widget.l10n.teacherLinkSent(widget.console.email ?? ''),
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: colors.success),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: colors.success),
           ),
           const SizedBox(height: 6),
           // Un lien de connexion signé par un expéditeur que personne ne
@@ -438,9 +484,8 @@ class _SignInState extends State<_SignIn> {
           Text(
             key: const Key('teacher-link-spam-hint'),
             widget.l10n.teacherLinkSpamHint,
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
+            style: Theme.of(context).textTheme.bodySmall
+                ?.copyWith(color: colors.textSecondary),
           ),
         ],
       ],
@@ -506,26 +551,31 @@ class _AccountCard extends StatelessWidget {
               l10n.teacherAccountRooms(account.roomsInUse, account.rooms),
               style: text.bodyMedium,
             ),
-            const SizedBox(height: 2),
-            Text(
-              // Un abonnement fini ne compte pas « encore zéro jour » :
-              // il dit la date à laquelle il s'est arrêté. Le décompte
-              // n'a de sens que sur ce qui court encore.
-              account.locked
-                  ? l10n.teacherAccountEndedOn(
-                      account.expiresAt == null
-                          ? ''
-                          : MaterialLocalizations.of(
-                              context,
-                            ).formatFullDate(account.expiresAt!),
-                    )
-                  : l10n.teacherAccountDaysLeft(account.daysLeft),
-              key: const Key('teacher-account-days'),
-              style: text.bodyMedium?.copyWith(
-                color: account.endingSoon ? colors.goldAccent : colors.textSecondary,
-                fontWeight: account.endingSoon ? FontWeight.w700 : null,
+            // Un compte découverte n'a pas d'échéance qui compte : sa
+            // limite est la jauge des parties, pas un nombre de jours.
+            if (!account.free) ...[
+              const SizedBox(height: 2),
+              Text(
+                // Un abonnement fini ne compte pas « encore zéro jour » :
+                // il dit la date à laquelle il s'est arrêté. Le décompte
+                // n'a de sens que sur ce qui court encore.
+                account.locked
+                    ? l10n.teacherAccountEndedOn(
+                        account.expiresAt == null
+                            ? ''
+                            : MaterialLocalizations.of(context)
+                                  .formatFullDate(account.expiresAt!),
+                      )
+                    : l10n.teacherAccountDaysLeft(account.daysLeft),
+                key: const Key('teacher-account-days'),
+                style: text.bodyMedium?.copyWith(
+                  color: account.endingSoon
+                      ? colors.goldAccent
+                      : colors.textSecondary,
+                  fontWeight: account.endingSoon ? FontWeight.w700 : null,
+                ),
               ),
-            ),
+            ],
             if (account.endingSoon && !account.cancelAtPeriodEnd) ...[
               const SizedBox(height: 6),
               Text(
@@ -542,7 +592,8 @@ class _AccountCard extends StatelessWidget {
               Text(
                 key: const Key('teacher-cancel-at-period-end'),
                 l10n.teacherCancelAtPeriodEnd(
-                  MaterialLocalizations.of(context).formatFullDate(account.expiresAt!),
+                  MaterialLocalizations.of(context)
+                      .formatFullDate(account.expiresAt!),
                 ),
                 style: text.bodySmall?.copyWith(color: colors.textSecondary),
               ),
@@ -565,7 +616,10 @@ class _AccountCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                l10n.teacherFreeGamesLeft(account.freeGamesLeft, account.freeGames!),
+                l10n.teacherFreeGamesLeft(
+                  account.freeGamesLeft,
+                  account.freeGames!,
+                ),
                 key: const Key('teacher-quota-text'),
                 style: text.bodySmall?.copyWith(color: colors.textSecondary),
               ),
@@ -611,9 +665,12 @@ class _AwaitingConfirmation extends StatelessWidget {
       key: const Key('teacher-awaiting-confirmation'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Icon(Icons.mark_email_unread_outlined, size: 40, color: colors.primary),
+        const SizedBox(height: 12),
         Text(
           l10n.teacherAwaitingConfirmationTitle,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 8),
         Text(
@@ -623,9 +680,8 @@ class _AwaitingConfirmation extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           l10n.teacherLinkSpamHint,
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: colors.textSecondary),
         ),
         const SizedBox(height: 20),
         OutlinedButton(
@@ -663,13 +719,16 @@ class _QuotaExhausted extends ConsumerWidget {
           _AccountCard(account: account, l10n: l10n, showSchoolName: true),
           const SizedBox(height: 18),
         ],
-        Text(l10n.teacherQuotaTitle, style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          l10n.teacherQuotaTitle,
+          style: Theme.of(context).textTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
+        ),
         const SizedBox(height: 8),
         Text(
           l10n.teacherQuotaBody,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: colors.textPrimary),
         ),
         const SizedBox(height: 20),
         _SubscribeButton(console: console, l10n: l10n),
@@ -678,7 +737,8 @@ class _QuotaExhausted extends ConsumerWidget {
           key: const Key('teacher-refresh-quota'),
           onPressed: console.busy
               ? null
-              : () => ref.read(teacherConsoleProvider.notifier).refreshLicence(),
+              : () =>
+                    ref.read(teacherConsoleProvider.notifier).refreshLicence(),
           child: ButtonLabel(l10n.teacherRefresh),
         ),
       ],
@@ -758,133 +818,197 @@ class _AccountViewState extends ConsumerState<_AccountView> {
     final account = console.account;
     final sessions = console.activeSessions;
 
+    Widget panel(String title, List<Widget> children) => _Panel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            title,
+            style: text.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 10),
+          ...children,
+        ],
+      ),
+    );
+
+    // L'abonnement.
+    final subscription = panel(l10n.teacherSubscriptionTitle, [
+      if (account != null) ...[
+        _AccountCard(account: account, l10n: l10n, showSchoolName: true),
+        const SizedBox(height: 12),
+        if (account.state == AccountState.quotaExhausted)
+          _SubscribeButton(console: console, l10n: l10n)
+        else if (account.paymentFailed)
+          _PortalButton(
+            console: console,
+            l10n: l10n,
+            label: l10n.teacherUpdatePayment,
+          )
+        else if (account.hasCustomer)
+          _PortalButton(console: console, l10n: l10n),
+      ],
+    ]);
+
+    // Les appareils.
+    final devices = panel(l10n.teacherManageDevices, [
+      if (account != null)
+        Text(
+          l10n.teacherDevicesActive(account.roomsInUse, account.rooms),
+          key: const Key('teacher-devices-count'),
+          style: text.bodyMedium?.copyWith(color: colors.textSecondary),
+        ),
+      const SizedBox(height: 8),
+      if (sessions == null)
+        const Center(
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: CircularProgressIndicator(),
+          ),
+        )
+      else if (sessions.isEmpty)
+        Text(
+          l10n.teacherNoActiveDevices,
+          key: const Key('teacher-no-devices'),
+          style: text.bodyMedium?.copyWith(color: colors.textSecondary),
+        )
+      else
+        for (final s in sessions)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(s.code, style: text.titleSmall),
+                      Text(
+                        s.alive
+                            ? l10n.teacherDeviceSince(
+                                MaterialLocalizations.of(context)
+                                    .formatTimeOfDay(
+                                      TimeOfDay.fromDateTime(s.openedAt),
+                                    ),
+                              )
+                            : l10n.teacherDeviceStale,
+                        style: text.bodySmall?.copyWith(
+                          color: colors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                OutlinedButton(
+                  key: Key('teacher-revoke-${s.sessionId}'),
+                  onPressed: console.busy
+                      ? null
+                      : () => ref
+                            .read(teacherConsoleProvider.notifier)
+                            .revokeSession(s.sessionId),
+                  child: ButtonLabel(l10n.teacherDisconnectDevice),
+                ),
+              ],
+            ),
+          ),
+    ]);
+
+    // Le mot de passe.
+    final password = panel(l10n.teacherChangePassword, [
+      TextField(
+        key: const Key('teacher-new-password'),
+        controller: _newPassword,
+        obscureText: true,
+        onChanged: (_) => setState(() => _changed = false),
+        decoration: InputDecoration(
+          labelText: l10n.teacherNewPassword,
+          border: const OutlineInputBorder(),
+          helperText: _changed ? l10n.teacherPasswordChanged : null,
+        ),
+      ),
+      const SizedBox(height: 8),
+      OutlinedButton(
+        key: const Key('teacher-change-password'),
+        onPressed: console.busy || _newPassword.text.isEmpty
+            ? null
+            : () async {
+                final ok = await ref
+                    .read(teacherConsoleProvider.notifier)
+                    .updatePassword(_newPassword.text);
+                if (ok && mounted) {
+                  _newPassword.clear();
+                  setState(() => _changed = true);
+                }
+              },
+        child: ButtonLabel(l10n.teacherChangePassword),
+      ),
+    ]);
+
+    // La sortie.
+    final deletion = panel(l10n.teacherDeleteAccount, [
+      Text(
+        l10n.teacherDeleteAccountHint,
+        style: text.bodySmall?.copyWith(color: colors.textSecondary),
+      ),
+      const SizedBox(height: 8),
+      if (!_confirmDelete)
+        OutlinedButton(
+          key: const Key('teacher-delete-account'),
+          onPressed: console.busy
+              ? null
+              : () => setState(() => _confirmDelete = true),
+          child: ButtonLabel(l10n.teacherDeleteAccount),
+        )
+      else
+        ElevatedButton(
+          key: const Key('teacher-confirm-delete'),
+          style: ElevatedButton.styleFrom(backgroundColor: colors.error),
+          onPressed: console.busy
+              ? null
+              : () => ref.read(teacherConsoleProvider.notifier).deleteAccount(),
+          child: ButtonLabel(l10n.teacherConfirmDelete),
+        ),
+    ]);
+
+    // Quatre panneaux, deux par ligne dès qu'il y a la place : tout
+    // l'espace tient alors sur un écran, sans faire défiler pour
+    // atteindre un bouton.
+    // La largeur se lit sur l'écran, pas dans un LayoutBuilder : la page
+    // vit sous un FitOrScroll, qui mesure sa hauteur intrinsèque, et un
+    // LayoutBuilder ne sait pas la donner.
+    final wide = MediaQuery.sizeOf(context).width >= 760;
+    if (!wide) {
+      return Column(
+        key: const Key('teacher-account-view'),
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          subscription,
+          const SizedBox(height: 14),
+          devices,
+          const SizedBox(height: 14),
+          password,
+          const SizedBox(height: 14),
+          deletion,
+        ],
+      );
+    }
+    Widget row(Widget a, Widget b) => IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(child: a),
+          const SizedBox(width: 16),
+          Expanded(child: b),
+        ],
+      ),
+    );
     return Column(
       key: const Key('teacher-account-view'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (account != null) ...[
-          _AccountCard(account: account, l10n: l10n, showSchoolName: true),
-          const SizedBox(height: 14),
-          if (account.state == AccountState.quotaExhausted)
-            _SubscribeButton(console: console, l10n: l10n)
-          else if (account.paymentFailed)
-            _PortalButton(console: console, l10n: l10n, label: l10n.teacherUpdatePayment)
-          else if (account.hasCustomer)
-            _PortalButton(console: console, l10n: l10n),
-          const SizedBox(height: 22),
-        ],
-
-        // Les appareils.
-        Text(l10n.teacherManageDevices, style: text.titleMedium),
-        const SizedBox(height: 4),
-        if (account != null)
-          Text(
-            l10n.teacherDevicesActive(account.roomsInUse, account.rooms),
-            key: const Key('teacher-devices-count'),
-            style: text.bodyMedium?.copyWith(color: colors.textSecondary),
-          ),
-        const SizedBox(height: 8),
-        if (sessions == null)
-          const Center(child: Padding(padding: EdgeInsets.all(12), child: CircularProgressIndicator()))
-        else if (sessions.isEmpty)
-          Text(
-            l10n.teacherNoActiveDevices,
-            key: const Key('teacher-no-devices'),
-            style: text.bodyMedium?.copyWith(color: colors.textSecondary),
-          )
-        else
-          for (final s in sessions)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(s.code, style: text.titleSmall),
-                        Text(
-                          s.alive
-                              ? l10n.teacherDeviceSince(
-                                  MaterialLocalizations.of(context).formatTimeOfDay(
-                                    TimeOfDay.fromDateTime(s.openedAt),
-                                  ),
-                                )
-                              : l10n.teacherDeviceStale,
-                          style: text.bodySmall?.copyWith(color: colors.textSecondary),
-                        ),
-                      ],
-                    ),
-                  ),
-                  OutlinedButton(
-                    key: Key('teacher-revoke-${s.sessionId}'),
-                    onPressed: console.busy
-                        ? null
-                        : () => ref
-                            .read(teacherConsoleProvider.notifier)
-                            .revokeSession(s.sessionId),
-                    child: ButtonLabel(l10n.teacherDisconnectDevice),
-                  ),
-                ],
-              ),
-            ),
-        const SizedBox(height: 22),
-
-        // Le mot de passe.
-        Text(l10n.teacherChangePassword, style: text.titleMedium),
-        const SizedBox(height: 8),
-        TextField(
-          key: const Key('teacher-new-password'),
-          controller: _newPassword,
-          obscureText: true,
-          onChanged: (_) => setState(() => _changed = false),
-          decoration: InputDecoration(
-            labelText: l10n.teacherNewPassword,
-            border: const OutlineInputBorder(),
-            helperText: _changed ? l10n.teacherPasswordChanged : null,
-          ),
-        ),
-        const SizedBox(height: 8),
-        OutlinedButton(
-          key: const Key('teacher-change-password'),
-          onPressed: console.busy || _newPassword.text.isEmpty
-              ? null
-              : () async {
-                  final ok = await ref
-                      .read(teacherConsoleProvider.notifier)
-                      .updatePassword(_newPassword.text);
-                  if (ok && mounted) {
-                    _newPassword.clear();
-                    setState(() => _changed = true);
-                  }
-                },
-          child: ButtonLabel(l10n.teacherChangePassword),
-        ),
-        const SizedBox(height: 28),
-
-        // La sortie.
-        Text(l10n.teacherDeleteAccount, style: text.titleMedium),
-        const SizedBox(height: 6),
-        Text(
-          l10n.teacherDeleteAccountHint,
-          style: text.bodySmall?.copyWith(color: colors.textSecondary),
-        ),
-        const SizedBox(height: 8),
-        if (!_confirmDelete)
-          OutlinedButton(
-            key: const Key('teacher-delete-account'),
-            onPressed: console.busy ? null : () => setState(() => _confirmDelete = true),
-            child: ButtonLabel(l10n.teacherDeleteAccount),
-          )
-        else
-          ElevatedButton(
-            key: const Key('teacher-confirm-delete'),
-            style: ElevatedButton.styleFrom(backgroundColor: colors.error),
-            onPressed: console.busy
-                ? null
-                : () => ref.read(teacherConsoleProvider.notifier).deleteAccount(),
-            child: ButtonLabel(l10n.teacherConfirmDelete),
-          ),
+        row(subscription, devices),
+        const SizedBox(height: 16),
+        row(password, deletion),
       ],
     );
   }
@@ -950,19 +1074,26 @@ class _Expired extends ConsumerWidget {
           _AccountCard(account: account, l10n: l10n, showSchoolName: true),
           const SizedBox(height: 18),
         ],
-        Text(l10n.teacherExpired, style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          l10n.teacherExpired,
+          style: Theme.of(context).textTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
+        ),
         const SizedBox(height: 8),
         Text(
           l10n.teacherExpiredHint,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: colors.textPrimary),
         ),
         const SizedBox(height: 20),
         if (kIsWeb && (console.account?.hasCustomer ?? false))
           _PortalButton(console: console, l10n: l10n, label: l10n.teacherRenew)
         else if (kIsWeb)
-          _SubscribeButton(console: console, l10n: l10n, label: l10n.teacherRenew)
+          _SubscribeButton(
+            console: console,
+            l10n: l10n,
+            label: l10n.teacherRenew,
+          )
         else
           // Tant qu'il n'y a pas de lien de paiement, une école dont
           // l'abonnement est fini n'avait que « Actualiser » — une
@@ -971,16 +1102,16 @@ class _Expired extends ConsumerWidget {
             key: const Key('teacher-renew-by-email'),
             l10n.teacherRenewByEmail,
             textAlign: TextAlign.center,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: colors.textPrimary),
           ),
         const SizedBox(height: 10),
         OutlinedButton(
           key: const Key('teacher-refresh-expired'),
           onPressed: console.busy
               ? null
-              : () => ref.read(teacherConsoleProvider.notifier).refreshLicence(),
+              : () =>
+                    ref.read(teacherConsoleProvider.notifier).refreshLicence(),
           child: ButtonLabel(l10n.teacherRefresh),
         ),
       ],
@@ -1008,7 +1139,10 @@ class _History extends ConsumerWidget {
       key: const Key('teacher-history'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(l10n.teacherHistory, style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          l10n.teacherHistory,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         const SizedBox(height: 10),
         if (reports == null)
           const Center(
@@ -1022,9 +1156,8 @@ class _History extends ConsumerWidget {
           Text(
             l10n.teacherHistoryEmpty,
             key: const Key('teacher-history-empty'),
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: colors.textSecondary),
           )
         else
           for (final report in reports) ...[
@@ -1099,7 +1232,9 @@ class _ReportTile extends ConsumerWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(child: Text(pupil.nickname, style: text.bodyMedium)),
+                      Expanded(
+                        child: Text(pupil.nickname, style: text.bodyMedium),
+                      ),
                       Text(
                         _mark(pupil, report.perQuestion.length),
                         style: text.bodyMedium?.copyWith(
@@ -1155,34 +1290,39 @@ class _NoLicence extends ConsumerWidget {
         if (console.email != null)
           Text(
             console.email!,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: colors.textSecondary),
           ),
         const SizedBox(height: 12),
-        Text(l10n.teacherNoLicence, style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          l10n.teacherNoLicence,
+          style: Theme.of(context).textTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
+        ),
         const SizedBox(height: 8),
         // The commonest way to be stuck here is to have paid with one
         // address and signed in with another — so the screen says that
         // before it offers to sell anything.
         Text(
           l10n.teacherNoLicenceHint,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: colors.textPrimary),
         ),
         const SizedBox(height: 8),
         Text(
           l10n.teacherLicencePaidElsewhere,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: colors.textSecondary),
         ),
         const SizedBox(height: 20),
         // Sur le web, la caisse ; sur un téléphone, ni lien ni prix —
         // une phrase qui dit où l'abonnement se gère.
         if (kIsWeb)
-          _SubscribeButton(console: console, l10n: l10n, label: l10n.teacherGetLicence)
+          _SubscribeButton(
+            console: console,
+            l10n: l10n,
+            label: l10n.teacherGetLicence,
+          )
         else
           Text(
             key: const Key('teacher-subscribe-on-site'),
@@ -1195,7 +1335,8 @@ class _NoLicence extends ConsumerWidget {
           key: const Key('teacher-refresh'),
           onPressed: console.busy
               ? null
-              : () => ref.read(teacherConsoleProvider.notifier).refreshLicence(),
+              : () =>
+                    ref.read(teacherConsoleProvider.notifier).refreshLicence(),
           child: ButtonLabel(l10n.teacherRefresh),
         ),
       ],
@@ -1275,8 +1416,7 @@ class _Setup extends ConsumerWidget {
       for (final l in all)
         if (l.category == category && l.difficulty == difficulty) l,
     ];
-    final selected =
-        lesson ?? (choices.isEmpty ? null : choices.first);
+    final selected = lesson ?? (choices.isEmpty ? null : choices.first);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1301,9 +1441,8 @@ class _Setup extends ConsumerWidget {
                 a.daysLeft,
               ),
               _ => l10n.teacherLicenceUntil(
-                MaterialLocalizations.of(
-                  context,
-                ).formatFullDate(console.licence!.expiresAt),
+                MaterialLocalizations.of(context)
+                    .formatFullDate(console.licence!.expiresAt),
               ),
             },
             key: const Key('teacher-licence-line'),
@@ -1457,27 +1596,26 @@ class _Setup extends ConsumerWidget {
           title: Text(l10n.teacherShuffle),
           subtitle: Text(
             l10n.teacherShuffleHint,
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
+            style: Theme.of(context).textTheme.bodySmall
+                ?.copyWith(color: colors.textSecondary),
           ),
         ),
         if (scoring == ClassroomScoring.teams) ...[
-        const SizedBox(height: 12),
-        DropdownButtonFormField<int>(
-          key: const Key('teacher-teams'),
-          isExpanded: true,
-          initialValue: teamCount,
-          decoration: InputDecoration(
-            labelText: l10n.teacherTeamsLabel,
-            border: const OutlineInputBorder(),
+          const SizedBox(height: 12),
+          DropdownButtonFormField<int>(
+            key: const Key('teacher-teams'),
+            isExpanded: true,
+            initialValue: teamCount,
+            decoration: InputDecoration(
+              labelText: l10n.teacherTeamsLabel,
+              border: const OutlineInputBorder(),
+            ),
+            items: [
+              for (final n in [2, 3, 4])
+                DropdownMenuItem(value: n, child: Text(l10n.teacherTeams(n))),
+            ],
+            onChanged: (v) => v == null ? null : onTeamCount(v),
           ),
-          items: [
-            for (final n in [2, 3, 4])
-              DropdownMenuItem(value: n, child: Text(l10n.teacherTeams(n))),
-          ],
-          onChanged: (v) => v == null ? null : onTeamCount(v),
-        ),
         ],
         const SizedBox(height: 12),
         DropdownButtonFormField<String>(
@@ -1529,9 +1667,8 @@ class _Running extends ConsumerWidget {
       children: [
         Text(
           l10n.teacherSessionRunning,
-          style: Theme.of(
-            context,
-          ).textTheme.titleMedium?.copyWith(color: colors.textSecondary),
+          style: Theme.of(context).textTheme.titleMedium
+              ?.copyWith(color: colors.textSecondary),
         ),
         const SizedBox(height: 6),
         Text(
@@ -1589,9 +1726,8 @@ class _Running extends ConsumerWidget {
         const SizedBox(height: 22),
         Text(
           l10n.teacherEndSessionHint,
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: colors.textSecondary),
         ),
         const SizedBox(height: 8),
         OutlinedButton(
@@ -1605,3 +1741,376 @@ class _Running extends ConsumerWidget {
     );
   }
 }
+
+/// La barre du haut : la marque, et les trois portes d'une école
+/// entrée. Pas de `AppBar` Material — elle vit sur un sous-domaine, mais
+/// elle appartient au site, et sa barre le dit.
+class _TopBar extends StatelessWidget {
+  const _TopBar({
+    required this.l10n,
+    this.title,
+    this.onBack,
+    this.onAccount,
+    this.onHistory,
+    this.onSignOut,
+  });
+
+  final AppLocalizations l10n;
+  final String? title;
+  final VoidCallback? onBack;
+  final VoidCallback? onAccount;
+  final VoidCallback? onHistory;
+  final VoidCallback? onSignOut;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final text = Theme.of(context).textTheme;
+    // Trois boutons à texte demandent de la place ; en dessous, des
+    // icônes avec leur infobulle.
+    final narrow = MediaQuery.sizeOf(context).width < 820;
+
+    Widget action(Key key, IconData icon, String label, VoidCallback? onTap) =>
+        narrow
+        ? IconButton(
+            key: key,
+            tooltip: label,
+            onPressed: onTap,
+            icon: Icon(icon, color: colors.textPrimary),
+          )
+        : TextButton.icon(
+            key: key,
+            onPressed: onTap,
+            icon: Icon(icon, size: 18),
+            label: ButtonLabel(label),
+          );
+
+    return Container(
+      height: 60,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        border: Border(bottom: BorderSide(color: colors.divider)),
+      ),
+      child: Row(
+        children: [
+          if (onBack != null)
+            IconButton(
+              key: const Key('teacher-history-back'),
+              icon: const Icon(Icons.arrow_back),
+              onPressed: onBack,
+            ),
+          // La marque ramène au site : une école venue de iqraquest.org
+          // ne doit pas croire avoir changé de maison.
+          Flexible(
+            child: InkWell(
+              key: const Key('teacher-brand'),
+              borderRadius: BorderRadius.circular(8),
+              onTap: () => launchUrl(Uri.https('iqraquest.org')),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.star_rounded,
+                      color: colors.goldAccent,
+                      size: 20,
+                    ),
+                    const SizedBox(width: 6),
+                    // Étroit : un seul mot — le titre de la vue, sinon
+                    // la marque. Large : la marque, puis la vue.
+                    Flexible(
+                      child: Text(
+                        narrow ? (title ?? 'IqraQuest') : 'IqraQuest',
+                        overflow: TextOverflow.ellipsis,
+                        style: text.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    if (!narrow) ...[
+                      Text(
+                        ' · ',
+                        style: text.titleMedium?.copyWith(
+                          color: colors.textSecondary,
+                        ),
+                      ),
+                      Flexible(
+                        child: Text(
+                          title ?? l10n.schoolMode,
+                          overflow: TextOverflow.ellipsis,
+                          style: text.titleMedium?.copyWith(
+                            color: colors.textSecondary,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const Spacer(),
+          if (onAccount != null)
+            action(
+              const Key('teacher-account-open'),
+              Icons.person_outline,
+              l10n.teacherAccountSection,
+              onAccount,
+            ),
+          if (onHistory != null)
+            action(
+              const Key('teacher-history-open'),
+              Icons.history,
+              l10n.teacherHistory,
+              onHistory,
+            ),
+          if (onSignOut != null)
+            action(
+              const Key('teacher-signout'),
+              Icons.logout,
+              l10n.teacherSignOut,
+              onSignOut,
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// La carte qui porte un formulaire ou une offre : une surface claire,
+/// un bord fin, une ombre courte.
+class _Panel extends StatelessWidget {
+  const _Panel({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: colors.divider),
+        boxShadow: [
+          BoxShadow(
+            color: colors.primaryDark.withValues(alpha: 0.10),
+            blurRadius: 30,
+            offset: const Offset(0, 12),
+          ),
+        ],
+      ),
+      child: Padding(padding: const EdgeInsets.all(24), child: child),
+    );
+  }
+}
+
+/// L'accueil : d'un côté ce que le mode École fait, de l'autre la porte.
+///
+/// Sur un écran large, les deux se partagent la hauteur entière : rien
+/// ne défile, chaque bouton est sous les yeux. Sur un téléphone, le
+/// panneau se réduit à un titre et trois points, et la carte suit.
+class _Welcome extends StatelessWidget {
+  const _Welcome({required this.l10n, required this.panel});
+
+  final AppLocalizations l10n;
+  final Widget panel;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final wide = constraints.maxWidth >= 880;
+        if (wide) {
+          return Row(
+            children: [
+              Expanded(flex: 11, child: _Pitch(l10n: l10n)),
+              Expanded(
+                flex: 9,
+                child: Center(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 24,
+                    ),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 460),
+                      child: _Panel(child: panel),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+        return FitOrScroll(
+          padding: pagePadding(context, top: 16, bottom: 20),
+          child: ContentWidth(
+            maxWidth: 520,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _PitchCompact(l10n: l10n),
+                const SizedBox(height: 16),
+                _Panel(child: panel),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Le panneau de gauche : ce que la classe va vivre, en trois points.
+class _Pitch extends StatelessWidget {
+  const _Pitch({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final text = Theme.of(context).textTheme;
+    const ivory = Color(0xFFFFF9ED);
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [colors.primaryDark, colors.primary],
+        ),
+      ),
+      padding: const EdgeInsets.fromLTRB(48, 40, 40, 32),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            l10n.schoolMode.toUpperCase(),
+            style: text.labelLarge?.copyWith(
+              color: colors.goldAccent,
+              letterSpacing: 2.4,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            l10n.teacherPitchTitle,
+            key: const Key('teacher-pitch'),
+            style: text.displaySmall?.copyWith(
+              color: ivory,
+              fontWeight: FontWeight.w800,
+              height: 1.08,
+            ),
+          ),
+          const SizedBox(height: 16),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: Text(
+              l10n.teacherPitchBody,
+              style: text.bodyLarge?.copyWith(
+                color: ivory.withValues(alpha: 0.86),
+                height: 1.45,
+              ),
+            ),
+          ),
+          const SizedBox(height: 32),
+          for (final point in _pitchPoints(l10n)) ...[
+            Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: ivory.withValues(alpha: 0.10),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(point.$1, color: colors.goldAccent, size: 22),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Text(
+                    point.$2,
+                    style: text.titleMedium?.copyWith(color: ivory),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+          ],
+          const SizedBox(height: 10),
+          Text(
+            l10n.teacherBackToSite,
+            style: text.bodySmall?.copyWith(
+              color: colors.goldAccent,
+              letterSpacing: 0.6,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Le même panneau, replié pour un téléphone : le titre, et les trois
+/// points en pastilles.
+class _PitchCompact extends StatelessWidget {
+  const _PitchCompact({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final text = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.teacherPitchTitle,
+          key: const Key('teacher-pitch'),
+          style: text.headlineMedium?.copyWith(
+            fontWeight: FontWeight.w800,
+            height: 1.1,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final point in _pitchPoints(l10n))
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: colors.surfaceElevated,
+                  borderRadius: BorderRadius.circular(999),
+                  border: Border.all(color: colors.divider),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(point.$1, size: 16, color: colors.primary),
+                    const SizedBox(width: 6),
+                    Text(point.$2, style: text.bodySmall),
+                  ],
+                ),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+List<(IconData, String)> _pitchPoints(AppLocalizations l10n) => [
+  (Icons.card_giftcard_outlined, l10n.teacherPitchFree),
+  (Icons.devices_outlined, l10n.teacherPitchDevices),
+  (Icons.grade_outlined, l10n.teacherPitchMarks),
+];

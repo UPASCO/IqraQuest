@@ -1442,6 +1442,25 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'Sınıf oynar. Siz yönetirsiniz.';
+
+  @override
+  String get teacherPitchBody =>
+      'Tahtada bir soru, her öğrenci kendi cihazından yanıtlar ve her doğru yanıtta atlar ilerler.';
+
+  @override
+  String get teacherPitchFree => 'Beş oyun ücretsiz, kart gerekmez';
+
+  @override
+  String get teacherPitchDevices => 'Aynı anda iki cihazla oturum';
+
+  @override
+  String get teacherPitchMarks => '20 üzerinden notlar, deftere hazır';
+
+  @override
+  String get teacherSubscriptionTitle => 'Abonelik';
+
+  @override
   String get teacherManageDevices => 'Cihazlarımı yönet';
 
   @override

@@ -1466,6 +1466,25 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'De klas speelt. U leidt.';
+
+  @override
+  String get teacherPitchBody =>
+      'Eén vraag op het bord, elke leerling antwoordt op het eigen apparaat, en de paarden gaan vooruit bij elk goed antwoord.';
+
+  @override
+  String get teacherPitchFree => 'Vijf spellen gratis, zonder kaart';
+
+  @override
+  String get teacherPitchDevices => 'Twee apparaten tegelijk in sessie';
+
+  @override
+  String get teacherPitchMarks => 'Cijfers op 20, klaar voor het rapport';
+
+  @override
+  String get teacherSubscriptionTitle => 'Abonnement';
+
+  @override
   String get teacherManageDevices => 'Mijn apparaten beheren';
 
   @override

@@ -1458,6 +1458,25 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
+  String get teacherPitchTitle => 'کلاس کھیلتی ہے۔ آپ رہنمائی کرتے ہیں۔';
+
+  @override
+  String get teacherPitchBody =>
+      'بورڈ پر ایک سوال، ہر طالب علم اپنے آلے سے جواب دیتا ہے، اور ہر درست جواب پر گھوڑے آگے بڑھتے ہیں۔';
+
+  @override
+  String get teacherPitchFree => 'پانچ کھیل مفت، بغیر کارڈ';
+
+  @override
+  String get teacherPitchDevices => 'ایک وقت میں دو آلات پر نشست';
+
+  @override
+  String get teacherPitchMarks => '20 میں سے نمبر، رجسٹر کے لیے تیار';
+
+  @override
+  String get teacherSubscriptionTitle => 'رکنیت';
+
+  @override
   String get teacherManageDevices => 'میرے آلات منظم کریں';
 
   @override
