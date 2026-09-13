@@ -77,7 +77,10 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
       if (!mounted) return;
       ref
           .read(teacherConsoleProvider.notifier)
-          .start(fragment: widget.fragment ?? Uri.base.fragment);
+          .start(
+            fragment: widget.fragment ?? Uri.base.fragment,
+            afterCheckout: Uri.base.queryParameters['checkout'] == 'success',
+          );
     });
   }
 

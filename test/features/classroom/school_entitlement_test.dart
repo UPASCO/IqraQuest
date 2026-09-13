@@ -223,6 +223,35 @@ void main() {
       c.dispose();
     });
 
+    test('au retour de la caisse, la console attend le webhook', () async {
+      // Le navigateur revient de Stripe avant que le webhook ait écrit
+      // la licence : le compte est encore « découverte, cinq parties
+      // utilisées ». La console ne doit pas rester là-dessus.
+      final h = harness(licence: discovery(used: 5));
+      final c = TeacherConsoleController(
+        h.gateway,
+        checkoutPollEvery: Duration.zero,
+      );
+      // Le webhook « arrive » pendant que la console redemande.
+      Future<void>(() => h.gateway.grant(school()));
+      await c.start(afterCheckout: true);
+      expect(c.state.stage, ConsoleStage.ready);
+      expect(c.state.account!.subscribed, isTrue);
+      c.dispose();
+    });
+
+    test('au retour de la caisse sans webhook, le dernier état reste', () async {
+      final h = harness(licence: discovery(used: 5));
+      final c = TeacherConsoleController(
+        h.gateway,
+        checkoutPollEvery: Duration.zero,
+      );
+      await c.start(afterCheckout: true);
+      expect(c.state.stage, ConsoleStage.quotaExhausted);
+      expect(c.state.busy, isFalse, reason: 'le bouton Actualiser reste utilisable');
+      c.dispose();
+    });
+
     test('supprimer le compte efface la licence et déconnecte', () async {
       final h = harness(licence: discovery());
       final c = TeacherConsoleController(h.gateway);

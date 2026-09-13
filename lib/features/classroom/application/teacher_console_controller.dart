@@ -136,6 +136,7 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
     String? deviceId,
     Random? random,
     this.heartbeatEvery = const Duration(seconds: 60),
+    this.checkoutPollEvery = const Duration(seconds: 2),
   }) : _random = random ?? Random.secure(),
        deviceId = deviceId ?? _newId(random ?? Random.secure()),
        super(const ConsoleState());
@@ -152,6 +153,14 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
   /// ce battement qui dit « je suis encore là ».
   final Duration heartbeatEvery;
   Timer? _heartbeat;
+
+  /// Au retour de la caisse Stripe, le webhook qui active la licence peut
+  /// arriver quelques secondes après le navigateur. Plutôt que d'afficher
+  /// « cinq parties utilisées » à quelqu'un qui vient de payer, la console
+  /// redemande son compte à ce rythme, quelques fois, jusqu'à le voir
+  /// actif.
+  final Duration checkoutPollEvery;
+  static const int checkoutPolls = 5;
 
   static String _newId(Random random) => List.generate(
     16,
@@ -177,7 +186,11 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
 
   /// Picks up the tokens a magic link just delivered, or the ones this
   /// browser kept, and asks what licence they carry.
-  Future<void> start({String? fragment}) async {
+  ///
+  /// [afterCheckout] is set when the page was reached through Stripe's
+  /// success URL: the licence is then re-read a few times, because the
+  /// webhook that activates it may land after the redirect.
+  Future<void> start({String? fragment, bool afterCheckout = false}) async {
     try {
       final signedIn = await gateway.restore(fragment: fragment);
       if (!signedIn) {
@@ -186,6 +199,7 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
       }
       state = state.copyWith(email: gateway.email);
       await refreshLicence();
+      if (afterCheckout) await _awaitActivation();
     } on TeacherException catch (e) {
       state = state.copyWith(
         stage: ConsoleStage.signedOut,
@@ -240,6 +254,20 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
       state = state.copyWith(error: e.error, busy: false);
     } catch (_) {
       state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
+  /// Redemande le compte jusqu'à ce que l'abonnement soit actif, ou que
+  /// la patience soit épuisée. Le dernier état lu reste affiché : si le
+  /// webhook n'est jamais arrivé, l'école voit son compte tel qu'il est,
+  /// et « Actualiser » reste à portée de main.
+  Future<void> _awaitActivation() async {
+    for (var i = 0; i < checkoutPolls; i++) {
+      final account = state.account;
+      if (account != null && account.subscribed && !account.free) return;
+      await Future<void>.delayed(checkoutPollEvery);
+      if (!mounted) return;
+      await refreshLicence();
     }
   }
 

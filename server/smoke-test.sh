@@ -169,6 +169,21 @@ else
   ok "la migration 0007 est passée (my_account existe)"
 fi
 
+# 4quinquies. Le compte, le bail et le quota ---------------------------
+# `my_sessions` n'existe qu'à partir de la migration 0008 — celle qui
+# apporte le compte gratuit, les cinq parties et le bail des appareils.
+# Sans elle, l'inscription libre crée un compte sans licence.
+body="$(rpc my_sessions '{}')"
+if grep -qi 'PGRST202\|could not find' <<<"$body"; then
+  ko "my_sessions est introuvable — la migration 0008 n'est pas passée"
+  note "$(head -c 200 <<<"$body")"
+elif grep -qi 'permission denied\|PGRST301\|JWT\|not authorized' <<<"$body"; then
+  ok "la migration 0008 est passée, et my_sessions refuse la clé publique"
+else
+  ko "my_sessions a répondu à la clé publique"
+  note "$(head -c 200 <<<"$body")"
+fi
+
 # 5. Le ménage est planifié -------------------------------------------
 # Rien de tout cela ne se voit de l'extérieur : à vérifier dans le SQL
 # Editor, une fois.

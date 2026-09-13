@@ -35,9 +35,10 @@ et c'est écrit à l'écran.
 Une séance qu'on a oublié de fermer part d'elle-même au bout de deux
 jours (`purge_old_sessions`).
 
-**La seule identité du système est celle de l'enseignant** : l'adresse
-e-mail qui a payé, sur laquelle arrive un lien de connexion. Pas de mot
-de passe, pas de profil, pas de nom.
+**La seule identité du système est celle de l'enseignant** : un compte
+à adresse e-mail et mot de passe (Supabase Auth), un profil qui tient
+en un nom et un nom d'établissement, tous deux facultatifs. Les élèves,
+eux, n'ont rien de tout cela.
 
 ## L'installation, une fois
 
@@ -99,9 +100,10 @@ Une page web, et rien d'autre : `/#/teacher` sur le site. La console
 n'existe pas dans l'application du magasin — une licence s'achète là, et
 rien sur un téléphone ne renvoie vers une page de paiement.
 
-La connexion est un lien envoyé à l'adresse qui a payé. Il n'y a aucun
-mot de passe dans ce système, et rien d'autre qu'une adresse n'identifie
-un enseignant. Le lien revient sur `teacher-callback.html`, une page
+La connexion est une adresse et un mot de passe. Le compte se crée
+depuis la console (confirmation par e-mail), et il est gratuit : cinq
+parties, puis l'abonnement. Le mot de passe oublié passe par un lien
+envoyé à l'adresse ; il revient sur `teacher-callback.html`, une page
 statique de trois lignes qui passe les jetons à la console à l'intérieur
 du fragment d'URL — donc sans qu'aucun serveur, le nôtre compris, ne les
 voie jamais. La console les efface de la barre d'adresse aussitôt lus.
@@ -109,13 +111,16 @@ voie jamais. La console les efface de la barre d'adresse aussitôt lus.
 Trois paramètres à la compilation, jamais dans le dépôt :
 
     flutter build web \
+      --dart-define=IQRAQUEST_SCHOOL=true \
       --dart-define=SUPABASE_URL=https://xxxx.supabase.co \
       --dart-define=SUPABASE_ANON_KEY=eyJ... \
-      --dart-define=TEACHER_CALLBACK_URL=https://<site>/teacher-callback.html \
-      --dart-define=STRIPE_CHECKOUT_URL=https://buy.stripe.com/xxxx
+      --dart-define=TEACHER_CALLBACK_URL=https://<site>/teacher-callback.html
 
-Le dernier est un lien de paiement Stripe : le prix vit chez Stripe, pas
-ici, et l'app ne touche jamais une carte.
+Aucun lien ni prix Stripe n'y figure : la caisse et le portail sont des
+adresses que le serveur fabrique à la demande, et l'app ne touche jamais
+une carte. Le premier drapeau réserve la build aux écrans du mode École
+(console, tableau, écran élève) : `school.iqraquest.org` ne sert pas le
+jeu familial.
 
 ## Publier la console et le tableau
 
@@ -152,7 +157,6 @@ Trois réglages, une fois :
 |------------------------|--------------------------------------------------|
 | `SUPABASE_URL`         | l'adresse du projet                              |
 | `SUPABASE_ANON_KEY`    | la clé publique (elle n'atteint que les fonctions)|
-| `STRIPE_CHECKOUT_URL`  | le lien de paiement Stripe                        |
 | `TEACHER_CALLBACK_URL` | `https://school.iqraquest.org/teacher-callback.html` |
 
 La clé `service_role` n'en fait pas partie et n'en fera jamais partie.
@@ -167,45 +171,55 @@ montre une salle vide et le dit franchement.
 
 ## Stripe, et la licence qu'il écrit
 
-`server/supabase/functions/stripe-webhook/index.ts` reçoit le webhook et
-inscrit la licence sur l'adresse qui a payé — avant même que l'acheteur
-ne se soit connecté une première fois. À la première connexion,
-`my_licence()` rattache la ligne au compte. C'est ce raccord qui évite de
-demander un compte au moment de l'achat.
+Trois fonctions Edge, dans `server/supabase/functions/` :
 
+| fonction | qui l'appelle | ce qu'elle fait |
+|---|---|---|
+| `create-school-checkout` | la console, avec le jeton de l'enseignant | ouvre une session Stripe Checkout (abonnement annuel, un seul prix) et rend son URL |
+| `create-customer-portal` | la console, avec le jeton | ouvre le portail client Stripe (résilier, changer de carte, factures) |
+| `stripe-webhook` | Stripe, signé | écrit ce que l'abonnement devient dans `licences`, une fois par événement |
+
+    supabase functions deploy create-school-checkout
+    supabase functions deploy create-customer-portal
     supabase functions deploy stripe-webhook --no-verify-jwt
-    supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
-    supabase secrets set IQRAQUEST_SERVICE_KEY=sb_secret_...
+    supabase secrets set STRIPE_MODE=test STRIPE_SECRET_KEY=sk_test_... \
+      STRIPE_SCHOOL_PRICE_TEST=price_... STRIPE_SCHOOL_PRICE_LIVE=price_... \
+      STRIPE_WEBHOOK_SECRET=whsec_... IQRAQUEST_SERVICE_KEY=sb_secret_... \
+      TEACHER_CONSOLE_URL=https://school.iqraquest.org
 
-`--no-verify-jwt` est nécessaire — c'est Stripe qui appelle, sans jeton
-Supabase — et c'est la signature `Stripe-Signature`, vérifiée avant toute
-lecture du corps, qui tient lieu de contrôle. Sans elle, cette URL
-distribuerait des licences.
+`--no-verify-jwt` ne concerne que le webhook — c'est Stripe qui appelle,
+sans jeton Supabase — et c'est la signature `Stripe-Signature`, vérifiée
+avant toute lecture du corps, qui tient lieu de contrôle. Sans elle,
+cette URL distribuerait des licences.
 
-Côté Stripe : un produit, puis un **lien de paiement** (Payment Link)
-portant ces deux métadonnées — sur le lien, pas sur le produit, car ce
-sont celles du lien que Stripe recopie sur la session de paiement, donc
-les seules que le webhook reçoit :
+**Deux prix, un seul en production.** Le produit « IqraQuest École »
+porte un prix de test à 1 €/an et un prix live à 89 €/an. La fonction
+lit `STRIPE_MODE` et refuse la combinaison qui mettrait le tarif de test
+en production ; en live, elle refuse en plus tout prix sous 50 €. Le
+prix n'est écrit nulle part dans ce dépôt.
 
-| clé               | valeur                              |
-|-------------------|-------------------------------------|
-| `iqraquest_plan`  | `classe` ou `ecole`                 |
-| `iqraquest_rooms` | nombre de salles simultanées (1-100)|
+**Le compte vient avant le paiement.** La caisse s'ouvre depuis la
+console, pour un enseignant connecté : la session Checkout porte son
+identifiant de compte (`client_reference_id`) et l'adresse est
+verrouillée sur celle du compte. Le webhook n'a donc jamais à deviner à
+qui appartient un paiement — il retrouve la licence par ce compte, puis,
+pour tout ce qui suit (renouvellement, résiliation, impayé), par
+l'identifiant d'abonnement.
 
-Sans elles, la licence retombe sur la plus modeste : une salle.
+Ce que le webhook fait, événement par événement :
 
-Un compte Stripe déjà utilisé pour une autre application convient : il
-faut seulement un produit et un lien de paiement **nouveaux** pour la
-licence Classe (les métadonnées ci-dessus lui sont propres), et un
-webhook pointant vers cette fonction. Un même compte peut servir
-plusieurs applications ; c'est le lien payé qui dit ce qui est acheté.
+| événement | `licences.status` | effet |
+|---|---|---|
+| `checkout.session.completed` | `active` | plan `ecole`, deux salles, échéance à un an |
+| `invoice.paid` | `active` | l'échéance suit la nouvelle période |
+| `invoice.payment_failed` | `past_due` | plus de nouvelle séance ; une séance en cours va au bout |
+| `customer.subscription.updated` | celui de Stripe | `cancel_at_period_end`, période, prix |
+| `customer.subscription.deleted` | `canceled` | l'accès s'arrête ; l'historique reste |
 
-Pour un abonnement, le renouvellement ne porte pas l'adresse de
-l'acheteur : la fonction retrouve la licence par l'identifiant
-d'abonnement inscrit au moment du paiement, et repousse simplement son
-échéance. Une résiliation arrête la licence à la date du jour sans
-effacer la ligne — l'école qui revient l'an prochain retrouve ses
-rapports.
+Une résiliation « à l'échéance » ne change rien avant la date : la
+console dit « prend fin le … », et les séances s'ouvrent jusque-là.
+Chaque événement est inscrit dans `stripe_events` **avant** d'être
+appliqué ; un doublon renvoyé par Stripe s'arrête sur cette clé.
 
 **La clé `service_role` ne sort jamais du tableau de bord Supabase et des
 secrets de la fonction.** Elle ne va ni dans le dépôt, ni dans l'app, ni
@@ -278,49 +292,47 @@ les prénoms ne restent pas.
 
 ## Comment l'abonnement d'une école est reconnu
 
-Sans compte à créer, la question devient légitime : qui dit que cette
-école a payé ? **L'adresse e-mail est le fil**, et il tient en cinq
-étapes.
+**Le compte est le fil**, et il tient en cinq étapes.
 
-1. **L'école paie** sur la page de Stripe, avec une adresse — celle de
-   la direction, du secrétariat, de l'enseignant. Aucun compte n'existe
-   encore, et rien n'est demandé de plus.
-2. **Stripe prévient la fonction Edge**, qui écrit une ligne dans
-   `licences` : l'adresse, le plan, le nombre de salles simultanées, la
-   date d'échéance. `owner_id` est **nul** : l'abonnement existe,
-   rattaché à une adresse, sans que personne se soit connecté.
-3. **L'enseignant ouvre la console** et entre cette adresse. Il reçoit
-   un lien ; le clic crée son compte Supabase — un identifiant et une
-   adresse, sans mot de passe. C'est tout ce que ce compte contient.
-4. **`my_licence()` fait la soudure**, à la première connexion : ne
-   trouvant aucune licence rattachée au compte, elle lit l'adresse du
-   compte connecté et réclame la ligne portant la même adresse
-   (`owner_id is null`). L'abonnement et le compte ne font plus qu'un.
+1. **L'enseignant crée un compte** depuis la console : adresse, mot de
+   passe, nom de l'établissement. Un déclencheur sur `auth.users`
+   (migration 0008) écrit son profil et une licence **découverte** :
+   cinq parties, deux salles, pas d'échéance.
+2. **Il joue.** `open_session` compte chaque ouverture dans
+   `free_games_used`, sous verrou, avec une clé de rejeu : la même
+   demande renvoyée deux fois par le réseau ne coûte qu'une partie. À la
+   sixième, la fonction répond `quota_exhausted`.
+3. **Il s'abonne** depuis la console : `create-school-checkout` ouvre
+   la caisse Stripe au nom de son compte.
+4. **Stripe prévient le webhook**, qui retrouve la licence par ce compte
+   et l'écrit : plan `ecole`, `status = 'active'`, échéance à un an,
+   client et abonnement Stripe notés. Rien n'est demandé de plus.
 5. **Ensuite, tout passe par là.** `open_session` appelle `my_licence()`
-   avant d'ouvrir quoi que ce soit : pas de licence → `no_licence` ;
-   échue → `licence_expired` ; déjà autant de salles ouvertes que payées
-   → `too_many_sessions`.
+   avant d'ouvrir quoi que ce soit : licence échue ou impayée →
+   `licence_expired` ; cinq parties utilisées sans abonnement →
+   `quota_exhausted` ; deux appareils déjà en séance →
+   `too_many_sessions`.
 
-Ce sens de lecture — payer d'abord, se connecter ensuite — n'est pas un
-détail d'implémentation. La page de paiement appartient à Stripe : on ne
-peut pas y créer de compte chez nous. Faire de l'adresse le point de
-jonction évite donc d'imposer une inscription avant l'achat, et évite
-surtout à un acheteur de devoir se souvenir de ce qu'il aurait tapé.
+La limite d'appareils est un **bail** : une séance compte tant que la
+console envoie un battement (toutes les 60 s) ; cinq minutes de silence
+et sa place est libre. Une tablette qui a planté ne bloque personne, et
+**Mon espace → Appareils** libère une place sur-le-champ.
 
-**La panne à connaître** : payer avec une adresse et se connecter avec
-une autre. La console affiche alors « aucune licence » et le dit
-explicitement — c'est le premier message de cet écran. Le remède, si
-l'école a réellement changé d'adresse, tient en une ligne dans le SQL
-Editor :
+Les licences écrites avant la migration 0008 — celles rattachées à une
+adresse ou à un domaine sans compte — continuent de fonctionner :
+`my_licence()` cherche d'abord une licence payante au nom du compte,
+puis une licence portant son adresse, puis une licence de son domaine
+d'école, et seulement ensuite sa licence découverte.
+
+**La panne à connaître** : une école qui paie hors ligne (bon de
+commande). Sa licence se pose à la main :
 
 ```sql
 update public.licences
-   set email = 'la.nouvelle@ecole.fr', owner_id = null
- where email = 'lancienne@ecole.fr';
+   set plan = 'ecole', concurrent_sessions = 2, status = 'active',
+       expires_at = now() + interval '1 year'
+ where email = 'ecole@example.org';
 ```
-
-Remettre `owner_id` à nul est la partie qui compte : c'est ce qui permet
-au prochain compte connecté de réclamer la licence.
 
 ## Ce qui empêche une licence de se promener
 

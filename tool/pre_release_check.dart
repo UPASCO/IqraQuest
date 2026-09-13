@@ -216,13 +216,9 @@ void main() {
   check(
     'every purchase surface of the console is compiled behind kIsWeb',
     RegExp(r'class _SubscribeButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText) &&
-        RegExp(r'class _PortalButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText) &&
-        consoleText
-            .split('\n')
-            .where((l) => l.contains('ClassroomConfig.stripeCheckoutUrl'))
-            .every((l) => l.contains('kIsWeb')),
-    detail: 'Apple 3.1.1 / Google Play Billing: the subscribe button, the '
-        'portal and the payment link must not exist in a store build',
+        RegExp(r'class _PortalButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText),
+    detail: 'Apple 3.1.1 / Google Play Billing: the subscribe button and '
+        'the portal must not exist in a store build',
   );
   check(
     'the console never prints a price',
@@ -252,17 +248,20 @@ void main() {
     detail: 'without the flag the deploy is an ordinary build, and the '
         'schools\' subdomain serves the family game again',
   );
+  // La caisse et le portail sont des URL que le serveur fabrique à la
+  // demande (Edge Functions) : aucune adresse Stripe n'est compilée dans
+  // l'application, ni pour le web, ni pour les magasins.
   final stripeMentions = <String>[];
   for (final entity in Directory('${root.path}/lib').listSync(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
     final text = entity.readAsStringSync();
-    if (!text.contains('stripeCheckoutUrl')) continue;
-    final isConfig = entity.path.endsWith('classroom_config.dart');
-    final isConsole = entity.path.endsWith('teacher_console_screen.dart');
-    if (!isConfig && !isConsole) stripeMentions.add(entity.path);
+    if (RegExp(r'buy\.stripe\.com|checkout\.stripe\.com|STRIPE_CHECKOUT_URL|price_1')
+        .hasMatch(text)) {
+      stripeMentions.add(entity.path);
+    }
   }
   check(
-    'the Stripe link is read by the web console alone',
+    'no Stripe link or price id is compiled into the app',
     stripeMentions.isEmpty,
     detail: stripeMentions.join('; '),
   );

@@ -36,9 +36,19 @@ Rien d'autre que ceci n'existe dans la base.
 | Code, leçon, langue, rythme | `sessions` | l'enseignant | idem |
 | Bilan par question (compteurs) | `reports.per_question` | calculé à la fermeture | **24 mois** |
 | Classement nominatif, **si l'enseignant l'a demandé** | `reports.per_pupil` | calculé à la fermeture | prénoms retirés à **90 jours**, ligne effacée à 24 mois |
-| Adresse e-mail de l'enseignant | `licences.email` | l'acheteur | durée de la licence |
-| Identifiants Stripe de la licence | `licences.stripe_*` | Stripe | idem |
+| Adresse e-mail et mot de passe (haché) de l'enseignant | `auth.users` (Supabase Auth) | l'enseignant, à l'inscription | jusqu'à la suppression du compte |
+| Nom, nom d'établissement (facultatifs) | `profiles` | l'enseignant | idem |
+| Adresse e-mail portée par la licence | `licences.email` | l'enseignant | idem |
+| Parties offertes utilisées, abonnement, échéance, statut | `licences` | calculé par le serveur et par Stripe | idem |
+| Identifiants Stripe (client, abonnement, prix) | `licences.stripe_*` | Stripe | idem ; les factures restent chez Stripe (obligation légale) |
+| Identifiant d'appareil de la console, dernier battement | `sessions.device_id`, `sessions.last_seen_at` | tiré au hasard par la console | durée de la séance, 2 jours au plus |
+| Identifiants d'événements Stripe reçus | `stripe_events` | Stripe | tenus pour l'idempotence, sans donnée personnelle |
 | Domaine de l'établissement, si licence d'école | `licences.domain` | l'acheteur | durée de la licence |
+
+**La suppression du compte** (`delete_my_account()`, depuis la console)
+efface le profil, la licence, les séances et les bilans, puis le compte
+d'authentification ; l'abonnement Stripe en cours est résilié. Aucune
+donnée bancaire n'entre jamais dans IqraQuest.
 
 **Ce qui n'existe nulle part** : compte élève, mot de passe élève,
 adresse e-mail d'élève, nom de famille, classe, date de naissance,
@@ -125,10 +135,11 @@ généralement les autres.
 
 Chiffrement en transit (HTTPS partout) et au repos (chiffrement du
 disque par l'hébergeur). Aucune clé secrète dans l'application : la clé
-publiée ne peut appeler que les quatre fonctions de séance. La clé
-`service_role`, seule à contourner RLS, ne réside que dans les secrets de
-la fonction Stripe. Les paiements n'entrent jamais dans l'application :
-ils se font sur une page hébergée par Stripe.
+publiée ne peut appeler que les fonctions de séance. La clé
+`service_role`, seule à contourner RLS, ne réside que dans les secrets
+des fonctions Stripe. Les paiements n'entrent jamais dans l'application :
+ils se font sur une page hébergée par Stripe, ouverte depuis la console
+web pour un enseignant connecté — jamais depuis l'application mobile.
 
 ## 9. Ce qui reste à faire avant la première école
 

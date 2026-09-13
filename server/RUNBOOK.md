@@ -39,11 +39,23 @@ précédente.
    - `server/supabase/migrations/0005_school_name.sql`
    - `server/supabase/migrations/0006_review_fixes.sql`
    - `server/supabase/migrations/0007_plans_and_account.sql`
+   - `server/supabase/migrations/0008_school_accounts.sql`
 
-Vérification : dans **Table Editor**, six tables existent (`licences`,
-`sessions`, `participants`, `answers`, `reports`, `plans`), toutes avec
-RLS activé et **aucune politique** — c'est normal, et c'est la protection :
-la clé publique ne lit rien, tout passe par les fonctions.
+   (Ou, en une fois : le fichier `iqraquest-socle-complet.sql`, qui est
+   la concaténation des huit, rejouable sans risque.)
+
+Vérification : dans **Table Editor**, huit tables existent (`licences`,
+`sessions`, `participants`, `answers`, `reports`, `plans`, `profiles`,
+`stripe_events`), toutes avec RLS activé. Sept n'ont **aucune
+politique** — c'est normal, et c'est la protection : la clé publique ne
+lit rien, tout passe par les fonctions. Seule `profiles` en porte deux,
+qui laissent un compte lire et modifier **sa propre ligne** et rien
+d'autre.
+
+La migration 0008 pose aussi un déclencheur sur `auth.users` : chaque
+compte créé reçoit un profil et une licence **découverte** (cinq
+parties, deux salles). C'est ce qui rend l'inscription libre possible
+sans qu'aucune ligne ne soit écrite à la main.
 
 Puis, depuis votre machine, la vérification qui compte vraiment — celle
 qui regarde le socle de l'extérieur, avec la clé publique, comme le
@@ -55,13 +67,13 @@ SUPABASE_ANON_KEY=sb_publishable_... \
 bash server/smoke-test.sh
 ```
 
-Il vérifie que les cinq tables ne rendent rien, qu'un code inconnu ne
-raconte rien, et que les quatre fonctions de l'enseignant sont hors de
-portée. Un échec sur les deux premiers points signifierait que des
+Il vérifie que les tables ne rendent rien, qu'un code inconnu ne
+raconte rien, que les fonctions de l'enseignant sont hors de portée de
+la clé publique, et que les migrations 0007 et 0008 sont passées. Un échec sur les deux premiers points signifierait que des
 données d'élèves sont lisibles : ne pas ouvrir de classe avant de
 l'avoir corrigé.
 
-## 2. L'authentification de l'enseignant — 10 minutes
+## 2. L'authentification de l'enseignant — 15 minutes
 
 Dans **Authentication → URL Configuration** :
 
@@ -69,52 +81,105 @@ Dans **Authentication → URL Configuration** :
 |---|---|
 | Site URL | `https://school.iqraquest.org` |
 | Redirect URLs | `https://school.iqraquest.org/teacher-callback.html` |
+| Redirect URLs (2e ligne) | `https://school.iqraquest.org/**` |
 
-Sans cette seconde ligne, le lien de connexion arrive mais refuse de
-revenir sur la console.
+Sans la première ligne de redirection, le lien de confirmation ou de
+connexion arrive mais refuse de revenir sur la console.
+
+Dans **Authentication → Providers → Email** :
+
+| réglage | valeur |
+|---|---|
+| Enable Email provider | activé |
+| Confirm email | **activé** — un compte non confirmé ne se connecte pas et ne reçoit pas de licence |
+| Secure email change | activé |
+| Minimum password length | 8 |
+
+Dans **Authentication → Emails**, les trois modèles utilisés sont
+*Confirm signup*, *Magic Link* et *Reset password*. Les modèles par
+défaut conviennent ; changer l'expéditeur suffit.
 
 **Le courrier.** Le service d'e-mail intégré de Supabase est bridé à
-quelques envois par heure : suffisant pour tester, pas pour une rentrée.
-Dès qu'il y a plus d'un enseignant, configurer un SMTP dans
-**Authentication → Emails** (Resend, Brevo, Postmark…). C'est la panne
-la plus probable le jour où ça compte, et elle est silencieuse : le lien
-n'arrive jamais.
+quelques envois par heure **et n'écrit qu'aux adresses membres de
+l'organisation du projet**. Suffisant pour vous tester vous-même, pas
+pour une école. Dès que l'inscription est ouverte au public, configurer
+un SMTP dans **Authentication → Emails → SMTP Settings** (Resend, Brevo,
+Postmark…, un compte gratuit suffit). C'est la panne la plus probable le
+jour où ça compte, et elle est silencieuse : le courrier n'arrive
+jamais.
 
-### Créer le compte d'une école — 2 minutes, sans e-mail
+### Comment une école entre
 
 La console se connecte avec **une adresse et un mot de passe**. C'est la
-porte de tous les jours, et elle ne dépend d'aucun courrier : un
-enseignant devant sa classe n'attend pas sa boîte de réception.
+porte de tous les jours, et elle ne dépend d'aucun courrier une fois le
+compte confirmé.
 
-Le compte se crée depuis le tableau de bord, **Authentication → Users →
-Add user** :
+1. **Créer un compte** (bouton sous le formulaire de connexion) : une
+   adresse, un mot de passe de huit caractères au moins, le nom de
+   l'établissement. La console dit « Confirmez votre adresse ».
+2. **Le courrier de confirmation** ramène sur la console, connectée.
+   Le déclencheur de la migration 0008 a déjà écrit le profil et la
+   licence découverte : l'école voit « Offre découverte — 0 partie sur
+   5 » et peut ouvrir sa première séance.
+3. **Cinq parties plus tard**, la console affiche l'offre et le bouton
+   « S'abonner » (étape 7). Rien n'est effacé : l'historique reste.
+
+**Mot de passe oublié** : sous le formulaire, « Mot de passe oublié ? »
+envoie un lien de connexion à l'adresse. Une fois entré, **Mon espace →
+Changer le mot de passe** en pose un nouveau. C'est le seul endroit où
+un e-mail reste nécessaire après la confirmation.
+
+**Supprimer le compte** : **Mon espace → Supprimer mon compte**, avec
+confirmation. Le profil, la licence, les séances et les bilans sont
+effacés ; le compte d'authentification aussi. Seules les factures
+restent chez Stripe, qui a l'obligation légale de les conserver, et
+l'abonnement en cours y est résilié. C'est ce que la politique de
+confidentialité promet, et c'est `delete_my_account()` qui le fait.
+
+### Créer le compte d'une école à la main — 2 minutes, sans e-mail
+
+Pour une école que vous inscrivez vous-même (ou tant qu'aucun SMTP n'est
+posé), **Authentication → Users → Add user → Create new user** :
 
 | champ | valeur |
 |---|---|
-| Email | l'adresse qui porte la licence |
-| Password | celui que vous transmettez à l'école |
+| Email | l'adresse de l'école |
+| Password | celui que vous lui transmettez |
 | Auto Confirm User | **coché** |
 
-« Auto Confirm User » compte : sans lui, l'adresse reste non confirmée,
-et `my_licence()` refuse de rattacher la licence — c'est la protection
-qui empêche quelqu'un de s'inscrire en `nimporte.qui@ecole-annour.fr`
-pour hériter de l'abonnement d'une école (migration 0006).
+« Auto Confirm User » compte : sans lui, l'adresse reste non confirmée
+et la console répond « Adresse ou mot de passe incorrect ». Le
+déclencheur écrit la licence découverte comme pour une inscription
+libre.
 
-Créer les comptes à la main est le bon fonctionnement tant qu'il y a
-quelques écoles : chacune reçoit ses identifiants avec sa facture, et
-personne ne peut réclamer une licence qu'il n'a pas payée. L'inscription
-libre demandera, elle, une confirmation par e-mail — donc un SMTP — et
-n'a d'intérêt qu'à partir du moment où les écoles arrivent seules.
+Si un compte a été créé **avant** par un lien de connexion qui n'est
+jamais arrivé, il existe sans mot de passe et refuse d'entrer. Le
+vérifier, puis le refaire :
 
-**Le mot de passe oublié** passe, lui, par le lien de connexion : la
-console le propose sous « Mot de passe oublié ? », et c'est le seul
-endroit où un e-mail reste nécessaire.
+```sql
+select email, email_confirmed_at,
+       length(coalesce(encrypted_password, '')) as hash
+  from auth.users where email = 'ecole@example.org';
+-- hash = 60 : le mot de passe est là. 0 : compte fantôme, à refaire :
+delete from auth.users where email = 'ecole@example.org';
+```
 
-### Le lien ne part pas : où regarder, dans l'ordre
+Pour une école qui a payé autrement que par la caisse en ligne (bon de
+commande, virement), la licence se pose à la main sur son compte :
 
-La console dit « Lien envoyé » dès que Supabase a répondu 2xx — donc
-qu'il a **accepté** la demande. Entre cette acceptation et une boîte de
-réception, quatre choses peuvent manquer.
+```sql
+update public.licences
+   set plan = 'ecole', concurrent_sessions = 2, status = 'active',
+       expires_at = now() + interval '1 year'
+ where email = 'ecole@example.org';
+```
+
+### Le courrier ne part pas : où regarder, dans l'ordre
+
+La console dit « Lien envoyé » ou « Confirmez votre adresse » dès que
+Supabase a répondu 2xx — donc qu'il a **accepté** la demande. Entre
+cette acceptation et une boîte de réception, quatre choses peuvent
+manquer.
 
 1. **Les indésirables.** L'expéditeur par défaut est
    `noreply@mail.app.supabase.io`, inconnu de tous les filtres. Chez
@@ -128,14 +193,11 @@ réception, quatre choses peuvent manquer.
    dans l'équipe ne recevra jamais rien tant qu'un SMTP n'est pas posé —
    sans la moindre erreur affichée.
 4. **Le plafond horaire.** Quelques envois par heure, pas davantage. La
-   console dit maintenant « Trop de liens demandés » plutôt que « le
-   serveur ne répond pas » : c'est un refus du service d'e-mail, pas une
-   panne.
+   console dit « Trop de liens demandés » plutôt que « le serveur ne
+   répond pas » : c'est un refus du service d'e-mail, pas une panne.
 
 Les points 3 et 4 ont la même réponse, et c'est la seule qui tienne pour
-de vraies écoles : un SMTP à soi dans **Authentication → Emails**. Un
-compte gratuit chez Resend ou Brevo suffit largement au volume d'un lien
-de connexion par enseignant et par trimestre.
+de vraies écoles : un SMTP à soi dans **Authentication → Emails**.
 
 ## 3. Le DNS chez OVHcloud — 5 minutes, plus la propagation
 
@@ -170,7 +232,11 @@ recopie dans la build et Pages le lit là.
 | `SUPABASE_URL` | l'URL de l'étape 1 | le web **et** les builds iOS/Android |
 | `SUPABASE_ANON_KEY` | la clé anon de l'étape 1 | idem |
 | `TEACHER_CALLBACK_URL` | `https://school.iqraquest.org/teacher-callback.html` | la console |
-| `STRIPE_CHECKOUT_URL` | le lien de paiement (étape 6 ; laisser vide pour l'instant) | la console |
+
+Aucun lien ni prix Stripe n'est compilé dans l'application : la caisse
+et le portail sont des adresses que le serveur fabrique à la demande
+(étape 7), et la vérification de pré-publication refuse une build qui
+en contiendrait un.
 
 Puis **Actions → Web — classroom console & board → Run workflow**, en
 choisissant la branche par défaut. (Toute poussée sur cette branche le
@@ -189,156 +255,221 @@ répond.
 
 ## 6. Une première séance, sans attendre Stripe — 10 minutes
 
-Une licence peut s'écrire à la main. C'est le moyen le plus rapide de
-voir le mode Classe tourner pour de vrai, et c'est aussi ce qu'on fera
-pour une école en essai.
+Aucune ligne à écrire : un compte suffit, et il donne cinq parties.
 
-Dans le **SQL Editor** :
-
-```sql
-insert into public.licences (email, plan, concurrent_sessions, expires_at)
-values ('votre.adresse@example.org', 'essai', 1, now() + interval '90 days');
-```
-
-Pour une école entière plutôt qu'un enseignant seul, ajouter le domaine :
-toute adresse de ce domaine ouvrira des séances sur cette licence, et sur
-son plafond de salles.
-
-```sql
-insert into public.licences
-  (email, domain, school_name, plan, concurrent_sessions, expires_at)
-values ('direction@ecole-annour.fr', 'ecole-annour.fr', 'École An-Nour',
-        'ecole', 5, now() + interval '1 year');
-```
-
-Ensuite, dans l'ordre :
-
-1. Ouvrir `https://school.iqraquest.org/#/teacher`, entrer **cette même
-   adresse**, demander le lien.
-2. Ouvrir le lien reçu **sur le même appareil**. La console affiche
-   « Licence valable jusqu'au… » : la ligne vient d'être rattachée au
-   compte créé par le lien.
-3. Choisir un thème, un niveau, une leçon. Régler le comptage (équipes
-   ou individuel), le chronomètre, la longueur. **Ouvrir la séance.**
-4. Un code à six caractères s'affiche. Cliquer **Ouvrir le tableau** :
+1. Ouvrir `https://school.iqraquest.org/#/teacher` → **Créer un
+   compte** (ou le créer depuis le tableau de bord, étape 2, si le
+   courrier n'est pas encore configuré). Se connecter.
+2. La console affiche « Offre découverte » et une jauge « 0 partie sur
+   5 ». Choisir un thème, un niveau, une leçon. Régler le comptage
+   (équipes ou individuel), le chronomètre, la longueur. **Ouvrir la
+   séance.**
+3. Un code à six caractères s'affiche. Cliquer **Ouvrir le tableau** :
    la page à projeter s'ouvre dans un second onglet, avec le code en
    grand et un QR code.
-5. Sur un téléphone : ouvrir IqraQuest → **Classe**, taper le code et un
-   prénom. (Ou scanner le QR : le code est alors déjà rempli. Ou, sans
-   installer l'app, ouvrir `https://school.iqraquest.org/#/classroom`.)
-6. Le prénom apparaît sur le tableau. Depuis la console : **Question
+4. Sur un téléphone : ouvrir IqraQuest → **Mode École**, taper le code
+   et un prénom. (Ou scanner le QR : le code est alors déjà rempli. Ou,
+   sans installer l'app, ouvrir `https://school.iqraquest.org/#/classroom`.)
+5. Le prénom apparaît sur le tableau. Depuis la console : **Question
    suivante** → la carte s'affiche partout ; répondre sur le téléphone →
    le compteur du tableau passe à 1 ; **Montrer la réponse** → la bonne
    s'allume, la source apparaît, le cheval avance.
-7. **Terminer la séance** : les prénoms sont effacés, le bilan par
-   question est écrit dans `reports`.
+6. **Terminer la séance** : les prénoms sont effacés, le bilan par
+   question est écrit dans `reports`, et la jauge passe à « 1 partie sur
+   5 ».
 
-Si l'étape 6 marche, le mode Classe est opérationnel.
+Si l'étape 5 marche, le mode École est opérationnel. Deux choses valent
+la peine d'être vues une fois :
 
-## 7. Stripe — 30 minutes
+- **Deux appareils.** Ouvrir une seconde séance depuis un autre
+  navigateur : elle s'ouvre (deux salles). Une troisième est refusée
+  avec « Deux appareils sont déjà en séance ». Fermer un onglet sans
+  terminer la séance : cinq minutes plus tard, sa place est libre —
+  c'est le bail des appareils, et **Mon espace → Appareils** permet de
+  la libérer tout de suite.
+- **La sixième partie.** Après cinq séances, « Ouvrir la séance »
+  disparaît au profit de l'offre. L'historique est toujours là.
+
+## 7. Stripe — 45 minutes
 
 Le compte existant convient (il est déjà vérifié, avec son compte
-bancaire). Il faut seulement de quoi vendre une licence de classe, ce
-qui n'existe pas encore : le lien IqraTime est un don à montant libre,
-sans abonnement ni webhook.
+bancaire). Il faut de quoi vendre **une** offre en abonnement annuel, un
+portail pour la gérer, trois fonctions serveur, et un webhook.
 
-1. **Trois produits, un par palier**, en abonnement annuel :
+**Une règle avant tout : le tarif de test est 1 €, le tarif de production
+est 89 €, et 1 € ne passe jamais en production.** Le code le refuse deux
+fois — `STRIPE_MODE=live` avec un Price ID de test est rejeté, et la
+caisse refuse en live tout prix inférieur à 50 € — mais la règle vaut
+d'abord pour la main qui configure.
 
-   | produit | prix | salles | `iqraquest_plan` |
-   |---|---|---|---|
-   | IqraQuest École — 3 salles | 89 €/an | 3 | `ecole3` |
-   | IqraQuest École — 5 salles | 99 €/an | 5 | `ecole5` |
-   | IqraQuest École — 10 salles | 149 €/an | 10 | `ecole10` |
+### 7.1 Le produit et ses deux prix
 
-   Les prix se fixent **dans Stripe et nulle part ailleurs** : ils ne
-   sont écrits dans aucun fichier de ce dépôt, et changer un tarif ne
-   demande aucune livraison.
+Dans Stripe, **Product catalog → Add product** :
 
-2. **Un lien de paiement** (Payment Link) par produit, portant **une
-   seule métadonnée, posée sur le lien** — ce sont celles du lien que
-   Stripe recopie sur la session de paiement, donc les seules que la
-   fonction reçoit :
+| champ | valeur |
+|---|---|
+| Name | IqraQuest École |
+| Description | Parties illimitées, deux sessions simultanées, un an |
+| Pricing | Recurring, **Yearly** |
 
-   | clé | valeur |
-   |---|---|
-   | `iqraquest_plan` | `ecole3`, `ecole5`, `ecole10` ou `test1j` |
+Le produit se crée **deux fois**, une par mode :
 
-   **Le nombre de salles ne se transmet plus.** Il se lit dans la table
-   `plans` (migration 0007), à partir du seul nom du palier. C'est
-   délibéré : `iqraquest_rooms` était un champ de saisie libre, et une
-   faute de frappe y donnait dix salles pour le prix de trois sans que
-   rien ne le signale.
+| mode Stripe (bascule en haut à droite) | prix | Price ID → secret |
+|---|---|---|
+| **Test mode** | **1,00 € / an** | `STRIPE_SCHOOL_PRICE_TEST` |
+| **Live mode** | **89,00 € / an** | `STRIPE_SCHOOL_PRICE_LIVE` |
 
-   **Un palier non reconnu n'écrit aucune licence** — l'événement est
-   journalisé, et se rejoue depuis Stripe une fois la métadonnée
-   corrigée. Ouvrir « une salle par défaut » donnerait à une école qui a
-   payé 149 € un accès qu'elle n'a pas acheté, silencieusement.
+Le Price ID (`price_…`) se lit sur la page du prix. Les prix vivent
+**dans Stripe et nulle part ailleurs** : aucun fichier de ce dépôt n'en
+porte, et changer un tarif ne demande aucune livraison.
 
-   L'échéance vient elle aussi du palier : un an pour les trois offres,
-   repoussé au 31 août quand il tomberait entre juin et août — une
-   licence ne doit pas mourir pendant les vacances, quand personne ne
-   renouvelle. Deux mois offerts au maximum, et une date de
-   renouvellement qui tombe à la rentrée.
+Aucune promotion, aucun code promo, aucun essai gratuit côté Stripe :
+l'essai, ce sont les cinq parties du compte, et il est déjà là.
 
-   ### Le palier d'observation : 1 €, un jour
+### 7.2 Le portail client
 
-   Un quatrième lien, qui ne s'affiche nulle part et ne se donne à
-   personne : **1 € en paiement unique, métadonnée `iqraquest_plan =
-   test1j`**. La licence qu'il ouvre dure vingt-quatre heures.
+**Settings → Billing → Customer portal** (à faire en test **et** en
+live) :
 
-   Il existe pour une seule raison : voir de ses yeux, le lendemain, ce
-   que devient une école dont l'abonnement est fini — la console qui
-   s'ouvre encore, l'historique toujours là, les séances qui ne
-   s'ouvrent plus, et le bouton de renouvellement. Attendre un an pour
-   savoir si ce chemin fonctionne n'est pas une option.
+| réglage | valeur |
+|---|---|
+| Cancel subscriptions | activé, **at end of billing period** |
+| Update payment method | activé |
+| Invoice history | activé |
+| Switch plans / Update quantities | désactivé — il n'y a qu'une offre |
+| Business information | nom, adresse de support `support@iqraquest.org` |
 
-   Le mode d'emploi tient en trois lignes :
+La résiliation à l'échéance est ce que la console attend : l'école garde
+son accès jusqu'à `current_period_end`, la console affiche « prend fin
+le … », et Stripe envoie `customer.subscription.deleted` ce jour-là.
 
-   1. Payer 1 € avec le lien `test1j`, depuis une adresse à soi.
-   2. Le jour même : la console dit « Encore 1 jour » en doré, et une
-      séance s'ouvre normalement.
-   3. Le lendemain : la console affiche « Votre abonnement est terminé »,
-      « Ouvrir la séance » a disparu, l'historique de la veille est
-      toujours consultable, et « Renouveler l'abonnement » mène au
-      paiement.
+### 7.3 Les fonctions serveur
 
-   Si l'étape 3 montre autre chose — surtout « aucune licence », qui
-   voudrait dire que l'école a l'air de n'avoir jamais rien acheté —
-   c'est un défaut, pas une subtilité de configuration.
+Depuis votre machine, avec la CLI Supabase (`npm i -g supabase`) :
 
-   Ajouter aussi, sur le lien de paiement, un **champ personnalisé**
-   nommé `etablissement` (« Nom de l'établissement ») : la fonction le
-   reprend comme nom de l'école, et la console affiche ce nom plutôt
-   qu'une adresse e-mail. À défaut, le nom porté par le paiement fait
-   l'affaire.
+```bash
+supabase login
+supabase link --project-ref <ref du projet>
 
-3. **La fonction webhook** :
+cd server
+supabase functions deploy create-school-checkout
+supabase functions deploy create-customer-portal
+supabase functions deploy stripe-webhook --no-verify-jwt
+```
 
-   ```bash
-   supabase functions deploy stripe-webhook --no-verify-jwt
-   supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_...
-   supabase secrets set IQRAQUEST_SERVICE_KEY=sb_secret_...
-   ```
+`--no-verify-jwt` ne concerne que le webhook — c'est Stripe qui appelle,
+sans jeton Supabase — et c'est la signature `Stripe-Signature`, vérifiée
+avant toute lecture du corps, qui tient lieu de contrôle. Les deux
+autres exigent le jeton de l'enseignant connecté : elles ne font rien
+pour un anonyme.
 
-   Le préfixe `SUPABASE_` est réservé par la CLI : un secret ainsi
-   nommé est refusé. D'où `IQRAQUEST_SERVICE_KEY`, qui reçoit la clé
-   **secrète** (`sb_secret_…`) — celle qui ne quitte jamais le tableau
-   de bord autrement que par cette commande, tapée sur votre machine.
+Puis les secrets, **tapés sur votre machine, jamais dans le dépôt** :
 
-4. **Webhook Stripe** vers l'URL de la fonction, abonné à
-   `checkout.session.completed`,
-   `checkout.session.async_payment_succeeded`,
-   `checkout.session.async_payment_failed`,
-   `customer.subscription.updated` et `customer.subscription.deleted`.
-   Les deux `async_*` couvrent le virement SEPA, qui aboutit — ou
-   échoue — plusieurs jours après la commande.
-5. Poser le lien de paiement dans le secret `STRIPE_CHECKOUT_URL` et
-   relancer le workflow web.
+```bash
+supabase secrets set \
+  STRIPE_MODE=test \
+  STRIPE_SECRET_KEY=sk_test_... \
+  STRIPE_SCHOOL_PRICE_TEST=price_... \
+  STRIPE_SCHOOL_PRICE_LIVE=price_... \
+  STRIPE_WEBHOOK_SECRET=whsec_... \
+  IQRAQUEST_SERVICE_KEY=sb_secret_... \
+  TEACHER_CONSOLE_URL=https://school.iqraquest.org
+```
 
-Test : payer une fois en **mode test** de Stripe, puis vérifier qu'une
-ligne est apparue dans `licences` avec le bon `plan` et le
-`concurrent_sessions` que la table `plans` associe à ce palier — 3, 5 ou
-10, jamais une valeur venue de Stripe.
+| secret | valeur | où la trouver |
+|---|---|---|
+| `STRIPE_MODE` | `test` d'abord, `live` à l'étape 7.6 | — |
+| `STRIPE_SECRET_KEY` | `sk_test_…` puis `sk_live_…` | Stripe → Developers → API keys, dans le mode correspondant |
+| `STRIPE_SCHOOL_PRICE_TEST` | `price_…` du prix à 1 € | le produit, en Test mode |
+| `STRIPE_SCHOOL_PRICE_LIVE` | `price_…` du prix à 89 € | le produit, en Live mode |
+| `STRIPE_WEBHOOK_SECRET` | `whsec_…` | le webhook de l'étape 7.4, dans le mode correspondant |
+| `IQRAQUEST_SERVICE_KEY` | `sb_secret_…` | Supabase → Settings → API. Le préfixe `SUPABASE_` est réservé par la CLI, d'où ce nom |
+| `TEACHER_CONSOLE_URL` | `https://school.iqraquest.org` | là où Stripe ramène après paiement |
+
+La clé secrète Supabase ne sort du tableau de bord que par cette
+commande. Elle ne va ni dans le dépôt, ni dans l'app, ni dans un secret
+GitHub.
+
+### 7.4 Le webhook
+
+**Developers → Webhooks → Add endpoint**, dans le mode courant (un
+endpoint en test, un autre en live, chacun avec son `whsec_`) :
+
+| champ | valeur |
+|---|---|
+| Endpoint URL | `https://<ref>.supabase.co/functions/v1/stripe-webhook` |
+| Events | `checkout.session.completed` |
+| | `checkout.session.async_payment_succeeded` |
+| | `checkout.session.async_payment_failed` |
+| | `customer.subscription.created` |
+| | `customer.subscription.updated` |
+| | `customer.subscription.deleted` |
+| | `invoice.paid` |
+| | `invoice.payment_failed` |
+
+Ce que chaque événement fait à la licence :
+
+| événement | `licences.status` | effet |
+|---|---|---|
+| `checkout.session.completed` | `active` | plan `ecole`, deux salles, échéance à un an, client et abonnement Stripe notés |
+| `invoice.paid` | `active` | renouvellement : l'échéance suit la nouvelle période |
+| `invoice.payment_failed` | `past_due` | plus de nouvelle séance ; une séance en cours va au bout |
+| `customer.subscription.updated` | celui de Stripe | `cancel_at_period_end`, période, prix |
+| `customer.subscription.deleted` | `canceled` | fin d'accès à l'instant ; l'historique reste |
+| `async_payment_failed` | `canceled` | virement SEPA refusé |
+
+Un événement reçu deux fois ne s'applique qu'une fois : sa clé est
+inscrite dans `stripe_events` avant toute écriture.
+
+### 7.5 Le parcours complet, en test, pour 1 €
+
+`STRIPE_MODE=test`, avec un compte découverte dont les cinq parties sont
+utilisées (ou pas — le bouton « S'abonner » est aussi dans Mon espace) :
+
+1. **S'abonner** → la caisse Stripe s'ouvre, à 1 €. Carte de test
+   `4242 4242 4242 4242`, n'importe quelle date future, n'importe quel
+   CVC.
+2. Retour sur la console, qui redemande le compte quelques secondes le
+   temps que le webhook passe : « IqraQuest École », « Renouvellement
+   le … », parties illimitées. Dans **Table Editor**, `licences.status =
+   'active'`, `stripe_events` porte l'événement.
+3. **Gérer l'abonnement** → le portail. Résilier : la console affiche
+   « prend fin le … » et une séance s'ouvre encore. Réactiver depuis le
+   portail : la mention disparaît.
+4. **Simuler l'échéance** : dans Stripe (test), sur l'abonnement,
+   *Cancel subscription → Immediately*. La console : « Votre abonnement
+   est terminé », « Ouvrir la séance » a disparu, l'historique est
+   toujours là, et « Renouveler » rouvre la caisse.
+5. **Simuler un impayé** : *Customers → le client → Payment methods*,
+   remplacer par la carte `4000 0000 0000 0341`, puis sur l'abonnement
+   *Actions → Update subscription → renouveler maintenant*. La console
+   dit « Paiement en échec » et refuse une nouvelle séance.
+
+Si l'étape 2 montre autre chose — surtout « Offre découverte » qui ne
+bouge pas — regarder **Developers → Webhooks → l'endpoint → Events** :
+un 400 signifie un `STRIPE_WEBHOOK_SECRET` qui n'est pas celui de ce
+mode ; un 500, la fonction ne joint pas Supabase (`IQRAQUEST_SERVICE_KEY`).
+Un événement se rejoue depuis cette page une fois le secret corrigé.
+
+### 7.6 Passer en production
+
+Quand 7.5 est vert de bout en bout :
+
+```bash
+supabase secrets set \
+  STRIPE_MODE=live \
+  STRIPE_SECRET_KEY=sk_live_... \
+  STRIPE_WEBHOOK_SECRET=whsec_...   # celui de l'endpoint LIVE (7.4)
+```
+
+`STRIPE_SCHOOL_PRICE_LIVE` est déjà posé : la fonction bascule sur lui,
+et refuse de démarrer si ce prix est sous 50 €. Puis, sur le site
+vitrine, poser la variable `NEXT_PUBLIC_CLASSROOM_CHECKOUT=true` (étape
+8) : la page Écoles cesse de dire que le paiement en ligne « ouvre
+bientôt ».
+
+Un premier paiement réel à 89 €, depuis une adresse à soi, puis un
+remboursement depuis Stripe, est la vérification qui compte.
 
 ## 8. Le site vitrine
 
@@ -346,7 +477,8 @@ Deux pages parlent des écoles sur `iqraquest.org`, et elles sont
 publiées :
 
 - **`/schools`** — comment se déroule une séance, ce que l'école garde,
-  les trois formules (3 salles / 89 €, 5 / 99 €, 10 / 149 €) et la FAQ.
+  les deux formules (Offre découverte, gratuite, cinq parties ;
+  IqraQuest École, 89 € par an, deux sessions simultanées) et la FAQ.
 - **`/account`** — « Mon espace » : ce qu'on trouve derrière la porte, et
   le bouton qui ouvre la console. La page porte l'en-tête et le pied du
   site, pour qu'une école ne découvre pas la console par un lien nu vers
@@ -362,9 +494,9 @@ Deux variables de dépôt gouvernent ces pages, dans
 | `NEXT_PUBLIC_CLASSROOM_CHECKOUT` | on peut payer en ligne | non posée = fausse |
 
 La première n'est à poser (`false`) que pour refermer l'accès si le
-service tombe. La seconde passe à `true` le jour où les trois liens de
-paiement existent : d'ici là, une école qui veut acheter lit qu'on lui
-répond par courrier, ce qui est vrai.
+service tombe. La seconde passe à `true` à l'étape 7.6 : d'ici là, une
+école qui a utilisé ses cinq parties lit qu'on lui répond par courrier,
+ce qui est vrai.
 
 ---
 
@@ -376,8 +508,11 @@ répond par courrier, ce qui est vrai.
 | Le lien de connexion n'arrive jamais | quota d'e-mails Supabase atteint → configurer un SMTP (étape 2). La connexion par mot de passe, elle, n'en dépend pas |
 | « Adresse ou mot de passe incorrect » sur un compte qui existe | « Auto Confirm User » n'était pas coché à la création : le compte existe mais son adresse n'est pas confirmée |
 | Le lien arrive mais la console reste déconnectée | `Redirect URLs` ne contient pas `teacher-callback.html` (étape 2) |
-| « Aucune licence » alors que Stripe a été payé | métadonnée posée sur le produit et non sur le lien, ou palier inconnu (étape 7) |
-| Une école a moins de salles qu'elle n'en a payées | `iqraquest_plan` ne correspond à aucune ligne de `plans` : corriger le lien, puis rejouer l'événement depuis Stripe |
+| « Confirmez votre adresse » mais rien n'arrive | courrier intégré bridé aux membres de l'organisation → SMTP (étape 2) ; en attendant, confirmer le compte à la main dans Authentication → Users |
+| Payé, mais la console reste sur « Offre découverte » | le webhook n'a pas atteint la fonction : Stripe → Webhooks → l'endpoint → Events (secret du mauvais mode = 400) ; rejouer l'événement |
+| « S'abonner » dit que le paiement est indisponible | fonction `create-school-checkout` non déployée, ou un secret `STRIPE_*` manquant, ou prix live sous 50 € (étape 7) |
+| « Deux appareils sont déjà en séance » alors qu'un seul joue | un onglet fermé sans terminer la séance garde sa place cinq minutes ; Mon espace → Appareils → Libérer |
+| « Vos cinq parties sont utilisées » sur un compte qui a payé | `licences.status` n'est pas `active` : voir la ligne précédente |
 | « Votre abonnement est terminé » alors qu'il court | l'horloge du serveur fait foi, pas celle du navigateur : vérifier `expires_at` dans `licences` |
 | Le tableau reste sur « code inconnu » | la séance a été fermée, ou le code appartient à un autre projet Supabase |
 | `school.iqraquest.org` renvoie un 404 GitHub | domaine personnalisé non renseigné dans Pages (étape 4) |
