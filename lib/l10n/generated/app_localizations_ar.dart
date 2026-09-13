@@ -1414,6 +1414,143 @@ class AppLocalizationsAr extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'إنشاء حساب';
+
+  @override
+  String get teacherHaveAccount => 'لديّ حساب بالفعل';
+
+  @override
+  String get teacherSignUpHint =>
+      'مجاني وبلا بطاقة بنكية. يحصل حسابك على خمس حصص مجانية لتجربة وضع المدرسة.';
+
+  @override
+  String get teacherSignUpButton => 'أنشئ حسابي';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'أكّد عنوانك';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return 'أُرسل بريد إلى $email. افتح الرابط الذي فيه ثم عد وسجّل الدخول.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'هذا العنوان له حساب بالفعل. سجّل الدخول أو استخدم «هل نسيت كلمة المرور؟».';
+
+  @override
+  String get teacherWeakPassword =>
+      'يجب أن تتكون كلمة المرور من ستة أحرف على الأقل.';
+
+  @override
+  String get teacherOfferDiscovery => 'عرض الاكتشاف';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left حصة مجانية متبقية من $total',
+      many: '$left حصة مجانية متبقية من $total',
+      few: '$left حصص مجانية متبقية من $total',
+      two: 'حصتان مجانيتان متبقيتان من $total',
+      one: 'حصة مجانية واحدة متبقية من $total',
+      zero: 'لا حصص مجانية متبقية من $total',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'استُخدمت حصصك المجانية';
+
+  @override
+  String get teacherQuotaBody =>
+      'لقد استخدمت حصصك الخمس المجانية. انتقل إلى IqraQuest École لإنشاء حصص بلا حدود لمدة عام.';
+
+  @override
+  String get teacherSubscribe => 'اشترك في IqraQuest École';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'يُدار الاشتراك من حساب مؤسستك، على الحاسوب.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'الأجهزة النشطة: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'إدارة أجهزتي';
+
+  @override
+  String get teacherDeviceLimitTitle => 'بلغت حد الأجهزة';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'تسمح رخصتك بـ $count من جلسات اللعب المتزامنة. أغلق حصة على جهاز آخر أو افصله أدناه.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'فصل';
+
+  @override
+  String get teacherNoActiveDevices => 'لا يوجد جهاز يلعب الآن.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return 'منذ $time';
+  }
+
+  @override
+  String get teacherDeviceStale => 'لا يستجيب — تحرّر المكان';
+
+  @override
+  String get teacherManageSubscription => 'إدارة اشتراكي';
+
+  @override
+  String get teacherSubscriptionActive => 'رخصتك IqraQuest École نشطة.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'أُلغي التجديد. تبقى رخصتك نشطة حتى $date.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'مشكلة في الدفع';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'يحتاج اشتراكك إلى تحديث وسيلة الدفع. يمكن إنهاء الحصة الجارية؛ والتالية تنتظر التسوية.';
+
+  @override
+  String get teacherUpdatePayment => 'تحديث وسيلة الدفع';
+
+  @override
+  String get teacherChangePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get teacherNewPassword => 'كلمة مرور جديدة';
+
+  @override
+  String get teacherPasswordChanged => 'تم تغيير كلمة المرور.';
+
+  @override
+  String get teacherDeleteAccount => 'حذف حسابي';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'سيُمحى ملفك ورخصتك وحصصك وتقاريرها. تبقى الفواتير لدى Stripe الملزم بحفظها. لا يمكن التراجع عن هذا.';
+
+  @override
+  String get teacherConfirmDelete => 'نعم، احذف نهائيًا';
+
+  @override
+  String get teacherNetworkNeeded => 'يلزم اتصال لبدء حصة مدرسية جديدة.';
+
+  @override
+  String get teacherAccountSection => 'حسابي';
+
+  @override
   String get teacherPasswordLabel => 'كلمة المرور';
 
   @override

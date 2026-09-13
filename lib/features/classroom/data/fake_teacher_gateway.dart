@@ -14,10 +14,15 @@ class FakeTeacherGateway implements TeacherGateway {
     Licence? licence,
     String? signedInAs,
     this.signInOnSend = false,
-  }) {
+    DateTime Function()? clock,
+  }) : _now = clock ?? DateTime.now {
     _licence = licence;
     _email = signedInAs?.trim();
   }
+
+  /// Combien d'appareils jouent à cet instant — ceux dont le bail court.
+  int get aliveSessions =>
+      lastSeen.values.where((t) => _now().difference(t) < lease).length;
 
   final FakeClassroomGateway room;
 
@@ -34,6 +39,24 @@ class FakeTeacherGateway implements TeacherGateway {
 
   /// The rooms this console opened, by session id.
   final Map<String, String> codeOf = {};
+
+  /// Le dernier signe de vie de chaque séance ouverte, et le bail au-delà
+  /// duquel une place se libère — les mêmes cinq minutes que le SQL.
+  final Map<String, DateTime> lastSeen = {};
+  static const Duration lease = Duration(minutes: 5);
+  final DateTime Function() _now;
+
+  /// La même demande rejouée rend la même séance : clé de rejeu → id.
+  final Map<String, String> _byRequest = {};
+
+  /// Les comptes créés par inscription, adresse → confirmé ?
+  final Map<String, bool> signedUp = {};
+
+  /// Ce que le serveur enregistre au fil des gestes, pour qu'un test
+  /// puisse relire ce qui a été demandé à Stripe.
+  int checkoutsCreated = 0;
+  int portalsCreated = 0;
+  bool deleted = false;
 
   @override
   bool get isSignedIn => _email != null;
@@ -76,7 +99,102 @@ class FakeTeacherGateway implements TeacherGateway {
     if (passwords[clean.toLowerCase()] != password) {
       throw const TeacherException(TeacherError.badCredentials);
     }
+    // Un compte inscrit mais non confirmé n'entre pas : c'est ce que
+    // GoTrue fait, et ce que my_licence() exige.
+    if (signedUp[clean.toLowerCase()] == false) {
+      throw const TeacherException(TeacherError.badCredentials);
+    }
     completeSignIn(clean);
+  }
+
+  @override
+  Future<bool> signUp({required String email, required String password}) async {
+    final clean = email.trim();
+    if (!RegExp(r'^[^@\s]+@[^@\s.]+\.[^@\s]+$').hasMatch(clean)) {
+      throw const TeacherException(TeacherError.invalidEmail);
+    }
+    if (password.length < 6) {
+      throw const TeacherException(TeacherError.weakPassword);
+    }
+    final key = clean.toLowerCase();
+    if (passwords.containsKey(key) || signedUp.containsKey(key)) {
+      throw const TeacherException(TeacherError.emailTaken);
+    }
+    passwords[key] = password;
+    signedUp[key] = false;
+    // Le serveur donne ses cinq parties au compte neuf — sauf si une
+    // licence existe déjà à cette adresse (l'école a payé avant).
+    _licence ??= Licence(
+      id: 'l_$key',
+      email: clean,
+      plan: 'decouverte',
+      concurrentSessions: 2,
+      expiresAt: _now().add(const Duration(days: 36500)),
+      freeGames: 5,
+    );
+    return true;
+  }
+
+  /// Ce que ferait le clic sur le lien de confirmation.
+  void confirm(String email) => signedUp[email.trim().toLowerCase()] = true;
+
+  @override
+  Future<void> updatePassword(String newPassword) async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    if (newPassword.length < 6) {
+      throw const TeacherException(TeacherError.weakPassword);
+    }
+    passwords[_email!.toLowerCase()] = newPassword;
+  }
+
+  @override
+  Future<void> heartbeat(String sessionId) async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    if (!codeOf.containsKey(sessionId)) {
+      throw const TeacherException(TeacherError.unknownSession);
+    }
+    lastSeen[sessionId] = _now();
+  }
+
+  @override
+  Future<List<ActiveSession>> sessions() async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    return [
+      for (final e in codeOf.entries)
+        ActiveSession(
+          sessionId: e.key,
+          code: e.value,
+          lessonId: '',
+          openedAt: lastSeen[e.key] ?? _now(),
+          lastSeenAt: lastSeen[e.key] ?? _now(),
+          alive: _now().difference(lastSeen[e.key] ?? _now()) < lease,
+        ),
+    ];
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    deleted = true;
+    _licence = null;
+    codeOf.clear();
+    lastSeen.clear();
+    await signOut();
+  }
+
+  @override
+  Future<Uri?> checkoutUrl() async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    checkoutsCreated += 1;
+    return Uri.parse('https://checkout.stripe.test/session/$checkoutsCreated');
+  }
+
+  @override
+  Future<Uri?> portalUrl() async {
+    if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    if (_licence?.status == 'none') return null;
+    portalsCreated += 1;
+    return Uri.parse('https://billing.stripe.test/portal/$portalsCreated');
   }
 
   @override
@@ -104,16 +222,34 @@ class FakeTeacherGateway implements TeacherGateway {
         subscribed: false,
       );
     }
-    final left = l.expiresAt.difference(DateTime.now());
+    final left = l.expiresAt.difference(_now());
+    final blocker = !l.isValid
+        ? StartBlocker.expired
+        : l.quotaExhausted
+            ? StartBlocker.quota
+            : aliveSessions >= l.concurrentSessions
+                ? StartBlocker.sessions
+                : StartBlocker.none;
     return Account(
-      state: l.isValid ? AccountState.active : AccountState.expired,
+      state: !l.isValid
+          ? AccountState.expired
+          : l.quotaExhausted
+              ? AccountState.quotaExhausted
+              : AccountState.active,
+      canStart: blocker == StartBlocker.none,
+      blocker: blocker,
       email: l.email,
       planLabel: l.plan,
       rooms: l.concurrentSessions,
-      roomsInUse: codeOf.length,
+      roomsInUse: aliveSessions,
       expiresAt: l.expiresAt,
       daysLeft: left.isNegative ? 0 : (left.inSeconds / 86400).ceil(),
-      subscribed: false,
+      subscribed: l.status != 'none',
+      status: l.status,
+      free: l.freeGames != null,
+      freeGames: l.freeGames,
+      freeGamesUsed: l.freeGamesUsed,
+      hasCustomer: l.status != 'none',
       schoolName: l.schoolName,
     );
   }
@@ -134,21 +270,34 @@ class FakeTeacherGateway implements TeacherGateway {
     int secondsPerQuestion = 0,
     bool keepIndividualScores = false,
     ClassroomScoring scoring = ClassroomScoring.teams,
+    String? requestId,
+    String? deviceId,
   }) async {
     if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
     final licence = _licence;
     if (licence == null) throw const TeacherException(TeacherError.noLicence);
+    // Même ordre que open_session en SQL : rejeu, échéance, quota, bail.
+    if (requestId != null && _byRequest.containsKey(requestId)) {
+      final id = _byRequest[requestId]!;
+      return (sessionId: id, code: codeOf[id]!);
+    }
     if (!licence.isValid) {
       throw const TeacherException(TeacherError.licenceExpired);
     }
-    if (questionIds.isEmpty) {
-      throw const TeacherException(TeacherError.noQuestions);
+    if (licence.quotaExhausted) {
+      throw TeacherException(
+        TeacherError.quotaExhausted,
+        limit: licence.freeGames,
+      );
     }
-    if (codeOf.length >= licence.concurrentSessions) {
+    if (aliveSessions >= licence.concurrentSessions) {
       throw TeacherException(
         TeacherError.tooManySessions,
         limit: licence.concurrentSessions,
       );
+    }
+    if (questionIds.isEmpty) {
+      throw const TeacherException(TeacherError.noQuestions);
     }
 
     final code = room.openSession(
@@ -161,6 +310,21 @@ class FakeTeacherGateway implements TeacherGateway {
     );
     final sessionId = 's_${codeOf.length}_$code';
     codeOf[sessionId] = code;
+    lastSeen[sessionId] = _now();
+    if (requestId != null) _byRequest[requestId] = sessionId;
+    if (licence.freeGames != null) {
+      _licence = Licence(
+        id: licence.id,
+        email: licence.email,
+        plan: licence.plan,
+        concurrentSessions: licence.concurrentSessions,
+        expiresAt: licence.expiresAt,
+        schoolName: licence.schoolName,
+        freeGames: licence.freeGames,
+        freeGamesUsed: licence.freeGamesUsed + 1,
+        status: licence.status,
+      );
+    }
     return (sessionId: sessionId, code: code);
   }
 
@@ -178,6 +342,7 @@ class FakeTeacherGateway implements TeacherGateway {
       case TeacherAction.close:
         room.close(code);
         codeOf.remove(sessionId);
+        lastSeen.remove(sessionId);
     }
   }
 
@@ -185,5 +350,6 @@ class FakeTeacherGateway implements TeacherGateway {
   Future<void> signOut() async {
     _email = null;
     codeOf.clear();
+    lastSeen.clear();
   }
 }

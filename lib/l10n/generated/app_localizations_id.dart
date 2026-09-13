@@ -1392,6 +1392,139 @@ class AppLocalizationsId extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'Buat akun';
+
+  @override
+  String get teacherHaveAccount => 'Saya sudah punya akun';
+
+  @override
+  String get teacherSignUpHint =>
+      'Gratis, tanpa kartu. Akun Anda mendapat lima permainan untuk mencoba mode Sekolah.';
+
+  @override
+  String get teacherSignUpButton => 'Buat akun saya';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'Konfirmasi alamat Anda';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return 'Email baru saja dikirim ke $email. Buka tautan di dalamnya, lalu kembali untuk masuk.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'Alamat ini sudah punya akun. Masuk, atau gunakan «Lupa kata sandi?».';
+
+  @override
+  String get teacherWeakPassword => 'Kata sandi harus minimal enam karakter.';
+
+  @override
+  String get teacherOfferDiscovery => 'Paket perkenalan';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left / $total permainan gratis tersisa',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'Permainan gratis Anda sudah habis';
+
+  @override
+  String get teacherQuotaBody =>
+      'Anda telah memakai lima permainan gratis. Beralih ke IqraQuest École untuk membuat permainan tanpa batas selama setahun.';
+
+  @override
+  String get teacherSubscribe => 'Berlangganan IqraQuest École';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'Langganan dikelola dari ruang sekolah Anda, di komputer.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'Perangkat aktif: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'Kelola perangkat saya';
+
+  @override
+  String get teacherDeviceLimitTitle => 'Batas perangkat tercapai';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'Lisensi Anda mengizinkan $count sesi permainan serentak. Tutup sesi di perangkat lain, atau putuskan di bawah.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'Putuskan';
+
+  @override
+  String get teacherNoActiveDevices =>
+      'Tidak ada perangkat yang sedang bermain.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return 'Sejak $time';
+  }
+
+  @override
+  String get teacherDeviceStale => 'Tidak menjawab — tempat dibebaskan';
+
+  @override
+  String get teacherManageSubscription => 'Kelola langganan saya';
+
+  @override
+  String get teacherSubscriptionActive => 'Lisensi IqraQuest École Anda aktif.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'Perpanjangan dibatalkan. Lisensi Anda tetap aktif hingga $date.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'Masalah pembayaran';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'Langganan Anda memerlukan pembaruan metode pembayaran. Sesi yang berjalan boleh selesai; berikutnya menunggu penyelesaian.';
+
+  @override
+  String get teacherUpdatePayment => 'Perbarui metode pembayaran saya';
+
+  @override
+  String get teacherChangePassword => 'Ubah kata sandi saya';
+
+  @override
+  String get teacherNewPassword => 'Kata sandi baru';
+
+  @override
+  String get teacherPasswordChanged => 'Kata sandi diubah.';
+
+  @override
+  String get teacherDeleteAccount => 'Hapus akun saya';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'Profil, lisensi, sesi, dan laporannya akan dihapus. Faktur tetap di Stripe, yang wajib menyimpannya. Tindakan ini permanen.';
+
+  @override
+  String get teacherConfirmDelete => 'Ya, hapus permanen';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'Koneksi diperlukan untuk memulai permainan Sekolah baru.';
+
+  @override
+  String get teacherAccountSection => 'Akun saya';
+
+  @override
   String get teacherPasswordLabel => 'Kata sandi';
 
   @override

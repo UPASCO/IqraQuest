@@ -1379,6 +1379,138 @@ class AppLocalizationsTr extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'Hesap oluştur';
+
+  @override
+  String get teacherHaveAccount => 'Zaten hesabım var';
+
+  @override
+  String get teacherSignUpHint =>
+      'Ücretsiz, kart gerekmez. Hesabınıza Okul modunu denemek için beş oyun verilir.';
+
+  @override
+  String get teacherSignUpButton => 'Hesabımı oluştur';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'Adresinizi doğrulayın';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return '$email adresine bir e-posta gönderildi. İçindeki bağlantıyı açın, sonra dönüp giriş yapın.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'Bu adresin zaten bir hesabı var. Giriş yapın veya «Parolanızı mı unuttunuz?» kullanın.';
+
+  @override
+  String get teacherWeakPassword => 'Parola en az altı karakter olmalı.';
+
+  @override
+  String get teacherOfferDiscovery => 'Keşif teklifi';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$total ücretsiz oyundan $left kaldı',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'Ücretsiz oyunlarınız bitti';
+
+  @override
+  String get teacherQuotaBody =>
+      'Beş ücretsiz oyununuzu kullandınız. Bir yıl boyunca sınırsız oyun için IqraQuest École\'e geçin.';
+
+  @override
+  String get teacherSubscribe => 'IqraQuest École\'e abone ol';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'Abonelik, okulunuzun alanından bilgisayarda yönetilir.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'Etkin cihazlar: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'Cihazlarımı yönet';
+
+  @override
+  String get teacherDeviceLimitTitle => 'Cihaz sınırına ulaşıldı';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'Lisansınız $count eşzamanlı oyun oturumuna izin verir. Başka bir cihazdaki oturumu kapatın veya aşağıdan bağlantısını kesin.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'Bağlantıyı kes';
+
+  @override
+  String get teacherNoActiveDevices => 'Şu anda hiçbir cihaz oynamıyor.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return '$time beri';
+  }
+
+  @override
+  String get teacherDeviceStale => 'Yanıt yok — yer serbest';
+
+  @override
+  String get teacherManageSubscription => 'Aboneliğimi yönet';
+
+  @override
+  String get teacherSubscriptionActive => 'IqraQuest École lisansınız etkin.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'Yenileme iptal edildi. Lisansınız $date tarihine kadar etkin kalır.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'Ödeme sorunu';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'Aboneliğiniz için ödeme yönteminin güncellenmesi gerekiyor. Süren oturum bitebilir; sonraki, düzeltmeyi bekler.';
+
+  @override
+  String get teacherUpdatePayment => 'Ödeme yöntemimi güncelle';
+
+  @override
+  String get teacherChangePassword => 'Parolamı değiştir';
+
+  @override
+  String get teacherNewPassword => 'Yeni parola';
+
+  @override
+  String get teacherPasswordChanged => 'Parola değiştirildi.';
+
+  @override
+  String get teacherDeleteAccount => 'Hesabımı sil';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'Profiliniz, lisansınız, oturumlarınız ve raporları silinecek. Faturalar, saklamakla yükümlü olan Stripe\'ta kalır. Bu işlem geri alınamaz.';
+
+  @override
+  String get teacherConfirmDelete => 'Evet, kalıcı olarak sil';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'Yeni bir Okul oyunu başlatmak için bağlantı gerekli.';
+
+  @override
+  String get teacherAccountSection => 'Hesabım';
+
+  @override
   String get teacherPasswordLabel => 'Parola';
 
   @override

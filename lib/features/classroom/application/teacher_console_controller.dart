@@ -22,6 +22,14 @@ enum ConsoleStage {
   /// Signed in, but nothing was bought on this address.
   noLicence,
 
+  /// L'inscription est faite ; la confirmation par e-mail est attendue.
+  awaitingConfirmation,
+
+  /// Les cinq parties offertes sont consommées. L'espace reste ouvert —
+  /// historique, abonnement — mais la prochaine séance demande une
+  /// licence.
+  quotaExhausted,
+
   /// L'abonnement est fini. Distinct de [noLicence], et il faut que ça
   /// le reste : une école qui a payé l'an dernier n'a pas à lire
   /// « aucune licence » comme si elle n'avait jamais rien acheté. Elle
@@ -43,6 +51,7 @@ class ConsoleState {
     this.licence,
     this.account,
     this.reports,
+    this.activeSessions,
     this.sessionId,
     this.code,
     this.error,
@@ -63,6 +72,9 @@ class ConsoleState {
   /// un bouton.
   final List<SessionReport>? reports;
 
+  /// Les appareils qui jouent, quand l'enseignant les a demandés.
+  final List<ActiveSession>? activeSessions;
+
   /// The open room, once there is one.
   final String? sessionId;
   final String? code;
@@ -81,6 +93,7 @@ class ConsoleState {
     Object? licence = _unset,
     Object? account = _unset,
     Object? reports = _unset,
+    Object? activeSessions = _unset,
     Object? sessionId = _unset,
     Object? code = _unset,
     Object? error = _unset,
@@ -94,6 +107,9 @@ class ConsoleState {
     reports: identical(reports, _unset)
         ? this.reports
         : reports as List<SessionReport>?,
+    activeSessions: identical(activeSessions, _unset)
+        ? this.activeSessions
+        : activeSessions as List<ActiveSession>?,
     sessionId: identical(sessionId, _unset)
         ? this.sessionId
         : sessionId as String?,
@@ -115,9 +131,49 @@ const Object _unset = Object();
 /// fail on a school network — so each says what happened rather than
 /// leaving a teacher pressing a button in front of a class.
 class TeacherConsoleController extends StateNotifier<ConsoleState> {
-  TeacherConsoleController(this.gateway) : super(const ConsoleState());
+  TeacherConsoleController(
+    this.gateway, {
+    String? deviceId,
+    Random? random,
+    this.heartbeatEvery = const Duration(seconds: 60),
+  }) : _random = random ?? Random.secure(),
+       deviceId = deviceId ?? _newId(random ?? Random.secure()),
+       super(const ConsoleState());
 
   final TeacherGateway gateway;
+  final Random _random;
+
+  /// Cet appareil, aux yeux de la licence. Un identifiant opaque, jamais
+  /// un nom de machine.
+  final String deviceId;
+
+  /// Le battement de vie d'une séance ouverte : le serveur libère la place
+  /// d'un appareil qu'il n'a plus entendu depuis cinq minutes, et c'est
+  /// ce battement qui dit « je suis encore là ».
+  final Duration heartbeatEvery;
+  Timer? _heartbeat;
+
+  static String _newId(Random random) => List.generate(
+    16,
+    (_) => random.nextInt(256).toRadixString(16).padLeft(2, '0'),
+  ).join();
+
+  /// Une clé de rejeu au format UUID v4, pour que la même ouverture
+  /// renvoyée deux fois par le réseau ne consomme qu'un crédit.
+  String _newRequestId() {
+    final b = List<int>.generate(16, (_) => _random.nextInt(256));
+    b[6] = (b[6] & 0x0f) | 0x40;
+    b[8] = (b[8] & 0x3f) | 0x80;
+    final h = b.map((x) => x.toRadixString(16).padLeft(2, '0')).join();
+    return '${h.substring(0, 8)}-${h.substring(8, 12)}-${h.substring(12, 16)}-'
+        '${h.substring(16, 20)}-${h.substring(20)}';
+  }
+
+  @override
+  void dispose() {
+    _heartbeat?.cancel();
+    super.dispose();
+  }
 
   /// Picks up the tokens a magic link just delivered, or the ones this
   /// browser kept, and asks what licence they carry.
@@ -201,6 +257,7 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
       state = state.copyWith(
         stage: switch (account.state) {
           AccountState.active => ConsoleStage.ready,
+          AccountState.quotaExhausted => ConsoleStage.quotaExhausted,
           AccountState.expired => ConsoleStage.expired,
           AccountState.noLicence => ConsoleStage.noLicence,
         },
@@ -255,6 +312,8 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
         secondsPerQuestion: secondsPerQuestion,
         keepIndividualScores: keepIndividualScores,
         scoring: scoring,
+        requestId: _newRequestId(),
+        deviceId: deviceId,
       );
       state = state.copyWith(
         stage: ConsoleStage.running,
@@ -262,6 +321,7 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
         code: opened.code,
         busy: false,
       );
+      _startHeartbeat(opened.sessionId);
     } on TeacherException catch (e) {
       state = state.copyWith(
         error: e.error,
@@ -280,13 +340,146 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
   /// Ends the lesson: the report is written and the children's names go
   /// with the session. The console lands back on the lesson list.
   Future<void> endSession() async {
+    _heartbeat?.cancel();
     await _advance(TeacherAction.close);
     if (state.error != null) return;
-    state = state.copyWith(
-      stage: ConsoleStage.ready,
-      sessionId: null,
-      code: null,
-    );
+    state = state.copyWith(sessionId: null, code: null);
+    // Le quota a pu tomber à zéro avec cette séance : on redemande au
+    // serveur où l'on en est plutôt que de le deviner.
+    await refreshLicence();
+  }
+
+  void _startHeartbeat(String sessionId) {
+    _heartbeat?.cancel();
+    _heartbeat = Timer.periodic(heartbeatEvery, (_) async {
+      if (state.sessionId != sessionId) return;
+      try {
+        await gateway.heartbeat(sessionId);
+      } catch (_) {
+        // Une coupure réseau courte ne doit pas casser la séance : le
+        // prochain battement reprendra, et le bail tient cinq minutes.
+      }
+    });
+  }
+
+  /// Un battement envoyé à la main — ce que fait un test, ou un retour
+  /// de veille de l'appareil.
+  Future<void> heartbeatNow() async {
+    final id = state.sessionId;
+    if (id == null) return;
+    try {
+      await gateway.heartbeat(id);
+    } catch (_) {}
+  }
+
+  /// Créer un compte. Selon le réglage du serveur, l'enseignant est entré
+  /// tout de suite ou attend un e-mail de confirmation.
+  Future<void> signUp(String email, String password) async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      final needsConfirmation = await gateway.signUp(
+        email: email,
+        password: password,
+      );
+      if (needsConfirmation) {
+        state = state.copyWith(
+          stage: ConsoleStage.awaitingConfirmation,
+          email: email.trim(),
+          busy: false,
+        );
+        return;
+      }
+      state = state.copyWith(email: gateway.email ?? email.trim());
+      await refreshLicence();
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
+  Future<bool> updatePassword(String newPassword) async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      await gateway.updatePassword(newPassword);
+      state = state.copyWith(busy: false);
+      return true;
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+    return false;
+  }
+
+  /// Les appareils qui jouent sur la licence, à la demande.
+  Future<void> loadSessions() async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      final sessions = await gateway.sessions();
+      state = state.copyWith(activeSessions: sessions, busy: false);
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
+  /// Fermer la séance d'un autre appareil — libérer une place quand la
+  /// limite est atteinte.
+  Future<void> revokeSession(String sessionId) async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      await gateway.advance(sessionId, TeacherAction.close);
+      final sessions = await gateway.sessions();
+      final account = await gateway.account();
+      state = state.copyWith(
+        activeSessions: sessions,
+        account: account,
+        busy: false,
+      );
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
+  /// L'adresse de paiement, fabriquée par le serveur. Null si le paiement
+  /// en ligne n'est pas ouvert.
+  Future<Uri?> checkoutUrl() async {
+    try {
+      return await gateway.checkoutUrl();
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable);
+    }
+    return null;
+  }
+
+  Future<Uri?> portalUrl() async {
+    try {
+      return await gateway.portalUrl();
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable);
+    }
+    return null;
+  }
+
+  Future<void> deleteAccount() async {
+    state = state.copyWith(busy: true, error: null);
+    try {
+      _heartbeat?.cancel();
+      await gateway.deleteAccount();
+      state = const ConsoleState(stage: ConsoleStage.signedOut);
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
   }
 
   Future<void> _advance(TeacherAction action) async {
@@ -304,6 +497,7 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
   }
 
   Future<void> signOut() async {
+    _heartbeat?.cancel();
     await gateway.signOut();
     state = const ConsoleState(stage: ConsoleStage.signedOut);
   }

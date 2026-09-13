@@ -1398,6 +1398,141 @@ class AppLocalizationsEn extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'Create an account';
+
+  @override
+  String get teacherHaveAccount => 'I already have an account';
+
+  @override
+  String get teacherSignUpHint =>
+      'Free, no card needed. Your account gets five games to try the School mode.';
+
+  @override
+  String get teacherSignUpButton => 'Create my account';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'Confirm your address';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return 'An e-mail is on its way to $email. Open the link inside, then come back and sign in.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'This address already has an account. Sign in, or use “Forgotten your password?”.';
+
+  @override
+  String get teacherWeakPassword =>
+      'The password must be at least six characters long.';
+
+  @override
+  String get teacherOfferDiscovery => 'Discovery offer';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left / $total free games left',
+      one: '$left / $total free game left',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'Your free games are used up';
+
+  @override
+  String get teacherQuotaBody =>
+      'You have used your five free games. Move to IqraQuest École to create games without limit for a year.';
+
+  @override
+  String get teacherSubscribe => 'Subscribe to IqraQuest École';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'The subscription is managed from your school\'s account, on a computer.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'Active devices: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'Manage my devices';
+
+  @override
+  String get teacherDeviceLimitTitle => 'Device limit reached';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'Your licence allows $count simultaneous game sessions. Close a session on another device, or disconnect it below.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'Disconnect';
+
+  @override
+  String get teacherNoActiveDevices => 'No device is playing right now.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return 'Since $time';
+  }
+
+  @override
+  String get teacherDeviceStale => 'Not answering — place freed';
+
+  @override
+  String get teacherManageSubscription => 'Manage my subscription';
+
+  @override
+  String get teacherSubscriptionActive =>
+      'Your IqraQuest École licence is active.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'Renewal cancelled. Your licence stays active until $date.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'Payment problem';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'Your subscription needs an updated payment method. A running session can finish; the next one waits for the fix.';
+
+  @override
+  String get teacherUpdatePayment => 'Update my payment method';
+
+  @override
+  String get teacherChangePassword => 'Change my password';
+
+  @override
+  String get teacherNewPassword => 'New password';
+
+  @override
+  String get teacherPasswordChanged => 'Password changed.';
+
+  @override
+  String get teacherDeleteAccount => 'Delete my account';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'Your profile, licence, sessions and their reports will be erased. Invoices stay with Stripe, which is required to keep them. This cannot be undone.';
+
+  @override
+  String get teacherConfirmDelete => 'Yes, delete for good';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'A connection is needed to start a new School game.';
+
+  @override
+  String get teacherAccountSection => 'My account';
+
+  @override
   String get teacherPasswordLabel => 'Password';
 
   @override

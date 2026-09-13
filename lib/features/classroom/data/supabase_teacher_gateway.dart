@@ -193,6 +193,8 @@ class SupabaseTeacherGateway implements TeacherGateway {
     int secondsPerQuestion = 0,
     bool keepIndividualScores = false,
     ClassroomScoring scoring = ClassroomScoring.teams,
+    String? requestId,
+    String? deviceId,
   }) async {
     final json = await _rpc('open_session', {
       'p_lesson_id': lessonId,
@@ -202,11 +204,149 @@ class SupabaseTeacherGateway implements TeacherGateway {
       'p_seconds_per_question': secondsPerQuestion,
       'p_keep_individual_scores': keepIndividualScores,
       'p_scoring_mode': scoring.name,
+      'p_request_id': ?requestId,
+      'p_device_id': ?deviceId,
     });
     return (
       sessionId: json!['sessionId'] as String,
       code: json['code'] as String,
     );
+  }
+
+  @override
+  Future<bool> signUp({required String email, required String password}) async {
+    final clean = email.trim();
+    if (!_looksLikeEmail(clean)) {
+      throw const TeacherException(TeacherError.invalidEmail);
+    }
+    if (password.length < 6) {
+      throw const TeacherException(TeacherError.weakPassword);
+    }
+    final path = redirectTo == null || redirectTo!.isEmpty
+        ? '/auth/v1/signup'
+        : '/auth/v1/signup?redirect_to=${Uri.encodeComponent(redirectTo!)}';
+    final response = await _post(path, body: {'email': clean, 'password': password});
+    if (response.statusCode == 422 || response.statusCode == 400) {
+      // GoTrue dit « already registered » ou « password should be… ».
+      final text = response.body.toLowerCase();
+      if (text.contains('already') || text.contains('registered')) {
+        throw const TeacherException(TeacherError.emailTaken);
+      }
+      if (text.contains('password')) {
+        throw const TeacherException(TeacherError.weakPassword);
+      }
+      throw const TeacherException(TeacherError.unreachable);
+    }
+    if (response.statusCode == 429) {
+      throw const TeacherException(TeacherError.tooManyLinks);
+    }
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    // Avec la confirmation par e-mail activée, GoTrue rend l'utilisateur
+    // sans session : on attend le clic. Sans elle, une session arrive
+    // tout de suite et l'enseignant est déjà entré.
+    final access = json['access_token'] as String?;
+    final refresh = json['refresh_token'] as String?;
+    if (access != null && refresh != null) {
+      await _remember(
+        TeacherLinkSession(accessToken: access, refreshToken: refresh, email: clean),
+      );
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  Future<void> updatePassword(String newPassword) async {
+    if (_accessToken == null) {
+      throw const TeacherException(TeacherError.notSignedIn);
+    }
+    if (newPassword.length < 6) {
+      throw const TeacherException(TeacherError.weakPassword);
+    }
+    http.Response response;
+    try {
+      response = await _client.put(
+        Uri.parse('$url/auth/v1/user'),
+        headers: {
+          'apikey': anonKey,
+          'Authorization': 'Bearer $_accessToken',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({'password': newPassword}),
+      );
+    } catch (_) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
+    if (response.statusCode == 401) {
+      throw const TeacherException(TeacherError.notSignedIn);
+    }
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
+  }
+
+  @override
+  Future<void> heartbeat(String sessionId) async {
+    await _rpc('heartbeat_session', {'p_session_id': sessionId});
+  }
+
+  @override
+  Future<List<ActiveSession>> sessions() async {
+    final json = await _rpc('my_sessions', const {});
+    final rows = json?['sessions'] as List? ?? const [];
+    return [
+      for (final row in rows)
+        ActiveSession.fromJson(Map<String, dynamic>.from(row as Map)),
+    ];
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    await _rpc('delete_my_account', const {});
+    await signOut();
+  }
+
+  @override
+  Future<Uri?> checkoutUrl() => _edgeUrl('create-school-checkout');
+
+  @override
+  Future<Uri?> portalUrl() => _edgeUrl('create-customer-portal');
+
+  /// Appelle une fonction Edge qui rend `{"url": …}` — le paiement et le
+  /// portail sont créés côté serveur avec la clé secrète Stripe, jamais
+  /// ici. Null quand la fonction n'est pas déployée : la console sait
+  /// alors ne pas promettre de bouton.
+  Future<Uri?> _edgeUrl(String function) async {
+    if (_accessToken == null) {
+      throw const TeacherException(TeacherError.notSignedIn);
+    }
+    http.Response response;
+    try {
+      response = await _client.post(
+        Uri.parse('$url/functions/v1/$function'),
+        headers: {
+          'apikey': anonKey,
+          'Authorization': 'Bearer $_accessToken',
+          'Content-Type': 'application/json',
+        },
+        body: '{}',
+      );
+    } catch (_) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
+    if (response.statusCode == 404) return null;
+    if (response.statusCode == 401) {
+      throw const TeacherException(TeacherError.notSignedIn);
+    }
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    final target = json['url'] as String?;
+    return target == null ? null : Uri.tryParse(target);
   }
 
   @override
@@ -292,6 +432,7 @@ class SupabaseTeacherGateway implements TeacherGateway {
     'no_licence' => TeacherError.noLicence,
     'licence_expired' => TeacherError.licenceExpired,
     'too_many_sessions' => TeacherError.tooManySessions,
+    'quota_exhausted' => TeacherError.quotaExhausted,
     'no_questions' => TeacherError.noQuestions,
     'unknown_session' => TeacherError.unknownSession,
     'not_now' => TeacherError.notNow,

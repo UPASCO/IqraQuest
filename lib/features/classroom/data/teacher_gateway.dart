@@ -13,6 +13,16 @@ enum TeacherError {
 
   /// The licence already runs as many rooms at once as it paid for.
   tooManySessions,
+
+  /// Les parties offertes sont toutes consommées : la suivante demande
+  /// une licence. C'est le serveur qui compte, jamais l'appareil.
+  quotaExhausted,
+
+  /// L'adresse porte déjà un compte : on ne s'inscrit pas deux fois.
+  emailTaken,
+
+  /// Le mot de passe choisi est trop court pour Supabase (six caractères).
+  weakPassword,
   noQuestions,
   unknownSession,
 
@@ -57,6 +67,9 @@ class Licence {
     required this.concurrentSessions,
     required this.expiresAt,
     this.schoolName,
+    this.freeGamesUsed = 0,
+    this.status = 'none',
+    this.freeGames,
   });
 
   factory Licence.fromJson(Map<String, dynamic> json) => Licence(
@@ -68,6 +81,8 @@ class Licence {
         DateTime.tryParse('${json['expires_at']}')?.toLocal() ??
         DateTime.now(),
     schoolName: (json['school_name'] as String?)?.trim(),
+    freeGamesUsed: (json['free_games_used'] as num?)?.toInt() ?? 0,
+    status: json['status'] as String? ?? 'none',
   );
 
   final String id;
@@ -82,7 +97,21 @@ class Licence {
   /// single teacher for their own class.
   final String? schoolName;
 
-  bool get isValid => expiresAt.isAfter(DateTime.now());
+  /// Parties ouvertes sur le quota offert, et la taille de ce quota.
+  /// [freeGames] null = licence payée, sans limite.
+  final int freeGamesUsed;
+  final int? freeGames;
+
+  /// Statut Stripe tel que le webhook l'a vu en dernier ; `none` sans
+  /// abonnement.
+  final String status;
+
+  bool get isValid =>
+      expiresAt.isAfter(DateTime.now()) &&
+      status != 'unpaid' &&
+      status != 'incomplete_expired';
+
+  bool get quotaExhausted => freeGames != null && freeGamesUsed >= freeGames!;
 }
 
 /// Où en est l'abonnement d'une école.
@@ -91,10 +120,17 @@ enum AccountState {
   noLicence,
   active,
 
+  /// Les parties offertes sont consommées : il faut une licence.
+  quotaExhausted,
+
   /// L'échéance est passée. Rien n'est perdu — l'historique reste, la
   /// console s'ouvre — mais aucune séance ne s'ouvre plus.
   expired,
 }
+
+/// Ce qui empêche, à cet instant, d'ouvrir une séance. Jugé par le
+/// serveur avec les mêmes règles que l'ouverture elle-même.
+enum StartBlocker { none, expired, quota, sessions }
 
 /// L'espace client d'une école : ce qu'elle a acheté, ce qu'il lui
 /// reste, et ce qui l'empêche éventuellement d'ouvrir une salle.
@@ -114,13 +150,31 @@ class Account {
     required this.daysLeft,
     required this.subscribed,
     this.schoolName,
+    this.canStart = false,
+    this.blocker = StartBlocker.none,
+    this.free = false,
+    this.freeGames,
+    this.freeGamesUsed = 0,
+    this.status = 'none',
+    this.cancelAtPeriodEnd = false,
+    this.hasCustomer = false,
+    this.firstName,
+    this.lastName,
   });
 
   factory Account.fromJson(Map<String, dynamic> json) => Account(
     state: switch (json['state']) {
       'active' => AccountState.active,
       'expired' => AccountState.expired,
+      'quota_exhausted' => AccountState.quotaExhausted,
       _ => AccountState.noLicence,
+    },
+    canStart: json['canStart'] == true,
+    blocker: switch (json['blocker']) {
+      'expired' => StartBlocker.expired,
+      'quota' => StartBlocker.quota,
+      'sessions' => StartBlocker.sessions,
+      _ => StartBlocker.none,
     },
     email: json['email'] as String? ?? '',
     planLabel: json['planLabel'] as String? ?? '',
@@ -130,6 +184,14 @@ class Account {
     daysLeft: (json['daysLeft'] as num?)?.toInt() ?? 0,
     subscribed: json['subscribed'] == true,
     schoolName: (json['schoolName'] as String?)?.trim(),
+    free: json['free'] == true,
+    freeGames: (json['freeGames'] as num?)?.toInt(),
+    freeGamesUsed: (json['freeGamesUsed'] as num?)?.toInt() ?? 0,
+    status: json['status'] as String? ?? 'none',
+    cancelAtPeriodEnd: json['cancelAtPeriodEnd'] == true,
+    hasCustomer: json['hasCustomer'] == true,
+    firstName: (json['firstName'] as String?)?.trim(),
+    lastName: (json['lastName'] as String?)?.trim(),
   );
 
   final AccountState state;
@@ -150,7 +212,32 @@ class Account {
   final bool subscribed;
   final String? schoolName;
 
-  bool get locked => state != AccountState.active;
+  /// Le verdict du serveur : peut-on ouvrir une séance maintenant, et
+  /// sinon pourquoi. Le bouton « Lancer une partie » ne promet que ça.
+  final bool canStart;
+  final StartBlocker blocker;
+
+  /// Compte découverte : [freeGames] parties offertes, [freeGamesUsed]
+  /// consommées.
+  final bool free;
+  final int? freeGames;
+  final int freeGamesUsed;
+  int get freeGamesLeft =>
+      freeGames == null ? 0 : (freeGames! - freeGamesUsed).clamp(0, freeGames!);
+
+  /// Statut Stripe brut, et si le renouvellement a été annulé — la
+  /// licence court alors jusqu'à l'échéance, puis s'arrête.
+  final String status;
+  final bool cancelAtPeriodEnd;
+  bool get paymentFailed => status == 'past_due' || status == 'unpaid';
+
+  /// Un client Stripe existe : le portail de gestion a quelqu'un à
+  /// montrer.
+  final bool hasCustomer;
+  final String? firstName;
+  final String? lastName;
+
+  bool get locked => state == AccountState.expired;
 
   /// Assez proche de la fin pour qu'on le dise sans attendre. Un
   /// trimestre scolaire dure douze semaines : prévenir un mois avant
@@ -278,6 +365,43 @@ class ReportPupil {
   }
 }
 
+/// Un appareil qui joue : une séance ouverte, et son dernier signe de vie.
+@immutable
+class ActiveSession {
+  const ActiveSession({
+    required this.sessionId,
+    required this.code,
+    required this.lessonId,
+    required this.openedAt,
+    required this.lastSeenAt,
+    required this.alive,
+    this.deviceId,
+  });
+
+  factory ActiveSession.fromJson(Map<String, dynamic> json) => ActiveSession(
+    sessionId: json['sessionId'] as String? ?? '',
+    code: json['code'] as String? ?? '',
+    lessonId: json['lessonId'] as String? ?? '',
+    deviceId: json['deviceId'] as String?,
+    openedAt: DateTime.tryParse('${json['openedAt']}')?.toLocal() ??
+        DateTime.now(),
+    lastSeenAt: DateTime.tryParse('${json['lastSeenAt']}')?.toLocal() ??
+        DateTime.now(),
+    alive: json['alive'] == true,
+  );
+
+  final String sessionId;
+  final String code;
+  final String lessonId;
+  final String? deviceId;
+  final DateTime openedAt;
+  final DateTime lastSeenAt;
+
+  /// Vrai tant que l'appareil bat ; faux au-delà du bail, et la place est
+  /// alors libre même si la séance n'a pas été fermée.
+  final bool alive;
+}
+
 /// The three gestures that run a lesson.
 enum TeacherAction { ask, reveal, close }
 
@@ -301,6 +425,32 @@ abstract class TeacherGateway {
   /// qu'on retrouve un mot de passe oublié. Il demande, lui, un service
   /// d'e-mail qui fonctionne.
   Future<void> sendMagicLink(String email);
+
+  /// Créer un compte. Gratuit, et il donne cinq parties. Rend vrai si
+  /// une confirmation par e-mail est attendue avant de pouvoir entrer.
+  Future<bool> signUp({required String email, required String password});
+
+  /// Changer son mot de passe — le geste qui suit un lien de secours.
+  Future<void> updatePassword(String newPassword);
+
+  /// Signe de vie d'une séance ouverte, toutes les soixante secondes.
+  Future<void> heartbeat(String sessionId);
+
+  /// Les appareils qui jouent sur cette licence.
+  Future<List<ActiveSession>> sessions();
+
+  /// Supprimer le compte : profil, licence, séances et bilans. Les
+  /// factures restent chez Stripe.
+  Future<void> deleteAccount();
+
+  /// L'adresse de paiement Stripe pour cette licence, créée par le
+  /// serveur — le prix vit là-bas. Null si le paiement en ligne n'est pas
+  /// configuré.
+  Future<Uri?> checkoutUrl();
+
+  /// Le portail Stripe où l'école gère son abonnement : moyen de
+  /// paiement, factures, résiliation. Null sans client Stripe.
+  Future<Uri?> portalUrl();
 
   /// Picks up a session: the tokens a magic link just dropped in the
   /// address bar, or the ones this browser already kept. Returns whether
@@ -334,6 +484,11 @@ abstract class TeacherGateway {
     int secondsPerQuestion,
     bool keepIndividualScores,
     ClassroomScoring scoring,
+
+    /// Clé de rejeu : la même demande renvoyée deux fois rend la même
+    /// séance et ne consomme qu'un crédit.
+    String? requestId,
+    String? deviceId,
   });
 
   Future<void> advance(String sessionId, TeacherAction action);

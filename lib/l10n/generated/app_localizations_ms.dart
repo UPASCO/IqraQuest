@@ -1391,6 +1391,139 @@ class AppLocalizationsMs extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'Cipta akaun';
+
+  @override
+  String get teacherHaveAccount => 'Saya sudah ada akaun';
+
+  @override
+  String get teacherSignUpHint =>
+      'Percuma, tanpa kad. Akaun anda menerima lima permainan untuk mencuba mod Sekolah.';
+
+  @override
+  String get teacherSignUpButton => 'Cipta akaun saya';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'Sahkan alamat anda';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return 'E-mel baru dihantar ke $email. Buka pautan di dalamnya, kemudian kembali untuk log masuk.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'Alamat ini sudah ada akaun. Log masuk, atau gunakan «Lupa kata laluan?».';
+
+  @override
+  String get teacherWeakPassword =>
+      'Kata laluan mesti sekurang-kurangnya enam aksara.';
+
+  @override
+  String get teacherOfferDiscovery => 'Tawaran perkenalan';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left / $total permainan percuma berbaki',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'Permainan percuma anda telah habis';
+
+  @override
+  String get teacherQuotaBody =>
+      'Anda telah menggunakan lima permainan percuma. Beralih ke IqraQuest École untuk mencipta permainan tanpa had selama setahun.';
+
+  @override
+  String get teacherSubscribe => 'Langgan IqraQuest École';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'Langganan diuruskan daripada ruang sekolah anda, di komputer.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'Peranti aktif: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'Urus peranti saya';
+
+  @override
+  String get teacherDeviceLimitTitle => 'Had peranti dicapai';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'Lesen anda membenarkan $count sesi permainan serentak. Tutup sesi di peranti lain, atau putuskan di bawah.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'Putuskan';
+
+  @override
+  String get teacherNoActiveDevices => 'Tiada peranti sedang bermain sekarang.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return 'Sejak $time';
+  }
+
+  @override
+  String get teacherDeviceStale => 'Tiada jawapan — tempat dibebaskan';
+
+  @override
+  String get teacherManageSubscription => 'Urus langganan saya';
+
+  @override
+  String get teacherSubscriptionActive => 'Lesen IqraQuest École anda aktif.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'Pembaharuan dibatalkan. Lesen anda kekal aktif sehingga $date.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'Masalah pembayaran';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'Langganan anda memerlukan kemas kini kaedah pembayaran. Sesi yang sedang berjalan boleh tamat; yang seterusnya menunggu pembetulan.';
+
+  @override
+  String get teacherUpdatePayment => 'Kemas kini kaedah pembayaran saya';
+
+  @override
+  String get teacherChangePassword => 'Tukar kata laluan saya';
+
+  @override
+  String get teacherNewPassword => 'Kata laluan baharu';
+
+  @override
+  String get teacherPasswordChanged => 'Kata laluan ditukar.';
+
+  @override
+  String get teacherDeleteAccount => 'Padam akaun saya';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'Profil, lesen, sesi dan laporan anda akan dipadam. Invois kekal di Stripe, yang wajib menyimpannya. Tindakan ini muktamad.';
+
+  @override
+  String get teacherConfirmDelete => 'Ya, padam selama-lamanya';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'Sambungan diperlukan untuk memulakan permainan Sekolah baharu.';
+
+  @override
+  String get teacherAccountSection => 'Akaun saya';
+
+  @override
   String get teacherPasswordLabel => 'Kata laluan';
 
   @override

@@ -1394,6 +1394,140 @@ class AppLocalizationsUr extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'اکاؤنٹ بنائیں';
+
+  @override
+  String get teacherHaveAccount => 'میرا اکاؤنٹ پہلے سے ہے';
+
+  @override
+  String get teacherSignUpHint =>
+      'مفت، بغیر کارڈ کے۔ آپ کے اکاؤنٹ کو اسکول موڈ آزمانے کے لیے پانچ کھیل ملتے ہیں۔';
+
+  @override
+  String get teacherSignUpButton => 'میرا اکاؤنٹ بنائیں';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'اپنے پتے کی تصدیق کریں';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return '$email پر ای میل بھیج دی گئی ہے۔ اس میں موجود لنک کھولیں، پھر واپس آ کر سائن ان کریں۔';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'اس پتے کا اکاؤنٹ پہلے سے موجود ہے۔ سائن ان کریں یا «پاس ورڈ بھول گئے؟» استعمال کریں۔';
+
+  @override
+  String get teacherWeakPassword => 'پاس ورڈ کم از کم چھ حروف کا ہونا چاہیے۔';
+
+  @override
+  String get teacherOfferDiscovery => 'تعارفی پیشکش';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$total میں سے $left مفت کھیل باقی',
+      one: '$total میں سے $left مفت کھیل باقی',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'آپ کے مفت کھیل ختم ہو گئے';
+
+  @override
+  String get teacherQuotaBody =>
+      'آپ نے اپنے پانچ مفت کھیل استعمال کر لیے۔ ایک سال تک لامحدود کھیل بنانے کے لیے IqraQuest École پر جائیں۔';
+
+  @override
+  String get teacherSubscribe => 'IqraQuest École کی رکنیت لیں';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'رکنیت آپ کے ادارے کے اکاؤنٹ سے، کمپیوٹر پر منظم ہوتی ہے۔';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'فعال آلات: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'میرے آلات منظم کریں';
+
+  @override
+  String get teacherDeviceLimitTitle => 'آلات کی حد پوری ہو گئی';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'آپ کا لائسنس $count بیک وقت کھیل نشستوں کی اجازت دیتا ہے۔ دوسرے آلے پر نشست بند کریں یا نیچے سے منقطع کریں۔';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'منقطع کریں';
+
+  @override
+  String get teacherNoActiveDevices => 'اس وقت کوئی آلہ نہیں کھیل رہا۔';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return '$time سے';
+  }
+
+  @override
+  String get teacherDeviceStale => 'جواب نہیں — جگہ خالی';
+
+  @override
+  String get teacherManageSubscription => 'میری رکنیت منظم کریں';
+
+  @override
+  String get teacherSubscriptionActive =>
+      'آپ کا IqraQuest École لائسنس فعال ہے۔';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'تجدید منسوخ۔ آپ کا لائسنس $date تک فعال رہے گا۔';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'ادائیگی کا مسئلہ';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'آپ کی رکنیت کو ادائیگی کے طریقے کی تازہ کاری درکار ہے۔ جاری نشست مکمل ہو سکتی ہے؛ اگلی درستی کا انتظار کرے گی۔';
+
+  @override
+  String get teacherUpdatePayment => 'ادائیگی کا طریقہ اپ ڈیٹ کریں';
+
+  @override
+  String get teacherChangePassword => 'پاس ورڈ تبدیل کریں';
+
+  @override
+  String get teacherNewPassword => 'نیا پاس ورڈ';
+
+  @override
+  String get teacherPasswordChanged => 'پاس ورڈ تبدیل ہو گیا۔';
+
+  @override
+  String get teacherDeleteAccount => 'میرا اکاؤنٹ حذف کریں';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'آپ کا پروفائل، لائسنس، نشستیں اور رپورٹیں مٹ جائیں گی۔ رسیدیں Stripe کے پاس رہیں گی جو انہیں رکھنے کا پابند ہے۔ یہ عمل حتمی ہے۔';
+
+  @override
+  String get teacherConfirmDelete => 'ہاں، مستقل حذف کریں';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'نیا اسکول کھیل شروع کرنے کے لیے کنکشن درکار ہے۔';
+
+  @override
+  String get teacherAccountSection => 'میرا اکاؤنٹ';
+
+  @override
   String get teacherPasswordLabel => 'پاس ورڈ';
 
   @override

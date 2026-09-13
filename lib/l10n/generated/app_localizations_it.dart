@@ -1410,6 +1410,142 @@ class AppLocalizationsIt extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'Crea un account';
+
+  @override
+  String get teacherHaveAccount => 'Ho già un account';
+
+  @override
+  String get teacherSignUpHint =>
+      'Gratis, senza carta. Il tuo account riceve cinque partite per provare la modalità Scuola.';
+
+  @override
+  String get teacherSignUpButton => 'Crea il mio account';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'Conferma il tuo indirizzo';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return 'Un\'e-mail è appena partita per $email. Apri il link che contiene, poi torna ad accedere.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'Questo indirizzo ha già un account. Accedi, o usa «Password dimenticata?».';
+
+  @override
+  String get teacherWeakPassword =>
+      'La password deve avere almeno sei caratteri.';
+
+  @override
+  String get teacherOfferDiscovery => 'Offerta di prova';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left / $total partite gratis rimaste',
+      one: '$left / $total partita gratis rimasta',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'Le tue partite gratis sono finite';
+
+  @override
+  String get teacherQuotaBody =>
+      'Hai usato le tue cinque partite gratis. Passa a IqraQuest École per creare partite senza limiti per un anno.';
+
+  @override
+  String get teacherSubscribe => 'Abbonati a IqraQuest École';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'L\'abbonamento si gestisce dall\'area del tuo istituto, su computer.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'Dispositivi attivi: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'Gestisci i miei dispositivi';
+
+  @override
+  String get teacherDeviceLimitTitle => 'Limite di dispositivi raggiunto';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'La tua licenza consente $count sessioni di gioco simultanee. Chiudi una sessione su un altro dispositivo, o scollegalo qui sotto.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'Scollega';
+
+  @override
+  String get teacherNoActiveDevices =>
+      'Nessun dispositivo sta giocando in questo momento.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return 'Dalle $time';
+  }
+
+  @override
+  String get teacherDeviceStale => 'Non risponde — posto liberato';
+
+  @override
+  String get teacherManageSubscription => 'Gestisci il mio abbonamento';
+
+  @override
+  String get teacherSubscriptionActive =>
+      'La tua licenza IqraQuest École è attiva.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'Rinnovo annullato. La tua licenza resta attiva fino al $date.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'Problema di pagamento';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'Il tuo abbonamento richiede un metodo di pagamento aggiornato. Una sessione in corso può finire; la prossima attende la regolarizzazione.';
+
+  @override
+  String get teacherUpdatePayment => 'Aggiorna il mio metodo di pagamento';
+
+  @override
+  String get teacherChangePassword => 'Cambia la mia password';
+
+  @override
+  String get teacherNewPassword => 'Nuova password';
+
+  @override
+  String get teacherPasswordChanged => 'Password cambiata.';
+
+  @override
+  String get teacherDeleteAccount => 'Elimina il mio account';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'Profilo, licenza, sessioni e relativi report saranno cancellati. Le fatture restano a Stripe, tenuto a conservarle. L\'azione è definitiva.';
+
+  @override
+  String get teacherConfirmDelete => 'Sì, elimina definitivamente';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'Serve una connessione per iniziare una nuova partita Scuola.';
+
+  @override
+  String get teacherAccountSection => 'Il mio account';
+
+  @override
   String get teacherPasswordLabel => 'Password';
 
   @override

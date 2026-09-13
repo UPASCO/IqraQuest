@@ -3219,6 +3219,343 @@ s("teacherBackToSite", "Console: the way back to iqraquest.org",
   tr="iqraquest.org", id="iqraquest.org", ur="iqraquest.org",
   ms="iqraquest.org", it="iqraquest.org", nl="iqraquest.org")
 
+s("teacherCreateAccount", "Console: switch to the sign-up form",
+  fr="Créer un compte", en="Create an account", ar="إنشاء حساب",
+  es="Crear una cuenta", pt="Criar uma conta", de="Konto erstellen",
+  tr="Hesap oluştur", id="Buat akun", ur="اکاؤنٹ بنائیں",
+  ms="Cipta akaun", it="Crea un account", nl="Account aanmaken")
+
+s("teacherHaveAccount", "Console: back from sign-up to sign-in",
+  fr="J'ai déjà un compte", en="I already have an account",
+  ar="لديّ حساب بالفعل", es="Ya tengo una cuenta", pt="Já tenho uma conta",
+  de="Ich habe schon ein Konto", tr="Zaten hesabım var",
+  id="Saya sudah punya akun", ur="میرا اکاؤنٹ پہلے سے ہے",
+  ms="Saya sudah ada akaun", it="Ho già un account", nl="Ik heb al een account")
+
+s("teacherSignUpHint", "Console: what a new account gives",
+  fr="Gratuit, sans carte bancaire. Votre compte reçoit cinq parties offertes pour essayer le mode École.",
+  en="Free, no card needed. Your account gets five games to try the School mode.",
+  ar="مجاني وبلا بطاقة بنكية. يحصل حسابك على خمس حصص مجانية لتجربة وضع المدرسة.",
+  es="Gratis, sin tarjeta. Tu cuenta recibe cinco partidas para probar el modo Escuela.",
+  pt="Grátis, sem cartão. A sua conta recebe cinco partidas para experimentar o modo Escola.",
+  de="Kostenlos, ohne Karte. Dein Konto bekommt fünf Spiele, um den Schulmodus auszuprobieren.",
+  tr="Ücretsiz, kart gerekmez. Hesabınıza Okul modunu denemek için beş oyun verilir.",
+  id="Gratis, tanpa kartu. Akun Anda mendapat lima permainan untuk mencoba mode Sekolah.",
+  ur="مفت، بغیر کارڈ کے۔ آپ کے اکاؤنٹ کو اسکول موڈ آزمانے کے لیے پانچ کھیل ملتے ہیں۔",
+  ms="Percuma, tanpa kad. Akaun anda menerima lima permainan untuk mencuba mod Sekolah.",
+  it="Gratis, senza carta. Il tuo account riceve cinque partite per provare la modalità Scuola.",
+  nl="Gratis, zonder kaart. Je account krijgt vijf spellen om de Schoolmodus te proberen.")
+
+s("teacherSignUpButton", "Console: the button that creates the account",
+  fr="Créer mon compte", en="Create my account", ar="أنشئ حسابي",
+  es="Crear mi cuenta", pt="Criar a minha conta", de="Mein Konto erstellen",
+  tr="Hesabımı oluştur", id="Buat akun saya", ur="میرا اکاؤنٹ بنائیں",
+  ms="Cipta akaun saya", it="Crea il mio account", nl="Mijn account aanmaken")
+
+s("teacherAwaitingConfirmationTitle", "Console: the account exists, the e-mail is on its way",
+  fr="Confirmez votre adresse", en="Confirm your address", ar="أكّد عنوانك",
+  es="Confirma tu dirección", pt="Confirme o seu endereço", de="Bestätige deine Adresse",
+  tr="Adresinizi doğrulayın", id="Konfirmasi alamat Anda", ur="اپنے پتے کی تصدیق کریں",
+  ms="Sahkan alamat anda", it="Conferma il tuo indirizzo", nl="Bevestig je adres")
+
+s("teacherAwaitingConfirmationBody", "Console: what to do with the confirmation e-mail",
+  ph={"email": "String"},
+  fr="Un e-mail vient de partir à {email}. Ouvrez le lien qu'il contient, puis revenez vous connecter.",
+  en="An e-mail is on its way to {email}. Open the link inside, then come back and sign in.",
+  ar="أُرسل بريد إلى {email}. افتح الرابط الذي فيه ثم عد وسجّل الدخول.",
+  es="Acabamos de enviar un correo a {email}. Abre el enlace que contiene y vuelve a iniciar sesión.",
+  pt="Acabámos de enviar um e-mail para {email}. Abra o link que contém e volte para entrar.",
+  de="Eine E-Mail ist unterwegs an {email}. Öffne den Link darin und melde dich dann an.",
+  tr="{email} adresine bir e-posta gönderildi. İçindeki bağlantıyı açın, sonra dönüp giriş yapın.",
+  id="Email baru saja dikirim ke {email}. Buka tautan di dalamnya, lalu kembali untuk masuk.",
+  ur="{email} پر ای میل بھیج دی گئی ہے۔ اس میں موجود لنک کھولیں، پھر واپس آ کر سائن ان کریں۔",
+  ms="E-mel baru dihantar ke {email}. Buka pautan di dalamnya, kemudian kembali untuk log masuk.",
+  it="Un'e-mail è appena partita per {email}. Apri il link che contiene, poi torna ad accedere.",
+  nl="Er is een e-mail onderweg naar {email}. Open de link erin en kom dan terug om in te loggen.")
+
+s("teacherEmailTaken", "Console: sign-up refused, the address already has an account",
+  fr="Cette adresse a déjà un compte. Connectez-vous, ou utilisez « Mot de passe oublié ? ».",
+  en="This address already has an account. Sign in, or use “Forgotten your password?”.",
+  ar="هذا العنوان له حساب بالفعل. سجّل الدخول أو استخدم «هل نسيت كلمة المرور؟».",
+  es="Esta dirección ya tiene una cuenta. Inicia sesión o usa «¿Olvidaste tu contraseña?».",
+  pt="Este endereço já tem uma conta. Entre, ou use «Esqueceu-se da palavra-passe?».",
+  de="Diese Adresse hat schon ein Konto. Melde dich an oder nutze „Passwort vergessen?“.",
+  tr="Bu adresin zaten bir hesabı var. Giriş yapın veya «Parolanızı mı unuttunuz?» kullanın.",
+  id="Alamat ini sudah punya akun. Masuk, atau gunakan «Lupa kata sandi?».",
+  ur="اس پتے کا اکاؤنٹ پہلے سے موجود ہے۔ سائن ان کریں یا «پاس ورڈ بھول گئے؟» استعمال کریں۔",
+  ms="Alamat ini sudah ada akaun. Log masuk, atau gunakan «Lupa kata laluan?».",
+  it="Questo indirizzo ha già un account. Accedi, o usa «Password dimenticata?».",
+  nl="Dit adres heeft al een account. Log in, of gebruik „Wachtwoord vergeten?”.")
+
+s("teacherWeakPassword", "Console: the password is too short",
+  fr="Le mot de passe doit faire au moins six caractères.",
+  en="The password must be at least six characters long.",
+  ar="يجب أن تتكون كلمة المرور من ستة أحرف على الأقل.",
+  es="La contraseña debe tener al menos seis caracteres.",
+  pt="A palavra-passe deve ter pelo menos seis caracteres.",
+  de="Das Passwort muss mindestens sechs Zeichen haben.",
+  tr="Parola en az altı karakter olmalı.",
+  id="Kata sandi harus minimal enam karakter.",
+  ur="پاس ورڈ کم از کم چھ حروف کا ہونا چاہیے۔",
+  ms="Kata laluan mesti sekurang-kurangnya enam aksara.",
+  it="La password deve avere almeno sei caratteri.",
+  nl="Het wachtwoord moet minstens zes tekens lang zijn.")
+
+s("teacherOfferDiscovery", "Console: the free plan's name",
+  fr="Offre découverte", en="Discovery offer", ar="عرض الاكتشاف",
+  es="Oferta de prueba", pt="Oferta de descoberta", de="Kennenlern-Angebot",
+  tr="Keşif teklifi", id="Paket perkenalan", ur="تعارفی پیشکش",
+  ms="Tawaran perkenalan", it="Offerta di prova", nl="Kennismakingsaanbod")
+
+s("teacherFreeGamesLeft", "Console: free games remaining out of the quota",
+  ph={"left": "num", "total": "num"},
+  fr="{left, plural, one{{left} / {total} partie offerte restante} other{{left} / {total} parties offertes restantes}}",
+  en="{left, plural, one{{left} / {total} free game left} other{{left} / {total} free games left}}",
+  ar="{left, plural, zero{لا حصص مجانية متبقية من {total}} one{حصة مجانية واحدة متبقية من {total}} two{حصتان مجانيتان متبقيتان من {total}} few{{left} حصص مجانية متبقية من {total}} many{{left} حصة مجانية متبقية من {total}} other{{left} حصة مجانية متبقية من {total}}}",
+  es="{left, plural, one{{left} / {total} partida gratis restante} other{{left} / {total} partidas gratis restantes}}",
+  pt="{left, plural, one{{left} / {total} partida grátis restante} other{{left} / {total} partidas grátis restantes}}",
+  de="{left, plural, one{{left} / {total} Gratisspiel übrig} other{{left} / {total} Gratisspiele übrig}}",
+  tr="{left, plural, other{{total} ücretsiz oyundan {left} kaldı}}",
+  id="{left, plural, other{{left} / {total} permainan gratis tersisa}}",
+  ur="{left, plural, one{{total} میں سے {left} مفت کھیل باقی} other{{total} میں سے {left} مفت کھیل باقی}}",
+  ms="{left, plural, other{{left} / {total} permainan percuma berbaki}}",
+  it="{left, plural, one{{left} / {total} partita gratis rimasta} other{{left} / {total} partite gratis rimaste}}",
+  nl="{left, plural, one{{left} / {total} gratis spel over} other{{left} / {total} gratis spellen over}}")
+
+s("teacherQuotaTitle", "Console: the five free games are used up",
+  fr="Vos parties offertes sont utilisées",
+  en="Your free games are used up", ar="استُخدمت حصصك المجانية",
+  es="Has usado tus partidas gratis", pt="As suas partidas grátis foram usadas",
+  de="Deine Gratisspiele sind aufgebraucht", tr="Ücretsiz oyunlarınız bitti",
+  id="Permainan gratis Anda sudah habis", ur="آپ کے مفت کھیل ختم ہو گئے",
+  ms="Permainan percuma anda telah habis", it="Le tue partite gratis sono finite",
+  nl="Je gratis spellen zijn op")
+
+s("teacherQuotaBody", "Console: what the subscription gives after the quota",
+  fr="Vous avez utilisé vos cinq parties offertes. Passez à IqraQuest École pour créer des parties sans limite pendant un an.",
+  en="You have used your five free games. Move to IqraQuest École to create games without limit for a year.",
+  ar="لقد استخدمت حصصك الخمس المجانية. انتقل إلى IqraQuest École لإنشاء حصص بلا حدود لمدة عام.",
+  es="Has usado tus cinco partidas gratis. Pasa a IqraQuest École para crear partidas sin límite durante un año.",
+  pt="Usou as suas cinco partidas grátis. Passe para o IqraQuest École para criar partidas sem limite durante um ano.",
+  de="Du hast deine fünf Gratisspiele genutzt. Wechsle zu IqraQuest École und erstelle ein Jahr lang unbegrenzt Spiele.",
+  tr="Beş ücretsiz oyununuzu kullandınız. Bir yıl boyunca sınırsız oyun için IqraQuest École'e geçin.",
+  id="Anda telah memakai lima permainan gratis. Beralih ke IqraQuest École untuk membuat permainan tanpa batas selama setahun.",
+  ur="آپ نے اپنے پانچ مفت کھیل استعمال کر لیے۔ ایک سال تک لامحدود کھیل بنانے کے لیے IqraQuest École پر جائیں۔",
+  ms="Anda telah menggunakan lima permainan percuma. Beralih ke IqraQuest École untuk mencipta permainan tanpa had selama setahun.",
+  it="Hai usato le tue cinque partite gratis. Passa a IqraQuest École per creare partite senza limiti per un anno.",
+  nl="Je hebt je vijf gratis spellen gebruikt. Stap over op IqraQuest École om een jaar lang onbeperkt spellen te maken.")
+
+s("teacherSubscribe", "Console: the button that opens Stripe Checkout (price shown there, never here)",
+  fr="S'abonner à IqraQuest École", en="Subscribe to IqraQuest École",
+  ar="اشترك في IqraQuest École", es="Suscribirse a IqraQuest École",
+  pt="Subscrever o IqraQuest École", de="IqraQuest École abonnieren",
+  tr="IqraQuest École'e abone ol", id="Berlangganan IqraQuest École",
+  ur="IqraQuest École کی رکنیت لیں", ms="Langgan IqraQuest École",
+  it="Abbonati a IqraQuest École", nl="Abonneer op IqraQuest École")
+
+s("teacherSubscribeOnSite", "Console, on a phone: where the subscription is managed — no link, no price",
+  fr="L'abonnement se gère depuis l'espace École de votre établissement, sur ordinateur.",
+  en="The subscription is managed from your school's account, on a computer.",
+  ar="يُدار الاشتراك من حساب مؤسستك، على الحاسوب.",
+  es="La suscripción se gestiona desde el espacio de tu centro, en un ordenador.",
+  pt="A subscrição gere-se a partir da área da sua escola, num computador.",
+  de="Das Abonnement wird über den Bereich deiner Schule verwaltet, am Computer.",
+  tr="Abonelik, okulunuzun alanından bilgisayarda yönetilir.",
+  id="Langganan dikelola dari ruang sekolah Anda, di komputer.",
+  ur="رکنیت آپ کے ادارے کے اکاؤنٹ سے، کمپیوٹر پر منظم ہوتی ہے۔",
+  ms="Langganan diuruskan daripada ruang sekolah anda, di komputer.",
+  it="L'abbonamento si gestisce dall'area del tuo istituto, su computer.",
+  nl="Het abonnement wordt beheerd vanuit de ruimte van je school, op een computer.")
+
+s("teacherDevicesActive", "Console: active game devices out of the licence's limit",
+  ph={"used": "num", "total": "num"},
+  fr="Appareils actifs : {used} / {total}", en="Active devices: {used} / {total}",
+  ar="الأجهزة النشطة: {used} / {total}", es="Dispositivos activos: {used} / {total}",
+  pt="Dispositivos ativos: {used} / {total}", de="Aktive Geräte: {used} / {total}",
+  tr="Etkin cihazlar: {used} / {total}", id="Perangkat aktif: {used} / {total}",
+  ur="فعال آلات: {used} / {total}", ms="Peranti aktif: {used} / {total}",
+  it="Dispositivi attivi: {used} / {total}", nl="Actieve apparaten: {used} / {total}")
+
+s("teacherManageDevices", "Console: open the list of playing devices",
+  fr="Gérer mes appareils", en="Manage my devices", ar="إدارة أجهزتي",
+  es="Gestionar mis dispositivos", pt="Gerir os meus dispositivos",
+  de="Meine Geräte verwalten", tr="Cihazlarımı yönet", id="Kelola perangkat saya",
+  ur="میرے آلات منظم کریں", ms="Urus peranti saya", it="Gestisci i miei dispositivi",
+  nl="Mijn apparaten beheren")
+
+s("teacherDeviceLimitTitle", "Console: a third device was refused",
+  fr="Limite d'appareils atteinte", en="Device limit reached",
+  ar="بلغت حد الأجهزة", es="Límite de dispositivos alcanzado",
+  pt="Limite de dispositivos atingido", de="Gerätelimit erreicht",
+  tr="Cihaz sınırına ulaşıldı", id="Batas perangkat tercapai",
+  ur="آلات کی حد پوری ہو گئی", ms="Had peranti dicapai",
+  it="Limite di dispositivi raggiunto", nl="Apparaatlimiet bereikt")
+
+s("teacherDeviceLimitBody", "Console: what the limit is and how to free a place",
+  ph={"count": "num"},
+  fr="Votre licence permet {count} sessions de jeu simultanées. Fermez une séance sur un autre appareil, ou déconnectez-le ci-dessous.",
+  en="Your licence allows {count} simultaneous game sessions. Close a session on another device, or disconnect it below.",
+  ar="تسمح رخصتك بـ {count} من جلسات اللعب المتزامنة. أغلق حصة على جهاز آخر أو افصله أدناه.",
+  es="Tu licencia permite {count} sesiones de juego simultáneas. Cierra una sesión en otro dispositivo o desconéctalo abajo.",
+  pt="A sua licença permite {count} sessões de jogo em simultâneo. Feche uma sessão noutro dispositivo ou desligue-o abaixo.",
+  de="Deine Lizenz erlaubt {count} gleichzeitige Spielsitzungen. Schließe eine Sitzung auf einem anderen Gerät oder trenne es unten.",
+  tr="Lisansınız {count} eşzamanlı oyun oturumuna izin verir. Başka bir cihazdaki oturumu kapatın veya aşağıdan bağlantısını kesin.",
+  id="Lisensi Anda mengizinkan {count} sesi permainan serentak. Tutup sesi di perangkat lain, atau putuskan di bawah.",
+  ur="آپ کا لائسنس {count} بیک وقت کھیل نشستوں کی اجازت دیتا ہے۔ دوسرے آلے پر نشست بند کریں یا نیچے سے منقطع کریں۔",
+  ms="Lesen anda membenarkan {count} sesi permainan serentak. Tutup sesi di peranti lain, atau putuskan di bawah.",
+  it="La tua licenza consente {count} sessioni di gioco simultanee. Chiudi una sessione su un altro dispositivo, o scollegalo qui sotto.",
+  nl="Je licentie staat {count} gelijktijdige spelsessies toe. Sluit een sessie op een ander apparaat, of koppel het hieronder los.")
+
+s("teacherDisconnectDevice", "Console: close another device's session",
+  fr="Déconnecter", en="Disconnect", ar="فصل", es="Desconectar",
+  pt="Desligar", de="Trennen", tr="Bağlantıyı kes", id="Putuskan",
+  ur="منقطع کریں", ms="Putuskan", it="Scollega", nl="Loskoppelen")
+
+s("teacherNoActiveDevices", "Console: no device is playing right now",
+  fr="Aucun appareil ne joue en ce moment.", en="No device is playing right now.",
+  ar="لا يوجد جهاز يلعب الآن.", es="Ningún dispositivo está jugando ahora.",
+  pt="Nenhum dispositivo está a jogar neste momento.", de="Gerade spielt kein Gerät.",
+  tr="Şu anda hiçbir cihaz oynamıyor.", id="Tidak ada perangkat yang sedang bermain.",
+  ur="اس وقت کوئی آلہ نہیں کھیل رہا۔", ms="Tiada peranti sedang bermain sekarang.",
+  it="Nessun dispositivo sta giocando in questo momento.", nl="Er speelt nu geen apparaat.")
+
+s("teacherDeviceSince", "Console: when a device opened its session",
+  ph={"time": "String"},
+  fr="Depuis {time}", en="Since {time}", ar="منذ {time}", es="Desde {time}",
+  pt="Desde {time}", de="Seit {time}", tr="{time} beri", id="Sejak {time}",
+  ur="{time} سے", ms="Sejak {time}", it="Dalle {time}", nl="Sinds {time}")
+
+s("teacherDeviceStale", "Console: the device stopped answering, its place is free",
+  fr="Sans réponse — place libérée", en="Not answering — place freed",
+  ar="لا يستجيب — تحرّر المكان", es="Sin respuesta — plaza liberada",
+  pt="Sem resposta — lugar libertado", de="Antwortet nicht — Platz frei",
+  tr="Yanıt yok — yer serbest", id="Tidak menjawab — tempat dibebaskan",
+  ur="جواب نہیں — جگہ خالی", ms="Tiada jawapan — tempat dibebaskan",
+  it="Non risponde — posto liberato", nl="Antwoordt niet — plaats vrijgemaakt")
+
+s("teacherManageSubscription", "Console: open the Stripe customer portal",
+  fr="Gérer mon abonnement", en="Manage my subscription", ar="إدارة اشتراكي",
+  es="Gestionar mi suscripción", pt="Gerir a minha subscrição",
+  de="Mein Abonnement verwalten", tr="Aboneliğimi yönet", id="Kelola langganan saya",
+  ur="میری رکنیت منظم کریں", ms="Urus langganan saya", it="Gestisci il mio abbonamento",
+  nl="Mijn abonnement beheren")
+
+s("teacherSubscriptionActive", "Console: the licence is paid and running",
+  fr="Votre licence IqraQuest École est active.", en="Your IqraQuest École licence is active.",
+  ar="رخصتك IqraQuest École نشطة.", es="Tu licencia IqraQuest École está activa.",
+  pt="A sua licença IqraQuest École está ativa.", de="Deine IqraQuest-École-Lizenz ist aktiv.",
+  tr="IqraQuest École lisansınız etkin.", id="Lisensi IqraQuest École Anda aktif.",
+  ur="آپ کا IqraQuest École لائسنس فعال ہے۔", ms="Lesen IqraQuest École anda aktif.",
+  it="La tua licenza IqraQuest École è attiva.", nl="Je IqraQuest École-licentie is actief.")
+
+s("teacherCancelAtPeriodEnd", "Console: the renewal was cancelled, access lasts to the date",
+  ph={"date": "String"},
+  fr="Renouvellement annulé. Votre licence reste active jusqu'au {date}.",
+  en="Renewal cancelled. Your licence stays active until {date}.",
+  ar="أُلغي التجديد. تبقى رخصتك نشطة حتى {date}.",
+  es="Renovación cancelada. Tu licencia sigue activa hasta el {date}.",
+  pt="Renovação cancelada. A sua licença continua ativa até {date}.",
+  de="Verlängerung gekündigt. Deine Lizenz bleibt bis {date} aktiv.",
+  tr="Yenileme iptal edildi. Lisansınız {date} tarihine kadar etkin kalır.",
+  id="Perpanjangan dibatalkan. Lisensi Anda tetap aktif hingga {date}.",
+  ur="تجدید منسوخ۔ آپ کا لائسنس {date} تک فعال رہے گا۔",
+  ms="Pembaharuan dibatalkan. Lesen anda kekal aktif sehingga {date}.",
+  it="Rinnovo annullato. La tua licenza resta attiva fino al {date}.",
+  nl="Verlenging opgezegd. Je licentie blijft actief tot {date}.")
+
+s("teacherPaymentFailedTitle", "Console: the renewal payment failed",
+  fr="Problème de paiement", en="Payment problem", ar="مشكلة في الدفع",
+  es="Problema de pago", pt="Problema de pagamento", de="Zahlungsproblem",
+  tr="Ödeme sorunu", id="Masalah pembayaran", ur="ادائیگی کا مسئلہ",
+  ms="Masalah pembayaran", it="Problema di pagamento", nl="Betalingsprobleem")
+
+s("teacherPaymentFailedBody", "Console: what to do about the failed payment",
+  fr="Votre abonnement nécessite une mise à jour du moyen de paiement. Une séance en cours peut se terminer ; la suivante attend la régularisation.",
+  en="Your subscription needs an updated payment method. A running session can finish; the next one waits for the fix.",
+  ar="يحتاج اشتراكك إلى تحديث وسيلة الدفع. يمكن إنهاء الحصة الجارية؛ والتالية تنتظر التسوية.",
+  es="Tu suscripción necesita actualizar el medio de pago. Una sesión en curso puede terminar; la siguiente espera la regularización.",
+  pt="A sua subscrição precisa de um meio de pagamento atualizado. Uma sessão em curso pode terminar; a seguinte espera a regularização.",
+  de="Dein Abonnement braucht eine aktualisierte Zahlungsmethode. Eine laufende Sitzung darf enden; die nächste wartet auf die Klärung.",
+  tr="Aboneliğiniz için ödeme yönteminin güncellenmesi gerekiyor. Süren oturum bitebilir; sonraki, düzeltmeyi bekler.",
+  id="Langganan Anda memerlukan pembaruan metode pembayaran. Sesi yang berjalan boleh selesai; berikutnya menunggu penyelesaian.",
+  ur="آپ کی رکنیت کو ادائیگی کے طریقے کی تازہ کاری درکار ہے۔ جاری نشست مکمل ہو سکتی ہے؛ اگلی درستی کا انتظار کرے گی۔",
+  ms="Langganan anda memerlukan kemas kini kaedah pembayaran. Sesi yang sedang berjalan boleh tamat; yang seterusnya menunggu pembetulan.",
+  it="Il tuo abbonamento richiede un metodo di pagamento aggiornato. Una sessione in corso può finire; la prossima attende la regolarizzazione.",
+  nl="Je abonnement heeft een bijgewerkte betaalmethode nodig. Een lopende sessie mag eindigen; de volgende wacht op de correctie.")
+
+s("teacherUpdatePayment", "Console: the button to the portal when a payment failed",
+  fr="Mettre à jour mon moyen de paiement", en="Update my payment method",
+  ar="تحديث وسيلة الدفع", es="Actualizar mi medio de pago",
+  pt="Atualizar o meu meio de pagamento", de="Zahlungsmethode aktualisieren",
+  tr="Ödeme yöntemimi güncelle", id="Perbarui metode pembayaran saya",
+  ur="ادائیگی کا طریقہ اپ ڈیٹ کریں", ms="Kemas kini kaedah pembayaran saya",
+  it="Aggiorna il mio metodo di pagamento", nl="Mijn betaalmethode bijwerken")
+
+s("teacherChangePassword", "Console: change the password",
+  fr="Changer mon mot de passe", en="Change my password", ar="تغيير كلمة المرور",
+  es="Cambiar mi contraseña", pt="Alterar a minha palavra-passe", de="Passwort ändern",
+  tr="Parolamı değiştir", id="Ubah kata sandi saya", ur="پاس ورڈ تبدیل کریں",
+  ms="Tukar kata laluan saya", it="Cambia la mia password", nl="Mijn wachtwoord wijzigen")
+
+s("teacherNewPassword", "Console: the new password field",
+  fr="Nouveau mot de passe", en="New password", ar="كلمة مرور جديدة",
+  es="Nueva contraseña", pt="Nova palavra-passe", de="Neues Passwort",
+  tr="Yeni parola", id="Kata sandi baru", ur="نیا پاس ورڈ",
+  ms="Kata laluan baharu", it="Nuova password", nl="Nieuw wachtwoord")
+
+s("teacherPasswordChanged", "Console: the password was changed",
+  fr="Mot de passe modifié.", en="Password changed.", ar="تم تغيير كلمة المرور.",
+  es="Contraseña cambiada.", pt="Palavra-passe alterada.", de="Passwort geändert.",
+  tr="Parola değiştirildi.", id="Kata sandi diubah.", ur="پاس ورڈ تبدیل ہو گیا۔",
+  ms="Kata laluan ditukar.", it="Password cambiata.", nl="Wachtwoord gewijzigd.")
+
+s("teacherDeleteAccount", "Console: delete the account",
+  fr="Supprimer mon compte", en="Delete my account", ar="حذف حسابي",
+  es="Eliminar mi cuenta", pt="Eliminar a minha conta", de="Mein Konto löschen",
+  tr="Hesabımı sil", id="Hapus akun saya", ur="میرا اکاؤنٹ حذف کریں",
+  ms="Padam akaun saya", it="Elimina il mio account", nl="Mijn account verwijderen")
+
+s("teacherDeleteAccountHint", "Console: what deletion removes and what stays",
+  fr="Votre profil, votre licence, vos séances et leurs bilans seront effacés. Les factures restent chez Stripe, qui a l'obligation de les conserver. Cette action est définitive.",
+  en="Your profile, licence, sessions and their reports will be erased. Invoices stay with Stripe, which is required to keep them. This cannot be undone.",
+  ar="سيُمحى ملفك ورخصتك وحصصك وتقاريرها. تبقى الفواتير لدى Stripe الملزم بحفظها. لا يمكن التراجع عن هذا.",
+  es="Se borrarán tu perfil, tu licencia, tus sesiones y sus informes. Las facturas quedan en Stripe, que debe conservarlas. Esta acción es definitiva.",
+  pt="O seu perfil, licença, sessões e relatórios serão apagados. As faturas ficam na Stripe, que é obrigada a guardá-las. Esta ação é definitiva.",
+  de="Profil, Lizenz, Sitzungen und ihre Berichte werden gelöscht. Rechnungen bleiben bei Stripe, das sie aufbewahren muss. Das lässt sich nicht rückgängig machen.",
+  tr="Profiliniz, lisansınız, oturumlarınız ve raporları silinecek. Faturalar, saklamakla yükümlü olan Stripe'ta kalır. Bu işlem geri alınamaz.",
+  id="Profil, lisensi, sesi, dan laporannya akan dihapus. Faktur tetap di Stripe, yang wajib menyimpannya. Tindakan ini permanen.",
+  ur="آپ کا پروفائل، لائسنس، نشستیں اور رپورٹیں مٹ جائیں گی۔ رسیدیں Stripe کے پاس رہیں گی جو انہیں رکھنے کا پابند ہے۔ یہ عمل حتمی ہے۔",
+  ms="Profil, lesen, sesi dan laporan anda akan dipadam. Invois kekal di Stripe, yang wajib menyimpannya. Tindakan ini muktamad.",
+  it="Profilo, licenza, sessioni e relativi report saranno cancellati. Le fatture restano a Stripe, tenuto a conservarle. L'azione è definitiva.",
+  nl="Je profiel, licentie, sessies en hun rapporten worden gewist. Facturen blijven bij Stripe, dat ze moet bewaren. Dit kan niet ongedaan worden gemaakt.")
+
+s("teacherConfirmDelete", "Console: the final confirmation button",
+  fr="Oui, supprimer définitivement", en="Yes, delete for good",
+  ar="نعم، احذف نهائيًا", es="Sí, eliminar definitivamente",
+  pt="Sim, eliminar definitivamente", de="Ja, endgültig löschen",
+  tr="Evet, kalıcı olarak sil", id="Ya, hapus permanen",
+  ur="ہاں، مستقل حذف کریں", ms="Ya, padam selama-lamanya",
+  it="Sì, elimina definitivamente", nl="Ja, definitief verwijderen")
+
+s("teacherNetworkNeeded", "Console: a new school game needs the network",
+  fr="Connexion nécessaire pour démarrer une nouvelle partie École.",
+  en="A connection is needed to start a new School game.",
+  ar="يلزم اتصال لبدء حصة مدرسية جديدة.",
+  es="Se necesita conexión para iniciar una nueva partida Escuela.",
+  pt="É necessária ligação para iniciar uma nova partida Escola.",
+  de="Für ein neues Schulspiel ist eine Verbindung nötig.",
+  tr="Yeni bir Okul oyunu başlatmak için bağlantı gerekli.",
+  id="Koneksi diperlukan untuk memulai permainan Sekolah baru.",
+  ur="نیا اسکول کھیل شروع کرنے کے لیے کنکشن درکار ہے۔",
+  ms="Sambungan diperlukan untuk memulakan permainan Sekolah baharu.",
+  it="Serve una connessione per iniziare una nuova partita Scuola.",
+  nl="Er is verbinding nodig om een nieuw Schoolspel te starten.")
+
+s("teacherAccountSection", "Console: heading of the account settings area",
+  fr="Mon compte", en="My account", ar="حسابي", es="Mi cuenta",
+  pt="A minha conta", de="Mein Konto", tr="Hesabım", id="Akun saya",
+  ur="میرا اکاؤنٹ", ms="Akaun saya", it="Il mio account", nl="Mijn account")
+
 s("teacherPasswordLabel", "Console: the password field",
   fr="Mot de passe", en="Password", ar="كلمة المرور",
   es="Contraseña", pt="Palavra-passe", de="Passwort", tr="Parola",

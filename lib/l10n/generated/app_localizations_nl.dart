@@ -1401,6 +1401,141 @@ class AppLocalizationsNl extends AppLocalizations {
   String get teacherBackToSite => 'iqraquest.org';
 
   @override
+  String get teacherCreateAccount => 'Account aanmaken';
+
+  @override
+  String get teacherHaveAccount => 'Ik heb al een account';
+
+  @override
+  String get teacherSignUpHint =>
+      'Gratis, zonder kaart. Je account krijgt vijf spellen om de Schoolmodus te proberen.';
+
+  @override
+  String get teacherSignUpButton => 'Mijn account aanmaken';
+
+  @override
+  String get teacherAwaitingConfirmationTitle => 'Bevestig je adres';
+
+  @override
+  String teacherAwaitingConfirmationBody(String email) {
+    return 'Er is een e-mail onderweg naar $email. Open de link erin en kom dan terug om in te loggen.';
+  }
+
+  @override
+  String get teacherEmailTaken =>
+      'Dit adres heeft al een account. Log in, of gebruik „Wachtwoord vergeten?”.';
+
+  @override
+  String get teacherWeakPassword =>
+      'Het wachtwoord moet minstens zes tekens lang zijn.';
+
+  @override
+  String get teacherOfferDiscovery => 'Kennismakingsaanbod';
+
+  @override
+  String teacherFreeGamesLeft(num left, num total) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left / $total gratis spellen over',
+      one: '$left / $total gratis spel over',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teacherQuotaTitle => 'Je gratis spellen zijn op';
+
+  @override
+  String get teacherQuotaBody =>
+      'Je hebt je vijf gratis spellen gebruikt. Stap over op IqraQuest École om een jaar lang onbeperkt spellen te maken.';
+
+  @override
+  String get teacherSubscribe => 'Abonneer op IqraQuest École';
+
+  @override
+  String get teacherSubscribeOnSite =>
+      'Het abonnement wordt beheerd vanuit de ruimte van je school, op een computer.';
+
+  @override
+  String teacherDevicesActive(num used, num total) {
+    return 'Actieve apparaten: $used / $total';
+  }
+
+  @override
+  String get teacherManageDevices => 'Mijn apparaten beheren';
+
+  @override
+  String get teacherDeviceLimitTitle => 'Apparaatlimiet bereikt';
+
+  @override
+  String teacherDeviceLimitBody(num count) {
+    return 'Je licentie staat $count gelijktijdige spelsessies toe. Sluit een sessie op een ander apparaat, of koppel het hieronder los.';
+  }
+
+  @override
+  String get teacherDisconnectDevice => 'Loskoppelen';
+
+  @override
+  String get teacherNoActiveDevices => 'Er speelt nu geen apparaat.';
+
+  @override
+  String teacherDeviceSince(String time) {
+    return 'Sinds $time';
+  }
+
+  @override
+  String get teacherDeviceStale => 'Antwoordt niet — plaats vrijgemaakt';
+
+  @override
+  String get teacherManageSubscription => 'Mijn abonnement beheren';
+
+  @override
+  String get teacherSubscriptionActive =>
+      'Je IqraQuest École-licentie is actief.';
+
+  @override
+  String teacherCancelAtPeriodEnd(String date) {
+    return 'Verlenging opgezegd. Je licentie blijft actief tot $date.';
+  }
+
+  @override
+  String get teacherPaymentFailedTitle => 'Betalingsprobleem';
+
+  @override
+  String get teacherPaymentFailedBody =>
+      'Je abonnement heeft een bijgewerkte betaalmethode nodig. Een lopende sessie mag eindigen; de volgende wacht op de correctie.';
+
+  @override
+  String get teacherUpdatePayment => 'Mijn betaalmethode bijwerken';
+
+  @override
+  String get teacherChangePassword => 'Mijn wachtwoord wijzigen';
+
+  @override
+  String get teacherNewPassword => 'Nieuw wachtwoord';
+
+  @override
+  String get teacherPasswordChanged => 'Wachtwoord gewijzigd.';
+
+  @override
+  String get teacherDeleteAccount => 'Mijn account verwijderen';
+
+  @override
+  String get teacherDeleteAccountHint =>
+      'Je profiel, licentie, sessies en hun rapporten worden gewist. Facturen blijven bij Stripe, dat ze moet bewaren. Dit kan niet ongedaan worden gemaakt.';
+
+  @override
+  String get teacherConfirmDelete => 'Ja, definitief verwijderen';
+
+  @override
+  String get teacherNetworkNeeded =>
+      'Er is verbinding nodig om een nieuw Schoolspel te starten.';
+
+  @override
+  String get teacherAccountSection => 'Mijn account';
+
+  @override
   String get teacherPasswordLabel => 'Wachtwoord';
 
   @override

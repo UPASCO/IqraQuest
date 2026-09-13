@@ -2392,6 +2392,222 @@ abstract class AppLocalizations {
   /// **'iqraquest.org'**
   String get teacherBackToSite;
 
+  /// Console: switch to the sign-up form
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get teacherCreateAccount;
+
+  /// Console: back from sign-up to sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'I already have an account'**
+  String get teacherHaveAccount;
+
+  /// Console: what a new account gives
+  ///
+  /// In en, this message translates to:
+  /// **'Free, no card needed. Your account gets five games to try the School mode.'**
+  String get teacherSignUpHint;
+
+  /// Console: the button that creates the account
+  ///
+  /// In en, this message translates to:
+  /// **'Create my account'**
+  String get teacherSignUpButton;
+
+  /// Console: the account exists, the e-mail is on its way
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your address'**
+  String get teacherAwaitingConfirmationTitle;
+
+  /// Console: what to do with the confirmation e-mail
+  ///
+  /// In en, this message translates to:
+  /// **'An e-mail is on its way to {email}. Open the link inside, then come back and sign in.'**
+  String teacherAwaitingConfirmationBody(String email);
+
+  /// Console: sign-up refused, the address already has an account
+  ///
+  /// In en, this message translates to:
+  /// **'This address already has an account. Sign in, or use “Forgotten your password?”.'**
+  String get teacherEmailTaken;
+
+  /// Console: the password is too short
+  ///
+  /// In en, this message translates to:
+  /// **'The password must be at least six characters long.'**
+  String get teacherWeakPassword;
+
+  /// Console: the free plan's name
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery offer'**
+  String get teacherOfferDiscovery;
+
+  /// Console: free games remaining out of the quota
+  ///
+  /// In en, this message translates to:
+  /// **'{left, plural, one{{left} / {total} free game left} other{{left} / {total} free games left}}'**
+  String teacherFreeGamesLeft(num left, num total);
+
+  /// Console: the five free games are used up
+  ///
+  /// In en, this message translates to:
+  /// **'Your free games are used up'**
+  String get teacherQuotaTitle;
+
+  /// Console: what the subscription gives after the quota
+  ///
+  /// In en, this message translates to:
+  /// **'You have used your five free games. Move to IqraQuest École to create games without limit for a year.'**
+  String get teacherQuotaBody;
+
+  /// Console: the button that opens Stripe Checkout (price shown there, never here)
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe to IqraQuest École'**
+  String get teacherSubscribe;
+
+  /// Console, on a phone: where the subscription is managed — no link, no price
+  ///
+  /// In en, this message translates to:
+  /// **'The subscription is managed from your school\'s account, on a computer.'**
+  String get teacherSubscribeOnSite;
+
+  /// Console: active game devices out of the licence's limit
+  ///
+  /// In en, this message translates to:
+  /// **'Active devices: {used} / {total}'**
+  String teacherDevicesActive(num used, num total);
+
+  /// Console: open the list of playing devices
+  ///
+  /// In en, this message translates to:
+  /// **'Manage my devices'**
+  String get teacherManageDevices;
+
+  /// Console: a third device was refused
+  ///
+  /// In en, this message translates to:
+  /// **'Device limit reached'**
+  String get teacherDeviceLimitTitle;
+
+  /// Console: what the limit is and how to free a place
+  ///
+  /// In en, this message translates to:
+  /// **'Your licence allows {count} simultaneous game sessions. Close a session on another device, or disconnect it below.'**
+  String teacherDeviceLimitBody(num count);
+
+  /// Console: close another device's session
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get teacherDisconnectDevice;
+
+  /// Console: no device is playing right now
+  ///
+  /// In en, this message translates to:
+  /// **'No device is playing right now.'**
+  String get teacherNoActiveDevices;
+
+  /// Console: when a device opened its session
+  ///
+  /// In en, this message translates to:
+  /// **'Since {time}'**
+  String teacherDeviceSince(String time);
+
+  /// Console: the device stopped answering, its place is free
+  ///
+  /// In en, this message translates to:
+  /// **'Not answering — place freed'**
+  String get teacherDeviceStale;
+
+  /// Console: open the Stripe customer portal
+  ///
+  /// In en, this message translates to:
+  /// **'Manage my subscription'**
+  String get teacherManageSubscription;
+
+  /// Console: the licence is paid and running
+  ///
+  /// In en, this message translates to:
+  /// **'Your IqraQuest École licence is active.'**
+  String get teacherSubscriptionActive;
+
+  /// Console: the renewal was cancelled, access lasts to the date
+  ///
+  /// In en, this message translates to:
+  /// **'Renewal cancelled. Your licence stays active until {date}.'**
+  String teacherCancelAtPeriodEnd(String date);
+
+  /// Console: the renewal payment failed
+  ///
+  /// In en, this message translates to:
+  /// **'Payment problem'**
+  String get teacherPaymentFailedTitle;
+
+  /// Console: what to do about the failed payment
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription needs an updated payment method. A running session can finish; the next one waits for the fix.'**
+  String get teacherPaymentFailedBody;
+
+  /// Console: the button to the portal when a payment failed
+  ///
+  /// In en, this message translates to:
+  /// **'Update my payment method'**
+  String get teacherUpdatePayment;
+
+  /// Console: change the password
+  ///
+  /// In en, this message translates to:
+  /// **'Change my password'**
+  String get teacherChangePassword;
+
+  /// Console: the new password field
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get teacherNewPassword;
+
+  /// Console: the password was changed
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed.'**
+  String get teacherPasswordChanged;
+
+  /// Console: delete the account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get teacherDeleteAccount;
+
+  /// Console: what deletion removes and what stays
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile, licence, sessions and their reports will be erased. Invoices stay with Stripe, which is required to keep them. This cannot be undone.'**
+  String get teacherDeleteAccountHint;
+
+  /// Console: the final confirmation button
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, delete for good'**
+  String get teacherConfirmDelete;
+
+  /// Console: a new school game needs the network
+  ///
+  /// In en, this message translates to:
+  /// **'A connection is needed to start a new School game.'**
+  String get teacherNetworkNeeded;
+
+  /// Console: heading of the account settings area
+  ///
+  /// In en, this message translates to:
+  /// **'My account'**
+  String get teacherAccountSection;
+
   /// Console: the password field
   ///
   /// In en, this message translates to:

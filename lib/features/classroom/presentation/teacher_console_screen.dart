@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -59,6 +60,12 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
   /// chercher doit rester visible sans faire défiler.
   bool _history = false;
 
+  /// L'espace du compte — abonnement, appareils, mot de passe,
+  /// suppression — sur sa propre vue, pour la même raison que
+  /// l'historique : rien de tout cela ne doit repousser « Ouvrir la
+  /// séance » hors de l'écran.
+  bool _account = false;
+
   /// The board follows the console's own language until a teacher says
   /// otherwise — a French classroom projects in French without touching
   /// anything, and the pupils' phones stay in each pupil's language.
@@ -116,17 +123,30 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
             ),
           ],
         ),
-        leading: _history
+        leading: _history || _account
             ? IconButton(
                 key: const Key('teacher-history-back'),
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => setState(() => _history = false),
+                onPressed: () => setState(() {
+                  _history = false;
+                  _account = false;
+                }),
               )
             : null,
         actions: [
           if (!_history &&
+              !_account &&
               (console.stage == ConsoleStage.ready ||
-                  console.stage == ConsoleStage.expired))
+                  console.stage == ConsoleStage.quotaExhausted ||
+                  console.stage == ConsoleStage.expired)) ...[
+            TextButton(
+              key: const Key('teacher-account-open'),
+              onPressed: () {
+                setState(() => _account = true);
+                ref.read(teacherConsoleProvider.notifier).loadSessions();
+              },
+              child: ButtonLabel(l10n.teacherAccountSection),
+            ),
             TextButton(
               key: const Key('teacher-history-open'),
               onPressed: () {
@@ -137,13 +157,16 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
               },
               child: ButtonLabel(l10n.teacherHistory),
             ),
+          ],
           // Rien à quitter tant que personne n'est entré. `linkSent`
           // affiche encore le champ d'adresse : proposer « Se
           // déconnecter » au-dessus d'un formulaire de connexion est la
           // première chose qu'une école voit, et ça n'a aucun sens.
           if (!_history &&
+              !_account &&
               console.stage != ConsoleStage.signedOut &&
               console.stage != ConsoleStage.linkSent &&
+              console.stage != ConsoleStage.awaitingConfirmation &&
               console.stage != ConsoleStage.loading)
             TextButton(
               key: const Key('teacher-signout'),
@@ -160,6 +183,8 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
             maxWidth: 720,
             child: _history
                 ? _History(console: console, l10n: l10n)
+                : _account
+                ? _AccountView(console: console, l10n: l10n)
                 : switch (console.stage) {
               ConsoleStage.loading => const Center(
                 child: Padding(
@@ -178,8 +203,20 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
                 onSignIn: (password) => ref
                     .read(teacherConsoleProvider.notifier)
                     .signIn(_email.text, password),
+                onSignUp: (password) => ref
+                    .read(teacherConsoleProvider.notifier)
+                    .signUp(_email.text, password),
+              ),
+              ConsoleStage.awaitingConfirmation => _AwaitingConfirmation(
+                console: console,
+                l10n: l10n,
+                onBack: () => ref.read(teacherConsoleProvider.notifier).signOut(),
               ),
               ConsoleStage.noLicence => _NoLicence(console: console, l10n: l10n),
+              ConsoleStage.quotaExhausted => _QuotaExhausted(
+                console: console,
+                l10n: l10n,
+              ),
               ConsoleStage.expired => _Expired(console: console, l10n: l10n),
               ConsoleStage.ready => _Setup(
                 console: console,
@@ -242,6 +279,9 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
         TeacherError.notSignedIn => l10n.teacherSignInHint,
         TeacherError.tooManyLinks => l10n.teacherTooManyLinks,
         TeacherError.badCredentials => l10n.teacherBadCredentials,
+        TeacherError.quotaExhausted => l10n.teacherQuotaBody,
+        TeacherError.emailTaken => l10n.teacherEmailTaken,
+        TeacherError.weakPassword => l10n.teacherWeakPassword,
         _ => l10n.teacherUnreachable,
       };
 }
@@ -255,6 +295,7 @@ class _SignIn extends StatefulWidget {
     required this.l10n,
     required this.onSend,
     required this.onSignIn,
+    required this.onSignUp,
   });
 
   final TextEditingController controller;
@@ -268,6 +309,9 @@ class _SignIn extends StatefulWidget {
   /// La porte de tous les jours.
   final ValueChanged<String> onSignIn;
 
+  /// Créer un compte — gratuit, cinq parties.
+  final ValueChanged<String> onSignUp;
+
   @override
   State<_SignIn> createState() => _SignInState();
 }
@@ -279,6 +323,10 @@ class _SignInState extends State<_SignIn> {
   /// côte à côte laissent choisir la mauvaise : une école qui a un mot
   /// de passe n'a aucune raison d'attendre un courrier.
   bool _forgot = false;
+
+  /// Le formulaire d'inscription : les mêmes deux champs, un autre
+  /// bouton. Une école arrive ici sans compte ; c'est le premier geste.
+  bool _signUp = false;
 
   @override
   void dispose() {
@@ -302,6 +350,8 @@ class _SignInState extends State<_SignIn> {
         Text(
           _forgot
               ? widget.l10n.teacherSignInHint
+              : _signUp
+              ? widget.l10n.teacherSignUpHint
               : widget.l10n.teacherSignInPasswordHint,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
@@ -339,17 +389,35 @@ class _SignInState extends State<_SignIn> {
           key: const Key('teacher-send'),
           onPressed: !_canSubmit
               ? null
-              : (_forgot ? widget.onSend : () => widget.onSignIn(_password.text)),
+              : _forgot
+              ? widget.onSend
+              : _signUp
+              ? () => widget.onSignUp(_password.text)
+              : () => widget.onSignIn(_password.text),
           child: ButtonLabel(
-            _forgot ? widget.l10n.teacherSendLink : widget.l10n.teacherSignIn,
+            _forgot
+                ? widget.l10n.teacherSendLink
+                : _signUp
+                ? widget.l10n.teacherSignUpButton
+                : widget.l10n.teacherSignIn,
           ),
         ),
         if (!_forgot && !sent) ...[
           const SizedBox(height: 6),
+          if (!_signUp)
+            TextButton(
+              key: const Key('teacher-forgot'),
+              onPressed: () => setState(() => _forgot = true),
+              child: ButtonLabel(widget.l10n.teacherForgotPassword),
+            ),
           TextButton(
-            key: const Key('teacher-forgot'),
-            onPressed: () => setState(() => _forgot = true),
-            child: ButtonLabel(widget.l10n.teacherForgotPassword),
+            key: const Key('teacher-toggle-signup'),
+            onPressed: () => setState(() => _signUp = !_signUp),
+            child: ButtonLabel(
+              _signUp
+                  ? widget.l10n.teacherHaveAccount
+                  : widget.l10n.teacherCreateAccount,
+            ),
           ),
         ],
         if (sent) ...[
@@ -428,7 +496,7 @@ class _AccountCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              account.planLabel,
+              account.free ? l10n.teacherOfferDiscovery : account.planLabel,
               style: text.bodyMedium?.copyWith(color: colors.textSecondary),
             ),
             const SizedBox(height: 8),
@@ -456,7 +524,7 @@ class _AccountCard extends StatelessWidget {
                 fontWeight: account.endingSoon ? FontWeight.w700 : null,
               ),
             ),
-            if (account.endingSoon) ...[
+            if (account.endingSoon && !account.cancelAtPeriodEnd) ...[
               const SizedBox(height: 6),
               Text(
                 account.subscribed
@@ -465,9 +533,393 @@ class _AccountCard extends StatelessWidget {
                 style: text.bodySmall?.copyWith(color: colors.textSecondary),
               ),
             ],
+            // Le renouvellement annulé ne coupe rien : la licence court
+            // jusqu'à l'échéance, et la carte le dit avec la date.
+            if (account.cancelAtPeriodEnd && account.expiresAt != null) ...[
+              const SizedBox(height: 6),
+              Text(
+                key: const Key('teacher-cancel-at-period-end'),
+                l10n.teacherCancelAtPeriodEnd(
+                  MaterialLocalizations.of(context).formatFullDate(account.expiresAt!),
+                ),
+                style: text.bodySmall?.copyWith(color: colors.textSecondary),
+              ),
+            ],
+            if (account.free && account.freeGames != null) ...[
+              const SizedBox(height: 10),
+              // La barre : ce qui reste, en un coup d'œil. Le compte vient
+              // du serveur — un téléphone réinstallé ne redonne rien.
+              ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: LinearProgressIndicator(
+                  key: const Key('teacher-quota-bar'),
+                  value: account.freeGamesUsed / account.freeGames!,
+                  minHeight: 8,
+                  backgroundColor: colors.divider,
+                  color: account.freeGamesLeft == 0
+                      ? colors.error
+                      : colors.primary,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                l10n.teacherFreeGamesLeft(account.freeGamesLeft, account.freeGames!),
+                key: const Key('teacher-quota-text'),
+                style: text.bodySmall?.copyWith(color: colors.textSecondary),
+              ),
+            ],
+            if (account.paymentFailed) ...[
+              const SizedBox(height: 8),
+              Text(
+                l10n.teacherPaymentFailedTitle,
+                key: const Key('teacher-payment-failed'),
+                style: text.bodyMedium?.copyWith(
+                  color: colors.error,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                l10n.teacherPaymentFailedBody,
+                style: text.bodySmall?.copyWith(color: colors.textSecondary),
+              ),
+            ],
           ],
         ),
       ),
+    );
+  }
+}
+
+/// L'inscription est faite, la confirmation attend dans une boîte.
+class _AwaitingConfirmation extends StatelessWidget {
+  const _AwaitingConfirmation({
+    required this.console,
+    required this.l10n,
+    required this.onBack,
+  });
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+  final VoidCallback onBack;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Column(
+      key: const Key('teacher-awaiting-confirmation'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          l10n.teacherAwaitingConfirmationTitle,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          l10n.teacherAwaitingConfirmationBody(console.email ?? ''),
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        const SizedBox(height: 6),
+        Text(
+          l10n.teacherLinkSpamHint,
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: colors.textSecondary),
+        ),
+        const SizedBox(height: 20),
+        OutlinedButton(
+          key: const Key('teacher-awaiting-back'),
+          onPressed: onBack,
+          child: ButtonLabel(l10n.teacherSignIn),
+        ),
+      ],
+    );
+  }
+}
+
+/// Les cinq parties sont consommées. L'espace reste ouvert ; la
+/// prochaine séance demande une licence.
+///
+/// Le bouton d'abonnement n'existe que sur le web : sur un téléphone on
+/// dit où l'abonnement se gère, sans lien et sans prix — c'est la règle
+/// des magasins, et une école n'achète pas depuis une tablette de toute
+/// façon.
+class _QuotaExhausted extends ConsumerWidget {
+  const _QuotaExhausted({required this.console, required this.l10n});
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors = context.colors;
+    final account = console.account;
+    return Column(
+      key: const Key('teacher-quota-exhausted'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (account != null) ...[
+          _AccountCard(account: account, l10n: l10n, showSchoolName: true),
+          const SizedBox(height: 18),
+        ],
+        Text(l10n.teacherQuotaTitle, style: Theme.of(context).textTheme.titleMedium),
+        const SizedBox(height: 8),
+        Text(
+          l10n.teacherQuotaBody,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
+        ),
+        const SizedBox(height: 20),
+        _SubscribeButton(console: console, l10n: l10n),
+        const SizedBox(height: 10),
+        OutlinedButton(
+          key: const Key('teacher-refresh-quota'),
+          onPressed: console.busy
+              ? null
+              : () => ref.read(teacherConsoleProvider.notifier).refreshLicence(),
+          child: ButtonLabel(l10n.teacherRefresh),
+        ),
+      ],
+    );
+  }
+}
+
+/// « S'abonner » — le serveur fabrique la page de paiement, le prix y
+/// est affiché là-bas et nulle part ici. Web seulement.
+class _SubscribeButton extends ConsumerWidget {
+  const _SubscribeButton({
+    required this.console,
+    required this.l10n,
+    this.label,
+  });
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+  final String? label;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (!kIsWeb) {
+      return Text(
+        key: const Key('teacher-subscribe-on-site'),
+        l10n.teacherSubscribeOnSite,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyMedium,
+      );
+    }
+    return ElevatedButton(
+      key: const Key('teacher-subscribe'),
+      onPressed: console.busy
+          ? null
+          : () async {
+              final target = await ref
+                  .read(teacherConsoleProvider.notifier)
+                  .checkoutUrl();
+              if (target != null) {
+                await launchUrl(target, webOnlyWindowName: '_self');
+              }
+            },
+      child: ButtonLabel(label ?? l10n.teacherSubscribe),
+    );
+  }
+}
+
+/// Mon compte : ce que l'école a, ses appareils, son abonnement, son
+/// mot de passe — et la porte de sortie.
+class _AccountView extends ConsumerStatefulWidget {
+  const _AccountView({required this.console, required this.l10n});
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+
+  @override
+  ConsumerState<_AccountView> createState() => _AccountViewState();
+}
+
+class _AccountViewState extends ConsumerState<_AccountView> {
+  final _newPassword = TextEditingController();
+  bool _changed = false;
+  bool _confirmDelete = false;
+
+  @override
+  void dispose() {
+    _newPassword.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = widget.l10n;
+    final console = widget.console;
+    final colors = context.colors;
+    final text = Theme.of(context).textTheme;
+    final account = console.account;
+    final sessions = console.activeSessions;
+
+    return Column(
+      key: const Key('teacher-account-view'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (account != null) ...[
+          _AccountCard(account: account, l10n: l10n, showSchoolName: true),
+          const SizedBox(height: 14),
+          if (account.state == AccountState.quotaExhausted)
+            _SubscribeButton(console: console, l10n: l10n)
+          else if (account.paymentFailed)
+            _PortalButton(console: console, l10n: l10n, label: l10n.teacherUpdatePayment)
+          else if (account.hasCustomer)
+            _PortalButton(console: console, l10n: l10n),
+          const SizedBox(height: 22),
+        ],
+
+        // Les appareils.
+        Text(l10n.teacherManageDevices, style: text.titleMedium),
+        const SizedBox(height: 4),
+        if (account != null)
+          Text(
+            l10n.teacherDevicesActive(account.roomsInUse, account.rooms),
+            key: const Key('teacher-devices-count'),
+            style: text.bodyMedium?.copyWith(color: colors.textSecondary),
+          ),
+        const SizedBox(height: 8),
+        if (sessions == null)
+          const Center(child: Padding(padding: EdgeInsets.all(12), child: CircularProgressIndicator()))
+        else if (sessions.isEmpty)
+          Text(
+            l10n.teacherNoActiveDevices,
+            key: const Key('teacher-no-devices'),
+            style: text.bodyMedium?.copyWith(color: colors.textSecondary),
+          )
+        else
+          for (final s in sessions)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(s.code, style: text.titleSmall),
+                        Text(
+                          s.alive
+                              ? l10n.teacherDeviceSince(
+                                  MaterialLocalizations.of(context).formatTimeOfDay(
+                                    TimeOfDay.fromDateTime(s.openedAt),
+                                  ),
+                                )
+                              : l10n.teacherDeviceStale,
+                          style: text.bodySmall?.copyWith(color: colors.textSecondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                  OutlinedButton(
+                    key: Key('teacher-revoke-${s.sessionId}'),
+                    onPressed: console.busy
+                        ? null
+                        : () => ref
+                            .read(teacherConsoleProvider.notifier)
+                            .revokeSession(s.sessionId),
+                    child: ButtonLabel(l10n.teacherDisconnectDevice),
+                  ),
+                ],
+              ),
+            ),
+        const SizedBox(height: 22),
+
+        // Le mot de passe.
+        Text(l10n.teacherChangePassword, style: text.titleMedium),
+        const SizedBox(height: 8),
+        TextField(
+          key: const Key('teacher-new-password'),
+          controller: _newPassword,
+          obscureText: true,
+          onChanged: (_) => setState(() => _changed = false),
+          decoration: InputDecoration(
+            labelText: l10n.teacherNewPassword,
+            border: const OutlineInputBorder(),
+            helperText: _changed ? l10n.teacherPasswordChanged : null,
+          ),
+        ),
+        const SizedBox(height: 8),
+        OutlinedButton(
+          key: const Key('teacher-change-password'),
+          onPressed: console.busy || _newPassword.text.isEmpty
+              ? null
+              : () async {
+                  final ok = await ref
+                      .read(teacherConsoleProvider.notifier)
+                      .updatePassword(_newPassword.text);
+                  if (ok && mounted) {
+                    _newPassword.clear();
+                    setState(() => _changed = true);
+                  }
+                },
+          child: ButtonLabel(l10n.teacherChangePassword),
+        ),
+        const SizedBox(height: 28),
+
+        // La sortie.
+        Text(l10n.teacherDeleteAccount, style: text.titleMedium),
+        const SizedBox(height: 6),
+        Text(
+          l10n.teacherDeleteAccountHint,
+          style: text.bodySmall?.copyWith(color: colors.textSecondary),
+        ),
+        const SizedBox(height: 8),
+        if (!_confirmDelete)
+          OutlinedButton(
+            key: const Key('teacher-delete-account'),
+            onPressed: console.busy ? null : () => setState(() => _confirmDelete = true),
+            child: ButtonLabel(l10n.teacherDeleteAccount),
+          )
+        else
+          ElevatedButton(
+            key: const Key('teacher-confirm-delete'),
+            style: ElevatedButton.styleFrom(backgroundColor: colors.error),
+            onPressed: console.busy
+                ? null
+                : () => ref.read(teacherConsoleProvider.notifier).deleteAccount(),
+            child: ButtonLabel(l10n.teacherConfirmDelete),
+          ),
+      ],
+    );
+  }
+}
+
+/// « Gérer mon abonnement » — le portail Stripe, fabriqué par le
+/// serveur. Web seulement : sur un téléphone on n'affiche ni lien ni
+/// prix.
+class _PortalButton extends ConsumerWidget {
+  const _PortalButton({required this.console, required this.l10n, this.label});
+
+  final ConsoleState console;
+  final AppLocalizations l10n;
+  final String? label;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (!kIsWeb) {
+      return Text(
+        l10n.teacherSubscribeOnSite,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyMedium,
+      );
+    }
+    return OutlinedButton(
+      key: const Key('teacher-portal'),
+      onPressed: console.busy
+          ? null
+          : () async {
+              final target = await ref
+                  .read(teacherConsoleProvider.notifier)
+                  .portalUrl();
+              if (target != null) {
+                await launchUrl(target, webOnlyWindowName: '_self');
+              }
+            },
+      child: ButtonLabel(label ?? l10n.teacherManageSubscription),
     );
   }
 }
@@ -505,7 +957,11 @@ class _Expired extends ConsumerWidget {
           ).textTheme.bodyMedium?.copyWith(color: colors.textPrimary),
         ),
         const SizedBox(height: 20),
-        if (ClassroomConfig.stripeCheckoutUrl.isNotEmpty)
+        if (kIsWeb && (console.account?.hasCustomer ?? false))
+          _PortalButton(console: console, l10n: l10n, label: l10n.teacherRenew)
+        else if (kIsWeb)
+          _SubscribeButton(console: console, l10n: l10n, label: l10n.teacherRenew)
+        else if (ClassroomConfig.stripeCheckoutUrl.isNotEmpty && kIsWeb)
           ElevatedButton(
             key: const Key('teacher-renew'),
             onPressed: () => launchUrl(

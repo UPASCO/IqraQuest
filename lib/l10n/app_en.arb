@@ -1870,6 +1870,186 @@
   "@teacherBackToSite": {
     "description": "Console: the way back to iqraquest.org"
   },
+  "teacherCreateAccount": "Create an account",
+  "@teacherCreateAccount": {
+    "description": "Console: switch to the sign-up form"
+  },
+  "teacherHaveAccount": "I already have an account",
+  "@teacherHaveAccount": {
+    "description": "Console: back from sign-up to sign-in"
+  },
+  "teacherSignUpHint": "Free, no card needed. Your account gets five games to try the School mode.",
+  "@teacherSignUpHint": {
+    "description": "Console: what a new account gives"
+  },
+  "teacherSignUpButton": "Create my account",
+  "@teacherSignUpButton": {
+    "description": "Console: the button that creates the account"
+  },
+  "teacherAwaitingConfirmationTitle": "Confirm your address",
+  "@teacherAwaitingConfirmationTitle": {
+    "description": "Console: the account exists, the e-mail is on its way"
+  },
+  "teacherAwaitingConfirmationBody": "An e-mail is on its way to {email}. Open the link inside, then come back and sign in.",
+  "@teacherAwaitingConfirmationBody": {
+    "description": "Console: what to do with the confirmation e-mail",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "teacherEmailTaken": "This address already has an account. Sign in, or use “Forgotten your password?”.",
+  "@teacherEmailTaken": {
+    "description": "Console: sign-up refused, the address already has an account"
+  },
+  "teacherWeakPassword": "The password must be at least six characters long.",
+  "@teacherWeakPassword": {
+    "description": "Console: the password is too short"
+  },
+  "teacherOfferDiscovery": "Discovery offer",
+  "@teacherOfferDiscovery": {
+    "description": "Console: the free plan's name"
+  },
+  "teacherFreeGamesLeft": "{left, plural, one{{left} / {total} free game left} other{{left} / {total} free games left}}",
+  "@teacherFreeGamesLeft": {
+    "description": "Console: free games remaining out of the quota",
+    "placeholders": {
+      "left": {
+        "type": "num"
+      },
+      "total": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherQuotaTitle": "Your free games are used up",
+  "@teacherQuotaTitle": {
+    "description": "Console: the five free games are used up"
+  },
+  "teacherQuotaBody": "You have used your five free games. Move to IqraQuest École to create games without limit for a year.",
+  "@teacherQuotaBody": {
+    "description": "Console: what the subscription gives after the quota"
+  },
+  "teacherSubscribe": "Subscribe to IqraQuest École",
+  "@teacherSubscribe": {
+    "description": "Console: the button that opens Stripe Checkout (price shown there, never here)"
+  },
+  "teacherSubscribeOnSite": "The subscription is managed from your school's account, on a computer.",
+  "@teacherSubscribeOnSite": {
+    "description": "Console, on a phone: where the subscription is managed — no link, no price"
+  },
+  "teacherDevicesActive": "Active devices: {used} / {total}",
+  "@teacherDevicesActive": {
+    "description": "Console: active game devices out of the licence's limit",
+    "placeholders": {
+      "used": {
+        "type": "num"
+      },
+      "total": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherManageDevices": "Manage my devices",
+  "@teacherManageDevices": {
+    "description": "Console: open the list of playing devices"
+  },
+  "teacherDeviceLimitTitle": "Device limit reached",
+  "@teacherDeviceLimitTitle": {
+    "description": "Console: a third device was refused"
+  },
+  "teacherDeviceLimitBody": "Your licence allows {count} simultaneous game sessions. Close a session on another device, or disconnect it below.",
+  "@teacherDeviceLimitBody": {
+    "description": "Console: what the limit is and how to free a place",
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "teacherDisconnectDevice": "Disconnect",
+  "@teacherDisconnectDevice": {
+    "description": "Console: close another device's session"
+  },
+  "teacherNoActiveDevices": "No device is playing right now.",
+  "@teacherNoActiveDevices": {
+    "description": "Console: no device is playing right now"
+  },
+  "teacherDeviceSince": "Since {time}",
+  "@teacherDeviceSince": {
+    "description": "Console: when a device opened its session",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "teacherDeviceStale": "Not answering — place freed",
+  "@teacherDeviceStale": {
+    "description": "Console: the device stopped answering, its place is free"
+  },
+  "teacherManageSubscription": "Manage my subscription",
+  "@teacherManageSubscription": {
+    "description": "Console: open the Stripe customer portal"
+  },
+  "teacherSubscriptionActive": "Your IqraQuest École licence is active.",
+  "@teacherSubscriptionActive": {
+    "description": "Console: the licence is paid and running"
+  },
+  "teacherCancelAtPeriodEnd": "Renewal cancelled. Your licence stays active until {date}.",
+  "@teacherCancelAtPeriodEnd": {
+    "description": "Console: the renewal was cancelled, access lasts to the date",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "teacherPaymentFailedTitle": "Payment problem",
+  "@teacherPaymentFailedTitle": {
+    "description": "Console: the renewal payment failed"
+  },
+  "teacherPaymentFailedBody": "Your subscription needs an updated payment method. A running session can finish; the next one waits for the fix.",
+  "@teacherPaymentFailedBody": {
+    "description": "Console: what to do about the failed payment"
+  },
+  "teacherUpdatePayment": "Update my payment method",
+  "@teacherUpdatePayment": {
+    "description": "Console: the button to the portal when a payment failed"
+  },
+  "teacherChangePassword": "Change my password",
+  "@teacherChangePassword": {
+    "description": "Console: change the password"
+  },
+  "teacherNewPassword": "New password",
+  "@teacherNewPassword": {
+    "description": "Console: the new password field"
+  },
+  "teacherPasswordChanged": "Password changed.",
+  "@teacherPasswordChanged": {
+    "description": "Console: the password was changed"
+  },
+  "teacherDeleteAccount": "Delete my account",
+  "@teacherDeleteAccount": {
+    "description": "Console: delete the account"
+  },
+  "teacherDeleteAccountHint": "Your profile, licence, sessions and their reports will be erased. Invoices stay with Stripe, which is required to keep them. This cannot be undone.",
+  "@teacherDeleteAccountHint": {
+    "description": "Console: what deletion removes and what stays"
+  },
+  "teacherConfirmDelete": "Yes, delete for good",
+  "@teacherConfirmDelete": {
+    "description": "Console: the final confirmation button"
+  },
+  "teacherNetworkNeeded": "A connection is needed to start a new School game.",
+  "@teacherNetworkNeeded": {
+    "description": "Console: a new school game needs the network"
+  },
+  "teacherAccountSection": "My account",
+  "@teacherAccountSection": {
+    "description": "Console: heading of the account settings area"
+  },
   "teacherPasswordLabel": "Password",
   "@teacherPasswordLabel": {
     "description": "Console: the password field"
