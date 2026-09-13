@@ -40,9 +40,10 @@ précédente.
    - `server/supabase/migrations/0006_review_fixes.sql`
    - `server/supabase/migrations/0007_plans_and_account.sql`
    - `server/supabase/migrations/0008_school_accounts.sql`
+   - `server/supabase/migrations/0009_account_review.sql`
 
    (Ou, en une fois : le fichier `iqraquest-socle-complet.sql`, qui est
-   la concaténation des huit, rejouable sans risque.)
+   la concaténation des neuf, rejouable sans risque.)
 
 Vérification : dans **Table Editor**, huit tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`, `plans`, `profiles`,
@@ -93,7 +94,7 @@ Dans **Authentication → Providers → Email** :
 | Enable Email provider | activé |
 | Confirm email | **activé** — un compte non confirmé ne se connecte pas et ne reçoit pas de licence |
 | Secure email change | activé |
-| Minimum password length | 8 |
+| Minimum password length | 6 (la valeur par défaut ; la console exige la même) |
 
 Dans **Authentication → Emails**, les trois modèles utilisés sont
 *Confirm signup*, *Magic Link* et *Reset password*. Les modèles par
@@ -115,8 +116,11 @@ porte de tous les jours, et elle ne dépend d'aucun courrier une fois le
 compte confirmé.
 
 1. **Créer un compte** (bouton sous le formulaire de connexion) : une
-   adresse, un mot de passe de huit caractères au moins, le nom de
-   l'établissement. La console dit « Confirmez votre adresse ».
+   adresse, un mot de passe de six caractères au moins, le nom de
+   l'établissement (facultatif). La console dit « Confirmez votre
+   adresse », avec un bouton « Renvoyer l'e-mail » si rien n'arrive.
+   Une adresse qui a déjà un compte le lit tout de suite ; une
+   connexion tentée avant la confirmation ramène à cet écran.
 2. **Le courrier de confirmation** ramène sur la console, connectée.
    Le déclencheur de la migration 0008 a déjà écrit le profil et la
    licence découverte : l'école voit « Offre découverte — 0 partie sur
@@ -125,16 +129,20 @@ compte confirmé.
    « S'abonner » (étape 7). Rien n'est effacé : l'historique reste.
 
 **Mot de passe oublié** : sous le formulaire, « Mot de passe oublié ? »
-envoie un lien de connexion à l'adresse. Une fois entré, **Mon espace →
-Changer le mot de passe** en pose un nouveau. C'est le seul endroit où
-un e-mail reste nécessaire après la confirmation.
+envoie un lien de connexion à l'adresse (une adresse sans compte lit
+« aucun compte », pas « lien envoyé »). Le lien ramène sur la console,
+qui ouvre d'elle-même **Mon compte** sur « Changer le mot de passe ».
+C'est le seul endroit où un e-mail reste nécessaire après la
+confirmation.
 
 **Supprimer le compte** : **Mon espace → Supprimer mon compte**, avec
-confirmation. Le profil, la licence, les séances et les bilans sont
-effacés ; le compte d'authentification aussi. Seules les factures
-restent chez Stripe, qui a l'obligation légale de les conserver, et
-l'abonnement en cours y est résilié. C'est ce que la politique de
-confidentialité promet, et c'est `delete_my_account()` qui le fait.
+confirmation. La fonction `delete-school-account` résilie d'abord
+l'abonnement chez Stripe (sans facture), puis `delete_my_account()`
+efface le profil, la licence, les séances, les bilans et le compte
+d'authentification. Seules les factures restent chez Stripe, qui a
+l'obligation légale de les conserver. Sans la fonction déployée, la base
+refuse de supprimer un compte encore facturé : la console dit de
+résilier d'abord depuis « Gérer mon abonnement ».
 
 ### Créer le compte d'une école à la main — 2 minutes, sans e-mail
 
@@ -354,12 +362,13 @@ supabase link --project-ref <ref du projet>
 cd server
 supabase functions deploy create-school-checkout
 supabase functions deploy create-customer-portal
+supabase functions deploy delete-school-account
 supabase functions deploy stripe-webhook --no-verify-jwt
 ```
 
 `--no-verify-jwt` ne concerne que le webhook — c'est Stripe qui appelle,
 sans jeton Supabase — et c'est la signature `Stripe-Signature`, vérifiée
-avant toute lecture du corps, qui tient lieu de contrôle. Les deux
+avant toute lecture du corps, qui tient lieu de contrôle. Les trois
 autres exigent le jeton de l'enseignant connecté : elles ne font rien
 pour un anonyme.
 
@@ -411,15 +420,20 @@ Ce que chaque événement fait à la licence :
 
 | événement | `licences.status` | effet |
 |---|---|---|
-| `checkout.session.completed` | `active` | plan `ecole`, deux salles, échéance à un an, client et abonnement Stripe notés |
-| `invoice.paid` | `active` | renouvellement : l'échéance suit la nouvelle période |
+| `checkout.session.completed` | `active` | plan `ecole`, deux salles, échéance provisoire à un an, client et abonnement Stripe notés — sur la licence **du compte** qui a ouvert la caisse |
+| `invoice.paid` | `active` | renouvellement : l'échéance suit la période payée |
 | `invoice.payment_failed` | `past_due` | plus de nouvelle séance ; une séance en cours va au bout |
 | `customer.subscription.updated` | celui de Stripe | `cancel_at_period_end`, période, prix |
 | `customer.subscription.deleted` | `canceled` | fin d'accès à l'instant ; l'historique reste |
 | `async_payment_failed` | `canceled` | virement SEPA refusé |
 
 Un événement reçu deux fois ne s'applique qu'une fois : sa clé est
-inscrite dans `stripe_events` avant toute écriture.
+inscrite dans `stripe_events` avant toute écriture — et rendue si
+l'écriture échoue, pour que la nouvelle tentative de Stripe ne soit pas
+prise pour un doublon. L'échéance écrite est la fin de période **plus
+trois jours** : le renouvellement Stripe tombe à l'échéance, parfois
+quelques heures après, et une école ne trouve pas porte close le matin
+de la reconduction. Une résiliation coupe à l'instant même.
 
 ### 7.5 Le parcours complet, en test, pour 1 €
 
@@ -511,6 +525,7 @@ ce qui est vrai.
 | « Confirmez votre adresse » mais rien n'arrive | (a) l'adresse avait déjà un compte — Supabase ne renvoie alors rien, et la console dit désormais « Cette adresse a déjà un compte » ; (b) courrier intégré bridé aux membres de l'organisation et à quelques envois par heure → SMTP (étape 2). En attendant, confirmer ou créer le compte à la main dans Authentication → Users |
 | Payé, mais la console reste sur « Offre découverte » | le webhook n'a pas atteint la fonction : Stripe → Webhooks → l'endpoint → Events (secret du mauvais mode = 400) ; rejouer l'événement |
 | « S'abonner » dit que le paiement est indisponible | fonction `create-school-checkout` non déployée, ou un secret `STRIPE_*` manquant, ou prix live sous 50 € (étape 7) |
+| « Paiement en échec » alors que la carte est bonne | `invoice.payment_failed` reçu, puis pas d'`invoice.paid` : vérifier l'endpoint (7.4) et rejouer ; la console redemande son compte au bouton Actualiser |
 | « Deux appareils sont déjà en séance » alors qu'un seul joue | un onglet fermé sans terminer la séance garde sa place cinq minutes ; Mon espace → Appareils → Libérer |
 | « Vos cinq parties sont utilisées » sur un compte qui a payé | `licences.status` n'est pas `active` : voir la ligne précédente |
 | « Votre abonnement est terminé » alors qu'il court | l'horloge du serveur fait foi, pas celle du navigateur : vérifier `expires_at` dans `licences` |

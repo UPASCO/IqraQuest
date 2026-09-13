@@ -252,6 +252,48 @@ void main() {
       c.dispose();
     });
 
+    test('un impayé bloque la prochaine séance, pas celle en cours', () async {
+      final h = harness(licence: school(status: 'active'));
+      final c = TeacherConsoleController(h.gateway);
+      await c.start();
+      await c.openSession(lesson: lesson());
+      expect(c.state.stage, ConsoleStage.running);
+      // Stripe signale l'échec du renouvellement pendant la séance.
+      h.gateway.grant(school(status: 'past_due'));
+      await c.ask();
+      expect(c.state.error, isNull, reason: 'la séance en cours va au bout');
+      await c.endSession();
+      expect(c.state.stage, ConsoleStage.expired);
+      expect(c.state.account!.paymentFailed, isTrue);
+      c.dispose();
+    });
+
+    test('se connecter sans avoir confirmé mène au courrier, pas à une erreur', () async {
+      final h = harness();
+      await h.gateway.signUp(email: 'neuve@example.org', password: 'un-mot-de-passe');
+      await h.gateway.signOut();
+      final c = TeacherConsoleController(h.gateway);
+      await c.start();
+      await c.signIn('neuve@example.org', 'un-mot-de-passe');
+      expect(c.state.stage, ConsoleStage.awaitingConfirmation);
+      await c.resendConfirmation();
+      expect(h.gateway.resent, ['neuve@example.org']);
+      c.dispose();
+    });
+
+    test("le nom de l'établissement donné à l'inscription arrive sur la licence", () async {
+      final h = harness();
+      await h.gateway.signOut();
+      final c = TeacherConsoleController(h.gateway);
+      await c.start();
+      await c.signUp('neuve@example.org', 'un-mot-de-passe', schoolName: 'École An-Nour');
+      h.gateway.confirm('neuve@example.org');
+      await c.signIn('neuve@example.org', 'un-mot-de-passe');
+      expect(c.state.stage, ConsoleStage.ready);
+      expect(c.state.licence!.schoolName, 'École An-Nour');
+      c.dispose();
+    });
+
     test('supprimer le compte efface la licence et déconnecte', () async {
       final h = harness(licence: discovery());
       final c = TeacherConsoleController(h.gateway);

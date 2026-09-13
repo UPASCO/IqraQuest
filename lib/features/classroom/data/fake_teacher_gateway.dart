@@ -58,6 +58,9 @@ class FakeTeacherGateway implements TeacherGateway {
   int portalsCreated = 0;
   bool deleted = false;
 
+  /// L'abonnement a été résilié au moment de la suppression.
+  bool subscriptionCancelled = false;
+
   @override
   bool get isSignedIn => _email != null;
 
@@ -100,15 +103,33 @@ class FakeTeacherGateway implements TeacherGateway {
       throw const TeacherException(TeacherError.badCredentials);
     }
     // Un compte inscrit mais non confirmé n'entre pas : c'est ce que
-    // GoTrue fait, et ce que my_licence() exige.
+    // GoTrue fait, et ce que my_licence() exige — en le disant.
     if (signedUp[clean.toLowerCase()] == false) {
-      throw const TeacherException(TeacherError.badCredentials);
+      throw const TeacherException(TeacherError.emailNotConfirmed);
     }
     completeSignIn(clean);
   }
 
+  /// Les courriers de confirmation renvoyés.
+  final List<String> resent = [];
+
   @override
-  Future<bool> signUp({required String email, required String password}) async {
+  Future<void> resendConfirmation(String email) async {
+    resent.add(email.trim());
+  }
+
+  /// Ce qu'un test veut simuler comme début de visite.
+  String? linkType;
+
+  @override
+  String? get lastLinkType => linkType;
+
+  @override
+  Future<bool> signUp({
+    required String email,
+    required String password,
+    String? schoolName,
+  }) async {
     final clean = email.trim();
     if (!RegExp(r'^[^@\s]+@[^@\s.]+\.[^@\s]+$').hasMatch(clean)) {
       throw const TeacherException(TeacherError.invalidEmail);
@@ -131,6 +152,7 @@ class FakeTeacherGateway implements TeacherGateway {
       concurrentSessions: 2,
       expiresAt: _now().add(const Duration(days: 36500)),
       freeGames: 5,
+      schoolName: schoolName?.trim(),
     );
     return true;
   }
@@ -175,6 +197,10 @@ class FakeTeacherGateway implements TeacherGateway {
   @override
   Future<void> deleteAccount() async {
     if (!isSignedIn) throw const TeacherException(TeacherError.notSignedIn);
+    // La fonction Edge résilie d'abord chez Stripe ; ici, on le note.
+    if (_licence != null && _licence!.status != 'none') {
+      subscriptionCancelled = true;
+    }
     deleted = true;
     _licence = null;
     codeOf.clear();
@@ -226,16 +252,16 @@ class FakeTeacherGateway implements TeacherGateway {
     final blocker = !l.isValid
         ? StartBlocker.expired
         : l.quotaExhausted
-            ? StartBlocker.quota
-            : aliveSessions >= l.concurrentSessions
-                ? StartBlocker.sessions
-                : StartBlocker.none;
+        ? StartBlocker.quota
+        : aliveSessions >= l.concurrentSessions
+        ? StartBlocker.sessions
+        : StartBlocker.none;
     return Account(
       state: !l.isValid
           ? AccountState.expired
           : l.quotaExhausted
-              ? AccountState.quotaExhausted
-              : AccountState.active,
+          ? AccountState.quotaExhausted
+          : AccountState.active,
       canStart: blocker == StartBlocker.none,
       blocker: blocker,
       email: l.email,

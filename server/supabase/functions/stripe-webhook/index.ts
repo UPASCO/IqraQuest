@@ -252,6 +252,58 @@ async function upsertLicence(row: Record<string, unknown>) {
   }
 }
 
+/// Trois jours de marge après la fin de période : le renouvellement
+/// Stripe tombe à l'échéance, parfois quelques heures après, et une
+/// école ne doit pas trouver porte close le matin de la reconduction.
+/// Une résiliation coupe par `customer.subscription.deleted`, qui pose
+/// l'échéance à l'instant même : la marge ne prolonge rien d'annulé.
+const RENEWAL_GRACE_DAYS = 3;
+
+function withGrace(periodEndSeconds: number): string {
+  const end = new Date(periodEndSeconds * 1000);
+  end.setUTCDate(end.getUTCDate() + RENEWAL_GRACE_DAYS);
+  return end.toISOString();
+}
+
+/// Retrouve la licence d'un compte — celle que la caisse a ouverte —
+/// et y écrit. Rend faux si le compte n'a pas de licence.
+async function patchLicenceByOwner(
+  ownerId: string,
+  fields: Record<string, unknown>,
+): Promise<boolean> {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/licences?owner_id=eq.${encodeURIComponent(ownerId)}` +
+      `&select=id,plan,expires_at`,
+    {
+      headers: { "apikey": SERVICE_ROLE, "Authorization": `Bearer ${SERVICE_ROLE}` },
+    },
+  );
+  if (!response.ok) throw new Error(`licence lookup failed: ${response.status}`);
+  const rows: { id: string; plan: string; expires_at: string }[] = await response.json();
+  // La payée d'abord, puis la plus longue — le même ordre que
+  // my_licence(), pour écrire la ligne que la console lira.
+  const row = (Array.isArray(rows) ? rows : []).sort((a, b) =>
+    Number(a.plan === "decouverte") - Number(b.plan === "decouverte") ||
+    String(b.expires_at).localeCompare(String(a.expires_at))
+  )[0];
+  if (!row?.id) return false;
+  const patched = await fetch(
+    `${SUPABASE_URL}/rest/v1/licences?id=eq.${encodeURIComponent(String(row.id))}`,
+    {
+      method: "PATCH",
+      headers: {
+        "apikey": SERVICE_ROLE,
+        "Authorization": `Bearer ${SERVICE_ROLE}`,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal",
+      },
+      body: JSON.stringify(fields),
+    },
+  );
+  if (!patched.ok) throw new Error(`licence patch failed: ${patched.status}`);
+  return true;
+}
+
 /// Inscrit l'événement ; rend faux s'il avait déjà été traité. Postgres
 /// tranche par la clé primaire, ce qui vaut même pour deux livraisons
 /// simultanées du même événement.
@@ -271,6 +323,23 @@ async function claimEvent(id: string, type: string): Promise<boolean> {
   return true;
 }
 
+/// Rend l'événement à Stripe. Sans cela, une écriture qui échoue après
+/// l'inscription de l'événement laisserait un doublon « déjà traité »
+/// à chaque nouvelle tentative — et une licence payée jamais écrite.
+async function releaseEvent(id: string): Promise<void> {
+  try {
+    await fetch(
+      `${SUPABASE_URL}/rest/v1/stripe_events?stripe_event_id=eq.${encodeURIComponent(id)}`,
+      {
+        method: "DELETE",
+        headers: { "apikey": SERVICE_ROLE, "Authorization": `Bearer ${SERVICE_ROLE}` },
+      },
+    );
+  } catch (error) {
+    console.error("événement non relâché", id, error);
+  }
+}
+
 /// Ce qu'un abonnement Stripe dit de lui, ramené aux colonnes de la
 /// licence. `current_period_*` a quitté l'objet Subscription dans les
 /// versions récentes de l'API : il vit sur la ligne d'abonnement, et on
@@ -285,7 +354,7 @@ function subscriptionFields(sub: Record<string, unknown>) {
     cancel_at_period_end: Boolean((sub as any)?.cancel_at_period_end),
     stripe_price_id: item?.price?.id ?? null,
     ...(start ? { current_period_start: new Date(start * 1000).toISOString() } : {}),
-    ...(end ? { expires_at: new Date(end * 1000).toISOString() } : {}),
+    ...(end ? { expires_at: withGrace(end) } : {}),
   };
 }
 
@@ -365,9 +434,13 @@ Deno.serve(async (request) => {
         // pour un abonnement, vingt-quatre heures pour le palier de
         // test — celui qui sert à voir de ses yeux, le lendemain, ce
         // que devient une école dont l'abonnement est fini.
-        const expires = expiryFor(plan, new Date());
-        await upsertLicence({
-          email,
+        // Un abonnement suit la période Stripe (les événements
+        // d'abonnement posent la vraie échéance) ; un paiement unique
+        // suit le palier.
+        const provisional = new Date();
+        provisional.setUTCDate(provisional.getUTCDate() + plan.duration_days + RENEWAL_GRACE_DAYS);
+        const expires = object?.subscription ? provisional : expiryFor(plan, new Date());
+        const fields = {
           plan: plan.id,
           concurrent_sessions: plan.rooms,
           expires_at: expires.toISOString(),
@@ -376,11 +449,17 @@ Deno.serve(async (request) => {
           current_period_start: new Date().toISOString(),
           stripe_customer_id: object?.customer ?? null,
           stripe_subscription_id: object?.subscription ?? null,
-          // La caisse a été ouverte par un compte : la licence lui est
-          // rattachée tout de suite, sans attendre la prochaine connexion.
-          ...(object?.client_reference_id ? { owner_id: object.client_reference_id } : {}),
           ...(schoolName ? { school_name: schoolName } : {}),
-        });
+        };
+        // La caisse a été ouverte par un compte : c'est SA licence qu'on
+        // écrit, retrouvée par le compte — pas par une adresse qui a pu
+        // changer depuis l'inscription. Sans compte (ancien lien de
+        // paiement), l'adresse fait foi.
+        const owner = object?.client_reference_id ? String(object.client_reference_id) : null;
+        const written = owner ? await patchLicenceByOwner(owner, fields) : false;
+        if (!written) {
+          await upsertLicence({ email, ...fields, ...(owner ? { owner_id: owner } : {}) });
+        }
         console.log("licence activée", { email, plan: plan.id, subscription: object?.subscription });
         break;
       }
@@ -399,7 +478,7 @@ Deno.serve(async (request) => {
           console.error("abonnement sans échéance lisible", object?.id);
           break;
         }
-        const renewed = new Date(period * 1000).toISOString();
+        const renewed = withGrace(period);
         // La ligne existe déjà (le paiement l'a écrite) : on la
         // retrouve par l'abonnement, pas par une adresse que
         // l'événement ne porte pas. Statut, période et renouvellement
@@ -478,7 +557,13 @@ Deno.serve(async (request) => {
         // porte la période.
         const subscription = object?.subscription ?? object?.parent?.subscription_details?.subscription;
         if (subscription) {
-          await patchLicenceBySubscription(String(subscription), { status: "active" });
+          // La facture porte la période qu'elle paie : l'échéance suit,
+          // sans attendre `subscription.updated`.
+          const periodEnd = Number(object?.lines?.data?.[0]?.period?.end ?? 0);
+          await patchLicenceBySubscription(String(subscription), {
+            status: "active",
+            ...(periodEnd ? { expires_at: withGrace(periodEnd) } : {}),
+          });
           console.log("facture payée", { subscription });
         }
         break;
@@ -486,8 +571,10 @@ Deno.serve(async (request) => {
     }
   } catch (error) {
     // Stripe réessaie sur un 500 : c'est ce qu'on veut si l'écriture a
-    // échoué, plutôt qu'une licence payée et jamais inscrite.
+    // échoué, plutôt qu'une licence payée et jamais inscrite. L'événement
+    // est rendu pour que la nouvelle tentative ne soit pas un doublon.
     console.error(error);
+    if (event?.id) await releaseEvent(String(event.id));
     return new Response("write failed", { status: 500 });
   }
 

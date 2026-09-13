@@ -41,6 +41,18 @@ enum TeacherError {
   /// l'envoi qui est plafonné — et un enseignant qui lit « le serveur ne
   /// répond pas » cherche au mauvais endroit.
   tooManyLinks,
+
+  /// « Mot de passe oublié » sur une adresse qui n'a pas de compte : on
+  /// le dit, plutôt que de laisser guetter un courrier qui ne partira
+  /// pas.
+  noAccount,
+
+  /// Le compte existe, mais l'adresse n'a pas encore été confirmée : le
+  /// mot de passe n'y est pour rien.
+  emailNotConfirmed,
+
+  /// Supprimer le compte est refusé tant qu'un abonnement est facturé.
+  subscriptionActive,
   unreachable,
 }
 
@@ -78,8 +90,7 @@ class Licence {
     plan: json['plan'] as String? ?? 'classe',
     concurrentSessions: (json['concurrent_sessions'] as num?)?.toInt() ?? 1,
     expiresAt:
-        DateTime.tryParse('${json['expires_at']}')?.toLocal() ??
-        DateTime.now(),
+        DateTime.tryParse('${json['expires_at']}')?.toLocal() ?? DateTime.now(),
     schoolName: (json['school_name'] as String?)?.trim(),
     freeGamesUsed: (json['free_games_used'] as num?)?.toInt() ?? 0,
     status: json['status'] as String? ?? 'none',
@@ -106,10 +117,18 @@ class Licence {
   /// abonnement.
   final String status;
 
+  /// Les statuts Stripe qui ferment la porte — les mêmes que
+  /// `licence_blocked_by_status` côté serveur.
+  static const blockedStatuses = {
+    'past_due',
+    'unpaid',
+    'incomplete',
+    'incomplete_expired',
+    'paused',
+  };
+
   bool get isValid =>
-      expiresAt.isAfter(DateTime.now()) &&
-      status != 'unpaid' &&
-      status != 'incomplete_expired';
+      expiresAt.isAfter(DateTime.now()) && !blockedStatuses.contains(status);
 
   bool get quotaExhausted => freeGames != null && freeGamesUsed >= freeGames!;
 }
@@ -229,7 +248,8 @@ class Account {
   /// licence court alors jusqu'à l'échéance, puis s'arrête.
   final String status;
   final bool cancelAtPeriodEnd;
-  bool get paymentFailed => status == 'past_due' || status == 'unpaid';
+  bool get paymentFailed =>
+      status == 'past_due' || status == 'unpaid' || status == 'incomplete';
 
   /// Un client Stripe existe : le portail de gestion a quelqu'un à
   /// montrer.
@@ -267,8 +287,8 @@ class SessionReport {
     id: json['id'] as String? ?? '',
     code: json['code'] as String? ?? '',
     lessonId: json['lessonId'] as String? ?? '',
-    playedAt: DateTime.tryParse('${json['playedAt']}')?.toLocal() ??
-        DateTime.now(),
+    playedAt:
+        DateTime.tryParse('${json['playedAt']}')?.toLocal() ?? DateTime.now(),
     pupils: (json['pupils'] as num?)?.toInt() ?? 0,
     perQuestion: [
       for (final row in (json['perQuestion'] as List? ?? const []))
@@ -304,8 +324,10 @@ class SessionReport {
   /// Les cartes que la classe a le moins réussies, les moins bien
   /// d'abord. Une question que personne n'a vue n'en fait pas partie.
   List<ReportQuestion> get hardest {
-    final seen = [for (final q in perQuestion) if (q.answered > 0) q]
-      ..sort((a, b) => a.success!.compareTo(b.success!));
+    final seen = [
+      for (final q in perQuestion)
+        if (q.answered > 0) q,
+    ]..sort((a, b) => a.success!.compareTo(b.success!));
     return seen;
   }
 }
@@ -383,10 +405,10 @@ class ActiveSession {
     code: json['code'] as String? ?? '',
     lessonId: json['lessonId'] as String? ?? '',
     deviceId: json['deviceId'] as String?,
-    openedAt: DateTime.tryParse('${json['openedAt']}')?.toLocal() ??
-        DateTime.now(),
-    lastSeenAt: DateTime.tryParse('${json['lastSeenAt']}')?.toLocal() ??
-        DateTime.now(),
+    openedAt:
+        DateTime.tryParse('${json['openedAt']}')?.toLocal() ?? DateTime.now(),
+    lastSeenAt:
+        DateTime.tryParse('${json['lastSeenAt']}')?.toLocal() ?? DateTime.now(),
     alive: json['alive'] == true,
   );
 
@@ -428,7 +450,20 @@ abstract class TeacherGateway {
 
   /// Créer un compte. Gratuit, et il donne cinq parties. Rend vrai si
   /// une confirmation par e-mail est attendue avant de pouvoir entrer.
-  Future<bool> signUp({required String email, required String password});
+  Future<bool> signUp({
+    required String email,
+    required String password,
+    String? schoolName,
+  });
+
+  /// Renvoie le courrier de confirmation d'une inscription.
+  Future<void> resendConfirmation(String email);
+
+  /// Comment cette visite a commencé : `recovery` ou `magiclink` quand
+  /// un lien de courrier vient d'être ouvert, `signup` après une
+  /// confirmation, null sinon. La console s'en sert pour proposer un
+  /// nouveau mot de passe à qui vient d'entrer sans le sien.
+  String? get lastLinkType;
 
   /// Changer son mot de passe — le geste qui suit un lien de secours.
   Future<void> updatePassword(String newPassword);

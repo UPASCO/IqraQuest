@@ -1502,6 +1502,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get teacherSubscriptionTitle => 'الاشتراك';
 
   @override
+  String get teacherNoAccount =>
+      'لا يوجد حساب بهذا العنوان. أنشئ واحدًا: إنه مجاني.';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'لم يُؤكَّد عنوانك بعد. افتح الرابط الذي وصلك بالبريد، أو اطلب رابطًا جديدًا.';
+
+  @override
+  String get teacherResendEmail => 'أعد إرسال البريد';
+
+  @override
+  String get teacherSchoolNameLabel => 'اسم المؤسسة (اختياري)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'اشتراكك ما زال نشطًا. ألغِه أولًا من «إدارة اشتراكي»، ثم احذف الحساب.';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'دخلت عبر رابط. اختر الآن كلمة مرور جديدة.';
+
+  @override
   String get teacherManageDevices => 'إدارة أجهزتي';
 
   @override

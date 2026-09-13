@@ -1485,6 +1485,28 @@ class AppLocalizationsNl extends AppLocalizations {
   String get teacherSubscriptionTitle => 'Abonnement';
 
   @override
+  String get teacherNoAccount =>
+      'Er bestaat geen account voor dit adres. Maak er een aan: het is gratis.';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'Je adres is nog niet bevestigd. Open de link uit de e-mail of vraag een nieuwe aan.';
+
+  @override
+  String get teacherResendEmail => 'E-mail opnieuw sturen';
+
+  @override
+  String get teacherSchoolNameLabel => 'Naam van de school (optioneel)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'Je abonnement loopt nog. Zeg het eerst op via “Mijn abonnement beheren” en verwijder dan het account.';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'Je bent via een link binnengekomen. Kies nu een nieuw wachtwoord.';
+
+  @override
   String get teacherManageDevices => 'Mijn apparaten beheren';
 
   @override

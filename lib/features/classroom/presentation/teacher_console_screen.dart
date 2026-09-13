@@ -100,6 +100,20 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
     final console = ref.watch(teacherConsoleProvider);
 
     ref.listen<ConsoleState>(teacherConsoleProvider, (previous, next) {
+      // Entré par un lien de courrier — mot de passe oublié — : la
+      // console ouvre Mon compte sur le mot de passe, une fois.
+      final byLink =
+          next.linkType == 'recovery' || next.linkType == 'magiclink';
+      if (byLink &&
+          !_account &&
+          previous?.stage == ConsoleStage.loading &&
+          (next.stage == ConsoleStage.ready ||
+              next.stage == ConsoleStage.quotaExhausted ||
+              next.stage == ConsoleStage.expired ||
+              next.stage == ConsoleStage.noLicence)) {
+        setState(() => _account = true);
+        ref.read(teacherConsoleProvider.notifier).loadSessions();
+      }
       final error = next.error;
       if (error == null || error == previous?.error) return;
       ScaffoldMessenger.of(context)
@@ -160,9 +174,9 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
             onSignIn: (password) => ref
                 .read(teacherConsoleProvider.notifier)
                 .signIn(_email.text, password),
-            onSignUp: (password) => ref
+            onSignUp: (password, school) => ref
                 .read(teacherConsoleProvider.notifier)
-                .signUp(_email.text, password),
+                .signUp(_email.text, password, schoolName: school),
           ),
         ),
         ConsoleStage.awaitingConfirmation => _Welcome(
@@ -171,6 +185,8 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
             console: console,
             l10n: l10n,
             onBack: () => ref.read(teacherConsoleProvider.notifier).signOut(),
+            onResend: () =>
+                ref.read(teacherConsoleProvider.notifier).resendConfirmation(),
           ),
         ),
         ConsoleStage.noLicence => _Welcome(
@@ -290,6 +306,9 @@ class _TeacherConsoleScreenState extends ConsumerState<TeacherConsoleScreen> {
         TeacherError.quotaExhausted => l10n.teacherQuotaBody,
         TeacherError.emailTaken => l10n.teacherEmailTaken,
         TeacherError.weakPassword => l10n.teacherWeakPassword,
+        TeacherError.noAccount => l10n.teacherNoAccount,
+        TeacherError.emailNotConfirmed => l10n.teacherEmailNotConfirmed,
+        TeacherError.subscriptionActive => l10n.teacherSubscriptionActiveDelete,
         _ => l10n.teacherUnreachable,
       };
 }
@@ -321,8 +340,9 @@ class _SignIn extends StatefulWidget {
   /// La porte de tous les jours.
   final ValueChanged<String> onSignIn;
 
-  /// Créer un compte — gratuit, cinq parties.
-  final ValueChanged<String> onSignUp;
+  /// Créer un compte — gratuit, cinq parties. Le nom de l'établissement
+  /// est facultatif.
+  final void Function(String password, String? schoolName) onSignUp;
 
   @override
   State<_SignIn> createState() => _SignInState();
@@ -330,6 +350,7 @@ class _SignIn extends StatefulWidget {
 
 class _SignInState extends State<_SignIn> {
   final _password = TextEditingController();
+  final _school = TextEditingController();
 
   /// Le lien de connexion n'est proposé qu'à qui le demande. Deux portes
   /// côte à côte laissent choisir la mauvaise : une école qui a un mot
@@ -349,6 +370,7 @@ class _SignInState extends State<_SignIn> {
   @override
   void dispose() {
     _password.dispose();
+    _school.dispose();
     super.dispose();
   }
 
@@ -414,6 +436,19 @@ class _SignInState extends State<_SignIn> {
             ),
           ),
         ],
+        if (_signUp) ...[
+          const SizedBox(height: 12),
+          TextField(
+            key: const Key('teacher-school-name'),
+            controller: _school,
+            textCapitalization: TextCapitalization.words,
+            autofillHints: const [AutofillHints.organizationName],
+            decoration: InputDecoration(
+              labelText: widget.l10n.teacherSchoolNameLabel,
+              border: const OutlineInputBorder(),
+            ),
+          ),
+        ],
         const SizedBox(height: 16),
         ElevatedButton(
           key: const Key('teacher-send'),
@@ -425,7 +460,7 @@ class _SignInState extends State<_SignIn> {
               : _forgot
               ? widget.onSend
               : _signUp
-              ? () => widget.onSignUp(_password.text)
+              ? () => widget.onSignUp(_password.text, _school.text)
               : () => widget.onSignIn(_password.text),
           child: ButtonLabel(
             _forgot
@@ -559,7 +594,7 @@ class _AccountCard extends StatelessWidget {
                 // Un abonnement fini ne compte pas « encore zéro jour » :
                 // il dit la date à laquelle il s'est arrêté. Le décompte
                 // n'a de sens que sur ce qui court encore.
-                account.locked
+                account.locked && !account.paymentFailed
                     ? l10n.teacherAccountEndedOn(
                         account.expiresAt == null
                             ? ''
@@ -652,11 +687,16 @@ class _AwaitingConfirmation extends StatelessWidget {
     required this.console,
     required this.l10n,
     required this.onBack,
+    required this.onResend,
   });
 
   final ConsoleState console;
   final AppLocalizations l10n;
   final VoidCallback onBack;
+
+  /// Le courrier, une seconde fois — la seule chose à faire quand la
+  /// première n'est pas arrivée.
+  final VoidCallback onResend;
 
   @override
   Widget build(BuildContext context) {
@@ -684,6 +724,15 @@ class _AwaitingConfirmation extends StatelessWidget {
               ?.copyWith(color: colors.textSecondary),
         ),
         const SizedBox(height: 20),
+        ElevatedButton(
+          key: const Key('teacher-resend'),
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size.fromHeight(52),
+          ),
+          onPressed: console.busy ? null : onResend,
+          child: ButtonLabel(l10n.teacherResendEmail),
+        ),
+        const SizedBox(height: 8),
         OutlinedButton(
           key: const Key('teacher-awaiting-back'),
           onPressed: onBack,
@@ -914,7 +963,20 @@ class _AccountViewState extends ConsumerState<_AccountView> {
     ]);
 
     // Le mot de passe.
+    final byLink =
+        console.linkType == 'recovery' || console.linkType == 'magiclink';
     final password = panel(l10n.teacherChangePassword, [
+      if (byLink) ...[
+        Text(
+          l10n.teacherSetNewPasswordHint,
+          key: const Key('teacher-set-password-hint'),
+          style: text.bodyMedium?.copyWith(
+            color: colors.goldAccent,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 8),
+      ],
       TextField(
         key: const Key('teacher-new-password'),
         controller: _newPassword,
@@ -938,6 +1000,7 @@ class _AccountViewState extends ConsumerState<_AccountView> {
                 if (ok && mounted) {
                   _newPassword.clear();
                   setState(() => _changed = true);
+                  ref.read(teacherConsoleProvider.notifier).clearLinkType();
                 }
               },
         child: ButtonLabel(l10n.teacherChangePassword),
@@ -1066,6 +1129,7 @@ class _Expired extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = context.colors;
     final account = console.account;
+    final paymentFailed = account?.paymentFailed ?? false;
     return Column(
       key: const Key('teacher-expired'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1074,20 +1138,30 @@ class _Expired extends ConsumerWidget {
           _AccountCard(account: account, l10n: l10n, showSchoolName: true),
           const SizedBox(height: 18),
         ],
+        // Deux situations, deux écrans : un paiement en échec se
+        // régularise (portail, nouvelle carte) ; un abonnement fini se
+        // renouvelle — par une nouvelle caisse, car Stripe ne réveille
+        // pas un abonnement résilié.
         Text(
-          l10n.teacherExpired,
+          paymentFailed ? l10n.teacherPaymentFailedTitle : l10n.teacherExpired,
           style: Theme.of(context).textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 8),
         Text(
-          l10n.teacherExpiredHint,
+          paymentFailed
+              ? l10n.teacherPaymentFailedBody
+              : l10n.teacherExpiredHint,
           style: Theme.of(context).textTheme.bodyMedium
               ?.copyWith(color: colors.textPrimary),
         ),
         const SizedBox(height: 20),
-        if (kIsWeb && (console.account?.hasCustomer ?? false))
-          _PortalButton(console: console, l10n: l10n, label: l10n.teacherRenew)
+        if (kIsWeb && paymentFailed && (account?.hasCustomer ?? false))
+          _PortalButton(
+            console: console,
+            l10n: l10n,
+            label: l10n.teacherUpdatePayment,
+          )
         else if (kIsWeb)
           _SubscribeButton(
             console: console,

@@ -1490,6 +1490,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get teacherSubscriptionTitle => 'Suscripción';
 
   @override
+  String get teacherNoAccount =>
+      'No existe ninguna cuenta con esta dirección. Crea una: es gratis.';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'Tu dirección aún no está confirmada. Abre el enlace recibido por correo o pide uno nuevo.';
+
+  @override
+  String get teacherResendEmail => 'Reenviar el correo';
+
+  @override
+  String get teacherSchoolNameLabel => 'Nombre del centro (opcional)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'Tu suscripción sigue activa. Cancélala primero desde «Gestionar mi suscripción» y luego elimina la cuenta.';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'Has entrado con un enlace. Elige ahora una nueva contraseña.';
+
+  @override
   String get teacherManageDevices => 'Gestionar mis dispositivos';
 
   @override

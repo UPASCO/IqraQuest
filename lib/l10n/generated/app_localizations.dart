@@ -2524,6 +2524,42 @@ abstract class AppLocalizations {
   /// **'Subscription'**
   String get teacherSubscriptionTitle;
 
+  /// Console: the address has no account (forgot-password path)
+  ///
+  /// In en, this message translates to:
+  /// **'No account exists for this address. Create one — it\'s free.'**
+  String get teacherNoAccount;
+
+  /// Console: sign-in refused because the address is not confirmed yet
+  ///
+  /// In en, this message translates to:
+  /// **'Your address is not confirmed yet. Open the link you received by e-mail, or ask for a new one.'**
+  String get teacherEmailNotConfirmed;
+
+  /// Console: button that sends the confirmation e-mail again
+  ///
+  /// In en, this message translates to:
+  /// **'Send the e-mail again'**
+  String get teacherResendEmail;
+
+  /// Console sign-up: optional school name field
+  ///
+  /// In en, this message translates to:
+  /// **'School name (optional)'**
+  String get teacherSchoolNameLabel;
+
+  /// Console: deletion refused while a subscription is still billed
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription is still active. Cancel it first from “Manage my subscription”, then delete the account.'**
+  String get teacherSubscriptionActiveDelete;
+
+  /// Console: shown in the account view right after a sign-in link was used
+  ///
+  /// In en, this message translates to:
+  /// **'You came in through a link. Choose a new password now.'**
+  String get teacherSetNewPasswordHint;
+
   /// Console: open the list of playing devices
   ///
   /// In en, this message translates to:

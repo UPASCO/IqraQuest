@@ -1477,6 +1477,28 @@ class AppLocalizationsUr extends AppLocalizations {
   String get teacherSubscriptionTitle => 'رکنیت';
 
   @override
+  String get teacherNoAccount =>
+      'اس پتے پر کوئی اکاؤنٹ نہیں ہے۔ ایک بنائیں: یہ مفت ہے۔';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'آپ کا پتہ ابھی تصدیق شدہ نہیں۔ ای میل میں ملا لنک کھولیں، یا نیا لنک طلب کریں۔';
+
+  @override
+  String get teacherResendEmail => 'ای میل دوبارہ بھیجیں';
+
+  @override
+  String get teacherSchoolNameLabel => 'ادارے کا نام (اختیاری)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'آپ کی رکنیت ابھی فعال ہے۔ پہلے «میری رکنیت کا انتظام» سے منسوخ کریں، پھر اکاؤنٹ حذف کریں۔';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'آپ لنک کے ذریعے داخل ہوئے ہیں۔ اب نیا پاس ورڈ منتخب کریں۔';
+
+  @override
   String get teacherManageDevices => 'میرے آلات منظم کریں';
 
   @override

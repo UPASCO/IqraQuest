@@ -32,7 +32,7 @@ export function form(
 export async function stripe(
   path: string,
   data?: Record<string, unknown>,
-  method: "POST" | "GET" = data ? "POST" : "GET",
+  method: "POST" | "GET" | "DELETE" = data ? "POST" : "GET",
   // deno-lint-ignore no-explicit-any
 ): Promise<any> {
   if (!STRIPE_SECRET_KEY) throw new Error("STRIPE_SECRET_KEY manquant");
@@ -42,7 +42,7 @@ export async function stripe(
       Authorization: `Bearer ${STRIPE_SECRET_KEY}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: method === "POST" && data ? form(data) : undefined,
+    body: method !== "GET" && data ? form(data) : undefined,
   });
   const body = await response.json();
   if (!response.ok) {

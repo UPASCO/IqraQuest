@@ -177,10 +177,12 @@ Trois fonctions Edge, dans `server/supabase/functions/` :
 |---|---|---|
 | `create-school-checkout` | la console, avec le jeton de l'enseignant | ouvre une session Stripe Checkout (abonnement annuel, un seul prix) et rend son URL |
 | `create-customer-portal` | la console, avec le jeton | ouvre le portail client Stripe (résilier, changer de carte, factures) |
+| `delete-school-account` | la console, avec le jeton | résilie l'abonnement chez Stripe, puis appelle `delete_my_account()` au nom de l'enseignant |
 | `stripe-webhook` | Stripe, signé | écrit ce que l'abonnement devient dans `licences`, une fois par événement |
 
     supabase functions deploy create-school-checkout
     supabase functions deploy create-customer-portal
+    supabase functions deploy delete-school-account
     supabase functions deploy stripe-webhook --no-verify-jwt
     supabase secrets set STRIPE_MODE=test STRIPE_SECRET_KEY=sk_test_... \
       STRIPE_SCHOOL_PRICE_TEST=price_... STRIPE_SCHOOL_PRICE_LIVE=price_... \
@@ -212,7 +214,7 @@ Ce que le webhook fait, événement par événement :
 |---|---|---|
 | `checkout.session.completed` | `active` | plan `ecole`, deux salles, échéance à un an |
 | `invoice.paid` | `active` | l'échéance suit la nouvelle période |
-| `invoice.payment_failed` | `past_due` | plus de nouvelle séance ; une séance en cours va au bout |
+| `invoice.payment_failed` | `past_due` | plus de nouvelle séance (`licence_blocked_by_status`, migration 0009) ; une séance en cours va au bout |
 | `customer.subscription.updated` | celui de Stripe | `cancel_at_period_end`, période, prix |
 | `customer.subscription.deleted` | `canceled` | l'accès s'arrête ; l'historique reste |
 

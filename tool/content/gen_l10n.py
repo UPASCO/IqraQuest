@@ -3432,6 +3432,76 @@ s("teacherSubscriptionTitle", "Console account view: heading of the subscription
   pt="Subscrição", de="Abonnement", tr="Abonelik", id="Langganan",
   ur="رکنیت", ms="Langganan", it="Abbonamento", nl="Abonnement")
 
+s("teacherNoAccount", "Console: the address has no account (forgot-password path)",
+  fr="Aucun compte n'existe à cette adresse. Créez-en un : c'est gratuit.",
+  en="No account exists for this address. Create one — it's free.",
+  ar="لا يوجد حساب بهذا العنوان. أنشئ واحدًا: إنه مجاني.",
+  es="No existe ninguna cuenta con esta dirección. Crea una: es gratis.",
+  pt="Não existe nenhuma conta com este endereço. Crie uma: é grátis.",
+  de="Für diese Adresse gibt es kein Konto. Lege eines an – kostenlos.",
+  tr="Bu adrese ait bir hesap yok. Bir tane oluşturun: ücretsiz.",
+  id="Tidak ada akun dengan alamat ini. Buat satu: gratis.",
+  ur="اس پتے پر کوئی اکاؤنٹ نہیں ہے۔ ایک بنائیں: یہ مفت ہے۔",
+  ms="Tiada akaun untuk alamat ini. Cipta satu: percuma.",
+  it="Nessun account esiste per questo indirizzo. Creane uno: è gratis.",
+  nl="Er bestaat geen account voor dit adres. Maak er een aan: het is gratis.")
+
+s("teacherEmailNotConfirmed", "Console: sign-in refused because the address is not confirmed yet",
+  fr="Votre adresse n'est pas encore confirmée. Ouvrez le lien reçu par e-mail, ou demandez-en un nouveau.",
+  en="Your address is not confirmed yet. Open the link you received by e-mail, or ask for a new one.",
+  ar="لم يُؤكَّد عنوانك بعد. افتح الرابط الذي وصلك بالبريد، أو اطلب رابطًا جديدًا.",
+  es="Tu dirección aún no está confirmada. Abre el enlace recibido por correo o pide uno nuevo.",
+  pt="O seu endereço ainda não está confirmado. Abra o link recebido por e-mail ou peça um novo.",
+  de="Deine Adresse ist noch nicht bestätigt. Öffne den Link aus der E-Mail oder fordere einen neuen an.",
+  tr="Adresiniz henüz doğrulanmadı. E-postayla gelen bağlantıyı açın ya da yenisini isteyin.",
+  id="Alamat Anda belum dikonfirmasi. Buka tautan yang diterima lewat email, atau minta yang baru.",
+  ur="آپ کا پتہ ابھی تصدیق شدہ نہیں۔ ای میل میں ملا لنک کھولیں، یا نیا لنک طلب کریں۔",
+  ms="Alamat anda belum disahkan. Buka pautan yang diterima melalui e-mel, atau minta yang baru.",
+  it="Il tuo indirizzo non è ancora confermato. Apri il link ricevuto per e-mail o richiedine uno nuovo.",
+  nl="Je adres is nog niet bevestigd. Open de link uit de e-mail of vraag een nieuwe aan.")
+
+s("teacherResendEmail", "Console: button that sends the confirmation e-mail again",
+  fr="Renvoyer l'e-mail", en="Send the e-mail again", ar="أعد إرسال البريد",
+  es="Reenviar el correo", pt="Reenviar o e-mail", de="E-Mail erneut senden",
+  tr="E-postayı yeniden gönder", id="Kirim ulang email", ur="ای میل دوبارہ بھیجیں",
+  ms="Hantar semula e-mel", it="Invia di nuovo l'e-mail", nl="E-mail opnieuw sturen")
+
+s("teacherSchoolNameLabel", "Console sign-up: optional school name field",
+  fr="Nom de l'établissement (facultatif)", en="School name (optional)",
+  ar="اسم المؤسسة (اختياري)", es="Nombre del centro (opcional)",
+  pt="Nome da escola (opcional)", de="Name der Schule (optional)",
+  tr="Kurum adı (isteğe bağlı)", id="Nama sekolah (opsional)",
+  ur="ادارے کا نام (اختیاری)", ms="Nama sekolah (pilihan)",
+  it="Nome dell'istituto (facoltativo)", nl="Naam van de school (optioneel)")
+
+s("teacherSubscriptionActiveDelete", "Console: deletion refused while a subscription is still billed",
+  fr="Votre abonnement est encore actif. Résiliez-le d'abord depuis « Gérer mon abonnement », puis supprimez le compte.",
+  en="Your subscription is still active. Cancel it first from “Manage my subscription”, then delete the account.",
+  ar="اشتراكك ما زال نشطًا. ألغِه أولًا من «إدارة اشتراكي»، ثم احذف الحساب.",
+  es="Tu suscripción sigue activa. Cancélala primero desde «Gestionar mi suscripción» y luego elimina la cuenta.",
+  pt="A sua subscrição ainda está ativa. Cancele-a primeiro em «Gerir a minha subscrição» e depois apague a conta.",
+  de="Dein Abonnement läuft noch. Kündige es zuerst unter „Mein Abonnement verwalten“ und lösche dann das Konto.",
+  tr="Aboneliğiniz hâlâ etkin. Önce «Aboneliğimi yönet» bölümünden iptal edin, sonra hesabı silin.",
+  id="Langganan Anda masih aktif. Batalkan dulu dari «Kelola langganan saya», lalu hapus akun.",
+  ur="آپ کی رکنیت ابھی فعال ہے۔ پہلے «میری رکنیت کا انتظام» سے منسوخ کریں، پھر اکاؤنٹ حذف کریں۔",
+  ms="Langganan anda masih aktif. Batalkan dahulu dari «Urus langganan saya», kemudian padam akaun.",
+  it="Il tuo abbonamento è ancora attivo. Disdicilo prima da «Gestisci il mio abbonamento», poi elimina l'account.",
+  nl="Je abonnement loopt nog. Zeg het eerst op via “Mijn abonnement beheren” en verwijder dan het account.")
+
+s("teacherSetNewPasswordHint", "Console: shown in the account view right after a sign-in link was used",
+  fr="Vous êtes entré par un lien. Choisissez maintenant un nouveau mot de passe.",
+  en="You came in through a link. Choose a new password now.",
+  ar="دخلت عبر رابط. اختر الآن كلمة مرور جديدة.",
+  es="Has entrado con un enlace. Elige ahora una nueva contraseña.",
+  pt="Entrou através de um link. Escolha agora uma nova palavra-passe.",
+  de="Du bist über einen Link hereingekommen. Wähle jetzt ein neues Passwort.",
+  tr="Bir bağlantıyla giriş yaptınız. Şimdi yeni bir parola seçin.",
+  id="Anda masuk lewat tautan. Pilih kata sandi baru sekarang.",
+  ur="آپ لنک کے ذریعے داخل ہوئے ہیں۔ اب نیا پاس ورڈ منتخب کریں۔",
+  ms="Anda masuk melalui pautan. Pilih kata laluan baharu sekarang.",
+  it="Sei entrato con un link. Scegli ora una nuova password.",
+  nl="Je bent via een link binnengekomen. Kies nu een nieuw wachtwoord.")
+
 s("teacherManageDevices", "Console: open the list of playing devices",
   fr="Gérer mes appareils", en="Manage my devices", ar="إدارة أجهزتي",
   es="Gestionar mis dispositivos", pt="Gerir os meus dispositivos",

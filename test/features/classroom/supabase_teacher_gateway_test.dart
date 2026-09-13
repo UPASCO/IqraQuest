@@ -43,7 +43,9 @@ void main() {
 
     expect(calls.single.url.path, '/auth/v1/otp');
     expect(calls.single.body['email'], 'ecole@example.org');
-    expect(calls.single.body['create_user'], true);
+    // Le lien sert à rentrer, pas à s'inscrire : une adresse inconnue ne
+    // reçoit plus un compte fantôme sans mot de passe.
+    expect(calls.single.body['create_user'], false);
     // The return address travels as a query parameter: GoTrue reads
     // `redirect_to` there and ignores anything put in the body, which is
     // exactly how the link used to come back to the wrong page.
@@ -170,6 +172,130 @@ void main() {
         isA<TeacherException>().having((e) => e.error, 'error', TeacherError.emailTaken),
       ),
     );
+  });
+
+  test('mot de passe oublié sur une adresse sans compte : on le dit', () async {
+    // `create_user: false` : le lien ne crée plus de compte fantôme, et
+    // GoTrue répond 422. L'école lit « aucun compte », pas « lien envoyé ».
+    late Map<String, dynamic> sent;
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient((request) async {
+        sent = jsonDecode(request.body) as Map<String, dynamic>;
+        return http.Response('{"code":422,"msg":"Signups not allowed for otp"}', 422);
+      }),
+    );
+    await expectLater(
+      gateway.sendMagicLink('inconnue@example.org'),
+      throwsA(isA<TeacherException>().having((e) => e.error, 'error', TeacherError.noAccount)),
+    );
+    expect(sent['create_user'], isFalse);
+  });
+
+  test('une adresse non confirmée est nommée, pas prise pour un mauvais mot de passe', () async {
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient(
+        (_) async => http.Response(
+          '{"error":"invalid_grant","error_code":"email_not_confirmed","msg":"Email not confirmed"}',
+          400,
+        ),
+      ),
+    );
+    await expectLater(
+      gateway.signInWithPassword(email: 'ecole@example.org', password: 'bon'),
+      throwsA(
+        isA<TeacherException>().having((e) => e.error, 'error', TeacherError.emailNotConfirmed),
+      ),
+    );
+  });
+
+  test('renvoyer le courrier de confirmation passe par /resend, type signup', () async {
+    late Uri hit;
+    late Map<String, dynamic> sent;
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      redirectTo: 'https://school.example.org/teacher-callback.html',
+      client: MockClient((request) async {
+        hit = request.url;
+        sent = jsonDecode(request.body) as Map<String, dynamic>;
+        return http.Response('{}', 200);
+      }),
+    );
+    await gateway.resendConfirmation('ecole@example.org');
+    expect(hit.path, '/auth/v1/resend');
+    expect(hit.queryParameters['redirect_to'], 'https://school.example.org/teacher-callback.html');
+    expect(sent['type'], 'signup');
+    expect(sent['email'], 'ecole@example.org');
+  });
+
+  test("le nom de l'établissement voyage dans les métadonnées du compte", () async {
+    late Map<String, dynamic> sent;
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient((request) async {
+        sent = jsonDecode(request.body) as Map<String, dynamic>;
+        return http.Response('{"id":"u1","identities":[{"id":"i1"}]}', 200);
+      }),
+    );
+    final needsConfirmation = await gateway.signUp(
+      email: 'ecole@example.org',
+      password: 'un-mot-de-passe',
+      schoolName: '  École An-Nour ',
+    );
+    expect(needsConfirmation, isTrue);
+    expect(sent['data'], {'organization_name': 'École An-Nour'});
+  });
+
+  test('un lien de récupération dit comment la visite a commencé', () async {
+    final gateway = SupabaseTeacherGateway(
+      url: _url,
+      anonKey: _anon,
+      storage: await freshStorage(),
+      client: MockClient((_) async => http.Response('{}', 200)),
+    );
+    final signedIn = await gateway.restore(
+      fragment: '/teacher?access_token=a&refresh_token=r&type=recovery',
+    );
+    expect(signedIn, isTrue);
+    expect(gateway.lastLinkType, 'recovery');
+  });
+
+  test('supprimer passe par la fonction qui résilie Stripe, sinon par la base', () async {
+    final calls = <String>[];
+    Future<SupabaseTeacherGateway> make(int edgeStatus) async {
+      final gateway = SupabaseTeacherGateway(
+        url: _url,
+        anonKey: _anon,
+        storage: await freshStorage(),
+        client: MockClient((request) async {
+          calls.add(request.url.path);
+          if (request.url.path.contains('/functions/v1/delete-school-account')) {
+            return http.Response('{"deleted":true}', edgeStatus);
+          }
+          return http.Response('{"deleted":true}', 200);
+        }),
+      );
+      await gateway.restore(fragment: 'access_token=a&refresh_token=r');
+      return gateway;
+    }
+
+    await (await make(200)).deleteAccount();
+    expect(calls, isNot(contains('/rest/v1/rpc/delete_my_account')),
+        reason: 'la fonction a déjà tout fait, abonnement compris');
+
+    calls.clear();
+    await (await make(404)).deleteAccount();
+    expect(calls, contains('/rest/v1/rpc/delete_my_account'),
+        reason: 'sans la fonction déployée, la base tranche elle-même');
   });
 
   test('a plafond d\'envoi atteint se dit, au lieu d\'accuser le serveur', () async {

@@ -57,6 +57,7 @@ class ConsoleState {
     this.error,
     this.errorLimit,
     this.busy = false,
+    this.linkType,
   });
 
   final ConsoleStage stage;
@@ -87,6 +88,11 @@ class ConsoleState {
   /// A call is in flight: the buttons wait rather than firing twice.
   final bool busy;
 
+  /// `recovery` ou `magiclink` quand la visite a commencé par un lien de
+  /// courrier : l'école est entrée sans mot de passe, et la console lui
+  /// en propose un.
+  final String? linkType;
+
   ConsoleState copyWith({
     ConsoleStage? stage,
     Object? email = _unset,
@@ -99,6 +105,7 @@ class ConsoleState {
     Object? error = _unset,
     Object? errorLimit = _unset,
     bool? busy,
+    Object? linkType = _unset,
   }) => ConsoleState(
     stage: stage ?? this.stage,
     email: identical(email, _unset) ? this.email : email as String?,
@@ -119,6 +126,7 @@ class ConsoleState {
         ? this.errorLimit
         : errorLimit as int?,
     busy: busy ?? this.busy,
+    linkType: identical(linkType, _unset) ? this.linkType : linkType as String?,
   );
 }
 
@@ -197,14 +205,14 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
         state = state.copyWith(stage: ConsoleStage.signedOut);
         return;
       }
-      state = state.copyWith(email: gateway.email);
+      state = state.copyWith(
+        email: gateway.email,
+        linkType: gateway.lastLinkType,
+      );
       await refreshLicence();
       if (afterCheckout) await _awaitActivation();
     } on TeacherException catch (e) {
-      state = state.copyWith(
-        stage: ConsoleStage.signedOut,
-        error: e.error,
-      );
+      state = state.copyWith(stage: ConsoleStage.signedOut, error: e.error);
     } catch (_) {
       state = state.copyWith(
         stage: ConsoleStage.signedOut,
@@ -222,6 +230,17 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
       state = state.copyWith(email: gateway.email ?? email.trim());
       await refreshLicence();
     } on TeacherException catch (e) {
+      // Adresse pas encore confirmée : on mène à l'écran qui sait
+      // renvoyer le courrier, plutôt qu'à un message rouge.
+      if (e.error == TeacherError.emailNotConfirmed) {
+        state = state.copyWith(
+          stage: ConsoleStage.awaitingConfirmation,
+          email: email.trim(),
+          error: e.error,
+          busy: false,
+        );
+        return;
+      }
       state = state.copyWith(error: e.error, busy: false);
     } catch (_) {
       state = state.copyWith(error: TeacherError.unreachable, busy: false);
@@ -351,11 +370,7 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
       );
       _startHeartbeat(opened.sessionId);
     } on TeacherException catch (e) {
-      state = state.copyWith(
-        error: e.error,
-        errorLimit: e.limit,
-        busy: false,
-      );
+      state = state.copyWith(error: e.error, errorLimit: e.limit, busy: false);
     } catch (_) {
       state = state.copyWith(error: TeacherError.unreachable, busy: false);
     }
@@ -402,12 +417,17 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
 
   /// Créer un compte. Selon le réglage du serveur, l'enseignant est entré
   /// tout de suite ou attend un e-mail de confirmation.
-  Future<void> signUp(String email, String password) async {
+  Future<void> signUp(
+    String email,
+    String password, {
+    String? schoolName,
+  }) async {
     state = state.copyWith(busy: true, error: null);
     try {
       final needsConfirmation = await gateway.signUp(
         email: email,
         password: password,
+        schoolName: schoolName,
       );
       if (needsConfirmation) {
         state = state.copyWith(
@@ -425,6 +445,24 @@ class TeacherConsoleController extends StateNotifier<ConsoleState> {
       state = state.copyWith(error: TeacherError.unreachable, busy: false);
     }
   }
+
+  /// Le courrier de confirmation, une seconde fois.
+  Future<void> resendConfirmation() async {
+    final email = state.email;
+    if (email == null) return;
+    state = state.copyWith(busy: true, error: null);
+    try {
+      await gateway.resendConfirmation(email);
+      state = state.copyWith(busy: false);
+    } on TeacherException catch (e) {
+      state = state.copyWith(error: e.error, busy: false);
+    } catch (_) {
+      state = state.copyWith(error: TeacherError.unreachable, busy: false);
+    }
+  }
+
+  /// Le lien a été lu, le mot de passe est posé : la mention s'efface.
+  void clearLinkType() => state = state.copyWith(linkType: null);
 
   Future<bool> updatePassword(String newPassword) async {
     state = state.copyWith(busy: true, error: null);

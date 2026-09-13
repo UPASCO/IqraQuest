@@ -1474,6 +1474,28 @@ class AppLocalizationsId extends AppLocalizations {
   String get teacherSubscriptionTitle => 'Langganan';
 
   @override
+  String get teacherNoAccount =>
+      'Tidak ada akun dengan alamat ini. Buat satu: gratis.';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'Alamat Anda belum dikonfirmasi. Buka tautan yang diterima lewat email, atau minta yang baru.';
+
+  @override
+  String get teacherResendEmail => 'Kirim ulang email';
+
+  @override
+  String get teacherSchoolNameLabel => 'Nama sekolah (opsional)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'Langganan Anda masih aktif. Batalkan dulu dari «Kelola langganan saya», lalu hapus akun.';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'Anda masuk lewat tautan. Pilih kata sandi baru sekarang.';
+
+  @override
   String get teacherManageDevices => 'Kelola perangkat saya';
 
   @override

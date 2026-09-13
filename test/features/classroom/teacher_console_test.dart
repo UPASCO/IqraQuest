@@ -63,6 +63,7 @@ Future<({FakeTeacherGateway console, FakeClassroomGateway room})> pumpConsole(
   WidgetTester tester, {
   Licence? granted,
   String? signedInAs,
+  String? linkType,
 }) async {
   tester.view.physicalSize = const Size(1100, 900);
   tester.view.devicePixelRatio = 1.0;
@@ -76,7 +77,7 @@ Future<({FakeTeacherGateway console, FakeClassroomGateway room})> pumpConsole(
     room: room,
     licence: granted,
     signedInAs: signedInAs,
-  );
+  )..linkType = linkType;
   final repository = QuestionRepository();
   final bank = await tester.runAsync(() => repository.loadAll('en'));
 
@@ -572,6 +573,35 @@ void main() {
       findsOneWidget,
       reason: 'a teacher is told what a ranking puts on the wall',
     );
+  });
+
+  testWidgets("sign-up asks for the school's name, and the form fits", (tester) async {
+    await pumpConsole(tester);
+    await tester.tap(find.byKey(const Key('teacher-toggle-signup')));
+    await settle(tester);
+    expect(find.byKey(const Key('teacher-school-name')), findsOneWidget);
+    final button = tester.getRect(find.byKey(const Key('teacher-send')));
+    expect(button.bottom, lessThan(900), reason: 'the button stays above the fold');
+  });
+
+  testWidgets('a recovery link opens the account view on the password', (tester) async {
+    await pumpConsole(
+      tester,
+      signedInAs: 'ecole@example.org',
+      linkType: 'recovery',
+      granted: Licence(
+        id: 'l1',
+        email: 'ecole@example.org',
+        plan: 'decouverte',
+        concurrentSessions: 2,
+        expiresAt: DateTime(2126),
+        freeGames: 5,
+      ),
+    );
+    expect(find.byKey(const Key('teacher-account-view')), findsOneWidget);
+    expect(find.byKey(const Key('teacher-set-password-hint')), findsOneWidget);
+    final field = tester.getRect(find.byKey(const Key('teacher-new-password')));
+    expect(field.bottom, lessThan(900), reason: 'the password field is above the fold');
   });
 
   test('a half-period runs the first cards, in a fresh order', () async {

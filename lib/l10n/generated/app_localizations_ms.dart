@@ -1474,6 +1474,28 @@ class AppLocalizationsMs extends AppLocalizations {
   String get teacherSubscriptionTitle => 'Langganan';
 
   @override
+  String get teacherNoAccount =>
+      'Tiada akaun untuk alamat ini. Cipta satu: percuma.';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'Alamat anda belum disahkan. Buka pautan yang diterima melalui e-mel, atau minta yang baru.';
+
+  @override
+  String get teacherResendEmail => 'Hantar semula e-mel';
+
+  @override
+  String get teacherSchoolNameLabel => 'Nama sekolah (pilihan)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'Langganan anda masih aktif. Batalkan dahulu dari «Urus langganan saya», kemudian padam akaun.';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'Anda masuk melalui pautan. Pilih kata laluan baharu sekarang.';
+
+  @override
   String get teacherManageDevices => 'Urus peranti saya';
 
   @override

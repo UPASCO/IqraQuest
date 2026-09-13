@@ -37,11 +37,15 @@
       var params = new URLSearchParams(fragment);
       var access = params.get('access_token');
       var refresh = params.get('refresh_token');
+      // `type` dit d'où vient le lien (magiclink, recovery, signup) :
+      // la console propose un nouveau mot de passe à qui est entré sans.
+      var type = params.get('type');
       var base = window.location.pathname.replace(/teacher-callback\.html$/, '');
       if (access && refresh) {
         window.location.replace(
           base + '#/teacher?access_token=' + encodeURIComponent(access) +
-          '&refresh_token=' + encodeURIComponent(refresh)
+          '&refresh_token=' + encodeURIComponent(refresh) +
+          (type ? '&type=' + encodeURIComponent(type) : '')
         );
       } else {
         window.location.replace(base + '#/teacher');

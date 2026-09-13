@@ -1461,6 +1461,28 @@ class AppLocalizationsTr extends AppLocalizations {
   String get teacherSubscriptionTitle => 'Abonelik';
 
   @override
+  String get teacherNoAccount =>
+      'Bu adrese ait bir hesap yok. Bir tane oluşturun: ücretsiz.';
+
+  @override
+  String get teacherEmailNotConfirmed =>
+      'Adresiniz henüz doğrulanmadı. E-postayla gelen bağlantıyı açın ya da yenisini isteyin.';
+
+  @override
+  String get teacherResendEmail => 'E-postayı yeniden gönder';
+
+  @override
+  String get teacherSchoolNameLabel => 'Kurum adı (isteğe bağlı)';
+
+  @override
+  String get teacherSubscriptionActiveDelete =>
+      'Aboneliğiniz hâlâ etkin. Önce «Aboneliğimi yönet» bölümünden iptal edin, sonra hesabı silin.';
+
+  @override
+  String get teacherSetNewPasswordHint =>
+      'Bir bağlantıyla giriş yaptınız. Şimdi yeni bir parola seçin.';
+
+  @override
   String get teacherManageDevices => 'Cihazlarımı yönet';
 
   @override

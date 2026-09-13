@@ -1979,6 +1979,30 @@
   "@teacherSubscriptionTitle": {
     "description": "Console account view: heading of the subscription panel"
   },
+  "teacherNoAccount": "No account exists for this address. Create one — it's free.",
+  "@teacherNoAccount": {
+    "description": "Console: the address has no account (forgot-password path)"
+  },
+  "teacherEmailNotConfirmed": "Your address is not confirmed yet. Open the link you received by e-mail, or ask for a new one.",
+  "@teacherEmailNotConfirmed": {
+    "description": "Console: sign-in refused because the address is not confirmed yet"
+  },
+  "teacherResendEmail": "Send the e-mail again",
+  "@teacherResendEmail": {
+    "description": "Console: button that sends the confirmation e-mail again"
+  },
+  "teacherSchoolNameLabel": "School name (optional)",
+  "@teacherSchoolNameLabel": {
+    "description": "Console sign-up: optional school name field"
+  },
+  "teacherSubscriptionActiveDelete": "Your subscription is still active. Cancel it first from “Manage my subscription”, then delete the account.",
+  "@teacherSubscriptionActiveDelete": {
+    "description": "Console: deletion refused while a subscription is still billed"
+  },
+  "teacherSetNewPasswordHint": "You came in through a link. Choose a new password now.",
+  "@teacherSetNewPasswordHint": {
+    "description": "Console: shown in the account view right after a sign-in link was used"
+  },
   "teacherManageDevices": "Manage my devices",
   "@teacherManageDevices": {
     "description": "Console: open the list of playing devices"

@@ -36,6 +36,10 @@ class SupabaseTeacherGateway implements TeacherGateway {
   String? _accessToken;
   String? _refreshToken;
   String? _email;
+  String? _lastLinkType;
+
+  @override
+  String? get lastLinkType => _lastLinkType;
 
   @override
   bool get isSignedIn => _accessToken != null;
@@ -56,15 +60,25 @@ class SupabaseTeacherGateway implements TeacherGateway {
     final path = redirectTo == null || redirectTo!.isEmpty
         ? '/auth/v1/otp'
         : '/auth/v1/otp?redirect_to=${Uri.encodeComponent(redirectTo!)}';
+    // `create_user: false` : le lien sert à rentrer chez soi, pas à
+    // s'inscrire. Avec `true`, une adresse inconnue recevait un compte
+    // sans mot de passe — un fantôme qui refusait ensuite toute
+    // connexion.
     final response = await _post(
       path,
-      body: {'email': clean, 'create_user': true},
+      body: {'email': clean, 'create_user': false},
     );
     // 429 est le plafond d'envoi du service d'e-mail, pas une panne : le
     // dire autrement enverrait chercher un serveur en carafe alors que
     // c'est le quota qui est atteint.
     if (response.statusCode == 429) {
       throw const TeacherException(TeacherError.tooManyLinks);
+    }
+    // 422 « Signups not allowed for otp » : personne à cette adresse.
+    if (response.statusCode == 422 ||
+        (response.statusCode == 400 &&
+            response.body.toLowerCase().contains('signups not allowed'))) {
+      throw const TeacherException(TeacherError.noAccount);
     }
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw const TeacherException(TeacherError.unreachable);
@@ -77,6 +91,7 @@ class SupabaseTeacherGateway implements TeacherGateway {
   Future<bool> restore({String? fragment}) async {
     final fromLink = sessionFromFragment(fragment ?? Uri.base.fragment);
     if (fromLink != null) {
+      _lastLinkType = fromLink.type;
       await _remember(fromLink);
       return true;
     }
@@ -108,6 +123,12 @@ class SupabaseTeacherGateway implements TeacherGateway {
     // inconnue comme sur un mot de passe faux, et c'est bien ainsi — les
     // distinguer dirait à un curieux quelles écoles sont clientes.
     if (response.statusCode == 400 || response.statusCode == 401) {
+      // Sauf un cas, qu'il faut nommer : le compte existe, l'adresse
+      // n'est pas confirmée. Dire « mot de passe incorrect » enverrait
+      // l'école changer un mot de passe qui est bon.
+      if (response.body.toLowerCase().contains('email_not_confirmed')) {
+        throw const TeacherException(TeacherError.emailNotConfirmed);
+      }
       throw const TeacherException(TeacherError.badCredentials);
     }
     if (response.statusCode < 200 || response.statusCode >= 300) {
@@ -214,7 +235,11 @@ class SupabaseTeacherGateway implements TeacherGateway {
   }
 
   @override
-  Future<bool> signUp({required String email, required String password}) async {
+  Future<bool> signUp({
+    required String email,
+    required String password,
+    String? schoolName,
+  }) async {
     final clean = email.trim();
     if (!_looksLikeEmail(clean)) {
       throw const TeacherException(TeacherError.invalidEmail);
@@ -225,7 +250,18 @@ class SupabaseTeacherGateway implements TeacherGateway {
     final path = redirectTo == null || redirectTo!.isEmpty
         ? '/auth/v1/signup'
         : '/auth/v1/signup?redirect_to=${Uri.encodeComponent(redirectTo!)}';
-    final response = await _post(path, body: {'email': clean, 'password': password});
+    final school = schoolName?.trim();
+    final response = await _post(
+      path,
+      body: {
+        'email': clean,
+        'password': password,
+        // Le nom de l'établissement voyage dans les métadonnées du compte ;
+        // le déclencheur d'inscription le pose sur le profil et la licence.
+        if (school != null && school.isNotEmpty)
+          'data': {'organization_name': school},
+      },
+    );
     if (response.statusCode == 422 || response.statusCode == 400) {
       // GoTrue dit « already registered » ou « password should be… ».
       final text = response.body.toLowerCase();
@@ -259,11 +295,36 @@ class SupabaseTeacherGateway implements TeacherGateway {
     final refresh = json['refresh_token'] as String?;
     if (access != null && refresh != null) {
       await _remember(
-        TeacherLinkSession(accessToken: access, refreshToken: refresh, email: clean),
+        TeacherLinkSession(
+          accessToken: access,
+          refreshToken: refresh,
+          email: clean,
+        ),
       );
       return false;
     }
     return true;
+  }
+
+  @override
+  Future<void> resendConfirmation(String email) async {
+    final clean = email.trim();
+    if (!_looksLikeEmail(clean)) {
+      throw const TeacherException(TeacherError.invalidEmail);
+    }
+    final path = redirectTo == null || redirectTo!.isEmpty
+        ? '/auth/v1/resend'
+        : '/auth/v1/resend?redirect_to=${Uri.encodeComponent(redirectTo!)}';
+    final response = await _post(
+      path,
+      body: {'type': 'signup', 'email': clean},
+    );
+    if (response.statusCode == 429) {
+      throw const TeacherException(TeacherError.tooManyLinks);
+    }
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw const TeacherException(TeacherError.unreachable);
+    }
   }
 
   @override
@@ -313,7 +374,13 @@ class SupabaseTeacherGateway implements TeacherGateway {
 
   @override
   Future<void> deleteAccount() async {
-    await _rpc('delete_my_account', const {});
+    // La fonction Edge résilie l'abonnement Stripe avant de supprimer.
+    // Si elle n'est pas déployée, la fonction SQL refuse d'elle-même un
+    // compte encore facturé (`subscription_active`).
+    final viaEdge = await _edgeCall('delete-school-account');
+    if (viaEdge == null) {
+      await _rpc('delete_my_account', const {});
+    }
     await signOut();
   }
 
@@ -328,6 +395,15 @@ class SupabaseTeacherGateway implements TeacherGateway {
   /// ici. Null quand la fonction n'est pas déployée : la console sait
   /// alors ne pas promettre de bouton.
   Future<Uri?> _edgeUrl(String function) async {
+    final json = await _edgeCall(function);
+    final target = json?['url'] as String?;
+    return target == null ? null : Uri.tryParse(target);
+  }
+
+  /// Une fonction Edge, avec le jeton de l'enseignant. Null si elle
+  /// n'est pas déployée (404) ; une erreur nommée par la fonction est
+  /// traduite comme celles des fonctions SQL.
+  Future<Map<String, dynamic>?> _edgeCall(String function) async {
     if (_accessToken == null) {
       throw const TeacherException(TeacherError.notSignedIn);
     }
@@ -349,12 +425,20 @@ class SupabaseTeacherGateway implements TeacherGateway {
     if (response.statusCode == 401) {
       throw const TeacherException(TeacherError.notSignedIn);
     }
+    Map<String, dynamic>? json;
+    try {
+      json = jsonDecode(response.body) as Map<String, dynamic>?;
+    } catch (_) {
+      json = null;
+    }
+    final error = json?['error'];
+    if (error is String && response.statusCode != 200) {
+      throw TeacherException(_errorOf(error));
+    }
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw const TeacherException(TeacherError.unreachable);
     }
-    final json = jsonDecode(response.body) as Map<String, dynamic>;
-    final target = json['url'] as String?;
-    return target == null ? null : Uri.tryParse(target);
+    return json;
   }
 
   @override
@@ -441,6 +525,8 @@ class SupabaseTeacherGateway implements TeacherGateway {
     'licence_expired' => TeacherError.licenceExpired,
     'too_many_sessions' => TeacherError.tooManySessions,
     'quota_exhausted' => TeacherError.quotaExhausted,
+    'subscription_active' => TeacherError.subscriptionActive,
+    'not_signed_in' => TeacherError.notSignedIn,
     'no_questions' => TeacherError.noQuestions,
     'unknown_session' => TeacherError.unknownSession,
     'not_now' => TeacherError.notNow,
@@ -469,7 +555,11 @@ TeacherLinkSession? sessionFromFragment(String fragment) {
   final access = values['access_token'];
   final refresh = values['refresh_token'];
   if (access == null || access.isEmpty || refresh == null) return null;
-  return TeacherLinkSession(accessToken: access, refreshToken: refresh);
+  return TeacherLinkSession(
+    accessToken: access,
+    refreshToken: refresh,
+    type: values['type'],
+  );
 }
 
 class TeacherLinkSession {
@@ -477,9 +567,13 @@ class TeacherLinkSession {
     required this.accessToken,
     required this.refreshToken,
     this.email,
+    this.type,
   });
 
   final String accessToken;
   final String refreshToken;
   final String? email;
+
+  /// Ce que GoTrue met dans `type=` : `magiclink`, `recovery`, `signup`…
+  final String? type;
 }
