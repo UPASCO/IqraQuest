@@ -2200,6 +2200,12 @@ abstract class AppLocalizations {
   /// **'Reconnecting…'**
   String get classroomReconnecting;
 
+  /// Home shelf: the teacher's entry to the School mode
+  ///
+  /// In en, this message translates to:
+  /// **'School mode'**
+  String get schoolMode;
+
   /// Title of the teacher's web console
   ///
   /// In en, this message translates to:

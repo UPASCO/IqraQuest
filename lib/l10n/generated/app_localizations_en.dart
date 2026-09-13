@@ -1279,6 +1279,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classroomReconnecting => 'Reconnecting…';
 
   @override
+  String get schoolMode => 'School mode';
+
+  @override
   String get teacherConsole => 'Teacher console';
 
   @override

@@ -347,6 +347,7 @@
   "classroomTooLate": "Te laat: de tijd was om.",
   "classroomUnreachable": "De klas is niet bereikbaar. Controleer de verbinding.",
   "classroomReconnecting": "Opnieuw verbinden…",
+  "schoolMode": "Schoolmodus",
   "teacherConsole": "Docentenconsole",
   "teacherSignInHint": "Voer het adres in waarmee de licentie is betaald: daar wacht een aanmeldlink. Geen wachtwoord.",
   "teacherEmailLabel": "E-mailadres",

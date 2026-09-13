@@ -1261,6 +1261,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get classroomReconnecting => 'Yeniden bağlanılıyor…';
 
   @override
+  String get schoolMode => 'Okul modu';
+
+  @override
   String get teacherConsole => 'Öğretmen konsolu';
 
   @override

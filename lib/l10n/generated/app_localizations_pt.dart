@@ -1287,6 +1287,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get classroomReconnecting => 'A reconectar…';
 
   @override
+  String get schoolMode => 'Modo Escola';
+
+  @override
   String get teacherConsole => 'Consola do professor';
 
   @override

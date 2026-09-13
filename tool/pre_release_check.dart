@@ -206,11 +206,29 @@ void main() {
 
   section('Classroom: the store build never links to a payment page');
   final routerText = File('${root.path}/lib/app/router.dart').readAsStringSync();
+  final consoleText = File(
+    '${root.path}/lib/features/classroom/presentation/teacher_console_screen.dart',
+  ).readAsStringSync();
+  // La console existe sur téléphone (se connecter, lire sa licence,
+  // ouvrir une séance) ; ce sont ses surfaces d'achat qui n'existent que
+  // sur le web. Apple 3.1.1 : rien dans une build de magasin ne mène à un
+  // paiement hors magasin.
   check(
-    "the teacher console's route is behind kIsWeb",
-    RegExp(r"if \(kIsWeb\)[\s\S]{0,120}'/teacher'").hasMatch(routerText),
-    detail: 'Apple 3.1.1: nothing in a store build may link to a purchase '
-        'made outside the store',
+    'every purchase surface of the console is compiled behind kIsWeb',
+    RegExp(r'class _SubscribeButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText) &&
+        RegExp(r'class _PortalButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText) &&
+        consoleText
+            .split('\n')
+            .where((l) => l.contains('ClassroomConfig.stripeCheckoutUrl'))
+            .every((l) => l.contains('kIsWeb')),
+    detail: 'Apple 3.1.1 / Google Play Billing: the subscribe button, the '
+        'portal and the payment link must not exist in a store build',
+  );
+  check(
+    'the console never prints a price',
+    !RegExp(r'\d+\s?€|€\s?\d+').hasMatch(consoleText),
+    detail: 'the price lives in Stripe; a store build must not show an '
+        'outside price either',
   );
   check(
     'the school build serves only the classroom',

@@ -347,6 +347,7 @@
   "classroomTooLate": "Terlambat: masa sudah tamat.",
   "classroomUnreachable": "Kelas tidak dapat dihubungi. Semak sambungan.",
   "classroomReconnecting": "Menyambung semula…",
+  "schoolMode": "Mod Sekolah",
   "teacherConsole": "Konsol guru",
   "teacherSignInHint": "Masukkan alamat yang membayar lesen: pautan log masuk menanti di sana. Tiada kata laluan.",
   "teacherEmailLabel": "Alamat e-mel",

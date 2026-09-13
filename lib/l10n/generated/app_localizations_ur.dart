@@ -1275,6 +1275,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get classroomReconnecting => 'دوبارہ رابطہ…';
 
   @override
+  String get schoolMode => 'اسکول موڈ';
+
+  @override
   String get teacherConsole => 'اساتذہ کنسول';
 
   @override

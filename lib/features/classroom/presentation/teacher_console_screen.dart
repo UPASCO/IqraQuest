@@ -12,7 +12,6 @@ import '../../../widgets/content_width.dart';
 import '../../../widgets/fit_or_scroll.dart';
 import '../application/classroom_board_controller.dart';
 import '../application/teacher_console_controller.dart';
-import '../data/classroom_config.dart';
 import '../data/teacher_gateway.dart';
 import '../domain/classroom_state.dart';
 import '../domain/lesson.dart';
@@ -961,15 +960,6 @@ class _Expired extends ConsumerWidget {
           _PortalButton(console: console, l10n: l10n, label: l10n.teacherRenew)
         else if (kIsWeb)
           _SubscribeButton(console: console, l10n: l10n, label: l10n.teacherRenew)
-        else if (ClassroomConfig.stripeCheckoutUrl.isNotEmpty && kIsWeb)
-          ElevatedButton(
-            key: const Key('teacher-renew'),
-            onPressed: () => launchUrl(
-              Uri.parse(ClassroomConfig.stripeCheckoutUrl),
-              webOnlyWindowName: '_blank',
-            ),
-            child: ButtonLabel(l10n.teacherRenew),
-          )
         else
           // Tant qu'il n'y a pas de lien de paiement, une école dont
           // l'abonnement est fini n'avait que « Actualiser » — une
@@ -1186,14 +1176,16 @@ class _NoLicence extends ConsumerWidget {
           ).textTheme.bodyMedium?.copyWith(color: colors.textSecondary),
         ),
         const SizedBox(height: 20),
-        if (ClassroomConfig.stripeCheckoutUrl.isNotEmpty)
-          ElevatedButton(
-            key: const Key('teacher-buy'),
-            onPressed: () => launchUrl(
-              Uri.parse(ClassroomConfig.stripeCheckoutUrl),
-              webOnlyWindowName: '_blank',
-            ),
-            child: ButtonLabel(l10n.teacherGetLicence),
+        // Sur le web, la caisse ; sur un téléphone, ni lien ni prix —
+        // une phrase qui dit où l'abonnement se gère.
+        if (kIsWeb)
+          _SubscribeButton(console: console, l10n: l10n, label: l10n.teacherGetLicence)
+        else
+          Text(
+            key: const Key('teacher-subscribe-on-site'),
+            l10n.teacherSubscribeOnSite,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         const SizedBox(height: 10),
         OutlinedButton(

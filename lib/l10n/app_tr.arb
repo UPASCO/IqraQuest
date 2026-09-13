@@ -347,6 +347,7 @@
   "classroomTooLate": "Çok geç: süre doldu.",
   "classroomUnreachable": "Sınıfa ulaşılamıyor. Bağlantıyı kontrol et.",
   "classroomReconnecting": "Yeniden bağlanılıyor…",
+  "schoolMode": "Okul modu",
   "teacherConsole": "Öğretmen konsolu",
   "teacherSignInHint": "Lisansı ödeyen adresi girin: giriş bağlantısı orada sizi bekliyor. Parola yok.",
   "teacherEmailLabel": "E-posta adresi",

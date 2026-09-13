@@ -347,6 +347,7 @@
   "classroomTooLate": "Trop tard : le temps était écoulé.",
   "classroomUnreachable": "La classe est injoignable. Vérifie la connexion.",
   "classroomReconnecting": "Reconnexion…",
+  "schoolMode": "Mode École",
   "teacherConsole": "Console enseignant",
   "teacherSignInHint": "Entrez l'adresse qui a payé la licence : un lien de connexion vous y attend. Aucun mot de passe.",
   "teacherEmailLabel": "Adresse e-mail",

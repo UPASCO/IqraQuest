@@ -1290,6 +1290,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get classroomReconnecting => 'Riconnessione…';
 
   @override
+  String get schoolMode => 'Modalità Scuola';
+
+  @override
   String get teacherConsole => 'Console dell\'insegnante';
 
   @override

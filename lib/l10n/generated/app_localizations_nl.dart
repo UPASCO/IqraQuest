@@ -1282,6 +1282,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get classroomReconnecting => 'Opnieuw verbinden…';
 
   @override
+  String get schoolMode => 'Schoolmodus';
+
+  @override
   String get teacherConsole => 'Docentenconsole';
 
   @override

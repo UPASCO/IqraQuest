@@ -220,6 +220,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         label: l10n.classroomJoin,
                         onTap: () => context.push('/classroom'),
                       ),
+                      // L'entrée de l'enseignant : se connecter, lire sa
+                      // licence, ouvrir une séance. Aucun achat n'y a
+                      // lieu sur un téléphone.
+                      _ShelfItem(
+                        key: const Key('shelf-school'),
+                        icon: Icons.school_outlined,
+                        label: l10n.schoolMode,
+                        onTap: () => context.push('/teacher'),
+                      ),
                       _ShelfItem(
                         icon: Icons.bar_chart,
                         label: l10n.progress,

@@ -2932,6 +2932,11 @@ s("classroomReconnecting", "Pupil screen: the wifi dropped, the seat is being re
   ms="Menyambung semula…", it="Riconnessione…", nl="Opnieuw verbinden…")
 
 # ---- The teacher's console (web only) ---------------------------------
+s("schoolMode", "Home shelf: the teacher's entry to the School mode",
+  fr="Mode École", en="School mode", ar="وضع المدرسة", es="Modo Escuela",
+  pt="Modo Escola", de="Schulmodus", tr="Okul modu", id="Mode Sekolah",
+  ur="اسکول موڈ", ms="Mod Sekolah", it="Modalità Scuola", nl="Schoolmodus")
+
 s("teacherConsole", "Title of the teacher's web console",
   fr="Console enseignant", en="Teacher console", ar="لوحة المعلّم",
   es="Consola del docente", pt="Consola do professor", de="Lehrerkonsole",

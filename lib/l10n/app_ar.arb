@@ -347,6 +347,7 @@
   "classroomTooLate": "فات الأوان: انتهى الوقت.",
   "classroomUnreachable": "تعذّر الوصول إلى الصف. تحقّق من الاتصال.",
   "classroomReconnecting": "جارٍ إعادة الاتصال…",
+  "schoolMode": "وضع المدرسة",
   "teacherConsole": "لوحة المعلّم",
   "teacherSignInHint": "أدخل البريد الذي دُفعت به الرخصة: سيصلك رابط الدخول. بلا كلمة مرور.",
   "teacherEmailLabel": "البريد الإلكتروني",

@@ -1712,6 +1712,10 @@
   "@classroomReconnecting": {
     "description": "Pupil screen: the wifi dropped, the seat is being recovered"
   },
+  "schoolMode": "School mode",
+  "@schoolMode": {
+    "description": "Home shelf: the teacher's entry to the School mode"
+  },
   "teacherConsole": "Teacher console",
   "@teacherConsole": {
     "description": "Title of the teacher's web console"

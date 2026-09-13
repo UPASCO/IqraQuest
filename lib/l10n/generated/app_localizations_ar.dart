@@ -1291,6 +1291,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get classroomReconnecting => 'جارٍ إعادة الاتصال…';
 
   @override
+  String get schoolMode => 'وضع المدرسة';
+
+  @override
   String get teacherConsole => 'لوحة المعلّم';
 
   @override

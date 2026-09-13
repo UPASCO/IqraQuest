@@ -1273,6 +1273,9 @@ class AppLocalizationsMs extends AppLocalizations {
   String get classroomReconnecting => 'Menyambung semula…';
 
   @override
+  String get schoolMode => 'Mod Sekolah';
+
+  @override
   String get teacherConsole => 'Konsol guru';
 
   @override
