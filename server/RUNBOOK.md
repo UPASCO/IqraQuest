@@ -43,7 +43,12 @@ précédente.
    - `server/supabase/migrations/0009_account_review.sql`
 
    (Ou, en une fois : le fichier `iqraquest-socle-complet.sql`, qui est
-   la concaténation des neuf, rejouable sans risque.)
+   la concaténation des neuf. Rejouable : chaque migration est écrite
+   pour l'être, et `server/supabase/tests/run_local.sh` le vérifie en
+   les jouant deux fois de suite sur un PostgreSQL 16 local, puis en
+   déroulant le parcours compte — inscription, cinq parties, deux
+   appareils, impayé, résiliation, suppression, clé publique, et deux
+   consoles qui se disputent le dernier crédit.)
 
 Vérification : dans **Table Editor**, huit tables existent (`licences`,
 `sessions`, `participants`, `answers`, `reports`, `plans`, `profiles`,

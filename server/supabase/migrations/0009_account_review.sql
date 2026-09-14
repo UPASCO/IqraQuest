@@ -327,3 +327,35 @@ $$;
 
 grant execute on function public.delete_my_account() to authenticated;
 revoke all on function public.delete_my_account() from anon;
+
+-- ---------------------------------------------------------------------
+-- 5. Les fonctions du compte ne répondent qu'à un compte
+-- ---------------------------------------------------------------------
+--
+-- `revoke … from anon` ne suffisait pas : Postgres donne EXECUTE à
+-- PUBLIC sur toute fonction créée, et anon en hérite. Les fonctions
+-- répondaient « aucune licence » à la clé publique — sans rien livrer,
+-- mais en répondant. Elles ne lui répondent plus du tout. Les trois
+-- fonctions de l'élève (rejoindre, répondre, tableau) restent ouvertes :
+-- c'est leur rôle.
+do $$
+declare f text;
+begin
+  foreach f in array array[
+    'public.my_licence()',
+    'public.my_account()',
+    'public.my_reports(int)',
+    'public.my_sessions()',
+    'public.open_session(text, text[], int, text, int, bool, text, uuid, text)',
+    'public.close_session(uuid)',
+    'public.advance_session(uuid, text)',
+    'public.heartbeat_session(uuid)',
+    'public.delete_my_account()',
+    'public.licence_blocked_by_status(text)',
+    'public.session_lease()'
+  ] loop
+    execute format('revoke all on function %s from public, anon', f);
+    execute format('grant execute on function %s to authenticated', f);
+  end loop;
+end;
+$$;

@@ -29,7 +29,7 @@ create extension if not exists "citext";
 -- L'enseignant est la seule identité du système, et elle est réduite au
 -- minimum : une adresse e-mail, celle qui a payé, sur laquelle arrive le
 -- lien de connexion. Pas de mot de passe, pas de profil, pas de nom.
-create table public.licences (
+create table if not exists public.licences (
   id uuid primary key default gen_random_uuid(),
   -- Rattachée au compte Supabase créé par le lien magique. Nulle tant
   -- que l'acheteur ne s'est pas connecté une première fois : Stripe
@@ -46,7 +46,7 @@ create table public.licences (
   created_at timestamptz not null default now()
 );
 
-create index licences_owner_idx on public.licences (owner_id);
+create index if not exists licences_owner_idx on public.licences (owner_id);
 
 comment on table public.licences is
   'Une licence par école ou par enseignant. Écrite par la fonction Edge '
@@ -61,7 +61,7 @@ comment on table public.licences is
 -- l'affiche dans sa propre langue puisque la banque est embarquée dans
 -- l'app. Une élève arabophone et sa voisine francophone répondent à la
 -- même question, chacune dans sa langue.
-create table public.sessions (
+create table if not exists public.sessions (
   id uuid primary key default gen_random_uuid(),
   code text not null unique,
   licence_id uuid not null references public.licences on delete cascade,
@@ -91,8 +91,8 @@ create table public.sessions (
   closed_at timestamptz
 );
 
-create index sessions_licence_idx on public.sessions (licence_id);
-create index sessions_open_idx on public.sessions (opened_at) where closed_at is null;
+create index if not exists sessions_licence_idx on public.sessions (licence_id);
+create index if not exists sessions_open_idx on public.sessions (opened_at) where closed_at is null;
 
 -- ---------------------------------------------------------------------
 -- Participants — anonymes par construction
@@ -102,7 +102,7 @@ create index sessions_open_idx on public.sessions (opened_at) where closed_at is
 -- séance : il permet à un élève dont le wifi a lâché de revenir avec son
 -- score, et ne le relie à rien d'autre, jamais. Aucun identifiant
 -- d'appareil, aucune adresse, aucun compte.
-create table public.participants (
+create table if not exists public.participants (
   id uuid primary key default gen_random_uuid(),
   session_id uuid not null references public.sessions on delete cascade,
   nickname text not null check (length(btrim(nickname)) between 1 and 24),
@@ -111,8 +111,8 @@ create table public.participants (
   joined_at timestamptz not null default now()
 );
 
-create unique index participants_token_idx on public.participants (session_id, token);
-create index participants_session_idx on public.participants (session_id);
+create unique index if not exists participants_token_idx on public.participants (session_id, token);
+create index if not exists participants_session_idx on public.participants (session_id);
 
 -- ---------------------------------------------------------------------
 -- Réponses
@@ -121,7 +121,7 @@ create index participants_session_idx on public.participants (session_id);
 -- Une réponse par élève et par question, définitive : la clé primaire
 -- interdit de se raviser, et un `on conflict do nothing` fait qu'un
 -- envoi renvoyé deux fois par un réseau capricieux ne compte qu'une.
-create table public.answers (
+create table if not exists public.answers (
   session_id uuid not null references public.sessions on delete cascade,
   participant_id uuid not null references public.participants on delete cascade,
   question_index int not null check (question_index >= 0),
@@ -131,12 +131,12 @@ create table public.answers (
   primary key (session_id, participant_id, question_index)
 );
 
-create index answers_session_question_idx on public.answers (session_id, question_index);
+create index if not exists answers_session_question_idx on public.answers (session_id, question_index);
 
 -- ---------------------------------------------------------------------
 -- Rapports — ce que l'enseignant garde
 -- ---------------------------------------------------------------------
-create table public.reports (
+create table if not exists public.reports (
   id uuid primary key default gen_random_uuid(),
   licence_id uuid not null references public.licences on delete cascade,
   session_code text not null,
@@ -152,7 +152,7 @@ create table public.reports (
   created_at timestamptz not null default now()
 );
 
-create index reports_licence_idx on public.reports (licence_id, played_at desc);
+create index if not exists reports_licence_idx on public.reports (licence_id, played_at desc);
 
 -- ---------------------------------------------------------------------
 -- Le verrou : rien n'est accessible directement
@@ -168,9 +168,11 @@ alter table public.reports enable row level security;
 -- appeler que les fonctions publiées à la fin de ce fichier.
 
 -- L'enseignant connecté ne voit que ce qui dépend de sa licence.
+drop policy if exists licences_own on public.licences;
 create policy licences_own on public.licences
   for select using (owner_id = auth.uid());
 
+drop policy if exists sessions_own on public.sessions;
 create policy sessions_own on public.sessions
   for all using (
     licence_id in (select id from public.licences where owner_id = auth.uid())
@@ -178,6 +180,7 @@ create policy sessions_own on public.sessions
     licence_id in (select id from public.licences where owner_id = auth.uid())
   );
 
+drop policy if exists participants_own on public.participants;
 create policy participants_own on public.participants
   for select using (
     session_id in (
@@ -187,6 +190,7 @@ create policy participants_own on public.participants
     )
   );
 
+drop policy if exists answers_own on public.answers;
 create policy answers_own on public.answers
   for select using (
     session_id in (
@@ -196,6 +200,7 @@ create policy answers_own on public.answers
     )
   );
 
+drop policy if exists reports_own on public.reports;
 create policy reports_own on public.reports
   for select using (
     licence_id in (select id from public.licences where owner_id = auth.uid())

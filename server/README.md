@@ -444,29 +444,36 @@ troisième ne touche à aucun écran.
 
 ## Ce que les tests prouvent, et ce qu'ils ne prouvent pas
 
-Quatre-vingt-dix tests couvrent le mode Classe, et il faut savoir
-exactement ce qu'ils regardent : **la salle en mémoire**
-(`FakeClassroomGateway`), pas le SQL. Les deux implémentent le même
-contrat, et rien d'automatique ne les tient synchronisées — c'est une
-relecture humaine qui le fait, fichier contre fichier.
+**Sur une vraie base** — `bash server/supabase/tests/run_local.sh`
+démarre un PostgreSQL 16 jetable (ou prend `PGURL`), pose ce que
+Supabase fournit d'office (rôles, schéma `auth`, `auth.uid()`), joue les
+neuf migrations **deux fois** — la seconde passe prouve qu'elles sont
+rejouables — puis déroule `account_flow.sql` :
 
-Autrement dit : « 606 tests au vert » ne dit rien de la correction du
-serveur. Le SQL n'a jamais été exécuté par la CI, faute de base ; la
-première exécution est celle du SQL Editor, chez vous.
+1. l'inscription écrit le profil, la licence découverte et le nom de
+   l'établissement ;
+2. un compte non confirmé n'a ni licence ni compte visible ;
+3. cinq parties s'ouvrent, la sixième est refusée, le rejeu d'une
+   demande rend la même séance sans consommer de crédit ;
+4. deux appareils ouvrent, le troisième est refusé, un bail de cinq
+   minutes échu libère la place, le battement tient la séance ;
+5. un impayé refuse la séance suivante et se lit comme tel ;
+6. une résiliation à l'échéance laisse ouvert jusqu'à l'échéance ;
+7. un compte à deux licences reçoit la payée ;
+8. la suppression est refusée tant que l'abonnement court, puis emporte
+   compte, licences et profil ;
+9. la clé publique ne lit aucune licence et ne peut appeler aucune
+   fonction du compte ;
+10. deux consoles qui ouvrent en même temps sur le dernier crédit : une
+    seule passe, le compteur s'arrête à cinq.
 
-Trois conséquences pratiques :
+**Dans l'application** (`flutter test`) : le même parcours contre une
+salle en mémoire, les écrans de la console, la passerelle HTTP (ce qui
+part vers Supabase et ce qui en revient), et les gardes des magasins.
 
-1. **Jouer les migrations est un test**, pas une formalité : une erreur
-   de syntaxe ou une signature ratée s'y voit immédiatement.
-2. **`smoke-test.sh` est le seul contrôle qui interroge le vrai
-   serveur.** Il est écrit pour échouer bruyamment, y compris quand une
-   migration n'est pas passée — le distinguer d'un refus de droits est
-   précisément ce qu'il fait.
-3. **Quand une règle change d'un côté, elle change des deux.** La
-   fermeture d'une séance, par exemple : le serveur garde la séance en
-   phase `over` et supprime les participants ; la salle en mémoire fait
-   exactement la même chose, et un test le vérifie. Si l'un des deux
-   dérive, c'est la classe qui l'apprend.
+**Ce que rien ici ne prouve** : le courrier (SMTP), le webhook Stripe
+avec de vrais événements signés, le portail. C'est le parcours à 1 € du
+runbook (section 7.5) qui les prouve, une fois, sur le projet réel.
 
 ## Ce que ça coûte
 
