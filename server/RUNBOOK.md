@@ -106,13 +106,45 @@ Dans **Authentication → Emails**, les trois modèles utilisés sont
 défaut conviennent ; changer l'expéditeur suffit.
 
 **Le courrier.** Le service d'e-mail intégré de Supabase est bridé à
-quelques envois par heure **et n'écrit qu'aux adresses membres de
-l'organisation du projet**. Suffisant pour vous tester vous-même, pas
-pour une école. Dès que l'inscription est ouverte au public, configurer
-un SMTP dans **Authentication → Emails → SMTP Settings** (Resend, Brevo,
-Postmark…, un compte gratuit suffit). C'est la panne la plus probable le
-jour où ça compte, et elle est silencieuse : le courrier n'arrive
-jamais.
+**deux envois par heure** et n'écrit qu'aux adresses membres de
+l'organisation du projet. Il ne sert à rien d'utile : poser un SMTP à
+soi tout de suite. C'est la panne la plus probable le jour où ça
+compte, et elle est silencieuse : le courrier n'arrive jamais.
+
+### Envoyer depuis support@iqraquest.org — 5 minutes
+
+La boîte `support@iqraquest.org` existe déjà chez OVH (les MX du domaine
+y pointent). Son serveur d'envoi suffit pour le volume d'une console :
+un courrier par enseignant à l'inscription, un par mot de passe oublié.
+
+**Authentication → Emails → SMTP Settings → Enable custom SMTP** :
+
+| champ | valeur |
+|---|---|
+| Sender email | `support@iqraquest.org` |
+| Sender name | `IqraQuest` |
+| Host | `ssl0.ovh.net` |
+| Port | `465` |
+| Username | `support@iqraquest.org` |
+| Password | le mot de passe de la boîte (celui du webmail OVH) |
+
+Le mot de passe se tape dans ce formulaire et nulle part ailleurs : ni
+dans le dépôt, ni dans un secret GitHub, ni dans une conversation.
+
+Puis **Authentication → Rate Limits → Email sent per hour** : `30` (la
+valeur que Supabase propose dès qu'un SMTP est posé).
+
+Vérification : depuis la console, « Mot de passe oublié ? » sur votre
+adresse. Le courrier arrive en moins d'une minute, signé
+`support@iqraquest.org`. S'il n'arrive pas, **Authentication → Logs**
+porte l'erreur SMTP exacte (mot de passe refusé, port bloqué). Chez OVH,
+si le compte refuse l'envoi, vérifier dans l'espace client que la boîte
+n'est pas une redirection : seule une vraie boîte a un mot de passe SMTP.
+
+Au-delà de quelques centaines d'envois par mois, ou si la délivrabilité
+devient un sujet, passer à Resend ou Brevo (compte gratuit) : même
+formulaire, avec en plus trois enregistrements DNS (SPF, DKIM, DMARC)
+que le prestataire donne, à poser chez OVH à côté des MX.
 
 ### Comment une école entre
 
