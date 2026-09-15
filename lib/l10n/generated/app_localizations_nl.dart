@@ -1466,20 +1466,23 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get teacherPitchTitle => 'De klas speelt. U leidt.';
+  String get teacherPitchTitle => 'Laat uw klas spelen';
 
   @override
   String get teacherPitchBody =>
-      'Eén vraag op het bord, elke leerling antwoordt op het eigen apparaat, en de paarden gaan vooruit bij elk goed antwoord.';
+      'U kiest een les. Op het bord verschijnt een code. Uw leerlingen typen die op hun telefoon of tablet en beantwoorden de vragen, allemaal tegelijk.';
 
   @override
-  String get teacherPitchFree => 'Vijf spellen gratis, zonder kaart';
+  String get teacherPitchPointFree =>
+      'Maak uw account aan: 5 gratis spellen om te proberen';
 
   @override
-  String get teacherPitchDevices => 'Twee apparaten tegelijk in sessie';
+  String get teacherPitchPointPlan =>
+      'Daarna IqraQuest École: onbeperkt spelen, het hele jaar';
 
   @override
-  String get teacherPitchMarks => 'Cijfers op 20, klaar voor het rapport';
+  String get teacherPitchPointPupils =>
+      'Uw leerlingen doen mee met de code, zonder account';
 
   @override
   String get teacherSubscriptionTitle => 'Abonnement';

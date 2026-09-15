@@ -1442,20 +1442,23 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get teacherPitchTitle => 'Sınıf oynar. Siz yönetirsiniz.';
+  String get teacherPitchTitle => 'Sınıfınızı oynatın';
 
   @override
   String get teacherPitchBody =>
-      'Tahtada bir soru, her öğrenci kendi cihazından yanıtlar ve her doğru yanıtta atlar ilerler.';
+      'Bir ders seçersiniz. Tahtada bir kod belirir. Öğrencileriniz kodu telefon ya da tabletlerine yazar ve soruları hep birlikte yanıtlar.';
 
   @override
-  String get teacherPitchFree => 'Beş oyun ücretsiz, kart gerekmez';
+  String get teacherPitchPointFree =>
+      'Hesabınızı oluşturun: denemek için 5 ücretsiz oyun';
 
   @override
-  String get teacherPitchDevices => 'Aynı anda iki cihazla oturum';
+  String get teacherPitchPointPlan =>
+      'Sonra IqraQuest École: yıl boyunca sınırsız oyun';
 
   @override
-  String get teacherPitchMarks => '20 üzerinden notlar, deftere hazır';
+  String get teacherPitchPointPupils =>
+      'Öğrencileriniz kodla katılır, hesap açmadan';
 
   @override
   String get teacherSubscriptionTitle => 'Abonelik';

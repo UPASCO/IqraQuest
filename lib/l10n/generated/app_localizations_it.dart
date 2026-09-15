@@ -1475,20 +1475,23 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get teacherPitchTitle => 'La classe gioca. Tu conduci.';
+  String get teacherPitchTitle => 'Fai giocare la tua classe';
 
   @override
   String get teacherPitchBody =>
-      'Una domanda alla lavagna, ogni alunno risponde dal proprio dispositivo e i cavalli avanzano a ogni risposta esatta.';
+      'Scegli una lezione. Alla lavagna compare un codice. Gli alunni lo digitano sul telefono o sul tablet e rispondono alle domande, tutti insieme.';
 
   @override
-  String get teacherPitchFree => 'Cinque partite gratis, senza carta';
+  String get teacherPitchPointFree =>
+      'Crea il tuo account: 5 partite gratis per provare';
 
   @override
-  String get teacherPitchDevices => 'Due dispositivi in sessione insieme';
+  String get teacherPitchPointPlan =>
+      'Poi IqraQuest École: partite illimitate tutto l\'anno';
 
   @override
-  String get teacherPitchMarks => 'Voti in ventesimi, pronti per il registro';
+  String get teacherPitchPointPupils =>
+      'Gli alunni entrano con il codice, senza creare un account';
 
   @override
   String get teacherSubscriptionTitle => 'Abbonamento';

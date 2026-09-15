@@ -2152,39 +2152,33 @@ class _PitchCompact extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final point in _pitchPoints(l10n))
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 6,
+        // Trois lignes pleines, pas des pastilles : les phrases sont
+        // entières, et un téléphone est étroit.
+        for (final point in _pitchPoints(l10n))
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Row(
+              children: [
+                Icon(point.$1, size: 18, color: colors.primary),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    point.$2,
+                    style: text.bodyMedium?.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
                 ),
-                decoration: BoxDecoration(
-                  color: colors.surfaceElevated,
-                  borderRadius: BorderRadius.circular(999),
-                  border: Border.all(color: colors.divider),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(point.$1, size: 16, color: colors.primary),
-                    const SizedBox(width: 6),
-                    Text(point.$2, style: text.bodySmall),
-                  ],
-                ),
-              ),
-          ],
-        ),
+              ],
+            ),
+          ),
       ],
     );
   }
 }
 
 List<(IconData, String)> _pitchPoints(AppLocalizations l10n) => [
-  (Icons.card_giftcard_outlined, l10n.teacherPitchFree),
-  (Icons.devices_outlined, l10n.teacherPitchDevices),
-  (Icons.grade_outlined, l10n.teacherPitchMarks),
+  (Icons.person_add_alt_1_outlined, l10n.teacherPitchPointFree),
+  (Icons.workspace_premium_outlined, l10n.teacherPitchPointPlan),
+  (Icons.groups_outlined, l10n.teacherPitchPointPupils),
 ];

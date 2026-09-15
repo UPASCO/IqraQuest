@@ -1455,20 +1455,23 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get teacherPitchTitle => 'Kelas bermain. Anda memimpin.';
+  String get teacherPitchTitle => 'Ajak kelas Anda bermain';
 
   @override
   String get teacherPitchBody =>
-      'Satu pertanyaan di papan, setiap murid menjawab dari perangkatnya, dan kuda-kuda maju di setiap jawaban benar.';
+      'Anda memilih pelajaran. Sebuah kode muncul di papan. Murid mengetiknya di ponsel atau tablet dan menjawab pertanyaan, semuanya bersamaan.';
 
   @override
-  String get teacherPitchFree => 'Lima permainan gratis, tanpa kartu';
+  String get teacherPitchPointFree =>
+      'Buat akun Anda: 5 permainan gratis untuk mencoba';
 
   @override
-  String get teacherPitchDevices => 'Dua perangkat bersesi sekaligus';
+  String get teacherPitchPointPlan =>
+      'Lalu IqraQuest École: permainan tanpa batas sepanjang tahun';
 
   @override
-  String get teacherPitchMarks => 'Nilai dari 20, siap untuk buku catatan';
+  String get teacherPitchPointPupils =>
+      'Murid bergabung dengan kode, tanpa membuat akun';
 
   @override
   String get teacherSubscriptionTitle => 'Langganan';

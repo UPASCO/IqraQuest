@@ -2488,35 +2488,35 @@ abstract class AppLocalizations {
   /// **'Active devices: {used} / {total}'**
   String teacherDevicesActive(num used, num total);
 
-  /// Console welcome panel: headline
+  /// Console welcome panel: headline, plain words
   ///
   /// In en, this message translates to:
-  /// **'The class plays. You lead.'**
+  /// **'Get your class playing'**
   String get teacherPitchTitle;
 
-  /// Console welcome panel: one sentence on how a session goes
+  /// Console welcome panel: how a session works, in one breath
   ///
   /// In en, this message translates to:
-  /// **'One question on the board, every pupil answers from their own device, and the horses move on every right answer.'**
+  /// **'You pick a lesson. A code appears on the board. Your pupils type it on their phone or tablet and answer the questions, all at the same time.'**
   String get teacherPitchBody;
 
-  /// Console welcome panel: first value point
+  /// Console welcome panel: what a new account gives
   ///
   /// In en, this message translates to:
-  /// **'Five games free, no card needed'**
-  String get teacherPitchFree;
+  /// **'Create your account: 5 free games to try it out'**
+  String get teacherPitchPointFree;
 
-  /// Console welcome panel: second value point
+  /// Console welcome panel: what comes after the free games (no price)
   ///
   /// In en, this message translates to:
-  /// **'Two devices in session at once'**
-  String get teacherPitchDevices;
+  /// **'Then IqraQuest École: unlimited games all year'**
+  String get teacherPitchPointPlan;
 
-  /// Console welcome panel: third value point
+  /// Console welcome panel: how pupils join
   ///
   /// In en, this message translates to:
-  /// **'Marks out of 20, ready for the register'**
-  String get teacherPitchMarks;
+  /// **'Your pupils join with the code, no account needed'**
+  String get teacherPitchPointPupils;
 
   /// Console account view: heading of the subscription panel
   ///
