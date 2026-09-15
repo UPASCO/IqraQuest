@@ -123,10 +123,10 @@ un courrier par enseignant à l'inscription, un par mot de passe oublié.
 |---|---|
 | Sender email | `support@iqraquest.org` |
 | Sender name | `IqraQuest` |
-| Host | `ssl0.ovh.net` |
-| Port | `465` |
+| Host | `smtp.mail.ovh.net` (offre Zimbra d'OVH ; `ssl0.ovh.net` pour l'ancienne offre MX Plan / E-mail Pro) |
+| Port | `465` (SSL) — `587` si le 465 est refusé |
 | Username | `support@iqraquest.org` |
-| Password | le mot de passe de la boîte (celui du webmail OVH) |
+| Password | le mot de passe de la boîte (celui du webmail Zimbra) |
 
 Le mot de passe se tape dans ce formulaire et nulle part ailleurs : ni
 dans le dépôt, ni dans un secret GitHub, ni dans une conversation.
