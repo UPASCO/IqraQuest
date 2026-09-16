@@ -1211,6 +1211,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumActive => 'بريميوم مفعّل: كل شيء مفتوح';
 
   @override
+  String get freeTourTitle => 'لقد رأيت كل البطاقات المجانية';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return 'ستتكرر الآن البطاقات المجانية الـ$free. يفتح Premium كل البطاقات الـ$total وكل المسارات والحفظ، بشراء واحد.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'افتح كل البطاقات الـ$total';
+  }
+
+  @override
   String get laterAction => 'لاحقًا';
 
   @override

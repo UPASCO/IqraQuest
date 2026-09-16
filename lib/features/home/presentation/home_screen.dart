@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../../app/build_flags.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -54,7 +57,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         title: Text(l10n.raceRulesUpdatedTitle),
         content: Text(l10n.raceRulesUpdatedBody),
         actions: [
-          TextButton(onPressed: () => Navigator.of(context).pop(), child: ButtonLabel(l10n.startNewRace)),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: ButtonLabel(l10n.startNewRace),
+          ),
         ],
       ),
     );
@@ -66,7 +72,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     // Only a current-schema save is readable; a legacy one is left
     // untouched for the migration flow to archive.
     final compatible =
-        ref.watch(legacyGameMigrationServiceProvider).inspect() == SaveCompatibility.current;
+        ref.watch(legacyGameMigrationServiceProvider).inspect() ==
+        SaveCompatibility.current;
     final save = compatible ? ref.watch(gameSaveServiceProvider).load() : null;
     final stats = ref.watch(progressServiceProvider).load();
     final isPremium = ref.watch(premiumControllerProvider);
@@ -89,7 +96,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               filterQuality: FilterQuality.medium,
-              errorBuilder: (_, _, _) => const ColoredBox(color: Color(0xFF0A3327)),
+              errorBuilder: (_, _, _) =>
+                  const ColoredBox(color: Color(0xFF0A3327)),
             ),
           ),
           // A scrim under the title only: the horses' manes are bright,
@@ -102,7 +110,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     stops: [0.0, 0.30, 0.55],
-                    colors: [Color(0xCC03151A), Color(0x6603151A), Color(0x0003151A)],
+                    colors: [
+                      Color(0xCC03151A),
+                      Color(0x6603151A),
+                      Color(0x0003151A),
+                    ],
                   ),
                 ),
               ),
@@ -162,14 +174,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       fontWeight: FontWeight.w800,
                       letterSpacing: 0.5,
                       shadows: const [
-                        Shadow(color: Color(0x66000000), blurRadius: 12, offset: Offset(0, 2)),
+                        Shadow(
+                          color: Color(0x66000000),
+                          blurRadius: 12,
+                          offset: Offset(0, 2),
+                        ),
                       ],
                     ),
                   ),
                   Text(
                     l10n.appTagline,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: onSceneDim),
+                    style: Theme.of(context).textTheme.bodyMedium
+                        ?.copyWith(color: onSceneDim),
                   ),
                   const SizedBox(height: 8),
                   const GoldRule(width: 168),
@@ -179,13 +196,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   const Spacer(),
 
                   // ---- The journey card: where I am + the dominant CTA ----
-                  _JourneyCard(l10n: l10n, save: save, onContinue: _continueJourney),
+                  _JourneyCard(
+                    l10n: l10n,
+                    save: save,
+                    onContinue: _continueJourney,
+                  ),
                   // What the unlock buys, said where the family decides
                   // what to play — not only behind a small icon in the
                   // corner. Gone the moment it is bought.
                   if (!isPremium) ...[
                     const SizedBox(height: 10),
-                    _PremiumBanner(l10n: l10n, onTap: () => context.push('/premium')),
+                    _PremiumBanner(
+                      l10n: l10n,
+                      onTap: () => context.push('/premium'),
+                    ),
                   ],
                   const SizedBox(height: 12),
 
@@ -201,34 +225,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         icon: Icons.person,
                         label: l10n.soloMode,
                         highlighted: true,
-                        onTap: () => context.push('/mode-selection', extra: 'solo'),
+                        onTap: () =>
+                            context.push('/mode-selection', extra: 'solo'),
                       ),
                       _ShelfItem(
                         key: const Key('shelf-family'),
                         icon: Icons.groups,
                         label: l10n.familyMode,
-                        onTap: () => context.push('/mode-selection', extra: 'family'),
+                        onTap: () =>
+                            context.push('/mode-selection', extra: 'family'),
                       ),
                       _ShelfItem(
                         icon: Icons.calendar_today,
                         label: l10n.dailyChallenge,
                         onTap: () => context.push('/daily-challenge'),
                       ),
-                      _ShelfItem(
-                        key: const Key('shelf-classroom'),
-                        icon: Icons.co_present_outlined,
-                        label: l10n.classroomJoin,
-                        onTap: () => context.push('/classroom'),
-                      ),
-                      // L'entrée de l'enseignant : se connecter, lire sa
-                      // licence, ouvrir une séance. Aucun achat n'y a
-                      // lieu sur un téléphone.
-                      _ShelfItem(
-                        key: const Key('shelf-school'),
-                        icon: Icons.school_outlined,
-                        label: l10n.schoolMode,
-                        onTap: () => context.push('/teacher'),
-                      ),
+                      // Le mode École est en réserve (kClassroomEnabled) :
+                      // ni la classe ni la console n'ont d'entrée ici.
+                      if (kClassroomEnabled) ...[
+                        _ShelfItem(
+                          key: const Key('shelf-classroom'),
+                          icon: Icons.co_present_outlined,
+                          label: l10n.classroomJoin,
+                          onTap: () => context.push('/classroom'),
+                        ),
+                        // L'entrée de l'enseignant : se connecter, lire sa
+                        // licence, ouvrir une séance. Aucun achat n'y a
+                        // lieu sur un téléphone.
+                        _ShelfItem(
+                          key: const Key('shelf-school'),
+                          icon: Icons.school_outlined,
+                          label: l10n.schoolMode,
+                          onTap: () => context.push('/teacher'),
+                        ),
+                      ],
                       _ShelfItem(
                         icon: Icons.bar_chart,
                         label: l10n.progress,
@@ -266,7 +296,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     // resumes, or every question would silently come back null.
     final pool = await ref.read(questionPoolProvider.future);
     final controller = ref.read(gameControllerProvider.notifier);
-    controller.configure(pool: pool, isPremium: ref.read(premiumControllerProvider));
+    controller.configure(
+      pool: pool,
+      isPremium: ref.read(premiumControllerProvider),
+    );
     // go, not push: the board replaces the hub exactly as it does at the
     // end of the setup flow, so every way onto the board leaves the same
     // stack behind it and every way off it is the same "home".
@@ -278,7 +311,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
 /// "Where am I on the journey" + the one big golden button.
 class _JourneyCard extends StatelessWidget {
-  const _JourneyCard({required this.l10n, required this.save, required this.onContinue});
+  const _JourneyCard({
+    required this.l10n,
+    required this.save,
+    required this.onContinue,
+  });
 
   final AppLocalizations l10n;
   final GameState? save;
@@ -301,7 +338,10 @@ class _JourneyCard extends StatelessWidget {
       for (var t = 0; t < save.players.length; t++) {
         if (save.players[t].isAi) continue;
         for (final horse in save.players[t].horses) {
-          best = (circuit.progressOf(horse.position, t) ?? 0).clamp(best, circuit.journeyLength);
+          best = (circuit.progressOf(horse.position, t) ?? 0).clamp(
+            best,
+            circuit.journeyLength,
+          );
         }
       }
       progress = best / circuit.journeyLength;
@@ -339,18 +379,20 @@ class _JourneyCard extends StatelessWidget {
                               circuitName,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                color: const Color(0xFFF4ECDC),
-                                fontWeight: FontWeight.w700,
-                              ),
+                              style: Theme.of(context).textTheme.titleSmall
+                                  ?.copyWith(
+                                    color: const Color(0xFFF4ECDC),
+                                    fontWeight: FontWeight.w700,
+                                  ),
                             ),
                           ),
                           Text(
                             '${(progress * 100).round()}%',
-                            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                              color: const Color(0xFFEBC06A),
-                              fontWeight: FontWeight.w800,
-                            ),
+                            style: Theme.of(context).textTheme.titleSmall
+                                ?.copyWith(
+                                  color: const Color(0xFFEBC06A),
+                                  fontWeight: FontWeight.w800,
+                                ),
                           ),
                         ],
                       ),
@@ -361,7 +403,9 @@ class _JourneyCard extends StatelessWidget {
                           value: progress.clamp(0.02, 1.0),
                           minHeight: 9,
                           backgroundColor: Colors.white.withValues(alpha: 0.12),
-                          valueColor: const AlwaysStoppedAnimation(Color(0xFFE3B354)),
+                          valueColor: const AlwaysStoppedAnimation(
+                            Color(0xFFE3B354),
+                          ),
                         ),
                       ),
                     ],
@@ -377,7 +421,9 @@ class _JourneyCard extends StatelessWidget {
             height: 56,
             child: Material(
               clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
               child: Ink(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
@@ -394,18 +440,24 @@ class _JourneyCard extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            (save != null ? l10n.continueGame : l10n.startGame).toUpperCase(),
+                            (save != null ? l10n.continueGame : l10n.startGame)
+                                .toUpperCase(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              color: const Color(0xFF4A3410),
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 0.8,
-                            ),
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(
+                                  color: const Color(0xFF4A3410),
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 0.8,
+                                ),
                           ),
                         ),
                         const SizedBox(width: 8),
-                        const Icon(Icons.arrow_forward, size: 20, color: Color(0xFF4A3410)),
+                        const Icon(
+                          Icons.arrow_forward,
+                          size: 20,
+                          color: Color(0xFF4A3410),
+                        ),
                       ],
                     ),
                   ),
@@ -449,7 +501,11 @@ class _PremiumBanner extends StatelessWidget {
             padding: const EdgeInsetsDirectional.fromSTEB(14, 9, 10, 9),
             child: Row(
               children: [
-                const Icon(Icons.workspace_premium, color: Color(0xFFF3D68A), size: 24),
+                const Icon(
+                  Icons.workspace_premium,
+                  color: Color(0xFFF3D68A),
+                  size: 24,
+                ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(
@@ -468,7 +524,9 @@ class _PremiumBanner extends StatelessWidget {
                         l10n.premiumBannerBody,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: text.bodySmall?.copyWith(color: const Color(0xCCE9DFC8)),
+                        style: text.bodySmall?.copyWith(
+                          color: const Color(0xCCE9DFC8),
+                        ),
                       ),
                     ],
                   ),
@@ -484,7 +542,11 @@ class _PremiumBanner extends StatelessWidget {
 }
 
 class _StatPill extends StatelessWidget {
-  const _StatPill({required this.icon, required this.iconColor, required this.text});
+  const _StatPill({
+    required this.icon,
+    required this.iconColor,
+    required this.text,
+  });
 
   final IconData icon;
   final Color iconColor;
@@ -506,8 +568,10 @@ class _StatPill extends StatelessWidget {
           const SizedBox(width: 5),
           Text(
             text,
-            style: Theme.of(context).textTheme.labelLarge
-                ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w700),
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              color: const Color(0xFFF4ECDC),
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),
@@ -535,11 +599,17 @@ class _RoundGlassButton extends StatelessWidget {
       label: semanticLabel,
       child: Material(
         color: const Color(0xB3122E22),
-        shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
+        shape: CircleBorder(
+          side: BorderSide(color: Colors.white.withValues(alpha: 0.14)),
+        ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
-          child: SizedBox(width: 38, height: 38, child: Icon(icon, size: 19, color: iconColor)),
+          child: SizedBox(
+            width: 38,
+            height: 38,
+            child: Icon(icon, size: 19, color: iconColor),
+          ),
         ),
       ),
     );
@@ -577,7 +647,9 @@ class _ShelfItem extends StatelessWidget {
         // pale type on it disappears completely over the light half —
         // that is what made "Défi du jour" unreadable on device.
         child: Material(
-          color: highlighted ? const Color(0xF2163D31) : const Color(0xE60B2A20),
+          color: highlighted
+              ? const Color(0xF2163D31)
+              : const Color(0xE60B2A20),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
             side: highlighted

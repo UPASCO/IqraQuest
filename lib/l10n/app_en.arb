@@ -1605,6 +1605,31 @@
   "@premiumActive": {
     "description": "Settings row when Premium is on"
   },
+  "freeTourTitle": "You have seen every free card",
+  "@freeTourTitle": {
+    "description": "In-game popup title: the player has now seen every free card"
+  },
+  "freeTourBody": "The {free} free cards will now repeat. Premium opens all {total} cards, every course and the saves, in one purchase.",
+  "@freeTourBody": {
+    "description": "In-game popup body: what Premium opens now that the free cards repeat",
+    "placeholders": {
+      "free": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "freeTourCta": "Unlock all {total} cards",
+  "@freeTourCta": {
+    "description": "In-game popup button: open the Premium screen",
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "laterAction": "Later",
   "@laterAction": {
     "description": "Dismiss button of the free-limit popup"

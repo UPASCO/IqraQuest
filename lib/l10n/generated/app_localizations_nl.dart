@@ -1202,6 +1202,19 @@ class AppLocalizationsNl extends AppLocalizations {
   String get premiumActive => 'Premium actief: alles is ontgrendeld';
 
   @override
+  String get freeTourTitle => 'Je hebt alle gratis kaarten gezien';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return 'De $free gratis kaarten gaan zich nu herhalen. Premium opent alle $total kaarten, elk parcours en de opgeslagen spellen, met één aankoop.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'Alle $total kaarten ontgrendelen';
+  }
+
+  @override
   String get laterAction => 'Later';
 
   @override

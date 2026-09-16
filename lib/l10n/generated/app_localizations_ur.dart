@@ -1197,6 +1197,19 @@ class AppLocalizationsUr extends AppLocalizations {
   String get premiumActive => 'پریمیم فعال: سب کچھ کھلا ہے';
 
   @override
+  String get freeTourTitle => 'آپ نے تمام مفت کارڈ دیکھ لیے';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return '$free مفت کارڈ اب دہرائے جائیں گے۔ Premium ایک خریداری میں تمام $total کارڈ، ہر راستہ اور محفوظ کھیل کھول دیتا ہے۔';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'تمام $total کارڈ کھولیں';
+  }
+
+  @override
   String get laterAction => 'بعد میں';
 
   @override

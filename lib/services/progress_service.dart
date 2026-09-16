@@ -28,7 +28,8 @@ class ProgressStats {
   final int dailyChallengesCompleted;
 
   double get winRate => gamesPlayed == 0 ? 0 : gamesWon / gamesPlayed;
-  double get accuracy => questionsAnswered == 0 ? 0 : correctAnswers / questionsAnswered;
+  double get accuracy =>
+      questionsAnswered == 0 ? 0 : correctAnswers / questionsAnswered;
 
   ProgressStats copyWith({
     int? gamesPlayed,
@@ -49,7 +50,8 @@ class ProgressStats {
     lastPlayedDate: lastPlayedDate ?? this.lastPlayedDate,
     categoryCorrect: categoryCorrect ?? this.categoryCorrect,
     categoryTotal: categoryTotal ?? this.categoryTotal,
-    dailyChallengesCompleted: dailyChallengesCompleted ?? this.dailyChallengesCompleted,
+    dailyChallengesCompleted:
+        dailyChallengesCompleted ?? this.dailyChallengesCompleted,
   );
 
   factory ProgressStats.fromJson(Map<String, dynamic> json) => ProgressStats(
@@ -62,11 +64,13 @@ class ProgressStats {
         ? null
         : DateTime.parse(json['lastPlayedDate'] as String),
     categoryCorrect: {
-      for (final entry in (json['categoryCorrect'] as Map<String, dynamic>? ?? {}).entries)
+      for (final entry
+          in (json['categoryCorrect'] as Map<String, dynamic>? ?? {}).entries)
         QuestionCategory.values.byName(entry.key): entry.value as int,
     },
     categoryTotal: {
-      for (final entry in (json['categoryTotal'] as Map<String, dynamic>? ?? {}).entries)
+      for (final entry
+          in (json['categoryTotal'] as Map<String, dynamic>? ?? {}).entries)
         QuestionCategory.values.byName(entry.key): entry.value as int,
     },
     dailyChallengesCompleted: json['dailyChallengesCompleted'] as int? ?? 0,
@@ -98,7 +102,37 @@ class ProgressService {
     return ProgressStats.fromJson(json);
   }
 
-  Future<void> save(ProgressStats stats) => _storage.setJson(_key, stats.toJson());
+  Future<void> save(ProgressStats stats) =>
+      _storage.setJson(_key, stats.toJson());
+
+  /// Every card a player has ever seen on this device, by id.
+  ///
+  /// Ce qui permet de dire « tu as fait le tour des questions
+  /// gratuites » : une fois que chacune des cartes gratuites est passée
+  /// au moins une fois, la suivante est forcément une répétition, et
+  /// c'est le moment de dire ce que Premium ouvre.
+  static const _seenKey = 'iqraquest.seen_questions.v1';
+
+  Set<String> seenQuestionIds() {
+    final json = _storage.getJson(_seenKey);
+    final ids = json?['ids'];
+    // Toujours un ensemble neuf et modifiable : l'appelant y ajoute.
+    if (ids is! List) return <String>{};
+    return ids.whereType<String>().toSet();
+  }
+
+  Future<void> markSeen(Iterable<String> questionIds) async {
+    final seen = seenQuestionIds();
+    final before = seen.length;
+    seen.addAll(questionIds);
+    if (seen.length == before) return;
+    await _storage.setJson(_seenKey, {'ids': seen.toList()});
+  }
+
+  /// Vrai quand chaque carte de [freeIds] a déjà été vue au moins une
+  /// fois sur cet appareil.
+  bool freeTourDone(Set<String> freeIds) =>
+      freeIds.isNotEmpty && seenQuestionIds().containsAll(freeIds);
 
   Future<ProgressStats> recordAnswer({
     required bool correct,
@@ -134,7 +168,8 @@ class ProgressService {
     final today = DateTime.now();
     final last = current.lastPlayedDate;
     final isConsecutiveDay =
-        last != null && today.difference(DateTime(last.year, last.month, last.day)).inDays == 1;
+        last != null &&
+        today.difference(DateTime(last.year, last.month, last.day)).inDays == 1;
     final isSameDay =
         last != null &&
         last.year == today.year &&

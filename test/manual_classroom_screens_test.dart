@@ -90,7 +90,10 @@ Future<({FakeClassroomGateway room, List<Question> bank, String code})> stage(
   final repository = QuestionRepository();
   final bank = await tester.runAsync(() => repository.loadAll('fr'));
   // Des cartes courtes : une capture doit se lire, pas se déchiffrer.
-  final cards = bank!.where((q) => q.question.length < 90).take(questions).toList();
+  final cards = bank!
+      .where((q) => q.question.length < 90)
+      .take(questions)
+      .toList();
   final code = room.openSession(
     lessonId: 'lesson_prophets_beginner_01',
     questionIds: [for (final c in cards) c.id],
@@ -121,7 +124,7 @@ Future<({FakeClassroomGateway room, List<Question> bank, String code})> stage(
           ),
           initialPremiumProvider.overrideWithValue(false),
           appRouterProvider.overrideWithValue(
-            buildAppRouter(initialLocation: location),
+            buildAppRouter(classroom: true, initialLocation: location),
           ),
         ],
         child: const IqraQuestApp(),
@@ -144,9 +147,9 @@ Future<void> loadAppFonts() async {
     'NotoNaskhArabic': 'assets/fonts/NotoNaskhArabic-Regular.ttf',
   }.entries) {
     final bytes = File(family.value).readAsBytesSync();
-    await (FontLoader(family.key)
-          ..addFont(Future.value(ByteData.sublistView(bytes))))
-        .load();
+    await (FontLoader(
+      family.key,
+    )..addFont(Future.value(ByteData.sublistView(bytes)))).load();
   }
   // Les icônes Material : sans leur police, chaque icône est un carré.
   // Le fichier vit dans le cache du SDK ; s'il n'y est pas, les captures
@@ -156,8 +159,9 @@ Future<void> loadAppFonts() async {
     '${root ?? '/home/user/flutter'}/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf',
   );
   if (icons.existsSync()) {
-    await (FontLoader('MaterialIcons')
-          ..addFont(Future.value(ByteData.sublistView(icons.readAsBytesSync()))))
+    await (FontLoader(
+          'MaterialIcons',
+        )..addFont(Future.value(ByteData.sublistView(icons.readAsBytesSync()))))
         .load();
   }
 }
@@ -378,8 +382,7 @@ void main() {
                 routes: [
                   GoRoute(
                     path: '/teacher',
-                    builder: (c, s) =>
-                        const TeacherConsoleScreen(fragment: ''),
+                    builder: (c, s) => const TeacherConsoleScreen(fragment: ''),
                   ),
                 ],
               ),
@@ -435,10 +438,18 @@ void main() {
           child: ProviderScope(
             overrides: [
               localStorageProvider.overrideWithValue(storage),
-              settingsServiceProvider.overrideWithValue(SettingsService(storage)),
-              entitlementServiceProvider.overrideWithValue(_MemoryEntitlements()),
-              progressServiceProvider.overrideWithValue(ProgressService(storage)),
-              gameSaveServiceProvider.overrideWithValue(GameSaveService(storage)),
+              settingsServiceProvider.overrideWithValue(
+                SettingsService(storage),
+              ),
+              entitlementServiceProvider.overrideWithValue(
+                _MemoryEntitlements(),
+              ),
+              progressServiceProvider.overrideWithValue(
+                ProgressService(storage),
+              ),
+              gameSaveServiceProvider.overrideWithValue(
+                GameSaveService(storage),
+              ),
               legacyGameMigrationServiceProvider.overrideWithValue(
                 LegacyGameMigrationService(storage),
               ),
@@ -457,7 +468,8 @@ void main() {
                   routes: [
                     GoRoute(
                       path: '/teacher',
-                      builder: (c, s) => const TeacherConsoleScreen(fragment: ''),
+                      builder: (c, s) =>
+                          const TeacherConsoleScreen(fragment: ''),
                     ),
                   ],
                 ),

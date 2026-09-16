@@ -1209,6 +1209,19 @@ class AppLocalizationsIt extends AppLocalizations {
   String get premiumActive => 'Premium attivo: tutto sbloccato';
 
   @override
+  String get freeTourTitle => 'Hai visto tutte le carte gratuite';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return 'Le $free carte gratuite ora si ripeteranno. Premium apre tutte le $total carte, ogni percorso e i salvataggi, con un solo acquisto.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'Sblocca tutte le $total carte';
+  }
+
+  @override
   String get laterAction => 'Più tardi';
 
   @override

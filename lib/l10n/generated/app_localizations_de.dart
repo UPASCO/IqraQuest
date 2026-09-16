@@ -1205,6 +1205,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumActive => 'Premium aktiv: alles freigeschaltet';
 
   @override
+  String get freeTourTitle => 'Du hast alle Gratiskarten gesehen';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return 'Die $free Gratiskarten wiederholen sich ab jetzt. Premium öffnet alle $total Karten, jede Strecke und die Spielstände, mit einem einzigen Kauf.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'Alle $total Karten freischalten';
+  }
+
+  @override
   String get laterAction => 'Später';
 
   @override

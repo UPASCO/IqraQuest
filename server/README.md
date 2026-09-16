@@ -1,3 +1,5 @@
+> **En réserve.** Le mode École est retiré du produit depuis le 16 septembre 2026 (`kClassroomEnabled = false`). Ce dossier décrit un serveur qui n'est plus relié à l'application publiée. Pour le rouvrir : [docs/SCHOOL_MODE_ARCHIVE.md](../docs/SCHOOL_MODE_ARCHIVE.md).
+
 # Le serveur du mode Classe
 
 Tout ce qu'IqraQuest fait sur un téléphone se passe hors ligne. Ce

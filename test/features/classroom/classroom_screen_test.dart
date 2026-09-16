@@ -79,7 +79,7 @@ Future<({FakeClassroomGateway room, List<Question> bank})> pumpPupil(
         initialSettingsProvider.overrideWithValue(const AppSettings()),
         initialPremiumProvider.overrideWithValue(false),
         appRouterProvider.overrideWithValue(
-          buildAppRouter(initialLocation: '/classroom'),
+          buildAppRouter(classroom: true, initialLocation: '/classroom'),
         ),
       ],
       child: const IqraQuestApp(),
@@ -116,7 +116,9 @@ void main() {
       reason: 'a child can read what the app keeps of them',
     );
     expect(
-      tester.widget<ElevatedButton>(find.byKey(const Key('classroom-join'))).onPressed,
+      tester
+          .widget<ElevatedButton>(find.byKey(const Key('classroom-join')))
+          .onPressed,
       isNull,
       reason: 'nothing to join with yet',
     );
@@ -128,7 +130,9 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     final storage = await LocalStorageService.create();
     final room = FakeClassroomGateway(random: Random(11));
-    final bank = await tester.runAsync(() => QuestionRepository().loadAll('en'));
+    final bank = await tester.runAsync(
+      () => QuestionRepository().loadAll('en'),
+    );
     final code = room.openSession(
       lessonId: 'piliers',
       questionIds: [bank!.first.id],
@@ -158,6 +162,7 @@ void main() {
           initialPremiumProvider.overrideWithValue(false),
           appRouterProvider.overrideWithValue(
             buildAppRouter(
+              classroom: true,
               initialLocation: '/classroom?code=${code.toLowerCase()}',
             ),
           ),

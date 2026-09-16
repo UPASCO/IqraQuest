@@ -158,6 +158,15 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final session = ref.watch(gameControllerProvider);
 
     ref.listen(gameControllerProvider, (previous, next) {
+      // Le tour des cartes gratuites est fait : le dire une fois, avec
+      // la porte de Premium, et laisser jouer — la partie continue avec
+      // des cartes déjà vues.
+      if (next?.freeTourJustCompleted == true &&
+          previous?.freeTourJustCompleted != true) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _offerFullBank();
+        });
+      }
       _beginAnswerBeatsIfNeeded(previous, next);
       _beginEarnBeatIfNeeded(previous, next);
       _playCuesFor(previous, next);
@@ -288,175 +297,165 @@ class _GameScreenState extends ConsumerState<GameScreen> {
         child: Padding(
           padding: rails ? const EdgeInsets.all(8) : EdgeInsets.zero,
           child: GestureDetector(
-          // A card that could move nothing passes by itself; a tap on
-          // the banner passes it sooner.
-          onTap: state.turnPhase == TurnPhase.noMove && player.isHuman
-              ? () =>
-                    ref.read(gameControllerProvider.notifier)
-                        .continueAfterFeedback()
-              : null,
+            // A card that could move nothing passes by itself; a tap on
+            // the banner passes it sooner.
+            onTap: state.turnPhase == TurnPhase.noMove && player.isHuman
+                ? () => ref
+                      .read(gameControllerProvider.notifier)
+                      .continueAfterFeedback()
+                : null,
             child: _TurnBanner(session: session, l10n: l10n),
           ),
         ),
       );
     }
 
-
     // ---- The HUD, in pieces ----
     //
     // The same pieces are laid out two ways below: across the top of the
     // plate, or down a rail beside it when a tablet is on its side.
     final backButton = _GlassIconButton(
-        key: const Key('board-back'),
-        icon: Icons.arrow_back,
-        label: MaterialLocalizations.of(
-          context,
-        ).backButtonTooltip,
-        onTap: () => context.go('/home'),
-      );
+      key: const Key('board-back'),
+      icon: Icons.arrow_back,
+      label: MaterialLocalizations.of(context).backButtonTooltip,
+      onTap: () => context.go('/home'),
+    );
     final muteButton = _GlassIconButton(
-        key: const Key('mute-toggle'),
-        icon: soundOn ? Icons.volume_up : Icons.volume_off,
-        label: soundOn ? l10n.muteSound : l10n.unmuteSound,
-        onTap: () => ref
-            .read(settingsControllerProvider.notifier)
-            .setSoundEnabled(!soundOn),
-      );
+      key: const Key('mute-toggle'),
+      icon: soundOn ? Icons.volume_up : Icons.volume_off,
+      label: soundOn ? l10n.muteSound : l10n.unmuteSound,
+      onTap: () => ref
+          .read(settingsControllerProvider.notifier)
+          .setSoundEnabled(!soundOn),
+    );
     final rulesButton = _GlassIconButton(
-        key: const Key('rules-shortcut'),
-        icon: Icons.help_outline,
-        label: l10n.rulesTitle,
-        onTap: () => context.push('/tutorial'),
-      );
+      key: const Key('rules-shortcut'),
+      icon: Icons.help_outline,
+      label: l10n.rulesTitle,
+      onTap: () => context.push('/tutorial'),
+    );
     final menuButton = _GlassIconButton(
-        key: const Key('board-menu'),
-        icon: Icons.menu,
-        label: l10n.boardMenuOpen,
-        onTap: () => _openBoardMenu(context, ref, l10n),
-      );
+      key: const Key('board-menu'),
+      icon: Icons.menu,
+      label: l10n.boardMenuOpen,
+      onTap: () => _openBoardMenu(context, ref, l10n),
+    );
     // Its own button, beside the menu: a save buried in a menu is a
     // save nobody finds. Premium — the lock says so on a free device,
     // and the tap then opens the paywall.
     final isPremium = ref.watch(premiumControllerProvider);
     final saveButton = _GlassIconButton(
-        key: const Key('board-save'),
-        icon: Icons.bookmark_add_outlined,
-        label: isPremium ? l10n.saveGame : '${l10n.saveGame}, ${l10n.premiumOnly}',
-        locked: !isPremium,
-        onTap: () => isPremium ? _saveGame(l10n) : openPremium(context),
-      );
+      key: const Key('board-save'),
+      icon: Icons.bookmark_add_outlined,
+      label: isPremium
+          ? l10n.saveGame
+          : '${l10n.saveGame}, ${l10n.premiumOnly}',
+      locked: !isPremium,
+      onTap: () => isPremium ? _saveGame(l10n) : openPremium(context),
+    );
     final nameplate = _TurnNameplate(
-        key: const Key('turn-nameplate'),
-        name: player.name,
-        color: player.team.color(colors),
-        // No eyebrow on an opponent's turn: the
-        // banner over the board already narrates
-        // what they are doing.
-        label: player.isHuman ? l10n.yourTurn : null,
-        waiting:
-            player.isHuman &&
-            state.turnPhase == TurnPhase.selectingGait,
-      );
+      key: const Key('turn-nameplate'),
+      name: player.name,
+      color: player.team.color(colors),
+      // No eyebrow on an opponent's turn: the
+      // banner over the board already narrates
+      // what they are doing.
+      label: player.isHuman ? l10n.yourTurn : null,
+      waiting: player.isHuman && state.turnPhase == TurnPhase.selectingGait,
+    );
     final arrivals = _HudGroup(
-        heading: l10n.hudArrivedHeading,
-        children: [
-          for (var i = 0; i < state.players.length; i++)
-            _HudPill(
-              highlight: i == state.currentPlayerIndex,
-              child: Semantics(
-                label: state.players[i].id == leader.id
-                    ? '${state.players[i].name}, '
-                          '${l10n.hudArrivedHeading} '
-                          '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
-                          '/${state.players[i].horses.length}, '
-                          '${l10n.leaderLabel}'
-                    : '${state.players[i].name}, '
-                          '${l10n.hudArrivedHeading} '
-                          '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
-                          '/${state.players[i].horses.length}',
-                child: ExcludeSemantics(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircleAvatar(
-                        radius: 5,
-                        backgroundColor: state.players[i].team
-                            .color(colors),
-                      ),
-                      const SizedBox(width: 5),
-                      Text(
+      heading: l10n.hudArrivedHeading,
+      children: [
+        for (var i = 0; i < state.players.length; i++)
+          _HudPill(
+            highlight: i == state.currentPlayerIndex,
+            child: Semantics(
+              label: state.players[i].id == leader.id
+                  ? '${state.players[i].name}, '
+                        '${l10n.hudArrivedHeading} '
+                        '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                        '/${state.players[i].horses.length}, '
+                        '${l10n.leaderLabel}'
+                  : '${state.players[i].name}, '
+                        '${l10n.hudArrivedHeading} '
                         '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
                         '/${state.players[i].horses.length}',
-                        style: _hudText(context),
+              child: ExcludeSemantics(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircleAvatar(
+                      radius: 5,
+                      backgroundColor: state.players[i].team.color(colors),
+                    ),
+                    const SizedBox(width: 5),
+                    Text(
+                      '${state.players[i].horses.where((h) => h.position is FinishedPosition).length}'
+                      '/${state.players[i].horses.length}',
+                      style: _hudText(context),
+                    ),
+                    if (state.players[i].id == leader.id &&
+                        state.players.length > 1) ...[
+                      const SizedBox(width: 4),
+                      const Icon(
+                        Icons.star_rounded,
+                        key: Key('leader-star'),
+                        size: 14,
+                        color: Color(0xFFFFE08A),
                       ),
-                      if (state.players[i].id == leader.id &&
-                          state.players.length > 1) ...[
-                        const SizedBox(width: 4),
-                        const Icon(
-                          Icons.star_rounded,
-                          key: Key('leader-star'),
-                          size: 14,
-                          color: Color(0xFFFFE08A),
-                        ),
-                      ],
                     ],
-                  ),
+                  ],
                 ),
               ),
             ),
-        ],
-      );
+          ),
+      ],
+    );
     final stats = Wrap(
-        alignment: WrapAlignment.center,
-        spacing: 8,
-        runSpacing: 6,
-        children: [
+      alignment: WrapAlignment.center,
+      spacing: 8,
+      runSpacing: 6,
+      children: [
+        _HudStat(
+          key: const Key('hud-knowledge'),
+          icon: Icons.auto_awesome,
+          iconColor: const Color(0xFFEBC06A),
+          value: '${player.rewards.knowledgePoints}',
+          word: l10n.hudKnowledgeShort,
+          semantics:
+              '${l10n.knowledgePointsLabel} : '
+              '${player.rewards.knowledgePoints}',
+        ),
+        _HudStat(
+          key: const Key('hud-streak'),
+          icon: Icons.local_fire_department,
+          iconColor: player.streak.current > 0
+              ? const Color(0xFFF0A24B)
+              : Colors.white38,
+          value: '${player.streak.current}/${player.streak.nextThreshold}',
+          word: l10n.hudStreakShort,
+          highlight: player.streak.current >= 3,
+          semantics:
+              '${l10n.knowledgeStreak} : '
+              '${player.streak.current} / ${player.streak.nextThreshold}',
+        ),
+        if (state.maxDraws != null)
           _HudStat(
-            key: const Key('hud-knowledge'),
-            icon: Icons.auto_awesome,
+            key: const Key('hud-cards'),
+            icon: Icons.style,
             iconColor: const Color(0xFFEBC06A),
-            value: '${player.rewards.knowledgePoints}',
-            word: l10n.hudKnowledgeShort,
-            semantics:
-                '${l10n.knowledgePointsLabel} : '
-                '${player.rewards.knowledgePoints}',
+            value: '${state.drawCount}/${state.maxDraws}',
+            word: l10n.hudCardsShort,
+            semantics: l10n.drawsCounter(state.drawCount, state.maxDraws!),
           ),
-          _HudStat(
-            key: const Key('hud-streak'),
-            icon: Icons.local_fire_department,
-            iconColor: player.streak.current > 0
-                ? const Color(0xFFF0A24B)
-                : Colors.white38,
-            value:
-                '${player.streak.current}/${player.streak.nextThreshold}',
-            word: l10n.hudStreakShort,
-            highlight: player.streak.current >= 3,
-            semantics:
-                '${l10n.knowledgeStreak} : '
-                '${player.streak.current} / ${player.streak.nextThreshold}',
-          ),
-          if (state.maxDraws != null)
-            _HudStat(
-              key: const Key('hud-cards'),
-              icon: Icons.style,
-              iconColor: const Color(0xFFEBC06A),
-              value: '${state.drawCount}/${state.maxDraws}',
-              word: l10n.hudCardsShort,
-              semantics: l10n.drawsCounter(
-                state.drawCount,
-                state.maxDraws!,
-              ),
-            ),
-        ],
-      );
+      ],
+    );
     final toast = <Widget>[
       if (_leadToast != null) ...[
         const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(child: _LeadToast(text: _leadToast!)),
-          ],
+          children: [Flexible(child: _LeadToast(text: _leadToast!))],
         ),
       ],
     ];
@@ -725,8 +724,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 // previous answer's verdict there is what once showed a
                 // fresh card already answered — its tiles dead, its right
                 // answer given away.
-                lastAnswerCorrect:
-                    state.turnPhase == TurnPhase.showingFeedback
+                lastAnswerCorrect: state.turnPhase == TurnPhase.showingFeedback
                     ? state.lastAnswerCorrect
                     : null,
                 compact: _compactFeedback && state.lastAnswerCorrect != null,
@@ -1113,14 +1111,20 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     final moved = _anyHorseMoved(previous.gameState, state);
     if (!moved) return;
     _leadTimer?.cancel();
-    setState(() => _leadToast = AppLocalizations.of(context).tookTheLead(leader.name));
+    setState(
+      () => _leadToast = AppLocalizations.of(context).tookTheLead(leader.name),
+    );
     _leadTimer = Timer(kLeadToastDuration, () {
       if (mounted) setState(() => _leadToast = null);
     });
   }
 
   bool _anyHorseMoved(GameState before, GameState after) {
-    for (var p = 0; p < after.players.length && p < before.players.length; p++) {
+    for (
+      var p = 0;
+      p < after.players.length && p < before.players.length;
+      p++
+    ) {
       final b = before.players[p].horses;
       final a = after.players[p].horses;
       for (var h = 0; h < a.length && h < b.length; h++) {
@@ -1131,14 +1135,49 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   }
 
   /// Keeps the game under a name, from the HUD button.
+  /// La fenêtre « tu as fait le tour des cartes gratuites ».
+  Future<void> _offerFullBank() async {
+    final l10n = AppLocalizations.of(context);
+    final controller = ref.read(gameControllerProvider.notifier);
+    final free = controller.freeBankSize;
+    final total = controller.bankSize;
+    final go = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        key: const Key('free-tour-popup'),
+        icon: const Icon(
+          Icons.workspace_premium,
+          color: Color(0xFFE3B354),
+          size: 36,
+        ),
+        title: Text(l10n.freeTourTitle),
+        content: Text(l10n.freeTourBody(free, total)),
+        actions: [
+          TextButton(
+            key: const Key('free-tour-later'),
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(l10n.laterAction),
+          ),
+          FilledButton(
+            key: const Key('free-tour-unlock'),
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: ButtonLabel(l10n.freeTourCta(total)),
+          ),
+        ],
+      ),
+    );
+    if (!mounted) return;
+    controller.acknowledgeFreeTour();
+    if (go == true) openPremium(context);
+  }
+
   Future<void> _saveGame(AppLocalizations l10n) async {
     final session = ref.read(gameControllerProvider);
     if (session == null) return;
     final saved = await saveGameWithName(context, ref, session.gameState);
     if (saved == null || !mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(l10n.gameSavedAs(saved.name))),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(l10n.gameSavedAs(saved.name))));
   }
 
   @override
@@ -1381,9 +1420,8 @@ Future<void> _openBoardMenu(
                             onPressed: () =>
                                 Navigator.of(dialogContext).pop(false),
                             child: Text(
-                              MaterialLocalizations.of(
-                                dialogContext,
-                              ).cancelButtonLabel,
+                              MaterialLocalizations.of(dialogContext)
+                                  .cancelButtonLabel,
                             ),
                           ),
                           FilledButton(
@@ -1396,7 +1434,9 @@ Future<void> _openBoardMenu(
                       ),
                     );
                     if (ok != true) return;
-                    ref.read(gameControllerProvider.notifier).restartSameSetup();
+                    ref
+                        .read(gameControllerProvider.notifier)
+                        .restartSameSetup();
                     if (sheetContext.mounted) {
                       Navigator.of(sheetContext).pop();
                     }
@@ -1558,10 +1598,9 @@ class _TurnNameplateState extends State<_TurnNameplate>
 
 /// The one type style of the HUD: every pill, counter and word is set in
 /// it, so the bar reads as one instrument rather than a row of widgets.
-TextStyle? _hudText(BuildContext context) => Theme.of(context)
-    .textTheme
-    .labelLarge
-    ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
+TextStyle? _hudText(BuildContext context) =>
+    Theme.of(context).textTheme.labelLarge
+        ?.copyWith(color: const Color(0xFFF4ECDC), fontWeight: FontWeight.w600);
 
 /// A heading and the row of pills it explains. One word over four
 /// counters beats the same word repeated inside each of them.
@@ -1695,9 +1734,7 @@ class _GlassIconButton extends StatelessWidget {
           child: Icon(
             icon,
             size: 19,
-            color: locked
-                ? const Color(0x99F4ECDC)
-                : const Color(0xFFF4ECDC),
+            color: locked ? const Color(0x99F4ECDC) : const Color(0xFFF4ECDC),
           ),
         ),
       ),
@@ -1736,7 +1773,10 @@ class _LeadToast extends StatelessWidget {
       duration: AppMotion.of(context, AppMotion.micro),
       builder: (context, t, child) => Opacity(
         opacity: t.clamp(0.0, 1.0),
-        child: Transform.translate(offset: Offset(0, (1 - t) * -6), child: child),
+        child: Transform.translate(
+          offset: Offset(0, (1 - t) * -6),
+          child: child,
+        ),
       ),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
@@ -1847,9 +1887,8 @@ class _PlacementBanner extends StatelessWidget {
           Text(
             extra!,
             textAlign: vertical ? TextAlign.center : null,
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-              color: const Color(0xCCE9DFC8),
-            ),
+            style: Theme.of(context).textTheme.labelMedium
+                ?.copyWith(color: const Color(0xCCE9DFC8)),
           ),
       ],
     );
@@ -1936,11 +1975,12 @@ class _TurnBanner extends StatelessWidget {
           // exact count first, because "my horse is three from Mecca,
           // I drew a six and nothing happened" is the refusal players
           // read as a bug.
-          MoveOutcome.noLegalMove => allHome
-              ? l10n.noExitHint
-              : awaited != null
-              ? l10n.noMoveOvershoot(awaited)
-              : l10n.outcomeNoLegalMove,
+          MoveOutcome.noLegalMove =>
+            allHome
+                ? l10n.noExitHint
+                : awaited != null
+                ? l10n.noMoveOvershoot(awaited)
+                : l10n.outcomeNoLegalMove,
           null => l10n.yourTurn,
         };
       }
@@ -2242,7 +2282,11 @@ class _StakePill extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: const Color(0xFFEBC06A), width: 1.3),
           boxShadow: const [
-            BoxShadow(color: Color(0x80000000), blurRadius: 14, offset: Offset(0, 4)),
+            BoxShadow(
+              color: Color(0x80000000),
+              blurRadius: 14,
+              offset: Offset(0, 4),
+            ),
           ],
         ),
         // The text is flexible and ellipsizes: on the floor phone at a

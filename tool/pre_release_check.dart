@@ -15,7 +15,20 @@ import 'dart:math' show max, min;
 const targetQuestionCount = 1100;
 const targetFreeCount = 50;
 const targetPremiumCount = 1050;
-const targetLanguages = ['fr', 'en', 'ar', 'es', 'pt', 'de', 'tr', 'id', 'ur', 'ms', 'it', 'nl'];
+const targetLanguages = [
+  'fr',
+  'en',
+  'ar',
+  'es',
+  'pt',
+  'de',
+  'tr',
+  'id',
+  'ur',
+  'ms',
+  'it',
+  'nl',
+];
 const targetCategoryCounts = {
   'prophets': 310,
   'sira': 300,
@@ -61,11 +74,14 @@ void main() {
   final root = Directory.current;
 
   section('Question bank');
-  final masterFile = File('${root.path}/assets/data/questions/master/questions.json');
+  final masterFile = File(
+    '${root.path}/assets/data/questions/master/questions.json',
+  );
   if (!masterFile.existsSync()) {
     check('master questions.json exists', false);
   } else {
-    final master = (jsonDecode(masterFile.readAsStringSync()) as List).cast<Map<String, dynamic>>();
+    final master = (jsonDecode(masterFile.readAsStringSync()) as List)
+        .cast<Map<String, dynamic>>();
     check(
       'total question count == $targetQuestionCount',
       master.length == targetQuestionCount,
@@ -127,12 +143,15 @@ void main() {
 
     section('Languages');
     for (final lang in targetLanguages) {
-      final file = File('${root.path}/assets/data/questions/$lang/questions.json');
+      final file = File(
+        '${root.path}/assets/data/questions/$lang/questions.json',
+      );
       if (!file.existsSync()) {
         check('$lang question content exists', false);
         continue;
       }
-      final content = (jsonDecode(file.readAsStringSync()) as List).cast<Map<String, dynamic>>();
+      final content = (jsonDecode(file.readAsStringSync()) as List)
+          .cast<Map<String, dynamic>>();
       check(
         '$lang has $targetQuestionCount question texts',
         content.length == targetQuestionCount,
@@ -147,21 +166,28 @@ void main() {
       // makes "Learn more" a button that pays off at random.
       final minDetail = (lang == 'ar' || lang == 'ur') ? 160 : 220;
       final thin = content
-          .where((q) => ((q['detail'] as String?) ?? '').trim().length < minDetail)
+          .where(
+            (q) => ((q['detail'] as String?) ?? '').trim().length < minDetail,
+          )
           .map((q) => q['id'] as String)
           .toList();
-      if (const {'fr', 'en', 'ar'}.contains(lang) || thin.length != content.length) {
+      if (const {'fr', 'en', 'ar'}.contains(lang) ||
+          thin.length != content.length) {
         check(
           '$lang: every question has a "learn more" detail',
           thin.isEmpty,
-          detail: '${thin.length} missing or thin (first: ${thin.take(3).join(', ')})',
+          detail:
+              '${thin.length} missing or thin (first: ${thin.take(3).join(', ')})',
         );
       } else {
         check('$lang: no partial details (the sheet falls back cleanly)', true);
       }
     }
     final totalLinguisticContent = targetLanguages
-        .map((lang) => File('${root.path}/assets/data/questions/$lang/questions.json'))
+        .map(
+          (lang) =>
+              File('${root.path}/assets/data/questions/$lang/questions.json'),
+        )
         .where((f) => f.existsSync())
         .map((f) => (jsonDecode(f.readAsStringSync()) as List).length)
         .fold<int>(0, (a, b) => a + b);
@@ -177,12 +203,18 @@ void main() {
   if (!lessonsFile.existsSync()) {
     check('lessons.json exists', false);
   } else {
-    final manifest = jsonDecode(lessonsFile.readAsStringSync()) as Map<String, dynamic>;
+    final manifest =
+        jsonDecode(lessonsFile.readAsStringSync()) as Map<String, dynamic>;
     final lessons = (manifest['lessons'] as List).cast<Map<String, dynamic>>();
     check('lessons.json exists', true);
-    check('the bank is cut into lessons', lessons.isNotEmpty,
-        detail: '${lessons.length} lessons');
-    final sizes = lessons.map((l) => (l['questionIds'] as List).length).toList();
+    check(
+      'the bank is cut into lessons',
+      lessons.isNotEmpty,
+      detail: '${lessons.length} lessons',
+    );
+    final sizes = lessons
+        .map((l) => (l['questionIds'] as List).length)
+        .toList();
     check(
       'every lesson fits a class period (8 to 11 cards)',
       sizes.every((n) => n >= 8 && n <= 11),
@@ -204,59 +236,33 @@ void main() {
     );
   }
 
-  section('Classroom: the store build never links to a payment page');
-  final routerText = File('${root.path}/lib/app/router.dart').readAsStringSync();
-  final consoleText = File(
-    '${root.path}/lib/features/classroom/presentation/teacher_console_screen.dart',
+  section('Classroom: in reserve, no entry point');
+  final flagsText = File('${root.path}/lib/app/build_flags.dart')
+      .readAsStringSync();
+  final classroomEnabled = RegExp(r'kClassroomEnabled\s*=\s*true')
+      .hasMatch(flagsText);
+  final routerText = File('${root.path}/lib/app/router.dart')
+      .readAsStringSync();
+  final homeText = File(
+    '${root.path}/lib/features/home/presentation/home_screen.dart',
   ).readAsStringSync();
-  // La console existe sur téléphone (se connecter, lire sa licence,
-  // ouvrir une séance) ; ce sont ses surfaces d'achat qui n'existent que
-  // sur le web. Apple 3.1.1 : rien dans une build de magasin ne mène à un
-  // paiement hors magasin.
-  check(
-    'every purchase surface of the console is compiled behind kIsWeb',
-    RegExp(r'class _SubscribeButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText) &&
-        RegExp(r'class _PortalButton[\s\S]{0,600}if \(!kIsWeb\)').hasMatch(consoleText),
-    detail: 'Apple 3.1.1 / Google Play Billing: the subscribe button and '
-        'the portal must not exist in a store build',
-  );
-  check(
-    'the console never prints a price',
-    !RegExp(r'\d+\s?€|€\s?\d+').hasMatch(consoleText),
-    detail: 'the price lives in Stripe; a store build must not show an '
-        'outside price either',
-  );
-  check(
-    'the school build serves only the classroom',
-    routerText.contains('if (!kSchoolBuild) ...['),
-    detail: 'school.iqraquest.org is the schools\' address: without this '
-        'guard it also served #/home, #/premium and the whole family game',
-  );
-  check(
-    'a typed address on the school build lands on the console',
-    routerText.contains('_allowedInSchoolBuild') &&
-        RegExp(r"kSchoolBuild[\s\S]{0,200}'/teacher'").hasMatch(routerText),
-    detail: 'the guard above hides the routes; this redirect catches what '
-        'someone types by hand',
-  );
-  final webWorkflow = File(
-    '${root.path}/.github/workflows/web-classroom.yml',
-  ).readAsStringSync();
-  check(
-    'the web deploy compiles the school build',
-    webWorkflow.contains('--dart-define=IQRAQUEST_SCHOOL=true'),
-    detail: 'without the flag the deploy is an ordinary build, and the '
-        'schools\' subdomain serves the family game again',
-  );
-  // La caisse et le portail sont des URL que le serveur fabrique à la
-  // demande (Edge Functions) : aucune adresse Stripe n'est compilée dans
-  // l'application, ni pour le web, ni pour les magasins.
+  final workflowTexts = Directory('${root.path}/.github/workflows')
+      .listSync()
+      .whereType<File>()
+      .map((f) => f.readAsStringSync())
+      .toList();
+  // La caisse et le portail étaient des URL que le serveur fabriquait à
+  // la demande : aucune adresse Stripe n'est compilée dans l'application,
+  // ni pour le web, ni pour les magasins — mode École ouvert ou fermé.
   final stripeMentions = <String>[];
-  for (final entity in Directory('${root.path}/lib').listSync(recursive: true)) {
+  for (final entity in Directory(
+    '${root.path}/lib',
+  ).listSync(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
     final text = entity.readAsStringSync();
-    if (RegExp(r'buy\.stripe\.com|checkout\.stripe\.com|STRIPE_CHECKOUT_URL|price_1')
-        .hasMatch(text)) {
+    if (RegExp(
+      r'buy\.stripe\.com|checkout\.stripe\.com|STRIPE_CHECKOUT_URL|price_1',
+    ).hasMatch(text)) {
       stripeMentions.add(entity.path);
     }
   }
@@ -265,18 +271,106 @@ void main() {
     stripeMentions.isEmpty,
     detail: stripeMentions.join('; '),
   );
+  if (!classroomEnabled) {
+    // Le mode École est en réserve : rien dans le produit n'y mène.
+    check(
+      'the classroom flag is off',
+      flagsText.contains('kClassroomEnabled = false'),
+      detail: 'lib/app/build_flags.dart',
+    );
+    check(
+      'the classroom routes are compiled behind the flag',
+      routerText.contains('bool classroom = kClassroomEnabled') &&
+          RegExp(r"if \(classroom\) \.\.\.\[[\s\S]*?'/teacher'[\s\S]*?\],")
+              .hasMatch(routerText),
+      detail:
+          'router.dart: /classroom, /teacher and the board must sit inside '
+          'if (classroom) ...[, classroom defaulting to kClassroomEnabled',
+    );
+    check(
+      'the home shelf shows no classroom entry',
+      RegExp(
+        r"if \(kClassroomEnabled\) \.\.\.\[[\s\S]*?shelf-classroom[\s\S]*?shelf-school[\s\S]*?\],",
+      ).hasMatch(homeText),
+      detail:
+          'home_screen.dart: shelf-classroom and shelf-school inside the guard',
+    );
+    check(
+      'no workflow builds the school web app',
+      !workflowTexts.any((t) => t.contains('IQRAQUEST_SCHOOL=true')),
+      detail: 'a workflow still passes --dart-define=IQRAQUEST_SCHOOL=true',
+    );
+    check(
+      'no workflow compiles a classroom server address into a store build',
+      !workflowTexts.any((t) => t.contains('SUPABASE_URL')),
+      detail: 'android/ios workflows must not pass SUPABASE_* defines',
+    );
+  } else {
+    final consoleText = File(
+      '${root.path}/lib/features/classroom/presentation/teacher_console_screen.dart',
+    ).readAsStringSync();
+    // La console existe sur téléphone (se connecter, lire sa licence,
+    // ouvrir une séance) ; ce sont ses surfaces d'achat qui n'existent que
+    // sur le web. Apple 3.1.1 : rien dans une build de magasin ne mène à un
+    // paiement hors magasin.
+    check(
+      'every purchase surface of the console is compiled behind kIsWeb',
+      RegExp(r'class _SubscribeButton[\s\S]{0,600}if \(!kIsWeb\)')
+              .hasMatch(consoleText) &&
+          RegExp(r'class _PortalButton[\s\S]{0,600}if \(!kIsWeb\)')
+              .hasMatch(consoleText),
+      detail:
+          'Apple 3.1.1 / Google Play Billing: the subscribe button and '
+          'the portal must not exist in a store build',
+    );
+    check(
+      'the console never prints a price',
+      !RegExp(r'\d+\s?€|€\s?\d+').hasMatch(consoleText),
+      detail:
+          'the price lives in Stripe; a store build must not show an '
+          'outside price either',
+    );
+    check(
+      'the school build serves only the classroom',
+      routerText.contains('if (!kSchoolBuild) ...['),
+      detail:
+          'school.iqraquest.org is the schools\' address: without this '
+          'guard it also served #/home, #/premium and the whole family game',
+    );
+    check(
+      'a typed address on the school build lands on the console',
+      routerText.contains('_allowedInSchoolBuild') &&
+          RegExp(r"kSchoolBuild[\s\S]{0,200}'/teacher'").hasMatch(routerText),
+      detail:
+          'the guard above hides the routes; this redirect catches what '
+          'someone types by hand',
+    );
+    check(
+      'a workflow compiles the school build',
+      workflowTexts.any(
+        (t) => t.contains('--dart-define=IQRAQUEST_SCHOOL=true'),
+      ),
+      detail:
+          'without the flag the deploy is an ordinary build, and the '
+          'schools\' subdomain serves the family game again',
+    );
+  }
   // Any credential that reaches this repository is a credential to
   // rotate, not to explain away — so the gate looks for the shapes of
   // the real ones rather than for the words around them. `service_role`
   // as a word is legitimate (the SQL revokes rights from that role);
   // what must never appear is a key that carries its value.
   final secretShapes = <String, RegExp>{
-    'a Stripe key': RegExp(r'\b(sk_live|sk_test|pk_live|rk_live)_[A-Za-z0-9]{8,}'),
+    'a Stripe key': RegExp(
+      r'\b(sk_live|sk_test|pk_live|rk_live)_[A-Za-z0-9]{8,}',
+    ),
     'a Supabase secret key': RegExp(r'\bsb_secret_[A-Za-z0-9_\-]{10,}'),
-    'a JWT (anon or service_role)':
-        RegExp(r'\beyJ[A-Za-z0-9_\-]{15,}\.[A-Za-z0-9_\-]{15,}\.[A-Za-z0-9_\-]{10,}'),
-    'a Postgres connection string with a password':
-        RegExp(r'postgres(ql)?://[^\s:@]+:[^\s@]+@'),
+    'a JWT (anon or service_role)': RegExp(
+      r'\beyJ[A-Za-z0-9_\-]{15,}\.[A-Za-z0-9_\-]{15,}\.[A-Za-z0-9_\-]{10,}',
+    ),
+    'a Postgres connection string with a password': RegExp(
+      r'postgres(ql)?://[^\s:@]+:[^\s@]+@',
+    ),
   };
   final leaked = <String>[];
   for (final directory in ['lib', 'server', 'web', 'tool', '.github']) {
@@ -312,7 +406,9 @@ void main() {
   var placeholderHits = <String>[];
   for (final entity in libDir.listSync(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
-    if (entity.path.contains('${Platform.pathSeparator}l10n${Platform.pathSeparator}generated')) {
+    if (entity.path.contains(
+      '${Platform.pathSeparator}l10n${Platform.pathSeparator}generated',
+    )) {
       continue;
     }
     final text = entity.readAsStringSync();
@@ -329,8 +425,14 @@ void main() {
   );
 
   section('Graphics');
-  check('DESIGN_SYSTEM.md exists', File('${root.path}/DESIGN_SYSTEM.md').existsSync());
-  check('app theme tokens file exists', File('${root.path}/lib/theme/app_theme.dart').existsSync());
+  check(
+    'DESIGN_SYSTEM.md exists',
+    File('${root.path}/DESIGN_SYSTEM.md').existsSync(),
+  );
+  check(
+    'app theme tokens file exists',
+    File('${root.path}/lib/theme/app_theme.dart').existsSync(),
+  );
   check(
     'a distinctive launcher icon has replaced the flutter template default',
     _hasCustomLauncherIcon(root),
@@ -429,13 +531,16 @@ void main() {
     );
     check(
       'the $dir launch window is not white',
-      launch.existsSync() && !launch.readAsStringSync().contains('@android:color/white'),
+      launch.existsSync() &&
+          !launch.readAsStringSync().contains('@android:color/white'),
       detail: 'a white flash before a dark board is a visible defect',
     );
   }
 
   section('Race rules (no dice, no chance)');
-  final engineFile = File('${root.path}/lib/features/game/domain/game_engine.dart');
+  final engineFile = File(
+    '${root.path}/lib/features/game/domain/game_engine.dart',
+  );
   check('game_engine.dart exists', engineFile.existsSync());
   if (engineFile.existsSync()) {
     final text = engineFile.readAsStringSync();
@@ -447,12 +552,19 @@ void main() {
   // incomplete. The migration service is allowed to *name* the old format
   // it detects, and the l10n bundle explains the change to the player.
   final diceOffenders = <String>[];
-  for (final entity in Directory('${root.path}/lib').listSync(recursive: true)) {
+  for (final entity in Directory(
+    '${root.path}/lib',
+  ).listSync(recursive: true)) {
     if (entity is! File || !entity.path.endsWith('.dart')) continue;
     if (entity.path.endsWith('legacy_game_migration_service.dart')) continue;
     if (entity.path.contains('l10n/generated')) continue;
     final text = entity.readAsStringSync();
-    for (final banned in const ['rollDice', 'DiceWidget', 'lastDiceValue', 'waitingForDice']) {
+    for (final banned in const [
+      'rollDice',
+      'DiceWidget',
+      'lastDiceValue',
+      'waitingForDice',
+    ]) {
       if (text.contains(banned)) {
         diceOffenders.add('${entity.path.split('/lib/').last}: $banned');
       }
@@ -480,11 +592,16 @@ void main() {
   final gaitFile = File('${root.path}/lib/models/movement_choice.dart');
   if (gaitFile.existsSync()) {
     final text = gaitFile.readAsStringSync();
-    check('gaits run 1 to 6', text.contains('minSteps = 1') && text.contains('maxSteps = 6'));
+    check(
+      'gaits run 1 to 6',
+      text.contains('minSteps = 1') && text.contains('maxSteps = 6'),
+    );
   }
 
   section('Purchases');
-  final purchaseService = File('${root.path}/lib/services/purchase_service.dart');
+  final purchaseService = File(
+    '${root.path}/lib/services/purchase_service.dart',
+  );
   if (purchaseService.existsSync()) {
     final text = purchaseService.readAsStringSync();
     check(
@@ -541,10 +658,13 @@ bool _hasCustomLauncherIcon(Directory root) {
   final marketing = File(
     '${root.path}/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png',
   );
-  if (!marketing.existsSync() || marketing.lengthSync() < 50 * 1024) return false;
+  if (!marketing.existsSync() || marketing.lengthSync() < 50 * 1024) {
+    return false;
+  }
   for (final density in const ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']) {
-    if (!File('${root.path}/android/app/src/main/res/mipmap-$density/ic_launcher.png')
-        .existsSync()) {
+    if (!File(
+      '${root.path}/android/app/src/main/res/mipmap-$density/ic_launcher.png',
+    ).existsSync()) {
       return false;
     }
   }

@@ -2074,6 +2074,24 @@ abstract class AppLocalizations {
   /// **'Premium active: everything is unlocked'**
   String get premiumActive;
 
+  /// In-game popup title: the player has now seen every free card
+  ///
+  /// In en, this message translates to:
+  /// **'You have seen every free card'**
+  String get freeTourTitle;
+
+  /// In-game popup body: what Premium opens now that the free cards repeat
+  ///
+  /// In en, this message translates to:
+  /// **'The {free} free cards will now repeat. Premium opens all {total} cards, every course and the saves, in one purchase.'**
+  String freeTourBody(int free, int total);
+
+  /// In-game popup button: open the Premium screen
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock all {total} cards'**
+  String freeTourCta(int total);
+
   /// Dismiss button of the free-limit popup
   ///
   /// In en, this message translates to:

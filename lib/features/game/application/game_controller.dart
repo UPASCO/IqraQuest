@@ -60,9 +60,16 @@ class GameSession {
     this.isAiTurnInProgress = false,
     this.journeyHorseIndex,
     this.journeyAttemptedHorses = const {},
+    this.freeTourJustCompleted = false,
   });
 
   final GameState gameState;
+
+  /// Un signal, une fois par partie : le joueur gratuit vient de voir
+  /// passer la dernière carte gratuite qu'il n'avait jamais vue — ou
+  /// commence une partie alors qu'il les a toutes vues. L'écran le lit,
+  /// propose Premium, puis [GameController.acknowledgeFreeTour] l'éteint.
+  final bool freeTourJustCompleted;
 
   /// The question currently on screen (a turn question, a bonus question
   /// from an interactive square, or a journey question).
@@ -83,6 +90,7 @@ class GameSession {
     bool? isAiTurnInProgress,
     Object? journeyHorseIndex = _unset,
     Set<int>? journeyAttemptedHorses,
+    bool? freeTourJustCompleted,
   }) => GameSession(
     gameState: gameState ?? this.gameState,
     currentQuestion: identical(currentQuestion, _unset)
@@ -94,6 +102,7 @@ class GameSession {
         : journeyHorseIndex as int?,
     journeyAttemptedHorses:
         journeyAttemptedHorses ?? this.journeyAttemptedHorses,
+    freeTourJustCompleted: freeTourJustCompleted ?? this.freeTourJustCompleted,
   );
 }
 
@@ -146,6 +155,11 @@ class GameController extends StateNotifier<GameSession?> {
   List<Question> _pool = const [];
   bool _isPremium = false;
 
+  /// Les cartes gratuites de la banque, et si le « tour » a déjà été
+  /// annoncé dans cette partie — une fois par partie, pas à chaque carte.
+  Set<String> _freeIds = const {};
+  bool _freeTourAnnounced = false;
+
   /// The draw pile for this game. Rebuilt whenever the playable bank
   /// changes — buying Premium mid-game widens it immediately.
   QuestionDeck? _deck;
@@ -162,6 +176,10 @@ class GameController extends StateNotifier<GameSession?> {
   void configure({required List<Question> pool, required bool isPremium}) {
     _pool = pool;
     _isPremium = isPremium;
+    _freeIds = {
+      for (final q in pool)
+        if (q.isFree) q.id,
+    };
     // Free players draw from the free bank only; the die is the same six
     // faces for everyone, so nothing about the ride changes.
     _deck = QuestionDeck(
@@ -193,6 +211,7 @@ class GameController extends StateNotifier<GameSession?> {
     bool bonusesEnabled = true,
   }) {
     _cancelTimers();
+    _freeTourAnnounced = false;
     final now = DateTime.now();
     var gameState = GameState(
       gameId: 'g_${now.microsecondsSinceEpoch}',
@@ -408,6 +427,10 @@ class GameController extends StateNotifier<GameSession?> {
           .copyWith(freeBankExhausted: true, extraTurn: s.gameState.extraTurn);
       state = s.copyWith(gameState: drawn, currentQuestion: null);
       _persist();
+      // Même sans carte, le tour est fait : le dire ici, sur l'état à
+      // jour — le signal doit s'écrire APRÈS la carte, jamais avant, ou
+      // l'écriture de la carte l'effacerait.
+      _noteSeen(null);
       _resolveAnswer(
         correct: true,
         questionId: 'free-bank-exhausted',
@@ -429,9 +452,40 @@ class GameController extends StateNotifier<GameSession?> {
       currentQuestion: card.question.withShuffledAnswers(_random),
     );
     _persist();
+    _noteSeen(card.question.id);
 
     final player = drawn.currentPlayer;
     if (player.isAi) _runAiAnswer(player.aiDifficulty!);
+  }
+
+  /// Retient la carte vue, et lève le signal « tour des cartes gratuites
+  /// fait » la première fois de la partie où c'est vrai. Un joueur
+  /// Premium n'a pas de tour à faire.
+  void _noteSeen(String? questionId) {
+    if (_isPremium || _freeIds.isEmpty) return;
+    if (questionId != null) {
+      // Fire and forget: the disk write must never delay the card.
+      unawaited(progressService.markSeen([questionId]));
+    }
+    if (_freeTourAnnounced) return;
+    final seen = progressService.seenQuestionIds();
+    if (questionId != null) seen.add(questionId);
+    if (!seen.containsAll(_freeIds)) return;
+    _freeTourAnnounced = true;
+    final s = state;
+    if (s != null) state = s.copyWith(freeTourJustCompleted: true);
+  }
+
+  /// Ce que la fenêtre annonce : combien de cartes gratuites, sur combien.
+  int get freeBankSize => _freeIds.length;
+  int get bankSize => _pool.length;
+
+  /// L'écran a montré la proposition : le signal s'éteint.
+  void acknowledgeFreeTour() {
+    final s = state;
+    if (s != null && s.freeTourJustCompleted) {
+      state = s.copyWith(freeTourJustCompleted: false);
+    }
   }
 
   /// A question outside the draw — a chest's, a journey's — dealt from
@@ -1162,8 +1216,9 @@ final gameControllerProvider =
       );
       // Pushed rather than read: the board's own menu can flip this
       // mid-game, and the next card must already obey it.
-      controller.autoPlaceSingleMove =
-          ref.read(settingsControllerProvider).autoPlaceSingleMove;
+      controller.autoPlaceSingleMove = ref
+          .read(settingsControllerProvider)
+          .autoPlaceSingleMove;
       ref.listen<AppSettings>(
         settingsControllerProvider,
         (_, next) => controller.autoPlaceSingleMove = next.autoPlaceSingleMove,

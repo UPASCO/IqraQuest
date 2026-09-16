@@ -76,7 +76,7 @@ Future<Widget> boardApp({
       initialSettingsProvider.overrideWithValue(const AppSettings()),
       initialPremiumProvider.overrideWithValue(false),
       appRouterProvider.overrideWithValue(
-        buildAppRouter(initialLocation: location),
+        buildAppRouter(classroom: true, initialLocation: location),
       ),
     ],
     child: const IqraQuestApp(),
@@ -164,10 +164,7 @@ void main() {
     tester,
   ) async {
     final harness = await pumpBoard(tester);
-    final seat = await harness.room.join(
-      code: harness.code,
-      nickname: 'Amina',
-    );
+    final seat = await harness.room.join(code: harness.code, nickname: 'Amina');
     harness.room.ask(harness.code);
     await settle(tester);
 
@@ -222,10 +219,7 @@ void main() {
 
     // Somebody answers, the board redraws — the answers must not move
     // while a class is reading them.
-    final seat = await harness.room.join(
-      code: harness.code,
-      nickname: 'Amina',
-    );
+    final seat = await harness.room.join(code: harness.code, nickname: 'Amina');
     await harness.room.answer(
       code: harness.code,
       token: seat.token,
@@ -467,10 +461,7 @@ void main() {
     tester,
   ) async {
     final harness = await pumpBoard(tester);
-    final seat = await harness.room.join(
-      code: harness.code,
-      nickname: 'Amina',
-    );
+    final seat = await harness.room.join(code: harness.code, nickname: 'Amina');
     harness.room.ask(harness.code);
     await harness.room.answer(
       code: harness.code,

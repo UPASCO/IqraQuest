@@ -1195,6 +1195,19 @@ class AppLocalizationsMs extends AppLocalizations {
   String get premiumActive => 'Premium aktif: semuanya terbuka';
 
   @override
+  String get freeTourTitle => 'Anda telah melihat semua kad percuma';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return '$free kad percuma kini akan berulang. Premium membuka kesemua $total kad, semua laluan dan simpanan, dengan satu pembelian.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'Buka kesemua $total kad';
+  }
+
+  @override
   String get laterAction => 'Kemudian';
 
   @override

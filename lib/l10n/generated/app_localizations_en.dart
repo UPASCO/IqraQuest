@@ -1199,6 +1199,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumActive => 'Premium active: everything is unlocked';
 
   @override
+  String get freeTourTitle => 'You have seen every free card';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return 'The $free free cards will now repeat. Premium opens all $total cards, every course and the saves, in one purchase.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return 'Unlock all $total cards';
+  }
+
+  @override
   String get laterAction => 'Later';
 
   @override

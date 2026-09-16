@@ -2734,6 +2734,36 @@ s("premiumActive", "Settings row when Premium is on",
   ur="پریمیم فعال: سب کچھ کھلا ہے", ms="Premium aktif: semuanya terbuka",
   it="Premium attivo: tutto sbloccato", nl="Premium actief: alles is ontgrendeld")
 
+s("freeTourTitle", "In-game popup title: the player has now seen every free card",
+  fr="Tu as fait le tour des cartes gratuites", en="You have seen every free card",
+  ar="لقد رأيت كل البطاقات المجانية", es="Has visto todas las cartas gratuitas",
+  pt="Já viste todas as cartas gratuitas", de="Du hast alle Gratiskarten gesehen",
+  tr="Tüm ücretsiz kartları gördün", id="Kamu sudah melihat semua kartu gratis",
+  ur="آپ نے تمام مفت کارڈ دیکھ لیے", ms="Anda telah melihat semua kad percuma",
+  it="Hai visto tutte le carte gratuite", nl="Je hebt alle gratis kaarten gezien")
+
+s("freeTourBody", "In-game popup body: what Premium opens now that the free cards repeat",
+  ph={"free": "int", "total": "int"},
+  fr="Les {free} cartes gratuites vont maintenant se répéter. Premium ouvre les {total} cartes, tous les parcours et les sauvegardes, en un seul achat.",
+  en="The {free} free cards will now repeat. Premium opens all {total} cards, every course and the saves, in one purchase.",
+  ar="ستتكرر الآن البطاقات المجانية الـ{free}. يفتح Premium كل البطاقات الـ{total} وكل المسارات والحفظ، بشراء واحد.",
+  es="Las {free} cartas gratuitas van a repetirse ahora. Premium abre las {total} cartas, todos los recorridos y las partidas guardadas, en una sola compra.",
+  pt="As {free} cartas gratuitas vão agora repetir-se. O Premium abre as {total} cartas, todos os percursos e os jogos guardados, numa única compra.",
+  de="Die {free} Gratiskarten wiederholen sich ab jetzt. Premium öffnet alle {total} Karten, jede Strecke und die Spielstände, mit einem einzigen Kauf.",
+  tr="{free} ücretsiz kart artık tekrar edecek. Premium tek bir satın almayla {total} kartın tümünü, tüm parkurları ve kayıtları açar.",
+  id="{free} kartu gratis sekarang akan berulang. Premium membuka semua {total} kartu, semua lintasan, dan simpanan, dalam satu pembelian.",
+  ur="{free} مفت کارڈ اب دہرائے جائیں گے۔ Premium ایک خریداری میں تمام {total} کارڈ، ہر راستہ اور محفوظ کھیل کھول دیتا ہے۔",
+  ms="{free} kad percuma kini akan berulang. Premium membuka kesemua {total} kad, semua laluan dan simpanan, dengan satu pembelian.",
+  it="Le {free} carte gratuite ora si ripeteranno. Premium apre tutte le {total} carte, ogni percorso e i salvataggi, con un solo acquisto.",
+  nl="De {free} gratis kaarten gaan zich nu herhalen. Premium opent alle {total} kaarten, elk parcours en de opgeslagen spellen, met één aankoop.")
+
+s("freeTourCta", "In-game popup button: open the Premium screen",
+  ph={"total": "int"},
+  fr="Débloquer les {total} cartes", en="Unlock all {total} cards", ar="افتح كل البطاقات الـ{total}",
+  es="Desbloquear las {total} cartas", pt="Desbloquear as {total} cartas", de="Alle {total} Karten freischalten",
+  tr="{total} kartın tümünü aç", id="Buka semua {total} kartu", ur="تمام {total} کارڈ کھولیں",
+  ms="Buka kesemua {total} kad", it="Sblocca tutte le {total} carte", nl="Alle {total} kaarten ontgrendelen")
+
 s("laterAction", "Dismiss button of the free-limit popup",
   fr="Plus tard", en="Later", ar="لاحقًا", es="Más tarde", pt="Mais tarde", de="Später",
   tr="Sonra", id="Nanti", ur="بعد میں", ms="Kemudian", it="Più tardi", nl="Later")

@@ -1183,6 +1183,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumActive => 'Premium etkin: her şey açık';
 
   @override
+  String get freeTourTitle => 'Tüm ücretsiz kartları gördün';
+
+  @override
+  String freeTourBody(int free, int total) {
+    return '$free ücretsiz kart artık tekrar edecek. Premium tek bir satın almayla $total kartın tümünü, tüm parkurları ve kayıtları açar.';
+  }
+
+  @override
+  String freeTourCta(int total) {
+    return '$total kartın tümünü aç';
+  }
+
+  @override
   String get laterAction => 'Sonra';
 
   @override

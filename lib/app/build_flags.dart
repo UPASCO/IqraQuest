@@ -34,3 +34,12 @@ const bool kTesterBuild = bool.fromEnvironment('IQRAQUEST_TESTER');
 /// OFF sauf compilation avec `--dart-define=IQRAQUEST_SCHOOL=true`, ce
 /// que seul le workflow web fait.
 const bool kSchoolBuild = bool.fromEnvironment('IQRAQUEST_SCHOOL');
+
+/// Whether the classroom (« mode École ») exists in this product at all.
+///
+/// Mis en réserve : la console de l'enseignant, le tableau projeté et
+/// l'écran « rejoindre une classe » restent dans le dépôt (branche
+/// `archive/school-mode`, et ce code même), mais aucune route, aucune
+/// entrée d'écran, aucun texte n'y mène tant que ce drapeau est faux.
+/// Pour le rouvrir : passer à `true`, et suivre docs/SCHOOL_MODE_ARCHIVE.md.
+const bool kClassroomEnabled = false;
