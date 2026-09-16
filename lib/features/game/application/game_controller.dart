@@ -293,6 +293,9 @@ class GameController extends StateNotifier<GameSession?> {
     var saved = stored;
     if (saved.turnPhase == TurnPhase.gameOver) return false;
     _cancelTimers();
+    // Une partie reprise est une partie : le tour des cartes gratuites
+    // s'y annonce une fois, comme dans une partie neuve.
+    _freeTourAnnounced = false;
 
     // A save from the previous turn order (card → horse → question) at
     // a mid-turn phase means something else there than it does now: the
