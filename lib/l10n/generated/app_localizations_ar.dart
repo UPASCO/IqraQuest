@@ -206,6 +206,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storeLoading => 'جارٍ الاتصال بالمتجر…';
 
   @override
+  String get purchaseInProgress => 'جارٍ الشراء…';
+
+  @override
   String get storeUnavailableCta => 'المتجر غير متاح';
 
   @override

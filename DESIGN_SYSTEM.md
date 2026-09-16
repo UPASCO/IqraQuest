@@ -351,6 +351,13 @@ generated, not traced from a copyrighted source.
 ## 8. Accessibility
 
 - All interactive elements carry `Semantics` labels (translated).
+- Every tappable control is at least `AppSpacing.minTouchTarget` (48)
+  square, whatever it draws: the round glass buttons over painted scenery
+  (`GlassCircleButton`: board HUD, home bar, riders' back button) draw a
+  38-point disc inside a 48-point tap area.
+- Overlays never cover play: the board reserves the measured height of
+  the HUD above and of the deck below on every device, and a transient
+  toast floats outside that band so the plate never resizes for it.
 - Color is never the only differentiator (see §2).
 - Dynamic Type / textScaleFactor is respected — layouts wrap rather than
   clip up to at least 1.6× scale.

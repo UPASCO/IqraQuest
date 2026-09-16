@@ -201,6 +201,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get storeLoading => 'Menghubungkan ke toko…';
 
   @override
+  String get purchaseInProgress => 'Pembelian sedang diproses…';
+
+  @override
   String get storeUnavailableCta => 'Toko tidak tersedia';
 
   @override

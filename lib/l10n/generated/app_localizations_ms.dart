@@ -201,6 +201,9 @@ class AppLocalizationsMs extends AppLocalizations {
   String get storeLoading => 'Menyambung ke kedai…';
 
   @override
+  String get purchaseInProgress => 'Pembelian sedang berjalan…';
+
+  @override
   String get storeUnavailableCta => 'Kedai tidak tersedia';
 
   @override

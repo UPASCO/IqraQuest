@@ -55,6 +55,7 @@
   "chooseTeam": "Elegir equipo",
   "ridersTitle": "Los jinetes",
   "storeLoading": "Conectando con la tienda…",
+  "purchaseInProgress": "Compra en curso…",
   "storeUnavailableCta": "Tienda no disponible",
   "premiumBenefitBank": "Todo el banco de preguntas, cada una con su fuente",
   "premiumBenefitUnlimited": "Partidas ilimitadas, hasta La Meca (la versión gratuita se detiene tras {count} robos)",

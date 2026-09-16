@@ -9,6 +9,8 @@ import '../../../app/providers.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/legacy_game_migration_service.dart';
+import '../../../widgets/glass_circle_button.dart';
+import '../../../widgets/wrapped_label.dart';
 import '../../../widgets/content_width.dart';
 import '../../../widgets/system_bars.dart';
 import '../../../widgets/gold_rule.dart';
@@ -139,6 +141,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           icon: Icons.local_fire_department,
                           iconColor: const Color(0xFFF0A24B),
                           text: '${stats.dayStreak}',
+                          semantics: '${l10n.streak} : ${stats.dayStreak}',
                         ),
                         const SizedBox(width: 8),
                       ],
@@ -147,21 +150,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           icon: Icons.auto_awesome,
                           iconColor: const Color(0xFFEBC06A),
                           text: '${stats.correctAnswers}',
+                          semantics:
+                              '${l10n.questionsAnswered} : ${stats.correctAnswers}',
                         ),
                       const Spacer(),
-                      _RoundGlassButton(
+                      GlassCircleButton(
                         icon: isPremium
                             ? Icons.workspace_premium
                             : Icons.workspace_premium_outlined,
                         iconColor: const Color(0xFFE3B354),
-                        semanticLabel: l10n.premium,
+                        label: l10n.premium,
                         onTap: () => context.push('/premium'),
                       ),
                       const SizedBox(width: 8),
-                      _RoundGlassButton(
+                      GlassCircleButton(
                         icon: Icons.settings_outlined,
                         iconColor: onSceneDim,
-                        semanticLabel: l10n.settings,
+                        label: l10n.settings,
                         onTap: () => context.push('/settings'),
                       ),
                     ],
@@ -546,70 +551,42 @@ class _StatPill extends StatelessWidget {
     required this.icon,
     required this.iconColor,
     required this.text,
+    required this.semantics,
   });
 
   final IconData icon;
   final Color iconColor;
   final String text;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-      decoration: BoxDecoration(
-        color: const Color(0xB3122E22),
-        borderRadius: BorderRadius.circular(50),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.14)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 15, color: iconColor),
-          const SizedBox(width: 5),
-          Text(
-            text,
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              color: const Color(0xFFF4ECDC),
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _RoundGlassButton extends StatelessWidget {
-  const _RoundGlassButton({
-    required this.icon,
-    required this.iconColor,
-    required this.onTap,
-    required this.semanticLabel,
-  });
-
-  final IconData icon;
-  final Color iconColor;
-  final VoidCallback onTap;
-  final String semanticLabel;
+  /// What the number counts, for a screen reader: a flame and a "3"
+  /// tell a sighted player a streak; a bare "3" tells VoiceOver nothing.
+  final String semantics;
 
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      button: true,
-      label: semanticLabel,
-      child: Material(
-        color: const Color(0xB3122E22),
-        shape: CircleBorder(
-          side: BorderSide(color: Colors.white.withValues(alpha: 0.14)),
+      label: semantics,
+      excludeSemantics: true,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+        decoration: BoxDecoration(
+          color: const Color(0xB3122E22),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.14)),
         ),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onTap,
-          child: SizedBox(
-            width: 38,
-            height: 38,
-            child: Icon(icon, size: 19, color: iconColor),
-          ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 15, color: iconColor),
+            const SizedBox(width: 5),
+            Text(
+              text,
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                color: const Color(0xFFF4ECDC),
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -639,6 +616,13 @@ class _ShelfItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ink = highlighted ? const Color(0xFFF6D98E) : const Color(0xFFF6EFE0);
+    final labelStyle =
+        (Theme.of(context).textTheme.labelSmall ?? const TextStyle()).copyWith(
+          fontSize: 11,
+          height: 1.1,
+          fontWeight: highlighted ? FontWeight.w800 : null,
+          color: ink,
+        );
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -662,18 +646,19 @@ class _ShelfItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(icon, size: 20, color: ink),
                   const SizedBox(height: 4),
-                  // Scaled down rather than ellipsised: "Défi du jour"
-                  // and its 11 translations must all stay readable.
-                  ButtonLabel(
-                    label,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      fontSize: 11,
-                      height: 1.1,
-                      fontWeight: highlighted ? FontWeight.w800 : null,
-                      color: ink,
+                  // Two lines at the shelf's own size, scaled down only
+                  // when a word will not fit: "Daily Challenge" must not
+                  // be the one small label of the four, and its eleven
+                  // translations must all stay whole. The box is two
+                  // lines tall on every tile, so the four stay level.
+                  SizedBox(
+                    height: WrappedLabel.linesHeight(context, labelStyle),
+                    child: Center(
+                      child: WrappedLabel(label, style: labelStyle),
                     ),
                   ),
                 ],

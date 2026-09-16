@@ -440,6 +440,12 @@ s("storeLoading", "Premium screen: button label while the Store product is still
   tr="Mağazaya bağlanılıyor…", id="Menghubungkan ke toko…", ur="اسٹور سے رابطہ ہو رہا ہے…",
   ms="Menyambung ke kedai…", it="Connessione allo store…", nl="Verbinden met de store…")
 
+s("purchaseInProgress", "Premium screen: disabled button label, beside a spinner, while the Store's own purchase sheet is up",
+  fr="Achat en cours…", en="Purchase in progress…", ar="جارٍ الشراء…",
+  es="Compra en curso…", pt="Compra em curso…", de="Kauf läuft…",
+  tr="Satın alma sürüyor…", id="Pembelian sedang diproses…", ur="خریداری جاری ہے…",
+  ms="Pembelian sedang berjalan…", it="Acquisto in corso…", nl="Aankoop bezig…")
+
 s("storeUnavailableCta", "Premium screen: disabled button label when the Store cannot be reached",
   fr="Boutique indisponible", en="Store unavailable", ar="المتجر غير متاح",
   es="Tienda no disponible", pt="Loja indisponível", de="Store nicht verfügbar",

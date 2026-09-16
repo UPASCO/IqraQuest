@@ -7,6 +7,7 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../theme/app_team.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/glass_circle_button.dart';
 import '../../../widgets/content_width.dart';
 import '../../../widgets/board/bonus_tile_painter.dart';
 import '../../../widgets/board/board_environment.dart';
@@ -114,7 +115,9 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                       // Back to the setup screen with its choices intact —
                       // and home when there is nothing under this screen,
                       // rather than an assertion on an empty stack.
-                      _GlassBackButton(
+                      GlassCircleButton(
+                        icon: Icons.arrow_back,
+                        label: MaterialLocalizations.of(context).backButtonTooltip,
                         onTap: () =>
                             context.canPop() ? context.pop() : context.go('/home'),
                       ),
@@ -278,33 +281,6 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
     );
 
     if (mounted) context.go('/game');
-  }
-}
-
-class _GlassBackButton extends StatelessWidget {
-  const _GlassBackButton({required this.onTap});
-
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      label: MaterialLocalizations.of(context).backButtonTooltip,
-      child: Material(
-        color: const Color(0xB3122E22),
-        shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.14))),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onTap,
-          child: const SizedBox(
-            width: 40,
-            height: 40,
-            child: Icon(Icons.arrow_back, size: 20, color: OrnatePalette.ivory),
-          ),
-        ),
-      ),
-    );
   }
 }
 

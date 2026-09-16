@@ -448,6 +448,12 @@ abstract class AppLocalizations {
   /// **'Connecting to the store…'**
   String get storeLoading;
 
+  /// Premium screen: disabled button label, beside a spinner, while the Store's own purchase sheet is up
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase in progress…'**
+  String get purchaseInProgress;
+
   /// Premium screen: disabled button label when the Store cannot be reached
   ///
   /// In en, this message translates to:

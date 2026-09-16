@@ -55,6 +55,7 @@
   "chooseTeam": "Choisir l'équipe",
   "ridersTitle": "Les cavaliers",
   "storeLoading": "Connexion à la boutique…",
+  "purchaseInProgress": "Achat en cours…",
   "storeUnavailableCta": "Boutique indisponible",
   "premiumBenefitBank": "Toute la banque de questions, chacune avec sa source",
   "premiumBenefitUnlimited": "Des parties illimitées, jusqu'à La Mecque (la version gratuite s'arrête après {count} pioches)",

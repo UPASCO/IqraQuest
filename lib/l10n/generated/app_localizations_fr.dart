@@ -206,6 +206,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get storeLoading => 'Connexion à la boutique…';
 
   @override
+  String get purchaseInProgress => 'Achat en cours…';
+
+  @override
   String get storeUnavailableCta => 'Boutique indisponible';
 
   @override

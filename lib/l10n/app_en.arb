@@ -243,6 +243,10 @@
   "@storeLoading": {
     "description": "Premium screen: button label while the Store product is still loading"
   },
+  "purchaseInProgress": "Purchase in progress…",
+  "@purchaseInProgress": {
+    "description": "Premium screen: disabled button label, beside a spinner, while the Store's own purchase sheet is up"
+  },
   "storeUnavailableCta": "Store unavailable",
   "@storeUnavailableCta": {
     "description": "Premium screen: disabled button label when the Store cannot be reached"

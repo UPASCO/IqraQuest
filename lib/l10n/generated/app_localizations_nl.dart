@@ -202,6 +202,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storeLoading => 'Verbinden met de store…';
 
   @override
+  String get purchaseInProgress => 'Aankoop bezig…';
+
+  @override
   String get storeUnavailableCta => 'Store niet beschikbaar';
 
   @override

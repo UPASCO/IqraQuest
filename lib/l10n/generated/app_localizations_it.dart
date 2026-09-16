@@ -205,6 +205,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get storeLoading => 'Connessione allo store…';
 
   @override
+  String get purchaseInProgress => 'Acquisto in corso…';
+
+  @override
   String get storeUnavailableCta => 'Store non disponibile';
 
   @override

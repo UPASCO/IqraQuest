@@ -625,7 +625,7 @@ void main() {
     // Silent, the board says so: the glyph flips with the state.
     expect(
       tester.widgetList<Icon>(find.descendant(of: toggle, matching: find.byType(Icon))).first.icon,
-      Icons.volume_off,
+      Icons.volume_off_outlined,
     );
 
     await tester.tap(toggle);
@@ -686,19 +686,27 @@ void main() {
     );
   });
 
-  testWidgets('on a tablet the HUD never sits on the plate', (tester) async {
+  testWidgets('the HUD never sits on the plate', (tester) async {
     // Reported from an iPad in portrait: the name, the arrivals and the
     // three counters were drawn over the top of the board. A 4:3 tablet
     // leaves about 180 points above a full-width square plate and the
     // HUD is taller than that — so the board reserves a band at each
     // end, in both orientations, and this measures that it works.
-    // Both orientations, and the accessibility text size, where the HUD
-    // grows but the plate does not.
+    // Then found again on a 16:9 phone, where the bands were not
+    // reserved at all: an iPhone SE centres a 375-point plate 146
+    // points from the top, under a 200-point HUD. So the phones are
+    // measured too, down to the floor, at the accessibility text size
+    // where the HUD grows but the plate does not.
     for (final (size, scale) in [
       (const Size(834, 1194), 1.0),
       (const Size(1194, 834), 1.0),
       (const Size(834, 1194), 1.3),
       (const Size(1024, 1366), 1.3),
+      (const Size(390, 844), 1.0),
+      (const Size(375, 667), 1.0),
+      (const Size(375, 667), 1.3),
+      (const Size(360, 780), 1.3),
+      (const Size(320, 568), 1.0),
     ]) {
       // A real tablet has a status bar, and SafeArea pushes the whole HUD
       // down by it. Without that inset the test measures a screen no
@@ -720,8 +728,15 @@ void main() {
 
       var hudBottom = 0.0;
       var hudRight = 0.0;
-      for (final key in ['turn-nameplate', 'hud-knowledge', 'hud-streak']) {
+      for (final key in [
+        'turn-nameplate',
+        'hud-knowledge',
+        'hud-streak',
+        'hud-cards',
+      ]) {
         final finder = find.byKey(Key(key));
+        // The cards counter only exists in a free game.
+        if (key == 'hud-cards' && finder.evaluate().isEmpty) continue;
         expect(finder, findsOneWidget, reason: '$key is missing');
         final rect = tester.getRect(finder);
         if (rect.bottom > hudBottom) hudBottom = rect.bottom;

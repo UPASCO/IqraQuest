@@ -171,14 +171,36 @@ class _PremiumScreenState extends ConsumerState<PremiumScreen> {
                             },
                       // Never hardcode a price — always read it from the
                       // Store's own ProductDetails (spec §73–§74).
-                      child: ButtonLabel(
-                        product != null
-                            ? l10n.premiumCta(product.price)
-                            : _uiState == PurchaseUiState.storeUnavailable ||
-                                  _uiState == PurchaseUiState.error
-                            ? l10n.storeUnavailableCta
-                            : l10n.storeLoading,
-                      ),
+                      child: _uiState == PurchaseUiState.purchasing
+                          // The Store's sheet is up: the button says so
+                          // and turns, rather than sitting greyed with
+                          // the price on it as if the tap had been lost.
+                          ? Row(
+                              key: const Key('purchase-busy'),
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const SizedBox(
+                                  width: 18,
+                                  height: 18,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2.2,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Flexible(
+                                  child: ButtonLabel(l10n.purchaseInProgress),
+                                ),
+                              ],
+                            )
+                          : ButtonLabel(
+                              product != null
+                                  ? l10n.premiumCta(product.price)
+                                  : _uiState ==
+                                            PurchaseUiState.storeUnavailable ||
+                                        _uiState == PurchaseUiState.error
+                                  ? l10n.storeUnavailableCta
+                                  : l10n.storeLoading,
+                            ),
                     ),
                     const SizedBox(height: 12),
                     OutlinedButton(

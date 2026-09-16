@@ -20,6 +20,7 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../../../models/models.dart';
 import '../../../services/sound_service.dart';
 import '../../../theme/app_theme.dart';
+import '../../../widgets/glass_circle_button.dart';
 import '../../../widgets/board/cross_board_scene.dart';
 import '../../../widgets/bonus_callout.dart';
 import '../../../widgets/celebration_overlay.dart';
@@ -136,19 +137,23 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     // moment it is tapped.
     final soundOn = ref.watch(settingsControllerProvider).soundEnabled;
     final boardSize = MediaQuery.sizeOf(context);
-    // A tablet's plate is big enough to reach the floating HUD and the
-    // deck at both ends — in PORTRAIT as much as in landscape, which is
-    // the case the first version missed: a 4:3 tablet leaves 180 points
-    // above a full-width plate and the HUD is taller than that. A phone's
-    // plate never comes close, so nothing there changes.
-    final reserveBands = boardSize.shortestSide >= 600;
+    // The plate keeps clear of the floating HUD and of the deck at both
+    // ends, on every device. The first version reserved the bands on
+    // tablets only, on the theory that a phone's square plate, centred
+    // in a tall screen, never comes near them — true of a 19.5:9 phone,
+    // false of a 16:9 one: on an iPhone SE the cards counter and the
+    // lead toast sat across the top row of the plate, the finish lanes
+    // and a stable under them. Now the plate is the square that fits
+    // between the two measured bands; a tall phone keeps the full width,
+    // a short one gives up a few points of side rather than its top row.
     // A tablet on its side keeps no band at all: the HUD and the deck
     // move to a rail on either side, and the plate takes the full height
     // between them. Bands above and below left a 12.9" iPad's plate at
     // 700 points with 330 points of empty felt each side; rails give it
     // a thousand. The rail is whatever the plate leaves, and never
     // narrower than the HUD needs.
-    final rails = reserveBands && boardSize.width > boardSize.height;
+    final rails =
+        boardSize.shortestSide >= 600 && boardSize.width > boardSize.height;
     final railWidth = rails
         ? math.max(
             _railMinWidth,
@@ -314,27 +319,27 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     //
     // The same pieces are laid out two ways below: across the top of the
     // plate, or down a rail beside it when a tablet is on its side.
-    final backButton = _GlassIconButton(
+    final backButton = GlassCircleButton(
       key: const Key('board-back'),
       icon: Icons.arrow_back,
       label: MaterialLocalizations.of(context).backButtonTooltip,
       onTap: () => context.go('/home'),
     );
-    final muteButton = _GlassIconButton(
+    final muteButton = GlassCircleButton(
       key: const Key('mute-toggle'),
-      icon: soundOn ? Icons.volume_up : Icons.volume_off,
+      icon: soundOn ? Icons.volume_up_outlined : Icons.volume_off_outlined,
       label: soundOn ? l10n.muteSound : l10n.unmuteSound,
       onTap: () => ref
           .read(settingsControllerProvider.notifier)
           .setSoundEnabled(!soundOn),
     );
-    final rulesButton = _GlassIconButton(
+    final rulesButton = GlassCircleButton(
       key: const Key('rules-shortcut'),
       icon: Icons.help_outline,
       label: l10n.rulesTitle,
       onTap: () => context.push('/tutorial'),
     );
-    final menuButton = _GlassIconButton(
+    final menuButton = GlassCircleButton(
       key: const Key('board-menu'),
       icon: Icons.menu,
       label: l10n.boardMenuOpen,
@@ -344,7 +349,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     // save nobody finds. Premium — the lock says so on a free device,
     // and the tap then opens the paywall.
     final isPremium = ref.watch(premiumControllerProvider);
-    final saveButton = _GlassIconButton(
+    final saveButton = GlassCircleButton(
       key: const Key('board-save'),
       icon: Icons.bookmark_add_outlined,
       label: isPremium
@@ -450,15 +455,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
           ),
       ],
     );
-    final toast = <Widget>[
-      if (_leadToast != null) ...[
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Flexible(child: _LeadToast(text: _leadToast!))],
-        ),
-      ],
-    ];
 
     return PopScope(
       // System back mid-game behaves exactly like the in-game back
@@ -488,16 +484,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
               // the plate the width it could have had. Until the first
               // frame has measured them the old floors stand in, so the
               // board never opens overlapping the HUD.
-              top: rails
-                  ? _bandGap
-                  : reserveBands
-                  ? (_hudBand ?? 220.0) + _bandGap
-                  : 0,
-              bottom: rails
-                  ? _bandGap
-                  : reserveBands
-                  ? (_deckBand ?? 160.0) + _bandGap
-                  : 0,
+              top: rails ? _bandGap : (_hudBand ?? 220.0) + _bandGap,
+              bottom: rails ? _bandGap : (_deckBand ?? 160.0) + _bandGap,
               left: rails ? railWidth : 0,
               right: rails ? railWidth : 0,
               child: InteractiveViewer(
@@ -574,8 +562,10 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                         children: [
                           Row(
                             children: [
+                              // The buttons' tap areas touch; their discs
+                              // keep twelve points of air between them.
                               backButton,
-                              const SizedBox(width: 6),
+                              const SizedBox(width: 2),
                               muteButton,
                               const SizedBox(width: 8),
                               // Five buttons leave a narrow phone
@@ -591,9 +581,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                               ),
                               const SizedBox(width: 8),
                               rulesButton,
-                              const SizedBox(width: 6),
+                              const SizedBox(width: 2),
                               saveButton,
-                              const SizedBox(width: 6),
+                              const SizedBox(width: 2),
                               menuButton,
                             ],
                           ),
@@ -601,7 +591,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                           arrivals,
                           const SizedBox(height: 8),
                           stats,
-                          ...toast,
                         ],
                       ),
                     ),
@@ -648,7 +637,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                         arrivals,
                         const SizedBox(height: 8),
                         stats,
-                        ...toast,
                       ],
                     ),
                   ),
@@ -677,6 +665,29 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 child: SafeArea(
                   child: Center(
                     child: SingleChildScrollView(child: bottomOverlay),
+                  ),
+                ),
+              ),
+
+            // "X takes the lead", for two seconds, floating just under
+            // the HUD (or at the top of the rail's plate). Outside the
+            // measured band on purpose: a toast that grew the band would
+            // resize the plate on its way in and again on its way out.
+            if (_leadToast != null)
+              Positioned(
+                top: rails ? _bandGap : (_hudBand ?? 220.0) + _bandGap,
+                left: rails ? railWidth : 0,
+                right: rails ? railWidth : 0,
+                child: IgnorePointer(
+                  child: SafeArea(
+                    top: rails,
+                    bottom: false,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(child: _LeadToast(text: _leadToast!)),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -1694,67 +1705,6 @@ class _HudStat extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _GlassIconButton extends StatelessWidget {
-  const _GlassIconButton({
-    super.key,
-    required this.icon,
-    required this.onTap,
-    required this.label,
-    this.locked = false,
-  });
-
-  final IconData icon;
-  final VoidCallback onTap;
-
-  /// What this button does, for a screen reader — never guessed from the
-  /// glyph: two of these sit side by side on the board.
-  final String label;
-
-  /// A Premium action on a free device: the glyph dimmed and the gold
-  /// lock on its corner; the tap still works, and opens the paywall.
-  final bool locked;
-
-  @override
-  Widget build(BuildContext context) {
-    final button = Material(
-      color: const Color(0xB3122E22),
-      shape: CircleBorder(
-        side: BorderSide(color: Colors.white.withValues(alpha: 0.14)),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: SizedBox(
-          width: 38,
-          height: 38,
-          child: Icon(
-            icon,
-            size: 19,
-            color: locked ? const Color(0x99F4ECDC) : const Color(0xFFF4ECDC),
-          ),
-        ),
-      ),
-    );
-    return Semantics(
-      button: true,
-      label: label,
-      child: locked
-          ? Stack(
-              clipBehavior: Clip.none,
-              children: [
-                button,
-                const PositionedDirectional(
-                  end: -3,
-                  bottom: -3,
-                  child: LockBadge(size: 16),
-                ),
-              ],
-            )
-          : button,
     );
   }
 }

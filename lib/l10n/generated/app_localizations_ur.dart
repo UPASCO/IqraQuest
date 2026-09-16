@@ -202,6 +202,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get storeLoading => 'اسٹور سے رابطہ ہو رہا ہے…';
 
   @override
+  String get purchaseInProgress => 'خریداری جاری ہے…';
+
+  @override
   String get storeUnavailableCta => 'اسٹور دستیاب نہیں';
 
   @override

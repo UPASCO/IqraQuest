@@ -199,6 +199,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get storeLoading => 'Mağazaya bağlanılıyor…';
 
   @override
+  String get purchaseInProgress => 'Satın alma sürüyor…';
+
+  @override
   String get storeUnavailableCta => 'Mağaza kullanılamıyor';
 
   @override
