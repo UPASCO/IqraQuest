@@ -1293,7 +1293,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'Introduce la dirección que pagó la licencia: allí te espera un enlace de acceso. Sin contraseña.';
+      'Introduce tu dirección: te enviamos un enlace para entrar y elegir una nueva contraseña.';
 
   @override
   String get teacherEmailLabel => 'Correo electrónico';
@@ -1716,7 +1716,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'Llega en un minuto. Si no está, mira en la carpeta de spam.';
+      'Llega en un minuto. Si no está, mira en la carpeta de spam. ¿Sigue sin llegar? Escribe a support@iqraquest.org.';
 
   @override
   String get teacherTooManyLinks =>

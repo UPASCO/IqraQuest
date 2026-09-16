@@ -1289,7 +1289,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'Voer het adres in waarmee de licentie is betaald: daar wacht een aanmeldlink. Geen wachtwoord.';
+      'Voer je adres in: we sturen je een link om binnen te komen en een nieuw wachtwoord te kiezen.';
 
   @override
   String get teacherEmailLabel => 'E-mailadres';
@@ -1711,7 +1711,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'Hij komt binnen een minuut aan. Zo niet, kijk in je spammap.';
+      'Hij komt binnen een minuut. Staat hij er niet, kijk dan in je spammap. Nog steeds niets? Schrijf naar support@iqraquest.org.';
 
   @override
   String get teacherTooManyLinks =>

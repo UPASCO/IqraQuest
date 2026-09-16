@@ -1296,7 +1296,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'Entrez l\'adresse qui a payé la licence : un lien de connexion vous y attend. Aucun mot de passe.';
+      'Entrez votre adresse : nous vous envoyons un lien pour entrer et choisir un nouveau mot de passe.';
 
   @override
   String get teacherEmailLabel => 'Adresse e-mail';
@@ -1720,7 +1720,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'Il arrive en une minute. S\'il n\'est pas là, regardez dans les indésirables.';
+      'Il arrive en une minute. S\'il n\'est pas là, regardez dans les indésirables. Toujours rien ? Écrivez à support@iqraquest.org.';
 
   @override
   String get teacherTooManyLinks =>

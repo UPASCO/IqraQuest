@@ -1282,7 +1282,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'وہ ای میل درج کریں جس سے لائسنس خریدا گیا: داخلے کا لنک وہیں پہنچے گا۔ کوئی پاس ورڈ نہیں۔';
+      'اپنا پتہ درج کریں: ہم آپ کو داخل ہونے اور نیا پاس ورڈ چننے کا لنک بھیجتے ہیں۔';
 
   @override
   String get teacherEmailLabel => 'ای میل ایڈریس';
@@ -1702,7 +1702,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'ایک منٹ میں آ جاتا ہے۔ نہ ملے تو اسپیم فولڈر دیکھیں۔';
+      'ایک منٹ میں پہنچ جاتا ہے۔ نہ ملے تو اسپیم فولڈر دیکھیں۔ پھر بھی کچھ نہیں؟ support@iqraquest.org پر لکھیں۔';
 
   @override
   String get teacherTooManyLinks =>

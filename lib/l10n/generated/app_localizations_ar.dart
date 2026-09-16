@@ -1298,7 +1298,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'أدخل البريد الذي دُفعت به الرخصة: سيصلك رابط الدخول. بلا كلمة مرور.';
+      'أدخل عنوانك: نرسل لك رابطًا للدخول واختيار كلمة مرور جديدة.';
 
   @override
   String get teacherEmailLabel => 'البريد الإلكتروني';
@@ -1730,7 +1730,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'يصل خلال دقيقة. إن لم تجده، فابحث في البريد غير المرغوب فيه.';
+      'يصل خلال دقيقة. إن لم تجده، فابحث في البريد غير المرغوب فيه. لا شيء بعد؟ راسل support@iqraquest.org.';
 
   @override
   String get teacherTooManyLinks =>

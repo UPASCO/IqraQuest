@@ -1720,9 +1720,9 @@
   "@teacherConsole": {
     "description": "Title of the teacher's web console"
   },
-  "teacherSignInHint": "Enter the address that paid for the licence: a sign-in link will be waiting there. No password.",
+  "teacherSignInHint": "Enter your address: we send you a link to get in and choose a new password.",
   "@teacherSignInHint": {
-    "description": "Console: how a teacher gets in — no password anywhere"
+    "description": "Console, forgot-password form: what happens next"
   },
   "teacherEmailLabel": "Email address",
   "@teacherEmailLabel": {
@@ -2268,9 +2268,9 @@
       }
     }
   },
-  "teacherLinkSpamHint": "It arrives within a minute. If it is not there, look in your spam folder.",
+  "teacherLinkSpamHint": "It arrives within a minute. If it is not there, look in your spam folder. Still nothing? Write to support@iqraquest.org.",
   "@teacherLinkSpamHint": {
-    "description": "Console: where to look if the link is not in the inbox"
+    "description": "Console: where to look if the link is not in the inbox, and whom to write to"
   },
   "teacherTooManyLinks": "Too many links requested. Wait an hour, or check the server's email sending.",
   "@teacherTooManyLinks": {

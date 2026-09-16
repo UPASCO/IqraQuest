@@ -1268,7 +1268,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'Lisansı ödeyen adresi girin: giriş bağlantısı orada sizi bekliyor. Parola yok.';
+      'Adresinizi girin: giriş yapıp yeni bir parola seçmeniz için size bir bağlantı gönderiyoruz.';
 
   @override
   String get teacherEmailLabel => 'E-posta adresi';
@@ -1683,7 +1683,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'Bir dakika içinde gelir. Gelmediyse gereksiz klasörüne bakın.';
+      'Bir dakika içinde gelir. Gelmediyse istenmeyen posta klasörüne bakın. Hâlâ yok mu? support@iqraquest.org adresine yazın.';
 
   @override
   String get teacherTooManyLinks =>

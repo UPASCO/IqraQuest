@@ -1280,7 +1280,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get teacherSignInHint =>
-      'Masukkan alamat yang membayar lisensi: tautan masuk menunggu di sana. Tanpa kata sandi.';
+      'Masukkan alamat Anda: kami mengirim tautan untuk masuk dan memilih kata sandi baru.';
 
   @override
   String get teacherEmailLabel => 'Alamat email';
@@ -1698,7 +1698,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get teacherLinkSpamHint =>
-      'Tiba dalam satu menit. Jika tidak ada, periksa folder spam.';
+      'Tiba dalam semenit. Jika tidak ada, periksa folder spam. Masih belum ada? Tulis ke support@iqraquest.org.';
 
   @override
   String get teacherTooManyLinks =>

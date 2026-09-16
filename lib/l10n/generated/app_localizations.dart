@@ -2212,10 +2212,10 @@ abstract class AppLocalizations {
   /// **'Teacher console'**
   String get teacherConsole;
 
-  /// Console: how a teacher gets in — no password anywhere
+  /// Console, forgot-password form: what happens next
   ///
   /// In en, this message translates to:
-  /// **'Enter the address that paid for the licence: a sign-in link will be waiting there. No password.'**
+  /// **'Enter your address: we send you a link to get in and choose a new password.'**
   String get teacherSignInHint;
 
   /// Console: the email field
@@ -2878,10 +2878,10 @@ abstract class AppLocalizations {
   /// **'This licence runs {limit} room(s) at a time.'**
   String teacherTooManySessions(num limit);
 
-  /// Console: where to look if the link is not in the inbox
+  /// Console: where to look if the link is not in the inbox, and whom to write to
   ///
   /// In en, this message translates to:
-  /// **'It arrives within a minute. If it is not there, look in your spam folder.'**
+  /// **'It arrives within a minute. If it is not there, look in your spam folder. Still nothing? Write to support@iqraquest.org.'**
   String get teacherLinkSpamHint;
 
   /// Console: the mail service refused another link for now
