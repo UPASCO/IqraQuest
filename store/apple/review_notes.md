@@ -9,13 +9,16 @@ designed for ages 7-99. Key points for review:
   THIRD_PARTY_NOTICES.md for the complete, short dependency list.
 - **No backend server.** All game logic, content, and progress storage
   is local to the device.
-- **Free content:** 50 of the 500 curated quiz questions in this build
-  (free questions recycle so a free game is never blocked), unlimited Solo and Family play, both game
-  variants (Quick/Classic), the daily challenge with the free question
-  bank.
+- **Free content:** 50 of the 1,100 curated quiz questions (free
+  questions recycle so a free game is never blocked), Solo and Family
+  play, the three race lengths (Quick/Duo/Classic), the daily challenge
+  with the free question bank. A free race stops after 50 draws and
+  says so, with the way to the unlock.
 - **One-time purchase:** `iqraquest_full_access` (non-consumable)
-  unlocks the remaining question bank. There is no subscription, no
-  consumable, and no other IAP.
+  unlocks the remaining question bank, lifts the 50-draw limit, and
+  opens the two other courses, the mixed level and named saves. There
+  is no subscription, no consumable, and no other IAP. The price is
+  read from the App Store product; nothing is hardcoded.
 - **Restore Purchases** is available on the Premium screen.
 - **Content sensitivity:** the app presents factual quiz questions about
   Islam sourced from the Qur'an and the two most authenticated hadith

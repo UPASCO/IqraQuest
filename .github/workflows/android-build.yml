@@ -6,13 +6,18 @@ name: Android — build & verify
 # missing drawable or an icon that does not resolve fails here rather
 # than on somebody's phone.
 #
-# It needs no secrets: the APK is signed with the debug key (see
-# android/app/build.gradle.kts), which is enough to prove the build.
+# The APK needs no secrets: it is signed with the debug key (see
+# android/app/build.gradle.kts), which is enough to prove the build and
+# to sideload it. It is uploaded as a run artifact, so a manual run
+# doubles as the quickest way to get a real build onto a real device —
+# no store, no review, no Apple secrets. Tick `tester_unlock` for a
+# build that can play the whole bank without a purchase.
 #
-# The APK is uploaded as a run artifact, so a manual run doubles as the
-# quickest way to get a real build onto a real device — no store, no
-# review, no Apple secrets. Tick `tester_unlock` for a build that can
-# play the whole bank without a purchase.
+# The Play bundle (.aab) is built on a manual run too, when the four
+# ANDROID_* secrets hold the upload key (store/google/PLAY_SETUP.md
+# says how to make them). It is signed with that key, numbered from the
+# run so every upload has a higher version code, and never built from a
+# tester configuration: what goes to Play is always the store build.
 on:
   workflow_dispatch:
     inputs:
@@ -81,3 +86,63 @@ jobs:
           name: iqraquest-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
+
+      # ---- The Play bundle, signed with the upload key ----
+      #
+      # Only on a manual run, only in the store configuration, and only
+      # when the secrets are there: without them the step says so and
+      # the job still succeeds on the strength of the APK above.
+      - name: Write the upload keystore from the secrets
+        id: keystore
+        if: github.event_name == 'workflow_dispatch' && inputs.tester_unlock != true
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "::notice::No ANDROID_KEYSTORE_BASE64 secret: the Play bundle is skipped (store/google/PLAY_SETUP.md)."
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          missing=""
+          for name in ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+            eval "value=\${$name}"
+            [ -z "$value" ] && missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing GitHub secret(s):$missing"
+            exit 1
+          fi
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+          {
+            echo "storePassword=$ANDROID_KEYSTORE_PASSWORD"
+            echo "keyPassword=$ANDROID_KEY_PASSWORD"
+            echo "keyAlias=$ANDROID_KEY_ALIAS"
+            echo "storeFile=upload-keystore.jks"
+          } > android/key.properties
+          echo "signed=true" >> "$GITHUB_OUTPUT"
+
+      # --build-number: Play refuses a bundle whose version code is not
+      # higher than the last one uploaded, so the run number stands in
+      # for pubspec's "+1", the same way the iOS workflow numbers its
+      # TestFlight uploads.
+      - name: Build the Play bundle
+        if: steps.keystore.outputs.signed == 'true'
+        run: |
+          flutter build appbundle --release \
+            --build-number=${{ github.run_number }} \
+            --dart-define=IQRAQUEST_TESTER=false
+
+      - name: Upload the Play bundle
+        if: steps.keystore.outputs.signed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: iqraquest-play-bundle
+          path: build/app/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+
+      - name: Remove the keystore from the runner
+        if: always()
+        run: rm -f android/app/upload-keystore.jks android/key.properties

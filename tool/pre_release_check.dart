@@ -400,6 +400,27 @@ void main() {
     leaked.isEmpty,
     detail: leaked.join('; '),
   );
+  // The Play upload key lives in GitHub secrets and, for the length of a
+  // build, on the runner — never in the tree. android/.gitignore keeps
+  // git from taking it; this keeps a checkout from carrying it anyway.
+  final keyFiles = <String>[];
+  final androidDir = Directory('${root.path}/android');
+  if (androidDir.existsSync()) {
+    for (final entity in androidDir.listSync(recursive: true)) {
+      if (entity is! File) continue;
+      final name = entity.uri.pathSegments.last;
+      if (name == 'key.properties' ||
+          name.endsWith('.jks') ||
+          name.endsWith('.keystore')) {
+        keyFiles.add(entity.path);
+      }
+    }
+  }
+  check(
+    'no Android keystore or key.properties in the tree',
+    keyFiles.isEmpty,
+    detail: keyFiles.join('; '),
+  );
 
   section('No placeholders in shipped code/content');
   final libDir = Directory('${root.path}/lib');

@@ -360,6 +360,78 @@ void main() {
     });
   }
 
+  // The two Premium popups a free player meets, for the marketing
+  // review. Each on its own (UX_AUDIT_SOLO=1): they drive the board.
+  group('premium popups', () {
+    final v = _variants.first;
+
+    testWidgets('free-limit popup', skip: !_solo, (tester) async {
+      // A race the 50-draw limit stopped: the results screen opens on
+      // the popup. The state has to exist before the screen's first
+      // frame, so the app opens on home and is sent to the results.
+      // (resumeFrom refuses a finished game, so the session is set.)
+      final container = await _pumpApp(tester, v, '/home');
+      final controller = container.read(gameControllerProvider.notifier);
+      final pool = await tester.runAsync(
+        () => QuestionRepository().loadAll('en'),
+      );
+      controller.configure(pool: pool!, isPremium: false);
+      controller.startNewGame(
+        mode: GameMode.family,
+        variant: GameVariant.classic,
+        circuitId: CircuitId.oasisRoute,
+        players: [
+          _human('p0', 'Amina', AppTeam.emerald),
+          _human('p1', 'Yusuf', AppTeam.saphir),
+        ],
+      );
+      final over = controller.state!.gameState.copyWith(
+        turnPhase: TurnPhase.gameOver,
+        endedByDrawLimit: true,
+        drawCount: GameState.freeDrawLimit,
+      );
+      // ignore: invalid_use_of_protected_member
+      controller.state = GameSession(gameState: over);
+      container.read(appRouterProvider).go('/results');
+      await _settle(tester);
+      expect(find.byKey(const Key('free-limit-popup')), findsOneWidget);
+      await _capture(tester, 'premium_free_limit_popup');
+    });
+
+    testWidgets('free-tour popup', skip: !_solo, (tester) async {
+      // Every free card already seen on this device: the first draw of
+      // the next game says the tour is done and offers the whole bank.
+      final pool = await tester.runAsync(
+        () => QuestionRepository().loadAll('en'),
+      );
+      final freeIds = [
+        for (final q in pool!)
+          if (q.isFree) q.id,
+      ];
+      final container = await _pumpApp(
+        tester,
+        v,
+        '/game',
+        seed: (storage) => ProgressService(storage).markSeen(freeIds),
+      );
+      final controller = container.read(gameControllerProvider.notifier);
+      controller.configure(pool: pool, isPremium: false);
+      controller.startNewGame(
+        mode: GameMode.family,
+        variant: GameVariant.classic,
+        circuitId: CircuitId.oasisRoute,
+        players: [
+          _human('p0', 'Amina', AppTeam.emerald),
+          _human('p1', 'Yusuf', AppTeam.saphir),
+        ],
+      );
+      await _settle(tester);
+      await _drawCard(tester);
+      expect(find.byKey(const Key('free-tour-popup')), findsOneWidget);
+      await _capture(tester, 'premium_free_tour_popup');
+    });
+  });
+
   // Last, on its own: the Premium screen wakes the billing plugin, whose
   // missing platform channel throws and leaves the binding in a state
   // that can stall the next runAsync. Nothing runs after it.
