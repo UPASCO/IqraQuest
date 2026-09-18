@@ -123,6 +123,19 @@ class PremiumController extends StateNotifier<bool> {
     await _entitlements.revokePremium();
     state = false;
   }
+
+  /// Settings › Tester mode: the same right on screen, a different flag
+  /// underneath, which a store build never reads (see EntitlementService).
+  Future<void> grantTester() async {
+    await _entitlements.grantTester();
+    state = true;
+  }
+
+  Future<void> revokeTester() async {
+    await _entitlements.revokeTester();
+    // A tester who also bought keeps what was bought.
+    state = await _entitlements.isPremium();
+  }
 }
 
 final premiumControllerProvider = StateNotifierProvider<PremiumController, bool>(

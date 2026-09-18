@@ -50,7 +50,7 @@ class TesterModeTile extends ConsumerWidget {
       value: isPremium,
       onChanged: (on) {
         final controller = ref.read(premiumControllerProvider.notifier);
-        on ? controller.grant() : controller.revoke();
+        on ? controller.grantTester() : controller.revokeTester();
       },
     );
   }

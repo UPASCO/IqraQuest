@@ -40,6 +40,12 @@ class _MemoryEntitlements implements EntitlementService {
   Future<void> grantPremium() async => _premium = true;
   @override
   Future<void> revokePremium() async => _premium = false;
+
+  @override
+  Future<void> grantTester() async => _premium = true;
+
+  @override
+  Future<void> revokeTester() async => _premium = false;
 }
 
 /// The room, the app, and the bank loaded for real — the pupil's screen

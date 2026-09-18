@@ -69,6 +69,13 @@ achat :
 Un build testeur ne va jamais en revue Apple ni sur Play : ce réglage
 n'existe pas dans un build store (`lib/app/build_flags.dart`).
 
+Le mode testeur laisse sa marque dans le trousseau de l'iPhone (ou le
+stockage chiffré d'Android), et le trousseau survit à la désinstallation.
+Un build store installé ensuite sur le même téléphone **ignore cette
+marque** : il n'ouvre Premium que sur un achat enregistré par la
+boutique. Un téléphone qui a servi aux builds testeurs revoit donc
+l'expérience gratuite avec le build store, sans rien à effacer.
+
 ## Parcours C — l'achat réel, sans être débité
 
 Le vrai parcours, avec la feuille d'achat de la boutique, sur le build

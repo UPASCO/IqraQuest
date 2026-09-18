@@ -37,6 +37,12 @@ class _MemoryEntitlements implements EntitlementService {
 
   @override
   Future<void> revokePremium() async => _premium = false;
+
+  @override
+  Future<void> grantTester() async => _premium = true;
+
+  @override
+  Future<void> revokeTester() async => _premium = false;
 }
 
 Future<void> _pump(WidgetTester tester, Widget home) async {
